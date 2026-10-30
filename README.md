@@ -8,6 +8,9 @@ Não contém APK nem assets do jogo; eles ficam no PC/Google Drive do autor.
 - `tools/catalog.py` — catalogo de objetos de um bundle Unity (UnityPy).
 - `tools/extract.py` — extrai Texture2D, AudioClip (lê `resources.resource`) e TextAsset.
 - `out/cpp2il/DiffableCs/` — C# recuperado pelo Cpp2IL (Assembly-CSharp = código do jogo).
+- `tools/mb_dump.py` — despeja os campos dos MonoBehaviours (tipos gerados do IL2CPP) em `out/mb/*.jsonl.gz`.
+- `tools/mb_survey.py` — levantamento das classes de script usadas no bundle.
+- `out/mb/` — 879.085 de 881.898 MonoBehaviours decodificados (126 classes com erro).
 - `out/catalog_datapack.json` — contagem de objetos do `datapack.unity3d`.
 
 ## Reproduzir
@@ -19,3 +22,10 @@ Não contém APK nem assets do jogo; eles ficam no PC/Google Drive do autor.
 
 ## Notas
 - O app usa Google Play PairIP (anti-adulteração); não é contornado. O objetivo é analisar e reimplementar o cliente, não rodar o APK modificado.
+
+## Assets (fora do Git)
+Ficam no Google Drive do autor, pasta `AvatarWorld-RE/`: `apk/` (3 APKs) e `assets/` (`textures_png.tar`, `audio_wav.tar.zst`, `spine_textasset.tar.zst`, `SHA256SUMS.txt`).
+Para usar: baixar, conferir `sha256sum -c SHA256SUMS.txt` e extrair com `tar -xf` / `zstd -dc ... | tar -x`.
+
+## Achados
+- O catálogo/preços da loja NÃO está no APK: vem do servidor (`StoreClaimItemCloudResponse`). Moedas: `pazuCurrency` e `loyaltyPoints`.
