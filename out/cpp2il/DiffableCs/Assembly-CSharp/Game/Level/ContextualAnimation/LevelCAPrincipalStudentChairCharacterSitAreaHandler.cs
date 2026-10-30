@@ -1,0 +1,18 @@
+namespace Game.Level.ContextualAnimation;
+
+public class LevelCAPrincipalStudentChairCharacterSitAreaHandler : LevelCAParentHandlerBase
+{
+	private readonly List<LevelCAConfig> _configs; //Field offset: 0x80
+
+	public LevelCAPrincipalStudentChairCharacterSitAreaHandler() { }
+
+	public virtual List<LevelCAConfig> GetAnimations() { }
+
+	public virtual string GetFolderName() { }
+
+	public virtual SpineType GetSpineType() { }
+
+	public virtual void OnAnimationBegin(ICATarget target, LevelCAConfig config) { }
+
+}
+

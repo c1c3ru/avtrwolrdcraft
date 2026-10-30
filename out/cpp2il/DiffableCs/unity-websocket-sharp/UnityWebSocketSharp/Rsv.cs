@@ -1,0 +1,8 @@
+namespace UnityWebSocketSharp;
+
+internal enum Rsv
+{
+	Off = 0,
+	On = 1,
+}
+
