@@ -26,6 +26,7 @@ os.makedirs(outdir, exist_ok=True)
 safe = lambda s: re.sub(r'[^\w.\-]+', '_', s)
 files, errs, stat = {}, {}, collections.defaultdict(lambda: collections.Counter())
 seen = 0
+written = 0
 marker = os.open(os.path.join(outdir, "_last.txt"), os.O_WRONLY | os.O_CREAT | os.O_TRUNC)
 for o in env.objects:
     if o.type.name != "MonoBehaviour": continue
@@ -44,7 +45,11 @@ for o in env.objects:
         if d["m_Script"]["m_PathID"] != pid: st["bad"] += 1; continue
         st["ok"] += 1
         if cname not in files: files[cname] = gzip.open(os.path.join(outdir, safe(cname) + ".jsonl.gz"), "wt")
-        d["_path_id"] = o.path_id; files[cname].write(json.dumps(d, default=str) + "\n")
+        # path_id so e unico dentro do arquivo serializado: guarda tambem o arquivo
+        d["_path_id"] = o.path_id
+        d["_file"] = o.assets_file.name
+        files[cname].write(json.dumps(d, default=str) + "\n")
+        written += 1
     except BaseException as e:
         if not isinstance(e, Exception): traceback.print_exc(); raise
         st["err"] += 1
@@ -53,4 +58,6 @@ for f in files.values(): f.close()
 tot = collections.Counter()
 for c in stat.values(): tot.update(c)
 json.dump({"stats": {k: dict(v) for k, v in stat.items()}, "erros": errs}, open(os.path.join(outdir, "_stats.json"), "w"), indent=1)
-print("classes", len(stat), dict(tot))
+print("classes", len(stat), dict(tot), "gravados", written)
+if written != tot["ok"]:
+    sys.exit(f"ERRO: gravados {written} != ok {tot['ok']}")
