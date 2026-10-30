@@ -1,0 +1,69 @@
+namespace TMPro;
+
+internal struct FloatTween : ITweenValue
+{
+	internal class FloatTweenCallback : UnityEvent<Single>
+	{
+
+		public FloatTweenCallback() { }
+
+	}
+
+	private FloatTweenCallback m_Target; //Field offset: 0x0
+	private float m_StartValue; //Field offset: 0x8
+	private float m_TargetValue; //Field offset: 0xC
+	private float m_Duration; //Field offset: 0x10
+	private bool m_IgnoreTimeScale; //Field offset: 0x14
+
+	public override float duration
+	{
+		 get { } //Length: 8
+		 set { } //Length: 8
+	}
+
+	public override bool ignoreTimeScale
+	{
+		 get { } //Length: 8
+		 set { } //Length: 12
+	}
+
+	public float startValue
+	{
+		 get { } //Length: 8
+		 set { } //Length: 8
+	}
+
+	public float targetValue
+	{
+		 get { } //Length: 8
+		 set { } //Length: 8
+	}
+
+	public void AddOnChangedCallback(UnityAction<Single> callback) { }
+
+	public override float get_duration() { }
+
+	public override bool get_ignoreTimeScale() { }
+
+	public float get_startValue() { }
+
+	public float get_targetValue() { }
+
+	public float GetDuration() { }
+
+	public bool GetIgnoreTimescale() { }
+
+	public void set_duration(float value) { }
+
+	public void set_ignoreTimeScale(bool value) { }
+
+	public void set_startValue(float value) { }
+
+	public void set_targetValue(float value) { }
+
+	public override void TweenValue(float floatPercentage) { }
+
+	public override bool ValidTarget() { }
+
+}
+

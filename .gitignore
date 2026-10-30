@@ -1,0 +1,16 @@
+# Arquivos do jogo e artefatos pesados (ficam fora do Git; ver README)
+apk/
+x/
+il2cpp_in/
+out/assets/
+out/assets_sample/
+out/diskstats.txt
+out/*.log
+# Ferramentas baixadas / ambientes
+tools/dotnet/
+tools/venv/
+tools/jadx/
+tools/jadx-*.zip
+tools/Cpp2IL-*
+tools/dotnet-install.sh
+out/catalog.err
