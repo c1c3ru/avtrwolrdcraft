@@ -1,0 +1,47 @@
+{
+  "buildFiles": [
+    "/home/deppi/avatarworld-re/client/AvatarWorldClient/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/CMakeLists.txt",
+    "/home/deppi/avatarworld-re/client/AvatarWorldClient/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/FramePacing/CMakeLists.txt",
+    "/home/deppi/avatarworld-re/client/AvatarWorldClient/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/deppi/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/SDK/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/deppi/avatarworld-re/client/AvatarWorldClient/.utmp/Debug/y3338v5y/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/deppi/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/SDK/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/deppi/avatarworld-re/client/AvatarWorldClient/.utmp/Debug/y3338v5y/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "game::@d02bb112ea9f9c2ed29f": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "game",
+      "output": "/home/deppi/avatarworld-re/client/AvatarWorldClient/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/y3338v5y/obj/arm64-v8a/libgame.so",
+      "runtimeFiles": []
+    },
+    "swappywrapper::@7e25bd1f32ce224db4e9": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "swappywrapper",
+      "output": "/home/deppi/avatarworld-re/client/AvatarWorldClient/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/Debug/y3338v5y/obj/arm64-v8a/libswappywrapper.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/home/deppi/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/home/deppi/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
