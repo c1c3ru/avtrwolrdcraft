@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="AvatarWorldClient" tests="27" failures="0" errors="0" skipped="0" time="0.068">
+  <testsuite name="AvatarWorld.Core.Tests.LocalStoreServiceTests" tests="14" failures="0" errors="0" skipped="0" time="0.022">
+    <testcase name="Claim_DeductsPriceAndRecordsTransaction" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.015" />
+    <testcase name="Claim_ExactBalance_Succeeds" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="Claim_FreeItem_CostsNothingAndGrantsOnlyLoyaltyPoints" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="Claim_InsufficientFunds_ChangesNothing" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.001" />
+    <testcase name="Claim_MaxClaims_AllowsExactlyThatMany" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="Claim_NegativePrice_IsNotAvailable" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="Claim_NullOrNoGuid_IsUnknownItem" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="Claim_OneTime_SecondAttemptIsRefusedAndFlagsMaxClaims" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="Claim_RealMoneyItem_IsAlwaysRefused" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="CreateNew_NegativeStartingBalance_Throws" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.003" />
+    <testcase name="Earn_AddsCoinsAndRecordsTransaction" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="Earn_NonPositive_Throws(0)" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="Earn_NonPositive_Throws(-5)" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.000" />
+    <testcase name="TransactionIds_AreUniqueAcrossOperations" classname="AvatarWorld.Core.Tests.LocalStoreServiceTests" time="0.001" />
+  </testsuite>
+  <testsuite name="AvatarWorld.Core.Tests.SaveStoreTests" tests="5" failures="0" errors="0" skipped="0" time="0.013">
+    <testcase name="LoadOrCreate_CorruptFile_IsPreservedAndStateStartsFresh" classname="AvatarWorld.Core.Tests.SaveStoreTests" time="0.009">
+      <system-out>Save ilegivel (ArgumentException); copia em /tmp/aw_save_a0c91fcb252d41ef860fefae8fc41139/player_state.json.corrupt. Iniciando estado novo.
+Save ilegivel (ArgumentException); copia em /tmp/aw_save_a0c91fcb252d41ef860fefae8fc41139/player_state.json.corrupt. Iniciando estado novo.</system-out>
+    </testcase>
+    <testcase name="LoadOrCreate_NegativeBalanceInFile_IsTreatedAsCorrupt" classname="AvatarWorld.Core.Tests.SaveStoreTests" time="0.002">
+      <system-out>Save ilegivel (InvalidDataException); copia em /tmp/aw_save_e163adcfde46474583a5d2f8fc3ac11f/player_state.json.corrupt. Iniciando estado novo.
+Save ilegivel (InvalidDataException); copia em /tmp/aw_save_e163adcfde46474583a5d2f8fc3ac11f/player_state.json.corrupt. Iniciando estado novo.</system-out>
+    </testcase>
+    <testcase name="LoadOrCreate_WithoutFile_UsesStartingBalance" classname="AvatarWorld.Core.Tests.SaveStoreTests" time="0.000" />
+    <testcase name="Save_Twice_OverwritesWithoutLeavingTempFile" classname="AvatarWorld.Core.Tests.SaveStoreTests" time="0.001" />
+    <testcase name="SaveThenLoad_RestoresBalancesClaimsAndLedger" classname="AvatarWorld.Core.Tests.SaveStoreTests" time="0.001" />
+  </testsuite>
+  <testsuite name="AvatarWorld.Core.Tests.UiSceneBuilderTests" tests="8" failures="0" errors="0" skipped="0" time="0.034">
+    <testcase name="Build_AppliesRectTransformValues" classname="AvatarWorld.Core.Tests.UiSceneBuilderTests" time="0.005" />
+    <testcase name="Build_ButtonClickRunsActionByObjectName" classname="AvatarWorld.Core.Tests.UiSceneBuilderTests" time="0.021" />
+    <testcase name="Build_ButtonFallsBackToMethodName" classname="AvatarWorld.Core.Tests.UiSceneBuilderTests" time="0.001" />
+    <testcase name="Build_ImageGetsSpriteColorAndType" classname="AvatarWorld.Core.Tests.UiSceneBuilderTests" time="0.004" />
+    <testcase name="Build_InactiveNodesAreDisabledButChildrenStillBuilt" classname="AvatarWorld.Core.Tests.UiSceneBuilderTests" time="0.001" />
+    <testcase name="Build_ParentReferencingFutureNodeThrows" classname="AvatarWorld.Core.Tests.UiSceneBuilderTests" time="0.000" />
+    <testcase name="Build_ReproducesHierarchyInOrder" classname="AvatarWorld.Core.Tests.UiSceneBuilderTests" time="0.001" />
+    <testcase name="SceneDescription_RoundTripsThroughJsonUtility" classname="AvatarWorld.Core.Tests.UiSceneBuilderTests" time="0.001">
+      <system-out>Saving results to: /home/deppi/.config/unity3d/DefaultCompany/AvatarWorldClient/TestResults.xml
+Saving results to: /home/deppi/.config/unity3d/DefaultCompany/AvatarWorldClient/TestResults.xml</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

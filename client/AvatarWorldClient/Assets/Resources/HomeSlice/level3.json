@@ -1,0 +1,9105 @@
+{
+ "name": "level3",
+ "nodes": [
+  {
+   "id": 0,
+   "parent": -1,
+   "name": "EventSystem",
+   "active": true,
+   "hasRect": false,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.EventSystems.StandaloneInputModule",
+    "PWC.DragThresholdFixer",
+    "UnityEngine.EventSystems.EventSystem"
+   ]
+  },
+  {
+   "id": 1,
+   "parent": -1,
+   "name": "Main Camera",
+   "active": true,
+   "hasRect": false,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": -10.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": []
+  },
+  {
+   "id": 2,
+   "parent": -1,
+   "name": "HomeManager",
+   "active": true,
+   "hasRect": false,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "Game.Home.HomeManager"
+   ]
+  },
+  {
+   "id": 3,
+   "parent": -1,
+   "name": "ELS_Home_Extra_Layer",
+   "active": true,
+   "hasRect": false,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": []
+  },
+  {
+   "id": 4,
+   "parent": -1,
+   "name": "Canvas",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": true,
+   "localScale": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.UI.GraphicRaycaster",
+    "UnityEngine.UI.CanvasScaler",
+    "PazuCore.PazuCoreAddressables.AFC.AFCCanvasScalerRangeToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 5,
+   "parent": 4,
+   "name": "Header",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCSizeDeltaToScreen"
+   ],
+   "anchorMin": {
+    "x": 1.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 1.0,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 190.5,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 6,
+   "parent": 5,
+   "name": "TopRightCorner",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -98.0,
+    "y": -106.0
+   },
+   "sizeDelta": {
+    "x": 184.0,
+    "y": 173.0
+   }
+  },
+  {
+   "id": 7,
+   "parent": 6,
+   "name": "AccountButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_75",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PazuCore.AF.ActionBar.OpenForParentsButton"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 92.0,
+    "y": -71.5
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 8,
+   "parent": 6,
+   "name": "SettingsButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "Game.Home.HomeSettingsButton",
+    "PazuCore.NonDrawingGraphic"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -71.0,
+    "y": -71.5
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 9,
+   "parent": 8,
+   "name": "Graphic",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_69",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 10,
+   "parent": 6,
+   "name": "RateUs",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.AF.ActionBar.RateUsButton"
+   ],
+   "anchorMin": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -416.0,
+    "y": -96.0
+   },
+   "sizeDelta": {
+    "x": 129.0,
+    "y": 178.0
+   }
+  },
+  {
+   "id": 11,
+   "parent": 10,
+   "name": "Image",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_67",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 26.5
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 12,
+   "parent": 10,
+   "name": "Text",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Rate Us",
+    "fontSize": 36.0,
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": false,
+    "minSize": 0,
+    "maxSize": 0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 28.5
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 57.0
+   }
+  },
+  {
+   "id": 13,
+   "parent": 4,
+   "name": "PlayButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 0.993643581867218,
+    "y": 0.993643581867218,
+    "z": 0.993643581867218
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "Game.Home.HomePlayButton",
+    "PazuCore.NonDrawingGraphic",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 593.0,
+    "y": 4.0
+   },
+   "sizeDelta": {
+    "x": 369.0,
+    "y": 370.0
+   }
+  },
+  {
+   "id": 14,
+   "parent": 13,
+   "name": "Graphic",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_85",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 344.0,
+    "y": 344.0
+   }
+  },
+  {
+   "id": 15,
+   "parent": 14,
+   "name": "HomeNewDropBadge",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "Game.Home.HomeNewClothesDropBadge"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 90.0,
+    "y": 205.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 16,
+   "parent": 15,
+   "name": "View",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 194.0,
+    "y": 119.0
+   }
+  },
+  {
+   "id": 17,
+   "parent": 14,
+   "name": "HomeNewBadge",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "Game.Home.HomeNewBadge"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 91.0,
+    "y": 205.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 18,
+   "parent": 17,
+   "name": "View",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_84",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 194.0,
+    "y": 119.0
+   }
+  },
+  {
+   "id": 19,
+   "parent": 13,
+   "name": "MultiplayerButtonPosition",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 123.38421630859375,
+    "y": -112.011962890625
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 20,
+   "parent": 4,
+   "name": "HolidayButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "Game.World.HolidayGameModeButton",
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "PWC.UGC.UGCInactiveInEditMode",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 231.0,
+    "y": 387.0
+   },
+   "sizeDelta": {
+    "x": 451.0,
+    "y": 269.0
+   }
+  },
+  {
+   "id": 21,
+   "parent": 20,
+   "name": "Image",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_73",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 163.0,
+    "y": 134.50001525878906
+   },
+   "sizeDelta": {
+    "x": 227.0,
+    "y": 187.0
+   }
+  },
+  {
+   "id": 22,
+   "parent": 20,
+   "name": "HorizontalGroup",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "UnityEngine.UI.HorizontalLayoutGroup"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 163.0,
+    "y": 360.0
+   },
+   "sizeDelta": {
+    "x": 500.0,
+    "y": 150.0
+   }
+  },
+  {
+   "id": 23,
+   "parent": 22,
+   "name": "GiftsWidget",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "Game.Store.StoreAvatarPassGiftsButton",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 75.0,
+    "y": -157.0
+   },
+   "sizeDelta": {
+    "x": 175.0,
+    "y": 164.0
+   }
+  },
+  {
+   "id": 24,
+   "parent": 23,
+   "name": "View",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_93",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 175.0,
+    "y": 164.0
+   }
+  },
+  {
+   "id": 25,
+   "parent": 22,
+   "name": "ClothesDropGiftsWidget",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnButtonClick",
+      "type": "Game.Home.HomeClothesWidget, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [
+    "Game.Home.HomeClothesWidget",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 250.0,
+    "y": -157.0
+   },
+   "sizeDelta": {
+    "x": 175.0,
+    "y": 164.0
+   }
+  },
+  {
+   "id": 26,
+   "parent": 25,
+   "name": "View",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_89",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 175.0,
+    "y": 164.0
+   }
+  },
+  {
+   "id": 27,
+   "parent": 26,
+   "name": "Icon",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_175330",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 48.0
+   },
+   "sizeDelta": {
+    "x": 108.0,
+    "y": 88.0
+   }
+  },
+  {
+   "id": 28,
+   "parent": 20,
+   "name": "GiftsWidget (2)",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "Game.Store.StoreAvatarPassGiftsButton",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 88.5,
+    "y": 287.0
+   },
+   "sizeDelta": {
+    "x": 147.0,
+    "y": 145.0
+   }
+  },
+  {
+   "id": 29,
+   "parent": 28,
+   "name": "View",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_93",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 147.0,
+    "y": 145.0
+   }
+  },
+  {
+   "id": 30,
+   "parent": 4,
+   "name": "ShopButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 0.875739574432373,
+    "y": 0.875739574432373,
+    "z": 0.875739574432373
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "PWC.Multiplayer.MPInactiveInMultiplayer",
+    "Game.Store.StoreButton",
+    "PazuCore.NonDrawingGraphic",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 294.0,
+    "y": 5.900000095367432
+   },
+   "sizeDelta": {
+    "x": 236.0,
+    "y": 236.0
+   }
+  },
+  {
+   "id": 31,
+   "parent": 30,
+   "name": "Graphic",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_87",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 236.0,
+    "y": 236.0
+   }
+  },
+  {
+   "id": 32,
+   "parent": 31,
+   "name": "Badge",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.1413999795913696,
+    "y": 1.1413999795913696,
+    "z": 1.1413999795913696
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_99",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "Game.Store.StoreButtonBadge",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": -182.0
+   },
+   "sizeDelta": {
+    "x": 157.0,
+    "y": 121.0
+   }
+  },
+  {
+   "id": 33,
+   "parent": 31,
+   "name": "GiftBadge",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_57",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "Game.Store.StoreButtonPackIndicatorBadge"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -99.5347671508789,
+    "y": -89.99137115478516
+   },
+   "sizeDelta": {
+    "x": 108.0,
+    "y": 107.0
+   }
+  },
+  {
+   "id": 34,
+   "parent": 4,
+   "name": "UserButtonsHolder",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "Game.Home.HomeUserButtonsHolder",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 96.5,
+    "y": -96.5
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 35,
+   "parent": 34,
+   "name": "NotSignedUserButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PWC.AWCloud.AWCloudOpenSceneButton",
+    "PazuCore.NonDrawingGraphic"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 102.0,
+    "y": -114.0
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 36,
+   "parent": 35,
+   "name": "Graphic",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_90",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 202.0,
+    "y": 245.0
+   }
+  },
+  {
+   "id": 37,
+   "parent": 34,
+   "name": "SignedUserButton ",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "Game.Home.HomeOpenUserMenuButton",
+    "PazuCore.NonDrawingGraphic"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 101.4000244140625,
+    "y": -93.9000244140625
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 38,
+   "parent": 37,
+   "name": "Background",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_58",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.5999755859375,
+    "y": -21.5999755859375
+   },
+   "sizeDelta": {
+    "x": 202.0,
+    "y": 245.0
+   }
+  },
+  {
+   "id": 39,
+   "parent": 37,
+   "name": "Mask",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_180186",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.UI.Mask"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -2.288818359375e-05,
+    "y": 2.288818359375e-05
+   },
+   "sizeDelta": {
+    "x": 195.0,
+    "y": 195.0
+   }
+  },
+  {
+   "id": 40,
+   "parent": 39,
+   "name": "AvatarImage",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_77",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": -5.0
+   },
+   "sizeDelta": {
+    "x": 171.0,
+    "y": 179.0
+   }
+  },
+  {
+   "id": 41,
+   "parent": 37,
+   "name": "Graphic",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_98",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.5999755859375,
+    "y": -21.5999755859375
+   },
+   "sizeDelta": {
+    "x": 202.0,
+    "y": 245.0
+   }
+  },
+  {
+   "id": 42,
+   "parent": 34,
+   "name": "ComingSoonButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_66",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnComingSoonButtonClick",
+      "type": "Game.Home.HomeUserButtonsHolder, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 29.0,
+    "y": -42.5
+   },
+   "sizeDelta": {
+    "x": 202.0,
+    "y": 245.0
+   }
+  },
+  {
+   "id": 43,
+   "parent": 42,
+   "name": "ComingSoonTooltip",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_82",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": -186.8000030517578
+   },
+   "sizeDelta": {
+    "x": 201.0,
+    "y": 132.0
+   }
+  },
+  {
+   "id": 44,
+   "parent": 43,
+   "name": "Text",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 0.8085899949073792,
+    "y": 0.8085899949073792,
+    "z": 0.8085899949073792
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Coming\nsoon",
+    "fontSize": 52.0,
+    "color": {
+     "r": 0.19607843458652496,
+     "g": 0.19607843458652496,
+     "b": 0.19607843458652496,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": false,
+    "minSize": 0,
+    "maxSize": 0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": -7.0
+   },
+   "sizeDelta": {
+    "x": 199.10000610351562,
+    "y": 106.5999984741211
+   }
+  },
+  {
+   "id": 45,
+   "parent": 34,
+   "name": "MultiplayerClickBlocker",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.EventSystems.EventTrigger",
+    "PazuCore.NonDrawingGraphic"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 29.0,
+    "y": -42.5
+   },
+   "sizeDelta": {
+    "x": 202.0,
+    "y": 245.0
+   }
+  },
+  {
+   "id": 46,
+   "parent": 45,
+   "name": "MultiplayerClickBlockerTooltip",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_82",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 1.52587890625e-05,
+    "y": -186.79978942871094
+   },
+   "sizeDelta": {
+    "x": 201.0,
+    "y": 132.0
+   }
+  },
+  {
+   "id": 47,
+   "parent": 46,
+   "name": "Text",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 0.8085899949073792,
+    "y": 0.8085899949073792,
+    "z": 0.8085899949073792
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Not available while in multiplayer",
+    "fontSize": 33.0,
+    "color": {
+     "r": 0.19607843458652496,
+     "g": 0.19607843458652496,
+     "b": 0.19607843458652496,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": false,
+    "minSize": 0,
+    "maxSize": 0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": -7.0
+   },
+   "sizeDelta": {
+    "x": 219.22999572753906,
+    "y": 122.37000274658203
+   }
+  },
+  {
+   "id": 48,
+   "parent": 4,
+   "name": "World_ShopButton",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 0.9200000166893005,
+    "y": 0.9200000166893005,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "Game.Store.StoreClaimableItemsWidget",
+    "PWC.UGC.UGCInactiveInEditMode",
+    "PWC.Multiplayer.MPInactiveInMultiplayer",
+    "Game.Store.StoreButton",
+    "PazuCore.NonDrawingGraphic",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 1.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -150.0,
+    "y": 150.0
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 49,
+   "parent": 48,
+   "name": "Graphic",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_173413",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 247.0,
+    "y": 266.0
+   }
+  },
+  {
+   "id": 50,
+   "parent": 49,
+   "name": "Badge",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_206675",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "Game.Store.StoreButtonBadge"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -72.69999694824219,
+    "y": 109.80000305175781
+   },
+   "sizeDelta": {
+    "x": 157.0,
+    "y": 123.0
+   }
+  },
+  {
+   "id": 51,
+   "parent": 49,
+   "name": "SmallBadge",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_168560",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "Game.Store.StoreButtonBadge"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 85.5,
+    "y": -94.4000015258789
+   },
+   "sizeDelta": {
+    "x": 75.0,
+    "y": 75.0
+   }
+  },
+  {
+   "id": 52,
+   "parent": 4,
+   "name": "NewUserGiftCurrency",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "Game.Store.StoreNewUserGiftCurrencyButton",
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 17.89990234375,
+    "y": 10.0999755859375
+   },
+   "sizeDelta": {
+    "x": 264.0,
+    "y": 302.0
+   }
+  },
+  {
+   "id": 53,
+   "parent": 52,
+   "name": "View",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_91",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 264.0,
+    "y": 302.0
+   }
+  },
+  {
+   "id": 54,
+   "parent": 52,
+   "name": "UI_TXT_Gift",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Gift",
+    "fontSize": 62.0,
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": true,
+    "minSize": 18.0,
+    "maxSize": 62.0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCLocalizedTextMeshPro",
+    "PazuCore.TMPOverlayCopy"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 1.1999969482421875,
+    "y": -37.30000305175781
+   },
+   "sizeDelta": {
+    "x": 217.2689971923828,
+    "y": 108.70670318603516
+   }
+  },
+  {
+   "id": 55,
+   "parent": 54,
+   "name": "OverlayCopy",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Gift",
+    "fontSize": 62.0,
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": true,
+    "minSize": 18.0,
+    "maxSize": 62.0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 217.2689971923828,
+    "y": 108.70670318603516
+   }
+  },
+  {
+   "id": 56,
+   "parent": 4,
+   "name": "AvatarPassButton_Small",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 0.5,
+    "y": 0.5,
+    "z": 0.5
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen",
+    "Game.Store.StoreAvatarPassButton"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 17.0,
+    "y": 329.0
+   },
+   "sizeDelta": {
+    "x": 147.0,
+    "y": 145.0
+   }
+  },
+  {
+   "id": 57,
+   "parent": 56,
+   "name": "View",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_101",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 312.0,
+    "y": 269.0
+   }
+  },
+  {
+   "id": 58,
+   "parent": 4,
+   "name": "GalxeKitWidget",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "Game.Home.HomeScreenWidget",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 1.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -150.0,
+    "y": 150.0
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 59,
+   "parent": 58,
+   "name": "View",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_64",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 247.0,
+    "y": 266.0
+   }
+  },
+  {
+   "id": 60,
+   "parent": 4,
+   "name": "AvatarPassButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PWC.UGC.UGCInactiveInEditMode",
+    "PWC.Multiplayer.MPInactiveInMultiplayer",
+    "Game.Store.StoreAvatarPassButton"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 243.0,
+    "y": 145.0
+   },
+   "sizeDelta": {
+    "x": 451.0,
+    "y": 269.0
+   }
+  },
+  {
+   "id": 61,
+   "parent": 60,
+   "name": "Image",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_101",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 163.0,
+    "y": 134.50001525878906
+   },
+   "sizeDelta": {
+    "x": 312.0,
+    "y": 269.0
+   }
+  },
+  {
+   "id": 62,
+   "parent": 60,
+   "name": "HorizontalGroup",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "UnityEngine.UI.HorizontalLayoutGroup"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 163.0,
+    "y": 360.0
+   },
+   "sizeDelta": {
+    "x": 500.0,
+    "y": 150.0
+   }
+  },
+  {
+   "id": 63,
+   "parent": 62,
+   "name": "GiftsWidget",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "Game.Store.StoreAvatarPassGiftsButton",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 75.0,
+    "y": -157.0
+   },
+   "sizeDelta": {
+    "x": 175.0,
+    "y": 164.0
+   }
+  },
+  {
+   "id": 64,
+   "parent": 63,
+   "name": "View",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_93",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 175.0,
+    "y": 164.0
+   }
+  },
+  {
+   "id": 65,
+   "parent": 62,
+   "name": "ClothesDropGiftsWidget",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnButtonClick",
+      "type": "Game.Home.HomeClothesWidget, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [
+    "Game.Home.HomeClothesWidget",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 250.0,
+    "y": -157.0
+   },
+   "sizeDelta": {
+    "x": 175.0,
+    "y": 164.0
+   }
+  },
+  {
+   "id": 66,
+   "parent": 65,
+   "name": "View",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_89",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 175.0,
+    "y": 164.0
+   }
+  },
+  {
+   "id": 67,
+   "parent": 66,
+   "name": "Icon",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_175330",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 48.0
+   },
+   "sizeDelta": {
+    "x": 108.0,
+    "y": 88.0
+   }
+  },
+  {
+   "id": 68,
+   "parent": 60,
+   "name": "GiftsWidget (2)",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "Game.Store.StoreAvatarPassGiftsButton",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 88.5,
+    "y": 287.0
+   },
+   "sizeDelta": {
+    "x": 147.0,
+    "y": 145.0
+   }
+  },
+  {
+   "id": 69,
+   "parent": 68,
+   "name": "View",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_93",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 147.0,
+    "y": 145.0
+   }
+  },
+  {
+   "id": 70,
+   "parent": 4,
+   "name": "World_ShopButton StarterPack",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "Game.Store.StoreClaimableItemsWidget",
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "PWC.UGC.UGCInactiveInEditMode",
+    "PWC.Multiplayer.MPInactiveInMultiplayer",
+    "Game.Store.StoreButton",
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen",
+    "PazuCore.NonDrawingGraphic"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 200.0,
+    "y": 145.0
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 71,
+   "parent": 70,
+   "name": "Graphic",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_179506",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 247.0,
+    "y": 266.0
+   }
+  },
+  {
+   "id": 72,
+   "parent": 71,
+   "name": "Badge",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_206675",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "Game.Store.StoreButtonBadge"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -72.69999694824219,
+    "y": 109.80000305175781
+   },
+   "sizeDelta": {
+    "x": 157.0,
+    "y": 123.0
+   }
+  },
+  {
+   "id": 73,
+   "parent": 71,
+   "name": "TitleText",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.1631641387939453,
+    "w": 0.9865989685058594
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Starter Pack",
+    "fontSize": 30.0,
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": false,
+    "minSize": 18.0,
+    "maxSize": 72.0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCLocalizedTextMeshPro",
+    "PazuCore.TMPOverlayCopy"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 51.29999923706055,
+    "y": 79.4000015258789
+   },
+   "sizeDelta": {
+    "x": 160.0,
+    "y": 75.0
+   }
+  },
+  {
+   "id": 74,
+   "parent": 73,
+   "name": "OverlayCopy",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Starter Pack",
+    "fontSize": 30.0,
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": false,
+    "minSize": 18.0,
+    "maxSize": 72.0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 2.490000009536743,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 160.0,
+    "y": 75.0
+   }
+  },
+  {
+   "id": 75,
+   "parent": 4,
+   "name": "AvatarPassChangeWidget",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "PWC.Multiplayer.MPInactiveInMultiplayer",
+    "PWC.AvatarPassChange.AvatarPassChangeWidget",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 593.0,
+    "y": -377.5
+   },
+   "sizeDelta": {
+    "x": 269.0,
+    "y": 269.0
+   }
+  },
+  {
+   "id": 76,
+   "parent": 75,
+   "name": "Image",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_80",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 217.0,
+    "y": 241.0
+   }
+  },
+  {
+   "id": 77,
+   "parent": 4,
+   "name": "MultiplayerButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 0.9831024408340454,
+    "y": 0.9831024408340454,
+    "z": 0.9831024408340454
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_97",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnMainButtonClick",
+      "type": "PWC.Multiplayer.HomeScene.HomeMultiplayerUI, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 744.2000122070312,
+    "y": -119.80000305175781
+   },
+   "sizeDelta": {
+    "x": 198.0,
+    "y": 199.0
+   }
+  },
+  {
+   "id": 78,
+   "parent": 4,
+   "name": "AchievementsAppWidget",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen",
+    "PWC.UGC.UGCInactiveInEditMode",
+    "PWC.Multiplayer.MPInactiveInMultiplayer",
+    "Game.Home.GameAchievementsButton"
+   ],
+   "anchorMin": {
+    "x": 1.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -225.5,
+    "y": 134.5
+   },
+   "sizeDelta": {
+    "x": 451.0,
+    "y": 269.0
+   }
+  },
+  {
+   "id": 79,
+   "parent": 78,
+   "name": "Graphic",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_68",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCScaleToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 247.0,
+    "y": 266.0
+   }
+  },
+  {
+   "id": 80,
+   "parent": 4,
+   "name": "SettingsMenu",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "Game.Home.HomeSettingsMenu"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 81,
+   "parent": 80,
+   "name": "Background",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "",
+    "color": {
+     "r": 0.0,
+     "g": 0.0,
+     "b": 0.0,
+     "a": 0.6666666865348816
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.EventSystems.EventTrigger"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 82,
+   "parent": 80,
+   "name": "Content",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCPositionToScreen"
+   ],
+   "anchorMin": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -596.0,
+    "y": -438.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 83,
+   "parent": 82,
+   "name": "MainPanel",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 84,
+   "parent": 83,
+   "name": "Window",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_100",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": -61.0
+   },
+   "sizeDelta": {
+    "x": 544.0,
+    "y": 695.0
+   }
+  },
+  {
+   "id": 85,
+   "parent": 83,
+   "name": "SFX",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PWC.GameSFXMuteButton"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 137.0,
+    "y": -73.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 86,
+   "parent": 85,
+   "name": "ToggleBG",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.NonDrawingGraphic"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 131.0,
+    "y": 74.0
+   }
+  },
+  {
+   "id": 87,
+   "parent": 85,
+   "name": "On",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_63",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 165.0,
+    "y": 85.0
+   }
+  },
+  {
+   "id": 88,
+   "parent": 85,
+   "name": "Off",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_53",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 169.0,
+    "y": 85.0
+   }
+  },
+  {
+   "id": 89,
+   "parent": 83,
+   "name": "Music",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PWC.GameMusicMuteButton"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 137.0,
+    "y": -199.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 90,
+   "parent": 89,
+   "name": "ToggleBG",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.NonDrawingGraphic"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 131.0,
+    "y": 74.0
+   }
+  },
+  {
+   "id": 91,
+   "parent": 89,
+   "name": "On",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_71",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 165.0,
+    "y": 85.0
+   }
+  },
+  {
+   "id": 92,
+   "parent": 89,
+   "name": "Off",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_83",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 169.0,
+    "y": 85.0
+   }
+  },
+  {
+   "id": 93,
+   "parent": 83,
+   "name": "WorldResetButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PWC.WorldReset.WorldResetButton",
+    "PWC.Multiplayer.MPInactiveInMultiplayer"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 81.0,
+    "y": -1.0
+   },
+   "sizeDelta": {
+    "x": 146.0,
+    "y": 143.0
+   }
+  },
+  {
+   "id": 94,
+   "parent": 93,
+   "name": "Graphic",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_52",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -25.0,
+    "y": 5.0
+   },
+   "sizeDelta": {
+    "x": 428.0,
+    "y": 88.0
+   }
+  },
+  {
+   "id": 95,
+   "parent": 83,
+   "name": "ChatLanguageButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_60",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnChatButtonClick",
+      "type": "Game.Home.HomeSettingsMenu, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [
+    "PWC.GameLanguageMenuButton"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 110.0,
+    "y": -335.0
+   },
+   "sizeDelta": {
+    "x": 203.0,
+    "y": 73.0
+   }
+  },
+  {
+   "id": 96,
+   "parent": 95,
+   "name": "Image",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_175562",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 104.0,
+    "y": 31.0
+   }
+  },
+  {
+   "id": 97,
+   "parent": 82,
+   "name": "ChatLanguagesPanel",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 1.09661865234375,
+    "y": -83.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 98,
+   "parent": 97,
+   "name": "Window",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_61",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 542.0,
+    "y": 467.0
+   }
+  },
+  {
+   "id": 99,
+   "parent": 97,
+   "name": "enButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_60",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnLangaugeButtonClick",
+      "type": "Game.Home.HomeSettingsMenu, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -115.0,
+    "y": 50.0
+   },
+   "sizeDelta": {
+    "x": 203.0,
+    "y": 73.0
+   }
+  },
+  {
+   "id": 100,
+   "parent": 99,
+   "name": "Image",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_175562",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 104.0,
+    "y": 31.0
+   }
+  },
+  {
+   "id": 101,
+   "parent": 97,
+   "name": "idButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_60",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnLangaugeButtonClick",
+      "type": "Game.Home.HomeSettingsMenu, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 115.0,
+    "y": 50.0
+   },
+   "sizeDelta": {
+    "x": 203.0,
+    "y": 73.0
+   }
+  },
+  {
+   "id": 102,
+   "parent": 101,
+   "name": "Image",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_117007",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 133.0,
+    "y": 31.0
+   }
+  },
+  {
+   "id": 103,
+   "parent": 97,
+   "name": "esButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_60",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnLangaugeButtonClick",
+      "type": "Game.Home.HomeSettingsMenu, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 115.0,
+    "y": -40.0
+   },
+   "sizeDelta": {
+    "x": 203.0,
+    "y": 73.0
+   }
+  },
+  {
+   "id": 104,
+   "parent": 103,
+   "name": "Image",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_115628",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 119.0,
+    "y": 37.0
+   }
+  },
+  {
+   "id": 105,
+   "parent": 97,
+   "name": "ptButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_60",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnLangaugeButtonClick",
+      "type": "Game.Home.HomeSettingsMenu, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -115.0,
+    "y": -40.0
+   },
+   "sizeDelta": {
+    "x": 203.0,
+    "y": 73.0
+   }
+  },
+  {
+   "id": 106,
+   "parent": 105,
+   "name": "Image",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "resources.assets_123155",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 150.0,
+    "y": 38.0
+   }
+  },
+  {
+   "id": 107,
+   "parent": 4,
+   "name": "UserMenu",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "Game.Home.HomeUserMenu"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 108,
+   "parent": 107,
+   "name": "Background",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "",
+    "color": {
+     "r": 0.0,
+     "g": 0.0,
+     "b": 0.0,
+     "a": 0.6666666865348816
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.EventSystems.EventTrigger"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 109,
+   "parent": 107,
+   "name": "Content",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 504.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 110,
+   "parent": 109,
+   "name": "Panel",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_62",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 25.0
+   },
+   "sizeDelta": {
+    "x": 545.0,
+    "y": 689.0
+   }
+  },
+  {
+   "id": 111,
+   "parent": 109,
+   "name": "Headline",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_92",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -0.5999755859375,
+    "y": 226.1999969482422
+   },
+   "sizeDelta": {
+    "x": 356.0,
+    "y": 99.0
+   }
+  },
+  {
+   "id": 112,
+   "parent": 109,
+   "name": "DashedLine",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_88",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 2.5,
+    "y": -20.799999237060547
+   },
+   "sizeDelta": {
+    "x": 425.0,
+    "y": 9.0
+   }
+  },
+  {
+   "id": 113,
+   "parent": 109,
+   "name": "DashedLine (1)",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_88",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 2.5,
+    "y": -208.0
+   },
+   "sizeDelta": {
+    "x": 425.0,
+    "y": 9.0
+   }
+  },
+  {
+   "id": 114,
+   "parent": 109,
+   "name": "LastSaveDateText",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "LAST SAVED: ...",
+    "fontSize": 26.0,
+    "color": {
+     "r": 0.4941176772117615,
+     "g": 0.4392157196998596,
+     "b": 0.5686274766921997,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": false,
+    "minSize": 0,
+    "maxSize": 0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCLocalizedText"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -1.0,
+    "y": -176.0
+   },
+   "sizeDelta": {
+    "x": 505.4100036621094,
+    "y": 45.400001525878906
+   }
+  },
+  {
+   "id": 115,
+   "parent": 109,
+   "name": "SaveText",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "SAVE YOUR CURRENT WORLD TO CLOUD\n",
+    "fontSize": 26.0,
+    "color": {
+     "r": 0.4941176772117615,
+     "g": 0.4392157196998596,
+     "b": 0.5686274766921997,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": false,
+    "minSize": 0,
+    "maxSize": 0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCLocalizedText"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 14.0
+   },
+   "sizeDelta": {
+    "x": 518.0,
+    "y": 45.400001525878906
+   }
+  },
+  {
+   "id": 116,
+   "parent": 109,
+   "name": "SaveProgressToServerButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_79",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PWC.CloudProgress.CPSaveButton"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 1.2999267578125,
+    "y": 42.0999755859375
+   },
+   "sizeDelta": {
+    "x": 427.0,
+    "y": 99.0
+   }
+  },
+  {
+   "id": 117,
+   "parent": 116,
+   "name": "UI_TXT_SaveWorld",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Save World",
+    "fontSize": 49.0,
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": true,
+    "minSize": 18.0,
+    "maxSize": 49.0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCLocalizedTextMeshPro",
+    "PazuCore.TMPOverlayCopy"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 47.5980224609375,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 285.0,
+    "y": 49.0
+   }
+  },
+  {
+   "id": 118,
+   "parent": 117,
+   "name": "OverlayCopy",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Save World",
+    "fontSize": 49.0,
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": true,
+    "minSize": 18.0,
+    "maxSize": 49.0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 285.0,
+    "y": 49.0
+   }
+  },
+  {
+   "id": 119,
+   "parent": 109,
+   "name": "LoadProgressFromCloudButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_96",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": []
+   },
+   "ignoredComponents": [
+    "PWC.CloudProgress.CPLoadButton"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.7999267578125,
+    "y": -149.70001220703125
+   },
+   "sizeDelta": {
+    "x": 427.0,
+    "y": 99.0
+   }
+  },
+  {
+   "id": 120,
+   "parent": 119,
+   "name": "UI_TXT_LoadWorld",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Load World",
+    "fontSize": 49.0,
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": true,
+    "minSize": 18.0,
+    "maxSize": 49.0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCLocalizedTextMeshPro",
+    "PazuCore.TMPOverlayCopy"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 46.70000076293945,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 285.0,
+    "y": 49.0
+   }
+  },
+  {
+   "id": 121,
+   "parent": 120,
+   "name": "OverlayCopy",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Load World",
+    "fontSize": 49.0,
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": true,
+    "minSize": 18.0,
+    "maxSize": 49.0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 285.0,
+    "y": 49.0
+   }
+  },
+  {
+   "id": 122,
+   "parent": 109,
+   "name": "UI_BTTN_Logout",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 0.6000000238418579,
+    "y": 0.6000000238418579,
+    "z": 0.6000000238418579
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "Logout",
+    "fontSize": 36.349998474121094,
+    "color": {
+     "r": 0.4941176772117615,
+     "g": 0.4392157196998596,
+     "b": 0.572549045085907,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": true,
+    "minSize": 18.0,
+    "maxSize": 49.0,
+    "enabled": true
+   },
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnLogoutButtonClick",
+      "type": "Game.Home.HomeUserMenu, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCLocalizedTextMeshPro"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -2.0,
+    "y": -311.29998779296875
+   },
+   "sizeDelta": {
+    "x": 415.0,
+    "y": 33.0
+   }
+  },
+  {
+   "id": 123,
+   "parent": 4,
+   "name": "MultiplayerCanvas",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 124,
+   "parent": 123,
+   "name": "Background",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "",
+    "color": {
+     "r": 0.0,
+     "g": 0.0,
+     "b": 0.0,
+     "a": 0.6980392336845398
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.EventSystems.EventTrigger"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 125,
+   "parent": 123,
+   "name": "InGameMenus",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 126,
+   "parent": 125,
+   "name": "HomeMultiplayerButtons",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PWC.Multiplayer.HomeScene.HomeMPUIButtonsSection"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 715.599853515625,
+    "y": -107.29998779296875
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 127,
+   "parent": 125,
+   "name": "ConnectOptionsPanel",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0005192756652832,
+    "y": 1.0005192756652832,
+    "z": 1.0005192756652832
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCUnityMessageHandler",
+    "PazuCore.ScaleToLandscapeScreen",
+    "PazuCore.PositionToLandscapeScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 584.0,
+    "y": -3.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 128,
+   "parent": 127,
+   "name": "Content",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 3.0517578125e-05,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 129,
+   "parent": 128,
+   "name": "Bubble",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_94",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 76.0
+   },
+   "sizeDelta": {
+    "x": 513.0,
+    "y": 206.0
+   }
+  },
+  {
+   "id": 130,
+   "parent": 128,
+   "name": "StartAsClientButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_65",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnStartAsClientButtonClick",
+      "type": "PWC.Multiplayer.HomeScene.HomeMultiplayerUI, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 118.30000305175781,
+    "y": 93.19999694824219
+   },
+   "sizeDelta": {
+    "x": 225.0,
+    "y": 129.0
+   }
+  },
+  {
+   "id": 131,
+   "parent": 128,
+   "name": "StartAsHostButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_70",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnStartAsHostButtonClick",
+      "type": "PWC.Multiplayer.HomeScene.HomeMultiplayerUI, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -110.30000305175781,
+    "y": 92.5999984741211
+   },
+   "sizeDelta": {
+    "x": 226.0,
+    "y": 129.0
+   }
+  },
+  {
+   "id": 132,
+   "parent": 125,
+   "name": "LeaveGamePanel",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 0.9975638389587402,
+    "y": 0.9975638389587402,
+    "z": 0.9975638389587402
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PazuCore.PazuCoreAddressables.AFC.AFCUnityMessageHandler",
+    "PazuCore.ScaleToLandscapeScreen",
+    "PazuCore.PositionToLandscapeScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 499.20001220703125,
+    "y": -23.799999237060547
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 133,
+   "parent": 132,
+   "name": "Content",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 1.0,
+    "y": 3.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 134,
+   "parent": 133,
+   "name": "AreaYouSureBubble",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_54",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 19.0,
+    "y": 67.0
+   },
+   "sizeDelta": {
+    "x": 644.0,
+    "y": 147.0
+   }
+  },
+  {
+   "id": 135,
+   "parent": 133,
+   "name": "LeaveGameYesButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_72",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnLeaveGameYesButtonClick",
+      "type": "PWC.Multiplayer.HomeScene.HomeMultiplayerUIButtonsSection, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 99.9000015258789,
+    "y": 82.69999694824219
+   },
+   "sizeDelta": {
+    "x": 148.0,
+    "y": 89.0
+   }
+  },
+  {
+   "id": 136,
+   "parent": 133,
+   "name": "LeaveGameNoButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_81",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnLeaveGameNoButtonClick",
+      "type": "PWC.Multiplayer.HomeScene.HomeMultiplayerUIButtonsSection, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 247.0,
+    "y": 84.4000015258789
+   },
+   "sizeDelta": {
+    "x": 148.0,
+    "y": 89.0
+   }
+  },
+  {
+   "id": 137,
+   "parent": 123,
+   "name": "HomeMultiplayerJoinWindow",
+   "active": false,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "PWC.Multiplayer.HomeScene.HomeMPUIJoinGameWindow"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 138,
+   "parent": 137,
+   "name": "Background",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "",
+    "color": {
+     "r": 0.0,
+     "g": 0.0,
+     "b": 0.0,
+     "a": 0.6980392336845398
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.EventSystems.EventTrigger"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 139,
+   "parent": 137,
+   "name": "Content",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 45.0,
+    "y": 197.0
+   },
+   "sizeDelta": {
+    "x": 100.0,
+    "y": 100.0
+   }
+  },
+  {
+   "id": 140,
+   "parent": 139,
+   "name": "Panel",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_56",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 1254.0,
+    "y": 388.0
+   }
+  },
+  {
+   "id": 141,
+   "parent": 139,
+   "name": "JoinCodeInputField",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 0.0
+    },
+    "imageType": 1,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.UI.InputField"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -209.0,
+    "y": 91.0
+   },
+   "sizeDelta": {
+    "x": 597.4000244140625,
+    "y": 134.39999389648438
+   }
+  },
+  {
+   "id": 142,
+   "parent": 141,
+   "name": "Placeholder",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "World ID...",
+    "fontSize": 85.0,
+    "color": {
+     "r": 0.19607843458652496,
+     "g": 0.19607843458652496,
+     "b": 0.19607843458652496,
+     "a": 0.5
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": false,
+    "minSize": 0,
+    "maxSize": 0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 143,
+   "parent": 141,
+   "name": "Text (Legacy)",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": true,
+   "text": {
+    "text": "",
+    "fontSize": 85.0,
+    "color": {
+     "r": 0.19607843458652496,
+     "g": 0.19607843458652496,
+     "b": 0.19607843458652496,
+     "a": 1.0
+    },
+    "hAlign": 2,
+    "vAlign": 512,
+    "autoSize": false,
+    "minSize": 0,
+    "maxSize": 0,
+    "enabled": true
+   },
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 1.0,
+    "y": 1.0
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 144,
+   "parent": 139,
+   "name": "JoinButton",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_55",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": true,
+   "button": {
+    "interactable": true,
+    "onClick": [
+     {
+      "method": "OnJoinButtonClick",
+      "type": "PWC.Multiplayer.HomeScene.HomeMultiplayerUIJoinGameWindow, Assembly-CSharp"
+     }
+    ]
+   },
+   "ignoredComponents": [],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 328.0,
+    "y": 83.0
+   },
+   "sizeDelta": {
+    "x": 388.0,
+    "y": 131.0
+   }
+  },
+  {
+   "id": 145,
+   "parent": -1,
+   "name": "CanvasBackground",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": true,
+   "localScale": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": false,
+   "image": {},
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "UnityEngine.UI.GraphicRaycaster",
+    "UnityEngine.UI.CanvasScaler"
+   ],
+   "anchorMin": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchorMax": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "pivot": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 0.0,
+    "y": 0.0
+   }
+  },
+  {
+   "id": 146,
+   "parent": 145,
+   "name": "Background",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": -0.0,
+    "y": -0.0,
+    "z": -0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_59",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": true,
+    "preserveAspect": true,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "ScreenScripts.FitToScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 0.0,
+    "y": 0.0
+   },
+   "sizeDelta": {
+    "x": 2048.0,
+    "y": 1024.0
+   }
+  },
+  {
+   "id": 147,
+   "parent": 145,
+   "name": "Splash_Screen_AW_Logo",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 1.0
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_86",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": 239.0,
+    "y": 298.0
+   },
+   "sizeDelta": {
+    "x": 403.0,
+    "y": 293.0
+   }
+  },
+  {
+   "id": 148,
+   "parent": 145,
+   "name": "Splash_Screen_OnTheRoad_Logo",
+   "active": true,
+   "hasRect": true,
+   "isCanvas": false,
+   "localScale": {
+    "x": 1.0,
+    "y": 1.0,
+    "z": 0.8999999761581421
+   },
+   "localRotation": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "w": 1.0
+   },
+   "localPosition": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+   },
+   "hasImage": true,
+   "image": {
+    "sprite": "sharedassets3.assets_76",
+    "color": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "imageType": 0,
+    "raycastTarget": false,
+    "preserveAspect": false,
+    "enabled": true
+   },
+   "hasText": false,
+   "text": {},
+   "hasButton": false,
+   "button": {},
+   "ignoredComponents": [
+    "ScreenScripts.PositionPerScreen",
+    "ScreenScripts.ScalePerScreen"
+   ],
+   "anchorMin": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorMax": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchoredPosition": {
+    "x": -510.0,
+    "y": 356.0
+   },
+   "sizeDelta": {
+    "x": 489.0,
+    "y": 256.0
+   }
+  }
+ ]
+}
