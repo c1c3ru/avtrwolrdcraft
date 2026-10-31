@@ -41,3 +41,10 @@ client/AvatarWorldClient/Assets/Resources/PerformanceTestRunSettings.json*
 client/AvatarWorldClient/.utmp/Debug/
 # Worktrees de agentes auxiliares, nunca pertencem ao historico do projeto.
 /.claude/
+# Inventario derivado do probe de avatares; resumo versionado em docs/AVATAR_ASSET_FINDINGS.md.
+out/avatar-spine-inventory.json
+out/avatar-render-probe.json
+/out/avatar-pipeline/
+/tools/__pycache__/
+# Screenshots/relatorios de teste gerados dentro do projeto Unity (mesmo motivo do out/ da raiz).
+client/AvatarWorldClient/out/

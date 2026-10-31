@@ -4,6 +4,7 @@ using UnityEditor.Android;
 using UnityEditor.Build;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using AvatarWorld.Runtime;
 
@@ -111,6 +112,77 @@ namespace AvatarWorld.EditorTools
                 options = BuildOptions.Development,
             });
             Debug.Log("ProjectSetup: build " + report.summary.result + " (" + report.summary.totalSize + " bytes)");
+            if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) EditorApplication.Exit(1);
+        }
+
+        const string AvatarValidationScenePath = "Assets/Scenes/AvatarValidation.unity";
+
+        /// <summary>
+        /// Cena minima e isolada so pra provar o Ciclo 1 (docs/AVATAR_GAMEPLAY_PLAN.md) no Android de
+        /// verdade: nada de Home/HomeBootstrap aqui de proposito, ainda e so a validacao do renderer,
+        /// o acesso pela Home e um ciclo posterior (4).
+        /// </summary>
+        public static void CreateAvatarValidationScene()
+        {
+            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            new GameObject("AvatarGpuRuntime", typeof(AvatarGpuRuntime));
+            Directory.CreateDirectory("Assets/Scenes");
+            EditorSceneManager.SaveScene(scene, AvatarValidationScenePath);
+            Debug.Log("ProjectSetup: cena criada em " + AvatarValidationScenePath);
+        }
+
+        /// <summary>
+        /// Shaders so referenciados por Shader.Find() em runtime (nunca por um Material-asset salvo)
+        /// sao cortados do build pelo stripper - precisam estar na lista "Always Included Shaders"
+        /// de Graphics Settings. AvatarGpuRuntime cria os Materials do avatar 100% em runtime.
+        /// </summary>
+        static void EnsureShaderAlwaysIncluded(string shaderName)
+        {
+            var shader = Shader.Find(shaderName);
+            if (shader == null) { Debug.LogError("EnsureShaderAlwaysIncluded: shader nao encontrado " + shaderName); return; }
+
+            var graphicsSettingsObj = AssetDatabase.LoadAssetAtPath<GraphicsSettings>("ProjectSettings/GraphicsSettings.asset");
+            var serialized = new SerializedObject(graphicsSettingsObj);
+            var list = serialized.FindProperty("m_AlwaysIncludedShaders");
+            for (int i = 0; i < list.arraySize; i++)
+                if (list.GetArrayElementAtIndex(i).objectReferenceValue == shader) { return; }
+
+            list.InsertArrayElementAtIndex(list.arraySize);
+            list.GetArrayElementAtIndex(list.arraySize - 1).objectReferenceValue = shader;
+            serialized.ApplyModifiedProperties();
+            Debug.Log("EnsureShaderAlwaysIncluded: adicionado " + shaderName);
+        }
+
+        /// <summary>Build separado (nao mexe em EditorBuildSettings.scenes, que continua so com a
+        /// Home) so pra essa validacao - BuildPlayerOptions.scenes substitui a lista pra esta build.</summary>
+        public static void BuildAvatarValidationAndroid()
+        {
+            ConfigureAndroidExternalTools();
+            EnsureShaderAlwaysIncluded("Spine/Skeleton");
+            PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android, "com.c1c3ru.avatarvalidation");
+            PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
+            PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel24;
+            PlayerSettings.defaultInterfaceOrientation = UIOrientation.AutoRotation;
+            PlayerSettings.allowedAutorotateToLandscapeLeft = true;
+            PlayerSettings.allowedAutorotateToLandscapeRight = true;
+            PlayerSettings.allowedAutorotateToPortrait = true;
+            PlayerSettings.allowedAutorotateToPortraitUpsideDown = true;
+
+            Directory.CreateDirectory("Builds");
+            var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            {
+                scenes = new[] { AvatarValidationScenePath },
+                locationPathName = "Builds/AvatarValidation-dev.apk",
+                target = BuildTarget.Android,
+                options = BuildOptions.Development,
+            });
+            Debug.Log("ProjectSetup: build validacao avatar " + report.summary.result + " (" + report.summary.totalSize + " bytes)");
+
+            // PlayerSettings (applicationIdentifier, minSdk, orientation) sao de ProjectSettings.asset,
+            // um unico arquivo compartilhado com a Home - restaura a identidade real da Home logo apos
+            // este build isolado, senao o arquivo fica commitado com a identidade da validacao.
+            ConfigureAndroid();
+
             if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) EditorApplication.Exit(1);
         }
     }
