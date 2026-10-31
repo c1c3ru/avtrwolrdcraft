@@ -74,3 +74,14 @@
 - BuildPipeline: Succeeded. APK dev em client/AvatarWorldClient/Builds/AvatarWorldOffline-dev.apk (43,7 MB, ignorado no git).
 - Pacote com.c1c3ru.avatarworldoffline (IL2CPP, ARM64, minSdk 24). NAO instalado: celular sem conexao ADB no momento.
 - Proximo: adb install -r + abrir; verificar a Home renderizada (nunca vista). Rebuild: unity run ... -executeMethod AvatarWorld.EditorTools.ProjectSetup.BuildAndroidDevelopment
+
+## Correcao da Home — 2026-10-31
+- Sintoma observado no Android: arte central encobre Play/Loja e deixa faixas pretas laterais.
+- Causa no cliente: UiSceneBuilder cria CanvasBackground depois de Canvas, ambos com sortingOrder=0; o fundo de 2048x1024 permanece fixo e FitToScreen e ignorado.
+- HomeLayout aplica ordem explicita (fundo -1, controles 0), desativa raycasts decorativos e usa AspectRatioFitter/EnvelopeParent para cobrir o viewport sem distorcer a arte.
+- Referencia 2048x1024 confirmada nos dois registros CanvasScaler de level3 em out/mb. ScreenMatchMode.Expand e uma escolha do cliente offline para manter os controles na area visivel, nao equivalencia certificada dos scripts AFC.
+- Botoes com imagem no filho Graphic passam a usar essa imagem como targetGraphic.
+- Adicionados 6 casos EditMode: ordem/raycast/controles, cobertura em 1600x720, 1920x1080, 2400x1080 e 1024x768, configuracao/idempotencia.
+- Verificacao local: git diff --check e geometria de cobertura aprovados. Unity/Android SDK indisponiveis neste ambiente: novos testes Unity, renderizacao real e novo APK ainda NAO executados/gerados.
+- Validacao pendente: Unity Test Runner > EditMode; gerar APK com ProjectSetup.BuildAndroidDevelopment, instalar e conferir fundo, logos, Play/Loja e toques nas quatro proporcoes. Play/Loja ainda apenas registram logs, conforme HomeBootstrap; esta correcao nao implementa salas/loja.
+- AFC*/PositionPerScreen, estados condicionais de widgets e safe area continuam pendentes de reproducao.

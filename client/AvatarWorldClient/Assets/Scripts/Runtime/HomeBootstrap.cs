@@ -26,7 +26,8 @@ namespace AvatarWorld.Runtime
             };
 
             UiSceneBuilder.EnsureEventSystem();
-            UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key), actions);
+            var objects = UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key), actions);
+            HomeLayout.Apply(objects);
         }
     }
 }
