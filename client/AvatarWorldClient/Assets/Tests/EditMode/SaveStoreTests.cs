@@ -1,4 +1,5 @@
 using System.IO;
+using AvatarWorld.Core.Avatar;
 using AvatarWorld.Core.Economy;
 using AvatarWorld.Runtime;
 using NUnit.Framework;
@@ -82,6 +83,93 @@ namespace AvatarWorld.Core.Tests
             UnityEngine.TestTools.LogAssert.Expect(UnityEngine.LogType.Warning, new System.Text.RegularExpressions.Regex("Save ilegivel"));
 
             Assert.AreEqual(7, new SaveStore(_file).LoadOrCreate(7).PazuCurrency);
+        }
+
+        // Ciclo 3 (docs/AVATAR_GAMEPLAY_PLAN.md): "Testes de roundtrip, IDs invalidos, campos
+        // ausentes em saves antigos e reabertura do aplicativo mantendo aparencia."
+
+        [Test]
+        public void LoadOrCreate_WithoutFile_UsesDefaultAppearance()
+        {
+            var state = new SaveStore(_file).LoadOrCreate(0);
+            Assert.IsNotNull(state.Appearance);
+            Assert.IsTrue(state.Appearance.IsFullyValid());
+        }
+
+        [Test]
+        public void SaveThenLoad_RoundtripsAppearanceChoices()
+        {
+            var store = new SaveStore(_file);
+            var state = PlayerState.CreateNew(10);
+            state.Appearance.TrySelect(AvatarCatalog.CategoryShirt, "shirt_casual_1");
+            state.Appearance.TrySelect(AvatarCatalog.CategoryShoes, "legs_shoes_10");
+            store.Save(state);
+
+            // Simula reabrir o aplicativo: nova instancia de SaveStore lendo o mesmo arquivo.
+            var reopened = new SaveStore(_file).LoadOrCreate(0);
+
+            Assert.AreEqual("shirt_casual_1", reopened.Appearance.ShirtId);
+            Assert.AreEqual("legs_shoes_10", reopened.Appearance.ShoesId);
+            // Categorias nao trocadas mantem o default, nada foi perdido na volta.
+            Assert.AreEqual(AvatarCatalog.DefaultOption(AvatarCatalog.CategoryBottom), reopened.Appearance.BottomId);
+        }
+
+        [Test]
+        public void SaveThenLoad_AppearanceRoundtrip_DoesNotAffectCoinsOrChallenges()
+        {
+            var store = new SaveStore(_file);
+            var state = PlayerState.CreateNew(50);
+            new LocalStoreService(state).Claim(new StoreItem { ItemGuid = "x", PazuCurrencyPrice = 10, LoyaltyPointsReward = 1 });
+            state.Appearance.TrySelect(AvatarCatalog.CategoryHair, "Hair_Front/2_Color");
+            store.Save(state);
+
+            var reopened = new SaveStore(_file).LoadOrCreate(0);
+
+            Assert.AreEqual(40, reopened.PazuCurrency);
+            Assert.AreEqual(1, reopened.LoyaltyPoints);
+            Assert.AreEqual("Hair_Front/2_Color", reopened.Appearance.HairId);
+        }
+
+        [Test]
+        public void LoadOrCreate_SaveWithoutAppearanceField_FallsBackToDefaultWithoutLosingBalance()
+        {
+            Directory.CreateDirectory(_dir);
+            // Formato de um save gravado ANTES do Ciclo 3 existir (sem o campo "Appearance" nenhum).
+            File.WriteAllText(_file, "{\"PazuCurrency\":77,\"LoyaltyPoints\":2}");
+
+            var state = new SaveStore(_file).LoadOrCreate(0);
+
+            Assert.AreEqual(77, state.PazuCurrency, "campo ausente de Appearance nao pode derrubar o resto do save");
+            Assert.AreEqual(2, state.LoyaltyPoints);
+            Assert.IsNotNull(state.Appearance);
+            Assert.IsTrue(state.Appearance.IsFullyValid());
+        }
+
+        [Test]
+        public void LoadOrCreate_SaveWithPartialAppearance_FillsMissingFieldsWithDefaults()
+        {
+            Directory.CreateDirectory(_dir);
+            File.WriteAllText(_file, "{\"PazuCurrency\":5,\"LoyaltyPoints\":0,\"Appearance\":{\"ShirtId\":\"shirt_casual_1\"}}");
+
+            var state = new SaveStore(_file).LoadOrCreate(0);
+
+            Assert.AreEqual("shirt_casual_1", state.Appearance.ShirtId);
+            Assert.AreEqual(AvatarCatalog.DefaultOption(AvatarCatalog.CategoryBottom), state.Appearance.BottomId);
+            Assert.AreEqual(AvatarCatalog.DefaultOption(AvatarCatalog.CategoryShoes), state.Appearance.ShoesId);
+        }
+
+        [Test]
+        public void LoadOrCreate_SaveWithInvalidAppearanceIds_SanitizesWithoutLosingBalance()
+        {
+            Directory.CreateDirectory(_dir);
+            File.WriteAllText(_file,
+                "{\"PazuCurrency\":30,\"LoyaltyPoints\":0,\"Appearance\":{\"ShirtId\":\"item_removido_do_catalogo\",\"BottomId\":\"bottom_special_10\"}}");
+
+            var state = new SaveStore(_file).LoadOrCreate(0);
+
+            Assert.AreEqual(30, state.PazuCurrency);
+            Assert.AreEqual(AvatarCatalog.DefaultOption(AvatarCatalog.CategoryShirt), state.Appearance.ShirtId, "ID invalido some, so essa categoria volta ao default");
+            Assert.AreEqual("bottom_special_10", state.Appearance.BottomId, "ID valido e preservado, nao e descartado junto");
         }
     }
 }
