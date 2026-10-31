@@ -27,3 +27,15 @@ out/mb_old_sem_file/
 out/level3_export/
 out/unity_*.log
 client/AvatarWorldClient/Builds/
+# Backup do Drive (apk/assets ja vem em arquivos separados) e extracao de assets reais do jogo:
+# nunca pertencem ao Git, ver README.
+/AvatarWorld-RE-*.zip
+/assets/
+# Screenshots e relatorios de teste de sessoes de depuracao, nao sao entregaveis do projeto.
+out/*.png
+out/test-results*.xml
+# Artefatos do Unity Test Framework gerados ao rodar "unity test", nao sao fonte do projeto.
+client/AvatarWorldClient/Assets/Resources/PerformanceTestRunInfo.json*
+client/AvatarWorldClient/Assets/Resources/PerformanceTestRunSettings.json*
+# Cache de build CMake/Gradle gerado a cada compilacao (pasta com hash aleatorio).
+client/AvatarWorldClient/.utmp/Debug/
