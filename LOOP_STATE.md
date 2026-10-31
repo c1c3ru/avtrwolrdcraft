@@ -74,3 +74,25 @@
 - BuildPipeline: Succeeded. APK dev em client/AvatarWorldClient/Builds/AvatarWorldOffline-dev.apk (43,7 MB, ignorado no git).
 - Pacote com.c1c3ru.avatarworldoffline (IL2CPP, ARM64, minSdk 24). NAO instalado: celular sem conexao ADB no momento.
 - Proximo: adb install -r + abrir; verificar a Home renderizada (nunca vista). Rebuild: unity run ... -executeMethod AvatarWorld.EditorTools.ProjectSetup.BuildAndroidDevelopment
+
+## Sessao 2026-10-31 (ambiente novo, sem Unity Editor nem device)
+- Ambiente de execucao atual NAO tem Unity Editor instalado (so achei o `unity` do desktop GNOME,
+  irrelevante) e `adb devices` retorna lista vazia -> build/instalacao/verificacao visual (criterio 2)
+  continuam BLOQUEADOS aqui; precisam rodar num ambiente com Unity Hub+Editor 6000.6.6f1 e/ou um
+  Android conectado. O APK dev de 2026-10-30 nao esta neste checkout (Builds/ e gitignored).
+- apk/ tem so base.apk (28,9 MB); sem lib/, sem libil2cpp.so/libpairipcore.so (vivem no split
+  ABI-specific, nao baixado neste ambiente). assets/ so tem SHA256SUMS.txt (tars reais ficam no Drive).
+- Verificado com REA (inspect_android_package/JADX) o manifest do base.apk original: confirma
+  com.pairip.application.Application, LicenseActivity, CHECK_LICENSE, extractNativeLibs=true,
+  requiredSplitTypes=base__abi, Play Billing 8.0.0 (dinheiro real, nao reproduzido por decisao).
+  Evidence: ev_cfb37074585b813a2225b3cf70e4a94f8ba20ed1d98bc3ab04d7fbe180ae4e22.
+- Conferido o StoreClaimItemCloudResponse.cs decompilado contra LocalStoreService/StoreItem da
+  reimplementacao: achado MaxClaims (int) e o enum ClaimError sao INVENCOES (o binario so expoe o
+  booleano hasReachedMaxClaims; o enum original so tem erros de guid/prefab, nao economicos).
+- Criterio #4 (relatorio do que nao foi reproduzido) ESCRITO: ver NOT_REPRODUCED.md (backend online,
+  precos/limites server-side, IAP real, PairIP, assets nao trazidos, Home nao vista).
+- ACHADO (nao resolvido, usuario pediu para nao agir agora): repo GitHub c1c3ru/avtrwolrdcraft esta
+  PUBLICO; README diz "privado". store_catalog.json e os PNGs extraidos em
+  Assets/Resources/HomeSlice/sprites/ estao versionados e visiveis publicamente.
+- PENDENTE real: (a) ambiente com Unity Editor para rebuild, (b) device ADB para instalar e ver a
+  Home renderizada, (c) decidir visibilidade do repo.
