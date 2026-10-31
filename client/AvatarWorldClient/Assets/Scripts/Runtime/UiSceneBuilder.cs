@@ -102,6 +102,15 @@ namespace AvatarWorld.Runtime
             var b = go.AddComponent<Button>();
             b.interactable = n.button.interactable;
             b.targetGraphic = go.GetComponent<Graphic>();
+            if (b.targetGraphic == null)
+            {
+                // Substitui o NonDrawingGraphic omitido na exportacao: area inteira clicavel.
+                var hitArea = go.AddComponent<Image>();
+                hitArea.color = Color.clear;
+                hitArea.raycastTarget = true;
+                b.targetGraphic = hitArea;
+                b.transition = Selectable.Transition.None;
+            }
             if (actions == null) return;
 
             Action action;

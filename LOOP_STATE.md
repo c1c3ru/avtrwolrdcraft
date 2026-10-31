@@ -85,3 +85,12 @@
 - Verificacao local: git diff --check e geometria de cobertura aprovados. Unity/Android SDK indisponiveis neste ambiente: novos testes Unity, renderizacao real e novo APK ainda NAO executados/gerados.
 - Validacao pendente: Unity Test Runner > EditMode; gerar APK com ProjectSetup.BuildAndroidDevelopment, instalar e conferir fundo, logos, Play/Loja e toques nas quatro proporcoes. Play/Loja ainda apenas registram logs, conforme HomeBootstrap; esta correcao nao implementa salas/loja.
 - AFC*/PositionPerScreen, estados condicionais de widgets e safe area continuam pendentes de reproducao.
+
+## Acoes da Home — 2026-10-31
+- Diagnostico: 39 Button exportados, mas HomeBootstrap so ligava Play/Loja a Debug.Log. NonDrawingGraphic nao era reconstruido; menus multiplayer serializados ativos podiam cobrir controles.
+- HomeActions conecta os 39 botoes a navegacao ou aviso explicito de indisponibilidade. Configuracoes oferecem mute global persistente (PlayerPrefs/AudioListener.pause); perfil local carrega o SaveStore existente, salva e recarrega progresso, preservando saldo; falhas de IO geram mensagem na tela.
+- Painel modal com scroll, voltar, toque fora e Escape/voltar Android (via sistema de input ativo). Nenhuma chamada a servidores, compra ou reset destrutivo foi adicionada.
+- UiSceneBuilder cria Image transparente para a area clicavel dos botoes sem Graphic. Estados de conta conflitantes e overlays multiplayer sem controlador ficam desativados.
+- Play lista apenas cenas incluidas no build sob Assets/Scenes/Worlds/. Hoje NAO ha nenhuma: apresenta aviso. Loja apresenta saldo e aviso de catalogo ausente; NAO realiza compras. Recursos restantes apresentam indisponibilidade. Isso corrige resposta/navegacao da Home, mas NAO conclui gameplay nem loja.
+- Adicionados 8 casos EditMode: cinco rotas via pointerClick, todos os handlers/areas de toque, persistencia do saldo, toggle de audio. Esses casos nao substituem raycast real no aparelho.
+- Verificacao local: JSON confirma 39 botoes e nenhuma imagem de botao com raycast desativado; diff --check aprovado. Unity indisponivel: testes C#/Unity NAO executados, sem novo APK. Pendente rodar toda suite EditMode e testar toques/scroll/voltar no Android.
