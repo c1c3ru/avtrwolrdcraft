@@ -1,7 +1,7 @@
 {
     "name": "AvatarWorld.Runtime",
     "rootNamespace": "AvatarWorld.Runtime",
-    "references": ["AvatarWorld.Core", "UnityEngine.UI", "Unity.TextMeshPro", "Unity.InputSystem"],
+    "references": ["AvatarWorld.Core", "UnityEngine.UI", "Unity.TextMeshPro", "Unity.InputSystem", "spine-csharp", "spine-unity"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
