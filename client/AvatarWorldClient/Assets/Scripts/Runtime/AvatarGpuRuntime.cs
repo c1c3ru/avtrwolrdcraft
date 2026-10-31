@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AvatarWorld.Core.Avatar;
+using AvatarWorld.Core.Economy;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
@@ -8,7 +10,7 @@ using UnityEngine;
 namespace AvatarWorld.Runtime
 {
     /// <summary>
-    /// Validacao no Android dos Ciclos 1 e 2 (docs/AVATAR_GAMEPLAY_PLAN.md):
+    /// Validacao no Android dos Ciclos 1-3 (docs/AVATAR_GAMEPLAY_PLAN.md):
     /// Ciclo 1 - corpo/olhos/cabelo, provado no Editor por AvatarGpuProbe.cs, aqui pelo runtime real
     /// em build de player (sem UnityEditor), carregando os assets de Resources/AvatarSpine.
     /// Ciclo 2 - roupas reais via SUT: cada peca de roupa e um skin "Templates/X" ja existente no
@@ -16,6 +18,10 @@ namespace AvatarWorld.Runtime
     /// item extraida de resources.assets (sutsystem/skins/character/..., ver clothing-manifest.json).
     /// Botoes OnGUI (toque real no Android) trocam cada categoria independentemente no MESMO avatar -
     /// so mudam attachments/texturas, sem recriar o esqueleto nem a SkeletonAnimation.
+    /// Ciclo 3 - a selecao atual fica em PlayerState.Appearance (Core/Avatar), gravada no MESMO
+    /// SaveStore/arquivo que a Home usaria (AvatarCatalog e a fonte unica de IDs validos, tambem usada
+    /// pela validacao fora da engine em PlayerStateTests). Cada toque salva imediatamente, provando
+    /// que reabrir o app mantem a aparencia escolhida.
     /// Mantido fora da Home/HomeBootstrap de proposito - acesso pela Home e o Ciclo 4.
     /// </summary>
     public sealed class AvatarGpuRuntime : MonoBehaviour
@@ -24,7 +30,7 @@ namespace AvatarWorld.Runtime
         [Serializable] class ManifestItem { public string id; public List<ManifestPiece> pieces; }
         [Serializable] class Manifest { public List<ManifestItem> items; }
 
-        class Category { public string label; public string[] itemIds; public int current; }
+        class Category { public string key; public string label; public string[] itemIds; }
 
         static readonly string[] BodyTextureNames = {
             "MultiPack__Body_Outline_31883", "MultiPack__Body_Shadow_87873", "MultiPack__Body_Solid_99707",
@@ -50,16 +56,27 @@ namespace AvatarWorld.Runtime
         Shader _shader;
 
         readonly List<Category> _categories = new List<Category> {
-            new Category { label = "Camisa", itemIds = new[] { "shirt_formal_1", "shirt_casual_1" } },
-            new Category { label = "Calca", itemIds = new[] { "bottom_special_1", "bottom_special_10" } },
-            new Category { label = "Sapato", itemIds = new[] { "legs_shoes_1", "legs_shoes_10" } },
-            new Category { label = "Acessorio", itemIds = new[] { "accessories_face_glasses_1", "accessories_body_neck_1" } },
+            new Category { key = AvatarCatalog.CategoryShirt, label = "Camisa", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShirt] },
+            new Category { key = AvatarCatalog.CategoryBottom, label = "Calca", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryBottom] },
+            new Category { key = AvatarCatalog.CategoryShoes, label = "Sapato", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShoes] },
+            new Category { key = AvatarCatalog.CategoryAccessory, label = "Acessorio", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryAccessory] },
         };
-        int _hairIndex = 0; // Hair_Front/1_Color ou Hair_Front/2_Color - skins diretos, sem SUT.
+        static readonly string[] HairOptions = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHair];
+
+        SaveStore _saveStore;
+        PlayerState _playerState;
+        AvatarAppearance Appearance => _playerState.Appearance;
 
         void Start()
         {
             Application.SetStackTraceLogType(LogType.Exception, StackTraceLogType.Full);
+
+            // Mesmo arquivo/formato que a Home usaria (ver SaveStore.DefaultPath) - app com package id
+            // proprio (com.c1c3ru.avatarvalidation), entao o save fica isolado do da Home de verdade
+            // pelo proprio sandbox do Android, sem risco de misturar os dois.
+            _saveStore = new SaveStore(SaveStore.DefaultPath);
+            _playerState = _saveStore.LoadOrCreate(0);
+            Debug.Log("AvatarGpuRuntime: aparencia carregada do save - " + Appearance.HairId + "/" + Appearance.ShirtId + "/" + Appearance.BottomId + "/" + Appearance.ShoesId + "/" + Appearance.AccessoryId);
 
             _shader = Shader.Find("Spine/Skeleton");
             if (_shader == null) { Debug.LogError("AvatarGpuRuntime: shader Spine/Skeleton nao encontrado"); return; }
@@ -196,11 +213,11 @@ namespace AvatarWorld.Runtime
             AddSkin(_skeletonData, skin, tints, "Body_Other/Body_Other", Color.white);
             AddSkin(_skeletonData, skin, tints, "Eyes/1_Color", new Color(0.22f, 0.44f, 0.57f));
             AddSkin(_skeletonData, skin, tints, "Eyes/1_Color-p", Color.white);
-            AddSkin(_skeletonData, skin, tints, _hairIndex == 0 ? "Hair_Front/1_Color" : "Hair_Front/2_Color", new Color(0.31f, 0.16f, 0.12f));
+            AddSkin(_skeletonData, skin, tints, Appearance.HairId, new Color(0.31f, 0.16f, 0.12f));
 
             foreach (var category in _categories)
             {
-                var item = _itemsById[category.itemIds[category.current]];
+                var item = _itemsById[Appearance.Get(category.key)];
                 foreach (var piece in item.pieces)
                     AddSkin(_skeletonData, skin, tints, piece.template, Color.white);
             }
@@ -221,23 +238,28 @@ namespace AvatarWorld.Runtime
             float y = 10f;
             const float w = 220f, h = 60f;
 
-            if (GUI.Button(new Rect(10, y, w, h), "Cabelo: " + (_hairIndex + 1) + "/2"))
+            int hairIndex = Array.IndexOf(HairOptions, Appearance.HairId);
+            if (GUI.Button(new Rect(10, y, w, h), "Cabelo: " + (hairIndex + 1) + "/" + HairOptions.Length))
             {
-                _hairIndex = (_hairIndex + 1) % 2;
+                var nextHair = HairOptions[(hairIndex + 1) % HairOptions.Length];
+                Appearance.TrySelect(AvatarCatalog.CategoryHair, nextHair);
+                _saveStore.Save(_playerState);
                 RebuildSkin();
-                Debug.Log("AvatarGpuRuntime: toque trocou cabelo para opcao " + (_hairIndex + 1));
+                Debug.Log("AvatarGpuRuntime: toque trocou cabelo para " + nextHair + " (salvo)");
             }
             y += h + 10f;
 
             foreach (var category in _categories)
             {
-                if (GUI.Button(new Rect(10, y, w, h), category.label + ": " + (category.current + 1) + "/" + category.itemIds.Length))
+                int current = Array.IndexOf(category.itemIds, Appearance.Get(category.key));
+                if (GUI.Button(new Rect(10, y, w, h), category.label + ": " + (current + 1) + "/" + category.itemIds.Length))
                 {
-                    category.current = (category.current + 1) % category.itemIds.Length;
-                    var newItem = _itemsById[category.itemIds[category.current]];
-                    LoadItemTextures(newItem);
+                    var nextItemId = category.itemIds[(current + 1) % category.itemIds.Length];
+                    Appearance.TrySelect(category.key, nextItemId);
+                    _saveStore.Save(_playerState);
+                    LoadItemTextures(_itemsById[nextItemId]);
                     RebuildSkin();
-                    Debug.Log("AvatarGpuRuntime: toque trocou " + category.label + " para " + newItem.id);
+                    Debug.Log("AvatarGpuRuntime: toque trocou " + category.label + " para " + nextItemId + " (salvo)");
                 }
                 y += h + 10f;
             }

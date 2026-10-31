@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using AvatarWorld.Core.Avatar;
 using AvatarWorld.Core.Economy;
 using UnityEngine;
 
@@ -28,6 +29,11 @@ namespace AvatarWorld.Runtime
             {
                 var state = JsonUtility.FromJson<PlayerState>(File.ReadAllText(_path));
                 if (state == null || state.PazuCurrency < 0 || state.LoyaltyPoints < 0) throw new InvalidDataException("estado invalido");
+                // Aparencia invalida (save de catalogo antigo, ou campo ausente virando null em algum
+                // caminho de desserializacao) nao derruba o save inteiro - so volta ao default, sem
+                // perder moedas/desafios (criterio do Ciclo 3).
+                if (state.Appearance == null) state.Appearance = AvatarAppearance.CreateDefault();
+                else state.Appearance.SanitizeInPlace();
                 return state;
             }
             catch (Exception e) when (e is ArgumentException || e is InvalidDataException || e is IOException)
