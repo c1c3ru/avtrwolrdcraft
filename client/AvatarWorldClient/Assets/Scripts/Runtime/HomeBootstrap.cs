@@ -46,29 +46,23 @@ namespace AvatarWorld.Runtime
 
             UiSceneBuilder.EnsureEventSystem();
             var objs = UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key), actions);
-            LogButtonScreenRect(objs, "PlayButton");
-            LogButtonScreenRect(objs, "ShopButton");
-        }
 
-        /// <summary>Diagnostico temporario: imprime o retangulo em pixels de tela de um botao, pra
-        /// calibrar toques via adb sem continuar advinhando coordenadas.</summary>
-        static void LogButtonScreenRect(List<GameObject> objs, string name)
-        {
-            var go = objs.Find(o => o.name == name);
-            if (go == null) { Debug.LogWarning("LogButtonScreenRect: '" + name + "' nao encontrado"); return; }
-            var rt = (RectTransform)go.transform;
-            var corners = new Vector3[4];
-            rt.GetWorldCorners(corners);
-            var bl = RectTransformUtility.WorldToScreenPoint(null, corners[0]);
-            var tr = RectTransformUtility.WorldToScreenPoint(null, corners[2]);
-            var center = (bl + tr) / 2f;
-            Debug.Log("ButtonRect " + name + ": bottomLeft=" + bl + " topRight=" + tr + " center=" + center
-                + " active=" + go.activeInHierarchy + " screen=" + Screen.width + "x" + Screen.height);
+            // O original controla a visibilidade do multiplayer (menus de sair/entrar em sala,
+            // "tem certeza que quer sair?") inteiramente por script em runtime; o estado "active"
+            // capturado na exportacao estatica nao reflete isso. Sem essa logica, dialogos do
+            // MultiplayerCanvas (ex.: AreaYouSureBubble, centralizado como o PlayButton) ficavam
+            // ativos e invisiveis por cima da Home, interceptando todo clique na area. Multiplayer
+            // esta fora do escopo deste cliente offline, entao desativa o ramo inteiro.
+            var multiplayerCanvas = objs.Find(o => o.name == "MultiplayerCanvas");
+            if (multiplayerCanvas != null) multiplayerCanvas.SetActive(false);
+
+            HomeLayout.Apply(objs);
+
+            BackgroundMusic.Play("Audio/home_music");
         }
 
         void OpenLiteracyChallenges()
         {
-            Debug.Log("Home: PlayButton clicado");
             var queue = LiteracyContent.LetterRecognition()
                 .Concat(LiteracyContent.SyllableBuilding())
                 .Concat(LiteracyContent.ReadingComprehension())

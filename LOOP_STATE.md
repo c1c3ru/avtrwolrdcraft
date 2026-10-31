@@ -96,3 +96,65 @@
   Assets/Resources/HomeSlice/sprites/ estao versionados e visiveis publicamente.
 - PENDENTE real: (a) ambiente com Unity Editor para rebuild, (b) device ADB para instalar e ver a
   Home renderizada, (c) decidir visibilidade do repo.
+
+## Sessao 2026-10-31 (continuacao) - Home verificada e funcional pela primeira vez
+- Unity CLI + Editor 6000.6.6f1 + modulo Android instalados neste ambiente (~/.local/bin/unity,
+  ~/Unity/Hub/Editor/6000.6.6f1). Licenca Personal ativada.
+- Celular conectado via ADB (Xiaomi M2101K7BI) apos autorizar USB debugging (tela desbloqueada e
+  necessaria para o prompt aparecer).
+- Bugs encontrados e corrigidos, em ordem:
+  1. Build batch falhava achando NDK: AndroidExternalToolsSettings apontado manualmente pro SDK/NDK/
+     JDK do proprio Editor (deteccao "Installed with Unity" falha em modulos instalados depois do
+     Editor via `unity install-modules`).
+  2. TMP Essential Resources nunca foi importado -> NullReferenceException em todo TextMeshProUGUI.
+     Corrigido extraindo o .unitypackage manualmente (ImportPackage async nao completa em batch).
+  3. UI_BTTN_Logout (unico no com hasButton+hasText no mesmo objeto, sem imagem) gerava 2 Graphic
+     conflitantes (Image + TMP) -> NullReferenceException que abortava o Build() inteiro, deixando
+     dialogos active=false presos visiveis. Corrigido: so adiciona alvo de raycast invisivel quando
+     o no NAO tem texto; Build() agora contem excecao por no em vez de abortar tudo.
+  4. Clique nao registrava em NENHUM botao: causa real era AreaYouSureBubble/LeaveGameYesButton/
+     LeaveGameNoButton (dialogo "sair do multiplayer?") ativos e centralizados por cima do PlayButton
+     na hierarquia exportada - visibilidade de dialogos de multiplayer e controlada por script no
+     original, nao pelo "active" estatico exportado. Corrigido desativando MultiplayerCanvas inteiro
+     (fora de escopo deste cliente offline).
+  5. Orientacao travada em paisagem (userLandscape, como o manifest original).
+  6. Sem AudioListener na cena -> nenhum som tocava. Audios de UI (click/correct/wrong/coin) tinham
+     preloadAudioData=0 e 3D=1 (herdado do import default) -> corrigido para preload=1, 3D=0, e
+     AudioSource.spatialBlend=0 explicito no codigo (fallback se o import nao bastar).
+- PARALELO: usuario tambem usou ChatGPT (GPT-6 Astra) no mesmo repo/GitHub pro mesmo sintoma (fundo
+  atras dos controles). Resultado: branch `fix/home-background-layering` (HomeLayout.cs), baseada no
+  commit b3bd9a33 (sem nenhum dos fixes acima). Mesclada manualmente por cima do meu estado: usa o
+  CanvasBackground real (root canvas separado do Canvas principal, index 145 em level3.json, com
+  GraphicRaycaster/CanvasScaler explicitamente omitidos no original - dado real, nao inventado) para
+  por o fundo atras (sortingOrder -1) e desabilitar seu raycaster; AspectRatioFitter.EnvelopeParent
+  pro fundo cobrir sem distorcer (diverge do _effectType=XY/keepAspectRatio=0 real que eu tinha achado
+  em ScreenScripts.FitToScreen - EnvelopeParent preserva proporcao, o original nao preservava. Reavaliar
+  qual comportamento manter). Scaler fixo em 2048x1024 + ScreenMatchMode.Expand, substitui minha curva
+  dinamica baseada no AFCCanvasScalerRangeToScreen real.
+- RESULTADO (testado no device, com os dois fixes juntos): fundo preenche a tela, TODOS os icones/
+  botoes (Play, Shop, corações, conta, PAW PASS, Starter Pack, etc.) visiveis e no lugar certo pela
+  primeira vez. PlayButton clicavel -> abre a tela de desafio de alfabetizacao (Core/Literacy, criada
+  nesta sessao). Resposta certa paga moeda (saldo persiste entre sessoes via SaveStore), avanca fila,
+  som toca sem aviso de "clipe nao encontrado". Zero excecoes no logcat.
+- PENDENTE: reconciliar com a branch do ChatGPT no GitHub antes de decidir o que vai pra main (os dois
+  fixes do fundo divergem em fidelidade ao original - ver acima); criterio de conclusao #2 (Home
+  renderizada, nunca vista antes) agora atingido na pratica, falta formalizar.
+- Usuario decidiu manter a abordagem do ChatGPT (AspectRatioFitter.EnvelopeParent) como definitiva;
+  removida minha regra especial de FitToScreen em UiSceneBuilder.cs (agora redundante).
+- Desafio pedagogico: usuario reportou loop sem fim (fila circular reiniciava sem avisar, sem saida).
+  Corrigido: botao "X" sempre visivel em toda tela de desafio (fecha a qualquer momento), tela de
+  conclusao ao terminar uma volta completa na fila ("Parabens! Voce respondeu tudo!" + moedas ganhas
+  na sessao + "Jogar de novo"/"X"), em vez de reiniciar direto e silenciosamente.
+- Animacao de moeda: usuario pediu reaproveitar a animacao propria do jogo. Nao achamos uma animacao
+  Spine/sprite-sheet dedicada nos dados extraidos; usamos o icone estatico real (Currency_Coin,
+  assets/textures_png/Texture2D/Currency_Coin_85317.png, 41x27) com uma animacao propria simples
+  (pop de escala + voo ate o contador + fade, CoinFx.cs) - testada no device, visivel voando ate
+  "Moedas: N" ao acertar.
+- Som/musica: UiSound.PlayClick ja estava em TODO botao (Home inteira + desafios) desde antes.
+  Adicionado BackgroundMusic.cs (loop, nao reinicia se ja tocando) com musica da Home. Sem confirmacao
+  do clipe original exato (so o botao de mute foi achado no MonoBehaviour dump, nao o AudioClip
+  referenciado); escolhida Vacation_Theme_Loop por tema (combina com o banner "ON THE ROAD" da Home),
+  documentado como escolha por conteudo, nao mapeamento confirmado. Usuario confirmou ouvindo no
+  aparelho: musica e efeitos tocando de verdade.
+- PENDENTE: musica/som por tela alem da Home (so existem 2 "telas" ainda - Home e desafios - desafios
+  herdam a musica da Home por enquanto, tocando por baixo); commit+push desta rodada ainda nao feito.

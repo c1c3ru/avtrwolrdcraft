@@ -39,3 +39,5 @@ client/AvatarWorldClient/Assets/Resources/PerformanceTestRunInfo.json*
 client/AvatarWorldClient/Assets/Resources/PerformanceTestRunSettings.json*
 # Cache de build CMake/Gradle gerado a cada compilacao (pasta com hash aleatorio).
 client/AvatarWorldClient/.utmp/Debug/
+# Worktrees de agentes auxiliares, nunca pertencem ao historico do projeto.
+/.claude/
