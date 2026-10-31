@@ -48,3 +48,7 @@ out/avatar-render-probe.json
 /tools/__pycache__/
 # Screenshots/relatorios de teste gerados dentro do projeto Unity (mesmo motivo do out/ da raiz).
 client/AvatarWorldClient/out/
+# Texturas SUT extraidas de resources.assets; a copia que o projeto usa de verdade ja esta em
+# client/AvatarWorldClient/Assets/Resources/AvatarSpine/Clothing (commitada).
+/out/sut-extract/
+out/avatar-outfit-probe-report.json

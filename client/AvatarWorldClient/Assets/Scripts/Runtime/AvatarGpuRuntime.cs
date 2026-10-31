@@ -8,21 +8,30 @@ using UnityEngine;
 namespace AvatarWorld.Runtime
 {
     /// <summary>
-    /// Validacao no Android do Ciclo 1 (docs/AVATAR_GAMEPLAY_PLAN.md): o mesmo composto corpo/olhos/
-    /// cabelo provado no Editor por Assets/Editor/AvatarGpuProbe.cs, agora pelo runtime real em
-    /// build de player (sem UnityEditor), carregando os assets de Resources/AvatarSpine em vez de
-    /// ler arquivos soltos do disco (que nao existem dentro do APK). Mantido fora da Home/HomeBootstrap
-    /// de proposito - isto e so a prova do Ciclo 1, acesso pela Home e um ciclo posterior (4).
+    /// Validacao no Android dos Ciclos 1 e 2 (docs/AVATAR_GAMEPLAY_PLAN.md):
+    /// Ciclo 1 - corpo/olhos/cabelo, provado no Editor por AvatarGpuProbe.cs, aqui pelo runtime real
+    /// em build de player (sem UnityEditor), carregando os assets de Resources/AvatarSpine.
+    /// Ciclo 2 - roupas reais via SUT: cada peca de roupa e um skin "Templates/X" ja existente no
+    /// esqueleto, cuja pagina de atlas (mesmo nome, ex. "T_Torso_7.png") recebe a textura real do
+    /// item extraida de resources.assets (sutsystem/skins/character/..., ver clothing-manifest.json).
+    /// Botoes OnGUI (toque real no Android) trocam cada categoria independentemente no MESMO avatar -
+    /// so mudam attachments/texturas, sem recriar o esqueleto nem a SkeletonAnimation.
+    /// Mantido fora da Home/HomeBootstrap de proposito - acesso pela Home e o Ciclo 4.
     /// </summary>
     public sealed class AvatarGpuRuntime : MonoBehaviour
     {
-        static readonly string[] TextureNames = {
+        [Serializable] class ManifestPiece { public string template; public string file; }
+        [Serializable] class ManifestItem { public string id; public List<ManifestPiece> pieces; }
+        [Serializable] class Manifest { public List<ManifestItem> items; }
+
+        class Category { public string label; public string[] itemIds; public int current; }
+
+        static readonly string[] BodyTextureNames = {
             "MultiPack__Body_Outline_31883", "MultiPack__Body_Shadow_87873", "MultiPack__Body_Solid_99707",
             "MultiPack__Ear_Shadow_76723", "Eyes_01_1_Color_21563", "Eyes_01_1_P_18738",
             "Hair_Front_01_Color_56300", "Hair_Front_02_Color_21315",
         };
-        // Nome do arquivo do atlas (sem extensao) -> nome do recurso correspondente em TextureNames.
-        static readonly Dictionary<string, string> PageToResource = new Dictionary<string, string> {
+        static readonly Dictionary<string, string> BodyPageToResource = new Dictionary<string, string> {
             { "MultiPack__Body_Outline", "MultiPack__Body_Outline_31883" },
             { "MultiPack__Body_Shadow", "MultiPack__Body_Shadow_87873" },
             { "MultiPack__Body_Solid", "MultiPack__Body_Solid_99707" },
@@ -33,24 +42,84 @@ namespace AvatarWorld.Runtime
             { "Hair_Front_02_Color", "Hair_Front_02_Color_21315" },
         };
 
+        Dictionary<string, ManifestItem> _itemsById;
+        Dictionary<string, Material> _materialByPage;
+        readonly HashSet<string> _loadedClothingPages = new HashSet<string>();
+        SkeletonAnimation _skeletonAnimation;
+        SkeletonData _skeletonData;
+        Shader _shader;
+
+        readonly List<Category> _categories = new List<Category> {
+            new Category { label = "Camisa", itemIds = new[] { "shirt_formal_1", "shirt_casual_1" } },
+            new Category { label = "Calca", itemIds = new[] { "bottom_special_1", "bottom_special_10" } },
+            new Category { label = "Sapato", itemIds = new[] { "legs_shoes_1", "legs_shoes_10" } },
+            new Category { label = "Acessorio", itemIds = new[] { "accessories_face_glasses_1", "accessories_body_neck_1" } },
+        };
+        int _hairIndex = 0; // Hair_Front/1_Color ou Hair_Front/2_Color - skins diretos, sem SUT.
+
         void Start()
         {
             Application.SetStackTraceLogType(LogType.Exception, StackTraceLogType.Full);
 
-            var shader = Shader.Find("Spine/Skeleton");
-            if (shader == null) { Debug.LogError("AvatarGpuRuntime: shader Spine/Skeleton nao encontrado"); return; }
+            _shader = Shader.Find("Spine/Skeleton");
+            if (_shader == null) { Debug.LogError("AvatarGpuRuntime: shader Spine/Skeleton nao encontrado"); return; }
+
+            var manifestText = Resources.Load<TextAsset>("AvatarSpine/clothing-manifest");
+            if (manifestText == null) { Debug.LogError("AvatarGpuRuntime: clothing-manifest.json nao encontrado"); return; }
+            var manifest = JsonUtility.FromJson<Manifest>(manifestText.text);
+            _itemsById = manifest.items.ToDictionary(i => i.id, i => i);
 
             var dummyTexture = new Texture2D(2, 2, TextureFormat.RGBA32, false) { name = "__avatar_runtime_unused__" };
-            var dummyMaterial = new Material(shader) { mainTexture = dummyTexture };
+            var dummyMaterial = new Material(_shader) { mainTexture = dummyTexture };
             var materials = new List<Material> { dummyMaterial };
 
-            foreach (var resourceName in TextureNames)
+            foreach (var resourceName in BodyTextureNames)
             {
                 var source = Resources.Load<Texture2D>("AvatarSpine/Textures/" + resourceName);
                 if (source == null) { Debug.LogError("AvatarGpuRuntime: textura ausente " + resourceName); return; }
                 var texture = PremultipliedCopy(source);
-                texture.name = PageToResource.First(p => p.Value == resourceName).Key;
-                materials.Add(new Material(shader) { mainTexture = texture });
+                texture.name = BodyPageToResource.First(p => p.Value == resourceName).Key;
+                materials.Add(new Material(_shader) { mainTexture = texture });
+            }
+
+            // Um Material por pagina de template unica usada por QUALQUER variante de QUALQUER
+            // categoria (ex.: "B_Pelvis" e compartilhado por bottom_special_1 e bottom_special_10) -
+            // trocar de item so reatribui o mainTexture desse Material (SetTextures real do SUT),
+            // nunca cria um Material novo por item. A textura real da selecao inicial (indice 0 de
+            // cada categoria) e carregada JA NA CRIACAO do Material, nao depois: GetAtlas() parseia
+            // e amarra AtlasRegion->Material no momento do CreateRuntimeInstance - mutar so' o
+            // mainTexture de um Material DEPOIS so funciona se aquele Material ja foi o escolhido
+            // nesse parse (ligado por nome da textura == nome da pagina). Uma pagina cujo Material
+            // tinha a dummy (nome nao-casante) na hora da criacao do atlas fica com
+            // page.rendererObject nulo PRA SEMPRE - trocar o mainTexture dela depois nao conserta
+            // (achado em teste no Android: a 2a opcao de cada categoria, nao carregada no Start,
+            // continuava em magenta - material de erro do Unity - mesmo apos o toque trocar
+            // corretamente a textura do Material). Por isso as texturas de TODAS as variantes
+            // conhecidas (nao so a selecao inicial) sao carregadas com o nome certo ja aqui.
+            var pageToFile = new Dictionary<string, string>();
+            foreach (var item in manifest.items)
+                foreach (var piece in item.pieces)
+                {
+                    var pageName = piece.template.Substring("Templates/".Length);
+                    if (!pageToFile.ContainsKey(pageName)) pageToFile[pageName] = piece.file;
+                }
+
+            _materialByPage = new Dictionary<string, Material>();
+            foreach (var pair in pageToFile)
+            {
+                var pageName = pair.Key;
+                var resourceName = System.IO.Path.GetFileNameWithoutExtension(pair.Value);
+                var source = Resources.Load<Texture2D>("AvatarSpine/Clothing/" + resourceName);
+                if (source == null) { Debug.LogError("AvatarGpuRuntime: textura de roupa ausente " + resourceName); continue; }
+                var texture = PremultipliedCopy(source);
+                // MaterialsTextureLoader casa cada pagina do atlas pelo NOME DA TEXTURA (nao do
+                // Material) - achado em diagnostico: sem isso toda peca de roupa fica com
+                // page.rendererObject nulo e renderiza com o material de erro (magenta) do Unity.
+                texture.name = pageName;
+                _loadedClothingPages.Add(pageName);
+                var mat = new Material(_shader) { mainTexture = texture, name = pageName };
+                _materialByPage[pageName] = mat;
+                materials.Add(mat);
             }
 
             var atlasText = Resources.Load<TextAsset>("AvatarSpine/Avatar_Spine.atlas");
@@ -63,39 +132,27 @@ namespace AvatarWorld.Runtime
 
             var atlasAsset = SpineAtlasAsset.CreateRuntimeInstance(atlasText, materials.ToArray(), true);
             var skeletonDataAsset = SkeletonDataAsset.CreateRuntimeInstance(skeletonBinary, atlasAsset, true, 0.01f);
-            var skeletonData = skeletonDataAsset.GetSkeletonData(false);
-            if (skeletonData == null) { Debug.LogError("AvatarGpuRuntime: SkeletonData nao carregou"); return; }
+            _skeletonData = skeletonDataAsset.GetSkeletonData(false);
+            if (_skeletonData == null) { Debug.LogError("AvatarGpuRuntime: SkeletonData nao carregou"); return; }
 
             var avatarGo = new GameObject("Avatar");
             avatarGo.transform.SetParent(transform, false);
-            var skeletonAnimation = SkeletonAnimation.AddToGameObject(avatarGo, skeletonDataAsset);
-            skeletonAnimation.Initialize(false);
-            if (!skeletonAnimation.valid) { Debug.LogError("AvatarGpuRuntime: SkeletonAnimation.valid == false"); return; }
+            _skeletonAnimation = SkeletonAnimation.AddToGameObject(avatarGo, skeletonDataAsset);
+            _skeletonAnimation.Initialize(false);
+            if (!_skeletonAnimation.valid) { Debug.LogError("AvatarGpuRuntime: SkeletonAnimation.valid == false"); return; }
 
-            var skin = new Skin("avatar-runtime-composite");
-            var tints = new Dictionary<Attachment, Color>();
-            AddSkin(skeletonData, skin, tints, "Body_Whites/Body_Whites", new Color(1f, 0.824f, 0.675f));
-            AddSkin(skeletonData, skin, tints, "Body_Shad/Body_Shad", new Color(0.824f, 0.569f, 0.435f));
-            AddSkin(skeletonData, skin, tints, "Ear_Shad/Ear_Shad", new Color(0.667f, 0.376f, 0.271f));
-            AddSkin(skeletonData, skin, tints, "Body_Other/Body_Other", Color.white);
-            AddSkin(skeletonData, skin, tints, "Eyes/1_Color", new Color(0.22f, 0.44f, 0.57f));
-            AddSkin(skeletonData, skin, tints, "Eyes/1_Color-p", Color.white);
-            AddSkin(skeletonData, skin, tints, "Hair_Front/1_Color", new Color(0.31f, 0.16f, 0.12f));
-            skeletonAnimation.skeleton.SetSkin(skin);
-            skeletonAnimation.skeleton.SetSlotsToSetupPose();
-            skeletonAnimation.skeleton.SetAttachment("Mouths", "Body_Outline/Mouth_Regular");
-            foreach (var slot in skeletonAnimation.skeleton.Slots)
-                if (slot.Attachment != null && tints.TryGetValue(slot.Attachment, out var color))
-                { slot.R = color.r; slot.G = color.g; slot.B = color.b; }
+            // Texturas das selecoes iniciais ja foram carregadas na criacao dos Materials acima.
+            RebuildSkin();
 
-            skeletonAnimation.AnimationName = null;
-            skeletonAnimation.state.SetAnimation(0, "Idle_Stand_1", true);
-            skeletonAnimation.Update(0.1f);
-            skeletonAnimation.LateUpdate();
+            _skeletonAnimation.AnimationName = null;
+            _skeletonAnimation.state.SetAnimation(0, "Idle_Stand_1", true);
+            _skeletonAnimation.Update(0.1f);
+            _skeletonAnimation.LateUpdate();
 
             var meshFilter = avatarGo.GetComponent<MeshFilter>();
             int tris = meshFilter != null && meshFilter.sharedMesh != null ? meshFilter.sharedMesh.triangles.Length / 3 : 0;
             Debug.Log("AvatarGpuRuntime: avatar valido, " + tris + " triangulos reais, animacao Idle_Stand_1 tocando");
+
 
             var cam = new GameObject("AvatarCamera", typeof(Camera));
             cam.tag = "MainCamera";
@@ -112,6 +169,78 @@ namespace AvatarWorld.Runtime
             float horizontalHalf = bounds.extents.x * 1.15f / Mathf.Max(camera.aspect, 0.01f);
             camera.orthographicSize = Mathf.Max(verticalHalf, horizontalHalf, 0.01f);
             cam.transform.position = new Vector3(bounds.center.x, bounds.center.y, -10f);
+        }
+
+        void LoadItemTextures(ManifestItem item)
+        {
+            foreach (var piece in item.pieces)
+            {
+                var pageName = piece.template.Substring("Templates/".Length);
+                var resourceName = System.IO.Path.GetFileNameWithoutExtension(piece.file);
+                var source = Resources.Load<Texture2D>("AvatarSpine/Clothing/" + resourceName);
+                if (source == null) { Debug.LogError("AvatarGpuRuntime: textura de roupa ausente " + resourceName); continue; }
+                var texture = PremultipliedCopy(source);
+                texture.name = pageName;
+                _materialByPage[pageName].mainTexture = texture;
+                _loadedClothingPages.Add(pageName);
+            }
+        }
+
+        void RebuildSkin()
+        {
+            var skin = new Skin("avatar-runtime-composite");
+            var tints = new Dictionary<Attachment, Color>();
+            AddSkin(_skeletonData, skin, tints, "Body_Whites/Body_Whites", new Color(1f, 0.824f, 0.675f));
+            AddSkin(_skeletonData, skin, tints, "Body_Shad/Body_Shad", new Color(0.824f, 0.569f, 0.435f));
+            AddSkin(_skeletonData, skin, tints, "Ear_Shad/Ear_Shad", new Color(0.667f, 0.376f, 0.271f));
+            AddSkin(_skeletonData, skin, tints, "Body_Other/Body_Other", Color.white);
+            AddSkin(_skeletonData, skin, tints, "Eyes/1_Color", new Color(0.22f, 0.44f, 0.57f));
+            AddSkin(_skeletonData, skin, tints, "Eyes/1_Color-p", Color.white);
+            AddSkin(_skeletonData, skin, tints, _hairIndex == 0 ? "Hair_Front/1_Color" : "Hair_Front/2_Color", new Color(0.31f, 0.16f, 0.12f));
+
+            foreach (var category in _categories)
+            {
+                var item = _itemsById[category.itemIds[category.current]];
+                foreach (var piece in item.pieces)
+                    AddSkin(_skeletonData, skin, tints, piece.template, Color.white);
+            }
+
+            _skeletonAnimation.skeleton.SetSkin(skin);
+            _skeletonAnimation.skeleton.SetSlotsToSetupPose();
+            _skeletonAnimation.skeleton.SetAttachment("Mouths", "Body_Outline/Mouth_Regular");
+            foreach (var slot in _skeletonAnimation.skeleton.Slots)
+                if (slot.Attachment != null && tints.TryGetValue(slot.Attachment, out var color))
+                { slot.R = color.r; slot.G = color.g; slot.B = color.b; }
+        }
+
+        void OnGUI()
+        {
+            if (_skeletonAnimation == null) return;
+            float scale = Screen.width / 1280f;
+            GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(scale, scale, 1f));
+            float y = 10f;
+            const float w = 220f, h = 60f;
+
+            if (GUI.Button(new Rect(10, y, w, h), "Cabelo: " + (_hairIndex + 1) + "/2"))
+            {
+                _hairIndex = (_hairIndex + 1) % 2;
+                RebuildSkin();
+                Debug.Log("AvatarGpuRuntime: toque trocou cabelo para opcao " + (_hairIndex + 1));
+            }
+            y += h + 10f;
+
+            foreach (var category in _categories)
+            {
+                if (GUI.Button(new Rect(10, y, w, h), category.label + ": " + (category.current + 1) + "/" + category.itemIds.Length))
+                {
+                    category.current = (category.current + 1) % category.itemIds.Length;
+                    var newItem = _itemsById[category.itemIds[category.current]];
+                    LoadItemTextures(newItem);
+                    RebuildSkin();
+                    Debug.Log("AvatarGpuRuntime: toque trocou " + category.label + " para " + newItem.id);
+                }
+                y += h + 10f;
+            }
         }
 
         static Texture2D PremultipliedCopy(Texture2D source)
