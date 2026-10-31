@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace AvatarWorld.Runtime
@@ -19,15 +17,10 @@ namespace AvatarWorld.Runtime
             if (json == null) { Debug.LogError("Home: " + SceneJson + ".json nao encontrado em Resources"); return; }
 
             var desc = JsonUtility.FromJson<SceneDescription>(json.text);
-            var actions = new Dictionary<string, Action>
-            {
-                { "PlayButton", () => Debug.Log("Home: Play (ainda nao implementado)") },
-                { "ShopButton", () => Debug.Log("Home: Loja (ainda nao implementada)") },
-            };
-
             UiSceneBuilder.EnsureEventSystem();
-            var objects = UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key), actions);
+            var objects = UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key));
             HomeLayout.Apply(objects);
+            gameObject.AddComponent<HomeActions>().Initialize(objects, new SaveStore(SaveStore.DefaultPath));
         }
     }
 }
