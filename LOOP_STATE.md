@@ -158,3 +158,14 @@
   aparelho: musica e efeitos tocando de verdade.
 - PENDENTE: musica/som por tela alem da Home (so existem 2 "telas" ainda - Home e desafios - desafios
   herdam a musica da Home por enquanto, tocando por baixo); commit+push desta rodada ainda nao feito.
+
+## Continuação da Home — 2026-10-31 (Codex)
+- Revisado PR #1 do origin `c1c3ru/avtrwolrdcraft` (URL com `avtrworldcraft` retorna 404), head f1af061d; não aplicado integralmente porque sua base anterior perderia o Play/desafios atuais e manteria saldo separado no perfil.
+- Inspecionados assets fora do Git (121647 texturas/arquivos, 2781 áudios, 2313 arquivos Spine) e cenas, inclusive worktree antiga ignorada. Não há salas jogáveis do cliente além de Home/SampleScene/template; ter assets brutos não equivale a ter uma sala implementada.
+- HomeActions adaptado do PR: Play chama desafios existentes; conta salva o MESMO PlayerState dos desafios; configurações oferecem mute global persistente; conquistas consulta progresso local. Mantidos fundo, TMP, clique, sons, moedas e conclusão dos desafios locais.
+- 35 dos 39 Button exportados continuam pendentes e desabilitados (incluem controles internos ocultos). Não contamos aviso de indisponibilidade como funcionalidade. Loja não está concluída: catálogo existe no disco, mas faltam interface, preços/configuração e integração dos resgates com os itens.
+- Unity 6000.6.6f1 EditMode executado: 47/47 passaram, zero falhas/ignorados, incluindo 5 testes novos de integração e preservação do saldo. XML em out/test-results-home.xml; log em out/unity_home_tests.log (ignorados no Git).
+- Relatório detalhado de revisão, limites e validação: docs/HOME_VALIDATION_2026-10-31.md.
+- APK gerado: Builds/AvatarWorldOffline-dev.apk, 59.473.626 bytes, SHA256 a682e936fb4f59e0c68864feeaf952efa65047a896539a3495f5ba63e3b14b08; build/CLI concluídos com sucesso. Instalado com -r no Xiaomi M2101K7BI (API33), mantendo dados. Home, configurações/mute persistente, Voltar, conta/salvar (55 moedas preservadas), Play/X e progresso local validados com toques ADB + screenshots.
+- Log do aparelho registra ClassNotFoundException de AssetPackManager na inicialização, sem impedir os fluxos verificados. Pendente investigar; não é execução sem exceções. Runtime reporta min API26 apesar da configuração solicitada API24.
+- Alterações simultâneas posteriores em LiteracyChallengeScreen.cs e quiz_panel.png/.meta foram preservadas e não pertencem ao commit desta correção nem à validação do assembly compilado antes delas. Detalhes/timestamps no relatório.

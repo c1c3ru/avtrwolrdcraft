@@ -38,14 +38,8 @@ namespace AvatarWorld.Runtime
             if (json == null) { Debug.LogError("Home: " + SceneJson + ".json nao encontrado em Resources"); return; }
 
             var desc = JsonUtility.FromJson<SceneDescription>(json.text);
-            var actions = new Dictionary<string, Action>
-            {
-                { "PlayButton", OpenLiteracyChallenges },
-                { "ShopButton", () => Debug.Log("Home: Loja (ainda nao implementada)") },
-            };
-
             UiSceneBuilder.EnsureEventSystem();
-            var objs = UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key), actions);
+            var objs = UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key));
 
             // O original controla a visibilidade do multiplayer (menus de sair/entrar em sala,
             // "tem certeza que quer sair?") inteiramente por script em runtime; o estado "active"
@@ -57,12 +51,14 @@ namespace AvatarWorld.Runtime
             if (multiplayerCanvas != null) multiplayerCanvas.SetActive(false);
 
             HomeLayout.Apply(objs);
+            gameObject.AddComponent<HomeActions>().Initialize(objs, _save, _state, OpenLiteracyChallenges);
 
             BackgroundMusic.Play("Audio/home_music");
         }
 
         void OpenLiteracyChallenges()
         {
+            if (FindFirstObjectByType<LiteracyChallengeScreen>() != null) return;
             var queue = LiteracyContent.LetterRecognition()
                 .Concat(LiteracyContent.SyllableBuilding())
                 .Concat(LiteracyContent.ReadingComprehension())
