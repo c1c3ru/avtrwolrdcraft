@@ -21,6 +21,10 @@ namespace AvatarWorld.Runtime
                 if (Application.isPlaying) Object.DontDestroyOnLoad(go);
                 _source = go.AddComponent<AudioSource>();
                 _source.playOnAwake = false;
+                // AudioSource criado por script comeca com spatialBlend=1 (3D) por padrao, mesmo com
+                // o clipe importado como 2D - sem isso o som atenua por distancia do AudioListener
+                // de forma imprevisivel (a UI nao tem posicao no espaco).
+                _source.spatialBlend = 0f;
                 return _source;
             }
         }

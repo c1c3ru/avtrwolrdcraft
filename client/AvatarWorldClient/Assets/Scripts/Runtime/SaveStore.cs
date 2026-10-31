@@ -21,8 +21,6 @@ namespace AvatarWorld.Runtime
 
         public static string DefaultPath => Path.Combine(Application.persistentDataPath, "player_state.json");
 
-        public bool Exists => File.Exists(_path);
-
         public PlayerState LoadOrCreate(int startingPazuCurrency)
         {
             if (!File.Exists(_path)) return PlayerState.CreateNew(startingPazuCurrency);

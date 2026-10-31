@@ -26,6 +26,7 @@ namespace AvatarWorld.Runtime
         LiteracyChallengeService _service;
         List<LiteracyChallenge> _queue;
         int _queueIndex;
+        int _sessionCoinsEarned;
         System.Action _onProgress;
 
         GameObject _root;
@@ -61,8 +62,13 @@ namespace AvatarWorld.Runtime
                 actions["Option" + i] = () => OnOptionClicked(captured);
             }
 
+            actions["CloseButton"] = Close;
             var objs = UiSceneBuilder.Build(desc, _ => null, actions, transform);
             _root = objs[0];
+            // Canvas raiz separado do da Home: sem sortingOrder explicito, a ordem entre dois Canvas
+            // ScreenSpaceOverlay no mesmo order(0) nao e garantida - podia renderizar atras da Home
+            // (clique funcionava, tela so nao aparecia por cima).
+            _root.GetComponent<Canvas>().sortingOrder = 10;
             _prompt = objs[promptIdx].GetComponent<TextMeshProUGUI>();
             _feedback = objs[feedbackIdx].GetComponent<TextMeshProUGUI>();
             _coins = objs[coinsIdx].GetComponent<TextMeshProUGUI>();
@@ -85,7 +91,12 @@ namespace AvatarWorld.Runtime
                 _feedback.text = result.CoinsAwarded ? ("Certo! +" + result.CoinsEarned + " moedas") : "Certo!";
                 _feedback.color = CorrectColor;
                 UiSound.PlayCorrect();
-                if (result.CoinsAwarded) UiSound.PlayCoin();
+                if (result.CoinsAwarded)
+                {
+                    UiSound.PlayCoin();
+                    _sessionCoinsEarned += result.CoinsEarned;
+                    CoinFx.Play(_root.transform, _feedback.transform.position, _coins.transform.position);
+                }
                 foreach (var b in _optionButtons) b.GetComponent<UnityEngine.UI.Button>().interactable = false;
                 RefreshCoinsLabel();
                 _onProgress?.Invoke();
@@ -102,9 +113,31 @@ namespace AvatarWorld.Runtime
         IEnumerator AdvanceAfterDelay()
         {
             yield return new WaitForSeconds(1.2f);
-            _queueIndex = (_queueIndex + 1) % _queue.Count;
-            ShowCurrent();
+            _queueIndex++;
+            if (_queueIndex >= _queue.Count) ShowCompletion();
+            else ShowCurrent();
         }
+
+        /// <summary>Fim de uma volta completa na fila: para e avisa em vez de reiniciar sem dizer nada
+        /// (o loop "sem fim e silencioso" e exatamente o que o usuario reportou como bug).</summary>
+        void ShowCompletion()
+        {
+            if (_root != null) Destroy(_root);
+            _optionButtons.Clear();
+            _optionLabels.Clear();
+
+            var desc = BuildCompletionDescription(_sessionCoinsEarned);
+            var actions = new System.Collections.Generic.Dictionary<string, System.Action>
+            {
+                { "PlayAgainButton", () => { _queueIndex = 0; _sessionCoinsEarned = 0; ShowCurrent(); } },
+                { "CloseButton", Close },
+            };
+            var objs = UiSceneBuilder.Build(desc, _ => null, actions, transform);
+            _root = objs[0];
+            _root.GetComponent<Canvas>().sortingOrder = 10;
+        }
+
+        void Close() => Destroy(gameObject);
 
         void RefreshCoinsLabel() => _coins.text = "Moedas: " + _service.PazuCurrencyBalance;
 
@@ -175,6 +208,79 @@ namespace AvatarWorld.Runtime
                 hasText = true, text = new TextDescription { text = "", fontSize = 30, color = CaptionColor, hAlign = 4, vAlign = 256 },
             });
             coinsIdx = nodes.Count - 1;
+
+            AddCloseButton(nodes, panel);
+
+            return desc;
+        }
+
+        /// <summary>X no canto, sempre presente: sem isso a crianca ficava presa na tela de desafios
+        /// ate zerar a fila inteira (o "loop sem fim" reportado pelo usuario).</summary>
+        static void AddCloseButton(List<NodeDescription> nodes, int panel)
+        {
+            nodes.Add(new NodeDescription
+            {
+                name = "CloseButton", parent = panel, hasRect = true,
+                anchorMin = new Vector2(0, 1), anchorMax = new Vector2(0, 1), pivot = new Vector2(0, 1),
+                anchoredPosition = new Vector2(40, -40), sizeDelta = new Vector2(80, 80),
+                hasImage = true, image = new ImageDescription { color = ButtonColor },
+                hasButton = true, button = new ButtonDescription(),
+            });
+            int closeNode = nodes.Count - 1;
+            nodes.Add(new NodeDescription
+            {
+                name = "CloseButtonLabel", parent = closeNode, hasRect = true,
+                anchorMin = Vector2.zero, anchorMax = Vector2.one, pivot = new Vector2(0.5f, 0.5f),
+                hasText = true, text = new TextDescription { text = "X", fontSize = 36, color = Color.white, hAlign = 2, vAlign = 512 },
+            });
+        }
+
+        static SceneDescription BuildCompletionDescription(int coinsEarned)
+        {
+            var desc = new SceneDescription { name = "LiteracyCompletion" };
+            var nodes = desc.nodes;
+
+            nodes.Add(new NodeDescription { name = "Canvas", isCanvas = true, hasRect = true, parent = -1 });
+            nodes.Add(new NodeDescription
+            {
+                name = "Panel", parent = 0, hasRect = true,
+                anchorMin = Vector2.zero, anchorMax = Vector2.one, pivot = new Vector2(0.5f, 0.5f),
+                hasImage = true, image = new ImageDescription { color = PanelColor },
+            });
+            const int panel = 1;
+
+            nodes.Add(new NodeDescription
+            {
+                name = "Title", parent = panel, hasRect = true,
+                anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
+                anchoredPosition = new Vector2(0, 200), sizeDelta = new Vector2(1500, 160),
+                hasText = true, text = new TextDescription { text = "Parabens! Voce respondeu tudo!", fontSize = 48, color = CorrectColor, hAlign = 2, vAlign = 512 },
+            });
+
+            nodes.Add(new NodeDescription
+            {
+                name = "Summary", parent = panel, hasRect = true,
+                anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
+                anchoredPosition = new Vector2(0, 60), sizeDelta = new Vector2(1500, 100),
+                hasText = true, text = new TextDescription { text = "Moedas ganhas agora: " + coinsEarned, fontSize = 38, color = Color.white, hAlign = 2, vAlign = 512 },
+            });
+
+            nodes.Add(new NodeDescription
+            {
+                name = "PlayAgainButton", parent = panel, hasRect = true,
+                anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
+                anchoredPosition = new Vector2(0, -80), sizeDelta = new Vector2(900, 110),
+                hasImage = true, image = new ImageDescription { color = ButtonColor },
+                hasButton = true, button = new ButtonDescription(),
+            });
+            nodes.Add(new NodeDescription
+            {
+                name = "PlayAgainLabel", parent = nodes.Count - 1, hasRect = true,
+                anchorMin = Vector2.zero, anchorMax = Vector2.one, pivot = new Vector2(0.5f, 0.5f),
+                hasText = true, text = new TextDescription { text = "Jogar de novo", fontSize = 36, color = Color.white, hAlign = 2, vAlign = 512 },
+            });
+
+            AddCloseButton(nodes, panel);
 
             return desc;
         }

@@ -35,26 +35,13 @@ namespace AvatarWorld.Runtime
                 if (n.hasRect && !rootCanvas)
                 {
                     var rt = (RectTransform)go.transform;
-                    // ScreenScripts.FitToScreen no original (EffectType.XY, keepAspectRatio=false,
-                    // confirmado no MonoBehaviour real da Home) estica o fundo pra cobrir X e Y
-                    // exatamente - a posicao/tamanho fixos exportados valiam so pra resolucao de
-                    // referencia do editor e NAO reproduzem isso sozinhos.
-                    if (n.ignoredComponents != null && n.ignoredComponents.Contains("ScreenScripts.FitToScreen"))
-                    {
-                        rt.anchorMin = Vector2.zero;
-                        rt.anchorMax = Vector2.one;
-                        rt.pivot = new Vector2(0.5f, 0.5f);
-                        rt.anchoredPosition = Vector2.zero;
-                        rt.sizeDelta = Vector2.zero;
-                    }
-                    else
-                    {
-                        rt.anchorMin = n.anchorMin;
-                        rt.anchorMax = n.anchorMax;
-                        rt.pivot = n.pivot;
-                        rt.anchoredPosition = n.anchoredPosition;
-                        rt.sizeDelta = n.sizeDelta;
-                    }
+                    rt.anchorMin = n.anchorMin;
+                    rt.anchorMax = n.anchorMax;
+                    rt.pivot = n.pivot;
+                    rt.anchoredPosition = n.anchoredPosition;
+                    rt.sizeDelta = n.sizeDelta;
+                    // O fundo (ScreenScripts.FitToScreen no original) e tratado por HomeLayout.Apply,
+                    // chamado depois do Build() em HomeBootstrap - ve-lo aqui so duplicaria/conflitaria.
                 }
                 if (!rootCanvas)
                 {
@@ -164,9 +151,6 @@ namespace AvatarWorld.Runtime
             var b = go.AddComponent<Button>();
             b.interactable = n.button.interactable;
             b.targetGraphic = go.GetComponent<Graphic>();
-            // Diagnostico temporario: confirma se o clique chega ao Unity antes de qualquer outra logica.
-            string nodeName = n.name;
-            b.onClick.AddListener(() => Debug.Log("BUTTON CLICK: " + nodeName));
             // Som de clique em todo botao interativo, mesmo os ainda sem acao ligada (nao-funcional
             // != mudo): da feedback sonoro consistente, igual ao original.
             b.onClick.AddListener(UiSound.PlayClick);
@@ -181,18 +165,12 @@ namespace AvatarWorld.Runtime
         /// <summary>Garante um EventSystem; sem ele nenhum botao recebe clique.</summary>
         public static void EnsureEventSystem()
         {
-            if (UnityEngine.Object.FindFirstObjectByType<EventSystem>() != null)
-            {
-                Debug.Log("EnsureEventSystem: ja existia um EventSystem");
-                return;
-            }
+            if (UnityEngine.Object.FindFirstObjectByType<EventSystem>() != null) return;
             var go = new GameObject("EventSystem", typeof(EventSystem));
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
             go.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
-            Debug.Log("EnsureEventSystem: criado com InputSystemUIInputModule");
 #else
             go.AddComponent<StandaloneInputModule>();
-            Debug.Log("EnsureEventSystem: criado com StandaloneInputModule");
 #endif
         }
     }
