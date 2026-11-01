@@ -52,6 +52,21 @@ tools/venv/bin/python tools/avatar_pipeline.py probe --unity "$HOME/Unity/Hub/Ed
 
 # Repetir as etapas mesmo quando há resultados anteriores válidos.
 tools/venv/bin/python tools/avatar_pipeline.py all --with-unity --force
+
+# Empacotar roupas SUT confirmadas sem reler o bundle ou chamar Unity.
+tools/venv/bin/python tools/avatar_package.py \
+  --item Shirt_Formal/1 --item Bottom_Special/1 --item Bottom_Special/10 \
+  --item Legs_Shoes/1 --item Legs_Shoes/10 \
+  --item Accessories_Face_Glasses/1 --item Accessories_Body_Neck/1
+
+# Investigar a sala level8 sem carregar todo o datapack em UnityPy.
+tools/venv/bin/python tools/unityfs_extract_entry.py level8
+tools/venv/bin/python tools/unityfs_extract_entry.py sharedassets8.assets
+tools/venv/bin/python tools/unityfs_extract_entry.py sharedassets8.assets.resS
+tools/venv/bin/python tools/unityfs_extract_entry.py globalgamemanagers.assets \
+  --bundle out/assets/avatar-base-data.unity3d --output-dir out/scene-extract/base
+tools/venv/bin/python tools/scene_level_inspect.py level8
+tools/venv/bin/python tools/scene_level_export.py level8
 ```
 
 As opções ficam **depois do subcomando**, como nos exemplos. `--timeout` é o limite de cada processo, não do pipeline inteiro. `--with-unity` só muda o comportamento de `all`; `probe` sempre executa Unity. Feche um Editor que já tenha este projeto aberto e não inicie dois pipelines simultaneamente no mesmo checkout.
@@ -70,6 +85,8 @@ Em `out/avatar-pipeline/`:
 
 Os probes existentes continuam gravando `out/avatar-spine-inventory.json`, `out/avatar-render-probe.json`, `out/avatar-preview.png` e `out/avatar-preview-hair-2.png`. O inventário do bundle grava `out/assets/avatar-resources.json` e seus artefatos auxiliares. Os arquivos pesados e relatórios são locais; não os adicione indiscriminadamente ao Git.
 
+As ferramentas `unityfs_extract_entry.py`, `scene_level_inspect.py` e `scene_level_export.py` permitem estudar uma sala Unity pelo arquivo serializado individual: extraem somente os blocos UnityFS necessários, identificam GameObjects/SpriteRenderers/scripts e exportam as imagens realmente referenciadas. O `scene_level_export.py` pode ler `resources.assets.resS` (1,28 GB) através de um symlink local em `out/scene-extract`; ele não copia nem modifica esse arquivo. PNGs e relatórios continuam sendo evidência de investigação, não uma cena jogável.
+
 O estado JSON é atualizado por arquivo temporário + troca atômica. Uma etapa só recebe `succeeded` se o processo retorna zero, as saídas esperadas existem, os JSONs são legíveis e os artefatos foram atualizados. Estado `succeeded` significa **etapa de investigação executada**, nunca “jogo completo”. Não há conclusão fictícia quando existem apenas arquivos antigos.
 
 Ao repetir o mesmo comando, etapas anteriormente bem-sucedidas são reaproveitadas somente se as assinaturas dos inputs/comandos e metadados das saídas continuam iguais. As assinaturas usam caminho, tamanho e mtime; não releem gigabytes para calcular hashes. Use `--force` quando editar arquivos preservando tamanho/mtime ou alterar dependências transitivas não listadas. Etapas interrompidas, em execução antiga ou com falha são tentadas novamente. A retomada é entre etapas; o próprio inventariador controla a reutilização de suas extrações internas.
@@ -80,4 +97,4 @@ Timeout e Ctrl+C encerram o grupo de processos iniciado pelo pipeline em POSIX e
 
 ## O que ainda precisa virar jogo
 
-O objetivo seguinte continua sendo uma cena utilizável: avatar visível, troca real de cabelo/roupas/acessórios, look persistido, acesso pela Home e APK validado no aparelho. Este pipeline prepara evidências para isso. Resolver SUT, colisões de materiais/texturas, montagem de roupas, duas cores e o desenho final permanece trabalho de implementação descrito em `docs/AVATAR_GAMEPLAY_PLAN.md`.
+O objetivo seguinte continua sendo uma cena utilizável: avatar visível, troca real de cabelo/roupas/acessórios, look persistido, acesso pela Home e APK validado no aparelho. Este pipeline prepara evidências para isso. O empacotador `avatar_package.py` resolve itens SUT por path, PNG e template exatos, validando hashes e dimensões e reportando dependências ambíguas. O pacote estático não substitui renderização ou gameplay. Persistência, integração pela Home e a primeira sala jogável continuam em `docs/AVATAR_GAMEPLAY_PLAN.md`.

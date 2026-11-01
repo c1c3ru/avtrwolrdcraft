@@ -3,15 +3,15 @@ using UnityEngine;
 namespace AvatarWorld.Runtime
 {
     /// <summary>
-    /// Musica de fundo em loop. Nao ha confirmacao de qual clipe o original usa na Home (so um
-    /// "PWC.GameMusicMuteButton" foi achado em level3.json, sem referencia ao AudioClip em si - esse
-    /// dado nao esta no MonoBehaviour dump). Vacation_Theme_Loop foi escolhida por conteudo (combina
-    /// com o banner "ON THE ROAD" da propria Home), nao e um mapeamento confirmado do original.
+    /// Musica de fundo em loop. HomeManager da level3 serializa _themeSoundName como
+    /// On_The_Go_Splash_Screen_Loop; este clip foi mapeado ao arquivo local extraído com esse nome.
     /// </summary>
     public static class BackgroundMusic
     {
         static AudioSource _source;
         static string _currentTrack;
+        static bool _muted;
+        public static bool IsMuted => _muted;
 
         /// <summary>Toca em loop; nao reinicia se o mesmo trilho ja estiver tocando (ex.: voltar pra
         /// Home depois de fechar os desafios nao deve cortar a musica e comecar de novo).</summary>
@@ -31,9 +31,11 @@ namespace AvatarWorld.Runtime
                 _source.loop = true;
                 _source.spatialBlend = 0f;
                 _source.volume = 0.5f;
+                _source.mute = _muted;
             }
 
             _source.clip = clip;
+            _source.mute = _muted;
             _source.Play();
             _currentTrack = resourcePath;
         }
@@ -42,6 +44,12 @@ namespace AvatarWorld.Runtime
         {
             if (_source != null) _source.Stop();
             _currentTrack = null;
+        }
+
+        public static void SetMuted(bool muted)
+        {
+            _muted = muted;
+            if (_source != null) _source.mute = muted;
         }
     }
 }

@@ -65,7 +65,28 @@ namespace AvatarWorld.Runtime
 
         SaveStore _saveStore;
         PlayerState _playerState;
+        Action _onClose;
+        bool _useSharedState;
+        bool _embeddedWorldAvatar;
+        Vector3 _worldPosition;
+        float _worldScale = 1f;
         AvatarAppearance Appearance => _playerState.Appearance;
+
+        public void Configure(SaveStore saveStore, PlayerState playerState, Action onClose)
+        {
+            _saveStore = saveStore ?? throw new ArgumentNullException(nameof(saveStore));
+            _playerState = playerState ?? throw new ArgumentNullException(nameof(playerState));
+            _onClose = onClose;
+            _useSharedState = true;
+        }
+
+        public void ConfigureAsWorldAvatar(SaveStore saveStore, PlayerState playerState, Vector3 position, float scale)
+        {
+            Configure(saveStore, playerState, null);
+            _embeddedWorldAvatar = true;
+            _worldPosition = position;
+            _worldScale = scale;
+        }
 
         void Start()
         {
@@ -74,8 +95,11 @@ namespace AvatarWorld.Runtime
             // Mesmo arquivo/formato que a Home usaria (ver SaveStore.DefaultPath) - app com package id
             // proprio (com.c1c3ru.avatarvalidation), entao o save fica isolado do da Home de verdade
             // pelo proprio sandbox do Android, sem risco de misturar os dois.
-            _saveStore = new SaveStore(SaveStore.DefaultPath);
-            _playerState = _saveStore.LoadOrCreate(0);
+            if (!_useSharedState)
+            {
+                _saveStore = new SaveStore(SaveStore.DefaultPath);
+                _playerState = _saveStore.LoadOrCreate(0);
+            }
             Debug.Log("AvatarGpuRuntime: aparencia carregada do save - " + Appearance.HairId + "/" + Appearance.ShirtId + "/" + Appearance.BottomId + "/" + Appearance.ShoesId + "/" + Appearance.AccessoryId);
 
             _shader = Shader.Find("Spine/Skeleton");
@@ -154,6 +178,11 @@ namespace AvatarWorld.Runtime
 
             var avatarGo = new GameObject("Avatar");
             avatarGo.transform.SetParent(transform, false);
+            if (_embeddedWorldAvatar)
+            {
+                avatarGo.transform.localPosition = _worldPosition;
+                avatarGo.transform.localScale = Vector3.one * _worldScale;
+            }
             _skeletonAnimation = SkeletonAnimation.AddToGameObject(avatarGo, skeletonDataAsset);
             _skeletonAnimation.Initialize(false);
             if (!_skeletonAnimation.valid) { Debug.LogError("AvatarGpuRuntime: SkeletonAnimation.valid == false"); return; }
@@ -168,24 +197,28 @@ namespace AvatarWorld.Runtime
 
             var meshFilter = avatarGo.GetComponent<MeshFilter>();
             int tris = meshFilter != null && meshFilter.sharedMesh != null ? meshFilter.sharedMesh.triangles.Length / 3 : 0;
+            var avatarRenderer = avatarGo.GetComponent<MeshRenderer>();
+            if (_embeddedWorldAvatar && avatarRenderer != null) avatarRenderer.sortingOrder = 4;
             Debug.Log("AvatarGpuRuntime: avatar valido, " + tris + " triangulos reais, animacao Idle_Stand_1 tocando");
 
 
-            var cam = new GameObject("AvatarCamera", typeof(Camera));
-            cam.tag = "MainCamera";
-            var camera = cam.GetComponent<Camera>();
-            camera.orthographic = true;
-            camera.clearFlags = CameraClearFlags.SolidColor;
-            camera.backgroundColor = new Color(0.922f, 0.914f, 0.953f, 1f);
+            if (!_embeddedWorldAvatar)
+            {
+                var cam = new GameObject("AvatarCamera", typeof(Camera));
+                cam.transform.SetParent(transform, false);
+                cam.tag = "MainCamera";
+                var camera = cam.GetComponent<Camera>();
+                camera.orthographic = true;
+                camera.clearFlags = CameraClearFlags.SolidColor;
+                camera.backgroundColor = new Color(0.922f, 0.914f, 0.953f, 1f);
 
-            // Enquadra pelos bounds reais do mesh (nao valores fixos no escuro): o skeleton usa
-            // escala 0.01, cujo tamanho mundial final depende dos dados reais, nao de suposicao.
-            var meshRenderer = avatarGo.GetComponent<MeshRenderer>();
-            Bounds bounds = meshRenderer != null ? meshRenderer.bounds : new Bounds(Vector3.zero, Vector3.one);
-            float verticalHalf = bounds.extents.y * 1.15f;
-            float horizontalHalf = bounds.extents.x * 1.15f / Mathf.Max(camera.aspect, 0.01f);
-            camera.orthographicSize = Mathf.Max(verticalHalf, horizontalHalf, 0.01f);
-            cam.transform.position = new Vector3(bounds.center.x, bounds.center.y, -10f);
+                var meshRenderer = avatarGo.GetComponent<MeshRenderer>();
+                Bounds bounds = meshRenderer != null ? meshRenderer.bounds : new Bounds(Vector3.zero, Vector3.one);
+                float verticalHalf = bounds.extents.y * 1.15f;
+                float horizontalHalf = bounds.extents.x * 1.15f / Mathf.Max(camera.aspect, 0.01f);
+                camera.orthographicSize = Mathf.Max(verticalHalf, horizontalHalf, 0.01f);
+                cam.transform.position = new Vector3(bounds.center.x, bounds.center.y, -10f);
+            }
         }
 
         void LoadItemTextures(ManifestItem item)
@@ -232,6 +265,7 @@ namespace AvatarWorld.Runtime
 
         void OnGUI()
         {
+            if (_embeddedWorldAvatar) return;
             if (_skeletonAnimation == null) return;
             float scale = Screen.width / 1280f;
             GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(scale, scale, 1f));
@@ -262,6 +296,14 @@ namespace AvatarWorld.Runtime
                     Debug.Log("AvatarGpuRuntime: toque trocou " + category.label + " para " + nextItemId + " (salvo)");
                 }
                 y += h + 10f;
+            }
+
+            if (_onClose != null && GUI.Button(new Rect(Screen.width / scale - 230f, 10f, 220f, h), "Voltar à Home"))
+            {
+                var close = _onClose;
+                _onClose = null;
+                close();
+                Destroy(gameObject);
             }
         }
 
