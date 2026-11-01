@@ -10,8 +10,7 @@ namespace AvatarWorld.Runtime
     /// <summary>
     /// Monta a tela Home (level3 do original) ao iniciar. Dados em Resources/HomeSlice
     /// (level3.json e sprites/), gerados por tools/export_level.py. Tambem carrega o save
-    /// e liga o PlayButton aos desafios de alfabetizacao (moedas ganhas entram no mesmo saldo
-    /// usado pela loja).
+    /// e liga Play a uma sala jogavel; desafios de alfabetizacao sao atividade opcional de moedas.
     /// </summary>
     public sealed class HomeBootstrap : MonoBehaviour
     {
@@ -22,6 +21,7 @@ namespace AvatarWorld.Runtime
         SaveStore _save;
         PlayerState _state;
         LiteracyChallengeService _literacy;
+        HomeActions _homeActions;
 
         void Start()
         {
@@ -38,8 +38,10 @@ namespace AvatarWorld.Runtime
             if (json == null) { Debug.LogError("Home: " + SceneJson + ".json nao encontrado em Resources"); return; }
 
             var desc = JsonUtility.FromJson<SceneDescription>(json.text);
-            UiSceneBuilder.EnsureEventSystem();
             var objs = UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key));
+            // A exportacao da level3 tambem contem EventSystem + StandaloneInputModule. Criar o
+            // EventSystem antes de materializar esses objetos deixava dois sistemas competindo.
+            UiSceneBuilder.EnsureEventSystem();
 
             // O original controla a visibilidade do multiplayer (menus de sair/entrar em sala,
             // "tem certeza que quer sair?") inteiramente por script em runtime; o estado "active"
@@ -51,7 +53,8 @@ namespace AvatarWorld.Runtime
             if (multiplayerCanvas != null) multiplayerCanvas.SetActive(false);
 
             HomeLayout.Apply(objs);
-            gameObject.AddComponent<HomeActions>().Initialize(objs, _save, _state, OpenLiteracyChallenges);
+            _homeActions = gameObject.AddComponent<HomeActions>();
+            _homeActions.Initialize(objs, _save, _state, OpenBasketballCourt, OpenLiteracyChallenges);
 
             BackgroundMusic.Play("Audio/home_music");
         }
@@ -66,7 +69,19 @@ namespace AvatarWorld.Runtime
 
             var screenGo = new GameObject("LiteracyChallengeScreen");
             var screen = screenGo.AddComponent<LiteracyChallengeScreen>();
-            screen.Begin(_literacy, queue, () => _save.Save(_state));
+            screen.Begin(_literacy, queue, () => _save.Save(_state), _homeActions.ReturnToHome);
+        }
+
+        void OpenBasketballCourt()
+        {
+            if (FindFirstObjectByType<BasketballCourtRuntime>() != null) return;
+            var game = new GameObject("BasketballCourtGameplay");
+            game.AddComponent<BasketballCourtRuntime>().Begin(_save, _state, () =>
+            {
+                _save.Save(_state);
+                Destroy(game);
+                _homeActions.ReturnFromGameplay();
+            });
         }
 
         void OnApplicationPause(bool paused) { if (paused && _state != null) _save.Save(_state); }

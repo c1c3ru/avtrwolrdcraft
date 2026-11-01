@@ -4,6 +4,12 @@
 
 Entregar uma fatia jogável offline: entrar pela Home, ver um avatar montado com os assets locais, mudar sua aparência por controles visuais, salvar, fechar/reabrir e recuperar a mesma aparência. Em seguida, colocar o avatar em uma sala com interação por toque/arraste. Menus textuais, logs, mockups e avisos não satisfazem nenhum desses critérios.
 
+### Prioridade do fluxo principal (decisão do usuário, 2026-10-31)
+
+- O botão principal **Play** leva ao fluxo principal de jogo: escolha/entrada em ambientes e gameplay. Não o ligar ao desafio de alfabetização.
+- O desafio de alfabetização é uma atividade opcional para ganhar moedas; deve ter entrada própria de recompensa/atividade, separada de Play.
+- O cliente atual só tem Home e cenas de validação/template. Os assets e dumps dos ambientes originais são insumos para reconstruir a primeira sala, não cenas jogáveis já prontas. Não apresentar uma tela de seleção textual como substituta do jogo.
+
 Preservar Home, áudio, economia, desafios pedagógicos e alterações de outras sessões. Base atual observada: `e837dd7b`, que já inclui a alteração de quiz publicada em paralelo. Não usar reset/checkout sobre trabalho local. Commit e push somente de ciclos verificáveis, conforme autorização anterior.
 
 ## Método de loop
@@ -69,3 +75,44 @@ Cada trecho só será declarado concluído com sua evidência. Até lá, o objet
 - **Próxima prova:** Ciclo 4 (acesso pela Home) — expor a edição de aparência a partir da Home de verdade (hoje `AvatarGpuRuntime` é isolado de propósito), reaproveitando `PlayerState.Appearance`/`AvatarCatalog` já prontos, preservando progresso/desafios/áudio existentes.
 - **Próximo rastreio:** `tools/avatar_bundle_inventory.py` consulta paths SUT do bundle local mantendo arquivo serializado e path_id; arquivos derivados permanecem em `out/assets` fora do Git.
 - **Ciclos 4–6 pendentes.** Acesso pela Home, sala jogável e integração/relatório final ainda não foram declarados prontos.
+
+## Retomada em 2026-10-31 — Ciclo 4 e fluxo principal
+
+- Foi criada uma entrada visual “Meu avatar” na Home. Ela cria o `AvatarGpuRuntime` real, injeta o mesmo `PlayerState`/`SaveStore` da Home/desafios e oferece retorno; os Canvas da Home são ocultados enquanto o editor está aberto.
+- EditMode: 62/62 passaram (inclui teste de integração que verifica a criação do runtime Spine e a ocultação do Canvas Home).
+- APK Home recompilado e instalado no Xiaomi M2101K7BI/API 33: `client/AvatarWorldClient/Builds/AvatarWorldOffline-dev.apk`, 62.132.105 bytes, SHA256 `11265444b7054f16bba03066e043668023878e0e5d36f1c85c36784c924d0ade`.
+- **Validação tátil inconclusiva:** capturas após tentativas de toque ADB continuam na Home e não apareceu o log de abertura do editor. Foi adicionada prioridade de sorting elevada e fallback de leitura da região de toque; o resultado ainda não provou que a entrada funciona. Não marcar como validada até observar avatar, troca de peça e retorno no aparelho.
+- Correção de prioridade: o desafio de alfabetização não deve ser o destino de Play. Hoje `HomeActions` o chama diretamente. Próxima mudança deve retirar essa ligação e ligar Play ao primeiro ambiente interativo realmente construído; a atividade de moedas fica em entrada independente.
+- **Rastreio de ambiente avançou:** extraído `level8` por blocos UnityFS sem carregar o datapack inteiro. É uma quadra de basquete real: 2403 objetos, 58 SpriteRenderers, 18 PolygonCollider2D, incluindo `Ball_01_Z2B3L1`, `BasketBallGate`, `RightBasketballHoop`, placar, `LevelBouncyBall` e `LevelBSBasketballItemHandler`. Inspecionados nomes/scripts a partir de `globalgamemanagers.assets`; 54 sprites referenciados foram exportados dos serialized files corretos, sem escolher textura por nome. Evidência: `out/scene-extract/level8-report.json` e `out/scene-extract/level8-sprites/`.
+- **Limite:** essa cena original tem dados, sprites e componentes/scripts de gameplay do jogo original, mas ainda não é carregada como cena no nosso cliente. O cliente não executa esses MonoBehaviours originais; é necessário reconstruir a fatia offline (quadra, avatar salvo, arrastar bola e marcar cesta) com código próprio e provar interação. Isso confirma por que não bastava conectar o botão a uma cena inexistente.
+- Pendências críticas: validar toque Home→editor no aparelho; reconstruir a quadra (cenário + avatar salvo + mover/arrastar + cesta/placar); colocar Play no fluxo principal da quadra/mundos e mover alfabetização para uma entrada separada de moedas; testes Unity e APK com captura; manter moedas/desafios/áudio e aparência no mesmo save.
+
+## Ciclo 5 — Play separado da atividade de moedas e primeira quadra (retomada)
+
+- **Decisão aplicada:** `HomeBootstrap` entrega callbacks distintos para `OpenBasketballCourt` e `OpenLiteracyChallenges`. `PlayButton` abre a quadra; “Desafio: ganhar moedas” abre a atividade de alfabetização opcional. Teste `PlayAndCoinChallengeAreSeparateActions` protege a separação.
+- **Fatia construída:** cenário de basquete original (`BG_01`), cesta e bola exportados da `level8` entram em `Resources/BasketballCourt`. `BasketballCourtRuntime` cria a quadra, mostra o `AvatarGpuRuntime` configurado com o mesmo `PlayerState`/`SaveStore` e permite arrastar a bola para arremessar, com contagem local de cestas e retorno à Home.
+- **Entrada atualizada:** bootstrap monta os objetos primeiro e consolida o EventSystem duplicado da exportação level3 com um único `InputSystemUIInputModule` configurado com ações padrão. Home ainda tem fallback direto pelo novo Input System (`Touchscreen`/`Pointer`) e API legada; a quadra também lê touch/mouse do Input System.
+- **Unity EditMode:** 62/62 passaram após as mudanças, XML `out/test-results-avatar-gameplay-slice.xml`, log `out/unity-avatar-gameplay-slice-tests.log`. Isso prova compilação e comportamento coberto pelos testes; não simula toque físico nem o render final.
+- **Build Android final concluído:** Unity reportou `ProjectSetup: build Succeeded`; APK de desenvolvimento gerado, íntegro e instalado no Xiaomi: `Builds/AvatarWorldOffline-dev.apk`, 90.070.255 bytes, SHA256 `3f38848911a6603ff82406a96237114704054d844fc4464aa8c2d177b50ef079`.
+- **Validação tátil ainda falha:** captura limpa mostra a Home e as duas entradas; nem `adb input tap` nem um swipe de 250 ms sobre o centro visível de Play abriram a quadra. Resolução lógica de toque confirmada em 2400×1080. O log filtrado não registrou o evento. Logo Play→quadra, o editor e arremesso no dispositivo **não estão validados**. O EventSystem foi unificado no APK mais recente, mas a entrada continua sem resposta.
+- **Limites do protótipo:** pontuação é local e demonstrativa; não paga moedas nem substitui a atividade de moedas. Ainda não há movimento livre do avatar, seleção de outros mundos, colisões/sensor de cesta ou animação de arremesso derivada dos scripts originais.
+- **Próximos passos:** diagnosticar toque com uma entrada física/telemetria do Input System no aparelho; provar Play→quadra, editor visual, arremesso/placar e retorno; aumentar testes das regras de arremesso; revisar layout e estabilidade. Não marcar o objetivo maior como completo até avatar customizável salvo e gameplay visual funcionarem no aparelho.
+
+## Reteste após relato de que os botões não funcionavam — 2026-10-31/11-01
+
+- Causa confirmada: o `InputSystemUIInputModule` e um fallback manual de toque/pointer em `HomeActions` despachavam callbacks duplicados. A Home também permanecia visível sobre a quadra. Removido o fallback duplicado; o EventSystem único despacha a UI; Home/CTAs são ocultados e restaurados ao entrar/sair de desafio, editor ou quadra.
+- Play e retorno validados no Xiaomi M2101K7BI/API 33: a quadra mostra bola, cestas, placar e avatar salvo (`out/avatar-final-play.png`); “Voltar à Home” restaura o menu (`out/avatar-final-return.png`).
+- CTA opcional abre somente o desafio de moedas, sem painel de Progresso sobreposto (`out/avatar-final-coins.png`). Configurações abre o painel de som/retorno (`out/avatar-final-settings.png`). “Meu avatar” abre o runtime Spine e as cinco categorias (`out/avatar-final-editor.png`); toque altera visivelmente a composição (`out/avatar-final-editor-hair.png`). Falta verificar independentemente cada categoria e persistência integrada após reabrir o processo.
+- EditMode: 62/62 passaram (`out/test-results-avatar-gameplay-slice.xml`). APK regenerado, íntegro e instalado: 90.070.438 bytes, SHA256 `d005e153f6ad4890b9cea7e89ce5b4b3a1069763ea5780765b2de5293833b1fb`; `unzip -t` sem erro.
+- Limites: Development Console cobre parte da tela na build de desenvolvimento; logs Spine em vermelho apontam texturas de guarda-chuva sem material, embora não impeçam os fluxos testados. A quadra é uma fatia de arremesso/placar local. Faltam movimento livre, detecção física de cesta e progressão.
+- Arraste ADB da bola mostrou “Cesta!” (`out/avatar-final-shot.png`), confirmando resposta à interação. Porém o placar apareceu como 9 após uma tacada, embora a quadra recém aberta mostrasse 0; regra/contador requer investigação isolada e não foi validado.
+- Correção de áudio após observação do usuário: `home_music.wav` estava usando `Vacation_Theme_Loop`; trocado pelo asset `Main_Theme_Loop` da biblioteca local. O componente extraído da cena Home não contém referência serializada ao clip, então a escolha é coerente com Home geral, mas a correspondência exata deve ser confirmada por audição. APK recompilado/instalado: 90.070.438 bytes, SHA256 `95ce751d70b00f1bb44acda03fc184566f0391b4d1a0362b69c5c13c6fe31c87`.
+- Estado: Play→quadra/retorno, CTA de moedas, Configurações e entrada no editor foram validados no Android. `/goal` continua aberto até verificar todos os controles/persistência integrada, resolver placar e materiais, remover console/debug e ampliar gameplay. Avisos de indisponibilidade não contam como funcionalidades.
+
+## Ativação incremental de controles — Configurações de áudio
+
+- Separados efeitos sonoros e música em dois controles persistentes. Antes, um único botão pausava o `AudioListener` inteiro. Agora efeitos mutam só o `AudioSource` de UI e música só o `BackgroundMusic`; o valor legado é migrado para ambas as preferências na primeira execução.
+- 62/62 EditMode passaram, incluindo verificações de independência e persistência (`out/test-results-home-button-audio.xml`). APK 90.072.488 bytes, SHA256 `5a938da78bea68dfa235d7e4db2b208bcfa8aa669e4b4d5ac89a98ead369fbe2`, instalado no Android.
+- Teste físico: efeitos desligados com música ligada, ambas desligadas e reativadas. Capturas em `out/home-settings-*.png`.
+- Ações existentes ligadas: Play, atividade opcional de moedas, editor, Configurações, perfil local e progresso. Ainda sem lógica local segura para loja, presente diário, passe, multiplayer ou evento sazonal; permanecem pendentes com nomes listados em `LOOP_STATE.md`. Não substituir por modais de indisponibilidade nem atribuir preços/recompensas inventados.
+- Revisão de paridade: o `HomeManager` original na cena `level3` define `_themeSoundName=On_The_Go_Splash_Screen_Loop`; este é o áudio correto, em `assets/audio_wav/AudioClip/On_The_Go_Splash_Screen_Loop_110563.wav`. A quadra atual, painel local de progresso e perfil local respondem ao toque, mas não reproduzem o `LoadPlayScene` original, o app de conquistas server-dependent ou a conta/cloud original. Próxima compilação deve incluir a faixa correta; esses destinos precisam permanecer classificados como protótipos até implementar equivalência.

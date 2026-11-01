@@ -149,13 +149,20 @@ def main(argv=None):
             if not re.fullmatch(r'[A-Za-z0-9_]+/[A-Za-z0-9_]+', item):
                 raise ValueError('Expected CATEGORY/ID with letters, digits or underscores: ' + item)
             category, identifier = item.split('/')
-            folder = (category + '_' + identifier).casefold()
+            category_lower = category.casefold()
+            folder = (category_lower + '_' + identifier).casefold()
+            category_parts = category_lower.split('_')
+            if category_parts[0] == 'accessories' and len(category_parts) >= 2:
+                prefix = ('sutsystem/skins/character/accessories/accessories_' +
+                          category_parts[1] + '/' + category_lower + '/' + folder + '/')
+            else:
+                prefix = ('sutsystem/skins/character/' + category_parts[0] + '/' +
+                          category_lower + '/' + folder + '/')
             result = {'item': item, 'resource_folder': folder, 'bindings': [], 'skipped': [], 'unresolved': []}
             manifest['items'].append(result)
             groups = {}
             for row in rows:
                 normalized = row['path'].replace('\\', '/').strip('/').casefold()
-                prefix = 'sutsystem/skins/character/' + folder + '/'
                 # ResourceManager paths are relative to Resources, occasionally with a leading prefix.
                 if normalized.startswith(prefix) or ('/' + prefix) in normalized:
                     groups.setdefault(normalized, []).append(row)

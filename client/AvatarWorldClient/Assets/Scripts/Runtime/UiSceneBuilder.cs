@@ -165,12 +165,34 @@ namespace AvatarWorld.Runtime
         /// <summary>Garante um EventSystem; sem ele nenhum botao recebe clique.</summary>
         public static void EnsureEventSystem()
         {
-            if (UnityEngine.Object.FindFirstObjectByType<EventSystem>() != null) return;
-            var go = new GameObject("EventSystem", typeof(EventSystem));
+            var systems = UnityEngine.Object.FindObjectsByType<EventSystem>();
+            EventSystem system = systems.Length > 0 ? systems[0] : null;
+            if (system == null) system = new GameObject("EventSystem", typeof(EventSystem)).GetComponent<EventSystem>();
+            for (int i = 1; i < systems.Length; i++)
+                if (systems[i] != null && systems[i] != system) systems[i].gameObject.SetActive(false);
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
-            go.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            var legacy = system.GetComponent<StandaloneInputModule>();
+            if (legacy != null)
+            {
+                legacy.enabled = false;
+                UnityEngine.Object.Destroy(legacy);
+            }
+            var inputSystemModule = system.GetComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            if (inputSystemModule == null) inputSystemModule = system.gameObject.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            inputSystemModule.AssignDefaultActions();
+#elif ENABLE_INPUT_SYSTEM
+            // Projeto em modo Both: mantém um único módulo. O atual suporta toque/Pointer e API legada.
+            var legacy = system.GetComponent<StandaloneInputModule>();
+            if (legacy != null)
+            {
+                legacy.enabled = false;
+                UnityEngine.Object.Destroy(legacy);
+            }
+            var inputSystemModule = system.GetComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            if (inputSystemModule == null) inputSystemModule = system.gameObject.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            inputSystemModule.AssignDefaultActions();
 #else
-            go.AddComponent<StandaloneInputModule>();
+            if (system.GetComponent<BaseInputModule>() == null) system.gameObject.AddComponent<StandaloneInputModule>();
 #endif
         }
     }

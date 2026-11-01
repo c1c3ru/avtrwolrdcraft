@@ -9,6 +9,8 @@ namespace AvatarWorld.Runtime
     public static class UiSound
     {
         static AudioSource _source;
+        static bool _muted;
+        public static bool IsMuted => _muted;
 
         static AudioSource Source
         {
@@ -34,8 +36,15 @@ namespace AvatarWorld.Runtime
         public static void PlayWrong() => Play("Audio/wrong");
         public static void PlayCoin() => Play("Audio/coin");
 
+        public static void SetMuted(bool muted)
+        {
+            _muted = muted;
+            if (_source != null) _source.mute = muted;
+        }
+
         static void Play(string resourcePath)
         {
+            if (_muted) return;
             var clip = Resources.Load<AudioClip>(resourcePath);
             if (clip == null) { Debug.LogWarning("UiSound: clipe nao encontrado em " + resourcePath); return; }
             Source.PlayOneShot(clip);

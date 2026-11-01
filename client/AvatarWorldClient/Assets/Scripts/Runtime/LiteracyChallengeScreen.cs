@@ -39,6 +39,7 @@ namespace AvatarWorld.Runtime
         int _queueIndex;
         int _sessionCoinsEarned;
         System.Action _onProgress;
+        System.Action _onClose;
         System.Random _rng = new System.Random();
 
         GameObject _root;
@@ -48,13 +49,15 @@ namespace AvatarWorld.Runtime
         readonly List<GameObject> _optionButtons = new List<GameObject>();
         readonly List<TextMeshProUGUI> _optionLabels = new List<TextMeshProUGUI>();
 
-        public void Begin(LiteracyChallengeService service, List<LiteracyChallenge> queue, System.Action onProgress = null)
+        public void Begin(LiteracyChallengeService service, List<LiteracyChallenge> queue,
+            System.Action onProgress = null, System.Action onClose = null)
         {
             _service = service;
             _queue = queue;
             Shuffle(_queue);
             _queueIndex = 0;
             _onProgress = onProgress;
+            _onClose = onClose;
             UiSceneBuilder.EnsureEventSystem();
             ShowCurrent();
         }
@@ -161,7 +164,11 @@ namespace AvatarWorld.Runtime
             _root.GetComponent<Canvas>().sortingOrder = 10;
         }
 
-        void Close() => Destroy(gameObject);
+        void Close()
+        {
+            _onClose?.Invoke();
+            Destroy(gameObject);
+        }
 
         void RefreshCoinsLabel() => _coins.text = "Moedas: " + _service.PazuCurrencyBalance;
 
