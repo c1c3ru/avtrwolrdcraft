@@ -57,3 +57,10 @@ adb devices -l
 Os vereditos foram registrados pela API da fila depois de conferir evidências reais; o histórico persistido guarda autores, revisão, hashes e escopo. Resultados aceitos não devem ser sobrescritos por uma nova coleta: versionar entradas/saídas antes de atualizá-las, ou os gates corretamente bloquearão dependências com hashes obsoletos.
 
 Próxima investigação: fechar os callees genéricos de `IsSceneAvailable`, os delegates/closure de `LoadScene` e o destino virtual do loading; seguir os cinco filhos de método liberados sem marcar seus pais como completos.
+
+### Publicação Git confirmada
+
+- Commit de ferramentas, contratos e fila: `2aa88455ba02a4179d71c8f6216dc678a05e2508`.
+- `git push origin main` concluiu com código zero, atualizando `420b2ae6 → 2aa88455`.
+- O recibo estruturado está em `reports/recon/wave2_checkpoint.json`; esta entrada integra um commit documental posterior.
+- Nenhum APK, binário IL2CPP, dump pesado ou alteração preexistente de código do cliente foi incluído nesse lote.
