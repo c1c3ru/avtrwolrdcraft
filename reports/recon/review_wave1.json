@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/review_plan_gaps",
+  "reviewed_at": "2026-11-01T15:07:11.719838+00:00",
+  "independence": "Reviewer did not author recon_baseline.py or the reviewed reports. Reviewer authored queue code, which is outside this review and is independently reviewed by root.",
+  "scope": "Independent scoped review of T001 baseline, T002 initial domains, existing-work/dump limits and operating policy. No live queue mutation.",
+  "evidence_refs": [
+    {
+      "path": "tools/recon_baseline.py",
+      "sha256": "d105cf6e177e449fa66420f0a6846d09063d856ce97231c390ab1a76c560dfc1"
+    },
+    {
+      "path": "reports/recon/baseline.json",
+      "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
+    },
+    {
+      "path": "reports/recon/existing_work.json",
+      "sha256": "ae0c029242ac51c928261e693436ebbe2fad536c46c008ccf6ba6b7d3bf73235"
+    },
+    {
+      "path": "reports/recon/dump_coverage.json",
+      "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
+    },
+    {
+      "path": "reports/recon/scope.json",
+      "sha256": "e856eb8265f0d5471fb5618e0ac7f3c2be4adb27efafd0521b35e4f3f4d40bef"
+    },
+    {
+      "path": "reports/recon/features.jsonl",
+      "sha256": "b0de684d701bdd6b79047b95693dd99e27ab78e5c8d673fff23e1b507ad7abd9"
+    },
+    {
+      "path": "reports/recon/operating_contracts.json",
+      "sha256": "d347314a2cd2a61bd2c61ea2aae0c163144c2440e4896ddfc8b359bb767a9e1c"
+    },
+    {
+      "path": "docs/OFFLINE_HOME_RULES.md",
+      "sha256": "8ecccd1cba0a9d832f9e04fcf294e4a71408c0bd4249dc7c2cd790e15e499919"
+    }
+  ],
+  "T001": {
+    "verdict": "accept_scoped_baseline",
+    "completion_recommended": true,
+    "rationale": "Current base/splits form a consistent package/versionCode/signer set. Reviewer independently streamed hashes of all three assets APKs plus native and metadata members and found exact matches. Current Scripts/Tests source hashes match the captured source manifest; all 2385 input fingerprints still matched at review time. Baseline does not certify full-game logic, current build parity, or a complete build-input snapshot.",
+    "checks": {
+      "package": "com.pazugames.avatarworld",
+      "version_code": 228,
+      "base_version_name": "1.227",
+      "split_version_names": "empty as reported; shared versionCode/package/signer checked",
+      "signer_certificate_sha256": "bd49ca453bf73530f088db6e6aee771fb4fb589e626cd19a601babfaa303f46b",
+      "source_stamp_certificate_sha256": "3257d599a49d2c961a471ca9843f59d341a405884583fc087df4237b733bbd6d",
+      "apksigner_results": "All three recorded exit codes 0, matching signer digests. Signing tool was not reexecuted by reviewer; recorded verification binds APK hashes independently rechecked now. This is not proof of official provenance.",
+      "independently_rehashed_apks": [
+        {
+          "path": "assets/base.apk",
+          "sha256": "c7edf76ff14254ecab9dc4162962f5d49d8e13be6e2e74e38f7d992f8c77ca07",
+          "match": true
+        },
+        {
+          "path": "assets/split_UnityDataAssetPack.apk",
+          "sha256": "66fd0e2732064ddfeaf2d4f596b8f25d81376a703e7b5878c2d9585c5e3ec792",
+          "match": true
+        },
+        {
+          "path": "assets/split_config.arm64_v8a.apk",
+          "sha256": "5c304f889fe02d6544071d5504a275be66c4235ff839b53022a746651cdc71d5",
+          "match": true
+        }
+      ],
+      "native_member": {
+        "apk": "assets/split_config.arm64_v8a.apk",
+        "member": "lib/arm64-v8a/libil2cpp.so",
+        "bytes": 74680624,
+        "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "independently_streamed_match": true,
+        "elf_class": 64,
+        "e_machine": 183
+      },
+      "metadata_member": {
+        "apk": "assets/base.apk",
+        "member": "assets/bin/Data/Managed/Metadata/global-metadata.dat",
+        "bytes": 16072324,
+        "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "independently_streamed_match": true,
+        "header_magic": "0xfab11baf",
+        "header_version": 31
+      },
+      "copied_base_matches": [
+        "assets/base.apk"
+      ],
+      "source_manifest_matches_current_scripts_tests": true,
+      "source_manifest_cross_report_digest_matches": true,
+      "changed_fingerprints_at_review": []
+    },
+    "blocking_findings": []
+  },
+  "T002": {
+    "verdict": "partial_not_done",
+    "completion_recommended": false,
+    "domain_count": 17,
+    "rationale": "17 feature domains and 13 SceneType values are an initial scope taxonomy, not a complete inventory of all features, methods, controls, variants or scenarios. scope.json explicitly preserves that boundary. Must expand discovered children and reconcile coverage before completion.",
+    "remaining": [
+      "Expand concrete features by scene/prefab/component/method inventories",
+      "Bind domain children to evidence and versioned identities",
+      "Keep all remote/backend/payment divergences in the visible inventory denominator"
+    ]
+  },
+  "existing_work": {
+    "verdict": "reuse_candidates_correctly_labeled_partial",
+    "current_behavior_revalidated": false,
+    "test_results_are_historical": true,
+    "remaining": "T003 must bind test XML/log/build manifests to exact sources. No current functional approval follows from this baseline review."
+  },
+  "dump_coverage": {
+    "verdict": "count_reconciliation_accepted_as_collector_output_not_decoder_correctness",
+    "class_count": 2418,
+    "error_class_count": 126,
+    "declared_totals": {
+      "ok": 879085,
+      "err": 2813
+    },
+    "actual_totals": {
+      "rows": 879085
+    },
+    "count_mismatches": [],
+    "extra_files": [],
+    "remaining": "126 failing classes / 2813 errors remain. Hashes/counts do not establish metadata typetree correctness or dump provenance to current splits; cross-class collisions untested."
+  },
+  "operating_policy": {
+    "verdict": "consistent_with_authorized_offline_rules",
+    "source_hash_matches": true,
+    "evidence_class": "DESIGNED_OFFLINE",
+    "prices": [
+      15,
+      20,
+      25
+    ],
+    "initial_gift": 25,
+    "daily_gift": 10,
+    "pass_price": 60,
+    "pass_milestones": [
+      4,
+      8,
+      12
+    ],
+    "reward_per_milestone": 25,
+    "implementation_revalidated": false,
+    "backend_parity_claimed": false,
+    "restrictions": "No real purchases/login, endpoint probing or protection bypass. Quiz secondary; Play must follow recovered exploration route; shared state and save rules preserved."
+  },
+  "nonblocking_risks": [
+    {
+      "id": "CACHE_STAT_TRUST",
+      "finding": "Collector reused 2385 hashes from unchanged stat fingerprints. The shortcut is explicitly labeled and --verify exists; it is not an independent cryptographic reread. Reviewer independently rehashed APK/native/metadata and current Scripts/Tests; dumps were not fully reread in this review.",
+      "next_task": "T005/T010: keep cached versus verified distinction; use --verify before stronger provenance conclusions."
+    },
+    {
+      "id": "SNAPSHOT_CONCURRENCY",
+      "finding": "Collector checks per-file stability while hashing, but does not lock the whole worktree or publish all three JSONs as one transaction. Concurrent source edits/output readers can observe a mixed epoch. No input-fingerprint drift and no source hash mismatch were found in this review.",
+      "next_task": "T007/T010/T054: generation ID or manifest tying output hashes, final validation pass, dedicated snapshot/checkout and lock where appropriate."
+    },
+    {
+      "id": "BUILD_INPUT_SCOPE",
+      "finding": "Source manifest includes Scripts/Tests .cs only, not all Editor code, package/settings files, Unity scenes, .meta, imported assets or build inputs. Git status records names, not a full content snapshot. Baseline is not a reproducible build manifest.",
+      "next_task": "T003/T054: hash complete build-input closure and bind APK/test results to it."
+    },
+    {
+      "id": "LIMITS_NOT_RECOVERED",
+      "finding": "Artifact identity and signature consistency do not recover code registration, method addresses, local behavior, backend logic or official provenance.",
+      "next_task": "T021 onward: metadata/native method mapping and independent contracts."
+    }
+  ],
+  "review_commands": [
+    "Read collector and report summary keys",
+    "Stream SHA256 of assets/base.apk, assets/split_UnityDataAssetPack.apk and assets/split_config.arm64_v8a.apk",
+    "Stream SHA256 of libil2cpp.so and global-metadata.dat directly from ZIP members; inspect ELF and metadata headers",
+    "Rehash current client Scripts/Tests against source manifest; compare all recorded stat fingerprints",
+    "Compare scope provenance and operating policy source hashes"
+  ],
+  "not_executed": [
+    "Full dump recount by reviewer",
+    "Unity tests/build",
+    "ADB/runtime replay",
+    "Signing verification rerun",
+    "Any live task queue mutation"
+  ]
+}

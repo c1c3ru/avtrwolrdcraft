@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "task_id": "T021/PAIR/b63661fa60c2-1ea14cf5829d",
+  "state": "independently_reviewed_narrow_prerequisite",
+  "imported_existing_work": true,
+  "producer": "/root/logic_bootstrap",
+  "reviewer": "/root/review_plan_gaps",
+  "review_path": "reports/recon/review_navigation_wave2.json",
+  "review_sha256": "8354afbb94a2be4b1622fa482ca547c0aaf53550f0e3bc2c0f8e15a68565be7a",
+  "rationale": "Derived native and metadata were independently SHA256-checked against reviewed baseline member identities; ELF64/AArch64 and metadata31 fit this pair. Does not imply full code/metadata registration recovery.",
+  "parent_completion_claimed": false,
+  "semantic_equivalence_claimed": false
+}

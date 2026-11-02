@@ -1,5 +1,7 @@
 # Plano de engenharia reversa e reconstrução offline por agentes
 
+> Plano inicial preservado como contexto. O documento operacional atualizado é [AVATAR_WORLD_MASTER_PLAN.md](AVATAR_WORLD_MASTER_PLAN.md), com 60 pacotes detalhados, dependências, recuperação IL2CPP, loops, divisão entre agentes e critérios V/L/C. Catálogo de tarefas: [AVATAR_WORLD_TASKS.json](AVATAR_WORLD_TASKS.json). Reconciliar o trabalho já realizado antes de usar os checkboxes históricos abaixo.
+
 **Meta:** mapear sistematicamente o comportamento observável do Avatar World nos APKs/assets locais e reconstruir uma experiência offline funcional, com editor de avatares, ambientes e atividades jogáveis, economia fictícia e desafios pedagógicos. Este plano serve para delegar trabalho em paralelo sem perder evidências, duplicar comandos ou misturar protótipos com paridade.
 
 **Limite da promessa:** “100%” é um objetivo de cobertura verificável sobre os conteúdos, cenas, telas, controles e regras observáveis nos artefatos disponíveis. Não é possível provar cópia integral do código-fonte original nem equivalência de serviços/flags/conteúdo que só existem no backend. Cada parte dinâmica deverá virar regra offline explicitamente definida ou uma divergência documentada. Nenhum endpoint deve ser sondado, nenhum login/compra real deve ser tentado, e nenhuma proteção/licença deve ser contornada durante este plano.

@@ -53,3 +53,9 @@ client/AvatarWorldClient/out/
 /out/sut-extract/
 out/avatar-outfit-probe-report.json
 /out/avatar-package-check/
+# Derived reconstruction evidence and queue mutexes; keep source/manifests in Git.
+/out/recon/
+/out/navigation-map/
+/out/scene-extract/
+/out/rea-avatar-base-20261101.json
+/reports/recon/*.lock

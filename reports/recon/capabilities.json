@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "evidence_class": "STATIC_environment_and_passive_local_commands",
+  "UnityPy": "1.25.4",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "llvm_objdump": {
+    "path": "/home/c1c3ru/Android/Sdk/ndk/29.0.13599879/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+    "present": true,
+    "version": [
+      "LLVM (http://llvm.org/):",
+      "  LLVM version 20.0.0"
+    ]
+  },
+  "unity_cli": "/home/c1c3ru/.local/bin/unity",
+  "unity_license_validated": false,
+  "android_build_executed_this_wave": false,
+  "native_rea": {
+    "last_attempt": "2026-11-01",
+    "target_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "open_binary": "succeeded",
+    "search_procedures": "provider_timeout",
+    "bridge_timeout_ms": 120000,
+    "not_retried_without_changed_blocker": true
+  },
+  "limitations": [
+    "CLI presence does not validate Unity license/Android module",
+    "This wave does not execute game/install/build; native logic from local bytes/LLVM is not successful REA decompilation"
+  ],
+  "adb": {
+    "command": "adb devices -l",
+    "sandbox_first_attempt": "local socket listener denied",
+    "authorized_host_retry_returncode": 0,
+    "attached_devices": [],
+    "runtime_validation_available": false
+  }
+}
