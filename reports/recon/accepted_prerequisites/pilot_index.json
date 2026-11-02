@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "task_id": "T022/PILOT_INDEX/b63661fa60c2",
+  "state": "independently_reviewed_narrow_prerequisite",
+  "imported_existing_work": true,
+  "producer": "/root/logic_bootstrap",
+  "reviewer": "/root/review_plan_gaps",
+  "review_path": "reports/recon/review_navigation_wave2.json",
+  "review_sha256": "8354afbb94a2be4b1622fa482ca547c0aaf53550f0e3bc2c0f8e15a68565be7a",
+  "rationale": "Independent reviewer parsed raw metadata records and ELF LOAD/RELA tables, checked Assembly-CSharp name/count/pointer table, then joined each of five names/types/MethodDef tokens through its RID pointer slot to executable bytes and cached VA/file offset. No method size, semantics or whole-parent completion inferred.",
+  "parent_completion_claimed": false,
+  "semantic_equivalence_claimed": false
+}

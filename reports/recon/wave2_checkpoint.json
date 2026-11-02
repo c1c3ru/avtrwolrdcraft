@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "completed_at_utc": "2026-11-02T21:48:23.047895+00:00",
+  "scope": "2026-11-02 static navigation and resumable discovery queue integration",
+  "task_states": {
+    "done": 3,
+    "pending": 444
+  },
+  "queue_revision": 16,
+  "total_tasks": 447,
+  "accepted_ids": [
+    "T001",
+    "T021/PAIR/b63661fa60c2-1ea14cf5829d",
+    "T022/PILOT_INDEX/b63661fa60c2"
+  ],
+  "test_execution": {
+    "command": "python3 -m unittest discover -s tools -p 'test_recon_*.py' -v",
+    "passed": 73,
+    "failed": 0,
+    "duration_seconds": 2.456,
+    "breakdown": {
+      "children": 17,
+      "navigation": 25,
+      "queue": 31
+    },
+    "source_refs": [
+      {
+        "path": "tools/recon_queue.py",
+        "sha256": "0406931b397554aca60510682df1e6a7599ada0cf303f419d53314ea26b1b2a0"
+      },
+      {
+        "path": "tools/test_recon_queue.py",
+        "sha256": "86c206810b812fd0a43455f03e61a03110143836b48cc0217f2e9a51a11d88d5"
+      },
+      {
+        "path": "tools/recon_children.py",
+        "sha256": "3c3957c7b998b291acc92504783e5f72b8e5c3e45e7a44a6a8a4a14029f91254"
+      },
+      {
+        "path": "tools/test_recon_children.py",
+        "sha256": "0fc5d514526eb23843f209507879460baa1b2fc256265103c628c88d7c73b873"
+      },
+      {
+        "path": "tools/recon_navigation.py",
+        "sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08"
+      },
+      {
+        "path": "tools/test_recon_navigation.py",
+        "sha256": "febd554e34ae505992f0738b831377a42beeb2f438ef6b33290fe328502a949c"
+      }
+    ]
+  },
+  "independent_navigation_negative_checks": {
+    "passed": 12,
+    "failed": 0,
+    "review_path": "reports/recon/review_navigation_wave2.json",
+    "sha256": "8354afbb94a2be4b1622fa482ca547c0aaf53550f0e3bc2c0f8e15a68565be7a"
+  },
+  "child_import": {
+    "count": 387,
+    "unique_inputs_hashed": 8,
+    "observed_command_wall_seconds": 0.670468073,
+    "manifest": "reports/recon/discovery_children.json"
+  },
+  "milestones": {
+    "V": "open",
+    "L": "open",
+    "C": "open"
+  },
+  "runtime_or_build_validation_this_wave": false,
+  "device_available": false,
+  "next_work": [
+    "Recover generic collection callees and callback/virtual targets in navigation",
+    "Execute selected scene and parser-error child tasks, preserving inferred bindings and2813 failed objects",
+    "Version accepted report inputs before future recollection; dependency hash changes deliberately block stale approvals"
+  ],
+  "commit_push_state": "pending_final_git_publication"
+}

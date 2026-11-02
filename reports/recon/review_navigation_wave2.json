@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/review_plan_gaps",
+  "reviewed_at": "2026-11-02T21:46:41.251378+00:00",
+  "independence": "Reviewer did not author recon_il2cpp.py, recon_navigation.py or their reports. Queue implementation is outside this review.",
+  "evidence_refs": [
+    {
+      "path": "tools/recon_il2cpp.py",
+      "sha256": "5b07fad8003143f5d9e41f4711e0e20f587ea76c0f84aa3b842400ba12a0bb73"
+    },
+    {
+      "path": "tools/recon_navigation.py",
+      "sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08"
+    },
+    {
+      "path": "reports/recon/il2cpp_bootstrap.json",
+      "sha256": "6668aaef31e7d1474fa4504ec40f9649806d147f9d0b1c239f03d141ffa1dd9c"
+    },
+    {
+      "path": "reports/recon/navigation_contract.json",
+      "sha256": "268b27459c5a0afe6911c671818dcb8cf9df448b054ea9d797cc789faef493d6"
+    },
+    {
+      "path": "tools/test_recon_navigation.py",
+      "sha256": "febd554e34ae505992f0738b831377a42beeb2f438ef6b33290fe328502a949c"
+    }
+  ],
+  "scope": "Only exact pair identity and five pilot metadata-to-native structural joins can be accepted; navigation evidence remains partial, not full method recovery.",
+  "task_verdicts": [
+    {
+      "task_id": "T021/PAIR/b63661fa60c2-1ea14cf5829d",
+      "verdict": "accept_narrow_child",
+      "acceptance_satisfied": true,
+      "rationale": "Derived native and metadata were independently SHA256-checked against reviewed baseline member identities; ELF64/AArch64 and metadata31 fit this pair. Does not imply full code/metadata registration recovery."
+    },
+    {
+      "task_id": "T022/PILOT_INDEX/b63661fa60c2",
+      "verdict": "accept_narrow_child",
+      "acceptance_satisfied": true,
+      "rationale": "Independent reviewer parsed raw metadata records and ELF LOAD/RELA tables, checked Assembly-CSharp name/count/pointer table, then joined each of five names/types/MethodDef tokens through its RID pointer slot to executable bytes and cached VA/file offset. No method size, semantics or whole-parent completion inferred."
+    }
+  ],
+  "input_pair": {
+    "native": {
+      "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+      "bytes": 74680624,
+      "derived_path": "out/recon/il2cpp/libil2cpp.so",
+      "independently_hashed": true
+    },
+    "metadata": {
+      "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+      "bytes": 16072324,
+      "version": 31,
+      "derived_path": "out/recon/il2cpp/global-metadata.dat",
+      "independently_hashed": true
+    }
+  },
+  "structural_index_checks": {
+    "selected_image": "Assembly-CSharp.dll",
+    "image_method_count": 36421,
+    "module_name_pointer_checked": true,
+    "module_count_field_checked": true,
+    "module_method_pointer_table_checked": true,
+    "method_owner_and_type_range_checked": true,
+    "pointer_relocation_and_LOAD_mapping_independently_checked": true,
+    "pilot_methods": [
+      {
+        "declaring_type": "Game.Home.HomePlayButton",
+        "name": "LoadPlayScene",
+        "token": "0x060054ef",
+        "method_definition_index": 21742,
+        "vaddr": "0x2057fa8",
+        "file_offset": "0x2053fa8",
+        "first_16_bytes": "fe57bea9f44f01a9332501b0683a5739",
+        "independent_raw_metadata_owner_token_pointer_and_bytes_check": true
+      },
+      {
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "LoadScene",
+        "token": "0x060056fe",
+        "method_definition_index": 22269,
+        "vaddr": "0x20728d4",
+        "file_offset": "0x206e8d4",
+        "first_16_bytes": "fe0f1cf8f85f01a9f65702a9f44f03a9",
+        "independent_raw_metadata_owner_token_pointer_and_bytes_check": true
+      },
+      {
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "LoadSceneImplement",
+        "token": "0x060056ff",
+        "method_definition_index": 22270,
+        "vaddr": "0x2072cc8",
+        "file_offset": "0x206ecc8",
+        "first_16_bytes": "fe0f1ef8f44f01a9542401d088f65b39",
+        "independent_raw_metadata_owner_token_pointer_and_bytes_check": true
+      },
+      {
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "GetCurrentWorldSceneName",
+        "token": "0x06005708",
+        "method_definition_index": 22279,
+        "vaddr": "0x2073238",
+        "file_offset": "0x206f238",
+        "first_16_bytes": "ff4301d1fe1300f9f65703a9f44f04a9",
+        "independent_raw_metadata_owner_token_pointer_and_bytes_check": true
+      },
+      {
+        "declaring_type": "PWC.World.Buildings.WorldBuilding",
+        "name": "ClickOnLevel",
+        "token": "0x06006081",
+        "method_definition_index": 24704,
+        "vaddr": "0x2108e90",
+        "file_offset": "0x2104e90",
+        "first_16_bytes": "fe0f1df8f65701a9f44f02a9b51f0190",
+        "independent_raw_metadata_owner_token_pointer_and_bytes_check": true
+      }
+    ],
+    "all_other_methods_independently_rechecked": false
+  },
+  "navigation": {
+    "verdict": "partial_static_candidate_not_done",
+    "parent_or_method_completion_recommended": false,
+    "getter": {
+      "key": "GAME_CURRENT_WORLD",
+      "fallback_type": "PWC.Game.LevelWorldType",
+      "fallback_enum": "World",
+      "fallback_value": 1,
+      "conditional_return": "After external availability call, TST w0,#1 then CSEL x0,x20,x19,NE chooses stored candidate x20 when bit0 nonzero, otherwise fallback x19.",
+      "metadata_literal_and_enum_bytes_checked": true,
+      "original_opcode_and_call_checks_passed": true,
+      "runtime_or_differential_equivalence_proven": false
+    },
+    "windows": {
+      "count": 5,
+      "all_recorded_slice_hashes_checked_against_original_bytes": true,
+      "whole_body_extents_proven": false,
+      "names": [
+        "GetCurrentWorldSceneName",
+        "IsSceneAvailable",
+        "LoadScene",
+        "LoadSceneImplement",
+        "StartSceneTransition"
+      ]
+    },
+    "assembly_review": "Reviewed recorded AArch64 assembly for getter, availability, LoadScene, LoadSceneImplement and StartSceneTransition. Optional delegate calls, load dispatch and virtual BR remain candidate contracts with declared unknowns.",
+    "tool_source_link": {
+      "matches_current_source_at_review": true,
+      "current_navigation_script_sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+      "report_recorded_navigation_script_sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+      "action_if_mismatched": "Regenerate navigation_contract after author freezes source, then bind refreshed report before using current-tool-generation assertions."
+    },
+    "remaining": [
+      "Full CFG/noncontiguous body/exception extent verification",
+      "Generic ctor/Add/Contains and MethodSpec resolution",
+      "Runtime-init/exception/null/concurrency effects",
+      "LoadScene closure callback and virtual fade dispatch",
+      "Matching-state differential/device route Home->map->environment->return",
+      "Full HomePlayButton and ClickOnLevel contracts"
+    ]
+  },
+  "independent_mutation_checks": {
+    "passed": 12,
+    "failed": 0,
+    "execution": "Disposable bytearrays in reviewer process; original files unchanged; getter operand guards called independently of full-pair hash gate for six semantic mutations.",
+    "cases": [
+      "Wrong native hash rejected",
+      "Wrong metadata hash rejected",
+      "CSEL return condition mutation rejected",
+      "GetString BL target mutation rejected",
+      "Fallback immediate mutation rejected",
+      "Key ADRP/LDR destination register mutation rejected",
+      "PlayerPrefs literal bytes mutation rejected",
+      "World enum compressed default mutation rejected",
+      "cache static store changed rejected",
+      "loop signed exit changed rejected",
+      "loading virtual register changed rejected",
+      "stage callback register changed rejected"
+    ],
+    "scope_limit": "Negative guards demonstrate detection of these changes, not correctness of all AArch64 semantics or all function paths."
+  },
+  "review_commands": [
+    "Read bounded source and assembly reports",
+    "Independently hash derived pair and compare baseline member identities",
+    "Parse ELF headers/RELA and metadata v31 raw rows to validate five pilot tokens and first16 bytes",
+    "Validate getter key/default/CSEL operands and all five window byte hashes",
+    "Run eight in-memory negative mutation checks"
+  ],
+  "limits": [
+    "No network, REA active-session mutation, APK target execution, emulation, Unity build or device scenario performed.",
+    "No full bootstrap rerun or all-120743-method independent verification.",
+    "T021/T022/T029 parents must stay incomplete; only two named prerequisite children accepted.",
+    "Source/report may be updated concurrently; evidence hashes bind the exact reviewed snapshots."
+  ],
+  "final_sourcefreeze_review": {
+    "all_existing_review_ref_hashes_match_current_files": true,
+    "navigation_report_sha256": "268b27459c5a0afe6911c671818dcb8cf9df448b054ea9d797cc789faef493d6",
+    "navigation_script_sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+    "bootstrap_script_sha256": "5b07fad8003143f5d9e41f4711e0e20f587ea76c0f84aa3b842400ba12a0bb73",
+    "no_blind_reference_refresh": "All four review refs already matched the final frozen sources/reports; reviewed transition-anchor additions and their test source explicitly before refreshing review timestamp.",
+    "transition_anchors_original_passed": {
+      "direct_call_sites": 21,
+      "field_loop_and_indirect_anchors": "passed",
+      "limit": "anchors and linked symbol identity; not callee execution or complete semantic proof"
+    },
+    "source_declaration_hashes_match": true,
+    "additional_independent_mutation_checks": [
+      {
+        "case": "cache static store changed",
+        "rejected": true,
+        "reason": "opcode mismatch at 0x2073140: 0xf8040c14 != 0xf8048c14"
+      },
+      {
+        "case": "loop signed exit changed",
+        "rejected": true,
+        "reason": "scene loop signed exit changed"
+      },
+      {
+        "case": "loading virtual register changed",
+        "rejected": true,
+        "reason": "loading virtual tail dispatch changed"
+      },
+      {
+        "case": "stage callback register changed",
+        "rejected": true,
+        "reason": "stage callback indirect dispatch changed"
+      }
+    ],
+    "author_test_source_reviewed": "tools/test_recon_navigation.py: 25 cases inspected; full suite not repeated by reviewer because root is executing combined suite.",
+    "completion_scope_unchanged": "Only two narrow prerequisite children accepted; navigation and parents remain partial."
+  }
+}
