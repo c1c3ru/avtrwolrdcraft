@@ -28,7 +28,7 @@ Verificador: `python3 tools/recon_access_gate.py` (`out/recon/tasks/T029/WORLD_C
 - Na 1.227 todos os prédios com cena abrem (`IsAllWorldFree`); o popup de preview existe no código mas não é alcançado. Nenhuma cena é inventada para `LevelType` não distribuídos. O clone offline não precisa de compra/assinatura para abrir prédios.
 
 ## Desconhecidos
-- Slot virtual `0x298` é inferido (única `LoadScene(string)` virtual na cadeia; vtable não decodificada).
+- Slot virtual `0x298` continua sem vtable decodificada, mas o `override void LoadScene(string)` aparece **uma única vez em todo o `Assembly-CSharp`** (`WorldEnterableEntity`) e `WorldBuilding` não tem subclasses, então o alvo é `WorldEnterableEntity.LoadScene` (inferência forte, não verificada por vtable).
 - Se algum outro escritor/remote config muda `IsAllWorldFree` em runtime (campo `readonly`, assumido constante); layout de `GameExtraSettings` a confirmar com typetree gerado.
-- Slots virtuais de `OnPointerClickInternal` (em `OnPointerClick`) e de `LoadScene` (em `ClickOnLevel`) não decodificados por vtable.
+- Slots virtuais de `OnPointerClickInternal` (em `OnPointerClick`) e de `LoadScene` (em `ClickOnLevel`) não decodificados por vtable (ver nota acima).
 - Efeitos de `MarkBuildingAsInteracted`/`SetFocusedBuildingType` e UI do popup.
