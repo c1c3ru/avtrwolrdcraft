@@ -29,11 +29,13 @@ namespace AvatarWorld.Runtime
 
         Action play;
         Action coinActivity;
+        Action<int> starterPack;
         public readonly List<string> PendingButtons = new List<string>();
 
         public void Initialize(IReadOnlyList<GameObject> objects, SaveStore saveStore,
-            PlayerState sharedState, Action openPlay, Action openCoinActivity)
+            PlayerState sharedState, Action openPlay, Action openCoinActivity, Action<int> openStarterPack = null)
         {
+            starterPack = openStarterPack;
             saves = saveStore ?? throw new ArgumentNullException(nameof(saveStore));
             state = sharedState ?? throw new ArgumentNullException(nameof(sharedState));
             play = openPlay ?? throw new ArgumentNullException(nameof(openPlay));
@@ -74,6 +76,12 @@ namespace AvatarWorld.Runtime
                         button.onClick.AddListener(() => Open(action));
                         boundButtons.Add(button);
                         break;
+                    case "World_ShopButton StarterPack":
+                        // No original abre a compra (dinheiro real); aqui abre desafios que pagam moedas.
+                        if (starterPack == null) goto default;
+                        button.onClick.AddListener(() => Open(action));
+                        boundButtons.Add(button);
+                        break;
                     default:
                         // Sem implementacao real: nao conta modal de aviso como funcionalidade.
                         button.interactable = false;
@@ -92,6 +100,11 @@ namespace AvatarWorld.Runtime
                     inGameplay = true;
                     SetHomeVisible(false);
                     play();
+                    break;
+                case "World_ShopButton StarterPack":
+                    Close();
+                    SetHomeVisible(false);
+                    starterPack(AvatarWorld.Core.Literacy.ChallengeDifficulty.StarterPackValue);
                     break;
                 case "SettingsButton": ShowSettings(); break;
                 case "AccountButton": ShowProfile(); break;

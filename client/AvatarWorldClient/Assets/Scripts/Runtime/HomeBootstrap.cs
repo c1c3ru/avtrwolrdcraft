@@ -54,7 +54,7 @@ namespace AvatarWorld.Runtime
 
             HomeLayout.Apply(objs);
             _homeActions = gameObject.AddComponent<HomeActions>();
-            _homeActions.Initialize(objs, _save, _state, OpenBasketballCourt, OpenLiteracyChallenges);
+            _homeActions.Initialize(objs, _save, _state, OpenBasketballCourt, OpenLiteracyChallenges, OpenStarterPackChallenges);
 
             BackgroundMusic.Play("Audio/home_music");
         }
@@ -70,6 +70,16 @@ namespace AvatarWorld.Runtime
             var screenGo = new GameObject("LiteracyChallengeScreen");
             var screen = screenGo.AddComponent<LiteracyChallengeScreen>();
             screen.Begin(_literacy, queue, () => _save.Save(_state), _homeActions.ReturnToHome);
+        }
+
+        /// <summary>"Pacote Inicial": desafios aleatorios do banco de 100, na dificuldade do valor do pacote.</summary>
+        void OpenStarterPackChallenges(int packValue)
+        {
+            if (FindFirstObjectByType<LiteracyChallengeScreen>() != null) return;
+            var screenGo = new GameObject("StarterPackChallenges");
+            var screen = screenGo.AddComponent<LiteracyChallengeScreen>();
+            screen.BeginRandom(_literacy, new ChallengeSelector(_state), packValue, "Pacote Inicial",
+                () => _save.Save(_state), _homeActions.ReturnToHome);
         }
 
         void OpenBasketballCourt()

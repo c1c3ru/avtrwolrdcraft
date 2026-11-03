@@ -34,6 +34,8 @@ namespace AvatarWorld.Core.Economy
         public List<TransactionRecord> Ledger = new List<TransactionRecord>();
         /// <summary>IDs de AvatarWorld.Core.Literacy.LiteracyChallenge ja respondidos corretamente ao menos uma vez.</summary>
         public List<string> CompletedChallenges = new List<string>();
+        /// <summary>Ultimos desafios sorteados (mais antigo primeiro); o ChallengeSelector evita repeti-los.</summary>
+        public List<string> RecentChallenges = new List<string>();
         /// <summary>Selecao de aparencia do avatar (Ciclo 3). Inicializador proprio sobrevive a saves
         /// antigos sem este campo - ver AvatarAppearance e SaveStore.LoadOrCreate.</summary>
         public AvatarAppearance Appearance = AvatarAppearance.CreateDefault();
