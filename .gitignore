@@ -30,7 +30,9 @@ client/AvatarWorldClient/Builds/
 # Backup do Drive (apk/assets ja vem em arquivos separados) e extracao de assets reais do jogo:
 # nunca pertencem ao Git, ver README.
 /AvatarWorld-RE-*.zip
-/assets/
+/assets/*
+# Excecao: prints de referencia do jogo original enviados pelo autor (3,5 MB).
+!/assets/exemplo_jogo_original/
 # Screenshots e relatorios de teste de sessoes de depuracao, nao sao entregaveis do projeto.
 out/*.png
 out/test-results*.xml
