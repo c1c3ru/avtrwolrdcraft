@@ -30,6 +30,12 @@ class HomePlayTests(unittest.TestCase):
         self.assertEqual(len(result['verified_calls']), 11)
         self.assertEqual(result['unresolved_indirect_dispatch']['site'], '0x2058174')
 
+    def test_dispatch_receiver_field_anchor_mutation_rejected(self):
+        result = home.verify(self.elf, self.meta, self.resolve)
+        self.assertEqual(result['dispatch_candidate']['confidence'], 'inferred')
+        with self.assertRaisesRegex(ValueError, 'opcode mismatch'):
+            home.verify(self.mutate(0x205810c, 0xf9401914), self.meta, self.resolve)  # +0x30
+
     def test_guard_polarity_and_scene_return_value_mutations_rejected(self):
         # Includes the wrong zero-value propagation observed in external pseudo-C.
         for address, instruction in [(0x2058054, 0x370002c0), (0x20580a0, 0x370001a0),

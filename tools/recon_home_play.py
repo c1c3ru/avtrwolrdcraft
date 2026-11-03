@@ -59,6 +59,9 @@ def verify(elf, meta, resolve):
         0x20581b4: 0xaa0003f3, 0x20581cc: 0xaa1303e0,
         0x20581d4: 0x52800021, 0x20581d8: 0xaa1f03e2,
         0x20581dc: 0xaa1f03e3,
+        # DeepLinkManager.Instance (static slot 0) -> field at +0x28 -> interface call.
+        0x2058100: 0xf9405d08, 0x2058104: 0xf9400108, 0x2058108: 0xb4000708,
+        0x205810c: 0xf9401514, 0x2058110: 0xb40006d4,
     }
     for address, expected in anchors.items():
         nav.expect(elf, address, expected)
@@ -72,10 +75,19 @@ def verify(elf, meta, resolve):
                     (targets[0]['declaring_type'], targets[0]['name']) == expected,
                     f'callee mismatch at {site:#x}')
         confirmed.append({'site': hex(site), 'target': targets[0]})
+    dispatch = {'site': '0x2058174', 'receiver_load': '0x205810c ldr x20,[x8,#0x28]',
+        'receiver_field': 'PazuCore.DeepLink.DeepLinkManager._mapLinkToLevel (offset 0x28 in C# dump)',
+        'candidate_call': 'IDictionary<string,LevelType>.get_Item(pendingLink)',
+        'confidence': 'inferred', 'basis': ['static slot 0 of the class is DeepLinkManager.Instance '
+            '(dump: only static backing field at offset 0x0)', 'field offset 0x28 matches the only '
+            'SerializableDictionaryBase<string,LevelType> field', 'one string argument, int return -> level',
+            'interface-offset search loop at 0x2058114..0x2058148 not independently decoded'],
+        'not_handled_here': 'absent key (KeyNotFoundException) and null Instance branch to 0x20581e8'}
     return {'method': identity[0], 'pending_key': key, 'default_string': empty,
             'verified_calls': confirmed, 'verified_operand_anchors': len(anchors),
             'unresolved_indirect_dispatch': {'site': '0x2058174', 'register': 'x8',
-                'argument': 'pending deep link string in x1', 'result': 'w0 saved in w19'}}
+                'argument': 'pending deep link string in x1', 'result': 'w0 saved in w19'},
+            'dispatch_candidate': dispatch}
 
 
 def bounded_flow(elf):
@@ -144,7 +156,8 @@ def run(source, output, craft=None):
     if craft:
         contract['craft_comparison'] = compare_craft(elf, craft)
     unknowns = [
-        'Resolve interface target at 0x2058174 for nonempty deep links.',
+        'Confirm interface method at 0x2058174 is get_Item (decode interface-offset search and method slot).',
+        'Extract serialized DeepLinkManager._mapLinkToLevel contents (keys -> LevelType) from the original data.',
         'Recover helpers, exceptions and independent body bounds.',
         'Verify effect of interaction-history callback and SaveBuildingData arguments.',
         'Validate original absent/empty/nonempty pending key scenarios on device.',
@@ -154,7 +167,7 @@ def run(source, output, craft=None):
         'Invoke OnClickHomePlayButton on the observed manager instance.',
         'If pending key is absent: scene = GetCurrentWorldSceneName().',
         'Otherwise Stop(1001), read pending key with empty default.',
-        'Empty/null value: level = 2; nonempty: level = unresolved interface call(value).',
+        'Empty/null value: level = 2; nonempty: level = DeepLinkManager.Instance._mapLinkToLevel[value] (inferred get_Item; absent key behaviour not decoded).',
         'Pending branch deletes the key and calls PlayerPrefs.Save().',
         'Pending branch calls SaveBuildingData(0, level), then scene = GetSceneName(level).',
         'Both normal paths tail-call LoadScene(scene, true, null).',
