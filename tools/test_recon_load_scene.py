@@ -44,6 +44,12 @@ class LoadSceneTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'callee mismatch'):
             self.verify(self.mutate(0x2072a58, word))
 
+    def test_reset_stores_rejected(self):
+        # Clearing a different static (+0x38) instead of IsSceneChangingInProgress / loading names.
+        for address, word in [(0x20725e8, 0x3900e11f), (0x2072710, 0xf8038c1f), (0x20726f8, 0xf8050c1f)]:
+            with self.subTest(address=hex(address)), self.assertRaisesRegex(ValueError, 'opcode mismatch'):
+                self.verify(self.mutate(address, word))
+
     def test_multiplayer_clear_guard_rejected(self):
         with self.assertRaisesRegex(ValueError, 'opcode mismatch'):
             self.verify(self.mutate(0x2072d3c, 0x35000128))

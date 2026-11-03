@@ -37,6 +37,14 @@ LOAD_ANCHORS = {
     0x2072c34: 0xb4000134,                          # transition instance null check
 }
 IMPL_ANCHORS = {0x2072d34: 0x39400108, 0x2072d3c: 0x34000128}
+# CancelCurrentSceneChangingProgress (0x207256c) and OnActiveSceneChanged (0x2072644) clear the
+# same three statics: in-progress flag (+0x30), Multiplayer_LoadingSceneNameInProgress (+0x40),
+# CurrentlyLoadingSceneName (+0x28).
+RESET_METHODS = {0x207256c: 'CancelCurrentSceneChangingProgress', 0x2072644: 'OnActiveSceneChanged'}
+RESET_ANCHORS = {
+    0x20725e8: 0x3900c11f, 0x2072620: 0xf8040c1f, 0x2072638: 0xf8028c1f,
+    0x20726c0: 0x3900c11f, 0x20726f8: 0xf8040c1f, 0x2072710: 0xf8028c1f,
+}
 
 
 def check_calls(elf, resolve, calls):
@@ -58,13 +66,17 @@ def verify(elf, meta, resolve, rows):
                     and ident[0]['name'] == name, f'{name} identity mismatch')
     literal = nav.literal(meta, nav.metadata_usage(elf, nav.adrp_ldr(elf, 0x2072a28, 0x2072a34)['got_vaddr']))
     nav.require(literal['literal'] == 'Scene loading is already in progress!', 'in-progress literal mismatch')
-    for address, expected in {**LOAD_ANCHORS, **IMPL_ANCHORS}.items():
+    for start, name in RESET_METHODS.items():
+        ident = resolve(start)
+        nav.require(len(ident) == 1 and ident[0]['declaring_type'] == 'PWC.GameSceneManager'
+                    and ident[0]['name'] == name, f'{name} identity mismatch')
+    for address, expected in {**LOAD_ANCHORS, **IMPL_ANCHORS, **RESET_ANCHORS}.items():
         nav.expect(elf, address, expected)
     return {'load_scene': resolve(LOAD)[0], 'load_scene_implement': resolve(IMPL)[0],
             'in_progress_literal': literal,
             'load_scene_calls': check_calls(elf, resolve, LOAD_CALLS),
             'implement_calls': check_calls(elf, resolve, IMPL_CALLS),
-            'verified_operand_anchors': len(LOAD_ANCHORS) + len(IMPL_ANCHORS)}
+            'verified_operand_anchors': len(LOAD_ANCHORS) + len(IMPL_ANCHORS) + len(RESET_ANCHORS)}
 
 
 def run(source, output):
@@ -84,11 +96,12 @@ def run(source, output):
         'Invoke OnBeforeSceneLoadStage1, Stage2, Stage3 actions in order when non-null.',
         'LoadingScreenManager.Instance.StartSceneTransition(new Action(closure.<LoadScene>b__0)); null Instance -> failure helper.',
         'After the fade, <LoadScene>b__0 (T029 callback probe) routes to LoadSceneImplement or the multiplayer path.',
+        'OnActiveSceneChanged(old,new) and CancelCurrentSceneChangingProgress() both set IsSceneChangingInProgress=false and null Multiplayer_LoadingSceneNameInProgress and CurrentlyLoadingSceneName (PreviousSceneName kept).',
         'LoadSceneImplement(sceneName): if MPManager.IsMultiplayerGame then MPOwnership.Clear(); SceneManager.LoadSceneAsync(sceneName).',
     ]
     contract['unknowns'] = [
         'IsSceneAvailable is not called by LoadScene itself; behaviour for an unavailable scene is the Unity LoadSceneAsync failure path.',
-        'Who resets IsSceneChangingInProgress to false (OnActiveSceneChanged / CancelCurrentSceneChangingProgress not decoded).',
+        'Who subscribes OnActiveSceneChanged (SceneManager.activeSceneChanged) and who calls CancelCurrentSceneChangingProgress.',
         'Subscribers of Stage1-3 actions and the fade implementation in StartSceneTransition.',
         'Exception edges and the complete method bodies; windows end at the next metadata method start.',
     ]

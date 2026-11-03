@@ -15,12 +15,13 @@ Janelas: `LoadScene` VA `0x20728d4..0x2072c64`, `LoadSceneImplement` `0x2072cc8.
 5. Invoca Stage1, Stage2, Stage3 (cada um se não nulo), nessa ordem.
 6. `LoadingScreenManager.Instance.StartSceneTransition(new Action(closure.<LoadScene>b__0))`; `Instance` nulo → helper de falha.
 7. Após o fade, `<LoadScene>b__0` segue para `LoadSceneImplement` (ou caminho multiplayer, ver doc do callback).
-8. `LoadSceneImplement(sceneName)`: se `MPManager.IsMultiplayerGame` → `MPOwnership.Clear()`; `SceneManager.LoadSceneAsync(sceneName)`.
+8. `CancelCurrentSceneChangingProgress()` (`0x207256c`) e `OnActiveSceneChanged(old,new)` (`0x2072644`) têm o mesmo efeito: `IsSceneChangingInProgress=false`, `Multiplayer_LoadingSceneNameInProgress=null`, `CurrentlyLoadingSceneName=null`; `PreviousSceneName` é mantido. (Verificado por 6 âncoras; 18 no total.)
+9. `LoadSceneImplement(sceneName)`: se `MPManager.IsMultiplayerGame` → `MPOwnership.Clear()`; `SceneManager.LoadSceneAsync(sceneName)`.
 
 ## Para o clone
 `LoadScene` **não** chama `IsSceneAvailable`; a checagem de cena ausente é de quem chama (ex.: `GetCurrentWorldSceneName`). Cena inexistente (ex.: os 7 `LevelType` não distribuídos) cairia no erro do `LoadSceneAsync` — não replicar nem inventar cena.
 
 ## Desconhecidos
-- Quem zera `IsSceneChangingInProgress` (candidatos: `OnActiveSceneChanged` `0x2072644`, `CancelCurrentSceneChangingProgress` `0x207256c`; não decodificados).
+- Quem assina `OnActiveSceneChanged` (provável `SceneManager.activeSceneChanged`) e quem chama `CancelCurrentSceneChangingProgress`; sem isso o ciclo do indicador não está fechado.
 - Assinantes dos eventos Stage1–3 e o fade de `StartSceneTransition` (`0x20fe2d8`).
 - Exceções e corpos completos.
