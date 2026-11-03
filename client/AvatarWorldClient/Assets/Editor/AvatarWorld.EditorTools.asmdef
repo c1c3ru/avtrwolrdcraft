@@ -1,8 +1,14 @@
 {
     "name": "AvatarWorld.EditorTools",
     "rootNamespace": "AvatarWorld.EditorTools",
-    "references": ["AvatarWorld.Runtime"],
-    "includePlatforms": ["Editor"],
+    "references": [
+        "AvatarWorld.Runtime",
+        "spine-csharp",
+        "spine-unity"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

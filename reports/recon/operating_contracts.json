@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "state": "initial_contracts_pending_independent_review",
+  "rules_source": "docs/OFFLINE_HOME_RULES.md",
+  "source_sha256": "8ecccd1cba0a9d832f9e04fcf294e4a71408c0bd4249dc7c2cd790e15e499919",
+  "shared_state_required": true,
+  "economy": {
+    "currency": "local_fictional",
+    "outfit_prices": [
+      15,
+      20,
+      25
+    ],
+    "initial_gift": 25,
+    "daily_gift": 10,
+    "daily_clock": "device_utc_no_server_anticheat",
+    "pass_price": 60,
+    "pass_tiers_distinct_challenges": [
+      4,
+      8,
+      12
+    ],
+    "reward_per_tier": 25,
+    "transactions": "persist immediately, rollback in-memory state on save failure, no duplicate claims"
+  },
+  "navigation": {
+    "play": "original main exploration route to be recovered, not quiz or arbitrary prototype room",
+    "pedagogy": "separate optional entry",
+    "save": "same player state across avatar/gameplay/economy"
+  },
+  "authority": "Previously authorized local design, not recovered backend behavior",
+  "implementation_verified_this_run": false
+}
