@@ -161,6 +161,19 @@ def main(argv=None):
                      'flipX': bool(d['m_FlipX']), 'flipY': bool(d['m_FlipY']), 'drawMode': d['m_DrawMode'],
                      'drawSize': [d['m_Size']['x'], d['m_Size']['y']]})
 
+    # Buildings that ship an under-construction variant ("_UC_") show it instead of the day-mode art
+    # (not released in 1.227: construction tape in the original map). Both are active in the static export.
+    uc_parents = {go_parent.get(r['go_id'], 0) for r in rows if '_UC' in r['go']}
+    def under_uc_parent(gid):
+        while gid:
+            if gid in uc_parents:
+                return True
+            gid = go_parent.get(gid, 0)
+        return False
+    before = len(rows)
+    rows = [r for r in rows if not ('DayMode' in r['go'] and under_uc_parent(r['go_id']))]
+    skipped['day-mode art replaced by under-construction variant'] += before - len(rows)
+
     # pivot / ppu of every exported sprite
     meta = {}
     for (f, pid), o in objs.items():
@@ -173,11 +186,31 @@ def main(argv=None):
         m = by_file.get(r['sprite'])
         r['pivot'], r['ppu'] = (m['pivot'], m['ppu']) if m else ([0.5, 0.5], 100.0)
 
+    def inside(gid, root):
+        while gid:
+            if gid == root:
+                return True
+            gid = go_parent.get(gid, 0)
+        return False
+
+    def bounds_of(r):
+        w, h = r['size'][0] / r['ppu'] * abs(r['sx']), r['size'][1] / r['ppu'] * abs(r['sy'])
+        left, bottom = r['x'] - r['pivot'][0] * w, r['y'] - r['pivot'][1] * h
+        return left, bottom, left + w, bottom + h
+
     buildings = []
     for b in load_mb(args.mb, 'PWC.World.Buildings.WorldBuilding', level):
         gid = b['m_GameObject']['m_PathID']
         wx, wy, wz, sx, sy, rot, active = world_of(go_tr[gid])
-        buildings.append({'go': go_name.get(gid, ''), 'go_id': gid, 'x': wx, 'y': wy, 'active': active,
+        root = go_parent.get(gid, 0) or gid
+        boxes = [bounds_of(r) for r in rows if inside(r['go_id'], root)]
+        box = None
+        if boxes:
+            box = [min(v[0] for v in boxes), min(v[1] for v in boxes),
+                   max(v[2] for v in boxes), max(v[3] for v in boxes)]
+        buildings.append({'go': go_name.get(gid, ''), 'name': go_name.get(root, ''), 'go_id': gid,
+                          'x': wx, 'y': wy, 'active': active, 'bounds': box,
+                          'underConstruction': any(inside(r['go_id'], root) and '_UC' in r['go'] for r in rows),
                           'buildingType': b['_buildingType'], 'defaultLevel': b['_defaultLevelType'],
                           'moreLevels': b.get('_moreValidLevelTypes') or [], 'isFree': b['_isFree']})
     out = {'level': level, 'weather': args.weather, 'camera': {'orthoSize': 5.12},
