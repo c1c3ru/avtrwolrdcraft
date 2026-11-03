@@ -23,4 +23,11 @@ Níveis: 1 = 30 desafios (itens 1–15 de Português e 51–65 de Matemática 6�
 No original o botão leva à compra com dinheiro real (tela de pagamento do Google). Aqui `World_ShopButton StarterPack` abre o diálogo de desafios (`HomeBootstrap.OpenStarterPackChallenges`) com valor de referência `ChallengeDifficulty.StarterPackValue = 700` (nível médio, ajustável). Os desafios continuam até o jogador fechar. A loja (fatia 4 de `docs/STORE_WORLD_UI_SPEC.md`) deve chamar o mesmo seletor com o preço do item que o jogador quer.
 
 ## Caixa de diálogo
-Estilo do sprite `Bubble` da Home original (balão de texto, 513×206): `Resources/Icons/text_bubble_panel.png` (corpo recortado, 9-slice) e `text_bubble_tail.png` (cauda), escala 1,5 das bordas; título com nome do pacote, nível e recompensa; fechar com X.
+Referência do autor: `assets/exemplo_jogo_original/balao de texto.jpeg` (painel "Perfil local": balão claro com contorno preto grosso, cauda no canto superior direito, botões em pílula verde com contorno preto, texto escuro, Home visível atrás).
+Implementação: sprite `Bubble` da Home original (513×206) recortado em `Resources/Icons/text_bubble_panel.png` (9-slice, virado para a cauda subir) e `text_bubble_tail.png`; opções em `pill_green.png` (gerada, gradiente ciano→verde). Bordas 2× (`pixelsPerUnitMultiplier = 1/2`: no `Image` do Unity valores MAIORES deixam as bordas mais finas). Título com pacote, nível e recompensa; X fecha; as entradas "Meu avatar"/"Desafio" da Home ficam escondidas enquanto o balão está aberto.
+
+## Validação
+- EditMode: 83/83 (21 novos: banco, dificuldade por preço, janela sem repetição, histórico entre sessões, opções embaralhadas, pagamento a cada acerto).
+- Aparelho (Xiaomi M2101K7BI): build **lado a lado** (`ProjectSetup.BuildAndroidSideBySide`, id `com.c1c3ru.avatarworldoffline.sbs`, save próprio). Pacote Inicial abre o balão; acentos renderizam; acerto +15 moedas (80→95), opções travam e vem outra pergunta; capturas feitas na sessão (não versionadas).
+- O app principal instalado no aparelho tem outra assinatura (build da outra máquina): `adb install -r` do build desta máquina é recusado (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`). Não foi desinstalado (apagaria o save).
+- Não testado: dificuldade fácil/difícil na tela (cobertos por testes), perguntas com 4 opções e com 2 opções na tela, feedback "Certo!" visível.
