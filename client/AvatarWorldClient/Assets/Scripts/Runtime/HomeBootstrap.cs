@@ -22,6 +22,7 @@ namespace AvatarWorld.Runtime
         PlayerState _state;
         LiteracyChallengeService _literacy;
         HomeActions _homeActions;
+        WorldMapRuntime _worldMap;
 
         void Start()
         {
@@ -54,7 +55,7 @@ namespace AvatarWorld.Runtime
 
             HomeLayout.Apply(objs);
             _homeActions = gameObject.AddComponent<HomeActions>();
-            _homeActions.Initialize(objs, _save, _state, OpenBasketballCourt, OpenLiteracyChallenges, OpenStarterPackChallenges);
+            _homeActions.Initialize(objs, _save, _state, OpenWorldMap, OpenLiteracyChallenges, OpenStarterPackChallenges);
 
             BackgroundMusic.Play("Audio/home_music");
         }
@@ -82,15 +83,34 @@ namespace AvatarWorld.Runtime
                 () => _save.Save(_state), _homeActions.ReturnToHome);
         }
 
+        /// <summary>Play abre o mapa World do original; a quadra de basquete e um predio dele.</summary>
+        void OpenWorldMap()
+        {
+            if (FindFirstObjectByType<WorldMapRuntime>() != null) return;
+            var host = new GameObject("WorldMap");
+            _worldMap = host.AddComponent<WorldMapRuntime>();
+            _worldMap.Begin(CloseWorldMap, OpenBasketballCourt);
+        }
+
+        void CloseWorldMap()
+        {
+            if (_worldMap != null) Destroy(_worldMap.gameObject);
+            _worldMap = null;
+            _save.Save(_state);
+            _homeActions.ReturnFromGameplay();
+        }
+
         void OpenBasketballCourt()
         {
             if (FindFirstObjectByType<BasketballCourtRuntime>() != null) return;
+            // O mapa fica desativado (preserva a posicao da camera) enquanto a quadra esta aberta.
+            if (_worldMap != null) _worldMap.gameObject.SetActive(false);
             var game = new GameObject("BasketballCourtGameplay");
             game.AddComponent<BasketballCourtRuntime>().Begin(_save, _state, () =>
             {
                 _save.Save(_state);
                 Destroy(game);
-                _homeActions.ReturnFromGameplay();
+                if (_worldMap != null) _worldMap.gameObject.SetActive(true);
             });
         }
 

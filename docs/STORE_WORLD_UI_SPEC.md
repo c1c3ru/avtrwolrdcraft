@@ -38,3 +38,7 @@ No original: mapa `World` → prédio **`MiniBasketball_Z1B3`** (em `level4`, `_
 6. **Slots/avatar/veículo** (`AvatarMakerLobby`) conforme prints.
 
 Sem validação em runtime do original além do que está nos documentos RECON; telas aqui descritas são **observação de prints**, não decodificação de código.
+
+## Estado da fatia 1 (2026-11-03)
+Implementada em `Scripts/Runtime/{WorldMapRuntime,WorldMapData}.cs` + `Resources/WorldSlice/` (dados de `tools/export_world_map.py`). Play abre o mapa; o prédio `Basketball_T1S2` abre a quadra; prédios em obras (`*_UC_*`) e sem cena mostram aviso. EditMode 88/88 e build OK; **falta validar no aparelho** (ver `LOOP_STATE.md`).
+Decisões de produto confirmadas: Pacote Inicial = 700 moedas (nível médio); faixas de preço até 500 / 501–899 / 900+.
