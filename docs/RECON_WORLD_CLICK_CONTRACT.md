@@ -14,14 +14,21 @@ Campos de `WorldBuilding` (dump Cpp2IL): `+0x48 _buildingType`, `+0x4c` nível p
 5. `SaveBuildingData`: fora de multiplayer, `PlayerPrefs.SetString("WorldBuildingData_" + buildingType, level.ToString())`. `TryLoadBuildingData` lê com padrão `""`.
 6. `WorldEnterableEntity.LoadScene(cena)`: `SoundManager.Stop(1001)` (se houver instância); **`SetCurrentWorldSceneName(GetActiveSceneName())` = `PlayerPrefs.SetString("GAME_CURRENT_WORLD", cenaAtiva)`**; depois `GameSceneManager.LoadScene(cena, true, null)` (ver contrato do LoadScene).
 
+## Gate de acesso (decodificado depois)
+Verificador: `python3 tools/recon_access_gate.py` (`out/recon/tasks/T029/WORLD_CLICK/access-gate-contract.json`), testes em `tools/test_recon_access_gate.py`.
+- `IsCurrentlyFree() = _isFree(+0x58) || _isFreeFromRemoteConfig(+0x70) || PWCConstants.IsAllWorldFree`.
+- **`PWCConstants..cctor` grava `IsAllWorldFree = true`** (`0x207cc38..0x207cc40`) → na 1.227 `IsCurrentlyFree()` é verdadeiro para todo prédio e o popup de preview não aparece (candidato estático). Os 115 `WorldBuilding` têm `_isFree = 0` (`out/mb`), então é o `IsAllWorldFree` que libera.
+- `IsGameUnlocked() = !User.IsLocked()`; `IsLocked`: versão completa (`PlayerPrefs.GetInt(GetFullVersionKey(),0)==1`) → desbloqueado; assinatura (token + keychain `is_active_subscription == "1"` + dispositivo ativo); senão `useTimeLock` → `TimeLimitDataManager.IsTimerLimitReached`; senão `!GamesPackUtils.IsThisGameFullVersionExistInKeychain`.
+- `GameExtraSettings` serializado (datapack `sharedassets1.assets` path 214, 544 bytes; parse manual, cada bool em 4 bytes, confiança moderada): `useNewEndSession=1, useAnalytics=1, useActionBarHomePlayButton=0, useTimeLock=0, useActionBarNextGameWidget=1, androidUseGoogleAnalytics=0, dontOfferSubscriptionPurchase=1`.
+
 ## Consequências para o clone
 - `GAME_CURRENT_WORLD` é gravado ao **entrar num prédio**, com o nome da cena ativa naquele momento (ex.: `World`); até lá o Play usa o padrão `"World"`.
 - O nível aberto por prédio é persistente e validado: último nível salvo se ainda válido, senão o padrão.
-- Prédios bloqueados mostram o popup de preview e não carregam cena. Nenhuma cena é inventada para `LevelType` não distribuídos.
+- Na 1.227 todos os prédios com cena abrem (`IsAllWorldFree`); o popup de preview existe no código mas não é alcançado. Nenhuma cena é inventada para `LevelType` não distribuídos. O clone offline não precisa de compra/assinatura para abrir prédios.
 
 ## Desconhecidos
 - Slot virtual `0x298` é inferido (única `LoadScene(string)` virtual na cadeia; vtable não decodificada).
-- Significado e valor distribuído de `useTimeLock`; semântica de `IsCurrentlyFree`/`IsGameUnlocked` e do `RemoteConfig`.
+- Se algum outro escritor/remote config muda `IsAllWorldFree` em runtime (campo `readonly`, assumido constante); layout de `GameExtraSettings` a confirmar com typetree gerado.
 - Gates de UGC/ponteiro no início de `OnPointerClickInternal` e `OnPointerClick`.
 - Parse do nível salvo em `TryLoadBuildingData` (cauda em `0x2109120`) e comportamento em falha.
 - Efeitos de `MarkBuildingAsInteracted`/`SetFocusedBuildingType` e UI do popup.

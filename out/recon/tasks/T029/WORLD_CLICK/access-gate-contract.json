@@ -1,0 +1,169 @@
+{
+  "literals": [
+    {
+      "site": "0x1cd9dd4",
+      "literal": "is_active_subscription"
+    },
+    {
+      "site": "0x1cd9de0",
+      "literal": "1"
+    }
+  ],
+  "verified_calls": [
+    {
+      "site": "0x1cbb7ec",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.PazuCloud.User",
+        "name": "IsLocked",
+        "token": "0x06001667",
+        "method_definition_index": 5734,
+        "parameter_count": 0,
+        "vaddr": "0x1cefe70",
+        "file_offset": "0x1cebe70"
+      }
+    },
+    {
+      "site": "0x1cd9d84",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.PazuCloud.User",
+        "name": "GetFullVersionKey",
+        "token": "0x0600165c",
+        "method_definition_index": 5723,
+        "parameter_count": 0,
+        "vaddr": "0x1cefa9c",
+        "file_offset": "0x1ceba9c"
+      }
+    },
+    {
+      "site": "0x1cd9d90",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.PlayerPrefs",
+        "name": "GetInt",
+        "token": "0x0600066c",
+        "method_definition_index": 86724,
+        "parameter_count": 2,
+        "vaddr": "0x3cc5878",
+        "file_offset": "0x3cc1878"
+      }
+    },
+    {
+      "site": "0x1cefebc",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.PazuCloud.User",
+        "name": "IsFullVersion",
+        "token": "0x0600165f",
+        "method_definition_index": 5726,
+        "parameter_count": 0,
+        "vaddr": "0x1cd9d44",
+        "file_offset": "0x1cd5d44"
+      }
+    },
+    {
+      "site": "0x1cefed0",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.Utils",
+        "name": "get_IsIOS",
+        "token": "0x060011be",
+        "method_definition_index": 4541,
+        "parameter_count": 0,
+        "vaddr": "0x1ca4bf0",
+        "file_offset": "0x1ca0bf0"
+      }
+    },
+    {
+      "site": "0x1ceff10",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.PazuCloud.User",
+        "name": "HasAccessToken",
+        "token": "0x0600164d",
+        "method_definition_index": 5708,
+        "parameter_count": 0,
+        "vaddr": "0x1cdd3bc",
+        "file_offset": "0x1cd93bc"
+      }
+    },
+    {
+      "site": "0x1ceff28",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.PazuCloud.User",
+        "name": "IsSubscriptionActive",
+        "token": "0x06001660",
+        "method_definition_index": 5727,
+        "parameter_count": 0,
+        "vaddr": "0x1cd9da8",
+        "file_offset": "0x1cd5da8"
+      }
+    },
+    {
+      "site": "0x1ceff40",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.PazuCloud.User",
+        "name": "IsActiveDevice",
+        "token": "0x06001664",
+        "method_definition_index": 5731,
+        "parameter_count": 0,
+        "vaddr": "0x1cefdb4",
+        "file_offset": "0x1cebdb4"
+      }
+    },
+    {
+      "site": "0x1cefff0",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.AF.TimeLimit.TimeLimitDataManager",
+        "name": "IsTimerLimitReached",
+        "token": "0x060016da",
+        "method_definition_index": 5849,
+        "parameter_count": 0,
+        "vaddr": "0x1cf5204",
+        "file_offset": "0x1cf1204"
+      }
+    },
+    {
+      "site": "0x1cefff8",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.PazuCloud.GamesPackUtils",
+        "name": "IsThisGameFullVersionExistInKeychain",
+        "token": "0x0600159b",
+        "method_definition_index": 5530,
+        "parameter_count": 0,
+        "vaddr": "0x1ce7f9c",
+        "file_offset": "0x1ce3f9c"
+      }
+    }
+  ],
+  "verified_operand_anchors": 17,
+  "schema_version": 1,
+  "status": "static_candidate_not_runtime_validated",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "serialized_inputs": {
+    "world_building_is_free_counts": {
+      "0": 115
+    },
+    "world_building_records": 115
+  },
+  "candidate": [
+    "IsCurrentlyFree() = _isFree || _isFreeFromRemoteConfig || PWCConstants.IsAllWorldFree.",
+    "PWCConstants..cctor sets IsAllWorldFree = true, so IsCurrentlyFree() is true for every building in 1.227 (candidate; static initialiser read, order vs other writers not proven).",
+    "Therefore the ClickOnLevel gate enters without the preview popup; IsGameUnlocked is not reached.",
+    "IsGameUnlocked() = !User.IsLocked(). IsLocked: full version (PlayerPrefs.GetInt(GetFullVersionKey(),0)==1) -> unlocked; subscription path (token + \"is_active_subscription\"==\"1\" in keychain + active device); ExtraSettings.useTimeLock -> TimeLimitDataManager.IsTimerLimitReached; else !GamesPackUtils.IsThisGameFullVersionExistInKeychain.",
+    "Serialized GameExtraSettings (datapack sharedassets1 path 214, 544 bytes) tail decodes to useNewEndSession=1, useAnalytics=1, useActionBarHomePlayButton=0, useTimeLock=0, useActionBarNextGameWidget=1, androidUseGoogleAnalytics=0, dontOfferSubscriptionPurchase=1 (manual parse, each bool in its own 4-byte unit; moderate confidence).",
+    "All 115 WorldBuilding records have _isFree = 0 (out/mb); _isFreeFromRemoteConfig is runtime/server data."
+  ],
+  "unknowns": [
+    "Whether another static writer or the remote config can change IsAllWorldFree at runtime (field is readonly; assumed constant).",
+    "GameExtraSettings tail layout was parsed manually; confirm field order with a generated typetree.",
+    "GetFullVersionKey literal, IsActiveDevice, IsTimerLimitReached and keychain helpers are not decoded; irrelevant while IsAllWorldFree is true.",
+    "Behaviour of the 7 LevelTypes without scenes and of buildings under construction (BurgerRestaurant/GasStation/CarWash) is not governed by this gate."
+  ]
+}
