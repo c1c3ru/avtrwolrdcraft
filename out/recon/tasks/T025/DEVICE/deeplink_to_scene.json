@@ -1,0 +1,908 @@
+{
+ "rule": "GameSceneManager.LoadScene(CoreExtensions.GetSceneName(level)); GetSceneName = String.Concat(\"Level_\", level.ToString()) (VA 0x206a798, literal index 8767, enum PWC.Game.LevelType)",
+ "confidence": "static candidate; enum names from cpp2il dump, concat/prefix verified in assembly",
+ "missing_enum_values": [],
+ "entries": {
+  "girlslivingroom": {
+   "level_value": 1,
+   "level_type": "GirlsLivingRoom_Z1B1L1",
+   "scene_candidate": "Level_GirlsLivingRoom_Z1B1L1",
+   "in_build_settings": true
+  },
+  "girlsroom": {
+   "level_value": 2,
+   "level_type": "GirlsRoom_Z1B1L2",
+   "scene_candidate": "Level_GirlsRoom_Z1B1L2",
+   "in_build_settings": true
+  },
+  "cabin": {
+   "level_value": 7,
+   "level_type": "Cabin_Z2B5L1",
+   "scene_candidate": "Level_Cabin_Z2B5L1",
+   "in_build_settings": true
+  },
+  "campsite": {
+   "level_value": 8,
+   "level_type": "Campsite_Z2B1L1",
+   "scene_candidate": "Level_Campsite_Z2B1L1",
+   "in_build_settings": true
+  },
+  "lake": {
+   "level_value": 9,
+   "level_type": "Lake_Z2B2L1",
+   "scene_candidate": "Level_Lake_Z2B2L1",
+   "in_build_settings": true
+  },
+  "talentshow": {
+   "level_value": 10,
+   "level_type": "TalentShow_Z2B4L1",
+   "scene_candidate": "Level_TalentShow_Z2B4L1",
+   "in_build_settings": true
+  },
+  "treetop": {
+   "level_value": 11,
+   "level_type": "Treetop_Z2B3L1",
+   "scene_candidate": "Level_Treetop_Z2B3L1",
+   "in_build_settings": true
+  },
+  "miniyogastudio": {
+   "level_value": 12,
+   "level_type": "MiniYogaStudio_Z1B2L1",
+   "scene_candidate": "Level_MiniYogaStudio_Z1B2L1",
+   "in_build_settings": true
+  },
+  "minibasketball": {
+   "level_value": 13,
+   "level_type": "MiniBasketball_L1",
+   "scene_candidate": "Level_MiniBasketball_L1",
+   "in_build_settings": true
+  },
+  "minibarbershop": {
+   "level_value": 14,
+   "level_type": "MiniBarbershop_Z1B5L1",
+   "scene_candidate": "Level_MiniBarbershop_Z1B5L1",
+   "in_build_settings": true
+  },
+  "supermarket": {
+   "level_value": 15,
+   "level_type": "Supermarket_Z1B4L1",
+   "scene_candidate": "Level_Supermarket_Z1B4L1",
+   "in_build_settings": true
+  },
+  "hotdog": {
+   "level_value": 18,
+   "level_type": "Hotdog_L4",
+   "scene_candidate": "Level_Hotdog_L4",
+   "in_build_settings": true
+  },
+  "pizza": {
+   "level_value": 19,
+   "level_type": "Pizza_L3",
+   "scene_candidate": "Level_Pizza_L3",
+   "in_build_settings": true
+  },
+  "fashionshop": {
+   "level_value": 20,
+   "level_type": "Fashionshop_L2",
+   "scene_candidate": "Level_Fashionshop_L2",
+   "in_build_settings": true
+  },
+  "kawaiishop": {
+   "level_value": 21,
+   "level_type": "Kawaiishop_L5",
+   "scene_candidate": "Level_Kawaiishop_L5",
+   "in_build_settings": true
+  },
+  "shoeshop": {
+   "level_value": 22,
+   "level_type": "Shoeshop_L6",
+   "scene_candidate": "Level_Shoeshop_L6",
+   "in_build_settings": true
+  },
+  "trainstation": {
+   "level_value": 23,
+   "level_type": "TrainStation_Z1B2",
+   "scene_candidate": "Level_TrainStation_Z1B2",
+   "in_build_settings": true
+  },
+  "hatshop": {
+   "level_value": 24,
+   "level_type": "Hatshop_L7",
+   "scene_candidate": "Level_Hatshop_L7",
+   "in_build_settings": true
+  },
+  "classroom": {
+   "level_value": 25,
+   "level_type": "Classroom_L11",
+   "scene_candidate": "Level_Classroom_L11",
+   "in_build_settings": true
+  },
+  "mallf1": {
+   "level_value": 26,
+   "level_type": "Mall_F1_L8",
+   "scene_candidate": "Level_Mall_F1_L8",
+   "in_build_settings": true
+  },
+  "icecreamshop": {
+   "level_value": 27,
+   "level_type": "Icecreamshop_L16",
+   "scene_candidate": "Level_Icecreamshop_L16",
+   "in_build_settings": true
+  },
+  "doctoroffice": {
+   "level_value": 28,
+   "level_type": "DoctorOffice_L17",
+   "scene_candidate": "Level_DoctorOffice_L17",
+   "in_build_settings": true
+  },
+  "mallf2": {
+   "level_value": 29,
+   "level_type": "Mall_F2_L9",
+   "scene_candidate": "Level_Mall_F2_L9",
+   "in_build_settings": true
+  },
+  "schoolhallway": {
+   "level_value": 30,
+   "level_type": "SchoolHallway_L12",
+   "scene_candidate": "Level_SchoolHallway_L12",
+   "in_build_settings": true
+  },
+  "schoolyard": {
+   "level_value": 31,
+   "level_type": "SchoolYard_L13",
+   "scene_candidate": "Level_SchoolYard_L13",
+   "in_build_settings": true
+  },
+  "balletstudio": {
+   "level_value": 32,
+   "level_type": "BalletStudio_L19",
+   "scene_candidate": "Level_BalletStudio_L19",
+   "in_build_settings": true
+  },
+  "hiphopstudio": {
+   "level_value": 33,
+   "level_type": "HipHopStudio_L18",
+   "scene_candidate": "Level_HipHopStudio_L18",
+   "in_build_settings": true
+  },
+  "mallf3": {
+   "level_value": 34,
+   "level_type": "Mall_F3_L10",
+   "scene_candidate": "Level_Mall_F3_L10",
+   "in_build_settings": true
+  },
+  "bakery": {
+   "level_value": 35,
+   "level_type": "Bakery_L20",
+   "scene_candidate": "Level_Bakery_L20",
+   "in_build_settings": true
+  },
+  "petshop": {
+   "level_value": 36,
+   "level_type": "PetShop_L21",
+   "scene_candidate": "Level_PetShop_L21",
+   "in_build_settings": true
+  },
+  "petshelter": {
+   "level_value": 37,
+   "level_type": "PetShelter_L22",
+   "scene_candidate": "Level_PetShelter_L22",
+   "in_build_settings": true
+  },
+  "cafeteria": {
+   "level_value": 38,
+   "level_type": "Cafeteria_L14",
+   "scene_candidate": "Level_Cafeteria_L14",
+   "in_build_settings": true
+  },
+  "shoeshopbrand": {
+   "level_value": 39,
+   "level_type": "ShoeShopBrand_L26",
+   "scene_candidate": "Level_ShoeShopBrand_L26",
+   "in_build_settings": true
+  },
+  "daycareentrance": {
+   "level_value": 40,
+   "level_type": "DaycareEntrance_L23",
+   "scene_candidate": "Level_DaycareEntrance_L23",
+   "in_build_settings": true
+  },
+  "infantsdaycare": {
+   "level_value": 41,
+   "level_type": "Infants_Daycare_L24",
+   "scene_candidate": "Level_Infants_Daycare_L24",
+   "in_build_settings": true
+  },
+  "kawaiishopbrand": {
+   "level_value": 42,
+   "level_type": "KawaiiShopBrand_L27",
+   "scene_candidate": "Level_KawaiiShopBrand_L27",
+   "in_build_settings": true
+  },
+  "modernhousef1": {
+   "level_value": 43,
+   "level_type": "ModernHouse_F1_L30",
+   "scene_candidate": "Level_ModernHouse_F1_L30",
+   "in_build_settings": true
+  },
+  "modernhousef2": {
+   "level_value": 44,
+   "level_type": "ModernHouse_F2_L31",
+   "scene_candidate": "Level_ModernHouse_F2_L31",
+   "in_build_settings": true
+  },
+  "skatershopbrand": {
+   "level_value": 45,
+   "level_type": "SkaterShopBrand_L28",
+   "scene_candidate": "Level_SkaterShopBrand_L28",
+   "in_build_settings": true
+  },
+  "toddlerbabyshop": {
+   "level_value": 46,
+   "level_type": "ToddlerBabyShop_L45",
+   "scene_candidate": "Level_ToddlerBabyShop_L45",
+   "in_build_settings": true
+  },
+  "luxuryhousef1": {
+   "level_value": 47,
+   "level_type": "LuxuryHouse_F1_L43",
+   "scene_candidate": "Level_LuxuryHouse_F1_L43",
+   "in_build_settings": true
+  },
+  "luxuryhousef2": {
+   "level_value": 48,
+   "level_type": "LuxuryHouse_F2_L44",
+   "scene_candidate": "Level_LuxuryHouse_F2_L44",
+   "in_build_settings": true
+  },
+  "luxuryhousef3": {
+   "level_value": 49,
+   "level_type": "LuxuryHouse_F3_L50",
+   "scene_candidate": "Level_LuxuryHouse_F3_L50",
+   "in_build_settings": true
+  },
+  "skatertoddlerandbabyshop": {
+   "level_value": 50,
+   "level_type": "SkaterToddlerAndBabyShop_L49",
+   "scene_candidate": "Level_SkaterToddlerAndBabyShop_L49",
+   "in_build_settings": true
+  },
+  "streetmain": {
+   "level_value": 51,
+   "level_type": "Street_Main_L41",
+   "scene_candidate": "Level_Street_Main_L41",
+   "in_build_settings": true
+  },
+  "furniturestoreshowroomf1": {
+   "level_value": 52,
+   "level_type": "FurnitureStoreShowRoom_F1_L46",
+   "scene_candidate": "Level_FurnitureStoreShowRoom_F1_L46",
+   "in_build_settings": true
+  },
+  "livingroominventoryf1": {
+   "level_value": 53,
+   "level_type": "LivingRoomInventory_F1_L47",
+   "scene_candidate": "Level_LivingRoomInventory_F1_L47",
+   "in_build_settings": true
+  },
+  "kitchenanddiningroominventoryf1": {
+   "level_value": 54,
+   "level_type": "KitchenAndDiningRoomInventory_F1_L48",
+   "scene_candidate": "Level_KitchenAndDiningRoomInventory_F1_L48",
+   "in_build_settings": true
+  },
+  "showroomf2": {
+   "level_value": 55,
+   "level_type": "ShowRoom_F2_L54",
+   "scene_candidate": "Level_ShowRoom_F2_L54",
+   "in_build_settings": true
+  },
+  "nurseryinventoryf2": {
+   "level_value": 56,
+   "level_type": "NurseryInventory_F2_L55",
+   "scene_candidate": "Level_NurseryInventory_F2_L55",
+   "in_build_settings": true
+  },
+  "childbedroominventoryf2": {
+   "level_value": 57,
+   "level_type": "ChildBedroomInventory_F2_L56",
+   "scene_candidate": "Level_ChildBedroomInventory_F2_L56",
+   "in_build_settings": true
+  },
+  "masterbedroominventoryf2": {
+   "level_value": 58,
+   "level_type": "MasterBedroomInventory_F2_L57",
+   "scene_candidate": "Level_MasterBedroomInventory_F2_L57",
+   "in_build_settings": true
+  },
+  "schoolbus": {
+   "level_value": 59,
+   "level_type": "SchoolBus_L42",
+   "scene_candidate": "Level_SchoolBus_L42",
+   "in_build_settings": true
+  },
+  "schoolstreet": {
+   "level_value": 60,
+   "level_type": "SchoolStreet_L39",
+   "scene_candidate": "Level_SchoolStreet_L39",
+   "in_build_settings": true
+  },
+  "regularoffice": {
+   "level_value": 61,
+   "level_type": "RegularOffice_L53",
+   "scene_candidate": "Level_RegularOffice_L53",
+   "in_build_settings": true
+  },
+  "shopboulevard": {
+   "level_value": 62,
+   "level_type": "ShopBoulevard_L59",
+   "scene_candidate": "Level_ShopBoulevard_L59",
+   "in_build_settings": true
+  },
+  "airportf1": {
+   "level_value": 63,
+   "level_type": "Airport_F1_L35",
+   "scene_candidate": "Level_Airport_F1_L35",
+   "in_build_settings": true
+  },
+  "airportf2": {
+   "level_value": 64,
+   "level_type": "Airport_F2_L36",
+   "scene_candidate": "Level_Airport_F2_L36",
+   "in_build_settings": true
+  },
+  "airportf3": {
+   "level_value": 66,
+   "level_type": "Airport_F3_L38",
+   "scene_candidate": "Level_Airport_F3_L38",
+   "in_build_settings": true
+  },
+  "airportf4": {
+   "level_value": 67,
+   "level_type": "Airport_F4_L52",
+   "scene_candidate": "Level_Airport_F4_L52",
+   "in_build_settings": true
+  },
+  "airplane": {
+   "level_value": 68,
+   "level_type": "Airplane_L51",
+   "scene_candidate": "Level_Airplane_L51",
+   "in_build_settings": true
+  },
+  "kawaiihousef1": {
+   "level_value": 69,
+   "level_type": "KawaiiHouse_F1_L32",
+   "scene_candidate": "Level_KawaiiHouse_F1_L32",
+   "in_build_settings": true
+  },
+  "kawaiihousef2": {
+   "level_value": 70,
+   "level_type": "KawaiiHouse_F2_L33",
+   "scene_candidate": "Level_KawaiiHouse_F2_L33",
+   "in_build_settings": true
+  },
+  "kawaiihousef3": {
+   "level_value": 71,
+   "level_type": "KawaiiHouse_F3_L34",
+   "scene_candidate": "Level_KawaiiHouse_F3_L34",
+   "in_build_settings": true
+  },
+  "metrostation": {
+   "level_value": 73,
+   "level_type": "MetroStation_L58",
+   "scene_candidate": "Level_MetroStation_L58",
+   "in_build_settings": true
+  },
+  "traincabin": {
+   "level_value": 74,
+   "level_type": "TrainCabin_L29",
+   "scene_candidate": "Level_TrainCabin_L29",
+   "in_build_settings": true
+  },
+  "principaloffice": {
+   "level_value": 75,
+   "level_type": "PrincipalOffice_L15",
+   "scene_candidate": "Level_PrincipalOffice_L15",
+   "in_build_settings": true
+  },
+  "vacationreception": {
+   "level_value": 76,
+   "level_type": "VacationReception_L60",
+   "scene_candidate": "Level_VacationReception_L60",
+   "in_build_settings": true
+  },
+  "vacationairport": {
+   "level_value": 77,
+   "level_type": "VacationAirport_L61",
+   "scene_candidate": "Level_VacationAirport_L61",
+   "in_build_settings": true
+  },
+  "beach": {
+   "level_value": 78,
+   "level_type": "Beach_L63",
+   "scene_candidate": "Level_Beach_L63",
+   "in_build_settings": true
+  },
+  "familybungalow01": {
+   "level_value": 80,
+   "level_type": "FamilyBungalow_01_L68",
+   "scene_candidate": "Level_FamilyBungalow_01_L68",
+   "in_build_settings": true
+  },
+  "familybungalow02": {
+   "level_value": 81,
+   "level_type": "FamilyBungalow_02_L69",
+   "scene_candidate": "Level_FamilyBungalow_02_L69",
+   "in_build_settings": true
+  },
+  "waterparkentrance": {
+   "level_value": 82,
+   "level_type": "Waterpark_Entrance_L70",
+   "scene_candidate": "Level_Waterpark_Entrance_L70",
+   "in_build_settings": true
+  },
+  "beachdock": {
+   "level_value": 84,
+   "level_type": "BeachDock_L94",
+   "scene_candidate": "Level_BeachDock_L94",
+   "in_build_settings": true
+  },
+  "airportstreet": {
+   "level_value": 85,
+   "level_type": "AirportStreet_L66",
+   "scene_candidate": "Level_AirportStreet_L66",
+   "in_build_settings": true
+  },
+  "islandhmf1": {
+   "level_value": 86,
+   "level_type": "Island_HM_F1_L91",
+   "scene_candidate": "Level_Island_HM_F1_L91",
+   "in_build_settings": true
+  },
+  "islandhmf2": {
+   "level_value": 87,
+   "level_type": "Island_HM_F2_L92",
+   "scene_candidate": "Level_Island_HM_F2_L92",
+   "in_build_settings": true
+  },
+  "islandhmf3": {
+   "level_value": 88,
+   "level_type": "Island_HM_F3_L93",
+   "scene_candidate": "Level_Island_HM_F3_L93",
+   "in_build_settings": true
+  },
+  "vacationstreetairport": {
+   "level_value": 89,
+   "level_type": "VacationStreetAirport_L62",
+   "scene_candidate": "Level_VacationStreetAirport_L62",
+   "in_build_settings": true
+  },
+  "airportmetrostation": {
+   "level_value": 90,
+   "level_type": "AirportMetroStation_L64",
+   "scene_candidate": "Level_AirportMetroStation_L64",
+   "in_build_settings": true
+  },
+  "musicclassroom": {
+   "level_value": 91,
+   "level_type": "MusicClassroom_L82",
+   "scene_candidate": "Level_MusicClassroom_L82",
+   "in_build_settings": true
+  },
+  "artclassroom": {
+   "level_value": 92,
+   "level_type": "ArtClassroom_L83",
+   "scene_candidate": "Level_ArtClassroom_L83",
+   "in_build_settings": true
+  },
+  "schoolhallwayf2": {
+   "level_value": 93,
+   "level_type": "SchoolHallway_F2_L84",
+   "scene_candidate": "Level_SchoolHallway_F2_L84",
+   "in_build_settings": true
+  },
+  "naturalchichmf1": {
+   "level_value": 94,
+   "level_type": "NaturalChicHM_F1_L99",
+   "scene_candidate": "Level_NaturalChicHM_F1_L99",
+   "in_build_settings": true
+  },
+  "naturalchichmf2": {
+   "level_value": 95,
+   "level_type": "NaturalChicHM_F2_L100",
+   "scene_candidate": "Level_NaturalChicHM_F2_L100",
+   "in_build_settings": true
+  },
+  "modernhousegarage": {
+   "level_value": 96,
+   "level_type": "ModernHouse_Garage_L67",
+   "scene_candidate": "Level_ModernHouse_Garage_L67",
+   "in_build_settings": true
+  },
+  "modernhousef3": {
+   "level_value": 97,
+   "level_type": "ModernHouse_F3_L101",
+   "scene_candidate": "Level_ModernHouse_F3_L101",
+   "in_build_settings": true
+  },
+  "vacationstreetreception": {
+   "level_value": 98,
+   "level_type": "VacationStreetReception_L65",
+   "scene_candidate": "Level_VacationStreetReception_L65",
+   "in_build_settings": true
+  },
+  "waterparksittingarea": {
+   "level_value": 99,
+   "level_type": "Waterpark_SittingArea_L71",
+   "scene_candidate": "Level_Waterpark_SittingArea_L71",
+   "in_build_settings": true
+  },
+  "waterparkplayarea": {
+   "level_value": 100,
+   "level_type": "Waterpark_PlayArea_L72",
+   "scene_candidate": "Level_Waterpark_PlayArea_L72",
+   "in_build_settings": true
+  },
+  "waterparksnakeslide": {
+   "level_value": 102,
+   "level_type": "Waterpark_SnakeSlide_L74",
+   "scene_candidate": "Level_Waterpark_SnakeSlide_L74",
+   "in_build_settings": true
+  },
+  "waterparksimpleslide": {
+   "level_value": 103,
+   "level_type": "Waterpark_SimpleSlide_L76",
+   "scene_candidate": "Level_Waterpark_SimpleSlide_L76",
+   "in_build_settings": true
+  },
+  "waterparktowerf1": {
+   "level_value": 104,
+   "level_type": "Waterpark_Tower_F1_L77",
+   "scene_candidate": "Level_Waterpark_Tower_F1_L77",
+   "in_build_settings": true
+  },
+  "daycare": {
+   "level_value": 105,
+   "level_type": "Daycare_L25",
+   "scene_candidate": "Level_Daycare_L25",
+   "in_build_settings": true
+  },
+  "italianrestaurant": {
+   "level_value": 106,
+   "level_type": "ItalianRestaurant_L98",
+   "scene_candidate": "Level_ItalianRestaurant_L98",
+   "in_build_settings": true
+  },
+  "storageunit": {
+   "level_value": 107,
+   "level_type": "StorageUnit_L125",
+   "scene_candidate": "Level_StorageUnit_L125",
+   "in_build_settings": true
+  },
+  "bubbleglamparking": {
+   "level_value": 108,
+   "level_type": "BubbleGlam_Parking_L96",
+   "scene_candidate": "Level_BubbleGlam_Parking_L96",
+   "in_build_settings": true
+  },
+  "bubbleglampoolarea": {
+   "level_value": 109,
+   "level_type": "BubbleGlam_PoolArea_L102",
+   "scene_candidate": "Level_BubbleGlam_PoolArea_L102",
+   "in_build_settings": true
+  },
+  "bubbleglamhmf1": {
+   "level_value": 110,
+   "level_type": "BubbleGlamHM_F1_L103",
+   "scene_candidate": "Level_BubbleGlamHM_F1_L103",
+   "in_build_settings": true
+  },
+  "bubbleglamhmf2": {
+   "level_value": 111,
+   "level_type": "BubbleGlamHM_F2_L104",
+   "scene_candidate": "Level_BubbleGlamHM_F2_L104",
+   "in_build_settings": true
+  },
+  "bubbleglamhmf3": {
+   "level_value": 112,
+   "level_type": "BubbleGlamHM_F3_L127",
+   "scene_candidate": "Level_BubbleGlamHM_F3_L127",
+   "in_build_settings": true
+  },
+  "moviestudio": {
+   "level_value": 113,
+   "level_type": "MovieStudio_L108",
+   "scene_candidate": "Level_MovieStudio_L108",
+   "in_build_settings": true
+  },
+  "moviepremiereentrance": {
+   "level_value": 116,
+   "level_type": "MoviePremiere_Entrance_L116",
+   "scene_candidate": "Level_MoviePremiere_Entrance_L116",
+   "in_build_settings": true
+  },
+  "moviepremieretheater": {
+   "level_value": 117,
+   "level_type": "MoviePremiere_Theater_L117",
+   "scene_candidate": "Level_MoviePremiere_Theater_L117",
+   "in_build_settings": true
+  },
+  "studiosstreet": {
+   "level_value": 118,
+   "level_type": "StudiosStreet_L120",
+   "scene_candidate": "Level_StudiosStreet_L120",
+   "in_build_settings": true
+  },
+  "musicstudio": {
+   "level_value": 119,
+   "level_type": "MusicStudio_L122",
+   "scene_candidate": "Level_MusicStudio_L122",
+   "in_build_settings": true
+  },
+  "starsboulevard": {
+   "level_value": 120,
+   "level_type": "StarsBoulevard_L123",
+   "scene_candidate": "Level_StarsBoulevard_L123",
+   "in_build_settings": true
+  },
+  "walkway": {
+   "level_value": 121,
+   "level_type": "Walkway_L128",
+   "scene_candidate": "Level_Walkway_L128",
+   "in_build_settings": true
+  },
+  "shoesandbagsstore": {
+   "level_value": 122,
+   "level_type": "ShoesAndBags_Store_L121",
+   "scene_candidate": "Level_ShoesAndBags_Store_L121",
+   "in_build_settings": true
+  },
+  "skincarestore": {
+   "level_value": 123,
+   "level_type": "Skincare_Store_L124",
+   "scene_candidate": "Level_Skincare_Store_L124",
+   "in_build_settings": true
+  },
+  "kpopstore": {
+   "level_value": 124,
+   "level_type": "KPopStore_L126",
+   "scene_candidate": "Level_KPopStore_L126",
+   "in_build_settings": true
+  },
+  "apthmf0": {
+   "level_value": 125,
+   "level_type": "AptHM_F0_L129",
+   "scene_candidate": "Level_AptHM_F0_L129",
+   "in_build_settings": true
+  },
+  "apthmf1": {
+   "level_value": 126,
+   "level_type": "AptHM_F1_L130",
+   "scene_candidate": "Level_AptHM_F1_L130",
+   "in_build_settings": true
+  },
+  "apthmf2": {
+   "level_value": 127,
+   "level_type": "AptHM_F2_L131",
+   "scene_candidate": "Level_AptHM_F2_L131",
+   "in_build_settings": false
+  },
+  "apthmf3": {
+   "level_value": 128,
+   "level_type": "AptHM_F3_L132",
+   "scene_candidate": "Level_AptHM_F3_L132",
+   "in_build_settings": true
+  },
+  "apthmf4": {
+   "level_value": 129,
+   "level_type": "AptHM_F4_L133",
+   "scene_candidate": "Level_AptHM_F4_L133",
+   "in_build_settings": true
+  },
+  "dock": {
+   "level_value": 130,
+   "level_type": "Dock_L134",
+   "scene_candidate": "Level_Dock_L134",
+   "in_build_settings": false
+  },
+  "stadium": {
+   "level_value": 131,
+   "level_type": "Stadium_L135",
+   "scene_candidate": "Level_Stadium_L135",
+   "in_build_settings": true
+  },
+  "monument": {
+   "level_value": 132,
+   "level_type": "Monument_L136",
+   "scene_candidate": "Level_Monument_L136",
+   "in_build_settings": true
+  },
+  "stadiumdressingroom": {
+   "level_value": 133,
+   "level_type": "StadiumDressingRoom_L137",
+   "scene_candidate": "Level_StadiumDressingRoom_L137",
+   "in_build_settings": true
+  },
+  "eveningstore": {
+   "level_value": 134,
+   "level_type": "EveningStore_L107",
+   "scene_candidate": "Level_EveningStore_L107",
+   "in_build_settings": true
+  },
+  "crystaljewelrystore": {
+   "level_value": 135,
+   "level_type": "CrystalJewelryStore_L106",
+   "scene_candidate": "Level_CrystalJewelryStore_L106",
+   "in_build_settings": true
+  },
+  "apthmshop02": {
+   "level_value": 136,
+   "level_type": "AptHM_Shop_02_L142",
+   "scene_candidate": "Level_AptHM_Shop_02_L142",
+   "in_build_settings": true
+  },
+  "makeupstore": {
+   "level_value": 138,
+   "level_type": "MakeupStore_L140",
+   "scene_candidate": "Level_MakeupStore_L140",
+   "in_build_settings": true
+  },
+  "policestation": {
+   "level_value": 139,
+   "level_type": "PoliceStation_L145",
+   "scene_candidate": "Level_PoliceStation_L145",
+   "in_build_settings": true
+  },
+  "postoffice": {
+   "level_value": 140,
+   "level_type": "PostOffice_L146",
+   "scene_candidate": "Level_PostOffice_L146",
+   "in_build_settings": true
+  },
+  "apthmshop03": {
+   "level_value": 141,
+   "level_type": "AptHM_Shop_03_L143",
+   "scene_candidate": "Level_AptHM_Shop_03_L143",
+   "in_build_settings": true
+  },
+  "bank": {
+   "level_value": 142,
+   "level_type": "Bank_L148",
+   "scene_candidate": "Level_Bank_L148",
+   "in_build_settings": true
+  },
+  "courthouse": {
+   "level_value": 143,
+   "level_type": "CourtHouse_L147",
+   "scene_candidate": "Level_CourtHouse_L147",
+   "in_build_settings": true
+  },
+  "municipalstreet": {
+   "level_value": 144,
+   "level_type": "MunicipalStreet_L141",
+   "scene_candidate": "Level_MunicipalStreet_L141",
+   "in_build_settings": true
+  },
+  "firestationf0": {
+   "level_value": 145,
+   "level_type": "FireStation_F0_L154",
+   "scene_candidate": "Level_FireStation_F0_L154",
+   "in_build_settings": true
+  },
+  "firestationf1": {
+   "level_value": 146,
+   "level_type": "FireStation_F1_L155",
+   "scene_candidate": "Level_FireStation_F1_L155",
+   "in_build_settings": true
+  },
+  "hospitalf1": {
+   "level_value": 147,
+   "level_type": "Hospital_F1_L157",
+   "scene_candidate": "Level_Hospital_F1_L157",
+   "in_build_settings": true
+  },
+  "hospitalf2": {
+   "level_value": 148,
+   "level_type": "Hospital_F2_L158",
+   "scene_candidate": "Level_Hospital_F2_L158",
+   "in_build_settings": true
+  },
+  "hospitalf3": {
+   "level_value": 149,
+   "level_type": "Hospital_F3_L159",
+   "scene_candidate": "Level_Hospital_F3_L159",
+   "in_build_settings": true
+  },
+  "stable": {
+   "level_value": 150,
+   "level_type": "Stable_L150",
+   "scene_candidate": "Level_Stable_L150",
+   "in_build_settings": true
+  },
+  "pasture": {
+   "level_value": 151,
+   "level_type": "Pasture_L156",
+   "scene_candidate": "Level_Pasture_L156",
+   "in_build_settings": true
+  },
+  "barn": {
+   "level_value": 152,
+   "level_type": "Barn_L138",
+   "scene_candidate": "Level_Barn_L138",
+   "in_build_settings": true
+  },
+  "farmingfields": {
+   "level_value": 153,
+   "level_type": "FarmingFields_L160",
+   "scene_candidate": "Level_FarmingFields_L160",
+   "in_build_settings": true
+  },
+  "park": {
+   "level_value": 154,
+   "level_type": "Park_L40",
+   "scene_candidate": "Level_Park_L40",
+   "in_build_settings": true
+  },
+  "yogastudiolayoutmkr": {
+   "level_value": 155,
+   "level_type": "YogaStudioLayout_MKR_L173",
+   "scene_candidate": "Level_YogaStudioLayout_MKR_L173",
+   "in_build_settings": true
+  },
+  "icecreamlayoutmkr": {
+   "level_value": 156,
+   "level_type": "IceCreamLayout_MKR_L174",
+   "scene_candidate": "Level_IceCreamLayout_MKR_L174",
+   "in_build_settings": true
+  },
+  "doctorsofficelayoutmkr": {
+   "level_value": 157,
+   "level_type": "DoctorsOfficeLayout_MKR_L175",
+   "scene_candidate": "Level_DoctorsOfficeLayout_MKR_L175",
+   "in_build_settings": true
+  },
+  "playground": {
+   "level_value": 158,
+   "level_type": "Playground_LM201",
+   "scene_candidate": "Level_Playground_LM201",
+   "in_build_settings": true
+  },
+  "dogpark": {
+   "level_value": 159,
+   "level_type": "DogPark_L165",
+   "scene_candidate": "Level_DogPark_L165",
+   "in_build_settings": true
+  },
+  "vetcliniclayoutmkr": {
+   "level_value": 160,
+   "level_type": "VetClinicLayout_MKR_L161",
+   "scene_candidate": "Level_VetClinicLayout_MKR_L161",
+   "in_build_settings": true
+  },
+  "conveniencestore": {
+   "level_value": 161,
+   "level_type": "ConvenienceStore_L167",
+   "scene_candidate": "Level_ConvenienceStore_L167",
+   "in_build_settings": false
+  },
+  "gym": {
+   "level_value": 162,
+   "level_type": "Gym_L164",
+   "scene_candidate": "Level_Gym_L164",
+   "in_build_settings": true
+  },
+  "basketball": {
+   "level_value": 163,
+   "level_type": "Basketball_LM1",
+   "scene_candidate": "Level_Basketball_LM1",
+   "in_build_settings": true
+  }
+ },
+ "build_settings_scene_count": 254,
+ "entries_found_in_build_settings": 146,
+ "entries_not_found": [
+  "apthmf2",
+  "dock",
+  "conveniencestore"
+ ]
+}
