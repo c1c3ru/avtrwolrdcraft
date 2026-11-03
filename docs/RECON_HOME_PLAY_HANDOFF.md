@@ -32,3 +32,16 @@ Xiaomi M2101K7BI, original 1.227. Home → toque em Play → tela de carregament
 - Craft não achou a função no ELF inteiro; só desmonta recortes com endereço conhecido.
 - Disassembler ad hoc: `capstone` num venv fora do repo (`pip install capstone`); não nomear script `dis.py` (sombreia o stdlib).
 - Clone: o Play do original abre o **mapa do mundo**, não a quadra; a quadra segue protótipo sem equivalência.
+
+## Índice da cadeia Home → Play → prédio → cena (todos candidatos estáticos)
+1. Home Play: este documento (`tools/recon_home_play.py`).
+2. `GameSceneManager.LoadScene/LoadSceneImplement` e reset de estado: `docs/RECON_LOAD_SCENE_CONTRACT.md` (`tools/recon_load_scene.py`); callback `<LoadScene>b__0`: `docs/RECON_CALLBACK_2026-11-03.md`.
+3. Toque em prédio → nível → cena; gates UGC/drag/reset; persistência `WorldBuildingData_*` e `GAME_CURRENT_WORLD`; gate de acesso (`IsAllWorldFree=true`): `docs/RECON_WORLD_CLICK_CONTRACT.md` (`tools/recon_world_click.py`, `tools/recon_access_gate.py`).
+4. Mapa deep link → `LevelType` → `Level_<nome>`: `out/recon/tasks/T025/DEVICE/deeplink_*.json`.
+
+## O que NÃO foi feito (próxima IA / humano)
+- **Validação em runtime** de qualquer contrato (precisa do aparelho; avaliar risco ao save antes de injetar `pazucore_pending_deep_link`).
+- **Revisão independente** — obrigatória antes de marcar T025/T029 como done (`docs/RECON_RESUME_SPEC.md`). Nenhuma tarefa da fila foi promovida.
+- Decodificar: fade/`StartSceneTransition` (`0x20fe2d8`), assinantes de `OnBeforeSceneLoadStage1-3`, quem assina `OnActiveSceneChanged`, vtables (slots virtuais), `MarkBuildingAsInteracted`/`SetFocusedBuildingType`, UI do `WorldBuildingPreviewPopup`.
+- Clone: o Play deve abrir o **mapa do mundo** (`World`), todo prédio com cena abre (sem paywall), `LevelType` sem cena não abre; a quadra de basquete atual é protótipo sem equivalência.
+- Restante da fila (`reports/recon/tasks.json`, 3 done / ~444 pending): esta cadeia cobre só uma fatia de T025/T029.
