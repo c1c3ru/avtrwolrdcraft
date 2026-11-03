@@ -258,3 +258,4 @@
 - Próximos: identificar nome da cena do mapa (logcat/`GetCurrentWorldSceneName` no metadata), resolver o alvo de 0x2058174, e cobrir os cenários chave ausente/vazia/não vazia.
 - Continuação 2026-11-03: alvo da chamada indireta em `0x2058174` resolvido como **inferido** (`DeepLinkManager.Instance._mapLinkToLevel[chave]`, campo +0x28); verificador ganhou anchors e teste (86 testes OK). Handoff completo em `docs/RECON_HOME_PLAY_HANDOFF.md` com desconhecidos ordenados. Nada commitado.
 - 2026-11-03: `_mapLinkToLevel` extraído do datapack (149 entradas, `out/recon/tasks/T025/DEVICE/deeplink_map_link_to_level.json`), pareamento por ordem ainda não validado (lista de chaves duplicada). Evidências de `out/recon/` agora versionadas, exceto `out/recon/il2cpp/`.
+- 2026-11-03: duplicata de chaves explicada (`_keyValues`+`_keys`+`_values`); mapa deep link→LevelType passa a candidato sólido. Próximo: LevelType→cena via `CoreExtensions.GetSceneName` (0x206a798).

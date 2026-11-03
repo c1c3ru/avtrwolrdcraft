@@ -1,6 +1,6 @@
 {
  "source": "datapack.unity3d sharedassets1.assets MonoBehaviour path_id 265 (script DeepLinkManager, MonoScript 5132 in data.unity3d)",
- "layout": "header(44 bytes), keys[149], keys2[149], values[149]",
+ "layout": "header(44 bytes), _keyValues List<string>[149], _keys string[149], _values LevelType[149]",
  "raw_sha256": "c52cb80e84b27ab5e7b4b8c55eb3d94c0b1642d2bd471552e3508034b6f328be",
  "keys_lists_identical": true,
  "map": {
@@ -153,5 +153,6 @@
   "conveniencestore": 161,
   "gym": 162,
   "basketball": 163
- }
+ },
+ "layout_basis": "RotaryHeart SerializableDictionaryBase`2 dump: [SerializeField] _keyValues (List<TKey>), _keys (TKey[]), _values (TValue[]). Two identical key lists explained; pairing _keys[i]<->_values[i] follows the library design. Field order inferred from dump declaration order and exact consumption of 6028 bytes."
 }
