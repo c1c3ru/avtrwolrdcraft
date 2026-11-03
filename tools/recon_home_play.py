@@ -62,6 +62,9 @@ def verify(elf, meta, resolve):
         # DeepLinkManager.Instance (static slot 0) -> field at +0x28 -> interface call.
         0x2058100: 0xf9405d08, 0x2058104: 0xf9400108, 0x2058108: 0xb4000708,
         0x205810c: 0xf9401514, 0x2058110: 0xb40006d4,
+        # Interface dispatch always uses vtable slot 0 (w2=0 on slow path, no slot add on fast path).
+        0x2058150: 0x2a1f03e2, 0x205815c: 0xb9800149, 0x2058160: 0x8b091108,
+        0x2058164: 0x9104e100, 0x2058168: 0xa9400808,
     }
     for address, expected in anchors.items():
         nav.expect(elf, address, expected)
@@ -78,10 +81,11 @@ def verify(elf, meta, resolve):
     dispatch = {'site': '0x2058174', 'receiver_load': '0x205810c ldr x20,[x8,#0x28]',
         'receiver_field': 'PazuCore.DeepLink.DeepLinkManager._mapLinkToLevel (offset 0x28 in C# dump)',
         'candidate_call': 'IDictionary<string,LevelType>.get_Item(pendingLink)',
+        'interface_slot': 0, 'slot_zero_method': 'System.Collections.Generic.IDictionary`2.get_Item (first method, token 0x06002fb8, metadata_methods.jsonl)',
         'confidence': 'inferred', 'basis': ['static slot 0 of the class is DeepLinkManager.Instance '
             '(dump: only static backing field at offset 0x0)', 'field offset 0x28 matches the only '
             'SerializableDictionaryBase<string,LevelType> field', 'one string argument, int return -> level',
-            'interface-offset search loop at 0x2058114..0x2058148 not independently decoded'],
+            'slot 0 decoded from both dispatch paths (0x2058150 mov w2,wzr; 0x205815c..0x2058168 no slot add); IDictionary`2 slot 0 is get_Item', 'interface class identity (IDictionary<string,LevelType>) still inferred from the field type; usage slot 0x41c7a98 has a non-standard encoding'],
         'not_handled_here': 'absent key (KeyNotFoundException) and null Instance branch to 0x20581e8'}
     return {'method': identity[0], 'pending_key': key, 'default_string': empty,
             'verified_calls': confirmed, 'verified_operand_anchors': len(anchors),
