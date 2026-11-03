@@ -904,5 +904,23 @@
   "apthmf2",
   "dock",
   "conveniencestore"
- ]
+ ],
+ "scene_absence_analysis": {
+  "enum_values_total": 230,
+  "without_scene_in_build_settings": [
+   "AptHM_F2_L131",
+   "Dock_L134",
+   "ConvenienceStore_L167",
+   "GalxeHMLuniRoom_F2_L182",
+   "BurgerRestaurant_L239",
+   "GasStation_L235",
+   "CarWash_L238"
+  ],
+  "deeplink_targets_among_them": [
+   "apthmf2",
+   "dock",
+   "conveniencestore"
+  ],
+  "interpretation": "Content present in the enum/deep-link table but not shipped in v1.227 (not in BuildSettings, not in the Addressables catalog extract). BurgerRestaurant/GasStation/CarWash coincide with the construction-taped buildings on the original world map (out/recon/tasks/T025/DEVICE/03-world.png). Inferred, not runtime-verified; behaviour of LoadScene for an unavailable scene is not decoded."
+ }
 }

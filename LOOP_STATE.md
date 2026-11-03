@@ -261,3 +261,4 @@
 - 2026-11-03: duplicata de chaves explicada (`_keyValues`+`_keys`+`_values`); mapa deep link→LevelType passa a candidato sólido. Próximo: LevelType→cena via `CoreExtensions.GetSceneName` (0x206a798).
 - 2026-11-03: `GetSceneName` = "Level_"+enum; tabela deep link→cena gerada (146/149 no BuildSettings; faltam apthmf2, dock, conveniencestore). Cenas `Home` e `World` existem no BuildSettings.
 - 2026-11-03: despacho em 0x2058174 decodificado como slot 0 de IDictionary`2 = get_Item (âncoras + teste). Celular não é necessário para os próximos passos estáticos; só para testes de runtime.
+- 2026-11-03: 3 deep links sem cena explicados: 7 LevelTypes não distribuídos na 1.227 (inclui Burger/GasStation/CarWash, vistos em obras no mapa). Estáticos concluídos; resta runtime (celular) e revisão independente.
