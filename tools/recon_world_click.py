@@ -18,6 +18,7 @@ METHODS = {
     0x2109220: ('PWC.World.Buildings.WorldBuildingsDataManager', 'SaveBuildingData'),
     0x2109014: ('PWC.World.Buildings.WorldBuildingsDataManager', 'TryLoadBuildingData'),
     0x2072888: ('PWC.GameSceneManager', 'SetCurrentWorldSceneName'),
+    0x2102aa0: ('PWC.World.WorldEnterableEntity', 'OnPointerClick'),
 }
 CALLS = {
     0x2108e30: ('PWC.World.Buildings.WorldBuildingsDataManager', 'TryLoadBuildingData', 'BL'),
@@ -37,6 +38,9 @@ CALLS = {
     0x2102bb8: ('PWC.GameSceneManager', 'LoadScene', 'B'),
     0x2109314: ('UnityEngine.PlayerPrefs', 'SetString', 'BL'),
     0x20728d0: ('UnityEngine.PlayerPrefs', 'SetString', 'B'),
+    0x2108d8c: ('UnityEngine.Object', 'op_Inequality', 'BL'),
+    0x21090d0: ('UnityEngine.PlayerPrefs', 'GetString', 'BL'),
+    0x21090dc: ('System.String', 'IsNullOrEmpty', 'BL'),
 }
 LITERALS = {  # (adrp, ldr) -> literal
     (0x2109258, 0x210925c): 'WorldBuildingData_',
@@ -57,6 +61,14 @@ ANCHORS = {
     0x2102b74: 0x52807d21, 0x2102ba8: 0x52800021,
     # SaveBuildingData skips PlayerPrefs.SetString when multiplayer
     0x21092a0: 0x350003c8,
+    # UGC gate: UGCManager static Instance(+0x30) alive and IsEditMode(+0x28) -> return without entering
+    0x2108d70: 0xf9401934, 0x2108d90: 0x360002c0, 0x2108dd8: 0xf9401908,
+    0x2108de0: 0x3940a108, 0x2108de4: 0x350004c8, 0x2108e88: 0xd65f03c0,
+    # TryLoadBuildingData: empty/null string -> level 0 and false; else generic Enum.TryParse
+    0x21090e0: 0x36000080, 0x21090e4: 0x2a1f03e0, 0x21090e8: 0xb900027f, 0x210911c: 0x940fd583,
+    # OnPointerClick: ignore when PointerEventData.dragging(+0x145) or WorldResetManager.IsGameInResetMode(+0x18)
+    0x2102aac: 0x39451428, 0x2102ab0: 0x35000208, 0x2102ae8: 0x39406108, 0x2102aec: 0x34000088,
+    0x2102b08: 0xf9414502, 0x2102b0c: 0xf9414901, 0x2102b14: 0xd61f0040,
 }
 
 
@@ -94,7 +106,8 @@ def run(source, output):
     contract.update(schema_version=1, status='static_candidate_not_runtime_validated',
                     native_sha256=nav.sha(binary), metadata_sha256=nav.sha(metadata))
     contract['candidate'] = [
-        'OnPointerClickInternal (after UGC/pointer gating, not decoded): pick level.',
+        'OnPointerClick(eventData): ignored when eventData.dragging or WorldResetManager.IsGameInResetMode; else virtual OnPointerClickInternal (tail branch through vtable).',
+        'OnPointerClickInternal gate: if UGCManager.Instance is alive and Instance.IsEditMode then return (no scene change). Otherwise pick level.',
         'Level: MPManager.IsMultiplayerGame -> defaultLevel(+0x4c); else TryLoadBuildingData(buildingType); '
         'saved level is used only if it differs from default and List<LevelType>.IndexOf(valid list +0x50) != -1; else default.',
         'Then this.ClickOnLevel(level).',
@@ -107,8 +120,8 @@ def run(source, output):
     contract['unknowns'] = [
         'Virtual slot 0x298 in ClickOnLevel is inferred to be LoadScene(string) from the dump (WorldEnterableEntity override); vtable not decoded.',
         'Meaning of useTimeLock at the gate: its polarity is decoded (nonzero skips the free/unlocked check) but its semantics and the shipped value are not recovered (ScriptableObject data not read).',
-        'UGC/pointer gating at the start of OnPointerClickInternal, and the pointer-click preamble in WorldEnterableEntity.OnPointerClick.',
-        'How the saved level string is parsed in TryLoadBuildingData (tail at 0x2109120) and failure behaviour.',
+        'Virtual slot for OnPointerClickInternal in OnPointerClick (0x288/0x290 pair) is not decoded; only the abstract declaration in the dump is known.',
+        'TryLoadBuildingData tail is a generic Enum.TryParse<LevelType>(string, out level) (0x210911c, generic instance not resolved by name): unparsable string -> false, level left at its parse default.',
         'MarkBuildingAsInteracted/SetFocusedBuildingType effects; preview popup UI.',
     ]
     nav.atomic_json(output / 'method-contract.json', contract)
