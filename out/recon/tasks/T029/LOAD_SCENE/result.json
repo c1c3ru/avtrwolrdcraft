@@ -1,0 +1,11 @@
+{
+  "status": "partial",
+  "semantic_completion": false,
+  "contract": "/home/deppi/avatarworld-re/out/recon/tasks/T029/LOAD_SCENE/method-contract.json",
+  "unknowns": [
+    "IsSceneAvailable is not called by LoadScene itself; behaviour for an unavailable scene is the Unity LoadSceneAsync failure path.",
+    "Who resets IsSceneChangingInProgress to false (OnActiveSceneChanged / CancelCurrentSceneChangingProgress not decoded).",
+    "Subscribers of Stage1-3 actions and the fade implementation in StartSceneTransition.",
+    "Exception edges and the complete method bodies; windows end at the next metadata method start."
+  ]
+}
