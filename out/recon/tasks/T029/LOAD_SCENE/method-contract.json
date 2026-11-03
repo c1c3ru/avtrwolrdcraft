@@ -1,0 +1,174 @@
+{
+  "load_scene": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "PWC.GameSceneManager",
+    "name": "LoadScene",
+    "token": "0x060056fe",
+    "method_definition_index": 22269,
+    "parameter_count": 3,
+    "vaddr": "0x20728d4",
+    "file_offset": "0x206e8d4"
+  },
+  "load_scene_implement": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "PWC.GameSceneManager",
+    "name": "LoadSceneImplement",
+    "token": "0x060056ff",
+    "method_definition_index": 22270,
+    "parameter_count": 1,
+    "vaddr": "0x2072cc8",
+    "file_offset": "0x206ecc8"
+  },
+  "in_progress_literal": {
+    "got_vaddr": "0x41c85b0",
+    "usage_vaddr": "0x4354110",
+    "encoded": "0xa0005d37",
+    "kind": 5,
+    "index": 11931,
+    "literal": "Scene loading is already in progress!",
+    "literal_file_offset": 512077,
+    "literal_bytes": 37
+  },
+  "load_scene_calls": [
+    {
+      "site": "0x2072a58",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.Debug",
+        "name": "LogError",
+        "token": "0x060001cf",
+        "method_definition_index": 85543,
+        "parameter_count": 1,
+        "vaddr": "0x3ca5b88",
+        "file_offset": "0x3ca1b88"
+      }
+    },
+    {
+      "site": "0x2072a78",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.AvatarSpine.AvatarSpineTexturesManager",
+        "name": "ClearAllTextureData",
+        "token": "0x060067e7",
+        "method_definition_index": 26598,
+        "parameter_count": 0,
+        "vaddr": "0x217a958",
+        "file_offset": "0x2176958"
+      }
+    },
+    {
+      "site": "0x2072a98",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.SUTSystem.SUTUtils",
+        "name": "ClearTexturesCache",
+        "token": "0x06005901",
+        "method_definition_index": 22784,
+        "parameter_count": 0,
+        "vaddr": "0x208bcc0",
+        "file_offset": "0x2087cc0"
+      }
+    },
+    {
+      "site": "0x2072ab8",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.CarsMaker.CarPartsLoader",
+        "name": "ClearLoadedParts",
+        "token": "0x06006654",
+        "method_definition_index": 26195,
+        "parameter_count": 0,
+        "vaddr": "0x2159d10",
+        "file_offset": "0x2155d10"
+      }
+    },
+    {
+      "site": "0x2072ad8",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.CarsMaker.CarAppearance",
+        "name": "ClearIconCache",
+        "token": "0x060065f4",
+        "method_definition_index": 26099,
+        "parameter_count": 0,
+        "vaddr": "0x21527a0",
+        "file_offset": "0x214e7a0"
+      }
+    },
+    {
+      "site": "0x2072b38",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "GetActiveSceneName",
+        "token": "0x06005705",
+        "method_definition_index": 22276,
+        "parameter_count": 0,
+        "vaddr": "0x2072c64",
+        "file_offset": "0x206ec64"
+      }
+    },
+    {
+      "site": "0x2072c54",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.LoadingScreen.LoadingScreenManager",
+        "name": "StartSceneTransition",
+        "token": "0x06005fc3",
+        "method_definition_index": 24514,
+        "parameter_count": 1,
+        "vaddr": "0x20fe2d8",
+        "file_offset": "0x20fa2d8"
+      }
+    }
+  ],
+  "implement_calls": [
+    {
+      "site": "0x2072d5c",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Multiplayer.MPOwnership",
+        "name": "Clear",
+        "token": "0x06005e99",
+        "method_definition_index": 24216,
+        "parameter_count": 0,
+        "vaddr": "0x20d7e78",
+        "file_offset": "0x20d3e78"
+      }
+    },
+    {
+      "site": "0x2072d80",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.SceneManagement.SceneManager",
+        "name": "LoadSceneAsync",
+        "token": "0x060009d0",
+        "method_definition_index": 87592,
+        "parameter_count": 1,
+        "vaddr": "0x3cdc604",
+        "file_offset": "0x3cd8604"
+      }
+    }
+  ],
+  "verified_operand_anchors": 12,
+  "schema_version": 1,
+  "status": "static_candidate_not_runtime_validated",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "candidate": [
+    "LoadScene(sceneName, considerMultiplayer, mp_nextSceneId) allocates a closure with the three arguments.",
+    "If IsSceneChangingInProgress: Debug.LogError(\"Scene loading is already in progress!\") and return; scene not changed.",
+    "Else clear Spine, SUT, car-part and car-icon caches (static helpers, no arguments).",
+    "Set IsSceneChangingInProgress=true, CurrentlyLoadingSceneName=sceneName, PreviousSceneName=GetActiveSceneName().",
+    "Invoke OnBeforeSceneLoadStage1, Stage2, Stage3 actions in order when non-null.",
+    "LoadingScreenManager.Instance.StartSceneTransition(new Action(closure.<LoadScene>b__0)); null Instance -> failure helper.",
+    "After the fade, <LoadScene>b__0 (T029 callback probe) routes to LoadSceneImplement or the multiplayer path.",
+    "LoadSceneImplement(sceneName): if MPManager.IsMultiplayerGame then MPOwnership.Clear(); SceneManager.LoadSceneAsync(sceneName)."
+  ],
+  "unknowns": [
+    "IsSceneAvailable is not called by LoadScene itself; behaviour for an unavailable scene is the Unity LoadSceneAsync failure path.",
+    "Who resets IsSceneChangingInProgress to false (OnActiveSceneChanged / CancelCurrentSceneChangingProgress not decoded).",
+    "Subscribers of Stage1-3 actions and the fade implementation in StartSceneTransition.",
+    "Exception edges and the complete method bodies; windows end at the next metadata method start."
+  ]
+}
