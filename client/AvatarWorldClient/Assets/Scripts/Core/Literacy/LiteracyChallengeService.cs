@@ -31,17 +31,16 @@ namespace AvatarWorld.Core.Literacy
                 return new AnswerResult { Correct = false, PazuCurrencyBalance = _state.PazuCurrency };
 
             bool alreadyDone = _state.IsChallengeCompleted(challenge.ChallengeId);
-            if (!alreadyDone)
-            {
-                _state.MarkChallengeCompleted(challenge.ChallengeId);
-                if (challenge.CoinReward > 0) _economy.Earn(challenge.CoinReward, "desafio:" + challenge.ChallengeId);
-            }
+            if (!alreadyDone) _state.MarkChallengeCompleted(challenge.ChallengeId);
+            // Desafios repetiveis (banco de 100) pagam a cada acerto; o seletor evita a repeticao.
+            bool pays = (!alreadyDone || challenge.Repeatable) && challenge.CoinReward > 0;
+            if (pays) _economy.Earn(challenge.CoinReward, "desafio:" + challenge.ChallengeId);
 
             return new AnswerResult
             {
                 Correct = true,
-                CoinsAwarded = !alreadyDone && challenge.CoinReward > 0,
-                CoinsEarned = alreadyDone ? 0 : challenge.CoinReward,
+                CoinsAwarded = pays,
+                CoinsEarned = pays ? challenge.CoinReward : 0,
                 PazuCurrencyBalance = _state.PazuCurrency,
             };
         }

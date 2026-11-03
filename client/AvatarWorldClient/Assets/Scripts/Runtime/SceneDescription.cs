@@ -52,6 +52,8 @@ namespace AvatarWorld.Runtime
         public int imageType;
         public bool raycastTarget = true;
         public bool preserveAspect;
+        /// <summary>Escala das bordas de um sprite 9-slice (Image.pixelsPerUnitMultiplier); 1 = tamanho nativo.</summary>
+        public float pixelsPerUnitMultiplier = 1f;
         public bool enabled = true;
     }
 

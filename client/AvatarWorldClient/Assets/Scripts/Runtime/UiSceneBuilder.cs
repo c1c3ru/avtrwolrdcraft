@@ -129,6 +129,7 @@ namespace AvatarWorld.Runtime
             img.color = d.color;
             img.type = (Image.Type)d.imageType;
             img.preserveAspect = d.preserveAspect;
+            img.pixelsPerUnitMultiplier = d.pixelsPerUnitMultiplier > 0f ? d.pixelsPerUnitMultiplier : 1f;
             img.raycastTarget = d.raycastTarget;
             img.enabled = d.enabled;
         }
