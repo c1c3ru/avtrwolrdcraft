@@ -23,6 +23,10 @@
     "0x2072888": [
       "PWC.GameSceneManager",
       "SetCurrentWorldSceneName"
+    ],
+    "0x2102aa0": [
+      "PWC.World.WorldEnterableEntity",
+      "OnPointerClick"
     ]
   },
   "literals": [
@@ -260,15 +264,55 @@
         "vaddr": "0x3cc59e0",
         "file_offset": "0x3cc19e0"
       }
+    },
+    {
+      "site": "0x2108d8c",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.Object",
+        "name": "op_Inequality",
+        "token": "0x060007c7",
+        "method_definition_index": 87071,
+        "parameter_count": 2,
+        "vaddr": "0x3ccab90",
+        "file_offset": "0x3cc6b90"
+      }
+    },
+    {
+      "site": "0x21090d0",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.PlayerPrefs",
+        "name": "GetString",
+        "token": "0x06000671",
+        "method_definition_index": 86729,
+        "parameter_count": 2,
+        "vaddr": "0x3cc5a70",
+        "file_offset": "0x3cc1a70"
+      }
+    },
+    {
+      "site": "0x21090dc",
+      "target": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.String",
+        "name": "IsNullOrEmpty",
+        "token": "0x060002b0",
+        "method_definition_index": 37108,
+        "parameter_count": 1,
+        "vaddr": "0x31dffdc",
+        "file_offset": "0x31dbfdc"
+      }
     }
   ],
-  "verified_operand_anchors": 20,
+  "verified_operand_anchors": 37,
   "schema_version": 1,
   "status": "static_candidate_not_runtime_validated",
   "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
   "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
   "candidate": [
-    "OnPointerClickInternal (after UGC/pointer gating, not decoded): pick level.",
+    "OnPointerClick(eventData): ignored when eventData.dragging or WorldResetManager.IsGameInResetMode; else virtual OnPointerClickInternal (tail branch through vtable).",
+    "OnPointerClickInternal gate: if UGCManager.Instance is alive and Instance.IsEditMode then return (no scene change). Otherwise pick level.",
     "Level: MPManager.IsMultiplayerGame -> defaultLevel(+0x4c); else TryLoadBuildingData(buildingType); saved level is used only if it differs from default and List<LevelType>.IndexOf(valid list +0x50) != -1; else default.",
     "Then this.ClickOnLevel(level).",
     "ClickOnLevel: invoke OnClickBuildingAction(this, level) if set; InteractionHistory.MarkBuildingAsInteracted and SetFocusedBuildingType.",
@@ -280,8 +324,8 @@
   "unknowns": [
     "Virtual slot 0x298 in ClickOnLevel is inferred to be LoadScene(string) from the dump (WorldEnterableEntity override); vtable not decoded.",
     "Meaning of useTimeLock at the gate: its polarity is decoded (nonzero skips the free/unlocked check) but its semantics and the shipped value are not recovered (ScriptableObject data not read).",
-    "UGC/pointer gating at the start of OnPointerClickInternal, and the pointer-click preamble in WorldEnterableEntity.OnPointerClick.",
-    "How the saved level string is parsed in TryLoadBuildingData (tail at 0x2109120) and failure behaviour.",
+    "Virtual slot for OnPointerClickInternal in OnPointerClick (0x288/0x290 pair) is not decoded; only the abstract declaration in the dump is known.",
+    "TryLoadBuildingData tail is a generic Enum.TryParse<LevelType>(string, out level) (0x210911c, generic instance not resolved by name): unparsable string -> false, level left at its parse default.",
     "MarkBuildingAsInteracted/SetFocusedBuildingType effects; preview popup UI."
   ]
 }

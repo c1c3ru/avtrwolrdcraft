@@ -26,7 +26,7 @@ class WorldClickTests(unittest.TestCase):
 
     def test_contract_verifies(self):
         result = self.verify()
-        self.assertEqual(len(result['verified_calls']), 17)
+        self.assertEqual(len(result['verified_calls']), 20)
         self.assertEqual({item['literal'] for item in result['literals']},
                          {'WorldBuildingData_', 'GAME_CURRENT_WORLD'})
 
@@ -46,6 +46,18 @@ class WorldClickTests(unittest.TestCase):
         word = 0x94000000 | (((0x20728d4 - 0x2108fbc) // 4) & 0x3ffffff)
         with self.assertRaisesRegex(ValueError, 'callee mismatch'):
             self.verify(self.mutate(0x2108fbc, word))
+
+    def test_ugc_and_pointer_gates_rejected(self):
+        # UGC edit-mode gate polarity, IsEditMode offset, dragging offset, reset-mode polarity
+        for address, word in [(0x2108de4, 0x340004c8), (0x2108de0, 0x3940a508),
+                              (0x2102aac, 0x39451828), (0x2102aec, 0x35000088)]:
+            with self.subTest(address=hex(address)), self.assertRaisesRegex(ValueError, 'opcode mismatch'):
+                self.verify(self.mutate(address, word))
+
+    def test_try_load_empty_handling_rejected(self):
+        for address, word in [(0x21090e0, 0x37000080), (0x21090e4, 0x52800020)]:
+            with self.subTest(address=hex(address)), self.assertRaisesRegex(ValueError, 'opcode mismatch'):
+                self.verify(self.mutate(address, word))
 
     def test_literals_rejected_when_changed(self):
         changed = copy.copy(self.meta)

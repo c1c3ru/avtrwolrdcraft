@@ -5,13 +5,14 @@ Candidato estático, **não validado em runtime**. Verificador: `python3 tools/r
 Campos de `WorldBuilding` (dump Cpp2IL): `+0x48 _buildingType`, `+0x4c` nível padrão, `+0x50` lista de níveis válidos, `+0x88 OnClickBuildingAction`, `+0x90 OnClickAction`.
 
 ## Fluxo candidato
-1. `OnPointerClickInternal` (após gates de UGC/ponteiro **não decodificados**) escolhe o nível:
+0. `WorldEnterableEntity.OnPointerClick(eventData)`: ignora o toque se `eventData.dragging` (`+0x145`) ou `WorldResetManager.IsGameInResetMode` (`+0x18`); senão chama o `OnPointerClickInternal` virtual.
+1. `OnPointerClickInternal`: se `UGCManager.Instance` existe e `Instance.IsEditMode` (`+0x28`) → retorna sem entrar. Senão escolhe o nível:
    - `MPManager.IsMultiplayerGame` → nível padrão;
    - senão `TryLoadBuildingData(buildingType)`; o nível salvo só vale se for diferente do padrão **e** estiver na lista de válidos (`List<LevelType>.IndexOf != -1`); caso contrário, padrão.
 2. `ClickOnLevel(level)`: dispara `OnClickBuildingAction(this, level)` se houver; `InteractionHistoryManager.MarkBuildingAsInteracted` e `SetFocusedBuildingType`.
 3. Gate: `SettingsManager.Instance.ExtraSettings.useTimeLock` (`GameExtraSettings +0x73`) ≠ 0 → entra; senão entra só se `IsCurrentlyFree()` ou `Utils.IsGameUnlocked(null)`. Caso contrário: `TryGetRemoteConfigItem` + `WorldBuildingPreviewPopup.Show(buildingType, item)` e **não entra** (cena não muda).
 4. Entrar: `OnClickAction.Invoke()` se houver; `SaveBuildingData(buildingType, level)`; `cena = GetSceneName(level)` (`"Level_"` + nome do enum); chamada virtual `LoadScene(cena)` (slot inferido = `WorldEnterableEntity.LoadScene`).
-5. `SaveBuildingData`: fora de multiplayer, `PlayerPrefs.SetString("WorldBuildingData_" + buildingType, level.ToString())`. `TryLoadBuildingData` lê com padrão `""`.
+5. `SaveBuildingData`: fora de multiplayer, `PlayerPrefs.SetString("WorldBuildingData_" + buildingType, level.ToString())`. `TryLoadBuildingData` lê com padrão `""`; string vazia/nula → `false` (nível 0); caso contrário `Enum.TryParse<LevelType>` genérico (instância não resolvida por nome) — string inválida → `false`.
 6. `WorldEnterableEntity.LoadScene(cena)`: `SoundManager.Stop(1001)` (se houver instância); **`SetCurrentWorldSceneName(GetActiveSceneName())` = `PlayerPrefs.SetString("GAME_CURRENT_WORLD", cenaAtiva)`**; depois `GameSceneManager.LoadScene(cena, true, null)` (ver contrato do LoadScene).
 
 ## Gate de acesso (decodificado depois)
@@ -29,6 +30,5 @@ Verificador: `python3 tools/recon_access_gate.py` (`out/recon/tasks/T029/WORLD_C
 ## Desconhecidos
 - Slot virtual `0x298` é inferido (única `LoadScene(string)` virtual na cadeia; vtable não decodificada).
 - Se algum outro escritor/remote config muda `IsAllWorldFree` em runtime (campo `readonly`, assumido constante); layout de `GameExtraSettings` a confirmar com typetree gerado.
-- Gates de UGC/ponteiro no início de `OnPointerClickInternal` e `OnPointerClick`.
-- Parse do nível salvo em `TryLoadBuildingData` (cauda em `0x2109120`) e comportamento em falha.
+- Slots virtuais de `OnPointerClickInternal` (em `OnPointerClick`) e de `LoadScene` (em `ClickOnLevel`) não decodificados por vtable.
 - Efeitos de `MarkBuildingAsInteracted`/`SetFocusedBuildingType` e UI do popup.

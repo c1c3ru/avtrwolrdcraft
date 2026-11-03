@@ -5,8 +5,8 @@
   "unknowns": [
     "Virtual slot 0x298 in ClickOnLevel is inferred to be LoadScene(string) from the dump (WorldEnterableEntity override); vtable not decoded.",
     "Meaning of useTimeLock at the gate: its polarity is decoded (nonzero skips the free/unlocked check) but its semantics and the shipped value are not recovered (ScriptableObject data not read).",
-    "UGC/pointer gating at the start of OnPointerClickInternal, and the pointer-click preamble in WorldEnterableEntity.OnPointerClick.",
-    "How the saved level string is parsed in TryLoadBuildingData (tail at 0x2109120) and failure behaviour.",
+    "Virtual slot for OnPointerClickInternal in OnPointerClick (0x288/0x290 pair) is not decoded; only the abstract declaration in the dump is known.",
+    "TryLoadBuildingData tail is a generic Enum.TryParse<LevelType>(string, out level) (0x210911c, generic instance not resolved by name): unparsable string -> false, level left at its parse default.",
     "MarkBuildingAsInteracted/SetFocusedBuildingType effects; preview popup UI."
   ]
 }
