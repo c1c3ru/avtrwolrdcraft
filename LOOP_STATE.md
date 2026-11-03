@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Retomada em 2026-11-03
+- Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
+- Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
+- Callback `<LoadScene>b__0` mapeado estaticamente, incluindo literal Home, caminho local e chamadas multiplayer. Sem promoção de tarefas ou alteração do cliente.
+- Evidências, limites e próximo passo: `docs/RECON_CALLBACK_2026-11-03.md`.
+
 ## Alvo
 - com.pazugames.avatarworld v1.227 (code 228), minSdk 24, arm64-v8a
 - Unity 2022.3.70f1, IL2CPP (libil2cpp.so 74 MB), Burst

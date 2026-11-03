@@ -238,6 +238,35 @@ class Queue:
             raise QueueError("reference must resolve to a regular file within queue root")
         return {"path": value, "sha256": digest(path)}
 
+    def relocate(self, root, actor, note):
+        """Move a quiescent queue, preserving approvals only after revalidation."""
+        if not actor.strip() or not note.strip():
+            raise QueueError("relocation requires actor and rationale")
+        with self.locked():
+            data = self.load()
+            if any(t.get("lease") for t in data["tasks"]):
+                raise QueueError("relocation refuses outstanding leases; recover idle workers first")
+            previous = data["root"]
+            destination = Path(root).resolve()
+            if not destination.is_dir():
+                raise QueueError("relocation root must be a directory")
+            data["root"] = str(destination)
+            refs = [{"path": data["source_doc"], "sha256": data["source_doc_sha256"]}]
+            for task in data["tasks"]:
+                if task["state"] in {"done", "review"}:
+                    refs.extend(task["input_refs"] + task["evidence_refs"])
+            unique = {(r["path"], r["sha256"]): r for r in refs}
+            self.check_refs(data, list(unique.values()))
+            data["revision"] += 1
+            data["history"].append({"revision": data["revision"], "action": "relocate",
+                                    "actor": actor, "at": self.clock(), "note": note,
+                                    "previous_root": previous, "root": str(destination),
+                                    "verified_refs": len(unique)})
+            validate(data)
+            atomic_write(self.path, data)
+            return {"root": str(destination), "previous_root": previous,
+                    "verified_refs": len(unique), "revision": data["revision"]}
+
     def check_refs(self, data, refs):
         for ref in refs:
             if self.file_ref(data, ref["path"])["sha256"] != ref["sha256"]:
@@ -518,6 +547,10 @@ def main(argv=None):
     init.add_argument("--root", type=Path, default=Path.cwd())
     commands.add_parser("status")
     commands.add_parser("ready")
+    relocate = commands.add_parser("relocate")
+    relocate.add_argument("--root", type=Path, required=True)
+    relocate.add_argument("--actor", required=True)
+    relocate.add_argument("--note", required=True)
     pause = commands.add_parser("pause")
     pause.add_argument("--until", required=True)
     pause.add_argument("--note", required=True)
@@ -556,6 +589,8 @@ def main(argv=None):
             result = q.status(ready=a.command == "ready")
         elif a.command == "pause":
             result = q.pause(a.until, a.note, a.actor)
+        elif a.command == "relocate":
+            result = q.relocate(a.root, a.actor, a.note)
         elif a.command == "import-children":
             result = q.import_children(a.manifest, a.actor, a.note)
         elif a.command == "configure":

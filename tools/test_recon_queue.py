@@ -1,6 +1,7 @@
 import copy
 import json
 import multiprocessing
+import shutil
 from pathlib import Path
 import tempfile
 import unittest
@@ -63,6 +64,52 @@ class QueueTests(unittest.TestCase):
             self.q.claim("A", "worker")
         with self.assertRaisesRegex(QueueError, "overwrite"):
             self.q.init(self.seed, self.root)
+
+    def relocation_fixture(self):
+        self.submit()
+        self.q.review("A", "reviewer", True, "Checked evidence")
+        self.configured("B")
+        target = self.root / "moved"
+        target.mkdir()
+        for name in ("plan.md", "input.txt", "result.json"):
+            shutil.copy2(self.root / name, target / name)
+        return target
+
+    def test_relocation_preserves_acceptance_and_allows_dependent_claim(self):
+        target = self.relocation_fixture()
+        before = self.q.load()
+        self.q.relocate(target, "coordinator", "Moved checkout")
+        after = self.q.load()
+        self.assertEqual(before["tasks"], after["tasks"])
+        self.assertEqual(after["revision"], before["revision"] + 1)
+        self.assertEqual(after["history"][-1]["previous_root"], str(self.root))
+        self.assertEqual(self.q.claim("B", "worker-b")["state"], "leased")
+
+    def test_relocation_rejects_changed_evidence_atomically(self):
+        target = self.relocation_fixture()
+        before = self.path.read_bytes()
+        (target / "result.json").write_text("modified")
+        with self.assertRaisesRegex(QueueError, "stale reference"):
+            self.q.relocate(target, "coordinator", "Moved checkout")
+        self.assertEqual(self.path.read_bytes(), before)
+
+    def test_relocation_rejects_symlink_escape(self):
+        target = self.relocation_fixture()
+        before = self.path.read_bytes()
+        (target / "input.txt").unlink()
+        (target / "input.txt").symlink_to(self.root / "input.txt")
+        with self.assertRaisesRegex(QueueError, "within queue root"):
+            self.q.relocate(target, "coordinator", "Moved checkout")
+        self.assertEqual(self.path.read_bytes(), before)
+
+    def test_relocation_refuses_even_expired_unrecovered_lease(self):
+        target = self.relocation_fixture()
+        self.q.claim("B", "worker-b", ttl=10)
+        self.now[0] += 20
+        before = self.path.read_bytes()
+        with self.assertRaisesRegex(QueueError, "outstanding leases"):
+            self.q.relocate(target, "coordinator", "Moved checkout")
+        self.assertEqual(self.path.read_bytes(), before)
 
     def test_dependencies_block_claim_until_independent_approval(self):
         self.configured("B")
