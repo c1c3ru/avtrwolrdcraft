@@ -174,7 +174,7 @@
       }
     }
   ],
-  "verified_operand_anchors": 40,
+  "verified_operand_anchors": 44,
   "unresolved_indirect_dispatch": {
     "site": "0x2058174",
     "register": "x8",
@@ -186,12 +186,15 @@
     "receiver_load": "0x205810c ldr x20,[x8,#0x28]",
     "receiver_field": "PazuCore.DeepLink.DeepLinkManager._mapLinkToLevel (offset 0x28 in C# dump)",
     "candidate_call": "IDictionary<string,LevelType>.get_Item(pendingLink)",
+    "interface_slot": 0,
+    "slot_zero_method": "System.Collections.Generic.IDictionary`2.get_Item (first method, token 0x06002fb8, metadata_methods.jsonl)",
     "confidence": "inferred",
     "basis": [
       "static slot 0 of the class is DeepLinkManager.Instance (dump: only static backing field at offset 0x0)",
       "field offset 0x28 matches the only SerializableDictionaryBase<string,LevelType> field",
       "one string argument, int return -> level",
-      "interface-offset search loop at 0x2058114..0x2058148 not independently decoded"
+      "slot 0 decoded from both dispatch paths (0x2058150 mov w2,wzr; 0x205815c..0x2058168 no slot add); IDictionary`2 slot 0 is get_Item",
+      "interface class identity (IDictionary<string,LevelType>) still inferred from the field type; usage slot 0x41c7a98 has a non-standard encoding"
     ],
     "not_handled_here": "absent key (KeyNotFoundException) and null Instance branch to 0x20581e8"
   },

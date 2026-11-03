@@ -260,3 +260,4 @@
 - 2026-11-03: `_mapLinkToLevel` extraído do datapack (149 entradas, `out/recon/tasks/T025/DEVICE/deeplink_map_link_to_level.json`), pareamento por ordem ainda não validado (lista de chaves duplicada). Evidências de `out/recon/` agora versionadas, exceto `out/recon/il2cpp/`.
 - 2026-11-03: duplicata de chaves explicada (`_keyValues`+`_keys`+`_values`); mapa deep link→LevelType passa a candidato sólido. Próximo: LevelType→cena via `CoreExtensions.GetSceneName` (0x206a798).
 - 2026-11-03: `GetSceneName` = "Level_"+enum; tabela deep link→cena gerada (146/149 no BuildSettings; faltam apthmf2, dock, conveniencestore). Cenas `Home` e `World` existem no BuildSettings.
+- 2026-11-03: despacho em 0x2058174 decodificado como slot 0 de IDictionary`2 = get_Item (âncoras + teste). Celular não é necessário para os próximos passos estáticos; só para testes de runtime.

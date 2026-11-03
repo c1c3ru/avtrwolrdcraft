@@ -33,6 +33,9 @@ class HomePlayTests(unittest.TestCase):
     def test_dispatch_receiver_field_anchor_mutation_rejected(self):
         result = home.verify(self.elf, self.meta, self.resolve)
         self.assertEqual(result['dispatch_candidate']['confidence'], 'inferred')
+        self.assertEqual(result['dispatch_candidate']['interface_slot'], 0)
+        with self.assertRaisesRegex(ValueError, 'opcode mismatch'):
+            home.verify(self.mutate(0x2058150, 0x52800022), self.meta, self.resolve)  # slot != 0
         with self.assertRaisesRegex(ValueError, 'opcode mismatch'):
             home.verify(self.mutate(0x205810c, 0xf9401914), self.meta, self.resolve)  # +0x30
 
