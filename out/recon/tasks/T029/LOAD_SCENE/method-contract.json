@@ -150,7 +150,7 @@
       }
     }
   ],
-  "verified_operand_anchors": 12,
+  "verified_operand_anchors": 18,
   "schema_version": 1,
   "status": "static_candidate_not_runtime_validated",
   "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
@@ -163,11 +163,12 @@
     "Invoke OnBeforeSceneLoadStage1, Stage2, Stage3 actions in order when non-null.",
     "LoadingScreenManager.Instance.StartSceneTransition(new Action(closure.<LoadScene>b__0)); null Instance -> failure helper.",
     "After the fade, <LoadScene>b__0 (T029 callback probe) routes to LoadSceneImplement or the multiplayer path.",
+    "OnActiveSceneChanged(old,new) and CancelCurrentSceneChangingProgress() both set IsSceneChangingInProgress=false and null Multiplayer_LoadingSceneNameInProgress and CurrentlyLoadingSceneName (PreviousSceneName kept).",
     "LoadSceneImplement(sceneName): if MPManager.IsMultiplayerGame then MPOwnership.Clear(); SceneManager.LoadSceneAsync(sceneName)."
   ],
   "unknowns": [
     "IsSceneAvailable is not called by LoadScene itself; behaviour for an unavailable scene is the Unity LoadSceneAsync failure path.",
-    "Who resets IsSceneChangingInProgress to false (OnActiveSceneChanged / CancelCurrentSceneChangingProgress not decoded).",
+    "Who subscribes OnActiveSceneChanged (SceneManager.activeSceneChanged) and who calls CancelCurrentSceneChangingProgress.",
     "Subscribers of Stage1-3 actions and the fade implementation in StartSceneTransition.",
     "Exception edges and the complete method bodies; windows end at the next metadata method start."
   ]
