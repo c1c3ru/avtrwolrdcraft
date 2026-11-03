@@ -1,5 +1,9 @@
 # Avatar World — engenharia reversa (uso pessoal)
 
+Plano operacional: [varredura, recuperação de lógica e reconstrução por agentes](docs/AVATAR_WORLD_MASTER_PLAN.md). [Catálogo dos 60 pacotes de tarefas](docs/AVATAR_WORLD_TASKS.json).
+
+Execução: [checkpoint e passos importantes](docs/RECON_EXECUTION_LOG.md), [fila persistente](reports/recon/tasks.json) e [operação da fila](docs/RECON_QUEUE_USAGE.md).
+
 Repositório PRIVADO. Análise do app `com.pazugames.avatarworld` v1.227 (Unity 2022.3.70f1, IL2CPP, arm64-v8a).
 Não contém APK nem assets do jogo; eles ficam no PC/Google Drive do autor.
 

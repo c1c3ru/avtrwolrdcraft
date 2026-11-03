@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AvatarWorld.Core.Avatar;
 
 namespace AvatarWorld.Core.Economy
 {
@@ -31,6 +32,11 @@ namespace AvatarWorld.Core.Economy
         public int LoyaltyPoints;
         public List<ClaimCount> Claims = new List<ClaimCount>();
         public List<TransactionRecord> Ledger = new List<TransactionRecord>();
+        /// <summary>IDs de AvatarWorld.Core.Literacy.LiteracyChallenge ja respondidos corretamente ao menos uma vez.</summary>
+        public List<string> CompletedChallenges = new List<string>();
+        /// <summary>Selecao de aparencia do avatar (Ciclo 3). Inicializador proprio sobrevive a saves
+        /// antigos sem este campo - ver AvatarAppearance e SaveStore.LoadOrCreate.</summary>
+        public AvatarAppearance Appearance = AvatarAppearance.CreateDefault();
 
         public static PlayerState CreateNew(int startingPazuCurrency)
         {
@@ -54,6 +60,13 @@ namespace AvatarWorld.Core.Economy
                 return;
             }
             Claims.Add(new ClaimCount { ItemGuid = itemGuid, Count = 1 });
+        }
+
+        public bool IsChallengeCompleted(string challengeId) => CompletedChallenges.Contains(challengeId);
+
+        internal void MarkChallengeCompleted(string challengeId)
+        {
+            if (!CompletedChallenges.Contains(challengeId)) CompletedChallenges.Add(challengeId);
         }
     }
 }

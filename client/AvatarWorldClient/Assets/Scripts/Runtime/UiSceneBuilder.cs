@@ -40,6 +40,8 @@ namespace AvatarWorld.Runtime
                     rt.pivot = n.pivot;
                     rt.anchoredPosition = n.anchoredPosition;
                     rt.sizeDelta = n.sizeDelta;
+                    // O fundo (ScreenScripts.FitToScreen no original) e tratado por HomeLayout.Apply,
+                    // chamado depois do Build() em HomeBootstrap - ve-lo aqui so duplicaria/conflitaria.
                 }
                 if (!rootCanvas)
                 {
@@ -48,10 +50,29 @@ namespace AvatarWorld.Runtime
                     if (!n.hasRect) go.transform.localPosition = n.localPosition;
                 }
 
-                if (n.isCanvas) AddCanvas(go, n.parent < 0);
-                if (n.hasImage) AddImage(go, n.image, loadSprite);
-                if (n.hasText) AddText(go, n.text);
-                if (n.hasButton) AddButton(go, n, actions);
+                // Uma excecao num unico componente (dado estranho de um dos ~150 nos) nao pode
+                // abortar o Build() inteiro: isso pularia o loop final que desativa os nos
+                // active=false, deixando dialogos (Settings, AvatarID...) presos visiveis por cima
+                // de tudo. Contem por no e loga o nome pra diagnostico.
+                try
+                {
+                    if (n.isCanvas) AddCanvas(go, n.parent < 0);
+                    if (n.hasImage) AddImage(go, n.image, loadSprite);
+                    // Botoes do original sem sprite usam NonDrawingGraphic (grafico invisivel, so pra
+                    // capturar clique) - nosso exportador nao marca isso como hasImage. Sem NENHUM
+                    // Graphic no objeto o GraphicRaycaster nao acerta nada ali e o clique nunca chega
+                    // ao Button. Mas so quando o no tambem NAO tem texto: UI_BTTN_Logout tem botao e
+                    // texto no MESMO objeto (sem imagem) - o proprio TextMeshProUGUI (adicionado
+                    // abaixo) ja serve de Graphic/alvo de clique; empilhar Image+TMP no mesmo
+                    // GameObject e o que lancava NullReferenceException em AddText.
+                    else if (n.hasButton && !n.hasText) AddInvisibleRaycastTarget(go);
+                    if (n.hasText) AddText(go, n.text);
+                    if (n.hasButton) AddButton(go, n, actions);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("UiSceneBuilder: falha no no '" + n.name + "' (indice " + (objs.Count - 1) + "): " + e);
+                }
             }
 
             // Ativacao por ultimo: SetActive(false) num pai desativaria a montagem dos filhos.
@@ -61,6 +82,25 @@ namespace AvatarWorld.Runtime
             return objs;
         }
 
+        /// <summary>
+        /// Reproduz PazuCore.PazuCoreAddressables.AFC.AFCCanvasScalerRangeToScreen do original: em
+        /// telas muito largas (ratio >= 2.0 - a maioria dos celulares atuais, 18:9 a 21:9) a altura de
+        /// referencia encolhe de 1080 ate 1024, dando mais espaco horizontal aos elementos de borda em
+        /// vez de deixa-los fora de tela. Valores confirmados no MonoBehaviour real da cena Home
+        /// (out/mb/PazuCore.PazuCoreAddressables.AFC.AFCCanvasScalerRangeToScreen.jsonl.gz, _file=level3):
+        /// screenType=2 (VeryWide), propertyType=Height, ratio 2.0..2.164, altura 1106..1024.
+        /// matchWidthOrHeight ja satura em 1.0 nessa faixa (regra screenType=1 para ratio 1.6..1.778),
+        /// entao so a altura de referencia precisa variar aqui.
+        /// </summary>
+        static Vector2 ResolveReferenceResolution()
+        {
+            float ratio = Screen.width > 0 && Screen.height > 0
+                ? (float)System.Math.Max(Screen.width, Screen.height) / System.Math.Min(Screen.width, Screen.height)
+                : 16f / 9f;
+            float height = ratio <= 2.0f ? ReferenceResolution.y : Mathf.Lerp(1106f, 1024f, Mathf.InverseLerp(2.0f, 2.1643f, ratio));
+            return new Vector2(ReferenceResolution.x, height);
+        }
+
         static void AddCanvas(GameObject go, bool isRoot)
         {
             var canvas = go.AddComponent<Canvas>();
@@ -68,9 +108,18 @@ namespace AvatarWorld.Runtime
             if (!isRoot) return;
             var scaler = go.AddComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = ReferenceResolution;
-            scaler.matchWidthOrHeight = 0.5f;
+            scaler.referenceResolution = ResolveReferenceResolution();
+            // Casa pela altura: a maioria dos nos da Home usa ancora central com deslocamento fixo em
+            // pixel (herdado do original), entao em telas mais largas que a referencia isso da MAIS
+            // espaco horizontal em vez de cortar os elementos das bordas.
+            scaler.matchWidthOrHeight = 1f;
             go.AddComponent<GraphicRaycaster>();
+        }
+
+        static void AddInvisibleRaycastTarget(GameObject go)
+        {
+            var img = go.AddComponent<Image>();
+            img.color = new Color(0, 0, 0, 0);
         }
 
         static void AddImage(GameObject go, ImageDescription d, Func<string, Sprite> loadSprite)
@@ -102,15 +151,9 @@ namespace AvatarWorld.Runtime
             var b = go.AddComponent<Button>();
             b.interactable = n.button.interactable;
             b.targetGraphic = go.GetComponent<Graphic>();
-            if (b.targetGraphic == null)
-            {
-                // Substitui o NonDrawingGraphic omitido na exportacao: area inteira clicavel.
-                var hitArea = go.AddComponent<Image>();
-                hitArea.color = Color.clear;
-                hitArea.raycastTarget = true;
-                b.targetGraphic = hitArea;
-                b.transition = Selectable.Transition.None;
-            }
+            // Som de clique em todo botao interativo, mesmo os ainda sem acao ligada (nao-funcional
+            // != mudo): da feedback sonoro consistente, igual ao original.
+            b.onClick.AddListener(UiSound.PlayClick);
             if (actions == null) return;
 
             Action action;
@@ -122,12 +165,34 @@ namespace AvatarWorld.Runtime
         /// <summary>Garante um EventSystem; sem ele nenhum botao recebe clique.</summary>
         public static void EnsureEventSystem()
         {
-            if (UnityEngine.Object.FindFirstObjectByType<EventSystem>() != null) return;
-            var go = new GameObject("EventSystem", typeof(EventSystem));
+            var systems = UnityEngine.Object.FindObjectsByType<EventSystem>();
+            EventSystem system = systems.Length > 0 ? systems[0] : null;
+            if (system == null) system = new GameObject("EventSystem", typeof(EventSystem)).GetComponent<EventSystem>();
+            for (int i = 1; i < systems.Length; i++)
+                if (systems[i] != null && systems[i] != system) systems[i].gameObject.SetActive(false);
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
-            go.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            var legacy = system.GetComponent<StandaloneInputModule>();
+            if (legacy != null)
+            {
+                legacy.enabled = false;
+                UnityEngine.Object.Destroy(legacy);
+            }
+            var inputSystemModule = system.GetComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            if (inputSystemModule == null) inputSystemModule = system.gameObject.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            inputSystemModule.AssignDefaultActions();
+#elif ENABLE_INPUT_SYSTEM
+            // Projeto em modo Both: mantém um único módulo. O atual suporta toque/Pointer e API legada.
+            var legacy = system.GetComponent<StandaloneInputModule>();
+            if (legacy != null)
+            {
+                legacy.enabled = false;
+                UnityEngine.Object.Destroy(legacy);
+            }
+            var inputSystemModule = system.GetComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            if (inputSystemModule == null) inputSystemModule = system.gameObject.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            inputSystemModule.AssignDefaultActions();
 #else
-            go.AddComponent<StandaloneInputModule>();
+            if (system.GetComponent<BaseInputModule>() == null) system.gameObject.AddComponent<StandaloneInputModule>();
 #endif
         }
     }

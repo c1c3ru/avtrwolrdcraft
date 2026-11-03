@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "target": {
+    "package": "com.pazugames.avatarworld",
+    "version_name": "1.227",
+    "version_code": 228,
+    "architecture": "arm64-v8a",
+    "identity_status": "see baseline.json for artifact verification"
+  },
+  "scope_status": "initial_domains_not_exhaustive_feature_inventory",
+  "milestones": {
+    "V": "all discovered artifact/features classified; not implementation",
+    "L": "required local behavior recovered with reviewed evidence",
+    "C": "required offline behavior implemented and validated against declared reference"
+  },
+  "original_modes": [
+    {
+      "name": "Home",
+      "value": 0,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "World",
+      "value": 1,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "Level",
+      "value": 2,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "AvatarMakerLobby",
+      "value": 3,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "AvatarMaker",
+      "value": 4,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "Street",
+      "value": 5,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "Store",
+      "value": 6,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "BWYWMenu",
+      "value": 7,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "StoreAvatarPass",
+      "value": 8,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "AWCloud",
+      "value": 9,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "StoreBundle",
+      "value": 10,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "StarsPass",
+      "value": 11,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    },
+    {
+      "name": "CarMaker",
+      "value": 12,
+      "evidence_class": "STATIC_cached_cpp2il_enum",
+      "logic_recovered": false
+    }
+  ],
+  "feature_domain_ids": [
+    "navigation",
+    "characters",
+    "customization",
+    "interaction",
+    "contextual_animation",
+    "environments",
+    "activities",
+    "progression",
+    "audiovisual",
+    "menus",
+    "ugc",
+    "vehicles",
+    "economy",
+    "pedagogy",
+    "backend",
+    "iap",
+    "content_remote"
+  ],
+  "external_divergence_policy": "Retain online/external services in complete inventory, separately from local mandatory parity; designed offline replacements never count as original service equivalence.",
+  "provenance": [
+    {
+      "path": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+      "sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f"
+    },
+    {
+      "path": "docs/OFFLINE_HOME_RULES.md",
+      "sha256": "8ecccd1cba0a9d832f9e04fcf294e4a71408c0bd4249dc7c2cd790e15e499919"
+    },
+    {
+      "path": "docs/REA_NAVIGATION_MAPPING_2026-11-01.md",
+      "sha256": "d38fe7f4e11bec0ab3d1f0caaa7733ce1c15f586f5cfd44d839cbf3899fcf169"
+    },
+    {
+      "path": "docs/OFFLINE_RECONSTRUCTION_STATUS.md",
+      "sha256": "dee50521f56eec2b28a9d4b7078251ba6561c04ce0f6548964f6ace461416f0c"
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/SceneType.cs",
+      "sha256": "374e66aed5ebf321cb689851283b6cfb3b979cf0bb83a1fe9178bf2060102308"
+    }
+  ],
+  "unknowns": [
+    "Full universe of methods/components/features still expanding",
+    "scene path to serialized file convention needs independent verification",
+    "metadata/native logic mapping pilot is not whole-game recovery"
+  ]
+}

@@ -27,3 +27,35 @@ out/mb_old_sem_file/
 out/level3_export/
 out/unity_*.log
 client/AvatarWorldClient/Builds/
+# Backup do Drive (apk/assets ja vem em arquivos separados) e extracao de assets reais do jogo:
+# nunca pertencem ao Git, ver README.
+/AvatarWorld-RE-*.zip
+/assets/
+# Screenshots e relatorios de teste de sessoes de depuracao, nao sao entregaveis do projeto.
+out/*.png
+out/test-results*.xml
+# Artefatos do Unity Test Framework gerados ao rodar "unity test", nao sao fonte do projeto.
+client/AvatarWorldClient/Assets/Resources/PerformanceTestRunInfo.json*
+client/AvatarWorldClient/Assets/Resources/PerformanceTestRunSettings.json*
+# Cache de build CMake/Gradle gerado a cada compilacao (pasta com hash aleatorio).
+client/AvatarWorldClient/.utmp/Debug/
+# Worktrees de agentes auxiliares, nunca pertencem ao historico do projeto.
+/.claude/
+# Inventario derivado do probe de avatares; resumo versionado em docs/AVATAR_ASSET_FINDINGS.md.
+out/avatar-spine-inventory.json
+out/avatar-render-probe.json
+/out/avatar-pipeline/
+/tools/__pycache__/
+# Screenshots/relatorios de teste gerados dentro do projeto Unity (mesmo motivo do out/ da raiz).
+client/AvatarWorldClient/out/
+# Texturas SUT extraidas de resources.assets; a copia que o projeto usa de verdade ja esta em
+# client/AvatarWorldClient/Assets/Resources/AvatarSpine/Clothing (commitada).
+/out/sut-extract/
+out/avatar-outfit-probe-report.json
+/out/avatar-package-check/
+# Derived reconstruction evidence and queue mutexes; keep source/manifests in Git.
+/out/recon/
+/out/navigation-map/
+/out/scene-extract/
+/out/rea-avatar-base-20261101.json
+/reports/recon/*.lock

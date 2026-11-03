@@ -5,7 +5,6 @@ using AvatarWorld.Core.Economy;
 using AvatarWorld.Runtime;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
@@ -15,101 +14,134 @@ namespace AvatarWorld.Core.Tests
     {
         GameObject root;
         HomeActions actions;
-        List<GameObject> objects;
+        PlayerState state;
+        SaveStore saves;
         string path;
-        bool paused;
-        int sound;
-        bool hadSound;
+        bool played, coins, paused, hadSound;
+        int sound, sfx, music;
+        bool hadSfx, hadMusic;
+        List<GameObject> objects;
 
-        [SetUp]
-        public void SetUp()
+        [SetUp] public void Setup()
         {
             paused = AudioListener.pause;
             hadSound = PlayerPrefs.HasKey("home.sound.enabled");
             sound = PlayerPrefs.GetInt("home.sound.enabled", 1);
-            path = Path.Combine(Path.GetTempPath(), "home-" + Guid.NewGuid() + ".json");
-            new SaveStore(path).Save(PlayerState.CreateNew(75));
+            hadSfx = PlayerPrefs.HasKey("home.sfx.enabled");
+            sfx = PlayerPrefs.GetInt("home.sfx.enabled", 1);
+            hadMusic = PlayerPrefs.HasKey("home.music.enabled");
+            music = PlayerPrefs.GetInt("home.music.enabled", 1);
+            path = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".json");
+            saves = new SaveStore(path);
+            state = PlayerState.CreateNew(75);
             root = new GameObject("TestHome");
-            var description = JsonUtility.FromJson<SceneDescription>(Resources.Load<TextAsset>("HomeSlice/level3").text);
-            objects = UiSceneBuilder.Build(description, null, parent: root.transform);
-            HomeLayout.Apply(objects);
+            var desc = JsonUtility.FromJson<SceneDescription>(Resources.Load<TextAsset>("HomeSlice/level3").text);
+            objects = UiSceneBuilder.Build(desc, null, parent: root.transform);
             actions = root.AddComponent<HomeActions>();
-            actions.Initialize(objects, new SaveStore(path));
+            actions.Initialize(objects, saves, state, () => played = true, () => coins = true);
         }
 
-        [TearDown]
-        public void TearDown()
+        [TearDown] public void Cleanup()
         {
             Object.DestroyImmediate(root);
-            foreach (string suffix in new[] { "", ".tmp", ".corrupt" })
-                if (File.Exists(path + suffix)) File.Delete(path + suffix);
+            if (File.Exists(path)) File.Delete(path);
             AudioListener.pause = paused;
             if (hadSound) PlayerPrefs.SetInt("home.sound.enabled", sound);
             else PlayerPrefs.DeleteKey("home.sound.enabled");
+            if (hadSfx) PlayerPrefs.SetInt("home.sfx.enabled", sfx);
+            else PlayerPrefs.DeleteKey("home.sfx.enabled");
+            if (hadMusic) PlayerPrefs.SetInt("home.music.enabled", music);
+            else PlayerPrefs.DeleteKey("home.music.enabled");
+            UiSound.SetMuted(sfx == 0);
+            BackgroundMusic.SetMuted(music == 0);
             PlayerPrefs.Save();
         }
 
-        Button FindButton(string name) => Array.Find(root.GetComponentsInChildren<Button>(true), b => b.name == name);
+        Button Button(string name) => Array.Find(root.GetComponentsInChildren<Button>(true), b => b.name == name && b.gameObject.activeInHierarchy);
 
-        [TestCase("PlayButton", "Jogar")]
-        [TestCase("ShopButton", "Loja")]
-        [TestCase("SettingsButton", "Configurações")]
-        [TestCase("AccountButton", "Perfil local")]
-        [TestCase("MultiplayerButton", "Indisponível")]
-        public void Click_OpensPageAndBackReturnsHome(string buttonName, string page)
-        {
-            // Executa o handler de pointer do Button, nao apenas onClick.Invoke.
-            var eventObject = new GameObject("TestEvents", typeof(EventSystem));
-            try
-            {
-                var data = new PointerEventData(eventObject.GetComponent<EventSystem>())
-                    { button = PointerEventData.InputButton.Left };
-                ExecuteEvents.Execute(FindButton(buttonName).gameObject, data, ExecuteEvents.pointerClickHandler);
-                Assert.AreEqual(page, actions.CurrentPage);
-                FindButton("Voltar à home").onClick.Invoke();
-                Assert.IsNull(actions.CurrentPage);
-            }
-            finally { Object.DestroyImmediate(eventObject); }
-        }
-
-        [Test]
-        public void EveryExportedButtonHasAHandlerAndRaycastSurface()
-        {
-            int count = 0;
-            foreach (var go in objects)
-            {
-                var button = go.GetComponent<Button>();
-                if (button == null) continue;
-                count++;
-                Assert.IsNotNull(button.targetGraphic, go.name);
-                Assert.IsTrue(go.GetComponent<Graphic>().raycastTarget, go.name);
-                button.onClick.Invoke();
-                Assert.IsNotNull(actions.CurrentPage, go.name);
-                actions.Close();
-            }
-            Assert.AreEqual(count, actions.BoundButtonCount);
-            Assert.IsFalse(objects.Find(go => go.name == "MultiplayerCanvas").activeSelf);
-        }
-
-        [Test]
-        public void ProfileSavePreservesExistingCurrency()
+        [Test] public void PlayAndCoinChallengeAreSeparateActions()
         {
             actions.Open("AccountButton");
-            FindButton("Salvar progresso").onClick.Invoke();
-            Assert.AreEqual(75, new SaveStore(path).LoadOrCreate(0).PazuCurrency);
+            Button("PlayButton").onClick.Invoke();
+            Assert.IsTrue(played);
+            Assert.IsFalse(coins, "Play não pode iniciar a atividade opcional que paga moedas.");
+            Assert.IsNull(actions.CurrentPage);
+            Assert.IsTrue(Array.Exists(objects.ToArray(), go =>
+            {
+                var canvas = go.GetComponent<Canvas>();
+                return canvas != null && canvas.isRootCanvas && !canvas.enabled;
+            }), "A Home precisa sair da frente ao entrar no jogo.");
+            actions.ReturnFromGameplay();
+
+            Button("Desafio: ganhar moedas").onClick.Invoke();
+            Assert.IsTrue(coins, "A atividade opcional deve ter entrada própria.");
+            Assert.IsTrue(played, "Abrir a atividade de moedas não deve substituir a navegação principal.");
         }
 
-        [Test]
-        public void SettingsToggleUpdatesAudioAndPersistsPreference()
+        [Test] public void AvatarEditorEntryOpensVisualRuntimeWithSharedState()
         {
-            PlayerPrefs.SetInt("home.sound.enabled", 1);
+            var entry = Button("Meu avatar");
+            Assert.IsNotNull(entry, "A Home deve oferecer uma entrada visível para o editor visual.");
+            entry.onClick.Invoke();
+
+            var runtime = root.GetComponentInChildren<AvatarGpuRuntime>(true);
+            Assert.IsNotNull(runtime, "A entrada deve criar o runtime Spine real, não um aviso textual.");
+            Assert.IsTrue(Array.Exists(objects.ToArray(), go =>
+            {
+                var canvas = go.GetComponent<Canvas>();
+                return canvas != null && canvas.isRootCanvas && !canvas.enabled;
+            }), "A Home deve ceder a tela enquanto o editor está aberto.");
+        }
+
+        [Test] public void ProfileSavesLiveGameplayStateInsteadOfStaleCopy()
+        {
+            new LocalStoreService(state).Earn(10, "test gameplay");
+            actions.Open("AccountButton");
+            Button("Salvar progresso").onClick.Invoke();
+            Assert.AreEqual(85, saves.LoadOrCreate(0).PazuCurrency);
+            Assert.AreEqual(1, saves.LoadOrCreate(0).Ledger.Count);
+        }
+
+        [Test] public void UnsupportedFeaturesRemainDisabledAndPending()
+        {
+            Assert.AreEqual(4, actions.BoundButtonCount);
+            Assert.AreEqual(35, actions.PendingButtons.Count);
+            Assert.IsFalse(Button("ShopButton").interactable);
+            Assert.IsFalse(objects.Find(o => o.name == "MultiplayerCanvas").activeSelf);
+            actions.Open("ShopButton");
+            Assert.IsNull(actions.CurrentPage);
+        }
+
+        [Test] public void SettingsSoundAndMusicCanBeToggledIndependently()
+        {
+            PlayerPrefs.SetInt("home.sfx.enabled", 1);
+            PlayerPrefs.SetInt("home.music.enabled", 1);
             actions.Open("SettingsButton");
-            FindButton("Som: ligado").onClick.Invoke();
-            Assert.AreEqual(0, PlayerPrefs.GetInt("home.sound.enabled"));
-            Assert.IsTrue(AudioListener.pause);
-            FindButton("Som: desligado").onClick.Invoke();
-            Assert.AreEqual(1, PlayerPrefs.GetInt("home.sound.enabled"));
-            Assert.IsFalse(AudioListener.pause);
+            Button("Efeitos sonoros: ligados").onClick.Invoke();
+            Assert.AreEqual(0, PlayerPrefs.GetInt("home.sfx.enabled"));
+            Assert.AreEqual(1, PlayerPrefs.GetInt("home.music.enabled"), "Mutar efeitos não deve silenciar a música.");
+            Assert.IsTrue(UiSound.IsMuted);
+            Assert.IsFalse(BackgroundMusic.IsMuted);
+            Button("Efeitos sonoros: desligados").onClick.Invoke();
+            Assert.AreEqual(1, PlayerPrefs.GetInt("home.sfx.enabled"));
+            Assert.IsFalse(UiSound.IsMuted);
+            Button("Música: ligada").onClick.Invoke();
+            Assert.AreEqual(0, PlayerPrefs.GetInt("home.music.enabled"));
+            Assert.AreEqual(1, PlayerPrefs.GetInt("home.sfx.enabled"), "Mutar música não deve silenciar os efeitos.");
+            Assert.IsTrue(BackgroundMusic.IsMuted);
+            Assert.IsFalse(UiSound.IsMuted);
+            Button("Música: desligada").onClick.Invoke();
+            Assert.AreEqual(1, PlayerPrefs.GetInt("home.music.enabled"));
+            Assert.IsFalse(BackgroundMusic.IsMuted);
+        }
+
+        [Test] public void ProgressReadsCompletedChallengesFromSharedState()
+        {
+            state.CompletedChallenges.Add("letter-a");
+            actions.Open("AchievementsAppWidget");
+            Assert.IsTrue(Array.Exists(root.GetComponentsInChildren<Text>(), t => t.text == "letter-a"));
+            Button("Voltar à home").onClick.Invoke();
+            Assert.IsNull(actions.CurrentPage);
         }
     }
 }

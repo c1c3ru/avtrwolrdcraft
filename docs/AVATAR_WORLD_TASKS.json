@@ -1,0 +1,2233 @@
+{
+  "schema_version": 1,
+  "kind": "planning_seed_not_live_execution_state",
+  "source_doc": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+  "source_doc_sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f",
+  "target": "Avatar World v1.227 / current local artifacts",
+  "milestones": [
+    "V: complete classified scan",
+    "L: recovered local required logic",
+    "C: validated offline reconstruction"
+  ],
+  "initial_state_policy": "All operational states pending reconciliation; baseline_maturity preserves inherited work.",
+  "expansion_required": true,
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "Baseline de APKs, splits e revisão do cliente",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "`assets/*.apk`, `apk/`, git status e fontes Unity; calcular hashes/tamanhos por streaming, comparar cópias, identificar package/versionCode/versionName/ABI e registrar alterações preexistentes. Preservar originais e saves.",
+      "outputs": "`baseline.json`, mapa de cópias e manifesto de revisão do cliente, sem credenciais.",
+      "acceptance": "cada análise aponta para um conjunto APK/splits coerente; nenhuma mistura silenciosa de versão ou revisão.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T001 — Baseline de APKs, splits e revisão do cliente",
+        "line": 129
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T001/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T002",
+      "title": "Matriz de funcionalidades e escopo",
+      "parent_id": null,
+      "role": "coordenador",
+      "dependencies": [
+        "T001"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "docs atuais, SceneType, catálogo e regras autorizadas; enumerar recursos locais, integrações online, conteúdo ausente e extensões pedagógicas. Registrar política por recurso: paridade, adaptação offline ou ausência externa.",
+      "outputs": "`scope.json`, `features.jsonl`, `divergences.jsonl` com domínio e plataformas.",
+      "acceptance": "nenhuma exclusão oculta; mudanças de preço/recompensa não são confundidas com regra recuperada.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T002 — Matriz de funcionalidades e escopo",
+        "line": 136
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T002/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [
+        "canonical_task_queue_write"
+      ],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T003",
+      "title": "Reconciliar evidências e implementação existentes",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T001",
+        "T002"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "LOOP_STATE, status, probes, testes/XML/logs, builds e código atual; classificar cada entrega em válida, parcial, histórica, obsoleta ou não verificável; extrair o restante exato.",
+      "outputs": "matriz requisito→entrega→evidência→revisão, tarefas já satisfeitas e lacunas.",
+      "acceptance": "nenhuma tarefa manda refazer extração/build/probe válido; teste antigo não aprova fonte modificada.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T003 — Reconciliar evidências e implementação existentes",
+        "line": 143
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T003/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T004",
+      "title": "Inventário de ferramentas e capacidade real",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [
+        "T001"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "REA, Cpp2IL, UnityPy, Unity/Android, decompilador nativo; consultar disponibilidade e versões. Identificar capacidade por operação, licença, host e entradas. Planejar reparo só do bloqueio observado.",
+      "outputs": "matriz capacidade→ferramenta→comando→limites e ambiente reproduzível.",
+      "acceptance": "rota suportada para inventário e recuperação nativa, ou bloqueio exato registrado; sem instalar/alterar configuração global silenciosamente.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T004 — Inventário de ferramentas e capacidade real",
+        "line": 150
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T004/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T005",
+      "title": "Proveniência dos dumps e falhas de decodificação",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [
+        "T001",
+        "T003"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "`_stats.json`, gzip, metadata e scripts do dump; recalcular objetos/classes/sucessos/erros, conferir schema e campos alinhados, identificar as 126 classes com erro e inputs originais.",
+      "outputs": "cobertura por classe/objeto e fila de correção com exemplos mínimos.",
+      "acceptance": "toda linha reaproveitada tem identidade/proveniência ou rótulo de não verificada; totais reconciliados sem duplicar objetos.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T005 — Proveniência dos dumps e falhas de decodificação",
+        "line": 157
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T005/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T006",
+      "title": "Congelar decisões e contratos de compatibilidade",
+      "parent_id": null,
+      "role": "coordenador",
+      "dependencies": [
+        "T002",
+        "T003",
+        "T004",
+        "T005"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "salvar regras existentes de economia, formato de save, versões Unity original/cliente e assets licenciados no workspace; documentar diferenças intencionais e restrições técnicas observadas.",
+      "outputs": "contratos versionados e lista de decisões ainda necessárias.",
+      "acceptance": "agentes podem implementar interfaces sem inventar políticas; perguntas ficam limitadas a decisões não autorizadas ou recursos externos necessários.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T006 — Congelar decisões e contratos de compatibilidade",
+        "line": 164
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T006/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [
+        "canonical_task_queue_write"
+      ],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T007",
+      "title": "Schemas e ledger de evidência",
+      "parent_id": null,
+      "role": "coordenador",
+      "dependencies": [
+        "T006"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "contratos da seção 6 e formatos atuais; criar schemas e migração/importação, IDs estáveis, validação e escrita atômica; distinguir metadados, prova de comportamento e implementação.",
+      "outputs": "schemas, ledger inicial e validador.",
+      "acceptance": "rejeitar referências inexistentes, hashes incompatíveis, duplicidade e promoção sem aceite; preservar dados históricos.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T007 — Schemas e ledger de evidência",
+        "line": 173
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T007/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [
+        "canonical_task_queue_write"
+      ],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T008",
+      "title": "Indexação incremental e cache por conteúdo",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [
+        "T007"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "pipeline de avatar, scripts existentes, catálogos e dumps; estender armazenamento pesquisável e cache com dependências transitivas, ferramenta/config/schema e invalidação seletiva.",
+      "outputs": "índices locais e subcomandos de consulta/extract/report compatíveis com ferramentas existentes.",
+      "acceptance": "segunda execução sem mudança reaproveita resultados; mudança de metadata invalida dossiês afetados; saída ausente/corrompida não dá cache hit.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T008 — Indexação incremental e cache por conteúdo",
+        "line": 180
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T008/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T009",
+      "title": "Scheduler, leases e locks de recursos",
+      "parent_id": null,
+      "role": "coordenador",
+      "dependencies": [
+        "T007",
+        "T008"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "DAG dos pacotes e recursos disponíveis; implementar fila pronta, leases, heartbeat, dono, limites de RAM/processos e exclusividade de Unity/dispositivo/banco REA.",
+      "outputs": "executor retomável e journal de transições.",
+      "acceptance": "dois workers não assumem a mesma tarefa; interrupção preserva outputs; recurso ocupado faz esperar/reagendar sem apagar lock ativo.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T009 — Scheduler, leases e locks de recursos",
+        "line": 187
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T009/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [
+        "canonical_task_queue_write"
+      ],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T010",
+      "title": "Gerador de filhos e prioridade",
+      "parent_id": null,
+      "role": "coordenador",
+      "dependencies": [
+        "T009"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "inventários disponíveis e novos resultados; expandir filhos por método, componente, cena e cenário; priorizar desbloqueio, risco e fatia jogável; incorporar descobertas tardias.",
+      "outputs": "fila com IDs canônicos, vínculos pai/filho e estimativa baseada em custo medido.",
+      "acceptance": "nova função/handler cria pendência; pai não termina com filho obrigatório aberto; reexecução não duplica tarefas.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T010 — Gerador de filhos e prioridade",
+        "line": 194
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T010/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [
+        "canonical_task_queue_write"
+      ],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T011",
+      "title": "Runner, checkpointer e recuperação de falhas",
+      "parent_id": null,
+      "role": "coordenador",
+      "dependencies": [
+        "T009",
+        "T010"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "padrões de `avatar_pipeline.py`; executar passos limitados com retorno/log/saída verificados, persistir tentativa e próximo passo, cancelar com checkpoint e retomar só etapas inválidas.",
+      "outputs": "loop da seção 4 implementado, comandos de status/resume/report e diagnóstico de bloqueio.",
+      "acceptance": "timeout, código 137, transporte truncado, processo morto e JSON inválido não viram sucesso; três tentativas iguais estacionam com causa e liberam fila independente.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T011 — Runner, checkpointer e recuperação de falhas",
+        "line": 201
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T011/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [
+        "canonical_task_queue_write"
+      ],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T012",
+      "title": "Revisão independente e integração",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T007",
+        "T011"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "contratos de entrega, branches/patches e schemas; preparar revisão de evidências, detecção de conflito e política de integração por lote pequeno; testar fluxo com tarefa piloto real.",
+      "outputs": "review record, gate de integração e relatório de custo do piloto.",
+      "acceptance": "autor não é seu próprio revisor; rejeição volta à fila; nenhum estado muda para done só porque o worker declarou sucesso.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T012 — Revisão independente e integração",
+        "line": 208
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T012/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T013",
+      "title": "Inventário físico e grafo de arquivos",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [
+        "T008"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "APKs/splits e inventário REA existente; listar membros, arquivos internos, bibliotecas, metadata, bundles e dados; detectar duplicatas, extras, arquivos ausentes e formatos desconhecidos.",
+      "outputs": "grafo arquivo→membro→conteúdo/hash com status de inspeção.",
+      "acceptance": "todos os bytes/ocorrências do escopo físico classificados ou pendência explícita; não repetir inventário base válido.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T013 — Inventário físico e grafo de arquivos",
+        "line": 217
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T013/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T014",
+      "title": "Diretórios UnityFS, bundles e referências externas",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [
+        "T013"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "extrator por blocos, ResourceManager/Addressables/GUIDs; indexar entradas, compressão, offsets, fileIDs e dependências; verificar chaves compostas e proveniência.",
+      "outputs": "mapa de resolução de referências e extrator/cache limitado em memória.",
+      "acceptance": "cada referência resolve de forma única ou gera unknown; colisão de nomes nunca escolhe primeiro arquivo; evitar carregar 1,3 GB por pergunta.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T014 — Diretórios UnityFS, bundles e referências externas",
+        "line": 224
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T014/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T015",
+      "title": "Catálogo integral de cenas e prefabs",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [
+        "T014"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "254 cenas de BuildSettings, prefabs e roots; gerar filho por cena/prefab, validar scene path↔serialized file, hierarquia ativa/inativa, componentes, dependências, objetos e scripts.",
+      "outputs": "`scenes.jsonl`, catálogos por cena e relatórios de vínculo.",
+      "acceptance": "todas as cenas e prefabs descobertos classificados, não apenas oito extraídos; bases de editor e auxiliares não contam como mundos jogáveis.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T015 — Catálogo integral de cenas e prefabs",
+        "line": 231
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T015/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T016",
+      "title": "Controles, handlers e navegação",
+      "parent_id": null,
+      "role": "comportamento",
+      "dependencies": [
+        "T015"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "Button/EventTrigger, inputs próprios, UnityEvents, código de registro de listeners e dados; catalogar gestos, hitboxes, visibilidade, guard, callback, destino e retorno. Incluir controles ocultos condicionais.",
+      "outputs": "catálogo de controles e grafo de navegação com arestas por classe de evidência.",
+      "acceptance": "nenhuma ação fica sem handler ou unknown; `m_Calls=[]` não é classificado como sem funcionalidade.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T016 — Controles, handlers e navegação",
+        "line": 238
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T016/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T017",
+      "title": "Texturas, sprites, atlas e materiais",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [
+        "T014"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "PNGs, Texture2D, SpriteAtlas, materiais e shaders; resolver texturas por referência real, UVs, pivots, bordas, recortes, cores e variantes; rastrear conteúdo faltante/corrompido.",
+      "outputs": "catálogo de renderização e mapa material→textura→origem.",
+      "acceptance": "ambiguidade de pixels do mesmo nome/dimensão resolvida por identidade ou pendente; nenhuma página visível faltante fica ocultada.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T017 — Texturas, sprites, atlas e materiais",
+        "line": 245
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T017/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T018",
+      "title": "Áudio, vídeo, Spine e animações",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [
+        "T014"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "clips, nomes por cena, skeleton/atlas/skins, timelines, controllers e eventos; indexar parâmetros, duração, dependências e seleção dinâmica.",
+      "outputs": "índices de animação/som/vídeo e relações com cenas/componentes.",
+      "acceptance": "coleções existentes reutilizadas; atlas e animação catalogados não são contados como comportamento executado.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T018 — Áudio, vídeo, Spine e animações",
+        "line": 252
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T018/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T019",
+      "title": "Configurações, catálogos, localização e saves",
+      "parent_id": null,
+      "role": "artefatos",
+      "dependencies": [
+        "T014"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "JSON/TextAssets, tabelas, idiomas, save models, PlayerPrefs e configurações remotas declaradas; recuperar schemas, defaults, versões e referências.",
+      "outputs": "catálogo de dados e contratos de serialização/localização.",
+      "acceptance": "dados locais separados de payload remoto/valor de decisão offline; preço zero do catálogo não vira preço original.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T019 — Configurações, catálogos, localização e saves",
+        "line": 259
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T019/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T020",
+      "title": "Fechar falhas e reconciliar a cobertura estática",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T005",
+        "T015",
+        "T016",
+        "T017",
+        "T018",
+        "T019"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "fila das 126 classes e novos erros; corrigir typetrees/alinhamento/campos com exemplos mínimos, reprocessar só objetos afetados, reconciliar total e arquivos com formatos ainda desconhecidos.",
+      "outputs": "cobertura por objeto, erro resolvido e desconhecido remanescente.",
+      "acceptance": "nenhum erro desaparece por ignorar classe ou trocar denominador; marco V só passa após classificação de todo o universo ampliado.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T020 — Fechar falhas e reconciliar a cobertura estática",
+        "line": 266
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T020/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T021",
+      "title": "Parear libil2cpp, metadata e módulos",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T004",
+        "T013"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "split arm64, `global-metadata.dat`, ELF e versão Unity; identificar/validar metadata v31 quando confirmado, módulos, CodeRegistration/MetadataRegistration e tabelas; usar ferramentas existentes compatíveis.",
+      "outputs": "manifesto do par binário/metadata e mapa de módulos/registrations.",
+      "acceptance": "consistência de versão, limites, contagens e endereços verificada; metadata incompatível falha explicitamente. Não executar bypass para obter resultado.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T021 — Parear libil2cpp, metadata e módulos",
+        "line": 275
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T021/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T022",
+      "title": "Inventário canônico de métodos e código",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T021"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "metadata, ELF, Cpp2IL e bases existentes; mapear token/definição→ponteiro→VA→offset→intervalos; incluir locais, wrappers, invokers, thunks, métodos sem corpo e funções nativas sem metadata.",
+      "outputs": "`methods.jsonl` e classificação de intervalos executáveis.",
+      "acceptance": "não limitar universo ao `.dynsym`; aliases e corpos compartilhados não inflam métricas; regiões não explicadas geram filhos unknown.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T022 — Inventário canônico de métodos e código",
+        "line": 282
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T022/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T023",
+      "title": "Tipos, layouts e ABI",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T021",
+        "T022"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "fields offsets, value/reference types, arrays, interfaces, delegates, strings e ABI arm64/IL2CPP; conferir offsets por acessos de código e dados, incluindo GC/write barriers e chamadas runtime.",
+      "outputs": "dicionário de tipos e contratos de layout versionados.",
+      "acceptance": "estruturas usadas nos dossiês têm offsets justificados; não confundir objeto managed com estrutura nativa nem renomear acesso incerto como campo conhecido.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T023 — Tipos, layouts e ABI",
+        "line": 289
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T023/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T024",
+      "title": "Generics, virtual dispatch, reflexão e callbacks",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T022",
+        "T023"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "vtables, interfaces, generic sharing/RGCTX, invokers, delegates, reflexão, registro de eventos e callbacks; reconstruir conjuntos possíveis de alvos e identidade de instanciações.",
+      "outputs": "grafo de chamadas com resolução/proveniência e unknown por call site.",
+      "acceptance": "nenhuma ligação é presumida só por nome; mesmo endereço pode representar vários contratos genéricos; alvos desconhecidos impedem certificação dos efeitos dependentes.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T024 — Generics, virtual dispatch, reflexão e callbacks",
+        "line": 296
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T024/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T025",
+      "title": "Recuperação de corpos por método",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T022",
+        "T023",
+        "T024"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "fila por método real; usar REA/decompilador disponível para assembly, CFG e pseudocódigo, com bytes e intervalos. Priorizar navegação/save/interação; agrupar funções compartilhadas e manter diffs por variante.",
+      "outputs": "dossiê completo por método com contrato da seção 6 e lacunas.",
+      "acceptance": "C# vazio continua pendente; pseudocódigo sem memória/efeitos ou saída truncada não recebe lógica recuperada; toda função obrigatória ganha filho rastreável.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T025 — Recuperação de corpos por método",
+        "line": 303
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T025/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T026",
+      "title": "Coroutines, async, eventos e máquinas de estado",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T024",
+        "T025"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "MoveNext, state fields, yield/wait, closures, cancelamento e callbacks; reconstruir ordem temporal, estados, transições, efeitos e descarte.",
+      "outputs": "contratos temporais e diagramas/tabelas executáveis por máquina.",
+      "acceptance": "entrada, todos os estados, término, erro e cancelamento explicados; função de início sozinha não certifica coroutine.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T026 — Coroutines, async, eventos e máquinas de estado",
+        "line": 310
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T026/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T027",
+      "title": "Harness de contratos e comparação diferencial",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T023",
+        "T024",
+        "T025",
+        "T026"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "métodos e contratos piloto; criar referência independente, fixtures de estado e observadores de retorno/memória/chamadas; usar emulação só quando adequada e cenário runtime para efeitos Unity/GC/física não modelados.",
+      "outputs": "runners por classe de contrato e registros de divergência.",
+      "acceptance": "mutação intencional de retorno/flag/estado é detectada; stubs, RNG, relógio e domínio testado explícitos; comparação do clone consigo mesmo não vale como oráculo.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T027 — Harness de contratos e comparação diferencial",
+        "line": 317
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T027/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T028",
+      "title": "Auditar todo o universo de lógica",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T020",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "métodos, intervalos, componentes e grafo; revisar funções sem callers, inicializadores, código raro e helpers; classificar terceiros por proveniência/contrato, sem reimplementar Unity inteiro sem necessidade.",
+      "outputs": "cobertura de métodos lógicos, corpos únicos, bytes únicos e dependências externas.",
+      "acceptance": "cada método do jogo é explicado ou pendente explícito; import de biblioteca não disfarça lógica própria ausente; marco L não passa com dependências desconhecidas obrigatórias.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T028 — Auditar todo o universo de lógica",
+        "line": 324
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T028/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T029",
+      "title": "Boot, Home, scene manager e transições",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T016",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "HomePlayButton, GameSceneManager, WorldManager, loading e overrides; rastrear Play, mundo salvo, três hooks, init/load/unload, retorno, troca de mundo e falhas.",
+      "outputs": "contrato de navegação por estado e rota vertical Home→mapa→ambiente→retorno.",
+      "acceptance": "destino e guarda vêm do código/evidência, não da quadra do protótipo; ordem e estado persistido conhecidos.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T029 — Boot, Home, scene manager e transições",
+        "line": 335
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T029/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T030",
+      "title": "Save, objetos persistentes e progresso",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T019",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "classes PersistentData, IDs, inventário, estado de cena e prefs; recuperar defaults, ownership, identidade, ordem de gravação, reset, migração e recuperação de erro.",
+      "outputs": "schema original observável, contrato de adaptação offline e fixtures por revisão.",
+      "acceptance": "avatar, itens, posições e progresso sobrevivem aos ciclos previstos; diferença de formato não oculta perda semântica de dados.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T030 — Save, objetos persistentes e progresso",
+        "line": 342
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T030/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T031",
+      "title": "Input, seleção, arraste e câmera",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T016",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "pointer/touch, drag/drop, prioridades, hitboxes, multitouch, câmera/pan/zoom e safe area; recuperar competição UI/mundo e cancelamento.",
+      "outputs": "contratos de gesto→alvo→efeito e parâmetros por dispositivo/cena.",
+      "acceptance": "tocar, arrastar, soltar, cancelar e sobrepor objetos têm regra reproduzível; sem callbacks duplicados ou gestos inventados por conveniência.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T031 — Input, seleção, arraste e câmera",
+        "line": 349
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T031/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T032",
+      "title": "Avatares, NPCs, pets e movimentação",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T018",
+        "T025",
+        "T026",
+        "T027",
+        "T031"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "tipos Character/Toddler/Baby/animais, spawn/despawn, seleção, locomoção, posição, orientação, estados, segurar objetos e interações entre entidades.",
+      "outputs": "state machines e contratos por tipo com dados/efeitos.",
+      "acceptance": "cada família existente nos artefatos classificada; não usar skeleton Character para todos os presets nem avatar decorativo como movimento recuperado.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T032 — Avatares, NPCs, pets e movimentação",
+        "line": 356
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T032/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T033",
+      "title": "Editor, SUT, roupas, cores e compatibilidade",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T017",
+        "T018",
+        "T019",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "probes/empacotadores existentes, templates, SUT map, materiais, recoloring, categorias, sorteio, presets, bloquear/desbloquear, salvar/cancelar/reset.",
+      "outputs": "catálogo e algoritmo de composição por tipo com compatibilidade e fixtures visuais.",
+      "acceptance": "peças e tint/duas cores têm fonte correta; combinação inválida e opção indisponível têm regra; seleção persiste e é usada em gameplay.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T033 — Editor, SUT, roupas, cores e compatibilidade",
+        "line": 363
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T033/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T034",
+      "title": "Física, containers, inventário de cena e objetos",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T015",
+        "T025",
+        "T026",
+        "T027",
+        "T031",
+        "T032"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "colisões, triggers, ordenar/profundidade, pegar/soltar, encaixar, empilhar, carregar, abrir/fechar, mover, juntar/separar, consumo, spawn e destruição.",
+      "outputs": "catálogo de capacidades e contratos de transição/ownership.",
+      "acceptance": "cada handler e efeito real mapeado; ciclos duplicação/perda de item e reinício testáveis; parâmetros de física não substituídos por números arbitrários sem declarar diferença.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T034 — Física, containers, inventário de cena e objetos",
+        "line": 370
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T034/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T035",
+      "title": "Animações contextuais e interações especializadas",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T018",
+        "T025",
+        "T026",
+        "T027",
+        "T032",
+        "T033",
+        "T034"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "todas as famílias LevelCA/DropArea/ItemHandler; agrupar pelo contrato, conferir overrides e dados de cada variante; incluir sentar, dormir, comer, banho, instrumentos, esportes, cozinhar/crafting/receitas, limpar, transformar itens e objetos especiais quando encontrados nos artefatos.",
+      "outputs": "índice componente→regra→animação→efeito→save e filhos de exceção.",
+      "acceptance": "nenhum tipo fica sem classificação; handlers raros não desaparecem por amostragem de família; transições entram/saem/cancelam corretamente.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T035 — Animações contextuais e interações especializadas",
+        "line": 377
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T035/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T036",
+      "title": "Renderização, áudio, vídeo, clima e tempo",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T017",
+        "T018",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "sorting, clipping, shaders, partículas, timelines, música por cena, mixer, mute, loop, vídeos, clima/dia/noite e efeitos temporais presentes.",
+      "outputs": "contratos audiovisuais e parâmetros por estado/cena.",
+      "acceptance": "material/atlas faltante é defeito visível, não warning ignorado; música exata por referência; efeito de preferências e pausa comprovado.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T036 — Renderização, áudio, vídeo, clima e tempo",
+        "line": 384
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T036/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T037",
+      "title": "Menus, loja, catálogo, passes, presentes e conquistas",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T016",
+        "T019",
+        "T025",
+        "T026",
+        "T027"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "UI interna, filtros/abas, perfil, settings, widgets, gifts/passes/hunts; recuperar a porção cliente, disponibilidade, requisições declaradas e feedback.",
+      "outputs": "contrato por controle/fluxo e tabela original↔adaptação offline.",
+      "acceptance": "menus ocultos mapeados, estados de erro/cancelamento conhecidos; taxas/preços/limites do servidor permanecem desconhecidos quando não presentes.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T037 — Menus, loja, catálogo, passes, presentes e conquistas",
+        "line": 391
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T037/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T038",
+      "title": "Contrato da economia e atividades locais",
+      "parent_id": null,
+      "role": "comportamento",
+      "dependencies": [
+        "T006",
+        "T030",
+        "T037"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "OFFLINE_HOME_RULES, saldo/inventário, quiz e serviços existentes; formalizar transações, idempotência, recompensas, datas, falha de I/O e reentrada. Separar recuperação original de extensão pedagógica.",
+      "outputs": "especificação versionada e matriz de teste da economia autorizada.",
+      "acceptance": "não pedir novamente autorização de política já registrada; não inventar novas políticas; salvar saldo/inventário/recompensa atomicamente e sem duplicação.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T038 — Contrato da economia e atividades locais",
+        "line": 398
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T038/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T039",
+      "title": "Fronteiras online, conteúdo remoto e integrações",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T013",
+        "T024",
+        "T025",
+        "T026",
+        "T037"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "tipos de requisição/resposta, chamadas cliente, login/cloud/multiplayer/remote config/analytics/ads/IAP; mapear entradas/saídas, cache, timeout e pontos de acoplamento por análise local.",
+      "outputs": "mapa de contratos e dependências, ausências de backend, substituições offline permitidas.",
+      "acceptance": "serviço não acessado nem falsamente recuperado; inventário registra tudo e métricas mostram divergências; runtime offline não depende de SDK remoto para iniciar/jogar.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T039 — Fronteiras online, conteúdo remoto e integrações",
+        "line": 405
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T039/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T040",
+      "title": "Android, lifecycle e bibliotecas de suporte",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T013",
+        "T025",
+        "T026",
+        "T027",
+        "T030",
+        "T036"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "launcher/manifest/JNI/plugins/Unity bridges, storage, orientação, pause/resume, contexto GL, input e retomada; classificar libs de terceiros e proteções sem contorno.",
+      "outputs": "contrato de integração Android e matriz de lifecycle/compatibilidade.",
+      "acceptance": "toda fronteira nativa/managed relevante tem contrato; comportamento em encerramento/recriação conhecido ou cenário pendente explícito.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T040 — Android, lifecycle e bibliotecas de suporte",
+        "line": 412
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T040/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T041",
+      "title": "Mapas, zonas, edifícios e transportes",
+      "parent_id": null,
+      "role": "comportamento",
+      "dependencies": [
+        "T015",
+        "T016",
+        "T029",
+        "T031"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "seis mapas candidatos, 115 edifícios, 101 entradas e 14 zonas; criar filhos por mapa/edifício, resolver pertencimento espacial/lógico, limites de câmera, transporte, andares e seleção.",
+      "outputs": "grafo completo mapa↔zona↔edifício↔ambiente, com condições e retorno.",
+      "acceptance": "todas as referências/variantes classificadas; não inferir zona por ancestralidade que já falhou nem desbloqueio por `_isFree=0`.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T041 — Mapas, zonas, edifícios e transportes",
+        "line": 421
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T041/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T042",
+      "title": "Dossiê funcional por cena e prefab",
+      "parent_id": null,
+      "role": "comportamento",
+      "dependencies": [
+        "T015",
+        "T029",
+        "T030",
+        "T031",
+        "T032",
+        "T033",
+        "T034",
+        "T035",
+        "T036",
+        "T037"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "expandir um filho por cena/prefab, enumerando todos os objetos interativos, capacidades, personagens, scripts, spawn, defaults e dependências; reconciliar com o catálogo completo. Criar filhos próprios para UGC/construção/decoração, seleção de layouts, transporte/veículos e CarMaker quando identificados, sem absorvê-los num genérico “outros”.",
+      "outputs": "pacote de implementação/QA por cena e catálogo de prefabs reutilizáveis.",
+      "acceptance": "nenhuma cena recebe done só por exportar sprites; cada componente obrigatório tem contrato ou bloqueio rastreado; todos os 254 paths classificados inclusive auxiliares.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T042 — Dossiê funcional por cena e prefab",
+        "line": 428
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T042/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T043",
+      "title": "Atividades, minijogos, pontuação e puzzles",
+      "parent_id": null,
+      "role": "lógica",
+      "dependencies": [
+        "T034",
+        "T035",
+        "T042"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "expandir loops encontrados em todos os ambientes; regras de início/término, pontuação, sensores, RNG, falha, reset e recompensa. Priorizar discrepância da quadra: uma tacada não pode incrementar várias vezes sem regra comprovada.",
+      "outputs": "contratos por atividade e vetores de estado/temporização.",
+      "acceptance": "“Cesta!” ou animação não substitui regra; pontuação/recompensa bate com a referência no domínio definido.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T043 — Atividades, minijogos, pontuação e puzzles",
+        "line": 435
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T043/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T044",
+      "title": "Segredos, progressão, eventos e conteúdo condicional",
+      "parent_id": null,
+      "role": "comportamento",
+      "dependencies": [
+        "T019",
+        "T030",
+        "T035",
+        "T037",
+        "T042"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "flags, colecionáveis, secrets, quests/hunts, calendário, tutoriais e conteúdo condicional; seguir dependências locais e separar o que depende de backend.",
+      "outputs": "grafo de condições/desbloqueios e cenários alternativos.",
+      "acceptance": "caminhos raros e condições temporais enumerados; ausência em captura não vira “não existe”; eventos remotos não viram regra inventada original.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T044 — Segredos, progressão, eventos e conteúdo condicional",
+        "line": 442
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T044/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T045",
+      "title": "Corpus runtime do original",
+      "parent_id": null,
+      "role": "comportamento",
+      "dependencies": [
+        "T001",
+        "T002",
+        "T016"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "gravar cenários do original por rota/feature com aparelho, build, estado/save descartável, gesto, câmera, sequência, áudio, tela/log e resultado; reutilizar capturas antigas válidas. Execução exclusiva do dispositivo.",
+      "outputs": "cenários versionados, fixtures e observações rotuladas OBSERVED.",
+      "acceptance": "sem alterar saves reais; observações cobrem todos os comportamentos obrigatórios acessíveis; recurso indisponível fica bloqueado em vez de observado ficticiamente.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T045 — Corpus runtime do original",
+        "line": 449
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T045/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T046",
+      "title": "Reconciliação cruzada de funcionalidades",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T028",
+        "T029",
+        "T030",
+        "T031",
+        "T032",
+        "T033",
+        "T034",
+        "T035",
+        "T036",
+        "T037",
+        "T038",
+        "T039",
+        "T040",
+        "T041",
+        "T042",
+        "T043",
+        "T044",
+        "T045"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "cruzar classes usadas, métodos, cenas, prefabs, controles, catálogo e cenários; detectar órfãos, listeners dinâmicos, objetos sem regra e regra sem teste. Abrir filhos novos nas fases anteriores.",
+      "outputs": "matriz de rastreabilidade e backlog residual priorizado.",
+      "acceptance": "zero lacuna obrigatória para marco L; classificação online não finge lógica backend; a descoberta aumenta denominadores e reabre pais quando necessário.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T046 — Reconciliação cruzada de funcionalidades",
+        "line": 456
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T046/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T047",
+      "title": "Fundação offline e contratos de runtime",
+      "parent_id": null,
+      "role": "implementação",
+      "dependencies": [
+        "T006",
+        "T012",
+        "T029",
+        "T030",
+        "T031"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "cliente existente; consolidar scene routing, carregamento incremental, estado único, save versionado, eventos, clock/RNG controláveis e adaptadores sem rede.",
+      "outputs": "fundação mantida em fonte próprio e testes de integração.",
+      "acceptance": "inicialização offline reproduzível, retorno/save consistentes e nenhuma delegação escondida a lógica original ausente ou SDK remoto.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T047 — Fundação offline e contratos de runtime",
+        "line": 467
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T047/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T048",
+      "title": "Home, loading, mapas e navegação fiel",
+      "parent_id": null,
+      "role": "implementação",
+      "dependencies": [
+        "T029",
+        "T041",
+        "T047"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "preservar Home/loading existentes, substituir destinos provisórios por mapas e ambientes corretos, implementar hitboxes, guardas, estado salvo, transições, viagem e retorno.",
+      "outputs": "fatia Home→mapa→ambiente→retorno com roteiro comparável.",
+      "acceptance": "Play segue o fluxo original recuperado; quiz secundário; sem sobreposição, callbacks duplicados ou painel substituindo mapa.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T048 — Home, loading, mapas e navegação fiel",
+        "line": 474
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T048/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T049",
+      "title": "Avatares completos e editor",
+      "parent_id": null,
+      "role": "implementação",
+      "dependencies": [
+        "T032",
+        "T033",
+        "T047"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "runtime Spine/SUT já existente; ampliar categorias/tipos, cores, presets, animações, limites e persistência; corrigir atlas/material e usar o mesmo estado em todas as cenas.",
+      "outputs": "editor e personagens com filhos por categoria/tipo/contrato.",
+      "acceptance": "salvar/cancelar/reset e combinações corretas; aparência idêntica após reinício, sem páginas visíveis ausentes; catálogo coberto e diferenças explícitas.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T049 — Avatares completos e editor",
+        "line": 481
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T049/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T050",
+      "title": "Motor de interação e capacidades compartilhadas",
+      "parent_id": null,
+      "role": "implementação",
+      "dependencies": [
+        "T031",
+        "T032",
+        "T033",
+        "T034",
+        "T035",
+        "T036",
+        "T047",
+        "T049"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "implementar sistemas reutilizáveis de movimento, drag/drop, física, containers, ownership, CA, áudio e efeitos com dados por prefab; não copiar classe vazia como script funcional.",
+      "outputs": "runtime de capacidades e testes por contrato/override.",
+      "acceptance": "handlers originais mapeados têm equivalente demonstrado; regressão entre famílias detectada; variantes de dados preservadas.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T050 — Motor de interação e capacidades compartilhadas",
+        "line": 488
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T050/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T051",
+      "title": "Reconstruir todos os ambientes por fatias",
+      "parent_id": null,
+      "role": "implementação",
+      "dependencies": [
+        "T042",
+        "T043",
+        "T044",
+        "T048",
+        "T049",
+        "T050"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "um filho por ambiente com visual+interação+regra+áudio+save+retorno; importar só dependências corretas e testar a fatia antes de expandir. Reutilizar prefabs/capacidades sem perder exceções.",
+      "outputs": "cenas jogáveis completas e seus pacotes de validação.",
+      "acceptance": "todo ambiente obrigatório e conteúdo descoberto acessível no produto conforme política; fundo com avatar decorativo ou sala única não fecha o pai.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T051 — Reconstruir todos os ambientes por fatias",
+        "line": 495
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T051/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T052",
+      "title": "Economia, inventário, recompensas e pedagogia",
+      "parent_id": null,
+      "role": "implementação",
+      "dependencies": [
+        "T030",
+        "T037",
+        "T038",
+        "T047"
+      ],
+      "baseline_maturity": "unverified",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "auditar OfflineHomeService e testes novos antes de editar; completar loja/catálogo local, presentes, passe, saldo/inventário e quiz conforme regras autorizadas; testar rollback/reentrada/data.",
+      "outputs": "serviços locais, telas e ledger de transações consistentes.",
+      "acceptance": "sem dinheiro real, sem preço original inventado, sem pagamento duplicado; regras de produto e diferenças de paridade separadas; reinício não perde propriedade/saldo.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T052 — Economia, inventário, recompensas e pedagogia",
+        "line": 502
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T052/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T053",
+      "title": "Telas auxiliares e conteúdo condicional",
+      "parent_id": null,
+      "role": "implementação",
+      "dependencies": [
+        "T037",
+        "T039",
+        "T044",
+        "T047",
+        "T052"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "completar settings/idiomas, progresso, perfil local, eventos e demais modos locais recuperados; integrar cada controle com função real ou classificá-lo como divergência fora do escopo offline.",
+      "outputs": "matriz de controles implementados com retorno/feedback/persistência.",
+      "acceptance": "todos os controles obrigatórios funcionais; mensagem “indisponível” não conta como reprodução; login/multiplayer não recebem falsa equivalência.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T053 — Telas auxiliares e conteúdo condicional",
+        "line": 509
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T053/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T054",
+      "title": "Assets, build e pacote Android reproduzível",
+      "parent_id": null,
+      "role": "implementação",
+      "dependencies": [
+        "T040",
+        "T047"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "build atual e dependências importadas; pipeline incremental de empacotamento por cena, auditoria de assets ausentes, configurações Android, assinatura local, variantes dev/release e checks de conteúdo.",
+      "outputs": "APK de fonte atual com manifesto de build/inputs/hashes e logs.",
+      "acceptance": "checkout/inputs declarados produzem app instalável; sem Development Console/erros repetidos na entrega; build bem-sucedida não substitui teste no aparelho.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T054 — Assets, build e pacote Android reproduzível",
+        "line": 516
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T054/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T055",
+      "title": "Suítes de contratos e integração automatizada",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T027",
+        "T047",
+        "T048",
+        "T049",
+        "T050",
+        "T051",
+        "T052",
+        "T053",
+        "T054"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "testes existentes e contratos novos; completar EditMode/PlayMode para estado, migração, interação, navegação, economia e catálogos; adicionar detectores de divergência significativos e CI por paths/dependências.",
+      "outputs": "suítes, matriz requisito→teste e XML/logs por revisão.",
+      "acceptance": "testes verificam comportamento, não espelham implementação; nenhum skip obrigatório tratado como verde; mudanças invalidam evidência afetada.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T055 — Suítes de contratos e integração automatizada",
+        "line": 525
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T055/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T056",
+      "title": "Replays comparativos original versus cópia",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T045",
+        "T048",
+        "T049",
+        "T050",
+        "T051",
+        "T052",
+        "T053",
+        "T054",
+        "T055"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "executar mesmos cenários/estado/gestos/aspecto; comparar efeitos, sequência, posições, hitboxes, imagem, áudio, saldo/progresso e persistência. Definir tolerâncias observáveis e não determinismo por tipo.",
+      "outputs": "veredito por cenário, diffs mínimos reproduzíveis e bugs priorizados.",
+      "acceptance": "todas as rotas obrigatórias aprovadas no escopo; screenshots isoladas não certificam a lógica; divergência intencional tem autorização/rationale, não é mascarada por tolerância ampla.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T056 — Replays comparativos original versus cópia",
+        "line": 532
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T056/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T057",
+      "title": "Limites, corrupção e interrupções",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T030",
+        "T040",
+        "T055"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "save corrompido/truncado, falha I/O, assets faltantes, cancelar drag/load, foco, pause/resume, encerramento/reabertura, multitouch e relógio alterado; fuzzing limitado em parsers relevantes.",
+      "outputs": "matriz de robustez e regressões por falha.",
+      "acceptance": "não perder estado válido, não duplicar itens/moedas, não travar em loading; diferenças de comportamento do original ficam documentadas.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T057 — Limites, corrupção e interrupções",
+        "line": 539
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T057/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T058",
+      "title": "Aparelhos, modo offline e desempenho",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T054",
+        "T055",
+        "T056",
+        "T057"
+      ],
+      "baseline_maturity": "partial",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "matriz Android/ABI/GPU/aspecto declarada, sessões longas e modo avião; medir tempo de carregamento, frame time, memória, uso de áudio e escalonamento por cenas.",
+      "outputs": "relatórios por aparelho/build e perfis de gargalo.",
+      "acceptance": "metas definidas por comparação e uso real, sem requisito arbitrário; nenhum fluxo obrigatório exige rede/login; aparelho ausente continua cobertura pendente.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T058 — Aparelhos, modo offline e desempenho",
+        "line": 546
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T058/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T059",
+      "title": "Auditoria final de cobertura e lacunas",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T046",
+        "T051",
+        "T052",
+        "T053",
+        "T054",
+        "T055",
+        "T056",
+        "T057",
+        "T058"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "refazer reconciliação de métodos, objetos, cenas, funcionalidades, testes, implementações e bugs; buscar TODOs funcionais, fallbacks e dependências da `.so` original para executar lógica do cliente novo.",
+      "outputs": "relatório dos três marcos V/L/C, cobertura multidimensional e residual de divergências externas.",
+      "acceptance": "nenhum unknown/bug obrigatório, certificado/evidência obsoleta ou filho perdido; total classificado e total equivalente apresentados separadamente; toda lógica local do produto mantida em fonte.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T059 — Auditoria final de cobertura e lacunas",
+        "line": 553
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T059/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    },
+    {
+      "id": "T060",
+      "title": "Reprodução independente e encerramento",
+      "parent_id": null,
+      "role": "validação",
+      "dependencies": [
+        "T059"
+      ],
+      "baseline_maturity": "planned",
+      "state": "pending",
+      "planning_seed": true,
+      "input_and_steps": "outro agente/ambiente reproduz build, testes e cenários críticos usando documentação/artefatos permitidos, sem contexto oculto; coordenador confere gates, limitações e estado persistido.",
+      "outputs": "pacote final local, manual de reprodução, relatório de aceite e checkpoint de encerramento.",
+      "acceptance": "V/L/C aprovados no escopo declarado, todos os filhos obrigatórios aceitos e recurso externo não disfarçado como recuperado; só então declarar objetivo concluído. Não publicar APK/assets automaticamente.",
+      "spec_ref": {
+        "path": "AVATAR_WORLD_MASTER_PLAN.md",
+        "heading": "#### T060 — Reprodução independente e encerramento",
+        "line": 560
+      },
+      "allowed_paths": [
+        "out/recon/tasks/T060/**"
+      ],
+      "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
+      "resource_locks": [],
+      "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
+      "input_refs": [],
+      "evidence_refs": [],
+      "unknown_ids": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+    }
+  ]
+}
