@@ -115,6 +115,35 @@ namespace AvatarWorld.EditorTools
             if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) EditorApplication.Exit(1);
         }
 
+        /// <summary>
+        /// Build de teste que instala AO LADO do app principal (outro applicationIdentifier, save proprio),
+        /// para validar no aparelho sem desinstalar o app existente (assinatura diferente => update recusado).
+        /// O identificador original e restaurado ao final; nada disto vai para o ProjectSettings.
+        /// </summary>
+        public static void BuildAndroidSideBySide()
+        {
+            ConfigureAndroid();
+            try
+            {
+                PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android, AppId + ".sbs");
+                PlayerSettings.productName = "Avatar World (teste)";
+                Directory.CreateDirectory("Builds");
+                var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+                {
+                    scenes = new[] { HomeScenePath },
+                    locationPathName = "Builds/AvatarWorldOffline-sidebyside.apk",
+                    target = BuildTarget.Android,
+                    options = BuildOptions.Development,
+                });
+                Debug.Log("ProjectSetup: sidebyside build " + report.summary.result + " (" + report.summary.totalSize + " bytes)");
+                if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) EditorApplication.Exit(1);
+            }
+            finally
+            {
+                ConfigureAndroid();
+            }
+        }
+
         const string AvatarValidationScenePath = "Assets/Scenes/AvatarValidation.unity";
 
         /// <summary>

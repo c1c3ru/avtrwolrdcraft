@@ -221,9 +221,12 @@ namespace AvatarWorld.Runtime
             {
                 name = "Card", parent = 0, hasRect = true,
                 anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
-                sizeDelta = new Vector2(1750, 1000),
+                // No modo balao o cartao e mais baixo e desce um pouco: a cauda (acima do canto
+                // superior direito) precisa caber na tela.
+                sizeDelta = bubble ? new Vector2(1750, 900) : new Vector2(1750, 1000),
+                anchoredPosition = bubble ? new Vector2(0, -50) : Vector2.zero,
                 hasImage = true, image = bubble
-                    ? new ImageDescription { sprite = "text_bubble_panel", imageType = 1, color = Color.white, pixelsPerUnitMultiplier = BubbleScale }
+                    ? new ImageDescription { sprite = "text_bubble_panel", imageType = 1, color = Color.white, pixelsPerUnitMultiplier = 1f / BubbleScale }
                     : new ImageDescription { sprite = "quiz_panel", imageType = 1, color = Color.white },
             });
             int card = nodes.Count - 1;
@@ -258,7 +261,7 @@ namespace AvatarWorld.Runtime
                 {
                     name = "Header", parent = panel, hasRect = true,
                     anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
-                    anchoredPosition = new Vector2(0, 445), sizeDelta = new Vector2(1250, 60),
+                    anchoredPosition = new Vector2(0, 410), sizeDelta = new Vector2(1250, 60),
                     hasText = true, text = new TextDescription { text = header, fontSize = 30, color = CaptionColor, hAlign = 2, vAlign = 512 },
                 });
             }
@@ -267,14 +270,14 @@ namespace AvatarWorld.Runtime
             {
                 name = "Prompt", parent = panel, hasRect = true,
                 anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
-                anchoredPosition = new Vector2(0, 380), sizeDelta = new Vector2(1500, 180),
+                anchoredPosition = new Vector2(0, header != null ? 320 : 380), sizeDelta = new Vector2(1500, 180),
                 hasText = true, text = new TextDescription { text = challenge.Prompt, fontSize = 44, color = DarkTextColor, hAlign = 2, vAlign = 512 },
             });
             promptIdx = nodes.Count - 1;
 
             optionIdx = new List<int>();
             optionLabelIdx = new List<int>();
-            float[] ys = { 150f, 10f, -130f, -270f };
+            float[] ys = header != null ? new[] { 120f, -20f, -160f, -300f } : new[] { 150f, 10f, -130f, -270f };
             for (int i = 0; i < challenge.Options.Count && i < ys.Length; i++)
             {
                 nodes.Add(new NodeDescription
@@ -303,7 +306,7 @@ namespace AvatarWorld.Runtime
             {
                 name = "Feedback", parent = panel, hasRect = true,
                 anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
-                anchoredPosition = new Vector2(0, -400), sizeDelta = new Vector2(1600, 100),
+                anchoredPosition = new Vector2(0, header != null ? -395 : -400), sizeDelta = new Vector2(1600, 100),
                 hasText = true, text = new TextDescription { text = "", fontSize = 36, color = Color.white, hAlign = 2, vAlign = 512 },
             });
             feedbackIdx = nodes.Count - 1;

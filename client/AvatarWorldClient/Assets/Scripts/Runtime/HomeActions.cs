@@ -102,8 +102,12 @@ namespace AvatarWorld.Runtime
                     play();
                     break;
                 case "World_ShopButton StarterPack":
+                    // A Home continua visivel atras do balao (como no dialogo de referencia), mas as
+                    // entradas proprias do cliente (Meu avatar / Desafio) ficam escondidas: nao podem
+                    // cobrir as opcoes. SetHomeVisible(true), ao fechar, as reexibe.
                     Close();
-                    SetHomeVisible(false);
+                    if (editorEntryCanvas != null) editorEntryCanvas.enabled = false;
+                    if (coinEntryCanvas != null) coinEntryCanvas.enabled = false;
                     starterPack(AvatarWorld.Core.Literacy.ChallengeDifficulty.StarterPackValue);
                     break;
                 case "SettingsButton": ShowSettings(); break;
