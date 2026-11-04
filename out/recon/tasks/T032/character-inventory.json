@@ -242,6 +242,29 @@
       "source_sha256": "f433c08a19289f660de059114287e92702a6230cd0ea8052de0f1f7a499fc163"
     }
   ],
+  "scene_reports": [
+    {
+      "path": "out/scene-extract/level4.inspect.json",
+      "sha256": "e89ddaf8cc37982da9c7c09fc00c758b71d89962c8eb2b556c0b47bd90985e50",
+      "scene": "level4",
+      "object_count": 9135,
+      "matching_component_counts": {}
+    },
+    {
+      "path": "out/recon/tasks/T030/level8-inspect.json",
+      "sha256": "265566b90aa4d618a344473fe2212d3eda0275eb6eb862473ba0592df5e13022",
+      "scene": "level8",
+      "object_count": 2403,
+      "matching_component_counts": {}
+    },
+    {
+      "path": "out/scene-extract/level237.inspect.json",
+      "sha256": "b808d191c690b0356f45c79028c1ac22b2a8d8a8697b9976887dca6e0846a199",
+      "scene": "level237",
+      "object_count": 331,
+      "matching_component_counts": {}
+    }
+  ],
   "limits": [
     "Cpp2IL class stubs establish declarations and interfaces, not runtime behavior.",
     "Premade preset counts do not measure scene NPC populations or unlocked catalog coverage."
