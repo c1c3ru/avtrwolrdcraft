@@ -14,7 +14,7 @@ namespace AvatarWorld.Core.Tests
         public void Data_HasRenderersWithUniqueDrawRanksAndExistingSprites()
         {
             var data = Load();
-            Assert.AreEqual(307, data.renderers.Count);
+            Assert.AreEqual(311, data.renderers.Count);
             Assert.AreEqual(data.renderers.Count, data.renderers.Select(r => r.rank).Distinct().Count());
             foreach (var name in data.renderers.Select(r => r.sprite).Distinct())
                 Assert.IsNotNull(Resources.Load<Texture2D>("WorldSlice/sprites/" + name), name);

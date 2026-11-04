@@ -171,7 +171,7 @@ def main(argv=None):
             gid = go_parent.get(gid, 0)
         return False
     before = len(rows)
-    rows = [r for r in rows if not ('DayMode' in r['go'] and under_uc_parent(r['go_id']))]
+    # (filtro de DayMode removido: no original a arte do predio fica sob a fita da obra)
     skipped['day-mode art replaced by under-construction variant'] += before - len(rows)
 
     # pivot / ppu of every exported sprite
