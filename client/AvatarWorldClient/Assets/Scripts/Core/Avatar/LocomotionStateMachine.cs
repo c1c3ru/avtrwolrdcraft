@@ -26,7 +26,13 @@ namespace AvatarWorld.Core.Avatar
         public static readonly LocomotionConfig Animal = new LocomotionConfig
             { StartWalkSpeed = 0.06f, StopSpeed = 0.006f, RunEnterSpeed = 18f, RunExitSpeed = 6f, CanEnterRun = true };
 
-        // LevelCharacterAnimator (0x22a1570): histerese NAO extraida ainda; nao ha preset de Character de proposito.
+        /// <summary>
+        /// LevelCharacterAnimator.OnMovement (0x22a1570): mesmos 0.06 / 0.006 / 6.0 do Toddler. Dentro de OnMovement nao ha
+        /// transicao Walk -> Run (de Walk so se compara com 0.006); Run so e mantido se ja estiver ativo. Quem ativa Run
+        /// no Character fica fora deste metodo e ainda nao foi localizado.
+        /// </summary>
+        public static readonly LocomotionConfig Character = new LocomotionConfig
+            { StartWalkSpeed = 0.06f, StopSpeed = 0.006f, RunEnterSpeed = float.PositiveInfinity, RunExitSpeed = 6f, CanEnterRun = false };
     }
 
     public static class LocomotionStateMachine
