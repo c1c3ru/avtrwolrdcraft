@@ -20,26 +20,25 @@ namespace AvatarWorld.Runtime
         PlayerState state;
         Font font;
         readonly List<Canvas> homeCanvases = new List<Canvas>();
-        Canvas editorEntryCanvas;
-        Canvas coinEntryCanvas;
-        AvatarGpuRuntime avatarEditor;
+        GameObject settingsMenu;
         bool inGameplay;
         public string CurrentPage { get; private set; }
         public int BoundButtonCount => boundButtons.Count;
 
         Action play;
-        Action coinActivity;
         Action<int> starterPack;
+        Action openStore;
         public readonly List<string> PendingButtons = new List<string>();
 
         public void Initialize(IReadOnlyList<GameObject> objects, SaveStore saveStore,
-            PlayerState sharedState, Action openPlay, Action openCoinActivity, Action<int> openStarterPack = null)
+            PlayerState sharedState, Action openPlay, Action<int> openStarterPack = null,
+            Action openStoreScreen = null)
         {
+            openStore = openStoreScreen;
             starterPack = openStarterPack;
             saves = saveStore ?? throw new ArgumentNullException(nameof(saveStore));
             state = sharedState ?? throw new ArgumentNullException(nameof(sharedState));
             play = openPlay ?? throw new ArgumentNullException(nameof(openPlay));
-            coinActivity = openCoinActivity ?? throw new ArgumentNullException(nameof(openCoinActivity));
             font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             foreach (var go in objects)
             {
@@ -56,13 +55,12 @@ namespace AvatarWorld.Runtime
             UiSound.SetMuted(PlayerPrefs.GetInt(SfxKey, 1) == 0);
             BackgroundMusic.SetMuted(PlayerPrefs.GetInt(MusicKey, 1) == 0);
             BuildPanel();
-            BuildAvatarEntry();
-            BuildCoinActivityEntry();
             foreach (var go in objects)
             {
                 if (go.name == "MultiplayerCanvas" || go.name == "MultiplayerClickBlocker" ||
                     go.name == "SignedUserButton " || go.name == "NotSignedUserButton" ||
                     go.name == "SettingsMenu" || go.name == "UserMenu") go.SetActive(false);
+                if (go.name == "SettingsMenu") settingsMenu = go;
                 var button = go.GetComponent<Button>();
                 if (button == null) continue;
                 string action = go.name.Trim();
@@ -74,6 +72,19 @@ namespace AvatarWorld.Runtime
                     case "AccountButton":
                     case "AchievementsAppWidget":
                         button.onClick.AddListener(() => Open(action));
+                        boundButtons.Add(button);
+                        break;
+                    case "ShopButton":
+                        // Loja com a moldura do original; compra so com moedas (sem dinheiro real).
+                        if (openStore == null) goto default;
+                        button.onClick.AddListener(() => Open(action));
+                        boundButtons.Add(button);
+                        break;
+                    case "SFX":
+                    case "Music":
+                        // Botoes do SettingsMenu original: liga/desliga com os icones On/Off do proprio menu.
+                        bool isSfx = action == "SFX";
+                        button.onClick.AddListener(() => ToggleSound(isSfx));
                         boundButtons.Add(button);
                         break;
                     case "World_ShopButton StarterPack":
@@ -102,83 +113,21 @@ namespace AvatarWorld.Runtime
                     play();
                     break;
                 case "World_ShopButton StarterPack":
-                    // A Home continua visivel atras do balao (como no dialogo de referencia), mas as
-                    // entradas proprias do cliente (Meu avatar / Desafio) ficam escondidas: nao podem
-                    // cobrir as opcoes. SetHomeVisible(true), ao fechar, as reexibe.
+                    // A Home continua visivel atras do balao de desafios (como no dialogo de referencia).
                     Close();
-                    if (editorEntryCanvas != null) editorEntryCanvas.enabled = false;
-                    if (coinEntryCanvas != null) coinEntryCanvas.enabled = false;
                     starterPack(AvatarWorld.Core.Literacy.ChallengeDifficulty.StarterPackValue);
+                    break;
+                case "ShopButton":
+                    if (openStore == null) break;
+                    Close();
+                    inGameplay = true;
+                    SetHomeVisible(false);
+                    openStore();
                     break;
                 case "SettingsButton": ShowSettings(); break;
                 case "AccountButton": ShowProfile(); break;
                 case "AchievementsAppWidget": ShowProgress(); break;
             }
-        }
-
-        void BuildAvatarEntry()
-        {
-            var root = new GameObject("AvatarEditorEntry", typeof(RectTransform), typeof(Canvas),
-                typeof(CanvasScaler), typeof(GraphicRaycaster));
-            root.transform.SetParent(transform, false);
-            editorEntryCanvas = root.GetComponent<Canvas>();
-            editorEntryCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            editorEntryCanvas.overrideSorting = true;
-            editorEntryCanvas.sortingOrder = 500;
-            var scaler = root.GetComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1280, 720);
-            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
-            var button = MakeButton(root.transform, "Meu avatar", OpenAvatarEditor);
-            var rect = (RectTransform)button.transform;
-            // A faixa inferior direita pertence ao AchievementsAppWidget original. Manter
-            // esta entrada no centro inferior evita interceptar o hitbox desse controle.
-            rect.anchorMin = new Vector2(0.50f, 0.035f);
-            rect.anchorMax = new Vector2(0.70f, 0.15f);
-            rect.offsetMin = rect.offsetMax = Vector2.zero;
-        }
-
-        void BuildCoinActivityEntry()
-        {
-            var root = new GameObject("CoinActivityEntry", typeof(RectTransform), typeof(Canvas),
-                typeof(CanvasScaler), typeof(GraphicRaycaster));
-            root.transform.SetParent(transform, false);
-            coinEntryCanvas = root.GetComponent<Canvas>();
-            coinEntryCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            coinEntryCanvas.overrideSorting = true;
-            coinEntryCanvas.sortingOrder = 500;
-            var scaler = root.GetComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1280, 720);
-            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
-            var button = MakeButton(root.transform, "Desafio: ganhar moedas", () =>
-            {
-                Close();
-                SetHomeVisible(false);
-                coinActivity();
-            });
-            var rect = (RectTransform)button.transform;
-            rect.anchorMin = new Vector2(0.50f, 0.17f);
-            rect.anchorMax = new Vector2(0.70f, 0.285f);
-            rect.offsetMin = rect.offsetMax = Vector2.zero;
-        }
-
-        void OpenAvatarEditor()
-        {
-            if (avatarEditor != null) return;
-            Debug.Log("Home: abrindo editor visual do avatar");
-            Close();
-            SetHomeVisible(false);
-            var host = new GameObject("AvatarEditorSession");
-            host.transform.SetParent(transform, false);
-            avatarEditor = host.AddComponent<AvatarGpuRuntime>();
-            avatarEditor.Configure(saves, state, CloseAvatarEditor);
-        }
-
-        void CloseAvatarEditor()
-        {
-            avatarEditor = null;
-            SetHomeVisible(true);
         }
 
         public void ReturnFromGameplay() => ReturnToHome();
@@ -198,8 +147,6 @@ namespace AvatarWorld.Runtime
                 var raycaster = canvas.GetComponent<GraphicRaycaster>();
                 if (raycaster != null) raycaster.enabled = visible;
             }
-            if (editorEntryCanvas != null) editorEntryCanvas.enabled = visible;
-            if (coinEntryCanvas != null) coinEntryCanvas.enabled = visible;
         }
 
         void ShowProgress()
@@ -211,30 +158,53 @@ namespace AvatarWorld.Runtime
         public void Close()
         {
             panel.SetActive(false);
+            if (settingsMenu != null) settingsMenu.SetActive(false);
             CurrentPage = null;
         }
 
+        /// <summary>Abre o SettingsMenu original (janela, SFX, Musica); fecha tocando fora ou com voltar.</summary>
         void ShowSettings()
         {
-            Show("Configurações", "Preferências deste aparelho.");
-            bool sfxEnabled = PlayerPrefs.GetInt(SfxKey, 1) != 0;
-            AddButton("Efeitos sonoros: " + (sfxEnabled ? "ligados" : "desligados"), () =>
+            if (settingsMenu == null) return;
+            CurrentPage = "Configurações";
+            settingsMenu.transform.SetAsLastSibling();
+            settingsMenu.SetActive(true);
+            var background = settingsMenu.transform.Find("Background");
+            if (background != null)
             {
-                bool next = PlayerPrefs.GetInt(SfxKey, 1) == 0;
-                PlayerPrefs.SetInt(SfxKey, next ? 1 : 0);
-                PlayerPrefs.Save();
-                UiSound.SetMuted(!next);
-                ShowSettings();
-            });
-            bool musicEnabled = PlayerPrefs.GetInt(MusicKey, 1) != 0;
-            AddButton("Música: " + (musicEnabled ? "ligada" : "desligada"), () =>
+                var image = background.GetComponent<Image>() ?? background.gameObject.AddComponent<Image>();
+                if (image.sprite == null && image.color.a < 0.01f) image.color = new Color(0, 0, 0, 0.55f);
+                image.raycastTarget = true;
+                var close = background.GetComponent<Button>() ?? background.gameObject.AddComponent<Button>();
+                close.onClick.RemoveAllListeners();
+                close.onClick.AddListener(Close);
+            }
+            RefreshSoundIcons();
+        }
+
+        void ToggleSound(bool sfx)
+        {
+            string key = sfx ? SfxKey : MusicKey;
+            bool next = PlayerPrefs.GetInt(key, 1) == 0;
+            PlayerPrefs.SetInt(key, next ? 1 : 0);
+            PlayerPrefs.Save();
+            if (sfx) UiSound.SetMuted(!next); else BackgroundMusic.SetMuted(!next);
+            RefreshSoundIcons();
+        }
+
+        void RefreshSoundIcons()
+        {
+            if (settingsMenu == null) return;
+            foreach (var button in settingsMenu.GetComponentsInChildren<Button>(true))
             {
-                bool next = PlayerPrefs.GetInt(MusicKey, 1) == 0;
-                PlayerPrefs.SetInt(MusicKey, next ? 1 : 0);
-                PlayerPrefs.Save();
-                BackgroundMusic.SetMuted(!next);
-                ShowSettings();
-            });
+                string name = button.name.Trim();
+                if (name != "SFX" && name != "Music") continue;
+                bool enabled = PlayerPrefs.GetInt(name == "SFX" ? SfxKey : MusicKey, 1) != 0;
+                var on = button.transform.Find("On");
+                var off = button.transform.Find("Off");
+                if (on != null) on.gameObject.SetActive(enabled);
+                if (off != null) off.gameObject.SetActive(!enabled);
+            }
         }
 
         void ShowProfile()
@@ -303,7 +273,7 @@ namespace AvatarWorld.Runtime
             scroll.content = content;
             scroll.horizontal = false;
             scroll.movementType = ScrollRect.MovementType.Clamped;
-            var close = MakeButton(card.transform, "Voltar à home", Close);
+            var close = MakeButton(card.transform, "Voltar", Close);
             Stretch((RectTransform)close.transform, new Vector2(0.1f, 0.025f), new Vector2(0.9f, 0.13f));
             // O ScrollRect ocupa quase todo o Card. Garante que o botão permaneça no topo
             // da ordem de raycast depois de criar a máscara/viewport.
@@ -373,7 +343,8 @@ namespace AvatarWorld.Runtime
 
         void Update()
         {
-            if (panel == null || !panel.activeSelf) return;
+            bool settingsOpen = settingsMenu != null && settingsMenu.activeSelf;
+            if ((panel == null || !panel.activeSelf) && !settingsOpen) return;
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
             if (UnityEngine.InputSystem.Keyboard.current != null &&
                 UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame) Close();

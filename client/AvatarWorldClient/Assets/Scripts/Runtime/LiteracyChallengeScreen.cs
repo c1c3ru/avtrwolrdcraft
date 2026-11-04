@@ -46,6 +46,8 @@ namespace AvatarWorld.Runtime
         int _sessionCoinsEarned;
         System.Action _onProgress;
         System.Action _onClose;
+        /// <summary>Ordem do Canvas; a loja (800) usa um valor maior para os desafios aparecerem por cima.</summary>
+        public int SortingOrder = 10;
         System.Random _rng = new System.Random();
 
         GameObject _root;
@@ -123,7 +125,7 @@ namespace AvatarWorld.Runtime
             // Canvas raiz separado do da Home: sem sortingOrder explicito, a ordem entre dois Canvas
             // ScreenSpaceOverlay no mesmo order(0) nao e garantida - podia renderizar atras da Home
             // (clique funcionava, tela so nao aparecia por cima).
-            _root.GetComponent<Canvas>().sortingOrder = 10;
+            _root.GetComponent<Canvas>().sortingOrder = SortingOrder;
             _prompt = objs[promptIdx].GetComponent<TextMeshProUGUI>();
             _feedback = objs[feedbackIdx].GetComponent<TextMeshProUGUI>();
             _coins = objs[coinsIdx].GetComponent<TextMeshProUGUI>();
@@ -195,7 +197,7 @@ namespace AvatarWorld.Runtime
             };
             var objs = UiSceneBuilder.Build(desc, LoadIcon, actions, transform);
             _root = objs[0];
-            _root.GetComponent<Canvas>().sortingOrder = 10;
+            _root.GetComponent<Canvas>().sortingOrder = SortingOrder;
         }
 
         void Close()

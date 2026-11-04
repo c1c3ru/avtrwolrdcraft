@@ -21,6 +21,7 @@ namespace AvatarWorld.Runtime
 
         Action _onBack;
         Action _onOpenBasketball;
+        Action _onOpenSlots;
         Camera _camera;
         WorldMapData _data;
         RectTransform _backRect;
@@ -31,6 +32,13 @@ namespace AvatarWorld.Runtime
         float _pressTime;
         bool _movedTooFar;
         bool _opening;
+        int _weather;
+        readonly List<SpriteRenderer> _weatherRenderers = new List<SpriteRenderer>();
+        readonly List<int> _weatherRendererIndex = new List<int>();
+        readonly List<RectTransform> _uiRects = new List<RectTransform>();
+        readonly Dictionary<int, RectTransform> _weatherIcons = new Dictionary<int, RectTransform>();
+        RectTransform _weatherPill;
+        readonly Dictionary<string, Sprite> _uiSprites = new Dictionary<string, Sprite>();
         const int SpritesPerFrame = 24;
         readonly Dictionary<string, Texture2D> _textures = new Dictionary<string, Texture2D>();
 
@@ -38,13 +46,15 @@ namespace AvatarWorld.Runtime
         public Camera MapCamera => _camera;
 
         /// <summary>Monta o mapa em varios quadros; onReady dispara quando tudo esta pronto (esconde o loading).</summary>
-        public void Begin(Action onBack, Action onOpenBasketball, Action onReady = null)
+        public void Begin(Action onBack, Action onOpenBasketball, Action onReady = null, Action onOpenSlots = null)
         {
+            _onOpenSlots = onOpenSlots;
             _onBack = onBack;
             _onOpenBasketball = onOpenBasketball;
             var json = Resources.Load<TextAsset>(DataResource);
             if (json == null) throw new InvalidOperationException("WorldSlice/world.json ausente em Resources");
             _data = JsonUtility.FromJson<WorldMapData>(json.text);
+            _weather = LoadWeather();
             BuildCamera();
             BuildOverlay();
             StartCoroutine(BuildSprites(onReady));
@@ -101,7 +111,13 @@ namespace AvatarWorld.Runtime
                 renderer.flipX = r.flipX != (r.sx < 0f);
                 renderer.flipY = r.flipY != (r.sy < 0f);
                 renderer.color = new Color(r.color[0], r.color[1], r.color[2], r.color[3]);
+                if (r.weathers != null && r.weathers.Length > 0)
+                {
+                    _weatherRenderers.Add(renderer);
+                    _weatherRendererIndex.Add(built - 1);
+                }
             }
+            ApplyWeather(_weather);
             Debug.Log("WorldMap: " + _data.renderers.Count + " elementos, " + _data.buildings.Count + " predios");
             onReady?.Invoke();
         }
@@ -149,6 +165,110 @@ namespace AvatarWorld.Runtime
             var shadow = toast.AddComponent<Outline>();
             shadow.effectColor = new Color(0.2f, 0.1f, 0.3f, 1f);
             _toast.enabled = false;
+
+            BuildTopBar(root.transform);
+        }
+
+        static int LoadWeather()
+        {
+            try
+            {
+                int saved = PlayerPrefs.GetInt(WorldWeather.PrefsKey, WorldWeather.Clear);
+                return WorldWeather.IsSupported(saved) ? saved : WorldWeather.Clear;
+            }
+            catch (Exception) { return WorldWeather.Clear; }
+        }
+
+        void ApplyWeather(int weather)
+        {
+            _weather = weather;
+            for (int i = 0; i < _weatherRenderers.Count; i++)
+                _weatherRenderers[i].enabled = _data.renderers[_weatherRendererIndex[i]].VisibleIn(weather);
+            foreach (var pair in _weatherIcons)
+            {
+                bool selected = pair.Key == weather;
+                pair.Value.localScale = Vector3.one * (selected ? 1.3f : 0.95f);
+                pair.Value.GetComponent<Image>().color = selected ? Color.white : new Color(1f, 1f, 1f, 0.7f);
+            }
+        }
+
+        void SetWeather(int weather)
+        {
+            if (weather == _weather) return;
+            ApplyWeather(weather);
+            try { PlayerPrefs.SetInt(WorldWeather.PrefsKey, weather); PlayerPrefs.Save(); } catch (Exception) { }
+        }
+
+        Sprite UiSprite(string name, Vector4 border = default)
+        {
+            if (_uiSprites.TryGetValue(name, out var cached)) return cached;
+            var tex = Resources.Load<Texture2D>("WorldSlice/ui/" + name);
+            if (tex == null) { Debug.LogWarning("WorldMap: arte de UI ausente " + name); return null; }
+            var sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f, 0,
+                SpriteMeshType.FullRect, border);
+            _uiSprites[name] = sprite;
+            return sprite;
+        }
+
+        RectTransform MakeUiButton(Transform parent, string name, string art, Vector2 anchor, Vector2 pivot, Vector2 position,
+            Vector2 size, Action onClick, Vector4 border = default)
+        {
+            var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
+            go.transform.SetParent(parent, false);
+            var rect = (RectTransform)go.transform;
+            rect.anchorMin = rect.anchorMax = anchor;
+            rect.pivot = pivot;
+            rect.anchoredPosition = position;
+            rect.sizeDelta = size;
+            var image = go.GetComponent<Image>();
+            image.sprite = UiSprite(art, border);
+            if (border != default) image.type = Image.Type.Sliced;
+            go.GetComponent<Button>().targetGraphic = image;
+            if (onClick != null) go.GetComponent<Button>().onClick.AddListener(() => { UiSound.PlayClick(); onClick(); });
+            else image.raycastTarget = false;
+            return rect;
+        }
+
+        /// <summary>
+        /// Barra superior do mapa (WorldCanvas/ZV_Navigation_Bar do original): botao de clima que abre as opcoes
+        /// sol/chuva/neve, globo, avatar+ e editar casa. Posicoes em unidades do canvas 2048x1024 (print 16.08.14).
+        /// Globo, avatar+ e editar casa ainda nao tem funcionalidade offline: mostram um aviso.
+        /// </summary>
+        void BuildTopBar(Transform root)
+        {
+            var topLeft = new Vector2(0, 1);
+            var topRight = new Vector2(1, 1);
+            var half = new Vector2(0, 0.5f);
+            var center = new Vector2(0.5f, 0.5f);
+
+            // Opcoes de clima: pilula (sprite fatiado) com os tres icones; o botao de clima abre/fecha.
+            _weatherPill = MakeUiButton(root, "WeatherPill", "weather_pill", topLeft, half, new Vector2(330f, -91f),
+                new Vector2(400f, 114f), null, new Vector4(57f, 0f, 57f, 0f));
+            var options = new[] { (WorldWeather.Clear, "weather_clear"), (WorldWeather.Rain, "weather_rain"), (WorldWeather.Snow, "weather_snow") };
+            float x = 75f;
+            foreach (var (weather, art) in options)
+            {
+                int value = weather;
+                var icon = MakeUiButton(_weatherPill, "Weather_" + art, art, half, center, new Vector2(x + 25f, 0f),
+                    new Vector2(98f, 96f), () => SetWeather(value));
+                _weatherIcons[weather] = icon;
+                x += 125f;
+            }
+            _weatherPill.gameObject.SetActive(false);
+            var toggle = MakeUiButton(root, "WeatherToggle", "weather_toggle", topLeft, center, new Vector2(268f, -91f),
+                new Vector2(146f, 143f), () => _weatherPill.gameObject.SetActive(!_weatherPill.gameObject.activeSelf));
+            var globe = MakeUiButton(root, "WorldButton", "globe", topLeft, center, new Vector2(444f, -91f),
+                new Vector2(146f, 143f), () => ShowToast("Os outros mundos ainda não estão disponíveis."));
+            var avatar = MakeUiButton(root, "AddAvatarButton", "add_avatar", topRight, center, new Vector2(-242.5f, -91f),
+                new Vector2(146f, 143f), () =>
+                {
+                    if (_onOpenSlots != null) _onOpenSlots();
+                    else ShowToast("Adicionar avatares ainda não está disponível.");
+                });
+            var house = MakeUiButton(root, "EditHouseButton", "edit_house", topRight, center, new Vector2(-92.5f, -91f),
+                new Vector2(146f, 143f), () => ShowToast("Editar a casa ainda não está disponível."));
+            _uiRects.AddRange(new[] { toggle, globe, avatar, house });
+            ApplyWeather(_weather);
         }
 
         void Update()
@@ -179,8 +299,14 @@ namespace AvatarWorld.Runtime
             }
         }
 
-        bool IsOverBack(Vector2 screen) =>
-            _backRect != null && RectTransformUtility.RectangleContainsScreenPoint(_backRect, screen, null);
+        bool IsOverBack(Vector2 screen)
+        {
+            if (_backRect != null && RectTransformUtility.RectangleContainsScreenPoint(_backRect, screen, null)) return true;
+            foreach (var rect in _uiRects)
+                if (RectTransformUtility.RectangleContainsScreenPoint(rect, screen, null)) return true;
+            return _weatherPill != null && _weatherPill.gameObject.activeSelf &&
+                   RectTransformUtility.RectangleContainsScreenPoint(_weatherPill, screen, null);
+        }
 
         void OnTap(Vector2 screen)
         {

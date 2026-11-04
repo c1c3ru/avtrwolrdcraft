@@ -14,11 +14,35 @@ namespace AvatarWorld.Core.Tests
         public void Data_HasRenderersWithUniqueDrawRanksAndExistingSprites()
         {
             var data = Load();
-            Assert.AreEqual(311, data.renderers.Count);
+            Assert.AreEqual(591, data.renderers.Count);
             Assert.AreEqual(data.renderers.Count, data.renderers.Select(r => r.rank).Distinct().Count());
             foreach (var name in data.renderers.Select(r => r.sprite).Distinct())
                 Assert.IsNotNull(Resources.Load<Texture2D>("WorldSlice/sprites/" + name), name);
             Assert.IsNotNull(Resources.Load<Texture2D>("WorldSlice/back_button"));
+        }
+
+        [Test]
+        public void Weather_VisibilityFollowsTheOriginalSupportedWeatherList()
+        {
+            var always = new WorldRendererData();
+            Assert.IsTrue(always.VisibleIn(WorldWeather.Clear) && always.VisibleIn(WorldWeather.Snow));
+            var snowOnly = new WorldRendererData { weathers = new[] { WorldWeather.Snow } };
+            Assert.IsTrue(snowOnly.VisibleIn(WorldWeather.Snow));
+            Assert.IsFalse(snowOnly.VisibleIn(WorldWeather.Clear));
+            Assert.IsFalse(snowOnly.VisibleIn(WorldWeather.Rain));
+            Assert.IsTrue(WorldWeather.IsSupported(WorldWeather.Rain));
+            Assert.IsFalse(WorldWeather.IsSupported(8), "Halloween e evento, fora do mapa");
+        }
+
+        [Test]
+        public void Data_HasRainAndSnowVariantsAndTheTopBarArt()
+        {
+            var data = Load();
+            Assert.Greater(data.renderers.Count(r => r.weathers != null && r.weathers.Contains(WorldWeather.Rain)), 0);
+            Assert.Greater(data.renderers.Count(r => r.weathers != null && r.weathers.Contains(WorldWeather.Snow)), 0);
+            Assert.Greater(data.renderers.Count(r => r.VisibleIn(WorldWeather.Clear)), 300, "mapa de tempo limpo completo");
+            foreach (var art in new[] { "weather_toggle", "weather_pill", "weather_clear", "weather_rain", "weather_snow", "globe", "add_avatar", "edit_house" })
+                Assert.IsNotNull(Resources.Load<Texture2D>("WorldSlice/ui/" + art), art);
         }
 
         [Test]

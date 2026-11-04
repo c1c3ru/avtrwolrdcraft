@@ -151,15 +151,14 @@ def main(argv=None):
         if 'night' in entry['file'].lower() or 'night' in go_name.get(gid, '').lower():
             skipped['night variant (name heuristic)'] += 1
             continue
-        if pid in weather and args.weather not in weather[pid]:
-            skipped['weather'] += 1
-            continue
         c = d['m_Color']
         rows.append({'go': go_name.get(gid, ''), 'go_id': gid, 'sprite': entry['file'], 'size': entry['size'],
                      'x': wx, 'y': wy, 'z': wz, 'sx': sx, 'sy': sy, 'rot': rot,
                      'order': d['m_SortingOrder'], 'sortPath': sort_path(gid, d['m_SortingOrder'], wz), 'color': [c['r'], c['g'], c['b'], c['a']],
                      'flipX': bool(d['m_FlipX']), 'flipY': bool(d['m_FlipY']), 'drawMode': d['m_DrawMode'],
-                     'drawSize': [d['m_Size']['x'], d['m_Size']['y']]})
+                     'drawSize': [d['m_Size']['x'], d['m_Size']['y']],
+                     # LevelSpriteRendererVisibleByWeather: vazio = sempre visivel; senao so nos climas listados
+                     'weathers': sorted(weather[pid]) if pid in weather else []})
 
     # Buildings that ship an under-construction variant ("_UC_") show it instead of the day-mode art
     # (not released in 1.227: construction tape in the original map). Both are active in the static export.
