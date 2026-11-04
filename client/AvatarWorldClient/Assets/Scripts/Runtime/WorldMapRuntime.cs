@@ -211,6 +211,7 @@ namespace AvatarWorld.Runtime
             Vector3 world = _camera.ScreenToWorldPoint(new Vector3(screen.x, screen.y, 10f));
             var building = _data.HitTest(world);
             if (building == null) return;
+            StartCoroutine(PulseBuilding(building));
             if (building.IsBasketball)
             {
                 UiSound.PlayClick();
@@ -220,6 +221,38 @@ namespace AvatarWorld.Runtime
             ShowToast(building.defaultLevel == 0
                 ? "Este lugar ainda está em obras."
                 : "Este lugar ainda não está disponível.");
+        }
+
+        /// <summary>
+        /// Feedback de toque: escurece por um instante os sprites que ficam dentro da caixa do predio
+        /// (os renderers nao carregam o id do predio; sprites bem maiores que a caixa, como o fundo, ficam de fora).
+        /// </summary>
+        System.Collections.IEnumerator PulseBuilding(WorldBuildingData building)
+        {
+            var targets = new List<SpriteRenderer>();
+            var originals = new List<Color>();
+            float w = building.x1 - building.x0, h = building.y1 - building.y0;
+            foreach (var r in GetComponentsInChildren<SpriteRenderer>())
+            {
+                var p = r.transform.position;
+                if (p.x < building.x0 || p.x > building.x1 || p.y < building.y0 || p.y > building.y1) continue;
+                var size = r.bounds.size;
+                if (size.x > w * 1.5f || size.y > h * 1.5f) continue;
+                targets.Add(r); originals.Add(r.color);
+            }
+            const float down = 0.06f, up = 0.12f, minShade = 0.7f; // total < FadeSeconds: termina antes do mapa ser desativado
+            for (float t = 0f; t < down + up; t += Time.unscaledDeltaTime)
+            {
+                float shade = t < down ? Mathf.Lerp(1f, minShade, t / down) : Mathf.Lerp(minShade, 1f, (t - down) / up);
+                for (int i = 0; i < targets.Count; i++)
+                {
+                    if (targets[i] == null) continue;
+                    var o = originals[i];
+                    targets[i].color = new Color(o.r * shade, o.g * shade, o.b * shade, o.a);
+                }
+                yield return null;
+            }
+            for (int i = 0; i < targets.Count; i++) if (targets[i] != null) targets[i].color = originals[i];
         }
 
         void ShowToast(string message)
