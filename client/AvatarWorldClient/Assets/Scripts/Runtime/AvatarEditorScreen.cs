@@ -43,6 +43,7 @@ namespace AvatarWorld.Runtime
             new CategoryView { key = AvatarCatalog.CategoryShoes,     art = "shoes",     centerY = 0.30f, half = 0.70f },
             new CategoryView { key = AvatarCatalog.CategoryAccessory, art = "accessory", centerY = 3.10f, half = 1.30f },
             new CategoryView { key = AvatarCatalog.CategoryMouth,     art = "mouth",     centerY = 2.75f, half = 0.70f },
+            new CategoryView { key = AvatarCatalog.CategoryHairBack,  art = "hair",      centerY = 3.30f, half = 1.60f },
             new CategoryView { key = AvatarCatalog.CategoryEyebrows,  art = "eyebrows",  centerY = 3.50f, half = 0.70f },
         };
 
@@ -71,6 +72,8 @@ namespace AvatarWorld.Runtime
         ScrollRect _scroll;
         GridLayoutGroup _gridLayout;
         RectTransform _colorsColumn;
+        GameObject _hairTabs;
+        readonly Dictionary<string, Image> _hairTabButtons = new Dictionary<string, Image>();
         readonly Dictionary<int, Image> _itemColorRings = new Dictionary<int, Image>();
 
         public string Category => _category;
@@ -208,6 +211,7 @@ namespace AvatarWorld.Runtime
             layout.padding = new RectOffset(4, 4, 8, 24);
             _grid.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             BuildColorsColumn();
+            BuildHairTabs();
             _scroll = viewport.GetComponent<ScrollRect>();
             _scroll.viewport = vr; _scroll.content = _grid;
             _scroll.horizontal = false; _scroll.vertical = true;
@@ -226,16 +230,55 @@ namespace AvatarWorld.Runtime
 
         // ---------- categorias e grade ----------
 
+        static string MenuKeyOf(string category) => category == AvatarCatalog.CategoryHairBack ? AvatarCatalog.CategoryHair : category;
+
         public void SelectCategory(string category)
         {
             _category = category;
+            if (_hairTabs != null) _hairTabs.SetActive(MenuKeyOf(category) == AvatarCatalog.CategoryHair);
+            RefreshHairTabs();
             foreach (var entry in MenuCategories)
             {
-                bool selected = entry.key == category;
+                bool selected = entry.key == MenuKeyOf(category);
                 _categoryButtons[entry.key].sprite = Art("AvatarMaker/cat_" + entry.art + (selected ? "_sel" : ""));
                 _panel.Find("Indicator_" + entry.key).gameObject.SetActive(selected);
             }
             RebuildGrid();
+        }
+
+        // Subcategorias de Cabelo (Subcategories do CharacterMenu): frente (skins Hair_Front) e atras (coques, rabos).
+        void BuildHairTabs()
+        {
+            _hairTabs = new GameObject("HairTabs", typeof(RectTransform));
+            _hairTabs.transform.SetParent(_panel, false);
+            var rect = (RectTransform)_hairTabs.transform;
+            rect.anchorMin = rect.anchorMax = new Vector2(0, 1);
+            rect.pivot = new Vector2(0, 1);
+            rect.anchoredPosition = new Vector2(146f, -14f);
+            rect.sizeDelta = new Vector2(520f, 84f);
+            var tabs = new[] { (AvatarCatalog.CategoryHair, "Frente"), (AvatarCatalog.CategoryHairBack, "Atrás") };
+            for (int i = 0; i < tabs.Length; i++)
+            {
+                string key = tabs[i].Item1;
+                var tab = NewImage("Tab_" + key, _hairTabs.transform, Art("AvatarMaker/indicator"), Color.white);
+                tab.type = Image.Type.Sliced;
+                tab.raycastTarget = true;
+                Place(tab.rectTransform, new Vector2(0, 0.5f), new Vector2(120f + i * 250f, 0f), new Vector2(230f, 76f));
+                var button = tab.gameObject.AddComponent<Button>();
+                button.targetGraphic = tab;
+                button.onClick.AddListener(() => { UiSound.PlayClick(); SelectCategory(key); });
+                var label = NewText("Label", tab.transform, 34, new Color(0.35f, 0.12f, 0.45f));
+                Stretch(label.rectTransform);
+                label.text = tabs[i].Item2;
+                _hairTabButtons[key] = tab;
+            }
+            _hairTabs.SetActive(false);
+        }
+
+        void RefreshHairTabs()
+        {
+            foreach (var pair in _hairTabButtons)
+                pair.Value.color = pair.Key == _category ? new Color(1f, 0.58f, 0.82f) : new Color(1f, 0.9f, 0.95f);
         }
 
         // Coluna de cores (paleta General) a direita do menu, como o CharacterMenu/Colors do original; so aparece
@@ -292,7 +335,7 @@ namespace AvatarWorld.Runtime
         void ChooseItemColor(int index)
         {
             if (_avatar == null || !_avatar.IsReady) return;
-            _avatar.SelectItemColor(_category, index);
+            _avatar.SelectItemColor(AvatarCatalog.ColorKey(_category), index);
             _history.Push(_avatar.CurrentAppearance);
             RefreshSelection();
             RefreshHistoryButtons();
@@ -306,7 +349,7 @@ namespace AvatarWorld.Runtime
             _colorsColumn.gameObject.SetActive(show);
             if (!show) return;
             EnsureColorSwatches();
-            int selected = _avatar.CurrentAppearance.GetItemColor(_category);
+            int selected = _avatar.CurrentAppearance.GetItemColor(AvatarCatalog.ColorKey(_category));
             foreach (var pair in _itemColorRings) pair.Value.color = pair.Key == selected ? new Color(1f, 0.25f, 0.65f) : Color.white;
         }
 

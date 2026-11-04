@@ -26,7 +26,10 @@ namespace AvatarWorld.Runtime
     /// </summary>
     public sealed class AvatarGpuRuntime : MonoBehaviour
     {
-        [Serializable] class ManifestPiece { public string template; public string file; }
+        // skin: nome do skin do esqueleto quando difere de template (cabelo da frente: Hair_Front/N_Color); template sempre da a pagina.
+        [Serializable] class ManifestPiece { public string template; public string file; public string skin; }
+
+        static string SkinOf(ManifestPiece piece) => string.IsNullOrEmpty(piece.skin) ? piece.template : piece.skin;
         [Serializable] class ManifestItem { public string id; public List<ManifestPiece> pieces; }
         [Serializable] class Manifest { public List<ManifestItem> items; }
 
@@ -68,6 +71,8 @@ namespace AvatarWorld.Runtime
         Shader _shader;
 
         readonly List<Category> _categories = new List<Category> {
+            new Category { key = AvatarCatalog.CategoryHair, label = "Cabelo", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHair] },
+            new Category { key = AvatarCatalog.CategoryHairBack, label = "Cabelo atras", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHairBack] },
             new Category { key = AvatarCatalog.CategoryShirt, label = "Camisa", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShirt] },
             new Category { key = AvatarCatalog.CategoryBottom, label = "Calca", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryBottom] },
             new Category { key = AvatarCatalog.CategoryShoes, label = "Sapato", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShoes] },
@@ -275,9 +280,9 @@ namespace AvatarWorld.Runtime
             if (_itemsById.TryGetValue(itemId, out var item))
             {
                 ok = item.pieces.Count > 0;
-                if (ok) foreach (var piece in item.pieces) if (_skeletonData.FindSkin(piece.template) == null) { ok = false; break; }
+                if (ok) foreach (var piece in item.pieces) if (_skeletonData.FindSkin(SkinOf(piece)) == null) { ok = false; break; }
             }
-            else ok = _skeletonData.FindSkin(itemId) != null; // cabelo: o ID e o proprio skin do esqueleto
+            else ok = false;
             _available[itemId] = ok;
             return ok;
         }
@@ -395,16 +400,15 @@ namespace AvatarWorld.Runtime
             AddSkin(_skeletonData, skin, tints, "Body_Other/Body_Other", Color.white);
             AddSkin(_skeletonData, skin, tints, "Eyes/1_Color", ToColor(eyeEntry.colors[0].c));
             AddSkin(_skeletonData, skin, tints, "Eyes/1_Color-p", Color.white);
-            AddSkin(_skeletonData, skin, tints, Appearance.HairId, new Color(0.31f, 0.16f, 0.12f));
 
             foreach (var category in _categories)
             {
                 if (!_itemsById.TryGetValue(Appearance.Get(category.key), out var item)) continue; // item embutido (boca padrao)
                 LoadItemTextures(item);
                 // Itens _color: tinta Multiply com a cor escolhida na paleta General (AvatarSpineSkinsColoringConfigs: Single/Multiply).
-                var tint = AvatarCatalog.IsColorItem(item.id) ? GeneralColor(Appearance.GetItemColor(category.key)) : Color.white;
+                var tint = AvatarCatalog.IsColorItem(item.id) ? GeneralColor(Appearance.GetItemColor(AvatarCatalog.ColorKey(category.key))) : Color.white;
                 foreach (var piece in item.pieces)
-                    AddSkin(_skeletonData, skin, tints, piece.template, tint);
+                    AddSkin(_skeletonData, skin, tints, SkinOf(piece), tint);
             }
 
             _skeletonAnimation.skeleton.SetSkin(skin);
@@ -418,7 +422,7 @@ namespace AvatarWorld.Runtime
                 if (AvatarCatalog.IsBuiltIn(Appearance.Get(category.key)) || !_itemsById.TryGetValue(Appearance.Get(category.key), out var placed)) continue;
                 foreach (var piece in placed.pieces)
                 {
-                    var templateSkin = _skeletonData.FindSkin(piece.template);
+                    var templateSkin = _skeletonData.FindSkin(SkinOf(piece));
                     if (templateSkin == null) continue;
                     foreach (var entry in templateSkin.Attachments)
                     {
