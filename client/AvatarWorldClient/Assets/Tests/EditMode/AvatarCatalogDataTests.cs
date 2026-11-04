@@ -18,7 +18,7 @@ namespace AvatarWorld.Core.Tests
         [Test]
         public void ClothingCategoriesOfferManyUniqueOptionsAndKeepTheOriginalDefaults()
         {
-            foreach (var category in new[] { AvatarCatalog.CategoryShirt, AvatarCatalog.CategoryBottom, AvatarCatalog.CategoryShoes, AvatarCatalog.CategoryAccessory })
+            foreach (var category in new[] { AvatarCatalog.CategoryShirt, AvatarCatalog.CategoryBottom, AvatarCatalog.CategoryShoes, AvatarCatalog.CategoryAccessory, AvatarCatalog.CategoryMouth })
             {
                 var ids = AvatarCatalog.OptionsByCategory[category];
                 Assert.GreaterOrEqual(ids.Length, 100, category);
@@ -28,6 +28,7 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual("bottom_special_1", AvatarCatalog.DefaultOption(AvatarCatalog.CategoryBottom));
             Assert.AreEqual("legs_shoes_1", AvatarCatalog.DefaultOption(AvatarCatalog.CategoryShoes));
             Assert.AreEqual("accessories_face_glasses_1", AvatarCatalog.DefaultOption(AvatarCatalog.CategoryAccessory));
+            Assert.AreEqual(AvatarCatalog.MouthDefault, AvatarCatalog.DefaultOption(AvatarCatalog.CategoryMouth));
         }
 
         [Test]
@@ -50,7 +51,7 @@ namespace AvatarWorld.Core.Tests
             var manifest = LoadManifest();
             var byId = manifest.items.ToDictionary(i => i.id);
             foreach (var category in AvatarCatalog.OptionsByCategory.Keys.Where(c => c != AvatarCatalog.CategoryHair))
-                foreach (var id in AvatarCatalog.OptionsByCategory[category])
+                foreach (var id in AvatarCatalog.OptionsByCategory[category].Where(i => !AvatarCatalog.IsBuiltIn(i)))
                 {
                     Assert.IsTrue(byId.TryGetValue(id, out var item), id + " ausente do manifesto");
                     Assert.Greater(item.pieces.Count, 0, id);

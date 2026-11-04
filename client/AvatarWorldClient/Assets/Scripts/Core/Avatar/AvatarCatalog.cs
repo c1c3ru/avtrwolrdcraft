@@ -17,6 +17,11 @@ namespace AvatarWorld.Core.Avatar
         public const string CategoryBottom = "Bottom";
         public const string CategoryShoes = "Shoes";
         public const string CategoryAccessory = "Accessory";
+        public const string CategoryMouth = "Mouth";
+        /// <summary>Id da boca embutida no esqueleto (Body_Outline/Mouth_Regular): nao e um item do SUT, nao tem textura propria.</summary>
+        public const string MouthDefault = "mouth_default";
+
+        public static bool IsBuiltIn(string itemId) => itemId == MouthDefault;
         /// <summary>Categorias de cor (paletas oficiais): o valor e um indice em AvatarPalette, nao um item.</summary>
         public const string CategorySkin = "Skin";
         public const string CategoryEyes = "Eyes";
@@ -36,6 +41,7 @@ namespace AvatarWorld.Core.Avatar
             { CategoryBottom, AvatarCatalogData.Bottom },
             { CategoryShoes, AvatarCatalogData.Shoes },
             { CategoryAccessory, AvatarCatalogData.Accessory },
+            { CategoryMouth, AvatarCatalogData.Mouth },
         };
 
         public static string DefaultOption(string category) => OptionsByCategory[category][0];
