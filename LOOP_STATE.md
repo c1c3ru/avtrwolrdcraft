@@ -286,8 +286,8 @@
 **Estado verificado no aparelho (2026-11-04):** editor com layout do original (CharacterMenu), 400 itens reais (100 camisas/calças/sapatos/acessórios; `tools/avatar_catalog_build.py`), texturas carregadas sob demanda, miniaturas geradas do próprio avatar (~27 ms cada), atlas 2172/2172 sem avisos, 109 testes EditMode. Bug resolvido: texturas novas sem Read/Write (`ClothingTextureImporter`).
 
 **Critério de conclusão (todos verificados no aparelho):**
-- [~] C1 Cores: tom de pele (62) e cor dos olhos (33) com paletas oficiais — OK no aparelho (ciclo 1). Falta: itens `_color` de roupa com tint (config `AvatarSpineSkinsDefaultColors_*` + paleta General) e coluna de cores por categoria.
-- [~] C2 Rosto/cabelo: olhos com cor, tom de pele (ciclo 1) e boca (100 opções, ciclo 2) OK no aparelho. Falta: cabelo frente+trás (188 itens), sobrancelhas.
+- [~] C1 Cores: pele (62), olhos (33) e itens `_color` por tinta Multiply com a paleta General (115) + coluna de cores no menu — OK no aparelho para sobrancelhas (ciclos 1 e 3). Falta: roupas `_color` e cabelo usarem a mesma coluna (estender o catálogo para esses itens).
+- [~] C2 Rosto/cabelo: olhos com cor, tom de pele (ciclo 1) e boca (100 opções, ciclo 2) OK no aparelho. Sobrancelhas (74, `_color` com tinta) OK no aparelho (ciclo 3). Falta: cabelo frente+trás (188 itens).
 - [ ] C3 Categorias restantes: chapéu, jaqueta, vestido, meias (modelo de save estendido, migração do save antigo).
 - [ ] C4 Slots: vários avatares persistidos (adicionar/trocar/apagar).
 - [ ] C5 Menu: subcategorias e marcas; miniaturas sem artefatos.
@@ -302,3 +302,4 @@
   - Óculos "duplos" NÃO é bug: o atlas `Glasses_5` tem uma região só com 2 pares desenhados (probe `AvatarAssetProbe`, inventário em `out/avatar-spine-inventory.json`).
 - (ciclo 2) Boca: `AvatarAppearance.MouthId` (padrão `mouth_default` = anexo embutido), 99 bocas SUT via `tools/avatar_catalog_build.py` (suporta pastas de 3 níveis), skin `Templates/Mouth_N` + `SetAttachment("Mouths","Mouths")`. EditMode 113/113. Aparelho: 100 miniaturas (~26 ms cada), troca ao vivo, desfazer ativo.
   - Próximo (ciclo 3): sobrancelhas e cabelo (`_color`) → exige tint por item (config `AvatarSpineSkinsDefaultColors_*` + paleta General) e coluna de cores.
+- (ciclo 3) Sobrancelhas + cor por item: `AvatarAppearance.EyebrowsId` e `ItemColors` (lista Categoria/Índice, padrão = marrom escuro da paleta General), tinta Multiply por item `_color`, coluna de cores (visível só quando o item aceita tinta). Tentativa 1 falhou no aparelho (avatar desbotado): `SetAttachment("Eyebrows_L",...)` lançava `Attachment not found` em itens de um só lado e abortava a tinta; tentativa 2: ligar só os anexos do skin do próprio item → OK (sobrancelhas vermelhas visíveis sem os óculos levantados, que as cobrem). Capture de miniatura agora restaura o item anterior em `finally` (a falha deixava o estado preso e salvo). EditMode 115/115.

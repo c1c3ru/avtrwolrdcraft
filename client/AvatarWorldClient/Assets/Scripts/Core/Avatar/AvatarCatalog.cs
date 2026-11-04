@@ -18,10 +18,15 @@ namespace AvatarWorld.Core.Avatar
         public const string CategoryShoes = "Shoes";
         public const string CategoryAccessory = "Accessory";
         public const string CategoryMouth = "Mouth";
+        public const string CategoryEyebrows = "Eyebrows";
+        public const string EyebrowsDefault = "eyebrows_default";
         /// <summary>Id da boca embutida no esqueleto (Body_Outline/Mouth_Regular): nao e um item do SUT, nao tem textura propria.</summary>
         public const string MouthDefault = "mouth_default";
 
-        public static bool IsBuiltIn(string itemId) => itemId == MouthDefault;
+        public static bool IsBuiltIn(string itemId) => itemId == MouthDefault || itemId == EyebrowsDefault;
+
+        /// <summary>Itens _color recebem tinta (Multiply) escolhida na paleta General; os demais usam a textura como esta.</summary>
+        public static bool IsColorItem(string itemId) => itemId != null && itemId.EndsWith("_color", System.StringComparison.Ordinal);
         /// <summary>Categorias de cor (paletas oficiais): o valor e um indice em AvatarPalette, nao um item.</summary>
         public const string CategorySkin = "Skin";
         public const string CategoryEyes = "Eyes";
@@ -42,6 +47,7 @@ namespace AvatarWorld.Core.Avatar
             { CategoryShoes, AvatarCatalogData.Shoes },
             { CategoryAccessory, AvatarCatalogData.Accessory },
             { CategoryMouth, AvatarCatalogData.Mouth },
+            { CategoryEyebrows, AvatarCatalogData.Eyebrows },
         };
 
         public static string DefaultOption(string category) => OptionsByCategory[category][0];

@@ -35,7 +35,10 @@ CATEGORIES = {
     'Shoes': ['legs/legs_shoes'],
     'Accessory': ['accessories/accessories_face/accessories_face_glasses', 'accessories/accessories_body/accessories_body_neck'],
     'Mouth': ['mouth'],  # pasta de 3 niveis: mouth/<item>/<peca>
+    'Eyebrows': ['eyebrows'],  # idem; todos os itens sao _color (tinta pela paleta General)
 }
+THREE_LEVEL = {'mouth', 'eyebrows'}
+COLOR_CATEGORIES = {'Eyebrows'}  # categorias cujos itens _color entram (recebem tinta Multiply)
 # IDs que ja existiam (os padroes) continuam sendo os primeiros de cada categoria
 KEEP_FIRST = {
     'Shirt': ['shirt_formal_1', 'shirt_casual_1'],
@@ -44,8 +47,9 @@ KEEP_FIRST = {
     'Accessory': ['accessories_face_glasses_1', 'accessories_body_neck_1'],
     # boca padrao = o anexo embutido no esqueleto (Body_Outline/Mouth_Regular), nao e um item do SUT
     'Mouth': ['mouth_default'],
+    'Eyebrows': ['eyebrows_default'],
 }
-BUILT_IN = {'mouth_default'}
+BUILT_IN = {'mouth_default', 'eyebrows_default'}
 
 
 def png_size(path):
@@ -82,7 +86,7 @@ def main():
         if p[3] == 'accessories':
             if len(p) < 8: continue
             key, item, piece = '/'.join(p[3:6]), p[6], p[7]
-        elif p[3] == 'mouth':
+        elif p[3] in THREE_LEVEL:
             if len(p) < 6: continue
             key, item, piece = p[3], p[4], p[5]
         else:
@@ -107,7 +111,8 @@ def main():
         quota = max(args.per_category, len(ids))
         per_prefix = max(1, (quota - len(ids)) // len(prefixes))
         for prefix in prefixes:
-            candidates = sorted((it for (k, it) in groups if k == prefix and not re.search(r'(_color|_p)$', it)), key=natural)
+            skip = r'_p$' if category in COLOR_CATEGORIES else r'(_color|_p)$'
+            candidates = sorted((it for (k, it) in groups if k == prefix and not re.search(skip, it)), key=natural)
             taken = 0
             for item in candidates:
                 if item in ids: continue
@@ -117,7 +122,8 @@ def main():
         # segunda passada: conjuntos pequenos nao preenchem a cota; completa com os maiores
         for prefix in prefixes:
             if len(ids) >= quota: break
-            candidates = sorted((it for (k, it) in groups if k == prefix and not re.search(r'(_color|_p)$', it)), key=natural)
+            skip = r'_p$' if category in COLOR_CATEGORIES else r'(_color|_p)$'
+            candidates = sorted((it for (k, it) in groups if k == prefix and not re.search(skip, it)), key=natural)
             for item in candidates:
                 if len(ids) >= quota: break
                 if item in ids: continue

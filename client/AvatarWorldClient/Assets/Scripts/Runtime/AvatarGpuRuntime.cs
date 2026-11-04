@@ -38,6 +38,8 @@ namespace AvatarWorld.Runtime
 
         static Color ToColor(float[] c) => new Color(c[0], c[1], c[2], 1f);
 
+        Color GeneralColor(int index) => ToColor(_palettes.general[Mathf.Clamp(index, 0, _palettes.general.Count - 1)].display);
+
         static readonly string[] BodyTextureNames = {
             "MultiPack__Body_Outline_31883", "MultiPack__Body_Shadow_87873", "MultiPack__Body_Solid_99707",
             "MultiPack__Ear_Shadow_76723", "Eyes_01_1_Color_21563", "Eyes_01_1_P_18738",
@@ -71,6 +73,7 @@ namespace AvatarWorld.Runtime
             new Category { key = AvatarCatalog.CategoryShoes, label = "Sapato", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShoes] },
             new Category { key = AvatarCatalog.CategoryAccessory, label = "Acessorio", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryAccessory] },
             new Category { key = AvatarCatalog.CategoryMouth, label = "Boca", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryMouth] },
+            new Category { key = AvatarCatalog.CategoryEyebrows, label = "Sobrancelha", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryEyebrows] },
         };
         static readonly string[] HairOptions = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHair];
 
@@ -319,6 +322,17 @@ namespace AvatarWorld.Runtime
             RefreshMesh();
         }
 
+        /// <summary>Troca a cor (paleta General) dos itens _color de uma categoria. Nao grava.</summary>
+        public void SelectItemColor(string category, int index)
+        {
+            if (!IsReady || !Appearance.TrySelectItemColor(category, index)) return;
+            RebuildSkin();
+            RefreshMesh();
+        }
+
+        public int GeneralPaletteCount => _palettes != null ? _palettes.general.Count : 0;
+        public Color GeneralSwatch(int index) => _palettes != null ? GeneralColor(index) : Color.white;
+
         /// <summary>Cor de exibicao (amostra do menu) da entrada da paleta; branco se fora do intervalo.</summary>
         public Color PaletteSwatch(string category, int index)
         {
@@ -333,6 +347,7 @@ namespace AvatarWorld.Runtime
             foreach (var category in AvatarCatalog.OptionsByCategory.Keys) Appearance.TrySelect(category, appearance.Get(category));
             Appearance.TrySelectColor(AvatarCatalog.CategorySkin, appearance.SkinIndex);
             Appearance.TrySelectColor(AvatarCatalog.CategoryEyes, appearance.EyesIndex);
+            Appearance.ItemColors = appearance.Clone().ItemColors;
             RebuildSkin();
             RefreshMesh();
         }
@@ -386,14 +401,32 @@ namespace AvatarWorld.Runtime
             {
                 if (!_itemsById.TryGetValue(Appearance.Get(category.key), out var item)) continue; // item embutido (boca padrao)
                 LoadItemTextures(item);
+                // Itens _color: tinta Multiply com a cor escolhida na paleta General (AvatarSpineSkinsColoringConfigs: Single/Multiply).
+                var tint = AvatarCatalog.IsColorItem(item.id) ? GeneralColor(Appearance.GetItemColor(category.key)) : Color.white;
                 foreach (var piece in item.pieces)
-                    AddSkin(_skeletonData, skin, tints, piece.template, Color.white);
+                    AddSkin(_skeletonData, skin, tints, piece.template, tint);
             }
 
             _skeletonAnimation.skeleton.SetSkin(skin);
             _skeletonAnimation.skeleton.SetSlotsToSetupPose();
             // Boca: embutida no esqueleto por padrao; um item do SUT traz o proprio anexo "Mouths" (skin Templates/Mouth_N).
             _skeletonAnimation.skeleton.SetAttachment("Mouths", AvatarCatalog.IsBuiltIn(Appearance.MouthId) ? "Body_Outline/Mouth_Regular" : "Mouths");
+            // Pecas cujo slot nao tem anexo na pose inicial (sobrancelhas): liga o anexo que o proprio skin do item traz.
+            // Nao forca nomes fixos: itens podem ter so um lado, e SetAttachment lancaria excecao (pele ficaria sem tinta).
+            foreach (var category in _categories)
+            {
+                if (AvatarCatalog.IsBuiltIn(Appearance.Get(category.key)) || !_itemsById.TryGetValue(Appearance.Get(category.key), out var placed)) continue;
+                foreach (var piece in placed.pieces)
+                {
+                    var templateSkin = _skeletonData.FindSkin(piece.template);
+                    if (templateSkin == null) continue;
+                    foreach (var entry in templateSkin.Attachments)
+                    {
+                        var slot = _skeletonAnimation.skeleton.Slots.Items[entry.SlotIndex];
+                        if (slot.Attachment == null) slot.Attachment = entry.Attachment;
+                    }
+                }
+            }
             foreach (var slot in _skeletonAnimation.skeleton.Slots)
                 if (slot.Attachment != null && tints.TryGetValue(slot.Attachment, out var color))
                 { slot.R = color.r; slot.G = color.g; slot.B = color.b; }
