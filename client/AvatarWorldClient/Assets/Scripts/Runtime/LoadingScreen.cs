@@ -112,7 +112,7 @@ namespace AvatarWorld.Runtime
             nose.sizeDelta *= Scale;
 
             // Posicao do circulo nao decodificada: embaixo, centralizado.
-            _circle = Sprite("LoadingCircle", rootRect, "loading_circle", new Vector2(0.5f, 0f), new Vector2(0f, 150f));
+            _circle = Sprite("LoadingCircle", rootRect, "loading_circle", new Vector2(0.5f, 0f), new Vector2(0f, 60f));
             _circle.sizeDelta *= 0.6f;
         }
 
