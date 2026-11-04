@@ -30,6 +30,9 @@ namespace AvatarWorld.Runtime
         Vector2 _pressStart, _lastPos;
         float _pressTime;
         bool _movedTooFar;
+        Image _fade;
+        bool _opening;
+        const float FadeSeconds = 0.22f;
         readonly Dictionary<string, Texture2D> _textures = new Dictionary<string, Texture2D>();
 
         public WorldMapData Data => _data;
@@ -126,7 +129,7 @@ namespace AvatarWorld.Runtime
             var image = back.GetComponent<Image>();
             if (tex != null) image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f);
             back.GetComponent<Button>().targetGraphic = image;
-            back.GetComponent<Button>().onClick.AddListener(() => { UiSound.PlayClick(); _onBack?.Invoke(); });
+            back.GetComponent<Button>().onClick.AddListener(() => { if (_opening) return; UiSound.PlayClick(); _onBack?.Invoke(); });
 
             var toast = new GameObject("Toast", typeof(RectTransform), typeof(Text));
             toast.transform.SetParent(root.transform, false);
@@ -143,11 +146,39 @@ namespace AvatarWorld.Runtime
             var shadow = toast.AddComponent<Outline>();
             shadow.effectColor = new Color(0.2f, 0.1f, 0.3f, 1f);
             _toast.enabled = false;
+
+            // Cortina preta da transicao mapa <-> quadra.
+            var fade = new GameObject("Fade", typeof(RectTransform), typeof(Image));
+            fade.transform.SetParent(root.transform, false);
+            var fadeRect = (RectTransform)fade.transform;
+            fadeRect.anchorMin = Vector2.zero; fadeRect.anchorMax = Vector2.one;
+            fadeRect.offsetMin = fadeRect.offsetMax = Vector2.zero;
+            _fade = fade.GetComponent<Image>();
+            _fade.color = new Color(0, 0, 0, 0);
+            _fade.raycastTarget = false;
+        }
+
+        // O mapa e desativado enquanto a quadra esta aberta; ao reativar, clareia a cortina.
+        void OnEnable()
+        {
+            if (_fade != null) SetFade(1f);
+        }
+
+        void SetFade(float alpha)
+        {
+            var c = _fade.color; c.a = Mathf.Clamp01(alpha); _fade.color = c;
         }
 
         void Update()
         {
             if (_toast != null && _toast.enabled && Time.unscaledTime > _toastUntil) _toast.enabled = false;
+            if (_opening)
+            {
+                SetFade(_fade.color.a + Time.unscaledDeltaTime / FadeSeconds);
+                if (_fade.color.a >= 1f) { _opening = false; _pressing = false; _onOpenBasketball?.Invoke(); }
+                return;
+            }
+            if (_fade != null && _fade.color.a > 0f) SetFade(_fade.color.a - Time.unscaledDeltaTime / FadeSeconds);
             if (!ReadPointer(out bool down, out bool up, out bool held, out Vector2 position)) return;
 
             if (down && !IsOverBack(position))
@@ -183,7 +214,7 @@ namespace AvatarWorld.Runtime
             if (building.IsBasketball)
             {
                 UiSound.PlayClick();
-                _onOpenBasketball?.Invoke();
+                _opening = true;
                 return;
             }
             ShowToast(building.defaultLevel == 0
