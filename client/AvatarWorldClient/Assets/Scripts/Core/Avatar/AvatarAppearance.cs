@@ -19,6 +19,16 @@ namespace AvatarWorld.Core.Avatar
 
         public static AvatarAppearance CreateDefault() => new AvatarAppearance();
 
+        /// <summary>Copia independente (usada pelo historico desfazer/refazer do editor).</summary>
+        public AvatarAppearance Clone() => new AvatarAppearance
+        {
+            HairId = HairId, ShirtId = ShirtId, BottomId = BottomId, ShoesId = ShoesId, AccessoryId = AccessoryId,
+        };
+
+        public bool SameAs(AvatarAppearance other) => other != null &&
+            HairId == other.HairId && ShirtId == other.ShirtId && BottomId == other.BottomId &&
+            ShoesId == other.ShoesId && AccessoryId == other.AccessoryId;
+
         public string Get(string category)
         {
             switch (category)

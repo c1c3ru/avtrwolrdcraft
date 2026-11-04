@@ -228,6 +228,36 @@ namespace AvatarWorld.Runtime
             }
         }
 
+        /// <summary>Esqueleto e skin prontos (Start concluiu); o editor visual espera isto antes de gerar miniaturas.</summary>
+        public bool IsReady => _skeletonAnimation != null && _skeletonAnimation.valid;
+
+        /// <summary>Aparencia em edicao (a mesma de PlayerState; nada e gravado ate o editor salvar).</summary>
+        public AvatarAppearance CurrentAppearance => _playerState.Appearance;
+
+        /// <summary>Troca uma categoria no avatar ja montado (as texturas de todas as variantes foram carregadas na criacao). Nao grava.</summary>
+        public void SelectOption(string category, string itemId)
+        {
+            if (!IsReady || !Appearance.TrySelect(category, itemId)) return;
+            RebuildSkin();
+            RefreshMesh();
+        }
+
+        /// <summary>Aplica uma aparencia inteira (desfazer/refazer/cancelar). Nao grava.</summary>
+        public void ApplyAppearance(AvatarAppearance appearance)
+        {
+            if (!IsReady || appearance == null) return;
+            foreach (var category in AvatarCatalog.OptionsByCategory.Keys) Appearance.TrySelect(category, appearance.Get(category));
+            RebuildSkin();
+            RefreshMesh();
+        }
+
+        // Atualiza a malha no mesmo quadro (necessario antes de Camera.Render para miniaturas).
+        void RefreshMesh()
+        {
+            _skeletonAnimation.Update(0f);
+            _skeletonAnimation.LateUpdate();
+        }
+
         void LoadItemTextures(ManifestItem item)
         {
             foreach (var piece in item.pieces)

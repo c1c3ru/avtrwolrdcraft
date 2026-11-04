@@ -184,7 +184,8 @@ namespace AvatarWorld.Runtime
             if (_avatarHost != null) { Destroy(_avatarHost); _avatarHost = null; }
             _editorHost = new GameObject("AvatarEditorSession");
             _editorHost.transform.SetParent(transform, false);
-            _editorHost.AddComponent<AvatarGpuRuntime>().Configure(_saves, _state, CloseEditor);
+            // Editor com o layout da cena AvatarMaker do original (AvatarEditorScreen).
+            _editorHost.AddComponent<AvatarEditorScreen>().Begin(_saves, _state, CloseEditor);
         }
 
         void CloseEditor()
