@@ -171,9 +171,22 @@ namespace AvatarWorld.Runtime
                 return;
             }
 
-            var atlasAsset = SpineAtlasAsset.CreateRuntimeInstance(atlasText, materials.ToArray(), true);
-            var skeletonDataAsset = SkeletonDataAsset.CreateRuntimeInstance(skeletonBinary, atlasAsset, true, 0.01f);
-            _skeletonData = skeletonDataAsset.GetSkeletonData(false);
+            // O atlas descreve ~2.170 paginas (toda a roupa do jogo) e so as ~22 usadas tem Material; o
+            // Spine registra um LogError por pagina sem Material (milhares de erros com pilha, caros no
+            // celular e que abrem o console de desenvolvimento). Sao esperados, entao o log fica
+            // desligado so durante a criacao do atlas/esqueleto; falhas reais sao checadas abaixo.
+            var previousFilter = Debug.unityLogger.filterLogType;
+            Debug.unityLogger.filterLogType = LogType.Exception;
+            SpineAtlasAsset atlasAsset;
+            SkeletonDataAsset skeletonDataAsset;
+            try
+            {
+                atlasAsset = SpineAtlasAsset.CreateRuntimeInstance(atlasText, materials.ToArray(), true);
+                skeletonDataAsset = SkeletonDataAsset.CreateRuntimeInstance(skeletonBinary, atlasAsset, true, 0.01f);
+                _skeletonData = skeletonDataAsset.GetSkeletonData(false);
+            }
+            finally { Debug.unityLogger.filterLogType = previousFilter; }
+            Debug.Log("AvatarGpuRuntime: atlas criado com " + materials.Count + " materiais (paginas sem Material sao esperadas)");
             if (_skeletonData == null) { Debug.LogError("AvatarGpuRuntime: SkeletonData nao carregou"); return; }
 
             var avatarGo = new GameObject("Avatar");

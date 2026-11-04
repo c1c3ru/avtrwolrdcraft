@@ -7,8 +7,9 @@ namespace AvatarWorld.Runtime
     /// <summary>
     /// Tela de loading do original (LoadingScreenScreen, sharedassets1): fundo em degradê amarelo
     /// (LoadingScreenBackground: _BottomColor/_TopColor), avatar abraçando o gato no centro, relógio
-    /// com ponteiros girando no canto inferior direito e o LoadingCircle. Arte em Resources/Loading.
-    /// A ancoragem do circulo e o pivo dos ponteiros nao foram decodificados: sao aproximados.
+    /// com ponteiros girando no canto inferior direito. Arte em Resources/Loading. Ancoras, tamanhos e
+    /// pivos dos ponteiros (0,5; 0,15) vem do original. O LoadingCircle do original e do ClickBlocker
+    /// (outro objeto, centralizado), nao desta tela. Ainda aproximados: fator de escala e velocidade.
     /// </summary>
     public sealed class LoadingScreen : MonoBehaviour
     {
@@ -19,7 +20,7 @@ namespace AvatarWorld.Runtime
         static LoadingScreen _instance;
 
         CanvasGroup _group;
-        RectTransform _circle, _hours, _minutes;
+        RectTransform _hours, _minutes;
         float _shownAt;
         Coroutine _hiding;
 
@@ -75,7 +76,6 @@ namespace AvatarWorld.Runtime
         void Update()
         {
             float t = Time.unscaledTime;
-            if (_circle != null) _circle.localRotation = Quaternion.Euler(0, 0, -t * 270f);
             if (_minutes != null) _minutes.localRotation = Quaternion.Euler(0, 0, -t * 360f);
             if (_hours != null) _hours.localRotation = Quaternion.Euler(0, 0, -t * 30f);
         }
@@ -110,17 +110,13 @@ namespace AvatarWorld.Runtime
             _minutes = Hand(clock, "ClockMinutes", "clock_minutes");
             var nose = Sprite("ClockNose", clock, "clock_nose", new Vector2(0.5f, 0.5f), new Vector2(0f, -11.5f) * Scale);
             nose.sizeDelta *= Scale;
-
-            // Posicao do circulo nao decodificada: embaixo, centralizado.
-            _circle = Sprite("LoadingCircle", rootRect, "loading_circle", new Vector2(0.5f, 0f), new Vector2(0f, 60f));
-            _circle.sizeDelta *= 0.6f;
         }
 
         RectTransform Hand(RectTransform clock, string name, string res)
         {
             var rect = Sprite(name, clock, res, new Vector2(0.5f, 0.5f), new Vector2(0f, -11.5f) * Scale);
             rect.sizeDelta *= Scale;
-            rect.pivot = new Vector2(0.5f, 0.1f); // gira em torno da base do ponteiro (aproximado)
+            rect.pivot = new Vector2(0.5f, 0.15f); // pivo do original (ClockHours/ClockMinutes)
             return rect;
         }
 
