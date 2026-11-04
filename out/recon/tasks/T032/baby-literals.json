@@ -1,0 +1,37 @@
+{
+ "PWC.Level.LevelBaby.Awake": [
+  "No Area found!"
+ ],
+ "PWC.Level.LevelBaby.OnDestroy": [
+  "Change_Object_State"
+ ],
+ "PWC.Level.LevelBaby.SitOn": [
+  "General/Idle"
+ ],
+ "PWC.Level.LevelBaby.CanBeDroppedOn": [
+  "_Tie"
+ ],
+ "PWC.Level.LevelBaby.DestroyAvatar": [
+  "/",
+  "_Tie",
+  "old_device_token",
+  "country",
+  "PDBulkData File is null!"
+ ],
+ "PWC.Level.LevelBaby.SetAddAnimationInternal": [
+  "No animation found for animationName[",
+  "]",
+  "animationName is null or empty!",
+  "PazuCore/Art/flags/"
+ ],
+ "PWC.Level.LevelBaby.ReturnToIdleAnimation": [
+  "General/Idle"
+ ],
+ "PWC.Level.LevelBaby.SetPersistentData": [
+  "_Tie",
+  "J_Arm_L"
+ ],
+ "PWC.Level.LevelBabyAnimations.GetValues": [
+  "_Tie"
+ ]
+}

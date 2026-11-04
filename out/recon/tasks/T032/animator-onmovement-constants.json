@@ -1,0 +1,13 @@
+{
+ "method": "PWC.Level.LevelCharacterAnimator.OnMovement", "vaddr": "0x22a1570",
+ "source_asm": "out/recon/tasks/T032/character-asm/OnMovement_00000000022a1570.asm.txt",
+ "rodata_floats": {"0xb30054": 0.2, "0xb2fdfc": 0.1, "0xb2ff00": 0.05},
+ "immediates": {"fmov_3.0": 3.0, "sorting_arg_0x32": 50},
+ "uses": [
+  {"at": "0x22a17f4", "fact": "if _canForceNormalDragging(0x35): |field@0x38 - s8| > 3.0 clears it"},
+  {"at": "0x22a18f4", "fact": "SetEmtyAnimation(trackIndex=1, mixDuration=0.2) then _movementType=None, _lastMovementPosition cleared"},
+  {"at": "0x22a1930", "fact": "|s10| < 0.1 and |s11| > 0.05 sets _forceNormalDragging(0x34)=true"},
+  {"at": "0x22a1848", "fact": "call 0x22f5d94(character, 50, null) before animation selection"}
+ ],
+ "status": "STATIC_PARTIAL: meaning of s8/s10/s11 (Vector2 current position / per-frame delta) is inferred, not proven"
+}

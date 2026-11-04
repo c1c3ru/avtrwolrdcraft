@@ -1,0 +1,637 @@
+{
+ "OnMovement_000000000233f910.asm.txt": [
+  {
+   "insn": "233f940",
+   "got": "0x41acae8",
+   "kind": 27212573400,
+   "index": 97078922
+  },
+  {
+   "insn": "233f94c",
+   "got": "0x41b52a0",
+   "kind": 6,
+   "index": 88496
+  },
+  {
+   "insn": "233f958",
+   "got": "0x41b52b0",
+   "kind": 6,
+   "index": 88497
+  },
+  {
+   "insn": "233f964",
+   "got": "0x41b52c8",
+   "kind": 6,
+   "index": 88498
+  },
+  {
+   "insn": "233f970",
+   "got": "0x41acd38",
+   "kind": "type",
+   "index": 25063
+  },
+  {
+   "insn": "233f97c",
+   "got": "0x41da678",
+   "kind": "method?",
+   "index": 34528
+  },
+  {
+   "insn": "233f988",
+   "got": "0x41b52f8",
+   "kind": 6,
+   "index": 91819
+  },
+  {
+   "insn": "233f994",
+   "got": "0x41ace80",
+   "kind": "type",
+   "index": 27078
+  },
+  {
+   "insn": "233f9a0",
+   "got": "0x41da680",
+   "kind": "type",
+   "index": 38141
+  },
+  {
+   "insn": "233f9ac",
+   "got": "0x41acdd8",
+   "kind": 6,
+   "index": 51735
+  },
+  {
+   "insn": "233f9b8",
+   "got": "0x41bbc90",
+   "kind": 6,
+   "index": 51744
+  },
+  {
+   "insn": "233f9c4",
+   "got": "0x41ba7d0",
+   "kind": 6,
+   "index": 51745
+  },
+  {
+   "insn": "233f9d0",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  },
+  {
+   "insn": "233f9dc",
+   "got": "0x41b9178",
+   "kind": "type",
+   "index": 34976
+  },
+  {
+   "insn": "233f9e8",
+   "got": "0x41da688",
+   "kind": "string",
+   "index": 9418,
+   "literal": "Movement_Cycles/Walking_Loop"
+  },
+  {
+   "insn": "233f9f4",
+   "got": "0x41da668",
+   "kind": "string",
+   "index": 6658,
+   "literal": "General/Stand_Idle"
+  },
+  {
+   "insn": "233fa00",
+   "got": "0x41c1908",
+   "kind": "string",
+   "index": 14392,
+   "literal": "Track_Animations/Forced_To_Walk"
+  },
+  {
+   "insn": "233fa0c",
+   "got": "0x41d6be0",
+   "kind": "string",
+   "index": 9794,
+   "literal": "No case found for nextMovementType["
+  },
+  {
+   "insn": "233fa18",
+   "got": "0x41da690",
+   "kind": "string",
+   "index": 9414,
+   "literal": "Movement_Cycles/Crawling_Loop"
+  },
+  {
+   "insn": "233fa24",
+   "got": "0x41da670",
+   "kind": "string",
+   "index": 6638,
+   "literal": "General/Lift_Idle"
+  },
+  {
+   "insn": "233fa30",
+   "got": "0x41ae0f0",
+   "kind": "string",
+   "index": 15955,
+   "literal": "]"
+  },
+  {
+   "insn": "233fa3c",
+   "got": "0x41da698",
+   "kind": "string",
+   "index": 14381,
+   "literal": "Track_Animations/Forced_To_Crawl"
+  },
+  {
+   "insn": "233fab8",
+   "got": "0x41da0b8",
+   "kind": "type",
+   "index": 26331
+  },
+  {
+   "insn": "233fb08",
+   "got": "0x41b5020",
+   "kind": "string",
+   "index": 6800,
+   "literal": "Glow_Loop"
+  },
+  {
+   "insn": "233ff34",
+   "got": "0x44f9010",
+   "kind": 33453785095,
+   "index": 202344447
+  },
+  {
+   "insn": "233ff3c",
+   "got": "0x41da010",
+   "kind": 6,
+   "index": 92039
+  },
+  {
+   "insn": "233fff8",
+   "got": "0x41b5010",
+   "kind": "type",
+   "index": 30684
+  }
+ ],
+ "OnBeginMovement_000000000233f288.asm.txt": [
+  {
+   "insn": "233f2a4",
+   "got": "0x41bd548",
+   "kind": 15172237863,
+   "index": 161334572
+  },
+  {
+   "insn": "233f2b0",
+   "got": "0x41d2e48",
+   "kind": "type",
+   "index": 24068
+  },
+  {
+   "insn": "233f2bc",
+   "got": "0x41d2e50",
+   "kind": "type",
+   "index": 24069
+  },
+  {
+   "insn": "233f2c8",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  },
+  {
+   "insn": "233f2d4",
+   "got": "0x41da668",
+   "kind": "string",
+   "index": 6658,
+   "literal": "General/Stand_Idle"
+  },
+  {
+   "insn": "233f2e0",
+   "got": "0x41d6bc0",
+   "kind": "string",
+   "index": 1841,
+   "literal": "<empty>"
+  },
+  {
+   "insn": "233f2ec",
+   "got": "0x41da670",
+   "kind": "string",
+   "index": 6638,
+   "literal": "General/Lift_Idle"
+  },
+  {
+   "insn": "233f3a0",
+   "got": "0x41da010",
+   "kind": 6,
+   "index": 92039
+  },
+  {
+   "insn": "233f4e8",
+   "got": "0x41bd0b8",
+   "kind": "method?",
+   "index": 13383
+  },
+  {
+   "insn": "233f4f4",
+   "got": "0x41bd018",
+   "kind": 6,
+   "index": 86771
+  },
+  {
+   "insn": "233f4f8",
+   "got": "0x41bd040",
+   "kind": "type",
+   "index": 37169
+  },
+  {
+   "insn": "233f4fc",
+   "got": "0x41bd028",
+   "kind": 6,
+   "index": 91814
+  },
+  {
+   "insn": "233f548",
+   "got": "0x41bd0c8",
+   "kind": 6,
+   "index": 88494
+  },
+  {
+   "insn": "233f5b8",
+   "got": "0x41bd010",
+   "kind": 6,
+   "index": 86770
+  },
+  {
+   "insn": "233f5dc",
+   "got": "0x41ac010",
+   "kind": 526354,
+   "index": 52830911
+  },
+  {
+   "insn": "233f5e4",
+   "got": "0x41d6010",
+   "kind": "string",
+   "index": 8424,
+   "literal": "Legs_Shoes_119"
+  }
+ ],
+ "OnEndMovement_000000000233f6f4.asm.txt": [
+  {
+   "insn": "233f710",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  }
+ ],
+ "OnMovement_0000000002265194.asm.txt": [
+  {
+   "insn": "22651c4",
+   "got": "0x41acae8",
+   "kind": 27212573400,
+   "index": 97078922
+  },
+  {
+   "insn": "22651d0",
+   "got": "0x41b52a0",
+   "kind": 6,
+   "index": 88496
+  },
+  {
+   "insn": "22651dc",
+   "got": "0x41b52b0",
+   "kind": 6,
+   "index": 88497
+  },
+  {
+   "insn": "22651e8",
+   "got": "0x41b52c8",
+   "kind": 6,
+   "index": 88498
+  },
+  {
+   "insn": "22651f4",
+   "got": "0x41d6bc8",
+   "kind": "method?",
+   "index": 30178
+  },
+  {
+   "insn": "2265200",
+   "got": "0x41acd38",
+   "kind": "type",
+   "index": 25063
+  },
+  {
+   "insn": "226520c",
+   "got": "0x41b52f8",
+   "kind": 6,
+   "index": 91819
+  },
+  {
+   "insn": "2265218",
+   "got": "0x41ace80",
+   "kind": "type",
+   "index": 27078
+  },
+  {
+   "insn": "2265224",
+   "got": "0x41d6bd0",
+   "kind": "type",
+   "index": 37152
+  },
+  {
+   "insn": "2265230",
+   "got": "0x41acdd8",
+   "kind": 6,
+   "index": 51735
+  },
+  {
+   "insn": "226523c",
+   "got": "0x41bbc90",
+   "kind": 6,
+   "index": 51744
+  },
+  {
+   "insn": "2265248",
+   "got": "0x41ba7d0",
+   "kind": 6,
+   "index": 51745
+  },
+  {
+   "insn": "2265254",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  },
+  {
+   "insn": "2265260",
+   "got": "0x41b9178",
+   "kind": "type",
+   "index": 34976
+  },
+  {
+   "insn": "226526c",
+   "got": "0x41d6bd8",
+   "kind": "string",
+   "index": 5746,
+   "literal": "Error in LevelAnimal, animal doesn't have Running animations but tries to run"
+  },
+  {
+   "insn": "2265278",
+   "got": "0x41c0d68",
+   "kind": "string",
+   "index": 6659,
+   "literal": "General/Standing_Idle"
+  },
+  {
+   "insn": "2265284",
+   "got": "0x41d6be0",
+   "kind": "string",
+   "index": 9794,
+   "literal": "No case found for nextMovementType["
+  },
+  {
+   "insn": "2265290",
+   "got": "0x41ae0f0",
+   "kind": "string",
+   "index": 15955,
+   "literal": "]"
+  },
+  {
+   "insn": "226530c",
+   "got": "0x41ae0b8",
+   "kind": 6,
+   "index": 92623
+  },
+  {
+   "insn": "226535c",
+   "got": "0x41b5020",
+   "kind": "string",
+   "index": 6800,
+   "literal": "Glow_Loop"
+  },
+  {
+   "insn": "226548c",
+   "got": "0x41acad8",
+   "kind": 526354,
+   "index": 52830911
+  },
+  {
+   "insn": "2265490",
+   "got": "0x41acae0",
+   "kind": 526354,
+   "index": 52830911
+  },
+  {
+   "insn": "22656c4",
+   "got": "0xb2fa70",
+   "kind": 526354,
+   "index": 52830911
+  },
+  {
+   "insn": "2265764",
+   "got": "0xb2fb18",
+   "kind": 526354,
+   "index": 52830911
+  },
+  {
+   "insn": "2265768",
+   "got": "0xb2fb20",
+   "kind": 0,
+   "index": 33332432
+  },
+  {
+   "insn": "2265844",
+   "got": "0x44f9010",
+   "kind": 33453785095,
+   "index": 202344447
+  },
+  {
+   "insn": "226584c",
+   "got": "0x41d6010",
+   "kind": "string",
+   "index": 8424,
+   "literal": "Legs_Shoes_119"
+  },
+  {
+   "insn": "2265860",
+   "got": "0x41d6ad8",
+   "kind": 6,
+   "index": 95277
+  },
+  {
+   "insn": "2265864",
+   "got": "0x41d6ae0",
+   "kind": "type",
+   "index": 37531
+  },
+  {
+   "insn": "22658b8",
+   "got": "0x41d6b18",
+   "kind": "method?",
+   "index": 30023
+  },
+  {
+   "insn": "22658bc",
+   "got": "0x41d6b20",
+   "kind": "string",
+   "index": 12429,
+   "literal": "Small_Box_Open"
+  },
+  {
+   "insn": "2265928",
+   "got": "0x41b5010",
+   "kind": "type",
+   "index": 30684
+  },
+  {
+   "insn": "2265a70",
+   "got": "0x41d6b28",
+   "kind": "string",
+   "index": 12428,
+   "literal": "Small_Box_Close"
+  },
+  {
+   "insn": "2265a74",
+   "got": "0x41d6b30",
+   "kind": "type",
+   "index": 37543
+  }
+ ],
+ "OnBeginMovement_0000000002264cf4.asm.txt": [
+  {
+   "insn": "2264d10",
+   "got": "0x41bd548",
+   "kind": 15172237863,
+   "index": 161334572
+  },
+  {
+   "insn": "2264d1c",
+   "got": "0x41b5fe0",
+   "kind": "type",
+   "index": 24021
+  },
+  {
+   "insn": "2264d28",
+   "got": "0x41d2e48",
+   "kind": "type",
+   "index": 24068
+  },
+  {
+   "insn": "2264d34",
+   "got": "0x41d2e50",
+   "kind": "type",
+   "index": 24069
+  },
+  {
+   "insn": "2264d40",
+   "got": "0x41ae918",
+   "kind": 6,
+   "index": 92583
+  },
+  {
+   "insn": "2264d4c",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  },
+  {
+   "insn": "2264d58",
+   "got": "0x41d6bc0",
+   "kind": "string",
+   "index": 1841,
+   "literal": "<empty>"
+  },
+  {
+   "insn": "2264d64",
+   "got": "0x41c0d68",
+   "kind": "string",
+   "index": 6659,
+   "literal": "General/Standing_Idle"
+  },
+  {
+   "insn": "2264e00",
+   "got": "0x41c0010",
+   "kind": 6,
+   "index": 93074
+  },
+  {
+   "insn": "2264f30",
+   "got": "0x41d60c8",
+   "kind": "string",
+   "index": 8770,
+   "literal": "Level_DoctorOffice_L17"
+  },
+  {
+   "insn": "2264fc8",
+   "got": "0x41aead8",
+   "kind": "string",
+   "index": 5232,
+   "literal": "DeleteSharedAudioClip: Failed! path["
+  },
+  {
+   "insn": "2264fcc",
+   "got": "0x41aeae0",
+   "kind": "string",
+   "index": 14490,
+   "literal": "TryLoadTextFile: fileName is null or empty"
+  },
+  {
+   "insn": "2265008",
+   "got": "0x41bd0b8",
+   "kind": "method?",
+   "index": 13383
+  },
+  {
+   "insn": "2265014",
+   "got": "0x41bd018",
+   "kind": 6,
+   "index": 86771
+  },
+  {
+   "insn": "2265018",
+   "got": "0x41bd040",
+   "kind": "type",
+   "index": 37169
+  },
+  {
+   "insn": "226501c",
+   "got": "0x41bd028",
+   "kind": 6,
+   "index": 91814
+  },
+  {
+   "insn": "2265070",
+   "got": "0x41bd010",
+   "kind": 6,
+   "index": 86770
+  },
+  {
+   "insn": "2265094",
+   "got": "0x41ac010",
+   "kind": 526354,
+   "index": 52830911
+  },
+  {
+   "insn": "226509c",
+   "got": "0x41d6010",
+   "kind": "string",
+   "index": 8424,
+   "literal": "Legs_Shoes_119"
+  }
+ ],
+ "OnEndMovement_0000000002265d7c.asm.txt": [
+  {
+   "insn": "2265d98",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  }
+ ],
+ "PlayProperIdleAnimation_0000000002336184.asm.txt": [
+  {
+   "insn": "2336198",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  }
+ ]
+}
