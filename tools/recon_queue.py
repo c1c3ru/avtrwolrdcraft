@@ -477,6 +477,14 @@ class Queue:
             refs = [self.file_ref(data, p) for p in evidence]
             if state == "evidence_ready" and not refs:
                 raise QueueError("evidence_ready requires output references")
+            if state == "evidence_ready":
+                expected = set(task.get("outputs", []))
+                supplied = {r["path"] for r in refs}
+                if expected and not expected.issubset(supplied):
+                    raise QueueError("evidence_ready requires every declared output, including the full report")
+                report = task.get("outputs", [])[-1] if task.get("outputs") else None
+                if report and not Path(data["root"], report).is_file():
+                    raise QueueError("full report missing")
             task.update(state=state, evidence_refs=refs, next_action=note)
             task["attempts"][-1].update(checkpoint_at=self.clock(), state=state, note=note,
                                         evidence_refs=copy.deepcopy(refs))
@@ -537,6 +545,32 @@ class Queue:
                     "expired_leases": [t["id"] for t in data["tasks"]
                                        if t.get("lease") and t["lease"]["expires_at"] <= self.clock()]}
 
+    def prepare(self, task_id):
+        """Token-efficient mandatory task brief; validate refs before exposing scope."""
+        with self.locked():
+            data = self.load()
+            task = self.task(data, task_id)
+            blockers = self.blockers(data, task)
+            refs = task["input_refs"] + task["evidence_refs"]
+            checked = []
+            for ref in refs:
+                actual = self.file_ref(data, ref["path"])
+                if actual["sha256"] != ref["sha256"]:
+                    raise QueueError("stale reference: " + ref["path"])
+                checked.append({"path": ref["path"], "sha256": actual["sha256"]})
+            deps = []
+            for dep in task["dependencies"]:
+                parent = self.task(data, dep)
+                deps.append({"id": dep, "state": parent["state"],
+                             "summary": parent.get("next_action", "")})
+            return {"id": task_id, "state": task["state"], "title": task["title"],
+                    "objective": task.get("input_and_steps", ""),
+                    "acceptance": task["acceptance"], "blockers": blockers,
+                    "dependencies": deps, "verified_inputs": checked,
+                    "outputs": task["outputs"], "next_action": task.get("next_action", ""),
+                    "full_report_path": task["outputs"][-1] if task["outputs"] else None,
+                    "summary_only": True}
+
 
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
@@ -547,6 +581,8 @@ def main(argv=None):
     init.add_argument("--root", type=Path, default=Path.cwd())
     commands.add_parser("status")
     commands.add_parser("ready")
+    prepare = commands.add_parser("prepare", help="mandatory hash-checked compact task brief")
+    prepare.add_argument("task")
     relocate = commands.add_parser("relocate")
     relocate.add_argument("--root", type=Path, required=True)
     relocate.add_argument("--actor", required=True)
@@ -587,6 +623,8 @@ def main(argv=None):
             result = q.init(a.seed, a.root)
         elif a.command in ("ready", "status"):
             result = q.status(ready=a.command == "ready")
+        elif a.command == "prepare":
+            result = q.prepare(a.task)
         elif a.command == "pause":
             result = q.pause(a.until, a.note, a.actor)
         elif a.command == "relocate":
