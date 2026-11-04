@@ -16,6 +16,11 @@ namespace AvatarWorld.Runtime
         Vector3 _shotStart;
         Vector3 _shotTarget;
         float _shotTime;
+        float _fallTime;
+        bool _falling;
+        // Centro do aro em relacao ao centro do sprite da cesta (ja na escala 0,8), medido no aparelho.
+        static readonly Vector2 RingOffset = new Vector2(0.65f, 1.57f);
+        const float HoopX = 6.25f, HoopY = -0.4f, FallSeconds = 0.45f, FallDistance = 1.0f;
         int _score;
         bool _dragging;
         bool _shooting;
@@ -45,7 +50,8 @@ namespace AvatarWorld.Runtime
 
             AddSprite("Quadra", "BasketballCourt/BG_01", Vector3.zero, 0, true);
             AddSprite("Cesta esquerda", "BasketballCourt/Hoop", new Vector3(-6.25f, -0.4f, 0), 2, false);
-            AddSprite("Cesta direita", "BasketballCourt/Hoop", new Vector3(6.25f, -0.4f, 0), 2, false);
+            // A cesta direita e a esquerda espelhada, para o poste ficar do lado de fora da quadra.
+            AddSprite("Cesta direita", "BasketballCourt/Hoop", new Vector3(6.25f, -0.4f, 0), 2, false).flipX = true;
             _ball = AddSprite("Bola arremessável", "BasketballCourt/Ball", new Vector3(0, -2.25f, 0), 5, false);
             _ballHome = _ball.transform.position;
 
@@ -80,6 +86,20 @@ namespace AvatarWorld.Runtime
 
         void Update()
         {
+            if (_falling)
+            {
+                // A bola atravessa o aro e some; volta ao centro quando a queda termina.
+                _fallTime += Time.deltaTime;
+                float f = Mathf.Clamp01(_fallTime / FallSeconds);
+                _ball.transform.position = new Vector3(_shotTarget.x, _shotTarget.y - FallDistance * f * f, 0);
+                if (f >= 1f)
+                {
+                    _falling = false;
+                    _shooting = false;
+                    _ball.transform.position = _ballHome;
+                }
+                return;
+            }
             if (_shooting)
             {
                 _shotTime += Time.deltaTime * 1.6f;
@@ -89,10 +109,10 @@ namespace AvatarWorld.Runtime
                 _ball.transform.position = p;
                 if (t >= 1f)
                 {
-                    _shooting = false;
                     _score++;
                     _message = "Cesta! Toque e arraste para tentar de novo";
-                    _ballHome = new Vector3(0, -2.25f, 0);
+                    _falling = true;
+                    _fallTime = 0f;
                 }
                 return;
             }
@@ -179,7 +199,8 @@ namespace AvatarWorld.Runtime
                 return;
             }
             _shotStart = _ball.transform.position;
-            _shotTarget = new Vector3(release.x < 0 ? -6.15f : 6.15f, -0.45f, 0);
+            float side = release.x < 0 ? -1f : 1f;
+            _shotTarget = new Vector3(side * (HoopX - RingOffset.x), HoopY + RingOffset.y, 0);
             _shotTime = 0;
             _shooting = true;
             _message = "Arremessando…";
@@ -192,7 +213,7 @@ namespace AvatarWorld.Runtime
             GUI.Box(new Rect(Screen.width * 0.38f, 12, Screen.width * 0.24f, 100), "");
             GUI.Label(new Rect(Screen.width * 0.38f, 16, Screen.width * 0.24f, 42), "CESTAS  " + _score, label);
             GUI.Label(new Rect(Screen.width * 0.2f, 62, Screen.width * 0.6f, 40), _message, label);
-            if (GUI.Button(new Rect(16, 16, Mathf.Max(120, Screen.width * 0.12f), 56), "Voltar à Home")) _onExit?.Invoke();
+            if (GUI.Button(new Rect(16, 16, Mathf.Max(120, Screen.width * 0.12f), 56), "Voltar ao mapa")) _onExit?.Invoke();
         }
     }
 }

@@ -133,7 +133,7 @@ namespace AvatarWorld.EditorTools
                     scenes = new[] { HomeScenePath },
                     locationPathName = "Builds/AvatarWorldOffline-sidebyside.apk",
                     target = BuildTarget.Android,
-                    options = BuildOptions.Development,
+                    options = BuildOptions.None,
                 });
                 Debug.Log("ProjectSetup: sidebyside build " + report.summary.result + " (" + report.summary.totalSize + " bytes)");
                 if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) EditorApplication.Exit(1);
