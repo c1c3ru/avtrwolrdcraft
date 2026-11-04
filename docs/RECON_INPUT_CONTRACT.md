@@ -37,3 +37,34 @@ O export registra coordenadas e bounds dos polígonos no espaço local, offset e
 - Comparar tap, drag, soltura válida/inválida, cancelamento, overlap e dois dedos em execução. Essa validação fica para quando o usuário quiser retomar os testes no aparelho.
 
 T031 permanece parcial. Este documento registra evidência estática e evita tratar presença de componente ou chamadas indiretas como prova de comportamento completo.
+
+## Recorte 2026-11-04: o que dispara OnBeginDragInternal, OnSyncPosition e OnEndDragInternal
+Ferramenta: `tools/recon_callers.py` (chamadores `bl`/`b` por método; saída `out/recon/tasks/T031/drag-callers.json`) mais varredura de `ldr x,[x,#off]` com a fórmula de vtable IL2CPP `off = 0x138 + slot*16` (validada: `OnEndDrag` carrega `0x318` = slot 30 = `OnEndDragInternal`).
+
+Slots de `DragDropItemBase` (campo `slot` do mapa de métodos): `OnBeginDrag` 20, `OnDrag` 22, `OnEndDrag` 23, `SyncPosition` (corrotina) 24, `OnSyncPosition` 27, `OnBeginDragInternal` 29, `OnEndDragInternal` 30, `OnPointerClickInternal` 31, `StopSyncPosition` 32.
+
+Provado pelos bytes:
+- `DragDropItemBase.OnBeginDrag` (`0x206b864`): carrega o slot 29 e chama `OnBeginDragInternal` (virtual), depois chama o slot 32 `StopSyncPosition`; também invoca o delegate `OnBeginDragAction` (campo `0xC0`).
+- `DragDropItemBase.OnEndDrag` (`0x206bb40`): chama `StopSyncPosition` (slot 32) e `OnEndDragInternal` (slot 30); também invoca `OnEndDragAction`.
+- `DragDropItemBase.OnDrag` (`0x206bb3c`) é só retorno: **o arraste contínuo não vem de `OnDrag`**.
+- `StartSyncPosition` (`0x206baec`) chama `StopSyncPosition` (slot 32) e depois a corrotina virtual `SyncPosition` (slot 24). O `MoveNext` de `<SyncPosition>d__75` (`0x206c7d0`, 1.008 bytes) chama o slot 27, `OnSyncPosition`, em `0x206c85c` e `0x206cb78`, além dos slots 25 e 26 (não identificados). Logo `OnSyncPosition` é chamado **por quadro dentro da corrotina**, e não por evento de ponteiro.
+- Quem inicia a corrotina: não foi localizado neste recorte (`StartSyncPosition` é virtual; os chamadores diretos não aparecem).
+- Cadeia dos `*Internal`: `LevelItem.OnBeginDragInternal`/`OnEndDragInternal` são chamados por overrides diretos (Character, Toddler, Animal, Baby, itens de tarefa) que invocam a base; `LevelCharacter.OnBeginDrag`/`OnEndDrag` fazem salto de cauda para `DragDropItemBase.OnBeginDrag`/`OnEndDrag`.
+- Fluxo sustentado: `EventSystem` (via `IBeginDragHandler`/`IEndDragHandler`) → `LevelCharacter.OnBeginDrag` → `DragDropItemBase.OnBeginDrag` → `OnBeginDragInternal` (Character → `LevelItem`) e `StartSyncPosition`; a cada quadro a corrotina chama `OnSyncPosition` (Character → `LevelCharacterAnimator.OnMovement`); no soltar, `OnEndDrag` → `StopSyncPosition` e `OnEndDragInternal` (Character → `OnEndMovement`).
+
+Ligação com T032: `LevelCharacter.OnSyncPosition` salta para `LevelCharacterAnimator.OnMovement`, portanto a velocidade da histerese 0.06/0.006/6.0 é a do ponteiro arrastado, medida por quadro na corrotina. A unidade de `t` (deltaTime) continua inferida.
+
+Limites: os slots 25/26 da corrotina e o chamador de `StartSyncPosition` ficam abertos; chamadas por delegate/interface e `MPPointerInputModule` não entram na varredura de `bl`/`b`; a janela de nomes duplicados (`<SyncPosition>d__5` é de outra classe) foi descartada por número `d__75` casar com o campo da classe.
+
+## Recorte 2026-11-04 (2): limiar de arraste, clique contra arraste, corrotina de sincronização
+Provado:
+- **`MPPointerInputModule.ShouldStartDrag` (`0x20cb0ec`)**: `(useDragThreshold, posA, posB, threshold)`; se `useDragThreshold` é falso retorna verdadeiro; senão retorna `(Δx²+Δy²) >= threshold²`. É o algoritmo padrão do Unity, sem ajuste do jogo.
+- **Valor do limiar**: o campo serializado `m_DragThreshold` do `EventSystem` vale **10** (pixels) nas 249 `EventSystem` decodificadas em `out/mb`, inclusive level4, level8, level233, level234 e level237. Inferido (não provado): é esse valor que o módulo passa como `threshold`; `ShouldStartDrag` não tem chamador direto (virtual/ponteiro).
+- **`DragDropItemBase.OnPointerDown` (`0x206c1b0`)**: se o flag `0x38` está ativo trava o EventSystem na `CShape` atual (`LockEventSystemToCurrentCShape`); guarda o id do ponteiro (`eventData+0x100` → `this+0x78`), a posição do ponteiro (`GetPointerPositionForDrag`) em `this+0x80` e liga `this+0x7C` (ponteiro pressionado). `OnPointerUp` (`0x206c210`) destrava (se `0x38`) e zera `this+0x7C`.
+- **Clique contra arraste** (`OnPointerClick`, `0x206c244`): retorna sem fazer nada se `eventData` é nulo, se `eventData+0x145` está ligado ou se `this+0x39` está ligado; caso contrário invoca o delegate `OnPointerClickAction` (`0xB8`) e o virtual `OnPointerClickInternal` (slot 31). Inferido: `eventData+0x145` é `PointerEventData.dragging` (o Unity o liga ao passar do limiar), então um toque que virou arraste não gera clique; o significado de `this+0x39` não foi determinado.
+- **Slots 25 e 26 da corrotina**: `GetDragPositionForThisFramePreModifications` (25) e `GetDragPositionForThisFramePostModifications` (26, sobrescrito em `LevelItem`). Ordem no `MoveNext` de `<SyncPosition>d__75` (`0x206c7d0`): slot 27 em `0x206c85c`, Pre (25) em `0x206c958`, Post (26) em `0x206cb48` e `OnSyncPosition` (27) de novo em `0x206cb78`; a posição passada a `OnSyncPosition` passou por Pre e Post. O primeiro uso do slot 27 em `0x206c85c` fica sem explicação.
+- **Quem inicia a corrotina**: a varredura de cargas do slot 21 (`StartSyncPosition`) na família de arraste só encontra `DragDropItemBase.OnBeginDrag` como chamador plausível (`ReleaseCurrentDropAreaIfExists` e `get_CurrentCandidateDropArea` são vizinhança de janela). Fecha a cadeia: `OnBeginDrag` → `StartSyncPosition` → corrotina `SyncPosition` por quadro; `OnEndDrag` → `StopSyncPosition`.
+
+Consequência para a cópia e para T032: o Character só começa a se mover depois que o ponteiro percorre 10 px (ou imediatamente se `useDragThreshold` for falso, caso não verificado) e a partir daí `OnSyncPosition` roda por quadro; um toque que não passa de 10 px é clique, não arraste. Para T026: a corrotina de arraste está mapeada (slots 24→21/32, 25/26/27 no `MoveNext`).
+
+Limites: a unidade/escala do limiar em dispositivos de densidades diferentes (o Unity usa pixels de tela, sem conversão por DPI neste código) e o caso `useDragThreshold = false` não foram verificados; multitoque, `MPPointerInputModule.ProcessDrag` e precedência UI contra CShape continuam abertos.
