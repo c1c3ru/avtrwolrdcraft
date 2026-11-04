@@ -19,7 +19,7 @@ namespace AvatarWorld.Runtime
     /// </summary>
     public sealed class AvatarEditorScreen : MonoBehaviour
     {
-        const float PanelWidth = 823f;
+        const float PanelWidth = 928f; // categorias 127 + divisor + miniaturas 685 + coluna de cores 95
         static readonly Vector3 AvatarPosition = new Vector3(-4.0f, -2.35f, 0f);
         const float AvatarScale = 1f;
         const int ThumbSize = 160;
@@ -31,6 +31,7 @@ namespace AvatarWorld.Runtime
         {
             (AvatarCatalog.CategoryHair, "hair"), (AvatarCatalog.CategoryShirt, "shirt"), (AvatarCatalog.CategoryBottom, "bottom"),
             (AvatarCatalog.CategoryShoes, "shoes"), (AvatarCatalog.CategoryAccessory, "accessory"), (AvatarCatalog.CategoryMouth, "mouth"),
+            (AvatarCatalog.CategoryEyebrows, "eyebrows"),
             (AvatarCatalog.CategorySkin, "skin"), (AvatarCatalog.CategoryEyes, "eyes"),
         };
 
@@ -42,6 +43,7 @@ namespace AvatarWorld.Runtime
             new CategoryView { key = AvatarCatalog.CategoryShoes,     art = "shoes",     centerY = 0.30f, half = 0.70f },
             new CategoryView { key = AvatarCatalog.CategoryAccessory, art = "accessory", centerY = 3.10f, half = 1.30f },
             new CategoryView { key = AvatarCatalog.CategoryMouth,     art = "mouth",     centerY = 2.75f, half = 0.70f },
+            new CategoryView { key = AvatarCatalog.CategoryEyebrows,  art = "eyebrows",  centerY = 3.50f, half = 0.70f },
         };
 
         SaveStore _saves;
@@ -68,6 +70,8 @@ namespace AvatarWorld.Runtime
         readonly Dictionary<int, Image> _colorRings = new Dictionary<int, Image>();
         ScrollRect _scroll;
         GridLayoutGroup _gridLayout;
+        RectTransform _colorsColumn;
+        readonly Dictionary<int, Image> _itemColorRings = new Dictionary<int, Image>();
 
         public string Category => _category;
         public int VisibleItemCount => _cells.Count;
@@ -172,7 +176,7 @@ namespace AvatarWorld.Runtime
             _redo = Button(_frontCanvas.transform, "RedoButton", Art("AvatarMaker/redo"), new Vector2(0, 0), new Vector2(447f, 94f), new Vector2(151f, 149f), Redo);
 
             // Categorias (icones do original; so as suportadas).
-            float y = -140f;
+            float y = -110f;
             foreach (var entry in MenuCategories)
             {
                 string key = entry.key;
@@ -182,7 +186,7 @@ namespace AvatarWorld.Runtime
                     () => { UiSound.PlayClick(); SelectCategory(key); });
                 icon.preserveAspect = true;
                 _categoryButtons[key] = icon;
-                y -= 112f;
+                y -= 100f;
             }
 
             // Grade de miniaturas com rolagem vertical (centenas de itens): 3 colunas de celas 217x207.
@@ -190,7 +194,7 @@ namespace AvatarWorld.Runtime
             viewport.transform.SetParent(_panel, false);
             var vr = (RectTransform)viewport.transform;
             vr.anchorMin = Vector2.zero; vr.anchorMax = Vector2.one;
-            vr.offsetMin = new Vector2(146f, 20f); vr.offsetMax = new Vector2(-6f, -110f);
+            vr.offsetMin = new Vector2(146f, 20f); vr.offsetMax = new Vector2(-111f, -110f);
             viewport.GetComponent<Image>().color = new Color(0, 0, 0, 0);
             _grid = new GameObject("Grid", typeof(RectTransform), typeof(GridLayoutGroup), typeof(ContentSizeFitter)).GetComponent<RectTransform>();
             _grid.SetParent(viewport.transform, false);
@@ -203,6 +207,7 @@ namespace AvatarWorld.Runtime
             layout.constraintCount = 3;
             layout.padding = new RectOffset(4, 4, 8, 24);
             _grid.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            BuildColorsColumn();
             _scroll = viewport.GetComponent<ScrollRect>();
             _scroll.viewport = vr; _scroll.content = _grid;
             _scroll.horizontal = false; _scroll.vertical = true;
@@ -231,6 +236,78 @@ namespace AvatarWorld.Runtime
                 _panel.Find("Indicator_" + entry.key).gameObject.SetActive(selected);
             }
             RebuildGrid();
+        }
+
+        // Coluna de cores (paleta General) a direita do menu, como o CharacterMenu/Colors do original; so aparece
+        // quando o item escolhido na categoria aceita tinta (_color).
+        void BuildColorsColumn()
+        {
+            var column = new GameObject("Colors", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
+            column.transform.SetParent(_panel, false);
+            var cr = (RectTransform)column.transform;
+            cr.anchorMin = new Vector2(1, 0); cr.anchorMax = new Vector2(1, 1);
+            cr.pivot = new Vector2(1, 0.5f);
+            cr.sizeDelta = new Vector2(100f, -130f);
+            cr.anchoredPosition = new Vector2(-6f, -40f);
+            column.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            var content = new GameObject("Content", typeof(RectTransform), typeof(GridLayoutGroup), typeof(ContentSizeFitter)).GetComponent<RectTransform>();
+            content.SetParent(column.transform, false);
+            content.anchorMin = new Vector2(0, 1); content.anchorMax = new Vector2(1, 1); content.pivot = new Vector2(0.5f, 1f);
+            content.sizeDelta = Vector2.zero;
+            var layout = content.GetComponent<GridLayoutGroup>();
+            layout.cellSize = new Vector2(84f, 84f); layout.spacing = new Vector2(0f, 8f);
+            layout.constraint = GridLayoutGroup.Constraint.FixedColumnCount; layout.constraintCount = 1;
+            layout.childAlignment = TextAnchor.UpperCenter; layout.padding = new RectOffset(0, 0, 8, 24);
+            content.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            var scroll = column.GetComponent<ScrollRect>();
+            scroll.viewport = cr; scroll.content = content; scroll.horizontal = false; scroll.vertical = true;
+            scroll.movementType = ScrollRect.MovementType.Clamped; scroll.scrollSensitivity = 40f;
+            _colorsColumn = cr;
+            _colorsContent = content;
+            column.SetActive(false);
+        }
+
+        RectTransform _colorsContent;
+
+        // Cria as amostras uma vez (a paleta General e fixa) assim que o avatar fica pronto.
+        void EnsureColorSwatches()
+        {
+            if (_itemColorRings.Count > 0 || _avatar == null || !_avatar.IsReady) return;
+            for (int i = 0; i < _avatar.GeneralPaletteCount; i++)
+            {
+                int index = i;
+                var ring = NewImage("ItemColor_" + index, _colorsContent, Art("AvatarMaker/indicator"), Color.white);
+                ring.type = Image.Type.Sliced;
+                ring.raycastTarget = true;
+                var button = ring.gameObject.AddComponent<Button>();
+                button.targetGraphic = ring;
+                button.onClick.AddListener(() => { UiSound.PlayClick(); ChooseItemColor(index); });
+                _itemColorRings[index] = ring;
+                var swatch = NewImage("Color", ring.transform, Art("AvatarMaker/indicator"), _avatar.GeneralSwatch(index));
+                swatch.type = Image.Type.Sliced;
+                Place(swatch.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(66f, 66f));
+            }
+        }
+
+        void ChooseItemColor(int index)
+        {
+            if (_avatar == null || !_avatar.IsReady) return;
+            _avatar.SelectItemColor(_category, index);
+            _history.Push(_avatar.CurrentAppearance);
+            RefreshSelection();
+            RefreshHistoryButtons();
+        }
+
+        void RefreshColorsColumn()
+        {
+            if (_colorsColumn == null) return;
+            bool show = _avatar != null && _avatar.IsReady && !AvatarCatalog.IsColorCategory(_category) &&
+                        AvatarCatalog.IsColorItem(_avatar.CurrentAppearance.Get(_category));
+            _colorsColumn.gameObject.SetActive(show);
+            if (!show) return;
+            EnsureColorSwatches();
+            int selected = _avatar.CurrentAppearance.GetItemColor(_category);
+            foreach (var pair in _itemColorRings) pair.Value.color = pair.Key == selected ? new Color(1f, 0.25f, 0.65f) : Color.white;
         }
 
         // Itens da categoria que existem no esqueleto (peca sem skin "Templates/..." e escondida).
@@ -310,6 +387,7 @@ namespace AvatarWorld.Runtime
         void RefreshSelection()
         {
             if (_avatar == null || !_avatar.IsReady) return;
+            RefreshColorsColumn();
             if (AvatarCatalog.IsColorCategory(_category))
             {
                 int selected = _avatar.CurrentAppearance.GetColorIndex(_category);
@@ -438,18 +516,26 @@ namespace AvatarWorld.Runtime
             CategoryView view = Views[0];
             foreach (var v in Views) if (v.key == category) view = v;
             string previous = _avatar.CurrentAppearance.Get(category);
-            _avatar.SelectOption(category, itemId);
-            _thumbCamera.orthographicSize = view.half * AvatarScale;
-            _thumbCamera.transform.position = new Vector3(AvatarPosition.x, AvatarPosition.y + view.centerY * AvatarScale, -10f);
-            _thumbCamera.Render();
-            RenderTexture.active = rt;
-            var tex = new Texture2D(ThumbSize, ThumbSize, TextureFormat.RGBA32, false);
-            tex.ReadPixels(new Rect(0, 0, ThumbSize, ThumbSize), 0, 0);
-            tex.Apply();
-            RenderTexture.active = null;
-            _thumbs[itemId] = Sprite.Create(tex, new Rect(0, 0, ThumbSize, ThumbSize), new Vector2(0.5f, 0.5f), 100f);
-            _avatar.SelectOption(category, previous);
-            _avatar.ReleaseUnselected();
+            try
+            {
+                _avatar.SelectOption(category, itemId);
+                _thumbCamera.orthographicSize = view.half * AvatarScale;
+                _thumbCamera.transform.position = new Vector3(AvatarPosition.x, AvatarPosition.y + view.centerY * AvatarScale, -10f);
+                _thumbCamera.Render();
+                RenderTexture.active = rt;
+                var tex = new Texture2D(ThumbSize, ThumbSize, TextureFormat.RGBA32, false);
+                tex.ReadPixels(new Rect(0, 0, ThumbSize, ThumbSize), 0, 0);
+                tex.Apply();
+                RenderTexture.active = null;
+                _thumbs[itemId] = Sprite.Create(tex, new Rect(0, 0, ThumbSize, ThumbSize), new Vector2(0.5f, 0.5f), 100f);
+            }
+            finally
+            {
+                // Mesmo se a miniatura falhar, o avatar volta ao item anterior (senao o estado fica preso e e salvo).
+                RenderTexture.active = null;
+                _avatar.SelectOption(category, previous);
+                _avatar.ReleaseUnselected();
+            }
         }
 
         void ShowToast(string message)

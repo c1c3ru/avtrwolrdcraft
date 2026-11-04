@@ -61,5 +61,41 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual(AvatarPaletteData.DefaultSkin, history.Undo().SkinIndex);
             Assert.AreEqual(0, history.Redo().SkinIndex);
         }
+
+        [Test]
+        public void ItemColorsDefaultSelectAndCompare()
+        {
+            var a = AvatarAppearance.CreateDefault();
+            Assert.AreEqual(AvatarPaletteData.DefaultItemColor, a.GetItemColor(AvatarCatalog.CategoryEyebrows));
+            Assert.IsTrue(a.TrySelectItemColor(AvatarCatalog.CategoryEyebrows, 10));
+            Assert.IsFalse(a.TrySelectItemColor(AvatarCatalog.CategoryEyebrows, AvatarPaletteData.GeneralCount));
+            Assert.IsFalse(a.TrySelectItemColor("Inexistente", 0));
+            Assert.AreEqual(10, a.GetItemColor(AvatarCatalog.CategoryEyebrows));
+            var b = a.Clone();
+            Assert.IsTrue(a.SameAs(b));
+            b.TrySelectItemColor(AvatarCatalog.CategoryEyebrows, 11);
+            Assert.IsFalse(a.SameAs(b));
+            Assert.AreEqual(10, a.GetItemColor(AvatarCatalog.CategoryEyebrows), "clone nao compartilha a lista");
+            // cor explicitamente igual ao padrao equivale a nao ter entrada
+            var c = AvatarAppearance.CreateDefault();
+            c.TrySelectItemColor(AvatarCatalog.CategoryEyebrows, AvatarPaletteData.DefaultItemColor);
+            Assert.IsTrue(c.SameAs(AvatarAppearance.CreateDefault()));
+        }
+
+        [Test]
+        public void EyebrowsAreColorItemsAndOldSavesKeepTheBuiltInDefault()
+        {
+            Assert.AreEqual(AvatarCatalog.EyebrowsDefault, AvatarCatalog.DefaultOption(AvatarCatalog.CategoryEyebrows));
+            Assert.IsTrue(AvatarCatalog.IsBuiltIn(AvatarCatalog.EyebrowsDefault));
+            Assert.IsFalse(AvatarCatalog.IsColorItem("shirt_formal_1"));
+            Assert.IsTrue(AvatarCatalog.IsColorItem("eyebrows_10_color"));
+            Assert.Greater(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryEyebrows].Length, 50);
+            var old = JsonUtility.FromJson<AvatarAppearance>("{\"HairId\":\"Hair_Front/1_Color\"}");
+            Assert.AreEqual(AvatarCatalog.EyebrowsDefault, old.EyebrowsId);
+            Assert.IsNotNull(old.ItemColors);
+            old.ItemColors.Add(new CategoryColor { Category = "Nada", Index = 5 });
+            old.SanitizeInPlace();
+            Assert.AreEqual(0, old.ItemColors.Count);
+        }
     }
 }

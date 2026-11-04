@@ -9,5 +9,6 @@ namespace AvatarWorld.Core.Avatar
         public const int GeneralCount = 115;
         public const int DefaultSkin = 5;
         public const int DefaultEyes = 24;
+        public const int DefaultItemColor = 106;
     }
 }

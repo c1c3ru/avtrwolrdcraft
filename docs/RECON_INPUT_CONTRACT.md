@@ -37,3 +37,21 @@ O export registra coordenadas e bounds dos polígonos no espaço local, offset e
 - Comparar tap, drag, soltura válida/inválida, cancelamento, overlap e dois dedos em execução. Essa validação fica para quando o usuário quiser retomar os testes no aparelho.
 
 T031 permanece parcial. Este documento registra evidência estática e evita tratar presença de componente ou chamadas indiretas como prova de comportamento completo.
+
+## Recorte 2026-11-04: o que dispara OnBeginDragInternal, OnSyncPosition e OnEndDragInternal
+Ferramenta: `tools/recon_callers.py` (chamadores `bl`/`b` por método; saída `out/recon/tasks/T031/drag-callers.json`) mais varredura de `ldr x,[x,#off]` com a fórmula de vtable IL2CPP `off = 0x138 + slot*16` (validada: `OnEndDrag` carrega `0x318` = slot 30 = `OnEndDragInternal`).
+
+Slots de `DragDropItemBase` (campo `slot` do mapa de métodos): `OnBeginDrag` 20, `OnDrag` 22, `OnEndDrag` 23, `SyncPosition` (corrotina) 24, `OnSyncPosition` 27, `OnBeginDragInternal` 29, `OnEndDragInternal` 30, `OnPointerClickInternal` 31, `StopSyncPosition` 32.
+
+Provado pelos bytes:
+- `DragDropItemBase.OnBeginDrag` (`0x206b864`): carrega o slot 29 e chama `OnBeginDragInternal` (virtual), depois chama o slot 32 `StopSyncPosition`; também invoca o delegate `OnBeginDragAction` (campo `0xC0`).
+- `DragDropItemBase.OnEndDrag` (`0x206bb40`): chama `StopSyncPosition` (slot 32) e `OnEndDragInternal` (slot 30); também invoca `OnEndDragAction`.
+- `DragDropItemBase.OnDrag` (`0x206bb3c`) é só retorno: **o arraste contínuo não vem de `OnDrag`**.
+- `StartSyncPosition` (`0x206baec`) chama `StopSyncPosition` (slot 32) e depois a corrotina virtual `SyncPosition` (slot 24). O `MoveNext` de `<SyncPosition>d__75` (`0x206c7d0`, 1.008 bytes) chama o slot 27, `OnSyncPosition`, em `0x206c85c` e `0x206cb78`, além dos slots 25 e 26 (não identificados). Logo `OnSyncPosition` é chamado **por quadro dentro da corrotina**, e não por evento de ponteiro.
+- Quem inicia a corrotina: não foi localizado neste recorte (`StartSyncPosition` é virtual; os chamadores diretos não aparecem).
+- Cadeia dos `*Internal`: `LevelItem.OnBeginDragInternal`/`OnEndDragInternal` são chamados por overrides diretos (Character, Toddler, Animal, Baby, itens de tarefa) que invocam a base; `LevelCharacter.OnBeginDrag`/`OnEndDrag` fazem salto de cauda para `DragDropItemBase.OnBeginDrag`/`OnEndDrag`.
+- Fluxo sustentado: `EventSystem` (via `IBeginDragHandler`/`IEndDragHandler`) → `LevelCharacter.OnBeginDrag` → `DragDropItemBase.OnBeginDrag` → `OnBeginDragInternal` (Character → `LevelItem`) e `StartSyncPosition`; a cada quadro a corrotina chama `OnSyncPosition` (Character → `LevelCharacterAnimator.OnMovement`); no soltar, `OnEndDrag` → `StopSyncPosition` e `OnEndDragInternal` (Character → `OnEndMovement`).
+
+Ligação com T032: `LevelCharacter.OnSyncPosition` salta para `LevelCharacterAnimator.OnMovement`, portanto a velocidade da histerese 0.06/0.006/6.0 é a do ponteiro arrastado, medida por quadro na corrotina. A unidade de `t` (deltaTime) continua inferida.
+
+Limites: os slots 25/26 da corrotina e o chamador de `StartSyncPosition` ficam abertos; chamadas por delegate/interface e `MPPointerInputModule` não entram na varredura de `bl`/`b`; a janela de nomes duplicados (`<SyncPosition>d__5` é de outra classe) foi descartada por número `d__75` casar com o campo da classe.
