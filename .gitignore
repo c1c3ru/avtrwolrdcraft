@@ -40,7 +40,7 @@ out/test-results*.xml
 client/AvatarWorldClient/Assets/Resources/PerformanceTestRunInfo.json*
 client/AvatarWorldClient/Assets/Resources/PerformanceTestRunSettings.json*
 # Cache de build CMake/Gradle gerado a cada compilacao (pasta com hash aleatorio).
-client/AvatarWorldClient/.utmp/Debug/
+client/AvatarWorldClient/.utmp/
 # Worktrees de agentes auxiliares, nunca pertencem ao historico do projeto.
 /.claude/
 # Inventario derivado do probe de avatares; resumo versionado em docs/AVATAR_ASSET_FINDINGS.md.
