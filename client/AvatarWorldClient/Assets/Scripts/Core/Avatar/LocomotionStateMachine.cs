@@ -28,8 +28,9 @@ namespace AvatarWorld.Core.Avatar
 
         /// <summary>
         /// LevelCharacterAnimator.OnMovement (0x22a1570): mesmos 0.06 / 0.006 / 6.0 do Toddler. Dentro de OnMovement nao ha
-        /// transicao Walk -> Run (de Walk so se compara com 0.006); Run so e mantido se ja estiver ativo. Quem ativa Run
-        /// no Character fica fora deste metodo e ainda nao foi localizado.
+        /// transicao Walk -> Run (de Walk so se compara com 0.006). Varredura de todos os metodos do animator: _movementType
+        /// so e gravado em OnMovement (0, ou 1/2/estado anterior) e OnEndMovement (0); nenhum grava 3. Logo o Character
+        /// nunca corre no original: o ramo "Movement_Cycles/Run" e inalcancavel.
         /// </summary>
         public static readonly LocomotionConfig Character = new LocomotionConfig
             { StartWalkSpeed = 0.06f, StopSpeed = 0.006f, RunEnterSpeed = float.PositiveInfinity, RunExitSpeed = 6f, CanEnterRun = false };
