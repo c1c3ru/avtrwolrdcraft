@@ -21,10 +21,12 @@ namespace AvatarWorld.Core.Avatar
         public static readonly IReadOnlyDictionary<string, string[]> OptionsByCategory = new Dictionary<string, string[]>
         {
             { CategoryHair, new[] { "Hair_Front/1_Color", "Hair_Front/2_Color" } },
-            { CategoryShirt, new[] { "shirt_formal_1", "shirt_casual_1" } },
-            { CategoryBottom, new[] { "bottom_special_1", "bottom_special_10" } },
-            { CategoryShoes, new[] { "legs_shoes_1", "legs_shoes_10" } },
-            { CategoryAccessory, new[] { "accessories_face_glasses_1", "accessories_body_neck_1" } },
+            // Roupas: AvatarCatalogData e gerado por tools/avatar_catalog_build.py (itens reais do SUT).
+            // Os dois primeiros de cada lista sao os ids originais; o primeiro e o padrao.
+            { CategoryShirt, AvatarCatalogData.Shirt },
+            { CategoryBottom, AvatarCatalogData.Bottom },
+            { CategoryShoes, AvatarCatalogData.Shoes },
+            { CategoryAccessory, AvatarCatalogData.Accessory },
         };
 
         public static string DefaultOption(string category) => OptionsByCategory[category][0];

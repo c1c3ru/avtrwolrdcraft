@@ -58,3 +58,103 @@ Ferramenta: `tools/recon_spawn_census.py` (lê relatórios do inspetor; saída `
 Conclusão sustentada: nas cenas locais disponíveis os personagens não vêm serializados; são criados em runtime a partir dos pontos `LevelSpawn` (11 em level8) via `LevelAvatarOneTimeSpawner`/`LevelUtils.SpawnAvatar`. Isso confirma que o preset (896: 827 Character, 45 Toddler, 11 Baby, 7 Dog, 3 Cat, 3 Horse) decide a família, e que não se deve usar o esqueleto Character para todos.
 
 Limite: as chamadas `bl` dentro de `LevelCharacterAnimator.OnMovement` passam por stubs de resolução IL2CPP (`0x1b886e8`); os alvos não foram resolvidos, então o roteamento exato Character → Animator (Stand/Walk/Run, `GetWalkingAnimationName`) segue só pelas assinaturas e campos (`MovementType`, `_walkTrackStartTime`, `OnStepContact`). Cenas além de level4/8/233/234/237 não estão extraídas localmente.
+
+## Recorte 2026-11-04 (2): Character → LevelCharacterAnimator resolvido
+Ferramentas: `tools/recon_call_targets.py` (alvos `bl` -> método via mapa estrutural de VA) e varredura binária de `bl`/`b` em `libil2cpp.so` (resultados em `out/recon/tasks/T032/animator-calls.json` e `animator-callers.json`).
+
+Correção: os `OnMovement` em `0x2265194` e `0x233f910` são de `LevelAnimal` e `LevelToddler`; o do animator humano é `0x22a1570`. Os stubs `0x1b886e8`/`0x1b8885c` são helpers de runtime IL2CPP e não carregam semântica de jogo.
+
+Chamadores (instrução `b` de cauda, exceto onde indicado):
+| Animator | Chamado por |
+|---|---|
+| `OnBeginMovement` (`0x22a1150`) | `LevelCharacter.OnBeginDragInternal`, `LevelCharacter.Multiplayer_PrepareForDrag`, `LevelWaterAreaItemHandler.GetOutOfWater` (`bl`) |
+| `OnMovement` (`0x22a1570`) | `LevelCharacter.OnSyncPosition`, `LevelCharacter.IMultiplayer_TransformChange.Multiplayer_OnTransformChange` |
+| `OnEndMovement` (`0x22a1fe0`) | `LevelCharacter.OnEndDragInternal`, `LevelCharacter.IMultiplayer_PrepareForDrop.Multiplayer_PrepareForDrop` |
+| `OnEndLand` (`0x22a0b84`) | `LevelCharacter.OnEndLand` |
+| `PlayIdleAnimationOnCharacterInit` | `LevelCharacter.Init` |
+| `PlayProperIdleAnimation` | 14 chamadores, incl. `LevelItemOnCharacterBase.OnBeginDragInternal`, handlers de CA (Toddler/Baby/Pet/Crutches/SkiPoles), `LevelRunningAreaItemHandler.OnEndLand`, `LevelStageTheme.ThemeSetActive` |
+
+Fluxo sustentado: arrastar (begin/end drag) e sincronização de posição (`OnSyncPosition`, também usada por multiplayer) movem o Character; o animator decide a animação a partir de `MovementType` (Stand/Walk/Run). Dentro do animator, `OnBeginMovement` usa `GetCurrentBehaviorItem` + `SetAddAnimationInternal`; `OnMovement` usa `CShape.IsPointInsideShape`, `LevelItem.SetSortingOrder`, `SetAddAnimationInternal`, `SetEmtyAnimation`; `OnEndMovement` usa `ShouldPlayFallHighAnimation` + `SetEmtyAnimation`.
+
+Ainda aberto: constantes (limiares Stand/Walk/Run, nomes de animação via `GetWalkingAnimationName`) exigem leitura de literais do corpo de `OnMovement`/`SetAddAnimationInternal`, o que cabe em T025.
+
+## Recorte 2026-11-04 (3): constantes de `LevelCharacterAnimator.OnMovement`
+Fonte: `out/recon/tasks/T032/animator-onmovement-constants.json` (asm de `0x22a1570` + floats lidos de `.rodata` pelo mapa de segmentos do ELF).
+
+Provado (instruções e valores literais): comparação com `3.0` contra `_positionOnBeginDrag` (campo `0x38`) que limpa `_canForceNormalDragging`; `SetEmtyAnimation(1, 0.2)` ao encerrar o movimento, zerando `_movementType` e `_lastMovementPosition`; `_forceNormalDragging = true` quando `|a| < 0.1` e `|b| > 0.05`; chamada com argumento inteiro `50` antes da seleção de animação.
+
+Inferido (não provado): `a`/`b` são componentes do deslocamento por quadro e o `3.0` é distância horizontal desde o início do arraste; o `50` é ordem de sorting. Não implementar como paridade até T025/T027 confirmarem por corpo completo ou execução.
+
+## Recorte 2026-11-04 (4): literais de string do animator
+Ferramenta: `tools/recon_string_literals.py` (pares `adrp`+`ldr` -> GOT -> slot de metadata usage -> literal; reutiliza `Elf`/`Metadata` de `recon_il2cpp.py`). Saída: `out/recon/tasks/T032/animator-literals.json`.
+
+Correção: `GetWalkingAnimationName` (`0x2266e08`) e `GetStandingIdleAnimationName` (`0x2266dc8`) são de `LevelAnimal`, não do Character. Seus literais (`Track_Animations/Forced_To_Walk`, `General/Standing_Idle`) valem para animais.
+
+`LevelCharacterAnimator` (literais por método, ordem de aparição no código, não de uso):
+| Método | Literais |
+|---|---|
+| `PlayStandIdleAnimation` | `Idle_Stand_1` |
+| `OnBeginMovement` | `Idle_Stand_1`, `Lift_Idle`, `Legs_Shoes_119`, `<empty>` |
+| `OnMovement` | `Idle_Stand_1`, `Lift_Idle`, `Movement_Cycles/Walk`, `Movement_Cycles/Run`, `Track_Animations/Forced_To_Walk`, `Glow_Loop`, erro `No case found for nextMovementType[...]` |
+| `PlayProperIdleAnimation` | `CA/Chair_Sitting/Sit_On_Chair_Idle`, `CA/Bed_Laying/Laying_Idle` |
+| `SetAddAnimationInternal` | erros `animationName is null or empty!` e `No animation found for animationName[...]` |
+
+Sustentado: Walk e Run usam `Movement_Cycles/Walk|Run`; idle em pé é `Idle_Stand_1`; item erguido usa `Lift_Idle`; idle contextual escolhe animações de cadeira/cama. `SetAddAnimationInternal` falha com erro quando o nome é vazio ou inexistente no esqueleto (não é fallback silencioso).
+
+Não verificado: a existência desses nomes nos esqueletos Spine extraídos (não estão em `out/assets/TextAsset`; precisa busca nos `.skel`/MonoBehaviours de Spine) e a condição exata de cada ramo (`Lift_Idle`, `Glow_Loop`, `Legs_Shoes_119`).
+
+## Recorte 2026-11-04 (5): validação dos nomes contra os esqueletos Spine
+Método: busca binária dos nomes (strings com prefixo de tamanho do formato `.skel` 4.2) em `out/assets/TextAsset/*skel*` (588 arquivos).
+
+| Nome | Onde existe |
+|---|---|
+| `Idle_Stand_1` | `Avatar_Spine.skel` (só Character) |
+| `Movement_Cycles/Walk` | `Avatar_Spine`, `Toddler_Spine`, `Treadmill_P151` |
+| `Movement_Cycles/Run` | `Avatar_Spine`, `Treadmill_P151` (**não** em `Toddler_Spine`) |
+| `Lift_Idle` | `Avatar_Spine`, `Toddler_Spine` |
+| `Track_Animations/Forced_To_Walk` | `Avatar_Spine`, `Toddler_Spine` e todos os pets (Cat, Dog, Horse, Cow, Bird, Fish, Rabbit, Turtle, Snake, Lizard, Hamster, Chicken) |
+| `CA/Chair_Sitting/Sit_On_Chair_Idle`, `CA/Bed_Laying/Laying_Idle` | `Avatar_Spine` |
+| `Glow_Loop` | só `Star_Pass-Gift_Choice.skel`; **não** no esqueleto do avatar |
+| `Legs_Shoes_119` | não é animação: aparece em packs de roupa (ex.: `CheerleaderIsLifeP204Pack`), é id de item de calçado |
+
+Consequências sustentadas: Toddler não tem ciclo de corrida (o ramo Run do animator só vale para o esqueleto Character); `Forced_To_Walk` é a faixa comum a Character, Toddler e pets; Baby não foi verificado contra `Baby_*` skeleton neste recorte. `Glow_Loop` em `OnMovement` é executado em outro objeto/esqueleto (efeito de brilho), não no Character. `Legs_Shoes_119` em `OnBeginMovement` é comparação com id de item segurado/vestido, não animação.
+
+Limite: busca por substring binária prova presença do nome no arquivo, não que seja animação (vs. skin/slot); para animações Character principais os nomes seguem o padrão de caminho de animação, mas a classificação exata exige parse do `.skel`.
+
+## Recorte 2026-11-04 (6): parser real de `.skel` 4.2 (corrige o recorte 5)
+Ferramentas: `tools/skel_dump/` (console .NET 8 que compila o `SkeletonBinary` do spine-csharp em `Library/PackageCache`; saída `out/recon/tasks/T032/skel-dump.jsonl`, 587 esqueletos, 0 erros) e `tools/recon_skel_check.py` (verifica nomes por tipo exato; sai com 0/1; passa com 9 checagens).
+Execução: `dotnet build tools/skel_dump -c Release -o <tmp>` e `dotnet <tmp>/skel_dump.dll out/assets/TextAsset/*skel*`.
+
+Tamanhos (animações/skins/slots): Avatar_Spine 3479/2120/429; Toddler_Spine 581/446/184; Baby_Spine 63/227/61; Pet_Dog 212/437/116; Pet_Cat 171/268/90; Pet_Horse 44/172/113.
+
+Correção ao recorte 5 (a substring enganava): como animação exata, `Idle_Stand_1`, `Lift_Idle`, `Movement_Cycles/Walk`, `Movement_Cycles/Run`, `CA/Chair_Sitting/Sit_On_Chair_Idle` e `CA/Bed_Laying/Laying_Idle` existem só em `Avatar_Spine` (Walk e Run também em `Treadmill_P151`); Toddler **não** tem `Walk`, `Lift_Idle` nem `Run` com esses nomes. `Track_Animations/Forced_To_Walk` existe em Avatar_Spine, Toddler e pets, mas não em Baby. Baby (63 animações) não tem locomoção. Pets usam `General/Standing_Idle`, `General/Walking`, `General/Running`. `Glow_Loop` só em `Star_Pass-Gift_Choice`. `Legs_Shoes_119` não é animação, skin nem slot de esqueleto algum.
+
+Consequência: os ciclos Idle/Walk/Run de `LevelCharacterAnimator` servem só ao esqueleto Avatar_Spine; Toddler, Baby e pets têm animadores próprios (`LevelToddler`, `LevelAnimal`) com outros literais, ainda por extrair com `tools/recon_string_literals.py`.
+
+## Recorte 2026-11-04 (7): Toddler, Baby e animais classificados
+Ferramentas: `tools/recon_method_literals.py` (decodifica `adrp`+`ldr` direto dos bytes, sem disassembler; saídas `out/recon/tasks/T032/baby-literals.json` e `toddler-animal-literals.json`) e `tools/recon_skel_check.py` estendido (15 checagens, todas passam).
+
+| Família | Classe | Esqueleto | Animações (validadas como nome exato) |
+|---|---|---|---|
+| Character | `LevelCharacter` + `LevelCharacterAnimator` | `Avatar_Spine` | `Idle_Stand_1`, `Movement_Cycles/Walk`, `Movement_Cycles/Run`, `Lift_Idle`, `Track_Animations/Forced_To_Walk` |
+| Toddler | `LevelToddler` | `Toddler_Spine` | `General/Stand_Idle`, `General/Lift_Idle`, `Movement_Cycles/Walking_Loop`, `Movement_Cycles/Crawling_Loop`, `Track_Animations/Forced_To_Walk`, `Track_Animations/Forced_To_Crawl` |
+| Baby | `LevelBaby` (+ `LevelBabyAnimations`) | `Baby_Spine` | `General/Idle` (idle e retorno; sem locomoção; `SitOn` também usa `General/Idle`) |
+| Animais (Cat/Dog/Horse e demais pets) | `LevelAnimal` | `Pet_*`, `Cow_Pet` | `General/Standing_Idle`, `General/Walking`, `General/Running`, `Track_Animations/Forced_To_Walk` |
+
+Sustentado: Toddler tem andar **e engatinhar** (ramo próprio com `Forced_To_Crawl`), sem corrida; Baby não se locomove por animação (só idle/pose), coerente com não ter ciclos de movimento; animais lançam erro "animal doesn't have Running animations but tries to run" se faltar `Running`. `Glow_Loop` aparece nas três famílias de `OnMovement`, mas só existe em outro esqueleto (efeito).
+
+Não confiável / ruído: o resolvedor lê pares `adrp`+`ldr` numa janela até o próximo método, então traz literais alheios (`_Tie`, `country`, `old_device_token`, `Level_DoctorOffice_L17`, `DeleteSharedAudioClip`, `PazuCore/Art/flags/`) e `Small_Box_Open/Close` (inexistentes em esqueleto algum). Tratar como não verificados; só valem os nomes confirmados no `.skel`. Ainda falta ligar cada literal à sua condição (ex.: quando usa crawl, quando animal corre).
+
+## Recorte 2026-11-04 (8): condições de `LevelToddler.OnMovement` (`0x233f910`)
+Fonte: asm de `OnMovement_000000000233f910` + slots de string resolvidos pelo join GOT→metadata; floats lidos de `.rodata`.
+
+Provado (instruções e valores):
+- **Walk contra crawl:** com movimento ativo e sem `_isLockedAnimationWhenWalking` (`0x398`), a animação é `Movement_Cycles/Walking_Loop` se `PostureType == Standing (1)` e `Movement_Cycles/Crawling_Loop` caso contrário (Sitting=2 ou None=0). `csel ... eq` seleciona o slot `0x41da688` (Walking) quando igual a 1 e `0x41da690` (Crawling) quando diferente. Com `_isLockedAnimationWhenWalking` ligado usa o nome travado em `0x3a0` e `MovementType=2`.
+- **Parada:** o ramo sem movimento toca `General/Stand_Idle` (slot `0x41da668`) com `MovementType=1`.
+- **Velocidade:** `speed = sqrt(a² + b²) / t`, onde `t` é o retorno de uma chamada sem argumentos (`0x3cd1b3c`).
+- **Histerese por estado atual** (`_movementType`, `0x380`): Stand(1) → anda se `speed > 0.06`; Walk(2) → continua enquanto `speed >= 0.006`, senão para; Run(3) → `speed < 6.0` cai para o ramo de andar. Constantes: 0.06, 0.006, 6.0.
+- Mantém o prólogo do animator de Character: limpa `_canForceNormalDragging` (`0x389`) se `|Δ| > 3.0`; ao encerrar chama o equivalente a `SetEmtyAnimation` com mix 0.2 e zera `_movementType`, `_lastMovementPosition`; força arraste normal com `|a| < 0.1` e `|b| > 0.05`.
+
+Inferido (não provado): `a`, `b` são o deslocamento por quadro e `t` é `Time.deltaTime`; os limiares 0.06/0.006/6.0 então são unidades por segundo. Não há ramo de Run próprio para animação do Toddler (o esqueleto não tem Run), então o estado Run só alimenta a escolha de andar/engatinhar.
+
+Consequência para a cópia: Toddler engatinha sempre que não está em pé (postura sentada ou indefinida) e anda quando `Standing`; ambos usam o mesmo limiar de velocidade.

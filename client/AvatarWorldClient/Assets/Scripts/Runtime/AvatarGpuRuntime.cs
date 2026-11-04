@@ -51,6 +51,10 @@ namespace AvatarWorld.Runtime
         Dictionary<string, ManifestItem> _itemsById;
         Dictionary<string, Material> _materialByPage;
         readonly HashSet<string> _loadedClothingPages = new HashSet<string>();
+        readonly Dictionary<string, string> _pageFileLoaded = new Dictionary<string, string>(); // pagina -> arquivo da textura atual
+        readonly Dictionary<string, Texture2D> _pageTextures = new Dictionary<string, Texture2D>();
+        readonly Dictionary<string, bool> _available = new Dictionary<string, bool>();
+        Texture2D _blank;
         SkeletonAnimation _skeletonAnimation;
         SkeletonData _skeletonData;
         Shader _shader;
@@ -144,13 +148,19 @@ namespace AvatarWorld.Runtime
             // continuava em magenta - material de erro do Unity - mesmo apos o toque trocar
             // corretamente a textura do Material). Por isso as texturas de TODAS as variantes
             // conhecidas (nao so a selecao inicial) sao carregadas com o nome certo ja aqui.
+            // O manifesto tem centenas de itens: so os selecionados agora carregam textura no Start; os demais
+            // carregam sob demanda (LoadItemTextures) e sao descartados por ReleaseUnselected. Todas as 2172 paginas
+            // ja tem Material no atlas (AvatarAtlasLoader), entao trocar o mainTexture depois funciona.
             var pageToFile = new Dictionary<string, string>();
-            foreach (var item in manifest.items)
-                foreach (var piece in item.pieces)
+            foreach (var selectedId in SelectedItemIds())
+            {
+                if (!_itemsById.TryGetValue(selectedId, out var selectedItem)) continue;
+                foreach (var piece in selectedItem.pieces)
                 {
                     var pageName = piece.template.Substring("Templates/".Length);
                     if (!pageToFile.ContainsKey(pageName)) pageToFile[pageName] = piece.file;
                 }
+            }
 
             foreach (var pair in pageToFile)
             {
@@ -164,7 +174,10 @@ namespace AvatarWorld.Runtime
                 // page.rendererObject nulo e renderiza com o material de erro (magenta) do Unity.
                 texture.name = pageName;
                 _loadedClothingPages.Add(pageName);
+                _pageFileLoaded[pageName] = pair.Value;
+                _pageTextures[pageName] = texture;
                 realTextures[pageName] = texture;
+                Resources.UnloadAsset(source);
             }
 
             SpineAtlasAsset atlasAsset;
@@ -234,6 +247,51 @@ namespace AvatarWorld.Runtime
         /// <summary>Aparencia em edicao (a mesma de PlayerState; nada e gravado ate o editor salvar).</summary>
         public AvatarAppearance CurrentAppearance => _playerState.Appearance;
 
+        IEnumerable<string> SelectedItemIds()
+        {
+            foreach (var category in _categories) yield return Appearance.Get(category.key);
+        }
+
+        /// <summary>O item existe no manifesto e todas as suas pecas tem skin "Templates/..." no esqueleto.</summary>
+        public bool IsItemAvailable(string itemId)
+        {
+            if (!IsReady) return false;
+            if (_available.TryGetValue(itemId, out var cached)) return cached;
+            bool ok;
+            if (_itemsById.TryGetValue(itemId, out var item))
+            {
+                ok = item.pieces.Count > 0;
+                if (ok) foreach (var piece in item.pieces) if (_skeletonData.FindSkin(piece.template) == null) { ok = false; break; }
+            }
+            else ok = _skeletonData.FindSkin(itemId) != null; // cabelo: o ID e o proprio skin do esqueleto
+            _available[itemId] = ok;
+            return ok;
+        }
+
+        /// <summary>Descarta as texturas de roupa que nenhuma categoria atual usa (miniaturas geram e descartam).</summary>
+        public void ReleaseUnselected()
+        {
+            if (!IsReady) return;
+            var needed = new HashSet<string>();
+            foreach (var id in SelectedItemIds())
+                if (_itemsById.TryGetValue(id, out var item))
+                    foreach (var piece in item.pieces) needed.Add(piece.template.Substring("Templates/".Length));
+            if (_blank == null)
+            {
+                _blank = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+                _blank.SetPixel(0, 0, Color.clear);
+                _blank.Apply(false, true);
+            }
+            foreach (var page in new List<string>(_pageTextures.Keys))
+            {
+                if (needed.Contains(page)) continue;
+                if (_pageTextures[page] != null) Destroy(_pageTextures[page]);
+                _materialByPage[page].mainTexture = _blank;
+                _pageTextures.Remove(page);
+                _pageFileLoaded.Remove(page);
+            }
+        }
+
         /// <summary>Troca uma categoria no avatar ja montado (as texturas de todas as variantes foram carregadas na criacao). Nao grava.</summary>
         public void SelectOption(string category, string itemId)
         {
@@ -263,12 +321,17 @@ namespace AvatarWorld.Runtime
             foreach (var piece in item.pieces)
             {
                 var pageName = piece.template.Substring("Templates/".Length);
+                if (_pageFileLoaded.TryGetValue(pageName, out var loadedFile) && loadedFile == piece.file) continue;
                 var resourceName = System.IO.Path.GetFileNameWithoutExtension(piece.file);
                 var source = Resources.Load<Texture2D>("AvatarSpine/Clothing/" + resourceName);
                 if (source == null) { Debug.LogError("AvatarGpuRuntime: textura de roupa ausente " + resourceName); continue; }
                 var texture = PremultipliedCopy(source);
+                Resources.UnloadAsset(source);
                 texture.name = pageName;
+                if (_pageTextures.TryGetValue(pageName, out var old) && old != null) Destroy(old);
                 _materialByPage[pageName].mainTexture = texture;
+                _pageTextures[pageName] = texture;
+                _pageFileLoaded[pageName] = piece.file;
                 _loadedClothingPages.Add(pageName);
             }
         }
@@ -288,6 +351,7 @@ namespace AvatarWorld.Runtime
             foreach (var category in _categories)
             {
                 var item = _itemsById[Appearance.Get(category.key)];
+                LoadItemTextures(item);
                 foreach (var piece in item.pieces)
                     AddSkin(_skeletonData, skin, tints, piece.template, Color.white);
             }

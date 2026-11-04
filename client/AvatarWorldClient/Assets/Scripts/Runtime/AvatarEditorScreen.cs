@@ -22,7 +22,7 @@ namespace AvatarWorld.Runtime
         const float PanelWidth = 823f;
         static readonly Vector3 AvatarPosition = new Vector3(-4.0f, -2.35f, 0f);
         const float AvatarScale = 1f;
-        const int ThumbSize = 256;
+        const int ThumbSize = 160;
 
         struct CategoryView { public string key; public string art; public float centerY, half; }
 
@@ -51,11 +51,15 @@ namespace AvatarWorld.Runtime
         Font _font;
         readonly Dictionary<string, Sprite> _art = new Dictionary<string, Sprite>();
         readonly Dictionary<string, Sprite> _thumbs = new Dictionary<string, Sprite>();
+        readonly HashSet<string> _thumbFailed = new HashSet<string>();
+        int _thumbCount;
         readonly Dictionary<string, Image> _categoryButtons = new Dictionary<string, Image>();
         readonly Dictionary<string, Image> _cells = new Dictionary<string, Image>();
+        readonly Dictionary<string, Image> _cellIcons = new Dictionary<string, Image>();
+        ScrollRect _scroll;
 
         public string Category => _category;
-        public bool ThumbsReady { get; private set; }
+        public int VisibleItemCount => _cells.Count;
 
         public void Begin(SaveStore saves, PlayerState state, Action onClose)
         {
@@ -77,7 +81,7 @@ namespace AvatarWorld.Runtime
 
             BuildFront();
             SelectCategory(AvatarCatalog.CategoryHair);
-            StartCoroutine(BuildThumbnails());
+            StartCoroutine(ThumbnailWorker());
         }
 
         // ---------- camera e canvas ----------
@@ -171,9 +175,29 @@ namespace AvatarWorld.Runtime
                 y -= 150f;
             }
 
-            _grid = new GameObject("Grid", typeof(RectTransform)).GetComponent<RectTransform>();
-            _grid.SetParent(_panel, false);
-            Stretch(_grid);
+            // Grade de miniaturas com rolagem vertical (centenas de itens): 3 colunas de celas 217x207.
+            var viewport = new GameObject("Viewport", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
+            viewport.transform.SetParent(_panel, false);
+            var vr = (RectTransform)viewport.transform;
+            vr.anchorMin = Vector2.zero; vr.anchorMax = Vector2.one;
+            vr.offsetMin = new Vector2(146f, 20f); vr.offsetMax = new Vector2(-6f, -110f);
+            viewport.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            _grid = new GameObject("Grid", typeof(RectTransform), typeof(GridLayoutGroup), typeof(ContentSizeFitter)).GetComponent<RectTransform>();
+            _grid.SetParent(viewport.transform, false);
+            _grid.anchorMin = new Vector2(0, 1); _grid.anchorMax = new Vector2(1, 1); _grid.pivot = new Vector2(0.5f, 1f);
+            _grid.sizeDelta = Vector2.zero;
+            var layout = _grid.GetComponent<GridLayoutGroup>();
+            layout.cellSize = new Vector2(217f, 207f);
+            layout.spacing = new Vector2(8f, 8f);
+            layout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            layout.constraintCount = 3;
+            layout.padding = new RectOffset(4, 4, 8, 24);
+            _grid.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            _scroll = viewport.GetComponent<ScrollRect>();
+            _scroll.viewport = vr; _scroll.content = _grid;
+            _scroll.horizontal = false; _scroll.vertical = true;
+            _scroll.movementType = ScrollRect.MovementType.Clamped;
+            _scroll.scrollSensitivity = 40f;
 
             _toast = new GameObject("Toast", typeof(RectTransform), typeof(Text)).GetComponent<Text>();
             _toast.transform.SetParent(_frontCanvas.transform, false);
@@ -200,35 +224,38 @@ namespace AvatarWorld.Runtime
             RebuildGrid();
         }
 
+        // Itens da categoria que existem no esqueleto (peca sem skin "Templates/..." e escondida).
+        List<string> AvailableIds(string category)
+        {
+            var list = new List<string>();
+            if (_avatar == null || !_avatar.IsReady) return list;
+            foreach (var id in AvatarCatalog.OptionsByCategory[category])
+                if (_avatar.IsItemAvailable(id)) list.Add(id);
+            return list;
+        }
+
         void RebuildGrid()
         {
             for (int i = _grid.childCount - 1; i >= 0; i--) { var c = _grid.GetChild(i).gameObject; c.SetActive(false); Destroy(c); }
             _cells.Clear();
-            var options = AvatarCatalog.OptionsByCategory[_category];
-            for (int i = 0; i < options.Length; i++)
+            _cellIcons.Clear();
+            _grid.anchoredPosition = Vector2.zero;
+            foreach (var id in AvailableIds(_category))
             {
-                string id = options[i];
-                float x = 154f + 108.5f + (i % 3) * 225f;
-                float y = -150f - 103.5f - (i / 3) * 215f;
-                var frame = NewImage("Cell_" + id, _grid, Art("AvatarMaker/indicator"), Color.white);
+                string itemId = id;
+                var frame = NewImage("Cell_" + itemId, _grid, Art("AvatarMaker/indicator"), Color.white);
                 frame.type = Image.Type.Sliced;
-                Place(frame.rectTransform, new Vector2(0, 1), new Vector2(x, y), new Vector2(217f, 207f));
                 frame.raycastTarget = true;
                 var button = frame.gameObject.AddComponent<Button>();
                 button.targetGraphic = frame;
-                button.onClick.AddListener(() => { UiSound.PlayClick(); Choose(id); });
-                _cells[id] = frame;
+                button.onClick.AddListener(() => { UiSound.PlayClick(); Choose(itemId); });
+                _cells[itemId] = frame;
 
-                var item = NewImage("Item", frame.transform, ThumbFor(id), Color.white);
+                var item = NewImage("Item", frame.transform, ThumbFor(itemId), Color.white);
                 item.preserveAspect = true;
                 Place(item.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(190f, 180f));
                 item.enabled = item.sprite != null;
-                if (item.sprite == null)
-                {
-                    var label = NewText("Loading", frame.transform, 30, new Color(0.5f, 0.25f, 0.55f));
-                    Place(label.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(190f, 60f));
-                    label.text = "...";
-                }
+                _cellIcons[itemId] = item;
             }
             RefreshSelection();
         }
@@ -312,38 +339,65 @@ namespace AvatarWorld.Runtime
 
         // ---------- miniaturas ----------
 
-        /// <summary>Renderiza cada opcao no proprio avatar (camera ortografica recortada) e volta a aparencia original.</summary>
-        IEnumerator BuildThumbnails()
+        /// <summary>
+        /// Gera as miniaturas aos poucos (uma por quadro), comecando pela categoria aberta: aplica o item no proprio avatar,
+        /// renderiza o recorte numa camera ortografica, devolve o item anterior e libera as texturas usadas.
+        /// </summary>
+        IEnumerator ThumbnailWorker()
         {
             while (_avatar != null && !_avatar.IsReady) yield return null;
             if (_avatar == null) yield break;
             yield return null;
-            var original = _avatar.CurrentAppearance.Clone();
+            RebuildGrid(); // agora a disponibilidade dos itens ja pode ser consultada
             var rt = new RenderTexture(ThumbSize, ThumbSize, 16, RenderTextureFormat.ARGB32);
             _thumbCamera.targetTexture = rt;
-            foreach (var view in Views)
-                foreach (var id in AvatarCatalog.OptionsByCategory[view.key])
+            while (!_closing && _avatar != null)
+            {
+                string next = null;
+                foreach (var id in AvailableIds(_category))
+                    if (!_thumbs.ContainsKey(id) && !_thumbFailed.Contains(id)) { next = id; break; }
+                if (next == null) { yield return null; continue; }
+                float started = Time.realtimeSinceStartup;
+                bool captured = true;
+                try { Capture(_category, next, rt); }
+                catch (Exception e)
                 {
-                    _avatar.ApplyAppearance(original); // so a opcao testada varia (sem herdar a anterior)
-                    _avatar.ApplyAppearance(original); // so a categoria testada varia (senao o cabelo anterior vaza)
-                    _avatar.SelectOption(view.key, id);
-                    float half = view.half * AvatarScale;
-                    _thumbCamera.orthographicSize = half;
-                    _thumbCamera.transform.position = new Vector3(AvatarPosition.x, AvatarPosition.y + view.centerY * AvatarScale, -10f);
-                    _thumbCamera.Render();
-                    RenderTexture.active = rt;
-                    var tex = new Texture2D(ThumbSize, ThumbSize, TextureFormat.RGBA32, false);
-                    tex.ReadPixels(new Rect(0, 0, ThumbSize, ThumbSize), 0, 0);
-                    tex.Apply();
-                    RenderTexture.active = null;
-                    _thumbs[id] = Sprite.Create(tex, new Rect(0, 0, ThumbSize, ThumbSize), new Vector2(0.5f, 0.5f), 100f);
+                    captured = false;
+                    _thumbFailed.Add(next);
+                    Debug.LogError("Editor: falha na miniatura de " + next + ": " + e);
                 }
+                if (!captured) { yield return null; continue; }
+                if (++_thumbCount <= 5 || _thumbCount % 20 == 0)
+                    Debug.Log("Editor: miniatura " + _thumbCount + " (" + next + ") em " + Mathf.RoundToInt((Time.realtimeSinceStartup - started) * 1000f) + " ms");
+                if (_cellIcons.TryGetValue(next, out var icon) && icon != null)
+                {
+                    icon.sprite = _thumbs[next];
+                    icon.enabled = true;
+                }
+                yield return null;
+            }
             _thumbCamera.targetTexture = null;
             rt.Release();
             Destroy(rt);
-            _avatar.ApplyAppearance(original);
-            ThumbsReady = true;
-            RebuildGrid();
+        }
+
+        void Capture(string category, string itemId, RenderTexture rt)
+        {
+            CategoryView view = Views[0];
+            foreach (var v in Views) if (v.key == category) view = v;
+            string previous = _avatar.CurrentAppearance.Get(category);
+            _avatar.SelectOption(category, itemId);
+            _thumbCamera.orthographicSize = view.half * AvatarScale;
+            _thumbCamera.transform.position = new Vector3(AvatarPosition.x, AvatarPosition.y + view.centerY * AvatarScale, -10f);
+            _thumbCamera.Render();
+            RenderTexture.active = rt;
+            var tex = new Texture2D(ThumbSize, ThumbSize, TextureFormat.RGBA32, false);
+            tex.ReadPixels(new Rect(0, 0, ThumbSize, ThumbSize), 0, 0);
+            tex.Apply();
+            RenderTexture.active = null;
+            _thumbs[itemId] = Sprite.Create(tex, new Rect(0, 0, ThumbSize, ThumbSize), new Vector2(0.5f, 0.5f), 100f);
+            _avatar.SelectOption(category, previous);
+            _avatar.ReleaseUnselected();
         }
 
         void ShowToast(string message)

@@ -277,3 +277,24 @@
 - 2026-11-04 — pilotos T030: `tools/recon_save_scene.py level4` gerou `scene-pilot.json` (41 `PDSceneObject`, GUIDs únicos: 6 UUID e 35 nomes; 13 handlers persistentes). A quadra original `level8` foi extraída em bloco isolado do APK e reportada em `level8-inspect.json`/`level8-scene-pilot.json`: 81 `PDSceneObject` com UUIDs únicos, 22 `PDPrefab`, 34 handlers persistentes, incluindo placar, itens, orientação, bolsa e item preenchível. Cpp2IL + ARM64 confirmam os schemas de score, parent/posição/attachment/flip, orientação, aberto/fechado e cheio/vazio; valores dinâmicos de uma sessão salva não vieram na cena base. T030 segue aberto para CFG/indirect dispatch e comparação com um save real ou captura runtime equivalente.
 - 2026-11-04 — T031 avançou por análise estática: 72 janelas ARM64 mapeadas sem alvos ausentes; relatórios com hashes e 2 cenas piloto em `out/recon/tasks/T031/`. `level4`: EventSystem padrão, 68 `LevelScrollCameraOnDrag`, 162 `CShape`, 107 polígonos; `level8`: EventSystem padrão, 14 `LevelItem`, handlers/aros da cesta e 18 polígonos. Contrato, cadeia pointer→drag→drop e limites em `docs/RECON_INPUT_CONTRACT.md`. Dispatches indiretos, competição de hitboxes, cancelamento, limiar de arraste, física/pontuação completa e execução dinâmica seguem pendentes; T031 continua parcial. Testes de aparelho adiados conforme combinado.
 - 2026-11-04 — T032 avançou estaticamente: classificação hashada dos 896 presets (827 Character, 45 Toddler, 11 Baby, 7 Dog, 3 Cat, 3 Horse), 21 classes de cena relacionadas e 87 janelas ARM64 em `out/recon/tasks/T032/`. Contratos de spawn, drag/movimento, interfaces e lacunas em `docs/RECON_CHARACTER_CONTRACT.md`. T032 permanece parcial: dispatch de callbacks, posição/autonomia de NPC, movimento entre famílias e execução pendentes. `recon_queue.py prepare T032` confirma dependências canônicas T018, T025–T027 e T031 pendentes; não promover estado da fila.
+
+## ETAPA "Avatar completo e funcional" — loop (iniciada 2026-11-04)
+
+**Objetivo:** o avatar aparece e é editado de forma completa e funcional como no jogo original.
+**Regras do loop:** um erro por ciclo; máximo 5 tentativas por erro (depois parar e escalar com: o que tentei, erro exato, 2 hipóteses); cada ciclo = Pensar → Agir → Observar (testes EditMode + build + aparelho/logcat) → Decidir. Instalação no aparelho exige o usuário tocar em "Instalar" (MIUI): só pedir quando houver algo novo a verificar.
+
+**Estado verificado no aparelho (2026-11-04):** editor com layout do original (CharacterMenu), 400 itens reais (100 camisas/calças/sapatos/acessórios; `tools/avatar_catalog_build.py`), texturas carregadas sob demanda, miniaturas geradas do próprio avatar (~27 ms cada), atlas 2172/2172 sem avisos, 109 testes EditMode. Bug resolvido: texturas novas sem Read/Write (`ClothingTextureImporter`).
+
+**Critério de conclusão (todos verificados no aparelho):**
+- [ ] C1 Cores: itens `_color` e tint ColorA/ColorB (preset/coloring configs) renderizam; coluna de cores no menu.
+- [ ] C2 Rosto/cabelo: cabelo frente+trás (188 itens), sobrancelhas, olhos com cor, boca, tom de pele.
+- [ ] C3 Categorias restantes: chapéu, jaqueta, vestido, meias (modelo de save estendido, migração do save antigo).
+- [ ] C4 Slots: vários avatares persistidos (adicionar/trocar/apagar).
+- [ ] C5 Menu: subcategorias e marcas; miniaturas sem artefatos.
+- [ ] C6 Referência visual: um preset reproduz o look do print do original (imagem13: chapéu de bombeiro, cabelo branco, jaqueta vermelha, saia rosa).
+- [ ] C7 Qualidade: 0 erros no logcat, testes verdes, tempo de abertura medido.
+**Fora desta etapa (documentado):** tipos criança/bebê/animais, CarMaker, avatar andando no mundo, persistência de cena (T030–T032).
+**Decisão pendente do usuário:** como o jogador obtém cada roupa (grátis no editor ou comprada com moedas).
+
+### Histórico de ciclos
+- (ciclo 0) catálogo de 400 itens + carregamento sob demanda: OK no aparelho.

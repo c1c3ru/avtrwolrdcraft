@@ -1,0 +1,360 @@
+{
+ "GetWalkingAnimationName_0000000002266e08.asm.txt": [
+  {
+   "insn": "2266e1c",
+   "got": "0x41c1908",
+   "kind": "string",
+   "index": 14392,
+   "literal": "Track_Animations/Forced_To_Walk"
+  }
+ ],
+ "GetStandingIdleAnimationName_0000000002266dc8.asm.txt": [
+  {
+   "insn": "2266ddc",
+   "got": "0x41c0d68",
+   "kind": "string",
+   "index": 6659,
+   "literal": "General/Standing_Idle"
+  }
+ ],
+ "SetAddAnimationInternal_00000000022a61e4.asm.txt": [
+  {
+   "insn": "22a6224",
+   "got": "0x41acae8",
+   "kind": 27212573400,
+   "index": 97078922
+  },
+  {
+   "insn": "22a6230",
+   "got": "0x41bdcf0",
+   "kind": "type",
+   "index": 31906
+  },
+  {
+   "insn": "22a623c",
+   "got": "0x41bdcf8",
+   "kind": "string",
+   "index": 9711,
+   "literal": "No animation found for animationName["
+  },
+  {
+   "insn": "22a6248",
+   "got": "0x41ae0f0",
+   "kind": "string",
+   "index": 15955,
+   "literal": "]"
+  },
+  {
+   "insn": "22a6254",
+   "got": "0x41b46c0",
+   "kind": "string",
+   "index": 16782,
+   "literal": "animationName is null or empty!"
+  },
+  {
+   "insn": "22a62d8",
+   "got": "0x41b4010",
+   "kind": "method?",
+   "index": 6836
+  }
+ ],
+ "OnMovement_00000000022a1570.asm.txt": [
+  {
+   "insn": "22a15a0",
+   "got": "0x41acae8",
+   "kind": 27212573400,
+   "index": 97078922
+  },
+  {
+   "insn": "22a15ac",
+   "got": "0x41b52a0",
+   "kind": 6,
+   "index": 88496
+  },
+  {
+   "insn": "22a15b8",
+   "got": "0x41b52b0",
+   "kind": 6,
+   "index": 88497
+  },
+  {
+   "insn": "22a15c4",
+   "got": "0x41b52c8",
+   "kind": 6,
+   "index": 88498
+  },
+  {
+   "insn": "22a15d0",
+   "got": "0x41d7d78",
+   "kind": "method?",
+   "index": 31519
+  },
+  {
+   "insn": "22a15dc",
+   "got": "0x41acd38",
+   "kind": "type",
+   "index": 25063
+  },
+  {
+   "insn": "22a15e8",
+   "got": "0x41b52f8",
+   "kind": 6,
+   "index": 91819
+  },
+  {
+   "insn": "22a15f4",
+   "got": "0x41ace80",
+   "kind": "type",
+   "index": 27078
+  },
+  {
+   "insn": "22a1600",
+   "got": "0x41d7d80",
+   "kind": "type",
+   "index": 37491
+  },
+  {
+   "insn": "22a160c",
+   "got": "0x41acdd8",
+   "kind": 6,
+   "index": 51735
+  },
+  {
+   "insn": "22a1618",
+   "got": "0x41bbc90",
+   "kind": 6,
+   "index": 51744
+  },
+  {
+   "insn": "22a1624",
+   "got": "0x41ba7d0",
+   "kind": 6,
+   "index": 51745
+  },
+  {
+   "insn": "22a1630",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  },
+  {
+   "insn": "22a163c",
+   "got": "0x41b9178",
+   "kind": "type",
+   "index": 34976
+  },
+  {
+   "insn": "22a1648",
+   "got": "0x41b5d00",
+   "kind": "string",
+   "index": 7370,
+   "literal": "Idle_Stand_1"
+  },
+  {
+   "insn": "22a1654",
+   "got": "0x41d7d70",
+   "kind": "string",
+   "index": 8824,
+   "literal": "Lift_Idle"
+  },
+  {
+   "insn": "22a1660",
+   "got": "0x41bbdb8",
+   "kind": "string",
+   "index": 9417,
+   "literal": "Movement_Cycles/Walk"
+  },
+  {
+   "insn": "22a166c",
+   "got": "0x41c1908",
+   "kind": "string",
+   "index": 14392,
+   "literal": "Track_Animations/Forced_To_Walk"
+  },
+  {
+   "insn": "22a1678",
+   "got": "0x41d6be0",
+   "kind": "string",
+   "index": 9794,
+   "literal": "No case found for nextMovementType["
+  },
+  {
+   "insn": "22a1684",
+   "got": "0x41bbdd0",
+   "kind": "string",
+   "index": 9415,
+   "literal": "Movement_Cycles/Run"
+  },
+  {
+   "insn": "22a1690",
+   "got": "0x41ae0f0",
+   "kind": "string",
+   "index": 15955,
+   "literal": "]"
+  },
+  {
+   "insn": "22a1710",
+   "got": "0x41ae0b8",
+   "kind": 6,
+   "index": 92623
+  },
+  {
+   "insn": "22a1760",
+   "got": "0x41b5020",
+   "kind": "string",
+   "index": 6800,
+   "literal": "Glow_Loop"
+  },
+  {
+   "insn": "22a1864",
+   "got": "0x41b53e0",
+   "kind": 6,
+   "index": 86987
+  },
+  {
+   "insn": "22a1990",
+   "got": "0xb2f3e0",
+   "kind": 526354,
+   "index": 52830911
+  },
+  {
+   "insn": "22a1be8",
+   "got": "0x41ac010",
+   "kind": 526354,
+   "index": 52830911
+  },
+  {
+   "insn": "22a1bf0",
+   "got": "0x41d7010",
+   "kind": "method?",
+   "index": 30387
+  },
+  {
+   "insn": "22a1c9c",
+   "got": "0x44f9010",
+   "kind": 33453785095,
+   "index": 202344447
+  }
+ ],
+ "OnBeginMovement_00000000022a1150.asm.txt": [
+  {
+   "insn": "22a1170",
+   "got": "0x41b5fe0",
+   "kind": "type",
+   "index": 24021
+  },
+  {
+   "insn": "22a117c",
+   "got": "0x41d2e48",
+   "kind": "type",
+   "index": 24068
+  },
+  {
+   "insn": "22a1188",
+   "got": "0x41d2e50",
+   "kind": "type",
+   "index": 24069
+  },
+  {
+   "insn": "22a1194",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  },
+  {
+   "insn": "22a11a0",
+   "got": "0x41b5d00",
+   "kind": "string",
+   "index": 7370,
+   "literal": "Idle_Stand_1"
+  },
+  {
+   "insn": "22a11ac",
+   "got": "0x41d6bc0",
+   "kind": "string",
+   "index": 1841,
+   "literal": "<empty>"
+  },
+  {
+   "insn": "22a11b8",
+   "got": "0x41d7d70",
+   "kind": "string",
+   "index": 8824,
+   "literal": "Lift_Idle"
+  },
+  {
+   "insn": "22a12ac",
+   "got": "0x41d7010",
+   "kind": "method?",
+   "index": 30387
+  },
+  {
+   "insn": "22a13a8",
+   "got": "0x41d63e8",
+   "kind": "method?",
+   "index": 29571
+  },
+  {
+   "insn": "22a1424",
+   "got": "0x41d73e8",
+   "kind": 6,
+   "index": 85910
+  },
+  {
+   "insn": "22a144c",
+   "got": "0x41d70c8",
+   "kind": "method?",
+   "index": 30441
+  },
+  {
+   "insn": "22a1514",
+   "got": "0x41d6010",
+   "kind": "string",
+   "index": 8424,
+   "literal": "Legs_Shoes_119"
+  }
+ ],
+ "PlayProperIdleAnimation_00000000022a3a40.asm.txt": [
+  {
+   "insn": "22a3a5c",
+   "got": "0x41b8a00",
+   "kind": "type",
+   "index": 25961
+  },
+  {
+   "insn": "22a3a68",
+   "got": "0x41bb970",
+   "kind": "type",
+   "index": 25984
+  },
+  {
+   "insn": "22a3a74",
+   "got": "0x41acbb8",
+   "kind": "type",
+   "index": 27880
+  },
+  {
+   "insn": "22a3a80",
+   "got": "0x41bba38",
+   "kind": "string",
+   "index": 3333,
+   "literal": "CA/Chair_Sitting/Sit_On_Chair_Idle"
+  },
+  {
+   "insn": "22a3a8c",
+   "got": "0x41d7b60",
+   "kind": "string",
+   "index": 3314,
+   "literal": "CA/Bed_Laying/Laying_Idle"
+  }
+ ],
+ "PlayStandIdleAnimation_00000000022a5b90.asm.txt": [
+  {
+   "insn": "22a5ba4",
+   "got": "0x41b5d00",
+   "kind": "string",
+   "index": 7370,
+   "literal": "Idle_Stand_1"
+  }
+ ]
+}
