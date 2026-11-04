@@ -89,7 +89,8 @@ namespace AvatarWorld.Runtime
             if (FindFirstObjectByType<WorldMapRuntime>() != null) return;
             var host = new GameObject("WorldMap");
             _worldMap = host.AddComponent<WorldMapRuntime>();
-            _worldMap.Begin(CloseWorldMap, OpenBasketballCourt);
+            LoadingScreen.Show();
+            _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f));
         }
 
         void CloseWorldMap()
@@ -110,8 +111,11 @@ namespace AvatarWorld.Runtime
             {
                 _save.Save(_state);
                 Destroy(game);
+                LoadingScreen.Show();
                 if (_worldMap != null) _worldMap.gameObject.SetActive(true);
+                LoadingScreen.Hide(0.5f);
             });
+            LoadingScreen.Hide(0.7f);
         }
 
         void OnApplicationPause(bool paused) { if (paused && _state != null) _save.Save(_state); }
