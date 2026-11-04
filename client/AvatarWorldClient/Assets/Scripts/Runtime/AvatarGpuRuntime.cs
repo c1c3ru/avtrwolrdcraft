@@ -31,6 +31,12 @@ namespace AvatarWorld.Runtime
         [Serializable] class Manifest { public List<ManifestItem> items; }
 
         class Category { public string key; public string label; public string[] itemIds; }
+        [Serializable] class PaletteColor { public float[] c; }
+        [Serializable] class PaletteEntry { public float[] display; public List<PaletteColor> colors; }
+        [Serializable] class Palettes { public List<PaletteEntry> skin; public List<PaletteEntry> eyes; public List<PaletteEntry> general; public int defaultSkin; public int defaultEyes; }
+        Palettes _palettes;
+
+        static Color ToColor(float[] c) => new Color(c[0], c[1], c[2], 1f);
 
         static readonly string[] BodyTextureNames = {
             "MultiPack__Body_Outline_31883", "MultiPack__Body_Shadow_87873", "MultiPack__Body_Solid_99707",
@@ -121,6 +127,9 @@ namespace AvatarWorld.Runtime
             if (manifestText == null) { Debug.LogError("AvatarGpuRuntime: clothing-manifest.json nao encontrado"); return; }
             var manifest = JsonUtility.FromJson<Manifest>(manifestText.text);
             _itemsById = manifest.items.ToDictionary(i => i.id, i => i);
+            var paletteText = Resources.Load<TextAsset>("AvatarSpine/palettes");
+            if (paletteText == null) { Debug.LogError("AvatarGpuRuntime: palettes.json nao encontrado"); return; }
+            _palettes = JsonUtility.FromJson<Palettes>(paletteText.text);
 
             var realTextures = new Dictionary<string, Texture2D>(StringComparer.Ordinal);
 
@@ -300,11 +309,28 @@ namespace AvatarWorld.Runtime
             RefreshMesh();
         }
 
+        /// <summary>Troca o indice de cor (pele/olhos) no avatar ja montado. Nao grava.</summary>
+        public void SelectColor(string category, int index)
+        {
+            if (!IsReady || !Appearance.TrySelectColor(category, index)) return;
+            RebuildSkin();
+            RefreshMesh();
+        }
+
+        /// <summary>Cor de exibicao (amostra do menu) da entrada da paleta; branco se fora do intervalo.</summary>
+        public Color PaletteSwatch(string category, int index)
+        {
+            var list = category == AvatarCatalog.CategorySkin ? _palettes?.skin : category == AvatarCatalog.CategoryEyes ? _palettes?.eyes : null;
+            return list != null && index >= 0 && index < list.Count ? ToColor(list[index].display) : Color.white;
+        }
+
         /// <summary>Aplica uma aparencia inteira (desfazer/refazer/cancelar). Nao grava.</summary>
         public void ApplyAppearance(AvatarAppearance appearance)
         {
             if (!IsReady || appearance == null) return;
             foreach (var category in AvatarCatalog.OptionsByCategory.Keys) Appearance.TrySelect(category, appearance.Get(category));
+            Appearance.TrySelectColor(AvatarCatalog.CategorySkin, appearance.SkinIndex);
+            Appearance.TrySelectColor(AvatarCatalog.CategoryEyes, appearance.EyesIndex);
             RebuildSkin();
             RefreshMesh();
         }
@@ -340,11 +366,17 @@ namespace AvatarWorld.Runtime
         {
             var skin = new Skin("avatar-runtime-composite");
             var tints = new Dictionary<Attachment, Color>();
-            AddSkin(_skeletonData, skin, tints, "Body_Whites/Body_Whites", new Color(1f, 0.824f, 0.675f));
-            AddSkin(_skeletonData, skin, tints, "Body_Shad/Body_Shad", new Color(0.824f, 0.569f, 0.435f));
-            AddSkin(_skeletonData, skin, tints, "Ear_Shad/Ear_Shad", new Color(0.667f, 0.376f, 0.271f));
+            // Paletas oficiais (AWSpineColorsList): pele = DisplayColor na base e Colors nas sombras; olhos = Colors[0]/[1].
+            var skinEntry = _palettes.skin[Mathf.Clamp(Appearance.SkinIndex, 0, _palettes.skin.Count - 1)];
+            var eyeEntry = _palettes.eyes[Mathf.Clamp(Appearance.EyesIndex, 0, _palettes.eyes.Count - 1)];
+            var skinBase = ToColor(skinEntry.display);
+            var skinShadow = ToColor(skinEntry.colors[0].c);
+            var earShadow = ToColor(skinEntry.colors[skinEntry.colors.Count > 1 ? 1 : 0].c);
+            AddSkin(_skeletonData, skin, tints, "Body_Whites/Body_Whites", skinBase);
+            AddSkin(_skeletonData, skin, tints, "Body_Shad/Body_Shad", skinShadow);
+            AddSkin(_skeletonData, skin, tints, "Ear_Shad/Ear_Shad", earShadow);
             AddSkin(_skeletonData, skin, tints, "Body_Other/Body_Other", Color.white);
-            AddSkin(_skeletonData, skin, tints, "Eyes/1_Color", new Color(0.22f, 0.44f, 0.57f));
+            AddSkin(_skeletonData, skin, tints, "Eyes/1_Color", ToColor(eyeEntry.colors[0].c));
             AddSkin(_skeletonData, skin, tints, "Eyes/1_Color-p", Color.white);
             AddSkin(_skeletonData, skin, tints, Appearance.HairId, new Color(0.31f, 0.16f, 0.12f));
 

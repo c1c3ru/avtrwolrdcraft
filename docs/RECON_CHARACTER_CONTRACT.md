@@ -158,3 +158,15 @@ Provado (instruções e valores):
 Inferido (não provado): `a`, `b` são o deslocamento por quadro e `t` é `Time.deltaTime`; os limiares 0.06/0.006/6.0 então são unidades por segundo. Não há ramo de Run próprio para animação do Toddler (o esqueleto não tem Run), então o estado Run só alimenta a escolha de andar/engatinhar.
 
 Consequência para a cópia: Toddler engatinha sempre que não está em pé (postura sentada ou indefinida) e anda quando `Standing`; ambos usam o mesmo limiar de velocidade.
+
+## Recorte 2026-11-04 (9): `LevelAnimal.OnMovement` (`0x2265194`) e contrato C#
+Provado (asm + floats de `.rodata` + slots de string):
+- Mesma estrutura do Toddler: speed = `sqrt(a²+b²)/t`; mesmas constantes de arraste (3.0, 0.2, 0.1, 0.05) e limpeza de `_lastMovementPosition`.
+- Histerese por `_movementType` (`0x360`): **Stand** → Walk se `speed > 0.06`. **Walk** → chama o virtual de slot `0xa68` (`HasRunningAnimations`, por consistência com o ramo Run) e então: `speed < 0.006` → Stand; `speed > 18.0` e há corrida → Run; senão continua Walk. **Run** → `speed < 6.0` volta a Walk. Não existe salto direto Stand→Run nem Run→Stand.
+- Ao entrar em Walk usa o nome travado (`0x370`) se `_isLockedAnimationWhenWalking`, senão o virtual de slot `0xb18` (`GetWalkingAnimationName`, por padrão do ramo, não por símbolo); em Stand usa `General/Standing_Idle`.
+- Ao pedir Run: se o virtual `0xa68` é falso, registra `"Error in LevelAnimal, animal doesn't have Running animations but tries to run"` (`0x2265a54`) e não troca de animação; se verdadeiro, usa o nome travado ou o do Run.
+- Erro de enum: `"No case found for nextMovementType[...]"` no caso padrão.
+
+Inferido: os virtuais `0xa68/0xb18` são `HasRunningAnimations`/`GetWalkingAnimationName` (os nomes existem em `LevelAnimal.cs`, mas o slot→símbolo não foi resolvido pela vtable); `Small_Box_Open/Close` do ramo Run é provável ruído de resolução (não existe em esqueleto).
+
+Contrato C#: `client/AvatarWorldClient/Assets/Scripts/Core/Avatar/LocomotionStateMachine.cs` (branch `worktree-t032-locomotion-contract`): `LocomotionConfig.Toddler/Animal`, `LocomotionStateMachine.Next`, `ToddlerMoveAnimation`. **Não há preset de Character**: a histerese de `LevelCharacterAnimator` ainda não foi extraída. Testes ficam para depois, como combinado.

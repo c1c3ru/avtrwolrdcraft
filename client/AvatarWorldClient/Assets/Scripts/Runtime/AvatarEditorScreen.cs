@@ -26,6 +26,14 @@ namespace AvatarWorld.Runtime
 
         struct CategoryView { public string key; public string art; public float centerY, half; }
 
+        // Ordem da coluna de categorias; Skin/Eyes sao de cor (amostras da paleta oficial, sem miniatura).
+        static readonly (string key, string art)[] MenuCategories =
+        {
+            (AvatarCatalog.CategoryHair, "hair"), (AvatarCatalog.CategoryShirt, "shirt"), (AvatarCatalog.CategoryBottom, "bottom"),
+            (AvatarCatalog.CategoryShoes, "shoes"), (AvatarCatalog.CategoryAccessory, "accessory"),
+            (AvatarCatalog.CategorySkin, "skin"), (AvatarCatalog.CategoryEyes, "eyes"),
+        };
+
         static readonly CategoryView[] Views =
         {
             new CategoryView { key = AvatarCatalog.CategoryHair,      art = "hair",      centerY = 3.50f, half = 1.45f },
@@ -56,7 +64,9 @@ namespace AvatarWorld.Runtime
         readonly Dictionary<string, Image> _categoryButtons = new Dictionary<string, Image>();
         readonly Dictionary<string, Image> _cells = new Dictionary<string, Image>();
         readonly Dictionary<string, Image> _cellIcons = new Dictionary<string, Image>();
+        readonly Dictionary<int, Image> _colorRings = new Dictionary<int, Image>();
         ScrollRect _scroll;
+        GridLayoutGroup _gridLayout;
 
         public string Category => _category;
         public int VisibleItemCount => _cells.Count;
@@ -161,18 +171,17 @@ namespace AvatarWorld.Runtime
             _redo = Button(_frontCanvas.transform, "RedoButton", Art("AvatarMaker/redo"), new Vector2(0, 0), new Vector2(447f, 94f), new Vector2(151f, 149f), Redo);
 
             // Categorias (icones do original; so as suportadas).
-            float y = -170f;
-            foreach (var view in Views)
+            float y = -140f;
+            foreach (var entry in MenuCategories)
             {
-                var v = view;
-                var backdrop = NewImage("Indicator_" + v.key, _panel, Art("AvatarMaker/indicator"), Color.white);
+                string key = entry.key;
+                var backdrop = NewImage("Indicator_" + key, _panel, Art("AvatarMaker/indicator"), Color.white);
                 Place(backdrop.rectTransform, new Vector2(0, 1), new Vector2(64f, y), new Vector2(105f, 107f));
-                var icon = Button(_panel, "Category_" + v.key, Art("AvatarMaker/cat_" + v.art), new Vector2(0, 1), new Vector2(64f, y), new Vector2(105f, 107f),
-                    () => { UiSound.PlayClick(); SelectCategory(v.key); });
+                var icon = Button(_panel, "Category_" + key, Art("AvatarMaker/cat_" + entry.art), new Vector2(0, 1), new Vector2(64f, y), new Vector2(105f, 107f),
+                    () => { UiSound.PlayClick(); SelectCategory(key); });
                 icon.preserveAspect = true;
-                _categoryButtons[v.key] = icon;
-                backdrop.gameObject.name = "Indicator_" + v.key;
-                y -= 150f;
+                _categoryButtons[key] = icon;
+                y -= 125f;
             }
 
             // Grade de miniaturas com rolagem vertical (centenas de itens): 3 colunas de celas 217x207.
@@ -186,7 +195,7 @@ namespace AvatarWorld.Runtime
             _grid.SetParent(viewport.transform, false);
             _grid.anchorMin = new Vector2(0, 1); _grid.anchorMax = new Vector2(1, 1); _grid.pivot = new Vector2(0.5f, 1f);
             _grid.sizeDelta = Vector2.zero;
-            var layout = _grid.GetComponent<GridLayoutGroup>();
+            var layout = _gridLayout = _grid.GetComponent<GridLayoutGroup>();
             layout.cellSize = new Vector2(217f, 207f);
             layout.spacing = new Vector2(8f, 8f);
             layout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
@@ -214,12 +223,11 @@ namespace AvatarWorld.Runtime
         public void SelectCategory(string category)
         {
             _category = category;
-            foreach (var view in Views)
+            foreach (var entry in MenuCategories)
             {
-                bool selected = view.key == category;
-                var button = _categoryButtons[view.key];
-                button.sprite = Art("AvatarMaker/cat_" + view.art + (selected ? "_sel" : ""));
-                _panel.Find("Indicator_" + view.key).gameObject.SetActive(selected);
+                bool selected = entry.key == category;
+                _categoryButtons[entry.key].sprite = Art("AvatarMaker/cat_" + entry.art + (selected ? "_sel" : ""));
+                _panel.Find("Indicator_" + entry.key).gameObject.SetActive(selected);
             }
             RebuildGrid();
         }
@@ -228,7 +236,7 @@ namespace AvatarWorld.Runtime
         List<string> AvailableIds(string category)
         {
             var list = new List<string>();
-            if (_avatar == null || !_avatar.IsReady) return list;
+            if (_avatar == null || !_avatar.IsReady || AvatarCatalog.IsColorCategory(category)) return list;
             foreach (var id in AvatarCatalog.OptionsByCategory[category])
                 if (_avatar.IsItemAvailable(id)) list.Add(id);
             return list;
@@ -239,7 +247,12 @@ namespace AvatarWorld.Runtime
             for (int i = _grid.childCount - 1; i >= 0; i--) { var c = _grid.GetChild(i).gameObject; c.SetActive(false); Destroy(c); }
             _cells.Clear();
             _cellIcons.Clear();
+            _colorRings.Clear();
             _grid.anchoredPosition = Vector2.zero;
+            bool colorMode = AvatarCatalog.IsColorCategory(_category);
+            _gridLayout.cellSize = colorMode ? new Vector2(98f, 98f) : new Vector2(217f, 207f);
+            _gridLayout.constraintCount = colorMode ? 6 : 3;
+            if (colorMode) { BuildColorCells(); return; }
             foreach (var id in AvailableIds(_category))
             {
                 string itemId = id;
@@ -260,11 +273,49 @@ namespace AvatarWorld.Runtime
             RefreshSelection();
         }
 
+        // Amostras da paleta oficial (AWSpineColorsList): anel + circulo de cor; o anel destaca a escolha atual.
+        void BuildColorCells()
+        {
+            if (_avatar == null || !_avatar.IsReady) return;
+            int count = AvatarCatalog.ColorCount(_category);
+            for (int i = 0; i < count; i++)
+            {
+                int index = i;
+                var ring = NewImage("Swatch_" + index, _grid, Art("AvatarMaker/indicator"), Color.white);
+                ring.type = Image.Type.Sliced;
+                ring.raycastTarget = true;
+                var button = ring.gameObject.AddComponent<Button>();
+                button.targetGraphic = ring;
+                button.onClick.AddListener(() => { UiSound.PlayClick(); ChooseColor(index); });
+                _colorRings[index] = ring;
+                var swatch = NewImage("Color", ring.transform, Art("AvatarMaker/indicator"), _avatar.PaletteSwatch(_category, index));
+                swatch.type = Image.Type.Sliced;
+                Place(swatch.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(78f, 78f));
+            }
+            RefreshSelection();
+        }
+
+        void ChooseColor(int index)
+        {
+            if (_avatar == null || !_avatar.IsReady) return;
+            _avatar.SelectColor(_category, index);
+            _history.Push(_avatar.CurrentAppearance);
+            RefreshSelection();
+            RefreshHistoryButtons();
+        }
+
         Sprite ThumbFor(string id) => _thumbs.TryGetValue(id, out var sprite) ? sprite : null;
 
         void RefreshSelection()
         {
             if (_avatar == null || !_avatar.IsReady) return;
+            if (AvatarCatalog.IsColorCategory(_category))
+            {
+                int selected = _avatar.CurrentAppearance.GetColorIndex(_category);
+                foreach (var pair in _colorRings)
+                    pair.Value.color = pair.Key == selected ? new Color(1f, 0.25f, 0.65f) : Color.white;
+                return;
+            }
             string current = _avatar.CurrentAppearance.Get(_category);
             foreach (var pair in _cells)
                 pair.Value.color = pair.Key == current ? new Color(1f, 0.58f, 0.82f) : new Color(1f, 0.9f, 0.95f);

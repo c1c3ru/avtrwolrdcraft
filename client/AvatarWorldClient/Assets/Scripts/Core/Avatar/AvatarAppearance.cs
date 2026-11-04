@@ -16,6 +16,9 @@ namespace AvatarWorld.Core.Avatar
         public string BottomId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryBottom);
         public string ShoesId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryShoes);
         public string AccessoryId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryAccessory);
+        /// <summary>Indices nas paletas Skin/Eyes (palettes.json). Saves antigos sem estes campos ficam nos padroes.</summary>
+        public int SkinIndex = AvatarPaletteData.DefaultSkin;
+        public int EyesIndex = AvatarPaletteData.DefaultEyes;
 
         public static AvatarAppearance CreateDefault() => new AvatarAppearance();
 
@@ -23,11 +26,31 @@ namespace AvatarWorld.Core.Avatar
         public AvatarAppearance Clone() => new AvatarAppearance
         {
             HairId = HairId, ShirtId = ShirtId, BottomId = BottomId, ShoesId = ShoesId, AccessoryId = AccessoryId,
+            SkinIndex = SkinIndex, EyesIndex = EyesIndex,
         };
 
         public bool SameAs(AvatarAppearance other) => other != null &&
             HairId == other.HairId && ShirtId == other.ShirtId && BottomId == other.BottomId &&
-            ShoesId == other.ShoesId && AccessoryId == other.AccessoryId;
+            ShoesId == other.ShoesId && AccessoryId == other.AccessoryId &&
+            SkinIndex == other.SkinIndex && EyesIndex == other.EyesIndex;
+
+        public int GetColorIndex(string category)
+        {
+            switch (category)
+            {
+                case AvatarCatalog.CategorySkin: return SkinIndex;
+                case AvatarCatalog.CategoryEyes: return EyesIndex;
+                default: throw new ArgumentOutOfRangeException(nameof(category), category, "categoria de cor desconhecida");
+            }
+        }
+
+        /// <summary>Troca o indice de cor se estiver dentro da paleta; retorna false (sem alterar) caso contrario.</summary>
+        public bool TrySelectColor(string category, int index)
+        {
+            if (!AvatarCatalog.IsColorCategory(category) || index < 0 || index >= AvatarCatalog.ColorCount(category)) return false;
+            if (category == AvatarCatalog.CategorySkin) SkinIndex = index; else EyesIndex = index;
+            return true;
+        }
 
         public string Get(string category)
         {
@@ -63,7 +86,8 @@ namespace AvatarWorld.Core.Avatar
             AvatarCatalog.IsValidOption(AvatarCatalog.CategoryShirt, ShirtId) &&
             AvatarCatalog.IsValidOption(AvatarCatalog.CategoryBottom, BottomId) &&
             AvatarCatalog.IsValidOption(AvatarCatalog.CategoryShoes, ShoesId) &&
-            AvatarCatalog.IsValidOption(AvatarCatalog.CategoryAccessory, AccessoryId);
+            AvatarCatalog.IsValidOption(AvatarCatalog.CategoryAccessory, AccessoryId) &&
+            SkinIndex >= 0 && SkinIndex < AvatarPaletteData.SkinCount && EyesIndex >= 0 && EyesIndex < AvatarPaletteData.EyesCount;
 
         /// <summary>Troca so os campos invalidos (ex.: salvos por uma versao com catalogo diferente) pelo default; preserva os validos.</summary>
         public void SanitizeInPlace()
@@ -73,6 +97,8 @@ namespace AvatarWorld.Core.Avatar
             if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryBottom, BottomId)) BottomId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryBottom);
             if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryShoes, ShoesId)) ShoesId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryShoes);
             if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryAccessory, AccessoryId)) AccessoryId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryAccessory);
+            if (SkinIndex < 0 || SkinIndex >= AvatarPaletteData.SkinCount) SkinIndex = AvatarPaletteData.DefaultSkin;
+            if (EyesIndex < 0 || EyesIndex >= AvatarPaletteData.EyesCount) EyesIndex = AvatarPaletteData.DefaultEyes;
         }
     }
 }

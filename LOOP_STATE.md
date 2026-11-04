@@ -286,8 +286,8 @@
 **Estado verificado no aparelho (2026-11-04):** editor com layout do original (CharacterMenu), 400 itens reais (100 camisas/calças/sapatos/acessórios; `tools/avatar_catalog_build.py`), texturas carregadas sob demanda, miniaturas geradas do próprio avatar (~27 ms cada), atlas 2172/2172 sem avisos, 109 testes EditMode. Bug resolvido: texturas novas sem Read/Write (`ClothingTextureImporter`).
 
 **Critério de conclusão (todos verificados no aparelho):**
-- [ ] C1 Cores: itens `_color` e tint ColorA/ColorB (preset/coloring configs) renderizam; coluna de cores no menu.
-- [ ] C2 Rosto/cabelo: cabelo frente+trás (188 itens), sobrancelhas, olhos com cor, boca, tom de pele.
+- [~] C1 Cores: tom de pele (62) e cor dos olhos (33) com paletas oficiais — OK no aparelho (ciclo 1). Falta: itens `_color` de roupa com tint (config `AvatarSpineSkinsDefaultColors_*` + paleta General) e coluna de cores por categoria.
+- [~] C2 Rosto/cabelo: olhos com cor e tom de pele OK (ciclo 1). Falta: cabelo frente+trás (188 itens), sobrancelhas, boca.
 - [ ] C3 Categorias restantes: chapéu, jaqueta, vestido, meias (modelo de save estendido, migração do save antigo).
 - [ ] C4 Slots: vários avatares persistidos (adicionar/trocar/apagar).
 - [ ] C5 Menu: subcategorias e marcas; miniaturas sem artefatos.
@@ -298,3 +298,5 @@
 
 ### Histórico de ciclos
 - (ciclo 0) catálogo de 400 itens + carregamento sob demanda: OK no aparelho.
+- (ciclo 1) paletas oficiais `AWSpineColorsList` → `palettes.json` (`tools/avatar_palette_export.py`); `AvatarAppearance.SkinIndex/EyesIndex` (save antigo mantém padrões; testado); categorias Pele/Olhos no menu com amostras. EditMode 113/113. Aparelho: grade de 62 e 33 amostras, troca ao vivo, desfazer ativo, concluir salva, reabrir mantém.
+  - Observação aberta: o save de teste tem óculos "duplos" (um par roxo na testa + um cinza sobre os olhos) — checar no ciclo 2 se o item `accessories_face_glasses_*` traz peças extras ou se é sobreposição com o padrão.

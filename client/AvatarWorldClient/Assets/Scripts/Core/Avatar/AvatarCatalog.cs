@@ -17,6 +17,15 @@ namespace AvatarWorld.Core.Avatar
         public const string CategoryBottom = "Bottom";
         public const string CategoryShoes = "Shoes";
         public const string CategoryAccessory = "Accessory";
+        /// <summary>Categorias de cor (paletas oficiais): o valor e um indice em AvatarPalette, nao um item.</summary>
+        public const string CategorySkin = "Skin";
+        public const string CategoryEyes = "Eyes";
+
+        public static bool IsColorCategory(string category) => category == CategorySkin || category == CategoryEyes;
+
+        public static int ColorCount(string category) =>
+            category == CategorySkin ? AvatarPaletteData.SkinCount :
+            category == CategoryEyes ? AvatarPaletteData.EyesCount : 0;
 
         public static readonly IReadOnlyDictionary<string, string[]> OptionsByCategory = new Dictionary<string, string[]>
         {
