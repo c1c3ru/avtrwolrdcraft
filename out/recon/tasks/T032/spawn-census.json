@@ -1,0 +1,36 @@
+{
+  "scenes": {
+    "level4": {
+      "report": "out/scene-extract/level4.inspect.json",
+      "sha256": "e89ddaf8cc37982da9c7c09fc00c758b71d89962c8eb2b556c0b47bd90985e50",
+      "behaviours": 2726,
+      "matching": {
+        "Game.Store.StoreAvatarPassButton": 2,
+        "PWC.QA.RTA.RTAQuickClicksPanelSpawner": 1,
+        "PWC.World.WorldCloudsSpawner": 1,
+        "PWC.WorldReset.WorldAvatarMakerButton": 1
+      }
+    },
+    "level237": {
+      "report": "out/scene-extract/level237.inspect.json",
+      "sha256": "b808d191c690b0356f45c79028c1ac22b2a8d8a8697b9976887dca6e0846a199",
+      "behaviours": 103,
+      "matching": {}
+    },
+    "level8": {
+      "report": "out/recon/tasks/T030/level8-inspect.json",
+      "sha256": "265566b90aa4d618a344473fe2212d3eda0275eb6eb862473ba0592df5e13022",
+      "behaviours": 957,
+      "matching": {
+        "Game.Level.ContextualAnimation.LevelCAPlayFountainToddlerDropAreaHandler": 7,
+        "Game.Level.LevelAddCAOnAllCharactersHandlerByWeather": 1,
+        "Game.Level.LevelParticleSpawnOnDropArea": 7,
+        "Game.Level.LevelReactionOfAvatarsOnCAAnimationHandler": 4,
+        "PWC.AvatarSpeech.AvatarSpeechUIMenu": 1,
+        "PWC.AvatarSpeech.AvatarSpeechUIToggleMenuButton": 1,
+        "PWC.Level.LevelItemInCharacterBoneTransformOverride": 4,
+        "PWC.Level.LevelSpawn": 11
+      }
+    }
+  }
+}

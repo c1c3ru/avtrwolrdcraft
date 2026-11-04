@@ -1,0 +1,249 @@
+{
+  "inputs": {
+    "presets": "out/assets/TextAsset/PremadeCharactersJson_109356.txt",
+    "presets_sha256": "23285e9696a9a066d300d545dd074ae7fccc4183a0630bd79ba9e51c057be166",
+    "assembly_stub_root": "out/cpp2il/DiffableCs/Assembly-CSharp"
+  },
+  "preset_count": 896,
+  "preset_counts_by_spine_type": {
+    "Character": 827,
+    "Baby": 11,
+    "Toddler": 45,
+    "Cat": 3,
+    "Horse": 3,
+    "Dog": 7
+  },
+  "preset_ids_by_spine_type": {
+    "Character": {
+      "count": 827,
+      "min": 100000,
+      "max": 100901
+    },
+    "Baby": {
+      "count": 11,
+      "min": 100256,
+      "max": 100849
+    },
+    "Toddler": {
+      "count": 45,
+      "min": 100260,
+      "max": 100903
+    },
+    "Cat": {
+      "count": 3,
+      "min": 100762,
+      "max": 100888
+    },
+    "Horse": {
+      "count": 3,
+      "min": 100856,
+      "max": 100862
+    },
+    "Dog": {
+      "count": 7,
+      "min": 100861,
+      "max": 100889
+    }
+  },
+  "preset_counts_by_size_type": {
+    "Big": 628,
+    "Small": 95,
+    "Medium": 110,
+    "None": 63
+  },
+  "level_character_classes": [
+    {
+      "name": "LevelCat",
+      "namespace": "Game.Level",
+      "abstract": false,
+      "bases": "LevelAnimal, ILevelAvatar, ILevelHasClothingHandler",
+      "declares_ILevelAvatar": true,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelCat.cs",
+      "source_sha256": "9193a9266068e40378d41b9b5ab2b59bf664b69d41381bfba3f264fe130a152b"
+    },
+    {
+      "name": "LevelDog",
+      "namespace": "Game.Level",
+      "abstract": false,
+      "bases": "LevelAnimal, ILevelAvatar, ILevelHasClothingHandler",
+      "declares_ILevelAvatar": true,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelDog.cs",
+      "source_sha256": "5871363a9f9ba09a05ae01f6814ced0b43549c69f72950b36ae47c72924c0135"
+    },
+    {
+      "name": "LevelHorse",
+      "namespace": "Game.Level",
+      "abstract": false,
+      "bases": "LevelAnimal, ILevelAvatar, ILevelHasClothingHandler",
+      "declares_ILevelAvatar": true,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelHorse.cs",
+      "source_sha256": "4dfafa75146e64c4f3c1452ce7c7c6aa677661759fe119de541ba9a154636b2b"
+    },
+    {
+      "name": "LevelTechBird",
+      "namespace": "Game.Level",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelTechBird.cs",
+      "source_sha256": "879c181b67259bb50e794cbf0c208c4ed6ef08cfbf622ac67f97ca632de846ca"
+    },
+    {
+      "name": "LevelTechCat",
+      "namespace": "Game.Level",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelTechCat.cs",
+      "source_sha256": "cd2ee9e92e413e8885ab6f887bf002d0cec2a1b56d38786116f018ff0c2640d2"
+    },
+    {
+      "name": "LevelTechDog",
+      "namespace": "Game.Level",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelTechDog.cs",
+      "source_sha256": "04578e4f9a57e0207e8dab91b1c81f9cbb5bc408d2e208f7ad9dfa8b71d5808a"
+    },
+    {
+      "name": "LevelTechRabbit",
+      "namespace": "Game.Level",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelTechRabbit.cs",
+      "source_sha256": "64bcb0e1c6612c1bd6d74215af0f9797e76734a6277cce625221c9b8074964ae"
+    },
+    {
+      "name": "LevelTechRobot",
+      "namespace": "Game.Level",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelTechRobot.cs",
+      "source_sha256": "be9b3b273af1450471f65c74f470a38e84766c92489e6293999d0174c9dbfc47"
+    },
+    {
+      "name": "LevelBird",
+      "namespace": "public class LevelBird : LevelAnimal",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/LevelBird.cs",
+      "source_sha256": "378ccb7181ef2d97880aa4bcc6cb5cfa59f10015fa0b0d1a04a554761bd88c5e"
+    },
+    {
+      "name": "LevelChicken",
+      "namespace": "public class LevelChicken : LevelAnimal",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/LevelChicken.cs",
+      "source_sha256": "d673c313c197e550da1adb5ea43ea169bac33e9f342b4e8ef0761ef4a7775a14"
+    },
+    {
+      "name": "LevelCow",
+      "namespace": "public class LevelCow : LevelAnimal",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/LevelCow.cs",
+      "source_sha256": "56d2b34fafb37e816c114ecc0310cea65fa834b2636450593ddb043fcac54537"
+    },
+    {
+      "name": "LevelFish",
+      "namespace": "public class LevelFish : LevelAnimal",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/LevelFish.cs",
+      "source_sha256": "2147cfdaa77daaac9ff19b75a7cf7da598d23e094322dab98c75c113d64a1c82"
+    },
+    {
+      "name": "LevelHamster",
+      "namespace": "public class LevelHamster : LevelAnimal",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/LevelHamster.cs",
+      "source_sha256": "fd07079dbc0782ad2a85fe15aa37b184a96c67c7fd9136f29ca8ccf1cefe83f9"
+    },
+    {
+      "name": "LevelLizard",
+      "namespace": "public class LevelLizard : LevelAnimal",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/LevelLizard.cs",
+      "source_sha256": "21b7202623f3327383dd4ddec6ada3431eb3cd901e5b2a3ed81b7320d40fdbaa"
+    },
+    {
+      "name": "LevelRabbit",
+      "namespace": "public class LevelRabbit : LevelAnimal",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/LevelRabbit.cs",
+      "source_sha256": "248c776923a9a42e7425ef1a6bf9b8c574404d2278b87849933fc463f476dc41"
+    },
+    {
+      "name": "LevelSnake",
+      "namespace": "public class LevelSnake : LevelAnimal",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/LevelSnake.cs",
+      "source_sha256": "e597af5935ecee3f8d4b454acc106c988347e0797127282c68522f91470aaa4f"
+    },
+    {
+      "name": "LevelTurtle",
+      "namespace": "public class LevelTurtle : LevelAnimal",
+      "abstract": false,
+      "bases": "LevelAnimal",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/LevelTurtle.cs",
+      "source_sha256": "006526c27b903a921e0246e79ac3eef425feebdb2c0a6db7c243fe5f40842709"
+    },
+    {
+      "name": "LevelAnimal",
+      "namespace": "PWC.Level",
+      "abstract": true,
+      "bases": "LevelSimpleConsumerItemBase, ILevelEater, ICATarget, ILevelLivingBeing, ILevelAnimatable, IHasSpineType, IMultiplayer_PrepareForDrop, IMultiplayer_TransformChange",
+      "declares_ILevelAvatar": false,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelAnimal.cs",
+      "source_sha256": "953bbde72d3388c9029489690637b96316b7900f9c6ea8d7a08a32f421a82d22"
+    },
+    {
+      "name": "LevelBaby",
+      "namespace": "PWC.Level",
+      "abstract": false,
+      "bases": "LevelSimpleConsumerItemBase, ICATarget, ILevelAvatar, ILevelLivingBeing, ILevelHasClothingHandler, ILevelAnimatable, ILevelHasMouth, ILevelCanRest, IHasSpineType",
+      "declares_ILevelAvatar": true,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelBaby.cs",
+      "source_sha256": "6516968850a04b36790c34690eda58179c0874be35a81ab3cbe7ac1930aad170"
+    },
+    {
+      "name": "LevelCharacter",
+      "namespace": "PWC.Level",
+      "abstract": false,
+      "bases": "LevelSimpleConsumerItemBase, ICATarget, ILevelLivingBeing, ILevelAvatar, ILevelHasClothingHandler, ILevelAnimatable, ILevelHasHands, ILevelCanRest, IHasSpineType, IInteractableItem, IMultiplayer_NetworkIdentityBase, IMultiplayer_PrepareForDrop, IMultiplayer_TransformChange, IMultiplayer_Messageable",
+      "declares_ILevelAvatar": true,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelCharacter.cs",
+      "source_sha256": "687be7d80362689a49a686b0f75f6a60ee67dab1af73da99d0c3bede9da442b7"
+    },
+    {
+      "name": "LevelToddler",
+      "namespace": "PWC.Level",
+      "abstract": false,
+      "bases": "LevelSimpleConsumerItemBase, ILevelLivingBeing, ICATarget, ILevelAvatar, ILevelHasClothingHandler, ILevelAnimatable, ILevelEater, ILevelDrinker, ILevelHasHands, ILevelHasMouth, ILevelCanRest, IHasSpineType, IInteractableItem, IMultiplayer_NetworkIdentityBase, IMultiplayer_PrepareForDrop, IMultiplayer_TransformChange",
+      "declares_ILevelAvatar": true,
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelToddler.cs",
+      "source_sha256": "f433c08a19289f660de059114287e92702a6230cd0ea8052de0f1f7a499fc163"
+    }
+  ],
+  "limits": [
+    "Cpp2IL class stubs establish declarations and interfaces, not runtime behavior.",
+    "Premade preset counts do not measure scene NPC populations or unlocked catalog coverage."
+  ]
+}

@@ -1,0 +1,18 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 21e0d40: f81e0ffe     	str	x30, [sp, #-0x20]!
+ 21e0d44: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 21e0d48: 92407c34     	and	x20, x1, #0xffffffff
+ 21e0d4c: aa1403e1     	mov	x1, x20
+ 21e0d50: aa0003f3     	mov	x19, x0
+ 21e0d54: 94000007     	bl	0x21e0d70 <__start_il2cpp+0x58fb60>
+ 21e0d58: aa0003e2     	mov	x2, x0
+ 21e0d5c: aa1303e0     	mov	x0, x19
+ 21e0d60: aa1403e1     	mov	x1, x20
+ 21e0d64: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 21e0d68: f84207fe     	ldr	x30, [sp], #0x20
+ 21e0d6c: 1400006b     	b	0x21e0f18 <__start_il2cpp+0x58fd08>

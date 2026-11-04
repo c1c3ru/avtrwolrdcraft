@@ -1,0 +1,33 @@
+{
+ "OnBeginMovement": [
+  "PWC.Level.Water.LevelWaterAreaItemHandler.GetOutOfWater"
+ ],
+ "OnMovement": [],
+ "OnEndMovement": [],
+ "OnEndLand": [
+  "PWC.Level.LevelCharacter.OnEndLand"
+ ],
+ "PlayProperIdle": [
+  "<>c__DisplayClass14_0.<OnAnimationBegin>b__0",
+  "Game.Level.ContextualAnimation.LevelCABabyOnCharacterHandlerBase.TryOverridePreBeginDrag",
+  "Game.Level.ContextualAnimation.LevelCACrutchesItemHandler.OnRemovedFromTarget",
+  "Game.Level.ContextualAnimation.LevelCAPairCharacterNearCharacterHandler.OnDestroy",
+  "Game.Level.ContextualAnimation.LevelCAReporterMicrophoneItemHandler.StopCharacterReactionIfNeeeded",
+  "Game.Level.ContextualAnimation.LevelCASkiPolesItemHandler.AddCA",
+  "Game.Level.ContextualAnimation.LevelCASkiPolesItemHandler.RemoveCA",
+  "Game.Level.ContextualAnimation.LevelCAToddlerOnCharacterHandlerBase.TryOverridePreBeginDrag",
+  "Game.Level.LevelBoomboxAnniversaryHandler.StopAnimationOnAllAvatars",
+  "Game.Level.LevelRunningAreaItemHandler.OnEndLand",
+  "Game.Level.LevelStageTheme.ThemeSetActive",
+  "PWC.Level.ContextualAnimation.LevelCAPetOnCharacterHandlerBase.TryOverridePreBeginDrag",
+  "PWC.Level.LevelCharacterAnimator.SetAddAnimationInternal",
+  "PWC.Level.LevelItemOnCharacterBase.OnBeginDragInternal"
+ ],
+ "PlayStandIdle": [
+  "PWC.Level.LevelCharacterAnimator.PlayIdleAnimationOnCharacterInit"
+ ],
+ "PlayIdleOnInit": [
+  "PWC.Level.LevelCharacter.Init"
+ ],
+ "GetMovementType": []
+}

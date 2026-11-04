@@ -1,0 +1,47 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 1dc9e0c: a9be57fe     	stp	x30, x21, [sp, #-0x20]!
+ 1dc9e10: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 1dc9e14: b0013995     	adrp	x21, 0x44fa000
+ 1dc9e18: f0011f74     	adrp	x20, 0x41b8000
+ 1dc9e1c: 39662aa8     	ldrb	w8, [x21, #0x98a]
+ 1dc9e20: f9440694     	ldr	x20, [x20, #0x808]
+ 1dc9e24: aa0003f3     	mov	x19, x0
+ 1dc9e28: 37000128     	tbnz	w8, #0x0, 0x1dc9e4c <__start_il2cpp+0x178c3c>
+ 1dc9e2c: f0011f60     	adrp	x0, 0x41b8000
+ 1dc9e30: f9440400     	ldr	x0, [x0, #0x808]
+ 1dc9e34: 97f6fa2d     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1dc9e38: f0011f60     	adrp	x0, 0x41b8000
+ 1dc9e3c: f9440800     	ldr	x0, [x0, #0x810]
+ 1dc9e40: 97f6fa2a     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1dc9e44: 52800028     	mov	w8, #0x1                // =1
+ 1dc9e48: 39262aa8     	strb	w8, [x21, #0x98a]
+ 1dc9e4c: aa1303e0     	mov	x0, x19
+ 1dc9e50: aa1f03e1     	mov	x1, xzr
+ 1dc9e54: 9412748b     	bl	0x2267080 <__start_il2cpp+0x615e70>
+ 1dc9e58: f9400288     	ldr	x8, [x20]
+ 1dc9e5c: aa0003f4     	mov	x20, x0
+ 1dc9e60: aa0803e0     	mov	x0, x8
+ 1dc9e64: 97f6fac3     	bl	0x1b88970 <JNI_OnUnload+0xa5b4>
+ 1dc9e68: aa1f03e1     	mov	x1, xzr
+ 1dc9e6c: aa0003f5     	mov	x21, x0
+ 1dc9e70: 941088f2     	bl	0x21ec238 <__start_il2cpp+0x59b028>
+ 1dc9e74: b40001d5     	cbz	x21, 0x1dc9eac <__start_il2cpp+0x178c9c>
+ 1dc9e78: b9445668     	ldr	w8, [x19, #0x454]
+ 1dc9e7c: f0011f69     	adrp	x9, 0x41b8000
+ 1dc9e80: f9440929     	ldr	x9, [x9, #0x810]
+ 1dc9e84: aa1403e0     	mov	x0, x20
+ 1dc9e88: b90012a8     	str	w8, [x21, #0x10]
+ 1dc9e8c: aa1503e1     	mov	x1, x21
+ 1dc9e90: f9400123     	ldr	x3, [x9]
+ 1dc9e94: aa1f03e2     	mov	x2, xzr
+ 1dc9e98: 941fc76d     	bl	0x25bbc4c <__start_il2cpp+0x96aa3c>
+ 1dc9e9c: aa1403e0     	mov	x0, x20
+ 1dc9ea0: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 1dc9ea4: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 1dc9ea8: d65f03c0     	ret
+ 1dc9eac: 97f6fab5     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>
