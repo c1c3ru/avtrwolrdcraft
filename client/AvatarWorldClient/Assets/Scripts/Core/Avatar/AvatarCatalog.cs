@@ -19,14 +19,20 @@ namespace AvatarWorld.Core.Avatar
         public const string CategoryAccessory = "Accessory";
         public const string CategoryMouth = "Mouth";
         public const string CategoryEyebrows = "Eyebrows";
+        /// <summary>Cabelo traseiro (coques, rabos); o da frente e CategoryHair (skins Hair_Front/N_Color).</summary>
+        public const string CategoryHairBack = "HairBack";
+        public const string HairBackNone = "hair_back_none";
+
+        /// <summary>Categoria cuja cor (ItemColors) vale para o item: o cabelo traseiro usa a cor do cabelo da frente.</summary>
+        public static string ColorKey(string category) => category == CategoryHairBack ? CategoryHair : category;
         public const string EyebrowsDefault = "eyebrows_default";
         /// <summary>Id da boca embutida no esqueleto (Body_Outline/Mouth_Regular): nao e um item do SUT, nao tem textura propria.</summary>
         public const string MouthDefault = "mouth_default";
 
-        public static bool IsBuiltIn(string itemId) => itemId == MouthDefault || itemId == EyebrowsDefault;
+        public static bool IsBuiltIn(string itemId) => itemId == MouthDefault || itemId == EyebrowsDefault || itemId == HairBackNone;
 
         /// <summary>Itens _color recebem tinta (Multiply) escolhida na paleta General; os demais usam a textura como esta.</summary>
-        public static bool IsColorItem(string itemId) => itemId != null && itemId.EndsWith("_color", System.StringComparison.Ordinal);
+        public static bool IsColorItem(string itemId) => itemId != null && itemId.EndsWith("_color", System.StringComparison.OrdinalIgnoreCase);
         /// <summary>Categorias de cor (paletas oficiais): o valor e um indice em AvatarPalette, nao um item.</summary>
         public const string CategorySkin = "Skin";
         public const string CategoryEyes = "Eyes";
@@ -39,7 +45,7 @@ namespace AvatarWorld.Core.Avatar
 
         public static readonly IReadOnlyDictionary<string, string[]> OptionsByCategory = new Dictionary<string, string[]>
         {
-            { CategoryHair, new[] { "Hair_Front/1_Color", "Hair_Front/2_Color" } },
+            { CategoryHair, AvatarCatalogData.Hair },
             // Roupas: AvatarCatalogData e gerado por tools/avatar_catalog_build.py (itens reais do SUT).
             // Os dois primeiros de cada lista sao os ids originais; o primeiro e o padrao.
             { CategoryShirt, AvatarCatalogData.Shirt },
@@ -48,6 +54,7 @@ namespace AvatarWorld.Core.Avatar
             { CategoryAccessory, AvatarCatalogData.Accessory },
             { CategoryMouth, AvatarCatalogData.Mouth },
             { CategoryEyebrows, AvatarCatalogData.Eyebrows },
+            { CategoryHairBack, AvatarCatalogData.HairBack },
         };
 
         public static string DefaultOption(string category) => OptionsByCategory[category][0];

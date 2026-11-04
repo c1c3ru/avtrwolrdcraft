@@ -27,6 +27,7 @@ namespace AvatarWorld.Core.Avatar
         public string AccessoryId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryAccessory);
         public string MouthId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryMouth);
         public string EyebrowsId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryEyebrows);
+        public string HairBackId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryHairBack);
         /// <summary>Cor (paleta General) por categoria, so para itens _color; ausente = AvatarPaletteData.DefaultItemColor.</summary>
         public List<CategoryColor> ItemColors = new List<CategoryColor>();
         /// <summary>Indices nas paletas Skin/Eyes (palettes.json). Saves antigos sem estes campos ficam nos padroes.</summary>
@@ -38,7 +39,7 @@ namespace AvatarWorld.Core.Avatar
         /// <summary>Copia independente (usada pelo historico desfazer/refazer do editor).</summary>
         public AvatarAppearance Clone() => new AvatarAppearance
         {
-            HairId = HairId, ShirtId = ShirtId, BottomId = BottomId, ShoesId = ShoesId, AccessoryId = AccessoryId, MouthId = MouthId, EyebrowsId = EyebrowsId,
+            HairId = HairId, ShirtId = ShirtId, BottomId = BottomId, ShoesId = ShoesId, AccessoryId = AccessoryId, MouthId = MouthId, EyebrowsId = EyebrowsId, HairBackId = HairBackId,
             SkinIndex = SkinIndex, EyesIndex = EyesIndex,
             ItemColors = ItemColors.ConvertAll(c => new CategoryColor { Category = c.Category, Index = c.Index }),
         };
@@ -61,7 +62,7 @@ namespace AvatarWorld.Core.Avatar
         public bool SameAs(AvatarAppearance other) => other != null &&
             HairId == other.HairId && ShirtId == other.ShirtId && BottomId == other.BottomId &&
             ShoesId == other.ShoesId && AccessoryId == other.AccessoryId && MouthId == other.MouthId &&
-            EyebrowsId == other.EyebrowsId && SkinIndex == other.SkinIndex && EyesIndex == other.EyesIndex && SameItemColors(other);
+            EyebrowsId == other.EyebrowsId && HairBackId == other.HairBackId && SkinIndex == other.SkinIndex && EyesIndex == other.EyesIndex && SameItemColors(other);
 
         bool SameItemColors(AvatarAppearance other)
         {
@@ -99,6 +100,7 @@ namespace AvatarWorld.Core.Avatar
                 case AvatarCatalog.CategoryAccessory: return AccessoryId;
                 case AvatarCatalog.CategoryMouth: return MouthId;
                 case AvatarCatalog.CategoryEyebrows: return EyebrowsId;
+                case AvatarCatalog.CategoryHairBack: return HairBackId;
                 default: throw new ArgumentOutOfRangeException(nameof(category), category, "categoria desconhecida");
             }
         }
@@ -116,6 +118,7 @@ namespace AvatarWorld.Core.Avatar
                 case AvatarCatalog.CategoryAccessory: AccessoryId = itemId; break;
                 case AvatarCatalog.CategoryMouth: MouthId = itemId; break;
                 case AvatarCatalog.CategoryEyebrows: EyebrowsId = itemId; break;
+                case AvatarCatalog.CategoryHairBack: HairBackId = itemId; break;
                 default: return false;
             }
             return true;
@@ -129,6 +132,7 @@ namespace AvatarWorld.Core.Avatar
             AvatarCatalog.IsValidOption(AvatarCatalog.CategoryAccessory, AccessoryId) &&
             AvatarCatalog.IsValidOption(AvatarCatalog.CategoryMouth, MouthId) &&
             AvatarCatalog.IsValidOption(AvatarCatalog.CategoryEyebrows, EyebrowsId) &&
+            AvatarCatalog.IsValidOption(AvatarCatalog.CategoryHairBack, HairBackId) &&
             ItemColors.TrueForAll(c => c != null && AvatarCatalog.OptionsByCategory.ContainsKey(c.Category) && c.Index >= 0 && c.Index < AvatarPaletteData.GeneralCount) &&
             SkinIndex >= 0 && SkinIndex < AvatarPaletteData.SkinCount && EyesIndex >= 0 && EyesIndex < AvatarPaletteData.EyesCount;
 
@@ -142,6 +146,7 @@ namespace AvatarWorld.Core.Avatar
             if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryAccessory, AccessoryId)) AccessoryId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryAccessory);
             if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryMouth, MouthId)) MouthId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryMouth);
             if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryEyebrows, EyebrowsId)) EyebrowsId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryEyebrows);
+            if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryHairBack, HairBackId)) HairBackId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryHairBack);
             if (ItemColors == null) ItemColors = new List<CategoryColor>();
             ItemColors.RemoveAll(c => c == null || !AvatarCatalog.OptionsByCategory.ContainsKey(c.Category) || c.Index < 0 || c.Index >= AvatarPaletteData.GeneralCount);
             if (SkinIndex < 0 || SkinIndex >= AvatarPaletteData.SkinCount) SkinIndex = AvatarPaletteData.DefaultSkin;

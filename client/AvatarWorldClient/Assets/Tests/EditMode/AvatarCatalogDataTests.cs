@@ -9,7 +9,7 @@ namespace AvatarWorld.Core.Tests
 {
     public class AvatarCatalogDataTests
     {
-        [Serializable] class Piece { public string template; public string file; }
+        [Serializable] class Piece { public string template; public string file; public string skin; }
         [Serializable] class Item { public string id; public List<Piece> pieces; }
         [Serializable] class Manifest { public List<Item> items; }
 
@@ -18,7 +18,7 @@ namespace AvatarWorld.Core.Tests
         [Test]
         public void ClothingCategoriesOfferManyUniqueOptionsAndKeepTheOriginalDefaults()
         {
-            foreach (var category in new[] { AvatarCatalog.CategoryShirt, AvatarCatalog.CategoryBottom, AvatarCatalog.CategoryShoes, AvatarCatalog.CategoryAccessory, AvatarCatalog.CategoryMouth })
+            foreach (var category in new[] { AvatarCatalog.CategoryShirt, AvatarCatalog.CategoryBottom, AvatarCatalog.CategoryShoes, AvatarCatalog.CategoryAccessory, AvatarCatalog.CategoryMouth, AvatarCatalog.CategoryHair, AvatarCatalog.CategoryHairBack })
             {
                 var ids = AvatarCatalog.OptionsByCategory[category];
                 Assert.GreaterOrEqual(ids.Length, 100, category);
@@ -50,7 +50,7 @@ namespace AvatarWorld.Core.Tests
         {
             var manifest = LoadManifest();
             var byId = manifest.items.ToDictionary(i => i.id);
-            foreach (var category in AvatarCatalog.OptionsByCategory.Keys.Where(c => c != AvatarCatalog.CategoryHair))
+            foreach (var category in AvatarCatalog.OptionsByCategory.Keys)
                 foreach (var id in AvatarCatalog.OptionsByCategory[category].Where(i => !AvatarCatalog.IsBuiltIn(i)))
                 {
                     Assert.IsTrue(byId.TryGetValue(id, out var item), id + " ausente do manifesto");

@@ -97,5 +97,19 @@ namespace AvatarWorld.Core.Tests
             old.SanitizeInPlace();
             Assert.AreEqual(0, old.ItemColors.Count);
         }
+
+        [Test]
+        public void HairIsAnItemCategoryWithColorAndABackLayerSharingTheHairColor()
+        {
+            Assert.Greater(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHair].Length, 50);
+            Assert.AreEqual("Hair_Front/1_Color", AvatarCatalog.DefaultOption(AvatarCatalog.CategoryHair));
+            Assert.AreEqual(AvatarCatalog.HairBackNone, AvatarCatalog.DefaultOption(AvatarCatalog.CategoryHairBack));
+            Assert.IsTrue(AvatarCatalog.IsColorItem("Hair_Front/3_Color"), "skins Hair_Front/N_Color aceitam tinta");
+            Assert.AreEqual(AvatarCatalog.CategoryHair, AvatarCatalog.ColorKey(AvatarCatalog.CategoryHairBack));
+            Assert.AreEqual(AvatarCatalog.CategoryShirt, AvatarCatalog.ColorKey(AvatarCatalog.CategoryShirt));
+            var a = AvatarAppearance.CreateDefault();
+            Assert.IsTrue(a.TrySelect(AvatarCatalog.CategoryHairBack, AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHairBack][1]));
+            Assert.IsFalse(a.SameAs(AvatarAppearance.CreateDefault()));
+        }
     }
 }
