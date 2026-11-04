@@ -1,0 +1,85 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 1dc9eb0: d10143ff     	sub	sp, sp, #0x50
+ 1dc9eb4: a9025ffe     	stp	x30, x23, [sp, #0x20]
+ 1dc9eb8: a90357f6     	stp	x22, x21, [sp, #0x30]
+ 1dc9ebc: a9044ff4     	stp	x20, x19, [sp, #0x40]
+ 1dc9ec0: b0013997     	adrp	x23, 0x44fa000
+ 1dc9ec4: f0011f76     	adrp	x22, 0x41b8000
+ 1dc9ec8: 39662ee8     	ldrb	w8, [x23, #0x98b]
+ 1dc9ecc: f9440ed6     	ldr	x22, [x22, #0x818]
+ 1dc9ed0: aa0203f3     	mov	x19, x2
+ 1dc9ed4: aa0103f4     	mov	x20, x1
+ 1dc9ed8: aa0003f5     	mov	x21, x0
+ 1dc9edc: 37000188     	tbnz	w8, #0x0, 0x1dc9f0c <__start_il2cpp+0x178cfc>
+ 1dc9ee0: 90011f60     	adrp	x0, 0x41b5000
+ 1dc9ee4: f9424400     	ldr	x0, [x0, #0x488]
+ 1dc9ee8: 97f6fa00     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1dc9eec: 90011f20     	adrp	x0, 0x41ad000
+ 1dc9ef0: f9441800     	ldr	x0, [x0, #0x830]
+ 1dc9ef4: 97f6f9fd     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1dc9ef8: f0011f60     	adrp	x0, 0x41b8000
+ 1dc9efc: f9440c00     	ldr	x0, [x0, #0x818]
+ 1dc9f00: 97f6f9fa     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1dc9f04: 52800028     	mov	w8, #0x1                // =1
+ 1dc9f08: 39262ee8     	strb	w8, [x23, #0x98b]
+ 1dc9f0c: f94002c4     	ldr	x4, [x22]
+ 1dc9f10: 910063e1     	add	x1, sp, #0x18
+ 1dc9f14: aa1403e0     	mov	x0, x20
+ 1dc9f18: 2a1f03e2     	mov	w2, wzr
+ 1dc9f1c: aa1f03e3     	mov	x3, xzr
+ 1dc9f20: a9017fff     	stp	xzr, xzr, [sp, #0x10]
+ 1dc9f24: f90007ff     	str	xzr, [sp, #0x8]
+ 1dc9f28: 941fc77f     	bl	0x25bbd24 <__start_il2cpp+0x96ab14>
+ 1dc9f2c: 360004a0     	tbz	w0, #0x0, 0x1dc9fc0 <__start_il2cpp+0x178db0>
+ 1dc9f30: f9400fe8     	ldr	x8, [sp, #0x18]
+ 1dc9f34: b40005a8     	cbz	x8, 0x1dc9fe8 <__start_il2cpp+0x178dd8>
+ 1dc9f38: 90011f69     	adrp	x9, 0x41b5000
+ 1dc9f3c: f9424529     	ldr	x9, [x9, #0x488]
+ 1dc9f40: b9401116     	ldr	w22, [x8, #0x10]
+ 1dc9f44: f9400120     	ldr	x0, [x9]
+ 1dc9f48: b940e009     	ldr	w9, [x0, #0xe0]
+ 1dc9f4c: 35000049     	cbnz	w9, 0x1dc9f54 <__start_il2cpp+0x178d44>
+ 1dc9f50: 97f6fa43     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 1dc9f54: 910043e1     	add	x1, sp, #0x10
+ 1dc9f58: 2a1603e0     	mov	w0, w22
+ 1dc9f5c: aa1f03e2     	mov	x2, xzr
+ 1dc9f60: 940e92c9     	bl	0x216ea84 <__start_il2cpp+0x51d874>
+ 1dc9f64: 360000c0     	tbz	w0, #0x0, 0x1dc9f7c <__start_il2cpp+0x178d6c>
+ 1dc9f68: f9400be8     	ldr	x8, [sp, #0x10]
+ 1dc9f6c: b40003e8     	cbz	x8, 0x1dc9fe8 <__start_il2cpp+0x178dd8>
+ 1dc9f70: b9403108     	ldr	w8, [x8, #0x30]
+ 1dc9f74: 7100391f     	cmp	w8, #0xe
+ 1dc9f78: 54000201     	b.ne	0x1dc9fb8 <__start_il2cpp+0x178da8>
+ 1dc9f7c: 52800028     	mov	w8, #0x1                // =1
+ 1dc9f80: 390f52a8     	strb	w8, [x21, #0x3d4]
+ 1dc9f84: 90011f28     	adrp	x8, 0x41ad000
+ 1dc9f88: f9441908     	ldr	x8, [x8, #0x830]
+ 1dc9f8c: 910023e1     	add	x1, sp, #0x8
+ 1dc9f90: aa1503e0     	mov	x0, x21
+ 1dc9f94: f9400102     	ldr	x2, [x8]
+ 1dc9f98: 941c9e19     	bl	0x24f17fc <__start_il2cpp+0x8a05ec>
+ 1dc9f9c: 36000120     	tbz	w0, #0x0, 0x1dc9fc0 <__start_il2cpp+0x178db0>
+ 1dc9fa0: f9400fe8     	ldr	x8, [sp, #0x18]
+ 1dc9fa4: b4000228     	cbz	x8, 0x1dc9fe8 <__start_il2cpp+0x178dd8>
+ 1dc9fa8: b9401101     	ldr	w1, [x8, #0x10]
+ 1dc9fac: aa1503e0     	mov	x0, x21
+ 1dc9fb0: 97fffb81     	bl	0x1dc8db4 <__start_il2cpp+0x177ba4>
+ 1dc9fb4: 14000003     	b	0x1dc9fc0 <__start_il2cpp+0x178db0>
+ 1dc9fb8: 52800028     	mov	w8, #0x1                // =1
+ 1dc9fbc: 3910c2a8     	strb	w8, [x21, #0x430]
+ 1dc9fc0: aa1503e0     	mov	x0, x21
+ 1dc9fc4: aa1403e1     	mov	x1, x20
+ 1dc9fc8: aa1303e2     	mov	x2, x19
+ 1dc9fcc: aa1f03e3     	mov	x3, xzr
+ 1dc9fd0: 94127466     	bl	0x2267168 <__start_il2cpp+0x615f58>
+ 1dc9fd4: a9444ff4     	ldp	x20, x19, [sp, #0x40]
+ 1dc9fd8: a94357f6     	ldp	x22, x21, [sp, #0x30]
+ 1dc9fdc: a9425ffe     	ldp	x30, x23, [sp, #0x20]
+ 1dc9fe0: 910143ff     	add	sp, sp, #0x50
+ 1dc9fe4: d65f03c0     	ret
+ 1dc9fe8: 97f6fa66     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

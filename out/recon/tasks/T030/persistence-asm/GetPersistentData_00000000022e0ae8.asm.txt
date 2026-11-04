@@ -1,0 +1,59 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 22e0ae8: a9bd5ffe     	stp	x30, x23, [sp, #-0x30]!
+ 22e0aec: a90157f6     	stp	x22, x21, [sp, #0x10]
+ 22e0af0: a9024ff4     	stp	x20, x19, [sp, #0x20]
+ 22e0af4: b00110f6     	adrp	x22, 0x44fd000
+ 22e0af8: b000f677     	adrp	x23, 0x41ad000
+ 22e0afc: b000f674     	adrp	x20, 0x41ad000
+ 22e0b00: b000f7d5     	adrp	x21, 0x41d9000
+ 22e0b04: 397a82c8     	ldrb	w8, [x22, #0xea0]
+ 22e0b08: f9449ef7     	ldr	x23, [x23, #0x938]
+ 22e0b0c: f9449a94     	ldr	x20, [x20, #0x930]
+ 22e0b10: f940ceb5     	ldr	x21, [x21, #0x198]
+ 22e0b14: aa0003f3     	mov	x19, x0
+ 22e0b18: 370001e8     	tbnz	w8, #0x0, 0x22e0b54 <__start_il2cpp+0x68f944>
+ 22e0b1c: b000f660     	adrp	x0, 0x41ad000
+ 22e0b20: f9449800     	ldr	x0, [x0, #0x930]
+ 22e0b24: 97e29ef1     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 22e0b28: b000f660     	adrp	x0, 0x41ad000
+ 22e0b2c: f9449c00     	ldr	x0, [x0, #0x938]
+ 22e0b30: 97e29eee     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 22e0b34: b000f7c0     	adrp	x0, 0x41d9000
+ 22e0b38: f940cc00     	ldr	x0, [x0, #0x198]
+ 22e0b3c: 97e29eeb     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 22e0b40: b000f7c0     	adrp	x0, 0x41d9000
+ 22e0b44: f940d000     	ldr	x0, [x0, #0x1a0]
+ 22e0b48: 97e29ee8     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 22e0b4c: 52800028     	mov	w8, #0x1                // =1
+ 22e0b50: 393a82c8     	strb	w8, [x22, #0xea0]
+ 22e0b54: f94002e0     	ldr	x0, [x23]
+ 22e0b58: 97e29f86     	bl	0x1b88970 <JNI_OnUnload+0xa5b4>
+ 22e0b5c: f9400281     	ldr	x1, [x20]
+ 22e0b60: aa0003f4     	mov	x20, x0
+ 22e0b64: 94186111     	bl	0x28f8fa8 <__start_il2cpp+0xca7d98>
+ 22e0b68: f94002a0     	ldr	x0, [x21]
+ 22e0b6c: 97e29f81     	bl	0x1b88970 <JNI_OnUnload+0xa5b4>
+ 22e0b70: aa1f03e1     	mov	x1, xzr
+ 22e0b74: aa0003f5     	mov	x21, x0
+ 22e0b78: 97fc2db2     	bl	0x21ec240 <__start_il2cpp+0x59b030>
+ 22e0b7c: b40001f5     	cbz	x21, 0x22e0bb8 <__start_il2cpp+0x68f9a8>
+ 22e0b80: b9407668     	ldr	w8, [x19, #0x74]
+ 22e0b84: b000f7c9     	adrp	x9, 0x41d9000
+ 22e0b88: f940d129     	ldr	x9, [x9, #0x1a0]
+ 22e0b8c: aa1403e0     	mov	x0, x20
+ 22e0b90: b90012a8     	str	w8, [x21, #0x10]
+ 22e0b94: aa1503e1     	mov	x1, x21
+ 22e0b98: f9400123     	ldr	x3, [x9]
+ 22e0b9c: aa1f03e2     	mov	x2, xzr
+ 22e0ba0: 940b6c2b     	bl	0x25bbc4c <__start_il2cpp+0x96aa3c>
+ 22e0ba4: aa1403e0     	mov	x0, x20
+ 22e0ba8: a9424ff4     	ldp	x20, x19, [sp, #0x20]
+ 22e0bac: a94157f6     	ldp	x22, x21, [sp, #0x10]
+ 22e0bb0: a8c35ffe     	ldp	x30, x23, [sp], #0x30
+ 22e0bb4: d65f03c0     	ret
+ 22e0bb8: 97e29f72     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

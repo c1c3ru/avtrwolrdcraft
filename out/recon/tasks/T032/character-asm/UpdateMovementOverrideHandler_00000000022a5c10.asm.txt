@@ -1,0 +1,49 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 22a5c10: a9be57fe     	stp	x30, x21, [sp, #-0x20]!
+ 22a5c14: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 22a5c18: 900112d4     	adrp	x20, 0x44fd000
+ 22a5c1c: f000f835     	adrp	x21, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 22a5c20: 396f5e88     	ldrb	w8, [x20, #0xbd7]
+ 22a5c24: f945deb5     	ldr	x21, [x21, #0xbb8]
+ 22a5c28: aa0003f3     	mov	x19, x0
+ 22a5c2c: 370000c8     	tbnz	w8, #0x0, 0x22a5c44 <__start_il2cpp+0x654a34>
+ 22a5c30: f000f820     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 22a5c34: f945dc00     	ldr	x0, [x0, #0xbb8]
+ 22a5c38: 97e38aac     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 22a5c3c: 52800028     	mov	w8, #0x1                // =1
+ 22a5c40: 392f5e88     	strb	w8, [x20, #0xbd7]
+ 22a5c44: 52800021     	mov	w1, #0x1                // =1
+ 22a5c48: aa1303e0     	mov	x0, x19
+ 22a5c4c: 9400001c     	bl	0x22a5cbc <__start_il2cpp+0x654aac>
+ 22a5c50: aa1303f4     	mov	x20, x19
+ 22a5c54: f8060e80     	str	x0, [x20, #0x60]!
+ 22a5c58: aa0003e1     	mov	x1, x0
+ 22a5c5c: aa1403e0     	mov	x0, x20
+ 22a5c60: 97e38a8d     	bl	0x1b88694 <JNI_OnUnload+0xa2d8>
+ 22a5c64: f94002a0     	ldr	x0, [x21]
+ 22a5c68: f9400295     	ldr	x21, [x20]
+ 22a5c6c: b940e008     	ldr	w8, [x0, #0xe0]
+ 22a5c70: 35000048     	cbnz	w8, 0x22a5c78 <__start_il2cpp+0x654a68>
+ 22a5c74: 97e38afa     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 22a5c78: aa1503e0     	mov	x0, x21
+ 22a5c7c: aa1f03e1     	mov	x1, xzr
+ 22a5c80: aa1f03e2     	mov	x2, xzr
+ 22a5c84: 94689715     	bl	0x3ccb8d8 <__start_il2cpp+0x207a6c8>
+ 22a5c88: 36000140     	tbz	w0, #0x0, 0x22a5cb0 <__start_il2cpp+0x654aa0>
+ 22a5c8c: 52800041     	mov	w1, #0x2                // =2
+ 22a5c90: aa1303e0     	mov	x0, x19
+ 22a5c94: 9400000a     	bl	0x22a5cbc <__start_il2cpp+0x654aac>
+ 22a5c98: aa0003e1     	mov	x1, x0
+ 22a5c9c: f9003260     	str	x0, [x19, #0x60]
+ 22a5ca0: aa1403e0     	mov	x0, x20
+ 22a5ca4: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 22a5ca8: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 22a5cac: 17e38a7a     	b	0x1b88694 <JNI_OnUnload+0xa2d8>
+ 22a5cb0: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 22a5cb4: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 22a5cb8: d65f03c0     	ret

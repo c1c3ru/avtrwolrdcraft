@@ -1,0 +1,50 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 21e288c: d100c3ff     	sub	sp, sp, #0x30
+ 21e2890: a90157fe     	stp	x30, x21, [sp, #0x10]
+ 21e2894: a9024ff4     	stp	x20, x19, [sp, #0x20]
+ 21e2898: f00118d5     	adrp	x21, 0x44fd000
+ 21e289c: b000ff54     	adrp	x20, 0x41cb000
+ 21e28a0: 3952dea8     	ldrb	w8, [x21, #0x4b7]
+ 21e28a4: f942ee94     	ldr	x20, [x20, #0x5d8]
+ 21e28a8: aa0103f3     	mov	x19, x1
+ 21e28ac: 37000128     	tbnz	w8, #0x0, 0x21e28d0 <__start_il2cpp+0x5916c0>
+ 21e28b0: d000fe80     	adrp	x0, 0x41b4000
+ 21e28b4: f9473000     	ldr	x0, [x0, #0xe60]
+ 21e28b8: 97e6978c     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 21e28bc: b000ff40     	adrp	x0, 0x41cb000
+ 21e28c0: f942ec00     	ldr	x0, [x0, #0x5d8]
+ 21e28c4: 97e69789     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 21e28c8: 52800028     	mov	w8, #0x1                // =1
+ 21e28cc: 3912dea8     	strb	w8, [x21, #0x4b7]
+ 21e28d0: f9400288     	ldr	x8, [x20]
+ 21e28d4: f90007ff     	str	xzr, [sp, #0x8]
+ 21e28d8: f9405d08     	ldr	x8, [x8, #0xb8]
+ 21e28dc: f9400d08     	ldr	x8, [x8, #0x18]
+ 21e28e0: b4000148     	cbz	x8, 0x21e2908 <__start_il2cpp+0x5916f8>
+ 21e28e4: f9400d09     	ldr	x9, [x8, #0x18]
+ 21e28e8: f9402100     	ldr	x0, [x8, #0x40]
+ 21e28ec: f9401503     	ldr	x3, [x8, #0x28]
+ 21e28f0: 92407e61     	and	x1, x19, #0xffffffff
+ 21e28f4: 910023e2     	add	x2, sp, #0x8
+ 21e28f8: d63f0120     	blr	x9
+ 21e28fc: 36000060     	tbz	w0, #0x0, 0x21e2908 <__start_il2cpp+0x5916f8>
+ 21e2900: f94007e0     	ldr	x0, [sp, #0x8]
+ 21e2904: 1400000a     	b	0x21e292c <__start_il2cpp+0x59171c>
+ 21e2908: d000fe88     	adrp	x8, 0x41b4000
+ 21e290c: f9473108     	ldr	x8, [x8, #0xe60]
+ 21e2910: f9400100     	ldr	x0, [x8]
+ 21e2914: b940e008     	ldr	w8, [x0, #0xe0]
+ 21e2918: 35000048     	cbnz	w8, 0x21e2920 <__start_il2cpp+0x591710>
+ 21e291c: 97e697d0     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 21e2920: 92407e60     	and	x0, x19, #0xffffffff
+ 21e2924: aa1f03e1     	mov	x1, xzr
+ 21e2928: 97fa415f     	bl	0x2072ea4 <__start_il2cpp+0x421c94>
+ 21e292c: a9424ff4     	ldp	x20, x19, [sp, #0x20]
+ 21e2930: a94157fe     	ldp	x30, x21, [sp, #0x10]
+ 21e2934: 9100c3ff     	add	sp, sp, #0x30
+ 21e2938: d65f03c0     	ret

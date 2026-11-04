@@ -1,0 +1,47 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 22b09d8: d10103ff     	sub	sp, sp, #0x40
+ 22b09dc: a9015ffe     	stp	x30, x23, [sp, #0x10]
+ 22b09e0: a90257f6     	stp	x22, x21, [sp, #0x20]
+ 22b09e4: a9034ff4     	stp	x20, x19, [sp, #0x30]
+ 22b09e8: b0011277     	adrp	x23, 0x44fd000
+ 22b09ec: 9000f955     	adrp	x21, 0x41d8000
+ 22b09f0: b000f7f6     	adrp	x22, 0x41ad000
+ 22b09f4: 397102e8     	ldrb	w8, [x23, #0xc40]
+ 22b09f8: f940beb5     	ldr	x21, [x21, #0x178]
+ 22b09fc: f9453ed6     	ldr	x22, [x22, #0xa78]
+ 22b0a00: aa0103f4     	mov	x20, x1
+ 22b0a04: aa0003f3     	mov	x19, x0
+ 22b0a08: 37000128     	tbnz	w8, #0x0, 0x22b0a2c <__start_il2cpp+0x65f81c>
+ 22b0a0c: b000f7e0     	adrp	x0, 0x41ad000
+ 22b0a10: f9453c00     	ldr	x0, [x0, #0xa78]
+ 22b0a14: 97e35f35     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 22b0a18: 9000f940     	adrp	x0, 0x41d8000
+ 22b0a1c: f940bc00     	ldr	x0, [x0, #0x178]
+ 22b0a20: 97e35f32     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 22b0a24: 52800028     	mov	w8, #0x1                // =1
+ 22b0a28: 393102e8     	strb	w8, [x23, #0xc40]
+ 22b0a2c: f94002a3     	ldr	x3, [x21]
+ 22b0a30: f94002c4     	ldr	x4, [x22]
+ 22b0a34: 910023e1     	add	x1, sp, #0x8
+ 22b0a38: 52800022     	mov	w2, #0x1                // =1
+ 22b0a3c: aa1403e0     	mov	x0, x20
+ 22b0a40: f90007ff     	str	xzr, [sp, #0x8]
+ 22b0a44: 940c2cb8     	bl	0x25bbd24 <__start_il2cpp+0x96ab14>
+ 22b0a48: 360000e0     	tbz	w0, #0x0, 0x22b0a64 <__start_il2cpp+0x65f854>
+ 22b0a4c: f94007e8     	ldr	x8, [sp, #0x8]
+ 22b0a50: b4000148     	cbz	x8, 0x22b0a78 <__start_il2cpp+0x65f868>
+ 22b0a54: 39404108     	ldrb	w8, [x8, #0x10]
+ 22b0a58: aa1303e0     	mov	x0, x19
+ 22b0a5c: 3900a268     	strb	w8, [x19, #0x28]
+ 22b0a60: 97fffea1     	bl	0x22b04e4 <__start_il2cpp+0x65f2d4>
+ 22b0a64: a9434ff4     	ldp	x20, x19, [sp, #0x30]
+ 22b0a68: a94257f6     	ldp	x22, x21, [sp, #0x20]
+ 22b0a6c: a9415ffe     	ldp	x30, x23, [sp, #0x10]
+ 22b0a70: 910103ff     	add	sp, sp, #0x40
+ 22b0a74: d65f03c0     	ret
+ 22b0a78: 97e35fc2     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

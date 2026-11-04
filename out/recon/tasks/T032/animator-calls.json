@@ -1,0 +1,114 @@
+{
+ "OnBeginMovement_00000000022a1150.asm.txt": {
+  "resolved": [
+   "PWC.Level.LevelCharacterAnimator.GetCurrentBehaviorItem",
+   "PWC.Level.LevelCharacterAnimator.SetAddAnimationInternal",
+   "PWC.Level.LevelCharacterAnimator.SetAddAnimationInternal"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 7,
+   "0x3cc84a8": 1,
+   "0x3cd4584": 1,
+   "0x1b8885c": 3,
+   "0x3ccab90": 2,
+   "0x35189d8": 2,
+   "0x34d888c": 2,
+   "0x1b88694": 3,
+   "0x31df55c": 3,
+   "0x3ccb8d8": 1,
+   "0x1b88980": 1
+  }
+ },
+ "OnMovement_00000000022a1570.asm.txt": {
+  "resolved": [
+   "CShapes.CShape.IsPointInsideShape",
+   "PWC.Level.LevelItem.SetSortingOrder",
+   "PWC.Level.LevelCharacterAnimator.SetAddAnimationInternal",
+   "PWC.Level.LevelCharacterAnimator.SetEmtyAnimation",
+   "PWC.Level.LevelItem.SetSortingOrder",
+   "PWC.Level.LevelCharacterAnimator.SetAddAnimationInternal",
+   "PWC.Level.LevelItem.SetSortingOrder",
+   "PWC.Level.LevelCharacterAnimator.SetAddAnimationInternal",
+   "PWC.Level.LevelCharacterAnimator.SetEmtyAnimation",
+   "PWC.Level.LevelCharacterAnimator.SetEmtyAnimation"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 22,
+   "0x3cc84a8": 1,
+   "0x3cd4584": 1,
+   "0x1b8885c": 8,
+   "0x2cf12b4": 1,
+   "0x29c0b20": 1,
+   "0x29c0b1c": 4,
+   "0x2e6038c": 1,
+   "0x2e60374": 2,
+   "0x3ccb8d8": 2,
+   "0x3cd1b3c": 1,
+   "0x3ccab90": 1,
+   "0x35189d8": 3,
+   "0x34d888c": 1,
+   "0x1b88970": 1,
+   "0x34d8d20": 1,
+   "0x1b88694": 1,
+   "0x34d56b8": 1,
+   "0x31df55c": 1,
+   "0x34d7c1c": 1,
+   "0x31d39e4": 1,
+   "0x338d9a0": 1,
+   "0x31dfa68": 1,
+   "0x3ca5b88": 1,
+   "0x1b88980": 3,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "OnEndMovement_00000000022a1fe0.asm.txt": {
+  "resolved": [
+   "PWC.Level.LevelCharacterAnimator.SetEmtyAnimation",
+   "PWC.Level.LevelCharacterAnimator.GetCurrentBehaviorItem",
+   "PWC.Level.LevelCharacterAnimator.ShouldPlayFallHighAnimation"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 2,
+   "0x35189d8": 1,
+   "0x34d5754": 1,
+   "0x1b8885c": 2,
+   "0x3ccab90": 2,
+   "0x1b88980": 1
+  }
+ },
+ "PlayProperIdleAnimation_00000000022a3a40.asm.txt": {
+  "resolved": [],
+  "unresolved_targets": {
+   "0x1b886e8": 5,
+   "0x1b8885c": 1,
+   "0x3ccab90": 1,
+   "0x1b88980": 1
+  }
+ },
+ "GetMovementType_00000000022a5b88.asm.txt": {
+  "resolved": [],
+  "unresolved_targets": {}
+ },
+ "PlayStandIdleAnimation_00000000022a5b90.asm.txt": {
+  "resolved": [],
+  "unresolved_targets": {
+   "0x1b886e8": 1
+  }
+ },
+ "UpdateMovementOverrideHandler_00000000022a5c10.asm.txt": {
+  "resolved": [
+   "PWC.Level.LevelCharacterAnimator.<UpdateMovementOverrideHandler>g__GetHeldItem|26_0",
+   "PWC.Level.LevelCharacterAnimator.<UpdateMovementOverrideHandler>g__GetHeldItem|26_0"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 1,
+   "0x1b88694": 1,
+   "0x1b8885c": 1,
+   "0x3ccb8d8": 1
+  }
+ }
+}

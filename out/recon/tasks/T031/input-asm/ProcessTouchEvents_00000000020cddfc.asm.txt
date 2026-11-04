@@ -1,0 +1,98 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 20cddfc: d10483ff     	sub	sp, sp, #0x120
+ 20cde00: a90f7bfd     	stp	x29, x30, [sp, #0xf0]
+ 20cde04: a91057f6     	stp	x22, x21, [sp, #0x100]
+ 20cde08: a9114ff4     	stp	x20, x19, [sp, #0x110]
+ 20cde0c: 910283e8     	add	x8, sp, #0xa0
+ 20cde10: 6f00e400     	movi	v0.2d, #0000000000000000
+ 20cde14: aa1f03e1     	mov	x1, xzr
+ 20cde18: aa0003f3     	mov	x19, x0
+ 20cde1c: b900e3ff     	str	wzr, [sp, #0xe0]
+ 20cde20: 390273ff     	strb	wzr, [sp, #0x9c]
+ 20cde24: ad010100     	stp	q0, q0, [x8, #0x20]
+ 20cde28: ad000100     	stp	q0, q0, [x8]
+ 20cde2c: 390263ff     	strb	wzr, [sp, #0x98]
+ 20cde30: 94799dbc     	bl	0x3f35520 <__start_il2cpp+0x22e4310>
+ 20cde34: b4000840     	cbz	x0, 0x20cdf3c <__start_il2cpp+0x47cd2c>
+ 20cde38: 2a1f03f4     	mov	w20, wzr
+ 20cde3c: f9400008     	ldr	x8, [x0]
+ 20cde40: f9418509     	ldr	x9, [x8, #0x308]
+ 20cde44: f9418901     	ldr	x1, [x8, #0x310]
+ 20cde48: d63f0120     	blr	x9
+ 20cde4c: 2a0003f5     	mov	w21, w0
+ 20cde50: aa1303e0     	mov	x0, x19
+ 20cde54: aa1f03e1     	mov	x1, xzr
+ 20cde58: 94799db2     	bl	0x3f35520 <__start_il2cpp+0x22e4310>
+ 20cde5c: b4000700     	cbz	x0, 0x20cdf3c <__start_il2cpp+0x47cd2c>
+ 20cde60: 6b15029f     	cmp	w20, w21
+ 20cde64: 540006ea     	b.ge	0x20cdf40 <__start_il2cpp+0x47cd30>
+ 20cde68: f9400008     	ldr	x8, [x0]
+ 20cde6c: 2a1403e1     	mov	w1, w20
+ 20cde70: f9418d09     	ldr	x9, [x8, #0x318]
+ 20cde74: f9419102     	ldr	x2, [x8, #0x320]
+ 20cde78: 910143e8     	add	x8, sp, #0x50
+ 20cde7c: d63f0120     	blr	x9
+ 20cde80: 910283e0     	add	x0, sp, #0xa0
+ 20cde84: 910143e1     	add	x1, sp, #0x50
+ 20cde88: 52800882     	mov	w2, #0x44               // =68
+ 20cde8c: 947b170d     	bl	0x3f93ac0 <__cxa_throw@plt+0x10>
+ 20cde90: 910283e0     	add	x0, sp, #0xa0
+ 20cde94: aa1f03e1     	mov	x1, xzr
+ 20cde98: 9470f830     	bl	0x3d0bf58 <__start_il2cpp+0x20bad48>
+ 20cde9c: 7100041f     	cmp	w0, #0x1
+ 20cdea0: 54000440     	b.eq	0x20cdf28 <__start_il2cpp+0x47cd18>
+ 20cdea4: 910023e0     	add	x0, sp, #0x8
+ 20cdea8: 910283e1     	add	x1, sp, #0xa0
+ 20cdeac: 52800882     	mov	w2, #0x44               // =68
+ 20cdeb0: 947b1704     	bl	0x3f93ac0 <__cxa_throw@plt+0x10>
+ 20cdeb4: 910023e1     	add	x1, sp, #0x8
+ 20cdeb8: 910263e2     	add	x2, sp, #0x98
+ 20cdebc: 910273e3     	add	x3, sp, #0x9c
+ 20cdec0: aa1303e0     	mov	x0, x19
+ 20cdec4: 97fff268     	bl	0x20ca864 <__start_il2cpp+0x479654>
+ 20cdec8: 394273f6     	ldrb	w22, [sp, #0x9c]
+ 20cdecc: 394263e2     	ldrb	w2, [sp, #0x98]
+ 20cded0: aa0003f5     	mov	x21, x0
+ 20cded4: aa1303e0     	mov	x0, x19
+ 20cded8: aa1503e1     	mov	x1, x21
+ 20cdedc: 2a1603e3     	mov	w3, w22
+ 20cdee0: 94000144     	bl	0x20ce3f0 <__start_il2cpp+0x47d1e0>
+ 20cdee4: 340000b6     	cbz	w22, 0x20cdef8 <__start_il2cpp+0x47cce8>
+ 20cdee8: aa1303e0     	mov	x0, x19
+ 20cdeec: aa1503e1     	mov	x1, x21
+ 20cdef0: 97fff246     	bl	0x20ca808 <__start_il2cpp+0x4795f8>
+ 20cdef4: 1400000d     	b	0x20cdf28 <__start_il2cpp+0x47cd18>
+ 20cdef8: f9400268     	ldr	x8, [x19]
+ 20cdefc: aa1303e0     	mov	x0, x19
+ 20cdf00: aa1503e1     	mov	x1, x21
+ 20cdf04: f9418509     	ldr	x9, [x8, #0x308]
+ 20cdf08: f9418902     	ldr	x2, [x8, #0x310]
+ 20cdf0c: d63f0120     	blr	x9
+ 20cdf10: f9400268     	ldr	x8, [x19]
+ 20cdf14: aa1303e0     	mov	x0, x19
+ 20cdf18: aa1503e1     	mov	x1, x21
+ 20cdf1c: f9418d09     	ldr	x9, [x8, #0x318]
+ 20cdf20: f9419102     	ldr	x2, [x8, #0x320]
+ 20cdf24: d63f0120     	blr	x9
+ 20cdf28: aa1303e0     	mov	x0, x19
+ 20cdf2c: aa1f03e1     	mov	x1, xzr
+ 20cdf30: 11000694     	add	w20, w20, #0x1
+ 20cdf34: 94799d7b     	bl	0x3f35520 <__start_il2cpp+0x22e4310>
+ 20cdf38: b5fff820     	cbnz	x0, 0x20cde3c <__start_il2cpp+0x47cc2c>
+ 20cdf3c: 97eaea91     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>
+ 20cdf40: f9400008     	ldr	x8, [x0]
+ 20cdf44: f9418509     	ldr	x9, [x8, #0x308]
+ 20cdf48: f9418901     	ldr	x1, [x8, #0x310]
+ 20cdf4c: d63f0120     	blr	x9
+ 20cdf50: a9514ff4     	ldp	x20, x19, [sp, #0x110]
+ 20cdf54: a95057f6     	ldp	x22, x21, [sp, #0x100]
+ 20cdf58: a94f7bfd     	ldp	x29, x30, [sp, #0xf0]
+ 20cdf5c: 7100001f     	cmp	w0, #0x0
+ 20cdf60: 1a9fd7e0     	cset	w0, gt
+ 20cdf64: 910483ff     	add	sp, sp, #0x120
+ 20cdf68: d65f03c0     	ret

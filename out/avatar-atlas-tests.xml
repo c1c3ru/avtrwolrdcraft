@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-04 13:22:41Z" end-time="2026-11-04 13:22:43Z" duration="2.273087">
+  <test-suite type="TestSuite" id="1000" name="Avatar World (offline)" fullname="Avatar World (offline)" runstate="Runnable" testcasecount="102" result="Passed" start-time="2026-11-04 13:22:41Z" end-time="2026-11-04 13:22:43Z" duration="2.273087" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1120" name="AvatarWorld.Core.Tests.dll" fullname="/home/deppi/avatarworld-re/client/AvatarWorldClient/Library/ScriptAssemblies/AvatarWorld.Core.Tests.dll" runstate="Runnable" testcasecount="102" result="Passed" start-time="2026-11-04 13:22:41Z" end-time="2026-11-04 13:22:43Z" duration="2.261259" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="1393022" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1121" name="AvatarWorld" fullname="AvatarWorld" runstate="Runnable" testcasecount="102" result="Passed" start-time="2026-11-04 13:22:41Z" end-time="2026-11-04 13:22:43Z" duration="2.260425" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1122" name="Core" fullname="AvatarWorld.Core" runstate="Runnable" testcasecount="102" result="Passed" start-time="2026-11-04 13:22:41Z" end-time="2026-11-04 13:22:43Z" duration="2.260023" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1123" name="Tests" fullname="AvatarWorld.Core.Tests" runstate="Runnable" testcasecount="102" result="Passed" start-time="2026-11-04 13:22:41Z" end-time="2026-11-04 13:22:43Z" duration="2.259589" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1010" name="AvatarAtlasLoaderTests" fullname="AvatarWorld.Core.Tests.AvatarAtlasLoaderTests" classname="AvatarWorld.Core.Tests.AvatarAtlasLoaderTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-04 13:22:41Z" end-time="2026-11-04 13:22:43Z" duration="2.256365" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1011" name="RealAtlas_ResolvesEveryPageAndKeepsProvidedTexture" fullname="AvatarWorld.Core.Tests.AvatarAtlasLoaderTests.RealAtlas_ResolvesEveryPageAndKeepsProvidedTexture" methodname="RealAtlas_ResolvesEveryPageAndKeepsProvidedTexture" classname="AvatarWorld.Core.Tests.AvatarAtlasLoaderTests" runstate="Runnable" seed="1635426443" result="Passed" start-time="2026-11-04 13:22:41Z" end-time="2026-11-04 13:22:43Z" duration="2.239008" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /home/deppi/.config/unity3d/c1c3ru/Avatar World (offline)/TestResults.xml
+Saving results to: /home/deppi/.config/unity3d/c1c3ru/Avatar World (offline)/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

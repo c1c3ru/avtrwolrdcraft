@@ -1,0 +1,81 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 1dc90b8: f81d0ffe     	str	x30, [sp, #-0x30]!
+ 1dc90bc: a90157f6     	stp	x22, x21, [sp, #0x10]
+ 1dc90c0: a9024ff4     	stp	x20, x19, [sp, #0x20]
+ 1dc90c4: b0013994     	adrp	x20, 0x44fa000
+ 1dc90c8: f0011f16     	adrp	x22, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 1dc90cc: 39661688     	ldrb	w8, [x20, #0x985]
+ 1dc90d0: f945ded6     	ldr	x22, [x22, #0xbb8]
+ 1dc90d4: aa0003f3     	mov	x19, x0
+ 1dc90d8: 37000128     	tbnz	w8, #0x0, 0x1dc90fc <__start_il2cpp+0x177eec>
+ 1dc90dc: f0011f00     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 1dc90e0: f946dc00     	ldr	x0, [x0, #0xdb8]
+ 1dc90e4: 97f6fd81     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1dc90e8: f0011f00     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 1dc90ec: f945dc00     	ldr	x0, [x0, #0xbb8]
+ 1dc90f0: 97f6fd7e     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1dc90f4: 52800028     	mov	w8, #0x1                // =1
+ 1dc90f8: 39261688     	strb	w8, [x20, #0x985]
+ 1dc90fc: aa1303e0     	mov	x0, x19
+ 1dc9100: aa1f03e1     	mov	x1, xzr
+ 1dc9104: 94127422     	bl	0x226618c <__start_il2cpp+0x614f7c>
+ 1dc9108: f94002c8     	ldr	x8, [x22]
+ 1dc910c: f9414a75     	ldr	x21, [x19, #0x290]
+ 1dc9110: aa0003f4     	mov	x20, x0
+ 1dc9114: b940e109     	ldr	w9, [x8, #0xe0]
+ 1dc9118: 35000069     	cbnz	w9, 0x1dc9124 <__start_il2cpp+0x177f14>
+ 1dc911c: aa0803e0     	mov	x0, x8
+ 1dc9120: 97f6fdcf     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 1dc9124: aa1503e0     	mov	x0, x21
+ 1dc9128: aa1f03e1     	mov	x1, xzr
+ 1dc912c: aa1f03e2     	mov	x2, xzr
+ 1dc9130: 947c0698     	bl	0x3ccab90 <__start_il2cpp+0x2079980>
+ 1dc9134: 36000120     	tbz	w0, #0x0, 0x1dc9158 <__start_il2cpp+0x177f48>
+ 1dc9138: f9414a60     	ldr	x0, [x19, #0x290]
+ 1dc913c: b4000520     	cbz	x0, 0x1dc91e0 <__start_il2cpp+0x177fd0>
+ 1dc9140: f9400008     	ldr	x8, [x0]
+ 1dc9144: aa1303e1     	mov	x1, x19
+ 1dc9148: f9418d09     	ldr	x9, [x8, #0x318]
+ 1dc914c: f9419102     	ldr	x2, [x8, #0x320]
+ 1dc9150: d63f0120     	blr	x9
+ 1dc9154: 370003c0     	tbnz	w0, #0x0, 0x1dc91cc <__start_il2cpp+0x177fbc>
+ 1dc9158: f94002c0     	ldr	x0, [x22]
+ 1dc915c: f941da75     	ldr	x21, [x19, #0x3b0]
+ 1dc9160: b940e008     	ldr	w8, [x0, #0xe0]
+ 1dc9164: 35000048     	cbnz	w8, 0x1dc916c <__start_il2cpp+0x177f5c>
+ 1dc9168: 97f6fdbd     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 1dc916c: aa1503e0     	mov	x0, x21
+ 1dc9170: aa1f03e1     	mov	x1, xzr
+ 1dc9174: aa1f03e2     	mov	x2, xzr
+ 1dc9178: 947c09d8     	bl	0x3ccb8d8 <__start_il2cpp+0x207a6c8>
+ 1dc917c: 36000280     	tbz	w0, #0x0, 0x1dc91cc <__start_il2cpp+0x177fbc>
+ 1dc9180: f94002c0     	ldr	x0, [x22]
+ 1dc9184: b940e008     	ldr	w8, [x0, #0xe0]
+ 1dc9188: 35000048     	cbnz	w8, 0x1dc9190 <__start_il2cpp+0x177f80>
+ 1dc918c: 97f6fdb4     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 1dc9190: aa1403e0     	mov	x0, x20
+ 1dc9194: aa1f03e1     	mov	x1, xzr
+ 1dc9198: aa1f03e2     	mov	x2, xzr
+ 1dc919c: 947c067d     	bl	0x3ccab90 <__start_il2cpp+0x2079980>
+ 1dc91a0: 36000100     	tbz	w0, #0x0, 0x1dc91c0 <__start_il2cpp+0x177fb0>
+ 1dc91a4: b40001f4     	cbz	x20, 0x1dc91e0 <__start_il2cpp+0x177fd0>
+ 1dc91a8: f0011f08     	adrp	x8, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 1dc91ac: f9401680     	ldr	x0, [x20, #0x28]
+ 1dc91b0: f946dd08     	ldr	x8, [x8, #0xdb8]
+ 1dc91b4: f9400101     	ldr	x1, [x8]
+ 1dc91b8: 97f6fdaa     	bl	0x1b88860 <JNI_OnUnload+0xa4a4>
+ 1dc91bc: b5000080     	cbnz	x0, 0x1dc91cc <__start_il2cpp+0x177fbc>
+ 1dc91c0: aa1303e0     	mov	x0, x19
+ 1dc91c4: aa1f03e1     	mov	x1, xzr
+ 1dc91c8: 94127615     	bl	0x2266a1c <__start_il2cpp+0x61580c>
+ 1dc91cc: aa1403e0     	mov	x0, x20
+ 1dc91d0: a9424ff4     	ldp	x20, x19, [sp, #0x20]
+ 1dc91d4: a94157f6     	ldp	x22, x21, [sp, #0x10]
+ 1dc91d8: f84307fe     	ldr	x30, [sp], #0x30
+ 1dc91dc: d65f03c0     	ret
+ 1dc91e0: 97f6fde8     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

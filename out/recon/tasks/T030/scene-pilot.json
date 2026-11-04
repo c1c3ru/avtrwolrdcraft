@@ -1,0 +1,493 @@
+{
+  "scene": "level4",
+  "inputs": {
+    "scene": "out/scene-extract/level4",
+    "scene_sha256": "d3e51b2e16a3319b3a0671973f2c1c12ca828040c7108148a3599a17a58e2e45",
+    "inspector_report": "out/scene-extract/level4.inspect.json",
+    "inspector_sha256": "e89ddaf8cc37982da9c7c09fc00c758b71d89962c8eb2b556c0b47bd90985e50"
+  },
+  "scene_counts": {
+    "unity_objects": 9135,
+    "mono_behaviours": 2726,
+    "PersistentDataManager_components": 1,
+    "PDSceneObject_components": 41
+  },
+  "persistent_components": [
+    {
+      "game_object": "Platform_CCS01",
+      "game_object_path_id": 475,
+      "mono_behaviour_path_id": 7006,
+      "type": "UGCNewPresetGridFloorHandler",
+      "serialized_bytes": 72,
+      "serialized_fields": {
+        "_presetPDPrefabReference.prefabGuid": "e5aa94ab-c2b1-4526-b687-6905b277ecb4"
+      }
+    },
+    {
+      "game_object": "PediatricianGrid",
+      "game_object_path_id": 699,
+      "mono_behaviour_path_id": 7271,
+      "type": "UGCNewPresetGridFloorHandler",
+      "serialized_bytes": 72,
+      "serialized_fields": {
+        "_presetPDPrefabReference.prefabGuid": "da3cd664-f686-4a17-b3ea-6056ba0bc09c"
+      }
+    },
+    {
+      "game_object": "Platform_CCS05",
+      "game_object_path_id": 733,
+      "mono_behaviour_path_id": 7315,
+      "type": "UGCNewPresetGridFloorHandler",
+      "serialized_bytes": 72,
+      "serialized_fields": {
+        "_presetPDPrefabReference.prefabGuid": "53b1e60f-eec9-40a2-b5f0-f996664ad5e1"
+      }
+    },
+    {
+      "game_object": "CandyStoreGrid",
+      "game_object_path_id": 874,
+      "mono_behaviour_path_id": 7506,
+      "type": "UGCNewPresetGridFloorHandler",
+      "serialized_bytes": 72,
+      "serialized_fields": {
+        "_presetPDPrefabReference.prefabGuid": "6d7ecdde-a881-4cdd-b644-47276cc56c32"
+      }
+    },
+    {
+      "game_object": "PersistentDataManager",
+      "game_object_path_id": 887,
+      "mono_behaviour_path_id": 7519,
+      "type": "PersistentDataManager",
+      "serialized_bytes": 32,
+      "serialized_custom_payload_bytes": 0,
+      "interpretation": "scene contains the manager component; its runtime file path/state is not serialized here"
+    },
+    {
+      "game_object": "AmbientLoop",
+      "game_object_path_id": 1121,
+      "mono_behaviour_path_id": 7802,
+      "type": "GameSoundPlayer",
+      "serialized_bytes": 44,
+      "serialized_fields": {
+        "_ignoreDistance": true,
+        "_ignorePD": true,
+        "_distanceFactor": 1.0
+      }
+    },
+    {
+      "game_object": "Platform_CCS04",
+      "game_object_path_id": 1138,
+      "mono_behaviour_path_id": 7819,
+      "type": "UGCNewPresetGridFloorHandler",
+      "serialized_bytes": 72,
+      "serialized_fields": {
+        "_presetPDPrefabReference.prefabGuid": "69814842-6132-4fca-897f-12341bea937c"
+      }
+    },
+    {
+      "game_object": "Platform_CCS03",
+      "game_object_path_id": 1155,
+      "mono_behaviour_path_id": 7841,
+      "type": "UGCNewPresetGridFloorHandler",
+      "serialized_bytes": 72,
+      "serialized_fields": {
+        "_presetPDPrefabReference.prefabGuid": "62edef34-1261-4169-8a98-276b89b9d963"
+      }
+    },
+    {
+      "game_object": "Platform_02_T1S1",
+      "game_object_path_id": 1253,
+      "mono_behaviour_path_id": 7976,
+      "type": "UGCStorePackGridFloorHandler",
+      "serialized_bytes": 80,
+      "serialized_fields": {
+        "_storePackType": {
+          "value": 261,
+          "name": "ParkP149"
+        },
+        "_inventoryFlagType": {
+          "value": 77,
+          "name": "ParkP149"
+        },
+        "_presetPDPrefabReference.prefabGuid": "23ab1ffa-e037-418e-a590-f0b0c7d91068",
+        "enum_sources": [
+          "out/cpp2il/DiffableCs/Assembly-CSharp/Store/StorePackType.cs",
+          "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Inventory/InventoryFlagType.cs"
+        ]
+      }
+    },
+    {
+      "game_object": "Platform_03_T1S2",
+      "game_object_path_id": 1444,
+      "mono_behaviour_path_id": 8198,
+      "type": "UGCStorePackGridFloorHandler",
+      "serialized_bytes": 80,
+      "serialized_fields": {
+        "_storePackType": {
+          "value": 259,
+          "name": "PlaygroundP136"
+        },
+        "_inventoryFlagType": {
+          "value": 76,
+          "name": "PlaygroundP136"
+        },
+        "_presetPDPrefabReference.prefabGuid": "96fa94cf-5149-4e5f-96a2-e455f1c3e915",
+        "enum_sources": [
+          "out/cpp2il/DiffableCs/Assembly-CSharp/Store/StorePackType.cs",
+          "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Inventory/InventoryFlagType.cs"
+        ]
+      }
+    },
+    {
+      "game_object": "VetClinicGrid",
+      "game_object_path_id": 1480,
+      "mono_behaviour_path_id": 8241,
+      "type": "UGCNewPresetGridFloorHandler",
+      "serialized_bytes": 72,
+      "serialized_fields": {
+        "_presetPDPrefabReference.prefabGuid": "f1a011d8-1f30-444c-9e17-b1df473065eb"
+      }
+    },
+    {
+      "game_object": "Platform_CCS02",
+      "game_object_path_id": 1563,
+      "mono_behaviour_path_id": 8339,
+      "type": "UGCNewPresetGridFloorHandler",
+      "serialized_bytes": 72,
+      "serialized_fields": {
+        "_presetPDPrefabReference.prefabGuid": "3c312dbe-e368-4794-b67f-46b7a0d293e5"
+      }
+    },
+    {
+      "game_object": "Platform_01_T1S5",
+      "game_object_path_id": 1674,
+      "mono_behaviour_path_id": 8472,
+      "type": "UGCNewPresetGridFloorHandler",
+      "serialized_bytes": 72,
+      "serialized_fields": {
+        "_presetPDPrefabReference.prefabGuid": "682cc952-1256-4d0a-b23f-919895b08fa0"
+      }
+    },
+    {
+      "game_object": "Platform_02_T1S2",
+      "game_object_path_id": 1772,
+      "mono_behaviour_path_id": 8593,
+      "type": "UGCStorePackGridFloorHandler",
+      "serialized_bytes": 80,
+      "serialized_fields": {
+        "_storePackType": {
+          "value": 258,
+          "name": "DogParkP145"
+        },
+        "_inventoryFlagType": {
+          "value": 75,
+          "name": "DogParkP145"
+        },
+        "_presetPDPrefabReference.prefabGuid": "76c320bb-5441-4800-83f4-14228cb70d70",
+        "enum_sources": [
+          "out/cpp2il/DiffableCs/Assembly-CSharp/Store/StorePackType.cs",
+          "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Inventory/InventoryFlagType.cs"
+        ]
+      }
+    }
+  ],
+  "PDSceneObjects": [
+    {
+      "game_object": "Platform_CCS03_FlatItemsParent",
+      "game_object_path_id": 11,
+      "mono_behaviour_path_id": 6425,
+      "scene_guid": "Platform_CCS03_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_CCS02_FlatItemsParent",
+      "game_object_path_id": 108,
+      "mono_behaviour_path_id": 6558,
+      "scene_guid": "Platform_CCS02_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_01_T1S1_GridItemsParent",
+      "game_object_path_id": 208,
+      "mono_behaviour_path_id": 6689,
+      "scene_guid": "Platform_01_T1S1_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_CCS01_GridItemsParent",
+      "game_object_path_id": 217,
+      "mono_behaviour_path_id": 6701,
+      "scene_guid": "Platform_CCS01_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "VetClinicGrid_FlatItemsParent",
+      "game_object_path_id": 265,
+      "mono_behaviour_path_id": 6770,
+      "scene_guid": "VetClinicGrid_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "WorldCamera",
+      "game_object_path_id": 270,
+      "mono_behaviour_path_id": 6775,
+      "scene_guid": "34b5cbe7-0ebe-4c7d-8020-6031e3921094",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Platform_CCS01",
+      "game_object_path_id": 475,
+      "mono_behaviour_path_id": 7005,
+      "scene_guid": "Platform_CCS01",
+      "serialized_bytes": 52
+    },
+    {
+      "game_object": "Platform_03_T1S2_FlatItemsParent",
+      "game_object_path_id": 533,
+      "mono_behaviour_path_id": 7066,
+      "scene_guid": "Platform_03_T1S2_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "PediatricianGrid_FlatItemsParent",
+      "game_object_path_id": 554,
+      "mono_behaviour_path_id": 7090,
+      "scene_guid": "PediatricianGrid_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "PediatricianGrid",
+      "game_object_path_id": 699,
+      "mono_behaviour_path_id": 7272,
+      "scene_guid": "6063e4da-4af3-4cde-a624-cd6239c5c1d8",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Platform_CCS05",
+      "game_object_path_id": 733,
+      "mono_behaviour_path_id": 7314,
+      "scene_guid": "Platform_CCS05",
+      "serialized_bytes": 52
+    },
+    {
+      "game_object": "PediatricianGrid_GridItemsParent",
+      "game_object_path_id": 846,
+      "mono_behaviour_path_id": 7470,
+      "scene_guid": "PediatricianGrid_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "CandyStoreGrid",
+      "game_object_path_id": 874,
+      "mono_behaviour_path_id": 7507,
+      "scene_guid": "aff9e3f5-9909-4c88-bfda-e0a2a83abbe3",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Platform_02_T1S2_GridItemsParent",
+      "game_object_path_id": 962,
+      "mono_behaviour_path_id": 7608,
+      "scene_guid": "Platform_02_T1S2_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_02_T1S2_FlatItemsParent",
+      "game_object_path_id": 1040,
+      "mono_behaviour_path_id": 7706,
+      "scene_guid": "Platform_02_T1S2_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "AmbientLoop",
+      "game_object_path_id": 1121,
+      "mono_behaviour_path_id": 7801,
+      "scene_guid": "344fd92d-133a-4b09-acfb-f6a8416dca7b",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "CandyStoreGrid_GridItemsParent",
+      "game_object_path_id": 1123,
+      "mono_behaviour_path_id": 7805,
+      "scene_guid": "CandyStoreGrid_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "CandyStoreGrid_FlatItemsParent",
+      "game_object_path_id": 1125,
+      "mono_behaviour_path_id": 7808,
+      "scene_guid": "CandyStoreGrid_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_CCS04",
+      "game_object_path_id": 1138,
+      "mono_behaviour_path_id": 7818,
+      "scene_guid": "Platform_CCS04",
+      "serialized_bytes": 52
+    },
+    {
+      "game_object": "Platform_CCS03",
+      "game_object_path_id": 1155,
+      "mono_behaviour_path_id": 7840,
+      "scene_guid": "Platform_CCS03",
+      "serialized_bytes": 52
+    },
+    {
+      "game_object": "Platform_02_T1S1_FlatItemsParent",
+      "game_object_path_id": 1163,
+      "mono_behaviour_path_id": 7853,
+      "scene_guid": "Platform_02_T1S1_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_02_T1S1",
+      "game_object_path_id": 1253,
+      "mono_behaviour_path_id": 7975,
+      "scene_guid": "Platform_02_T1S1",
+      "serialized_bytes": 52
+    },
+    {
+      "game_object": "Platform_03_T1S2",
+      "game_object_path_id": 1444,
+      "mono_behaviour_path_id": 8197,
+      "scene_guid": "Platform_03_T1S2",
+      "serialized_bytes": 52
+    },
+    {
+      "game_object": "VetClinicGrid",
+      "game_object_path_id": 1480,
+      "mono_behaviour_path_id": 8242,
+      "scene_guid": "f6816a06-ac5f-450f-9f43-6db4b86a6eac",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Platform_CCS04_FlatItemsParent",
+      "game_object_path_id": 1546,
+      "mono_behaviour_path_id": 8319,
+      "scene_guid": "Platform_CCS04_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_CCS02",
+      "game_object_path_id": 1563,
+      "mono_behaviour_path_id": 8338,
+      "scene_guid": "Platform_CCS02",
+      "serialized_bytes": 52
+    },
+    {
+      "game_object": "Platform_03_T1S2_GridItemsParent",
+      "game_object_path_id": 1604,
+      "mono_behaviour_path_id": 8390,
+      "scene_guid": "Platform_03_T1S2_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_01_T1S5",
+      "game_object_path_id": 1674,
+      "mono_behaviour_path_id": 8471,
+      "scene_guid": "Platform_01_T1S5",
+      "serialized_bytes": 52
+    },
+    {
+      "game_object": "Platform_01_T1S5_GridItemsParent",
+      "game_object_path_id": 1716,
+      "mono_behaviour_path_id": 8529,
+      "scene_guid": "Platform_01_T1S5_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_CCS05_GridItemsParent",
+      "game_object_path_id": 1723,
+      "mono_behaviour_path_id": 8537,
+      "scene_guid": "Platform_CCS05_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_01_T1S1_FlatItemsParent",
+      "game_object_path_id": 1754,
+      "mono_behaviour_path_id": 8577,
+      "scene_guid": "Platform_01_T1S1_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_CCS04_GridItemsParent",
+      "game_object_path_id": 1767,
+      "mono_behaviour_path_id": 8590,
+      "scene_guid": "Platform_CCS04_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_02_T1S2",
+      "game_object_path_id": 1772,
+      "mono_behaviour_path_id": 8592,
+      "scene_guid": "Platform_02_T1S2",
+      "serialized_bytes": 52
+    },
+    {
+      "game_object": "Platform_CCS05_FlatItemsParent",
+      "game_object_path_id": 1830,
+      "mono_behaviour_path_id": 8659,
+      "scene_guid": "Platform_CCS05_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_CCS01_FlatItemsParent",
+      "game_object_path_id": 1847,
+      "mono_behaviour_path_id": 8678,
+      "scene_guid": "Platform_CCS01_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_01_T1S5_FlatItemsParent",
+      "game_object_path_id": 1866,
+      "mono_behaviour_path_id": 8702,
+      "scene_guid": "Platform_01_T1S5_FlatItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "VetClinicGrid_GridItemsParent",
+      "game_object_path_id": 1872,
+      "mono_behaviour_path_id": 8708,
+      "scene_guid": "VetClinicGrid_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_CCS02_GridItemsParent",
+      "game_object_path_id": 1887,
+      "mono_behaviour_path_id": 8726,
+      "scene_guid": "Platform_CCS02_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_CCS03_GridItemsParent",
+      "game_object_path_id": 1974,
+      "mono_behaviour_path_id": 8835,
+      "scene_guid": "Platform_CCS03_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "Platform_02_T1S1_GridItemsParent",
+      "game_object_path_id": 1978,
+      "mono_behaviour_path_id": 8839,
+      "scene_guid": "Platform_02_T1S1_GridItemsParent",
+      "serialized_bytes": 68
+    },
+    {
+      "game_object": "BackgroundPlanet",
+      "game_object_path_id": 2077,
+      "mono_behaviour_path_id": 8963,
+      "scene_guid": "eba9af38-da9a-4d4f-9e51-20e03dcaf04a",
+      "serialized_bytes": 72
+    }
+  ],
+  "scene_guid_summary": {
+    "unique_count": 41,
+    "uuid_shaped_count": 6,
+    "name_shaped_count": 35
+  },
+  "interpretation_limits": [
+    "Unity's MonoBehaviour base envelope is separated from script payload at byte offset 32 for this scene format.",
+    "Decoded fields are matched to Cpp2IL field order/types; this does not reveal saved PlayerPrefs/files or runtime values.",
+    "Scene GUID uniqueness is measured within this scene only; cross-scene collision behavior and GUID assignment are not proven by this sample."
+  ]
+}
