@@ -30,15 +30,15 @@ namespace AvatarWorld.Runtime
         Vector2 _pressStart, _lastPos;
         float _pressTime;
         bool _movedTooFar;
-        Image _fade;
         bool _opening;
-        const float FadeSeconds = 0.22f;
+        const int SpritesPerFrame = 24;
         readonly Dictionary<string, Texture2D> _textures = new Dictionary<string, Texture2D>();
 
         public WorldMapData Data => _data;
         public Camera MapCamera => _camera;
 
-        public void Begin(Action onBack, Action onOpenBasketball)
+        /// <summary>Monta o mapa em varios quadros; onReady dispara quando tudo esta pronto (esconde o loading).</summary>
+        public void Begin(Action onBack, Action onOpenBasketball, Action onReady = null)
         {
             _onBack = onBack;
             _onOpenBasketball = onOpenBasketball;
@@ -46,9 +46,8 @@ namespace AvatarWorld.Runtime
             if (json == null) throw new InvalidOperationException("WorldSlice/world.json ausente em Resources");
             _data = JsonUtility.FromJson<WorldMapData>(json.text);
             BuildCamera();
-            BuildSprites();
             BuildOverlay();
-            Debug.Log("WorldMap: " + _data.renderers.Count + " elementos, " + _data.buildings.Count + " predios");
+            StartCoroutine(BuildSprites(onReady));
         }
 
         void BuildCamera()
@@ -72,11 +71,13 @@ namespace AvatarWorld.Runtime
             return min > max ? (min + max) * 0.5f : Mathf.Clamp(x, min, max);
         }
 
-        void BuildSprites()
+        System.Collections.IEnumerator BuildSprites(Action onReady)
         {
             var sprites = new Dictionary<string, Sprite>();
+            int built = 0;
             foreach (var r in _data.renderers)
             {
+                if (++built % SpritesPerFrame == 0) yield return null;
                 string key = r.sprite + "|" + r.pivotX + "|" + r.pivotY + "|" + r.ppu;
                 if (!sprites.TryGetValue(key, out var sprite))
                 {
@@ -101,6 +102,8 @@ namespace AvatarWorld.Runtime
                 renderer.flipY = r.flipY != (r.sy < 0f);
                 renderer.color = new Color(r.color[0], r.color[1], r.color[2], r.color[3]);
             }
+            Debug.Log("WorldMap: " + _data.renderers.Count + " elementos, " + _data.buildings.Count + " predios");
+            onReady?.Invoke();
         }
 
         void BuildOverlay()
@@ -146,39 +149,12 @@ namespace AvatarWorld.Runtime
             var shadow = toast.AddComponent<Outline>();
             shadow.effectColor = new Color(0.2f, 0.1f, 0.3f, 1f);
             _toast.enabled = false;
-
-            // Cortina preta da transicao mapa <-> quadra.
-            var fade = new GameObject("Fade", typeof(RectTransform), typeof(Image));
-            fade.transform.SetParent(root.transform, false);
-            var fadeRect = (RectTransform)fade.transform;
-            fadeRect.anchorMin = Vector2.zero; fadeRect.anchorMax = Vector2.one;
-            fadeRect.offsetMin = fadeRect.offsetMax = Vector2.zero;
-            _fade = fade.GetComponent<Image>();
-            _fade.color = new Color(0, 0, 0, 0);
-            _fade.raycastTarget = false;
-        }
-
-        // O mapa e desativado enquanto a quadra esta aberta; ao reativar, clareia a cortina.
-        void OnEnable()
-        {
-            if (_fade != null) SetFade(1f);
-        }
-
-        void SetFade(float alpha)
-        {
-            var c = _fade.color; c.a = Mathf.Clamp01(alpha); _fade.color = c;
         }
 
         void Update()
         {
             if (_toast != null && _toast.enabled && Time.unscaledTime > _toastUntil) _toast.enabled = false;
-            if (_opening)
-            {
-                SetFade(_fade.color.a + Time.unscaledDeltaTime / FadeSeconds);
-                if (_fade.color.a >= 1f) { _opening = false; _pressing = false; _onOpenBasketball?.Invoke(); }
-                return;
-            }
-            if (_fade != null && _fade.color.a > 0f) SetFade(_fade.color.a - Time.unscaledDeltaTime / FadeSeconds);
+            if (_opening) return;
             if (!ReadPointer(out bool down, out bool up, out bool held, out Vector2 position)) return;
 
             if (down && !IsOverBack(position))
@@ -215,12 +191,25 @@ namespace AvatarWorld.Runtime
             if (building.IsBasketball)
             {
                 UiSound.PlayClick();
-                _opening = true;
+                StartCoroutine(OpenCourtRoutine());
                 return;
             }
             ShowToast(building.defaultLevel == 0
                 ? "Este lugar ainda está em obras."
                 : "Este lugar ainda não está disponível.");
+        }
+
+        // Destaque, loading, um quadro para renderizar e so entao troca para a quadra.
+        System.Collections.IEnumerator OpenCourtRoutine()
+        {
+            _opening = true; _pressing = false;
+            // Deixa o destaque do predio terminar (PulseBuilding) antes de cobrir a tela.
+            yield return new WaitForSecondsRealtime(0.18f);
+            LoadingScreen.Show();
+            yield return null;
+            yield return null;
+            _opening = false;
+            _onOpenBasketball?.Invoke();
         }
 
         /// <summary>
@@ -240,7 +229,7 @@ namespace AvatarWorld.Runtime
                 if (size.x > w * 1.5f || size.y > h * 1.5f) continue;
                 targets.Add(r); originals.Add(r.color);
             }
-            const float down = 0.06f, up = 0.12f, minShade = 0.7f; // total < FadeSeconds: termina antes do mapa ser desativado
+            const float down = 0.06f, up = 0.12f, minShade = 0.7f; // total (0,18 s) = espera de OpenCourtRoutine
             for (float t = 0f; t < down + up; t += Time.unscaledDeltaTime)
             {
                 float shade = t < down ? Mathf.Lerp(1f, minShade, t / down) : Mathf.Lerp(minShade, 1f, (t - down) / up);
