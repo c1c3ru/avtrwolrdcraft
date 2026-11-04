@@ -55,22 +55,9 @@ namespace AvatarWorld.Runtime
 
             HomeLayout.Apply(objs);
             _homeActions = gameObject.AddComponent<HomeActions>();
-            _homeActions.Initialize(objs, _save, _state, OpenWorldMap, OpenLiteracyChallenges, OpenStarterPackChallenges);
+            _homeActions.Initialize(objs, _save, _state, OpenWorldMap, OpenStarterPackChallenges, () => OpenStore());
 
             BackgroundMusic.Play("Audio/home_music");
-        }
-
-        void OpenLiteracyChallenges()
-        {
-            if (FindFirstObjectByType<LiteracyChallengeScreen>() != null) return;
-            var queue = LiteracyContent.LetterRecognition()
-                .Concat(LiteracyContent.SyllableBuilding())
-                .Concat(LiteracyContent.ReadingComprehension())
-                .ToList();
-
-            var screenGo = new GameObject("LiteracyChallengeScreen");
-            var screen = screenGo.AddComponent<LiteracyChallengeScreen>();
-            screen.Begin(_literacy, queue, () => _save.Save(_state), _homeActions.ReturnToHome);
         }
 
         /// <summary>"Pacote Inicial": desafios aleatorios do banco de 100, na dificuldade do valor do pacote.</summary>
@@ -83,6 +70,29 @@ namespace AvatarWorld.Runtime
                 () => _save.Save(_state), _homeActions.ReturnToHome);
         }
 
+        /// <summary>Loja com a moldura do original. Sem moedas, os desafios (preco -> dificuldade) pagam moedas.</summary>
+        void OpenStore(Action afterClose = null)
+        {
+            if (FindFirstObjectByType<StoreScreen>() != null) return;
+            var host = new GameObject("Store");
+            var store = host.AddComponent<StoreScreen>();
+            store.Begin(_state, _save, () =>
+            {
+                Destroy(host);
+                _save.Save(_state);
+                if (afterClose != null) afterClose(); else _homeActions.ReturnFromGameplay();
+            }, price =>
+            {
+                if (FindFirstObjectByType<LiteracyChallengeScreen>() != null) return;
+                var screenGo = new GameObject("StoreChallenges");
+                var screen = screenGo.AddComponent<LiteracyChallengeScreen>();
+                screen.SortingOrder = 900;
+                screen.BeginRandom(_literacy, new ChallengeSelector(_state), price, "Moedas AW",
+                    () => { _save.Save(_state); store.RefreshCoins(); },
+                    () => { store.RefreshCoins(); store.SelectCategory(store.Category); });
+            });
+        }
+
         /// <summary>Play abre o mapa World do original; a quadra de basquete e um predio dele.</summary>
         void OpenWorldMap()
         {
@@ -90,7 +100,22 @@ namespace AvatarWorld.Runtime
             var host = new GameObject("WorldMap");
             _worldMap = host.AddComponent<WorldMapRuntime>();
             LoadingScreen.Show();
-            _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f));
+            _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f), OpenAvatarSlots);
+        }
+
+        /// <summary>Slots de avatar/pet/carro (AvatarMakerLobby): aberto pelo avatar+ do mapa; voltar retorna ao mapa.</summary>
+        void OpenAvatarSlots()
+        {
+            if (FindFirstObjectByType<AvatarSlotsScreen>() != null) return;
+            if (_worldMap != null) _worldMap.gameObject.SetActive(false);
+            var host = new GameObject("AvatarSlots");
+            var slots = host.AddComponent<AvatarSlotsScreen>();
+            slots.Begin(_save, _state, () =>
+            {
+                _save.Save(_state);
+                Destroy(host);
+                if (_worldMap != null) _worldMap.gameObject.SetActive(true);
+            }, () => OpenStore(() => { }));
         }
 
         void CloseWorldMap()

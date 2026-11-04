@@ -105,22 +105,29 @@ namespace AvatarWorld.Runtime
             _shader = Shader.Find("Spine/Skeleton");
             if (_shader == null) { Debug.LogError("AvatarGpuRuntime: shader Spine/Skeleton nao encontrado"); return; }
 
+            var atlasText = Resources.Load<TextAsset>("AvatarSpine/Avatar_Spine.atlas");
+            var skeletonBinary = Resources.Load<TextAsset>("AvatarSpine/Avatar_Spine.skel");
+            if (atlasText == null || skeletonBinary == null)
+            {
+                Debug.LogError("AvatarGpuRuntime: atlas ou skeleton nao encontrados em Resources/AvatarSpine");
+                return;
+            }
+
             var manifestText = Resources.Load<TextAsset>("AvatarSpine/clothing-manifest");
             if (manifestText == null) { Debug.LogError("AvatarGpuRuntime: clothing-manifest.json nao encontrado"); return; }
             var manifest = JsonUtility.FromJson<Manifest>(manifestText.text);
             _itemsById = manifest.items.ToDictionary(i => i.id, i => i);
 
-            var dummyTexture = new Texture2D(2, 2, TextureFormat.RGBA32, false) { name = "__avatar_runtime_unused__" };
-            var dummyMaterial = new Material(_shader) { mainTexture = dummyTexture };
-            var materials = new List<Material> { dummyMaterial };
+            var realTextures = new Dictionary<string, Texture2D>(StringComparer.Ordinal);
 
             foreach (var resourceName in BodyTextureNames)
             {
                 var source = Resources.Load<Texture2D>("AvatarSpine/Textures/" + resourceName);
                 if (source == null) { Debug.LogError("AvatarGpuRuntime: textura ausente " + resourceName); return; }
                 var texture = PremultipliedCopy(source);
-                texture.name = BodyPageToResource.First(p => p.Value == resourceName).Key;
-                materials.Add(new Material(_shader) { mainTexture = texture });
+                var pageName = BodyPageToResource.First(p => p.Value == resourceName).Key;
+                texture.name = pageName;
+                realTextures[pageName] = texture;
             }
 
             // Um Material por pagina de template unica usada por QUALQUER variante de QUALQUER
@@ -145,7 +152,6 @@ namespace AvatarWorld.Runtime
                     if (!pageToFile.ContainsKey(pageName)) pageToFile[pageName] = piece.file;
                 }
 
-            _materialByPage = new Dictionary<string, Material>();
             foreach (var pair in pageToFile)
             {
                 var pageName = pair.Key;
@@ -158,35 +164,23 @@ namespace AvatarWorld.Runtime
                 // page.rendererObject nulo e renderiza com o material de erro (magenta) do Unity.
                 texture.name = pageName;
                 _loadedClothingPages.Add(pageName);
-                var mat = new Material(_shader) { mainTexture = texture, name = pageName };
-                _materialByPage[pageName] = mat;
-                materials.Add(mat);
+                realTextures[pageName] = texture;
             }
 
-            var atlasText = Resources.Load<TextAsset>("AvatarSpine/Avatar_Spine.atlas");
-            var skeletonBinary = Resources.Load<TextAsset>("AvatarSpine/Avatar_Spine.skel");
-            if (atlasText == null || skeletonBinary == null)
-            {
-                Debug.LogError("AvatarGpuRuntime: atlas ou skeleton nao encontrados em Resources/AvatarSpine");
-                return;
-            }
-
-            // O atlas descreve ~2.170 paginas (toda a roupa do jogo) e so as ~22 usadas tem Material; o
-            // Spine registra um LogError por pagina sem Material (milhares de erros com pilha, caros no
-            // celular e que abrem o console de desenvolvimento). Sao esperados, entao o log fica
-            // desligado so durante a criacao do atlas/esqueleto; falhas reais sao checadas abaixo.
-            var previousFilter = Debug.unityLogger.filterLogType;
-            Debug.unityLogger.filterLogType = LogType.Exception;
             SpineAtlasAsset atlasAsset;
             SkeletonDataAsset skeletonDataAsset;
             try
             {
-                atlasAsset = SpineAtlasAsset.CreateRuntimeInstance(atlasText, materials.ToArray(), true);
+                atlasAsset = AvatarAtlasLoader.Create(atlasText, _shader, realTextures, out _materialByPage);
                 skeletonDataAsset = SkeletonDataAsset.CreateRuntimeInstance(skeletonBinary, atlasAsset, true, 0.01f);
                 _skeletonData = skeletonDataAsset.GetSkeletonData(false);
             }
-            finally { Debug.unityLogger.filterLogType = previousFilter; }
-            Debug.Log("AvatarGpuRuntime: atlas criado com " + materials.Count + " materiais (paginas sem Material sao esperadas)");
+            catch (Exception exception)
+            {
+                Debug.LogError("AvatarGpuRuntime: falha ao criar atlas completo: " + exception);
+                return;
+            }
+            Debug.Log("AvatarGpuRuntime: atlas completo, 2172/2172 paginas com Material");
             if (_skeletonData == null) { Debug.LogError("AvatarGpuRuntime: SkeletonData nao carregou"); return; }
 
             var avatarGo = new GameObject("Avatar");
@@ -311,7 +305,7 @@ namespace AvatarWorld.Runtime
                 y += h + 10f;
             }
 
-            if (_onClose != null && GUI.Button(new Rect(Screen.width / scale - 230f, 10f, 220f, h), "Voltar à Home"))
+            if (_onClose != null && GUI.Button(new Rect(Screen.width / scale - 230f, 10f, 220f, h), "Voltar"))
             {
                 var close = _onClose;
                 _onClose = null;

@@ -43,6 +43,24 @@ namespace AvatarWorld.Runtime
         public int rank;
         public float[] color = { 1f, 1f, 1f, 1f };
         public bool flipX, flipY;
+        /// <summary>WeatherType em que o sprite aparece (LevelSpriteRendererVisibleByWeather); vazio = sempre.</summary>
+        public int[] weathers;
+
+        public bool VisibleIn(int weather)
+        {
+            if (weathers == null || weathers.Length == 0) return true;
+            foreach (var w in weathers) if (w == weather) return true;
+            return false;
+        }
+    }
+
+    /// <summary>Valores de WeatherType do original usados no mapa (Halloween=8 e Snow_Xmas=7 nao entram).</summary>
+    public static class WorldWeather
+    {
+        public const int Clear = 0, Rain = 1, Snow = 6;
+        public const string PrefsKey = "PazuWorld_WeatherType"; // mesma chave do original
+
+        public static bool IsSupported(int weather) => weather == Clear || weather == Rain || weather == Snow;
     }
 
     [Serializable]
