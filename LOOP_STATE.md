@@ -287,7 +287,7 @@
 
 **Critério de conclusão (todos verificados no aparelho):**
 - [~] C1 Cores: tom de pele (62) e cor dos olhos (33) com paletas oficiais — OK no aparelho (ciclo 1). Falta: itens `_color` de roupa com tint (config `AvatarSpineSkinsDefaultColors_*` + paleta General) e coluna de cores por categoria.
-- [~] C2 Rosto/cabelo: olhos com cor e tom de pele OK (ciclo 1). Falta: cabelo frente+trás (188 itens), sobrancelhas, boca.
+- [~] C2 Rosto/cabelo: olhos com cor, tom de pele (ciclo 1) e boca (100 opções, ciclo 2) OK no aparelho. Falta: cabelo frente+trás (188 itens), sobrancelhas.
 - [ ] C3 Categorias restantes: chapéu, jaqueta, vestido, meias (modelo de save estendido, migração do save antigo).
 - [ ] C4 Slots: vários avatares persistidos (adicionar/trocar/apagar).
 - [ ] C5 Menu: subcategorias e marcas; miniaturas sem artefatos.
@@ -299,4 +299,6 @@
 ### Histórico de ciclos
 - (ciclo 0) catálogo de 400 itens + carregamento sob demanda: OK no aparelho.
 - (ciclo 1) paletas oficiais `AWSpineColorsList` → `palettes.json` (`tools/avatar_palette_export.py`); `AvatarAppearance.SkinIndex/EyesIndex` (save antigo mantém padrões; testado); categorias Pele/Olhos no menu com amostras. EditMode 113/113. Aparelho: grade de 62 e 33 amostras, troca ao vivo, desfazer ativo, concluir salva, reabrir mantém.
-  - Observação aberta: o save de teste tem óculos "duplos" (um par roxo na testa + um cinza sobre os olhos) — checar no ciclo 2 se o item `accessories_face_glasses_*` traz peças extras ou se é sobreposição com o padrão.
+  - Óculos "duplos" NÃO é bug: o atlas `Glasses_5` tem uma região só com 2 pares desenhados (probe `AvatarAssetProbe`, inventário em `out/avatar-spine-inventory.json`).
+- (ciclo 2) Boca: `AvatarAppearance.MouthId` (padrão `mouth_default` = anexo embutido), 99 bocas SUT via `tools/avatar_catalog_build.py` (suporta pastas de 3 níveis), skin `Templates/Mouth_N` + `SetAttachment("Mouths","Mouths")`. EditMode 113/113. Aparelho: 100 miniaturas (~26 ms cada), troca ao vivo, desfazer ativo.
+  - Próximo (ciclo 3): sobrancelhas e cabelo (`_color`) → exige tint por item (config `AvatarSpineSkinsDefaultColors_*` + paleta General) e coluna de cores.

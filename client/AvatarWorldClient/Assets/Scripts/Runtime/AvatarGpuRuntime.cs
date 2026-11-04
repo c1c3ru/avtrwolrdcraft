@@ -70,6 +70,7 @@ namespace AvatarWorld.Runtime
             new Category { key = AvatarCatalog.CategoryBottom, label = "Calca", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryBottom] },
             new Category { key = AvatarCatalog.CategoryShoes, label = "Sapato", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShoes] },
             new Category { key = AvatarCatalog.CategoryAccessory, label = "Acessorio", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryAccessory] },
+            new Category { key = AvatarCatalog.CategoryMouth, label = "Boca", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryMouth] },
         };
         static readonly string[] HairOptions = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHair];
 
@@ -265,6 +266,7 @@ namespace AvatarWorld.Runtime
         public bool IsItemAvailable(string itemId)
         {
             if (!IsReady) return false;
+            if (AvatarCatalog.IsBuiltIn(itemId)) return true;
             if (_available.TryGetValue(itemId, out var cached)) return cached;
             bool ok;
             if (_itemsById.TryGetValue(itemId, out var item))
@@ -382,7 +384,7 @@ namespace AvatarWorld.Runtime
 
             foreach (var category in _categories)
             {
-                var item = _itemsById[Appearance.Get(category.key)];
+                if (!_itemsById.TryGetValue(Appearance.Get(category.key), out var item)) continue; // item embutido (boca padrao)
                 LoadItemTextures(item);
                 foreach (var piece in item.pieces)
                     AddSkin(_skeletonData, skin, tints, piece.template, Color.white);
@@ -390,7 +392,8 @@ namespace AvatarWorld.Runtime
 
             _skeletonAnimation.skeleton.SetSkin(skin);
             _skeletonAnimation.skeleton.SetSlotsToSetupPose();
-            _skeletonAnimation.skeleton.SetAttachment("Mouths", "Body_Outline/Mouth_Regular");
+            // Boca: embutida no esqueleto por padrao; um item do SUT traz o proprio anexo "Mouths" (skin Templates/Mouth_N).
+            _skeletonAnimation.skeleton.SetAttachment("Mouths", AvatarCatalog.IsBuiltIn(Appearance.MouthId) ? "Body_Outline/Mouth_Regular" : "Mouths");
             foreach (var slot in _skeletonAnimation.skeleton.Slots)
                 if (slot.Attachment != null && tints.TryGetValue(slot.Attachment, out var color))
                 { slot.R = color.r; slot.G = color.g; slot.B = color.b; }

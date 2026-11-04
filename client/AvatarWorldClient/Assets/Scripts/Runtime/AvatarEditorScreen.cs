@@ -30,7 +30,7 @@ namespace AvatarWorld.Runtime
         static readonly (string key, string art)[] MenuCategories =
         {
             (AvatarCatalog.CategoryHair, "hair"), (AvatarCatalog.CategoryShirt, "shirt"), (AvatarCatalog.CategoryBottom, "bottom"),
-            (AvatarCatalog.CategoryShoes, "shoes"), (AvatarCatalog.CategoryAccessory, "accessory"),
+            (AvatarCatalog.CategoryShoes, "shoes"), (AvatarCatalog.CategoryAccessory, "accessory"), (AvatarCatalog.CategoryMouth, "mouth"),
             (AvatarCatalog.CategorySkin, "skin"), (AvatarCatalog.CategoryEyes, "eyes"),
         };
 
@@ -41,6 +41,7 @@ namespace AvatarWorld.Runtime
             new CategoryView { key = AvatarCatalog.CategoryBottom,    art = "bottom",    centerY = 0.85f, half = 0.85f },
             new CategoryView { key = AvatarCatalog.CategoryShoes,     art = "shoes",     centerY = 0.30f, half = 0.70f },
             new CategoryView { key = AvatarCatalog.CategoryAccessory, art = "accessory", centerY = 3.10f, half = 1.30f },
+            new CategoryView { key = AvatarCatalog.CategoryMouth,     art = "mouth",     centerY = 2.75f, half = 0.70f },
         };
 
         SaveStore _saves;
@@ -181,7 +182,7 @@ namespace AvatarWorld.Runtime
                     () => { UiSound.PlayClick(); SelectCategory(key); });
                 icon.preserveAspect = true;
                 _categoryButtons[key] = icon;
-                y -= 125f;
+                y -= 112f;
             }
 
             // Grade de miniaturas com rolagem vertical (centenas de itens): 3 colunas de celas 217x207.

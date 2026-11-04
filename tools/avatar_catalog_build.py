@@ -34,6 +34,7 @@ CATEGORIES = {
     'Bottom': ['bottom/bottom_special', 'bottom/bottom_casual', 'bottom/bottom_formal', 'bottom/bottom_jobs'],
     'Shoes': ['legs/legs_shoes'],
     'Accessory': ['accessories/accessories_face/accessories_face_glasses', 'accessories/accessories_body/accessories_body_neck'],
+    'Mouth': ['mouth'],  # pasta de 3 niveis: mouth/<item>/<peca>
 }
 # IDs que ja existiam (os padroes) continuam sendo os primeiros de cada categoria
 KEEP_FIRST = {
@@ -41,7 +42,10 @@ KEEP_FIRST = {
     'Bottom': ['bottom_special_1', 'bottom_special_10'],
     'Shoes': ['legs_shoes_1', 'legs_shoes_10'],
     'Accessory': ['accessories_face_glasses_1', 'accessories_body_neck_1'],
+    # boca padrao = o anexo embutido no esqueleto (Body_Outline/Mouth_Regular), nao e um item do SUT
+    'Mouth': ['mouth_default'],
 }
+BUILT_IN = {'mouth_default'}
 
 
 def png_size(path):
@@ -78,6 +82,9 @@ def main():
         if p[3] == 'accessories':
             if len(p) < 8: continue
             key, item, piece = '/'.join(p[3:6]), p[6], p[7]
+        elif p[3] == 'mouth':
+            if len(p) < 6: continue
+            key, item, piece = p[3], p[4], p[5]
         else:
             if len(p) < 7: continue
             key, item, piece = p[3] + '/' + p[4], p[5], p[6]
@@ -122,7 +129,7 @@ def main():
     new_items = []
     for category in CATEGORIES:
         for item_id in chosen[category]:
-            if item_id in existing: continue
+            if item_id in existing or item_id in BUILT_IN: continue
             prefix, item = chosen[item_id]
             built = resolve(prefix, item)
             pieces = []

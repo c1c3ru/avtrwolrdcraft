@@ -16,6 +16,7 @@ namespace AvatarWorld.Core.Avatar
         public string BottomId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryBottom);
         public string ShoesId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryShoes);
         public string AccessoryId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryAccessory);
+        public string MouthId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryMouth);
         /// <summary>Indices nas paletas Skin/Eyes (palettes.json). Saves antigos sem estes campos ficam nos padroes.</summary>
         public int SkinIndex = AvatarPaletteData.DefaultSkin;
         public int EyesIndex = AvatarPaletteData.DefaultEyes;
@@ -25,13 +26,13 @@ namespace AvatarWorld.Core.Avatar
         /// <summary>Copia independente (usada pelo historico desfazer/refazer do editor).</summary>
         public AvatarAppearance Clone() => new AvatarAppearance
         {
-            HairId = HairId, ShirtId = ShirtId, BottomId = BottomId, ShoesId = ShoesId, AccessoryId = AccessoryId,
+            HairId = HairId, ShirtId = ShirtId, BottomId = BottomId, ShoesId = ShoesId, AccessoryId = AccessoryId, MouthId = MouthId,
             SkinIndex = SkinIndex, EyesIndex = EyesIndex,
         };
 
         public bool SameAs(AvatarAppearance other) => other != null &&
             HairId == other.HairId && ShirtId == other.ShirtId && BottomId == other.BottomId &&
-            ShoesId == other.ShoesId && AccessoryId == other.AccessoryId &&
+            ShoesId == other.ShoesId && AccessoryId == other.AccessoryId && MouthId == other.MouthId &&
             SkinIndex == other.SkinIndex && EyesIndex == other.EyesIndex;
 
         public int GetColorIndex(string category)
@@ -61,6 +62,7 @@ namespace AvatarWorld.Core.Avatar
                 case AvatarCatalog.CategoryBottom: return BottomId;
                 case AvatarCatalog.CategoryShoes: return ShoesId;
                 case AvatarCatalog.CategoryAccessory: return AccessoryId;
+                case AvatarCatalog.CategoryMouth: return MouthId;
                 default: throw new ArgumentOutOfRangeException(nameof(category), category, "categoria desconhecida");
             }
         }
@@ -76,6 +78,7 @@ namespace AvatarWorld.Core.Avatar
                 case AvatarCatalog.CategoryBottom: BottomId = itemId; break;
                 case AvatarCatalog.CategoryShoes: ShoesId = itemId; break;
                 case AvatarCatalog.CategoryAccessory: AccessoryId = itemId; break;
+                case AvatarCatalog.CategoryMouth: MouthId = itemId; break;
                 default: return false;
             }
             return true;
@@ -87,6 +90,7 @@ namespace AvatarWorld.Core.Avatar
             AvatarCatalog.IsValidOption(AvatarCatalog.CategoryBottom, BottomId) &&
             AvatarCatalog.IsValidOption(AvatarCatalog.CategoryShoes, ShoesId) &&
             AvatarCatalog.IsValidOption(AvatarCatalog.CategoryAccessory, AccessoryId) &&
+            AvatarCatalog.IsValidOption(AvatarCatalog.CategoryMouth, MouthId) &&
             SkinIndex >= 0 && SkinIndex < AvatarPaletteData.SkinCount && EyesIndex >= 0 && EyesIndex < AvatarPaletteData.EyesCount;
 
         /// <summary>Troca so os campos invalidos (ex.: salvos por uma versao com catalogo diferente) pelo default; preserva os validos.</summary>
@@ -97,6 +101,7 @@ namespace AvatarWorld.Core.Avatar
             if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryBottom, BottomId)) BottomId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryBottom);
             if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryShoes, ShoesId)) ShoesId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryShoes);
             if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryAccessory, AccessoryId)) AccessoryId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryAccessory);
+            if (!AvatarCatalog.IsValidOption(AvatarCatalog.CategoryMouth, MouthId)) MouthId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryMouth);
             if (SkinIndex < 0 || SkinIndex >= AvatarPaletteData.SkinCount) SkinIndex = AvatarPaletteData.DefaultSkin;
             if (EyesIndex < 0 || EyesIndex >= AvatarPaletteData.EyesCount) EyesIndex = AvatarPaletteData.DefaultEyes;
         }
