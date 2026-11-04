@@ -78,10 +78,33 @@ namespace AvatarWorld.Core.Tests
             {
                 var scaler = Find(name).GetComponent<CanvasScaler>();
                 Assert.AreEqual(new Vector2(2048f, 1024f), scaler.referenceResolution);
-                Assert.AreEqual(CanvasScaler.ScreenMatchMode.Expand, scaler.screenMatchMode);
+                Assert.AreEqual(CanvasScaler.ScreenMatchMode.MatchWidthOrHeight, scaler.screenMatchMode);
+                Assert.AreEqual(1f, scaler.matchWidthOrHeight);
             }
             Assert.AreEqual(1, Find("CanvasBackground").transform.Find("Background")
                 .GetComponents<AspectRatioFitter>().Length);
+        }
+
+        [TestCase(1f, 0.7f, 1024f)]
+        [TestCase(1.1666667f, 0.85f, 1024f)]
+        [TestCase(1.6f, 0.5f, 1024f)]
+        [TestCase(1.688889f, 0.75f, 1024f)]
+        [TestCase(2f, 1f, 1106f)]
+        [TestCase(2.0821255f, 1f, 1065f)]
+        [TestCase(2.164251f, 1f, 1024f)]
+        public void Home_ReproducesOriginalAdaptiveScalerRanges(float ratio, float match, float height)
+        {
+            var go = new GameObject("ScalerTest", typeof(RectTransform), typeof(CanvasScaler));
+            objects = new List<GameObject> { go };
+            var scaler = go.GetComponent<CanvasScaler>();
+
+            HomeLayout.ConfigureScaler(scaler, ratio, true);
+
+            Assert.AreEqual(CanvasScaler.ScaleMode.ScaleWithScreenSize, scaler.uiScaleMode);
+            Assert.AreEqual(CanvasScaler.ScreenMatchMode.MatchWidthOrHeight, scaler.screenMatchMode);
+            Assert.That(scaler.matchWidthOrHeight, Is.EqualTo(match).Within(0.0001f));
+            Assert.That(scaler.referenceResolution.x, Is.EqualTo(2048f).Within(0.0001f));
+            Assert.That(scaler.referenceResolution.y, Is.EqualTo(height).Within(0.001f));
         }
     }
 }
