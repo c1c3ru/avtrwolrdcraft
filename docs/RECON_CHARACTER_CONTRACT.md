@@ -158,3 +158,28 @@ Provado (instruções e valores):
 Inferido (não provado): `a`, `b` são o deslocamento por quadro e `t` é `Time.deltaTime`; os limiares 0.06/0.006/6.0 então são unidades por segundo. Não há ramo de Run próprio para animação do Toddler (o esqueleto não tem Run), então o estado Run só alimenta a escolha de andar/engatinhar.
 
 Consequência para a cópia: Toddler engatinha sempre que não está em pé (postura sentada ou indefinida) e anda quando `Standing`; ambos usam o mesmo limiar de velocidade.
+
+## Recorte 2026-11-04 (9): `LevelAnimal.OnMovement` (`0x2265194`) e contrato C#
+Provado (asm + floats de `.rodata` + slots de string):
+- Mesma estrutura do Toddler: speed = `sqrt(a²+b²)/t`; mesmas constantes de arraste (3.0, 0.2, 0.1, 0.05) e limpeza de `_lastMovementPosition`.
+- Histerese por `_movementType` (`0x360`): **Stand** → Walk se `speed > 0.06`. **Walk** → chama o virtual de slot `0xa68` (`HasRunningAnimations`, por consistência com o ramo Run) e então: `speed < 0.006` → Stand; `speed > 18.0` e há corrida → Run; senão continua Walk. **Run** → `speed < 6.0` volta a Walk. Não existe salto direto Stand→Run nem Run→Stand.
+- Ao entrar em Walk usa o nome travado (`0x370`) se `_isLockedAnimationWhenWalking`, senão o virtual de slot `0xb18` (`GetWalkingAnimationName`, por padrão do ramo, não por símbolo); em Stand usa `General/Standing_Idle`.
+- Ao pedir Run: se o virtual `0xa68` é falso, registra `"Error in LevelAnimal, animal doesn't have Running animations but tries to run"` (`0x2265a54`) e não troca de animação; se verdadeiro, usa o nome travado ou o do Run.
+- Erro de enum: `"No case found for nextMovementType[...]"` no caso padrão.
+
+Inferido: os virtuais `0xa68/0xb18` são `HasRunningAnimations`/`GetWalkingAnimationName` (os nomes existem em `LevelAnimal.cs`, mas o slot→símbolo não foi resolvido pela vtable); `Small_Box_Open/Close` do ramo Run é provável ruído de resolução (não existe em esqueleto).
+
+Contrato C#: `client/AvatarWorldClient/Assets/Scripts/Core/Avatar/LocomotionStateMachine.cs` (branch `worktree-t032-locomotion-contract`): `LocomotionConfig.Toddler/Animal`, `LocomotionStateMachine.Next`, `ToddlerMoveAnimation`. **Não há preset de Character**: a histerese de `LevelCharacterAnimator` ainda não foi extraída. Testes ficam para depois, como combinado.
+
+## Recorte 2026-11-04 (10): histerese de `LevelCharacterAnimator.OnMovement` (`0x22a1570`) e testes
+Provado: Character usa a mesma histerese do Toddler: Stand→Walk se `speed > 0.06` (`0xb2fe40`); Walk continua se `speed >= 0.006` (`0xb2fdd8`), senão vai a Stand (nome travado ou `Idle_Stand_1`); Run→Walk se `speed < 6.0`. **Não há transição Walk→Run dentro de `OnMovement`** (de Walk só se compara com 0.006) nem limiar 18.0 (esse é só de `LevelAnimal`). Run só é mantido se já ativo; quem ativa Run no Character fica fora deste método e **não foi localizado** (o literal `Movement_Cycles/Run` só é alcançado com estado anterior 3).
+Código: `LocomotionConfig.Character` (`CanEnterRun=false`) em `LocomotionStateMachine.cs`. Testes: `Assets/Tests/EditMode/LocomotionStateMachineTests.cs` (11 casos: limites 0.06/0.006/18/6, histerese, sem saltos Stand↔Run, Toddler/Character sem Run, postura→walk/crawl). Verificação: os 11 passam num harness .NET com shim de NUnit; **não** rodados no Unity Test Runner (worktree sem Library).
+
+## Recorte 2026-11-04 (11): quem ativa Run no Character
+Método: varredura binária de todos os métodos de `LevelCharacterAnimator` (janela até o próximo método, cap `0x1800`) por `str w,[x,#0x30]` (`_movementType`) e por `mov w,#3`. Script reproduzível: `/home/deppi/.claude/jobs/0979ab8d/tmp/scan_mt.py` (temporário; a lógica é `str` com imm12=12 e `mov w,#3`).
+
+Provado: `_movementType` só é gravado em `OnMovement` (`0x22a1904` com `wzr`; `0x22a1cd0` com `w24`; `0x22a1d78` com `wzr`) e em `OnEndMovement` (`0x22a2024` com `wzr`). `w24` é carregado do próprio campo (`0x22a19ec`) ou fixado em 1 (`0x22a1ac8`) ou 2 (`0x22a1b28`). Nenhum método do animator contém `mov w,#3`. O campo é privado e o animator é o único que o grava.
+
+Conclusão sustentada: **o Character nunca entra em Run no original**; o ramo `Movement_Cycles/Run` (`0x22a1cd8`) só seria alcançado com estado anterior 3, que nunca é produzido. `Movement_Cycles/Run` existe no esqueleto, mas não é usado pelo animator (só o `Treadmill_P151` e `LevelAnimal` o usam). A cópia deve manter `CanEnterRun = false` para Character, e isso agora é paridade provada, não lacuna.
+
+Limite: não cobre escrita por reflexão/serialização nem por outra classe com layout idêntico; não foi verificada execução no aparelho.
