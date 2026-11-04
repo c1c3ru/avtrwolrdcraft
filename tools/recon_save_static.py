@@ -87,6 +87,32 @@ TARGET_GROUPS = {
     "PWC.Level.LevelAvatarOneTimeSpawner": {"OnLevelPrePostInit", "PlaceAvatarInScene", "SpawnAvatar", "HandleCAHandlers", "GetPersistentData", "SetPersistentData"},
     "PWC.Level.LevelAvatarData": {"ApplyDataIfExists", "ApplyDataInternal", "SaveData", "SaveDataInternal"},
   },
+  "clothing": {
+    "PWC.AvatarMaker.AvatarMakerThumbsManager": {
+        "AddExpansionPackThumbs", "AddItemSpritesOutsideAnyPack", "AddItemSpritesWithNoThumb",
+        "AddOwnedExpansionPacksThumbs", "FilterByClaimedInventoryFlags", "FillSections",
+        "GetOwnedPackFlagsInTabOrder", "GetPremiumItemsNames", "GetRelevantInventorySkins",
+        "Init", "OnExpansionPackChanged", "OnThumbClick", "TryFillColorSections",
+    },
+    "PWC.AvatarMaker.AvatarMakerExpansionPackManager": {
+        "AddExpansionPackCategory", "GetAvailableExpansionPackCategories", "InitAvailableExpansionPacks",
+        "PressOnCurrentExpanisonPack",
+    },
+    "PWC.AvatarMaker.AvatarMakerExpansionPackCategory": {
+        "Init", "InitLocalizedTooltipText", "InitTooltipText", "OnPointerClick",
+        "SetActiveAccordingToCurrentSpineType", "TryGetRelevantCategoryInCurrentExpansion",
+    },
+    "PWC.Inventory.InventorySkinsBuildData": {
+        "ContainsItem", "EnsureInit", "GetPremiumSkinsInventoryFlags", "GetDictionaryForSpecificFlagType",
+        "TryGetCategoriesFromFlag", "TryGetSkinsFromFlag", "TryGetSkinsFromFlagForSpine", "TryGetText",
+    },
+    "PWC.Inventory.InventorySkinsUtils": {
+        "ForEachOwnedPremiumSkinFlag", "GetAllCategories", "IsFlagInteractionPerformed",
+        "SetFlagInteractionPerformed", "SetNewFlagNotSeenYet",
+    },
+    "PWC.Inventory.InventoryManager": {"ContainsFlagType", "GetFlagCount"},
+    "PWC.Inventory.InventoryFlagTypeExtensionMethods": {"GetStorePackName", ".cctor"},
+  },
 }
 
 
@@ -109,7 +135,8 @@ def main() -> None:
     args.index = args.index.resolve()
     args.binary = args.binary.resolve()
     args.objdump = args.objdump.resolve()
-    defaults = {"save": "T030/persistence-asm", "input": "T031/input-asm", "characters": "T032/character-asm"}
+    defaults = {"save": "T030/persistence-asm", "input": "T031/input-asm", "characters": "T032/character-asm",
+                "clothing": "T033/gates-asm"}
     args.output = (args.output or ROOT / "out/recon/tasks" / defaults[args.scope]).resolve()
     selected = TARGET_GROUPS[args.scope]
     rows = [json.loads(line) for line in args.index.read_text(encoding="utf-8").splitlines()]

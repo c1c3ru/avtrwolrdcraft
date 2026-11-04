@@ -35,6 +35,8 @@ Atualizações (2026-11-04):
 
 - T031: contrato estático de ponteiro/arraste e pilotos `level4`/`level8` em `docs/RECON_INPUT_CONTRACT.md` e `out/recon/tasks/T031/`. Avança entrada, mas não fecha física, gestos completos ou validação dinâmica.
 - T032: classificação de presets e contratos iniciais de spawn/movimento em `docs/RECON_CHARACTER_CONTRACT.md` e `out/recon/tasks/T032/`. Avança inventário, mas não fecha locomoção entre famílias, NPCs ou validação dinâmica.
+- T033: catálogo ampliado a 2.174 opções com alocação proporcional provisória; 4.016 candidatos passam a resolução estática estrita. Mapeamento extraído: 48 flags/1.763 skins de expansão e 3 flags premium/11 skins; 64 IDs do catálogo cruzam com flags de expansão. Os outros 2.110 não são comprovadamente gratuitos. Compatibilidade/cor, categoria original, distribuição de origem e aplicação dos gates seguem pendentes. Relatório em `out/recon/tasks/T033/clothing-gates-crosswalk.json` e `docs/RECON_CLOTHING_GAP.md`.
+- T042: inventário de `ResourceManager` com 154.446 referências, 176 grupos `level/sceneitems`, mapa level4 com 59 edifícios/770 renderers, recursos SUT de acessórios/pets e categorias/peças CarMaker. 263 IDs Character/accessories cruzam com flags; veículos por sufixo e breeds de pets por enum são candidatos lexicais. Sem validação de entitlement/runtime por cena; dossiê em `docs/RECON_WORLD_ASSET_MAP.md` e JSON completo em `out/recon/tasks/T042/`.
 
 Ambas as linhas permanecem Parciais.
 

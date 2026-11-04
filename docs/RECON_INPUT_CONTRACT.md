@@ -68,3 +68,8 @@ Provado:
 Consequência para a cópia e para T032: o Character só começa a se mover depois que o ponteiro percorre 10 px (ou imediatamente se `useDragThreshold` for falso, caso não verificado) e a partir daí `OnSyncPosition` roda por quadro; um toque que não passa de 10 px é clique, não arraste. Para T026: a corrotina de arraste está mapeada (slots 24→21/32, 25/26/27 no `MoveNext`).
 
 Limites: a unidade/escala do limiar em dispositivos de densidades diferentes (o Unity usa pixels de tela, sem conversão por DPI neste código) e o caso `useDragThreshold = false` não foram verificados; multitoque, `MPPointerInputModule.ProcessDrag` e precedência UI contra CShape continuam abertos.
+
+## Contrato C# do T031 (2026-11-04)
+`Assets/Scripts/Core/Pointer/DragIntentDetector.cs` (namespace `AvatarWorld.Core.Pointer`, evitando sombrear `UnityEngine.Input`): `ShouldStartDrag` estático (`useDragThreshold` falso → sempre; senão `Δ² >= limiar²`), `PointerDown/PointerMove/PointerUp`, fases `Idle/Pressed/Dragging`, limiar padrão 10 px medido **desde o pressionar** (não desde o movimento anterior) e `ClickSuppressed` para o flag `this+0x39` (significado desconhecido). Soltar sem ter virado arraste → `Click`; depois de arrastar → `EndDrag`, mesmo voltando perto do início.
+Testes: `Assets/Tests/EditMode/DragIntentDetectorTests.cs` (13 casos; limites 9.99/10, diagonal 7/7.1, flag desligado, clique suprimido, sem pressionar). Verificação: 24 testes (11 de locomoção + 13 deste) passam num harness .NET com shim de NUnit; **não** rodados no Unity Test Runner.
+Fora do contrato (não provado): se o threshold real do módulo é o `m_DragThreshold` do `EventSystem`, a conversão por DPI, multitoque e o pipeline Pre→Post→`OnSyncPosition` por quadro.

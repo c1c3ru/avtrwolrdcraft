@@ -17,8 +17,6 @@ namespace AvatarWorld.Runtime
     public sealed class StoreScreen : MonoBehaviour
     {
         static readonly Color Purple = new Color(0.42f, 0.22f, 0.62f);
-        static readonly Color RailIdle = new Color(0.30f, 0.12f, 0.46f, 0.95f);
-        static readonly Color RailActive = new Color(1f, 0.72f, 0.95f, 1f);
         static readonly Color TextDark = new Color(0.2f, 0.1f, 0.3f);
 
         PlayerState _state;
@@ -135,22 +133,32 @@ namespace AvatarWorld.Runtime
             _toast.enabled = false;
         }
 
+        static string RailArt(string category)
+        {
+            switch (category)
+            {
+                case StoreCatalog.CategoryCoins: return "cat_coins";
+                case StoreCatalog.CategoryFeatured: return "cat_featured";
+                case StoreCatalog.CategoryHouses: return "cat_houses";
+                case StoreCatalog.CategoryFashion: return "cat_fashion";
+                case StoreCatalog.CategoryPets: return "cat_pets";
+                default: return "cat_combos";
+            }
+        }
+
+        /// <summary>Trilho lateral so com icones do original (Static/Pressed), sem texto.</summary>
         void BuildRail()
         {
-            float y = -300f;
+            float y = -268f;
             foreach (var category in StoreCatalog.Categories)
             {
                 string cat = category;
-                var button = NewImage("Cat_" + cat, _root, Art("Store/ui/star"), RailIdle);
-                button.sprite = null; // retangulo arredondado simples (sem arte de icone extraida)
-                Anchor(button.rectTransform, new Vector2(0, 1), new Vector2(124f, y), new Vector2(222f, 112f));
-                var label = NewText("Label", button.transform, 33, TextAnchor.MiddleCenter, Color.white);
-                label.gameObject.AddComponent<Outline>().effectColor = new Color(0.15f, 0.04f, 0.3f);
-                Stretch(label.rectTransform, Vector2.zero, Vector2.one);
-                label.text = cat;
+                var button = NewImage("Cat_" + cat, _root, Art("Store/ui/" + RailArt(cat)), Color.white);
+                button.preserveAspect = true;
+                Anchor(button.rectTransform, new Vector2(0, 1), new Vector2(124f, y), new Vector2(132f, 128f));
                 Click(button.gameObject, () => { UiSound.PlayClick(); SelectCategory(cat); });
                 _railButtons[cat] = button;
-                y -= 128f;
+                y -= 138f;
             }
         }
 
@@ -160,9 +168,9 @@ namespace AvatarWorld.Runtime
             foreach (var pair in _railButtons)
             {
                 bool active = pair.Key == category;
-                pair.Value.color = active ? RailActive : RailIdle;
-                var label = pair.Value.GetComponentInChildren<Text>();
-                if (label != null) label.color = active ? TextDark : Color.white;
+                string art = "Store/ui/" + RailArt(pair.Key) + (active ? "_on" : "");
+                pair.Value.sprite = Art(art);
+                pair.Value.rectTransform.localScale = Vector3.one * (active ? 1.12f : 1f);
             }
             for (int i = _content.childCount - 1; i >= 0; i--)
             {

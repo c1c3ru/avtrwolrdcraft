@@ -38,6 +38,17 @@ namespace AvatarWorld.Runtime
         readonly List<RectTransform> _uiRects = new List<RectTransform>();
         readonly Dictionary<int, RectTransform> _weatherIcons = new Dictionary<int, RectTransform>();
         RectTransform _weatherPill;
+        RectTransform _globe, _mapStrip;
+        float _globeTargetX = GlobeClosedX;
+        int _selectedMap;
+        readonly List<GameObject> _mapChecks = new List<GameObject>();
+        const float GlobeClosedX = 444f, GlobeWeatherOpenX = 822f;
+        // Mundos do seletor (arte do original). So o primeiro (campus) tem cena exportada; os demais avisam.
+        static readonly (string art, string name)[] Maps =
+        {
+            ("map_university", "Campus"), ("map_town", "Bairro"), ("map_city", "Cidade"),
+            ("map_farm", "Fazenda"), ("map_resort", "Resort"), ("map_snow", "Montanha"),
+        };
         readonly Dictionary<string, Sprite> _uiSprites = new Dictionary<string, Sprite>();
         const int SpritesPerFrame = 24;
         readonly Dictionary<string, Texture2D> _textures = new Dictionary<string, Texture2D>();
@@ -256,9 +267,12 @@ namespace AvatarWorld.Runtime
             }
             _weatherPill.gameObject.SetActive(false);
             var toggle = MakeUiButton(root, "WeatherToggle", "weather_toggle", topLeft, center, new Vector2(268f, -91f),
-                new Vector2(146f, 143f), () => _weatherPill.gameObject.SetActive(!_weatherPill.gameObject.activeSelf));
-            var globe = MakeUiButton(root, "WorldButton", "globe", topLeft, center, new Vector2(444f, -91f),
-                new Vector2(146f, 143f), () => ShowToast("Os outros mundos ainda não estão disponíveis."));
+                new Vector2(146f, 143f), () => SetPanel(!_weatherPill.gameObject.activeSelf, false));
+            BuildMapStrip(root);
+            // Criado depois do clima e dos mapas: fica por cima e desliza para a direita quando o clima abre.
+            var globe = MakeUiButton(root, "WorldButton", "globe", topLeft, center, new Vector2(GlobeClosedX, -91f),
+                new Vector2(146f, 143f), () => SetPanel(false, !_mapStrip.gameObject.activeSelf));
+            _globe = globe;
             var avatar = MakeUiButton(root, "AddAvatarButton", "add_avatar", topRight, center, new Vector2(-242.5f, -91f),
                 new Vector2(146f, 143f), () =>
                 {
@@ -271,9 +285,65 @@ namespace AvatarWorld.Runtime
             ApplyWeather(_weather);
         }
 
+        /// <summary>Abre um painel da barra (clima ou mapas); um fecha o outro. O globo sai do caminho do clima.</summary>
+        void SetPanel(bool weather, bool maps)
+        {
+            _weatherPill.gameObject.SetActive(weather);
+            _mapStrip.gameObject.SetActive(maps);
+            _globeTargetX = weather ? GlobeWeatherOpenX : GlobeClosedX;
+        }
+
+        void BuildMapStrip(Transform root)
+        {
+            const float itemW = 134f;
+            float left = GlobeClosedX + 73f + 8f;
+            _mapStrip = MakeUiButton(root, "MapStrip", "weather_pill", new Vector2(0, 1), new Vector2(0, 0.5f),
+                new Vector2(left, -91f), new Vector2(640f, 114f), null, new Vector4(57f, 0f, 57f, 0f));
+            var viewport = new GameObject("Viewport", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
+            viewport.transform.SetParent(_mapStrip, false);
+            var vr = (RectTransform)viewport.transform;
+            vr.anchorMin = Vector2.zero; vr.anchorMax = Vector2.one;
+            vr.offsetMin = new Vector2(24f, 0f); vr.offsetMax = new Vector2(-24f, 0f);
+            viewport.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            var content = new GameObject("Content", typeof(RectTransform));
+            content.transform.SetParent(viewport.transform, false);
+            var cr = (RectTransform)content.transform;
+            cr.anchorMin = new Vector2(0, 0); cr.anchorMax = new Vector2(0, 1); cr.pivot = new Vector2(0, 0.5f);
+            cr.sizeDelta = new Vector2(Maps.Length * itemW, 0f);
+            cr.anchoredPosition = Vector2.zero;
+            var scroll = viewport.GetComponent<ScrollRect>();
+            scroll.viewport = vr; scroll.content = cr;
+            scroll.horizontal = true; scroll.vertical = false;
+            scroll.movementType = ScrollRect.MovementType.Clamped;
+            for (int i = 0; i < Maps.Length; i++)
+            {
+                int index = i;
+                var thumb = MakeUiButton(cr, "Map_" + Maps[i].art, Maps[i].art, new Vector2(0, 0.5f), new Vector2(0.5f, 0.5f),
+                    new Vector2(itemW * i + itemW * 0.5f, 0f), new Vector2(120f, 100f), () => SelectMap(index));
+                thumb.GetComponent<Image>().preserveAspect = true;
+                var check = MakeUiButton(thumb, "Check", "map_check", new Vector2(1, 0), new Vector2(0.5f, 0.5f),
+                    new Vector2(-14f, 14f), new Vector2(46f, 46f), null);
+                check.gameObject.SetActive(i == _selectedMap);
+                _mapChecks.Add(check.gameObject);
+            }
+            _mapStrip.gameObject.SetActive(false);
+        }
+
+        void SelectMap(int index)
+        {
+            if (index == _selectedMap) return;
+            ShowToast(Maps[index].name + ": este mundo ainda não está disponível.");
+        }
+
         void Update()
         {
             if (_toast != null && _toast.enabled && Time.unscaledTime > _toastUntil) _toast.enabled = false;
+            if (_globe != null && !Mathf.Approximately(_globe.anchoredPosition.x, _globeTargetX))
+            {
+                var gp = _globe.anchoredPosition;
+                gp.x = Mathf.MoveTowards(gp.x, _globeTargetX, 2400f * Time.unscaledDeltaTime);
+                _globe.anchoredPosition = gp;
+            }
             if (_opening) return;
             if (!ReadPointer(out bool down, out bool up, out bool held, out Vector2 position)) return;
 
@@ -304,6 +374,8 @@ namespace AvatarWorld.Runtime
             if (_backRect != null && RectTransformUtility.RectangleContainsScreenPoint(_backRect, screen, null)) return true;
             foreach (var rect in _uiRects)
                 if (RectTransformUtility.RectangleContainsScreenPoint(rect, screen, null)) return true;
+            if (_mapStrip != null && _mapStrip.gameObject.activeSelf &&
+                RectTransformUtility.RectangleContainsScreenPoint(_mapStrip, screen, null)) return true;
             return _weatherPill != null && _weatherPill.gameObject.activeSelf &&
                    RectTransformUtility.RectangleContainsScreenPoint(_weatherPill, screen, null);
         }
