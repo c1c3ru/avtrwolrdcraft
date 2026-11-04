@@ -13,9 +13,11 @@ namespace AvatarWorld.Runtime
     /// Editor de avatar com o layout da cena AvatarMaker do original (level234 + prefab CharacterMenu de
     /// resources.assets): voltar (topo-esquerda), concluir/desfazer/refazer (base-esquerda) e, a direita, o menu com a
     /// coluna de categorias (127), divisor e grade de miniaturas (cela 217x207). Posicoes em unidades do canvas 2048x1024.
-    /// Mostra so as 5 categorias que o avatar local suporta (cabelo, camisa, calca, sapato, acessorio), 2 opcoes cada.
+    /// Usa as categorias e IDs presentes em AvatarCatalog. O catálogo contém 2.174 opções nas quatro categorias
+    /// principais, com distribuição provisória derivada dos recursos extraídos; cabelo, boca, sobrancelha e cabelo
+    /// traseiro têm listas separadas. O gate de pacotes do original ainda não está reproduzido.
     /// Aproximado: fundo/cor do painel (sem print do original), miniaturas geradas do proprio avatar (o original usa icones),
-    /// sem coluna de cores nem pacotes de expansao. Concluir grava; voltar descarta as mudancas da sessao.
+    /// sem pacotes de expansao. Concluir grava; voltar descarta as mudancas da sessao.
     /// </summary>
     public sealed class AvatarEditorScreen : MonoBehaviour
     {

@@ -13,6 +13,7 @@ uso: tools/venv/bin/python tools/avatar_catalog_build.py [--per-category 100]
 """
 import argparse
 import collections
+import hashlib
 import json
 import os
 import re
@@ -69,6 +70,7 @@ def natural(value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--per-category', type=int, default=100)
+    parser.add_argument('--selection', type=Path, help='JSON with exact category IDs from recon_clothing_gap.py')
     args = parser.parse_args()
 
     rows = json.loads((ROOT / 'out/assets/avatar-resources.json').read_text(encoding='utf-8'))
@@ -109,6 +111,17 @@ def main():
 
     manifest = json.loads(MANIFEST.read_text(encoding='utf-8'))
     existing = {it['id']: it for it in manifest['items']}
+    selection = None
+    if args.selection:
+        selection = json.loads(args.selection.read_text(encoding='utf-8'))
+        if selection.get('status') != 'provisional_review_only' or not isinstance(selection.get('items_by_category'), dict):
+            raise SystemExit('selection must be a provisional candidate JSON from recon_clothing_gap.py')
+        if not set(selection['items_by_category']).issubset(CATEGORIES):
+            raise SystemExit('selection contains a category not supported by this generator')
+        if any(not isinstance(v, list) for v in selection['items_by_category'].values()):
+            raise SystemExit('each selected category must contain an ID array')
+        if selection.get('total') != sum(len(v) for v in selection['items_by_category'].values()):
+            raise SystemExit('selection total does not match its category arrays')
 
     # ---- cabelo da frente: skins Hair_Front/N_Color do inventario do esqueleto ----
     front = {}
@@ -130,6 +143,21 @@ def main():
     front_ids = [i for i in front_ids if i in front][:max(args.per_category, 2)]
     chosen = {}
     for category, prefixes in CATEGORIES.items():
+        if selection and category in selection['items_by_category']:
+            ids = selection['items_by_category'][category]
+            if not isinstance(ids, list) or len(ids) != len(set(ids)):
+                raise SystemExit(f'invalid or duplicate selected IDs in {category}')
+            if any(not isinstance(item, str) or not re.fullmatch(r'[A-Za-z0-9_]+', item) for item in ids):
+                raise SystemExit(f'invalid item ID in {category}')
+            for item in ids:
+                prefix = next((candidate for candidate in prefixes if (candidate, item) in groups), None)
+                if prefix is None:
+                    raise SystemExit(f'no exact SUT folder for {category}/{item}')
+                if item not in existing and not resolve(prefix, item):
+                    raise SystemExit(f'unresolved SUT textures for {category}/{item}')
+                chosen[item] = (prefix, item)
+            chosen[category] = list(ids)
+            continue
         ids = list(KEEP_FIRST[category])
         quota = max(args.per_category, len(ids))
         per_prefix = max(1, (quota - len(ids)) // len(prefixes))
@@ -155,12 +183,29 @@ def main():
         chosen[category] = ids[:quota]
 
     CLOTHING.mkdir(parents=True, exist_ok=True)
+    meta_template_path = next(iter(CLOTHING.glob('*.png.meta')), None)
+    if meta_template_path is None:
+        raise SystemExit('cannot create Unity texture metadata: no existing .png.meta template')
+    meta_template = meta_template_path.read_text(encoding='utf-8')
+
+    def ensure_meta(path):
+        meta_path = Path(str(path) + '.meta')
+        if meta_path.exists():
+            return
+        relative = path.relative_to(UNITY).as_posix()
+        guid = hashlib.sha256(('avatarworld-re:' + relative).encode('utf-8')).hexdigest()[:32]
+        if not re.search(r'^guid:\s*[0-9a-fA-F]{32}\s*$', meta_template, re.M):
+            raise SystemExit('existing Unity metadata template has no valid GUID line')
+        meta_text = re.sub(r'^guid:\s*[0-9a-fA-F]{32}\s*$', 'guid: ' + guid, meta_template, count=1, flags=re.M)
+        meta_path.write_text('\n'.join(line.rstrip() for line in meta_text.splitlines()) + '\n', encoding='utf-8')
+
     new_items = []
     for hair_id in front_ids:
         if hair_id in existing and existing[hair_id]['pieces'][0].get('skin'): continue
         page, filename, pid = front[hair_id]
         out_name = f'{page.casefold()}__{pid}.png'
         shutil.copyfile(TEXTURES / filename, CLOTHING / out_name)
+        ensure_meta(CLOTHING / out_name)
         # skin = nome do skin do esqueleto; template so serve para derivar a pagina de atlas (Templates/<pagina>)
         piece = {'template': 'Templates/' + page, 'file': out_name, 'skin': hair_id}
         if hair_id in existing: existing[hair_id] = {'id': hair_id, 'pieces': [piece]}
@@ -174,6 +219,7 @@ def main():
             for piece, filename, pid in sorted(built):
                 out_name = f'{piece}__{pid}.png'
                 shutil.copyfile(TEXTURES / filename, CLOTHING / out_name)
+                ensure_meta(CLOTHING / out_name)
                 pieces.append({'template': 'Templates/' + page_case[piece], 'file': out_name})
             new_items.append({'id': item_id, 'pieces': pieces})
     manifest['items'] = list(existing.values()) + [it for it in new_items if it['id'] not in existing]
@@ -191,6 +237,8 @@ def main():
             out.write('        };\n\n')
         out.write('    }\n}\n')
     total = sum(len(chosen[c]) for c in list(CATEGORIES) + ['Hair'])
+    if selection:
+        print(f"selection target={selection['total']}; categories={', '.join(c + ' ' + str(len(selection['items_by_category'][c])) for c in selection['items_by_category'])}")
     print(f'{total} itens ({", ".join(c + " " + str(len(chosen[c])) for c in list(CATEGORIES) + ["Hair"])}); {len(new_items)} novos; PNGs copiados')
 
 
