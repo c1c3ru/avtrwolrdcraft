@@ -56,3 +56,28 @@ Ainda **não verificado**: nenhum dispositivo Android conectado via ADB nesta se
 execução para gerar um screenshot via Editor/Play Mode como alternativa. O build Android relatado
 como "Succeeded" em 2026-10-30 não está presente neste checkout (`client/.../Builds/` é ignorado
 pelo git) e precisaria ser refeito antes de instalar/visualizar.
+
+## 7. Auditoria por contrato (2026-11-05): o que o replay encontrou
+Ferramenta: `tools/recon_contract.py` + `tools/replay-core` (compila o `Core` sem Unity); contrato em
+`contracts/store-claim.contract.json`. Reproduzir: `python3 tools/recon_contract.py replay
+contracts/store-claim.contract.json -- tools/dotnet/dotnet <ReplayCore.dll>`.
+
+- **§2 confirmado.** `store_catalog.json`: 37.230 linhas, 25.812 GUIDs únicos (6.412 GUIDs repetidos em mais de
+  uma linha), **preço 0 em todas**. Os preços não estão no catálogo extraído.
+- **§2 precisa de uma nota.** Preços em moedas *existem* como observação visual dos prints do app original
+  (`assets/exemplo_jogo_original/`, pasta ignorada pelo Git). Não vêm do APK nem do servidor; são fonte
+  `runtime-observed`, só vale o que está na tela.
+- **Replay dos combos: 4 de 6 batem** — Galxe Mansion 1200, Natural Chic 1400, Casinha de brincar 770,
+  Show ao vivo 980.
+- **Divergência 1: `PB25` "Amiguinhos".** O print (`imagem11.jpeg`, também `imagem6.jpeg`) mostra
+  1500 → **1200**. O cliente tem 500, valor do item vizinho "Meu primeiro hamster", que é outro item. E `PB25`
+  está em `StoreCatalog.Observed`, ou seja, está marcado como "lido do print" e não bate com ele.
+- **Divergência 2: `PB27` "Festa à Fantasia".** Print (`imagem6.jpeg`, nome truncado "…TASIA", 25% OFF) mostra
+  **450**; o cliente tem 600 (que é o preço riscado). Associação provável, não confirmada.
+- `ObservedPrintPrices_AreKept` (StoreCatalogTests) não cobre `PB25` nem `PB27`, por isso não pegou isso.
+- Itens vistos nos prints sem equivalente em `StoreCatalog.All`: Carro de aventura (700), Mini Eu (300),
+  Festa de formatura (600), Essenciais de bebê (800), Estábulo da cabana (1200).
+- **Não verificado:** a lógica de resgate (`LocalStoreService`) não tem vetor. O original faz isso no servidor,
+  então qualquer vetor seria só a reimplementação comparada a si mesma.
+
+**Corrigido** nesta branch (decisão do autor): `PB25` → 1200 e `PB27` → 450 (preço exibido, como nos demais combos), ambos agora em `ObservedPrintPrices_AreKept`. Replay: 6/6 idênticos. Os testes Unity EditMode não foram rodados (sem Editor neste ambiente); só o replay e os 13 testes do contrato.
