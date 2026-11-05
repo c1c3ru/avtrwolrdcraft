@@ -164,6 +164,7 @@ def base_animation_name(data: dict, config: dict) -> str:
 
 def suffix_rules(asm_report: Path, overrides: list[dict]) -> list[dict]:
     native = json.loads(asm_report.read_text())
+    literal_report = json.loads(asm_report.parent.parent.joinpath("contextual-suffix-literals.json").read_text())
     methods = {m["declaring_type"]: m for m in native["mapped_methods"] if m["name"] == "GetAnimationSuffix"}
     standing = {"LevelCACatOnToddlerHandler", "LevelCADogOnToddlerHandler", "LevelCASmallPetOnToddlerHandler"}
     posture = {"LevelCAToddlerBottleItemHandler", "LevelCAToyCarToddlerItemHandler", "LevelCAToddlerPlayablesItemHandler",
@@ -174,21 +175,47 @@ def suffix_rules(asm_report: Path, overrides: list[dict]) -> list[dict]:
         cls = entry["class"]
         short = cls.rsplit(".", 1)[-1]
         method = methods[cls]
+        assembly = ROOT / method["assembly"]
+        code = assembly.read_text()
+        literals = [item["literal"] for item in literal_report[assembly.name] if "literal" in item]
         if short in standing:
+            if literals != ["_Standing"]:
+                raise ValueError(f"constant suffix evidence changed: {cls}")
             expression, cases = '"_Standing"', {"all": "_Standing"}
         elif short == "LevelCAToddlerDancingClothingSpineSkinHandler":
+            if literals != ["_Sitting", ""] or "#0x440" not in code or "cmp\tw8, #0x2" not in code:
+                raise ValueError(f"conditional suffix evidence changed: {cls}")
             expression = 'toddler.PostureType == Sitting ? "_Sitting" : ""'
             cases = {"None": "", "Standing": "", "Sitting": "_Sitting"}
         elif short in posture:
+            callees = {(candidate["type"], candidate["name"]) for branch in method["direct_branches"] for candidate in branch["metadata_candidates"]}
+            if literals != ["_"] or "#0x440" not in code or ("System.Enum", "ToString") not in callees:
+                raise ValueError(f"posture suffix evidence changed: {cls}")
             expression = '"_" + toddler.PostureType.ToString()'
             cases = {"None": "_None", "Standing": "_Standing", "Sitting": "_Sitting"}
         else:
             raise ValueError(f"suffix override needs separate native analysis: {cls}")
-        assembly = ROOT / method["assembly"]
         rules.append({"class": cls, "vaddr": method["vaddr"], "assembly": rel(assembly),
                       "assembly_sha256": digest(assembly), "expression": expression,
-                      "defined_posture_cases": cases, "source": entry["source"]})
+                      "defined_posture_cases": cases, "source": entry["source"], "native_evidence_checked": True})
     return rules
+
+
+def verify_pointer_edges(report: dict) -> int:
+    count = 0
+    metadata = report["metadata"]["files"]
+    for asset in report["assets"]:
+        expected = asset["file"], asset["path_id"]
+        for edge in asset["users"]:
+            source, file_id = edge["file"], edge["file_id"]
+            target_file = source if file_id == 0 else metadata[source]["externals"][file_id - 1]
+            # The stored source pointer ID is retained separately from its resolved target.
+            if (target_file, edge["target_path_id"]) != expected:
+                raise ValueError(f"edge identity failed independent reconstruction: {edge}")
+            count += 1
+    if count != report["summary"]["component_scan"]["resolved_data_edges"]:
+        raise ValueError("pointer-edge count disagrees with summary")
+    return count
 
 
 def main() -> int:
@@ -251,7 +278,7 @@ def main() -> int:
                 target = archive.resolve(source_file, file_id, path_id)
                 if target in data:
                     users[target].append({"class": class_name, "file": source_file, "path_id": handler_id,
-                                          "field": field, "file_id": file_id})
+                                          "field": field, "file_id": file_id, "target_path_id": path_id})
                     handler_stats["resolved_data_edges"] += 1
                     found = True
                 elif declared_data:
@@ -308,6 +335,24 @@ def main() -> int:
         asset_rows.append(result)
     archive.save()
     recovered_suffix_rules = suffix_rules(args.asm_report, suffix_overrides)
+    absent_reaction_names = []
+    absent_initiating_names = []
+    for asset in asset_rows:
+        for reaction in asset.get("reactions", []):
+            actor = reaction["names"].get("animationName")
+            reacting = reaction["names"].get("reactionAnimationName")
+            context = {"file": asset["file"], "path_id": asset["path_id"], "asset": asset["name"]}
+            if actor and not actor["candidate_source_spine_types"]:
+                leaf = actor["name"].rsplit("/", 1)[-1]
+                alternatives = [{"spine_type": st, "name": name} for st, names in rigs.items()
+                                for name in sorted(names) if name.rsplit("/", 1)[-1] == leaf]
+                absent_initiating_names.append({**context, "name": actor["name"], "same_leaf_name_candidates": alternatives})
+            if reacting and reacting["exact_name_present_in_reacting_rig"] is not True:
+                raw_name = reacting["name"]
+                candidates = {raw_name.removeprefix("CA/"), "CA/" + raw_name}
+                target_names = rigs.get(reaction["config"].get("spineType"), set())
+                absent_reaction_names.append({**context, "name": raw_name, "rig_source": reaction["rig_source"],
+                                              "CA_prefix_variant_candidates": sorted(candidates & target_names)})
     summary = {"data_assets": sum(x["kind"] == "data" for x in asset_rows),
                "reaction_assets": sum(x["kind"] == "reaction" for x in asset_rows),
                "assets_with_component_links": sum(bool(x["users"]) for x in asset_rows),
@@ -318,22 +363,35 @@ def main() -> int:
         "inputs": {"bundle": rel(args.bundle), "bundle_sha256": archive.bundle_hash,
                    "animation_inventory": rel(args.inventory), "animation_inventory_sha256": digest(args.inventory),
                    "contextual_native_report": rel(args.asm_report), "contextual_native_report_sha256": digest(args.asm_report),
+                   "suffix_literal_report_sha256": digest(args.asm_report.parent.parent / "contextual-suffix-literals.json"),
                    "monobehaviour_inventories": sources},
         "summary": summary,
         "name_rule_evidence": {"CreateAnimationName": "0x212fe74", "HasCAPrefixForCAAnimations": "0x2187938",
                                "formula": "full flag: config.name; otherwise (CA/ for SpineType 1,2,13) + (folderNameOverride or handler.GetFolderName()) + / + config.name + handler.GetAnimationSuffix()",
                                "scope": "Data FolderName and empty suffix are used only as candidates; full names bypass folder/prefix/suffix"},
+        "reaction_name_rule_evidence": {
+            "FindReactionIfExist_predicate": "0x1ee91b0: System.String.op_Equality compares stored initiating name to requested name",
+            "GetResolvedReactionAnimationName": "0x22483d0: nonempty reactionAnimationNames list selects a random element; otherwise returns reactionAnimationName unchanged",
+            "scope": "Candidate spelling/folder changes are reported as followups; original data is preserved"},
         "rig_sources_by_spine_type": rig_sources, "assets": asset_rows,
         "unresolved_declared_data_fields": unresolved, "declared_suffix_override_classes": suffix_overrides,
         "suffix_rules": {"posture_enum": {"None": 0, "Standing": 1, "Sitting": 2},
                          "posture_backing_field_offset_in_LevelToddler": "0x440",
                          "base_handler_suffix": "", "overrides": recovered_suffix_rules},
         "metadata": {"source_file_count": len(archive.used), "files": archive.used},
+        "followups": {"reaction_name_absences": absent_reaction_names,
+                      "initiating_name_absences": absent_initiating_names,
+                      "assets_without_direct_serialized_component_reference": [
+                          {"file": a["file"], "path_id": a["path_id"], "name": a["name"], "kind": a["kind"]}
+                          for a in asset_rows if not a["users"]]},
         "limits": ["Presence of the generated base name in the correct rig does not prove runtime selection, priority, cancellation, or effects.",
                    "Handler-specific folder, SpineType, swappable data and call-time posture must still be reconciled before treating candidates as executed names; suffix formulas are separately recorded.",
                    "A missing base name can be explained by a runtime suffix/override and is not a defect verdict.",
                    "Rig filenames are explicit mappings to the extracted skeleton inventory; full scene-to-SkeletonDataAsset ownership remains separate evidence."],
     }
+    report["verification"] = {"pointer_edges_independently_reconstructed": verify_pointer_edges(report),
+                              "suffix_override_declarations_covered": len(recovered_suffix_rules) == len(suffix_overrides),
+                              "unique_composite_asset_identities": len(data) == len(asset_rows)}
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps({"summary": summary, "metadata_files": len(archive.used), "cache_hits": archive.cache_hits,
                       "blocks_decoded": archive.blocks_decoded, "report": rel(args.output)}, ensure_ascii=False, indent=2))

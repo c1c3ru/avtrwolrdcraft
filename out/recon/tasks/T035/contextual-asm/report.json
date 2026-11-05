@@ -9,6 +9,7 @@
   },
   "tool": "/usr/lib/llvm-21/bin/llvm-objdump",
   "target_types": [
+    "<>c__DisplayClass32_0",
     "Game.Level.ContextualAnimation.LevelCACatOnToddlerHandler",
     "Game.Level.ContextualAnimation.LevelCADogOnToddlerHandler",
     "Game.Level.ContextualAnimation.LevelCASmallPetOnToddlerHandler",
@@ -22,16 +23,27 @@
     "Game.Level.ContextualAnimation.LevelCAToddlerPacifierItemHandler",
     "Game.Level.ContextualAnimation.LevelCAToddlerPlayablesItemHandler",
     "Game.Level.ContextualAnimation.LevelCAToyCarToddlerItemHandler",
+    "Game.Level.LevelReactionOfAvatarsOnCAAnimationHandler",
     "PWC.AvatarSpine.SpineTypeExtensionMethods",
     "PWC.Level.ContextualAnimation.LevelCAHandlerBase",
     "PWC.LevelContextualAnimation.LevelCAConfig",
     "PWC.PSDToLevel.LevelContextualAnimation.LevelCADropAreaHandlerWithData",
-    "PWC.PSDToLevel.LevelContextualAnimation.LevelCAItemHandlerWithData"
+    "PWC.PSDToLevel.LevelContextualAnimation.LevelCAItemHandlerWithData",
+    "ReactionAnimationData"
   ],
   "requested_methods": {
     "PWC.LevelContextualAnimation.LevelCAConfig": [
       "CreateAnimationName",
       "IsValid"
+    ],
+    "ReactionAnimationData": [
+      "GetResolvedReactionAnimationName"
+    ],
+    "Game.Level.LevelReactionOfAvatarsOnCAAnimationHandler": [
+      "FindReactionIfExist"
+    ],
+    "<>c__DisplayClass32_0": [
+      "<FindReactionIfExist>b__0"
     ],
     "PWC.AvatarSpine.SpineTypeExtensionMethods": [
       "HasCAPrefixForCAAnimations"
@@ -97,6 +109,162 @@
     ]
   },
   "mapped_methods": [
+    {
+      "declaring_type": "Game.Level.LevelReactionOfAvatarsOnCAAnimationHandler",
+      "name": "FindReactionIfExist",
+      "token": "0x06003a38",
+      "vaddr": "0x1ee58a0",
+      "file_offset": "0x1ee18a0",
+      "window_stop_exclusive": "0x1ee59dc",
+      "window_bytes": 316,
+      "boundary": "next distinct metadata start, capped at 16384; not proven body extent",
+      "assembly": "out/recon/tasks/T035/contextual-asm/FindReactionIfExist_0000000001ee58a0.asm.txt",
+      "command": [
+        "/usr/lib/llvm-21/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1ee58a0",
+        "--stop-address=0x1ee59dc",
+        "/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "direct_branches": [
+        {
+          "site": "0x1ee58d0",
+          "kind": "bl",
+          "target": "0x1b886e8",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee58dc",
+          "kind": "bl",
+          "target": "0x1b886e8",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee58e8",
+          "kind": "bl",
+          "target": "0x1b886e8",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee58f4",
+          "kind": "bl",
+          "target": "0x1b886e8",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee5900",
+          "kind": "bl",
+          "target": "0x1b886e8",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee5910",
+          "kind": "bl",
+          "target": "0x1b88970",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee591c",
+          "kind": "bl",
+          "target": "0x339a46c",
+          "metadata_candidates": [
+            {
+              "type": "System.Object",
+              "name": ".ctor",
+              "token": "0x06000fb2"
+            }
+          ]
+        },
+        {
+          "site": "0x1ee5938",
+          "kind": "bl",
+          "target": "0x1b88694",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee594c",
+          "kind": "bl",
+          "target": "0x1b8885c",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee595c",
+          "kind": "bl",
+          "target": "0x3ccb8d8",
+          "metadata_candidates": [
+            {
+              "type": "UnityEngine.Object",
+              "name": "op_Equality",
+              "token": "0x060007c6"
+            }
+          ]
+        },
+        {
+          "site": "0x1ee5980",
+          "kind": "bl",
+          "target": "0x1b88970",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee599c",
+          "kind": "bl",
+          "target": "0x2eae6ec",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee59c0",
+          "kind": "b",
+          "target": "0x2cf0d84",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x1ee59d8",
+          "kind": "bl",
+          "target": "0x1b88980",
+          "metadata_candidates": []
+        }
+      ],
+      "indirect_calls": []
+    },
+    {
+      "declaring_type": "<>c__DisplayClass32_0",
+      "name": "<FindReactionIfExist>b__0",
+      "token": "0x06003a4f",
+      "vaddr": "0x1ee91b0",
+      "file_offset": "0x1ee51b0",
+      "window_stop_exclusive": "0x1ee91d4",
+      "window_bytes": 36,
+      "boundary": "next distinct metadata start, capped at 16384; not proven body extent",
+      "assembly": "out/recon/tasks/T035/contextual-asm/<FindReactionIfExist>b__0_0000000001ee91b0.asm.txt",
+      "command": [
+        "/usr/lib/llvm-21/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1ee91b0",
+        "--stop-address=0x1ee91d4",
+        "/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "direct_branches": [
+        {
+          "site": "0x1ee91cc",
+          "kind": "b",
+          "target": "0x31d39e4",
+          "metadata_candidates": [
+            {
+              "type": "System.String",
+              "name": "op_Equality",
+              "token": "0x06000233"
+            }
+          ]
+        },
+        {
+          "site": "0x1ee91d0",
+          "kind": "bl",
+          "target": "0x1b88980",
+          "metadata_candidates": []
+        }
+      ],
+      "indirect_calls": []
+    },
     {
       "declaring_type": "Game.Level.ContextualAnimation.LevelCAToddlerBlanketItemHandler",
       "name": "GetAnimationSuffix",
@@ -1692,6 +1860,57 @@
       "indirect_calls": []
     },
     {
+      "declaring_type": "ReactionAnimationData",
+      "name": "GetResolvedReactionAnimationName",
+      "token": "0x0600731f",
+      "vaddr": "0x22483d0",
+      "file_offset": "0x22443d0",
+      "window_stop_exclusive": "0x2248458",
+      "window_bytes": 136,
+      "boundary": "next distinct metadata start, capped at 16384; not proven body extent",
+      "assembly": "out/recon/tasks/T035/contextual-asm/GetResolvedReactionAnimationName_00000000022483d0.asm.txt",
+      "command": [
+        "/usr/lib/llvm-21/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x22483d0",
+        "--stop-address=0x2248458",
+        "/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "direct_branches": [
+        {
+          "site": "0x22483f0",
+          "kind": "bl",
+          "target": "0x1b886e8",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x22483fc",
+          "kind": "bl",
+          "target": "0x1b886e8",
+          "metadata_candidates": []
+        },
+        {
+          "site": "0x2248424",
+          "kind": "bl",
+          "target": "0x3cc6028",
+          "metadata_candidates": [
+            {
+              "type": "UnityEngine.Random",
+              "name": "Range",
+              "token": "0x0600068d"
+            }
+          ]
+        },
+        {
+          "site": "0x2248444",
+          "kind": "b",
+          "target": "0x2cf044c",
+          "metadata_candidates": []
+        }
+      ],
+      "indirect_calls": []
+    },
+    {
       "declaring_type": "PWC.Level.ContextualAnimation.LevelCAHandlerBase",
       "name": "GetAnimationSuffix",
       "token": "0x06008d14",
@@ -1721,6 +1940,9 @@
   ],
   "missing_methods": {
     "PWC.LevelContextualAnimation.LevelCAConfig": [],
+    "ReactionAnimationData": [],
+    "Game.Level.LevelReactionOfAvatarsOnCAAnimationHandler": [],
+    "<>c__DisplayClass32_0": [],
     "PWC.AvatarSpine.SpineTypeExtensionMethods": [],
     "PWC.Level.ContextualAnimation.LevelCAHandlerBase": [],
     "Game.Level.ContextualAnimation.LevelCAToddlerBottleItemHandler": [],
