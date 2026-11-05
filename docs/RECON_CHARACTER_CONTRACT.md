@@ -188,3 +188,5 @@ Provado: `_movementType` só é gravado em `OnMovement` (`0x22a1904` com `wzr`; 
 Conclusão sustentada: **o Character nunca entra em Run no original**; o ramo `Movement_Cycles/Run` (`0x22a1cd8`) só seria alcançado com estado anterior 3, que nunca é produzido. `Movement_Cycles/Run` existe no esqueleto, mas não é usado pelo animator (só o `Treadmill_P151` e `LevelAnimal` o usam). A cópia deve manter `CanEnterRun = false` para Character, e isso agora é paridade provada, não lacuna.
 
 Limite: não cobre escrita por reflexão/serialização nem por outra classe com layout idêntico; não foi verificada execução no aparelho.
+
+Atualizacao 2026-11-05: os 11 testes de LocomotionStateMachineTests passaram no Unity 6000.6.6f1 EditMode (28/28 com os de arraste).
