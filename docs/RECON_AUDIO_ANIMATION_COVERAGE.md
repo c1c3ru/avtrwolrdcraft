@@ -3,7 +3,7 @@
 Ferramentas: `tools/recon_audio_coverage.py`, `tools/recon_audio_scan_all.py`, `tools/recon_animation_coverage.py` (saídas em `out/recon/tasks/T032/`), `tools/skel_dump` (agora com detalhes dos eventos Spine). Tudo estático.
 
 ## 1. Sons
-**Disponível (concreto).** 2.781 clipes extraídos (WAV, 1,95 GB) e o registro oficial `PazuCore.AudioClipPaths` (ScriptableObject `name → path` em `Resources`): **2.781 entradas, 1:1 com os clipes** (uma só difere pela apóstrofe: `Avatar_Doesn't_Fit_And_Drop` ↔ arquivo `Avatar_Doesn_t_Fit_And_Drop`). Pastas do registro: `Sound/SFX` 2.513, `Sound/Music` 174, `Sound/Ambience` 80, `PazuCore/Sound` 13.
+**Disponível (concreto).** 2.781 clipes extraídos (WAV, 1,95 GB) e o registro oficial `PazuCore.AudioClipPaths` (ScriptableObject `name → path` em `Resources`): **2.781 entradas, 1:1 com os clipes** (uma só difere pela apóstrofe: `Avatar_Doesn't_Fit_And_Drop` ↔ arquivo `Avatar_Doesn_t_Fit_And_Drop`). Pastas do registro: `Sound/SFX` 2.514, `Sound/Music` 174, `Sound/Ambience` 80, `PazuCore/Sound` 13.
 **Como o original toca som:** por **nome**. 43 classes de som e centenas de handlers guardam `_soundName` e a classe `GameSoundPlayer` (5.496 instâncias) resolve o nome pelo registro. As cenas amostradas (level4, level8, level237) não têm `AudioSource`, só `AudioListener`.
 **Quem referencia cada clipe (evidência):**
 | Canal | Clipes |
@@ -46,3 +46,15 @@ O repositório já versiona 3.177 arquivos de `Resources` (114 MB) em git comum,
 
 ## 5. Total e estratégia de armazenamento (decisão pendente)
 Tudo no cliente: ~190–213 MB de som + ~200 MB de animações (texto + texturas de atlas, antes da compressão de textura do Unity) = **~400 MB de binários novos**. Precedente do projeto: 114 MB de `Resources` versionados em git comum (sem LFS). Opções: (a) git comum, (b) Git LFS, (c) fora do git (pacotes no Drive que já existem em `out/pack`) com script de importação reprodutível (WAV→Vorbis, cópia de esqueletos/atlas/texturas) e só o código e os índices (registro de sons, nomes) versionados.
+
+## 6. Sons importados no cliente, sem perda (2026-11-05)
+**Achado:** todos os 2.781 `AudioClip` do original têm `m_CompressionFormat = 1` (**Vorbis**, container FSB5 do FMOD), 202,9 MB no total (bate com os 203 MB de `resources.resource`). Os WAV extraídos antes eram o PCM **decodificado** desse Vorbis (1,95 GB); recodificar para Vorbis adicionaria uma geração de perda.
+**Solução (sem perda):** `tools/recon_audio_original.py` e `tools/import_audio_original.py` reconstroem o `.ogg` a partir do fluxo Vorbis original, sem recodificar (`fsb5` + libvorbis, só reempacotam os pacotes e regeneram o cabeçalho):
+- **2.654 clipes** viram `.ogg` com o fluxo idêntico ao do jogo. Validação: 60 de 60 amostras decodificam para o mesmo áudio do WAV (erro RMS relativo < 2%, mesma duração).
+- **127 clipes** (taxas baixas: 22.050, 16.000, 11.000, 8.000 Hz) têm um cabeçalho de setup Vorbis que a tabela do `fsb5` não conhece (testei qualidades 1 a 100, nenhuma reproduz); ficam em **FLAC do PCM exato que o jogo decodifica** (6,1 MB).
+- **Total: 216,9 MB** (2.654 `.ogg` 210,8 MB + 127 FLAC 6,1 MB), contra 1,95 GB de WAV.
+**Layout:** cada som vai no **mesmo caminho do registro do jogo** (`Assets/Resources/Sound/SFX|Music|Ambience/<nome>`, `Resources/PazuCore/Sound/<nome>`), então `Resources.Load(path)` funciona como no original. `Resources/Sound/sound-registry.json` guarda `nome → caminho`, formato, canais, frequência, duração e bytes.
+**Código:** `Core/Audio/SoundRegistry.cs` (consulta por nome, sem diferenciar maiúsculas; nomes de handler com pasta, extensão e pares `A^B`), `Runtime/GameSoundLibrary.cs` (`GetClip(nome)`), `Editor/SoundImportPostprocessor.cs` (Music e Ambience em Streaming, SFX em Decompress On Load, Vorbis qualidade máxima; FLAC como PCM).
+**Verificação (Unity 6000.6.6f1):** EditMode 8 testes novos (2.781 entradas, cada arquivo existe, 2.654 + 127, categorias 2.514/174/80/13); PlayMode 3 testes novos (mais de 200 clipes reais carregam pelo caminho do registro com a duração e os canais do original; música em streaming; FLAC como PCM).
+**Ressalva honesta sobre "sem perda":** o repositório guarda o fluxo original bit a bit. O Unity recodifica os `.ogg` no build (Vorbis qualidade máxima), que é uma geração a mais; o jogo original fez o mesmo a partir dos seus masters. Se for preciso zero geração em runtime, a alternativa é carregar os `.ogg` de `StreamingAssets` por `UnityWebRequestMultimedia`.
+**Não coberto:** o `GameSoundPlayer` (volume por distância, loop, mute) continua sem decodificar; o registro só resolve nome → clipe.
