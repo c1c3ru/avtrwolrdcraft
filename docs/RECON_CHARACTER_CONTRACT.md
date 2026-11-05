@@ -206,3 +206,17 @@ Ferramentas: `tools/recon_spawner_census.py` (saída `out/recon/tasks/T032/spawn
 Inferido (não provado): qual tipo concreto de área vai para `SleepOn` (provavelmente cama) e qual para `PerformBasicDrop`; o que acontece com `_spawnPoint` nulo (7 casos); o significado do intervalo aleatório de `HandleCAHandlers`.
 
 Contrato C#: `Core/Avatar/AvatarSpawnRules.cs` (`Decide`, `SetsDidSpawn`, `LogsError`, mensagens originais) com `AvatarSpawnRulesTests` (9 casos).
+
+## Recorte 2026-11-05 (13): idle apropriado, objeto segurado e animações contextuais do Character
+Ferramenta: `tools/recon_disasm.py` agora resolve também slots de **tipo** (índice de uso → `byvalTypeIndex` → nome), o que identifica `isinst`/comparações de classe.
+
+**`PlayProperIdleAnimation` (`0x22a3a40`), provado.** Campos de `LevelCharacter`: `+0x3E0` = `LockedCAHandler`, `+0x3B8` = `CurrentRestArea`. Prioridade:
+1. `LockedCAHandler != null` (semântica Unity): toca em loop o idle que o próprio handler informa (chamada virtual, slot `0x2E8` do handler) via `SetAddAnimationInternal`.
+2. Senão, se o delegate `OverridePlayProperIdleAnimationAction` (`+0x28`, `Func<bool>`) devolve verdadeiro, não toca nada.
+3. Senão: `CurrentRestArea` é `LevelSitArea` → `CA/Chair_Sitting/Sit_On_Chair_Idle`; `LevelSleepArea` → `CA/Bed_Laying/Laying_Idle`; qualquer outro → `PlayStandIdleAnimation` (`Idle_Stand_1`).
+
+**`UpdateMovementOverrideHandler` (`0x22a5c10`), provado.** `_movementOverrideHandler` (`+0x60`) vem de `GetHeldItem(mão 1 = LeftHand)`; se for nulo (Unity), `GetHeldItem(mão 2 = RightHand)`. `GetHeldItem` usa `LevelCharacterInteractionHandler.TryGetHandItem` e o componente `LevelCharacterMovementOverrideHandler`. É chamado ao fim de `OnBeginMovement` (salto de cauda). Inferido: `MovementCyclesWalkOverride` do handler substitui o ciclo de andar; o uso exato dentro de `OnMovement` não foi confirmado.
+
+**`OnBeginMovement` (`0x22a1150`), parcial.** Provado: liga `_canForceNormalDragging`; lê `GetCurrentBehaviorItem`; testa se o handler é `LevelCAItemWithSkinHandlerBase`, `LevelCAItemSpineNoSkinHandlerBase` ou `LevelCAHandlerWithData` (checagem de tipo em cadeia); toca `Lift_Idle` via `SetAddAnimationInternal` em um ramo; compara uma string com `"Legs_Shoes_119"`; termina em `UpdateMovementOverrideHandler`. Não determinado: a condição exata que escolhe `Lift_Idle` e o que `"Legs_Shoes_119"` representa (não é skin, slot nem animação de `Avatar_Spine`; aparece só como prefixo de ids como `Character_Legs_Shoes_1194_Color` nos packs de roupa, ou seja, pode ser comparação por prefixo ou um id literal de calçado).
+
+Contratos C#: `Core/Avatar/ProperIdleSelector.cs` (7 testes) e `Core/Avatar/HeldItemRules.cs` (4 testes).

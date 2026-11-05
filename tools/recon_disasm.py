@@ -30,6 +30,12 @@ def main():
     target = [x for x in rows if x["name"] == meth and x["declaring_type"].endswith(typ)]
     if not target:
         raise SystemExit("method not found")
+    # indice de tipo (Il2CppType) -> nome, via byvalTypeIndex da definicao de tipo (campo +8 do registro de 88 bytes)
+    type_names = {}
+    table = meta.tables["types"]
+    for idx, typ in enumerate(meta.types):
+        byval = struct.unpack_from("<I", meta.data, table["offset"] + idx * 88 + 8)[0]
+        type_names.setdefault(byval, (typ["namespace"] + "." if typ["namespace"] else "") + typ["name"])
     cs = Cs(CS_ARCH_ARM64, CS_MODE_ARM)
     cs.detail = False
     for x in target[:1]:
@@ -55,6 +61,10 @@ def main():
                     got = pages[base_reg] + off
                     try:
                         enc = struct.unpack_from("<Q", elf.data, elf.offset(elf.pointer(got), 8))[0]
+                        if enc >> 29 == 1:
+                            tname = type_names.get((enc & 0x1FFFFFFF) >> 1)
+                            if tname:
+                                note = "  ; type " + tname
                         if enc >> 29 == 5:
                             idx = (enc & 0x1FFFFFFF) >> 1
                             ln, di = struct.unpack_from("<II", meta.data, lt + idx * 8)
