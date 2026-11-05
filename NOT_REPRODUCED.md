@@ -73,7 +73,7 @@ contracts/store-claim.contract.json -- tools/dotnet/dotnet <ReplayCore.dll>`.
   1500 → **1200**. O cliente tem 500, valor do item vizinho "Meu primeiro hamster", que é outro item. E `PB25`
   está em `StoreCatalog.Observed`, ou seja, está marcado como "lido do print" e não bate com ele.
 - **Divergência 2: `PB27` "Festa à Fantasia".** Print (`imagem6.jpeg`, nome truncado "…TASIA", 25% OFF) mostra
-  **450**; o cliente tem 600 (que é o preço riscado). Associação provável, não confirmada.
+  **450**; o cliente tem 600 (que é o preço riscado). Associação confirmada pela arte (`Resources/Store/packs/PB27.png` é o mesmo card).
 - `ObservedPrintPrices_AreKept` (StoreCatalogTests) não cobre `PB25` nem `PB27`, por isso não pegou isso.
 - Itens vistos nos prints sem equivalente em `StoreCatalog.All`: Carro de aventura (700), Mini Eu (300),
   Festa de formatura (600), Essenciais de bebê (800), Estábulo da cabana (1200).
