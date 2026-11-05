@@ -26,3 +26,19 @@ Não coberto: pools de literais embutidos entre métodos (não observados), bloc
 
 ## Decisao de escopo (2026-11-05, usuario)
 As 80 corrotinas de QA/automacao (`PWC.QA.*`, `RTA*`) e as demos de lobby (`LobbyHelloWorld`) ficam **excluidas da reimplementacao**. Escopo restante de corrotinas: gameplay (138) e mundo/home/loja (31), ou seja 169, mais as de multiplayer e SDK apenas se uma tarefa futura as exigir. Isso so afeta o inventario; os dados de `coroutines.jsonl` nao foram apagados.
+
+---
+
+# T026 (parcial): durações de `WaitForSeconds`
+Ferramentas: `tools/recon_image_methods.py` (mapa método→VA de qualquer imagem; gerado `UnityEngine.CoreModule`: 2.903 métodos, 2.598 com código; `WaitForSeconds..ctor` em `0x3cd11cc`, `WaitForSecondsRealtime..ctor` em `0x3cd12c8`) e `tools/recon_waits.py` (capstone; para cada `bl` ao construtor recua até a instrução que define `s0`: `fmov` imediato, `adrp`+`ldr` do `.rodata`, `mov`/`movk`+`fmov`, ou segue cópias `fmov sA, sB`). Saída: `out/recon/tasks/T032/waits.jsonl`.
+
+## Provado
+- **146 corrotinas** criam `WaitForSeconds`/`WaitForSecondsRealtime`, num total de **230** esperas.
+- **166 esperas têm duração constante** (72%): `fmov` imediato 109, `.rodata` 53, `mov`+`fmov` 2, zero 2. As outras **64 são dinâmicas** (valor vindo de campo ou cálculo; sem constante no código; para essas o valor está nos dados serializados ou em tempo de execução).
+- Durações mais comuns: 1,0 s (43), 0,5 s (23), 0,3 s (21), 2,0 s (8), 0,1 s (7), 3,0 s (7), 0,25 s (7), 0,4 s (6), 1,5 s (5), 0,02 s (4), 5,0 s (4), 0,6 s (4).
+- Amostra conferida à mão no disassembly (`LevelClawMachine.PlayLightsSequence`, `0x1f24e10`): `bl 0x1b88970` (alocação), `adrp`+`ldr s0` de `0xb2ff08` (0,02 s) e `bl 0x3cd11cc` (construtor); outro sítio com `fmov s0, #0.5`.
+
+## Limites
+- Só cobre `WaitForSeconds` e `WaitForSecondsRealtime`; não extrai `WaitUntil`, `WaitForEndOfFrame`, `yield return null`, tweens nem corrotinas aninhadas, nem a ordem dos `yield`.
+- Exclui nada por escopo: as 80 corrotinas de QA/lobby (decisão do usuário) continuam no arquivo, filtre por dono ao usar.
+- O valor é o da instrução mais próxima que define `s0`; esperas cujo `s0` foi calculado em outro bloco ficam como dinâmicas (subestima as constantes).
