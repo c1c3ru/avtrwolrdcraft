@@ -122,6 +122,55 @@ namespace AvatarWorld.PlayModeTests
         static AvatarWorld.Core.Pointer.DragPhase DragPhaseOf(CharacterDragController c) { return c.Phase; }
 
         [UnityTest]
+        public IEnumerator CatalogContextualAnimationPlaysThenReturnsToIdle()
+        {
+            yield return null;
+            var catalog = CACatalogLoader.Load();
+            Assert.IsNotNull(catalog, "catalogo carregou");
+            var handler = catalog.Find("BrokenWallWithBrush", 1);
+            Assert.IsNotNull(handler);
+            int ended = 0;
+            _controller.CAEnded += () => ended++;
+
+            Assert.IsTrue(_controller.PlayContextualAnimation(handler, 0));
+            Assert.AreEqual("CA/Paint_Brush/Paint_Strokes", Current);
+            Assert.AreEqual(AvatarWorld.Core.Avatar.CAPlayType.PlayingNormalAnimation, _controller.CurrentCAPlayType);
+            Assert.AreEqual(1, _controller.ContextualAnimationCounter);
+
+            _spine.Update(600f);       // state.Update + Apply: passa do fim da animacao e dispara Complete
+            Assert.AreEqual(AvatarWorld.Core.Avatar.CAPlayType.None, _controller.CurrentCAPlayType);
+            Assert.AreEqual("Idle_Stand_1", Current);
+            Assert.AreEqual(1, ended);
+        }
+
+        [UnityTest]
+        public IEnumerator EveryCharacterCatalogConfigResolvesToARealAnimation()
+        {
+            yield return null;
+            var catalog = CACatalogLoader.Load();
+            int checkedConfigs = 0;
+            foreach (var h in catalog.ForSpineType(1))
+                for (int i = 0; i < h.configs.Length; i++)
+                {
+                    string n = h.AnimationName(i);
+                    Assert.IsTrue(_controller.HasAnimation(n) || _controller.HasAnimation(n + "__Sitting"), h.name + " -> " + n);
+                    checkedConfigs++;
+                }
+            Assert.Greater(checkedConfigs, 2000);
+        }
+
+        [UnityTest]
+        public IEnumerator InvalidHandlerOrIndexIsRejectedWithTheOriginalMessage()
+        {
+            yield return null;
+            LogAssert.Expect(LogType.Error, AvatarWorld.Core.Avatar.ContextualAnimationRules.TargetNullMessage);
+            Assert.IsFalse(_controller.PlayContextualAnimation(null, 0));
+            var handler = CACatalogLoader.Load().Find("BrokenWallWithBrush", 1);
+            LogAssert.Expect(LogType.Error, AvatarWorld.Core.Avatar.ContextualAnimationRules.TargetNullMessage);
+            Assert.IsFalse(_controller.PlayContextualAnimation(handler, 99));
+        }
+
+        [UnityTest]
         public IEnumerator ATapThatStaysUnderTenPixelsIsAClickAndKeepsIdle()
         {
             int clicks = 0;

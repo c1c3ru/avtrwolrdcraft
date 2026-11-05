@@ -20,7 +20,8 @@ class Program {
                     animations = d.Animations.Select(a => new { a.Name, a.Duration }).ToArray(),
                     skins = d.Skins.Select(s => s.Name).ToArray(),
                     slots = d.Slots.Select(s => s.Name).ToArray(),
-                    bones = d.Bones.Count, events = d.Events.Select(e => e.Name).ToArray()
+                    bones = d.Bones.Count, events = d.Events.Select(e => e.Name).ToArray(),
+                    eventDetails = d.Events.Select(e => new { e.Name, e.AudioPath, e.Volume, e.Balance, e.String, e.Int, e.Float }).ToArray()
                 }, opts));
             } catch (Exception e) {
                 Console.WriteLine(JsonSerializer.Serialize(new { file = Path.GetFileName(path), error = e.GetType().Name + ": " + e.Message }, opts));
