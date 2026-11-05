@@ -115,6 +115,9 @@ TARGET_GROUPS = {
   },
   "contextual": {
     "PWC.LevelContextualAnimation.LevelCAConfig": {"CreateAnimationName", "IsValid"},
+    "ReactionAnimationData": {"GetResolvedReactionAnimationName"},
+    "Game.Level.LevelReactionOfAvatarsOnCAAnimationHandler": {"FindReactionIfExist"},
+    "<>c__DisplayClass32_0": {"<FindReactionIfExist>b__0"},
     "PWC.AvatarSpine.SpineTypeExtensionMethods": {"HasCAPrefixForCAAnimations"},
     "PWC.Level.ContextualAnimation.LevelCAHandlerBase": {"GetAnimationSuffix"},
     **{f"Game.Level.ContextualAnimation.{name}": {"GetAnimationSuffix"} for name in (
