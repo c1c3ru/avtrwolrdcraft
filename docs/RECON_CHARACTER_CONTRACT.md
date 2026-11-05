@@ -185,3 +185,24 @@ Conclusão sustentada: **o Character nunca entra em Run no original**; o ramo `M
 Limite: não cobre escrita por reflexão/serialização nem por outra classe com layout idêntico; não foi verificada execução no aparelho.
 
 Atualizacao 2026-11-05: os 11 testes de LocomotionStateMachineTests passaram no Unity 6000.6.6f1 EditMode (28/28 com os de arraste).
+
+## Recorte 2026-11-05 (12): spawn de avatares (`LevelAvatarOneTimeSpawner`) e catálogo completo
+Ferramentas: `tools/recon_spawner_census.py` (saída `out/recon/tasks/T032/spawner-census.json`) e `tools/recon_disasm.py` (disassembly anotado com capstone: chamadas resolvidas e literais). Requer `pip install capstone` num venv.
+
+**`LevelSpawn` (`PWC.Level.LevelSpawn`)** é só um marcador: um campo `_spawner` atribuído em runtime, sem dados serializados. Marca itens criados a partir de dados persistentes (`TryGetSpawn(PDPrefabReference, out LevelSpawn)`), não avatares. As 11 instâncias de level8 não são personagens.
+
+**Catálogo de avatares**: `SpineType` numérico → 1 Character, 2 Baby, 3 Cat, 4 Dog, 13 Toddler, 14 Horse (por contagem e faixas de id). Há **1.324** avatares: 896 de `PremadeCharactersJson` e **428** em arquivos `Level_*`/`LevelPhoneAvatars`/`College_Main_Characters` com o mesmo esquema `AvatarSpineDatas`. O catálogo completo é a união; só os presets deixam 10 ids de spawner sem resolver.
+
+**Spawners em cenas** (`LevelAvatarOneTimeSpawner`, 39 instâncias em 23 cenas): 37 resolvem para Character e 2 para Cat (level35 id 101015, level84 id 100762); **nenhum Toddler, Baby, Dog ou Horse** é criado por esse spawner nas cenas. Flags: `_playAnimation` 17, `_allowSpawnWhenAlreadyInGame` 11, override de prefab 15, `_isFlipped` 2, sem ponto de spawn (`_spawnPoint` nulo) 7.
+
+**Decisão em `OnLevelPrePostInit` (`0x2299144`), provada pelo disassembly:**
+1. Sai se `!_isValid (0x42)` ou `_didSpawn (0x41)`.
+2. Se `!_allowSpawnWhenAlreadyInGame (0x31)` e `LevelAvatarData.TryGetData(_avatarId)` acha dados: registra `"LevelAvatarOneTimeSpawner: Already in game! _avatarId[...] scene[...]"`, grava `_didSpawn = true` e sai.
+3. Se já existe avatar com esse id no nível atual (predicado `<OnLevelPrePostInit>b__10_0`): registra `"...Already in current level! _avatarId["`, grava `_didSpawn = true` e sai. Esta checagem roda mesmo com `_allowSpawnWhenAlreadyInGame`.
+4. Senão: `PlaceAvatarInScene(_spawnPoint, _avatarId)`; se `_playAnimation (0x30)` chama `HandleCAHandlers(avatar)`; se o avatar existe chama `LevelItem.SetFlipped(avatar, _isFlipped (0x40), true)` e grava `_didSpawn = true`.
+`_didSpawn` é persistido (`GetPersistentData` devolve `BoolPD`, `SetPersistentData` restaura).
+`SpawnAvatar` (`PDPrefabReference.IsValid` → override de prefab; `LevelUtils.SpawnAvatar`; `PDSceneObject.EnsureSceneGuid`; erro `"Expected PDPrefabPack!"`). `PlaceAvatarInScene` escolhe por tipo da área no ponto (ramos que chamam `LevelCharacterInteractionHandler.SleepOn` ou `LevelItem.PerformBasicDrop`; padrão `"No case found for area["`). `HandleCAHandlers`: `AddCAHandlers`, número aleatório em intervalo e `PlayContextualAnimation`.
+
+Inferido (não provado): qual tipo concreto de área vai para `SleepOn` (provavelmente cama) e qual para `PerformBasicDrop`; o que acontece com `_spawnPoint` nulo (7 casos); o significado do intervalo aleatório de `HandleCAHandlers`.
+
+Contrato C#: `Core/Avatar/AvatarSpawnRules.cs` (`Decide`, `SetsDidSpawn`, `LogsError`, mensagens originais) com `AvatarSpawnRulesTests` (9 casos).
