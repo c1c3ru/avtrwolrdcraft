@@ -23,3 +23,6 @@ Ferramenta: `tools/recon_method_extents.py` → `out/recon/method-extents.jsonl`
 Resultado: **35.825 de 35.830** extensões (99,986%) são consistentes (ret 9.947, b 8.814, bl-noreturn 16.802, br 267). Os 5 restantes ficam sem validação.
 Leitura correta: é **consistência forte**, não prova formal por método. Um corte errado raramente cairia logo após um terminador em 35 mil casos, então "início do próximo método = fim do atual" passa a ser a regra adotada, com janela máxima por método quando o próximo está longe. Isso sustenta `tools/recon_disasm.py`, `recon_method_literals.py` e `recon_coroutines.py`, que usam essa janela.
 Não coberto: pools de literais embutidos entre métodos (não observados), blocos frios fora da janela e corpos de métodos genéricos compartilhados.
+
+## Decisao de escopo (2026-11-05, usuario)
+As 80 corrotinas de QA/automacao (`PWC.QA.*`, `RTA*`) e as demos de lobby (`LobbyHelloWorld`) ficam **excluidas da reimplementacao**. Escopo restante de corrotinas: gameplay (138) e mundo/home/loja (31), ou seja 169, mais as de multiplayer e SDK apenas se uma tarefa futura as exigir. Isso so afeta o inventario; os dados de `coroutines.jsonl` nao foram apagados.
