@@ -1,0 +1,32 @@
+{
+  "csharp_root": "client/AvatarWorldClient/Assets/Scripts",
+  "checks": [
+    {"id": "loco.floats.start_walk", "kind": "float_rodata", "va": "0xb2fe40", "expect": 0.06, "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs", "regex": "Animal = new LocomotionConfig\\s*\\{ StartWalkSpeed = ([0-9.]+)f"}},
+    {"id": "loco.floats.stop", "kind": "float_rodata", "va": "0xb2fdd8", "expect": 0.006, "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs", "regex": "Animal = new LocomotionConfig\\s*\\{ StartWalkSpeed = [0-9.]+f, StopSpeed = ([0-9.]+)f"}},
+    {"id": "loco.immediate.run_enter", "kind": "fmov_immediate", "va": "0x22656d4", "expect": 18.0, "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs", "regex": "Animal = new LocomotionConfig\\s*\\{[^}]*RunEnterSpeed = ([0-9.]+)f"}},
+    {"id": "loco.immediate.run_exit", "kind": "fmov_immediate", "va": "0x2265708", "expect": 6.0, "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs", "regex": "Animal = new LocomotionConfig\\s*\\{[^}]*RunExitSpeed = ([0-9.]+)f"}},
+    {"id": "drag.threshold_pixels", "kind": "serialized_value", "mb": "UnityEngine.EventSystems.EventSystem", "field": "m_DragThreshold", "expect": 10, "csharp": {"file": "Core/Pointer/DragIntentDetector.cs", "regex": "DefaultThresholdPixels = ([0-9.]+)f"}},
+
+    {"id": "enum.CAPlayType", "kind": "enum", "stub": "PWC/Level/ContextualAnimation/CAPlayType.cs", "csharp": {"file": "Core/Avatar/ContextualAnimationRules.cs", "enum": "CAPlayType"}},
+    {"id": "enum.MovementType", "kind": "enum", "stub": "PWC/Level/LevelToddler.cs", "stub_enum": "MovementType", "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs", "enum": "MovementKind"}},
+    {"id": "enum.PostureType", "kind": "enum", "stub": "PWC/Level/PostureType.cs", "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs", "enum": "PostureKind", "csharp_names": {"Standing": "Standing", "Sitting": "Sitting", "None": "None"}}},
+    {"id": "enum.AvatarHandType", "kind": "enum", "stub": "PWC/Level/AvatarHandType.cs", "csharp": {"file": "Core/Avatar/HeldItemRules.cs", "enum": "HandKind", "csharp_names": {"LeftHand": "Left", "RightHand": "Right", "None": "None"}}},
+
+    {"id": "str.spawn.already_in_game", "kind": "string_literal", "text": "LevelAvatarOneTimeSpawner: Already in game! _avatarId[", "csharp": {"file": "Core/Avatar/AvatarSpawnRules.cs"}},
+    {"id": "str.spawn.already_in_level", "kind": "string_literal", "text": "LevelAvatarOneTimeSpawner: Already in current level! _avatarId[", "csharp": {"file": "Core/Avatar/AvatarSpawnRules.cs"}},
+    {"id": "str.ca.target_null", "kind": "string_literal", "text": "target is null!", "csharp": {"file": "Core/Avatar/ContextualAnimationRules.cs"}},
+    {"id": "str.ca.name_empty", "kind": "string_literal", "text": " animationConfig.name is null or empty!", "csharp": {"file": "Core/Avatar/ContextualAnimationRules.cs"}},
+    {"id": "str.ca.sit_idle", "kind": "string_literal", "text": "CA/Chair_Sitting/Sit_On_Chair_Idle", "csharp": {"file": "Core/Avatar/ProperIdleSelector.cs"}},
+    {"id": "str.ca.sleep_idle", "kind": "string_literal", "text": "CA/Bed_Laying/Laying_Idle", "csharp": {"file": "Core/Avatar/ProperIdleSelector.cs"}},
+    {"id": "str.toddler.walk", "kind": "string_literal", "text": "Movement_Cycles/Walking_Loop", "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs"}},
+    {"id": "str.toddler.crawl", "kind": "string_literal", "text": "Movement_Cycles/Crawling_Loop", "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs"}},
+    {"id": "str.toddler.stand", "kind": "string_literal", "text": "General/Stand_Idle", "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs"}},
+    {"id": "str.animal.stand", "kind": "string_literal", "text": "General/Standing_Idle", "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs"}},
+    {"id": "str.animal.run_error", "kind": "string_literal", "text": "Error in LevelAnimal, animal doesn't have Running animations but tries to run", "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs"}},
+
+    {"id": "anim.character", "kind": "animations", "skeleton": "Avatar_Spine", "names": ["Idle_Stand_1", "Movement_Cycles/Walk", "Movement_Cycles/Run", "Lift_Idle", "CA/Chair_Sitting/Sit_On_Chair_Idle", "CA/Bed_Laying/Laying_Idle", "Track_Animations/Forced_To_Walk"], "csharp": {"file": "Core/Avatar/LocomotionAnimations.cs", "contains": ["Idle_Stand_1", "Movement_Cycles/Walk"]}},
+    {"id": "anim.toddler", "kind": "animations", "skeleton": "Toddler_Spine", "names": ["General/Stand_Idle", "Movement_Cycles/Walking_Loop", "Movement_Cycles/Crawling_Loop"], "csharp": {"file": "Core/Avatar/LocomotionStateMachine.cs", "contains": ["Movement_Cycles/Walking_Loop"]}},
+    {"id": "anim.dog", "kind": "animations", "skeleton": "Pet_Dog_Spine", "names": ["General/Standing_Idle", "General/Walking", "General/Running"], "csharp": {"file": "Core/Avatar/LocomotionAnimations.cs", "contains": ["General/Walking", "General/Running"]}},
+    {"id": "anim.cat", "kind": "animations", "skeleton": "Pet_Cat_Spine", "names": ["General/Standing_Idle", "General/Walking", "General/Running"], "csharp": {"file": "Core/Avatar/LocomotionAnimations.cs", "contains": ["General/Walking"]}}
+  ]
+}
