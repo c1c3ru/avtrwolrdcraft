@@ -20,6 +20,9 @@ namespace AvatarWorld.Runtime
         public bool HasRunningAnimations;
         public float GrabRadius = 1.4f;
 
+        /// <summary>Se maior que zero, substitui Time.deltaTime no Update (testes com velocidade deterministica).</summary>
+        public float DeltaTimeOverride;
+
         /// <summary>Esqueleto Spine a animar (opcional). Sem ele, so CurrentAnimation e eventos sao atualizados.</summary>
         public Spine.Unity.SkeletonAnimation Skeleton;
 
@@ -51,6 +54,8 @@ namespace AvatarWorld.Runtime
 
         void Start()
         {
+            // Family/Posture costumam ser configurados depois do AddComponent: recalcula com a configuracao final.
+            CurrentAnimation = LocomotionAnimations.NameFor(Family, Movement, Posture);
             PlayOnSkeleton(CurrentAnimation);
         }
 
@@ -59,7 +64,7 @@ namespace AvatarWorld.Runtime
 #if ENABLE_INPUT_SYSTEM
             var pointer = UnityEngine.InputSystem.Pointer.current;
             if (pointer == null) return;
-            Tick(pointer.press.isPressed, pointer.position.ReadValue(), Time.deltaTime);
+            Tick(pointer.press.isPressed, pointer.position.ReadValue(), DeltaTimeOverride > 0f ? DeltaTimeOverride : Time.deltaTime);
 #endif
         }
 
