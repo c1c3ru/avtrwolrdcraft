@@ -51,10 +51,11 @@ para a fatia Home (`Assets/Resources/HomeSlice/sprites/`). O restante permanece 
 reimplementação por enquanto — decisão de escopo (fatia por fatia), não bloqueio técnico.
 
 ## 6. Verificação visual da tela Home
-Ainda **não verificado**: nenhum dispositivo Android conectado via ADB nesta sessão
-(`adb devices` retornou lista vazia) e **correção (2026-11-05):** o Unity Editor 6000.6.6f1 está instalado (`~/Unity/Hub/Editor`, CLI `unity` no PATH) — a afirmação "sem Unity Editor" estava errada; resta sem aparelho ADB conectado nesta sessão e sem screenshot gerado para gerar um screenshot via Editor/Play Mode como alternativa. O build Android relatado
-como "Succeeded" em 2026-10-30 não está presente neste checkout (`client/.../Builds/` é ignorado
-pelo git) e precisaria ser refeito antes de instalar/visualizar.
+Parcial. `docs/HOME_VALIDATION_2026-10-31.md` registra validação em aparelho real (Xiaomi M2101K7BI, Android 13)
+com screenshots por ADB. Nesta sessão (2026-11-05) **nenhum aparelho está conectado** (`adb devices` vazio), então
+nada foi revalidado visualmente. O Unity Editor 6000.6.6f1 **está instalado** (`~/Unity/Hub/Editor`, CLI `unity`);
+uma versão anterior deste item dizia o contrário, e estava errada. O APK de desenvolvimento (`Builds/`, ignorado
+pelo Git) precisa ser refeito para nova instalação.
 
 ## 7. Auditoria por contrato (2026-11-05): o que o replay encontrou
 Ferramenta: `tools/recon_contract.py` + `tools/replay-core` (compila o `Core` sem Unity); contrato em
