@@ -51,11 +51,11 @@ para a fatia Home (`Assets/Resources/HomeSlice/sprites/`). O restante permanece 
 reimplementação por enquanto — decisão de escopo (fatia por fatia), não bloqueio técnico.
 
 ## 6. Verificação visual da tela Home
-Ainda **não verificado**: nenhum dispositivo Android conectado via ADB nesta sessão
-(`adb devices` retornou lista vazia) e nenhuma instalação do Unity Editor neste ambiente de
-execução para gerar um screenshot via Editor/Play Mode como alternativa. O build Android relatado
-como "Succeeded" em 2026-10-30 não está presente neste checkout (`client/.../Builds/` é ignorado
-pelo git) e precisaria ser refeito antes de instalar/visualizar.
+Parcial. `docs/HOME_VALIDATION_2026-10-31.md` registra validação em aparelho real (Xiaomi M2101K7BI, Android 13)
+com screenshots por ADB. Nesta sessão (2026-11-05) **nenhum aparelho está conectado** (`adb devices` vazio), então
+nada foi revalidado visualmente. O Unity Editor 6000.6.6f1 **está instalado** (`~/Unity/Hub/Editor`, CLI `unity`);
+uma versão anterior deste item dizia o contrário, e estava errada. O APK de desenvolvimento (`Builds/`, ignorado
+pelo Git) precisa ser refeito para nova instalação.
 
 ## 7. Auditoria por contrato (2026-11-05): o que o replay encontrou
 Ferramenta: `tools/recon_contract.py` + `tools/replay-core` (compila o `Core` sem Unity); contrato em
@@ -73,11 +73,11 @@ contracts/store-claim.contract.json -- tools/dotnet/dotnet <ReplayCore.dll>`.
   1500 → **1200**. O cliente tem 500, valor do item vizinho "Meu primeiro hamster", que é outro item. E `PB25`
   está em `StoreCatalog.Observed`, ou seja, está marcado como "lido do print" e não bate com ele.
 - **Divergência 2: `PB27` "Festa à Fantasia".** Print (`imagem6.jpeg`, nome truncado "…TASIA", 25% OFF) mostra
-  **450**; o cliente tem 600 (que é o preço riscado). Associação provável, não confirmada.
+  **450**; o cliente tem 600 (que é o preço riscado). Associação confirmada pela arte (`Resources/Store/packs/PB27.png` é o mesmo card).
 - `ObservedPrintPrices_AreKept` (StoreCatalogTests) não cobre `PB25` nem `PB27`, por isso não pegou isso.
 - Itens vistos nos prints sem equivalente em `StoreCatalog.All`: Carro de aventura (700), Mini Eu (300),
   Festa de formatura (600), Essenciais de bebê (800), Estábulo da cabana (1200).
 - **Não verificado:** a lógica de resgate (`LocalStoreService`) não tem vetor. O original faz isso no servidor,
   então qualquer vetor seria só a reimplementação comparada a si mesma.
 
-**Corrigido** nesta branch (decisão do autor): `PB25` → 1200 e `PB27` → 450 (preço exibido, como nos demais combos), ambos agora em `ObservedPrintPrices_AreKept`. Replay: 6/6 idênticos. Os testes Unity EditMode não foram rodados (sem Editor neste ambiente); só o replay e os 13 testes do contrato.
+**Corrigido** nesta branch (decisão do autor): `PB25` → 1200 e `PB27` → 450 (preço exibido, como nos demais combos), ambos agora em `ObservedPrintPrices_AreKept`. Replay: 6/6 idênticos. Testes Unity EditMode rodados em 2026-11-05 (Unity 6000.6.6f1, `unity test … --mode EditMode`): **144/144 aprovados**, incluindo `ObservedPrintPrices_AreKept` com PB25/PB27 (`out/test-results-pr4.xml`, ignorado no Git).

@@ -58,13 +58,13 @@
       "settle": "Só observável com o backend; fora do escopo (NOT_REPRODUCED.md §1)."
     },
     {
-      "question": "O que PB25 e PB27 vendem de fato, e o preço do catálogo local deve ser o promocional ou o riscado?",
+      "question": "O preço do catálogo local deve ser o promocional (exibido) ou o riscado? (PB25 e PB27 já mapeados aos prints.)",
       "severity": "low",
       "probes": [
         "imagem11.jpeg: Amiguinhos 1500->1200 e, ao lado, Meu primeiro hamster 500 (item separado).",
         "imagem6.jpeg: '...TASIA' 450 com selo 25% OFF."
       ],
-      "settle": "Confirmar o mapeamento print->PBxx pela arte (Resources/Store/packs) e decidir a regra de preço."
+      "settle": "Decisão de produto; hoje o cliente usa o preço exibido."
     }
   ],
   "vectors": [
@@ -140,7 +140,7 @@
       "stdout": "450\n",
       "exitCode": 0,
       "source": "print do app original: assets/exemplo_jogo_original/imagem6.jpeg",
-      "note": "Nome truncado no print ('...TASIA'); associação a PB27 é provável, não confirmada."
+      "note": "Nome truncado no print ('...TASIA'); associação a PB27 confirmada pela arte: Resources/Store/packs/PB27.png é o mesmo card."
     }
   ]
 }
