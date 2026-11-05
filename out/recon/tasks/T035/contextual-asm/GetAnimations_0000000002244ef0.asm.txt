@@ -1,0 +1,45 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 2244ef0: a9be57fe     	stp	x30, x21, [sp, #-0x20]!
+ 2244ef4: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 2244ef8: b00115d5     	adrp	x21, 0x44fd000
+ 2244efc: 9000fb54     	adrp	x20, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 2244f00: 395ec2a8     	ldrb	w8, [x21, #0x7b0]
+ 2244f04: f945de94     	ldr	x20, [x20, #0xbb8]
+ 2244f08: aa0003f3     	mov	x19, x0
+ 2244f0c: 370000c8     	tbnz	w8, #0x0, 0x2244f24 <__start_il2cpp+0x5f3d14>
+ 2244f10: 9000fb40     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 2244f14: f945dc00     	ldr	x0, [x0, #0xbb8]
+ 2244f18: 97e50df4     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2244f1c: 52800028     	mov	w8, #0x1                // =1
+ 2244f20: 391ec2a8     	strb	w8, [x21, #0x7b0]
+ 2244f24: f9400280     	ldr	x0, [x20]
+ 2244f28: f9404274     	ldr	x20, [x19, #0x80]
+ 2244f2c: b940e008     	ldr	w8, [x0, #0xe0]
+ 2244f30: 35000048     	cbnz	w8, 0x2244f38 <__start_il2cpp+0x5f3d28>
+ 2244f34: 97e50e4a     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 2244f38: aa1403e0     	mov	x0, x20
+ 2244f3c: aa1f03e1     	mov	x1, xzr
+ 2244f40: aa1f03e2     	mov	x2, xzr
+ 2244f44: 946a1a65     	bl	0x3ccb8d8 <__start_il2cpp+0x207a6c8>
+ 2244f48: 360000a0     	tbz	w0, #0x0, 0x2244f5c <__start_il2cpp+0x5f3d4c>
+ 2244f4c: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 2244f50: aa1f03e0     	mov	x0, xzr
+ 2244f54: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 2244f58: d65f03c0     	ret
+ 2244f5c: f9404260     	ldr	x0, [x19, #0x80]
+ 2244f60: b4000140     	cbz	x0, 0x2244f88 <__start_il2cpp+0x5f3d78>
+ 2244f64: f9400c13     	ldr	x19, [x0, #0x18]
+ 2244f68: aa1f03e1     	mov	x1, xzr
+ 2244f6c: 946a25d9     	bl	0x3cce6d0 <__start_il2cpp+0x207d4c0>
+ 2244f70: aa0003e1     	mov	x1, x0
+ 2244f74: aa1303e0     	mov	x0, x19
+ 2244f78: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 2244f7c: aa1f03e2     	mov	x2, xzr
+ 2244f80: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 2244f84: 17ec9bb4     	b	0x1d6be54 <__start_il2cpp+0x11ac44>
+ 2244f88: 97e50e7e     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

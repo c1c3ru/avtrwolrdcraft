@@ -1,0 +1,190 @@
+{
+ "clips_total": 2781,
+ "clip_files": 2781,
+ "data_reference_names": 740,
+ "data_names_resolving_to_a_clip": 731,
+ "data_names_without_clip": 9,
+ "sample_unresolved": [
+  "Anniversary_Splash_Screen_Loop",
+  "Daycare_Float_Loop",
+  "New_Year_Loop",
+  "New_Year_Loop_2",
+  "Petshop_Float_Loop",
+  "Sandwich_Output_Nook_L120",
+  "SinkDrinking_Fountain_Loop",
+  "Stage_Float_Loop",
+  "paywall_music"
+ ],
+ "code_literals_matching_clips": 371,
+ "spine_event_audio_paths": 48,
+ "spine_audio_paths_matching_clips": 40,
+ "code_name_prefixes": 27,
+ "clips_covered_by_code_prefixes": 749,
+ "sample_prefixes": [
+  [
+   "Avatar_",
+   459
+  ],
+  [
+   "Dog_",
+   50
+  ],
+  [
+   "Cat_",
+   39
+  ],
+  [
+   "Parrot_",
+   22
+  ],
+  [
+   "Car_",
+   21
+  ],
+  [
+   "Hamster_",
+   21
+  ],
+  [
+   "Horse_",
+   20
+  ],
+  [
+   "Snake_",
+   12
+  ],
+  [
+   "Turtle_",
+   12
+  ],
+  [
+   "Lizard_",
+   11
+  ],
+  [
+   "Rabbit_",
+   11
+  ],
+  [
+   "Crafting_",
+   10
+  ],
+  [
+   "Fish_",
+   7
+  ],
+  [
+   "Hip_Hop_Scratch_",
+   7
+  ],
+  [
+   "Blender_",
+   6
+  ],
+  [
+   "Button_",
+   5
+  ],
+  [
+   "Fantasy_Unicorn_Emit_",
+   5
+  ],
+  [
+   "Slide_",
+   5
+  ],
+  [
+   "Basketball_Net_",
+   4
+  ],
+  [
+   "Dustbunny_",
+   4
+  ]
+ ],
+ "spine_event_names": 190,
+ "spine_events_matching_clips": 35,
+ "registry_entries": 2781,
+ "clips_by_category": {
+  "Ambience": 80,
+  "SFX": 2513,
+  "Music": 174,
+  "Sound": 13,
+  "?": 1
+ },
+ "referenced_by_category": {
+  "SFX": 2093,
+  "Music": 168,
+  "Ambience": 80,
+  "Sound": 13,
+  "?": 1
+ },
+ "clips_referenced_exact_name": 1740,
+ "clips_referenced_only_by_code_prefix": 615,
+ "clips_referenced_any": 2355,
+ "clips_unreferenced": 426,
+ "sample_unreferenced": [
+  "Airport_Indoor_Airplane_Approaching",
+  "Airport_Indoor_Airplane_Landing",
+  "Airport_Indoor_Airplane_Taking_Off",
+  "Airport_Outdoor_Airplane_Landing",
+  "Airport_Outdoor_Airplane_Taking_Off",
+  "Ambulance_Siren_Loop",
+  "Anchor_Down_To_Bottom",
+  "Anchor_Middle_To_Down",
+  "Anchor_Up_To_Middle",
+  "Aquarium_Close",
+  "Aquarium_Open",
+  "Autumn_Song_Loop",
+  "BWYW_Hiphop_2_Counter_Beep",
+  "BWYW_Hiphop_2_Level_Up_Award",
+  "BWYW_Hiphop_2_Loading_Bar_Fills_Up",
+  "BWYW_Hiphop_2_Swipe_Backwards",
+  "BWYW_Hiphop_2_Swipe_Forward",
+  "Ball_Passing_Machine_Shoot",
+  "Balls_Rolling_Tube_1",
+  "Balls_Rolling_Tube_2",
+  "Banner_Change",
+  "Bass_Guitar_Loop_1",
+  "Bass_Guitar_Loop_2",
+  "Beach_Ball_Catch",
+  "Beach_Ball_Catch_And_Drop",
+  "Beach_Ball_Pass",
+  "Beach_Boombox_Loop_1",
+  "Beach_Boombox_Loop_2",
+  "Beach_Boombox_Loop_3",
+  "Beach_Flags_Changing",
+  "Bell_Chain_Ring",
+  "Bench_Swing",
+  "Big_Box_Open_2",
+  "Big_Box_Open_Without_Confetti",
+  "Big_Wall_TV_Loop_1",
+  "Big_Wall_TV_Loop_2",
+  "Big_Wall_TV_Loop_3",
+  "Big_Wall_TV_Loop_4",
+  "Big_Wall_TV_Loop_5",
+  "Big_Wall_TV_Loop_6"
+ ],
+ "refs_by_class": {
+  "PWC.Level.LevelPickUpSoundItemHandler": 1189,
+  "Game.Level.LevelPlaySound": 969,
+  "PWC.Level.LevelClickSoundItemHandler": 745,
+  "PWC.Level.LevelToggleableAudio": 610,
+  "PWC.BackgroundPlanetSoundHandler": 601,
+  "PWC.Level.LevelDropAreaSoundOnItemEndDropHandler": 509,
+  "PWC.Level.LevelPointerDownSoundItemHandler": 373,
+  "PWC.Level.LevelSoundWhileEnabled": 330,
+  "PWC.Level.LevelSoundOnEndDropItemHandler": 178,
+  "PWC.Level.LevelSoundOnDragItemHandler": 173,
+  "Game.Level.LevelMusicRecord": 92,
+  "PWC.Level.LevelToggleableAudioItemHandler": 91,
+  "PWC.Level.OnlySoundOnClick": 78,
+  "Game.Level.LevelSimpleSoundOnClickItem": 41,
+  "PWC.Level.LevelSimpleSoundPlayer": 39,
+  "Game.Level.LevelMusicRecordPlayerHandler": 38,
+  "Game.Level.LevelDJMusicRecordPlayerHandler": 11,
+  "Game.Level.LevelSimpleSoundOnClickStationaryItem": 11,
+  "PWC.Level.LevelToggleableAudioRecordPlayerListenerHandler": 9,
+  "Game.Level.LevelSimpleToggleableAudioStationaryItem": 5
+ }
+}
