@@ -113,6 +113,27 @@ TARGET_GROUPS = {
     "PWC.Inventory.InventoryManager": {"ContainsFlagType", "GetFlagCount"},
     "PWC.Inventory.InventoryFlagTypeExtensionMethods": {"GetStorePackName", ".cctor"},
   },
+  "contextual": {
+    "PWC.LevelContextualAnimation.LevelCAConfig": {"CreateAnimationName", "IsValid"},
+    "PWC.AvatarSpine.SpineTypeExtensionMethods": {"HasCAPrefixForCAAnimations"},
+    "PWC.Level.ContextualAnimation.LevelCAHandlerBase": {"GetAnimationSuffix"},
+    **{f"Game.Level.ContextualAnimation.{name}": {"GetAnimationSuffix"} for name in (
+        "LevelCAToddlerBottleItemHandler", "LevelCAToyCarToddlerItemHandler",
+        "LevelCAToddlerPlayablesItemHandler", "LevelCAToddlerHandler",
+        "LevelCASmallPetOnToddlerHandler", "LevelCADogOnToddlerHandler",
+        "LevelCAToddlerBlanketItemHandler", "LevelCAToddlerDancingClothingSpineSkinHandler",
+        "LevelCAToddlerFavoritePlushieItemHandler", "LevelCACatOnToddlerHandler",
+        "LevelCAToddlerDrinkablesItemHandler", "LevelCAToddlerEdiblesItemHandler",
+        "LevelCAToddlerPacifierItemHandler",
+    )},
+    "PWC.PSDToLevel.LevelContextualAnimation.LevelCADropAreaHandlerWithData": {
+        "GetAnimations", "GetData", "GetFolderName", "GetForcedToSitAnimation",
+        "GetLockedAnimationName", "GetPriority", "GetSpineType", "IsForceToSitWhenPossible",
+    },
+    "PWC.PSDToLevel.LevelContextualAnimation.LevelCAItemHandlerWithData": {
+        "GetAnimations", "GetData", "GetFolderName", "GetLockedAnimationName", "GetSpineType",
+    },
+  },
 }
 
 
@@ -136,7 +157,7 @@ def main() -> None:
     args.binary = args.binary.resolve()
     args.objdump = args.objdump.resolve()
     defaults = {"save": "T030/persistence-asm", "input": "T031/input-asm", "characters": "T032/character-asm",
-                "clothing": "T033/gates-asm"}
+                "clothing": "T033/gates-asm", "contextual": "T035/contextual-asm"}
     args.output = (args.output or ROOT / "out/recon/tasks" / defaults[args.scope]).resolve()
     selected = TARGET_GROUPS[args.scope]
     rows = [json.loads(line) for line in args.index.read_text(encoding="utf-8").splitlines()]
