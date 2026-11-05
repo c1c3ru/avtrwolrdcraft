@@ -12,6 +12,8 @@ namespace AvatarWorld.Core.World
         static readonly Dictionary<int, string> Keys = new Dictionary<int, string>
         {
             { 218, "dentist" }, // ZV_Dentist_T1 -> DentistOffice_L208 -> level206
+            { 32, "ballet" },   // Ballet_T1S3 -> BalletStudio_L19 -> level30
+            { 7, "cabin" },     // Cabin_Z2B5 -> Cabin_Z2B5L1 -> level15
         };
 
         public static bool TryGetKey(int defaultLevel, out string key) => Keys.TryGetValue(defaultLevel, out key);
