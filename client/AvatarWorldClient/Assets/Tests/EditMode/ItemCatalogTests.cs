@@ -1,0 +1,69 @@
+using System.Linq;
+using AvatarWorld.Core.Economy;
+using NUnit.Framework;
+using UnityEngine;
+
+namespace AvatarWorld.Core.Tests
+{
+    public class ItemCatalogTests
+    {
+        [TestCase("food", ItemPricing.Small)]
+        [TestCase("makeup", ItemPricing.Small)]
+        [TestCase("character", ItemPricing.Medium)]
+        [TestCase("Wall", ItemPricing.Medium)]
+        [TestCase("ugc", ItemPricing.Large)]
+        [TestCase("poolboxpack", ItemPricing.Large)]
+        [TestCase("dreamybabypf33box", ItemPricing.Large)]
+        [TestCase("", ItemPricing.Small)]
+        [TestCase(null, ItemPricing.Small)]
+        public void PriceFor_FollowsTheThreeBands(string category, int expected) =>
+            Assert.AreEqual(expected, ItemPricing.PriceFor(category));
+
+        [Test]
+        public void Bands_MatchTheDecidedRanges()
+        {
+            Assert.LessOrEqual(ItemPricing.Small, 500);
+            Assert.That(ItemPricing.Medium, Is.InRange(501, 899));
+            Assert.GreaterOrEqual(ItemPricing.Large, 900);
+        }
+
+        static CatalogItem I(string g, string n, string c) => new CatalogItem { Guid = g, Name = n, Category = c };
+
+        [Test]
+        public void Index_DedupsByGuid_GroupsAndPages()
+        {
+            var idx = new ItemCatalogIndex(new[] { I("a", "Bolo", "food"), I("a", "Outro", "toy"), I("b", "Anel", "food"), I("c", "Bola", "toy"), I("d", "Pao", "food") });
+            Assert.AreEqual(4, idx.Count);
+            CollectionAssert.AreEqual(new[] { "food", "toy" }, idx.Categories());
+            Assert.AreEqual(2, idx.PageCount("food", 2));
+            CollectionAssert.AreEqual(new[] { "Anel", "Bolo" }, idx.Page("food", 0, 2).Select(i => i.Name));
+            CollectionAssert.AreEqual(new[] { "Pao" }, idx.Page("food", 1, 2).Select(i => i.Name));
+            Assert.IsEmpty(idx.Page("nada", 0, 2));
+        }
+
+        [Test]
+        public void ClaimingAnItem_SpendsOnceAndIsOneTime()
+        {
+            var item = I("g1", "Cadeira", "chair");
+            var state = PlayerState.CreateNew(1000);
+            var svc = new LocalStoreService(state);
+            var first = svc.Claim(item.ToStoreItem());
+            Assert.IsTrue(first.Success);
+            Assert.AreEqual(1000 - ItemPricing.Medium, state.PazuCurrency);
+            var again = svc.Claim(item.ToStoreItem());
+            Assert.IsFalse(again.Success);
+            Assert.AreEqual(ClaimError.AlreadyClaimed, again.Error);
+        }
+
+        [Test]
+        public void ShippedCatalog_LoadsWithEveryItemPriced()
+        {
+            var json = Resources.Load<TextAsset>("Store/items");
+            Assert.IsNotNull(json);
+            var data = JsonUtility.FromJson<Runtime.ItemCatalogFile>(json.text);
+            var idx = new ItemCatalogIndex(data.items.Select(e => new CatalogItem { Guid = e.g, Name = e.n, Category = e.c }));
+            Assert.AreEqual(25812 - 0, idx.Count, 100); // um por GUID unico (algumas linhas sem nome sao descartadas)
+            Assert.IsTrue(idx.Categories().All(c => ItemPricing.PriceFor(c) >= ItemPricing.Small));
+        }
+    }
+}

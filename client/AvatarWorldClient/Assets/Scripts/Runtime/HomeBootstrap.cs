@@ -90,6 +90,16 @@ namespace AvatarWorld.Runtime
                 screen.BeginRandom(_literacy, new ChallengeSelector(_state), price, "Moedas AW",
                     () => { _save.Save(_state); store.RefreshCoins(); },
                     () => { store.RefreshCoins(); store.SelectCategory(store.Category); });
+            }, () =>
+            {
+                if (FindFirstObjectByType<ItemBrowserScreen>() != null) return;
+                var itemsGo = new GameObject("ItemBrowser");
+                itemsGo.AddComponent<ItemBrowserScreen>().Begin(_state, _save, () =>
+                {
+                    Destroy(itemsGo);
+                    store.RefreshCoins();
+                    store.SelectCategory(store.Category);
+                });
             });
         }
 
