@@ -15,8 +15,10 @@ namespace AvatarWorld.Runtime
     /// </summary>
     public sealed class WorldMapRuntime : MonoBehaviour
     {
-        const string DataResource = "WorldSlice/world";
-        const string SpritePrefix = "WorldSlice/sprites/";
+        const string DefaultDataResource = "WorldSlice/world";
+        const string DefaultSpritePrefix = "WorldSlice/sprites/";
+        string _spritePrefix = DefaultSpritePrefix;
+        bool _switching;
         const float TapMaxPixels = 18f;
         const float TapMaxSeconds = 0.45f;
 
@@ -42,14 +44,15 @@ namespace AvatarWorld.Runtime
         RectTransform _weatherPill;
         RectTransform _globe, _mapStrip;
         float _globeTargetX = GlobeClosedX;
-        int _selectedMap;
+        int _selectedMap = 1; // Bairro = cena World (level4), a unica carregada hoje
         readonly List<GameObject> _mapChecks = new List<GameObject>();
         const float GlobeClosedX = 444f, GlobeWeatherOpenX = 822f;
-        // Mundos do seletor (arte do original). So o primeiro (campus) tem cena exportada; os demais avisam.
-        static readonly (string art, string name)[] Maps =
+        // Mundos do seletor (arte do original) -> cena: Campus=College, Bairro=World, Cidade=StarDustCity,
+        // Fazenda=Countryside, Resort=Vacation, Montanha=SnowyMountain. Hoje so o Bairro tem cena exportada; os demais avisam.
+        static readonly (string art, string name, string folder)[] Maps =
         {
-            ("map_university", "Campus"), ("map_town", "Bairro"), ("map_city", "Cidade"),
-            ("map_farm", "Fazenda"), ("map_resort", "Resort"), ("map_snow", "Montanha"),
+            ("map_university", "Campus", "Maps/college"), ("map_town", "Bairro", null), ("map_city", "Cidade", "Maps/stardust"),
+            ("map_farm", "Fazenda", "Maps/countryside"), ("map_resort", "Resort", "Maps/vacation"), ("map_snow", "Montanha", "Maps/snowy"),
         };
         readonly Dictionary<string, Sprite> _uiSprites = new Dictionary<string, Sprite>();
         const int SpritesPerFrame = 24;
@@ -66,13 +69,22 @@ namespace AvatarWorld.Runtime
             _onOpenInterior = onOpenInterior;
             _onBack = onBack;
             _onOpenBasketball = onOpenBasketball;
-            var json = Resources.Load<TextAsset>(DataResource);
-            if (json == null) throw new InvalidOperationException("WorldSlice/world.json ausente em Resources");
-            _data = JsonUtility.FromJson<WorldMapData>(json.text);
+            LoadMapData(Maps[_selectedMap].folder);
             _weather = LoadWeather();
             BuildCamera();
             BuildOverlay();
             StartCoroutine(BuildSprites(onReady));
+        }
+
+        /// <summary>Le os dados do mapa: pasta null = Bairro (WorldSlice); outra = Resources/&lt;pasta&gt;/&lt;chave&gt;.json.</summary>
+        void LoadMapData(string folder)
+        {
+            string key = folder == null ? null : folder.Substring(folder.LastIndexOf('/') + 1);
+            string resource = folder == null ? DefaultDataResource : folder + "/" + key;
+            _spritePrefix = folder == null ? DefaultSpritePrefix : folder + "/sprites/";
+            var json = Resources.Load<TextAsset>(resource);
+            if (json == null) throw new InvalidOperationException(resource + " ausente em Resources");
+            _data = JsonUtility.FromJson<WorldMapData>(json.text);
         }
 
         void BuildCamera()
@@ -108,7 +120,7 @@ namespace AvatarWorld.Runtime
                 {
                     if (!_textures.TryGetValue(r.sprite, out var tex))
                     {
-                        tex = Resources.Load<Texture2D>(SpritePrefix + r.sprite);
+                        tex = Resources.Load<Texture2D>(_spritePrefix + r.sprite);
                         _textures[r.sprite] = tex;
                     }
                     if (tex == null) { Debug.LogWarning("WorldMap: sprite ausente " + r.sprite); continue; }
@@ -335,8 +347,36 @@ namespace AvatarWorld.Runtime
 
         void SelectMap(int index)
         {
-            if (index == _selectedMap) return;
-            ShowToast(Maps[index].name + ": este mundo ainda não está disponível.");
+            if (index == _selectedMap || _switching) return;
+            StartCoroutine(SwitchMapRoutine(index));
+        }
+
+        /// <summary>Troca de mapa: tela de loading, descarta os sprites do atual e monta o escolhido.</summary>
+        System.Collections.IEnumerator SwitchMapRoutine(int index)
+        {
+            _switching = true; _opening = true; _pressing = false;
+            SetPanel(false, false);
+            LoadingScreen.Show();
+            yield return null;
+            yield return null;
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                var child = transform.GetChild(i).gameObject;
+                if (child.GetComponent<SpriteRenderer>() == null) continue;
+                child.SetActive(false);
+                Destroy(child);
+            }
+            _weatherRenderers.Clear();
+            _weatherRendererIndex.Clear();
+            _textures.Clear();
+            _selectedMap = index;
+            for (int i = 0; i < _mapChecks.Count; i++) _mapChecks[i].SetActive(i == index);
+            LoadMapData(Maps[index].folder);
+            _camera.orthographicSize = _data.camera.orthoSize;
+            _camera.transform.position = new Vector3(ClampX(_data.camera.startX), _data.camera.startY, -10f);
+            yield return Resources.UnloadUnusedAssets();
+            yield return StartCoroutine(BuildSprites(() => LoadingScreen.Hide(0.8f)));
+            _opening = false; _switching = false;
         }
 
         void Update()
