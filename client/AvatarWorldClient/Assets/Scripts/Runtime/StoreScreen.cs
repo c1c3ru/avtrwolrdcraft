@@ -23,6 +23,7 @@ namespace AvatarWorld.Runtime
         SaveStore _saves;
         Action _onClose;
         Action<int> _onEarnCoins;
+        Action _onOpenItems;
         Font _font;
         Transform _root;
         RectTransform _content;
@@ -38,8 +39,9 @@ namespace AvatarWorld.Runtime
         public int ShownCardCount => _content != null ? _content.childCount : 0;
 
         /// <summary>onEarnCoins(preco) abre os desafios cuja dificuldade corresponde ao preco.</summary>
-        public void Begin(PlayerState state, SaveStore saves, Action onClose, Action<int> onEarnCoins)
+        public void Begin(PlayerState state, SaveStore saves, Action onClose, Action<int> onEarnCoins, Action onOpenItems = null)
         {
+            _onOpenItems = onOpenItems;
             _state = state ?? throw new ArgumentNullException(nameof(state));
             _saves = saves;
             _onClose = onClose;
@@ -100,6 +102,19 @@ namespace AvatarWorld.Runtime
             _coinText = NewText("Value", pill.transform, 52, TextAnchor.MiddleRight, Color.white);
             Anchor(_coinText.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(26f, 0f), new Vector2(190f, 92f));
             RefreshCoins();
+
+            // Loja por item (ItemBrowserScreen): botao de texto ao lado do contador de moedas.
+            if (_onOpenItems != null)
+            {
+                var items = NewImage("ItemsButton", _root, Art("Icons/pill_green", new Vector4(60, 0, 60, 0)), Color.white);
+                items.type = Image.Type.Sliced;
+                Anchor(items.rectTransform, new Vector2(1, 1), new Vector2(-470f, -68f), new Vector2(240f, 91f));
+                var label = NewText("Label", items.transform, 44, TextAnchor.MiddleCenter, TextDark);
+                Stretch(label.rectTransform, Vector2.zero, Vector2.one);
+                label.text = "Itens";
+                label.raycastTarget = false;
+                Click(items.gameObject, () => { UiSound.PlayClick(); _onOpenItems(); });
+            }
 
             BuildRail();
 

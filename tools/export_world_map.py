@@ -39,13 +39,15 @@ def main(argv=None):
     parser.add_argument('--scene-dir', type=Path, default=ROOT / 'out/scene-extract')
     parser.add_argument('--mb', type=Path, default=ROOT / 'out/mb')
     parser.add_argument('--report', type=Path)
+    parser.add_argument('--externals', nargs='*', default=['sharedassets4.assets', 'sharedassets3.assets', 'resources.assets'],
+                        help='arquivos serializados extras que o level referencia (padrao: os do level4)')
     parser.add_argument('--output', type=Path)
     args = parser.parse_args(argv)
     report = json.loads((args.report or args.scene_dir / f'{args.level}.inspect.json').read_text())
     exported = {(e['source']['file'], e['source']['path_id']): e for e in report['exported_sprites']}
 
     env = UnityPy.load(str(args.scene_dir / args.level))
-    for name in ('sharedassets4.assets', 'sharedassets3.assets', 'resources.assets'):
+    for name in args.externals:
         env.load_file(str(args.scene_dir / name))
     objs = {(o.assets_file.name, o.path_id): o for o in env.objects}
     level = args.level
