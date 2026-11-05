@@ -27,6 +27,8 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual(1400, StoreCatalog.Find("bundle-PB7").Price);  // Natural Chic
             Assert.AreEqual(770, StoreCatalog.Find("bundle-PB26").Price);  // Casinha de brincar
             Assert.AreEqual(980, StoreCatalog.Find("bundle-PB23").Price);  // Show ao vivo
+            Assert.AreEqual(1200, StoreCatalog.Find("bundle-PB25").Price); // Amiguinhos (1500 -> 1200); nao e o hamster de 500
+            Assert.AreEqual(450, StoreCatalog.Find("bundle-PB27").Price);  // Festa a Fantasia (600 -> 450); nome truncado no print
         }
 
         [Test]

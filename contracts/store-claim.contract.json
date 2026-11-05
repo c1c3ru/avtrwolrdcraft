@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "subject": "Store claim (StoreClaimItemCloudResponse) vs LocalStoreService",
+  "functions": [
+    {
+      "name": "Game.Store.StoreClaimItemCloudResponse (resposta do servidor)",
+      "inputs": [
+        "responseText: string (JSON do servidor)"
+      ],
+      "outputs": [
+        "hasReachedMaxClaims: bool",
+        "isOneTimeClaim: bool",
+        "transactionId: string",
+        "currencyBalance: int?",
+        "loyaltyPointsBalance: int?",
+        "storeClaimErrorType: enum"
+      ],
+      "sideEffects": [],
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Store/StoreClaimItemCloudResponse.cs:41"
+    }
+  ],
+  "constants": [
+    {
+      "name": "StoreClaimErrorType.NoItemGuid",
+      "value": 1,
+      "status": "sourced",
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Store/StoreClaimItemCloudResponse.cs:15-20"
+    },
+    {
+      "name": "StoreClaimErrorType.PrefabNotFound",
+      "value": 2,
+      "status": "sourced",
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Store/StoreClaimItemCloudResponse.cs:15-20"
+    },
+    {
+      "name": "StoreItem.MaxClaims",
+      "value": "int, 0 = ilimitado",
+      "status": "invented",
+      "basis": "O cliente original só recebe o booleano hasReachedMaxClaims; o número do limite é estado server-side (NOT_REPRODUCED.md §2).",
+      "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Store/StoreClaimItemCloudResponse.cs:36",
+      "reimplementation": "client/AvatarWorldClient/Assets/Scripts/Core/Economy/StoreItem.cs:22"
+    },
+    {
+      "name": "ClaimError (UnknownItem/RequiresRealMoney/NotAvailable/InsufficientFunds/AlreadyClaimed)",
+      "value": "taxonomia nova",
+      "status": "invented",
+      "basis": "Não reconstrói o enum original; criada para a lógica 100% local com moedas do jogo (decisão de 2026-10-30).",
+      "reimplementation": "client/AvatarWorldClient/Assets/Scripts/Core/Economy/ClaimResult.cs:3"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "Qual é o limite real de resgates por item e como o servidor o decide?",
+      "severity": "medium",
+      "probes": [
+        "Campo numérico ausente em StoreClaimItemCloudResponse; só hasReachedMaxClaims chega ao cliente."
+      ],
+      "settle": "Só observável com o backend; fora do escopo (NOT_REPRODUCED.md §1)."
+    },
+    {
+      "question": "O que PB25 e PB27 vendem de fato, e o preço do catálogo local deve ser o promocional ou o riscado?",
+      "severity": "low",
+      "probes": [
+        "imagem11.jpeg: Amiguinhos 1500->1200 e, ao lado, Meu primeiro hamster 500 (item separado).",
+        "imagem6.jpeg: '...TASIA' 450 com selo 25% OFF."
+      ],
+      "settle": "Confirmar o mapeamento print->PBxx pela arte (Resources/Store/packs) e decidir a regra de preço."
+    }
+  ],
+  "vectors": [
+    {
+      "name": "Galxe Mansion (2400 -> 1200)",
+      "provenance": "runtime-observed",
+      "args": [
+        "bundle-price",
+        "PB22"
+      ],
+      "stdin": "",
+      "stdout": "1200\n",
+      "exitCode": 0,
+      "source": "print do app original: assets/exemplo_jogo_original/imagem3.jpeg"
+    },
+    {
+      "name": "Natural Chic (2000 -> 1400)",
+      "provenance": "runtime-observed",
+      "args": [
+        "bundle-price",
+        "PB7"
+      ],
+      "stdin": "",
+      "stdout": "1400\n",
+      "exitCode": 0,
+      "source": "print do app original: assets/exemplo_jogo_original/imagem3.jpeg"
+    },
+    {
+      "name": "Casinha de brincar (1100 -> 770)",
+      "provenance": "runtime-observed",
+      "args": [
+        "bundle-price",
+        "PB26"
+      ],
+      "stdin": "",
+      "stdout": "770\n",
+      "exitCode": 0,
+      "source": "print do app original: assets/exemplo_jogo_original/imagem5.jpeg"
+    },
+    {
+      "name": "Show ao vivo (1400 -> 980)",
+      "provenance": "runtime-observed",
+      "args": [
+        "bundle-price",
+        "PB23"
+      ],
+      "stdin": "",
+      "stdout": "980\n",
+      "exitCode": 0,
+      "source": "print do app original: assets/exemplo_jogo_original/imagem12.jpeg"
+    },
+    {
+      "name": "Amiguinhos (1500 -> 1200)",
+      "provenance": "runtime-observed",
+      "args": [
+        "bundle-price",
+        "PB25"
+      ],
+      "stdin": "",
+      "stdout": "1200\n",
+      "exitCode": 0,
+      "source": "print do app original: assets/exemplo_jogo_original/imagem11.jpeg",
+      "note": "Item distinto de 'Meu primeiro hamster' (500), que aparece ao lado no mesmo print."
+    },
+    {
+      "name": "Festa a Fantasia (600 -> 450, 25% OFF)",
+      "provenance": "runtime-observed",
+      "args": [
+        "bundle-price",
+        "PB27"
+      ],
+      "stdin": "",
+      "stdout": "450\n",
+      "exitCode": 0,
+      "source": "print do app original: assets/exemplo_jogo_original/imagem6.jpeg",
+      "note": "Nome truncado no print ('...TASIA'); associação a PB27 é provável, não confirmada."
+    }
+  ]
+}
