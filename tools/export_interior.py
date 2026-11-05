@@ -3,7 +3,7 @@
 
 Encadeia (cada passo e o script ja existente): unityfs_extract_entry (level + sharedassets que ele referencia),
 scene_level_inspect, scene_level_export, export_world_map --level, build_interior_slice.
-uso: tools/venv/bin/python tools/export_interior.py <levelN> <chave>
+uso: tools/venv/bin/python tools/export_interior.py <levelN> <chave> [--dest <pasta em Resources>]   (padrao: Interiors; mapas: Maps)
 """
 import json, subprocess, sys
 from pathlib import Path
@@ -28,6 +28,7 @@ def extract(entry):
 
 def main():
     level, key = sys.argv[1:3]
+    dest = sys.argv[sys.argv.index("--dest") + 1] if "--dest" in sys.argv else None
     extract(level)
     inspect = SCENES / f"{level}.inspect.json"
     run("tools/scene_level_inspect.py", level, "--output", inspect)
@@ -38,7 +39,7 @@ def main():
     run("tools/scene_level_export.py", level, "--resource-dir", SCENES, "--report", inspect,
         "--output", SCENES / f"{level}.export.json", "--force")
     run("tools/export_world_map.py", "--level", level, "--externals", *externals, "--output", SCENES / f"{level}_world.json")
-    out = run("tools/build_interior_slice.py", level, key).stdout.strip()
+    out = run("tools/build_interior_slice.py", level, key, *(["--dest", dest] if dest else [])).stdout.strip()
     print(f"{level} -> {key}: {out}")
 
 
