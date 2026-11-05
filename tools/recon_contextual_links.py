@@ -166,6 +166,9 @@ def suffix_rules(asm_report: Path, overrides: list[dict]) -> list[dict]:
     native = json.loads(asm_report.read_text())
     methods = {m["declaring_type"]: m for m in native["mapped_methods"] if m["name"] == "GetAnimationSuffix"}
     standing = {"LevelCACatOnToddlerHandler", "LevelCADogOnToddlerHandler", "LevelCASmallPetOnToddlerHandler"}
+    posture = {"LevelCAToddlerBottleItemHandler", "LevelCAToyCarToddlerItemHandler", "LevelCAToddlerPlayablesItemHandler",
+               "LevelCAToddlerHandler", "LevelCAToddlerBlanketItemHandler", "LevelCAToddlerFavoritePlushieItemHandler",
+               "LevelCAToddlerDrinkablesItemHandler", "LevelCAToddlerEdiblesItemHandler", "LevelCAToddlerPacifierItemHandler"}
     rules = []
     for entry in overrides:
         cls = entry["class"]
@@ -176,9 +179,11 @@ def suffix_rules(asm_report: Path, overrides: list[dict]) -> list[dict]:
         elif short == "LevelCAToddlerDancingClothingSpineSkinHandler":
             expression = 'toddler.PostureType == Sitting ? "_Sitting" : ""'
             cases = {"None": "", "Standing": "", "Sitting": "_Sitting"}
-        else:
+        elif short in posture:
             expression = '"_" + toddler.PostureType.ToString()'
             cases = {"None": "_None", "Standing": "_Standing", "Sitting": "_Sitting"}
+        else:
+            raise ValueError(f"suffix override needs separate native analysis: {cls}")
         assembly = ROOT / method["assembly"]
         rules.append({"class": cls, "vaddr": method["vaddr"], "assembly": rel(assembly),
                       "assembly_sha256": digest(assembly), "expression": expression,
@@ -325,7 +330,7 @@ def main() -> int:
                          "base_handler_suffix": "", "overrides": recovered_suffix_rules},
         "metadata": {"source_file_count": len(archive.used), "files": archive.used},
         "limits": ["Presence of the generated base name in the correct rig does not prove runtime selection, priority, cancellation, or effects.",
-                   "Handler-specific folder, SpineType, suffix, swappable data and overrides must still be reconciled before treating candidates as executed names.",
+                   "Handler-specific folder, SpineType, swappable data and call-time posture must still be reconciled before treating candidates as executed names; suffix formulas are separately recorded.",
                    "A missing base name can be explained by a runtime suffix/override and is not a defect verdict.",
                    "Rig filenames are explicit mappings to the extracted skeleton inventory; full scene-to-SkeletonDataAsset ownership remains separate evidence."],
     }
