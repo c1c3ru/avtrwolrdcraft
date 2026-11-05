@@ -20,6 +20,9 @@ namespace AvatarWorld.Runtime
         public bool HasRunningAnimations;
         public float GrabRadius = 1.4f;
 
+        /// <summary>Esqueleto Spine a animar (opcional). Sem ele, so CurrentAnimation e eventos sao atualizados.</summary>
+        public Spine.Unity.SkeletonAnimation Skeleton;
+
         /// <summary>Conversao tela -> mundo; injetavel para testes. Padrao: Cam.ScreenToWorldPoint.</summary>
         public Func<Vector2, Vector2> ScreenToWorld;
 
@@ -44,6 +47,11 @@ namespace AvatarWorld.Runtime
         void Awake()
         {
             CurrentAnimation = LocomotionAnimations.NameFor(Family, Movement, Posture);
+        }
+
+        void Start()
+        {
+            PlayOnSkeleton(CurrentAnimation);
         }
 
         void Update()
@@ -116,8 +124,22 @@ namespace AvatarWorld.Runtime
             if (next == Movement && CurrentAnimation != null) return;
             bool changed = next != Movement;
             Movement = next;
+            string previous = CurrentAnimation;
             CurrentAnimation = LocomotionAnimations.NameFor(Family, Movement, Posture);
+            if (CurrentAnimation != previous) PlayOnSkeleton(CurrentAnimation);
             if (changed && MovementChanged != null) MovementChanged(Movement);
+        }
+
+        /// <summary>Toca a animacao no esqueleto (faixa 0, em loop). Nome ausente no esqueleto vira erro de log, como no original.</summary>
+        public void PlayOnSkeleton(string animationName)
+        {
+            if (Skeleton == null || !Skeleton.valid) return;
+            if (Skeleton.Skeleton.Data.FindAnimation(animationName) == null)
+            {
+                Debug.LogError("CharacterDragController: No animation found for animationName[" + animationName + "]");
+                return;
+            }
+            Skeleton.AnimationState.SetAnimation(0, animationName, true);
         }
     }
 }
