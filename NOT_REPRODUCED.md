@@ -52,8 +52,7 @@ reimplementação por enquanto — decisão de escopo (fatia por fatia), não bl
 
 ## 6. Verificação visual da tela Home
 Ainda **não verificado**: nenhum dispositivo Android conectado via ADB nesta sessão
-(`adb devices` retornou lista vazia) e nenhuma instalação do Unity Editor neste ambiente de
-execução para gerar um screenshot via Editor/Play Mode como alternativa. O build Android relatado
+(`adb devices` retornou lista vazia) e **correção (2026-11-05):** o Unity Editor 6000.6.6f1 está instalado (`~/Unity/Hub/Editor`, CLI `unity` no PATH) — a afirmação "sem Unity Editor" estava errada; resta sem aparelho ADB conectado nesta sessão e sem screenshot gerado para gerar um screenshot via Editor/Play Mode como alternativa. O build Android relatado
 como "Succeeded" em 2026-10-30 não está presente neste checkout (`client/.../Builds/` é ignorado
 pelo git) e precisaria ser refeito antes de instalar/visualizar.
 
@@ -80,4 +79,4 @@ contracts/store-claim.contract.json -- tools/dotnet/dotnet <ReplayCore.dll>`.
 - **Não verificado:** a lógica de resgate (`LocalStoreService`) não tem vetor. O original faz isso no servidor,
   então qualquer vetor seria só a reimplementação comparada a si mesma.
 
-**Corrigido** nesta branch (decisão do autor): `PB25` → 1200 e `PB27` → 450 (preço exibido, como nos demais combos), ambos agora em `ObservedPrintPrices_AreKept`. Replay: 6/6 idênticos. Os testes Unity EditMode não foram rodados (sem Editor neste ambiente); só o replay e os 13 testes do contrato.
+**Corrigido** nesta branch (decisão do autor): `PB25` → 1200 e `PB27` → 450 (preço exibido, como nos demais combos), ambos agora em `ObservedPrintPrices_AreKept`. Replay: 6/6 idênticos. Testes Unity EditMode rodados em 2026-11-05 (Unity 6000.6.6f1, `unity test … --mode EditMode`): **144/144 aprovados**, incluindo `ObservedPrintPrices_AreKept` com PB25/PB27 (`out/test-results-pr4.xml`, ignorado no Git).
