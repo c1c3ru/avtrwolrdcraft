@@ -15,3 +15,11 @@ Dos 437, só as de gameplay (138) e mundo/home/loja (31), ou seja 169, interessa
 - Contagem de "chamadas de espera" no JSON (`wait_calls`) é **indício** por nome de chamada direta (`WaitFor*`, `Tween*`, `StartCoroutine`...), não prova de quando/quanto espera: valores como `WaitForSeconds(x)` não foram extraídos (ficam em constantes de `.rodata`, como nas constantes do animator).
 - Não foram decodificados os estados (`<>1__state`) nem a ordem de `yield`: exige ler o `MoveNext` por método (como foi feito com `SyncPosition`, cujas chamadas de slot 25/26/27 foram provadas).
 - Corrotinas iniciadas por reflexão, por delegate ou por `StartCoroutine` indireto não aparecem como chamadores.
+
+---
+
+# T025 (parcial): extensões de método validadas
+Ferramenta: `tools/recon_method_extents.py` → `out/recon/method-extents.jsonl`. O mapa de métodos marcava a extensão como `UNKNOWN_not_inferred_from_next_pointer`. Teste: para cada método, a última instrução antes do início do próximo é um terminador (`ret`, `b`, `br`, `brk`) ou um `bl` para helper sem retorno (alvo que encerra ≥ 50 métodos: `0x1914dc0`, `0x1b8884c`, `0x1b88980`, `0x1b88988`, `0x1b88d1c`).
+Resultado: **35.825 de 35.830** extensões (99,986%) são consistentes (ret 9.947, b 8.814, bl-noreturn 16.802, br 267). Os 5 restantes ficam sem validação.
+Leitura correta: é **consistência forte**, não prova formal por método. Um corte errado raramente cairia logo após um terminador em 35 mil casos, então "início do próximo método = fim do atual" passa a ser a regra adotada, com janela máxima por método quando o próximo está longe. Isso sustenta `tools/recon_disasm.py`, `recon_method_literals.py` e `recon_coroutines.py`, que usam essa janela.
+Não coberto: pools de literais embutidos entre métodos (não observados), blocos frios fora da janela e corpos de métodos genéricos compartilhados.
