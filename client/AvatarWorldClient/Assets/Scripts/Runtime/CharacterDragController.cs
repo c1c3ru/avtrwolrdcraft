@@ -18,6 +18,12 @@ namespace AvatarWorld.Runtime
         public LocomotionFamily Family = LocomotionFamily.Character;
         public PostureKind Posture = PostureKind.Standing;
         public bool HasRunningAnimations;
+
+        /// <summary>SpineType do catalogo (1 Character, 2 Baby, 3 Cat, 4 Dog, 13 Toddler, 14 Horse); escolhe handlers de CA e prefixo.</summary>
+        public int SpineType = 1;
+
+        /// <summary>Area de descanso atual (LevelCharacter.CurrentRestArea): decide idle de cadeira/cama e a variante __Sitting.</summary>
+        public RestAreaKind RestArea = RestAreaKind.None;
         public float GrabRadius = 1.4f;
 
         /// <summary>Se maior que zero, substitui Time.deltaTime no Update (testes com velocidade deterministica).</summary>
@@ -37,6 +43,11 @@ namespace AvatarWorld.Runtime
         public event Action DragStarted;
         public event Action DragEnded;
         public event Action Clicked;
+        public event Action CAEnded;
+
+        public CAPlayType CurrentCAPlayType { get; private set; }
+        public string CurrentCAHandlerName { get; private set; }
+        public int ContextualAnimationCounter { get; private set; }
 
         /// <summary>Etapas opcionais Pre/Post por quadro (slots 25/26 do original). Nulas = identidade.</summary>
         public Func<DragPoint, DragPoint> PreModifications;
@@ -133,6 +144,77 @@ namespace AvatarWorld.Runtime
             CurrentAnimation = LocomotionAnimations.NameFor(Family, Movement, Posture);
             if (CurrentAnimation != previous) PlayOnSkeleton(CurrentAnimation);
             if (changed && MovementChanged != null) MovementChanged(Movement);
+        }
+
+        public bool HasAnimation(string animationName)
+        {
+            return Skeleton != null && Skeleton.valid && Skeleton.Skeleton.Data.FindAnimation(animationName) != null;
+        }
+
+        /// <summary>
+        /// Toca uma animacao contextual do catalogo (docs/RECON_CHARACTER_CONTRACT.md, secoes 15 e 16): valida alvo e nome,
+        /// resolve o nome pela regra de CreateAnimationName, usa __Sitting no Character sentado, toca em loop=false na faixa da config
+        /// e, no fim, toca o idle alternativo (se houver) ou volta ao idle apropriado. Inferido: loop=false e o retorno ao idle.
+        /// </summary>
+        public bool PlayContextualAnimation(CAHandlerEntry handler, int configIndex)
+        {
+            bool alive = handler != null && handler.configs != null && configIndex >= 0 && configIndex < handler.configs.Length;
+            var check = ContextualAnimationRules.ValidateStart(alive, alive ? handler.configs[configIndex].name : null);
+            if (check == CAStartCheck.TargetNull) { Debug.LogError(ContextualAnimationRules.TargetNullMessage); return false; }
+            if (check == CAStartCheck.ConfigNameEmpty) { Debug.LogError(ContextualAnimationRules.ConfigNameEmptyMessage); return false; }
+
+            var cfg = handler.configs[configIndex];
+            string name = handler.AnimationName(configIndex);
+            if (Family == LocomotionFamily.Character)
+                name = ContextualAnimationRules.CharacterAnimationName(name, RestArea == RestAreaKind.Sit, HasAnimation);
+
+            bool hasSkeleton = Skeleton != null && Skeleton.valid;
+            if (hasSkeleton && !HasAnimation(name))
+            {
+                Debug.LogError("CharacterDragController: No animation found for animationName[" + name + "]");
+                return false;
+            }
+
+            ContextualAnimationCounter++;
+            CurrentCAPlayType = CAPlayType.PlayingNormalAnimation;
+            CurrentCAHandlerName = handler.name;
+            CurrentAnimation = name;
+            if (hasSkeleton)
+            {
+                var entry = Skeleton.AnimationState.SetAnimation(cfg.trackIndex, name, false);
+                entry.Complete += e => OnCAComplete(handler, cfg);
+            }
+            return true;
+        }
+
+        void OnCAComplete(CAHandlerEntry handler, CAConfigEntry cfg)
+        {
+            if (!string.IsNullOrEmpty(cfg.alternateIdleAnimation))
+            {
+                string alt = cfg.alternateIdleAnimation;
+                if (!HasAnimation(alt))
+                {
+                    bool prefix = ContextualAnimationRules.HasCAPrefix(handler.spineType) ?? false;
+                    string folder = string.IsNullOrEmpty(cfg.folderNameOverride) ? handler.folderName : cfg.folderNameOverride;
+                    alt = (prefix ? "CA/" : "") + folder + "/" + cfg.alternateIdleAnimation;
+                }
+                if (HasAnimation(alt))
+                {
+                    CurrentCAPlayType = CAPlayType.PlayingAlternateIdle;
+                    CurrentAnimation = alt;
+                    Skeleton.AnimationState.SetAnimation(cfg.trackIndex, alt, true);
+                    return;
+                }
+            }
+            CurrentCAPlayType = CAPlayType.None;
+            CurrentCAHandlerName = null;
+            string idle = Family == LocomotionFamily.Character
+                ? ProperIdleSelector.AnimationFor(ProperIdleSelector.Choose(false, false, RestArea))
+                : LocomotionAnimations.NameFor(Family, MovementKind.Stand, Posture);
+            CurrentAnimation = idle;
+            if (cfg.trackIndex != 0 && Skeleton != null && Skeleton.valid) Skeleton.AnimationState.ClearTrack(cfg.trackIndex);
+            PlayOnSkeleton(idle);
+            if (CAEnded != null) CAEnded();
         }
 
         /// <summary>Toca a animacao no esqueleto (faixa 0, em loop). Nome ausente no esqueleto vira erro de log, como no original.</summary>
