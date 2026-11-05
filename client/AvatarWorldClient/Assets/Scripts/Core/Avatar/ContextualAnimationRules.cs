@@ -43,6 +43,42 @@ namespace AvatarWorld.Core.Avatar
             return skeletonHasAnimation != null && skeletonHasAnimation(variant) ? variant : name;
         }
 
+        /// <summary>
+        /// SpineType do catalogo (PremadeCharactersJson/AvatarSpineDatas): 1 Character, 2 Baby, 3 Cat, 4 Dog, 13 Toddler, 14 Horse.
+        /// Outros valores aparecem em configs de CA (5, 8, 11, 15, 16) mas seus esqueletos nao foram extraidos.
+        /// </summary>
+        public enum SpineKind { Character = 1, Baby = 2, Cat = 3, Dog = 4, Toddler = 13, Horse = 14 }
+
+        /// <summary>
+        /// SpineTypeExtensionMethods.HasCAPrefixForCAAnimations. Valores conhecidos vem de 2.876 configs que casaram com
+        /// animacoes reais: Character, Baby e Toddler usam "CA/"; Cat, Dog e Horse nao. Tipos nao extraidos devolvem null.
+        /// </summary>
+        public static bool? HasCAPrefix(int spineType)
+        {
+            switch (spineType)
+            {
+                case (int)SpineKind.Character:
+                case (int)SpineKind.Baby:
+                case (int)SpineKind.Toddler: return true;
+                case (int)SpineKind.Cat:
+                case (int)SpineKind.Dog:
+                case (int)SpineKind.Horse: return false;
+                default: return null;
+            }
+        }
+
+        /// <summary>
+        /// LevelCAConfig.CreateAnimationName (0x212fe74): nome inteiro quando isNameFullAnimationName; senao
+        /// [prefixo "CA/"] + pasta + "/" + nome, com a pasta vinda de folderNameOverride ou do FolderName do handler.
+        /// </summary>
+        public static string CreateAnimationName(bool isNameFullAnimationName, string name, string folderNameOverride,
+                                                 string handlerFolderName, bool hasCAPrefix)
+        {
+            if (isNameFullAnimationName) return name;
+            string folder = string.IsNullOrEmpty(folderNameOverride) ? handlerFolderName : folderNameOverride;
+            return (hasCAPrefix ? "CA/" : "") + folder + "/" + name;
+        }
+
         /// <summary>LevelCharacter.ICATarget.ShouldIncludeInEnsureCheck (0x22a3a18) devolve sempre verdadeiro.</summary>
         public static bool CharacterShouldIncludeInEnsureCheck() { return true; }
     }

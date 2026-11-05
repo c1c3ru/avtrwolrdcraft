@@ -64,6 +64,43 @@ namespace AvatarWorld.Core.Tests
         }
 
         [Test]
+        public void HumansUseTheCAPrefixAndPetsDoNot()
+        {
+            Assert.AreEqual(true, ContextualAnimationRules.HasCAPrefix(1));
+            Assert.AreEqual(true, ContextualAnimationRules.HasCAPrefix(2));
+            Assert.AreEqual(true, ContextualAnimationRules.HasCAPrefix(13));
+            Assert.AreEqual(false, ContextualAnimationRules.HasCAPrefix(3));
+            Assert.AreEqual(false, ContextualAnimationRules.HasCAPrefix(4));
+            Assert.AreEqual(false, ContextualAnimationRules.HasCAPrefix(14));
+            Assert.IsNull(ContextualAnimationRules.HasCAPrefix(15));
+        }
+
+        [Test]
+        public void AnimationNameIsPrefixFolderAndName()
+        {
+            Assert.AreEqual("CA/Paint_Brush/Paint_Strokes",
+                ContextualAnimationRules.CreateAnimationName(false, "Paint_Strokes", "", "Paint_Brush", true));
+        }
+
+        [Test]
+        public void FolderOverrideWinsOverTheHandlerFolder()
+        {
+            Assert.AreEqual("CA/Other/X", ContextualAnimationRules.CreateAnimationName(false, "X", "Other", "Paint_Brush", true));
+        }
+
+        [Test]
+        public void PetsHaveNoCAPrefix()
+        {
+            Assert.AreEqual("General/Eating_Jump", ContextualAnimationRules.CreateAnimationName(false, "Eating_Jump", "", "General", false));
+        }
+
+        [Test]
+        public void FullAnimationNameIsUsedAsIs()
+        {
+            Assert.AreEqual("CA/Foo/Bar", ContextualAnimationRules.CreateAnimationName(true, "CA/Foo/Bar", "ignored", "ignored", false));
+        }
+
+        [Test]
         public void CharacterAlwaysIncludesHandlersInTheEnsureCheck()
         {
             Assert.IsTrue(ContextualAnimationRules.CharacterShouldIncludeInEnsureCheck());
