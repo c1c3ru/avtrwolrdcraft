@@ -224,3 +224,27 @@ Contratos C#: `Core/Avatar/ProperIdleSelector.cs` (7 testes) e `Core/Avatar/Held
 ## Recorte 2026-11-05 (14): animações contextuais (CA), entrada do sistema
 `CAPlayType` (provado, enum do assembly): `None 0`, `PlayingNormalAnimation 1`, `PlayingAlternateIdle 2`, `PlayingPreAnimation 3`. `LevelCharacter` guarda `LockedCAHandler (0x3E0)`, `CurrentCAHandler (0x3E8)`, `CurrentCAConfig (0x3F0)`, `CurrentCAPlayType (0x3F8)`, `ContexualAnimationCounter (0x3FC)`, `AlternateIdleCAConfig (0x400)`, `AlternateIdleCAHandler (0x408)` e a lista `CAHandlers (0x410)`.
 `CATargetExtensionMethods.PlayContextualAnimation` (`0x23ab96c` aprox., 3.336 bytes) provado: valida `target` (`"target is null!"`) e o nome da config (`" animationConfig.name is null or empty!"`); usa `IsAlive`, o gate `LevelManager.IsManagerPostInit`, `LevelCAConfig.CreateAnimationName` e um callback `TrackEntryDelegate` (fechamento `<>c__DisplayClass1_0`) para o fim da animação; despacha por `CAPlayType` com padrão `"No case found for playType["` e ramo `"Not supported!"`; quase todas as chamadas passam por `ICATarget` (interface), então a decodificação completa depende de identificar as implementações (Character, Toddler, Animal, Baby). Isso pertence ao T035 e ficou aberto. Várias strings (`Trolley`, `Heavy_Lifting`, `Stealing_Food`) que aparecem nos métodos vizinhos são ruído de janela, não prova de uso.
+
+## Recorte 2026-11-05 (15): T035 — `ICATarget` e `PlayContextualAnimation`
+Ferramenta: `tools/recon_disasm.py` agora anota **chamadas de interface** (`mov w2,#N` + `bl 0x1b7ba44` → `ICATarget.<método>`, índice na ordem de definição) e aceita `@0xENDEREÇO`. O rastreio do tipo se limita a interfaces (nome `I` + maiúscula) para não vazar para `UnityEngine.Object`.
+
+**`ICATarget`** (20 métodos, índices de despacho 0–19): `get/set CurrentCAHandler`, `CurrentCAConfig`, `CurrentCAPlayType`, `ContexualAnimationCounter`, `LockedCAHandler`, `get CAHandlers`, `get/set IsMoving`, `GetTransform`, `ReturnToIdleAnimation`, `OnBeforePlayContextualAnimation`, `OnAddedCAHandlerWithLockedAnimation(handler)`, `ShouldIncludeInEnsureCheck(handler)`, `SetAnimation(name, loop, ensureRequiredTextures, trackIndex)`, `OnCARemoved`.
+**Implementadores (5):** `LevelCharacter`, `LevelToddler`, `LevelBaby`, `LevelAnimal` (Cat/Dog/Horse herdam) e `LevelDynamicSignRobot`.
+
+**`PlayContextualAnimation` (`0x23ab96c`, 3.336 bytes), ordem das chamadas provada** (por ordem de endereço):
+1. `IsAlive(target)` falso → erro `"target is null!"`; depois nome da config vazio → `" animationConfig.name is null or empty!"`.
+2. `target.GetTransform()` (2 sítios).
+3. `target.OnBeforePlayContextualAnimation()` (4 sítios, ramos por tipo de reprodução).
+4. `ContexualAnimationCounter`: `get` e `set` (incremento), mais um `get`.
+5. `set CurrentCAPlayType`, `set CurrentCAHandler`, `set CurrentCAConfig`.
+6. `LevelCAConfig.CreateAnimationName` e `get CurrentCAConfig`.
+7. `target.SetAnimation(...)` em dois sítios (animação normal e a de fim/idle alternativo).
+8. Callback de fim `TrackEntryDelegate` (fechamento `<>c__DisplayClass1_0`), com o gate `LevelManager.IsManagerPostInit` em dois sítios e `get CurrentCAConfig` ao concluir.
+9. Padrão do `switch` por `CAPlayType`: `"No case found for playType["`; ramo `"Not supported!"`.
+
+**Implementação do Character (provada, métodos curtos):** `ShouldIncludeInEnsureCheck` → sempre `true` (`0x22a3a18`); `GetTransform` → `transform` do próprio objeto; `ReturnToIdleAnimation` → `Animator.PlayProperIdleAnimation()` (`0x22a3a28`); `OnBeforePlayContextualAnimation` → `InteractionHandler.ReleaseCurrentBehaviorItemIfExists()` (`0x22a3be8`); `OnAddedCAHandlerWithLockedAnimation` → libera a mão (`FreeHand`) se houver outro item e chama `ReleaseCurrentBehaviorItemIfExists`; `SetAnimation` (`0x22a3c00`) testa `CurrentRestArea is LevelSitArea` e usa o literal `"__Sitting"` antes de `Animator.SetAddAnimationInternal`.
+**Verificado no esqueleto:** `Avatar_Spine` tem 11 animações `*__Sitting` (ex.: `CA/Microscope/Look_And_Find_Nothing__Sitting`), todas com a versão base também presente; `Toddler_Spine` tem 0. Inferido: sem a variante, mantém o nome base (o fallback não foi confirmado instrução a instrução).
+
+Contrato C#: `Core/Avatar/ContextualAnimationRules.cs` (`CAPlayType`, `ValidateStart`, `CharacterAnimationName`, mensagens originais) com 9 testes.
+
+**Aberto:** o que cada um dos 4 sítios de `OnBeforePlayContextualAnimation` distingue; os parâmetros de `SetAnimation` (loop por tipo de reprodução); implementações de `LevelToddler`, `LevelBaby`, `LevelAnimal` e `LevelDynamicSignRobot` (não lidas); quais handlers de CA existem e em que cenas (`LevelCAConfig`, `LevelCAHandlerBase`).
