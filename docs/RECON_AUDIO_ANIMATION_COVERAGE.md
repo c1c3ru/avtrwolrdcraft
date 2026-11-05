@@ -39,7 +39,10 @@ Por categoria: Ambience 80/80, Music 168/174, SFX 2.093/2.513, `PazuCore/Sound` 
 ## 4. Custo para ter TUDO no cliente
 | Item | Hoje | Estimativa |
 |---|---|---|
-| Sons: converter 2.781 WAV (1,95 GB) para Vorbis | 0,4% no cliente | alguns centenas de MB (a medir; depende da qualidade) |
+| Sons: converter 2.781 WAV (1,95 GB) para Vorbis | 0,4% no cliente | **medido por amostra (25 por categoria, ffmpeg libvorbis): ~190 MB em q3, ~213 MB em q5** (SFX ~93/104 MB, Música ~81/91 MB, Ambiente ~17/18 MB); razão ~10% do WAV |
 | Animações: 587 esqueletos + atlas (87 MB texto) + texturas de atlas (112 MB PNG) | só Avatar | ~200 MB brutos; menos com compressão de textura |
 | Código: `GameSoundPlayer` por nome, registro, importador | ausente | médio |
 O repositório já versiona 3.177 arquivos de `Resources` (114 MB) em git comum, sem LFS.
+
+## 5. Total e estratégia de armazenamento (decisão pendente)
+Tudo no cliente: ~190–213 MB de som + ~200 MB de animações (texto + texturas de atlas, antes da compressão de textura do Unity) = **~400 MB de binários novos**. Precedente do projeto: 114 MB de `Resources` versionados em git comum (sem LFS). Opções: (a) git comum, (b) Git LFS, (c) fora do git (pacotes no Drive que já existem em `out/pack`) com script de importação reprodutível (WAV→Vorbis, cópia de esqueletos/atlas/texturas) e só o código e os índices (registro de sons, nomes) versionados.
