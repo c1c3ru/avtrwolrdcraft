@@ -6,11 +6,13 @@ namespace AvatarWorld.Core.Tests
 {
     public class InteriorCatalogTests
     {
-        [Test]
-        public void Dentist_IsKeyedByItsLevelType()
+        [TestCase(218, "dentist")]
+        [TestCase(32, "ballet")]
+        [TestCase(7, "cabin")]
+        public void Interior_IsKeyedByItsLevelType(int level, string expected)
         {
-            Assert.IsTrue(InteriorCatalog.TryGetKey(218, out var key));
-            Assert.AreEqual("dentist", key);
+            Assert.IsTrue(InteriorCatalog.TryGetKey(level, out var key));
+            Assert.AreEqual(expected, key);
         }
 
         [Test]

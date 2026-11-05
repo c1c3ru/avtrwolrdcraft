@@ -8,6 +8,7 @@ namespace AvatarWorld.Core.Economy
     public sealed class CatalogItem
     {
         public string Guid, Name, Category;
+        public string DisplayName => ItemNames.Display(Name);
         public int Price => ItemPricing.PriceFor(Category);
 
         public StoreItem ToStoreItem() => new StoreItem

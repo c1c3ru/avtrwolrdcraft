@@ -164,7 +164,7 @@ namespace AvatarWorld.Runtime
             Place(card.rectTransform, new Vector2(0, 1), new Vector2(430f + col * 415f, -380f - row * 190f), new Vector2(395f, 170f));
             var name = Txt("Name", card.transform, 32, TextAnchor.UpperCenter, TextDark);
             Place(name.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -50f), new Vector2(370f, 90f));
-            name.text = item.Name;
+            name.text = item.DisplayName;
             name.verticalOverflow = VerticalWrapMode.Truncate;
             bool owned = _state.GetClaimCount(item.Guid) >= 1;
             var price = Txt("Price", card.transform, 40, TextAnchor.MiddleCenter, owned ? new Color(0.1f, 0.5f, 0.2f) : TextDark);
@@ -196,8 +196,8 @@ namespace AvatarWorld.Runtime
             var msg = Txt("Message", panel.transform, 44, TextAnchor.MiddleCenter, TextDark);
             Place(msg.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -170f), new Vector2(1000f, 220f));
             msg.text = canPay
-                ? "Comprar \"" + item.Name + "\" por " + item.Price + " moedas?"
-                : "Faltam " + (item.Price - _state.PazuCurrency) + " moedas para \"" + item.Name + "\".";
+                ? "Comprar \"" + item.DisplayName + "\" por " + item.Price + " moedas?"
+                : "Faltam " + (item.Price - _state.PazuCurrency) + " moedas para \"" + item.DisplayName + "\".";
             if (canPay) Button(panel.transform, "Comprar", new Vector2(-250f, 80f), () => Purchase(item));
             Button(panel.transform, canPay ? "Cancelar" : "Fechar", new Vector2(canPay ? 250f : 0f, 80f), CloseModal);
         }

@@ -27,6 +27,16 @@ namespace AvatarWorld.Core.Tests
             Assert.GreaterOrEqual(ItemPricing.Large, 900);
         }
 
+        [TestCase("Food_01_ChocoSnackbar_Box_P134", "Food 01 Choco Snackbar Box")]
+        [TestCase("Character_Accessories_Body_Bags_101", "Character Accessories Body Bags 101")]
+        [TestCase("Cushion_04_Z1B1L1", "Cushion 04")]
+        [TestCase("Flag_Z1B1L1", "Flag")]
+        [TestCase("Pizza_Shop_T1S4", "Pizza Shop")]
+        [TestCase("P134", "P134")]
+        [TestCase("", "")]
+        public void Display_StripsCodesAndSplitsWords(string raw, string expected) =>
+            Assert.AreEqual(expected, ItemNames.Display(raw));
+
         static CatalogItem I(string g, string n, string c) => new CatalogItem { Guid = g, Name = n, Category = c };
 
         [Test]
