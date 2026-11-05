@@ -5,6 +5,8 @@
     "bundle_sha256": "8da06aab5a6a227081ac0e906b7d28ce434184b6215c1ecee6ee43b3c63a3dfb",
     "animation_inventory": "out/recon/tasks/T035/animation-inventory.json",
     "animation_inventory_sha256": "7d117128a71c2a74d0d4429378035d2a67e44cfdaba59e01b8bcd3b3b10d8a06",
+    "contextual_native_report": "out/recon/tasks/T035/contextual-asm/report.json",
+    "contextual_native_report_sha256": "15a8f838866652f4897db6c6345ce61a48a41fe9d0b4fe4c1e4158a068089b8a",
     "monobehaviour_inventories": [
       {
         "path": "out/mb/PWC.PSDToLevel.LevelContextualAnimation.LevelCAItemHandlerData.jsonl.gz",
@@ -151333,10 +151335,182 @@
       "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToyCarToddlerItemHandler.cs"
     }
   ],
+  "suffix_rules": {
+    "posture_enum": {
+      "None": 0,
+      "Standing": 1,
+      "Sitting": 2
+    },
+    "posture_backing_field_offset_in_LevelToddler": "0x440",
+    "base_handler_suffix": "",
+    "overrides": [
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCACatOnToddlerHandler",
+        "vaddr": "0x203ff44",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_000000000203ff44.asm.txt",
+        "assembly_sha256": "1908f2185b561568f70a962b0012382fe45448846262e927997365859699c6ee",
+        "expression": "\"_Standing\"",
+        "defined_posture_cases": {
+          "all": "_Standing"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCACatOnToddlerHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCADogOnToddlerHandler",
+        "vaddr": "0x20409f8",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_00000000020409f8.asm.txt",
+        "assembly_sha256": "7f42f4489be8f695e06204a528a722995c4f75220b017c556c01d244ce62c557",
+        "expression": "\"_Standing\"",
+        "defined_posture_cases": {
+          "all": "_Standing"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCADogOnToddlerHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCASmallPetOnToddlerHandler",
+        "vaddr": "0x2042acc",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_0000000002042acc.asm.txt",
+        "assembly_sha256": "8d6333358366f3803d529835c2a1de42d1753a3365c32b67e32e1bbe84511fb2",
+        "expression": "\"_Standing\"",
+        "defined_posture_cases": {
+          "all": "_Standing"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCASmallPetOnToddlerHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToddlerBlanketItemHandler",
+        "vaddr": "0x2038a48",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_0000000002038a48.asm.txt",
+        "assembly_sha256": "01dfaa22edbffe1ff47e63eb04ed8d4c9bb3fac67bcec46c9b40dee9b307c9d0",
+        "expression": "\"_\" + toddler.PostureType.ToString()",
+        "defined_posture_cases": {
+          "None": "_None",
+          "Standing": "_Standing",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToddlerBlanketItemHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToddlerBottleItemHandler",
+        "vaddr": "0x2039430",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_0000000002039430.asm.txt",
+        "assembly_sha256": "3212457dc6666438f4e2bab5c2cf693a68fef1e825ee4e92bc26db596a07dd9e",
+        "expression": "\"_\" + toddler.PostureType.ToString()",
+        "defined_posture_cases": {
+          "None": "_None",
+          "Standing": "_Standing",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToddlerBottleItemHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToddlerDancingClothingSpineSkinHandler",
+        "vaddr": "0x204aba8",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_000000000204aba8.asm.txt",
+        "assembly_sha256": "e3b7fb45e15cb4272f6c060aa578e811b8fe91729cd5723e21edbcd0a1dacb24",
+        "expression": "toddler.PostureType == Sitting ? \"_Sitting\" : \"\"",
+        "defined_posture_cases": {
+          "None": "",
+          "Standing": "",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToddlerDancingClothingSpineSkinHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToddlerDrinkablesItemHandler",
+        "vaddr": "0x2039b08",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_0000000002039b08.asm.txt",
+        "assembly_sha256": "29e79b46b075d383fccfbac6a113f5739573a0c9964d05578ab4542d51f468ff",
+        "expression": "\"_\" + toddler.PostureType.ToString()",
+        "defined_posture_cases": {
+          "None": "_None",
+          "Standing": "_Standing",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToddlerDrinkablesItemHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToddlerEdiblesItemHandler",
+        "vaddr": "0x2039fe8",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_0000000002039fe8.asm.txt",
+        "assembly_sha256": "696b58c48b22a712381e2b6514982f2c2080c72b25935af2e2ce5c1582bb2aa7",
+        "expression": "\"_\" + toddler.PostureType.ToString()",
+        "defined_posture_cases": {
+          "None": "_None",
+          "Standing": "_Standing",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToddlerEdiblesItemHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToddlerFavoritePlushieItemHandler",
+        "vaddr": "0x203aa80",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_000000000203aa80.asm.txt",
+        "assembly_sha256": "5c0f5c81f8364fe4a20a54aacc4a72628f59a5d59972f0127a10bd2c3aab4b19",
+        "expression": "\"_\" + toddler.PostureType.ToString()",
+        "defined_posture_cases": {
+          "None": "_None",
+          "Standing": "_Standing",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToddlerFavoritePlushieItemHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToddlerHandler",
+        "vaddr": "0x2044b0c",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_0000000002044b0c.asm.txt",
+        "assembly_sha256": "f193757d9dfddd94361a8e184b9383c46e9b0f44aa9ba58a5294299cd3b65f1e",
+        "expression": "\"_\" + toddler.PostureType.ToString()",
+        "defined_posture_cases": {
+          "None": "_None",
+          "Standing": "_Standing",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToddlerHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToddlerPacifierItemHandler",
+        "vaddr": "0x203b7ac",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_000000000203b7ac.asm.txt",
+        "assembly_sha256": "c46c8f1fa706ac4df2c8409ef47a6742ae8c14bf57904ba6455188928620eff3",
+        "expression": "\"_\" + toddler.PostureType.ToString()",
+        "defined_posture_cases": {
+          "None": "_None",
+          "Standing": "_Standing",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToddlerPacifierItemHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToddlerPlayablesItemHandler",
+        "vaddr": "0x203c030",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_000000000203c030.asm.txt",
+        "assembly_sha256": "0134628344949ef5a7055112844c16a8e17e571a84515d68fcce1e3c0833a2db",
+        "expression": "\"_\" + toddler.PostureType.ToString()",
+        "defined_posture_cases": {
+          "None": "_None",
+          "Standing": "_Standing",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToddlerPlayablesItemHandler.cs"
+      },
+      {
+        "class": "Game.Level.ContextualAnimation.LevelCAToyCarToddlerItemHandler",
+        "vaddr": "0x203e274",
+        "assembly": "out/recon/tasks/T035/contextual-asm/GetAnimationSuffix_000000000203e274.asm.txt",
+        "assembly_sha256": "04368040ebae5bc874e9025b2098411728db03693cce22a0760fe9b50d6a0cf3",
+        "expression": "\"_\" + toddler.PostureType.ToString()",
+        "defined_posture_cases": {
+          "None": "_None",
+          "Standing": "_Standing",
+          "Sitting": "_Sitting"
+        },
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/ContextualAnimation/LevelCAToyCarToddlerItemHandler.cs"
+      }
+    ]
+  },
   "metadata": {
     "source_file_count": 239,
-    "cache_hits": 131,
-    "blocks_decoded": 180,
     "files": {
       "level27": {
         "externals": [
