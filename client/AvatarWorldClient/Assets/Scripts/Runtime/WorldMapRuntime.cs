@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AvatarWorld.Core.Economy;
+using AvatarWorld.Core.World;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,7 @@ namespace AvatarWorld.Runtime
         Action _onBack;
         Action _onOpenBasketball;
         Action _onOpenSlots;
+        Action<string> _onOpenInterior;
         Camera _camera;
         WorldMapData _data;
         RectTransform _backRect;
@@ -57,9 +59,11 @@ namespace AvatarWorld.Runtime
         public Camera MapCamera => _camera;
 
         /// <summary>Monta o mapa em varios quadros; onReady dispara quando tudo esta pronto (esconde o loading).</summary>
-        public void Begin(Action onBack, Action onOpenBasketball, Action onReady = null, Action onOpenSlots = null)
+        public void Begin(Action onBack, Action onOpenBasketball, Action onReady = null, Action onOpenSlots = null,
+            Action<string> onOpenInterior = null)
         {
             _onOpenSlots = onOpenSlots;
+            _onOpenInterior = onOpenInterior;
             _onBack = onBack;
             _onOpenBasketball = onOpenBasketball;
             var json = Resources.Load<TextAsset>(DataResource);
@@ -392,6 +396,12 @@ namespace AvatarWorld.Runtime
                 StartCoroutine(OpenCourtRoutine());
                 return;
             }
+            if (_onOpenInterior != null && InteriorCatalog.TryGetKey(building.defaultLevel, out var interiorKey))
+            {
+                UiSound.PlayClick();
+                StartCoroutine(OpenInteriorRoutine(interiorKey));
+                return;
+            }
             ShowToast(building.defaultLevel == 0
                 ? "Este lugar ainda está em obras."
                 : "Este lugar ainda não está disponível.");
@@ -408,6 +418,17 @@ namespace AvatarWorld.Runtime
             yield return null;
             _opening = false;
             _onOpenBasketball?.Invoke();
+        }
+
+        System.Collections.IEnumerator OpenInteriorRoutine(string key)
+        {
+            _opening = true; _pressing = false;
+            yield return new WaitForSecondsRealtime(0.18f);
+            LoadingScreen.Show();
+            yield return null;
+            yield return null;
+            _opening = false;
+            _onOpenInterior?.Invoke(key);
         }
 
         /// <summary>

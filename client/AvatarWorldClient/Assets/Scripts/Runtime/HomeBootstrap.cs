@@ -100,7 +100,7 @@ namespace AvatarWorld.Runtime
             var host = new GameObject("WorldMap");
             _worldMap = host.AddComponent<WorldMapRuntime>();
             LoadingScreen.Show();
-            _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f), OpenAvatarSlots);
+            _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f), OpenAvatarSlots, OpenInterior);
         }
 
         /// <summary>Slots de avatar/pet/carro (AvatarMakerLobby): aberto pelo avatar+ do mapa; voltar retorna ao mapa.</summary>
@@ -124,6 +124,22 @@ namespace AvatarWorld.Runtime
             _worldMap = null;
             _save.Save(_state);
             _homeActions.ReturnFromGameplay();
+        }
+
+        /// <summary>Interior de um predio do mapa (visual); voltar retorna ao mapa na mesma posicao.</summary>
+        void OpenInterior(string key)
+        {
+            if (FindFirstObjectByType<InteriorRuntime>() != null) return;
+            if (_worldMap != null) _worldMap.gameObject.SetActive(false);
+            var host = new GameObject("Interior_" + key);
+            host.AddComponent<InteriorRuntime>().Begin(key, () =>
+            {
+                Destroy(host);
+                LoadingScreen.Show();
+                if (_worldMap != null) _worldMap.gameObject.SetActive(true);
+                LoadingScreen.Hide(0.5f);
+            });
+            LoadingScreen.Hide(0.7f);
         }
 
         void OpenBasketballCourt()

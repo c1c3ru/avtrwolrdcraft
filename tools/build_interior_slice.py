@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+"""Converte o export de uma cena de interior (export_world_map.py --level levelN) em Resources/Interiors/<chave>/.
+
+Gera <chave>.json no formato WorldMapData (renderers com rank ja ordenado) e copia so os PNGs usados.
+Visual apenas: nenhum script do original (itens arrastaveis, luz, som) e reproduzido.
+
+uso: build_interior_slice.py <levelN> <chave> [--scene-dir out/scene-extract]
+"""
+import argparse, json, shutil
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("level"); ap.add_argument("key")
+    ap.add_argument("--scene-dir", type=Path, default=ROOT / "out/scene-extract")
+    ap.add_argument("--dest", type=Path, default=ROOT / "client/AvatarWorldClient/Assets/Resources/Interiors")
+    a = ap.parse_args()
+    world = json.loads((a.scene_dir / f"{a.level}_world.json").read_text())
+    pngs = a.scene_dir / f"{a.level}.export.json"  # diretorio de PNGs gerado por scene_level_export.py
+    out = a.dest / a.key
+    (out / "sprites").mkdir(parents=True, exist_ok=True)
+
+    rows = sorted(world["renderers"], key=lambda r: [list(p) for p in r["sortPath"]])
+    renderers, skipped, left, right = [], 0, 1e9, -1e9
+    for rank, r in enumerate(rows):
+        name = r["sprite"].removesuffix(".png")
+        src = pngs / f"{name}.png"
+        if not src.exists():
+            skipped += 1
+            continue
+        shutil.copyfile(src, out / "sprites" / f"{name}.png")
+        w = r["size"][0] / r["ppu"] * abs(r["sx"])
+        left = min(left, r["x"] - r["pivot"][0] * w); right = max(right, r["x"] + (1 - r["pivot"][0]) * w)
+        renderers.append({"sprite": name, "go": r["go"], "x": r["x"], "y": r["y"], "z": r["z"], "sx": r["sx"], "sy": r["sy"],
+                          "rot": r["rot"], "rank": rank, "color": r["color"], "flipX": r["flipX"], "flipY": r["flipY"],
+                          "pivotX": r["pivot"][0], "pivotY": r["pivot"][1], "ppu": r["ppu"], "weathers": r["weathers"]})
+    data = {"camera": {"orthoSize": 5.12, "startX": round((left + right) / 2, 2), "startY": 0.12,
+                       "minX": round(left, 2), "maxX": round(right, 2)},
+            "renderers": renderers, "buildings": []}
+    (out / f"{a.key}.json").write_text(json.dumps(data))
+    print(f"{len(renderers)} renderers ({skipped} sem png), x {left:.1f}..{right:.1f} -> {out}")
+
+
+if __name__ == "__main__":
+    main()
