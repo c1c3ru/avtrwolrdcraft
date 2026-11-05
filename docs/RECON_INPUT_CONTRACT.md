@@ -75,3 +75,6 @@ Testes: `Assets/Tests/EditMode/DragIntentDetectorTests.cs` (13 casos; limites 9.
 Fora do contrato (não provado): se o threshold real do módulo é o `m_DragThreshold` do `EventSystem`, a conversão por DPI, multitoque e o pipeline Pre→Post→`OnSyncPosition` por quadro.
 
 Atualizacao 2026-11-05: os 28 testes (LocomotionStateMachineTests 11, DragIntentDetectorTests 13, DragPositionPipelineTests 4) passaram no Unity 6000.6.6f1 EditMode (28/28), em batchmode sem -quit (com -quit o Unity sai sem executar testes).
+
+## Componente de Runtime (2026-11-05)
+`Assets/Scripts/Runtime/CharacterDragController.cs` liga ponteiro -> `DragIntentDetector` -> `DragPositionPipeline` -> velocidade -> `LocomotionStateMachine` -> `LocomotionAnimations.NameFor`; expoe `Movement`, `CurrentAnimation` e eventos `DragStarted/DragEnded/Clicked/MovementChanged`, sem tocar em Spine. `Tick(pressed, screenPos, dt)` e testavel sem dispositivo; `Update` le `Pointer.current` (Input System). Velocidade em unidades de mundo por segundo (inferido). Achado: `None` -> `Stand` no `Next` (nos tres `OnMovement`, `cmp w8,#1; b.ne` cai no ramo de idle e grava 1); sem isso o personagem travava apos soltar. 39 testes (28 de contrato + 11 do componente) passam no Unity 6000.6.6f1 EditMode. Nao validado em cena real nem com Spine.

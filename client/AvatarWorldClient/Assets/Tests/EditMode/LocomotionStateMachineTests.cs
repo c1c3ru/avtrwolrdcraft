@@ -77,9 +77,10 @@ namespace AvatarWorld.Core.Tests
         }
 
         [Test]
-        public void NoneStateIsLeftUntouched()
+        public void NoneBecomesStandRegardlessOfSpeed()
         {
-            Assert.AreEqual(MovementKind.None, LocomotionStateMachine.Next(LocomotionConfig.Animal, MovementKind.None, 10f, true));
+            Assert.AreEqual(MovementKind.Stand, LocomotionStateMachine.Next(LocomotionConfig.Animal, MovementKind.None, 10f, true));
+            Assert.AreEqual(MovementKind.Stand, LocomotionStateMachine.Next(LocomotionConfig.Character, MovementKind.None, 0f, false));
         }
 
         [Test]

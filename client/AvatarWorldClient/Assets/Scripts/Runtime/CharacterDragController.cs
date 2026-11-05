@@ -1,0 +1,123 @@
+using System;
+using AvatarWorld.Core.Avatar;
+using AvatarWorld.Core.Pointer;
+using UnityEngine;
+
+namespace AvatarWorld.Runtime
+{
+    /// <summary>
+    /// Liga os contratos extraidos do original (docs/RECON_*_CONTRACT.md) a um personagem na cena:
+    /// ponteiro -> DragIntentDetector (limiar de 10 px, clique contra arraste) -> posicao por quadro (Pre/Post)
+    /// -> velocidade -> LocomotionStateMachine -> nome de animacao.
+    /// A velocidade e medida em unidades de mundo por segundo (inferido: o original usa sqrt(a^2+b^2)/t, a unidade nao foi provada).
+    /// Nao toca em Spine: expoe CurrentAnimation e eventos para quem renderiza.
+    /// </summary>
+    public sealed class CharacterDragController : MonoBehaviour
+    {
+        public Camera Cam;
+        public LocomotionFamily Family = LocomotionFamily.Character;
+        public PostureKind Posture = PostureKind.Standing;
+        public bool HasRunningAnimations;
+        public float GrabRadius = 1.4f;
+
+        /// <summary>Conversao tela -> mundo; injetavel para testes. Padrao: Cam.ScreenToWorldPoint.</summary>
+        public Func<Vector2, Vector2> ScreenToWorld;
+
+        public MovementKind Movement { get; private set; } = MovementKind.Stand;
+        public string CurrentAnimation { get; private set; }
+        public DragPhase Phase { get { return _intent.Phase; } }
+
+        public event Action<MovementKind> MovementChanged;
+        public event Action DragStarted;
+        public event Action DragEnded;
+        public event Action Clicked;
+
+        /// <summary>Etapas opcionais Pre/Post por quadro (slots 25/26 do original). Nulas = identidade.</summary>
+        public Func<DragPoint, DragPoint> PreModifications;
+        public Func<DragPoint, DragPoint> PostModifications;
+
+        readonly DragIntentDetector _intent = new DragIntentDetector();
+        bool _wasPressed;
+        Vector2 _grabOffset;
+        Vector2 _lastPosition;
+
+        void Awake()
+        {
+            CurrentAnimation = LocomotionAnimations.NameFor(Family, Movement, Posture);
+        }
+
+        void Update()
+        {
+#if ENABLE_INPUT_SYSTEM
+            var pointer = UnityEngine.InputSystem.Pointer.current;
+            if (pointer == null) return;
+            Tick(pointer.press.isPressed, pointer.position.ReadValue(), Time.deltaTime);
+#endif
+        }
+
+        /// <summary>Um quadro de entrada. Separado de Update para ser testavel sem dispositivo.</summary>
+        public void Tick(bool pressed, Vector2 screenPosition, float deltaTime)
+        {
+            Vector2 world = ToWorld(screenPosition);
+            bool down = pressed && !_wasPressed;
+            bool up = !pressed && _wasPressed;
+            _wasPressed = pressed;
+
+            if (down)
+            {
+                if (Vector2.Distance(world, (Vector2)transform.position) <= GrabRadius)
+                {
+                    _intent.PointerDown(screenPosition.x, screenPosition.y);
+                    _grabOffset = (Vector2)transform.position - world;
+                    _lastPosition = transform.position;
+                }
+                return;
+            }
+
+            if (up)
+            {
+                var result = _intent.PointerUp();
+                if (result == PointerReleaseResult.Click) { if (Clicked != null) Clicked(); }
+                else if (result == PointerReleaseResult.EndDrag)
+                {
+                    SetMovement(MovementKind.None);       // OnEndMovement grava 0
+                    SetMovement(MovementKind.Stand);      // e o idle volta no quadro seguinte
+                    if (DragEnded != null) DragEnded();
+                }
+                return;
+            }
+
+            if (_intent.Phase == DragPhase.Idle) return;
+
+            if (_intent.PointerMove(screenPosition.x, screenPosition.y) && DragStarted != null)
+                DragStarted();
+            if (_intent.Phase != DragPhase.Dragging) return;
+
+            var raw = new DragPoint(world.x + _grabOffset.x, world.y + _grabOffset.y);
+            var p = DragPositionPipeline.Compute(raw, PreModifications, PostModifications);
+            var target = new Vector2(p.X, p.Y);
+            transform.position = new Vector3(target.x, target.y, transform.position.z);
+
+            float speed = deltaTime > 0f ? Vector2.Distance(target, _lastPosition) / deltaTime : 0f;
+            _lastPosition = target;
+            SetMovement(LocomotionStateMachine.Next(LocomotionAnimations.ConfigFor(Family), Movement, speed, HasRunningAnimations));
+        }
+
+        Vector2 ToWorld(Vector2 screen)
+        {
+            if (ScreenToWorld != null) return ScreenToWorld(screen);
+            if (Cam == null) return screen;
+            Vector3 w = Cam.ScreenToWorldPoint(new Vector3(screen.x, screen.y, 10f));
+            return new Vector2(w.x, w.y);
+        }
+
+        void SetMovement(MovementKind next)
+        {
+            if (next == Movement && CurrentAnimation != null) return;
+            bool changed = next != Movement;
+            Movement = next;
+            CurrentAnimation = LocomotionAnimations.NameFor(Family, Movement, Posture);
+            if (changed && MovementChanged != null) MovementChanged(Movement);
+        }
+    }
+}
