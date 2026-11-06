@@ -394,12 +394,24 @@ namespace AvatarWorld.Runtime
                 button.targetGraphic = frame;
                 button.onClick.AddListener(() => { UiSound.PlayClick(); Choose(itemId); });
                 _cells[itemId] = frame;
+                bool locked = PackGate.IsLocked(_state, itemId);
 
                 var item = NewImage("Item", frame.transform, ThumbFor(itemId), Color.white);
                 item.preserveAspect = true;
                 Place(item.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(190f, 180f));
                 item.enabled = item.sprite != null;
                 _cellIcons[itemId] = item;
+                if (locked)
+                {
+                    // Peca de combo da loja ainda nao comprado: miniatura esmaecida e etiqueta.
+                    item.color = new Color(0.4f, 0.4f, 0.45f, 0.8f);
+                    var tag = new GameObject("Locked", typeof(RectTransform), typeof(Text)).GetComponent<Text>();
+                    tag.transform.SetParent(frame.transform, false);
+                    Place(tag.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 26f), new Vector2(200f, 44f));
+                    tag.font = _font; tag.fontSize = 30; tag.alignment = TextAnchor.MiddleCenter;
+                    tag.color = new Color(0.45f, 0.2f, 0.6f); tag.raycastTarget = false;
+                    tag.text = "Na loja";
+                }
             }
             RefreshSelection();
         }
@@ -456,6 +468,11 @@ namespace AvatarWorld.Runtime
         void Choose(string itemId)
         {
             if (_avatar == null || !_avatar.IsReady) return;
+            if (PackGate.IsLocked(_state, itemId))
+            {
+                ShowToast("Peça do combo \"" + PackGate.OfferTitleFor(itemId) + "\" da loja.");
+                return;
+            }
             _avatar.SelectOption(_category, itemId);
             _history.Push(_avatar.CurrentAppearance);
             RefreshSelection();
