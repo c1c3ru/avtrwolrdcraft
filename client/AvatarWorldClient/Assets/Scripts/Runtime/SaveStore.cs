@@ -34,6 +34,7 @@ namespace AvatarWorld.Runtime
                 // perder moedas/desafios (criterio do Ciclo 3).
                 if (state.Appearance == null) state.Appearance = AvatarAppearance.CreateDefault();
                 else state.Appearance.SanitizeInPlace();
+                state.SanitizeAvatarSlots();
                 return state;
             }
             catch (Exception e) when (e is ArgumentException || e is InvalidDataException || e is IOException)

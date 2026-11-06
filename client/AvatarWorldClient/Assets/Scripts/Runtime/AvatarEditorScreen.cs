@@ -13,7 +13,7 @@ namespace AvatarWorld.Runtime
     /// Editor de avatar com o layout da cena AvatarMaker do original (level234 + prefab CharacterMenu de
     /// resources.assets): voltar (topo-esquerda), concluir/desfazer/refazer (base-esquerda) e, a direita, o menu com a
     /// coluna de categorias (127), divisor e grade de miniaturas (cela 217x207). Posicoes em unidades do canvas 2048x1024.
-    /// Usa as categorias e IDs presentes em AvatarCatalog. O catálogo contém 2.174 opções nas quatro categorias
+    /// Usa as categorias e IDs presentes em AvatarCatalog. O catálogo contém 4.016 opções nas quatro categorias
     /// principais, com distribuição provisória derivada dos recursos extraídos; cabelo, boca, sobrancelha e cabelo
     /// traseiro têm listas separadas. O gate de pacotes do original ainda não está reproduzido.
     /// Aproximado: fundo/cor do painel (sem print do original), miniaturas geradas do proprio avatar (o original usa icones),
@@ -78,6 +78,8 @@ namespace AvatarWorld.Runtime
         readonly Dictionary<string, Image> _hairTabButtons = new Dictionary<string, Image>();
         readonly Dictionary<int, Image> _itemColorRings = new Dictionary<int, Image>();
 
+        /// <summary>True se a sessao terminou em Concluir (gravou); Voltar descarta e deixa false.</summary>
+        public bool Saved { get; private set; }
         public string Category => _category;
         public int VisibleItemCount => _cells.Count;
 
@@ -493,6 +495,7 @@ namespace AvatarWorld.Runtime
                 ShowToast("Não foi possível salvar. Nada foi alterado.");
                 return;
             }
+            Saved = true;
             Close();
         }
 

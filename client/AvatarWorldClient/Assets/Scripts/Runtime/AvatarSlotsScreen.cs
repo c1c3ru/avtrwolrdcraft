@@ -7,8 +7,8 @@ namespace AvatarWorld.Runtime
 {
     /// <summary>
     /// Tela de slots (AvatarMakerLobby do original, prints 16.07.17 e 16.07.35): voltar, abas humano/pet/carro,
-    /// slots com silhueta tracejada e lixeira. O primeiro slot humano mostra o avatar salvo e abre o editor;
-    /// slots extras, pets e veiculos ainda nao existem offline (aviso). O slot de veiculo bloqueado leva a loja.
+    /// slots com silhueta tracejada e lixeira. Cada slot humano mostra o avatar salvo (ou a silhueta para criar) e abre o editor;
+    /// os slots humanos 1-3 criam/editam avatares; pets e veiculos ainda nao existem offline (aviso: sem arte/esqueleto extraidos). O slot de veiculo bloqueado leva a loja.
     /// Posicoes em unidades do canvas 2048x1024 convertidas dos prints (x1,42); arte em Resources/Slots.
     /// O pedestal rosa nao foi extraido: e desenhado em codigo.
     /// </summary>
@@ -25,7 +25,10 @@ namespace AvatarWorld.Runtime
         Transform _slotsRoot;
         Text _toast;
         float _toastUntil;
-        GameObject _avatarHost, _editorHost;
+        GameObject _editorHost;
+        readonly System.Collections.Generic.List<GameObject> _avatarHosts = new System.Collections.Generic.List<GameObject>();
+        int _editingSlot, _returnSlot;
+        bool _editingNew;
         readonly System.Collections.Generic.Dictionary<string, Sprite> _sprites = new System.Collections.Generic.Dictionary<string, Sprite>();
         readonly System.Collections.Generic.Dictionary<string, Image> _tabs = new System.Collections.Generic.Dictionary<string, Image>();
         Font _font;
@@ -129,7 +132,7 @@ namespace AvatarWorld.Runtime
             _tabs[TabPet].sprite = Art(tab == TabPet ? "Slots/pet_sel" : "Slots/pet");
             _tabs[TabCar].sprite = Art(tab == TabCar ? "Slots/car_sel" : "Slots/car");
             for (int i = _slotsRoot.childCount - 1; i >= 0; i--) { var c = _slotsRoot.GetChild(i).gameObject; c.SetActive(false); Destroy(c); }
-            if (_avatarHost != null) { Destroy(_avatarHost); _avatarHost = null; }
+            ClearAvatarHosts();
             if (tab == TabHuman) BuildHumanSlots();
             else if (tab == TabPet) BuildPetSlots();
             else BuildCarSlots();
@@ -139,18 +142,32 @@ namespace AvatarWorld.Runtime
 
         void BuildHumanSlots()
         {
-            // Pedestal do slot 1 + avatar salvo (mesmo runtime Spine da quadra, sem camera propria).
-            var pedestal = NewImage("Pedestal", _slotsRoot, PedestalSprite(), Color.white);
-            Place(pedestal.rectTransform, new Vector2(0f, -205f), new Vector2(420f, 130f));
-            var hit = Button("Slot1", _slotsRoot, null, new Vector2(0.5f, 0.5f), new Vector2(0f, 0f), new Vector2(330f, 480f), OpenEditor);
-            hit.color = new Color(0, 0, 0, 0);
-            _avatarHost = new GameObject("Avatar salvo no slot 1");
-            _avatarHost.transform.SetParent(transform, false);
-            _avatarHost.AddComponent<AvatarGpuRuntime>().ConfigureAsWorldAvatar(_saves, _state, new Vector3(0f, -1.95f, 0f), 0.9f);
-
-            for (int i = 1; i <= 2; i++)
-                Button("Slot" + (i + 1), _slotsRoot, Art("Slots/empty_human"), new Vector2(0.5f, 0.5f), new Vector2(SlotSpacing * i, 3f), new Vector2(279f, 461f),
-                    () => { UiSound.PlayClick(); ShowToast("Mais avatares ainda não estão disponíveis."); });
+            // Um slot por avatar humano: o avatar salvo (mesmo runtime Spine da quadra, sem camera propria) sobre o pedestal,
+            // ou a silhueta tracejada para criar um novo. Slots extras mostram uma copia so de leitura (PlayerState temporario).
+            for (int slot = 0; slot < PlayerState.HumanSlotCount; slot++)
+            {
+                int captured = slot;
+                float x = SlotSpacing * slot;
+                if (_state.HasHumanAvatar(slot))
+                {
+                    var pedestal = NewImage("Pedestal" + (slot + 1), _slotsRoot, PedestalSprite(), Color.white);
+                    Place(pedestal.rectTransform, new Vector2(x, -205f), new Vector2(420f, 130f));
+                    var hit = Button("Slot" + (slot + 1), _slotsRoot, null, new Vector2(0.5f, 0.5f), new Vector2(x, 0f), new Vector2(330f, 480f), () => OpenEditor(captured));
+                    hit.color = new Color(0, 0, 0, 0);
+                    var host = new GameObject("Avatar salvo no slot " + (slot + 1));
+                    host.transform.SetParent(transform, false);
+                    var shown = slot == _state.ActiveHumanSlot ? _state : new PlayerState { Appearance = _state.GetHumanAppearance(slot).Clone() };
+                    host.AddComponent<AvatarGpuRuntime>().ConfigureAsWorldAvatar(_saves, shown, new Vector3(x / 100f, -1.95f, 0f), 0.9f);
+                    _avatarHosts.Add(host);
+                }
+                else
+                {
+                    Button("Slot" + (slot + 1), _slotsRoot, Art("Slots/empty_human"), new Vector2(0.5f, 0.5f), new Vector2(x, 3f), new Vector2(279f, 461f),
+                        () => OpenEditor(captured));
+                    var plus = NewImage("Plus" + (slot + 1), _slotsRoot, Art("Slots/plus"), Color.white);
+                    Place(plus.rectTransform, new Vector2(x, 3f), new Vector2(110f, 110f));
+                }
+            }
         }
 
         void BuildCarSlots()
@@ -176,12 +193,21 @@ namespace AvatarWorld.Runtime
 
         // ---------- editor do avatar (slot 1) ----------
 
-        void OpenEditor()
+        void ClearAvatarHosts()
+        {
+            foreach (var host in _avatarHosts) if (host != null) Destroy(host);
+            _avatarHosts.Clear();
+        }
+
+        void OpenEditor(int slot)
         {
             if (_editorHost != null) return;
             UiSound.PlayClick();
             SetVisible(false);
-            if (_avatarHost != null) { Destroy(_avatarHost); _avatarHost = null; }
+            ClearAvatarHosts();
+            // O slot escolhido vira o avatar ativo (o editor e o mundo leem PlayerState.Appearance).
+            _editingSlot = slot; _returnSlot = _state.ActiveHumanSlot;
+            _editingNew = _state.SwitchHumanSlot(slot);
             _editorHost = new GameObject("AvatarEditorSession");
             _editorHost.transform.SetParent(transform, false);
             // Editor com o layout da cena AvatarMaker do original (AvatarEditorScreen).
@@ -190,8 +216,21 @@ namespace AvatarWorld.Runtime
 
         void CloseEditor()
         {
+            bool saved = _editorHost != null && _editorHost.GetComponent<AvatarEditorScreen>().Saved;
             if (_editorHost != null) Destroy(_editorHost);
             _editorHost = null;
+            if (_editingNew && !saved)
+            {
+                // Criacao cancelada: o slot volta a ficar vazio e o avatar anterior continua ativo.
+                _state.DiscardHumanSlot(_editingSlot, _returnSlot);
+            }
+            else
+            {
+                // Persiste a troca de slot ativo (o Concluir do editor ja gravou o resto).
+                try { _saves.Save(_state); }
+                catch (System.Exception e) when (e is System.IO.IOException || e is UnauthorizedAccessException) { Debug.LogWarning("Slots: nao gravou slot ativo: " + e.Message); }
+            }
+            _editingNew = false;
             SetVisible(true);
             SelectTab(Tab);
         }
