@@ -179,9 +179,97 @@ namespace AvatarWorld.Runtime
             catch (Exception) { return WorldWeather.Clear; }
         }
 
+        ParticleSystem _precip;
+        Texture2D _dotTexture;
+
+        static Texture2D MakeDot()
+        {
+            const int n = 32;
+            var t = new Texture2D(n, n, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp };
+            for (int y = 0; y < n; y++)
+                for (int x = 0; x < n; x++)
+                {
+                    float d = Vector2.Distance(new Vector2(x, y), new Vector2(n / 2f - 0.5f, n / 2f - 0.5f)) / (n / 2f);
+                    t.SetPixel(x, y, new Color(1, 1, 1, Mathf.Clamp01(1.4f - d * 1.4f)));
+                }
+            t.Apply();
+            return t;
+        }
+
+        // Chuva/neve caindo sobre a area visivel (sistema de particulas preso a camera).
+        void UpdatePrecipitation(int weather)
+        {
+            if (_camera == null) return;
+            if (_precip == null)
+            {
+                var go = new GameObject("WeatherParticles", typeof(ParticleSystem));
+                go.transform.SetParent(_camera.transform, false);
+                float h = _camera.orthographicSize;
+                go.transform.localPosition = new Vector3(0f, h + 0.5f, 5f);
+                go.transform.localRotation = Quaternion.identity;
+                _precip = go.GetComponent<ParticleSystem>();
+                var r = go.GetComponent<ParticleSystemRenderer>();
+                _dotTexture = MakeDot();
+                var shader = Shader.Find("Sprites/Default");
+                r.material = new Material(shader) { mainTexture = _dotTexture };
+                r.sortingOrder = 500;
+                var shape = _precip.shape;
+                shape.shapeType = ParticleSystemShapeType.Box;
+                shape.scale = new Vector3(HalfWidth * 2f + 4f, 0.1f, 0.1f);
+                var main0 = _precip.main;
+                main0.simulationSpace = ParticleSystemSimulationSpace.World;
+            }
+            var main = _precip.main;
+            var emission = _precip.emission;
+            var rend = _precip.GetComponent<ParticleSystemRenderer>();
+            if (weather == WorldWeather.Rain)
+            {
+                main.startLifetime = 0.9f;
+                main.startSpeed = 0f;
+                main.startSize = 0.09f;
+                main.startColor = new Color(0.75f, 0.85f, 1f, 0.75f);
+                main.maxParticles = 1500;
+                var vel = _precip.velocityOverLifetime;
+                vel.enabled = true;
+                vel.space = ParticleSystemSimulationSpace.World;
+                vel.x = new ParticleSystem.MinMaxCurve(-1.5f);
+                vel.y = new ParticleSystem.MinMaxCurve(-13f);
+                vel.z = new ParticleSystem.MinMaxCurve(0f);
+                emission.rateOverTime = 260f;
+                rend.renderMode = ParticleSystemRenderMode.Stretch;
+                rend.lengthScale = 6f; rend.velocityScale = 0.06f;
+                if (!_precip.isPlaying) _precip.Play();
+            }
+            else if (weather == WorldWeather.Snow)
+            {
+                main.startLifetime = 5f;
+                main.startSpeed = 0f;
+                main.startSize = new ParticleSystem.MinMaxCurve(0.08f, 0.2f);
+                main.startColor = new Color(1f, 1f, 1f, 0.95f);
+                main.maxParticles = 800;
+                var vel = _precip.velocityOverLifetime;
+                vel.enabled = true;
+                vel.space = ParticleSystemSimulationSpace.World;
+                vel.x = new ParticleSystem.MinMaxCurve(-0.6f, 0.6f);
+                vel.y = new ParticleSystem.MinMaxCurve(-1.6f, -0.9f);
+                vel.z = new ParticleSystem.MinMaxCurve(0f, 0f);
+                emission.rateOverTime = 110f;
+                rend.renderMode = ParticleSystemRenderMode.Billboard;
+                if (!_precip.isPlaying) _precip.Play();
+            }
+            else
+            {
+                _precip.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            }
+            if (_camera != null)
+                _camera.backgroundColor = weather == WorldWeather.Rain ? new Color(0.62f, 0.66f, 0.78f)
+                    : weather == WorldWeather.Snow ? new Color(0.85f, 0.9f, 0.98f) : new Color(0.97f, 0.78f, 0.82f);
+        }
+
         void ApplyWeather(int weather)
         {
             _weather = weather;
+            UpdatePrecipitation(weather);
             for (int i = 0; i < _weatherRenderers.Count; i++)
                 _weatherRenderers[i].enabled = _data.renderers[_weatherRendererIndex[i]].VisibleIn(weather);
             foreach (var pair in _weatherIcons)
