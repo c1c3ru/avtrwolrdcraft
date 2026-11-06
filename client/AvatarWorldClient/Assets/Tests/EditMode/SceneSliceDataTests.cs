@@ -1,3 +1,4 @@
+using AvatarWorld.Core.Spine;
 using System.Linq;
 using AvatarWorld.Runtime;
 using NUnit.Framework;
@@ -28,6 +29,26 @@ namespace AvatarWorld.Core.Tests
                 foreach (var r in new[] { data.renderers[0], data.renderers[data.renderers.Count / 2], data.renderers.Last() })
                     Assert.IsNotNull(Resources.Load<Texture2D>("Scenes/" + entry.name + "/sprites/" + r.sprite), entry.name + "/" + r.sprite);
             }
+        }
+
+        [Test]
+        public void Scenes_SpinesReferenceRenderableSkeletonsWithUniqueRanks()
+        {
+            int total = 0;
+            foreach (var entry in SceneSliceRuntime.Index.scenes)
+            {
+                var data = JsonUtility.FromJson<SceneSliceData>(Resources.Load<TextAsset>("Scenes/" + entry.name + "/scene").text);
+                var ranks = data.renderers.Select(r => r.rank).Concat(data.spines.Select(s => s.rank)).ToList();
+                Assert.AreEqual(ranks.Count, ranks.Distinct().Count(), entry.name + ": rank repetido entre sprites e spines");
+                foreach (var sp in data.spines)
+                {
+                    SpineEntry e;
+                    Assert.IsTrue(SpineLibrary.Index.TryGet(sp.skeleton, out e), entry.name + ": " + sp.skeleton);
+                    Assert.IsTrue(e.renderable, entry.name + ": " + sp.skeleton + " sem atlas");
+                    total++;
+                }
+            }
+            Assert.AreEqual(275, total);
         }
     }
 }

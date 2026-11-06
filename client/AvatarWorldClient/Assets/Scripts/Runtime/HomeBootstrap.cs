@@ -140,7 +140,7 @@ namespace AvatarWorld.Runtime
                 if (_worldMap != null) _worldMap.gameObject.SetActive(true);
                 LoadingScreen.Hide(0.5f);
             }
-            if (!host.AddComponent<SceneSliceRuntime>().Begin(levelType, Close, () => LoadingScreen.Hide(0.7f))) Close();
+            if (!host.AddComponent<SceneSliceRuntime>().Begin(levelType, Close, () => LoadingScreen.Hide(0.7f), _save, _state)) Close();
         }
 
         void OpenBasketballCourt()

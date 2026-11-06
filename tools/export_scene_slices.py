@@ -47,13 +47,28 @@ def main(argv=None):
             if 'night' in r['go'].lower() or 'night' in r['sprite'].lower():
                 continue
             rows.append(r)
-        rows.sort(key=sort_key)
+        # Spine (animations.spines) entra na mesma ordenacao dos sprites; Avatar_Spine (personagens) fica de fora:
+        # sem a aparencia/skins aplicadas ele nao e um elemento de cenario.
+        spines = [sp for sp in (data.get('animations') or {}).get('spines', []) if sp['skeleton'] != 'Avatar_Spine']
+        merged = [(sort_key(r), 0, r) for r in rows] + [(([tuple(p) for p in sp['sortPath']], 1 << 40), 1, sp) for sp in spines]
+        merged.sort(key=lambda t: (t[0], t[1]))
+        spine_rows = []
+        for rank, (_, kind, sp) in enumerate(merged):
+            if kind:
+                spine_rows.append({'skeleton': sp['skeleton'], 'x': round(sp['x'], 4), 'y': round(sp['y'], 4),
+                                   'sx': sp['sx'], 'sy': sp['sy'], 'animation': sp['animation'], 'loop': sp['loop'],
+                                   'followCamera': sp.get('followCamera', False), 'offsetX': round(sp.get('offsetX', sp['x']), 4),
+                                   'offsetY': round(sp.get('offsetY', sp['y']), 4), 'rank': rank})
+            else:
+                sp['_rank'] = rank
+        rows = [r for _, kind, r in merged if not kind]
         sdir = out_root / name / 'sprites'
         sdir.mkdir(parents=True, exist_ok=True)
         rend, used = [], set()
         minx = miny = 1e9
         maxx = maxy = -1e9
-        for rank, r in enumerate(rows):
+        for r in rows:
+            rank = r['_rank']
             sprite = r['sprite'][:-4] if r['sprite'].endswith('.png') else r['sprite']
             src = args.scene_dir / f'{n}.export.json' / f'{sprite}.png'
             if not src.exists():
@@ -77,7 +92,7 @@ def main(argv=None):
                 row['drawW'], row['drawH'] = r['drawSize']
             rend.append(row)
         scene = {'name': name, 'levelType': entry['levelType'], 'orthoSize': data['camera'].get('orthoSize', 5.12),
-                 'minX': minx, 'maxX': maxx, 'minY': miny, 'maxY': maxy, 'renderers': rend}
+                 'minX': minx, 'maxX': maxx, 'minY': miny, 'maxY': maxy, 'renderers': rend, 'spines': spine_rows}
         (out_root / name / 'scene.json').write_text(json.dumps(scene, separators=(',', ':')))
         total_sprites += len(used)
         index.append({'levelType': entry['levelType'], 'name': name, 'renderers': len(rend), 'sprites': len(used)})

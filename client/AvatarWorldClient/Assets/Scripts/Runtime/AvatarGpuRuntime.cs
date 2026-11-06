@@ -72,6 +72,8 @@ namespace AvatarWorld.Runtime
         Action _onClose;
         bool _useSharedState;
         bool _embeddedWorldAvatar;
+        /// <summary>Ordem de desenho do avatar quando embutido numa cena (padrao 4: quadra de basquete).</summary>
+        public int EmbeddedSortingOrder = 4;
         Vector3 _worldPosition;
         float _worldScale = 1f;
         AvatarAppearance Appearance => _playerState.Appearance;
@@ -218,7 +220,7 @@ namespace AvatarWorld.Runtime
             var meshFilter = avatarGo.GetComponent<MeshFilter>();
             int tris = meshFilter != null && meshFilter.sharedMesh != null ? meshFilter.sharedMesh.triangles.Length / 3 : 0;
             var avatarRenderer = avatarGo.GetComponent<MeshRenderer>();
-            if (_embeddedWorldAvatar && avatarRenderer != null) avatarRenderer.sortingOrder = 4;
+            if (_embeddedWorldAvatar && avatarRenderer != null) avatarRenderer.sortingOrder = EmbeddedSortingOrder;
             Debug.Log("AvatarGpuRuntime: avatar valido, " + tris + " triangulos reais, animacao Idle_Stand_1 tocando");
 
 

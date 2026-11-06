@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AvatarWorld.Core.Economy;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,12 +20,22 @@ namespace AvatarWorld.Runtime
     }
 
     [Serializable]
+    public sealed class SceneSliceSpine
+    {
+        public string skeleton, animation;
+        public float x, y, sx = 1f, sy = 1f, offsetX, offsetY;
+        public bool loop = true, followCamera;
+        public int rank;
+    }
+
+    [Serializable]
     public sealed class SceneSliceData
     {
         public string name;
         public int levelType;
         public float orthoSize = 5.12f, minX, maxX, minY, maxY;
         public List<SceneSliceRenderer> renderers = new List<SceneSliceRenderer>();
+        public List<SceneSliceSpine> spines = new List<SceneSliceSpine>();
     }
 
     [Serializable] public sealed class SceneSliceEntry { public int levelType; public string name; public int renderers, sprites; }
@@ -46,6 +57,9 @@ namespace AvatarWorld.Runtime
         SceneSliceData _data;
         bool _pressing;
         Vector2 _lastPos;
+        SaveStore _save;
+        PlayerState _state;
+        readonly List<KeyValuePair<Transform, SceneSliceSpine>> _followers = new List<KeyValuePair<Transform, SceneSliceSpine>>();
 
         public SceneSliceData Data => _data;
         public Camera SceneCamera => _camera;
@@ -71,7 +85,7 @@ namespace AvatarWorld.Runtime
         public static bool Has(int levelType) => NameFor(levelType) != null;
 
         /// <summary>Monta a cena em varios quadros; onReady dispara quando tudo esta pronto.</summary>
-        public bool Begin(int levelType, Action onBack, Action onReady = null)
+        public bool Begin(int levelType, Action onBack, Action onReady = null, SaveStore save = null, PlayerState state = null)
         {
             string name = NameFor(levelType);
             if (name == null) return false;
@@ -79,6 +93,7 @@ namespace AvatarWorld.Runtime
             if (json == null) { Debug.LogError("SceneSlice: scene.json ausente para " + name); return false; }
             _data = JsonUtility.FromJson<SceneSliceData>(json.text);
             _onBack = onBack;
+            _save = save; _state = state;
             BuildCamera();
             BuildOverlay();
             StartCoroutine(BuildSprites(name, onReady));
@@ -160,9 +175,57 @@ namespace AvatarWorld.Runtime
                     sr.enabled = visible;
                 }
             }
+            BuildSpines();
+            BuildAvatar();
             if (missing > 0) Debug.LogWarning("SceneSlice " + scene + ": " + missing + " sprites ausentes");
             Debug.Log("SceneSlice " + scene + ": " + _data.renderers.Count + " elementos");
             onReady?.Invoke();
+        }
+
+        void BuildSpines()
+        {
+            int ok = 0;
+            foreach (var sp in _data.spines)
+            {
+                var asset = SpineLibrary.Load(sp.skeleton);
+                if (asset == null) continue;
+                var go = new GameObject("Spine " + sp.skeleton);
+                go.transform.SetParent(transform, false);
+                go.transform.position = new Vector3(sp.x, sp.y, 0f);
+                go.transform.localScale = new Vector3(sp.sx, sp.sy, 1f);
+                var anim = Spine.Unity.SkeletonAnimation.AddToGameObject(go, asset);
+                if (!anim.valid) { Destroy(go); continue; }
+                string name = PickAnimation(anim, sp);
+                if (name != null) anim.state.SetAnimation(0, name, sp.loop);
+                var mr = go.GetComponent<MeshRenderer>();
+                if (mr != null) mr.sortingOrder = sp.rank;
+                if (sp.followCamera) _followers.Add(new KeyValuePair<Transform, SceneSliceSpine>(go.transform, sp));
+                ok++;
+            }
+            if (_data.spines.Count > 0) Debug.Log("SceneSlice: " + ok + "/" + _data.spines.Count + " spines");
+        }
+
+        // A cena guarda o nome da animacao inicial; sem nome, so ciclos ambiente (fogo, agua, sol) sao tocados.
+        static string PickAnimation(Spine.Unity.SkeletonAnimation anim, SceneSliceSpine sp)
+        {
+            var data = anim.skeleton.Data;
+            if (!string.IsNullOrEmpty(sp.animation) && data.FindAnimation(sp.animation) != null) return sp.animation;
+            foreach (var key in new[] { "Idle", "Loop", "Day" })
+                foreach (var a in data.Animations)
+                    if (a.Name.IndexOf(key, StringComparison.OrdinalIgnoreCase) >= 0) return a.Name;
+            bool ambient = sp.skeleton.StartsWith("Fire") || sp.skeleton.StartsWith("Water") || sp.skeleton.StartsWith("Sun");
+            return ambient && data.Animations.Count > 0 ? data.Animations.Items[0].Name : null;
+        }
+
+        // Avatar salvo do jogador, como na quadra; o original o cria em runtime (nao ha personagem serializado na cena).
+        void BuildAvatar()
+        {
+            if (_save == null || _state == null) return;
+            var host = new GameObject("Avatar salvo na cena");
+            host.transform.SetParent(transform, false);
+            var avatar = host.AddComponent<AvatarGpuRuntime>();
+            avatar.EmbeddedSortingOrder = 30000;
+            avatar.ConfigureAsWorldAvatar(_save, _state, new Vector3(_camera.transform.position.x, -2.7f, 0f), 0.55f);
         }
 
         RectTransform _backRect;
@@ -193,6 +256,13 @@ namespace AvatarWorld.Runtime
             if (tex != null) image.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f);
             back.GetComponent<Button>().targetGraphic = image;
             back.GetComponent<Button>().onClick.AddListener(() => { UiSound.PlayClick(); _onBack?.Invoke(); });
+        }
+
+        void LateUpdate()
+        {
+            if (_camera == null) return;
+            foreach (var f in _followers)
+                f.Key.position = new Vector3(_camera.transform.position.x + f.Value.offsetX, f.Value.offsetY, 0f);
         }
 
         void Update()
