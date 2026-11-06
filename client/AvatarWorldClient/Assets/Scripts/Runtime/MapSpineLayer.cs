@@ -64,6 +64,14 @@ namespace AvatarWorld.Runtime
             }
         }
 
+        /// <summary>Cor do esqueleto inteiro (tonalidade por hora do dia / transparencia dos brilhos da agua).</summary>
+        public void SetColor(Color color)
+        {
+            var animation = GetComponent<SkeletonAnimation>();
+            if (animation == null || animation.Skeleton == null) return;
+            animation.Skeleton.R = color.r; animation.Skeleton.G = color.g; animation.Skeleton.B = color.b; animation.Skeleton.A = color.a;
+        }
+
         void LateUpdate()
         {
             if (!_follow || _camera == null) return;

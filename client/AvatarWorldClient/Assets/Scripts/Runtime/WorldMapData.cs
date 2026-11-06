@@ -52,6 +52,8 @@ namespace AvatarWorld.Runtime
         public bool cloudRain;
         /// <summary>Id do WorldTrain dono do sprite (0 = nao e trem).</summary>
         public int train;
+        /// <summary>Id do ColorByTimeOfDay que tinge o sprite por hora do dia (0 = sem tinta).</summary>
+        public int tint;
 
         public bool VisibleIn(int weather)
         {
@@ -70,6 +72,16 @@ namespace AvatarWorld.Runtime
         public List<WorldTrainAnimData> trains = new List<WorldTrainAnimData>();
         public List<WorldSpineData> spines = new List<WorldSpineData>();
         public List<WorldCarsData> cars = new List<WorldCarsData>();
+        public List<WorldTintData> tints = new List<WorldTintData>();
+    }
+
+    /// <summary>ColorByTimeOfDay do original: cor (RGBA) de dia, por do sol e noite.</summary>
+    [Serializable]
+    public sealed class WorldTintData
+    {
+        public int id;
+        public string name;
+        public float[] day = { 1f, 1f, 1f, 1f }, sunset = { 1f, 1f, 1f, 1f }, night = { 1f, 1f, 1f, 1f };
     }
 
     /// <summary>Um WorldCarsController: rede de estrada, carros usados (cars/car&lt;N&gt;), quantos e a ordem de desenho.</summary>
@@ -96,7 +108,7 @@ namespace AvatarWorld.Runtime
     {
         public string skeleton, animation;
         public float x, y, sx = 1f, sy = 1f, offsetX, offsetY;
-        public int rank;
+        public int rank, tint;
         public bool loop = true, followCamera;
     }
 

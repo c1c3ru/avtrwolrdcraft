@@ -30,7 +30,7 @@ PACKS = {
     'bundle-PB24': 'DayInTheParkP222',         # Ferias de Primavera
     'bundle-PB17': 'PrepToGlamP199',           # Estilista de Celebridades
 }
-CATEGORY_ORDER = ['Shirt', 'Bottom', 'Shoes', 'Accessory', 'Mouth', 'Eyebrows', 'HairBack', 'Hat', 'Jacket']
+CATEGORY_ORDER = ['Shirt', 'Bottom', 'Shoes', 'Accessory', 'Mouth', 'Eyebrows', 'HairBack', 'Hat', 'Jacket', 'Hair']
 BUILT_IN_FIRST = {'Hat': 'hat_none', 'Jacket': 'jacket_none'}  # categorias novas ainda sem dados no catalogo atual
 FREE_EXTRA = 60  # chapeus/jaquetas livres (fora de qualquer pacote do original) por categoria, alem dos de combo
 
@@ -57,7 +57,7 @@ def main():
         for piece in cov[flag]['pieces']:
             cat = piece['editor_category']
             if piece['texture'] != 'ok' or not cat: continue
-            item = piece['skin'].lower()
+            item = piece.get('id') or piece['skin'].lower()
             if item not in selection[cat]: selection[cat].append(item)
             ids.append(item)
         content[offer] = (flag, sorted(set(ids)))

@@ -11,9 +11,12 @@ namespace AvatarWorld.Core.Economy
     {
         public static readonly IReadOnlyDictionary<string, string[]> ItemsByOffer = new Dictionary<string, string[]>
         {
-            // GalxeLiveShowP173: 20 pecas
+            // GalxeLiveShowP173: 23 pecas
             { "bundle-PB23", new[]
                 {
+                    "Hair_Front/168_Color",
+                    "Hair_Front/169_Color",
+                    "Hair_Front/170_Color",
                     "accessories_body_neck_370",
                     "accessories_body_neck_371",
                     "accessories_body_neck_372",
@@ -35,9 +38,15 @@ namespace AvatarWorld.Core.Economy
                     "shirt_special_918",
                     "shirt_special_919",
                 } },
-            // GraduationPartyP214: 42 pecas
+            // GraduationPartyP214: 48 pecas
             { "bundle-PB27", new[]
                 {
+                    "Hair_Front/263_Color",
+                    "Hair_Front/264_Color",
+                    "Hair_Front/265_Color",
+                    "Hair_Front/266_Color",
+                    "Hair_Front/267_Color",
+                    "Hair_Front/268_Color",
                     "accessories_body_neck_468",
                     "accessories_body_neck_469",
                     "accessories_body_neck_470",
@@ -81,9 +90,15 @@ namespace AvatarWorld.Core.Economy
                     "shirt_special_1058",
                     "shirt_special_1059",
                 } },
-            // StarsFashionP228: 30 pecas
+            // StarsFashionP228: 36 pecas
             { "bundle-PB20", new[]
                 {
+                    "Hair_Front/273_Color",
+                    "Hair_Front/274_Color",
+                    "Hair_Front/275_Color",
+                    "Hair_Front/276_Color",
+                    "Hair_Front/277_Color",
+                    "Hair_Front/278_Color",
                     "accessories_body_neck_482",
                     "accessories_face_glasses_429",
                     "accessories_face_glasses_430",
@@ -115,9 +130,13 @@ namespace AvatarWorld.Core.Economy
                     "shirt_special_1123",
                     "shirt_special_1124",
                 } },
-            // DaizyMiniCollectionP216: 24 pecas
+            // DaizyMiniCollectionP216: 28 pecas
             { "bundle-PB21", new[]
                 {
+                    "Hair_Front/39_Color",
+                    "Hair_Front/40_Color",
+                    "Hair_Front/41_Color",
+                    "Hair_Front/42_Color",
                     "hat_a_175",
                     "hat_a_176",
                     "hat_a_177",
@@ -182,9 +201,15 @@ namespace AvatarWorld.Core.Economy
                     "shirt_special_1129",
                     "shirt_special_1130",
                 } },
-            // ToddlersExpansionP220: 6 pecas
+            // ToddlersExpansionP220: 12 pecas
             { "bundle-PB16", new[]
                 {
+                    "Hair_Front/33_Color",
+                    "Hair_Front/34_Color",
+                    "Hair_Front/35_Color",
+                    "Hair_Front/36_Color",
+                    "Hair_Front/37_Color",
+                    "Hair_Front/38_Color",
                     "eyebrows_32_color",
                     "eyebrows_33_color",
                     "eyebrows_34_color",
@@ -192,9 +217,15 @@ namespace AvatarWorld.Core.Economy
                     "mouth_43",
                     "mouth_44",
                 } },
-            // DriftCrewP244: 36 pecas
+            // DriftCrewP244: 42 pecas
             { "bundle-PB18", new[]
                 {
+                    "Hair_Front/293_Color",
+                    "Hair_Front/294_Color",
+                    "Hair_Front/295_Color",
+                    "Hair_Front/296_Color",
+                    "Hair_Front/297_Color",
+                    "Hair_Front/298_Color",
                     "accessories_face_glasses_463",
                     "accessories_face_glasses_464",
                     "accessories_face_glasses_465",
@@ -257,9 +288,22 @@ namespace AvatarWorld.Core.Economy
                     "shirt_special_1110",
                     "shirt_special_1111",
                 } },
-            // PrepToGlamP199: 11 pecas
+            // PrepToGlamP199: 24 pecas
             { "bundle-PB17", new[]
                 {
+                    "Hair_Front/145_Color",
+                    "Hair_Front/187_Color",
+                    "Hair_Front/188_Color",
+                    "Hair_Front/189_Color",
+                    "Hair_Front/190_Color",
+                    "Hair_Front/191_Color",
+                    "Hair_Front/192_Color",
+                    "Hair_Front/193_Color",
+                    "Hair_Front/194_Color",
+                    "Hair_Front/195_Color",
+                    "Hair_Front/196_Color",
+                    "Hair_Front/197_Color",
+                    "Hair_Front/198_Color",
                     "hair_back_104_color",
                     "hair_back_135_color",
                     "hair_back_136_color",

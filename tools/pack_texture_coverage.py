@@ -18,7 +18,7 @@ ATLAS = UNITY / 'Resources/AvatarSpine/Avatar_Spine.atlas.txt'
 DATA_CS = UNITY / 'Scripts/Core/Avatar/AvatarCatalogData.cs'
 # familia da peca (prefixo do skin) -> categoria do editor; o resto nao tem categoria no editor hoje
 EDITOR_FAMILY = {'shirt': 'Shirt', 'bottom': 'Bottom', 'legs_shoes': 'Shoes', 'mouth': 'Mouth',
-                 'eyebrows': 'Eyebrows', 'hair_back': 'HairBack', 'hat': 'Hat', 'jacket': 'Jacket',
+                 'eyebrows': 'Eyebrows', 'hair_back': 'HairBack', 'hair_front': 'Hair', 'hat': 'Hat', 'jacket': 'Jacket',
                  'accessories_body_neck': 'Accessory',
                  'accessories_face_glasses': 'Accessory'}
 
@@ -30,9 +30,15 @@ def png_size(p):
 
 def family(skin):
     s = skin.lower()
-    for key in ('legs_shoes', 'hair_back', 'accessories_body_neck', 'accessories_face_glasses'):
+    for key in ('legs_shoes', 'hair_back', 'hair_front', 'accessories_body_neck', 'accessories_face_glasses'):
         if s.startswith(key): return key
     return s.split('_')[0]
+
+
+def catalog_id(item):
+    """Id no catalogo do editor: o cabelo da frente usa o nome do skin do esqueleto (Hair_Front/N_Color)."""
+    m = re.fullmatch(r'hair_front_(\d+)_color', item)
+    return f'Hair_Front/{m.group(1)}_Color' if m else item
 
 
 def make_resolver():
@@ -54,7 +60,23 @@ def make_resolver():
         if len(p) >= 6 and p[:3] == ['sutsystem', 'skins', 'character']:
             items[p[-2]][p[-1]].add(r['path_id'])
 
+    skin_pages = {s['name'].casefold(): s['pages'] for s in inventory['skins']}
+    tex_by_page = collections.defaultdict(list)
+    for n in tex:
+        m = re.match(r'(.*)_(\d+)\.png$', n)
+        if m: tex_by_page[m.group(1)].extend(tex[n])
+
+    def hair_front(item):
+        # cabelo da frente = skin Hair_Front/N_Color do esqueleto com 1 pagina e 1 textura de mesmas dimensoes
+        m = re.fullmatch(r'hair_front_(\d+_color)', item)
+        pg = skin_pages.get('hair_front/' + m.group(1)) if m else None
+        if not pg or len(pg) != 1: return 'sem_skin'
+        page = pg[0][:-4].casefold()
+        c = [t for t in tex_by_page.get(page, []) if page in pages and png_size(TEXTURES / t) == pages[page]]
+        return 'ok' if len(c) == 1 else 'sem_png'
+
     def resolvable(item):
+        if item.startswith('hair_front_'): return hair_front(item)
         pieces = items.get(item)
         if not pieces: return 'sem_recurso'
         for piece, pids in pieces.items():
@@ -75,8 +97,8 @@ def main():
         item = r['skin_name'].lower()
         fam = family(item)
         out.setdefault(r['flag'], []).append({
-            'skin': r['skin_name'], 'family': fam, 'editor_category': EDITOR_FAMILY.get(fam),
-            'texture': resolvable(item), 'in_catalog': item in catalog})
+            'skin': r['skin_name'], 'id': catalog_id(item), 'family': fam, 'editor_category': EDITOR_FAMILY.get(fam),
+            'texture': resolvable(item), 'in_catalog': catalog_id(item) in catalog})
     summary = {}
     print(f"{'pacote':32}{'total':>6}{'ok':>5}{'ok+editor':>10}{'ja no catalogo':>15}")
     for flag, lst in sorted(out.items(), key=lambda kv: -sum(1 for x in kv[1] if x['texture'] == 'ok' and x['editor_category'])):

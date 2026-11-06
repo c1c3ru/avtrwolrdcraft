@@ -120,7 +120,7 @@ def main():
         selection = json.loads(args.selection.read_text(encoding='utf-8'))
         if selection.get('status') != 'provisional_review_only' or not isinstance(selection.get('items_by_category'), dict):
             raise SystemExit('selection must be a provisional candidate JSON from recon_clothing_gap.py')
-        if not set(selection['items_by_category']).issubset(CATEGORIES):
+        if not set(selection['items_by_category']).issubset(set(CATEGORIES) | {'Hair'}):
             raise SystemExit('selection contains a category not supported by this generator')
         if any(not isinstance(v, list) for v in selection['items_by_category'].values()):
             raise SystemExit('each selected category must contain an ID array')
@@ -145,6 +145,11 @@ def main():
                 front[skin['name']] = (page, cands[0][0], cands[0][1])
     front_ids = list(HAIR_FRONT_FIRST) + [k for k in sorted(front, key=natural) if k not in HAIR_FRONT_FIRST]
     front_ids = [i for i in front_ids if i in front][:max(args.per_category, 2)]
+    if selection and 'Hair' in selection['items_by_category']:
+        # selecao exata do cabelo da frente (ids Hair_Front/N_Color, incluindo os de pacotes): sem o corte da cota
+        front_ids = list(selection['items_by_category']['Hair'])
+        missing = [i for i in front_ids if i not in front]
+        if missing: raise SystemExit(f'Hair_Front sem skin/textura unicos: {missing[:5]}')
     chosen = {}
     for category, prefixes in CATEGORIES.items():
         if selection and category in selection['items_by_category']:

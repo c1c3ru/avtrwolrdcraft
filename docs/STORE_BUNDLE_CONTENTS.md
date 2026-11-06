@@ -16,7 +16,7 @@ O que existe no APK: `InventorySkinsBuildData` (resources.assets) com 51 pacotes
 | Férias de Primavera (PB24) | `DayInTheParkP222` | 13 |
 | Estilista de Celebridades (PB17) | `PrepToGlamP199` | 11 |
 
-Só entram peças com textura utilizável (`tools/pack_texture_coverage.py`) e categoria no editor (camisa, calça, sapato, acessório pescoço/óculos, boca, sobrancelha, cabelo traseiro, chapéu e jaqueta). Chapéu e jaqueta são sub-abas de Acessório e Camisa no editor, com "nenhum" como padrão e 60 peças livres (fora de qualquer pacote do original) além das de combo. Cabelo da frente dos pacotes (Hair_Front) segue de fora. Nem toda peça foi confirmada no skeleton Spine.
+Só entram peças com textura utilizável (`tools/pack_texture_coverage.py`) e categoria no editor (camisa, calça, sapato, acessório pescoço/óculos, boca, sobrancelha, cabelo traseiro, chapéu e jaqueta). Chapéu e jaqueta são sub-abas de Acessório e Camisa no editor, com "nenhum" como padrão e 60 peças livres (fora de qualquer pacote do original) além das de combo. Cabelo da frente dos pacotes entra como `Hair_Front/N_Color` (skin do esqueleto, 1 página cada) na aba Frente do cabelo. Nem toda peça foi confirmada no skeleton Spine.
 
 Pipeline: `tools/pack_texture_coverage.py` -> `tools/build_pack_content.py` -> `tools/avatar_catalog_build.py --selection out/recon/pack_selection.json`.
 Gate: `PackGate` (Core/Economy) bloqueia a peça no `AvatarEditorScreen` até comprar o combo.
