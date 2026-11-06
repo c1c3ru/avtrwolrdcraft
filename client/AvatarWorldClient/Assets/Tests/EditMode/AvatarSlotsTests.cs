@@ -150,5 +150,48 @@ namespace AvatarWorld.Core.Tests
                 Assert.IsNotNull(Resources.Load<TextAsset>(AvatarKinds.ResourceFolder(kind) + "/Spine.skel"));
             }
         }
+        [Test]
+        public void PetsAreStoredPerSlotAndSurviveJson()
+        {
+            var state = PlayerState.CreateNew(0);
+            Assert.IsNull(state.GetPet(0));
+            var rabbit = PetAppearance.CreateDefault();
+            Assert.IsTrue(rabbit.IsValid());
+            Assert.IsTrue(state.SetPet(1, rabbit));
+            rabbit.TrySelectSpecies("Bird");           // a copia guardada nao muda
+            Assert.AreEqual("Rabbit", state.GetPet(1).Species);
+            Assert.IsFalse(state.SetPet(PlayerState.PetSlotCount, rabbit));
+            Assert.IsFalse(state.SetPet(0, new PetAppearance { Species = "Dragon", VariantId = "x" }));
+            Assert.IsTrue(state.SetPet(1, rabbit));    // substitui o slot, sem duplicar
+            Assert.AreEqual(1, state.Pets.Count);
+            var back = JsonUtility.FromJson<PlayerState>(JsonUtility.ToJson(state));
+            back.Pets.Add(new SavedPet { Slot = 1, Pet = PetAppearance.CreateDefault("Fish") });   // duplicado
+            back.Pets.Add(new SavedPet { Slot = 7, Pet = PetAppearance.CreateDefault("Fish") });   // fora do intervalo
+            back.Pets.Add(new SavedPet { Slot = 2, Pet = new PetAppearance { Species = "Bird", VariantId = "nope" } });
+            back.SanitizePets();
+            Assert.AreEqual(2, back.Pets.Count);
+            Assert.AreEqual("Bird", back.GetPet(1).Species);
+            Assert.IsTrue(back.GetPet(2).IsValid());
+            state.RemovePet(1);
+            Assert.IsNull(state.GetPet(1));
+        }
+
+        [Test]
+        public void EveryPetSpeciesHasVariantsAndResources()
+        {
+            foreach (var species in PetCatalog.Species)
+            {
+                var variants = PetCatalog.Variants(species);
+                Assert.Greater(variants.Length, 0, species);
+                Assert.AreEqual(variants.Length, new HashSet<string>(variants).Count, species);
+                string folder = "AvatarSpine/Pets/" + species;
+                Assert.IsNotNull(Resources.Load<TextAsset>(folder + "/Spine.atlas"), species);
+                Assert.IsNotNull(Resources.Load<TextAsset>(folder + "/Spine.skel"), species);
+                var file = Resources.Load<TextAsset>(folder + "/pet");
+                Assert.IsNotNull(file, species);
+                foreach (var id in variants) StringAssert.Contains("\"" + id + "\"", file.text);
+                Assert.IsTrue(PetAppearance.CreateDefault(species).IsValid());
+            }
+        }
     }
 }

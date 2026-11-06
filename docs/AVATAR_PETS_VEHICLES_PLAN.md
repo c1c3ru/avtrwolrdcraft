@@ -1,6 +1,12 @@
 # Pets e veículos no slot de avatar: levantamento e plano
 
-Data: 2026-11-06. Estado: **não implementado**; só inventário (nenhum render foi possível neste ambiente).
+Data: 2026-11-06. Estado: **pets simples implementados** (fase 1, sem validação de render); cão/gato, cavalo, vaca e veículos seguem só como inventário.
+
+## Implementado: pets simples
+- Espécies com variantes prontas (skin completo): coelho 4, hamster 4, pássaro 9, galinha 3, tartaruga 2, lagarto 4, cobra 2, peixe 4 (32 variantes; as `Party_Hat_Skin_*` ficaram de fora).
+- Dados: `tools/avatar_pet_build.py` (skin -> região -> página -> textura única por nome+dimensões) gera `Resources/AvatarSpine/Pets/<Espécie>/{Spine.atlas.txt,Spine.skel.bytes,pet.json}` e `PetCatalogData.cs`; checagem cruzada: 0 problemas.
+- Cliente: `PetAppearance`/`SavedPet` em `PlayerState.Pets` (3 slots), `PetGpuRuntime` (skin composto default + variante, animação `General/Chilling`), `PetEditorScreen` (espécie + variante), aba de pets da tela de slots.
+- Não validado em aparelho/Editor; escala (1,3 no editor, 0,8 nos slots) e posição foram estimadas.
 
 ## Pets
 - Esqueletos `Pet_{Dog,Cat,Rabbit,Hamster,Bird,Chicken,Fish,Lizard,Snake,Turtle}_Spine` + `Pet_Horse`/`Cow_Pet` em `out/assets/TextAsset`. Cães e gatos têm roupas SUT (`sutsystem/skins/{dog,cat,horse}`: 844/782/368 refs); os demais não têm roupas.
@@ -12,6 +18,6 @@ Data: 2026-11-06. Estado: **não implementado**; só inventário (nenhum render 
 - Existem `CarMakerOneSlot`, `CarMakerFiveSlots`, `CarDefaultCategoryColors` e `AvatarSpineSkinsDefaultColors_Car_SeatsColors` (editor de carro por slots e cores), mas nenhum esqueleto de "carro do avatar" foi identificado ainda (os `Car_*.skel` são carros de cenário). Precisa de uma tarefa de descoberta (T0xx) antes de qualquer UI.
 
 ## Recomendação
-1. Validar o render de criança/bebê (PR #13-#15) num Editor/aparelho antes de acrescentar mais tipos.
-2. Pets em duas fases: (a) espécies simples + cão/gato com raça e cor de corpo; (b) padrões, olhos, boca e roupas.
+1. Validar o render de criança/bebê e de pets num Editor/aparelho.
+2. Pets fase 2: cão/gato com raça e cor de corpo; depois padrões, olhos, boca e roupas (e cavalo/vaca).
 3. Veículos: descoberta do CarMaker primeiro.

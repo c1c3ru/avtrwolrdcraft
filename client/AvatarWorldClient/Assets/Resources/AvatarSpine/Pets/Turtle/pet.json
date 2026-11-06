@@ -1,0 +1,43 @@
+{
+ "species": "Turtle",
+ "idle": "General/Chilling",
+ "basePieces": [
+  {
+   "template": "Templates/MultiPack__General",
+   "file": "multipack__general__69348.png",
+   "skin": "default"
+  }
+ ],
+ "variants": [
+  {
+   "id": "turtle_a_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__69348.png",
+     "skin": "Turtle_A_1"
+    },
+    {
+     "template": "Templates/MultiPack__Turtle_A_1",
+     "file": "multipack__turtle_a_1__58893.png",
+     "skin": "Turtle_A_1"
+    }
+   ]
+  },
+  {
+   "id": "turtle_a_2",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__69348.png",
+     "skin": "Turtle_A_2"
+    },
+    {
+     "template": "Templates/MultiPack__Turtle_A_2",
+     "file": "multipack__turtle_a_2__102318.png",
+     "skin": "Turtle_A_2"
+    }
+   ]
+  }
+ ]
+}

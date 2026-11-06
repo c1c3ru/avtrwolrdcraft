@@ -1,0 +1,78 @@
+{
+ "species": "Lizard",
+ "idle": "General/Chilling",
+ "basePieces": [
+  {
+   "template": "Templates/MultiPack__General",
+   "file": "multipack__general__55753.png",
+   "skin": "default"
+  }
+ ],
+ "variants": [
+  {
+   "id": "lizard_a_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__55753.png",
+     "skin": "Lizard_A_1"
+    },
+    {
+     "template": "Templates/MultiPack__Lizard_A_1",
+     "file": "multipack__lizard_a_1__54219.png",
+     "skin": "Lizard_A_1"
+    },
+    {
+     "template": "Templates/MultiPack__Lizard_A_2",
+     "file": "multipack__lizard_a_2__26364.png",
+     "skin": "Lizard_A_1"
+    }
+   ]
+  },
+  {
+   "id": "lizard_a_2",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__55753.png",
+     "skin": "Lizard_A_2"
+    },
+    {
+     "template": "Templates/MultiPack__Lizard_A_2",
+     "file": "multipack__lizard_a_2__26364.png",
+     "skin": "Lizard_A_2"
+    }
+   ]
+  },
+  {
+   "id": "lizard_a_3",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__55753.png",
+     "skin": "Lizard_A_3"
+    },
+    {
+     "template": "Templates/MultiPack__Lizard_A_3",
+     "file": "multipack__lizard_a_3__16638.png",
+     "skin": "Lizard_A_3"
+    }
+   ]
+  },
+  {
+   "id": "lizard_a_4",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__55753.png",
+     "skin": "Lizard_A_4"
+    },
+    {
+     "template": "Templates/MultiPack__Lizard_A_4",
+     "file": "multipack__lizard_a_4__42001.png",
+     "skin": "Lizard_A_4"
+    }
+   ]
+  }
+ ]
+}
