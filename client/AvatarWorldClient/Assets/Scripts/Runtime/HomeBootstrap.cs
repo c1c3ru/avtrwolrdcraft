@@ -143,7 +143,7 @@ namespace AvatarWorld.Runtime
             if (FindFirstObjectByType<InteriorRuntime>() != null) return;
             if (_worldMap != null) _worldMap.gameObject.SetActive(false);
             var host = new GameObject("Interior_" + key);
-            host.AddComponent<InteriorRuntime>().Begin(key, () =>
+            host.AddComponent<InteriorRuntime>().Begin(key, _save, _state, () =>
             {
                 Destroy(host);
                 LoadingScreen.Show();

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AvatarWorld.Core.Economy;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +8,10 @@ namespace AvatarWorld.Runtime
 {
     /// <summary>
     /// Interior de um predio do mapa, lido de Resources/Interiors/&lt;chave&gt;/&lt;chave&gt;.json (formato WorldMapData,
-    /// gerado por tools/build_interior_slice.py a partir da cena original). So visual: camera que rola ao arrastar
-    /// e botao voltar. Nao reproduz itens arrastaveis, luz nem som do original.
+    /// gerado por tools/build_interior_slice.py a partir da cena original). Camera que rola ao arrastar no vazio, botao
+    /// voltar, o avatar salvo do jogador (toque no chao = anda ate la) e os itens do original (LevelItem, marcados por
+    /// tools/mark_interior_items.py em &lt;chave&gt;_items.json) que podem ser arrastados. Nao reproduz as regras dos itens
+    /// (comer, cozinhar, encaixe), npcs, luz nem som do original.
     /// </summary>
     public sealed class InteriorRuntime : MonoBehaviour
     {
@@ -18,17 +21,40 @@ namespace AvatarWorld.Runtime
         Action _onBack;
         bool _pressing;
         Vector2 _lastPos;
+        SaveStore _saves;
+        PlayerState _state;
+        readonly List<SpriteRenderer> _items = new List<SpriteRenderer>();
+        SpriteRenderer _dragged;
+        Vector3 _dragOffset;
+        int _dragBaseOrder;
+        Vector2 _downPos;
+        float _downTime;
+        bool _moved;
+        int _topRank;
+        AvatarGpuRuntime _avatar;
+        float _walkTarget;
+        bool _walking;
+        const float WalkSpeed = 3.2f;
+        const float AvatarY = -2.45f;
+        const float AvatarScale = 0.6f;
+
+        [Serializable] class InteriorExtras { public List<int> items = new List<int>(); }
 
         public WorldMapData Data => _data;
 
-        public void Begin(string key, Action onBack)
+        public void Begin(string key, SaveStore saves, PlayerState state, Action onBack)
         {
             _onBack = onBack;
+            _saves = saves;
+            _state = state;
             var json = Resources.Load<TextAsset>("Interiors/" + key + "/" + key);
             if (json == null) throw new InvalidOperationException("Interiors/" + key + " ausente em Resources");
             _data = JsonUtility.FromJson<WorldMapData>(json.text);
             BuildCamera();
-            BuildSprites("Interiors/" + key + "/sprites/");
+            var extras = Resources.Load<TextAsset>("Interiors/" + key + "/" + key + "_items");
+            var itemIndices = new HashSet<int>(extras != null ? JsonUtility.FromJson<InteriorExtras>(extras.text).items : new List<int>());
+            BuildSprites("Interiors/" + key + "/sprites/", itemIndices);
+            BuildAvatar();
             BuildBackButton();
         }
 
@@ -51,12 +77,13 @@ namespace AvatarWorld.Runtime
             return min > max ? (min + max) * 0.5f : Mathf.Clamp(x, min, max);
         }
 
-        void BuildSprites(string prefix)
+        void BuildSprites(string prefix, HashSet<int> itemIndices)
         {
             var textures = new Dictionary<string, Texture2D>();
             var sprites = new Dictionary<string, Sprite>();
-            foreach (var r in _data.renderers)
+            for (int index = 0; index < _data.renderers.Count; index++)
             {
+                var r = _data.renderers[index];
                 string key = r.sprite + "|" + r.pivotX + "|" + r.pivotY + "|" + r.ppu;
                 if (!sprites.TryGetValue(key, out var sprite))
                 {
@@ -77,9 +104,21 @@ namespace AvatarWorld.Runtime
                 sr.flipX = r.flipX != (r.sx < 0f);
                 sr.flipY = r.flipY != (r.sy < 0f);
                 sr.color = new Color(r.color[0], r.color[1], r.color[2], r.color[3]);
+                _topRank = Mathf.Max(_topRank, r.rank);
+                if (itemIndices.Contains(index)) _items.Add(sr);
             }
             foreach (var spine in _data.animations?.spines ?? new List<WorldSpineData>()) MapSpineLayer.Create(transform, spine, _camera);
-            Debug.Log("Interior: " + _data.renderers.Count + " elementos");
+            Debug.Log("Interior: " + _data.renderers.Count + " elementos, " + _items.Count + " itens arrastaveis");
+        }
+
+        // Avatar salvo do jogador, a frente do cenario; sem save (testes) o interior fica so com a arte.
+        void BuildAvatar()
+        {
+            if (_saves == null || _state == null) return;
+            var host = new GameObject("Avatar do jogador");
+            host.transform.SetParent(transform, false);
+            _avatar = host.AddComponent<AvatarGpuRuntime>();
+            _avatar.ConfigureAsWorldAvatar(_saves, _state, new Vector3(_camera.transform.position.x, AvatarY, 0f), AvatarScale, _topRank + 5);
         }
 
         void BuildBackButton()
@@ -112,17 +151,93 @@ namespace AvatarWorld.Runtime
 
         void Update()
         {
-            if (_camera == null || !TryPointer(out bool down, out bool up, out bool held, out Vector2 pos)) { _pressing = false; return; }
-            if (down && !RectTransformUtility.RectangleContainsScreenPoint(_backRect, pos, null)) { _pressing = true; _lastPos = pos; }
+            UpdateWalk();
+            if (_camera == null || !TryPointer(out bool down, out bool up, out bool held, out Vector2 pos)) { _pressing = false; EndDrag(); return; }
+            if (down && !RectTransformUtility.RectangleContainsScreenPoint(_backRect, pos, null))
+            {
+                _pressing = true; _lastPos = _downPos = pos; _downTime = Time.unscaledTime; _moved = false;
+                var world = ToWorld(pos);
+                _dragged = PickItem(world);
+                if (_dragged != null)
+                {
+                    UiSound.PlayClick();
+                    _dragBaseOrder = _dragged.sortingOrder;
+                    _dragged.sortingOrder = _topRank + 10; // levantado, acima de tudo
+                    _dragOffset = _dragged.transform.position - world;
+                }
+            }
             else if (_pressing && held)
             {
-                float unitsPerPixel = _camera.orthographicSize * 2f / Screen.height;
-                var p = _camera.transform.position;
-                p.x = ClampX(p.x - (pos.x - _lastPos.x) * unitsPerPixel);
-                _camera.transform.position = p;
+                if ((pos - _downPos).sqrMagnitude > 24f * 24f) _moved = true;
+                if (_dragged != null)
+                {
+                    var p = ToWorld(pos) + _dragOffset;
+                    p.z = 0f;
+                    _dragged.transform.position = p;
+                }
+                else
+                {
+                    float unitsPerPixel = _camera.orthographicSize * 2f / Screen.height;
+                    var p = _camera.transform.position;
+                    p.x = ClampX(p.x - (pos.x - _lastPos.x) * unitsPerPixel);
+                    _camera.transform.position = p;
+                }
                 _lastPos = pos;
             }
-            if (up) _pressing = false;
+            if (up)
+            {
+                if (_pressing && _dragged == null && !_moved && Time.unscaledTime - _downTime < 0.45f) WalkTo(ToWorld(pos).x);
+                EndDrag();
+                _pressing = false;
+            }
+        }
+
+        Vector3 ToWorld(Vector2 screen) => _camera.ScreenToWorldPoint(new Vector3(screen.x, screen.y, -_camera.transform.position.z));
+
+        // Item arrastavel mais a frente (maior sortingOrder) sob o ponto.
+        SpriteRenderer PickItem(Vector3 world)
+        {
+            SpriteRenderer best = null;
+            foreach (var item in _items)
+            {
+                if (item == null || item.sprite == null) continue;
+                var bounds = item.bounds;
+                if (world.x < bounds.min.x || world.x > bounds.max.x || world.y < bounds.min.y || world.y > bounds.max.y) continue;
+                if (best == null || item.sortingOrder > best.sortingOrder) best = item;
+            }
+            return best;
+        }
+
+        void EndDrag()
+        {
+            if (_dragged == null) return;
+            _dragged.sortingOrder = _dragBaseOrder; // solto: volta a ordem de desenho original
+            _dragged = null;
+        }
+
+        void WalkTo(float x)
+        {
+            if (_avatar == null || !_avatar.IsReady) return;
+            _walkTarget = Mathf.Clamp(x, _data.camera.minX, _data.camera.maxX);
+            _walking = true;
+            _avatar.PlayAnimation("Movement_Cycles/Walk", true);
+        }
+
+        void UpdateWalk()
+        {
+            if (!_walking || _avatar == null || !_avatar.IsReady) return;
+            var t = _avatar.AvatarTransform;
+            float dx = _walkTarget - t.position.x;
+            _avatar.SetFacing(dx < 0f);
+            float step = WalkSpeed * Time.deltaTime;
+            if (Mathf.Abs(dx) <= step)
+            {
+                t.position = new Vector3(_walkTarget, t.position.y, t.position.z);
+                _walking = false;
+                _avatar.PlayAnimation("Idle_Stand_1", true);
+                return;
+            }
+            t.position += new Vector3(Mathf.Sign(dx) * step, 0f, 0f);
         }
 
         static bool TryPointer(out bool down, out bool up, out bool held, out Vector2 position)
