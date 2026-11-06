@@ -99,6 +99,7 @@ namespace AvatarWorld.Runtime
             if (FindFirstObjectByType<WorldMapRuntime>() != null) return;
             var host = new GameObject("WorldMap");
             _worldMap = host.AddComponent<WorldMapRuntime>();
+            _worldMap.OnOpenLevel = OpenSceneSlice;
             LoadingScreen.Show();
             _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f), OpenAvatarSlots);
         }
@@ -124,6 +125,22 @@ namespace AvatarWorld.Runtime
             _worldMap = null;
             _save.Save(_state);
             _homeActions.ReturnFromGameplay();
+        }
+
+        /// <summary>Ambiente generico (arte e layout extraidos) aberto por um predio do mapa; voltar retorna ao mapa.</summary>
+        void OpenSceneSlice(int levelType)
+        {
+            if (FindFirstObjectByType<SceneSliceRuntime>() != null) return;
+            if (_worldMap != null) _worldMap.gameObject.SetActive(false);
+            var host = new GameObject("SceneSlice");
+            void Close()
+            {
+                Destroy(host);
+                LoadingScreen.Show();
+                if (_worldMap != null) _worldMap.gameObject.SetActive(true);
+                LoadingScreen.Hide(0.5f);
+            }
+            if (!host.AddComponent<SceneSliceRuntime>().Begin(levelType, Close, () => LoadingScreen.Hide(0.7f))) Close();
         }
 
         void OpenBasketballCourt()
