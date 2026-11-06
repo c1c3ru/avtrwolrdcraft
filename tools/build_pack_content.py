@@ -21,6 +21,11 @@ PACKS = {
     'bundle-PB27': 'GraduationPartyP214',      # Festa (formatura) - "Festa de formatura 600" nos prints
     'bundle-PB20': 'StarsFashionP228',         # Pop Star
     'bundle-PB21': 'DaizyMiniCollectionP216',  # Moda Daisy
+    'bundle-PB13': 'LuggageLuxuryFamilyP225',  # Ricos e Famosos
+    'bundle-PB16': 'ToddlersExpansionP220',    # Crescendo
+    'bundle-PB18': 'DriftCrewP244',            # Moda Drip
+    'bundle-PB24': 'DayInTheParkP222',         # Ferias de Primavera
+    'bundle-PB17': 'PrepToGlamP199',           # Estilista de Celebridades
 }
 CATEGORY_ORDER = ['Shirt', 'Bottom', 'Shoes', 'Accessory', 'Mouth', 'Eyebrows', 'HairBack']
 

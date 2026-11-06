@@ -10,6 +10,11 @@ O que existe no APK: `InventorySkinsBuildData` (resources.assets) com 51 pacotes
 | Festa (PB27; "Festa de formatura 600" nos prints) | `GraduationPartyP214` | 34 |
 | Pop Star (PB20) | `StarsFashionP228` | 25 |
 | Moda Daisy (PB21) | `DaizyMiniCollectionP216` | 9 |
+| Ricos e Famosos (PB13) | `LuggageLuxuryFamilyP225` | 28 |
+| Crescendo (PB16) | `ToddlersExpansionP220` | 6 |
+| Moda Drip (PB18) | `DriftCrewP244` | 27 |
+| Férias de Primavera (PB24) | `DayInTheParkP222` | 13 |
+| Estilista de Celebridades (PB17) | `PrepToGlamP199` | 11 |
 
 Só entram peças com textura utilizável (`tools/pack_texture_coverage.py`) e categoria no editor (camisa, calça, sapato, acessório pescoço/óculos, boca, sobrancelha, cabelo traseiro). Hat/Jacket/Hair-front etc. ficam de fora até o editor ter essas categorias. Nem toda peça foi confirmada no skeleton Spine.
 
