@@ -1,0 +1,915 @@
+{
+ "sceneCount": 254,
+ "buildings": [
+  {
+   "building": "TalentShow_Z2B4",
+   "defaultLevel": 10,
+   "levelType": "TalentShow_Z2B4L1",
+   "scene": "Assets/Game/Towns/SummerCamp/Scenes/Level_TalentShow_Z2B4L1.unity",
+   "file": "level14",
+   "rootObjects": 28,
+   "bounds": [
+    91.36,
+    1.09,
+    94.19,
+    3.48
+   ]
+  },
+  {
+   "building": "Post_Office_T1S4",
+   "defaultLevel": 140,
+   "levelType": "PostOffice_L146",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_PostOffice_L146.unity",
+   "file": "level133",
+   "rootObjects": 62,
+   "bounds": [
+    -13.37,
+    0.99,
+    -9.32,
+    3.25
+   ]
+  },
+  {
+   "building": "Luxury_Build_T1S1",
+   "defaultLevel": 47,
+   "levelType": "LuxuryHouse_F1_L43",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_LuxuryHouse_F1_L43.unity",
+   "file": "level45",
+   "rootObjects": 114,
+   "bounds": [
+    -88.9,
+    -0.13,
+    -81.59,
+    4.46
+   ]
+  },
+  {
+   "building": "Campsite_Z2B1",
+   "defaultLevel": 8,
+   "levelType": "Campsite_Z2B1L1",
+   "scene": "Assets/Game/Towns/SummerCamp/Scenes/Level_Campsite_Z2B1L1.unity",
+   "file": "level11",
+   "rootObjects": 25,
+   "bounds": [
+    85.85,
+    1.07,
+    89.72,
+    2.85
+   ]
+  },
+  {
+   "building": "JellyBean_Street",
+   "defaultLevel": 216,
+   "levelType": "JellyBeanAvenue_L210",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_JellyBeanAvenue_L210.unity",
+   "file": "level204",
+   "rootObjects": 39,
+   "bounds": [
+    16.35,
+    -1.74,
+    29.63,
+    1.39
+   ]
+  },
+  {
+   "building": "Hats_Shop_T1S4",
+   "defaultLevel": 24,
+   "levelType": "Hatshop_L7",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Hatshop_L7.unity",
+   "file": "level22",
+   "rootObjects": 54,
+   "bounds": [
+    -6.57,
+    -2.53,
+    -4.35,
+    -0.58
+   ]
+  },
+  {
+   "building": "Natural_Chich_T1S1",
+   "defaultLevel": 94,
+   "levelType": "NaturalChicHM_F1_L99",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_NaturalChicHM_F1_L99.unity",
+   "file": "level88",
+   "rootObjects": 71,
+   "bounds": [
+    -93.52,
+    -3.25,
+    -89.175,
+    0.16
+   ]
+  },
+  {
+   "building": "AirportMetro_T1S6",
+   "defaultLevel": 90,
+   "levelType": "AirportMetroStation_L64",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_AirportMetroStation_L64.unity",
+   "file": "level84",
+   "rootObjects": 49,
+   "bounds": [
+    62.435,
+    -1.84,
+    64.015,
+    -0.62
+   ]
+  },
+  {
+   "building": "Branding_Skater_T1S3",
+   "defaultLevel": 45,
+   "levelType": "SkaterShopBrand_L28",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_SkaterShopBrand_L28.unity",
+   "file": "level43",
+   "rootObjects": 198,
+   "bounds": [
+    -33.15,
+    1.55,
+    -29.45,
+    4.37
+   ]
+  },
+  {
+   "building": "Airport_T1S6",
+   "defaultLevel": 63,
+   "levelType": "Airport_F1_L35",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Airport_F1_L35.unity",
+   "file": "level64",
+   "rootObjects": 100,
+   "bounds": [
+    63.59,
+    -2.3,
+    74.95,
+    2.69
+   ]
+  },
+  {
+   "building": "HipHop_Build_T1S3",
+   "defaultLevel": 33,
+   "levelType": "HipHopStudio_L18",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_HipHopStudio_L18.unity",
+   "file": "level31",
+   "rootObjects": 171,
+   "bounds": [
+    -35.66,
+    -1.39,
+    -31.68,
+    1.7
+   ]
+  },
+  {
+   "building": "Cabin_Z2B5",
+   "defaultLevel": 7,
+   "levelType": "Cabin_Z2B5L1",
+   "scene": "Assets/Game/Towns/SummerCamp/Scenes/Level_Cabin_Z2B5L1.unity",
+   "file": "level15",
+   "rootObjects": 15,
+   "bounds": [
+    97.76,
+    1.1,
+    100.84,
+    3.51
+   ]
+  },
+  {
+   "building": "CountryClubStreet_L187",
+   "defaultLevel": 178,
+   "levelType": "CountryClubStreet_L187",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_CountryClubStreet_L187.unity",
+   "file": "level165",
+   "rootObjects": 100,
+   "bounds": [
+    -60.31,
+    -1.37,
+    -50.97,
+    1.39
+   ]
+  },
+  {
+   "building": "Office_Build_T1S3 (1)",
+   "defaultLevel": 61,
+   "levelType": "RegularOffice_L53",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_RegularOffice_L53.unity",
+   "file": "level59",
+   "rootObjects": 265,
+   "bounds": [
+    -28.03,
+    -2.57,
+    -24.4,
+    0.21
+   ]
+  },
+  {
+   "building": "Hospital_T1S4",
+   "defaultLevel": 147,
+   "levelType": "Hospital_F1_L157",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Hospital_F1_L157.unity",
+   "file": "level139",
+   "rootObjects": 155,
+   "bounds": [
+    -28.375,
+    1.09,
+    -23.685,
+    3.86
+   ]
+  },
+  {
+   "building": "Bakery_Build_T1S3",
+   "defaultLevel": 35,
+   "levelType": "Bakery_L20",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Bakery_L20.unity",
+   "file": "level33",
+   "rootObjects": 159,
+   "bounds": [
+    -38.62,
+    1.53,
+    -33.18,
+    4.89
+   ]
+  },
+  {
+   "building": "MKR_Kawaii_House_T1S1",
+   "defaultLevel": 69,
+   "levelType": "KawaiiHouse_F1_L32",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_KawaiiHouse_F1_L32.unity",
+   "file": "level76",
+   "rootObjects": 73,
+   "bounds": [
+    -79.59,
+    0.335,
+    -72.56,
+    3.65
+   ]
+  },
+  {
+   "building": "Barbershop_T1S2",
+   "defaultLevel": 14,
+   "levelType": "MiniBarbershop_Z1B5L1",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_MiniBarbershop_Z1B5L1.unity",
+   "file": "level10",
+   "rootObjects": 63,
+   "bounds": [
+    -48.55,
+    -3.13,
+    -44.91,
+    0.13
+   ]
+  },
+  {
+   "building": "Toystore",
+   "defaultLevel": 217,
+   "levelType": "ToyStore_L209",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_ToyStore_L209.unity",
+   "file": "level205",
+   "rootObjects": 45,
+   "bounds": [
+    18.88,
+    0.02,
+    22.58,
+    3.18
+   ]
+  },
+  {
+   "building": "Kawaii_Shop_T1S4",
+   "defaultLevel": 21,
+   "levelType": "Kawaiishop_L5",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Kawaiishop_L5.unity",
+   "file": "level19",
+   "rootObjects": 67,
+   "bounds": [
+    1.335,
+    -2.42,
+    3.775,
+    -0.66
+   ]
+  },
+  {
+   "building": "Family_House_T1S1",
+   "defaultLevel": 1,
+   "levelType": "GirlsLivingRoom_Z1B1L1",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_GirlsLivingRoom_Z1B1L1.unity",
+   "file": "level5",
+   "rootObjects": 35,
+   "bounds": [
+    -82.85,
+    -2.78,
+    -79.3,
+    0.18
+   ]
+  },
+  {
+   "building": "Bank_T1S4",
+   "defaultLevel": 142,
+   "levelType": "Bank_L148",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Bank_L148.unity",
+   "file": "level134",
+   "rootObjects": 172,
+   "bounds": [
+    -16.58,
+    -2.82,
+    -12.35,
+    -0.18
+   ]
+  },
+  {
+   "building": "ZV_Dentist_T1",
+   "defaultLevel": 218,
+   "levelType": "DentistOffice_L208",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_DentistOffice_L208.unity",
+   "file": "level206",
+   "rootObjects": 8,
+   "bounds": [
+    18.33,
+    -2.59,
+    21.91,
+    0.21
+   ]
+  },
+  {
+   "building": "Mall_T1S4",
+   "defaultLevel": 26,
+   "levelType": "Mall_F1_L8",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Mall_F1_L8.unity",
+   "file": "level23",
+   "rootObjects": 55,
+   "bounds": [
+    -8.725,
+    -0.5,
+    -0.435,
+    4.77
+   ]
+  },
+  {
+   "building": "Fire_Station_T1S4",
+   "defaultLevel": 145,
+   "levelType": "FireStation_F0_L154",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_FireStation_F0_L154.unity",
+   "file": "level138",
+   "rootObjects": 93,
+   "bounds": [
+    -21.825,
+    0.47,
+    -18.065,
+    3.75
+   ]
+  },
+  {
+   "building": "CourtHouse_T1S4",
+   "defaultLevel": 143,
+   "levelType": "CourtHouse_L147",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_CourtHouse_L147.unity",
+   "file": "level135",
+   "rootObjects": 134,
+   "bounds": [
+    -22.99,
+    -2.62,
+    -18.92,
+    0.89
+   ]
+  },
+  {
+   "building": "Lake_Z2B2",
+   "defaultLevel": 9,
+   "levelType": "Lake_Z2B2L1",
+   "scene": "Assets/Game/Towns/SummerCamp/Scenes/Level_Lake_Z2B2L1.unity",
+   "file": "level12",
+   "rootObjects": 19,
+   "bounds": [
+    85.91,
+    -2.54,
+    91.83,
+    0.46
+   ]
+  },
+  {
+   "building": "Sports_Clothes_T1S2",
+   "defaultLevel": 39,
+   "levelType": "ShoeShopBrand_L26",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_ShoeShopBrand_L26.unity",
+   "file": "level37",
+   "rootObjects": 226,
+   "bounds": [
+    -65.97,
+    -3.06,
+    -62.42,
+    -0.34
+   ]
+  },
+  {
+   "building": "Fashion_Shop_T1S4",
+   "defaultLevel": 20,
+   "levelType": "Fashionshop_L2",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Fashionshop_L2.unity",
+   "file": "level18",
+   "rootObjects": 150,
+   "bounds": [
+    -1.05,
+    -2.8,
+    1.66,
+    -1.1
+   ]
+  },
+  {
+   "building": "MunicipalStreet_T1S4",
+   "defaultLevel": 144,
+   "levelType": "MunicipalStreet_L141",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_MunicipalStreet_L141.unity",
+   "file": "level137",
+   "rootObjects": 107,
+   "bounds": [
+    -25.28,
+    -2.02,
+    -9.26,
+    1.66
+   ]
+  },
+  {
+   "building": "ShopBoulevard_L59",
+   "defaultLevel": 62,
+   "levelType": "ShopBoulevard_L59",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_ShopBoulevard_L59.unity",
+   "file": "level60",
+   "rootObjects": 101,
+   "bounds": [
+    -10.38,
+    -3.43,
+    5.58,
+    -1.32
+   ]
+  },
+  {
+   "building": "Ice_Cream_T1S4",
+   "defaultLevel": 27,
+   "levelType": "Icecreamshop_L16",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Icecreamshop_L16.unity",
+   "file": "level25",
+   "rootObjects": 64,
+   "bounds": [
+    0.335,
+    2.48,
+    2.125,
+    4.78
+   ]
+  },
+  {
+   "building": "MKR_Modern_T1S1",
+   "defaultLevel": 43,
+   "levelType": "ModernHouse_F1_L30",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_ModernHouse_F1_L30.unity",
+   "file": "level41",
+   "rootObjects": 74,
+   "bounds": [
+    -89.79,
+    -0.69,
+    -84.68,
+    1.75
+   ]
+  },
+  {
+   "building": "Supermarket_Z1B4",
+   "defaultLevel": 15,
+   "levelType": "Supermarket_Z1B4L1",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Supermarket_Z1B4L1.unity",
+   "file": "level9",
+   "rootObjects": 17,
+   "bounds": [
+    0.945,
+    -1.1,
+    7.405,
+    1.28
+   ]
+  },
+  {
+   "building": "Police_Station_T1S4",
+   "defaultLevel": 139,
+   "levelType": "PoliceStation_L145",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_PoliceStation_L145.unity",
+   "file": "level132",
+   "rootObjects": 175,
+   "bounds": [
+    -17.87,
+    1.06,
+    -12.75,
+    3.56
+   ]
+  },
+  {
+   "building": "Toddler_Baby_Skater_T1Z3",
+   "defaultLevel": 50,
+   "levelType": "SkaterToddlerAndBabyShop_L49",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_SkaterToddlerAndBabyShop_L49.unity",
+   "file": "level48",
+   "rootObjects": 188,
+   "bounds": [
+    -8.875,
+    -2.3,
+    -6.125,
+    0.87
+   ]
+  },
+  {
+   "building": "Furniture_Store_Build_T1S5",
+   "defaultLevel": 52,
+   "levelType": "FurnitureStoreShowRoom_F1_L46",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_FurnitureStoreShowRoom_F1_L46.unity",
+   "file": "level50",
+   "rootObjects": 376,
+   "bounds": [
+    28.54,
+    -1.4,
+    40.34,
+    3.93
+   ]
+  },
+  {
+   "building": "Basketball_T1S2",
+   "defaultLevel": 13,
+   "levelType": "MiniBasketball_L1",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_MiniBasketball_L1.unity",
+   "file": "level8",
+   "rootObjects": 56,
+   "bounds": [
+    -78.3,
+    -1.87,
+    -73.25,
+    0.18
+   ]
+  },
+  {
+   "building": "Pet_Store_T1S3",
+   "defaultLevel": 36,
+   "levelType": "PetShop_L21",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_PetShop_L21.unity",
+   "file": "level34",
+   "rootObjects": 265,
+   "bounds": [
+    -47.38,
+    0.07,
+    -43.95,
+    2.72
+   ]
+  },
+  {
+   "building": "ToddlerBaby_T1S3",
+   "defaultLevel": 46,
+   "levelType": "ToddlerBabyShop_L45",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_ToddlerBabyShop_L45.unity",
+   "file": "level44",
+   "rootObjects": 107,
+   "bounds": [
+    -34.99,
+    -3.09,
+    -31.94,
+    -0.72
+   ]
+  },
+  {
+   "building": "Airport_Street_T1Z4",
+   "defaultLevel": 85,
+   "levelType": "AirportStreet_L66",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_AirportStreet_L66.unity",
+   "file": "level80",
+   "rootObjects": 114,
+   "bounds": [
+    58.365,
+    -3.17,
+    70.745,
+    -1.67
+   ]
+  },
+  {
+   "building": "Pizza_Shop_T1S4",
+   "defaultLevel": 19,
+   "levelType": "Pizza_L3",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Pizza_L3.unity",
+   "file": "level17",
+   "rootObjects": 25,
+   "bounds": [
+    6.345,
+    2.06,
+    8.905,
+    4.17
+   ]
+  },
+  {
+   "building": "Metro_Build_T1Z3",
+   "defaultLevel": 73,
+   "levelType": "MetroStation_L58",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_MetroStation_L58.unity",
+   "file": "level61",
+   "rootObjects": 33,
+   "bounds": [
+    -12.99,
+    -3.67,
+    -9.72,
+    -1.31
+   ]
+  },
+  {
+   "building": "Daycare_T1Z2",
+   "defaultLevel": 40,
+   "levelType": "DaycareEntrance_L23",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_DaycareEntrance_L23.unity",
+   "file": "level38",
+   "rootObjects": 121,
+   "bounds": [
+    -73.405,
+    1.23,
+    -68.985,
+    4.07
+   ]
+  },
+  {
+   "building": "FancyRestaurant_T1Z3",
+   "defaultLevel": 106,
+   "levelType": "ItalianRestaurant_L98",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_ItalianRestaurant_L98.unity",
+   "file": "level101",
+   "rootObjects": 85,
+   "bounds": [
+    10.47,
+    1.55,
+    14.19,
+    4.06
+   ]
+  },
+  {
+   "building": "Res_Street_T1S1",
+   "defaultLevel": 51,
+   "levelType": "Street_Main_L41",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Street_Main_L41.unity",
+   "file": "level49",
+   "rootObjects": 116,
+   "bounds": [
+    -88.12,
+    -3.67,
+    -76.07,
+    3.55
+   ]
+  },
+  {
+   "building": "School_T1S2",
+   "defaultLevel": 30,
+   "levelType": "SchoolHallway_L12",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_SchoolHallway_L12.unity",
+   "file": "level28",
+   "rootObjects": 50,
+   "bounds": [
+    -64.995,
+    0.75,
+    -58.695,
+    4.03
+   ]
+  },
+  {
+   "building": "Treetop_Z2B3",
+   "defaultLevel": 11,
+   "levelType": "Treetop_Z2B3L1",
+   "scene": "Assets/Game/Towns/SummerCamp/Scenes/Level_Treetop_Z2B3L1.unity",
+   "file": "level13",
+   "rootObjects": 25,
+   "bounds": [
+    85.87,
+    -2.11,
+    97.76,
+    0.5
+   ]
+  },
+  {
+   "building": "Branding_Kawaii_Build_T1S3",
+   "defaultLevel": 42,
+   "levelType": "KawaiiShopBrand_L27",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_KawaiiShopBrand_L27.unity",
+   "file": "level40",
+   "rootObjects": 70,
+   "bounds": [
+    -43.415,
+    -3.43,
+    -39.885,
+    -0.43
+   ]
+  },
+  {
+   "building": "School_Street_T1S2",
+   "defaultLevel": 60,
+   "levelType": "SchoolStreet_L39",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_SchoolStreet_L39.unity",
+   "file": "level57",
+   "rootObjects": 140,
+   "bounds": [
+    -69.36,
+    1.29,
+    -64.68,
+    3.18
+   ]
+  },
+  {
+   "building": "Office_Build_T1S3",
+   "defaultLevel": 107,
+   "levelType": "StorageUnit_L125",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_StorageUnit_L125.unity",
+   "file": "level102",
+   "rootObjects": 22,
+   "bounds": [
+    77.055,
+    -2.71,
+    79.805,
+    0.2
+   ]
+  },
+  {
+   "building": "Pharmacy_T1S2",
+   "defaultLevel": 28,
+   "levelType": "DoctorOffice_L17",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_DoctorOffice_L17.unity",
+   "file": "level26",
+   "rootObjects": 17,
+   "bounds": [
+    -79.125,
+    -3.61,
+    -73.205,
+    -0.96
+   ]
+  },
+  {
+   "building": "Ballet_T1S3",
+   "defaultLevel": 32,
+   "levelType": "BalletStudio_L19",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_BalletStudio_L19.unity",
+   "file": "level30",
+   "rootObjects": 12,
+   "bounds": [
+    -41.56,
+    -1.12,
+    -38.03,
+    1.97
+   ]
+  },
+  {
+   "building": "Fashion_Shop_T1S4 (1)",
+   "defaultLevel": 20,
+   "levelType": "Fashionshop_L2",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Fashionshop_L2.unity",
+   "file": "level18",
+   "rootObjects": 150,
+   "bounds": [
+    -1.03,
+    -2.76,
+    1.68,
+    -1.06
+   ]
+  },
+  {
+   "building": "Yoga_Build_T1S3",
+   "defaultLevel": 12,
+   "levelType": "MiniYogaStudio_Z1B2L1",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_MiniYogaStudio_Z1B2L1.unity",
+   "file": "level7",
+   "rootObjects": 48,
+   "bounds": [
+    -44.15,
+    1.4,
+    -39.43,
+    4.21
+   ]
+  },
+  {
+   "building": "TrainStation",
+   "defaultLevel": 23,
+   "levelType": "TrainStation_Z1B2",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_TrainStation_Z1B2.unity",
+   "file": "level21",
+   "rootObjects": 15,
+   "bounds": [
+    29.14,
+    -3.18,
+    33.38,
+    -0.47
+   ]
+  },
+  {
+   "building": "Hotdog_Shop_T1S4",
+   "defaultLevel": 18,
+   "levelType": "Hotdog_L4",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Hotdog_L4.unity",
+   "file": "level16",
+   "rootObjects": 49,
+   "bounds": [
+    -2.46,
+    -1.76,
+    -0.59,
+    0.23
+   ]
+  },
+  {
+   "building": "Garage",
+   "defaultLevel": 239,
+   "levelType": "Garage_L232",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Garage_L232.unity",
+   "file": "level227",
+   "rootObjects": 105,
+   "bounds": [
+    44.68,
+    -1.6,
+    50.08,
+    1.02
+   ]
+  },
+  {
+   "building": "Shoes_Shop_T1S4",
+   "defaultLevel": 22,
+   "levelType": "Shoeshop_L6",
+   "scene": "Assets/Game/Towns/SunriseHills/Scenes/Level_Shoeshop_L6.unity",
+   "file": "level20",
+   "rootObjects": 105,
+   "bounds": [
+    -4.2,
+    -2.34,
+    -1.37,
+    -0.48
+   ]
+  },
+  {
+   "building": "FG_Cinema_UC_Back_T1S3",
+   "defaultLevel": 0,
+   "levelType": "None",
+   "scene": null,
+   "file": null,
+   "rootObjects": null,
+   "bounds": [
+    -10.35,
+    -0.4,
+    -9.29,
+    0.39
+   ]
+  },
+  {
+   "building": "UGC_Convenience_Store_UC_T1",
+   "defaultLevel": 0,
+   "levelType": "None",
+   "scene": null,
+   "file": null,
+   "rootObjects": null,
+   "bounds": [
+    47.95,
+    1.24,
+    50.34,
+    3.09
+   ]
+  },
+  {
+   "building": "Gas_Station_UC_T1",
+   "defaultLevel": 0,
+   "levelType": "None",
+   "scene": null,
+   "file": null,
+   "rootObjects": null,
+   "bounds": [
+    51.0,
+    1.02,
+    53.6,
+    2.07
+   ]
+  },
+  {
+   "building": "Car_Wash_UC_T1",
+   "defaultLevel": 0,
+   "levelType": "None",
+   "scene": null,
+   "file": null,
+   "rootObjects": null,
+   "bounds": [
+    42.359,
+    -0.636,
+    45.889,
+    2.024
+   ]
+  },
+  {
+   "building": "Burger_Restaurant_UC_T1",
+   "defaultLevel": 0,
+   "levelType": "None",
+   "scene": null,
+   "file": null,
+   "rootObjects": null,
+   "bounds": [
+    53.19,
+    -1.06,
+    56.96,
+    0.44
+   ]
+  },
+  {
+   "building": "FG_Cinema_UC_T1S3",
+   "defaultLevel": 0,
+   "levelType": "None",
+   "scene": null,
+   "file": null,
+   "rootObjects": null,
+   "bounds": [
+    -10.35,
+    -0.4,
+    -8.56,
+    1.18
+   ]
+  }
+ ]
+}

@@ -26,6 +26,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--presets", type=Path, default=ROOT / "out/assets/TextAsset/PremadeCharactersJson_109356.txt")
     parser.add_argument("--assembly", type=Path, default=ROOT / "out/cpp2il/DiffableCs/Assembly-CSharp")
+    parser.add_argument("--scene-report", type=Path, action="append", default=[])
     parser.add_argument("--output", type=Path, default=ROOT / "out/recon/tasks/T032/character-inventory.json")
     args = parser.parse_args()
     presets_path, assembly_root, output = args.presets.resolve(), args.assembly.resolve(), args.output.resolve()
@@ -55,6 +56,21 @@ def main() -> None:
                         "abstract": match.group(1) == "abstract", "bases": bases,
                         "declares_ILevelAvatar": "ILevelAvatar" in bases,
                         "source": str(path.relative_to(ROOT)), "source_sha256": sha256(path)})
+    class_names = {item["name"] for item in classes} | {"LevelAvatarOneTimeSpawner", "BackgroundCharacterSpineManager",
+                                                         "BackgroundToddlerSpineManager", "LevelCharacterAnimator"}
+    scene_reports = []
+    for raw_path in args.scene_report:
+        path = raw_path.resolve()
+        report = json.loads(path.read_text(encoding="utf-8"))
+        component_counts: dict[str, int] = {}
+        for behaviour in report.get("behaviours", []):
+            script = behaviour.get("script", {})
+            if script.get("name") in class_names:
+                full_name = ((script.get("namespace") or "") + "." + script["name"]).strip(".")
+                component_counts[full_name] = component_counts.get(full_name, 0) + 1
+        scene_reports.append({"path": str(path.relative_to(ROOT)), "sha256": sha256(path),
+                              "scene": report.get("level"), "object_count": report.get("object_count"),
+                              "matching_component_counts": component_counts})
     result = {
         "inputs": {"presets": str(presets_path.relative_to(ROOT)), "presets_sha256": sha256(presets_path),
                    "assembly_stub_root": str(assembly_root.relative_to(ROOT))},
@@ -63,6 +79,7 @@ def main() -> None:
                                       for name, values in ids.items()},
         "preset_counts_by_size_type": size_counts,
         "level_character_classes": classes,
+        "scene_reports": scene_reports,
         "limits": ["Cpp2IL class stubs establish declarations and interfaces, not runtime behavior.",
                    "Premade preset counts do not measure scene NPC populations or unlocked catalog coverage."]
     }

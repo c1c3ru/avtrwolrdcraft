@@ -90,6 +90,16 @@ namespace AvatarWorld.Runtime
                 screen.BeginRandom(_literacy, new ChallengeSelector(_state), price, "Moedas AW",
                     () => { _save.Save(_state); store.RefreshCoins(); },
                     () => { store.RefreshCoins(); store.SelectCategory(store.Category); });
+            }, () =>
+            {
+                if (FindFirstObjectByType<ItemBrowserScreen>() != null) return;
+                var itemsGo = new GameObject("ItemBrowser");
+                itemsGo.AddComponent<ItemBrowserScreen>().Begin(_state, _save, () =>
+                {
+                    Destroy(itemsGo);
+                    store.RefreshCoins();
+                    store.SelectCategory(store.Category);
+                });
             });
         }
 
@@ -101,7 +111,7 @@ namespace AvatarWorld.Runtime
             _worldMap = host.AddComponent<WorldMapRuntime>();
             _worldMap.OnOpenLevel = OpenSceneSlice;
             LoadingScreen.Show();
-            _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f), OpenAvatarSlots);
+            _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f), OpenAvatarSlots, OpenInterior);
         }
 
         /// <summary>Slots de avatar/pet/carro (AvatarMakerLobby): aberto pelo avatar+ do mapa; voltar retorna ao mapa.</summary>
@@ -127,20 +137,20 @@ namespace AvatarWorld.Runtime
             _homeActions.ReturnFromGameplay();
         }
 
-        /// <summary>Ambiente generico (arte e layout extraidos) aberto por um predio do mapa; voltar retorna ao mapa.</summary>
-        void OpenSceneSlice(int levelType)
+        /// <summary>Interior de um predio do mapa (visual); voltar retorna ao mapa na mesma posicao.</summary>
+        void OpenInterior(string key)
         {
-            if (FindFirstObjectByType<SceneSliceRuntime>() != null) return;
+            if (FindFirstObjectByType<InteriorRuntime>() != null) return;
             if (_worldMap != null) _worldMap.gameObject.SetActive(false);
-            var host = new GameObject("SceneSlice");
-            void Close()
+            var host = new GameObject("Interior_" + key);
+            host.AddComponent<InteriorRuntime>().Begin(key, () =>
             {
                 Destroy(host);
                 LoadingScreen.Show();
                 if (_worldMap != null) _worldMap.gameObject.SetActive(true);
                 LoadingScreen.Hide(0.5f);
-            }
-            if (!host.AddComponent<SceneSliceRuntime>().Begin(levelType, Close, () => LoadingScreen.Hide(0.7f), _save, _state)) Close();
+            });
+            LoadingScreen.Hide(0.7f);
         }
 
         void OpenBasketballCourt()

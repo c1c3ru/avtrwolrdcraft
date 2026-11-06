@@ -29,13 +29,13 @@ namespace AvatarWorld.Runtime
 
         public static SpineAtlasAsset Create(TextAsset atlasText, Shader shader,
             IReadOnlyDictionary<string, Texture2D> realTextures,
-            out Dictionary<string, Material> materialByPage)
+            out Dictionary<string, Material> materialByPage, int expectedPageCount = ExpectedPageCount)
         {
             if (atlasText == null) throw new ArgumentNullException(nameof(atlasText));
             if (shader == null) throw new ArgumentNullException(nameof(shader));
             var pages = ParsePageNames(atlasText.text);
-            if (pages.Length != ExpectedPageCount)
-                throw new InvalidOperationException($"Atlas tem {pages.Length} paginas; esperado: {ExpectedPageCount}");
+            if (expectedPageCount >= 0 && pages.Length != expectedPageCount)
+                throw new InvalidOperationException($"Atlas tem {pages.Length} paginas; esperado: {expectedPageCount}");
 
             var materials = new Material[pages.Length];
             materialByPage = new Dictionary<string, Material>(pages.Length, StringComparer.Ordinal);

@@ -1,0 +1,73 @@
+{
+ "species": "Hamster",
+ "idle": "General/Chilling",
+ "basePieces": [
+  {
+   "template": "Templates/MultiPack__General",
+   "file": "multipack__general__27077.png",
+   "skin": "default"
+  }
+ ],
+ "variants": [
+  {
+   "id": "hamster_a_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__27077.png",
+     "skin": "Hamster_A_1"
+    },
+    {
+     "template": "Templates/MultiPack__Hamster_A_1",
+     "file": "multipack__hamster_a_1__72812.png",
+     "skin": "Hamster_A_1"
+    }
+   ]
+  },
+  {
+   "id": "hamster_a_4",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__27077.png",
+     "skin": "Hamster_A_4"
+    },
+    {
+     "template": "Templates/MultiPack__Hamster_A_4",
+     "file": "multipack__hamster_a_4__74593.png",
+     "skin": "Hamster_A_4"
+    }
+   ]
+  },
+  {
+   "id": "hamster_a_6",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__27077.png",
+     "skin": "Hamster_A_6"
+    },
+    {
+     "template": "Templates/MultiPack__Hamster_A_6",
+     "file": "multipack__hamster_a_6__104967.png",
+     "skin": "Hamster_A_6"
+    }
+   ]
+  },
+  {
+   "id": "hamster_b_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__27077.png",
+     "skin": "Hamster_B_1"
+    },
+    {
+     "template": "Templates/MultiPack__Hamster_B_1",
+     "file": "multipack__hamster_b_1__54223.png",
+     "skin": "Hamster_B_1"
+    }
+   ]
+  }
+ ]
+}

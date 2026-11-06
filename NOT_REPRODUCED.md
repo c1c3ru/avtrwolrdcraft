@@ -51,18 +51,33 @@ para a fatia Home (`Assets/Resources/HomeSlice/sprites/`). O restante permanece 
 reimplementação por enquanto — decisão de escopo (fatia por fatia), não bloqueio técnico.
 
 ## 6. Verificação visual da tela Home
-Ainda **não verificado**: nenhum dispositivo Android conectado via ADB nesta sessão
-(`adb devices` retornou lista vazia) e nenhuma instalação do Unity Editor neste ambiente de
-execução para gerar um screenshot via Editor/Play Mode como alternativa. O build Android relatado
-como "Succeeded" em 2026-10-30 não está presente neste checkout (`client/.../Builds/` é ignorado
-pelo git) e precisaria ser refeito antes de instalar/visualizar.
+Parcial. `docs/HOME_VALIDATION_2026-10-31.md` registra validação em aparelho real (Xiaomi M2101K7BI, Android 13)
+com screenshots por ADB. Nesta sessão (2026-11-05) **nenhum aparelho está conectado** (`adb devices` vazio), então
+nada foi revalidado visualmente. O Unity Editor 6000.6.6f1 **está instalado** (`~/Unity/Hub/Editor`, CLI `unity`);
+uma versão anterior deste item dizia o contrário, e estava errada. O APK de desenvolvimento (`Builds/`, ignorado
+pelo Git) precisa ser refeito para nova instalação.
 
-## Mapa World: partes móveis (2026-11-06)
-- Implementado (`WorldMapMotion`, dados de `tools/export_world_motion.py` → `Resources/WorldSlice/motion.json`): 26 nuvens (`WorldCloud`) derivando e reaparecendo, trem (`WorldTrain`, tempos 3,5 s/5 s da cena), Spine `Sun_Moon` e `Water_Reflections`.
-- Aproximações (o Cpp2IL não traz o corpo dos métodos): velocidade das nuvens, qual lista de sprites vale em cada clima (clear→sol, rain→neve, heavyRain→chuva), esperas e curva do trem, animação Spine escolhida (Day/Idle/primeira) sem ligação com a hora do dia.
-- **Não implementado**: carros (`WorldCarsController`/`WorldCar`; grafo de 120 `WorldRoadPoint` já exportado em `motion.json`, mas o prefab do carro é `MonoBehaviour` em `resources.assets` e os sprites por direção/modelo não foram identificados); `WobbleEffect` (130 sprites, efeito de shader ao arrastar a câmera); `LevelVFXArea` (55); animações de personagens/NPCs do mapa. Nada disso verificado no aparelho.
-- Atualização: ambientes agora também têm os 275 Spine de cenário (portas, fogão, chuveiro, fogo, sol; `animation` inicial vem da cena; ordem de desenho intercalada com os sprites) e o avatar salvo do jogador, posto no centro da cena (-2,7) com escala 0,55 como na quadra. Os pontos `LevelSpawn` são de itens (comida, talheres), não de avatares: o spawn original de personagens (`LevelAvatarOneTimeSpawner`/slots) segue não reproduzido. `Avatar_Spine` das cenas (34) não é desenhado (sem skins). `followCamera` (sol/lua) usa câmera+offset, semântica inferida.
-- Itens arrastáveis (WIP, 2026-11-06): `tools/export_scene_items.py` exporta 2.821 `LevelItem` com sprites e 1.647 polígonos de `LevelDropArea` (`scene.json`: `items`, `dropAreas`, `renderer.item`); `SceneSliceRuntime` arrasta (limiar 10 px via `DragIntentDetector`), levanta a ordem de desenho e solta na área de maior prioridade (`DropAreaQuery`, testes EditMode). **Falhas conhecidas**: dois testes de Play Mode estão `[Ignore]`: soltar no vazio não volta ao início (áreas largas do cenário aceitam o item) e o apoio na superfície difere ~0,14 u da área escolhida. A regra real (`LevelDropAreaQuery`, aceitação por subclasse, itens gerados por spawners) não foi recuperada. Não visto no aparelho.
-- LevelDropAreaQuery recuperada (2026-11-06, ARM64 via `tools/recon_disasm.py`; `DropAreaQuery.cs`): queda = área de **menor distância vertical** do raio para baixo (1000 u) entre as que passam em `PerformBasicTests` (X sobrepõe, altura `_maxItemsHeight`==0 ou ≥ altura do item, largura `_maxItemsWidth` ou largura X ≥ base do item, `CanItemFallOnSelf`), `LevelFloorArea` aceita o raio que começa dentro; sob o ponteiro = ponto dentro do polígono (`IsDroppableUnderItem`). Corrige o erro anterior (prioridade). Ainda **não** reproduzido: `LevelUndroppableArea`, `CanItemFallOnDropArea` com consumidor, bloqueio por entidade (`IsEntityBlockingDropArea`), orientação do item, `CanConsumeItem` das subclasses (só personagens/comida/matar/água ficam de fora), critério exato de `SortDropAreas` (comparador de Transform) e a ordem exata sob-ponteiro/queda dentro de `DropInLevel`. Exportação agora inclui as 64 subclasses de `LevelDropArea` (2.726 polígonos, 257 de chão).
-- SortDropAreas recuperado (2026-11-06): ordena a lista estática com `LevelConsumers.CompareConsumers` (0x22c3fd4): sem entidade nos dois, maior `_sortPriority` primeiro; só um com entidade (`ILevelConsumer.GetEntity`, aqui o `LevelItem` que contém a área), ele primeiro; dois com entidade, maior ordem de desenho (`GetSortingOrderForY`, aproximada pelo maior rank dos sprites do item) e, empatando, prioridade. `GetMostRelevantDropAreaUnderPosition` devolve a PRIMEIRA área ordenada que passa em `IsDroppableUnderItem`. `List.Sort` do original é instável: o desempate aqui é a ordem de entrada. `LevelUndroppableArea` segue não reproduzido.
-- LevelUndroppableArea recuperada (2026-11-06, ARM64; `UndroppableAreaQuery.cs`): `PerformBasicTests` (X sobrepõe, `_minItemsHeight`==0 ou ≤ altura do item), `CanAffectItemOnDrop` (`_dontAffectIfItemIsHigher` + `IsItemTopAboveArea` com corte 0,5; `_dontAllowForgivingTest` = raio horizontal estrito `IsXBoundsTouching`; senão teste perdoador: base ≤1 com o centro dentro, ou base encolhida a 30% com borda esquerda, centro e borda direita dentro), `GetDroppableY` (11 raios verticais, menor cruzamento −0,1), e o bloqueio de `CanItemFallOnDropArea` (só áreas com entidade; não-dropável tão alta quanto o item, antes da área em `CompareConsumers`, contendo o ponto de pouso). Constantes lidas de `libil2cpp.so`: 0,3 / −0,1 / 0,5. Integrado ao `FallOn` apenas no bloqueio de `CanItemFallOnDropArea`. **Não integrado** (comportamento de `LevelItem.DropInLevel` não fechado): quando uma área não-dropável afeta o item no pouso, a queda até `GetDroppableY`/`FallFromUndroppableArea` e a escolha de `GetDownmostUndroppableArea` (aproximada pela base). Não reproduzidos: `CanConsumeItem` das subclasses, teste "item filho da área", ramo de personagem de `GetDroppableY`. Exportação: 1.741 polígonos não-dropáveis em `<chave>_dropareas.json` (`undroppable`).
+## 7. Auditoria por contrato (2026-11-05): o que o replay encontrou
+Ferramenta: `tools/recon_contract.py` + `tools/replay-core` (compila o `Core` sem Unity); contrato em
+`contracts/store-claim.contract.json`. Reproduzir: `python3 tools/recon_contract.py replay
+contracts/store-claim.contract.json -- tools/dotnet/dotnet <ReplayCore.dll>`.
+
+- **§2 confirmado.** `store_catalog.json`: 37.230 linhas, 25.812 GUIDs únicos (6.412 GUIDs repetidos em mais de
+  uma linha), **preço 0 em todas**. Os preços não estão no catálogo extraído.
+- **§2 precisa de uma nota.** Preços em moedas *existem* como observação visual dos prints do app original
+  (`assets/exemplo_jogo_original/`, pasta ignorada pelo Git). Não vêm do APK nem do servidor; são fonte
+  `runtime-observed`, só vale o que está na tela.
+- **Replay dos combos: 4 de 6 batem** — Galxe Mansion 1200, Natural Chic 1400, Casinha de brincar 770,
+  Show ao vivo 980.
+- **Divergência 1: `PB25` "Amiguinhos".** O print (`imagem11.jpeg`, também `imagem6.jpeg`) mostra
+  1500 → **1200**. O cliente tem 500, valor do item vizinho "Meu primeiro hamster", que é outro item. E `PB25`
+  está em `StoreCatalog.Observed`, ou seja, está marcado como "lido do print" e não bate com ele.
+- **Divergência 2: `PB27` "Festa à Fantasia".** Print (`imagem6.jpeg`, nome truncado "…TASIA", 25% OFF) mostra
+  **450**; o cliente tem 600 (que é o preço riscado). Associação confirmada pela arte (`Resources/Store/packs/PB27.png` é o mesmo card).
+- `ObservedPrintPrices_AreKept` (StoreCatalogTests) não cobre `PB25` nem `PB27`, por isso não pegou isso.
+- Itens vistos nos prints sem equivalente em `StoreCatalog.All`: Carro de aventura (700), Mini Eu (300),
+  Festa de formatura (600), Essenciais de bebê (800), Estábulo da cabana (1200).
+- **Não verificado:** a lógica de resgate (`LocalStoreService`) não tem vetor. O original faz isso no servidor,
+  então qualquer vetor seria só a reimplementação comparada a si mesma.
+
+**Corrigido** nesta branch (decisão do autor): `PB25` → 1200 e `PB27` → 450 (preço exibido, como nos demais combos), ambos agora em `ObservedPrintPrices_AreKept`. Replay: 6/6 idênticos. Testes Unity EditMode rodados em 2026-11-05 (Unity 6000.6.6f1, `unity test … --mode EditMode`): **144/144 aprovados**, incluindo `ObservedPrintPrices_AreKept` com PB25/PB27 (`out/test-results-pr4.xml`, ignorado no Git).

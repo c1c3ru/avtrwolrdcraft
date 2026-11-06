@@ -17,31 +17,41 @@ namespace AvatarWorld.Runtime
     public sealed class StoreScreen : MonoBehaviour
     {
         static readonly Color Purple = new Color(0.42f, 0.22f, 0.62f);
-        static readonly Color RailIdle = new Color(0.30f, 0.12f, 0.46f, 0.95f);
-        static readonly Color RailActive = new Color(1f, 0.72f, 0.95f, 1f);
         static readonly Color TextDark = new Color(0.2f, 0.1f, 0.3f);
 
         PlayerState _state;
         SaveStore _saves;
         Action _onClose;
         Action<int> _onEarnCoins;
+        Action _onOpenItems;
         Font _font;
         Transform _root;
         RectTransform _content;
         Text _coinText;
         string _category;
+        string _sub;
+        RectTransform _subRail;
+        RectTransform _subContent;
         GameObject _modal;
         Text _toast;
         float _toastUntil;
         readonly Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
         readonly Dictionary<string, Image> _railButtons = new Dictionary<string, Image>();
+        readonly Dictionary<string, Image> _subButtons = new Dictionary<string, Image>();
+        static readonly HashSet<string> RailWithArt = new HashSet<string>
+        {
+            StoreCatalog.CategoryCoins, StoreCatalog.CategoryFeatured, StoreCatalog.CategoryHouses,
+            StoreCatalog.CategoryFashion, StoreCatalog.CategoryPets, StoreCatalog.CategoryCombos,
+        };
 
         public string Category => _category;
+        public string Sub => _sub;
         public int ShownCardCount => _content != null ? _content.childCount : 0;
 
         /// <summary>onEarnCoins(preco) abre os desafios cuja dificuldade corresponde ao preco.</summary>
-        public void Begin(PlayerState state, SaveStore saves, Action onClose, Action<int> onEarnCoins)
+        public void Begin(PlayerState state, SaveStore saves, Action onClose, Action<int> onEarnCoins, Action onOpenItems = null)
         {
+            _onOpenItems = onOpenItems;
             _state = state ?? throw new ArgumentNullException(nameof(state));
             _saves = saves;
             _onClose = onClose;
@@ -55,6 +65,13 @@ namespace AvatarWorld.Runtime
         public void RefreshCoins()
         {
             if (_coinText != null) _coinText.text = _state.PazuCurrency.ToString();
+            // Pacotes habilitam/desabilitam conforme o saldo: redesenha mantendo a posicao de rolagem.
+            if (_content != null && _category != null)
+            {
+                var position = _content.anchoredPosition;
+                ShowCards();
+                _content.anchoredPosition = position;
+            }
         }
 
         // ---------- moldura ----------
@@ -103,7 +120,21 @@ namespace AvatarWorld.Runtime
             Anchor(_coinText.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(26f, 0f), new Vector2(190f, 92f));
             RefreshCoins();
 
+            // Loja por item (ItemBrowserScreen): botao de texto ao lado do contador de moedas.
+            if (_onOpenItems != null)
+            {
+                var items = NewImage("ItemsButton", _root, Art("Icons/pill_green", new Vector4(60, 0, 60, 0)), Color.white);
+                items.type = Image.Type.Sliced;
+                Anchor(items.rectTransform, new Vector2(1, 1), new Vector2(-470f, -68f), new Vector2(240f, 91f));
+                var label = NewText("Label", items.transform, 44, TextAnchor.MiddleCenter, TextDark);
+                Stretch(label.rectTransform, Vector2.zero, Vector2.one);
+                label.text = "Itens";
+                label.raycastTarget = false;
+                Click(items.gameObject, () => { UiSound.PlayClick(); _onOpenItems(); });
+            }
+
             BuildRail();
+            BuildSubRail();
 
             var scrollGo = new GameObject("Items", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
             scrollGo.transform.SetParent(_root, false);
@@ -135,35 +166,161 @@ namespace AvatarWorld.Runtime
             _toast.enabled = false;
         }
 
+        static string RailArt(string category)
+        {
+            switch (category)
+            {
+                case StoreCatalog.CategoryCoins: return "cat_coins";
+                case StoreCatalog.CategoryFeatured: return "cat_featured";
+                case StoreCatalog.CategoryHouses: return "cat_houses";
+                case StoreCatalog.CategoryFashion: return "cat_fashion";
+                case StoreCatalog.CategoryPets: return "cat_pets";
+                default: return "cat_combos";
+            }
+        }
+
+        /// <summary>
+        /// Trilho lateral de categorias (icones do original; categorias sem arte local viram etiquetas), com
+        /// rolagem vertical porque ha mais categorias do que cabem na tela.
+        /// </summary>
         void BuildRail()
         {
-            float y = -300f;
+            var railGo = new GameObject("Rail", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
+            railGo.transform.SetParent(_root, false);
+            var railRect = (RectTransform)railGo.transform;
+            railRect.anchorMin = new Vector2(0, 0); railRect.anchorMax = new Vector2(0, 1);
+            railRect.offsetMin = new Vector2(30f, 20f); railRect.offsetMax = new Vector2(220f, -200f);
+            railGo.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            var contentGo = new GameObject("Content", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
+            var content = (RectTransform)contentGo.transform;
+            content.SetParent(railGo.transform, false);
+            content.anchorMin = new Vector2(0, 1); content.anchorMax = new Vector2(1, 1);
+            content.pivot = new Vector2(0.5f, 1f);
+            content.sizeDelta = Vector2.zero;
+            var layout = contentGo.GetComponent<VerticalLayoutGroup>();
+            layout.spacing = 10f; layout.padding = new RectOffset(0, 0, 8, 24);
+            layout.childAlignment = TextAnchor.UpperCenter;
+            layout.childControlWidth = layout.childControlHeight = false;
+            layout.childForceExpandWidth = layout.childForceExpandHeight = false;
+            contentGo.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            var scroll = railGo.GetComponent<ScrollRect>();
+            scroll.viewport = railRect; scroll.content = content;
+            scroll.horizontal = false; scroll.vertical = true;
+            scroll.movementType = ScrollRect.MovementType.Clamped;
+            scroll.scrollSensitivity = 40f;
+
             foreach (var category in StoreCatalog.Categories)
             {
                 string cat = category;
-                var button = NewImage("Cat_" + cat, _root, Art("Store/ui/star"), RailIdle);
-                button.sprite = null; // retangulo arredondado simples (sem arte de icone extraida)
-                Anchor(button.rectTransform, new Vector2(0, 1), new Vector2(124f, y), new Vector2(222f, 112f));
-                var label = NewText("Label", button.transform, 33, TextAnchor.MiddleCenter, Color.white);
-                label.gameObject.AddComponent<Outline>().effectColor = new Color(0.15f, 0.04f, 0.3f);
-                Stretch(label.rectTransform, Vector2.zero, Vector2.one);
-                label.text = cat;
+                Image button;
+                if (RailWithArt.Contains(cat))
+                {
+                    button = NewImage("Cat_" + cat, content, Art("Store/ui/" + RailArt(cat)), Color.white);
+                    button.preserveAspect = true;
+                }
+                else
+                {
+                    button = NewImage("Cat_" + cat, content, Art("Icons/pill_green", new Vector4(60, 0, 60, 0)), Color.white);
+                    button.type = Image.Type.Sliced;
+                    var label = NewText("Label", button.transform, 30, TextAnchor.MiddleCenter, TextDark);
+                    Stretch(label.rectTransform, new Vector2(0.06f, 0f), new Vector2(0.94f, 1f));
+                    label.text = cat;
+                    label.resizeTextForBestFit = true;
+                    label.resizeTextMinSize = 18; label.resizeTextMaxSize = 30;
+                }
+                button.rectTransform.sizeDelta = new Vector2(150f, 128f);
                 Click(button.gameObject, () => { UiSound.PlayClick(); SelectCategory(cat); });
                 _railButtons[cat] = button;
-                y -= 128f;
             }
+        }
+
+        /// <summary>Sub-trilho horizontal (subgrupos da categoria ativa), acima dos cartoes.</summary>
+        void BuildSubRail()
+        {
+            var go = new GameObject("SubRail", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
+            go.transform.SetParent(_root, false);
+            _subRail = (RectTransform)go.transform;
+            _subRail.anchorMin = new Vector2(0, 1); _subRail.anchorMax = new Vector2(1, 1);
+            _subRail.offsetMin = new Vector2(250f, -190f); _subRail.offsetMax = new Vector2(-640f, -80f);
+            go.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            var contentGo = new GameObject("Content", typeof(RectTransform), typeof(HorizontalLayoutGroup), typeof(ContentSizeFitter));
+            _subContent = (RectTransform)contentGo.transform;
+            _subContent.SetParent(go.transform, false);
+            _subContent.anchorMin = new Vector2(0, 0); _subContent.anchorMax = new Vector2(0, 1);
+            _subContent.pivot = new Vector2(0, 0.5f);
+            _subContent.sizeDelta = Vector2.zero;
+            var layout = contentGo.GetComponent<HorizontalLayoutGroup>();
+            layout.spacing = 16f; layout.padding = new RectOffset(8, 8, 0, 0);
+            layout.childAlignment = TextAnchor.MiddleLeft;
+            layout.childControlWidth = layout.childControlHeight = false;
+            layout.childForceExpandWidth = layout.childForceExpandHeight = false;
+            contentGo.GetComponent<ContentSizeFitter>().horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+            var scroll = go.GetComponent<ScrollRect>();
+            scroll.viewport = _subRail; scroll.content = _subContent;
+            scroll.horizontal = true; scroll.vertical = false;
+            scroll.movementType = ScrollRect.MovementType.Clamped;
+            scroll.scrollSensitivity = 40f;
+            _subRail.gameObject.SetActive(false);
+        }
+
+        void RebuildSubRail()
+        {
+            _subButtons.Clear();
+            for (int i = _subContent.childCount - 1; i >= 0; i--)
+            {
+                var child = _subContent.GetChild(i).gameObject;
+                child.SetActive(false);
+                Destroy(child);
+            }
+            var subs = StoreCatalog.SubCategories(_category);
+            _subRail.gameObject.SetActive(subs.Count > 0);
+            if (subs.Count == 0) return;
+            AddSubChip(null, "Todos");
+            foreach (var sub in subs) AddSubChip(sub, sub);
+            _subContent.anchoredPosition = Vector2.zero;
+        }
+
+        void AddSubChip(string sub, string label)
+        {
+            var chip = NewImage("Sub_" + label, _subContent, Art("Icons/pill_green", new Vector4(60, 0, 60, 0)), Color.white);
+            chip.type = Image.Type.Sliced;
+            chip.rectTransform.sizeDelta = new Vector2(Mathf.Max(200f, 34f * label.Length + 80f), 84f);
+            var text = NewText("Label", chip.transform, 38, TextAnchor.MiddleCenter, TextDark);
+            Stretch(text.rectTransform, Vector2.zero, Vector2.one);
+            text.text = label;
+            text.horizontalOverflow = HorizontalWrapMode.Overflow;
+            Click(chip.gameObject, () => { UiSound.PlayClick(); SelectSub(sub); });
+            _subButtons[sub ?? ""] = chip;
+            bool active = (sub ?? "") == (_sub ?? "");
+            chip.color = active ? Color.white : new Color(1f, 1f, 1f, 0.55f);
+        }
+
+        public void SelectSub(string sub)
+        {
+            _sub = string.IsNullOrEmpty(sub) ? null : sub;
+            ShowCards();
         }
 
         public void SelectCategory(string category)
         {
             _category = category;
+            _sub = null;
+            ShowCards();
+        }
+
+        void ShowCards()
+        {
+            string category = _category;
             foreach (var pair in _railButtons)
             {
                 bool active = pair.Key == category;
-                pair.Value.color = active ? RailActive : RailIdle;
-                var label = pair.Value.GetComponentInChildren<Text>();
-                if (label != null) label.color = active ? TextDark : Color.white;
+                if (RailWithArt.Contains(pair.Key))
+                    pair.Value.sprite = Art("Store/ui/" + RailArt(pair.Key) + (active ? "_on" : ""));
+                else
+                    pair.Value.color = active ? Color.white : new Color(0.82f, 0.72f, 0.9f);
+                pair.Value.rectTransform.localScale = Vector3.one * (active ? 1.08f : 1f);
             }
+            RebuildSubRail();
             for (int i = _content.childCount - 1; i >= 0; i--)
             {
                 var child = _content.GetChild(i).gameObject;
@@ -171,8 +328,27 @@ namespace AvatarWorld.Runtime
                 Destroy(child);
             }
             if (category == StoreCatalog.CategoryCoins) BuildActivityCards();
-            else foreach (var offer in StoreCatalog.InCategory(category)) BuildOfferCard(offer);
+            else
+            {
+                var offers = StoreCatalog.InCategory(category, _sub);
+                if (offers.Count == 0) BuildComingSoon();
+                else foreach (var offer in offers) BuildOfferCard(offer);
+            }
             _content.anchoredPosition = Vector2.zero;
+        }
+
+        void BuildComingSoon()
+        {
+            var card = new GameObject("ComingSoon", typeof(RectTransform), typeof(LayoutElement));
+            card.transform.SetParent(_content, false);
+            card.GetComponent<LayoutElement>().preferredWidth = 900f;
+            card.GetComponent<LayoutElement>().preferredHeight = 500f;
+            var panel = NewImage("Panel", card.transform, Art("Store/ui/bubble", new Vector4(70, 70, 70, 70)), new Color(1f, 0.93f, 0.98f));
+            panel.type = Image.Type.Sliced;
+            Stretch(panel.rectTransform, Vector2.zero, Vector2.one);
+            var text = NewText("Text", card.transform, 60, TextAnchor.MiddleCenter, TextDark);
+            Stretch(text.rectTransform, new Vector2(0.06f, 0.1f), new Vector2(0.94f, 0.9f));
+            text.text = _category + "\nEm breve";
         }
 
         // ---------- cartoes ----------
@@ -184,7 +360,11 @@ namespace AvatarWorld.Runtime
             card.GetComponent<LayoutElement>().preferredWidth = 520f;
             card.GetComponent<LayoutElement>().preferredHeight = 700f;
 
-            var art = NewImage("Art", card.transform, Art("Store/packs/" + offer.Art), Color.white);
+            bool owned = StoreCatalog.IsOwned(_state, offer);
+            bool affordable = owned || _state.PazuCurrency >= offer.Price;
+            // Sem moedas suficientes o pacote fica acinzentado (desabilitado); com saldo, volta ao normal.
+            var art = NewImage("Art", card.transform, Art("Store/packs/" + offer.Art),
+                affordable ? Color.white : new Color(0.5f, 0.5f, 0.55f, 0.85f));
             Anchor(art.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, -22f), new Vector2(480f, 610f));
             art.preserveAspect = true;
             StoreOffer captured = offer;
@@ -196,7 +376,6 @@ namespace AvatarWorld.Runtime
             title.text = offer.Title;
             title.raycastTarget = false;
 
-            bool owned = StoreCatalog.IsOwned(_state, offer);
             var pill = NewImage("Price", card.transform, Art("Store/ui/currency_bg"), Color.white);
             Anchor(pill.rectTransform, new Vector2(1f, 0f), new Vector2(-150f, 70f), new Vector2(250f, 80f));
             pill.raycastTarget = false;
@@ -213,6 +392,14 @@ namespace AvatarWorld.Runtime
                 var price = NewText("Value", pill.transform, 46, TextAnchor.MiddleRight, Color.white);
                 Anchor(price.rectTransform, new Vector2(1f, 0.5f), new Vector2(-105f, 0f), new Vector2(150f, 80f));
                 price.text = offer.Price.ToString();
+                if (!affordable) price.color = new Color(1f, 0.55f, 0.55f);
+                else
+                {
+                    var buy = NewText("BuyBadge", card.transform, 40, TextAnchor.MiddleCenter, new Color(0.6f, 1f, 0.7f));
+                    buy.gameObject.AddComponent<Outline>().effectColor = new Color(0.15f, 0.04f, 0.3f);
+                    Anchor(buy.rectTransform, new Vector2(0f, 0f), new Vector2(150f, 70f), new Vector2(240f, 80f));
+                    buy.text = "Comprar";
+                }
             }
         }
 
@@ -330,7 +517,7 @@ namespace AvatarWorld.Runtime
             }
             CloseModal();
             RefreshCoins();
-            SelectCategory(_category);
+            ShowCards();
             ShowToast("Combo adquirido!");
         }
 

@@ -87,6 +87,56 @@ TARGET_GROUPS = {
     "PWC.Level.LevelAvatarOneTimeSpawner": {"OnLevelPrePostInit", "PlaceAvatarInScene", "SpawnAvatar", "HandleCAHandlers", "GetPersistentData", "SetPersistentData"},
     "PWC.Level.LevelAvatarData": {"ApplyDataIfExists", "ApplyDataInternal", "SaveData", "SaveDataInternal"},
   },
+  "clothing": {
+    "PWC.AvatarMaker.AvatarMakerThumbsManager": {
+        "AddExpansionPackThumbs", "AddItemSpritesOutsideAnyPack", "AddItemSpritesWithNoThumb",
+        "AddOwnedExpansionPacksThumbs", "FilterByClaimedInventoryFlags", "FillSections",
+        "GetOwnedPackFlagsInTabOrder", "GetPremiumItemsNames", "GetRelevantInventorySkins",
+        "Init", "OnExpansionPackChanged", "OnThumbClick", "TryFillColorSections",
+    },
+    "PWC.AvatarMaker.AvatarMakerExpansionPackManager": {
+        "AddExpansionPackCategory", "GetAvailableExpansionPackCategories", "InitAvailableExpansionPacks",
+        "PressOnCurrentExpanisonPack",
+    },
+    "PWC.AvatarMaker.AvatarMakerExpansionPackCategory": {
+        "Init", "InitLocalizedTooltipText", "InitTooltipText", "OnPointerClick",
+        "SetActiveAccordingToCurrentSpineType", "TryGetRelevantCategoryInCurrentExpansion",
+    },
+    "PWC.Inventory.InventorySkinsBuildData": {
+        "ContainsItem", "EnsureInit", "GetPremiumSkinsInventoryFlags", "GetDictionaryForSpecificFlagType",
+        "TryGetCategoriesFromFlag", "TryGetSkinsFromFlag", "TryGetSkinsFromFlagForSpine", "TryGetText",
+    },
+    "PWC.Inventory.InventorySkinsUtils": {
+        "ForEachOwnedPremiumSkinFlag", "GetAllCategories", "IsFlagInteractionPerformed",
+        "SetFlagInteractionPerformed", "SetNewFlagNotSeenYet",
+    },
+    "PWC.Inventory.InventoryManager": {"ContainsFlagType", "GetFlagCount"},
+    "PWC.Inventory.InventoryFlagTypeExtensionMethods": {"GetStorePackName", ".cctor"},
+  },
+  "contextual": {
+    "PWC.LevelContextualAnimation.LevelCAConfig": {"CreateAnimationName", "IsValid"},
+    "ReactionAnimationData": {"GetResolvedReactionAnimationName"},
+    "Game.Level.LevelReactionOfAvatarsOnCAAnimationHandler": {"FindReactionIfExist"},
+    "<>c__DisplayClass32_0": {"<FindReactionIfExist>b__0"},
+    "PWC.AvatarSpine.SpineTypeExtensionMethods": {"HasCAPrefixForCAAnimations"},
+    "PWC.Level.ContextualAnimation.LevelCAHandlerBase": {"GetAnimationSuffix"},
+    **{f"Game.Level.ContextualAnimation.{name}": {"GetAnimationSuffix"} for name in (
+        "LevelCAToddlerBottleItemHandler", "LevelCAToyCarToddlerItemHandler",
+        "LevelCAToddlerPlayablesItemHandler", "LevelCAToddlerHandler",
+        "LevelCASmallPetOnToddlerHandler", "LevelCADogOnToddlerHandler",
+        "LevelCAToddlerBlanketItemHandler", "LevelCAToddlerDancingClothingSpineSkinHandler",
+        "LevelCAToddlerFavoritePlushieItemHandler", "LevelCACatOnToddlerHandler",
+        "LevelCAToddlerDrinkablesItemHandler", "LevelCAToddlerEdiblesItemHandler",
+        "LevelCAToddlerPacifierItemHandler",
+    )},
+    "PWC.PSDToLevel.LevelContextualAnimation.LevelCADropAreaHandlerWithData": {
+        "GetAnimations", "GetData", "GetFolderName", "GetForcedToSitAnimation",
+        "GetLockedAnimationName", "GetPriority", "GetSpineType", "IsForceToSitWhenPossible",
+    },
+    "PWC.PSDToLevel.LevelContextualAnimation.LevelCAItemHandlerWithData": {
+        "GetAnimations", "GetData", "GetFolderName", "GetLockedAnimationName", "GetSpineType",
+    },
+  },
 }
 
 
@@ -109,7 +159,8 @@ def main() -> None:
     args.index = args.index.resolve()
     args.binary = args.binary.resolve()
     args.objdump = args.objdump.resolve()
-    defaults = {"save": "T030/persistence-asm", "input": "T031/input-asm", "characters": "T032/character-asm"}
+    defaults = {"save": "T030/persistence-asm", "input": "T031/input-asm", "characters": "T032/character-asm",
+                "clothing": "T033/gates-asm", "contextual": "T035/contextual-asm"}
     args.output = (args.output or ROOT / "out/recon/tasks" / defaults[args.scope]).resolve()
     selected = TARGET_GROUPS[args.scope]
     rows = [json.loads(line) for line in args.index.read_text(encoding="utf-8").splitlines()]

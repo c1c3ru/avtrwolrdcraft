@@ -1,0 +1,455 @@
+{
+  "target_count": 2174,
+  "target_origin": "User-stated; no corresponding 2,174-ID source list is configured in this repository.",
+  "inputs": {
+    "resources": {
+      "path": "out/assets/avatar-resources.json",
+      "sha256": "f10a826783f6e189c6c3cb9135313d40627b869701659a5ca9f09ce478cc3be7"
+    },
+    "atlas": {
+      "path": "client/AvatarWorldClient/Assets/Resources/AvatarSpine/Avatar_Spine.atlas.txt",
+      "sha256": "f28037f279a77828efbfa8cdb6651aeaf37b229fe12dd569c709565a60a251c8"
+    },
+    "manifest": {
+      "path": "client/AvatarWorldClient/Assets/Resources/AvatarSpine/clothing-manifest.json",
+      "sha256": "d16e5cfe0e5bfeaac4f7697d3fa87c620429b6bfe1de72bdda14703ba4b5bdca"
+    },
+    "catalog": {
+      "path": "client/AvatarWorldClient/Assets/Scripts/Core/Avatar/AvatarCatalogData.cs",
+      "sha256": "81972ff3713f4cbee74952a6b88d149b6b85e6e9f4bfc280ade19941927bd257"
+    }
+  },
+  "texture_directory": "out/assets/Texture2D",
+  "texture_png_count": 121647,
+  "texture_filename_inventory_sha256": "364cab4a67a83efaacf0c70d770b0630128587b3d72d213ae9b5f6b252dcf0fd",
+  "resource_rows": 48200,
+  "atlas_pages": 2172,
+  "source_unique_sut_item_folders": 8979,
+  "current_manifest_unique_ids": 772,
+  "current_catalog_ids_by_category": {
+    "Shirt": 100,
+    "Bottom": 100,
+    "Shoes": 100,
+    "Accessory": 100,
+    "Mouth": 100,
+    "Eyebrows": 75,
+    "HairBack": 100,
+    "Hair": 100
+  },
+  "current_four_primary_categories_count": 400,
+  "current_four_primary_categories_target_delta": 1774,
+  "resolvable_candidates_in_four_primary_categories": 4016,
+  "resolvable_candidates_by_primary_category": {
+    "Shirt": 1042,
+    "Bottom": 970,
+    "Shoes": 1171,
+    "Accessory": 833
+  },
+  "provisional_exact_target_allocation": {
+    "Shirt": 564,
+    "Bottom": 525,
+    "Shoes": 634,
+    "Accessory": 451
+  },
+  "core_candidate_delta_to_target": 1842,
+  "category_counts": {
+    "accessories/accessories_body/accessories_body_bags": {
+      "source_item_folders": 238,
+      "strictly_resolvable": 236,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "accessories/accessories_body/accessories_body_bracelets": {
+      "source_item_folders": 297,
+      "strictly_resolvable": 296,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "accessories/accessories_body/accessories_body_gloves": {
+      "source_item_folders": 170,
+      "strictly_resolvable": 165,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "accessories/accessories_body/accessories_body_neck": {
+      "source_item_folders": 452,
+      "strictly_resolvable": 451,
+      "currently_selected_by_builder": 447,
+      "builder_selected_resolvable": 447,
+      "excluded_suffix_color": 5,
+      "excluded_suffix_p": 0
+    },
+    "accessories/accessories_body/accessories_body_rings": {
+      "source_item_folders": 78,
+      "strictly_resolvable": 77,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "accessories/accessories_face/accessories_face_glasses": {
+      "source_item_folders": 399,
+      "strictly_resolvable": 392,
+      "currently_selected_by_builder": 386,
+      "builder_selected_resolvable": 386,
+      "excluded_suffix_color": 13,
+      "excluded_suffix_p": 0
+    },
+    "accessories/accessories_face/accessories_face_mask": {
+      "source_item_folders": 24,
+      "strictly_resolvable": 24,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "accessories/accessories_face/accessories_face_piercing": {
+      "source_item_folders": 319,
+      "strictly_resolvable": 318,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "back/back_c": {
+      "source_item_folders": 28,
+      "strictly_resolvable": 28,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "bottom/bottom_casual": {
+      "source_item_folders": 12,
+      "strictly_resolvable": 12,
+      "currently_selected_by_builder": 10,
+      "builder_selected_resolvable": 10,
+      "excluded_suffix_color": 2,
+      "excluded_suffix_p": 0
+    },
+    "bottom/bottom_formal": {
+      "source_item_folders": 12,
+      "strictly_resolvable": 12,
+      "currently_selected_by_builder": 10,
+      "builder_selected_resolvable": 10,
+      "excluded_suffix_color": 2,
+      "excluded_suffix_p": 0
+    },
+    "bottom/bottom_jobs": {
+      "source_item_folders": 5,
+      "strictly_resolvable": 5,
+      "currently_selected_by_builder": 5,
+      "builder_selected_resolvable": 5,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "bottom/bottom_special": {
+      "source_item_folders": 989,
+      "strictly_resolvable": 968,
+      "currently_selected_by_builder": 945,
+      "builder_selected_resolvable": 945,
+      "excluded_suffix_color": 44,
+      "excluded_suffix_p": 0
+    },
+    "eyebrows": {
+      "source_item_folders": 74,
+      "strictly_resolvable": 74,
+      "currently_selected_by_builder": 74,
+      "builder_selected_resolvable": 74,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "face/face_cheeks": {
+      "source_item_folders": 120,
+      "strictly_resolvable": 120,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "face/face_complexion": {
+      "source_item_folders": 240,
+      "strictly_resolvable": 239,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "fingernails/fingernails_l": {
+      "source_item_folders": 2,
+      "strictly_resolvable": 2,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "fingernails/fingernails_r": {
+      "source_item_folders": 2,
+      "strictly_resolvable": 2,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "hair/hair_back": {
+      "source_item_folders": 188,
+      "strictly_resolvable": 188,
+      "currently_selected_by_builder": 188,
+      "builder_selected_resolvable": 188,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "hat/hat_a": {
+      "source_item_folders": 1075,
+      "strictly_resolvable": 1055,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "hat/hat_b": {
+      "source_item_folders": 21,
+      "strictly_resolvable": 21,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "hat/hat_c": {
+      "source_item_folders": 21,
+      "strictly_resolvable": 21,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "hat/hat_d": {
+      "source_item_folders": 24,
+      "strictly_resolvable": 24,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_bicycle": {
+      "source_item_folders": 9,
+      "strictly_resolvable": 9,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_bubbleblower": {
+      "source_item_folders": 1,
+      "strictly_resolvable": 1,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_chopsticks": {
+      "source_item_folders": 1,
+      "strictly_resolvable": 1,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_crutches": {
+      "source_item_folders": 2,
+      "strictly_resolvable": 2,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_excerciseball": {
+      "source_item_folders": 4,
+      "strictly_resolvable": 3,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_gymnasticribbon": {
+      "source_item_folders": 3,
+      "strictly_resolvable": 3,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_jumpingrope": {
+      "source_item_folders": 7,
+      "strictly_resolvable": 7,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_makeupconcealer": {
+      "source_item_folders": 1,
+      "strictly_resolvable": 1,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_makeupserum": {
+      "source_item_folders": 1,
+      "strictly_resolvable": 1,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_scissors": {
+      "source_item_folders": 2,
+      "strictly_resolvable": 2,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_skipoles": {
+      "source_item_folders": 10,
+      "strictly_resolvable": 10,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_stethoscope": {
+      "source_item_folders": 4,
+      "strictly_resolvable": 0,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "item/item_umbrella": {
+      "source_item_folders": 12,
+      "strictly_resolvable": 0,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "jacket/jacket_casual": {
+      "source_item_folders": 11,
+      "strictly_resolvable": 11,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "jacket/jacket_formal": {
+      "source_item_folders": 10,
+      "strictly_resolvable": 10,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "jacket/jacket_special": {
+      "source_item_folders": 651,
+      "strictly_resolvable": 620,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "legs/legs_shoes": {
+      "source_item_folders": 1207,
+      "strictly_resolvable": 1186,
+      "currently_selected_by_builder": 1171,
+      "builder_selected_resolvable": 1171,
+      "excluded_suffix_color": 36,
+      "excluded_suffix_p": 0
+    },
+    "legs/legs_socks": {
+      "source_item_folders": 464,
+      "strictly_resolvable": 454,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "mouth": {
+      "source_item_folders": 155,
+      "strictly_resolvable": 154,
+      "currently_selected_by_builder": 141,
+      "builder_selected_resolvable": 141,
+      "excluded_suffix_color": 14,
+      "excluded_suffix_p": 0
+    },
+    "onepiece/onepiece_casual": {
+      "source_item_folders": 20,
+      "strictly_resolvable": 20,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "onepiece/onepiece_formal": {
+      "source_item_folders": 10,
+      "strictly_resolvable": 10,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "onepiece/onepiece_special": {
+      "source_item_folders": 509,
+      "strictly_resolvable": 495,
+      "currently_selected_by_builder": 0,
+      "builder_selected_resolvable": 0,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "shirt/shirt_casual": {
+      "source_item_folders": 20,
+      "strictly_resolvable": 20,
+      "currently_selected_by_builder": 16,
+      "builder_selected_resolvable": 16,
+      "excluded_suffix_color": 4,
+      "excluded_suffix_p": 0
+    },
+    "shirt/shirt_formal": {
+      "source_item_folders": 12,
+      "strictly_resolvable": 12,
+      "currently_selected_by_builder": 10,
+      "builder_selected_resolvable": 10,
+      "excluded_suffix_color": 2,
+      "excluded_suffix_p": 0
+    },
+    "shirt/shirt_jobs": {
+      "source_item_folders": 6,
+      "strictly_resolvable": 6,
+      "currently_selected_by_builder": 6,
+      "builder_selected_resolvable": 6,
+      "excluded_suffix_color": 0,
+      "excluded_suffix_p": 0
+    },
+    "shirt/shirt_special": {
+      "source_item_folders": 1057,
+      "strictly_resolvable": 1029,
+      "currently_selected_by_builder": 1010,
+      "builder_selected_resolvable": 1010,
+      "excluded_suffix_color": 47,
+      "excluded_suffix_p": 0
+    }
+  },
+  "limits": [
+    "Strictly resolvable means every resource piece has exactly one extracted PNG, an atlas page, and matching dimensions; it does not validate clothing attachment compatibility or visual rendering.",
+    "Target category distribution is not inferred from the aggregate count.",
+    "The generator's current 100-item cap is an explicit selection limit, not a source-asset deficit."
+  ],
+  "provisional_candidate": "out/recon/tasks/T033/clothing-candidate-2174.json"
+}

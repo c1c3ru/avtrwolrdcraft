@@ -1,0 +1,45 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 2044b0c: d10103ff     	sub	sp, sp, #0x40
+ 2044b10: f90013fe     	str	x30, [sp, #0x20]
+ 2044b14: a9034ff4     	stp	x20, x19, [sp, #0x30]
+ 2044b18: 900125d4     	adrp	x20, 0x44fc000
+ 2044b1c: 39541e88     	ldrb	w8, [x20, #0x507]
+ 2044b20: aa0003f3     	mov	x19, x0
+ 2044b24: 37000128     	tbnz	w8, #0x0, 0x2044b48 <__start_il2cpp+0x3f3938>
+ 2044b28: f0010be0     	adrp	x0, 0x41c3000
+ 2044b2c: f9425400     	ldr	x0, [x0, #0x4a8]
+ 2044b30: 97ed0eee     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2044b34: b0010b40     	adrp	x0, 0x41ad000
+ 2044b38: f9460000     	ldr	x0, [x0, #0xc00]
+ 2044b3c: 97ed0eeb     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2044b40: 52800028     	mov	w8, #0x1                // =1
+ 2044b44: 39141e88     	strb	w8, [x20, #0x507]
+ 2044b48: f9404668     	ldr	x8, [x19, #0x88]
+ 2044b4c: b40002c8     	cbz	x8, 0x2044ba4 <__start_il2cpp+0x3f3994>
+ 2044b50: f0010be9     	adrp	x9, 0x41c3000
+ 2044b54: f9425529     	ldr	x9, [x9, #0x4a8]
+ 2044b58: b0010b53     	adrp	x19, 0x41ad000
+ 2044b5c: 9280000a     	mov	x10, #-0x1              // =-1
+ 2044b60: 910023e0     	add	x0, sp, #0x8
+ 2044b64: f9400129     	ldr	x9, [x9]
+ 2044b68: f9460273     	ldr	x19, [x19, #0xc00]
+ 2044b6c: b9444108     	ldr	w8, [x8, #0x440]
+ 2044b70: aa1f03e1     	mov	x1, xzr
+ 2044b74: a900abe9     	stp	x9, x10, [sp, #0x8]
+ 2044b78: b9001be8     	str	w8, [sp, #0x18]
+ 2044b7c: 944d2389     	bl	0x338d9a0 <__start_il2cpp+0x173c790>
+ 2044b80: f9400268     	ldr	x8, [x19]
+ 2044b84: aa0003e1     	mov	x1, x0
+ 2044b88: aa1f03e2     	mov	x2, xzr
+ 2044b8c: aa0803e0     	mov	x0, x8
+ 2044b90: 94463b61     	bl	0x31d3914 <__start_il2cpp+0x1582704>
+ 2044b94: a9434ff4     	ldp	x20, x19, [sp, #0x30]
+ 2044b98: f94013fe     	ldr	x30, [sp, #0x20]
+ 2044b9c: 910103ff     	add	sp, sp, #0x40
+ 2044ba0: d65f03c0     	ret
+ 2044ba4: 97ed0f77     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

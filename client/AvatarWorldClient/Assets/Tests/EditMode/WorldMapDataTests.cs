@@ -14,7 +14,7 @@ namespace AvatarWorld.Core.Tests
         public void Data_HasRenderersWithUniqueDrawRanksAndExistingSprites()
         {
             var data = Load();
-            Assert.AreEqual(591, data.renderers.Count);
+            Assert.AreEqual(643, data.renderers.Count); // 591 de cena + 52 sprites de nuvem (26 nuvens, arte clara e de chuva)
             Assert.AreEqual(data.renderers.Count, data.renderers.Select(r => r.rank).Distinct().Count());
             foreach (var name in data.renderers.Select(r => r.sprite).Distinct())
                 Assert.IsNotNull(Resources.Load<Texture2D>("WorldSlice/sprites/" + name), name);

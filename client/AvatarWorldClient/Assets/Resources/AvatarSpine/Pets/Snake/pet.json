@@ -1,0 +1,43 @@
+{
+ "species": "Snake",
+ "idle": "General/Chilling",
+ "basePieces": [
+  {
+   "template": "Templates/MultiPack__General",
+   "file": "multipack__general__23091.png",
+   "skin": "default"
+  }
+ ],
+ "variants": [
+  {
+   "id": "snake_a_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__23091.png",
+     "skin": "Snake_A_1"
+    },
+    {
+     "template": "Templates/MultiPack__Snake_A_1",
+     "file": "multipack__snake_a_1__60317.png",
+     "skin": "Snake_A_1"
+    }
+   ]
+  },
+  {
+   "id": "snake_a_2",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__23091.png",
+     "skin": "Snake_A_2"
+    },
+    {
+     "template": "Templates/MultiPack__Snake_A_2",
+     "file": "multipack__snake_a_2__61416.png",
+     "skin": "Snake_A_2"
+    }
+   ]
+  }
+ ]
+}

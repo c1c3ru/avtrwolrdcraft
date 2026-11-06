@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AvatarWorld.Core.Economy;
+using AvatarWorld.Core.World;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,14 +15,17 @@ namespace AvatarWorld.Runtime
     /// </summary>
     public sealed class WorldMapRuntime : MonoBehaviour
     {
-        const string DataResource = "WorldSlice/world";
-        const string SpritePrefix = "WorldSlice/sprites/";
+        const string DefaultDataResource = "WorldSlice/world";
+        const string DefaultSpritePrefix = "WorldSlice/sprites/";
+        string _spritePrefix = DefaultSpritePrefix;
+        bool _switching;
         const float TapMaxPixels = 18f;
         const float TapMaxSeconds = 0.45f;
 
         Action _onBack;
         Action _onOpenBasketball;
         Action _onOpenSlots;
+        Action<string> _onOpenInterior;
         Camera _camera;
         WorldMapData _data;
         RectTransform _backRect;
@@ -36,9 +40,30 @@ namespace AvatarWorld.Runtime
         WorldMapMotion _motion;
         readonly List<SpriteRenderer> _weatherRenderers = new List<SpriteRenderer>();
         readonly List<int> _weatherRendererIndex = new List<int>();
+        // Grupos animados: todos os sprites de uma nuvem (clara + chuva) / de um trem andam juntos.
+        readonly Dictionary<int, List<Transform>> _cloudGroups = new Dictionary<int, List<Transform>>();
+        readonly Dictionary<int, List<Transform>> _trainGroups = new Dictionary<int, List<Transform>>();
+        readonly Dictionary<int, float> _trainBaseX = new Dictionary<int, float>();
+        // Tonalidade por hora do dia: sprites/esqueletos com ColorByTimeOfDay; a cor base e multiplicada pela tinta atual.
+        readonly List<(SpriteRenderer renderer, Color baseColor, int tint)> _tinted = new List<(SpriteRenderer, Color, int)>();
+        readonly List<(MapSpineLayer layer, int tint)> _tintedSpines = new List<(MapSpineLayer, int)>();
+        float _nextTintCheck;
+        int _lastTintMinute = -1;
         readonly List<RectTransform> _uiRects = new List<RectTransform>();
         readonly Dictionary<int, RectTransform> _weatherIcons = new Dictionary<int, RectTransform>();
         RectTransform _weatherPill;
+        RectTransform _globe, _mapStrip;
+        float _globeTargetX = GlobeClosedX;
+        int _selectedMap = 1; // Bairro = cena World (level4), a unica carregada hoje
+        readonly List<GameObject> _mapChecks = new List<GameObject>();
+        const float GlobeClosedX = 444f, GlobeWeatherOpenX = 822f;
+        // Mundos do seletor (arte do original) -> cena: Campus=College, Bairro=World, Cidade=StarDustCity,
+        // Fazenda=Countryside, Resort=Vacation, Montanha=SnowyMountain. Hoje so o Bairro tem cena exportada; os demais avisam.
+        static readonly (string art, string name, string folder)[] Maps =
+        {
+            ("map_university", "Campus", "Maps/college"), ("map_town", "Bairro", null), ("map_city", "Cidade", "Maps/stardust"),
+            ("map_farm", "Fazenda", "Maps/countryside"), ("map_resort", "Resort", "Maps/vacation"), ("map_snow", "Montanha", "Maps/snowy"),
+        };
         readonly Dictionary<string, Sprite> _uiSprites = new Dictionary<string, Sprite>();
         const int SpritesPerFrame = 24;
         readonly Dictionary<string, Texture2D> _textures = new Dictionary<string, Texture2D>();
@@ -47,18 +72,29 @@ namespace AvatarWorld.Runtime
         public Camera MapCamera => _camera;
 
         /// <summary>Monta o mapa em varios quadros; onReady dispara quando tudo esta pronto (esconde o loading).</summary>
-        public void Begin(Action onBack, Action onOpenBasketball, Action onReady = null, Action onOpenSlots = null)
+        public void Begin(Action onBack, Action onOpenBasketball, Action onReady = null, Action onOpenSlots = null,
+            Action<string> onOpenInterior = null)
         {
             _onOpenSlots = onOpenSlots;
+            _onOpenInterior = onOpenInterior;
             _onBack = onBack;
             _onOpenBasketball = onOpenBasketball;
-            var json = Resources.Load<TextAsset>(DataResource);
-            if (json == null) throw new InvalidOperationException("WorldSlice/world.json ausente em Resources");
-            _data = JsonUtility.FromJson<WorldMapData>(json.text);
+            LoadMapData(Maps[_selectedMap].folder);
             _weather = LoadWeather();
             BuildCamera();
             BuildOverlay();
             StartCoroutine(BuildSprites(onReady));
+        }
+
+        /// <summary>Le os dados do mapa: pasta null = Bairro (WorldSlice); outra = Resources/&lt;pasta&gt;/&lt;chave&gt;.json.</summary>
+        void LoadMapData(string folder)
+        {
+            string key = folder == null ? null : folder.Substring(folder.LastIndexOf('/') + 1);
+            string resource = folder == null ? DefaultDataResource : folder + "/" + key;
+            _spritePrefix = folder == null ? DefaultSpritePrefix : folder + "/sprites/";
+            var json = Resources.Load<TextAsset>(resource);
+            if (json == null) throw new InvalidOperationException(resource + " ausente em Resources");
+            _data = JsonUtility.FromJson<WorldMapData>(json.text);
         }
 
         void BuildCamera()
@@ -71,6 +107,7 @@ namespace AvatarWorld.Runtime
             _camera.clearFlags = CameraClearFlags.SolidColor;
             _camera.backgroundColor = new Color(0.97f, 0.78f, 0.82f);
             _camera.transform.position = new Vector3(ClampX(_data.camera.startX), _data.camera.startY, -10f);
+            SkyBackground.Attach(_camera, () => _weather); // gradiente do BackgroundSky; sem sky.json fica a cor lisa
         }
 
         float HalfWidth => _camera.orthographicSize * _camera.aspect;
@@ -95,7 +132,7 @@ namespace AvatarWorld.Runtime
                 {
                     if (!_textures.TryGetValue(r.sprite, out var tex))
                     {
-                        tex = Resources.Load<Texture2D>(SpritePrefix + r.sprite);
+                        tex = Resources.Load<Texture2D>(_spritePrefix + r.sprite);
                         _textures[r.sprite] = tex;
                     }
                     if (tex == null) { Debug.LogWarning("WorldMap: sprite ausente " + r.sprite); continue; }
@@ -115,17 +152,84 @@ namespace AvatarWorld.Runtime
                 renderer.flipX = r.flipX != (r.sx < 0f);
                 renderer.flipY = r.flipY != (r.sy < 0f);
                 renderer.color = new Color(r.color[0], r.color[1], r.color[2], r.color[3]);
-                if (r.weathers != null && r.weathers.Length > 0)
+                if (r.tint != 0) _tinted.Add((renderer, renderer.color, r.tint));
+                if (r.cloud != 0) Group(_cloudGroups, r.cloud).Add(go.transform);
+                if (r.train != 0)
+                {
+                    Group(_trainGroups, r.train).Add(go.transform);
+                    if (!_trainBaseX.ContainsKey(r.train)) _trainBaseX[r.train] = r.x;
+                }
+                if ((r.weathers != null && r.weathers.Length > 0) || r.cloud != 0)
                 {
                     _weatherRenderers.Add(renderer);
                     _weatherRendererIndex.Add(built - 1);
                 }
             }
             ApplyWeather(_weather);
-            _motion = gameObject.AddComponent<WorldMapMotion>();
-            _motion.Begin(_data, _weather, byName);
+            foreach (var spine in _data.animations?.spines ?? new List<WorldSpineData>())
+            {
+                var layer = MapSpineLayer.Create(transform, spine, _camera);
+                if (layer != null && spine.tint != 0) _tintedSpines.Add((layer, spine.tint));
+            }
+            ApplyTimeOfDay(force: true);
+            int carLayer = 0;
+            foreach (var cars in _data.animations?.cars ?? new List<WorldCarsData>())
+                new GameObject("Cars_" + carLayer).AddComponent<MapCarsLayer>().Begin(transform, cars, 1000 + carLayer++);
             Debug.Log("WorldMap: " + _data.renderers.Count + " elementos, " + _data.buildings.Count + " predios");
             onReady?.Invoke();
+        }
+
+        /// <summary>Aplica a tinta da hora atual (dia/por do sol/noite) aos sprites e esqueletos marcados.</summary>
+        void ApplyTimeOfDay(bool force = false)
+        {
+            if (_tinted.Count == 0 && _tintedSpines.Count == 0) return;
+            var now = DateTime.Now;
+            int minute = now.Hour * 60 + now.Minute;
+            if (!force && minute == _lastTintMinute) return;
+            _lastTintMinute = minute;
+            var table = new Dictionary<int, Color>();
+            foreach (var t in _data.animations?.tints ?? new List<WorldTintData>())
+            {
+                var c = TimeOfDayTint.At(now.Hour + now.Minute / 60f, ToSky(t.day), ToSky(t.sunset), ToSky(t.night));
+                table[t.id] = new Color(c.R, c.G, c.B, c.A);
+            }
+            foreach (var (renderer, baseColor, tint) in _tinted)
+                if (renderer != null && table.TryGetValue(tint, out var c)) renderer.color = baseColor * c;
+            foreach (var (layer, tint) in _tintedSpines)
+                if (layer != null && table.TryGetValue(tint, out var c)) layer.SetColor(c);
+        }
+
+        static SkyColor ToSky(float[] c) => c != null && c.Length >= 4 ? new SkyColor(c[0], c[1], c[2], c[3]) : new SkyColor(1f, 1f, 1f, 1f);
+
+        static List<Transform> Group(Dictionary<int, List<Transform>> groups, int id)
+        {
+            if (!groups.TryGetValue(id, out var list)) groups[id] = list = new List<Transform>();
+            return list;
+        }
+
+        /// <summary>Nuvens derivam ate o ponto final do spawner e voltam ao inicial; o trem repete chegada/parada/saida.</summary>
+        void AnimateWorld()
+        {
+            var cloud = _data.animations?.clouds;
+            if (cloud != null && cloud.Exists)
+            {
+                foreach (var pair in _cloudGroups)
+                {
+                    var list = pair.Value;
+                    if (list.Count == 0 || list[0] == null) continue;
+                    float x = list[0].position.x;
+                    float nx = WorldAnimation.AdvanceCloud(x, Time.deltaTime, WorldAnimation.CloudSpeed(pair.Key), cloud.startX, cloud.endX);
+                    foreach (var t in list) if (t != null) t.position += new Vector3(nx - x, 0f, 0f);
+                }
+            }
+            foreach (var train in _data.animations?.trains ?? new List<WorldTrainAnimData>())
+            {
+                if (!_trainGroups.TryGetValue(train.id, out var list) || list.Count == 0 || list[0] == null) continue;
+                float station = _trainBaseX[train.id];
+                float nx = WorldAnimation.TrainX(Time.time, train.startX, station, train.goX, train.toStartSeconds, train.toGoSeconds);
+                float dx = nx - list[0].position.x;
+                foreach (var t in list) if (t != null) t.position += new Vector3(dx, 0f, 0f);
+            }
         }
 
         void BuildOverlay()
@@ -351,9 +455,12 @@ namespace AvatarWorld.Runtime
             }
             _weatherPill.gameObject.SetActive(false);
             var toggle = MakeUiButton(root, "WeatherToggle", "weather_toggle", topLeft, center, new Vector2(268f, -91f),
-                new Vector2(146f, 143f), () => _weatherPill.gameObject.SetActive(!_weatherPill.gameObject.activeSelf));
-            var globe = MakeUiButton(root, "WorldButton", "globe", topLeft, center, new Vector2(444f, -91f),
-                new Vector2(146f, 143f), () => ShowToast("Os outros mundos ainda não estão disponíveis."));
+                new Vector2(146f, 143f), () => SetPanel(!_weatherPill.gameObject.activeSelf, false));
+            BuildMapStrip(root);
+            // Criado depois do clima e dos mapas: fica por cima e desliza para a direita quando o clima abre.
+            var globe = MakeUiButton(root, "WorldButton", "globe", topLeft, center, new Vector2(GlobeClosedX, -91f),
+                new Vector2(146f, 143f), () => SetPanel(false, !_mapStrip.gameObject.activeSelf));
+            _globe = globe;
             var avatar = MakeUiButton(root, "AddAvatarButton", "add_avatar", topRight, center, new Vector2(-242.5f, -91f),
                 new Vector2(146f, 143f), () =>
                 {
@@ -366,9 +473,96 @@ namespace AvatarWorld.Runtime
             ApplyWeather(_weather);
         }
 
+        /// <summary>Abre um painel da barra (clima ou mapas); um fecha o outro. O globo sai do caminho do clima.</summary>
+        void SetPanel(bool weather, bool maps)
+        {
+            _weatherPill.gameObject.SetActive(weather);
+            _mapStrip.gameObject.SetActive(maps);
+            _globeTargetX = weather ? GlobeWeatherOpenX : GlobeClosedX;
+        }
+
+        void BuildMapStrip(Transform root)
+        {
+            const float itemW = 134f;
+            float left = GlobeClosedX + 73f + 8f;
+            _mapStrip = MakeUiButton(root, "MapStrip", "weather_pill", new Vector2(0, 1), new Vector2(0, 0.5f),
+                new Vector2(left, -91f), new Vector2(640f, 114f), null, new Vector4(57f, 0f, 57f, 0f));
+            var viewport = new GameObject("Viewport", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
+            viewport.transform.SetParent(_mapStrip, false);
+            var vr = (RectTransform)viewport.transform;
+            vr.anchorMin = Vector2.zero; vr.anchorMax = Vector2.one;
+            vr.offsetMin = new Vector2(24f, 0f); vr.offsetMax = new Vector2(-24f, 0f);
+            viewport.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            var content = new GameObject("Content", typeof(RectTransform));
+            content.transform.SetParent(viewport.transform, false);
+            var cr = (RectTransform)content.transform;
+            cr.anchorMin = new Vector2(0, 0); cr.anchorMax = new Vector2(0, 1); cr.pivot = new Vector2(0, 0.5f);
+            cr.sizeDelta = new Vector2(Maps.Length * itemW, 0f);
+            cr.anchoredPosition = Vector2.zero;
+            var scroll = viewport.GetComponent<ScrollRect>();
+            scroll.viewport = vr; scroll.content = cr;
+            scroll.horizontal = true; scroll.vertical = false;
+            scroll.movementType = ScrollRect.MovementType.Clamped;
+            for (int i = 0; i < Maps.Length; i++)
+            {
+                int index = i;
+                var thumb = MakeUiButton(cr, "Map_" + Maps[i].art, Maps[i].art, new Vector2(0, 0.5f), new Vector2(0.5f, 0.5f),
+                    new Vector2(itemW * i + itemW * 0.5f, 0f), new Vector2(120f, 100f), () => SelectMap(index));
+                thumb.GetComponent<Image>().preserveAspect = true;
+                var check = MakeUiButton(thumb, "Check", "map_check", new Vector2(1, 0), new Vector2(0.5f, 0.5f),
+                    new Vector2(-14f, 14f), new Vector2(46f, 46f), null);
+                check.gameObject.SetActive(i == _selectedMap);
+                _mapChecks.Add(check.gameObject);
+            }
+            _mapStrip.gameObject.SetActive(false);
+        }
+
+        void SelectMap(int index)
+        {
+            if (index == _selectedMap || _switching) return;
+            StartCoroutine(SwitchMapRoutine(index));
+        }
+
+        /// <summary>Troca de mapa: tela de loading, descarta os sprites do atual e monta o escolhido.</summary>
+        System.Collections.IEnumerator SwitchMapRoutine(int index)
+        {
+            _switching = true; _opening = true; _pressing = false;
+            SetPanel(false, false);
+            LoadingScreen.Show();
+            yield return null;
+            yield return null;
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                var child = transform.GetChild(i).gameObject;
+                if (child.GetComponent<SpriteRenderer>() == null && child.GetComponent<MapSpineLayer>() == null && child.GetComponent<MapCarsLayer>() == null) continue;
+                child.SetActive(false);
+                Destroy(child);
+            }
+            _weatherRenderers.Clear();
+            _weatherRendererIndex.Clear();
+            _cloudGroups.Clear(); _trainGroups.Clear(); _trainBaseX.Clear(); _tinted.Clear(); _tintedSpines.Clear(); _lastTintMinute = -1;
+            _textures.Clear();
+            _selectedMap = index;
+            for (int i = 0; i < _mapChecks.Count; i++) _mapChecks[i].SetActive(i == index);
+            LoadMapData(Maps[index].folder);
+            _camera.orthographicSize = _data.camera.orthoSize;
+            _camera.transform.position = new Vector3(ClampX(_data.camera.startX), _data.camera.startY, -10f);
+            yield return Resources.UnloadUnusedAssets();
+            yield return StartCoroutine(BuildSprites(() => LoadingScreen.Hide(0.8f)));
+            _opening = false; _switching = false;
+        }
+
         void Update()
         {
             if (_toast != null && _toast.enabled && Time.unscaledTime > _toastUntil) _toast.enabled = false;
+            if (_globe != null && !Mathf.Approximately(_globe.anchoredPosition.x, _globeTargetX))
+            {
+                var gp = _globe.anchoredPosition;
+                gp.x = Mathf.MoveTowards(gp.x, _globeTargetX, 2400f * Time.unscaledDeltaTime);
+                _globe.anchoredPosition = gp;
+            }
+            if (_data != null && !_switching) AnimateWorld();
+            if (Time.unscaledTime >= _nextTintCheck) { _nextTintCheck = Time.unscaledTime + 5f; ApplyTimeOfDay(); }
             if (_opening) return;
             if (!ReadPointer(out bool down, out bool up, out bool held, out Vector2 position)) return;
 
@@ -399,6 +593,8 @@ namespace AvatarWorld.Runtime
             if (_backRect != null && RectTransformUtility.RectangleContainsScreenPoint(_backRect, screen, null)) return true;
             foreach (var rect in _uiRects)
                 if (RectTransformUtility.RectangleContainsScreenPoint(rect, screen, null)) return true;
+            if (_mapStrip != null && _mapStrip.gameObject.activeSelf &&
+                RectTransformUtility.RectangleContainsScreenPoint(_mapStrip, screen, null)) return true;
             return _weatherPill != null && _weatherPill.gameObject.activeSelf &&
                    RectTransformUtility.RectangleContainsScreenPoint(_weatherPill, screen, null);
         }
@@ -415,10 +611,10 @@ namespace AvatarWorld.Runtime
                 StartCoroutine(OpenCourtRoutine());
                 return;
             }
-            if (OnOpenLevel != null && SceneSliceRuntime.Has(building.defaultLevel))
+            if (_onOpenInterior != null && InteriorCatalog.TryGetKey(building.defaultLevel, out var interiorKey))
             {
                 UiSound.PlayClick();
-                StartCoroutine(OpenLevelRoutine(building.defaultLevel));
+                StartCoroutine(OpenInteriorRoutine(interiorKey));
                 return;
             }
             ShowToast(building.defaultLevel == 0
@@ -451,6 +647,17 @@ namespace AvatarWorld.Runtime
             yield return null;
             _opening = false;
             _onOpenBasketball?.Invoke();
+        }
+
+        System.Collections.IEnumerator OpenInteriorRoutine(string key)
+        {
+            _opening = true; _pressing = false;
+            yield return new WaitForSecondsRealtime(0.18f);
+            LoadingScreen.Show();
+            yield return null;
+            yield return null;
+            _opening = false;
+            _onOpenInterior?.Invoke(key);
         }
 
         /// <summary>

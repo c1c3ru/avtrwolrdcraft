@@ -1,0 +1,191 @@
+{
+ "LevelItem.OnBeginDragInternal": {
+  "targets": [
+   "0x22f6260"
+  ],
+  "callers": {
+   "Game.Level.LevelBook.OnBeginDragInternal": [
+    "b"
+   ],
+   "Game.Level.LevelCatchableInsect.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelDiamond.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelDustbunny.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelHairbrush.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelHiddenDoorPlush.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelPerfume.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelRoomba.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelSalverLid.OnBeginDragInternal": [
+    "b"
+   ],
+   "Game.Level.LevelScissors.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelSoapBar.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelSponge.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelSprayItem.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelStickCookable.OnBeginDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelUnicorn.OnBeginDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelAnimal.OnBeginDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelBaby.OnBeginDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelCharacter.OnBeginDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelContainerItemWithParticles.OnBeginDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelHangableClothingItem.OnBeginDragInternal": [
+    "b"
+   ],
+   "PWC.Level.LevelHangableClothingItem.OnEndDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelHangableClothingSingleStateItem.OnBeginDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelItemOnCharacterBase.OnBeginDragInternal": [
+    "b"
+   ],
+   "PWC.Level.LevelSimpleDragActionItemBase.OnBeginDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelSimpleHangableItem.OnBeginDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelSimpleHangableItem.OnEndDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelToddler.OnBeginDragInternal": [
+    "bl"
+   ],
+   "PazuCore.LocalizationManager..ctor": [
+    "bl"
+   ]
+  }
+ },
+ "LevelItem.OnEndDragInternal": {
+  "targets": [
+   "0x22f68bc"
+  ],
+  "callers": {
+   "Game.Level.LevelDiamond.OnEndDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelHairDryer.OnEndDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelHairbrush.OnEndDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelPerfume.OnEndDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelSoapBar.OnEndDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelSponge.OnEndDragInternal": [
+    "bl"
+   ],
+   "Game.Level.LevelSprayItem.OnEndDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelAnimal.OnEndDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelBaby.OnEndDragInternal": [
+    "b"
+   ],
+   "PWC.Level.LevelCharacter.OnEndDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelContainerItemWithParticles.OnEndDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelHangableClothingItem.OnEndDragInternal": [
+    "b",
+    "bl"
+   ],
+   "PWC.Level.LevelSimpleDragActionItemBase.OnEndDragInternal": [
+    "bl"
+   ],
+   "PWC.Level.LevelSimpleHangableItem.OnEndDragInternal": [
+    "b",
+    "bl"
+   ],
+   "PWC.Level.LevelToddler.OnEndDragInternal": [
+    "b"
+   ],
+   "PazuCore.LocalizationManager..ctor": [
+    "bl"
+   ]
+  }
+ },
+ "LevelCharacter.OnSyncPosition": {
+  "targets": [
+   "0x22a154c"
+  ],
+  "callers": {}
+ },
+ "DragDropItemBase.OnBeginDrag": {
+  "targets": [
+   "0x206b864"
+  ],
+  "callers": {
+   "Game.Level.LevelPlayerVehicle.OnBeginDrag": [
+    "b"
+   ],
+   "Game.Level.LevelTechDog.OnBeginDrag": [
+    "b"
+   ],
+   "PWC.Level.LevelCharacter.OnBeginDrag": [
+    "b"
+   ],
+   "PWC.Level.LevelSlider.OnBeginDrag": [
+    "b"
+   ]
+  }
+ },
+ "DragDropItemBase.OnEndDrag": {
+  "targets": [
+   "0x206bb40"
+  ],
+  "callers": {
+   "Game.Level.LevelPlayerVehicle.OnEndDrag": [
+    "b"
+   ],
+   "PWC.Level.LevelCharacter.OnEndDrag": [
+    "b"
+   ],
+   "PWC.Level.LevelSlider.OnEndDrag": [
+    "bl"
+   ]
+  }
+ }
+}

@@ -1,0 +1,43 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 2245028: a9be57fe     	stp	x30, x21, [sp, #-0x20]!
+ 224502c: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 2245030: 900115d5     	adrp	x21, 0x44fd000
+ 2245034: f000fb34     	adrp	x20, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 2245038: 395ecaa8     	ldrb	w8, [x21, #0x7b2]
+ 224503c: f945de94     	ldr	x20, [x20, #0xbb8]
+ 2245040: aa0003f3     	mov	x19, x0
+ 2245044: 37000128     	tbnz	w8, #0x0, 0x2245068 <__start_il2cpp+0x5f3e58>
+ 2245048: f000fb20     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 224504c: f945dc00     	ldr	x0, [x0, #0xbb8]
+ 2245050: 97e50da6     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2245054: f000fb20     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 2245058: f945d000     	ldr	x0, [x0, #0xba0]
+ 224505c: 97e50da3     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2245060: 52800028     	mov	w8, #0x1                // =1
+ 2245064: 391ecaa8     	strb	w8, [x21, #0x7b2]
+ 2245068: f9400280     	ldr	x0, [x20]
+ 224506c: f9404274     	ldr	x20, [x19, #0x80]
+ 2245070: b940e008     	ldr	w8, [x0, #0xe0]
+ 2245074: 35000048     	cbnz	w8, 0x224507c <__start_il2cpp+0x5f3e6c>
+ 2245078: 97e50df9     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 224507c: aa1403e0     	mov	x0, x20
+ 2245080: aa1f03e1     	mov	x1, xzr
+ 2245084: aa1f03e2     	mov	x2, xzr
+ 2245088: 946a1a14     	bl	0x3ccb8d8 <__start_il2cpp+0x207a6c8>
+ 224508c: 36000080     	tbz	w0, #0x0, 0x224509c <__start_il2cpp+0x5f3e8c>
+ 2245090: f000fb28     	adrp	x8, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 2245094: f945d108     	ldr	x8, [x8, #0xba0]
+ 2245098: 14000004     	b	0x22450a8 <__start_il2cpp+0x5f3e98>
+ 224509c: f9404268     	ldr	x8, [x19, #0x80]
+ 22450a0: b40000c8     	cbz	x8, 0x22450b8 <__start_il2cpp+0x5f3ea8>
+ 22450a4: 91012108     	add	x8, x8, #0x48
+ 22450a8: f9400100     	ldr	x0, [x8]
+ 22450ac: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 22450b0: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 22450b4: d65f03c0     	ret
+ 22450b8: 97e50e32     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

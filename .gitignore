@@ -58,7 +58,15 @@ out/avatar-outfit-probe-report.json
 # Derived reconstruction evidence and queue mutexes; keep source/manifests in Git.
 /out/recon/il2cpp/
 /out/navigation-map/
-/out/scene-extract/
+# Extracoes brutas de cenas sao regeneraveis e pesadas. Os dois relatorios de
+# inventario abaixo sao evidencias compactas referenciadas pelo censo T032.
+/out/scene-extract/*
+!/out/scene-extract/level4.inspect.json
+!/out/scene-extract/level237.inspect.json
 /out/rea-avatar-base-20261101.json
 /reports/recon/*.lock
 /out/validation/
+
+# replay-core
+/tools/replay-core/bin/
+/tools/replay-core/obj/

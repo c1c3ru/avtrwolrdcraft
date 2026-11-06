@@ -1,0 +1,86 @@
+{
+  "description": "focused indirect-call shapes for T030; semantic targets combine AArch64 data flow with managed declarations",
+  "managed_sources": {
+    "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/PersistentData/PersistentDataManager.cs": "7c73aa892559f964ac097bce486ecdbdbcdfa56cb2621fd52c5924f5ecfc65c5",
+    "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/PersistentData/IHasPersistentData.cs": "f3fa5371a27e4c863479e66fe9fa9fa2b9d5ba84ea61aecc4be144dc905f79e2"
+  },
+  "contracts": [
+    {
+      "method": "PersistentDataManager.GetFilePath",
+      "assembly": "out/recon/tasks/T030/persistence-asm/GetFilePath_00000000021e24b4.asm.txt",
+      "site": "0x21e2520",
+      "target": "PersistentDataManager.TryOverrideFileNameAction.Invoke(Scene, out string)",
+      "kind": "delegate",
+      "confidence": "high",
+      "reason": "SceneDataDelegate returns bool and writes an out string; a false result enters the normal path builder.",
+      "assembly_sha256": "f392f22c622f269a8bf51c765b76fb042391d18ea9fcbf3e774605d5f38fb0a3",
+      "verified_anchors": [
+        "ldr x9, [x8, #0x18]",
+        "ldr x0, [x8, #0x40]",
+        "add x2, sp, #0x8",
+        "blr x9",
+        "tbz w0"
+      ],
+      "status": "verified_call_shape"
+    },
+    {
+      "method": "PersistentDataManager.GetDataFromRootGameObjects",
+      "assembly": "out/recon/tasks/T030/persistence-asm/GetDataFromRootGameObjects_00000000021e0f18.asm.txt",
+      "site": "0x21e1654",
+      "target": "IHasPersistentData.GetPersistentData()",
+      "kind": "interface_dispatch",
+      "confidence": "high",
+      "reason": "The loop dispatches on the persistent component and immediately tests the returned data object before dictionary insertion.",
+      "assembly_sha256": "2ed7b7665f63db9ffe7e05e0bc4a3534e2c6947dfd927e4c6c6de320a54d96d3",
+      "verified_anchors": [
+        "add x0, x8, #0x138",
+        "ldp x8, x1, [x0]",
+        "mov x0, x28",
+        "blr x8",
+        "cbz x0"
+      ],
+      "status": "verified_call_shape"
+    },
+    {
+      "method": "PersistentDataManager.SetPersistentData",
+      "assembly": "out/recon/tasks/T030/persistence-asm/SetPersistentData_00000000021e52d0.asm.txt",
+      "site": "0x21e54f8",
+      "target": "IHasPersistentData.SetPersistentData(allData, sceneObjects)",
+      "kind": "interface_dispatch",
+      "confidence": "high",
+      "reason": "The three managed arguments match the interface setter and the call occurs inside the persistent-component loop.",
+      "assembly_sha256": "ced4b54bc1e9adc0d78248510332e2c8e24256593b60c61f505f828eeba22349",
+      "verified_anchors": [
+        "add x0, x8, #0x138",
+        "ldp x8, x3, [x0]",
+        "mov x0, x25",
+        "mov x1, x23",
+        "mov x2, x19",
+        "blr x8"
+      ],
+      "status": "verified_call_shape"
+    },
+    {
+      "method": "PersistentDataManager.LoadDataInternal",
+      "assembly": "out/recon/tasks/T030/persistence-asm/LoadDataInternal_00000000021e2a50.asm.txt",
+      "site": "0x21e2eac",
+      "target": "PersistentDataManager.OnDataLoadedAction.Invoke(Scene)",
+      "kind": "delegate",
+      "confidence": "medium",
+      "reason": "The only matching static Action<Scene> notification in the managed declaration is OnDataLoadedAction; no concrete delegate target is recoverable statically.",
+      "assembly_sha256": "d7ff26c0d48cf9db45b97358543ec7eeadfe6f67bf0b0c504078fcf19b304019",
+      "verified_anchors": [
+        "ldr x9, [x8, #0x18]",
+        "ldr x0, [x8, #0x40]",
+        "ldr w1, [sp, #0x28]",
+        "blr x9"
+      ],
+      "status": "verified_call_shape"
+    }
+  ],
+  "limits": [
+    "Interface dispatch resolves a slot shape, not every concrete runtime implementation.",
+    "Delegate invocation identifies the delegate field signature, not subscribed runtime methods.",
+    "Exception edges and callees outside the bounded assembly windows remain unresolved."
+  ]
+}

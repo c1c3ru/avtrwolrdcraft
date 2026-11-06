@@ -13,18 +13,30 @@ namespace AvatarWorld.Runtime
     /// Editor de avatar com o layout da cena AvatarMaker do original (level234 + prefab CharacterMenu de
     /// resources.assets): voltar (topo-esquerda), concluir/desfazer/refazer (base-esquerda) e, a direita, o menu com a
     /// coluna de categorias (127), divisor e grade de miniaturas (cela 217x207). Posicoes em unidades do canvas 2048x1024.
-    /// Mostra so as 5 categorias que o avatar local suporta (cabelo, camisa, calca, sapato, acessorio), 2 opcoes cada.
+    /// Usa as categorias e IDs presentes em AvatarCatalog. O catálogo contém 4.016 opções nas quatro categorias
+    /// principais, com distribuição provisória derivada dos recursos extraídos; cabelo, boca, sobrancelha e cabelo
+    /// traseiro têm listas separadas. O gate de pacotes do original ainda não está reproduzido.
     /// Aproximado: fundo/cor do painel (sem print do original), miniaturas geradas do proprio avatar (o original usa icones),
-    /// sem coluna de cores nem pacotes de expansao. Concluir grava; voltar descarta as mudancas da sessao.
+    /// sem pacotes de expansao. Concluir grava; voltar descarta as mudancas da sessao.
     /// </summary>
     public sealed class AvatarEditorScreen : MonoBehaviour
     {
-        const float PanelWidth = 823f;
+        const float PanelWidth = 928f; // categorias 127 + divisor + miniaturas 685 + coluna de cores 95
         static readonly Vector3 AvatarPosition = new Vector3(-4.0f, -2.35f, 0f);
         const float AvatarScale = 1f;
         const int ThumbSize = 160;
+        const float AdultReferenceHeight = 5f;
 
         struct CategoryView { public string key; public string art; public float centerY, half; }
+
+        // Ordem da coluna de categorias; Skin/Eyes sao de cor (amostras da paleta oficial, sem miniatura).
+        static readonly (string key, string art)[] AllMenuCategories =
+        {
+            (AvatarCatalog.CategoryHair, "hair"), (AvatarCatalog.CategoryShirt, "shirt"), (AvatarCatalog.CategoryBottom, "bottom"),
+            (AvatarCatalog.CategoryShoes, "shoes"), (AvatarCatalog.CategoryAccessory, "accessory"), (AvatarCatalog.CategoryMouth, "mouth"),
+            (AvatarCatalog.CategoryEyebrows, "eyebrows"),
+            (AvatarCatalog.CategorySkin, "skin"), (AvatarCatalog.CategoryEyes, "eyes"),
+        };
 
         static readonly CategoryView[] Views =
         {
@@ -33,8 +45,14 @@ namespace AvatarWorld.Runtime
             new CategoryView { key = AvatarCatalog.CategoryBottom,    art = "bottom",    centerY = 0.85f, half = 0.85f },
             new CategoryView { key = AvatarCatalog.CategoryShoes,     art = "shoes",     centerY = 0.30f, half = 0.70f },
             new CategoryView { key = AvatarCatalog.CategoryAccessory, art = "accessory", centerY = 3.10f, half = 1.30f },
+            new CategoryView { key = AvatarCatalog.CategoryMouth,     art = "mouth",     centerY = 2.75f, half = 0.70f },
+            new CategoryView { key = AvatarCatalog.CategoryHairBack,  art = "hair",      centerY = 3.30f, half = 1.60f },
+            new CategoryView { key = AvatarCatalog.CategoryEyebrows,  art = "eyebrows",  centerY = 3.50f, half = 0.70f },
         };
 
+        // Categorias do menu do tipo de avatar em edicao (crianca/bebe nao tem todas).
+        (string key, string art)[] MenuCategories;
+        AvatarKind _kind;
         SaveStore _saves;
         PlayerState _state;
         Action _onClose;
@@ -56,8 +74,16 @@ namespace AvatarWorld.Runtime
         readonly Dictionary<string, Image> _categoryButtons = new Dictionary<string, Image>();
         readonly Dictionary<string, Image> _cells = new Dictionary<string, Image>();
         readonly Dictionary<string, Image> _cellIcons = new Dictionary<string, Image>();
+        readonly Dictionary<int, Image> _colorRings = new Dictionary<int, Image>();
         ScrollRect _scroll;
+        GridLayoutGroup _gridLayout;
+        RectTransform _colorsColumn;
+        GameObject _hairTabs;
+        readonly Dictionary<string, Image> _hairTabButtons = new Dictionary<string, Image>();
+        readonly Dictionary<int, Image> _itemColorRings = new Dictionary<int, Image>();
 
+        /// <summary>True se a sessao terminou em Concluir (gravou); Voltar descarta e deixa false.</summary>
+        public bool Saved { get; private set; }
         public string Category => _category;
         public int VisibleItemCount => _cells.Count;
 
@@ -68,6 +94,8 @@ namespace AvatarWorld.Runtime
             _onClose = onClose;
             _font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             _history = new AvatarEditHistory(_state.Appearance);
+            _kind = _state.Appearance.Kind;
+            MenuCategories = Array.FindAll(AllMenuCategories, e => AvatarCatalog.IsEditable(_kind, e.key));
             UiSceneBuilder.EnsureEventSystem();
             BuildCameras();
             _backCanvas = NewCanvas("Back", 0);
@@ -161,18 +189,17 @@ namespace AvatarWorld.Runtime
             _redo = Button(_frontCanvas.transform, "RedoButton", Art("AvatarMaker/redo"), new Vector2(0, 0), new Vector2(447f, 94f), new Vector2(151f, 149f), Redo);
 
             // Categorias (icones do original; so as suportadas).
-            float y = -170f;
-            foreach (var view in Views)
+            float y = -110f;
+            foreach (var entry in MenuCategories)
             {
-                var v = view;
-                var backdrop = NewImage("Indicator_" + v.key, _panel, Art("AvatarMaker/indicator"), Color.white);
+                string key = entry.key;
+                var backdrop = NewImage("Indicator_" + key, _panel, Art("AvatarMaker/indicator"), Color.white);
                 Place(backdrop.rectTransform, new Vector2(0, 1), new Vector2(64f, y), new Vector2(105f, 107f));
-                var icon = Button(_panel, "Category_" + v.key, Art("AvatarMaker/cat_" + v.art), new Vector2(0, 1), new Vector2(64f, y), new Vector2(105f, 107f),
-                    () => { UiSound.PlayClick(); SelectCategory(v.key); });
+                var icon = Button(_panel, "Category_" + key, Art("AvatarMaker/cat_" + entry.art), new Vector2(0, 1), new Vector2(64f, y), new Vector2(105f, 107f),
+                    () => { UiSound.PlayClick(); SelectCategory(key); });
                 icon.preserveAspect = true;
-                _categoryButtons[v.key] = icon;
-                backdrop.gameObject.name = "Indicator_" + v.key;
-                y -= 150f;
+                _categoryButtons[key] = icon;
+                y -= 100f;
             }
 
             // Grade de miniaturas com rolagem vertical (centenas de itens): 3 colunas de celas 217x207.
@@ -180,19 +207,21 @@ namespace AvatarWorld.Runtime
             viewport.transform.SetParent(_panel, false);
             var vr = (RectTransform)viewport.transform;
             vr.anchorMin = Vector2.zero; vr.anchorMax = Vector2.one;
-            vr.offsetMin = new Vector2(146f, 20f); vr.offsetMax = new Vector2(-6f, -110f);
+            vr.offsetMin = new Vector2(146f, 20f); vr.offsetMax = new Vector2(-111f, -110f);
             viewport.GetComponent<Image>().color = new Color(0, 0, 0, 0);
             _grid = new GameObject("Grid", typeof(RectTransform), typeof(GridLayoutGroup), typeof(ContentSizeFitter)).GetComponent<RectTransform>();
             _grid.SetParent(viewport.transform, false);
             _grid.anchorMin = new Vector2(0, 1); _grid.anchorMax = new Vector2(1, 1); _grid.pivot = new Vector2(0.5f, 1f);
             _grid.sizeDelta = Vector2.zero;
-            var layout = _grid.GetComponent<GridLayoutGroup>();
+            var layout = _gridLayout = _grid.GetComponent<GridLayoutGroup>();
             layout.cellSize = new Vector2(217f, 207f);
             layout.spacing = new Vector2(8f, 8f);
             layout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             layout.constraintCount = 3;
             layout.padding = new RectOffset(4, 4, 8, 24);
             _grid.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            BuildColorsColumn();
+            if (AvatarCatalog.IsEditable(_kind, AvatarCatalog.CategoryHairBack)) BuildHairTabs();
             _scroll = viewport.GetComponent<ScrollRect>();
             _scroll.viewport = vr; _scroll.content = _grid;
             _scroll.horizontal = false; _scroll.vertical = true;
@@ -211,25 +240,135 @@ namespace AvatarWorld.Runtime
 
         // ---------- categorias e grade ----------
 
+        static string MenuKeyOf(string category) => category == AvatarCatalog.CategoryHairBack ? AvatarCatalog.CategoryHair : category;
+
         public void SelectCategory(string category)
         {
             _category = category;
-            foreach (var view in Views)
+            if (_hairTabs != null) _hairTabs.SetActive(MenuKeyOf(category) == AvatarCatalog.CategoryHair);
+            RefreshHairTabs();
+            foreach (var entry in MenuCategories)
             {
-                bool selected = view.key == category;
-                var button = _categoryButtons[view.key];
-                button.sprite = Art("AvatarMaker/cat_" + view.art + (selected ? "_sel" : ""));
-                _panel.Find("Indicator_" + view.key).gameObject.SetActive(selected);
+                bool selected = entry.key == MenuKeyOf(category);
+                _categoryButtons[entry.key].sprite = Art("AvatarMaker/cat_" + entry.art + (selected ? "_sel" : ""));
+                _panel.Find("Indicator_" + entry.key).gameObject.SetActive(selected);
             }
             RebuildGrid();
+        }
+
+        // Subcategorias de Cabelo (Subcategories do CharacterMenu): frente (skins Hair_Front) e atras (coques, rabos).
+        void BuildHairTabs()
+        {
+            _hairTabs = new GameObject("HairTabs", typeof(RectTransform));
+            _hairTabs.transform.SetParent(_panel, false);
+            var rect = (RectTransform)_hairTabs.transform;
+            rect.anchorMin = rect.anchorMax = new Vector2(0, 1);
+            rect.pivot = new Vector2(0, 1);
+            rect.anchoredPosition = new Vector2(146f, -14f);
+            rect.sizeDelta = new Vector2(520f, 84f);
+            var tabs = new[] { (AvatarCatalog.CategoryHair, "Frente"), (AvatarCatalog.CategoryHairBack, "Atrás") };
+            for (int i = 0; i < tabs.Length; i++)
+            {
+                string key = tabs[i].Item1;
+                var tab = NewImage("Tab_" + key, _hairTabs.transform, Art("AvatarMaker/indicator"), Color.white);
+                tab.type = Image.Type.Sliced;
+                tab.raycastTarget = true;
+                Place(tab.rectTransform, new Vector2(0, 0.5f), new Vector2(120f + i * 250f, 0f), new Vector2(230f, 76f));
+                var button = tab.gameObject.AddComponent<Button>();
+                button.targetGraphic = tab;
+                button.onClick.AddListener(() => { UiSound.PlayClick(); SelectCategory(key); });
+                var label = NewText("Label", tab.transform, 34, new Color(0.35f, 0.12f, 0.45f));
+                Stretch(label.rectTransform);
+                label.text = tabs[i].Item2;
+                _hairTabButtons[key] = tab;
+            }
+            _hairTabs.SetActive(false);
+        }
+
+        void RefreshHairTabs()
+        {
+            foreach (var pair in _hairTabButtons)
+                pair.Value.color = pair.Key == _category ? new Color(1f, 0.58f, 0.82f) : new Color(1f, 0.9f, 0.95f);
+        }
+
+        // Coluna de cores (paleta General) a direita do menu, como o CharacterMenu/Colors do original; so aparece
+        // quando o item escolhido na categoria aceita tinta (_color).
+        void BuildColorsColumn()
+        {
+            var column = new GameObject("Colors", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
+            column.transform.SetParent(_panel, false);
+            var cr = (RectTransform)column.transform;
+            cr.anchorMin = new Vector2(1, 0); cr.anchorMax = new Vector2(1, 1);
+            cr.pivot = new Vector2(1, 0.5f);
+            cr.sizeDelta = new Vector2(100f, -130f);
+            cr.anchoredPosition = new Vector2(-6f, -40f);
+            column.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            var content = new GameObject("Content", typeof(RectTransform), typeof(GridLayoutGroup), typeof(ContentSizeFitter)).GetComponent<RectTransform>();
+            content.SetParent(column.transform, false);
+            content.anchorMin = new Vector2(0, 1); content.anchorMax = new Vector2(1, 1); content.pivot = new Vector2(0.5f, 1f);
+            content.sizeDelta = Vector2.zero;
+            var layout = content.GetComponent<GridLayoutGroup>();
+            layout.cellSize = new Vector2(84f, 84f); layout.spacing = new Vector2(0f, 8f);
+            layout.constraint = GridLayoutGroup.Constraint.FixedColumnCount; layout.constraintCount = 1;
+            layout.childAlignment = TextAnchor.UpperCenter; layout.padding = new RectOffset(0, 0, 8, 24);
+            content.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            var scroll = column.GetComponent<ScrollRect>();
+            scroll.viewport = cr; scroll.content = content; scroll.horizontal = false; scroll.vertical = true;
+            scroll.movementType = ScrollRect.MovementType.Clamped; scroll.scrollSensitivity = 40f;
+            _colorsColumn = cr;
+            _colorsContent = content;
+            column.SetActive(false);
+        }
+
+        RectTransform _colorsContent;
+
+        // Cria as amostras uma vez (a paleta General e fixa) assim que o avatar fica pronto.
+        void EnsureColorSwatches()
+        {
+            if (_itemColorRings.Count > 0 || _avatar == null || !_avatar.IsReady) return;
+            for (int i = 0; i < _avatar.GeneralPaletteCount; i++)
+            {
+                int index = i;
+                var ring = NewImage("ItemColor_" + index, _colorsContent, Art("AvatarMaker/indicator"), Color.white);
+                ring.type = Image.Type.Sliced;
+                ring.raycastTarget = true;
+                var button = ring.gameObject.AddComponent<Button>();
+                button.targetGraphic = ring;
+                button.onClick.AddListener(() => { UiSound.PlayClick(); ChooseItemColor(index); });
+                _itemColorRings[index] = ring;
+                var swatch = NewImage("Color", ring.transform, Art("AvatarMaker/indicator"), _avatar.GeneralSwatch(index));
+                swatch.type = Image.Type.Sliced;
+                Place(swatch.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(66f, 66f));
+            }
+        }
+
+        void ChooseItemColor(int index)
+        {
+            if (_avatar == null || !_avatar.IsReady) return;
+            _avatar.SelectItemColor(AvatarCatalog.ColorKey(_category), index);
+            _history.Push(_avatar.CurrentAppearance);
+            RefreshSelection();
+            RefreshHistoryButtons();
+        }
+
+        void RefreshColorsColumn()
+        {
+            if (_colorsColumn == null) return;
+            bool show = _avatar != null && _avatar.IsReady && !AvatarCatalog.IsColorCategory(_category) &&
+                        AvatarCatalog.IsColorItem(_avatar.CurrentAppearance.Get(_category));
+            _colorsColumn.gameObject.SetActive(show);
+            if (!show) return;
+            EnsureColorSwatches();
+            int selected = _avatar.CurrentAppearance.GetItemColor(AvatarCatalog.ColorKey(_category));
+            foreach (var pair in _itemColorRings) pair.Value.color = pair.Key == selected ? new Color(1f, 0.25f, 0.65f) : Color.white;
         }
 
         // Itens da categoria que existem no esqueleto (peca sem skin "Templates/..." e escondida).
         List<string> AvailableIds(string category)
         {
             var list = new List<string>();
-            if (_avatar == null || !_avatar.IsReady) return list;
-            foreach (var id in AvatarCatalog.OptionsByCategory[category])
+            if (_avatar == null || !_avatar.IsReady || AvatarCatalog.IsColorCategory(category)) return list;
+            foreach (var id in AvatarCatalog.Options(_kind)[category])
                 if (_avatar.IsItemAvailable(id)) list.Add(id);
             return list;
         }
@@ -239,7 +378,12 @@ namespace AvatarWorld.Runtime
             for (int i = _grid.childCount - 1; i >= 0; i--) { var c = _grid.GetChild(i).gameObject; c.SetActive(false); Destroy(c); }
             _cells.Clear();
             _cellIcons.Clear();
+            _colorRings.Clear();
             _grid.anchoredPosition = Vector2.zero;
+            bool colorMode = AvatarCatalog.IsColorCategory(_category);
+            _gridLayout.cellSize = colorMode ? new Vector2(98f, 98f) : new Vector2(217f, 207f);
+            _gridLayout.constraintCount = colorMode ? 6 : 3;
+            if (colorMode) { BuildColorCells(); return; }
             foreach (var id in AvailableIds(_category))
             {
                 string itemId = id;
@@ -250,14 +394,57 @@ namespace AvatarWorld.Runtime
                 button.targetGraphic = frame;
                 button.onClick.AddListener(() => { UiSound.PlayClick(); Choose(itemId); });
                 _cells[itemId] = frame;
+                bool locked = PackGate.IsLocked(_state, itemId);
 
                 var item = NewImage("Item", frame.transform, ThumbFor(itemId), Color.white);
                 item.preserveAspect = true;
                 Place(item.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(190f, 180f));
                 item.enabled = item.sprite != null;
                 _cellIcons[itemId] = item;
+                if (locked)
+                {
+                    // Peca de combo da loja ainda nao comprado: miniatura esmaecida e etiqueta.
+                    item.color = new Color(0.4f, 0.4f, 0.45f, 0.8f);
+                    var tag = new GameObject("Locked", typeof(RectTransform), typeof(Text)).GetComponent<Text>();
+                    tag.transform.SetParent(frame.transform, false);
+                    Place(tag.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 26f), new Vector2(200f, 44f));
+                    tag.font = _font; tag.fontSize = 30; tag.alignment = TextAnchor.MiddleCenter;
+                    tag.color = new Color(0.45f, 0.2f, 0.6f); tag.raycastTarget = false;
+                    tag.text = "Na loja";
+                }
             }
             RefreshSelection();
+        }
+
+        // Amostras da paleta oficial (AWSpineColorsList): anel + circulo de cor; o anel destaca a escolha atual.
+        void BuildColorCells()
+        {
+            if (_avatar == null || !_avatar.IsReady) return;
+            int count = AvatarCatalog.ColorCount(_category);
+            for (int i = 0; i < count; i++)
+            {
+                int index = i;
+                var ring = NewImage("Swatch_" + index, _grid, Art("AvatarMaker/indicator"), Color.white);
+                ring.type = Image.Type.Sliced;
+                ring.raycastTarget = true;
+                var button = ring.gameObject.AddComponent<Button>();
+                button.targetGraphic = ring;
+                button.onClick.AddListener(() => { UiSound.PlayClick(); ChooseColor(index); });
+                _colorRings[index] = ring;
+                var swatch = NewImage("Color", ring.transform, Art("AvatarMaker/indicator"), _avatar.PaletteSwatch(_category, index));
+                swatch.type = Image.Type.Sliced;
+                Place(swatch.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(78f, 78f));
+            }
+            RefreshSelection();
+        }
+
+        void ChooseColor(int index)
+        {
+            if (_avatar == null || !_avatar.IsReady) return;
+            _avatar.SelectColor(_category, index);
+            _history.Push(_avatar.CurrentAppearance);
+            RefreshSelection();
+            RefreshHistoryButtons();
         }
 
         Sprite ThumbFor(string id) => _thumbs.TryGetValue(id, out var sprite) ? sprite : null;
@@ -265,6 +452,14 @@ namespace AvatarWorld.Runtime
         void RefreshSelection()
         {
             if (_avatar == null || !_avatar.IsReady) return;
+            RefreshColorsColumn();
+            if (AvatarCatalog.IsColorCategory(_category))
+            {
+                int selected = _avatar.CurrentAppearance.GetColorIndex(_category);
+                foreach (var pair in _colorRings)
+                    pair.Value.color = pair.Key == selected ? new Color(1f, 0.25f, 0.65f) : Color.white;
+                return;
+            }
             string current = _avatar.CurrentAppearance.Get(_category);
             foreach (var pair in _cells)
                 pair.Value.color = pair.Key == current ? new Color(1f, 0.58f, 0.82f) : new Color(1f, 0.9f, 0.95f);
@@ -273,6 +468,11 @@ namespace AvatarWorld.Runtime
         void Choose(string itemId)
         {
             if (_avatar == null || !_avatar.IsReady) return;
+            if (PackGate.IsLocked(_state, itemId))
+            {
+                ShowToast("Peça do combo \"" + PackGate.OfferTitleFor(itemId) + "\" da loja.");
+                return;
+            }
             _avatar.SelectOption(_category, itemId);
             _history.Push(_avatar.CurrentAppearance);
             RefreshSelection();
@@ -318,6 +518,7 @@ namespace AvatarWorld.Runtime
                 ShowToast("Não foi possível salvar. Nada foi alterado.");
                 return;
             }
+            Saved = true;
             Close();
         }
 
@@ -386,18 +587,29 @@ namespace AvatarWorld.Runtime
             CategoryView view = Views[0];
             foreach (var v in Views) if (v.key == category) view = v;
             string previous = _avatar.CurrentAppearance.Get(category);
-            _avatar.SelectOption(category, itemId);
-            _thumbCamera.orthographicSize = view.half * AvatarScale;
-            _thumbCamera.transform.position = new Vector3(AvatarPosition.x, AvatarPosition.y + view.centerY * AvatarScale, -10f);
-            _thumbCamera.Render();
-            RenderTexture.active = rt;
-            var tex = new Texture2D(ThumbSize, ThumbSize, TextureFormat.RGBA32, false);
-            tex.ReadPixels(new Rect(0, 0, ThumbSize, ThumbSize), 0, 0);
-            tex.Apply();
-            RenderTexture.active = null;
-            _thumbs[itemId] = Sprite.Create(tex, new Rect(0, 0, ThumbSize, ThumbSize), new Vector2(0.5f, 0.5f), 100f);
-            _avatar.SelectOption(category, previous);
-            _avatar.ReleaseUnselected();
+            try
+            {
+                _avatar.SelectOption(category, itemId);
+                // Os recortes foram medidos no adulto (~5 unidades de altura); crianca/bebe escalam pelo tamanho real da malha.
+                float fit = _kind == AvatarKind.Adult ? 1f : Mathf.Max(_avatar.BodyHeight, 0.5f) / AdultReferenceHeight;
+                float bottom = _kind == AvatarKind.Adult ? 0f : _avatar.BodyBottom;
+                _thumbCamera.orthographicSize = view.half * fit * AvatarScale;
+                _thumbCamera.transform.position = new Vector3(AvatarPosition.x, AvatarPosition.y + (bottom + view.centerY * fit) * AvatarScale, -10f);
+                _thumbCamera.Render();
+                RenderTexture.active = rt;
+                var tex = new Texture2D(ThumbSize, ThumbSize, TextureFormat.RGBA32, false);
+                tex.ReadPixels(new Rect(0, 0, ThumbSize, ThumbSize), 0, 0);
+                tex.Apply();
+                RenderTexture.active = null;
+                _thumbs[itemId] = Sprite.Create(tex, new Rect(0, 0, ThumbSize, ThumbSize), new Vector2(0.5f, 0.5f), 100f);
+            }
+            finally
+            {
+                // Mesmo se a miniatura falhar, o avatar volta ao item anterior (senao o estado fica preso e e salvo).
+                RenderTexture.active = null;
+                _avatar.SelectOption(category, previous);
+                _avatar.ReleaseUnselected();
+            }
         }
 
         void ShowToast(string message)
