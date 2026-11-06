@@ -101,6 +101,7 @@ namespace AvatarWorld.Runtime
             _camera.clearFlags = CameraClearFlags.SolidColor;
             _camera.backgroundColor = new Color(0.97f, 0.78f, 0.82f);
             _camera.transform.position = new Vector3(ClampX(_data.camera.startX), _data.camera.startY, -10f);
+            SkyBackground.Attach(_camera, () => _weather); // gradiente do BackgroundSky; sem sky.json fica a cor lisa
         }
 
         float HalfWidth => _camera.orthographicSize * _camera.aspect;
