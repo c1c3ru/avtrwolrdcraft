@@ -156,6 +156,9 @@ namespace AvatarWorld.Runtime
             }
             ApplyWeather(_weather);
             foreach (var spine in _data.animations?.spines ?? new List<WorldSpineData>()) MapSpineLayer.Create(transform, spine, _camera);
+            int carLayer = 0;
+            foreach (var cars in _data.animations?.cars ?? new List<WorldCarsData>())
+                new GameObject("Cars_" + carLayer).AddComponent<MapCarsLayer>().Begin(transform, cars, 1000 + carLayer++);
             Debug.Log("WorldMap: " + _data.renderers.Count + " elementos, " + _data.buildings.Count + " predios");
             onReady?.Invoke();
         }
@@ -404,7 +407,7 @@ namespace AvatarWorld.Runtime
             for (int i = transform.childCount - 1; i >= 0; i--)
             {
                 var child = transform.GetChild(i).gameObject;
-                if (child.GetComponent<SpriteRenderer>() == null && child.GetComponent<MapSpineLayer>() == null) continue;
+                if (child.GetComponent<SpriteRenderer>() == null && child.GetComponent<MapSpineLayer>() == null && child.GetComponent<MapCarsLayer>() == null) continue;
                 child.SetActive(false);
                 Destroy(child);
             }

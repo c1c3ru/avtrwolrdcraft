@@ -43,7 +43,9 @@ def main():
     sort_key = lambda r: [list(p) for p in r["sortPath"]]
     spines_in = (world.get("animations") or {}).get("spines", [])
     # Sprites e esqueletos Spine dividem a mesma ordem de desenho (rank denso sobre o sortPath).
-    ordered = sorted([("s", r) for r in world["renderers"]] + [("p", sp) for sp in spines_in], key=lambda kv: sort_key(kv[1]))
+    cars_in = (world.get("animations") or {}).get("cars", [])
+    ordered = sorted([("s", r) for r in world["renderers"]] + [("p", sp) for sp in spines_in] + [("c", c) for c in cars_in],
+                     key=lambda kv: sort_key(kv[1]))
     ranks = {id(r): i for i, (_, r) in enumerate(ordered)}
     rows = [r for kind, r in ordered if kind == "s"]
     renderers, skipped, left, right = [], 0, 1e9, -1e9
@@ -76,7 +78,8 @@ def main():
                        "offsetX": sp["offsetX"], "offsetY": sp["offsetY"]})
     data = {"camera": {"orthoSize": 5.12, "startX": round((left + right) / 2, 2), "startY": 0.12,
                        "minX": round(left, 2), "maxX": round(right, 2)},
-            "renderers": renderers, "buildings": buildings, "animations": {**{"clouds": None, "trains": []}, **{k: v for k, v in (world.get("animations") or {}).items() if k != "spines"}, "spines": spines}}
+            "renderers": renderers, "buildings": buildings, "animations": {**{"clouds": None, "trains": []}, **{k: v for k, v in (world.get("animations") or {}).items() if k not in ("spines", "cars")}, "spines": spines,
+                       "cars": [{**{k: v for k, v in c.items() if k != "sortPath"}, "rank": ranks[id(c)]} for c in cars_in]}}
     (out / f"{a.key}.json").write_text(json.dumps(data))
     print(f"{len(renderers)} renderers, {len(buildings)} prédios ({skipped} sem png), x {left:.1f}..{right:.1f} -> {out}")
 

@@ -261,7 +261,7 @@ def main(argv=None):
         w = world_of(tr_ref['m_PathID'])
         return w[0], w[1]
 
-    animations = {'clouds': None, 'trains': [], 'spines': []}
+    animations = {'clouds': None, 'trains': [], 'spines': [], 'cars': []}
     # Esqueletos Spine da cena (Sun_Moon = ceu, Water_Reflections = brilhos na agua): posicao, escala e ordem de desenho.
     sk_names = {}
     for rec in (json.loads(l) for l in gzip.open(args.mb / 'Spine.Unity.SkeletonDataAsset.jsonl.gz', 'rt')):
@@ -293,6 +293,20 @@ def main(argv=None):
         gx, gy = pos(r['_goToPos']); sx, sy = pos(r['_startPos'])
         animations['trains'].append({'id': r['m_GameObject']['m_PathID'], 'startX': sx, 'startY': sy, 'goX': gx, 'goY': gy,
                                      'toGoSeconds': r['_goToGoToPosTime'], 'toStartSeconds': r['_goToInitialPosTime']})
+    # Carros (WorldCarsController): rede de pontos de estrada + quais carros (cars/car<N>) + quantos. O movimento e do cliente.
+    road_mb = {r['_path_id']: r for r in load_mb(args.mb, 'PWC.World.WorldRoadPoint', level)}
+    for ctrl in load_mb(args.mb, 'PWC.World.WorldCarsController', level):
+        ids = [p['m_PathID'] for p in ctrl['_roadPoints'] if p['m_PathID'] in road_mb]
+        index = {cid: i for i, cid in enumerate(ids)}
+        points = []
+        for cid in ids:
+            rp = road_mb[cid]
+            px, py = world_of(go_tr[rp['m_GameObject']['m_PathID']])[:2]
+            points.append({'x': px, 'y': py, 'next': [index[n['m_PathID']] for n in rp['_nextPoints'] if n['m_PathID'] in index]})
+        cgid = ctrl['m_GameObject']['m_PathID']
+        animations['cars'].append({'cars': list(ctrl['_carsIndexes']), 'count': ctrl['NumberOfCars'], 'speed': ctrl['_speed'],
+                                   'spawn': list(ctrl['_spawnPositionsIndexes']), 'points': points,
+                                   'sortPath': sort_path(cgid, ctrl['_sortingOrder'], world_of(go_tr[cgid])[2])})
     out = {'level': level, 'weather': args.weather, 'camera': {'orthoSize': 5.12}, 'animations': animations,
            'renderers': rows, 'buildings': buildings, 'skipped': dict(skipped)}
     path = args.output or args.scene_dir / f'{level}_world.json'

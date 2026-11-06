@@ -1,6 +1,6 @@
 # Mapas e animações — estado em 2026-11-06
 
-Validação: só testes EditMode (190/190). **Nenhuma destas camadas foi vista no aparelho nesta rodada** (decisão do autor: seguir montando; o build do `.test` foi morto por falta de memória e depois dispensado).
+Validação: só testes EditMode (198/198). **Nenhuma destas camadas foi vista no aparelho nesta rodada** (decisão do autor: seguir montando; o build do `.test` foi morto por falta de memória e depois dispensado).
 
 ## Os 6 mapas do seletor são cenas separadas do original
 | Ícone | Cena (BuildSettings) | Arquivo | Prédios | No cliente |
@@ -21,7 +21,7 @@ O globo troca de mapa (`WorldMapRuntime.SwitchMapRoutine`). Prédios de cada map
 | Trem `WorldTrain` (Bairro) | feita | **Dados reais**: ponto inicial, estação, destino, 3,5 s e 5 s. **Aproximado**: pausa na estação (6 s) e ausência (8 s). |
 | Spine `Sun_Moon`, `Water_Reflections` | feita | Esqueleto, atlas, posição, escala e ordem reais; seguem a câmera como no original (filhos da `WorldCamera`). **Aproximado**: animação do Sol/Lua escolhida pela hora por nome (o original usa `LitSpineByTimeOfDay`). Material `Spine/Skeleton` padrão: mistura/PMA não confirmados. |
 | Spine de interiores (esteiras, telas, algas…) | feita | Mesmo carregador (`MapSpineLayer`); avatares (`Avatar_Spine`) são omitidos de propósito. |
-| Carros `WorldCarsController` | **não feita** | Prefab em outro arquivo serializado + pontos da estrada; exige exportar o prefab. |
+| Carros `WorldCarsController` | feita | **Dados reais**: rede de pontos de estrada (`WorldRoadPoint`, 7–60 por controlador), quais carros (`cars/car<N>`, 14 no total; a Montanha usa o guindaste `car14`), quantos por controlador (4–20) e as artes up/down/sideways. **Aproximado**: velocidade (1,6 u/s; o original guarda 0 = constante do código) e a escolha da bifurcação (sorteio sem voltar). Sem faróis (`*_light`) nem tonalidade por hora do dia. |
 | Gradiente do céu `BackgroundSky` (por clima) | **não feita** | O cliente usa cor lisa; configs por clima estão em arquivo externo. |
 | Tonalidade por hora do dia (`LitSpriteByTimeOfDayRenderer`, 473 sprites no Bairro) | **não feita** | Sem ciclo dia/noite. |
 

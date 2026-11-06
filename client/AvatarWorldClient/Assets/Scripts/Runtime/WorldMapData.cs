@@ -69,6 +69,25 @@ namespace AvatarWorld.Runtime
         public WorldCloudAnimData clouds = new WorldCloudAnimData();
         public List<WorldTrainAnimData> trains = new List<WorldTrainAnimData>();
         public List<WorldSpineData> spines = new List<WorldSpineData>();
+        public List<WorldCarsData> cars = new List<WorldCarsData>();
+    }
+
+    /// <summary>Um WorldCarsController: rede de estrada, carros usados (cars/car&lt;N&gt;), quantos e a ordem de desenho.</summary>
+    [Serializable]
+    public sealed class WorldCarsData
+    {
+        public int[] cars = new int[0];
+        public int count, rank;
+        public float speed;
+        public int[] spawn = new int[0];
+        public List<WorldRoadPointData> points = new List<WorldRoadPointData>();
+    }
+
+    [Serializable]
+    public sealed class WorldRoadPointData
+    {
+        public float x, y;
+        public int[] next = new int[0];
     }
 
     /// <summary>Esqueleto Spine da cena (Resources/MapSpine/&lt;skeleton&gt;/). followCamera: filho da WorldCamera no original.</summary>
