@@ -32,12 +32,14 @@ T034 = ROOT / 'out/recon/tasks/T034'
 KINDS = {
     'Toddler': {
         'skel': 'Toddler_Spine.skel_109615.txt', 'atlas': 'Toddler_Spine.atlas_108537.txt', 'prefix': 'tdl_',
-        'cats': {'Shirt': [('toddler', 'shirt')], 'Bottom': [('toddler', 'bottom')], 'Shoes': [('toddler', 'legs')], 'Accessory': [('toddler', 'neck')]},
+        'cats': {'Shirt': [('toddler', 'shirt'), ('toddler', 'jacket'), ('toddler', 'onepiece')], 'Bottom': [('toddler', 'bottom'), ('toddler', 'diaper')],
+                 'Shoes': [('toddler', 'legs')],
+                 'Accessory': [('toddler', 'neck'), ('toddler', 'bag'), ('toddler', 'back'), ('toddler', 'carrier')]},
         'body': [('Body_Whites/Body_Whites', 'skin'), ('Body_Shad/Body_Shad', 'shadow'), ('Ear_Shad/Ear_Shad', 'ear'), ('Body_Other/Body_Other', '')],
     },
     'Baby': {
         'skel': 'Baby_Spine.skel_108922.txt', 'atlas': 'Baby_Spine.atlas_109843.txt', 'prefix': 'baby_',
-        'cats': {'Shirt': [('baby', 'wrap'), ('baby', 'bib')], 'Accessory': [('baby', 'glasses')]},
+        'cats': {'Shirt': [('baby', 'wrap'), ('baby', 'bib')], 'Accessory': [('baby', 'glasses'), ('baby', 'hat'), ('baby', 'carrier')]},
         'body': [('Body_Solid/Body_Solid', 'skin'), ('Body_Shadow/Body_Shadow', 'shadow'), ('Ear_Shadow/Ear_Shadow', 'ear'), ('Body_Outline/Body_Outline', '')],
     },
 }
