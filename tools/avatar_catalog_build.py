@@ -150,6 +150,7 @@ def main():
             if any(not isinstance(item, str) or not re.fullmatch(r'[A-Za-z0-9_]+', item) for item in ids):
                 raise SystemExit(f'invalid item ID in {category}')
             for item in ids:
+                if item in BUILT_IN: continue  # ids embutidos no esqueleto: sem pasta no SUT
                 prefix = next((candidate for candidate in prefixes if (candidate, item) in groups), None)
                 if prefix is None:
                     raise SystemExit(f'no exact SUT folder for {category}/{item}')
