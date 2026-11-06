@@ -63,3 +63,10 @@ Total: **389** avatares em 52 de 57 interiores.
 | trainstation | TrainStation_Z1B2 | 6 | 6 | 0 | 0 | 0 |
 | treetop_z2b3 | Treetop_Z2B3L1 | 1 | 1 | 0 | 0 | 0 |
 | yoga_build_t1s3 | MiniYogaStudio_Z1B2L1 | 5 | 5 | 0 | 0 | 0 |
+
+## Aparência e `isOnPhone` (engenharia reversa)
+
+- **Aparência: achada.** `out/assets/TextAsset/PremadeCharactersJson_*.txt` (+ ~58 TextAssets por cena com o mesmo formato `AvatarSpineDatas`) traz, por `ID`, `SkinsData` (`CategoryType`, `SkinName` como `Shirt_Special/243`, `Hair_Front/99_Color`, `ColorA/ColorB`), `SizeType`, `SpineType` e `Config.isDisplayInPhone`. 1.324 ids únicos; **381 dos 384 ids de NPC** cobertos (sem aparências divergentes entre arquivos). Os 3 faltantes (900005, 900009, 900017) são pets (`LevelAnimalIDHandler`).
+- **`LevelSceneAvatarMap` = avatares padrão da cena.** Só `LevelManager.GetAllLevelDefaultAvatarsID` e `RestoreMakerExcludedSkinClothingIfNeeded` o leem (callers diretos, `tools/recon_callers.py`); `GetAllLevelDefaultAvatarsID` é chamado por `ContactsContent.EnsureLevelDefaults` (app Contatos do telefone). Logo, são os personagens que a cena cria por padrão, e os ids alimentam a lista de contatos.
+- **`isOnPhone` (mapa de cena)**: ainda sem leitor identificado; todos os 389 são 1. `Config.isDisplayInPhone` (premade) é outro flag: true em só 37 de 1.324 (9 dos NPCs de cena). Próximo passo: ler `ContactsContent.EnsureLevelDefaults` e o uso do offset 0x28 de `AvatarData`.
+- **Próximo passo de implementação:** converter `SkinName` -> ids do catálogo do editor (`Shirt_Special/243` -> `shirt_special_243`, `Hair_Front/N_Color` já no formato) e desenhar os NPCs nas posições do mapa.
