@@ -33,6 +33,7 @@ namespace AvatarWorld.Runtime
         public float[] poly;
         public bool allowOverlap, canConsumeCharacters;
         public float maxW, maxH;
+        public string kind = "LevelDropArea";
     }
 
     [Serializable]
@@ -173,7 +174,7 @@ namespace AvatarWorld.Runtime
                 _itemRenderers.Add(new List<SpriteRenderer>());
             }
             foreach (var a in _data.dropAreas)
-                if (a.poly != null && a.poly.Length >= 6) _areas.Add(new DropArea(a.poly, a.priority, a.go));
+                if (a.poly != null && a.poly.Length >= 6) _areas.Add(new DropArea(a.poly, a.priority, a.go, a.kind, a.maxH, a.maxW));
             var textures = new Dictionary<string, Texture2D>();
             var sprites = new Dictionary<string, Sprite>();
             int built = 0, missing = 0;
@@ -360,19 +361,18 @@ namespace AvatarWorld.Runtime
             var list = _itemRenderers[item];
             for (int i = 0; i < list.Count && i < _dragOrders.Length; i++) list[i].sortingOrder = _dragOrders[i];
             var root = _itemRoots[item];
-            Vector3 target = _dragStartPos; // sem area valida: volta (aproximacao do ajuste/queda do original)
+            Vector3 target = _dragStartPos; // nenhuma area serve: volta ao ponto inicial
             if (ItemBounds(item, out var b))
             {
-                float x = b.center.x;
-                for (float dy = 0f; dy <= 0.6f; dy += 0.05f)
+                var info = new DropItem
                 {
-                    var area = DropAreaQuery.Best(_areas, x, b.min.y - dy + 0.02f);
-                    if (area != null && area.TopAt(x, out float top))
-                    {
-                        target = root.position + new Vector3(0f, top - b.min.y, 0f);
-                        break;
-                    }
-                }
+                    X = b.center.x, BottomY = b.min.y, Height = b.size.y,
+                    BottomWidth = _data.items[item].bottomWidth > 0f ? _data.items[item].bottomWidth : b.size.x
+                };
+                // LevelItem.DropInLevel: primeiro area sob a base (IsDroppableUnderItem), senao cai (GetDropAreaToFallOn)
+                if (DropAreaQuery.Under(_areas, info, info.X, info.BottomY) != null) target = root.position;
+                else if (DropAreaQuery.FallOn(_areas, info, info.X, info.BottomY, out float hitY) != null)
+                    target = root.position + new Vector3(0f, hitY - info.BottomY, 0f);
             }
             StartCoroutine(SlideTo(root, target, target == _dragStartPos ? 0.2f : 0.12f));
         }

@@ -43,7 +43,23 @@ def main(argv=None):
     args = ap.parse_args(argv)
 
     items_mb = load_by_file(args.mb, 'PWC.Level.LevelItem')
-    areas_mb = load_by_file(args.mb, 'PWC.Level.LevelDropArea')
+    # Subclasses de LevelDropArea ficam em arquivos proprios (LevelFloorArea, LevelCharactersOnlyDropArea, ...):
+    # qualquer classe cujo registro tem os campos de LevelDropArea entra, com o nome da classe em 'kind'.
+    areas_mb = defaultdict(list)
+    for path in sorted(args.mb.glob('*.jsonl.gz')):
+        cls = path.name[:-len('.jsonl.gz')]
+        if not (cls.startswith('PWC.Level') or cls.startswith('Game.Level')):
+            continue
+        try:
+            first = json.loads(next(gzip.open(path, 'rt')))
+        except StopIteration:
+            continue
+        if not all(k in first for k in ('_sortPriority', '_maxItemsHeight', '_itemOrientationType')):
+            continue
+        for l in gzip.open(path, 'rt'):
+            r = json.loads(l)
+            r['_kind'] = cls.split('.')[-1]
+            areas_mb[r['_file']].append(r)
     result = {}
     for entry in json.loads(args.map.read_text()):
         level = f"level{entry['buildIndex']}"
@@ -144,7 +160,8 @@ def main(argv=None):
                         out_areas.append({'go': names.get(gid, ''), 'priority': r['_sortPriority'],
                                           'allowOverlap': bool(r['_allowOverlappingItems']),
                                           'maxW': r['_maxItemsWidth'], 'maxH': r['_maxItemsHeight'],
-                                          'canConsumeCharacters': bool(r['_canConsumeCharacters']), 'poly': pts})
+                                          'canConsumeCharacters': bool(r['_canConsumeCharacters']), 'kind': r['_kind'],
+                                          'poly': pts})
         result[level] = {'items': out_items, 'dropAreas': out_areas}
         print(level, entry['name'], len(out_items), 'items', len(out_areas), 'drop-area polygons')
     args.output.write_text(json.dumps(result, separators=(',', ':')))
