@@ -64,6 +64,8 @@ namespace AvatarWorld.Runtime
         Dictionary<string, Material> _materialByPage;
         readonly HashSet<string> _loadedClothingPages = new HashSet<string>();
         readonly Dictionary<string, string> _pageFileLoaded = new Dictionary<string, string>(); // pagina -> arquivo da textura atual
+        // Cor assada (Overlay) na textura atual da pagina; ausente = textura sem tinta. So crianca/bebe: o original mistura Overlay.
+        readonly Dictionary<string, Color> _pageOverlay = new Dictionary<string, Color>();
         readonly Dictionary<string, Texture2D> _pageTextures = new Dictionary<string, Texture2D>();
         readonly Dictionary<string, bool> _available = new Dictionary<string, bool>();
         Texture2D _blank;
@@ -336,6 +338,7 @@ namespace AvatarWorld.Runtime
                 _materialByPage[page].mainTexture = _blank;
                 _pageTextures.Remove(page);
                 _pageFileLoaded.Remove(page);
+                _pageOverlay.Remove(page);
             }
         }
 
@@ -392,18 +395,21 @@ namespace AvatarWorld.Runtime
             _skeletonAnimation.LateUpdate();
         }
 
-        void LoadItemTextures(ManifestItem item)
+        void LoadItemTextures(ManifestItem item, Color? overlay = null)
         {
             foreach (var piece in item.pieces)
             {
                 var pageName = piece.template.Substring("Templates/".Length);
-                if (_pageFileLoaded.TryGetValue(pageName, out var loadedFile) && loadedFile == piece.file) continue;
+                bool hadOverlay = _pageOverlay.TryGetValue(pageName, out var oldOverlay);
+                bool sameOverlay = overlay.HasValue ? hadOverlay && oldOverlay == overlay.Value : !hadOverlay;
+                if (_pageFileLoaded.TryGetValue(pageName, out var loadedFile) && loadedFile == piece.file && sameOverlay) continue;
                 var resourceName = System.IO.Path.GetFileNameWithoutExtension(piece.file);
                 var source = Resources.Load<Texture2D>("AvatarSpine/Clothing/" + resourceName);
                 if (source == null) { Debug.LogError("AvatarGpuRuntime: textura de roupa ausente " + resourceName); continue; }
-                var texture = PremultipliedCopy(source);
+                var texture = PremultipliedCopy(source, overlay);
                 Resources.UnloadAsset(source);
                 texture.name = pageName;
+                if (overlay.HasValue) _pageOverlay[pageName] = overlay.Value; else _pageOverlay.Remove(pageName);
                 if (_pageTextures.TryGetValue(pageName, out var old) && old != null) Destroy(old);
                 _materialByPage[pageName].mainTexture = texture;
                 _pageTextures[pageName] = texture;
@@ -445,9 +451,13 @@ namespace AvatarWorld.Runtime
             foreach (var category in _categories)
             {
                 if (!_itemsById.TryGetValue(Appearance.Get(category.key), out var item)) continue; // item embutido (boca padrao)
-                LoadItemTextures(item);
-                // Itens _color: tinta Multiply com a cor escolhida na paleta General (AvatarSpineSkinsColoringConfigs: Single/Multiply).
-                var tint = AvatarCatalog.IsColorItem(item.id) ? GeneralColor(Appearance.GetItemColor(AvatarCatalog.ColorKey(category.key))) : Color.white;
+                // Itens _color: adulto = tinta Multiply na paleta General (ColoringConfigs Single/Multiply);
+                // crianca/bebe = Overlay (ColoringConfigs Single/Overlay), assado na textura da pagina.
+                bool colored = AvatarCatalog.IsColorItem(item.id);
+                var chosen = colored ? GeneralColor(Appearance.GetItemColor(AvatarCatalog.ColorKey(category.key))) : Color.white;
+                bool bake = colored && _kind != AvatarKind.Adult;
+                LoadItemTextures(item, bake ? chosen : (Color?)null);
+                var tint = colored && !bake ? chosen : Color.white;
                 foreach (var piece in item.pieces)
                     AddSkin(_skeletonData, skin, tints, SkinOf(piece), tint);
             }
@@ -530,12 +540,22 @@ namespace AvatarWorld.Runtime
             }
         }
 
-        static Texture2D PremultipliedCopy(Texture2D source)
+        // Overlay (base = textura, mistura = cor): escuro 2*b*t, claro 1-2*(1-b)*(1-t).
+        static float OverlayChannel(float b, float t) => b < 0.5f ? 2f * b * t : 1f - 2f * (1f - b) * (1f - t);
+
+        static Texture2D PremultipliedCopy(Texture2D source, Color? overlay = null)
         {
             var pixels = source.GetPixels32();
             for (int i = 0; i < pixels.Length; i++)
             {
                 var p = pixels[i];
+                if (overlay.HasValue)
+                {
+                    var o = overlay.Value;
+                    p.r = (byte)Mathf.Clamp(Mathf.RoundToInt(OverlayChannel(p.r / 255f, o.r) * 255f), 0, 255);
+                    p.g = (byte)Mathf.Clamp(Mathf.RoundToInt(OverlayChannel(p.g / 255f, o.g) * 255f), 0, 255);
+                    p.b = (byte)Mathf.Clamp(Mathf.RoundToInt(OverlayChannel(p.b / 255f, o.b) * 255f), 0, 255);
+                }
                 float a = p.a / 255f;
                 pixels[i] = new Color32((byte)(p.r * a), (byte)(p.g * a), (byte)(p.b * a), p.a);
             }

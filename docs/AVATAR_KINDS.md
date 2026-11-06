@@ -15,7 +15,7 @@ Data: 2026-11-06. O original tem três famílias de avatar humano (`SpineType`: 
 
 ## Limitações
 - Não validado em aparelho nem no Editor com render real: foram checados compilação, existência de skin/região/PNG de cada peça (`0` problemas) e testes EditMode escritos (`AvatarSlotsTests`). Recortes das miniaturas de criança/bebê são escalados pela altura da malha e podem precisar de ajuste fino.
-- Itens de mão da criança (bicicleta, instrumentos, cavalinho) não entram. Peças `_color`/`_p` ficam de fora, como no adulto.
+- Itens de mão da criança entram como acessórios. Peças `_color`/`_p` ficam de fora, como no adulto.
 - Jaquetas e vestidos inteiros dividem a categoria Camisa (e fraldas a Calça): um vestido inteiro usa os mesmos slots da calça, então o último a ser aplicado cobre o outro.
-- Cores: as paletas de pele/olhos/geral (`AWSpineColorsList`) são globais, então valem para os três tipos. Mas os `ColoringConfigs` de criança e bebê usam mistura **Overlay** e o cliente aplica **Multiply** (como no adulto); a cor de cabelo/sobrancelha de criança/bebê pode sair mais escura que a original até haver um shader Overlay.
+- Cores: as paletas de pele/olhos/geral (`AWSpineColorsList`) são globais e valem para os três tipos. Os `ColoringConfigs` de criança e bebê pedem mistura **Overlay**; o cliente assa o Overlay (`b<0.5 ? 2bt : 1-2(1-b)(1-t)`) na cópia da textura da página ao escolher a cor (adulto continua Multiply no slot). A fórmula é a padrão do Overlay, mas não foi comparada com o original em tela.
 - Pets e veículos continuam sem slot funcional: os esqueletos `Pet_*_Spine` existem, mas pedem a mesma extração por espécie (catálogo, atlas, roupas de cão/gato) e não há arte de veículo no slot.
