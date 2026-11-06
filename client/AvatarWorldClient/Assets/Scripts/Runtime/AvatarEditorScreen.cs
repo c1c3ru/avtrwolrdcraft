@@ -48,6 +48,8 @@ namespace AvatarWorld.Runtime
             new CategoryView { key = AvatarCatalog.CategoryMouth,     art = "mouth",     centerY = 2.75f, half = 0.70f },
             new CategoryView { key = AvatarCatalog.CategoryHairBack,  art = "hair",      centerY = 3.30f, half = 1.60f },
             new CategoryView { key = AvatarCatalog.CategoryEyebrows,  art = "eyebrows",  centerY = 3.50f, half = 0.70f },
+            new CategoryView { key = AvatarCatalog.CategoryHat,       art = "accessory", centerY = 3.50f, half = 1.30f },
+            new CategoryView { key = AvatarCatalog.CategoryJacket,    art = "shirt",     centerY = 1.65f, half = 0.95f },
         };
 
         // Categorias do menu do tipo de avatar em edicao (crianca/bebe nao tem todas).
@@ -78,8 +80,8 @@ namespace AvatarWorld.Runtime
         ScrollRect _scroll;
         GridLayoutGroup _gridLayout;
         RectTransform _colorsColumn;
-        GameObject _hairTabs;
-        readonly Dictionary<string, Image> _hairTabButtons = new Dictionary<string, Image>();
+        readonly Dictionary<string, GameObject> _tabBars = new Dictionary<string, GameObject>();
+        readonly Dictionary<string, Image> _tabButtons = new Dictionary<string, Image>();
         readonly Dictionary<int, Image> _itemColorRings = new Dictionary<int, Image>();
 
         /// <summary>True se a sessao terminou em Concluir (gravou); Voltar descarta e deixa false.</summary>
@@ -221,7 +223,7 @@ namespace AvatarWorld.Runtime
             layout.padding = new RectOffset(4, 4, 8, 24);
             _grid.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             BuildColorsColumn();
-            if (AvatarCatalog.IsEditable(_kind, AvatarCatalog.CategoryHairBack)) BuildHairTabs();
+            BuildTabs();
             _scroll = viewport.GetComponent<ScrollRect>();
             _scroll.viewport = vr; _scroll.content = _grid;
             _scroll.horizontal = false; _scroll.vertical = true;
@@ -240,13 +242,29 @@ namespace AvatarWorld.Runtime
 
         // ---------- categorias e grade ----------
 
-        static string MenuKeyOf(string category) => category == AvatarCatalog.CategoryHairBack ? AvatarCatalog.CategoryHair : category;
+        // Sub-abas por categoria do menu (Subcategories do CharacterMenu): Cabelo = frente/atras, Camisa = camisa/jaqueta,
+        // Acessorio = acessorio/chapeu. A chave do menu e a categoria cujo icone fica selecionado. A barra so existe se a
+        // segunda categoria for editavel no tipo do avatar (crianca/bebe nao tem jaqueta nem chapeu).
+        static readonly (string menuKey, (string category, string label)[] tabs)[] TabGroups =
+        {
+            (AvatarCatalog.CategoryHair, new[] { (AvatarCatalog.CategoryHair, "Frente"), (AvatarCatalog.CategoryHairBack, "Atrás") }),
+            (AvatarCatalog.CategoryShirt, new[] { (AvatarCatalog.CategoryShirt, "Camisa"), (AvatarCatalog.CategoryJacket, "Jaqueta") }),
+            (AvatarCatalog.CategoryAccessory, new[] { (AvatarCatalog.CategoryAccessory, "Acessório"), (AvatarCatalog.CategoryHat, "Chapéu") }),
+        };
+
+        static string MenuKeyOf(string category)
+        {
+            foreach (var group in TabGroups)
+                foreach (var tab in group.tabs)
+                    if (tab.category == category) return group.menuKey;
+            return category;
+        }
 
         public void SelectCategory(string category)
         {
             _category = category;
-            if (_hairTabs != null) _hairTabs.SetActive(MenuKeyOf(category) == AvatarCatalog.CategoryHair);
-            RefreshHairTabs();
+            foreach (var pair in _tabBars) pair.Value.SetActive(pair.Key == MenuKeyOf(category));
+            RefreshTabs();
             foreach (var entry in MenuCategories)
             {
                 bool selected = entry.key == MenuKeyOf(category);
@@ -256,38 +274,41 @@ namespace AvatarWorld.Runtime
             RebuildGrid();
         }
 
-        // Subcategorias de Cabelo (Subcategories do CharacterMenu): frente (skins Hair_Front) e atras (coques, rabos).
-        void BuildHairTabs()
+        void BuildTabs()
         {
-            _hairTabs = new GameObject("HairTabs", typeof(RectTransform));
-            _hairTabs.transform.SetParent(_panel, false);
-            var rect = (RectTransform)_hairTabs.transform;
-            rect.anchorMin = rect.anchorMax = new Vector2(0, 1);
-            rect.pivot = new Vector2(0, 1);
-            rect.anchoredPosition = new Vector2(146f, -14f);
-            rect.sizeDelta = new Vector2(520f, 84f);
-            var tabs = new[] { (AvatarCatalog.CategoryHair, "Frente"), (AvatarCatalog.CategoryHairBack, "Atrás") };
-            for (int i = 0; i < tabs.Length; i++)
+            foreach (var group in TabGroups)
             {
-                string key = tabs[i].Item1;
-                var tab = NewImage("Tab_" + key, _hairTabs.transform, Art("AvatarMaker/indicator"), Color.white);
-                tab.type = Image.Type.Sliced;
-                tab.raycastTarget = true;
-                Place(tab.rectTransform, new Vector2(0, 0.5f), new Vector2(120f + i * 250f, 0f), new Vector2(230f, 76f));
-                var button = tab.gameObject.AddComponent<Button>();
-                button.targetGraphic = tab;
-                button.onClick.AddListener(() => { UiSound.PlayClick(); SelectCategory(key); });
-                var label = NewText("Label", tab.transform, 34, new Color(0.35f, 0.12f, 0.45f));
-                Stretch(label.rectTransform);
-                label.text = tabs[i].Item2;
-                _hairTabButtons[key] = tab;
+                if (!AvatarCatalog.IsEditable(_kind, group.tabs[1].category)) continue;
+                var bar = new GameObject("Tabs_" + group.menuKey, typeof(RectTransform));
+                bar.transform.SetParent(_panel, false);
+                var rect = (RectTransform)bar.transform;
+                rect.anchorMin = rect.anchorMax = new Vector2(0, 1);
+                rect.pivot = new Vector2(0, 1);
+                rect.anchoredPosition = new Vector2(146f, -14f);
+                rect.sizeDelta = new Vector2(520f, 84f);
+                for (int i = 0; i < group.tabs.Length; i++)
+                {
+                    string key = group.tabs[i].category;
+                    var tab = NewImage("Tab_" + key, bar.transform, Art("AvatarMaker/indicator"), Color.white);
+                    tab.type = Image.Type.Sliced;
+                    tab.raycastTarget = true;
+                    Place(tab.rectTransform, new Vector2(0, 0.5f), new Vector2(120f + i * 250f, 0f), new Vector2(230f, 76f));
+                    var button = tab.gameObject.AddComponent<Button>();
+                    button.targetGraphic = tab;
+                    button.onClick.AddListener(() => { UiSound.PlayClick(); SelectCategory(key); });
+                    var label = NewText("Label", tab.transform, 34, new Color(0.35f, 0.12f, 0.45f));
+                    Stretch(label.rectTransform);
+                    label.text = group.tabs[i].label;
+                    _tabButtons[key] = tab;
+                }
+                bar.SetActive(false);
+                _tabBars[group.menuKey] = bar;
             }
-            _hairTabs.SetActive(false);
         }
 
-        void RefreshHairTabs()
+        void RefreshTabs()
         {
-            foreach (var pair in _hairTabButtons)
+            foreach (var pair in _tabButtons)
                 pair.Value.color = pair.Key == _category ? new Color(1f, 0.58f, 0.82f) : new Color(1f, 0.9f, 0.95f);
         }
 
@@ -394,12 +415,24 @@ namespace AvatarWorld.Runtime
                 button.targetGraphic = frame;
                 button.onClick.AddListener(() => { UiSound.PlayClick(); Choose(itemId); });
                 _cells[itemId] = frame;
+                bool locked = PackGate.IsLocked(_state, itemId);
 
                 var item = NewImage("Item", frame.transform, ThumbFor(itemId), Color.white);
                 item.preserveAspect = true;
                 Place(item.rectTransform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(190f, 180f));
                 item.enabled = item.sprite != null;
                 _cellIcons[itemId] = item;
+                if (locked)
+                {
+                    // Peca de combo da loja ainda nao comprado: miniatura esmaecida e etiqueta.
+                    item.color = new Color(0.4f, 0.4f, 0.45f, 0.8f);
+                    var tag = new GameObject("Locked", typeof(RectTransform), typeof(Text)).GetComponent<Text>();
+                    tag.transform.SetParent(frame.transform, false);
+                    Place(tag.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 26f), new Vector2(200f, 44f));
+                    tag.font = _font; tag.fontSize = 30; tag.alignment = TextAnchor.MiddleCenter;
+                    tag.color = new Color(0.45f, 0.2f, 0.6f); tag.raycastTarget = false;
+                    tag.text = "Na loja";
+                }
             }
             RefreshSelection();
         }
@@ -456,6 +489,11 @@ namespace AvatarWorld.Runtime
         void Choose(string itemId)
         {
             if (_avatar == null || !_avatar.IsReady) return;
+            if (PackGate.IsLocked(_state, itemId))
+            {
+                ShowToast("Peça do combo \"" + PackGate.OfferTitleFor(itemId) + "\" da loja.");
+                return;
+            }
             _avatar.SelectOption(_category, itemId);
             _history.Push(_avatar.CurrentAppearance);
             RefreshSelection();
