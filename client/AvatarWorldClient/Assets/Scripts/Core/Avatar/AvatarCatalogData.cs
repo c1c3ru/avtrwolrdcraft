@@ -1048,6 +1048,12 @@ namespace AvatarWorld.Core.Avatar
             "shirt_special_1171",
             "shirt_special_1172",
             "shirt_special_1173",
+            "shirt_special_1192",
+            "shirt_special_1193",
+            "shirt_special_1191",
+            "shirt_special_1194",
+            "shirt_special_1196",
+            "shirt_special_1195",
         };
 
         public static readonly string[] Bottom =
@@ -2022,6 +2028,12 @@ namespace AvatarWorld.Core.Avatar
             "bottom_special_1073",
             "bottom_special_1074",
             "bottom_special_1075",
+            "bottom_special_1093",
+            "bottom_special_1094",
+            "bottom_special_1092",
+            "bottom_special_1095",
+            "bottom_special_1099",
+            "bottom_special_1096",
         };
 
         public static readonly string[] Shoes =
@@ -3197,6 +3209,12 @@ namespace AvatarWorld.Core.Avatar
             "legs_shoes_1352",
             "legs_shoes_1353",
             "legs_shoes_1354",
+            "legs_shoes_1360",
+            "legs_shoes_1361",
+            "legs_shoes_1359",
+            "legs_shoes_1362",
+            "legs_shoes_1365",
+            "legs_shoes_1364",
         };
 
         public static readonly string[] Accessory =
@@ -4138,6 +4156,12 @@ namespace AvatarWorld.Core.Avatar
             "mouth_106",
             "mouth_107",
             "mouth_108",
+            "mouth_154",
+            "mouth_155",
+            "mouth_157",
+            "mouth_156",
+            "mouth_167",
+            "mouth_168",
         };
 
         public static readonly string[] Eyebrows =
@@ -4321,6 +4345,32 @@ namespace AvatarWorld.Core.Avatar
             "hair_back_98_color",
             "hair_back_99_color",
             "hair_back_104_color",
+            "hair_back_117_color",
+            "hair_back_116_color",
+            "hair_back_115_color",
+            "hair_back_197_color",
+            "hair_back_199_color",
+            "hair_back_198_color",
+            "hair_back_200_color",
+            "hair_back_205_color",
+            "hair_back_206_color",
+            "hair_back_208_color",
+            "hair_back_207_color",
+            "hair_back_209_color",
+            "hair_back_218_color",
+            "hair_back_219_color",
+            "hair_back_221_color",
+            "hair_back_220_color",
+            "hair_back_138_color",
+            "hair_back_137_color",
+            "hair_back_144_color",
+            "hair_back_139_color",
+            "hair_back_140_color",
+            "hair_back_141_color",
+            "hair_back_142_color",
+            "hair_back_143_color",
+            "hair_back_135_color",
+            "hair_back_136_color",
         };
 
         public static readonly string[] Hair =
