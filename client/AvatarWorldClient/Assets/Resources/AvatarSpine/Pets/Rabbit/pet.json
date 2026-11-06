@@ -1,0 +1,78 @@
+{
+ "species": "Rabbit",
+ "idle": "General/Chilling",
+ "basePieces": [
+  {
+   "template": "Templates/MultiPack__General",
+   "file": "multipack__general__75469.png",
+   "skin": "default"
+  }
+ ],
+ "variants": [
+  {
+   "id": "rabbit_a_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__Rabbit_A_1",
+     "file": "multipack__rabbit_a_1__29695.png",
+     "skin": "Rabbit_A_1"
+    },
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__75469.png",
+     "skin": "Rabbit_A_1"
+    }
+   ]
+  },
+  {
+   "id": "rabbit_a_2",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__Rabbit_A_2",
+     "file": "multipack__rabbit_a_2__64782.png",
+     "skin": "Rabbit_A_2"
+    },
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__75469.png",
+     "skin": "Rabbit_A_2"
+    }
+   ]
+  },
+  {
+   "id": "rabbit_a_4",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__Rabbit_A_4",
+     "file": "multipack__rabbit_a_4__69067.png",
+     "skin": "Rabbit_A_4"
+    },
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__75469.png",
+     "skin": "Rabbit_A_4"
+    }
+   ]
+  },
+  {
+   "id": "rabbit_b_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__Rabbit_B_1",
+     "file": "multipack__rabbit_b_1__57425.png",
+     "skin": "Rabbit_B_1"
+    },
+    {
+     "template": "Templates/MultiPack__Rabbit_A_4",
+     "file": "multipack__rabbit_a_4__69067.png",
+     "skin": "Rabbit_B_1"
+    },
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__75469.png",
+     "skin": "Rabbit_B_1"
+    }
+   ]
+  }
+ ]
+}
