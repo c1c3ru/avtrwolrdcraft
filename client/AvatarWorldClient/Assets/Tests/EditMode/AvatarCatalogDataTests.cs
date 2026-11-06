@@ -29,6 +29,10 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual("legs_shoes_1", AvatarCatalog.DefaultOption(AvatarCatalog.CategoryShoes));
             Assert.AreEqual("accessories_face_glasses_1", AvatarCatalog.DefaultOption(AvatarCatalog.CategoryAccessory));
             Assert.AreEqual(AvatarCatalog.MouthDefault, AvatarCatalog.DefaultOption(AvatarCatalog.CategoryMouth));
+            Assert.AreEqual(AvatarCatalog.HatNone, AvatarCatalog.DefaultOption(AvatarCatalog.CategoryHat));
+            Assert.AreEqual(AvatarCatalog.JacketNone, AvatarCatalog.DefaultOption(AvatarCatalog.CategoryJacket));
+            Assert.Greater(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHat].Length, 50);
+            Assert.Greater(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryJacket].Length, 50);
         }
 
         [Test]
