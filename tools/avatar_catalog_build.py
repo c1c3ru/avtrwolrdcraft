@@ -74,6 +74,7 @@ def natural(value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--per-category', type=int, default=100)
+    parser.add_argument('--hidden-items', type=Path, help='JSON {campo: [ids]}: itens que entram no manifesto (PNGs) mas nao nas listas do editor (NPCs)')
     parser.add_argument('--selection', type=Path, help='JSON with exact category IDs from recon_clothing_gap.py')
     args = parser.parse_args()
 
@@ -232,6 +233,34 @@ def main():
                 ensure_meta(CLOTHING / out_name)
                 pieces.append({'template': 'Templates/' + page_case[piece], 'file': out_name})
             new_items.append({'id': item_id, 'pieces': pieces})
+    # itens so de NPC: PNG + manifesto, sem entrar em AvatarCatalogData (o editor nao os lista)
+    if args.hidden_items:
+        known = {it['id'] for it in new_items} | set(existing)
+        skipped = 0
+        for field, ids in json.loads(args.hidden_items.read_text(encoding='utf-8')).items():
+            for item_id in ids:
+                if item_id in known: continue
+                if field == 'Hair':
+                    if item_id not in front: skipped += 1; continue
+                    page, filename, pid = front[item_id]
+                    out_name = f'{page.casefold()}__{pid}.png'
+                    shutil.copyfile(TEXTURES / filename, CLOTHING / out_name)
+                    ensure_meta(CLOTHING / out_name)
+                    new_items.append({'id': item_id, 'pieces': [{'template': 'Templates/' + page, 'file': out_name, 'skin': item_id}]})
+                    known.add(item_id)
+                    continue
+                key = next((k for (k, it) in groups if it == item_id), None)
+                built = resolve(key, item_id) if key else None
+                if not built: skipped += 1; continue
+                pieces = []
+                for piece, filename, pid in sorted(built):
+                    out_name = f'{piece}__{pid}.png'
+                    shutil.copyfile(TEXTURES / filename, CLOTHING / out_name)
+                    ensure_meta(CLOTHING / out_name)
+                    pieces.append({'template': 'Templates/' + page_case[piece], 'file': out_name})
+                new_items.append({'id': item_id, 'pieces': pieces})
+                known.add(item_id)
+        print(f'itens de NPC: {len(known)} conhecidos, {skipped} sem skin/textura')
     manifest['items'] = list(existing.values()) + [it for it in new_items if it['id'] not in existing]
     chosen['Hair'] = front_ids
     MANIFEST.write_text(json.dumps(manifest, indent=2), encoding='utf-8')
