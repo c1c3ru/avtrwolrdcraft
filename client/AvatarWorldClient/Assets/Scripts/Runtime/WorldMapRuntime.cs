@@ -39,6 +39,10 @@ namespace AvatarWorld.Runtime
         int _weather;
         readonly List<SpriteRenderer> _weatherRenderers = new List<SpriteRenderer>();
         readonly List<int> _weatherRendererIndex = new List<int>();
+        // Grupos animados: todos os sprites de uma nuvem (clara + chuva) / de um trem andam juntos.
+        readonly Dictionary<int, List<Transform>> _cloudGroups = new Dictionary<int, List<Transform>>();
+        readonly Dictionary<int, List<Transform>> _trainGroups = new Dictionary<int, List<Transform>>();
+        readonly Dictionary<int, float> _trainBaseX = new Dictionary<int, float>();
         readonly List<RectTransform> _uiRects = new List<RectTransform>();
         readonly Dictionary<int, RectTransform> _weatherIcons = new Dictionary<int, RectTransform>();
         RectTransform _weatherPill;
@@ -138,7 +142,13 @@ namespace AvatarWorld.Runtime
                 renderer.flipX = r.flipX != (r.sx < 0f);
                 renderer.flipY = r.flipY != (r.sy < 0f);
                 renderer.color = new Color(r.color[0], r.color[1], r.color[2], r.color[3]);
-                if (r.weathers != null && r.weathers.Length > 0)
+                if (r.cloud != 0) Group(_cloudGroups, r.cloud).Add(go.transform);
+                if (r.train != 0)
+                {
+                    Group(_trainGroups, r.train).Add(go.transform);
+                    if (!_trainBaseX.ContainsKey(r.train)) _trainBaseX[r.train] = r.x;
+                }
+                if ((r.weathers != null && r.weathers.Length > 0) || r.cloud != 0)
                 {
                     _weatherRenderers.Add(renderer);
                     _weatherRendererIndex.Add(built - 1);
@@ -147,6 +157,37 @@ namespace AvatarWorld.Runtime
             ApplyWeather(_weather);
             Debug.Log("WorldMap: " + _data.renderers.Count + " elementos, " + _data.buildings.Count + " predios");
             onReady?.Invoke();
+        }
+
+        static List<Transform> Group(Dictionary<int, List<Transform>> groups, int id)
+        {
+            if (!groups.TryGetValue(id, out var list)) groups[id] = list = new List<Transform>();
+            return list;
+        }
+
+        /// <summary>Nuvens derivam ate o ponto final do spawner e voltam ao inicial; o trem repete chegada/parada/saida.</summary>
+        void AnimateWorld()
+        {
+            var cloud = _data.animations?.clouds;
+            if (cloud != null && cloud.Exists)
+            {
+                foreach (var pair in _cloudGroups)
+                {
+                    var list = pair.Value;
+                    if (list.Count == 0 || list[0] == null) continue;
+                    float x = list[0].position.x;
+                    float nx = WorldAnimation.AdvanceCloud(x, Time.deltaTime, WorldAnimation.CloudSpeed(pair.Key), cloud.startX, cloud.endX);
+                    foreach (var t in list) if (t != null) t.position += new Vector3(nx - x, 0f, 0f);
+                }
+            }
+            foreach (var train in _data.animations?.trains ?? new List<WorldTrainAnimData>())
+            {
+                if (!_trainGroups.TryGetValue(train.id, out var list) || list.Count == 0 || list[0] == null) continue;
+                float station = _trainBaseX[train.id];
+                float nx = WorldAnimation.TrainX(Time.time, train.startX, station, train.goX, train.toStartSeconds, train.toGoSeconds);
+                float dx = nx - list[0].position.x;
+                foreach (var t in list) if (t != null) t.position += new Vector3(dx, 0f, 0f);
+            }
         }
 
         void BuildOverlay()
@@ -368,6 +409,7 @@ namespace AvatarWorld.Runtime
             }
             _weatherRenderers.Clear();
             _weatherRendererIndex.Clear();
+            _cloudGroups.Clear(); _trainGroups.Clear(); _trainBaseX.Clear();
             _textures.Clear();
             _selectedMap = index;
             for (int i = 0; i < _mapChecks.Count; i++) _mapChecks[i].SetActive(i == index);
@@ -388,6 +430,7 @@ namespace AvatarWorld.Runtime
                 gp.x = Mathf.MoveTowards(gp.x, _globeTargetX, 2400f * Time.unscaledDeltaTime);
                 _globe.anchoredPosition = gp;
             }
+            if (_data != null && !_switching) AnimateWorld();
             if (_opening) return;
             if (!ReadPointer(out bool down, out bool up, out bool held, out Vector2 position)) return;
 

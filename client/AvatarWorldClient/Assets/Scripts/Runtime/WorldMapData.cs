@@ -12,6 +12,8 @@ namespace AvatarWorld.Runtime
         public WorldCameraData camera;
         public List<WorldRendererData> renderers = new List<WorldRendererData>();
         public List<WorldBuildingData> buildings = new List<WorldBuildingData>();
+        /// <summary>Animacoes da cena (nuvens e trem): pontos e tempos exportados; o movimento e do cliente.</summary>
+        public WorldAnimationData animations = new WorldAnimationData();
 
         /// <summary>Menor prédio cuja caixa contém o ponto (prédios menores ficam sobre os grandes).</summary>
         public WorldBuildingData HitTest(Vector2 point)
@@ -45,13 +47,41 @@ namespace AvatarWorld.Runtime
         public bool flipX, flipY;
         /// <summary>WeatherType em que o sprite aparece (LevelSpriteRendererVisibleByWeather); vazio = sempre.</summary>
         public int[] weathers;
+        /// <summary>Id do WorldCloud dono do sprite (0 = nao e nuvem). cloudRain: variante de chuva da nuvem.</summary>
+        public int cloud;
+        public bool cloudRain;
+        /// <summary>Id do WorldTrain dono do sprite (0 = nao e trem).</summary>
+        public int train;
 
         public bool VisibleIn(int weather)
         {
+            // A nuvem tem duas artes: a de ceu limpo some na chuva e a de chuva so aparece nela.
+            if (cloud != 0 && cloudRain != (weather == WorldWeather.Rain)) return false;
             if (weathers == null || weathers.Length == 0) return true;
             foreach (var w in weathers) if (w == weather) return true;
             return false;
         }
+    }
+
+    [Serializable]
+    public sealed class WorldAnimationData
+    {
+        public WorldCloudAnimData clouds = new WorldCloudAnimData();
+        public List<WorldTrainAnimData> trains = new List<WorldTrainAnimData>();
+    }
+
+    [Serializable]
+    public sealed class WorldCloudAnimData
+    {
+        public float startX, endX, minY, maxY;
+        public bool Exists => !Mathf.Approximately(startX, endX);
+    }
+
+    [Serializable]
+    public sealed class WorldTrainAnimData
+    {
+        public int id;
+        public float startX, startY, goX, goY, toGoSeconds, toStartSeconds;
     }
 
     /// <summary>Valores de WeatherType do original usados no mapa (Halloween=8 e Snow_Xmas=7 nao entram).</summary>

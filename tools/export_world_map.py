@@ -50,6 +50,11 @@ def main(argv=None):
     for name in args.externals:
         env.load_file(str(args.scene_dir / name))
     objs = {(o.assets_file.name, o.path_id): o for o in env.objects}
+    level_assets = next(o.assets_file for o in env.objects if o.assets_file.name == args.level)
+
+    def objs_level_externals(ref):
+        return level_assets.externals[ref['m_FileID'] - 1].path
+
     level = args.level
 
     go_active, go_name, go_tr = {}, {}, {}
@@ -122,6 +127,38 @@ def main(argv=None):
         chain.reverse()
         return chain + [(order, -z)]
 
+    # Animacoes do mapa (WorldCloud / WorldCloudsSpawner / WorldTrain): so os dados; o movimento e do cliente.
+    cloud_mbs = load_mb(args.mb, 'PWC.World.WorldCloud', level)
+    cloud_roots = {r['m_GameObject']['m_PathID'] for r in cloud_mbs}
+    rain_pids = {r['_rainSpriteRenderer']['m_PathID'] for r in cloud_mbs if r.get('_rainSpriteRenderer')}
+    clear_pids = {r['_clearSpriteRenderer']['m_PathID'] for r in cloud_mbs if r.get('_clearSpriteRenderer')}
+    # As nuvens do original nascem SEM sprite: o spawner sorteia da lista (clear/rain). Exporta essas listas.
+    cloud_png_dir = args.scene_dir / f'{level}.export.json'
+    cloud_png_dir.mkdir(parents=True, exist_ok=True)
+    cloud_entries = {'clear': [], 'rain': []}
+    for sp_mb in load_mb(args.mb, 'PWC.World.WorldCloudsSpawner', level):
+        for kind, field in (('clear', '_clearCloudSprites'), ('rain', '_rainCloudsSprites')):
+            for i, ref in enumerate(sp_mb.get(field) or []):
+                ext = Path(objs_level_externals(ref)).name
+                o = objs.get((ext, ref['m_PathID']))
+                if o is None:
+                    continue
+                img = o.read().image
+                name = f"{Path(ext).stem}_{ref['m_PathID']}_Cloud_{kind}_{i}"
+                img.save(cloud_png_dir / f'{name}.png')
+                entry = {'file': name, 'size': list(img.size), 'source': {'file': ext, 'path_id': ref['m_PathID']}}
+                exported[(ext, ref['m_PathID'])] = entry
+                cloud_entries[kind].append(entry)
+    train_mbs = load_mb(args.mb, 'PWC.World.WorldTrain', level)
+    train_roots = {r['m_GameObject']['m_PathID'] for r in train_mbs}
+
+    def nearest(gid, roots):
+        while gid:
+            if gid in roots:
+                return gid
+            gid = go_parent.get(gid, 0)
+        return 0
+
     rows, skipped = [], collections.Counter()
     for (f, pid), o in objs.items():
         if f != level or o.type.name != 'SpriteRenderer':
@@ -133,15 +170,20 @@ def main(argv=None):
             sprite_file = level
         else:
             sprite_file = Path(o.assets_file.externals[sp['m_FileID'] - 1].path).name
-        entry = exported.get((sprite_file, sp['m_PathID']))
+        is_cloud = pid in clear_pids or pid in rain_pids
+        if is_cloud and sp['m_PathID'] == 0:
+            pool = cloud_entries['rain' if pid in rain_pids else 'clear']
+            entry = pool[nearest(gid, cloud_roots) % len(pool)] if pool else None
+        else:
+            entry = exported.get((sprite_file, sp['m_PathID']))
         if entry is None:
             skipped['no exported sprite'] += 1
             continue
-        if not d['m_Enabled']:
+        if not d['m_Enabled'] and not is_cloud:
             skipped['renderer disabled'] += 1
             continue
         wx, wy, wz, sx, sy, rot, active = world_of(go_tr[gid])
-        if not active:
+        if not active and not is_cloud:
             skipped['inactive hierarchy'] += 1
             continue
         if under(gid, badge_roots):
@@ -160,7 +202,8 @@ def main(argv=None):
                      'flipX': bool(d['m_FlipX']), 'flipY': bool(d['m_FlipY']), 'drawMode': d['m_DrawMode'],
                      'drawSize': [d['m_Size']['x'], d['m_Size']['y']],
                      # LevelSpriteRendererVisibleByWeather: vazio = sempre visivel; senao so nos climas listados
-                     'weathers': sorted(weather[pid]) if pid in weather else []})
+                     'weathers': sorted(weather[pid]) if pid in weather else [],
+                     'cloud': nearest(gid, cloud_roots), 'cloudRain': pid in rain_pids, 'train': nearest(gid, train_roots)})
 
     # Buildings that ship an under-construction variant ("_UC_") show it instead of the day-mode art
     # (not released in 1.227: construction tape in the original map). Both are active in the static export.
@@ -214,11 +257,24 @@ def main(argv=None):
                           'underConstruction': any(inside(r['go_id'], root) and '_UC' in r['go'] for r in rows),
                           'buildingType': b['_buildingType'], 'defaultLevel': b['_defaultLevelType'],
                           'moreLevels': b.get('_moreValidLevelTypes') or [], 'isFree': b['_isFree']})
-    out = {'level': level, 'weather': args.weather, 'camera': {'orthoSize': 5.12},
+    def pos(tr_ref):
+        w = world_of(tr_ref['m_PathID'])
+        return w[0], w[1]
+
+    animations = {'clouds': None, 'trains': []}
+    for r in load_mb(args.mb, 'PWC.World.WorldCloudsSpawner', level):
+        sx, sy = world_of(go_tr[r['m_GameObject']['m_PathID']])[:2]
+        ex, ey = pos(r['_endPoint'])
+        animations['clouds'] = {'startX': sx, 'endX': ex, 'minY': r['_minYPosition'], 'maxY': r['_maxYPosition']}
+    for r in train_mbs:
+        gx, gy = pos(r['_goToPos']); sx, sy = pos(r['_startPos'])
+        animations['trains'].append({'id': r['m_GameObject']['m_PathID'], 'startX': sx, 'startY': sy, 'goX': gx, 'goY': gy,
+                                     'toGoSeconds': r['_goToGoToPosTime'], 'toStartSeconds': r['_goToInitialPosTime']})
+    out = {'level': level, 'weather': args.weather, 'camera': {'orthoSize': 5.12}, 'animations': animations,
            'renderers': rows, 'buildings': buildings, 'skipped': dict(skipped)}
     path = args.output or args.scene_dir / f'{level}_world.json'
     path.write_text(json.dumps(out))
-    print(f'{len(rows)} renderers, {len(buildings)} buildings, skipped {dict(skipped)} -> {path}')
+    print(f'{sum(1 for r in rows if r["cloud"])} sprites de nuvem, {sum(1 for r in rows if r["train"])} de trem;', f'{len(rows)} renderers, {len(buildings)} buildings, skipped {dict(skipped)} -> {path}')
 
 
 if __name__ == '__main__':
