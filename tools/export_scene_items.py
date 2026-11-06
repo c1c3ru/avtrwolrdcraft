@@ -60,14 +60,21 @@ def main(argv=None):
             r = json.loads(l)
             r['_kind'] = cls.split('.')[-1]
             areas_mb[r['_file']].append(r)
+    und_mb = defaultdict(list)
+    for cls in ('PWC.Level.LevelUndroppableArea', 'PWC.Level.LevelNonCharacterUndroppableArea'):
+        for l in gzip.open(args.mb / f'{cls}.jsonl.gz', 'rt'):
+            r = json.loads(l)
+            r['_kind'] = cls.split('.')[-1]
+            und_mb[r['_file']].append(r)
     result = {}
     for entry in json.loads(args.map.read_text()):
         level = f"level{entry['buildIndex']}"
         if args.only and level not in args.only:
             continue
         items, areas = items_mb.get(level, []), areas_mb.get(level, [])
-        if not items and not areas:
-            result[level] = {'items': [], 'dropAreas': []}
+        unds = und_mb.get(level, [])
+        if not items and not areas and not unds:
+            result[level] = {'items': [], 'dropAreas': [], 'undroppable': []}
             continue
         env = UnityPy.load(str(args.scene_dir / level))
         tr, go_tr, names, active, polys = {}, {}, {}, {}, defaultdict(list)
@@ -167,7 +174,27 @@ def main(argv=None):
                                           'maxW': r['_maxItemsWidth'], 'maxH': r['_maxItemsHeight'],
                                           'canConsumeCharacters': bool(r['_canConsumeCharacters']), 'kind': r['_kind'], 'entityGo': owner.get(gid, 0),
                                           'poly': pts})
-        result[level] = {'items': out_items, 'dropAreas': out_areas}
+        out_unds = []
+        for r in unds:
+            gid = r['m_GameObject']['m_PathID']
+            if gid not in go_tr or not chain_active(gid) or gid not in polys or not r['m_Enabled']:
+                continue
+            x, y, sx, sy, rot = world(go_tr[gid])
+            c, sn = math.cos(rot), math.sin(rot)
+            for col in polys[gid]:
+                off = col.get('m_Offset', {'x': 0, 'y': 0})
+                for path in col['m_Points']['m_Paths']:
+                    pts = []
+                    for p in path:
+                        lx, ly = (p['x'] + off['x']) * sx, (p['y'] + off['y']) * sy
+                        pts.extend([round(x + c * lx - sn * ly, 4), round(y + sn * lx + c * ly, 4)])
+                    if len(pts) >= 6:
+                        out_unds.append({'go': names.get(gid, ''), 'kind': r['_kind'], 'priority': r['_sortPriority'],
+                                         'minItemsHeight': r['_minItemsHeight'],
+                                         'dontAllowForgivingTest': bool(r['_dontAllowForgivingTest']),
+                                         'dontAffectIfItemIsHigher': bool(r['_dontAffectIfItemIsHigher']),
+                                         'entityGo': owner.get(gid, 0), 'poly': pts})
+        result[level] = {'items': out_items, 'dropAreas': out_areas, 'undroppable': out_unds}
         print(level, entry['name'], len(out_items), 'items', len(out_areas), 'drop-area polygons')
     args.output.write_text(json.dumps(result, separators=(',', ':')))
 

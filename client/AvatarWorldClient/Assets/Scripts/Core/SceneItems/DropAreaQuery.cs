@@ -15,8 +15,17 @@ namespace AvatarWorld.Core.SceneItems
     /// Area de soltar (LevelDropArea e subclasses): poligono do PolygonCollider2D em espaco do mundo.
     /// Campos de LevelDropArea: _sortPriority, _maxItemsHeight, _maxItemsWidth.
     /// </summary>
-    public sealed class DropArea
+    /// <summary>ILevelConsumer: o que CompareConsumers lê (GetSortPriority e GetEntity).</summary>
+    public interface IConsumer
     {
+        int Priority { get; }
+        int EntityOrder { get; }
+    }
+
+    public sealed class DropArea : IConsumer
+    {
+        int IConsumer.Priority => Priority;
+        int IConsumer.EntityOrder => EntityOrder;
         public float[] Poly;
         public int Priority;
         public string Name;
@@ -118,7 +127,7 @@ namespace AvatarWorld.Core.SceneItems
     /// - Sob o ponteiro (IsDroppableUnderItem): ponto dentro do poligono; a ordem vem de SortDropAreas (aqui: prioridade).
     /// - Queda (GetDropAreaToFallOn): entre as areas que passam, a de MENOR distancia vertical do raio para baixo
     ///   (position.y - hit.y &lt; melhor); nao usa prioridade.
-    /// Nao reproduzido: LevelUndroppableArea, CanItemFallOnDropArea com consumidor, bloqueio por entidade,
+    /// Areas nao-dropaveis: ver UndroppableAreaQuery. Nao reproduzido: bloqueio por entidade (IsEntityBlockingDropArea),
     /// orientacao do item, CanConsumeItem das subclasses.
     /// </summary>
     public static class DropAreaQuery
@@ -145,7 +154,7 @@ namespace AvatarWorld.Core.SceneItems
         /// maior _sortPriority primeiro; so um com entidade, ele primeiro; os dois com entidade, maior ordem de desenho
         /// (SortingElement.GetSortingOrderForY) primeiro e, empatando, maior prioridade.
         /// </summary>
-        public static int CompareConsumers(DropArea a, DropArea b)
+        public static int CompareConsumers(IConsumer a, IConsumer b)
         {
             bool ea = a.EntityOrder >= 0, eb = b.EntityOrder >= 0;
             if (!ea && !eb) return b.Priority.CompareTo(a.Priority);
@@ -182,6 +191,14 @@ namespace AvatarWorld.Core.SceneItems
 
         /// <summary>Area onde o item cai a partir de (x,y) (GetDropAreaToFallOn); hitY = y da superficie.</summary>
         public static DropArea FallOn(IList<DropArea> areas, DropItem item, float x, float y, out float hitY)
+            => FallOn(areas, null, item, x, y, out hitY);
+
+        /// <summary>
+        /// Como FallOn, e CanItemFallOnDropArea (0x2354b5c): uma area com entidade nao recebe o item se o ponto de pouso
+        /// esta dentro de uma area nao-dropavel que passa nos testes basicos, e' pelo menos tao alta quanto o item e
+        /// vem antes da area em CompareConsumers.
+        /// </summary>
+        public static DropArea FallOn(IList<DropArea> areas, IList<UndroppableArea> undroppable, DropItem item, float x, float y, out float hitY)
         {
             DropArea best = null;
             float bestDist = float.MaxValue;
@@ -192,6 +209,7 @@ namespace AvatarWorld.Core.SceneItems
                 if (!a.RayDown(x, y, a.IsFloor, out float hy)) continue;
                 float dist = y - hy;
                 if (dist >= bestDist) continue;
+                if (undroppable != null && !UndroppableAreaQuery.CanItemFallOn(a, undroppable, item, x, hy)) continue;
                 bestDist = dist; best = a; hitY = hy;
             }
             return best;

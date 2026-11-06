@@ -4,7 +4,8 @@
 Source: this branch's Resources/Scenes/<Name>/scene.json (dropAreas exported by export_scene_items.py from the
 original PolygonCollider2D + LevelDropArea fields). Coordinates are the same world space as Interiors/<key>/<key>.json.
 The interior renderer list comes from a git ref (default origin/maps-animations-lfs), so no PNG/Resources of #16 is
-needed here. Output = {"areas":[{go, kind, priority, maxW, maxH, entityOrder, poly}]}, a small text file per interior.
+needed here. Output = {"areas":[{go, kind, priority, maxW, maxH, entityOrder, poly}], "undroppable":[{go, kind, priority,
+  minItemsHeight, dontAllowForgivingTest, dontAffectIfItemIsHigher, entityOrder, poly}]}, a small text file per interior.
 
   go            GameObject name of the LevelDropArea
   kind          class name (LevelDropArea, LevelFloorArea, LevelSingleItemDropArea, ...)
@@ -61,6 +62,16 @@ def main(argv=None):
                 if hit:
                     idx = hit.pop(0)
                     item_last[r['item']] = max(item_last.get(r['item'], -1), idx)
+        def entity_order(a):
+            if a['entityOrder'] < 0:
+                return -1
+            owner = by_rank.get(a['entityOrder'], {}).get('item', -1)
+            return item_last.get(owner, -1)
+
+        unds = [{'go': a['go'], 'kind': a['kind'], 'priority': a['priority'], 'minItemsHeight': a['minItemsHeight'],
+                 'dontAllowForgivingTest': a['dontAllowForgivingTest'],
+                 'dontAffectIfItemIsHigher': a['dontAffectIfItemIsHigher'], 'entityOrder': entity_order(a),
+                 'poly': a['poly']} for a in scene.get('undroppable', [])]
         areas = []
         for a in scene['dropAreas']:
             order = -1
@@ -69,7 +80,7 @@ def main(argv=None):
                 order = item_last.get(owner, -1)
             areas.append({'go': a['go'], 'kind': a['kind'], 'priority': a['priority'], 'maxW': a['maxW'],
                           'maxH': a['maxH'], 'entityOrder': order, 'poly': a['poly']})
-        (args.out / f'{key}_dropareas.json').write_text(json.dumps({'areas': areas}, separators=(',', ':')))
+        (args.out / f'{key}_dropareas.json').write_text(json.dumps({'areas': areas, 'undroppable': unds}, separators=(',', ':')))
         total += len(areas)
         print(f'{key:30} {len(areas):4} areas, {sum(1 for x in areas if x["entityOrder"] >= 0):3} com entidade')
     print('total', total, 'areas em', len(entries), 'interiores ->', args.out)

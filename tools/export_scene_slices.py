@@ -123,7 +123,13 @@ def main(argv=None):
             ent = by_go.get(a.pop('entityGo', 0))
             a['entityOrder'] = item_order[old_to_new[ent]] if ent is not None and ent in old_to_new else -1
             areas_out.append(a)
-        scene = {'name': name, 'items': items_out, 'dropAreas': areas_out, 'levelType': entry['levelType'], 'orthoSize': data['camera'].get('orthoSize', 5.12),
+        unds_out = []
+        for a in scene_items.get('undroppable', []):
+            a = dict(a)
+            ent = by_go.get(a.pop('entityGo', 0))
+            a['entityOrder'] = item_order[old_to_new[ent]] if ent is not None and ent in old_to_new else -1
+            unds_out.append(a)
+        scene = {'name': name, 'items': items_out, 'dropAreas': areas_out, 'undroppable': unds_out, 'levelType': entry['levelType'], 'orthoSize': data['camera'].get('orthoSize', 5.12),
                  'minX': minx, 'maxX': maxx, 'minY': miny, 'maxY': maxy, 'renderers': rend, 'spines': spine_rows}
         (out_root / name / 'scene.json').write_text(json.dumps(scene, separators=(',', ':')))
         total_sprites += len(used)
