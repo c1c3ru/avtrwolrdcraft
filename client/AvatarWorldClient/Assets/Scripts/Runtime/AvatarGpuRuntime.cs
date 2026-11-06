@@ -95,6 +95,8 @@ namespace AvatarWorld.Runtime
         Action _onClose;
         bool _useSharedState;
         bool _embeddedWorldAvatar;
+        /// <summary>Ordem de desenho do avatar quando embutido numa cena (padrao 4: quadra de basquete).</summary>
+        public int EmbeddedSortingOrder = 4;
         Vector3 _worldPosition;
         float _worldScale = 1f;
         AvatarAppearance Appearance => _playerState.Appearance;

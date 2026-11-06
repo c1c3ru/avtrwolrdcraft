@@ -109,6 +109,7 @@ namespace AvatarWorld.Runtime
             if (FindFirstObjectByType<WorldMapRuntime>() != null) return;
             var host = new GameObject("WorldMap");
             _worldMap = host.AddComponent<WorldMapRuntime>();
+            _worldMap.OnOpenLevel = OpenSceneSlice;
             LoadingScreen.Show();
             _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f), OpenAvatarSlots, OpenInterior);
         }
