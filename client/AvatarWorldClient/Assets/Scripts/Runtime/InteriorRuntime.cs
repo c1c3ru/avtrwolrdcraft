@@ -78,6 +78,7 @@ namespace AvatarWorld.Runtime
                 sr.flipY = r.flipY != (r.sy < 0f);
                 sr.color = new Color(r.color[0], r.color[1], r.color[2], r.color[3]);
             }
+            foreach (var spine in _data.animations?.spines ?? new List<WorldSpineData>()) MapSpineLayer.Create(transform, spine, _camera);
             Debug.Log("Interior: " + _data.renderers.Count + " elementos");
         }
 

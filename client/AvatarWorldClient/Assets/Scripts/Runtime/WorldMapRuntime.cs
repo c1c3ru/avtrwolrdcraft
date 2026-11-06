@@ -39,6 +39,15 @@ namespace AvatarWorld.Runtime
         int _weather;
         readonly List<SpriteRenderer> _weatherRenderers = new List<SpriteRenderer>();
         readonly List<int> _weatherRendererIndex = new List<int>();
+        // Grupos animados: todos os sprites de uma nuvem (clara + chuva) / de um trem andam juntos.
+        readonly Dictionary<int, List<Transform>> _cloudGroups = new Dictionary<int, List<Transform>>();
+        readonly Dictionary<int, List<Transform>> _trainGroups = new Dictionary<int, List<Transform>>();
+        readonly Dictionary<int, float> _trainBaseX = new Dictionary<int, float>();
+        // Tonalidade por hora do dia: sprites/esqueletos com ColorByTimeOfDay; a cor base e multiplicada pela tinta atual.
+        readonly List<(SpriteRenderer renderer, Color baseColor, int tint)> _tinted = new List<(SpriteRenderer, Color, int)>();
+        readonly List<(MapSpineLayer layer, int tint)> _tintedSpines = new List<(MapSpineLayer, int)>();
+        float _nextTintCheck;
+        int _lastTintMinute = -1;
         readonly List<RectTransform> _uiRects = new List<RectTransform>();
         readonly Dictionary<int, RectTransform> _weatherIcons = new Dictionary<int, RectTransform>();
         RectTransform _weatherPill;
@@ -97,6 +106,7 @@ namespace AvatarWorld.Runtime
             _camera.clearFlags = CameraClearFlags.SolidColor;
             _camera.backgroundColor = new Color(0.97f, 0.78f, 0.82f);
             _camera.transform.position = new Vector3(ClampX(_data.camera.startX), _data.camera.startY, -10f);
+            SkyBackground.Attach(_camera, () => _weather); // gradiente do BackgroundSky; sem sky.json fica a cor lisa
         }
 
         float HalfWidth => _camera.orthographicSize * _camera.aspect;
@@ -138,15 +148,84 @@ namespace AvatarWorld.Runtime
                 renderer.flipX = r.flipX != (r.sx < 0f);
                 renderer.flipY = r.flipY != (r.sy < 0f);
                 renderer.color = new Color(r.color[0], r.color[1], r.color[2], r.color[3]);
-                if (r.weathers != null && r.weathers.Length > 0)
+                if (r.tint != 0) _tinted.Add((renderer, renderer.color, r.tint));
+                if (r.cloud != 0) Group(_cloudGroups, r.cloud).Add(go.transform);
+                if (r.train != 0)
+                {
+                    Group(_trainGroups, r.train).Add(go.transform);
+                    if (!_trainBaseX.ContainsKey(r.train)) _trainBaseX[r.train] = r.x;
+                }
+                if ((r.weathers != null && r.weathers.Length > 0) || r.cloud != 0)
                 {
                     _weatherRenderers.Add(renderer);
                     _weatherRendererIndex.Add(built - 1);
                 }
             }
             ApplyWeather(_weather);
+            foreach (var spine in _data.animations?.spines ?? new List<WorldSpineData>())
+            {
+                var layer = MapSpineLayer.Create(transform, spine, _camera);
+                if (layer != null && spine.tint != 0) _tintedSpines.Add((layer, spine.tint));
+            }
+            ApplyTimeOfDay(force: true);
+            int carLayer = 0;
+            foreach (var cars in _data.animations?.cars ?? new List<WorldCarsData>())
+                new GameObject("Cars_" + carLayer).AddComponent<MapCarsLayer>().Begin(transform, cars, 1000 + carLayer++);
             Debug.Log("WorldMap: " + _data.renderers.Count + " elementos, " + _data.buildings.Count + " predios");
             onReady?.Invoke();
+        }
+
+        /// <summary>Aplica a tinta da hora atual (dia/por do sol/noite) aos sprites e esqueletos marcados.</summary>
+        void ApplyTimeOfDay(bool force = false)
+        {
+            if (_tinted.Count == 0 && _tintedSpines.Count == 0) return;
+            var now = DateTime.Now;
+            int minute = now.Hour * 60 + now.Minute;
+            if (!force && minute == _lastTintMinute) return;
+            _lastTintMinute = minute;
+            var table = new Dictionary<int, Color>();
+            foreach (var t in _data.animations?.tints ?? new List<WorldTintData>())
+            {
+                var c = TimeOfDayTint.At(now.Hour + now.Minute / 60f, ToSky(t.day), ToSky(t.sunset), ToSky(t.night));
+                table[t.id] = new Color(c.R, c.G, c.B, c.A);
+            }
+            foreach (var (renderer, baseColor, tint) in _tinted)
+                if (renderer != null && table.TryGetValue(tint, out var c)) renderer.color = baseColor * c;
+            foreach (var (layer, tint) in _tintedSpines)
+                if (layer != null && table.TryGetValue(tint, out var c)) layer.SetColor(c);
+        }
+
+        static SkyColor ToSky(float[] c) => c != null && c.Length >= 4 ? new SkyColor(c[0], c[1], c[2], c[3]) : new SkyColor(1f, 1f, 1f, 1f);
+
+        static List<Transform> Group(Dictionary<int, List<Transform>> groups, int id)
+        {
+            if (!groups.TryGetValue(id, out var list)) groups[id] = list = new List<Transform>();
+            return list;
+        }
+
+        /// <summary>Nuvens derivam ate o ponto final do spawner e voltam ao inicial; o trem repete chegada/parada/saida.</summary>
+        void AnimateWorld()
+        {
+            var cloud = _data.animations?.clouds;
+            if (cloud != null && cloud.Exists)
+            {
+                foreach (var pair in _cloudGroups)
+                {
+                    var list = pair.Value;
+                    if (list.Count == 0 || list[0] == null) continue;
+                    float x = list[0].position.x;
+                    float nx = WorldAnimation.AdvanceCloud(x, Time.deltaTime, WorldAnimation.CloudSpeed(pair.Key), cloud.startX, cloud.endX);
+                    foreach (var t in list) if (t != null) t.position += new Vector3(nx - x, 0f, 0f);
+                }
+            }
+            foreach (var train in _data.animations?.trains ?? new List<WorldTrainAnimData>())
+            {
+                if (!_trainGroups.TryGetValue(train.id, out var list) || list.Count == 0 || list[0] == null) continue;
+                float station = _trainBaseX[train.id];
+                float nx = WorldAnimation.TrainX(Time.time, train.startX, station, train.goX, train.toStartSeconds, train.toGoSeconds);
+                float dx = nx - list[0].position.x;
+                foreach (var t in list) if (t != null) t.position += new Vector3(dx, 0f, 0f);
+            }
         }
 
         void BuildOverlay()
@@ -362,12 +441,13 @@ namespace AvatarWorld.Runtime
             for (int i = transform.childCount - 1; i >= 0; i--)
             {
                 var child = transform.GetChild(i).gameObject;
-                if (child.GetComponent<SpriteRenderer>() == null) continue;
+                if (child.GetComponent<SpriteRenderer>() == null && child.GetComponent<MapSpineLayer>() == null && child.GetComponent<MapCarsLayer>() == null) continue;
                 child.SetActive(false);
                 Destroy(child);
             }
             _weatherRenderers.Clear();
             _weatherRendererIndex.Clear();
+            _cloudGroups.Clear(); _trainGroups.Clear(); _trainBaseX.Clear(); _tinted.Clear(); _tintedSpines.Clear(); _lastTintMinute = -1;
             _textures.Clear();
             _selectedMap = index;
             for (int i = 0; i < _mapChecks.Count; i++) _mapChecks[i].SetActive(i == index);
@@ -388,6 +468,8 @@ namespace AvatarWorld.Runtime
                 gp.x = Mathf.MoveTowards(gp.x, _globeTargetX, 2400f * Time.unscaledDeltaTime);
                 _globe.anchoredPosition = gp;
             }
+            if (_data != null && !_switching) AnimateWorld();
+            if (Time.unscaledTime >= _nextTintCheck) { _nextTintCheck = Time.unscaledTime + 5f; ApplyTimeOfDay(); }
             if (_opening) return;
             if (!ReadPointer(out bool down, out bool up, out bool held, out Vector2 position)) return;
 
