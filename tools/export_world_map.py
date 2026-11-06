@@ -159,6 +159,17 @@ def main(argv=None):
             gid = go_parent.get(gid, 0)
         return 0
 
+    # Tonalidade por hora do dia (LitSpriteByTimeOfDayRenderer / LitSpineByTimeOfDay -> ColorByTimeOfDay: dia/por do sol/noite).
+    tint_of = {}
+    for cls in ('PWC.LightSystem.LitSpriteByTimeOfDayRenderer', 'PWC.LightSystem.LitSpineByTimeOfDay',
+                'PWC.LightSystem.LitRendererByTimeOfDay'):
+        if not (args.mb / f'{cls}.jsonl.gz').exists():
+            continue
+        for rec in load_mb(args.mb, cls, level):
+            ref = rec.get('_colorByTimeOfDay')
+            if ref and ref['m_PathID']:
+                tint_of[rec['m_GameObject']['m_PathID']] = ref['m_PathID']
+
     rows, skipped = [], collections.Counter()
     for (f, pid), o in objs.items():
         if f != level or o.type.name != 'SpriteRenderer':
@@ -203,7 +214,8 @@ def main(argv=None):
                      'drawSize': [d['m_Size']['x'], d['m_Size']['y']],
                      # LevelSpriteRendererVisibleByWeather: vazio = sempre visivel; senao so nos climas listados
                      'weathers': sorted(weather[pid]) if pid in weather else [],
-                     'cloud': nearest(gid, cloud_roots), 'cloudRain': pid in rain_pids, 'train': nearest(gid, train_roots)})
+                     'cloud': nearest(gid, cloud_roots), 'cloudRain': pid in rain_pids, 'train': nearest(gid, train_roots),
+                     'tint': tint_of.get(gid, 721805 if nearest(gid, cloud_roots) else 0)})  # 721805 = 'Clouds' (prefab das nuvens)
 
     # Buildings that ship an under-construction variant ("_UC_") show it instead of the day-mode art
     # (not released in 1.227: construction tape in the original map). Both are active in the static export.
@@ -283,7 +295,7 @@ def main(argv=None):
         cam = nearest(gid, cam_gids)  # filho da WorldCamera: acompanha a tela (offset = posicao - camera na cena)
         cx, cy = world_of(go_tr[cam])[:2] if cam else (0.0, 0.0)
         animations['spines'].append({'skeleton': name, 'x': wx, 'y': wy, 'z': wz, 'sx': sx, 'sy': sy, 'loop': bool(rec['loop']),
-                                     'followCamera': bool(cam), 'offsetX': wx - cx, 'offsetY': wy - cy,
+                                     'followCamera': bool(cam), 'offsetX': wx - cx, 'offsetY': wy - cy, 'tint': tint_of.get(gid, 0),
                                      'animation': rec.get('_animationName') or '', 'sortPath': sort_path(gid, mesh_order.get(gid, 0), wz)})
     for r in load_mb(args.mb, 'PWC.World.WorldCloudsSpawner', level):
         sx, sy = world_of(go_tr[r['m_GameObject']['m_PathID']])[:2]
@@ -307,6 +319,13 @@ def main(argv=None):
         animations['cars'].append({'cars': list(ctrl['_carsIndexes']), 'count': ctrl['NumberOfCars'], 'speed': ctrl['_speed'],
                                    'spawn': list(ctrl['_spawnPositionsIndexes']), 'points': points,
                                    'sortPath': sort_path(cgid, ctrl['_sortingOrder'], world_of(go_tr[cgid])[2])})
+    used = {r['tint'] for r in rows if r['tint']} | {sp['tint'] for sp in animations['spines'] if sp['tint']}
+    tints = []
+    for rec in (json.loads(l) for l in gzip.open(args.mb / 'PWC.ColorByTimeOfDay.jsonl.gz', 'rt')):
+        if rec['_path_id'] in used:
+            c = lambda k: [rec[k]['r'], rec[k]['g'], rec[k]['b'], rec[k]['a']]
+            tints.append({'id': rec['_path_id'], 'name': rec['m_Name'], 'day': c('DayColor'), 'sunset': c('SunsetColor'), 'night': c('NightColor')})
+    animations['tints'] = tints
     out = {'level': level, 'weather': args.weather, 'camera': {'orthoSize': 5.12}, 'animations': animations,
            'renderers': rows, 'buildings': buildings, 'skipped': dict(skipped)}
     path = args.output or args.scene_dir / f'{level}_world.json'

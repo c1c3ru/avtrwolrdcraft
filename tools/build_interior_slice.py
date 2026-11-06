@@ -65,7 +65,8 @@ def main():
         renderers.append({"sprite": name, "go": r["go"], "x": r["x"], "y": r["y"], "z": r["z"], "sx": r["sx"], "sy": r["sy"],
                           "rot": r["rot"], "rank": rank, "color": r["color"], "flipX": r["flipX"], "flipY": r["flipY"],
                           "pivotX": r["pivot"][0], "pivotY": r["pivot"][1], "ppu": r["ppu"], "weathers": r["weathers"],
-                          "cloud": r.get("cloud", 0), "cloudRain": r.get("cloudRain", False), "train": r.get("train", 0)})
+                          "cloud": r.get("cloud", 0), "cloudRain": r.get("cloudRain", False), "train": r.get("train", 0),
+                          "tint": r.get("tint", 0)})
     buildings = [{"name": b["name"], "x0": b["bounds"][0], "y0": b["bounds"][1], "x1": b["bounds"][2], "y1": b["bounds"][3],
                   "defaultLevel": b["defaultLevel"], "buildingType": b["buildingType"]}
                  for b in world.get("buildings", []) if b.get("bounds")]
@@ -75,7 +76,7 @@ def main():
             continue
         spines.append({"skeleton": sp["skeleton"], "x": sp["x"], "y": sp["y"], "sx": sp["sx"], "sy": sp["sy"], "rank": ranks[id(sp)],
                        "loop": sp["loop"], "animation": sp["animation"], "followCamera": sp["followCamera"],
-                       "offsetX": sp["offsetX"], "offsetY": sp["offsetY"]})
+                       "offsetX": sp["offsetX"], "offsetY": sp["offsetY"], "tint": sp.get("tint", 0)})
     data = {"camera": {"orthoSize": 5.12, "startX": round((left + right) / 2, 2), "startY": 0.12,
                        "minX": round(left, 2), "maxX": round(right, 2)},
             "renderers": renderers, "buildings": buildings, "animations": {**{"clouds": None, "trains": []}, **{k: v for k, v in (world.get("animations") or {}).items() if k not in ("spines", "cars")}, "spines": spines,
