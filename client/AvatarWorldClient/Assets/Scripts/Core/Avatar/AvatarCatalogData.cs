@@ -570,6 +570,20 @@ namespace AvatarWorld.Core.Avatar
             "shirt_special_570",
             "shirt_special_571",
             "shirt_special_572",
+            "shirt_special_919",
+            "shirt_special_918",
+            "shirt_special_917",
+            "shirt_special_912",
+            "shirt_special_913",
+            "shirt_special_914",
+            "shirt_special_1056",
+            "shirt_special_1058",
+            "shirt_special_1057",
+            "shirt_special_1059",
+            "shirt_special_1121",
+            "shirt_special_1122",
+            "shirt_special_1124",
+            "shirt_special_1123",
         };
 
         public static readonly string[] Bottom =
@@ -1099,6 +1113,17 @@ namespace AvatarWorld.Core.Avatar
             "bottom_special_529",
             "bottom_special_530",
             "bottom_special_531",
+            "bottom_special_836",
+            "bottom_special_837",
+            "bottom_special_838",
+            "bottom_special_999",
+            "bottom_special_1001",
+            "bottom_special_1000",
+            "bottom_special_1002",
+            "bottom_special_1025",
+            "bottom_special_1026",
+            "bottom_special_1028",
+            "bottom_special_1027",
         };
 
         public static readonly string[] Shoes =
@@ -1737,6 +1762,23 @@ namespace AvatarWorld.Core.Avatar
             "legs_shoes_679",
             "legs_shoes_682",
             "legs_shoes_683",
+            "legs_shoes_1056",
+            "legs_shoes_1057",
+            "legs_shoes_1058",
+            "legs_shoes_1245",
+            "legs_shoes_1244",
+            "legs_shoes_1249",
+            "legs_shoes_1248",
+            "legs_shoes_1247",
+            "legs_shoes_1246",
+            "legs_shoes_1251",
+            "legs_shoes_1250",
+            "legs_shoes_1279",
+            "legs_shoes_1278",
+            "legs_shoes_1281",
+            "legs_shoes_1280",
+            "legs_shoes_1283",
+            "legs_shoes_1282",
         };
 
         public static readonly string[] Accessory =
@@ -2192,6 +2234,22 @@ namespace AvatarWorld.Core.Avatar
             "accessories_body_neck_240",
             "accessories_body_neck_241",
             "accessories_face_glasses_247",
+            "accessories_body_neck_370",
+            "accessories_body_neck_371",
+            "accessories_body_neck_372",
+            "accessories_face_glasses_419",
+            "accessories_face_glasses_420",
+            "accessories_face_glasses_421",
+            "accessories_body_neck_470",
+            "accessories_body_neck_472",
+            "accessories_body_neck_469",
+            "accessories_body_neck_471",
+            "accessories_body_neck_468",
+            "accessories_body_neck_473",
+            "accessories_face_glasses_430",
+            "accessories_body_neck_482",
+            "accessories_face_glasses_429",
+            "accessories_face_glasses_431",
         };
 
         public static readonly string[] Mouth =
@@ -2296,6 +2354,12 @@ namespace AvatarWorld.Core.Avatar
             "mouth_106",
             "mouth_107",
             "mouth_108",
+            "mouth_154",
+            "mouth_155",
+            "mouth_157",
+            "mouth_156",
+            "mouth_167",
+            "mouth_168",
         };
 
         public static readonly string[] Eyebrows =
@@ -2479,6 +2543,18 @@ namespace AvatarWorld.Core.Avatar
             "hair_back_98_color",
             "hair_back_99_color",
             "hair_back_104_color",
+            "hair_back_117_color",
+            "hair_back_116_color",
+            "hair_back_115_color",
+            "hair_back_197_color",
+            "hair_back_199_color",
+            "hair_back_198_color",
+            "hair_back_200_color",
+            "hair_back_205_color",
+            "hair_back_206_color",
+            "hair_back_208_color",
+            "hair_back_207_color",
+            "hair_back_209_color",
         };
 
         public static readonly string[] Hair =
