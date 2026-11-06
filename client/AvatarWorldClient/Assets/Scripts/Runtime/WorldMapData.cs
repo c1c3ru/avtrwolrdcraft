@@ -12,6 +12,8 @@ namespace AvatarWorld.Runtime
         public WorldCameraData camera;
         public List<WorldRendererData> renderers = new List<WorldRendererData>();
         public List<WorldBuildingData> buildings = new List<WorldBuildingData>();
+        /// <summary>Animacoes da cena (nuvens e trem): pontos e tempos exportados; o movimento e do cliente.</summary>
+        public WorldAnimationData animations = new WorldAnimationData();
 
         /// <summary>Menor prédio cuja caixa contém o ponto (prédios menores ficam sobre os grandes).</summary>
         public WorldBuildingData HitTest(Vector2 point)
@@ -45,13 +47,83 @@ namespace AvatarWorld.Runtime
         public bool flipX, flipY;
         /// <summary>WeatherType em que o sprite aparece (LevelSpriteRendererVisibleByWeather); vazio = sempre.</summary>
         public int[] weathers;
+        /// <summary>Id do WorldCloud dono do sprite (0 = nao e nuvem). cloudRain: variante de chuva da nuvem.</summary>
+        public int cloud;
+        public bool cloudRain;
+        /// <summary>Id do WorldTrain dono do sprite (0 = nao e trem).</summary>
+        public int train;
+        /// <summary>Id do ColorByTimeOfDay que tinge o sprite por hora do dia (0 = sem tinta).</summary>
+        public int tint;
 
         public bool VisibleIn(int weather)
         {
+            // A nuvem tem duas artes: a de ceu limpo some na chuva e a de chuva so aparece nela.
+            if (cloud != 0 && cloudRain != (weather == WorldWeather.Rain)) return false;
             if (weathers == null || weathers.Length == 0) return true;
             foreach (var w in weathers) if (w == weather) return true;
             return false;
         }
+    }
+
+    [Serializable]
+    public sealed class WorldAnimationData
+    {
+        public WorldCloudAnimData clouds = new WorldCloudAnimData();
+        public List<WorldTrainAnimData> trains = new List<WorldTrainAnimData>();
+        public List<WorldSpineData> spines = new List<WorldSpineData>();
+        public List<WorldCarsData> cars = new List<WorldCarsData>();
+        public List<WorldTintData> tints = new List<WorldTintData>();
+    }
+
+    /// <summary>ColorByTimeOfDay do original: cor (RGBA) de dia, por do sol e noite.</summary>
+    [Serializable]
+    public sealed class WorldTintData
+    {
+        public int id;
+        public string name;
+        public float[] day = { 1f, 1f, 1f, 1f }, sunset = { 1f, 1f, 1f, 1f }, night = { 1f, 1f, 1f, 1f };
+    }
+
+    /// <summary>Um WorldCarsController: rede de estrada, carros usados (cars/car&lt;N&gt;), quantos e a ordem de desenho.</summary>
+    [Serializable]
+    public sealed class WorldCarsData
+    {
+        public int[] cars = new int[0];
+        public int count, rank;
+        public float speed;
+        public int[] spawn = new int[0];
+        public List<WorldRoadPointData> points = new List<WorldRoadPointData>();
+    }
+
+    [Serializable]
+    public sealed class WorldRoadPointData
+    {
+        public float x, y;
+        public int[] next = new int[0];
+    }
+
+    /// <summary>Esqueleto Spine da cena (Resources/MapSpine/&lt;skeleton&gt;/). followCamera: filho da WorldCamera no original.</summary>
+    [Serializable]
+    public sealed class WorldSpineData
+    {
+        public string skeleton, animation;
+        public float x, y, sx = 1f, sy = 1f, offsetX, offsetY;
+        public int rank, tint;
+        public bool loop = true, followCamera;
+    }
+
+    [Serializable]
+    public sealed class WorldCloudAnimData
+    {
+        public float startX, endX, minY, maxY;
+        public bool Exists => !Mathf.Approximately(startX, endX);
+    }
+
+    [Serializable]
+    public sealed class WorldTrainAnimData
+    {
+        public int id;
+        public float startX, startY, goX, goY, toGoSeconds, toStartSeconds;
     }
 
     /// <summary>Valores de WeatherType do original usados no mapa (Halloween=8 e Snow_Xmas=7 nao entram).</summary>
