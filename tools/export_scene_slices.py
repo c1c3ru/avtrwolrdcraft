@@ -110,7 +110,20 @@ def main(argv=None):
         items_out = [{'go': scene_items['items'][i]['go'], 'x': scene_items['items'][i]['x'],
                       'y': scene_items['items'][i]['y'], 'bottomWidth': scene_items['items'][i]['bottomWidth']}
                      for i in sorted(used_items)]
-        scene = {'name': name, 'items': items_out, 'dropAreas': scene_items['dropAreas'], 'levelType': entry['levelType'], 'orthoSize': data['camera'].get('orthoSize', 5.12),
+        # ordem de desenho do item = maior rank dos seus sprites (aproxima SortingElement.GetSortingOrderForY)
+        item_order = {}
+        by_go = {it['goId']: i for i, it in enumerate(scene_items['items'])}
+        for row in rend:
+            if 'item' in row:
+                item_order[row['item']] = max(item_order.get(row['item'], -1), row['rank'])
+        old_to_new = remap
+        areas_out = []
+        for a in scene_items['dropAreas']:
+            a = dict(a)
+            ent = by_go.get(a.pop('entityGo', 0))
+            a['entityOrder'] = item_order[old_to_new[ent]] if ent is not None and ent in old_to_new else -1
+            areas_out.append(a)
+        scene = {'name': name, 'items': items_out, 'dropAreas': areas_out, 'levelType': entry['levelType'], 'orthoSize': data['camera'].get('orthoSize', 5.12),
                  'minX': minx, 'maxX': maxx, 'minY': miny, 'maxY': maxy, 'renderers': rend, 'spines': spine_rows}
         (out_root / name / 'scene.json').write_text(json.dumps(scene, separators=(',', ':')))
         total_sprites += len(used)

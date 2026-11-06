@@ -34,6 +34,7 @@ namespace AvatarWorld.Runtime
         public bool allowOverlap, canConsumeCharacters;
         public float maxW, maxH;
         public string kind = "LevelDropArea";
+        public int entityOrder = -1;
     }
 
     [Serializable]
@@ -174,7 +175,7 @@ namespace AvatarWorld.Runtime
                 _itemRenderers.Add(new List<SpriteRenderer>());
             }
             foreach (var a in _data.dropAreas)
-                if (a.poly != null && a.poly.Length >= 6) _areas.Add(new DropArea(a.poly, a.priority, a.go, a.kind, a.maxH, a.maxW));
+                if (a.poly != null && a.poly.Length >= 6) _areas.Add(new DropArea(a.poly, a.priority, a.go, a.kind, a.maxH, a.maxW) { EntityOrder = a.entityOrder });
             var textures = new Dictionary<string, Texture2D>();
             var sprites = new Dictionary<string, Sprite>();
             int built = 0, missing = 0;

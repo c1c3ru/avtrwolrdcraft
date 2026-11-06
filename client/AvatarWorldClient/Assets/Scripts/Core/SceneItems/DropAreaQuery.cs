@@ -22,6 +22,8 @@ namespace AvatarWorld.Core.SceneItems
         public string Name;
         public string Kind = "LevelDropArea";
         public float MaxItemsHeight, MaxItemsWidth;
+        /// <summary>Ordem de desenho do LevelItem dono da area (ILevelConsumer.GetEntity); -1 = area do cenario, sem entidade.</summary>
+        public int EntityOrder = -1;
 
         public float MinX, MaxX, MinY, MaxY;
 
@@ -138,17 +140,44 @@ namespace AvatarWorld.Core.SceneItems
         public static bool BasicTests(DropArea a, DropItem item) =>
             a.AcceptsGenericItems && XOverlaps(a, item) && HeightFits(a, item) && WidthFits(a, item);
 
-        /// <summary>Area sob (x,y) (IsDroppableUnderItem): prioridade, empate pela menor caixa.</summary>
+        /// <summary>
+        /// LevelConsumers.CompareConsumers (0x22c3fd4), o comparador de LevelDropArea.SortDropAreas: sem entidade nos dois,
+        /// maior _sortPriority primeiro; so um com entidade, ele primeiro; os dois com entidade, maior ordem de desenho
+        /// (SortingElement.GetSortingOrderForY) primeiro e, empatando, maior prioridade.
+        /// </summary>
+        public static int CompareConsumers(DropArea a, DropArea b)
+        {
+            bool ea = a.EntityOrder >= 0, eb = b.EntityOrder >= 0;
+            if (!ea && !eb) return b.Priority.CompareTo(a.Priority);
+            if (ea && !eb) return -1;
+            if (!ea && eb) return 1;
+            return a.EntityOrder == b.EntityOrder ? b.Priority.CompareTo(a.Priority) : b.EntityOrder.CompareTo(a.EntityOrder);
+        }
+
+        /// <summary>Ordena como SortDropAreas (Sort do original e instavel; aqui o desempate e a ordem de entrada).</summary>
+        public static List<DropArea> Sorted(IList<DropArea> areas)
+        {
+            var indexed = new List<KeyValuePair<int, DropArea>>();
+            for (int i = 0; i < areas.Count; i++) indexed.Add(new KeyValuePair<int, DropArea>(i, areas[i]));
+            indexed.Sort((x, y) =>
+            {
+                int c = CompareConsumers(x.Value, y.Value);
+                return c != 0 ? c : x.Key.CompareTo(y.Key);
+            });
+            var result = new List<DropArea>(indexed.Count);
+            foreach (var kv in indexed) result.Add(kv.Value);
+            return result;
+        }
+
+        /// <summary>
+        /// Area sob (x,y) (LevelItem.GetMostRelevantDropAreaUnderPosition): percorre a lista ordenada e devolve a PRIMEIRA
+        /// que passa em IsDroppableUnderItem (testes basicos e ponto dentro do poligono).
+        /// </summary>
         public static DropArea Under(IList<DropArea> areas, DropItem item, float x, float y)
         {
-            DropArea best = null;
-            foreach (var a in areas)
-            {
-                if (!BasicTests(a, item) || !a.Contains(x, y)) continue;
-                if (best == null || a.Priority > best.Priority ||
-                    (a.Priority == best.Priority && a.BoundsArea < best.BoundsArea)) best = a;
-            }
-            return best;
+            foreach (var a in Sorted(areas))
+                if (BasicTests(a, item) && a.Contains(x, y)) return a;
+            return null;
         }
 
         /// <summary>Area onde o item cai a partir de (x,y) (GetDropAreaToFallOn); hitY = y da superficie.</summary>
@@ -157,7 +186,7 @@ namespace AvatarWorld.Core.SceneItems
             DropArea best = null;
             float bestDist = float.MaxValue;
             hitY = y;
-            foreach (var a in areas)
+            foreach (var a in Sorted(areas))
             {
                 if (!BasicTests(a, item)) continue;
                 if (!a.RayDown(x, y, a.IsFloor, out float hy)) continue;

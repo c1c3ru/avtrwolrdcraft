@@ -67,13 +67,29 @@ namespace AvatarWorld.Core.Tests
         }
 
         [Test]
-        public void Under_PrefersPriorityThenSmallerBox()
+        public void CompareConsumers_EntityFirst_ThenPriorityDescending()
+        {
+            var plainLow = new DropArea(Rect(0, 0, 1, 1), 1, "plainLow");
+            var plainHigh = new DropArea(Rect(0, 0, 1, 1), 7, "plainHigh");
+            var onItemFront = new DropArea(Rect(0, 0, 1, 1), 0, "front") { EntityOrder = 50 };
+            var onItemBack = new DropArea(Rect(0, 0, 1, 1), 9, "back") { EntityOrder = 10 };
+            var sorted = DropAreaQuery.Sorted(new[] { plainLow, plainHigh, onItemBack, onItemFront });
+            // areas de itens primeiro (a do item desenhado a frente antes), depois as do cenario por prioridade
+            CollectionAssert.AreEqual(new[] { "front", "back", "plainHigh", "plainLow" }, new[] { sorted[0].Name, sorted[1].Name, sorted[2].Name, sorted[3].Name });
+            Assert.AreEqual(0, DropAreaQuery.CompareConsumers(plainLow, plainLow));
+        }
+
+        [Test]
+        public void Under_ReturnsFirstDroppableInSortedOrder()
         {
             var big = new DropArea(Rect(0, 0, 10, 10), 0, "big");
-            var small = new DropArea(Rect(0, 0, 4, 2), 0, "small");
+            var small = new DropArea(Rect(0, 0, 4, 2), 0, "small");       // mesma prioridade: vale a ordem de entrada
             var high = new DropArea(Rect(0, 0, 10, 10), 5, "high");
-            Assert.AreEqual("small", DropAreaQuery.Under(new[] { big, small }, Item(1, 1), 1, 1).Name);
+            Assert.AreEqual("big", DropAreaQuery.Under(new[] { big, small }, Item(1, 1), 1, 1).Name);
             Assert.AreEqual("high", DropAreaQuery.Under(new[] { big, small, high }, Item(1, 1), 1, 1).Name);
+            var onItem = new DropArea(Rect(0, 0, 3, 3), 0, "onItem") { EntityOrder = 4 };
+            Assert.AreEqual("onItem", DropAreaQuery.Under(new[] { high, onItem }, Item(1, 1), 1, 1).Name);
+            Assert.IsNull(DropAreaQuery.Under(new[] { big }, Item(1, 1), 50, 50));
         }
     }
 }

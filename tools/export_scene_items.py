@@ -142,6 +142,11 @@ def main(argv=None):
             out_items.append({'go': names.get(gid, ''), 'goId': gid, 'x': round(x, 4), 'y': round(y, 4),
                               'depth': depth(gid), 'bottomWidth': r['_bottomWidth'],
                               'descendants': descendants(gid)})
+        # entidade da area (ILevelConsumer.GetEntity): o LevelItem mais profundo que a contem (nenhum = area do cenario)
+        owner = {}
+        for it in sorted(out_items, key=lambda i: i['depth']):
+            for g in it['descendants']:
+                owner[g] = it['goId']
         out_areas = []
         for r in areas:
             gid = r['m_GameObject']['m_PathID']
@@ -160,7 +165,7 @@ def main(argv=None):
                         out_areas.append({'go': names.get(gid, ''), 'priority': r['_sortPriority'],
                                           'allowOverlap': bool(r['_allowOverlappingItems']),
                                           'maxW': r['_maxItemsWidth'], 'maxH': r['_maxItemsHeight'],
-                                          'canConsumeCharacters': bool(r['_canConsumeCharacters']), 'kind': r['_kind'],
+                                          'canConsumeCharacters': bool(r['_canConsumeCharacters']), 'kind': r['_kind'], 'entityGo': owner.get(gid, 0),
                                           'poly': pts})
         result[level] = {'items': out_items, 'dropAreas': out_areas}
         print(level, entry['name'], len(out_items), 'items', len(out_areas), 'drop-area polygons')
