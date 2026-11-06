@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("skel_dump")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28f54a9912616a4355c867d478c803ea9d7a6788")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91d42796f097710d9930734c88fadd3a88377a3e")]
 [assembly: System.Reflection.AssemblyProductAttribute("skel_dump")]
 [assembly: System.Reflection.AssemblyTitleAttribute("skel_dump")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
