@@ -16,3 +16,5 @@ Data: 2026-11-04. O inventário foi gerado por `tools/venv/bin/python tools/reco
 - `tools/recon_animation_inventory.py`: extração e cruzamento reproduzíveis, com verificação de cobertura do dump contra os 587 arquivos-fonte.
 
 Os grupos de esqueleto por família são heurísticos e dependem de nomes de arquivo. A listagem de handlers mostra presença e herança, não reconstrói transições de entrada/saída/cancelamento nem todos os efeitos em cena. Também não inclui conteúdo entregue remotamente que não está neste APK/bundle. Assim, o inventário local dos nomes está completo para as fontes extraídas; a semântica de execução segue parcial e T035 permanece aberto.
+
+Em 2026-11-05, o cruzamento avançou para 974 configurações e 71 assets de reação, com 5.704 referências serializadas resolvidas. As 3.150 configurações têm um nome-base presente no rig correspondente; 13 regras nativas de sufixo foram recuperadas. Quatro entradas de reação em dois assets têm diferenças de nome a reconciliar. Detalhes em [RECON_CONTEXTUAL_LINKS.md](RECON_CONTEXTUAL_LINKS.md), incluindo os limites do vínculo estático e o próximo recorte.

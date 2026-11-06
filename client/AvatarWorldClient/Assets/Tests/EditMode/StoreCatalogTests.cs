@@ -37,8 +37,21 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual(0, StoreCatalog.InCategory(StoreCatalog.CategoryCoins).Count);
             Assert.AreEqual(StoreCatalog.All.Count, StoreCatalog.InCategory(StoreCatalog.CategoryCombos).Count);
             Assert.Greater(StoreCatalog.InCategory(StoreCatalog.CategoryFeatured).Count, 0);
-            foreach (var category in StoreCatalog.Categories.Where(c => c != StoreCatalog.CategoryCoins))
+            foreach (var category in StoreCatalog.Categories.Where(c => c != StoreCatalog.CategoryCoins && c != StoreCatalog.CategoryCombos && c != StoreCatalog.CategoryFeatured && !StoreCatalog.ComingSoon.Contains(c)))
                 Assert.Greater(StoreCatalog.InCategory(category).Count, 0, category);
+        }
+
+        [Test]
+        public void SubCategories_FilterOffersAndSkipSingleGroups()
+        {
+            var subs = StoreCatalog.SubCategories(StoreCatalog.CategoryHouses);
+            Assert.GreaterOrEqual(subs.Count, 2);
+            foreach (var sub in subs)
+                foreach (var offer in StoreCatalog.InCategory(StoreCatalog.CategoryHouses, sub))
+                    Assert.AreEqual(sub, offer.Sub);
+            Assert.AreEqual(0, StoreCatalog.SubCategories(StoreCatalog.CategoryCelebrations).Count);
+            Assert.AreEqual(StoreCatalog.InCategory(StoreCatalog.CategoryHouses).Count,
+                StoreCatalog.InCategory(StoreCatalog.CategoryHouses, null).Count);
         }
 
         [Test]

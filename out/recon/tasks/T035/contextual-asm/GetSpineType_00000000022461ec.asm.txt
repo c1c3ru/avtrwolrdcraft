@@ -1,0 +1,38 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 22461ec: a9be57fe     	stp	x30, x21, [sp, #-0x20]!
+ 22461f0: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 22461f4: f00115b5     	adrp	x21, 0x44fd000
+ 22461f8: d000fb34     	adrp	x20, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 22461fc: 395f16a8     	ldrb	w8, [x21, #0x7c5]
+ 2246200: f945de94     	ldr	x20, [x20, #0xbb8]
+ 2246204: aa0003f3     	mov	x19, x0
+ 2246208: 370000c8     	tbnz	w8, #0x0, 0x2246220 <__start_il2cpp+0x5f5010>
+ 224620c: d000fb20     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 2246210: f945dc00     	ldr	x0, [x0, #0xbb8]
+ 2246214: 97e50935     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2246218: 52800028     	mov	w8, #0x1                // =1
+ 224621c: 391f16a8     	strb	w8, [x21, #0x7c5]
+ 2246220: f9400280     	ldr	x0, [x20]
+ 2246224: f9404674     	ldr	x20, [x19, #0x88]
+ 2246228: b940e008     	ldr	w8, [x0, #0xe0]
+ 224622c: 35000048     	cbnz	w8, 0x2246234 <__start_il2cpp+0x5f5024>
+ 2246230: 97e5098b     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 2246234: aa1403e0     	mov	x0, x20
+ 2246238: aa1f03e1     	mov	x1, xzr
+ 224623c: aa1f03e2     	mov	x2, xzr
+ 2246240: 946a15a6     	bl	0x3ccb8d8 <__start_il2cpp+0x207a6c8>
+ 2246244: 36000060     	tbz	w0, #0x0, 0x2246250 <__start_il2cpp+0x5f5040>
+ 2246248: 2a1f03e0     	mov	w0, wzr
+ 224624c: 14000004     	b	0x224625c <__start_il2cpp+0x5f504c>
+ 2246250: f9404668     	ldr	x8, [x19, #0x88]
+ 2246254: b40000a8     	cbz	x8, 0x2246268 <__start_il2cpp+0x5f5058>
+ 2246258: b9403900     	ldr	w0, [x8, #0x38]
+ 224625c: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 2246260: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 2246264: d65f03c0     	ret
+ 2246268: 97e509c6     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

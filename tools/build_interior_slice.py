@@ -37,11 +37,14 @@ def main():
         renderers.append({"sprite": name, "go": r["go"], "x": r["x"], "y": r["y"], "z": r["z"], "sx": r["sx"], "sy": r["sy"],
                           "rot": r["rot"], "rank": rank, "color": r["color"], "flipX": r["flipX"], "flipY": r["flipY"],
                           "pivotX": r["pivot"][0], "pivotY": r["pivot"][1], "ppu": r["ppu"], "weathers": r["weathers"]})
+    buildings = [{"name": b["name"], "x0": b["bounds"][0], "y0": b["bounds"][1], "x1": b["bounds"][2], "y1": b["bounds"][3],
+                  "defaultLevel": b["defaultLevel"], "buildingType": b["buildingType"]}
+                 for b in world.get("buildings", []) if b.get("bounds")]
     data = {"camera": {"orthoSize": 5.12, "startX": round((left + right) / 2, 2), "startY": 0.12,
                        "minX": round(left, 2), "maxX": round(right, 2)},
-            "renderers": renderers, "buildings": []}
+            "renderers": renderers, "buildings": buildings}
     (out / f"{a.key}.json").write_text(json.dumps(data))
-    print(f"{len(renderers)} renderers ({skipped} sem png), x {left:.1f}..{right:.1f} -> {out}")
+    print(f"{len(renderers)} renderers, {len(buildings)} prédios ({skipped} sem png), x {left:.1f}..{right:.1f} -> {out}")
 
 
 if __name__ == "__main__":

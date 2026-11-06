@@ -13,7 +13,7 @@ namespace AvatarWorld.Runtime
     /// Editor de avatar com o layout da cena AvatarMaker do original (level234 + prefab CharacterMenu de
     /// resources.assets): voltar (topo-esquerda), concluir/desfazer/refazer (base-esquerda) e, a direita, o menu com a
     /// coluna de categorias (127), divisor e grade de miniaturas (cela 217x207). Posicoes em unidades do canvas 2048x1024.
-    /// Usa as categorias e IDs presentes em AvatarCatalog. O catálogo contém 2.174 opções nas quatro categorias
+    /// Usa as categorias e IDs presentes em AvatarCatalog. O catálogo contém 4.016 opções nas quatro categorias
     /// principais, com distribuição provisória derivada dos recursos extraídos; cabelo, boca, sobrancelha e cabelo
     /// traseiro têm listas separadas. O gate de pacotes do original ainda não está reproduzido.
     /// Aproximado: fundo/cor do painel (sem print do original), miniaturas geradas do proprio avatar (o original usa icones),
@@ -25,11 +25,12 @@ namespace AvatarWorld.Runtime
         static readonly Vector3 AvatarPosition = new Vector3(-4.0f, -2.35f, 0f);
         const float AvatarScale = 1f;
         const int ThumbSize = 160;
+        const float AdultReferenceHeight = 5f;
 
         struct CategoryView { public string key; public string art; public float centerY, half; }
 
         // Ordem da coluna de categorias; Skin/Eyes sao de cor (amostras da paleta oficial, sem miniatura).
-        static readonly (string key, string art)[] MenuCategories =
+        static readonly (string key, string art)[] AllMenuCategories =
         {
             (AvatarCatalog.CategoryHair, "hair"), (AvatarCatalog.CategoryShirt, "shirt"), (AvatarCatalog.CategoryBottom, "bottom"),
             (AvatarCatalog.CategoryShoes, "shoes"), (AvatarCatalog.CategoryAccessory, "accessory"), (AvatarCatalog.CategoryMouth, "mouth"),
@@ -49,6 +50,9 @@ namespace AvatarWorld.Runtime
             new CategoryView { key = AvatarCatalog.CategoryEyebrows,  art = "eyebrows",  centerY = 3.50f, half = 0.70f },
         };
 
+        // Categorias do menu do tipo de avatar em edicao (crianca/bebe nao tem todas).
+        (string key, string art)[] MenuCategories;
+        AvatarKind _kind;
         SaveStore _saves;
         PlayerState _state;
         Action _onClose;
@@ -78,6 +82,8 @@ namespace AvatarWorld.Runtime
         readonly Dictionary<string, Image> _hairTabButtons = new Dictionary<string, Image>();
         readonly Dictionary<int, Image> _itemColorRings = new Dictionary<int, Image>();
 
+        /// <summary>True se a sessao terminou em Concluir (gravou); Voltar descarta e deixa false.</summary>
+        public bool Saved { get; private set; }
         public string Category => _category;
         public int VisibleItemCount => _cells.Count;
 
@@ -88,6 +94,8 @@ namespace AvatarWorld.Runtime
             _onClose = onClose;
             _font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             _history = new AvatarEditHistory(_state.Appearance);
+            _kind = _state.Appearance.Kind;
+            MenuCategories = Array.FindAll(AllMenuCategories, e => AvatarCatalog.IsEditable(_kind, e.key));
             UiSceneBuilder.EnsureEventSystem();
             BuildCameras();
             _backCanvas = NewCanvas("Back", 0);
@@ -213,7 +221,7 @@ namespace AvatarWorld.Runtime
             layout.padding = new RectOffset(4, 4, 8, 24);
             _grid.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             BuildColorsColumn();
-            BuildHairTabs();
+            if (AvatarCatalog.IsEditable(_kind, AvatarCatalog.CategoryHairBack)) BuildHairTabs();
             _scroll = viewport.GetComponent<ScrollRect>();
             _scroll.viewport = vr; _scroll.content = _grid;
             _scroll.horizontal = false; _scroll.vertical = true;
@@ -360,7 +368,7 @@ namespace AvatarWorld.Runtime
         {
             var list = new List<string>();
             if (_avatar == null || !_avatar.IsReady || AvatarCatalog.IsColorCategory(category)) return list;
-            foreach (var id in AvatarCatalog.OptionsByCategory[category])
+            foreach (var id in AvatarCatalog.Options(_kind)[category])
                 if (_avatar.IsItemAvailable(id)) list.Add(id);
             return list;
         }
@@ -493,6 +501,7 @@ namespace AvatarWorld.Runtime
                 ShowToast("Não foi possível salvar. Nada foi alterado.");
                 return;
             }
+            Saved = true;
             Close();
         }
 
@@ -564,8 +573,11 @@ namespace AvatarWorld.Runtime
             try
             {
                 _avatar.SelectOption(category, itemId);
-                _thumbCamera.orthographicSize = view.half * AvatarScale;
-                _thumbCamera.transform.position = new Vector3(AvatarPosition.x, AvatarPosition.y + view.centerY * AvatarScale, -10f);
+                // Os recortes foram medidos no adulto (~5 unidades de altura); crianca/bebe escalam pelo tamanho real da malha.
+                float fit = _kind == AvatarKind.Adult ? 1f : Mathf.Max(_avatar.BodyHeight, 0.5f) / AdultReferenceHeight;
+                float bottom = _kind == AvatarKind.Adult ? 0f : _avatar.BodyBottom;
+                _thumbCamera.orthographicSize = view.half * fit * AvatarScale;
+                _thumbCamera.transform.position = new Vector3(AvatarPosition.x, AvatarPosition.y + (bottom + view.centerY * fit) * AvatarScale, -10f);
                 _thumbCamera.Render();
                 RenderTexture.active = rt;
                 var tex = new Texture2D(ThumbSize, ThumbSize, TextureFormat.RGBA32, false);
