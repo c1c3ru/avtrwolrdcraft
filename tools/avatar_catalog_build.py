@@ -38,6 +38,8 @@ CATEGORIES = {
     'Mouth': ['mouth'],  # pasta de 3 niveis: mouth/<item>/<peca>
     'Eyebrows': ['eyebrows'],  # idem; todos os itens sao _color (tinta pela paleta General)
     'HairBack': ['hair/hair_back'],  # cabelo traseiro (coques, rabos): itens _color
+    'Hat': ['hat/hat_a', 'hat/hat_b', 'hat/hat_c', 'hat/hat_d'],
+    'Jacket': ['jacket/jacket_special', 'jacket/jacket_casual', 'jacket/jacket_formal'],
 }
 THREE_LEVEL = {'mouth', 'eyebrows'}
 COLOR_CATEGORIES = {'Eyebrows', 'HairBack'}  # categorias cujos itens _color entram (recebem tinta Multiply)
@@ -51,8 +53,10 @@ KEEP_FIRST = {
     'Mouth': ['mouth_default'],
     'Eyebrows': ['eyebrows_default'],
     'HairBack': ['hair_back_none'],
+    'Hat': ['hat_none'],
+    'Jacket': ['jacket_none'],
 }
-BUILT_IN = {'mouth_default', 'eyebrows_default', 'hair_back_none'}
+BUILT_IN = {'mouth_default', 'eyebrows_default', 'hair_back_none', 'hat_none', 'jacket_none'}
 # cabelo da frente = skins Hair_Front/N_Color do esqueleto (1 pagina cada); os dois primeiros ja existiam
 HAIR_FRONT_FIRST = ['Hair_Front/1_Color', 'Hair_Front/2_Color']
 

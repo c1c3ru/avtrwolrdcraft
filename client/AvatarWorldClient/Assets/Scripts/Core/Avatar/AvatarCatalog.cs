@@ -22,6 +22,11 @@ namespace AvatarWorld.Core.Avatar
         /// <summary>Cabelo traseiro (coques, rabos); o da frente e CategoryHair (skins Hair_Front/N_Color).</summary>
         public const string CategoryHairBack = "HairBack";
         public const string HairBackNone = "hair_back_none";
+        /// <summary>Chapeus e jaquetas (sub-abas de Acessorio e Camisa no editor); "none" = sem peca.</summary>
+        public const string CategoryHat = "Hat";
+        public const string CategoryJacket = "Jacket";
+        public const string HatNone = "hat_none";
+        public const string JacketNone = "jacket_none";
 
         /// <summary>Categoria cuja cor (ItemColors) vale para o item: o cabelo traseiro usa a cor do cabelo da frente.</summary>
         public static string ColorKey(string category) => category == CategoryHairBack ? CategoryHair : category;
@@ -29,7 +34,7 @@ namespace AvatarWorld.Core.Avatar
         /// <summary>Id da boca embutida no esqueleto (Body_Outline/Mouth_Regular): nao e um item do SUT, nao tem textura propria.</summary>
         public const string MouthDefault = "mouth_default";
 
-        public static bool IsBuiltIn(string itemId) => itemId == MouthDefault || itemId == EyebrowsDefault || itemId == HairBackNone;
+        public static bool IsBuiltIn(string itemId) => itemId == MouthDefault || itemId == EyebrowsDefault || itemId == HairBackNone || itemId == HatNone || itemId == JacketNone;
 
         /// <summary>Itens _color recebem tinta (Multiply) escolhida na paleta General; os demais usam a textura como esta.</summary>
         public static bool IsColorItem(string itemId) => itemId != null && itemId.EndsWith("_color", System.StringComparison.OrdinalIgnoreCase);
@@ -55,6 +60,8 @@ namespace AvatarWorld.Core.Avatar
             { CategoryMouth, AvatarCatalogData.Mouth },
             { CategoryEyebrows, AvatarCatalogData.Eyebrows },
             { CategoryHairBack, AvatarCatalogData.HairBack },
+            { CategoryHat, AvatarCatalogData.Hat },
+            { CategoryJacket, AvatarCatalogData.Jacket },
         };
 
         public static string DefaultOption(string category) => OptionsByCategory[category][0];

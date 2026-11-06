@@ -8,8 +8,11 @@ editor dos pacotes escolhidos (PACKS) ao catalogo atual e grava:
 A associacao cartao -> pacote e INFERIDA pelo nome (o servidor do original nao esta no APK); ver docs/STORE_BUNDLE_CONTENTS.md.
 uso: python3 tools/build_pack_content.py && tools/venv/bin/python tools/avatar_catalog_build.py --selection out/recon/pack_selection.json --per-category 100
 """
-import json, re
+import json, re, sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pack_texture_coverage import make_resolver
 
 ROOT = Path(__file__).resolve().parents[1]
 UNITY = ROOT / 'client/AvatarWorldClient/Assets'
@@ -27,14 +30,27 @@ PACKS = {
     'bundle-PB24': 'DayInTheParkP222',         # Ferias de Primavera
     'bundle-PB17': 'PrepToGlamP199',           # Estilista de Celebridades
 }
-CATEGORY_ORDER = ['Shirt', 'Bottom', 'Shoes', 'Accessory', 'Mouth', 'Eyebrows', 'HairBack']
+CATEGORY_ORDER = ['Shirt', 'Bottom', 'Shoes', 'Accessory', 'Mouth', 'Eyebrows', 'HairBack', 'Hat', 'Jacket']
+BUILT_IN_FIRST = {'Hat': 'hat_none', 'Jacket': 'jacket_none'}  # categorias novas ainda sem dados no catalogo atual
+FREE_EXTRA = 60  # chapeus/jaquetas livres (fora de qualquer pacote do original) por categoria, alem dos de combo
+
+
+def natural(value):
+    return [int(p) if p.isdigit() else p for p in re.split(r'(\d+)', value)]
 
 
 def main():
     cov = json.loads((ROOT / 'out/recon/pack_texture_coverage.json').read_text(encoding='utf-8'))
     src = DATA_CS.read_text(encoding='utf-8')
     current = {m.group(1): re.findall(r'"([^"]+)"', m.group(2)) for m in re.finditer(r'string\[\] (\w+) =\s*\{(.*?)\};', src, re.S)}
-    selection = {c: list(current[c]) for c in CATEGORY_ORDER}
+    selection = {c: list(current.get(c, [BUILT_IN_FIRST.get(c)])) for c in CATEGORY_ORDER}
+    resolvable, items = make_resolver()
+    in_any_pack = {p['skin'].lower() for v in cov.values() for p in v['pieces']}
+    for cat, prefix in (('Hat', 'hat_'), ('Jacket', 'jacket_')):
+        free = [i for i in sorted(items, key=natural) if i.startswith(prefix) and not re.search(r'(_color|_p)$', i)
+                and i not in in_any_pack and resolvable(i) == 'ok']
+        for item in free[:FREE_EXTRA]:
+            if item not in selection[cat]: selection[cat].append(item)
     content = {}
     for offer, flag in PACKS.items():
         ids = []

@@ -74,9 +74,11 @@ namespace AvatarWorld.Runtime
             new Category { key = AvatarCatalog.CategoryHair, label = "Cabelo", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHair] },
             new Category { key = AvatarCatalog.CategoryHairBack, label = "Cabelo atras", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHairBack] },
             new Category { key = AvatarCatalog.CategoryShirt, label = "Camisa", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShirt] },
+            new Category { key = AvatarCatalog.CategoryJacket, label = "Jaqueta", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryJacket] },
             new Category { key = AvatarCatalog.CategoryBottom, label = "Calca", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryBottom] },
             new Category { key = AvatarCatalog.CategoryShoes, label = "Sapato", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShoes] },
             new Category { key = AvatarCatalog.CategoryAccessory, label = "Acessorio", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryAccessory] },
+            new Category { key = AvatarCatalog.CategoryHat, label = "Chapeu", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHat] },
             new Category { key = AvatarCatalog.CategoryMouth, label = "Boca", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryMouth] },
             new Category { key = AvatarCatalog.CategoryEyebrows, label = "Sobrancelha", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryEyebrows] },
         };
