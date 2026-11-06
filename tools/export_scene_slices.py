@@ -34,6 +34,8 @@ def main(argv=None):
     out_root.mkdir(parents=True, exist_ok=True)
     index = []
     total_sprites = 0
+    items_file = ROOT / 'tools/data/scene_items.json'
+    all_items = json.loads(items_file.read_text()) if items_file.exists() else {}
     for entry in json.loads(args.map.read_text()):
         name = entry['name']
         if args.only and name not in args.only:
@@ -65,6 +67,12 @@ def main(argv=None):
         sdir = out_root / name / 'sprites'
         sdir.mkdir(parents=True, exist_ok=True)
         rend, used = [], set()
+        scene_items = all_items.get(n, {'items': [], 'dropAreas': []})
+        owner = {}  # GameObject id -> indice do LevelItem mais profundo que o contem
+        for i, it in sorted(enumerate(scene_items['items']), key=lambda t: t[1]['depth']):
+            for g in it['descendants']:
+                owner[g] = i
+        used_items = set()
         minx = miny = 1e9
         maxx = maxy = -1e9
         for r in rows:
@@ -88,10 +96,21 @@ def main(argv=None):
                    'pivotX': r['pivot'][0], 'pivotY': r['pivot'][1], 'ppu': ppu, 'rank': rank,
                    'color': [round(c, 4) for c in r['color']], 'flipX': r['flipX'], 'flipY': r['flipY'],
                    'weathers': r['weathers']}
+            if r['go_id'] in owner:
+                row['item'] = owner[r['go_id']]
+                used_items.add(owner[r['go_id']])
             if r['drawMode'] != 0:  # sliced/tiled: estica ate drawSize (aproximacao)
                 row['drawW'], row['drawH'] = r['drawSize']
             rend.append(row)
-        scene = {'name': name, 'levelType': entry['levelType'], 'orthoSize': data['camera'].get('orthoSize', 5.12),
+        # reindexa so os itens que tem arte; item sem sprite exportado nao e arrastavel
+        remap = {old: new for new, old in enumerate(sorted(used_items))}
+        for row in rend:
+            if 'item' in row:
+                row['item'] = remap[row['item']]
+        items_out = [{'go': scene_items['items'][i]['go'], 'x': scene_items['items'][i]['x'],
+                      'y': scene_items['items'][i]['y'], 'bottomWidth': scene_items['items'][i]['bottomWidth']}
+                     for i in sorted(used_items)]
+        scene = {'name': name, 'items': items_out, 'dropAreas': scene_items['dropAreas'], 'levelType': entry['levelType'], 'orthoSize': data['camera'].get('orthoSize', 5.12),
                  'minX': minx, 'maxX': maxx, 'minY': miny, 'maxY': maxy, 'renderers': rend, 'spines': spine_rows}
         (out_root / name / 'scene.json').write_text(json.dumps(scene, separators=(',', ':')))
         total_sprites += len(used)

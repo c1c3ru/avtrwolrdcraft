@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using AvatarWorld.Core.Economy;
+using AvatarWorld.Core.Pointer;
+using AvatarWorld.Core.SceneItems;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +19,20 @@ namespace AvatarWorld.Runtime
         public float[] color = { 1f, 1f, 1f, 1f };
         public bool flipX, flipY;
         public int[] weathers;
+        /// <summary>Indice do LevelItem (arrastavel) a que o sprite pertence; -1 = cenario.</summary>
+        public int item = -1;
+    }
+
+    [Serializable] public sealed class SceneSliceItem { public string go; public float x, y, bottomWidth; }
+
+    [Serializable]
+    public sealed class SceneSliceDropArea
+    {
+        public string go;
+        public int priority;
+        public float[] poly;
+        public bool allowOverlap, canConsumeCharacters;
+        public float maxW, maxH;
     }
 
     [Serializable]
@@ -36,6 +52,8 @@ namespace AvatarWorld.Runtime
         public float orthoSize = 5.12f, minX, maxX, minY, maxY;
         public List<SceneSliceRenderer> renderers = new List<SceneSliceRenderer>();
         public List<SceneSliceSpine> spines = new List<SceneSliceSpine>();
+        public List<SceneSliceItem> items = new List<SceneSliceItem>();
+        public List<SceneSliceDropArea> dropAreas = new List<SceneSliceDropArea>();
     }
 
     [Serializable] public sealed class SceneSliceEntry { public int levelType; public string name; public int renderers, sprites; }
@@ -58,10 +76,24 @@ namespace AvatarWorld.Runtime
         bool _pressing;
         Vector2 _lastPos;
         SaveStore _save;
+        // itens arrastaveis (LevelItem): raiz por item, seus renderers e as areas de soltar
+        readonly List<Transform> _itemRoots = new List<Transform>();
+        readonly List<List<SpriteRenderer>> _itemRenderers = new List<List<SpriteRenderer>>();
+        readonly List<DropArea> _areas = new List<DropArea>();
+        readonly DragIntentDetector _detector = new DragIntentDetector();
+        int _grabItem = -1, _dragItem = -1;
+        Vector3 _dragOffset, _dragStartPos;
+        int[] _dragOrders;
+        const int DragSortingBoost = 20000;
         PlayerState _state;
         readonly List<KeyValuePair<Transform, SceneSliceSpine>> _followers = new List<KeyValuePair<Transform, SceneSliceSpine>>();
 
         public SceneSliceData Data => _data;
+        public IReadOnlyList<Transform> ItemRoots => _itemRoots;
+        public IReadOnlyList<DropArea> DropAreas => _areas;
+        public bool TryGetItemBounds(int item, out Bounds bounds) => ItemBounds(item, out bounds);
+        public int DraggingItem => _dragItem;
+        public int GrabbedItem => _grabItem;
         public Camera SceneCamera => _camera;
 
         public static SceneSliceIndex Index
@@ -132,6 +164,16 @@ namespace AvatarWorld.Runtime
         System.Collections.IEnumerator BuildSprites(string scene, Action onReady)
         {
             int weather = Weather();
+            foreach (var it in _data.items)
+            {
+                var root = new GameObject("Item " + it.go);
+                root.transform.SetParent(transform, false);
+                root.transform.position = new Vector3(it.x, it.y, 0f);
+                _itemRoots.Add(root.transform);
+                _itemRenderers.Add(new List<SpriteRenderer>());
+            }
+            foreach (var a in _data.dropAreas)
+                if (a.poly != null && a.poly.Length >= 6) _areas.Add(new DropArea(a.poly, a.priority, a.go));
             var textures = new Dictionary<string, Texture2D>();
             var sprites = new Dictionary<string, Sprite>();
             int built = 0, missing = 0;
@@ -168,6 +210,11 @@ namespace AvatarWorld.Runtime
                 sr.flipX = r.flipX != (r.sx < 0f);
                 sr.flipY = r.flipY != (r.sy < 0f);
                 sr.color = new Color(r.color[0], r.color[1], r.color[2], r.color[3]);
+                if (r.item >= 0 && r.item < _itemRoots.Count)
+                {
+                    go.transform.SetParent(_itemRoots[r.item], true);
+                    _itemRenderers[r.item].Add(sr);
+                }
                 if (r.weathers != null && r.weathers.Length > 0)
                 {
                     bool visible = false;
@@ -265,20 +312,123 @@ namespace AvatarWorld.Runtime
                 f.Key.position = new Vector3(_camera.transform.position.x + f.Value.offsetX, f.Value.offsetY, 0f);
         }
 
+        Vector3 ToWorld(Vector2 screen) =>
+            _camera.ScreenToWorldPoint(new Vector3(screen.x, screen.y, -_camera.transform.position.z));
+
+        bool ItemBounds(int item, out Bounds bounds)
+        {
+            bounds = default;
+            bool any = false;
+            foreach (var r in _itemRenderers[item])
+            {
+                if (r == null || !r.enabled) continue;
+                if (!any) { bounds = r.bounds; any = true; } else bounds.Encapsulate(r.bounds);
+            }
+            return any;
+        }
+
+        /// <summary>Item sob o ponto (caixa dos sprites); vence o de maior ordem de desenho. Aproximacao do CShape do original.</summary>
+        int HitItem(Vector3 world)
+        {
+            int best = -1, bestOrder = int.MinValue;
+            for (int i = 0; i < _itemRenderers.Count; i++)
+                foreach (var r in _itemRenderers[i])
+                {
+                    if (r == null || !r.enabled) continue;
+                    var b = r.bounds;
+                    if (world.x < b.min.x || world.x > b.max.x || world.y < b.min.y || world.y > b.max.y) continue;
+                    if (r.sortingOrder > bestOrder) { best = i; bestOrder = r.sortingOrder; }
+                }
+            return best;
+        }
+
+        void BeginItemDrag(int item, Vector2 pos)
+        {
+            _dragItem = item;
+            var root = _itemRoots[item];
+            _dragStartPos = root.position;
+            _dragOffset = root.position - ToWorld(pos);
+            var list = _itemRenderers[item];
+            _dragOrders = new int[list.Count];
+            for (int i = 0; i < list.Count; i++) { _dragOrders[i] = list[i].sortingOrder; list[i].sortingOrder += DragSortingBoost; }
+        }
+
+        void EndItemDrag()
+        {
+            int item = _dragItem;
+            _dragItem = -1;
+            var list = _itemRenderers[item];
+            for (int i = 0; i < list.Count && i < _dragOrders.Length; i++) list[i].sortingOrder = _dragOrders[i];
+            var root = _itemRoots[item];
+            Vector3 target = _dragStartPos; // sem area valida: volta (aproximacao do ajuste/queda do original)
+            if (ItemBounds(item, out var b))
+            {
+                float x = b.center.x;
+                for (float dy = 0f; dy <= 0.6f; dy += 0.05f)
+                {
+                    var area = DropAreaQuery.Best(_areas, x, b.min.y - dy + 0.02f);
+                    if (area != null && area.TopAt(x, out float top))
+                    {
+                        target = root.position + new Vector3(0f, top - b.min.y, 0f);
+                        break;
+                    }
+                }
+            }
+            StartCoroutine(SlideTo(root, target, target == _dragStartPos ? 0.2f : 0.12f));
+        }
+
+        System.Collections.IEnumerator SlideTo(Transform t, Vector3 target, float seconds)
+        {
+            var from = t.position;
+            for (float e = 0f; e < seconds; e += Time.unscaledDeltaTime)
+            {
+                t.position = Vector3.Lerp(from, target, e / seconds);
+                yield return null;
+            }
+            t.position = target;
+        }
+
         void Update()
         {
             if (_camera == null || !ReadPointer(out bool down, out bool up, out bool held, out Vector2 pos)) return;
+            Step(down, held, up, pos);
+        }
+
+        /// <summary>Um passo de entrada (tela em pixels); separado de Update para testes sem dispositivo.</summary>
+        public void Step(bool down, bool held, bool up, Vector2 pos)
+        {
             bool overBack = _backRect != null && RectTransformUtility.RectangleContainsScreenPoint(_backRect, pos, null);
-            if (down && !overBack) { _pressing = true; _lastPos = pos; }
+            if (down && !overBack)
+            {
+                _pressing = true; _lastPos = pos;
+                _detector.PointerDown(pos.x, pos.y);
+                _grabItem = HitItem(ToWorld(pos));
+            }
             else if (_pressing && held)
             {
-                float unitsPerPixel = _camera.orthographicSize * 2f / Screen.height;
-                var p = _camera.transform.position;
-                p.x = ClampX(p.x - (pos.x - _lastPos.x) * unitsPerPixel);
-                _camera.transform.position = p;
+                if (_dragItem >= 0)
+                {
+                    _itemRoots[_dragItem].position = ToWorld(pos) + _dragOffset;
+                }
+                else if (_grabItem >= 0)
+                {
+                    if (_detector.PointerMove(pos.x, pos.y)) BeginItemDrag(_grabItem, pos);
+                }
+                else
+                {
+                    float unitsPerPixel = _camera.orthographicSize * 2f / Screen.height;
+                    var p = _camera.transform.position;
+                    p.x = ClampX(p.x - (pos.x - _lastPos.x) * unitsPerPixel);
+                    _camera.transform.position = p;
+                }
                 _lastPos = pos;
             }
-            if (up) _pressing = false;
+            if (up)
+            {
+                if (_dragItem >= 0) EndItemDrag();
+                _detector.PointerUp();
+                _pressing = false; _grabItem = -1;
+            }
         }
 
         static bool ReadPointer(out bool down, out bool up, out bool held, out Vector2 position)
