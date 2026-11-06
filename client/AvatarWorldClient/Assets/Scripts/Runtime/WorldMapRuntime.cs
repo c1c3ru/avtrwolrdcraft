@@ -33,6 +33,7 @@ namespace AvatarWorld.Runtime
         bool _movedTooFar;
         bool _opening;
         int _weather;
+        WorldMapMotion _motion;
         readonly List<SpriteRenderer> _weatherRenderers = new List<SpriteRenderer>();
         readonly List<int> _weatherRendererIndex = new List<int>();
         readonly List<RectTransform> _uiRects = new List<RectTransform>();
@@ -84,6 +85,7 @@ namespace AvatarWorld.Runtime
         System.Collections.IEnumerator BuildSprites(Action onReady)
         {
             var sprites = new Dictionary<string, Sprite>();
+            var byName = new Dictionary<string, List<GameObject>>();
             int built = 0;
             foreach (var r in _data.renderers)
             {
@@ -102,6 +104,8 @@ namespace AvatarWorld.Runtime
                 }
                 var go = new GameObject(r.go);
                 go.transform.SetParent(transform, false);
+                if (!byName.TryGetValue(r.go, out var named)) byName[r.go] = named = new List<GameObject>();
+                named.Add(go);
                 go.transform.position = new Vector3(r.x, r.y, 0f);
                 go.transform.rotation = Quaternion.Euler(0, 0, r.rot * Mathf.Rad2Deg);
                 go.transform.localScale = new Vector3(Mathf.Abs(r.sx), Mathf.Abs(r.sy), 1f);
@@ -118,6 +122,8 @@ namespace AvatarWorld.Runtime
                 }
             }
             ApplyWeather(_weather);
+            _motion = gameObject.AddComponent<WorldMapMotion>();
+            _motion.Begin(_data, _weather, byName);
             Debug.Log("WorldMap: " + _data.renderers.Count + " elementos, " + _data.buildings.Count + " predios");
             onReady?.Invoke();
         }
@@ -270,6 +276,7 @@ namespace AvatarWorld.Runtime
         {
             _weather = weather;
             UpdatePrecipitation(weather);
+            if (_motion != null) _motion.SetWeather(weather);
             for (int i = 0; i < _weatherRenderers.Count; i++)
                 _weatherRenderers[i].enabled = _data.renderers[_weatherRendererIndex[i]].VisibleIn(weather);
             foreach (var pair in _weatherIcons)

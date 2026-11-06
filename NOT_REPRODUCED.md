@@ -56,3 +56,8 @@ Ainda **não verificado**: nenhum dispositivo Android conectado via ADB nesta se
 execução para gerar um screenshot via Editor/Play Mode como alternativa. O build Android relatado
 como "Succeeded" em 2026-10-30 não está presente neste checkout (`client/.../Builds/` é ignorado
 pelo git) e precisaria ser refeito antes de instalar/visualizar.
+
+## Mapa World: partes móveis (2026-11-06)
+- Implementado (`WorldMapMotion`, dados de `tools/export_world_motion.py` → `Resources/WorldSlice/motion.json`): 26 nuvens (`WorldCloud`) derivando e reaparecendo, trem (`WorldTrain`, tempos 3,5 s/5 s da cena), Spine `Sun_Moon` e `Water_Reflections`.
+- Aproximações (o Cpp2IL não traz o corpo dos métodos): velocidade das nuvens, qual lista de sprites vale em cada clima (clear→sol, rain→neve, heavyRain→chuva), esperas e curva do trem, animação Spine escolhida (Day/Idle/primeira) sem ligação com a hora do dia.
+- **Não implementado**: carros (`WorldCarsController`/`WorldCar`; grafo de 120 `WorldRoadPoint` já exportado em `motion.json`, mas o prefab do carro é `MonoBehaviour` em `resources.assets` e os sprites por direção/modelo não foram identificados); `WobbleEffect` (130 sprites, efeito de shader ao arrastar a câmera); `LevelVFXArea` (55); animações de personagens/NPCs do mapa. Nada disso verificado no aparelho.
