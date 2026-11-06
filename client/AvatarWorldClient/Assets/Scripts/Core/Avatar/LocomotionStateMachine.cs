@@ -41,6 +41,7 @@ namespace AvatarWorld.Core.Avatar
         /// <summary>
         /// Proximo estado de locomocao. Retorna o mesmo estado quando nenhuma condicao do original dispara.
         /// Nao ha salto Stand -> Run nem Run -> Stand: Run so sai para Walk, e Stand so entra em Walk.
+        /// None (estado apos OnEndMovement) vira Stand no proximo quadro.
         /// </summary>
         public static MovementKind Next(LocomotionConfig c, MovementKind current, float speed, bool hasRunningAnimations)
         {
@@ -55,7 +56,8 @@ namespace AvatarWorld.Core.Avatar
                 case MovementKind.Run:
                     return speed < c.RunExitSpeed ? MovementKind.Walk : MovementKind.Run;
                 default:
-                    return current;
+                    // None (0): nos tres OnMovement o ramo "cmp w8,#1; b.ne" cai no caminho de idle e grava estado 1.
+                    return MovementKind.Stand;
             }
         }
 

@@ -188,3 +188,86 @@ Provado: `_movementType` só é gravado em `OnMovement` (`0x22a1904` com `wzr`; 
 Conclusão sustentada: **o Character nunca entra em Run no original**; o ramo `Movement_Cycles/Run` (`0x22a1cd8`) só seria alcançado com estado anterior 3, que nunca é produzido. `Movement_Cycles/Run` existe no esqueleto, mas não é usado pelo animator (só o `Treadmill_P151` e `LevelAnimal` o usam). A cópia deve manter `CanEnterRun = false` para Character, e isso agora é paridade provada, não lacuna.
 
 Limite: não cobre escrita por reflexão/serialização nem por outra classe com layout idêntico; não foi verificada execução no aparelho.
+
+Atualizacao 2026-11-05: os 11 testes de LocomotionStateMachineTests passaram no Unity 6000.6.6f1 EditMode (28/28 com os de arraste).
+
+## Recorte 2026-11-05 (12): spawn de avatares (`LevelAvatarOneTimeSpawner`) e catálogo completo
+Ferramentas: `tools/recon_spawner_census.py` (saída `out/recon/tasks/T032/spawner-census.json`) e `tools/recon_disasm.py` (disassembly anotado com capstone: chamadas resolvidas e literais). Requer `pip install capstone` num venv.
+
+**`LevelSpawn` (`PWC.Level.LevelSpawn`)** é só um marcador: um campo `_spawner` atribuído em runtime, sem dados serializados. Marca itens criados a partir de dados persistentes (`TryGetSpawn(PDPrefabReference, out LevelSpawn)`), não avatares. As 11 instâncias de level8 não são personagens.
+
+**Catálogo de avatares**: `SpineType` numérico → 1 Character, 2 Baby, 3 Cat, 4 Dog, 13 Toddler, 14 Horse (por contagem e faixas de id). Há **1.324** avatares: 896 de `PremadeCharactersJson` e **428** em arquivos `Level_*`/`LevelPhoneAvatars`/`College_Main_Characters` com o mesmo esquema `AvatarSpineDatas`. O catálogo completo é a união; só os presets deixam 10 ids de spawner sem resolver.
+
+**Spawners em cenas** (`LevelAvatarOneTimeSpawner`, 39 instâncias em 23 cenas): 37 resolvem para Character e 2 para Cat (level35 id 101015, level84 id 100762); **nenhum Toddler, Baby, Dog ou Horse** é criado por esse spawner nas cenas. Flags: `_playAnimation` 17, `_allowSpawnWhenAlreadyInGame` 11, override de prefab 15, `_isFlipped` 2, sem ponto de spawn (`_spawnPoint` nulo) 7.
+
+**Decisão em `OnLevelPrePostInit` (`0x2299144`), provada pelo disassembly:**
+1. Sai se `!_isValid (0x42)` ou `_didSpawn (0x41)`.
+2. Se `!_allowSpawnWhenAlreadyInGame (0x31)` e `LevelAvatarData.TryGetData(_avatarId)` acha dados: registra `"LevelAvatarOneTimeSpawner: Already in game! _avatarId[...] scene[...]"`, grava `_didSpawn = true` e sai.
+3. Se já existe avatar com esse id no nível atual (predicado `<OnLevelPrePostInit>b__10_0`): registra `"...Already in current level! _avatarId["`, grava `_didSpawn = true` e sai. Esta checagem roda mesmo com `_allowSpawnWhenAlreadyInGame`.
+4. Senão: `PlaceAvatarInScene(_spawnPoint, _avatarId)`; se `_playAnimation (0x30)` chama `HandleCAHandlers(avatar)`; se o avatar existe chama `LevelItem.SetFlipped(avatar, _isFlipped (0x40), true)` e grava `_didSpawn = true`.
+`_didSpawn` é persistido (`GetPersistentData` devolve `BoolPD`, `SetPersistentData` restaura).
+`SpawnAvatar` (`PDPrefabReference.IsValid` → override de prefab; `LevelUtils.SpawnAvatar`; `PDSceneObject.EnsureSceneGuid`; erro `"Expected PDPrefabPack!"`). `PlaceAvatarInScene` escolhe por tipo da área no ponto (ramos que chamam `LevelCharacterInteractionHandler.SleepOn` ou `LevelItem.PerformBasicDrop`; padrão `"No case found for area["`). `HandleCAHandlers`: `AddCAHandlers`, número aleatório em intervalo e `PlayContextualAnimation`.
+
+Inferido (não provado): qual tipo concreto de área vai para `SleepOn` (provavelmente cama) e qual para `PerformBasicDrop`; o que acontece com `_spawnPoint` nulo (7 casos); o significado do intervalo aleatório de `HandleCAHandlers`.
+
+Contrato C#: `Core/Avatar/AvatarSpawnRules.cs` (`Decide`, `SetsDidSpawn`, `LogsError`, mensagens originais) com `AvatarSpawnRulesTests` (9 casos).
+
+## Recorte 2026-11-05 (13): idle apropriado, objeto segurado e animações contextuais do Character
+Ferramenta: `tools/recon_disasm.py` agora resolve também slots de **tipo** (índice de uso → `byvalTypeIndex` → nome), o que identifica `isinst`/comparações de classe.
+
+**`PlayProperIdleAnimation` (`0x22a3a40`), provado.** Campos de `LevelCharacter`: `+0x3E0` = `LockedCAHandler`, `+0x3B8` = `CurrentRestArea`. Prioridade:
+1. `LockedCAHandler != null` (semântica Unity): toca em loop o idle que o próprio handler informa (chamada virtual, slot `0x2E8` do handler) via `SetAddAnimationInternal`.
+2. Senão, se o delegate `OverridePlayProperIdleAnimationAction` (`+0x28`, `Func<bool>`) devolve verdadeiro, não toca nada.
+3. Senão: `CurrentRestArea` é `LevelSitArea` → `CA/Chair_Sitting/Sit_On_Chair_Idle`; `LevelSleepArea` → `CA/Bed_Laying/Laying_Idle`; qualquer outro → `PlayStandIdleAnimation` (`Idle_Stand_1`).
+
+**`UpdateMovementOverrideHandler` (`0x22a5c10`), provado.** `_movementOverrideHandler` (`+0x60`) vem de `GetHeldItem(mão 1 = LeftHand)`; se for nulo (Unity), `GetHeldItem(mão 2 = RightHand)`. `GetHeldItem` usa `LevelCharacterInteractionHandler.TryGetHandItem` e o componente `LevelCharacterMovementOverrideHandler`. É chamado ao fim de `OnBeginMovement` (salto de cauda). Inferido: `MovementCyclesWalkOverride` do handler substitui o ciclo de andar; o uso exato dentro de `OnMovement` não foi confirmado.
+
+**`OnBeginMovement` (`0x22a1150`), parcial.** Provado: liga `_canForceNormalDragging`; lê `GetCurrentBehaviorItem`; testa se o handler é `LevelCAItemWithSkinHandlerBase`, `LevelCAItemSpineNoSkinHandlerBase` ou `LevelCAHandlerWithData` (checagem de tipo em cadeia); toca `Lift_Idle` via `SetAddAnimationInternal` em um ramo; compara uma string com `"Legs_Shoes_119"`; termina em `UpdateMovementOverrideHandler`. Não determinado: a condição exata que escolhe `Lift_Idle` e o que `"Legs_Shoes_119"` representa (não é skin, slot nem animação de `Avatar_Spine`; aparece só como prefixo de ids como `Character_Legs_Shoes_1194_Color` nos packs de roupa, ou seja, pode ser comparação por prefixo ou um id literal de calçado).
+
+Contratos C#: `Core/Avatar/ProperIdleSelector.cs` (7 testes) e `Core/Avatar/HeldItemRules.cs` (4 testes).
+
+## Recorte 2026-11-05 (14): animações contextuais (CA), entrada do sistema
+`CAPlayType` (provado, enum do assembly): `None 0`, `PlayingNormalAnimation 1`, `PlayingAlternateIdle 2`, `PlayingPreAnimation 3`. `LevelCharacter` guarda `LockedCAHandler (0x3E0)`, `CurrentCAHandler (0x3E8)`, `CurrentCAConfig (0x3F0)`, `CurrentCAPlayType (0x3F8)`, `ContexualAnimationCounter (0x3FC)`, `AlternateIdleCAConfig (0x400)`, `AlternateIdleCAHandler (0x408)` e a lista `CAHandlers (0x410)`.
+`CATargetExtensionMethods.PlayContextualAnimation` (`0x23ab96c` aprox., 3.336 bytes) provado: valida `target` (`"target is null!"`) e o nome da config (`" animationConfig.name is null or empty!"`); usa `IsAlive`, o gate `LevelManager.IsManagerPostInit`, `LevelCAConfig.CreateAnimationName` e um callback `TrackEntryDelegate` (fechamento `<>c__DisplayClass1_0`) para o fim da animação; despacha por `CAPlayType` com padrão `"No case found for playType["` e ramo `"Not supported!"`; quase todas as chamadas passam por `ICATarget` (interface), então a decodificação completa depende de identificar as implementações (Character, Toddler, Animal, Baby). Isso pertence ao T035 e ficou aberto. Várias strings (`Trolley`, `Heavy_Lifting`, `Stealing_Food`) que aparecem nos métodos vizinhos são ruído de janela, não prova de uso.
+
+## Recorte 2026-11-05 (15): T035 — `ICATarget` e `PlayContextualAnimation`
+Ferramenta: `tools/recon_disasm.py` agora anota **chamadas de interface** (`mov w2,#N` + `bl 0x1b7ba44` → `ICATarget.<método>`, índice na ordem de definição) e aceita `@0xENDEREÇO`. O rastreio do tipo se limita a interfaces (nome `I` + maiúscula) para não vazar para `UnityEngine.Object`.
+
+**`ICATarget`** (20 métodos, índices de despacho 0–19): `get/set CurrentCAHandler`, `CurrentCAConfig`, `CurrentCAPlayType`, `ContexualAnimationCounter`, `LockedCAHandler`, `get CAHandlers`, `get/set IsMoving`, `GetTransform`, `ReturnToIdleAnimation`, `OnBeforePlayContextualAnimation`, `OnAddedCAHandlerWithLockedAnimation(handler)`, `ShouldIncludeInEnsureCheck(handler)`, `SetAnimation(name, loop, ensureRequiredTextures, trackIndex)`, `OnCARemoved`.
+**Implementadores (5):** `LevelCharacter`, `LevelToddler`, `LevelBaby`, `LevelAnimal` (Cat/Dog/Horse herdam) e `LevelDynamicSignRobot`.
+
+**`PlayContextualAnimation` (`0x23ab96c`, 3.336 bytes), ordem das chamadas provada** (por ordem de endereço):
+1. `IsAlive(target)` falso → erro `"target is null!"`; depois nome da config vazio → `" animationConfig.name is null or empty!"`.
+2. `target.GetTransform()` (2 sítios).
+3. `target.OnBeforePlayContextualAnimation()` (4 sítios, ramos por tipo de reprodução).
+4. `ContexualAnimationCounter`: `get` e `set` (incremento), mais um `get`.
+5. `set CurrentCAPlayType`, `set CurrentCAHandler`, `set CurrentCAConfig`.
+6. `LevelCAConfig.CreateAnimationName` e `get CurrentCAConfig`.
+7. `target.SetAnimation(...)` em dois sítios (animação normal e a de fim/idle alternativo).
+8. Callback de fim `TrackEntryDelegate` (fechamento `<>c__DisplayClass1_0`), com o gate `LevelManager.IsManagerPostInit` em dois sítios e `get CurrentCAConfig` ao concluir.
+9. Padrão do `switch` por `CAPlayType`: `"No case found for playType["`; ramo `"Not supported!"`.
+
+**Implementação do Character (provada, métodos curtos):** `ShouldIncludeInEnsureCheck` → sempre `true` (`0x22a3a18`); `GetTransform` → `transform` do próprio objeto; `ReturnToIdleAnimation` → `Animator.PlayProperIdleAnimation()` (`0x22a3a28`); `OnBeforePlayContextualAnimation` → `InteractionHandler.ReleaseCurrentBehaviorItemIfExists()` (`0x22a3be8`); `OnAddedCAHandlerWithLockedAnimation` → libera a mão (`FreeHand`) se houver outro item e chama `ReleaseCurrentBehaviorItemIfExists`; `SetAnimation` (`0x22a3c00`) testa `CurrentRestArea is LevelSitArea` e usa o literal `"__Sitting"` antes de `Animator.SetAddAnimationInternal`.
+**Verificado no esqueleto:** `Avatar_Spine` tem 11 animações `*__Sitting` (ex.: `CA/Microscope/Look_And_Find_Nothing__Sitting`), todas com a versão base também presente; `Toddler_Spine` tem 0. Inferido: sem a variante, mantém o nome base (o fallback não foi confirmado instrução a instrução).
+
+Contrato C#: `Core/Avatar/ContextualAnimationRules.cs` (`CAPlayType`, `ValidateStart`, `CharacterAnimationName`, mensagens originais) com 9 testes.
+
+**Aberto:** o que cada um dos 4 sítios de `OnBeforePlayContextualAnimation` distingue; os parâmetros de `SetAnimation` (loop por tipo de reprodução); implementações de `LevelToddler`, `LevelBaby`, `LevelAnimal` e `LevelDynamicSignRobot` (não lidas); quais handlers de CA existem e em que cenas (`LevelCAConfig`, `LevelCAHandlerBase`).
+
+## Recorte 2026-11-05 (16): T035 — outras implementações de `ICATarget`, dados de CA e `CreateAnimationName`
+**Outras implementações (provado, `recon_disasm.py @endereço`):** as cinco classes devolvem `true` em `ShouldIncludeInEnsureCheck`. `LevelDynamicSignRobot`, `LevelBaby` e `LevelToddler` implementam `SetAnimation` como salto para o próprio `SetAddAnimationInternal`, sem variante de postura. `LevelAnimal.SetAnimation` (`0x2266e88`, 188 bytes) usa os literais `"Sitting"` e `"Standing"` antes de `SetAddAnimationInternal`; `OnBeforePlayContextualAnimation` e `OnAddedCAHandlerWithLockedAnimation` do animal só chamam `StopIdleRandomAnimations`. O Toddler, em `OnAddedCAHandlerWithLockedAnimation`, testa `LevelCAItemOnBoneHandlerBase`, chama `FreeHand` e `HandsSetActive`; `OnCARemoved` chama `HandsSetActive`.
+Inferido: no animal, `"Sitting"`/`"Standing"` trocam a postura dentro do nome (os esqueletos mostram pares: Cat 4 e Dog 6, como `General/Standing_Idle` ↔ `General/Sitting_Idle`; Horse não tem). O sentido exato da troca não foi lido.
+
+**Dados de CA nas cenas:** 594 classes de handler/config e 26.893 instâncias serializadas. As maiores: `LevelCAClothingItemHandlerWithData` (2.259, 54 cenas), `LevelContextualAnimationItem` (1.575, 225 cenas), `LevelCAItemHandlerWithData` (1.484), `LevelCAShirtClothingItemHandler` (1.325), `LevelCADropAreaHandlerWithData` (1.123), `LevelCAShoesClothingItemHandler` (992).
+Modelo de `LevelCAItemHandlerData`: `m_Name`, `LevelCAConfigs[]` (`name`, `repetitions`, `ensureRequiredTextures`, `folderNameOverride`, `index`, `isNameFullAnimationName`, `thumbPathOverride`, `alternateIdleAnimation`, `preAnimation`, `trackIndex`, `isDisableOtherAnimations`, `extraData`, `keepCurrentAnimation`), `BoneName`, `FolderName`, `CharacterSpineType`, `SkinName`, `LockedAnimation`, `OverrideThumbPath`, `DontApplyForceToSit`, `ForcedToSitOverride`, `IsSingleCA`, `IsAllowedInWaterArea`, `CanHoldItemsWithLockedAnimation`, `OverrideToForceToSitIndexs`, `OverrideBoneName`.
+
+**`LevelCAConfig.CreateAnimationName` (`0x212fe74`), provado por código e por dados:** se `isNameFullAnimationName` (`+0x2C`) devolve o nome; senão `prefixo + pasta + "/" + nome`, com o prefixo `"CA/"` decidido por `SpineTypeExtensionMethods.HasCAPrefixForCAAnimations(spineType)` e a pasta vinda de `folderNameOverride` ou do `FolderName` do handler. Teste empírico (`tools/recon_ca_names.py` → `out/recon/tasks/T032/ca-names.json`): das 2.929 configs únicas, **2.876 (100% das que têm esqueleto extraído) casam com uma animação real**: 2.826 com `CA/` e 50 sem. Por tipo de esqueleto: Character (1) 2.572, Toddler (13) 244 e Baby (2) 10 com `CA/`; Cat (3) 7, Dog (4) 38 e Horse (14) 5 sem `CA/`. As 19 `alternateIdleAnimation` presentes também casam. 53 configs usam tipos de esqueleto (0, 5, 8, 11, 15, 16) que não foram extraídos e ficam sem verificação.
+
+Contrato C#: `ContextualAnimationRules.HasCAPrefix`, `CreateAnimationName` e `SpineKind` (14 testes no total no arquivo `ContextualAnimationRulesTests`).
+
+## Recorte 2026-11-05 (17): catálogo de CA no cliente e `PlayContextualAnimation`
+`tools/export_ca_catalog.py` exporta `LevelCAItemHandlerData` (974 handlers, 3.150 configs, ~980 KB) para `Assets/Resources/ContextualAnimations/ca-catalog.json`. Escopo: só handlers de item; os outros tipos de handler (roupa, drop area, brinquedo etc.) têm dados próprios e ficam fora deste recorte.
+Código: `Core/Avatar/CACatalog.cs` (modelo `CACatalogData`/`CAHandlerEntry`/`CAConfigEntry` com campos públicos para `JsonUtility`, consulta por nome e tipo de esqueleto, nome da animação pela regra provada), `Runtime/CACatalogLoader.cs` e `CharacterDragController.PlayContextualAnimation(handler, índice)`.
+Comportamento: valida alvo e nome (mensagens originais), resolve o nome (`CreateAnimationName`), usa `__Sitting` no Character sentado, toca na faixa da config com `loop=false`, ao fim toca o idle alternativo (`PlayingAlternateIdle`, em loop) ou volta ao idle apropriado (`ProperIdleSelector` para o Character) e dispara `CAEnded`. Mantém `CurrentCAPlayType`, `CurrentCAHandlerName` e `ContextualAnimationCounter`.
+Inferido (não provado no original): `loop=false` para a animação normal, o retorno automático ao idle no fim e a escolha do idle alternativo por nome simples ou prefixado. Não definido: interação com arraste durante uma CA (a CA e a locomoção usam a faixa 0 e a última a escrever vence).
+Verificação (Unity 6000.6.6f1, batchmode): PlayMode 12/12 (inclui: CA do catálogo toca `CA/Paint_Brush/Paint_Strokes` e volta a `Idle_Stand_1`; **todas** as configs de Character do catálogo, mais de 2.000, resolvem para animações reais do `Avatar_Spine`; entradas inválidas são rejeitadas com as mensagens originais); EditMode do projeto inteiro 188/188 (+6 de `CACatalogTests`).
