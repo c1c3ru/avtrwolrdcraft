@@ -68,6 +68,17 @@ namespace AvatarWorld.Runtime
     {
         public WorldCloudAnimData clouds = new WorldCloudAnimData();
         public List<WorldTrainAnimData> trains = new List<WorldTrainAnimData>();
+        public List<WorldSpineData> spines = new List<WorldSpineData>();
+    }
+
+    /// <summary>Esqueleto Spine da cena (Resources/MapSpine/&lt;skeleton&gt;/). followCamera: filho da WorldCamera no original.</summary>
+    [Serializable]
+    public sealed class WorldSpineData
+    {
+        public string skeleton, animation;
+        public float x, y, sx = 1f, sy = 1f, offsetX, offsetY;
+        public int rank;
+        public bool loop = true, followCamera;
     }
 
     [Serializable]

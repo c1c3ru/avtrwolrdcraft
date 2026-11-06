@@ -261,7 +261,30 @@ def main(argv=None):
         w = world_of(tr_ref['m_PathID'])
         return w[0], w[1]
 
-    animations = {'clouds': None, 'trains': []}
+    animations = {'clouds': None, 'trains': [], 'spines': []}
+    # Esqueletos Spine da cena (Sun_Moon = ceu, Water_Reflections = brilhos na agua): posicao, escala e ordem de desenho.
+    sk_names = {}
+    for rec in (json.loads(l) for l in gzip.open(args.mb / 'Spine.Unity.SkeletonDataAsset.jsonl.gz', 'rt')):
+        sk_names[(rec['_file'], rec['_path_id'])] = rec['m_Name'].removesuffix('_SkeletonData')
+    mesh_order = {}
+    for (f, pid), o in objs.items():
+        if f == level and o.type.name == 'MeshRenderer':
+            d = o.read_typetree()
+            mesh_order[d['m_GameObject']['m_PathID']] = d['m_SortingOrder']
+    cam_gids = {r['m_GameObject']['m_PathID'] for r in load_mb(args.mb, 'PWC.World.WorldCamera', level)}
+    for rec in load_mb(args.mb, 'Spine.Unity.SkeletonAnimation', level):
+        gid = rec['m_GameObject']['m_PathID']
+        ref = rec['skeletonDataAsset']
+        ext = Path(objs_level_externals(ref)).name if ref['m_FileID'] else level
+        name = sk_names.get((ext, ref['m_PathID']))
+        if name is None or gid not in go_tr or not go_active.get(gid, True):
+            continue
+        wx, wy, wz, sx, sy, rot, active = world_of(go_tr[gid])
+        cam = nearest(gid, cam_gids)  # filho da WorldCamera: acompanha a tela (offset = posicao - camera na cena)
+        cx, cy = world_of(go_tr[cam])[:2] if cam else (0.0, 0.0)
+        animations['spines'].append({'skeleton': name, 'x': wx, 'y': wy, 'z': wz, 'sx': sx, 'sy': sy, 'loop': bool(rec['loop']),
+                                     'followCamera': bool(cam), 'offsetX': wx - cx, 'offsetY': wy - cy,
+                                     'animation': rec.get('_animationName') or '', 'sortPath': sort_path(gid, mesh_order.get(gid, 0), wz)})
     for r in load_mb(args.mb, 'PWC.World.WorldCloudsSpawner', level):
         sx, sy = world_of(go_tr[r['m_GameObject']['m_PathID']])[:2]
         ex, ey = pos(r['_endPoint'])

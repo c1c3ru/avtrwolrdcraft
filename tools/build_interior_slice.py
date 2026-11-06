@@ -12,6 +12,22 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def copy_spine(name, dest):
+    """Esqueleto/atlas/textura do Spine (ja extraidos em out/assets) -> Resources/MapSpine/<nome>/."""
+    src = ROOT / "out/assets"
+    skel = next((src / "TextAsset").glob(f"{name}.skel_*.txt"), None)
+    atlas = next((src / "TextAsset").glob(f"{name}.atlas_*.txt"), None)
+    tex = next((src / "Texture2D").glob(f"{name}_*.png"), None)
+    if name.startswith("Avatar") or not (skel and atlas and tex):
+        return False  # avatares (Avatar_Spine, multi-pagina) sao do runtime do avatar; sem arquivos, a camada e omitida
+    out = dest / name
+    out.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(skel, out / f"{name}.skel.bytes")
+    shutil.copyfile(atlas, out / f"{name}.atlas.txt")
+    shutil.copyfile(tex, out / f"{name}.png")
+    return True
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("level"); ap.add_argument("key")
@@ -24,11 +40,17 @@ def main():
     out = a.dest / a.key
     (out / "sprites").mkdir(parents=True, exist_ok=True)
 
-    rows = sorted(world["renderers"], key=lambda r: [list(p) for p in r["sortPath"]])
+    sort_key = lambda r: [list(p) for p in r["sortPath"]]
+    spines_in = (world.get("animations") or {}).get("spines", [])
+    # Sprites e esqueletos Spine dividem a mesma ordem de desenho (rank denso sobre o sortPath).
+    ordered = sorted([("s", r) for r in world["renderers"]] + [("p", sp) for sp in spines_in], key=lambda kv: sort_key(kv[1]))
+    ranks = {id(r): i for i, (_, r) in enumerate(ordered)}
+    rows = [r for kind, r in ordered if kind == "s"]
     renderers, skipped, left, right = [], 0, 1e9, -1e9
     SUPPORTED_WEATHER = {0, 1, 6}  # Clear, Rain, Snow (Halloween=8 e Snow_Xmas=7 nao entram: ver WorldWeather no cliente)
     rows = [r for r in rows if not r["weathers"] or SUPPORTED_WEATHER & set(r["weathers"])]
-    for rank, r in enumerate(rows):
+    for r in rows:
+        rank = ranks[id(r)]
         name = r["sprite"].removesuffix(".png")
         src = next((d / f"{name}.png" for d in png_dirs if (d / f"{name}.png").exists()), None)
         if src is None:
@@ -45,9 +67,16 @@ def main():
     buildings = [{"name": b["name"], "x0": b["bounds"][0], "y0": b["bounds"][1], "x1": b["bounds"][2], "y1": b["bounds"][3],
                   "defaultLevel": b["defaultLevel"], "buildingType": b["buildingType"]}
                  for b in world.get("buildings", []) if b.get("bounds")]
+    spines = []
+    for sp in spines_in:
+        if not copy_spine(sp["skeleton"], a.dest.parent / "MapSpine"):
+            continue
+        spines.append({"skeleton": sp["skeleton"], "x": sp["x"], "y": sp["y"], "sx": sp["sx"], "sy": sp["sy"], "rank": ranks[id(sp)],
+                       "loop": sp["loop"], "animation": sp["animation"], "followCamera": sp["followCamera"],
+                       "offsetX": sp["offsetX"], "offsetY": sp["offsetY"]})
     data = {"camera": {"orthoSize": 5.12, "startX": round((left + right) / 2, 2), "startY": 0.12,
                        "minX": round(left, 2), "maxX": round(right, 2)},
-            "renderers": renderers, "buildings": buildings, "animations": world.get("animations") or {"clouds": None, "trains": []}}
+            "renderers": renderers, "buildings": buildings, "animations": {**{"clouds": None, "trains": []}, **{k: v for k, v in (world.get("animations") or {}).items() if k != "spines"}, "spines": spines}}
     (out / f"{a.key}.json").write_text(json.dumps(data))
     print(f"{len(renderers)} renderers, {len(buildings)} prédios ({skipped} sem png), x {left:.1f}..{right:.1f} -> {out}")
 

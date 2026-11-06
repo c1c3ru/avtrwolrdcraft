@@ -155,6 +155,7 @@ namespace AvatarWorld.Runtime
                 }
             }
             ApplyWeather(_weather);
+            foreach (var spine in _data.animations?.spines ?? new List<WorldSpineData>()) MapSpineLayer.Create(transform, spine, _camera);
             Debug.Log("WorldMap: " + _data.renderers.Count + " elementos, " + _data.buildings.Count + " predios");
             onReady?.Invoke();
         }
@@ -403,7 +404,7 @@ namespace AvatarWorld.Runtime
             for (int i = transform.childCount - 1; i >= 0; i--)
             {
                 var child = transform.GetChild(i).gameObject;
-                if (child.GetComponent<SpriteRenderer>() == null) continue;
+                if (child.GetComponent<SpriteRenderer>() == null && child.GetComponent<MapSpineLayer>() == null) continue;
                 child.SetActive(false);
                 Destroy(child);
             }
