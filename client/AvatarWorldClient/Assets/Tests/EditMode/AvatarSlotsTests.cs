@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using AvatarWorld.Core.Avatar;
 using AvatarWorld.Core.Economy;
 using NUnit.Framework;
@@ -76,6 +78,77 @@ namespace AvatarWorld.Core.Tests
             Assert.GreaterOrEqual(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryBottom].Length, 970);
             Assert.GreaterOrEqual(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShoes].Length, 1171);
             Assert.GreaterOrEqual(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryAccessory].Length, 833);
+        }
+        [Test]
+        public void EveryKindHasAValidDefaultAppearance()
+        {
+            foreach (var kind in AvatarKinds.All)
+            {
+                var a = AvatarAppearance.CreateDefault(kind);
+                Assert.AreEqual(kind, a.Kind);
+                Assert.IsTrue(a.IsFullyValid(), kind.ToString());
+                Assert.AreEqual(kind, a.Clone().Kind);
+            }
+        }
+
+        [Test]
+        public void KindCatalogsRejectIdsFromOtherKinds()
+        {
+            var toddler = AvatarAppearance.CreateDefault(AvatarKind.Toddler);
+            Assert.IsFalse(toddler.TrySelect(AvatarCatalog.CategoryShirt, AvatarCatalog.DefaultOption(AvatarCatalog.CategoryShirt)));
+            Assert.IsTrue(toddler.TrySelect(AvatarCatalog.CategoryShirt, AvatarCatalog.Options(AvatarKind.Toddler)[AvatarCatalog.CategoryShirt][3]));
+            var adult = AvatarAppearance.CreateDefault();
+            Assert.IsFalse(adult.TrySelect(AvatarCatalog.CategoryShirt, AvatarCatalog.Options(AvatarKind.Toddler)[AvatarCatalog.CategoryShirt][0]));
+            Assert.IsTrue(AvatarCatalog.IsEditable(AvatarKind.Toddler, AvatarCatalog.CategoryShoes));
+            Assert.IsFalse(AvatarCatalog.IsEditable(AvatarKind.Baby, AvatarCatalog.CategoryShoes));
+            Assert.IsFalse(AvatarCatalog.IsEditable(AvatarKind.Baby, AvatarCatalog.CategoryHairBack));
+        }
+
+        [Test]
+        public void OldSavesWithoutKindStayAdultAndKindSurvivesJson()
+        {
+            var old = JsonUtility.FromJson<AvatarAppearance>("{\"HairId\":\"" + AvatarCatalog.DefaultOption(AvatarCatalog.CategoryHair) + "\"}");
+            old.SanitizeInPlace();
+            Assert.AreEqual(AvatarKind.Adult, old.Kind);
+            var baby = AvatarAppearance.CreateDefault(AvatarKind.Baby);
+            var back = JsonUtility.FromJson<AvatarAppearance>(JsonUtility.ToJson(baby));
+            back.SanitizeInPlace();
+            Assert.AreEqual(AvatarKind.Baby, back.Kind);
+            Assert.AreEqual(baby.ShirtId, back.ShirtId);
+        }
+
+        [Test]
+        public void NewSlotsCanBeCreatedAsChildOrBaby()
+        {
+            var state = PlayerState.CreateNew(0);
+            Assert.IsTrue(state.SwitchHumanSlot(1, AvatarKind.Toddler));
+            Assert.AreEqual(AvatarKind.Toddler, state.Appearance.Kind);
+            Assert.IsTrue(state.SwitchHumanSlot(2, AvatarKind.Baby));
+            Assert.AreEqual(AvatarKind.Baby, state.GetHumanAppearance(2).Kind);
+            Assert.AreEqual(AvatarKind.Toddler, state.GetHumanAppearance(1).Kind);
+            Assert.AreEqual(AvatarKind.Adult, state.GetHumanAppearance(0).Kind);
+            Assert.IsFalse(state.SwitchHumanSlot(1, AvatarKind.Baby)); // slot ja existe: mantem o tipo
+            Assert.AreEqual(AvatarKind.Toddler, state.Appearance.Kind);
+        }
+
+        [Serializable] class Piece { public string template; public string file; public string skin; }
+        [Serializable] class Item { public string id; public List<Piece> pieces; }
+        [Serializable] class Manifest { public List<Item> items; }
+
+        [Test]
+        public void KindManifestsContainEveryCatalogIdAndTheBody()
+        {
+            foreach (var kind in new[] { AvatarKind.Toddler, AvatarKind.Baby })
+            {
+                var manifest = JsonUtility.FromJson<Manifest>(Resources.Load<TextAsset>(AvatarKinds.ResourceFolder(kind) + "/manifest").text);
+                var ids = new HashSet<string>(manifest.items.ConvertAll(i => i.id));
+                Assert.IsTrue(ids.Contains("__body"), kind + " sem corpo");
+                foreach (var pair in AvatarCatalog.Options(kind))
+                    foreach (var id in pair.Value)
+                        Assert.IsTrue(AvatarCatalog.IsBuiltIn(id) || ids.Contains(id), kind + " " + pair.Key + " " + id);
+                Assert.IsNotNull(Resources.Load<TextAsset>(AvatarKinds.ResourceFolder(kind) + "/Spine.atlas"));
+                Assert.IsNotNull(Resources.Load<TextAsset>(AvatarKinds.ResourceFolder(kind) + "/Spine.skel"));
+            }
         }
     }
 }

@@ -29,7 +29,12 @@ namespace AvatarWorld.Core.Avatar
         /// <summary>Id da boca embutida no esqueleto (Body_Outline/Mouth_Regular): nao e um item do SUT, nao tem textura propria.</summary>
         public const string MouthDefault = "mouth_default";
 
-        public static bool IsBuiltIn(string itemId) => itemId == MouthDefault || itemId == EyebrowsDefault || itemId == HairBackNone;
+        /// <summary>"Sem item" das categorias que crianca/bebe nao tem ou em que o padrao e nao usar nada.</summary>
+        public const string AccessoryNone = "accessory_none", BottomNone = "bottom_none", ShoesNone = "shoes_none";
+
+        public static bool IsBuiltIn(string itemId) =>
+            itemId == MouthDefault || itemId == EyebrowsDefault || itemId == HairBackNone ||
+            itemId == AccessoryNone || itemId == BottomNone || itemId == ShoesNone;
 
         /// <summary>Itens _color recebem tinta (Multiply) escolhida na paleta General; os demais usam a textura como esta.</summary>
         public static bool IsColorItem(string itemId) => itemId != null && itemId.EndsWith("_color", System.StringComparison.OrdinalIgnoreCase);
@@ -58,6 +63,53 @@ namespace AvatarWorld.Core.Avatar
         };
 
         public static string DefaultOption(string category) => OptionsByCategory[category][0];
+
+        static readonly Dictionary<AvatarKind, IReadOnlyDictionary<string, string[]>> KindOptions = BuildKindOptions();
+
+        static Dictionary<AvatarKind, IReadOnlyDictionary<string, string[]>> BuildKindOptions()
+        {
+            string[] With(string first, string[] rest) => new[] { first }.Concat(rest).ToArray();
+            string[] Or(string none, string[] list) => list.Length > 0 ? list : new[] { none };
+            return new Dictionary<AvatarKind, IReadOnlyDictionary<string, string[]>>
+            {
+                { AvatarKind.Adult, OptionsByCategory },
+                { AvatarKind.Toddler, new Dictionary<string, string[]>
+                    {
+                        { CategoryHair, AvatarKindCatalogData.Toddler.Hair },
+                        { CategoryHairBack, new[] { HairBackNone } },
+                        { CategoryShirt, AvatarKindCatalogData.Toddler.Shirt },
+                        { CategoryBottom, Or(BottomNone, AvatarKindCatalogData.Toddler.Bottom) },
+                        { CategoryShoes, Or(ShoesNone, AvatarKindCatalogData.Toddler.Shoes) },
+                        { CategoryAccessory, With(AccessoryNone, AvatarKindCatalogData.Toddler.Accessory) },
+                        { CategoryMouth, AvatarKindCatalogData.Toddler.Mouth },
+                        { CategoryEyebrows, AvatarKindCatalogData.Toddler.Eyebrows },
+                    } },
+                { AvatarKind.Baby, new Dictionary<string, string[]>
+                    {
+                        { CategoryHair, AvatarKindCatalogData.Baby.Hair },
+                        { CategoryHairBack, new[] { HairBackNone } },
+                        { CategoryShirt, AvatarKindCatalogData.Baby.Shirt },
+                        { CategoryBottom, Or(BottomNone, AvatarKindCatalogData.Baby.Bottom) },
+                        { CategoryShoes, Or(ShoesNone, AvatarKindCatalogData.Baby.Shoes) },
+                        { CategoryAccessory, With(AccessoryNone, AvatarKindCatalogData.Baby.Accessory) },
+                        { CategoryMouth, AvatarKindCatalogData.Baby.Mouth },
+                        { CategoryEyebrows, AvatarKindCatalogData.Baby.Eyebrows },
+                    } },
+            };
+        }
+
+        /// <summary>Opcoes por categoria do tipo (adulto = OptionsByCategory). Categorias sem itens reais trazem so o "sem item".</summary>
+        public static IReadOnlyDictionary<string, string[]> Options(AvatarKind kind) =>
+            KindOptions.TryGetValue(kind, out var options) ? options : OptionsByCategory;
+
+        public static string DefaultOption(AvatarKind kind, string category) => Options(kind)[category][0];
+
+        public static bool IsValidOption(AvatarKind kind, string category, string itemId) =>
+            itemId != null && Options(kind).TryGetValue(category, out var options) && options.Contains(itemId);
+
+        /// <summary>O menu do editor so mostra categorias com mais de uma opcao (ou de cor).</summary>
+        public static bool IsEditable(AvatarKind kind, string category) =>
+            IsColorCategory(category) || (Options(kind).TryGetValue(category, out var options) && options.Length > 1);
 
         public static bool IsValidOption(string category, string itemId) =>
             itemId != null && OptionsByCategory.TryGetValue(category, out var options) && options.Contains(itemId);

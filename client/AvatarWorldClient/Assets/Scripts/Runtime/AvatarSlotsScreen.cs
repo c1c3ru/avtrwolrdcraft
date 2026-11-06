@@ -1,4 +1,5 @@
 using System;
+using AvatarWorld.Core.Avatar;
 using AvatarWorld.Core.Economy;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,7 @@ namespace AvatarWorld.Runtime
         float _toastUntil;
         GameObject _editorHost;
         readonly System.Collections.Generic.List<GameObject> _avatarHosts = new System.Collections.Generic.List<GameObject>();
+        GameObject _picker;
         int _editingSlot, _returnSlot;
         bool _editingNew;
         readonly System.Collections.Generic.Dictionary<string, Sprite> _sprites = new System.Collections.Generic.Dictionary<string, Sprite>();
@@ -159,11 +161,14 @@ namespace AvatarWorld.Runtime
                     var shown = slot == _state.ActiveHumanSlot ? _state : new PlayerState { Appearance = _state.GetHumanAppearance(slot).Clone() };
                     host.AddComponent<AvatarGpuRuntime>().ConfigureAsWorldAvatar(_saves, shown, new Vector3(x / 100f, -1.95f, 0f), 0.9f);
                     _avatarHosts.Add(host);
+                    var kindLabel = NewText("Kind" + (slot + 1), _slotsRoot, 40, new Color(0.45f, 0.2f, 0.6f));
+                    Place(kindLabel.rectTransform, new Vector2(x, -300f), new Vector2(420f, 60f));
+                    kindLabel.text = AvatarKinds.DisplayName(_state.GetHumanAppearance(slot).Kind);
                 }
                 else
                 {
                     Button("Slot" + (slot + 1), _slotsRoot, Art("Slots/empty_human"), new Vector2(0.5f, 0.5f), new Vector2(x, 3f), new Vector2(279f, 461f),
-                        () => OpenEditor(captured));
+                        () => ShowKindPicker(captured));
                     var plus = NewImage("Plus" + (slot + 1), _slotsRoot, Art("Slots/plus"), Color.white);
                     Place(plus.rectTransform, new Vector2(x, 3f), new Vector2(110f, 110f));
                 }
@@ -199,7 +204,46 @@ namespace AvatarWorld.Runtime
             _avatarHosts.Clear();
         }
 
-        void OpenEditor(int slot)
+        // Escolha do tipo (adulto, crianca, bebe) ao criar um avatar num slot vazio.
+        void ShowKindPicker(int slot)
+        {
+            if (_picker != null) return;
+            UiSound.PlayClick();
+            _picker = new GameObject("KindPicker", typeof(RectTransform));
+            _picker.transform.SetParent(_frontCanvas.transform, false);
+            Stretch((RectTransform)_picker.transform);
+            var dim = NewImage("Dim", _picker.transform, null, new Color(0f, 0f, 0f, 0.5f));
+            Stretch(dim.rectTransform);
+            dim.raycastTarget = true;
+            var title = NewText("Title", _picker.transform, 62, Color.white);
+            Place(title.rectTransform, new Vector2(0f, 270f), new Vector2(1400f, 100f));
+            title.text = "Escolha o tipo de avatar";
+            var kinds = AvatarKinds.All;
+            for (int i = 0; i < kinds.Length; i++)
+            {
+                var kind = kinds[i];
+                var card = Button("Kind_" + kind, _picker.transform, null, new Vector2(0.5f, 0.5f), new Vector2((i - 1) * 440f, 20f), new Vector2(390f, 330f),
+                    () => { HideKindPicker(); OpenEditor(slot, kind); });
+                card.color = new Color(1f, 0.93f, 0.96f);
+                var label = NewText("Label", card.transform, 58, new Color(0.45f, 0.2f, 0.6f));
+                Stretch(label.rectTransform);
+                label.text = AvatarKinds.DisplayName(kind);
+            }
+            var cancel = Button("Cancel", _picker.transform, null, new Vector2(0.5f, 0.5f), new Vector2(0f, -250f), new Vector2(360f, 100f),
+                () => { UiSound.PlayClick(); HideKindPicker(); });
+            cancel.color = new Color(0.95f, 0.72f, 0.84f);
+            var cancelLabel = NewText("Label", cancel.transform, 46, Color.white);
+            Stretch(cancelLabel.rectTransform);
+            cancelLabel.text = "Cancelar";
+        }
+
+        void HideKindPicker()
+        {
+            if (_picker != null) Destroy(_picker);
+            _picker = null;
+        }
+
+        void OpenEditor(int slot, AvatarKind kind = AvatarKind.Adult)
         {
             if (_editorHost != null) return;
             UiSound.PlayClick();
@@ -207,7 +251,7 @@ namespace AvatarWorld.Runtime
             ClearAvatarHosts();
             // O slot escolhido vira o avatar ativo (o editor e o mundo leem PlayerState.Appearance).
             _editingSlot = slot; _returnSlot = _state.ActiveHumanSlot;
-            _editingNew = _state.SwitchHumanSlot(slot);
+            _editingNew = _state.SwitchHumanSlot(slot, kind);
             _editorHost = new GameObject("AvatarEditorSession");
             _editorHost.transform.SetParent(transform, false);
             // Editor com o layout da cena AvatarMaker do original (AvatarEditorScreen).

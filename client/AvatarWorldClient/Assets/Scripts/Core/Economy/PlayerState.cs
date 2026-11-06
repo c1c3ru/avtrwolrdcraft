@@ -71,10 +71,10 @@ namespace AvatarWorld.Core.Economy
         }
 
         /// <summary>
-        /// Torna o slot o avatar ativo (guarda o atual no seu slot). Slot vazio nasce com a aparencia padrao.
+        /// Torna o slot o avatar ativo (guarda o atual no seu slot). Slot vazio nasce com a aparencia padrao do tipo pedido.
         /// Retorna true se o slot acabou de ser criado.
         /// </summary>
-        public bool SwitchHumanSlot(int slot)
+        public bool SwitchHumanSlot(int slot, AvatarKind kindIfNew = AvatarKind.Adult)
         {
             if (slot < 0 || slot >= HumanSlotCount) throw new ArgumentOutOfRangeException(nameof(slot));
             if (slot == ActiveHumanSlot) return false;
@@ -82,7 +82,7 @@ namespace AvatarWorld.Core.Economy
             bool created = target == null;
             OtherAvatars.RemoveAll(o => o == null || o.Slot == slot);
             OtherAvatars.Add(new SavedAvatar { Slot = ActiveHumanSlot, Appearance = Appearance });
-            Appearance = created ? AvatarAppearance.CreateDefault() : target.Appearance;
+            Appearance = created ? AvatarAppearance.CreateDefault(kindIfNew) : target.Appearance;
             ActiveHumanSlot = slot;
             return created;
         }

@@ -27,7 +27,7 @@ namespace AvatarWorld.Runtime
     public sealed class AvatarGpuRuntime : MonoBehaviour
     {
         // skin: nome do skin do esqueleto quando difere de template (cabelo da frente: Hair_Front/N_Color); template sempre da a pagina.
-        [Serializable] class ManifestPiece { public string template; public string file; public string skin; }
+        [Serializable] class ManifestPiece { public string template; public string file; public string skin; public string role; }
 
         static string SkinOf(ManifestPiece piece) => string.IsNullOrEmpty(piece.skin) ? piece.template : piece.skin;
         [Serializable] class ManifestItem { public string id; public List<ManifestPiece> pieces; }
@@ -59,6 +59,7 @@ namespace AvatarWorld.Runtime
             { "Hair_Front_02_Color", "Hair_Front_02_Color_21315" },
         };
 
+        const string BodyItemId = "__body";
         Dictionary<string, ManifestItem> _itemsById;
         Dictionary<string, Material> _materialByPage;
         readonly HashSet<string> _loadedClothingPages = new HashSet<string>();
@@ -70,17 +71,22 @@ namespace AvatarWorld.Runtime
         SkeletonData _skeletonData;
         Shader _shader;
 
-        readonly List<Category> _categories = new List<Category> {
-            new Category { key = AvatarCatalog.CategoryHair, label = "Cabelo", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHair] },
-            new Category { key = AvatarCatalog.CategoryHairBack, label = "Cabelo atras", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHairBack] },
-            new Category { key = AvatarCatalog.CategoryShirt, label = "Camisa", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShirt] },
-            new Category { key = AvatarCatalog.CategoryBottom, label = "Calca", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryBottom] },
-            new Category { key = AvatarCatalog.CategoryShoes, label = "Sapato", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShoes] },
-            new Category { key = AvatarCatalog.CategoryAccessory, label = "Acessorio", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryAccessory] },
-            new Category { key = AvatarCatalog.CategoryMouth, label = "Boca", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryMouth] },
-            new Category { key = AvatarCatalog.CategoryEyebrows, label = "Sobrancelha", itemIds = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryEyebrows] },
+        static readonly (string key, string label)[] CategoryLabels =
+        {
+            (AvatarCatalog.CategoryHair, "Cabelo"), (AvatarCatalog.CategoryHairBack, "Cabelo atras"), (AvatarCatalog.CategoryShirt, "Camisa"),
+            (AvatarCatalog.CategoryBottom, "Calca"), (AvatarCatalog.CategoryShoes, "Sapato"), (AvatarCatalog.CategoryAccessory, "Acessorio"),
+            (AvatarCatalog.CategoryMouth, "Boca"), (AvatarCatalog.CategoryEyebrows, "Sobrancelha"),
         };
-        static readonly string[] HairOptions = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHair];
+        // Montadas no Start, conforme o tipo do avatar (adulto, crianca, bebe).
+        List<Category> _categories = new List<Category>();
+        AvatarKind _kind = AvatarKind.Adult;
+        string[] HairOptions => AvatarCatalog.Options(_kind)[AvatarCatalog.CategoryHair];
+
+        /// <summary>Tipo de avatar renderizado (definido pela aparencia do PlayerState ao iniciar).</summary>
+        public AvatarKind Kind => _kind;
+        /// <summary>Altura e base (em unidades locais do avatar, relativas a posicao dele) da malha em repouso; usados no enquadramento das miniaturas.</summary>
+        public float BodyHeight { get; private set; }
+        public float BodyBottom { get; private set; }
 
         SaveStore _saveStore;
         PlayerState _playerState;
@@ -124,15 +130,20 @@ namespace AvatarWorld.Runtime
             _shader = Shader.Find("Spine/Skeleton");
             if (_shader == null) { Debug.LogError("AvatarGpuRuntime: shader Spine/Skeleton nao encontrado"); return; }
 
-            var atlasText = Resources.Load<TextAsset>("AvatarSpine/Avatar_Spine.atlas");
-            var skeletonBinary = Resources.Load<TextAsset>("AvatarSpine/Avatar_Spine.skel");
+            _kind = AvatarKinds.IsDefined(Appearance.Kind) ? Appearance.Kind : AvatarKind.Adult;
+            _categories = new List<Category>();
+            foreach (var entry in CategoryLabels)
+                _categories.Add(new Category { key = entry.key, label = entry.label, itemIds = AvatarCatalog.Options(_kind)[entry.key] });
+            string kindFolder = AvatarKinds.ResourceFolder(_kind);
+            var atlasText = Resources.Load<TextAsset>(kindFolder == null ? "AvatarSpine/Avatar_Spine.atlas" : kindFolder + "/Spine.atlas");
+            var skeletonBinary = Resources.Load<TextAsset>(kindFolder == null ? "AvatarSpine/Avatar_Spine.skel" : kindFolder + "/Spine.skel");
             if (atlasText == null || skeletonBinary == null)
             {
                 Debug.LogError("AvatarGpuRuntime: atlas ou skeleton nao encontrados em Resources/AvatarSpine");
                 return;
             }
 
-            var manifestText = Resources.Load<TextAsset>("AvatarSpine/clothing-manifest");
+            var manifestText = Resources.Load<TextAsset>(kindFolder == null ? "AvatarSpine/clothing-manifest" : kindFolder + "/manifest");
             if (manifestText == null) { Debug.LogError("AvatarGpuRuntime: clothing-manifest.json nao encontrado"); return; }
             var manifest = JsonUtility.FromJson<Manifest>(manifestText.text);
             _itemsById = manifest.items.ToDictionary(i => i.id, i => i);
@@ -142,7 +153,7 @@ namespace AvatarWorld.Runtime
 
             var realTextures = new Dictionary<string, Texture2D>(StringComparer.Ordinal);
 
-            foreach (var resourceName in BodyTextureNames)
+            foreach (var resourceName in _kind == AvatarKind.Adult ? BodyTextureNames : new string[0])
             {
                 var source = Resources.Load<Texture2D>("AvatarSpine/Textures/" + resourceName);
                 if (source == null) { Debug.LogError("AvatarGpuRuntime: textura ausente " + resourceName); return; }
@@ -170,6 +181,13 @@ namespace AvatarWorld.Runtime
             // carregam sob demanda (LoadItemTextures) e sao descartados por ReleaseUnselected. Todas as 2172 paginas
             // ja tem Material no atlas (AvatarAtlasLoader), entao trocar o mainTexture depois funciona.
             var pageToFile = new Dictionary<string, string>();
+            // Crianca/bebe: corpo e olhos vem do item fixo "__body" do manifesto (o adulto usa BodyTextureNames).
+            if (_kind != AvatarKind.Adult && _itemsById.TryGetValue(BodyItemId, out var bodyItem))
+                foreach (var piece in bodyItem.pieces)
+                {
+                    var pageName = piece.template.Substring("Templates/".Length);
+                    if (!pageToFile.ContainsKey(pageName)) pageToFile[pageName] = piece.file;
+                }
             foreach (var selectedId in SelectedItemIds())
             {
                 if (!_itemsById.TryGetValue(selectedId, out var selectedItem)) continue;
@@ -202,7 +220,7 @@ namespace AvatarWorld.Runtime
             SkeletonDataAsset skeletonDataAsset;
             try
             {
-                atlasAsset = AvatarAtlasLoader.Create(atlasText, _shader, realTextures, out _materialByPage);
+                atlasAsset = AvatarAtlasLoader.Create(atlasText, _shader, realTextures, out _materialByPage, _kind == AvatarKind.Adult ? AvatarAtlasLoader.ExpectedPageCount : -1);
                 skeletonDataAsset = SkeletonDataAsset.CreateRuntimeInstance(skeletonBinary, atlasAsset, true, 0.01f);
                 _skeletonData = skeletonDataAsset.GetSkeletonData(false);
             }
@@ -211,7 +229,7 @@ namespace AvatarWorld.Runtime
                 Debug.LogError("AvatarGpuRuntime: falha ao criar atlas completo: " + exception);
                 return;
             }
-            Debug.Log("AvatarGpuRuntime: atlas completo, 2172/2172 paginas com Material");
+            Debug.Log("AvatarGpuRuntime: atlas completo (" + _kind + "), todas as paginas com Material");
             if (_skeletonData == null) { Debug.LogError("AvatarGpuRuntime: SkeletonData nao carregou"); return; }
 
             var avatarGo = new GameObject("Avatar");
@@ -229,7 +247,9 @@ namespace AvatarWorld.Runtime
             RebuildSkin();
 
             _skeletonAnimation.AnimationName = null;
-            _skeletonAnimation.state.SetAnimation(0, "Idle_Stand_1", true);
+            string idle = AvatarKinds.IdleAnimation(_kind);
+            if (_skeletonData.FindAnimation(idle) == null) { Debug.LogWarning("AvatarGpuRuntime: animacao " + idle + " ausente em " + _kind); idle = _skeletonData.Animations.Count > 0 ? _skeletonData.Animations.Items[0].Name : null; }
+            if (idle != null) _skeletonAnimation.state.SetAnimation(0, idle, true);
             _skeletonAnimation.Update(0.1f);
             _skeletonAnimation.LateUpdate();
 
@@ -237,6 +257,11 @@ namespace AvatarWorld.Runtime
             int tris = meshFilter != null && meshFilter.sharedMesh != null ? meshFilter.sharedMesh.triangles.Length / 3 : 0;
             var avatarRenderer = avatarGo.GetComponent<MeshRenderer>();
             if (_embeddedWorldAvatar && avatarRenderer != null) avatarRenderer.sortingOrder = 4;
+            if (avatarRenderer != null)
+            {
+                BodyHeight = avatarRenderer.bounds.size.y / Mathf.Max(avatarGo.transform.lossyScale.y, 0.0001f);
+                BodyBottom = (avatarRenderer.bounds.min.y - avatarGo.transform.position.y) / Mathf.Max(avatarGo.transform.lossyScale.y, 0.0001f);
+            }
             Debug.Log("AvatarGpuRuntime: avatar valido, " + tris + " triangulos reais, animacao Idle_Stand_1 tocando");
 
 
@@ -295,6 +320,9 @@ namespace AvatarWorld.Runtime
             foreach (var id in SelectedItemIds())
                 if (_itemsById.TryGetValue(id, out var item))
                     foreach (var piece in item.pieces) needed.Add(piece.template.Substring("Templates/".Length));
+            // Corpo e olhos de crianca/bebe sao paginas carregadas no Start que nunca devem ser descartadas.
+            if (_kind != AvatarKind.Adult && _itemsById.TryGetValue(BodyItemId, out var bodyItem))
+                foreach (var piece in bodyItem.pieces) needed.Add(piece.template.Substring("Templates/".Length));
             if (_blank == null)
             {
                 _blank = new Texture2D(1, 1, TextureFormat.RGBA32, false);
@@ -394,12 +422,25 @@ namespace AvatarWorld.Runtime
             var skinBase = ToColor(skinEntry.display);
             var skinShadow = ToColor(skinEntry.colors[0].c);
             var earShadow = ToColor(skinEntry.colors[skinEntry.colors.Count > 1 ? 1 : 0].c);
-            AddSkin(_skeletonData, skin, tints, "Body_Whites/Body_Whites", skinBase);
-            AddSkin(_skeletonData, skin, tints, "Body_Shad/Body_Shad", skinShadow);
-            AddSkin(_skeletonData, skin, tints, "Ear_Shad/Ear_Shad", earShadow);
-            AddSkin(_skeletonData, skin, tints, "Body_Other/Body_Other", Color.white);
-            AddSkin(_skeletonData, skin, tints, "Eyes/1_Color", ToColor(eyeEntry.colors[0].c));
-            AddSkin(_skeletonData, skin, tints, "Eyes/1_Color-p", Color.white);
+            if (_kind == AvatarKind.Adult)
+            {
+                AddSkin(_skeletonData, skin, tints, "Body_Whites/Body_Whites", skinBase);
+                AddSkin(_skeletonData, skin, tints, "Body_Shad/Body_Shad", skinShadow);
+                AddSkin(_skeletonData, skin, tints, "Ear_Shad/Ear_Shad", earShadow);
+                AddSkin(_skeletonData, skin, tints, "Body_Other/Body_Other", Color.white);
+                AddSkin(_skeletonData, skin, tints, "Eyes/1_Color", ToColor(eyeEntry.colors[0].c));
+                AddSkin(_skeletonData, skin, tints, "Eyes/1_Color-p", Color.white);
+            }
+            else if (_itemsById.TryGetValue(BodyItemId, out var bodyItem))
+            {
+                // Crianca/bebe: cada peca do item "__body" diz que cor recebe (pele, sombra, orelha, olho ou nenhuma).
+                foreach (var piece in bodyItem.pieces)
+                {
+                    Color tint = piece.role == "skin" ? skinBase : piece.role == "shadow" ? skinShadow : piece.role == "ear" ? earShadow :
+                                 piece.role == "eye" ? ToColor(eyeEntry.colors[0].c) : Color.white;
+                    AddSkin(_skeletonData, skin, tints, SkinOf(piece), tint);
+                }
+            }
 
             foreach (var category in _categories)
             {
@@ -414,26 +455,35 @@ namespace AvatarWorld.Runtime
             _skeletonAnimation.skeleton.SetSkin(skin);
             _skeletonAnimation.skeleton.SetSlotsToSetupPose();
             // Boca: embutida no esqueleto por padrao; um item do SUT traz o proprio anexo "Mouths" (skin Templates/Mouth_N).
-            _skeletonAnimation.skeleton.SetAttachment("Mouths", AvatarCatalog.IsBuiltIn(Appearance.MouthId) ? "Body_Outline/Mouth_Regular" : "Mouths");
+            // Crianca/bebe: todas as bocas sao itens do esqueleto (anexos ligados pelo laco abaixo).
+            if (_kind == AvatarKind.Adult)
+                _skeletonAnimation.skeleton.SetAttachment("Mouths", AvatarCatalog.IsBuiltIn(Appearance.MouthId) ? "Body_Outline/Mouth_Regular" : "Mouths");
+            if (_kind != AvatarKind.Adult && _itemsById.TryGetValue(BodyItemId, out var bodyPlaced))
+                foreach (var piece in bodyPlaced.pieces)
+                    ShowSkinAttachments(SkinOf(piece), false);
             // Pecas cujo slot nao tem anexo na pose inicial (sobrancelhas): liga o anexo que o proprio skin do item traz.
             // Nao forca nomes fixos: itens podem ter so um lado, e SetAttachment lancaria excecao (pele ficaria sem tinta).
             foreach (var category in _categories)
             {
                 if (AvatarCatalog.IsBuiltIn(Appearance.Get(category.key)) || !_itemsById.TryGetValue(Appearance.Get(category.key), out var placed)) continue;
                 foreach (var piece in placed.pieces)
-                {
-                    var templateSkin = _skeletonData.FindSkin(SkinOf(piece));
-                    if (templateSkin == null) continue;
-                    foreach (var entry in templateSkin.Attachments)
-                    {
-                        var slot = _skeletonAnimation.skeleton.Slots.Items[entry.SlotIndex];
-                        if (slot.Attachment == null) slot.Attachment = entry.Attachment;
-                    }
-                }
+                    ShowSkinAttachments(SkinOf(piece), _kind != AvatarKind.Adult);
             }
             foreach (var slot in _skeletonAnimation.skeleton.Slots)
                 if (slot.Attachment != null && tints.TryGetValue(slot.Attachment, out var color))
                 { slot.R = color.r; slot.G = color.g; slot.B = color.b; }
+        }
+
+        // Liga no esqueleto os anexos de um skin; force=true troca tambem o anexo que o slot ja tinha (rosto de crianca/bebe).
+        void ShowSkinAttachments(string skinName, bool force)
+        {
+            var templateSkin = _skeletonData.FindSkin(skinName);
+            if (templateSkin == null) return;
+            foreach (var entry in templateSkin.Attachments)
+            {
+                var slot = _skeletonAnimation.skeleton.Slots.Items[entry.SlotIndex];
+                if (force || slot.Attachment == null) slot.Attachment = entry.Attachment;
+            }
         }
 
         void OnGUI()
