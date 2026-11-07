@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 using AvatarWorld.Core.Economy;
 using AvatarWorld.Core.Literacy;
 using UnityEngine;
@@ -23,8 +24,12 @@ namespace AvatarWorld.Runtime
         LiteracyChallengeService _literacy;
         HomeActions _homeActions;
 
-        void Start()
+        IEnumerator Start()
         {
+            var loadingScreen = LoadingScreenView.Show();
+            // Libera ao menos um frame para a composição laranja aparecer antes da montagem
+            // síncrona da Home e dos seus 149 elementos exportados.
+            yield return null;
             // Builds de desenvolvimento por padrao nao logam stack trace completo de excecao no
             // Android; sem isso o logcat so mostra "NullReferenceException" sem dizer onde.
             Application.SetStackTraceLogType(LogType.Exception, StackTraceLogType.Full);
@@ -35,7 +40,12 @@ namespace AvatarWorld.Runtime
             _literacy = new LiteracyChallengeService(_state, economy);
 
             var json = Resources.Load<TextAsset>(SceneJson);
-            if (json == null) { Debug.LogError("Home: " + SceneJson + ".json nao encontrado em Resources"); return; }
+            if (json == null)
+            {
+                Debug.LogError("Home: " + SceneJson + ".json nao encontrado em Resources");
+                loadingScreen.Hide();
+                yield break;
+            }
 
             var desc = JsonUtility.FromJson<SceneDescription>(json.text);
             var objs = UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key));
@@ -57,6 +67,8 @@ namespace AvatarWorld.Runtime
             _homeActions.Initialize(objs, _save, _state, OpenBasketballCourt, OpenLiteracyChallenges);
 
             BackgroundMusic.Play("Audio/home_music");
+            yield return new WaitForSecondsRealtime(.65f);
+            if (loadingScreen != null) loadingScreen.Hide();
         }
 
         void OpenLiteracyChallenges()

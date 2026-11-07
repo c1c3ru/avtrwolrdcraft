@@ -1,5 +1,24 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Entrega da loja gráfica offline — 2026-11-02
+- Concluída a substituição dos menus de texto de loja/presentes/passe por UI com sprites originais da level237, painel branco original e prévias renderizadas pelo Spine com os itens entregues. Organização/catálogo são adaptações offline, sem alegação de paridade completa.
+- Regras próprias autorizadas pelo usuário: composições 15/20/25 moedas, presente inicial +25, diário +10 por UTC, passe 60 e prêmios +25 em 4/8/12 desafios. Resgates únicos, compra persistida, rollback em falha de save. Detalhes em docs/OFFLINE_HOME_RULES.md.
+- Corrigidos ComingSoon sobre Avatar ID, GiftBadge sem ação própria, hitbox invisível de presente sobre Starter Pack, textos extrapolando botões e sobreposição do terceiro prêmio do passe.
+- EditMode **72/72 passou** (`out/test-results-store-visual.xml`). Build final e instalação no Xiaomi concluídas. APK 106.089.488 bytes, SHA256 `97fe877acf804a63dd709c7c012dd7f41265fbeabd71377892744cfb05ce31a7`.
+- Android: loja/comprar, presentes, passe/ativar, recusa de prêmio sem requisitos, retorno, abrir editor com aparência comprada e persistência após reinstalar/reabrir validados. Sequência real do saldo 50→35→70→10. Captura final `out/store-visual-device-final-pass.png` mostra os três prêmios separados.
+- Relatório: docs/STORE_VISUAL_VALIDATION_2026-11-02.md. Objetivo geral continua aberto: catálogo limitado a três composições, gameplay protótipo, serviços online ausentes e materiais Spine não resolvidos ainda geram Development Console no editor/quadra.
+- Preservadas alterações de outras frentes em README/.gitignore/planos/ferramentas de reconstrução. Nenhum commit ou push desta rodada.
+
+## Retomada e validação — 2026-11-01
+- Retomadas mudanças locais da Home: loading, painel Settings original e acesso às atividades locais pelos painéis de perfil/progresso.
+- Corrigido bug no backdrop de Settings: o loop de botões pendentes desabilitava o Button criado para fechar o painel. Agora permanece interativo; teste de regressão incluído.
+- EditMode: **63/63 passaram**, zero falhas/ignorados (`out/test-results-home-reference-resume.xml`). `git diff --check` passou.
+- Build Android concluído (`out/unity-home-reference-resume-build.log`), APK instalado com `adb install -r`: 90.078.978 bytes, SHA256 `23ef70c4e81abfd036501725fff0ace1c489790e7032c149d4f8863d7fab6916`.
+- Settings validado no Xiaomi: abertura pela engrenagem, SFX OFF com música ON, restauração de SFX e fechamento tocando fora. Capturas `out/home-reference-settings.png`, `out/home-reference-settings-muted.png`, `out/home-reference-settings-closed.png`.
+- Música empacotada conferida por SHA256 contra `On_The_Go_Splash_Screen_Loop_110563.wav`; são idênticas. Correspondência estática já documentada no HomeManager.
+- Entrada Avatar ID pelo toque (120,110) não abriu perfil nesta rodada; teste de código passa, validação tátil continua pendente. CTAs anteriores foram removidos pelas mudanças retomadas, logo o acesso ao editor e ao desafio pelos novos caminhos precisa reteste/correção antes de considerar a navegação pronta.
+- Loading compilado, mas não capturado durante a inicialização; paridade visual não validada. Development Console e erros de materiais Spine continuam presentes após abrir a quadra. Objetivo de reconstrução completa permanece aberto.
+
 ## Alvo
 - com.pazugames.avatarworld v1.227 (code 228), minSdk 24, arm64-v8a
 - Unity 2022.3.70f1, IL2CPP (libil2cpp.so 74 MB), Burst

@@ -73,15 +73,17 @@ namespace AvatarWorld.Core.Tests
             }), "A Home precisa sair da frente ao entrar no jogo.");
             actions.ReturnFromGameplay();
 
-            Button("Desafio: ganhar moedas").onClick.Invoke();
+            actions.Open("AchievementsAppWidget");
+            Button("Desafio pedagógico: ganhar moedas").onClick.Invoke();
             Assert.IsTrue(coins, "A atividade opcional deve ter entrada própria.");
             Assert.IsTrue(played, "Abrir a atividade de moedas não deve substituir a navegação principal.");
         }
 
         [Test] public void AvatarEditorEntryOpensVisualRuntimeWithSharedState()
         {
-            var entry = Button("Meu avatar");
-            Assert.IsNotNull(entry, "A Home deve oferecer uma entrada visível para o editor visual.");
+            Button("NotSignedUserButton").onClick.Invoke();
+            var entry = Button("Editar meu avatar");
+            Assert.IsNotNull(entry, "Avatar ID deve abrir o perfil local, que oferece o editor visual.");
             entry.onClick.Invoke();
 
             var runtime = root.GetComponentInChildren<AvatarGpuRuntime>(true);
@@ -104,12 +106,50 @@ namespace AvatarWorld.Core.Tests
 
         [Test] public void UnsupportedFeaturesRemainDisabledAndPending()
         {
-            Assert.AreEqual(4, actions.BoundButtonCount);
-            Assert.AreEqual(35, actions.PendingButtons.Count);
-            Assert.IsFalse(Button("ShopButton").interactable);
+            Assert.AreEqual(28, actions.BoundButtonCount);
+            Assert.AreEqual(12, actions.PendingButtons.Count);
+            Assert.IsTrue(Button("ShopButton").interactable);
             Assert.IsFalse(objects.Find(o => o.name == "MultiplayerCanvas").activeSelf);
-            actions.Open("ShopButton");
+            actions.Open("MultiplayerButton");
             Assert.IsNull(actions.CurrentPage);
+        }
+
+        [Test] public void ShopPurchaseAppliesOutfitAndPersistsBalanceAndOwnership()
+        {
+            actions.Open("ShopButton");
+            var visual = root.GetComponentInChildren<StoreVisualView>();
+            Assert.IsNotNull(visual, "A loja deve abrir a interface gráfica com assets originais.");
+            var preview = Array.Find(visual.GetComponentsInChildren<Image>(), i => i.name == "AvatarPreview");
+            Assert.IsNotNull(preview.sprite, "O produto deve mostrar a composição real do avatar.");
+            Assert.IsNotNull(Button("Passeio — 15 moedas").targetGraphic.GetComponent<Image>().sprite);
+            Button("Passeio — 15 moedas").onClick.Invoke();
+            Assert.AreEqual(60, state.PazuCurrency);
+            Assert.AreEqual(1, state.GetClaimCount("offline.outfit.0"));
+            var loaded = saves.LoadOrCreate(0);
+            Assert.AreEqual(60, loaded.PazuCurrency);
+            Assert.AreEqual(state.Appearance.HairId, loaded.Appearance.HairId);
+            Button("Passeio — Aplicar (adquirido)").onClick.Invoke();
+            Assert.AreEqual(60, state.PazuCurrency);
+        }
+
+        [Test] public void GiftButtonGrantsOneTimeRewardAndSavesIt()
+        {
+            Button("GiftBadge").onClick.Invoke();
+            Button("Resgatar presente inicial: 25 moedas").onClick.Invoke();
+            Assert.AreEqual(100, state.PazuCurrency);
+            Assert.AreEqual(1, saves.LoadOrCreate(0).GetClaimCount("offline.starter"));
+            actions.Open("NewUserGiftCurrency");
+            Assert.IsFalse(Button("Presente inicial resgatado").interactable);
+        }
+
+        [Test] public void AllPassRewardsRemainVisibleAbovePlayButton()
+        {
+            actions.Open("AvatarPassButton");
+            Button("Ativar passe: 60 moedas").onClick.Invoke();
+            var reward = (RectTransform)Button("12 desafios: +25 moedas").transform;
+            var playButton = (RectTransform)Button("Jogar desafios").transform;
+            Assert.LessOrEqual(playButton.anchorMax.y, reward.anchorMin.y,
+                "A ação de jogar não pode cobrir o terceiro prêmio.");
         }
 
         [Test] public void SettingsSoundAndMusicCanBeToggledIndependently()
@@ -117,22 +157,45 @@ namespace AvatarWorld.Core.Tests
             PlayerPrefs.SetInt("home.sfx.enabled", 1);
             PlayerPrefs.SetInt("home.music.enabled", 1);
             actions.Open("SettingsButton");
-            Button("Efeitos sonoros: ligados").onClick.Invoke();
+            Button("SFX").onClick.Invoke();
             Assert.AreEqual(0, PlayerPrefs.GetInt("home.sfx.enabled"));
             Assert.AreEqual(1, PlayerPrefs.GetInt("home.music.enabled"), "Mutar efeitos não deve silenciar a música.");
             Assert.IsTrue(UiSound.IsMuted);
             Assert.IsFalse(BackgroundMusic.IsMuted);
-            Button("Efeitos sonoros: desligados").onClick.Invoke();
+            Button("SFX").onClick.Invoke();
             Assert.AreEqual(1, PlayerPrefs.GetInt("home.sfx.enabled"));
             Assert.IsFalse(UiSound.IsMuted);
-            Button("Música: ligada").onClick.Invoke();
+            Button("Music").onClick.Invoke();
             Assert.AreEqual(0, PlayerPrefs.GetInt("home.music.enabled"));
             Assert.AreEqual(1, PlayerPrefs.GetInt("home.sfx.enabled"), "Mutar música não deve silenciar os efeitos.");
             Assert.IsTrue(BackgroundMusic.IsMuted);
             Assert.IsFalse(UiSound.IsMuted);
-            Button("Música: desligada").onClick.Invoke();
+            Button("Music").onClick.Invoke();
             Assert.AreEqual(1, PlayerPrefs.GetInt("home.music.enabled"));
             Assert.IsFalse(BackgroundMusic.IsMuted);
+        }
+
+        [Test] public void SettingsBackdropRemainsClickableAndClosesMenu()
+        {
+            actions.Open("SettingsButton");
+            var menu = objects.Find(o => o.name == "SettingsMenu");
+            var backdrop = objects.Find(o => o.name == "Background" && o.transform.IsChildOf(menu.transform));
+            var button = backdrop.GetComponent<Button>();
+            Assert.IsTrue(menu.activeSelf);
+            Assert.IsTrue(button.interactable);
+            button.onClick.Invoke();
+            Assert.IsFalse(menu.activeSelf);
+        }
+
+        [Test] public void AvatarEntryIsNotCoveredByComingSoonOverlay()
+        {
+            Assert.IsFalse(objects.Find(o => o.name == "ComingSoonButton").activeSelf);
+            Assert.IsFalse(objects.Find(o => o.name == "NewUserGiftCurrency").activeSelf,
+                "O presente sem arte não pode interceptar o Starter Pack.");
+            Assert.IsTrue(Button("NotSignedUserButton").interactable);
+            Button("NotSignedUserButton").onClick.Invoke();
+            Button("Editar meu avatar").onClick.Invoke();
+            Assert.IsNotNull(root.GetComponentInChildren<AvatarGpuRuntime>(true));
         }
 
         [Test] public void ProgressReadsCompletedChallengesFromSharedState()

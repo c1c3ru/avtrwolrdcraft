@@ -64,3 +64,13 @@ Próxima investigação: fechar os callees genéricos de `IsSceneAvailable`, os 
 - `git push origin main` concluiu com código zero, atualizando `420b2ae6 → 2aa88455`.
 - O recibo estruturado está em `reports/recon/wave2_checkpoint.json`; esta entrada integra um commit documental posterior.
 - Nenhum APK, binário IL2CPP, dump pesado ou alteração preexistente de código do cliente foi incluído nesse lote.
+
+## 2026-11-02 — publicação das alterações preexistentes, autorizada depois
+
+O usuário solicitou também publicar o trabalho preexistente e, em seguida, parar. A revisão incluiu loading, Home/Settings, loja gráfica, economia local, presentes/passe, testes, gerador de previews e exportação seletiva de UI. Scripts, assets runtime necessários e respectivos `.meta` entram no novo lote; o export intermediário `out/store-ui-export/` fica ignorado, assim como APKs e caches.
+
+- Revisão independente não identificou bloqueio de correção ou PNG/meta obrigatório ausente. Continua pendente a seleção visual do subasset do loading importado como Multiple; os testes da Home não certificam sua paridade visual.
+- A execução atual produziu `out/test-results-preexisting-review.xml`: **72 testes, 72 Passed, zero failed/skipped**, de 22:05:24Z a 22:05:25Z. O processo CLI foi interrompido posteriormente e retornou 130; o XML completo já estava gravado. O resultado dos testes é reportado pelo XML, sem afirmar término normal da CLI.
+- A evidência Android/APK anterior está em `STORE_VISUAL_VALIDATION_2026-11-02.md`; esta publicação não executou uma nova instalação/reprodução em aparelho.
+- `git diff --check` passou. O recibo de revisão em `reports/recon/client_publication_review.json` vincula os arquivos deste lote e o XML por hash.
+- Após commit e push deste lote, a execução será encerrada por instrução explícita do usuário; nenhum novo lote de engenharia reversa será iniciado.

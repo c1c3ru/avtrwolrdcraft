@@ -1,0 +1,463 @@
+{
+  "schema_version": 1,
+  "scope": "publish reviewed preexisting client work, not full original parity",
+  "reviewed_base_commit": "c14524709616e80c7c9d01b952ce5cdbfe01a533",
+  "unity_editmode": {
+    "xml_path": "out/test-results-preexisting-review.xml",
+    "xml_sha256": "66e89940ba976e4aa6b5c66e77b50f9a1fa32d428334aa019d8303988ce4d508",
+    "attributes": {
+      "id": "2",
+      "testcasecount": "72",
+      "result": "Passed",
+      "total": "72",
+      "passed": "72",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-11-02 22:05:24Z",
+      "end-time": "2026-11-02 22:05:25Z",
+      "duration": "1.3355122"
+    },
+    "cli_exit_code": 130,
+    "note": "Complete passing XML produced before later CLI interruption; normal CLI completion is not claimed"
+  },
+  "independent_review": "/root/review_plan_gaps read-only review: no blocking issue or required resource missing; loading Multiple subasset selection not visually validated",
+  "android_retested_this_publication": false,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 2040,
+      "sha256": "8b7561ae8669635ba4e28fa2c66920ab7f90ff9a62b31b01ed3209994a3b84b9"
+    },
+    {
+      "path": "LOOP_STATE.md",
+      "bytes": 37966,
+      "sha256": "a3fe62b27761663c31a566b3d4a53053b72f5f8a16c4672abe52c59fd3bfdf7c"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Editor/AvatarWorld.EditorTools.asmdef",
+      "bytes": 513,
+      "sha256": "639084a96fcf890a83983702662804c43ea149d47e30f6f948789ef2da4b9a2e"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Editor/StoreVisualAssets.cs",
+      "bytes": 5703,
+      "sha256": "ee6f7b45438a8917c3d5086cc71bc61bbd20306b5cebf176a2752f40aaac9860"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Editor/StoreVisualAssets.cs.meta",
+      "bytes": 59,
+      "sha256": "11653ae9db20d62deb9049a0ea9c6b12ed2837e9e1228a662ed5f56a655771a9"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/Loading.meta",
+      "bytes": 172,
+      "sha256": "4713c372a8bc33517c7b58a77347c9050994828392d53856c8ec7b28d2a31d75"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/Loading/loading_clock.png",
+      "bytes": 20196,
+      "sha256": "09db8ca829cf4c409783b61cc1c44255d33c91ec9e99cec34e6897ed6c231689"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/Loading/loading_clock.png.meta",
+      "bytes": 5549,
+      "sha256": "8c59f025d54f21d2b253175fe3bcf5cab536d76b37741329556962c1064f1f5c"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/Loading/loading_mascot.png",
+      "bytes": 89398,
+      "sha256": "cfaf6c45adfd42d90f33826f7eb8b763581e83fb1a3ee2105688584ecd88af42"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/Loading/loading_mascot.png.meta",
+      "bytes": 3684,
+      "sha256": "7e509fed3025c8ab84668ab00fbb6ba0e2b034cd902854dec17433f6ff1cc386"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual.meta",
+      "bytes": 172,
+      "sha256": "c04a1f282de49ffdaf0f6e9d7d0657e3723da7da3c490ee2fe1aa86eae0a7833"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/AvatarPass_Static_67114.png",
+      "bytes": 23166,
+      "sha256": "c767470d9fd40358e5cdb5d19c698326a0c177666f6689dcaab66b82f2ac305c"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/AvatarPass_Static_67114.png.meta",
+      "bytes": 4092,
+      "sha256": "501f541fe05dff77d1cf97d06fd5758d803b02913d101b7353060c8c68d8146c"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/Gifts_Static_92702.png",
+      "bytes": 20576,
+      "sha256": "b79f629c70971eeb017116ebc6906e6de290199b3f599fe70b5f1d114d26e2b3"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/Gifts_Static_92702.png.meta",
+      "bytes": 4092,
+      "sha256": "44c4e814d3fcf203041238ced4af2c3fab12e675f2a7e05afd50f8a8bdbedd03"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/StoreWidget_CharactersPack_64600.png",
+      "bytes": 61317,
+      "sha256": "f16c43aac1fdfdffab7d27a33a1c12ccca06eab72fa9b64676655e531b5a2562"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/StoreWidget_CharactersPack_64600.png.meta",
+      "bytes": 4092,
+      "sha256": "a8378a7242eafe08208120b38fd12de5c70dcd2f4fb1951306ff6750a333cc77"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/UI_Panel_White.png",
+      "bytes": 17394,
+      "sha256": "b78ec93982048b547f5538986f9e023b2104b00ac5c02a79f2ce852f464f1d5c"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/UI_Panel_White.png.meta",
+      "bytes": 4092,
+      "sha256": "4cf2df0787158ccad0ea5fb4117bc0299fcf16badec72bc03bf64a663b8ba8d6"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/outfit-0.png",
+      "bytes": 179624,
+      "sha256": "19c0b3fd093046f27970dad8568f0640201c54950a3a23635659e3c55702e900"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/outfit-0.png.meta",
+      "bytes": 3699,
+      "sha256": "970a5a569c7efbbce9911e3747338d738ec5c9582029ca19c4d177bfe51e28f8"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/outfit-1.png",
+      "bytes": 158889,
+      "sha256": "02c8a6f2112dc7880523ea6c89894f567fdef9b8727f9c0edcbe79189fd99ad2"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/outfit-1.png.meta",
+      "bytes": 3700,
+      "sha256": "92758284c95f3de0f2f921746da5742e956907998a6409fccbbf8c8fdade267f"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/outfit-2.png",
+      "bytes": 174141,
+      "sha256": "18d712c728f0b842b7e569edde2616c1c63b03246a35d3cedd53f795281c21c8"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/outfit-2.png.meta",
+      "bytes": 3702,
+      "sha256": "1566d4ea0b90c969145cdef4ce82fd71ff69019da3346f1fd9f6e6e8ea495b4a"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_112826.png",
+      "bytes": 739,
+      "sha256": "c8a67080192bffbcf215154f54da71e602237067b580dd410c7a17566b9a6281"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_112826.png.meta",
+      "bytes": 4092,
+      "sha256": "84b65945fa494a51b8514729bc7f9511616f774b253a8435834ab4b210c6a20a"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_112827.png",
+      "bytes": 668,
+      "sha256": "a8b6443e7046103762c044fdeafa3360fff4f96932f84dec424ba3133f057d2b"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_112827.png.meta",
+      "bytes": 4092,
+      "sha256": "8d71f7fe60431d1e8773b39d3bcf13457d9716554581c56a9854c81b397f1750"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_112831.png",
+      "bytes": 220,
+      "sha256": "83413a30e873fa4d552d40d49ddcde025ff55e20c4f256effa7f8c24f5eb5123"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_112831.png.meta",
+      "bytes": 4092,
+      "sha256": "69f50c11f1c0bf2849bc380e92a40c3664c4ca50885d443a33d92255a6d773c0"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_116746.png",
+      "bytes": 108,
+      "sha256": "7a7cfd91ffd6bc8db216816ea30e41763e698312a4dd20059a962fb1942c6cad"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_116746.png.meta",
+      "bytes": 4092,
+      "sha256": "daf00452393bc6f9522a143cc8166ba68dd2cfbc1d8f2d9bb819c7dd46be6717"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_129461.png",
+      "bytes": 10525,
+      "sha256": "811fa4d5bdff9d51f6d3ada42752912249dda36b7e15446654b60412e831b38b"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_129461.png.meta",
+      "bytes": 4092,
+      "sha256": "2b8dd91090282d18f2ae5cba754fa29dcb6ab8e0a2597fbfd22e4cb89b98e816"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_134478.png",
+      "bytes": 435,
+      "sha256": "3f19be5d2b4119708fffc766118fbc2ed2c45200637c630dbe1645c3ead8d77d"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_134478.png.meta",
+      "bytes": 4092,
+      "sha256": "8ed4399798972f6eb9053fb20ea48fdf65e4a2ddb34603edb622e75e75843ae8"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_147356.png",
+      "bytes": 1472,
+      "sha256": "0e67416b7733784a1ededec3d8d907cf9fe2f7b149dc53e6494296550d342389"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_147356.png.meta",
+      "bytes": 4092,
+      "sha256": "cbc622a0d36c8091fcc56a2e2be6c6b9db2bd7f2b1d93b035e8a041075dc8c00"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_150542.png",
+      "bytes": 9006,
+      "sha256": "1db3d2e45879b08a60fa541b2ae97ff2e381c8d4132f3913cdc45691f73c4f28"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_150542.png.meta",
+      "bytes": 4092,
+      "sha256": "49756baaf0109883aa4df545033865d33006854c00fe17500a8f5189348eda34"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_158873.png",
+      "bytes": 4306,
+      "sha256": "b711b4cc9e7b5aed037b7beb5ab17537a208edd17e68e57e6db6bfccd5f96b9b"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_158873.png.meta",
+      "bytes": 4092,
+      "sha256": "bac12c4913bfc7571554a23730f6c81fb907e930eb0ed2d1cbc3ec2e5fb398f4"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_168101.png",
+      "bytes": 6701,
+      "sha256": "7e141549406c695897914a09210e9a3ebc83ab6a0e6e0cc78f173f670e69f1f6"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_168101.png.meta",
+      "bytes": 4092,
+      "sha256": "855eb5ca47f2cc40de4a6790072874bea1ae0dd77635409b52a304efb197ef82"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_170163.png",
+      "bytes": 7161,
+      "sha256": "1f77032e33341e0549b93ce44b1c50bc0b2acc569374c29adc26e72134290f52"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_170163.png.meta",
+      "bytes": 4092,
+      "sha256": "391ca096d7792e8f4f7df48b3fcbc69b8f0971a7fb58023ed1bd246637be156f"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_184451.png",
+      "bytes": 13475,
+      "sha256": "30e761b78103a979a01b734f54a09f559978219b4a8e17e132c57a156f05f749"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_184451.png.meta",
+      "bytes": 4092,
+      "sha256": "fbf2862ecc4184a23bcb1c6f0381fb35cbacfc74c28b9b8208a7bd4b8acd72ce"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_187542.png",
+      "bytes": 40483,
+      "sha256": "30241698ecc67d9d117c89bd511a99ef3bf939fdd023551ff416732a1c043b7e"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_187542.png.meta",
+      "bytes": 4092,
+      "sha256": "3b3772aa0c0fb384cd86acc84497ed265dad7a2a4238c474b018c1694848fe35"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_190344.png",
+      "bytes": 1394,
+      "sha256": "348be7d9baad43731a317c853c2fc359f6a213b859d35efda8bf39525b3a36e9"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_190344.png.meta",
+      "bytes": 4092,
+      "sha256": "271a98526db04fe94fc514e1883796abcc3b9d3a7f267a844c747f5b2f9dc2ea"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_202103.png",
+      "bytes": 190,
+      "sha256": "e9678b7d7857469f1ae152268bf4e59ad47885bbc8b4f73421f10b7f352edbeb"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_202103.png.meta",
+      "bytes": 4092,
+      "sha256": "f6040f2c4b7e1649eb296890f0f91fca4053bbaccae85b6a779c7137740f5d30"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_213224.png",
+      "bytes": 705,
+      "sha256": "27e061342fbacea471b5f2cbbedc52c365bc174a3dd6166d48f27bc88d31b2e4"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/resources.assets_213224.png.meta",
+      "bytes": 4092,
+      "sha256": "0daf3dce7cf3ef99c30f945415e557021cf743c80fe97b3bb762884495442743"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_10.png",
+      "bytes": 4596,
+      "sha256": "5ba148231ecaafec326f41c2fc732f5d9774b5fc316558969876f658ca0ac1fe"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_10.png.meta",
+      "bytes": 4092,
+      "sha256": "2692dc843973542400c2b2cbb5b881fca3d75e46c85206f94cb296eba7b47b0a"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_11.png",
+      "bytes": 24013,
+      "sha256": "29098ce4ecf7b90eb4189489f0fa0a683d176e7cf3343e7da2f0fa6d99189491"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_11.png.meta",
+      "bytes": 4092,
+      "sha256": "d0bae3340ce7012e1d83436755883258071065a7598757d3110bcd672c5eaf7d"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_12.png",
+      "bytes": 3950,
+      "sha256": "3ec4b17f719b39f0921a09cb4c7a52da230ee4123333cfdd7aa5a9e18ce26c54"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_12.png.meta",
+      "bytes": 4092,
+      "sha256": "0f5a0101c4a473a3e073edc366a16e337c6e3207672256238b49e64c3200666f"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_13.png",
+      "bytes": 1136,
+      "sha256": "16dcd20ba242b81a0a45b1cbc69a4bd0c8631182f48a5fd84908281f52577ac9"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_13.png.meta",
+      "bytes": 4092,
+      "sha256": "eb968234d649d4a37c419137fec448a8a865550bdd3f004218b71066e3965240"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_14.png",
+      "bytes": 7223,
+      "sha256": "414d1a1ae610cb30c17101e1edb2bb53fc37c314edb70eaae5295646cb720341"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_14.png.meta",
+      "bytes": 4092,
+      "sha256": "2ab062e4869842832fa1ba8e9dcb245bf70334b56f7dad3aaf9161084b85502b"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_15.png",
+      "bytes": 14118,
+      "sha256": "d8c2693a5ec91e17e1e5524c88bea0fa965e7cb983f104daf581dd0c2d7b3da8"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_15.png.meta",
+      "bytes": 4092,
+      "sha256": "92f12809bff02164e78f3fecd895a968ce237d9550aee6271ed99490e3a345d7"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_16.png",
+      "bytes": 4157,
+      "sha256": "5a8d4e965f8762846dddb846000c9b906c293591938c520276303dfb04a94e1c"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Resources/StoreVisual/sharedassets237.assets_16.png.meta",
+      "bytes": 4092,
+      "sha256": "0ad0f4977048a50a5358a8546ed6b842eca11be1b375aa14dac0aae03eee23ef"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Scripts/Core/Economy/OfflineHomeService.cs",
+      "bytes": 4834,
+      "sha256": "435df5bd375bf019a212b00d81f2a2d484f6def8946c34a323bdccf8ad4df992"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Scripts/Core/Economy/OfflineHomeService.cs.meta",
+      "bytes": 59,
+      "sha256": "ccb40fb1d07ea95eac504c9349a8b48d0ac230b45839e9bb8ec129ae9d46868e"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Scripts/Runtime/HomeActions.cs",
+      "bytes": 21891,
+      "sha256": "fae3d51acd3d01d432861adf7f25083a2d032a71509e2d61e6b4e0aa66c1f415"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Scripts/Runtime/HomeBootstrap.cs",
+      "bytes": 4770,
+      "sha256": "bbb483c579b5250549e1d60daf9451c503f8159bb09d1656e8f45dce4cdd0cf1"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Scripts/Runtime/LoadingScreenView.cs",
+      "bytes": 2744,
+      "sha256": "e6f135ef8d4dea01e7ab284c046ddea96eb74adce057ff6935b0e711695d5f3c"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Scripts/Runtime/LoadingScreenView.cs.meta",
+      "bytes": 59,
+      "sha256": "2dab2e8515a521c8c29004893af6a9b35e9f8e5bb7fbb75139af272cccdc77be"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Scripts/Runtime/StoreVisualView.cs",
+      "bytes": 10651,
+      "sha256": "7b6e5c62a04c2caef0ca37b17c9f566a3d94160ec57f49709092a009bb194d97"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Scripts/Runtime/StoreVisualView.cs.meta",
+      "bytes": 59,
+      "sha256": "93d8a5a82bd7fe7be28d14d8a5cb2a33d31572dbec136b2ad4558f1277e2290b"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Tests/EditMode/HomeActionsTests.cs",
+      "bytes": 10196,
+      "sha256": "26447f893d6e12bef8ffee57f8018877c5d0c4393101d1005870dbaa21fa6a19"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Tests/EditMode/OfflineHomeServiceTests.cs",
+      "bytes": 3648,
+      "sha256": "911492f46a8049add09fc9204511873b04584b64b174945db6670599b9ed1f8c"
+    },
+    {
+      "path": "client/AvatarWorldClient/Assets/Tests/EditMode/OfflineHomeServiceTests.cs.meta",
+      "bytes": 59,
+      "sha256": "82fecf2f4523d1d68c3fc25e54a8abc9efdde478f1b8801a3ceb6267a5a0297b"
+    },
+    {
+      "path": "docs/OFFLINE_RECONSTRUCTION_STATUS.md",
+      "bytes": 12552,
+      "sha256": "10c0522a01076264f17f1abeb513218f0c53f646f25efac051b3e5765c9cb6f0"
+    },
+    {
+      "path": "docs/RECON_EXECUTION_LOG.md",
+      "bytes": 9615,
+      "sha256": "41b8267db6cf98a1c62aa722e5848b612e9b302d72ec9d6c7c98b55acca2ae54"
+    },
+    {
+      "path": "docs/STORE_VISUAL_VALIDATION_2026-11-02.md",
+      "bytes": 4330,
+      "sha256": "daf4f81183b0268cf068fbdce95921f2671a0394316cc07ef5b327dc644a2cb9"
+    },
+    {
+      "path": "tools/export_level.py",
+      "bytes": 7239,
+      "sha256": "f87286c235b73df50d075e2a39d427c3c096258853951e1734eafc2c6030c5b4"
+    }
+  ],
+  "generated_export_excluded": "out/store-ui-export/",
+  "stop_after_publication": true
+}

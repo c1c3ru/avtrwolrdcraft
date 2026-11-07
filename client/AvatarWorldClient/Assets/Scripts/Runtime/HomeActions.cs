@@ -18,10 +18,18 @@ namespace AvatarWorld.Runtime
         RectTransform content;
         SaveStore saves;
         PlayerState state;
+        OfflineHomeService offline;
+        StoreVisualView storeVisual;
         Font font;
         readonly List<Canvas> homeCanvases = new List<Canvas>();
-        Canvas editorEntryCanvas;
-        Canvas coinEntryCanvas;
+        GameObject settingsMenu;
+        GameObject chatLanguagesPanel;
+        Button sfxButton;
+        Button musicButton;
+        GameObject sfxOn;
+        GameObject sfxOff;
+        GameObject musicOn;
+        GameObject musicOff;
         AvatarGpuRuntime avatarEditor;
         bool inGameplay;
         public string CurrentPage { get; private set; }
@@ -36,6 +44,7 @@ namespace AvatarWorld.Runtime
         {
             saves = saveStore ?? throw new ArgumentNullException(nameof(saveStore));
             state = sharedState ?? throw new ArgumentNullException(nameof(sharedState));
+            offline = new OfflineHomeService(state, () => saves.Save(state));
             play = openPlay ?? throw new ArgumentNullException(nameof(openPlay));
             coinActivity = openCoinActivity ?? throw new ArgumentNullException(nameof(openCoinActivity));
             font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
@@ -54,14 +63,39 @@ namespace AvatarWorld.Runtime
             UiSound.SetMuted(PlayerPrefs.GetInt(SfxKey, 1) == 0);
             BackgroundMusic.SetMuted(PlayerPrefs.GetInt(MusicKey, 1) == 0);
             BuildPanel();
-            BuildAvatarEntry();
-            BuildCoinActivityEntry();
+            settingsMenu = FindObject(objects, "SettingsMenu");
+            chatLanguagesPanel = FindObject(objects, "ChatLanguagesPanel");
+            sfxButton = FindButton(objects, "SFX");
+            musicButton = FindButton(objects, "Music");
+            sfxOn = FindObject(objects, "On", sfxButton != null ? sfxButton.transform : null);
+            sfxOff = FindObject(objects, "Off", sfxButton != null ? sfxButton.transform : null);
+            musicOn = FindObject(objects, "On", musicButton != null ? musicButton.transform : null);
+            musicOff = FindObject(objects, "Off", musicButton != null ? musicButton.transform : null);
+            SyncAudioToggles();
+            var settingsBackdrop = FindObject(objects, "Background", settingsMenu != null ? settingsMenu.transform : null);
+            if (settingsBackdrop != null)
+            {
+                var backdropButton = settingsBackdrop.GetComponent<Button>();
+                if (backdropButton == null) backdropButton = settingsBackdrop.AddComponent<Button>();
+                backdropButton.targetGraphic = settingsBackdrop.GetComponent<Graphic>();
+                backdropButton.onClick.AddListener(() => settingsMenu.SetActive(false));
+            }
             foreach (var go in objects)
             {
                 if (go.name == "MultiplayerCanvas" || go.name == "MultiplayerClickBlocker" ||
-                    go.name == "SignedUserButton " || go.name == "NotSignedUserButton" ||
-                    go.name == "SettingsMenu" || go.name == "UserMenu") go.SetActive(false);
+                    go.name == "SignedUserButton " || go.name == "ComingSoonButton" ||
+                    go.name == "UserMenu") go.SetActive(false);
+                // O presente avulso exportado está sem View; o GiftBadge visível é o acesso
+                // aos presentes. Evita um hitbox invisível sobre o Starter Pack.
+                if (go.name == "NewUserGiftCurrency" && go.transform.Find("View") is Transform giftView &&
+                    !giftView.gameObject.activeSelf) go.SetActive(false);
                 var button = go.GetComponent<Button>();
+                if (go.name == "GiftBadge" && button == null)
+                {
+                    button = go.AddComponent<Button>();
+                    button.targetGraphic = go.GetComponent<Graphic>();
+                    if (button.targetGraphic != null) button.targetGraphic.raycastTarget = true;
+                }
                 if (button == null) continue;
                 string action = go.name.Trim();
                 // Preserva os listeners existentes, inclusive o som de clique.
@@ -71,7 +105,55 @@ namespace AvatarWorld.Runtime
                     case "SettingsButton":
                     case "AccountButton":
                     case "AchievementsAppWidget":
+                    case "ShopButton":
+                    case "World_ShopButton":
+                    case "World_ShopButton StarterPack":
+                    case "NewUserGiftCurrency":
+                    case "AvatarPassButton":
+                    case "AvatarPassButton_Small":
+                    case "AvatarPassChangeWidget":
+                    case "HolidayButton":
+                    case "GiftsWidget":
+                    case "GiftsWidget (2)":
+                    case "GiftBadge":
+                    case "ClothesDropGiftsWidget":
+                    case "WorldResetButton":
                         button.onClick.AddListener(() => Open(action));
+                        boundButtons.Add(button);
+                        break;
+                    case "NotSignedUserButton":
+                        button.onClick.AddListener(ShowProfile);
+                        boundButtons.Add(button);
+                        break;
+                    case "Background" when go == settingsBackdrop:
+                        // O backdrop recebe o listener de fechar acima e deve continuar clicável.
+                        button.interactable = true;
+                        break;
+                    case "SFX":
+                        button.onClick.AddListener(ToggleSfx);
+                        boundButtons.Add(button);
+                        break;
+                    case "Music":
+                        button.onClick.AddListener(ToggleMusic);
+                        boundButtons.Add(button);
+                        break;
+                    case "ChatLanguageButton":
+                        button.onClick.AddListener(() =>
+                        {
+                            if (chatLanguagesPanel != null) chatLanguagesPanel.SetActive(!chatLanguagesPanel.activeSelf);
+                        });
+                        boundButtons.Add(button);
+                        break;
+                    case "ptButton":
+                    case "enButton":
+                    case "esButton":
+                    case "idButton":
+                        button.onClick.AddListener(() =>
+                        {
+                            PlayerPrefs.SetString("home.chat.language", action.Substring(0, 2));
+                            PlayerPrefs.Save();
+                            if (chatLanguagesPanel != null) chatLanguagesPanel.SetActive(false);
+                        });
                         boundButtons.Add(button);
                         break;
                     default:
@@ -80,6 +162,14 @@ namespace AvatarWorld.Runtime
                         PendingButtons.Add(action);
                         break;
                 }
+            }
+            foreach (var button in boundButtons) button.interactable = true;
+            // Arte decorativa exportada não pode bloquear controles que ficam atrás dela.
+            foreach (var go in objects)
+            {
+                var graphic = go.GetComponent<Graphic>();
+                if (graphic != null && go != settingsBackdrop && go.GetComponentInParent<Button>() == null)
+                    graphic.raycastTarget = false;
             }
         }
 
@@ -96,54 +186,50 @@ namespace AvatarWorld.Runtime
                 case "SettingsButton": ShowSettings(); break;
                 case "AccountButton": ShowProfile(); break;
                 case "AchievementsAppWidget": ShowProgress(); break;
+                case "ShopButton":
+                case "World_ShopButton":
+                case "World_ShopButton StarterPack": ShowShop(); break;
+                case "NewUserGiftCurrency":
+                case "GiftsWidget":
+                case "GiftsWidget (2)": ShowGifts(); break;
+                case "GiftBadge": ShowGifts(); break;
+                case "AvatarPassButton":
+                case "AvatarPassButton_Small":
+                case "AvatarPassChangeWidget": ShowPass(); break;
+                case "HolidayButton": ShowDailyActivity(); break;
+                case "ClothesDropGiftsWidget": OpenAvatarEditor(); break;
+                case "WorldResetButton":
+                    Close();
+                    Show("Reiniciar ambiente", "Abrir a quadra com bola e placar reiniciados? Suas moedas e seu avatar serão mantidos.");
+                    AddButton("Reiniciar quadra", () => Open("PlayButton"));
+                    break;
             }
         }
 
-        void BuildAvatarEntry()
+        void ShowShop(string message = "") => ShowVisualPage("shop", "Loja offline", message);
+        void ShowGifts(string message = "") => ShowVisualPage("gifts", "Presentes offline", message);
+        void ShowPass(string message = "") => ShowVisualPage("pass", "Passe offline", message);
+        void ShowDailyActivity() => ShowGifts();
+
+        void ShowVisualPage(string page, string title, string message)
         {
-            var root = new GameObject("AvatarEditorEntry", typeof(RectTransform), typeof(Canvas),
-                typeof(CanvasScaler), typeof(GraphicRaycaster));
-            root.transform.SetParent(transform, false);
-            editorEntryCanvas = root.GetComponent<Canvas>();
-            editorEntryCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            editorEntryCanvas.overrideSorting = true;
-            editorEntryCanvas.sortingOrder = 500;
-            var scaler = root.GetComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1280, 720);
-            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
-            var button = MakeButton(root.transform, "Meu avatar", OpenAvatarEditor);
-            var rect = (RectTransform)button.transform;
-            // A faixa inferior direita pertence ao AchievementsAppWidget original. Manter
-            // esta entrada no centro inferior evita interceptar o hitbox desse controle.
-            rect.anchorMin = new Vector2(0.50f, 0.035f);
-            rect.anchorMax = new Vector2(0.70f, 0.15f);
-            rect.offsetMin = rect.offsetMax = Vector2.zero;
+            Close();
+            if (storeVisual == null)
+            {
+                var go = new GameObject("OriginalStoreVisual", typeof(RectTransform));
+                go.transform.SetParent(transform, false);
+                storeVisual = go.AddComponent<StoreVisualView>();
+                storeVisual.Initialize(state, offline, Close, OpenAvatarEditor, OpenCoinActivity);
+            }
+            CurrentPage = title;
+            storeVisual.Show(page, message);
         }
 
-        void BuildCoinActivityEntry()
+        void OpenCoinActivity()
         {
-            var root = new GameObject("CoinActivityEntry", typeof(RectTransform), typeof(Canvas),
-                typeof(CanvasScaler), typeof(GraphicRaycaster));
-            root.transform.SetParent(transform, false);
-            coinEntryCanvas = root.GetComponent<Canvas>();
-            coinEntryCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            coinEntryCanvas.overrideSorting = true;
-            coinEntryCanvas.sortingOrder = 500;
-            var scaler = root.GetComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1280, 720);
-            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
-            var button = MakeButton(root.transform, "Desafio: ganhar moedas", () =>
-            {
-                Close();
-                SetHomeVisible(false);
-                coinActivity();
-            });
-            var rect = (RectTransform)button.transform;
-            rect.anchorMin = new Vector2(0.50f, 0.17f);
-            rect.anchorMax = new Vector2(0.70f, 0.285f);
-            rect.offsetMin = rect.offsetMax = Vector2.zero;
+            Close();
+            SetHomeVisible(false);
+            coinActivity();
         }
 
         void OpenAvatarEditor()
@@ -181,49 +267,80 @@ namespace AvatarWorld.Runtime
                 var raycaster = canvas.GetComponent<GraphicRaycaster>();
                 if (raycaster != null) raycaster.enabled = visible;
             }
-            if (editorEntryCanvas != null) editorEntryCanvas.enabled = visible;
-            if (coinEntryCanvas != null) coinEntryCanvas.enabled = visible;
         }
 
         void ShowProgress()
         {
             Show("Progresso", $"Desafios concluídos: {state.CompletedChallenges.Count}\nMoedas: {state.PazuCurrency}\nPontos: {state.LoyaltyPoints}");
             foreach (var id in state.CompletedChallenges) AddText(id, 24);
+            AddButton("Desafio pedagógico: ganhar moedas", () =>
+            {
+                Close();
+                SetHomeVisible(false);
+                coinActivity();
+            });
         }
 
         public void Close()
         {
             panel.SetActive(false);
+            if (storeVisual != null) storeVisual.gameObject.SetActive(false);
+            if (settingsMenu != null) settingsMenu.SetActive(false);
             CurrentPage = null;
         }
 
         void ShowSettings()
         {
-            Show("Configurações", "Preferências deste aparelho.");
-            bool sfxEnabled = PlayerPrefs.GetInt(SfxKey, 1) != 0;
-            AddButton("Efeitos sonoros: " + (sfxEnabled ? "ligados" : "desligados"), () =>
-            {
-                bool next = PlayerPrefs.GetInt(SfxKey, 1) == 0;
-                PlayerPrefs.SetInt(SfxKey, next ? 1 : 0);
-                PlayerPrefs.Save();
-                UiSound.SetMuted(!next);
-                ShowSettings();
-            });
-            bool musicEnabled = PlayerPrefs.GetInt(MusicKey, 1) != 0;
-            AddButton("Música: " + (musicEnabled ? "ligada" : "desligada"), () =>
-            {
-                bool next = PlayerPrefs.GetInt(MusicKey, 1) == 0;
-                PlayerPrefs.SetInt(MusicKey, next ? 1 : 0);
-                PlayerPrefs.Save();
-                BackgroundMusic.SetMuted(!next);
-                ShowSettings();
-            });
+            Close();
+            if (settingsMenu != null) settingsMenu.SetActive(true);
         }
 
         void ShowProfile()
         {
             Show("Perfil local", $"Progresso salvo neste aparelho.\nMoedas: {state.PazuCurrency}\nPontos: {state.LoyaltyPoints}");
+            AddButton("Editar meu avatar", OpenAvatarEditor);
             AddButton("Salvar progresso", SaveProgress);
+        }
+
+        void ToggleSfx()
+        {
+            bool enabled = PlayerPrefs.GetInt(SfxKey, 1) == 0;
+            PlayerPrefs.SetInt(SfxKey, enabled ? 1 : 0);
+            PlayerPrefs.Save();
+            UiSound.SetMuted(!enabled);
+            SyncAudioToggles();
+        }
+
+        void ToggleMusic()
+        {
+            bool enabled = PlayerPrefs.GetInt(MusicKey, 1) == 0;
+            PlayerPrefs.SetInt(MusicKey, enabled ? 1 : 0);
+            PlayerPrefs.Save();
+            BackgroundMusic.SetMuted(!enabled);
+            SyncAudioToggles();
+        }
+
+        void SyncAudioToggles()
+        {
+            bool soundEnabled = PlayerPrefs.GetInt(SfxKey, 1) != 0;
+            bool musicEnabled = PlayerPrefs.GetInt(MusicKey, 1) != 0;
+            if (sfxOn != null) sfxOn.SetActive(soundEnabled);
+            if (sfxOff != null) sfxOff.SetActive(!soundEnabled);
+            if (musicOn != null) musicOn.SetActive(musicEnabled);
+            if (musicOff != null) musicOff.SetActive(!musicEnabled);
+        }
+
+        static GameObject FindObject(IReadOnlyList<GameObject> objects, string name, Transform parent = null)
+        {
+            foreach (var go in objects)
+                if (go != null && go.name == name && (parent == null || go.transform.IsChildOf(parent))) return go;
+            return null;
+        }
+
+        static Button FindButton(IReadOnlyList<GameObject> objects, string name)
+        {
+            var go = FindObject(objects, name);
+            return go != null ? go.GetComponent<Button>() : null;
         }
 
         void SaveProgress()
@@ -262,7 +379,7 @@ namespace AvatarWorld.Runtime
             var card = new GameObject("Card", typeof(RectTransform), typeof(Image));
             card.transform.SetParent(panel.transform, false);
             Stretch((RectTransform)card.transform, new Vector2(0.12f, 0.08f), new Vector2(0.88f, 0.92f));
-            card.GetComponent<Image>().color = new Color(0.96f, 0.94f, 1);
+            card.GetComponent<Image>().sprite = Resources.Load<Sprite>("StoreVisual/resources.assets_187542");
 
             var scrollGo = new GameObject("Scroll", typeof(RectTransform), typeof(Image), typeof(Mask), typeof(ScrollRect));
             scrollGo.transform.SetParent(card.transform, false);
@@ -330,7 +447,7 @@ namespace AvatarWorld.Runtime
             go.transform.SetParent(parent, false);
             go.GetComponent<LayoutElement>().preferredHeight = 64;
             var image = go.GetComponent<Image>();
-            image.color = new Color(0.45f, 0.2f, 0.6f);
+            image.sprite = Resources.Load<Sprite>("StoreVisual/resources.assets_184451");
             var button = go.GetComponent<Button>();
             button.targetGraphic = image;
             button.onClick.AddListener(() => { UiSound.PlayClick(); action(); });
@@ -342,7 +459,7 @@ namespace AvatarWorld.Runtime
             text.text = label;
             text.fontSize = 24;
             text.alignment = TextAnchor.MiddleCenter;
-            text.color = Color.white;
+            text.color = Color.black;
             text.raycastTarget = false;
             return go;
         }

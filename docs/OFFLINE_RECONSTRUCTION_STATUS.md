@@ -1,6 +1,18 @@
 # Reconstrução offline — escopo, evidências e pendências
 
+## Entrega visual — 2026-11-02
+
+Loja, presentes e passe agora têm UI gráfica com assets originais e prévias do avatar Spine. Compras, resgates, ativação, bloqueio por requisitos e persistência foram validados no Xiaomi. A revisão final passou **72/72 testes**, foi compilada e instalada; os três prêmios do passe estão visíveis sem sobreposição. Evidências, origem dos sprites, APK/SHA256 e limites em `STORE_VISUAL_VALIDATION_2026-11-02.md`. As matrizes e notas históricas abaixo descrevem revisões anteriores; não interpretar os menus textuais anteriores como a interface entregue atual.
+
 Atualizado em 2026-10-31. Este documento descreve o que foi observado no APK original, o que o cliente local realmente implementa e o que ainda falta. “Responde ao toque” não significa “equivalente ao original”. O objetivo geral permanece aberto.
+
+## Atualização de controles — 2026-11-01
+
+O usuário autorizou preços e recompensas próprios do cliente offline. As regras estão em `docs/OFFLINE_HOME_RULES.md`. Loja oferece três composições reais do avatar, registra propriedade, desconta moedas e aplica o visual; presentes inicial/diário e passe com marcos de desafios usam o mesmo save. Starter Pack abre a loja; widgets de presentes e roupas abrem seus fluxos locais. Reset Mode confirma a abertura de uma sessão nova da quadra. Não há paridade com o catálogo/eventos/passe do servidor original.
+
+O código conecta 27 controles exportados e acrescenta ação ao GiftBadge verde (28 bindings, incluindo controles internos/ocultos); 12 permanecem pendentes, ligados a login/cloud, multiplayer, Coming Soon e Galxe. Coming Soon e usuário conectado são ocultados no modo offline. Não interpretar essas contagens como 28 botões visíveis ou todos os sistemas originais concluídos. O overlay Coming Soon que bloqueava Avatar ID foi removido e imagens decorativas sem Button ancestral deixam de interceptar toques.
+
+EditMode: **71/71 passaram** em `out/test-results-offline-home.xml`, incluindo compra/persistência, saldo insuficiente, presentes sem duplicidade, data UTC, requisitos do passe, alcance de todos os prêmios com o banco real e rollback após falha de escrita. Loja validada no Android: compra Passeio debitou 15 (saldo 50→35), registrou propriedade/aparência e persistiu após reinstalação/reabertura. Capturas `out/offline-home-shop.png` e `out/offline-home-purchased.png`. A matriz abaixo documenta a revisão anterior.
 
 ## Escopo acordado
 

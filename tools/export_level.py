@@ -13,6 +13,9 @@ import collections, glob, gzip, json, os, sys
 import UnityPy
 
 level, mbdir, outdir = sys.argv[1:4]
+# Quarto argumento opcional: arquivos serializados já extraídos. Evita abrir o bundle
+# de 1,3 GB inteiro para exportar outra tela de UI.
+scene_dir = sys.argv[4] if len(sys.argv) > 4 else None
 os.makedirs(os.path.join(outdir, "sprites"), exist_ok=True)
 
 # 1) MonoBehaviours deste level, indexados pelo GameObject dono
@@ -27,7 +30,18 @@ for f in glob.glob(os.path.join(mbdir, "*.jsonl.gz")):
             mb[r["m_GameObject"]["m_PathID"]][cls] = r
 
 # 2) objetos do level + indice de todos os Sprites (podem estar em resources.assets)
-env = UnityPy.load("x/data/assets/bin/Data/datapack.unity3d")
+if scene_dir:
+    env = UnityPy.load(os.path.join(scene_dir, level))
+    scene_file = next(f for f in env.files.values() if f.name == level)
+    for external in scene_file.externals:
+        filename = os.path.basename(external.path)
+        candidate = os.path.join(scene_dir, filename)
+        if filename == "resources.assets":
+            candidate = os.path.join("out/assets", filename)
+        if os.path.isfile(candidate):
+            env.load_file(candidate)
+else:
+    env = UnityPy.load("x/data/assets/bin/Data/datapack.unity3d")
 lvl_objs, sprites = {}, {}
 externals = None
 for o in env.objects:
