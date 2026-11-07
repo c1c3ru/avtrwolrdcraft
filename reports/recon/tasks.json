@@ -31987,7 +31987,7 @@
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "review",
       "planning_seed": false,
       "scope": {
         "method_identity": {
@@ -32062,13 +32062,58 @@
         "out/recon/tasks/T025/METHOD/e579655ba8e57adf/result.json"
       ],
       "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/method-contract.json",
+          "sha256": "85cd181011b90e0f9575812e04d4beb54e6c13cf1f6bcc51d7d281122a921d1a"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/control-flow.json",
+          "sha256": "41cebf463f5fc81c7c86a21452ff4bd1c79d3f33de5ac03ba7c2b0783a772a29"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/unknowns.jsonl",
+          "sha256": "235245889fb527e7f7c4ac2c76b023878eb841ff142e3b789937f63725397e49"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/result.json",
+          "sha256": "f6306f1670dea352284f53aae618d3d1d30ff3a48f5533a3fdc85797cfa45af2"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "255e87e05ac9492589ac823ee90f7148",
+          "owner": "agente-logica-claude",
+          "started_at": 1794095413.2313426,
+          "lease_id": "47ac05d30ba0429cbebf397cf12030b3",
+          "checkpoint_at": 1794095488.5558608,
+          "state": "evidence_ready",
+          "note": "Reutilizei o decode de janela e a resolucao de simbolos de tools/recon_navigation.py (windows/transition_contracts para LoadSceneImplement), revalidando contra o par nativo+metadata atual. Trabalho puramente estatico, sem Unity/aparelho. Corpo do metodo totalmente delimitado (188 bytes); os dois callees nomeados (MPOwnership.Clear e SceneManager.LoadSceneAsync) foram resolvidos e revalidados. Lacunas remanescentes: identidade da flag estatica de multiplayer e comportamento nativo do LoadSceneAsync.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/method-contract.json",
+              "sha256": "85cd181011b90e0f9575812e04d4beb54e6c13cf1f6bcc51d7d281122a921d1a"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/control-flow.json",
+              "sha256": "41cebf463f5fc81c7c86a21452ff4bd1c79d3f33de5ac03ba7c2b0783a772a29"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/unknowns.jsonl",
+              "sha256": "235245889fb527e7f7c4ac2c76b023878eb841ff142e3b789937f63725397e49"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/result.json",
+              "sha256": "f6306f1670dea352284f53aae618d3d1d30ff3a48f5533a3fdc85797cfa45af2"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Reutilizei o decode de janela e a resolucao de simbolos de tools/recon_navigation.py (windows/transition_contracts para LoadSceneImplement), revalidando contra o par nativo+metadata atual. Trabalho puramente estatico, sem Unity/aparelho. Corpo do metodo totalmente delimitado (188 bytes); os dois callees nomeados (MPOwnership.Clear e SceneManager.LoadSceneAsync) foram resolvidos e revalidados. Lacunas remanescentes: identidade da flag estatica de multiplayer e comportamento nativo do LoadSceneAsync.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -32173,7 +32218,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 33,
+  "revision": 36,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -32804,6 +32849,27 @@
       "task": "T025/METHOD/d417091ede9f01e0",
       "actor": "agente-logica-claude",
       "at": 1794095368.2582464
+    },
+    {
+      "revision": 34,
+      "action": "claim",
+      "task": "T025/METHOD/e579655ba8e57adf",
+      "actor": "agente-logica-claude",
+      "at": 1794095413.2423022
+    },
+    {
+      "revision": 35,
+      "action": "start",
+      "task": "T025/METHOD/e579655ba8e57adf",
+      "actor": "agente-logica-claude",
+      "at": 1794095419.2584767
+    },
+    {
+      "revision": 36,
+      "action": "checkpoint",
+      "task": "T025/METHOD/e579655ba8e57adf",
+      "actor": "agente-logica-claude",
+      "at": 1794095488.598079
     }
   ]
 }
