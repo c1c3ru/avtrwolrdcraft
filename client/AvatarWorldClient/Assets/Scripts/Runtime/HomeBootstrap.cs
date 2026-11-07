@@ -27,7 +27,7 @@ namespace AvatarWorld.Runtime
 
         IEnumerator Start()
         {
-            var loadingScreen = LoadingScreenView.Show();
+            LoadingScreen.Show();
             // Libera ao menos um frame para a composição laranja aparecer antes da montagem
             // síncrona da Home e dos seus 149 elementos exportados.
             yield return null;
@@ -44,7 +44,7 @@ namespace AvatarWorld.Runtime
             if (json == null)
             {
                 Debug.LogError("Home: " + SceneJson + ".json nao encontrado em Resources");
-                loadingScreen.Hide();
+                LoadingScreen.Hide(0f);
                 yield break;
             }
 
@@ -69,7 +69,7 @@ namespace AvatarWorld.Runtime
 
             BackgroundMusic.Play("Audio/home_music");
             yield return new WaitForSecondsRealtime(.65f);
-            if (loadingScreen != null) loadingScreen.Hide();
+            LoadingScreen.Hide();
         }
 
         /// <summary>"Pacote Inicial": desafios aleatorios do banco de 100, na dificuldade do valor do pacote.</summary>
@@ -121,7 +121,6 @@ namespace AvatarWorld.Runtime
             if (FindFirstObjectByType<WorldMapRuntime>() != null) return;
             var host = new GameObject("WorldMap");
             _worldMap = host.AddComponent<WorldMapRuntime>();
-            _worldMap.OnOpenLevel = OpenSceneSlice;
             LoadingScreen.Show();
             _worldMap.Begin(CloseWorldMap, OpenBasketballCourt, () => LoadingScreen.Hide(0.8f), OpenAvatarSlots, OpenInterior);
         }

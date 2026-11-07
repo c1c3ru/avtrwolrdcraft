@@ -622,20 +622,6 @@ namespace AvatarWorld.Runtime
                 : "Este lugar ainda não está disponível.");
         }
 
-        /// <summary>Abre o ambiente (SceneSliceRuntime) do LevelType do predio tocado; definido por quem hospeda o mapa.</summary>
-        public Action<int> OnOpenLevel;
-
-        System.Collections.IEnumerator OpenLevelRoutine(int levelType)
-        {
-            _opening = true; _pressing = false;
-            yield return new WaitForSecondsRealtime(0.18f);
-            LoadingScreen.Show();
-            yield return null;
-            yield return null;
-            _opening = false;
-            OnOpenLevel?.Invoke(levelType);
-        }
-
         // Destaque, loading, um quadro para renderizar e so entao troca para a quadra.
         System.Collections.IEnumerator OpenCourtRoutine()
         {
