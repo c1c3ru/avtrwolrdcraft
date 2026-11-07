@@ -31637,7 +31637,7 @@
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "review",
       "planning_seed": false,
       "scope": {
         "method_identity": {
@@ -31712,13 +31712,58 @@
         "out/recon/tasks/T025/METHOD/d417091ede9f01e0/result.json"
       ],
       "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/method-contract.json",
+          "sha256": "01eae64cdfed679af720ca75d94f088300c91ab639a19338e8359f41a1ceb374"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/control-flow.json",
+          "sha256": "5a121c7baaa9971b7a8daab3123fff9b133755554f5ebf4fdf3d6e4568150688"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/unknowns.jsonl",
+          "sha256": "6e3417d867be22b074ba0fbaa147305145b429956c44259f247c108e5a0a66bc"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/result.json",
+          "sha256": "56b3564cc0aac4c7f502fd5a46d90e735da5340d767828171988847f763c432e"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "a92f671c90284b2daad7af41cca749ea",
+          "owner": "agente-logica-claude",
+          "started_at": 1794095182.2718563,
+          "lease_id": "d86d21a031084db7b580292d80d98c3b",
+          "checkpoint_at": 1794095368.247302,
+          "state": "evidence_ready",
+          "note": "Reutilizei o verificador existente tools/recon_navigation.py (verify_getter) reexecutando-o contra o par nativo+metadata atual; todas as ancoras/operandos/chamadas foram revalidados. Trabalho puramente estatico (ARM64 + metadata IL2CPP), sem Unity/aparelho. Corpo do metodo totalmente delimitado (212 bytes, 0x2073238-0x207330c); gap semantico remanescente depende de IsSceneAvailable, cujo proprio corpo ja e um candidato estatico com bindings genericos nao resolvidos (nao recertificado aqui).",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/method-contract.json",
+              "sha256": "01eae64cdfed679af720ca75d94f088300c91ab639a19338e8359f41a1ceb374"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/control-flow.json",
+              "sha256": "5a121c7baaa9971b7a8daab3123fff9b133755554f5ebf4fdf3d6e4568150688"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/unknowns.jsonl",
+              "sha256": "6e3417d867be22b074ba0fbaa147305145b429956c44259f247c108e5a0a66bc"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/result.json",
+              "sha256": "56b3564cc0aac4c7f502fd5a46d90e735da5340d767828171988847f763c432e"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Reutilizei o verificador existente tools/recon_navigation.py (verify_getter) reexecutando-o contra o par nativo+metadata atual; todas as ancoras/operandos/chamadas foram revalidados. Trabalho puramente estatico (ARM64 + metadata IL2CPP), sem Unity/aparelho. Corpo do metodo totalmente delimitado (212 bytes, 0x2073238-0x207330c); gap semantico remanescente depende de IsSceneAvailable, cujo proprio corpo ja e um candidato estatico com bindings genericos nao resolvidos (nao recertificado aqui).",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -32128,7 +32173,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 30,
+  "revision": 33,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -32738,6 +32783,27 @@
       "task": "T020/CLASS/d723b7b66951bef8",
       "actor": "agente-artefatos-claude",
       "at": 1794092035.0955565
+    },
+    {
+      "revision": 31,
+      "action": "claim",
+      "task": "T025/METHOD/d417091ede9f01e0",
+      "actor": "agente-logica-claude",
+      "at": 1794095182.284229
+    },
+    {
+      "revision": 32,
+      "action": "start",
+      "task": "T025/METHOD/d417091ede9f01e0",
+      "actor": "agente-logica-claude",
+      "at": 1794095187.276573
+    },
+    {
+      "revision": 33,
+      "action": "checkpoint",
+      "task": "T025/METHOD/d417091ede9f01e0",
+      "actor": "agente-logica-claude",
+      "at": 1794095368.2582464
     }
   ]
 }

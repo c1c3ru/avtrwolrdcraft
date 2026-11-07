@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "task_id": "T025/METHOD/d417091ede9f01e0",
+  "scope": "Bounded static ARM64/IL2CPP-metadata contract for PWC.GameSceneManager.GetCurrentWorldSceneName; no runtime execution, emulation, or device validation performed here",
+  "method_identity": {
+    "image": "Assembly-CSharp.dll",
+    "token": "0x06005708",
+    "declaring_type": "PWC.GameSceneManager",
+    "name": "GetCurrentWorldSceneName",
+    "parameter_count": 0,
+    "vaddr": "0x2073238",
+    "exclusive_stop": "0x207330c",
+    "body_bytes": 212,
+    "body_sha256": "95abb656b53d704fc34a79caa08b727e730a0ce46076f64dddd2a83bfc97d8c2"
+  },
+  "input_pair": {
+    "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+  },
+  "tool_source": {
+    "script": "tools/recon_navigation.py",
+    "function": "verify_getter",
+    "note": "Reused the existing, already-anchored navigation verifier instead of re-deriving the decode from scratch; reran it against the current cached binary/metadata pair to revalidate every anchor and literal before packaging this task's evidence."
+  },
+  "status": "STATIC_candidate_contract_checked_not_certified",
+  "parameters": [],
+  "return": "string: stored candidate if availability bit0 nonzero; else default World name",
+  "pseudocode": [
+    "ensure metadata/class initialization as guarded in code",
+    "fallback = LevelWorldType.World.ToString()",
+    "candidate = PlayerPrefs.GetString(\"GAME_CURRENT_WORLD\", fallback)",
+    "return (IsSceneAvailable(candidate) & 1) != 0 ? candidate : fallback"
+  ],
+  "verified_operands": {
+    "player_prefs_key": {"literal": "GAME_CURRENT_WORLD", "got_vaddr": "0x41c85b8"},
+    "default_enum": {"type": "PWC.Game.LevelWorldType", "selected": "World", "value": 1,
+      "all_constants": {"None": 0, "World": 1, "Vacation": 2, "StarDustCity": 3,
+                         "Countryside": 4, "SnowyMountain": 5, "College": 6}},
+    "return_selection": {"kind": "CSEL x0, x20 (candidate), x19 (fallback), condition=ne(1)",
+      "meaning": "x0 = candidate (x20) if condition true, else fallback (x19)"}
+  },
+  "verified_calls": [
+    {"site": "0x20732b4", "target": "0x338d9a0", "callee": {"declaring_type": "System.Enum", "name": "ToString"}},
+    {"site": "0x20732cc", "target": "0x3cc5a70", "callee": {"declaring_type": "UnityEngine.PlayerPrefs", "name": "GetString"}},
+    {"site": "0x20732ec", "target": "0x207305c", "callee": {"declaring_type": "PWC.GameSceneManager", "name": "IsSceneAvailable",
+      "note": "in-module sibling method; its own body is STATIC_candidate_with_unresolved_generic_operations (see dependency note below), not re-certified by this task"}}
+  ],
+  "effects": [
+    "reads PlayerPrefs through external GetString",
+    "writes lazy metadata-init flag and stack enum temporary",
+    "callee IsSceneAvailable may initialize/query a static scene-name cache",
+    "runtime helpers/class initialization may have further effects"
+  ],
+  "dependency_note": "IsSceneAvailable(candidate)'s own contract (produced by the same tool run, out/recon/tasks/T025/METHOD/d417091ede9f01e0/navigation/navigation_contract.json -> availability) is only a STATIC candidate with unresolved generic collection operations (construct/add/contains bindings unknown). GetCurrentWorldSceneName's return value is therefore only as certain as that unresolved callee.",
+  "verification": {
+    "input_identity": "passed (native+metadata sha256 match pinned pair)",
+    "opcode_and_operand_anchors": "passed (verify_getter re-ran and all requires() succeeded)",
+    "callee_symbol_bindings": "passed (resolved via metadata_methods.jsonl + codegen module pointer table, re-validated)",
+    "exact_window_byte_hash": "passed",
+    "target_executed": false,
+    "emulated": false,
+    "semantic_certification": false
+  },
+  "unknowns": [
+    "Runtime initialization/exception behavior of the metadata/class-init guard.",
+    "Unity PlayerPrefs/Enum.ToString() implementation semantics (native engine code, not covered by this IL2CPP binary).",
+    "IsSceneAvailable's generic HashSet<string> construct/Add/Contains bindings (its own body is explicitly unresolved_generic_operations).",
+    "Threading/concurrency and actual device behavior for the PlayerPrefs read."
+  ]
+}
