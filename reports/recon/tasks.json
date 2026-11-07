@@ -31530,7 +31530,7 @@
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "baseline_maturity": "partial",
-      "state": "stale",
+      "state": "review",
       "planning_seed": false,
       "scope": {
         "method_identity": {
@@ -31605,7 +31605,24 @@
         "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/result.json"
       ],
       "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/method-contract.json",
+          "sha256": "47287498d3802eb6b2421884b4f3e5cf35ffa4b87b9fd8a14b232c37ce0454de"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/control-flow.json",
+          "sha256": "f0c48fdd6467a29fe25c6cd57ee2e80a592a8b82473f212ae714b3c504af3f69"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/unknowns.jsonl",
+          "sha256": "e798526923963091935de1dc4c8d78d9bc495115bf9db02c28c4506d0886596d"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/result.json",
+          "sha256": "0459380628ee6b9bef269d54c05c2a6f0cda064d36a84dfd48c50f99bc206b86"
+        }
+      ],
       "unknown_ids": [],
       "attempts": [
         {
@@ -31616,12 +31633,39 @@
           "recovered_at": 1793795084.08067,
           "recovery_note": "Lease expirado; não há processo de análise ativo. Evidências locais preservadas e hashes das entradas conferidos.",
           "recovery_actor": "codex"
+        },
+        {
+          "id": "fe05af06a4a44ad9b2ac18a17f1a16bc",
+          "owner": "agente-logica-claude",
+          "started_at": 1794095726.2869189,
+          "lease_id": "294e4a4a405f4973ac960acd7fd9297c",
+          "checkpoint_at": 1794095769.0526464,
+          "state": "evidence_ready",
+          "note": "Tarefa estava stale (lease anterior do ator codex-navigation ja recuperada por codex em sessao passada, sem reclaim desde entao). Reexecutei tools/recon_home_play.py (ja escrito especificamente para esta tarefa, TASK_OUTPUT apontava para este mesmo diretorio) contra o par nativo+metadata atual: 11 chamadas e 44 ancoras revalidadas. Trabalho puramente estatico, sem Unity/aparelho. Despacho indireto em 0x2058174 permanece apenas inferido (get_Item de IDictionary via slot 0 de vtable), nao certificado.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/method-contract.json",
+              "sha256": "47287498d3802eb6b2421884b4f3e5cf35ffa4b87b9fd8a14b232c37ce0454de"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/control-flow.json",
+              "sha256": "f0c48fdd6467a29fe25c6cd57ee2e80a592a8b82473f212ae714b3c504af3f69"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/unknowns.jsonl",
+              "sha256": "e798526923963091935de1dc4c8d78d9bc495115bf9db02c28c4506d0886596d"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/result.json",
+              "sha256": "0459380628ee6b9bef269d54c05c2a6f0cda064d36a84dfd48c50f99bc206b86"
+            }
+          ]
         }
       ],
-      "owner": "codex-navigation",
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Lease expirado; não há processo de análise ativo. Evidências locais preservadas e hashes das entradas conferidos.",
+      "next_action": "Tarefa estava stale (lease anterior do ator codex-navigation ja recuperada por codex em sessao passada, sem reclaim desde entao). Reexecutei tools/recon_home_play.py (ja escrito especificamente para esta tarefa, TASK_OUTPUT apontava para este mesmo diretorio) contra o par nativo+metadata atual: 11 chamadas e 44 ancoras revalidadas. Trabalho puramente estatico, sem Unity/aparelho. Despacho indireto em 0x2058174 permanece apenas inferido (get_Item de IDictionary via slot 0 de vtable), nao certificado.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -32263,7 +32307,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 39,
+  "revision": 42,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -32936,6 +32980,27 @@
       "task": "T025/METHOD/4a19cfec8f8e89ba",
       "actor": "agente-logica-claude",
       "at": 1794095672.1521513
+    },
+    {
+      "revision": 40,
+      "action": "claim",
+      "task": "T025/METHOD/5fe1bb4a25183678",
+      "actor": "agente-logica-claude",
+      "at": 1794095726.303055
+    },
+    {
+      "revision": 41,
+      "action": "start",
+      "task": "T025/METHOD/5fe1bb4a25183678",
+      "actor": "agente-logica-claude",
+      "at": 1794095733.3030791
+    },
+    {
+      "revision": 42,
+      "action": "checkpoint",
+      "task": "T025/METHOD/5fe1bb4a25183678",
+      "actor": "agente-logica-claude",
+      "at": 1794095769.0660543
     }
   ]
 }
