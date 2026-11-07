@@ -10,7 +10,7 @@ namespace AvatarWorld.Core.Tests
         [Test]
         public void Catalog_HasUniqueIdsPricesInTheObservedRangeAndExistingArt()
         {
-            Assert.AreEqual(22, StoreCatalog.All.Count);
+            Assert.AreEqual(31, StoreCatalog.All.Count);
             Assert.AreEqual(StoreCatalog.All.Count, StoreCatalog.All.Select(o => o.Id).Distinct().Count());
             foreach (var offer in StoreCatalog.All)
             {
@@ -29,6 +29,25 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual(980, StoreCatalog.Find("bundle-PB23").Price);  // Show ao vivo
             Assert.AreEqual(1200, StoreCatalog.Find("bundle-PB25").Price); // Amiguinhos (1500 -> 1200); nao e o hamster de 500
             Assert.AreEqual(450, StoreCatalog.Find("bundle-PB27").Price);  // Festa a Fantasia (600 -> 450); arte confirma o card
+        }
+
+        [Test]
+        public void ObservedVehicleStorePrices_AreKept()
+        {
+            // Capturados ao vivo em 2026-11-07 (com.pazugames.avatarworld 1.228/versionCode 229), ver docs/STORE_WORLD_UI_SPEC.md.
+            Assert.AreEqual(700, StoreCatalog.Find("bundle-jeep-aventura").Price);
+            Assert.AreEqual(700, StoreCatalog.Find("bundle-carro-familia").Price);
+            Assert.AreEqual(400, StoreCatalog.Find("bundle-viagem-inverno").Price);
+            Assert.AreEqual(400, StoreCatalog.Find("bundle-pe-na-estrada").Price);
+            Assert.AreEqual(300, StoreCatalog.Find("bundle-trator-agricola").Price);
+            Assert.AreEqual(800, StoreCatalog.Find("bundle-helicoptero-vip").Price);
+            Assert.AreEqual(300, StoreCatalog.Find("bundle-limo-luxo").Price);
+            Assert.AreEqual(300, StoreCatalog.Find("bundle-limo-panda").Price);
+            Assert.IsFalse(StoreCatalog.Observed.Contains("motorhome"),
+                "preco do motorhome nao apareceu na captura; nao pode ser marcado como lido do original");
+
+            var subs = StoreCatalog.SubCategories(StoreCatalog.CategoryVehicles);
+            Assert.AreEqual(new[] { "Carro", "Van", "VIP" }, subs.OrderBy(s => s).ToArray());
         }
 
         [Test]

@@ -55,10 +55,17 @@ namespace AvatarWorld.Core.Economy
         };
 
         /// <summary>Categorias do original ainda sem combos locais: a loja mostra "Em breve".</summary>
-        public static readonly string[] ComingSoon = { CategoryVehicles, CategoryStory, CategoryAvatarMaker, CategorySports };
+        public static readonly string[] ComingSoon = { CategoryStory, CategoryAvatarMaker, CategorySports };
 
         /// <summary>Ids cujo preco em moedas foi lido dos prints do original (docs/STORE_WORLD_UI_SPEC.md).</summary>
-        public static readonly string[] Observed = { "PB22", "PB7", "PB26", "PB23", "PB25", "PB27" };
+        public static readonly string[] Observed =
+        {
+            "PB22", "PB7", "PB26", "PB23", "PB25", "PB27",
+            // "motorhome" fica de fora: a captura de 2026-11-07 achou o cartao mas o preco ficou fora da tela
+            // (ver docs/STORE_WORLD_UI_SPEC.md); o valor abaixo e decisao local, nao leitura do original.
+            "jeep-aventura", "carro-familia", "viagem-inverno", "pe-na-estrada", "trator-agricola",
+            "helicoptero-vip", "limo-luxo", "limo-panda",
+        };
 
         static StoreOffer O(string id, string title, string category, string sub, int price, bool featured = false) =>
             new StoreOffer { Id = "bundle-" + id, Title = title, Category = category, Sub = sub, Price = price, Art = id, Featured = featured };
@@ -87,6 +94,15 @@ namespace AvatarWorld.Core.Economy
             O("PB21", "Moda Daisy", CategoryFashion, "Casual", 500),
             O("PB24", "Férias de Primavera", CategoryFashion, "Casual", 800),
             O("PB27", "Festa à Fantasia", CategoryCelebrations, "Festas", 450),
+            O("jeep-aventura", "Carro de Aventura", CategoryVehicles, "Carro", 700, true),
+            O("carro-familia", "Carro da Família", CategoryVehicles, "Carro", 700, true),
+            O("viagem-inverno", "Viagem de Inverno em Família", CategoryVehicles, "Carro", 400),
+            O("pe-na-estrada", "Pé na Estrada", CategoryVehicles, "Carro", 400),
+            O("motorhome", "Motorhome", CategoryVehicles, "Van", 1200, true), // preco local; original nao mostrou o valor na captura
+            O("trator-agricola", "Trator Agrícola", CategoryVehicles, "Van", 300),
+            O("helicoptero-vip", "Helicóptero VIP", CategoryVehicles, "VIP", 800),
+            O("limo-luxo", "Limusine de Luxo", CategoryVehicles, "VIP", 300),
+            O("limo-panda", "Limusine Panda", CategoryVehicles, "VIP", 300),
         };
 
         /// <summary>Subgrupos (sub-trilho) de uma categoria, na ordem de aparicao. Vazio se houver menos de 2.</summary>
