@@ -15,8 +15,25 @@
   encontrados). Candidato a 8º tema (não confirmado): Casinha de Brincar ~ `FairyTreeDollhouseP224`.
 - Detalhe completo: `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md`. Dados: `out/recon/store_house_bundles.json`,
   `out/mb/PWC.Inventory.InventoryBuildData.jsonl.gz`, `out/mb/PWC.Inventory.InventorySkinsBuildData.jsonl.gz`.
-- NÃO implementado no cliente (não há editor de casas ainda; sem Unity Editor neste ambiente para validar). Também
-  não reextraí as outras ~124 classes que tinham o mesmo bug — fica para depois.
+- NÃO implementado no cliente (não há editor de casas ainda; sem Unity Editor neste ambiente para validar).
+
+## Mesma frente, continuação — 2026-11-07 (tarde)
+Usuário pediu, nesta ordem: (3) destravar as outras ~124 classes com o mesmo bug, (2) mapear as outras categorias
+de pacotes, (1) terminar Casas (Mansão/Modern House/8º submenu).
+- **(3) bloqueado por memória**: a máquina tem só 7,1 GB de RAM; `datapack.unity3d` (1,3 GB) sozinho não coube
+  disponível com outra sessão do Claude rodando em paralelo no mesmo checkout (worktree `store-moda-submenus`) —
+  `exit 137` (OOM) duas vezes seguidas, sempre ao carregar o datapack, antes de processar qualquer classe-alvo.
+  Script pronto fora do repo (`/home/c1c3ru/.claude/jobs/57f8c0ba/tmp/retry_failed_classes.py`) pra rodar depois
+  com mais RAM livre. Não insisti pra não arriscar derrubar a outra sessão.
+- **(2) feito**: `tools/recon_store_packs_overview.py` classificou os 224 pacotes por heurística (nome + categoria
+  dos itens): 50 Casa/cômodo, 49 Moda/avatar, 58 Indefinido, 21 Bebê/criança, 14 Celebração, 14 Pet, 9 Esporte, 9
+  Veículo. Detalhe e limites em `docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md`.
+- **(1) parcial**: achei mais pacotes com perfil de cômodo sem bundle-capa (`HipHopApt`/`HipHopStore`,
+  `SummerBathRoom`/`SummerKitchen`, `DiningRoomL43`/`PoolL43`). O par `L43` é candidato mais forte a cômodos de
+  `MansionBundlePB2` (mesmo padrão de sufixo de `GalxeHM`/`SnowyHM`), mas **sem prova** — nenhum bundle-capa aponta
+  pra eles. Mansão e Modern House continuam sem confirmação; 8º submenu de Casas também.
+- Nada commitado foi testado no Unity (sem editor neste ambiente). Próxima sessão: rodar (3) com mais RAM livre,
+  revisar manualmente os 58 pacotes "Indefinido", e só depois decidir o que efetivamente implementar no cliente.
 
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.

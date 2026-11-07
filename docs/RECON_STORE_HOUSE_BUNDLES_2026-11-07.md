@@ -66,6 +66,17 @@ cartão da loja em lugar nenhum do APK, exatamente como já documentado para Mod
 não estão no APK). Mesma ressalva vale para `WelcomeBabyP223Box_Pack` (71 itens) vs. o card "ESSENCIAIS DE BEBÊ"
 (800) do mesmo print.
 
+## Addendum (mesma sessão): pacotes "casa" avulsos sem bundle-capa
+`tools/recon_store_packs_overview.py` (ver `docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md`) achou mais pacotes
+com perfil de cômodo que **não** têm bundle-capa `...PBnBox_Pack` associado e não pertencem a nenhum dos 7 temas
+acima: `HipHopAptP85Box_Pack`(170) + `HipHopStoreP98Box_Pack`(97) — "apartamento hip hop", tema plausível não
+visto em print nenhum; `SummerBathRoomP35Box_Pack`(37) + `SummerKitchenP37Box_Pack`(36) — tema "verão"; e o par
+`DiningRoomL43Box_Pack`(43) + `PoolL43Box_Pack`(52), que compartilham o sufixo `L43` (mesmo padrão usado por
+`GalxeHM`/`SnowyHM` pra agrupar cômodos de um local) — **candidato mais forte a cômodos de `MansionBundlePB2`**,
+mas sem nenhuma prova (não há bundle-capa `MansionBundlePB2` apontando pra eles, é só coincidência de sufixo).
+Nenhum desses tem bundle-capa com guid resolvido — ou são temas vendidos sem "capa" (card único, sem sub-trilho),
+ou a ligação real está em dados que não estão no APK (igual já vale para Moda). **Não dou isso como resolvido.**
+
 ## Limites / o que falta
 1. **Ligação cartão-da-loja → pack é inferência por nome**, igual ao já documentado para Moda em
    `docs/STORE_BUNDLE_CONTENTS.md` — o servidor da loja (preço, nome exibido, bundleItems) não está no APK.
