@@ -1,5 +1,16 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Evidência loja original ao vivo vs. build offline — 2026-11-07
+- Rodado o app original `com.pazugames.avatarworld` no Xiaomi (não emulado) e capturado ao lado do build
+  offline atual (pós-revert de `87f72dc76`) para orientar quem for refazer a loja gráfica. Detalhes,
+  achados e lista de capturas: `docs/STORE_ORIGINAL_REFERENCE_2026-11-07.md`.
+- Resumo: Home e a aba "Todos" (casas) da loja batem pixel-a-pixel com o original. O gap real é
+  "Criador de Avatar" (categoria de roupas/avatares, a mais importante) — no build offline é só
+  placeholder "Em breve"; no original tem subcategorias reais (Casas de Férias, Celebrações, Profissões)
+  com bundles de roupa. O botão "Itens" do build offline (dump cru do catálogo, 344 páginas) não existe no
+  original. Confirmado que o catálogo é server-driven (duas sessões do original mostraram lojas
+  diferentes) — paridade deve mirar a moldura/estrutura, não conteúdo exato.
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
