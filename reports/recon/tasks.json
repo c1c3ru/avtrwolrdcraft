@@ -2340,7 +2340,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "BWYW.BWYWGiftData",
@@ -2389,13 +2389,34 @@
         "out/recon/tasks/T020/CLASS/d723b7b66951bef8/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/d723b7b66951bef8/attempt1-oom.log",
+          "sha256": "e5da6a5c51999f257a1be6c2cbd0d53ac6eeb0582b370a41988643039d6abed5"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "a660426a6c26474d8353862cb8bf57bf",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1794091605.6769128,
+          "lease_id": "f770b80406834b018593dbd78773c678",
+          "checkpoint_at": 1794092035.085336,
+          "state": "blocked_external",
+          "note": "Reproducao da falha (TypeTreeGenerator.load_il2cpp com libil2cpp.so+global-metadata.dat) foi OOM-killed (exit 137) duas vezes, mesmo com ~5.5GB livres e nenhum outro job Unity visivel no momento. Maquina tem 7302MB RAM total e swap (4095MB) ja ~75% ocupado por multiplos processos claude/MCP concorrentes nesta sessao de trabalho. Nao cheguei a executar get_nodes_as_json nem read_typetree; causa raiz do ValueError Failed to get ref type node continua desconhecida. Nota: esta tentativa rodou a partir de um worktree isolado (.claude/worktrees/recon-automation) com root da fila ainda apontando para /home/c1c3ru/avtrwolrdcraft; este checkpoint so existe na copia local da fila deste worktree, nao foi mesclado de volta ao checkout principal.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/d723b7b66951bef8/attempt1-oom.log",
+              "sha256": "e5da6a5c51999f257a1be6c2cbd0d53ac6eeb0582b370a41988643039d6abed5"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Reproducao da falha (TypeTreeGenerator.load_il2cpp com libil2cpp.so+global-metadata.dat) foi OOM-killed (exit 137) duas vezes, mesmo com ~5.5GB livres e nenhum outro job Unity visivel no momento. Maquina tem 7302MB RAM total e swap (4095MB) ja ~75% ocupado por multiplos processos claude/MCP concorrentes nesta sessao de trabalho. Nao cheguei a executar get_nodes_as_json nem read_typetree; causa raiz do ValueError Failed to get ref type node continua desconhecida. Nota: esta tentativa rodou a partir de um worktree isolado (.claude/worktrees/recon-automation) com root da fila ainda apontando para /home/c1c3ru/avtrwolrdcraft; este checkpoint so existe na copia local da fila deste worktree, nao foi mesclado de volta ao checkout principal.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -32107,7 +32128,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 27,
+  "revision": 30,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -32696,6 +32717,27 @@
       "task": "T025/METHOD/8e708ca7d06e0b52",
       "actor": "/root",
       "at": 1794074793.5889754
+    },
+    {
+      "revision": 28,
+      "action": "claim",
+      "task": "T020/CLASS/d723b7b66951bef8",
+      "actor": "agente-artefatos-claude",
+      "at": 1794091605.6875968
+    },
+    {
+      "revision": 29,
+      "action": "start",
+      "task": "T020/CLASS/d723b7b66951bef8",
+      "actor": "agente-artefatos-claude",
+      "at": 1794091611.4334848
+    },
+    {
+      "revision": 30,
+      "action": "checkpoint",
+      "task": "T020/CLASS/d723b7b66951bef8",
+      "actor": "agente-artefatos-claude",
+      "at": 1794092035.0955565
     }
   ]
 }
