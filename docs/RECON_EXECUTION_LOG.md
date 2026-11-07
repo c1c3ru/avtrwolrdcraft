@@ -74,3 +74,11 @@ O usuário solicitou também publicar o trabalho preexistente e, em seguida, par
 - A evidência Android/APK anterior está em `STORE_VISUAL_VALIDATION_2026-11-02.md`; esta publicação não executou uma nova instalação/reprodução em aparelho.
 - `git diff --check` passou. O recibo de revisão em `reports/recon/client_publication_review.json` vincula os arquivos deste lote e o XML por hash.
 - Após commit e push deste lote, a execução será encerrada por instrução explícita do usuário; nenhum novo lote de engenharia reversa será iniciado.
+
+## 2026-11-07 — fechamento da pendência de publicação
+
+- Conferido o histórico após a interrupção: as alterações preexistentes da loja, presentes/passe, loading e testes já foram publicadas no commit `277b07d4b328f167e3321e546f479d6196fa919b`.
+- Uma alteração posterior, `87f72dc76`, reverteu o protótipo de loja gráfica/loading. Essa reversão faz parte do estado atual e não deve ser anulada por uma retomada baseada nas notas antigas.
+- `git ls-remote origin refs/heads/main` confirmou `8fa788b4d45feed47818cafecf2bcc85b9bb40c3`, igual ao HEAD local antes desta anotação. A consulta precisou ser repetida no host porque a resolução DNS falhou no sandbox.
+- Existem alterações posteriores de catálogo/avatares, assets de roupas e movimento do mapa no workspace. Não fazem parte da antiga pendência de publicação; foram preservadas sem inclusão incidental em commit.
+- A tarefa anterior de publicar as alterações preexistentes está concluída. Esta retomada apenas registra o desfecho; não restaura funcionalidades revertidas, não executa novos testes do jogo e não inicia outro lote de implementação.
