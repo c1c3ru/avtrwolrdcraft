@@ -1,0 +1,20 @@
+42146 20:24:02.273456 tgkill(42140, 42140, SIGRT_2) = 0
+42140 20:24:02.273521 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_TKILL, si_pid=42140, si_uid=1000} ---
+42146 20:24:02.674469 tgkill(42140, 42140, SIGRT_2 <unfinished ...>
+42140 20:24:02.674527 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_TKILL, si_pid=42140, si_uid=1000} ---
+42146 20:24:02.674544 <... tgkill resumed>) = 0
+42146 20:24:03.905725 tgkill(42140, 42140, SIGRT_2) = 0
+42146 20:24:03.905938 tgkill(42140, 42140, SIGRT_2) = 0
+42146 20:24:03.906151 tgkill(42140, 42140, SIGRT_2) = 0
+42146 20:24:03.906392 tgkill(42140, 42140, SIGRT_2) = 0
+42146 20:24:03.906691 tgkill(42140, 42140, SIGRT_2) = 0
+42140 20:24:03.906850 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_TKILL, si_pid=42140, si_uid=1000} ---
+42140 20:24:03.906924 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_TKILL, si_pid=42140, si_uid=1000} ---
+42140 20:24:03.906995 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_TKILL, si_pid=42140, si_uid=1000} ---
+42146 20:24:03.907006 tgkill(42140, 42140, SIGRT_2) = 0
+42140 20:24:03.907059 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_TKILL, si_pid=42140, si_uid=1000} ---
+42140 20:24:03.907124 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_TKILL, si_pid=42140, si_uid=1000} ---
+42140 20:24:03.907184 --- SIGRT_2 {si_signo=SIGRT_2, si_code=SI_TKILL, si_pid=42140, si_uid=1000} ---
+42146 20:24:21.809636 +++ killed by SIGKILL +++
+42145 20:24:21.816250 +++ killed by SIGKILL +++
+42140 20:24:21.816275 +++ killed by SIGKILL +++
