@@ -37,8 +37,22 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual(0, StoreCatalog.InCategory(StoreCatalog.CategoryCoins).Count);
             Assert.AreEqual(StoreCatalog.All.Count, StoreCatalog.InCategory(StoreCatalog.CategoryCombos).Count);
             Assert.Greater(StoreCatalog.InCategory(StoreCatalog.CategoryFeatured).Count, 0);
-            foreach (var category in StoreCatalog.Categories.Where(c => c != StoreCatalog.CategoryCoins && c != StoreCatalog.CategoryCombos && c != StoreCatalog.CategoryFeatured && !StoreCatalog.ComingSoon.Contains(c)))
+            // CategoryAvatarMaker nunca tem ofertas de proposito: StoreScreen trata a selecao como navegacao
+            // (abre AvatarSlotsScreen) em vez de listar cartoes, entao fica fora tanto do ComingSoon quanto
+            // desta checagem de "toda categoria ativa tem pelo menos uma oferta".
+            foreach (var category in StoreCatalog.Categories.Where(c => c != StoreCatalog.CategoryCoins && c != StoreCatalog.CategoryCombos && c != StoreCatalog.CategoryFeatured && c != StoreCatalog.CategoryAvatarMaker && !StoreCatalog.ComingSoon.Contains(c)))
                 Assert.Greater(StoreCatalog.InCategory(category).Count, 0, category);
+        }
+
+        [Test]
+        public void AvatarMaker_IsNavigationShortcutNotProductCategory()
+        {
+            Assert.AreEqual(0, StoreCatalog.InCategory(StoreCatalog.CategoryAvatarMaker).Count,
+                "Criador de Avatar nao deve ter cartoes: StoreScreen.SelectCategory trata como atalho de navegacao.");
+            CollectionAssert.DoesNotContain(StoreCatalog.ComingSoon, StoreCatalog.CategoryAvatarMaker,
+                "nao e 'Em breve': a loja navega para o editor em vez de mostrar o aviso.");
+            CollectionAssert.Contains(StoreCatalog.Categories, StoreCatalog.CategoryAvatarMaker,
+                "continua no trilho, na mesma posicao do original.");
         }
 
         [Test]

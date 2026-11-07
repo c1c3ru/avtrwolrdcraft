@@ -37,6 +37,13 @@ namespace AvatarWorld.Core.Economy
         public const string CategoryVehicles = "Veículos";
         public const string CategoryHouses = "Casas";
         public const string CategoryStory = "Narrativa";
+        /// <summary>
+        /// Nao e uma categoria de produtos: no original (level237) e um atalho do trilho que abre a cena
+        /// AvatarMakerLobby (aqui, AvatarSlotsScreen) em vez de listar cartoes - mesma relacao que ja existe
+        /// no sentido inverso (botao de carrinho dos slots abre a loja). Por isso nunca tem ofertas em
+        /// StoreCatalog.All; StoreScreen trata a selecao como navegacao, nao como filtro de cartoes.
+        /// Ver docs/STORE_ORIGINAL_REFERENCE_2026-11-07.md.
+        /// </summary>
         public const string CategoryAvatarMaker = "Criador de Avatar";
         public const string CategoryCombos = "Combos";
         public const string CategoryFashion = "Moda";
@@ -55,7 +62,7 @@ namespace AvatarWorld.Core.Economy
         };
 
         /// <summary>Categorias do original ainda sem combos locais: a loja mostra "Em breve".</summary>
-        public static readonly string[] ComingSoon = { CategoryVehicles, CategoryStory, CategoryAvatarMaker, CategorySports };
+        public static readonly string[] ComingSoon = { CategoryVehicles, CategoryStory, CategorySports };
 
         /// <summary>Ids cujo preco em moedas foi lido dos prints do original (docs/STORE_WORLD_UI_SPEC.md).</summary>
         public static readonly string[] Observed = { "PB22", "PB7", "PB26", "PB23", "PB25", "PB27" };
