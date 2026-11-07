@@ -66,7 +66,7 @@ namespace AvatarWorld.Core.Economy
         public static readonly IReadOnlyList<StoreOffer> All = new List<StoreOffer>
         {
             O("PB22", "Galxe Mansion", CategoryHouses, "Mansões", 1200, true),
-            O("PB7", "Natural Chic", CategoryHouses, "Modernas", 1400, true),
+            O("PB7", "Natural Chic", CategoryHouses, "Natural Chic", 1400, true),
             O("PB26", "Casinha de brincar", CategoryHouses, "Infantis", 770, true),
             O("PB23", "Show ao vivo", CategoryFashion, "Palco", 980, true),
             O("PB25", "Amiguinhos", CategoryPets, "Variados", 1200, true),
@@ -92,10 +92,11 @@ namespace AvatarWorld.Core.Economy
         /// <summary>
         /// Subgrupos (sub-trilho) de uma categoria, na ordem de aparicao. Vazio se houver menos de 2.
         /// Para Moda, os 6 nomes (Drip, Daisy, Ferias, Palco, Luxo, Infantil) batem com a contagem de 6
-        /// icones confirmada no print original (docs/STORE_WORLD_UI_SPEC.md) e usam os nomes internos reais
-        /// do jogo (enum Store.StorePackType, decompilado: DripFashionBundlePB18, DaisyFashionBundlePB21,
-        /// SpringBreakBundlePB24 etc.) em vez de rotulos puramente inventados; o agrupamento em si (quais
-        /// cartoes caem em qual dos 6 icones) continua sem confirmacao, pois vem de config remota ausente do APK.
+        /// icones confirmada no print original (docs/STORE_WORLD_UI_SPEC.md); pra Casas, os 5 nomes (Mansoes,
+        /// Natural Chic, Modernas, Infantis, Familia) batem com a contagem de 5 do print. Ambos usam os nomes
+        /// internos reais do jogo (enum Store.StorePackType, decompilado: DripFashionBundlePB18,
+        /// NaturalChicBundlePB7 etc.) em vez de rotulos puramente inventados; o agrupamento em si (quais
+        /// cartoes caem em qual icone) continua sem confirmacao, pois vem de config remota ausente do APK.
         /// </summary>
         public static IReadOnlyList<string> SubCategories(string category)
         {
