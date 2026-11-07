@@ -1,0 +1,228 @@
+{
+  "method": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "Game.Home.HomePlayButton",
+    "name": "LoadPlayScene",
+    "token": "0x060054ef",
+    "method_definition_index": 21742,
+    "parameter_count": 0,
+    "vaddr": "0x2057fa8",
+    "file_offset": "0x2053fa8"
+  },
+  "pending_key": {
+    "got_vaddr": "0x41b1428",
+    "usage_vaddr": "0x4363d28",
+    "encoded": "0xa0009c45",
+    "kind": 5,
+    "index": 20002,
+    "literal": "pazucore_pending_deep_link",
+    "literal_file_offset": 727908,
+    "literal_bytes": 26
+  },
+  "default_string": {
+    "got_vaddr": "0x41acba0",
+    "usage_vaddr": "0x433cc50",
+    "encoded": "0xa0000001",
+    "kind": 5,
+    "index": 0,
+    "literal": "",
+    "literal_file_offset": 177072,
+    "literal_bytes": 0
+  },
+  "verified_calls": [
+    {
+      "site": "0x2058044",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.InteractionHistory.InteractionHistoryManager",
+        "name": "OnClickHomePlayButton",
+        "token": "0x060064c5",
+        "method_definition_index": 25796,
+        "parameter_count": 0,
+        "vaddr": "0x21419ac",
+        "file_offset": "0x213d9ac"
+      }
+    },
+    {
+      "site": "0x2058050",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.PlayerPrefs",
+        "name": "HasKey",
+        "token": "0x06000673",
+        "method_definition_index": 86731,
+        "parameter_count": 1,
+        "vaddr": "0x3cc5b20",
+        "file_offset": "0x3cc1b20"
+      }
+    },
+    {
+      "site": "0x2058078",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.SoundManager",
+        "name": "Stop",
+        "token": "0x060010d0",
+        "method_definition_index": 4303,
+        "parameter_count": 1,
+        "vaddr": "0x1caf0e0",
+        "file_offset": "0x1cab0e0"
+      }
+    },
+    {
+      "site": "0x2058090",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.PlayerPrefs",
+        "name": "GetString",
+        "token": "0x06000671",
+        "method_definition_index": 86729,
+        "parameter_count": 2,
+        "vaddr": "0x3cc5a70",
+        "file_offset": "0x3cc1a70"
+      }
+    },
+    {
+      "site": "0x205809c",
+      "target": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.String",
+        "name": "IsNullOrEmpty",
+        "token": "0x060002b0",
+        "method_definition_index": 37108,
+        "parameter_count": 1,
+        "vaddr": "0x31dffdc",
+        "file_offset": "0x31dbfdc"
+      }
+    },
+    {
+      "site": "0x20580c8",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "GetCurrentWorldSceneName",
+        "token": "0x06005708",
+        "method_definition_index": 22279,
+        "parameter_count": 0,
+        "vaddr": "0x2073238",
+        "file_offset": "0x206f238"
+      }
+    },
+    {
+      "site": "0x2058184",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.PlayerPrefs",
+        "name": "DeleteKey",
+        "token": "0x06000674",
+        "method_definition_index": 86732,
+        "parameter_count": 1,
+        "vaddr": "0x3cc5b5c",
+        "file_offset": "0x3cc1b5c"
+      }
+    },
+    {
+      "site": "0x205818c",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.PlayerPrefs",
+        "name": "Save",
+        "token": "0x06000675",
+        "method_definition_index": 86733,
+        "parameter_count": 0,
+        "vaddr": "0x3cc5b98",
+        "file_offset": "0x3cc1b98"
+      }
+    },
+    {
+      "site": "0x205819c",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.World.Buildings.WorldBuildingsDataManager",
+        "name": "SaveBuildingData",
+        "token": "0x060060cb",
+        "method_definition_index": 24778,
+        "parameter_count": 2,
+        "vaddr": "0x2109220",
+        "file_offset": "0x2105220"
+      }
+    },
+    {
+      "site": "0x20581a8",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.CoreExtensions",
+        "name": "GetSceneName",
+        "token": "0x0600561e",
+        "method_definition_index": 22045,
+        "parameter_count": 1,
+        "vaddr": "0x206a798",
+        "file_offset": "0x2066798"
+      }
+    },
+    {
+      "site": "0x20581e4",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "LoadScene",
+        "token": "0x060056fe",
+        "method_definition_index": 22269,
+        "parameter_count": 3,
+        "vaddr": "0x20728d4",
+        "file_offset": "0x206e8d4"
+      }
+    }
+  ],
+  "verified_operand_anchors": 44,
+  "unresolved_indirect_dispatch": {
+    "site": "0x2058174",
+    "register": "x8",
+    "argument": "pending deep link string in x1",
+    "result": "w0 saved in w19"
+  },
+  "dispatch_candidate": {
+    "site": "0x2058174",
+    "receiver_load": "0x205810c ldr x20,[x8,#0x28]",
+    "receiver_field": "PazuCore.DeepLink.DeepLinkManager._mapLinkToLevel (offset 0x28 in C# dump)",
+    "candidate_call": "IDictionary<string,LevelType>.get_Item(pendingLink)",
+    "interface_slot": 0,
+    "slot_zero_method": "System.Collections.Generic.IDictionary`2.get_Item (first method, token 0x06002fb8, metadata_methods.jsonl)",
+    "confidence": "inferred",
+    "basis": [
+      "static slot 0 of the class is DeepLinkManager.Instance (dump: only static backing field at offset 0x0)",
+      "field offset 0x28 matches the only SerializableDictionaryBase<string,LevelType> field",
+      "one string argument, int return -> level",
+      "slot 0 decoded from both dispatch paths (0x2058150 mov w2,wzr; 0x205815c..0x2058168 no slot add); IDictionary`2 slot 0 is get_Item",
+      "interface class identity (IDictionary<string,LevelType>) still inferred from the field type; usage slot 0x41c7a98 has a non-standard encoding"
+    ],
+    "not_handled_here": "absent key (KeyNotFoundException) and null Instance branch to 0x20581e8"
+  },
+  "schema_version": 1,
+  "status": "static_candidate_not_runtime_validated",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "window_sha256": "72476cc7e4ae431c5cad01a362bde7014ca1e7c2e548b7e3536be954ee0db668",
+  "craft_comparison": {
+    "evidence_id": "ev_ee773a5b408e1c597da3f5de0946ba5c75c9ef8e6dfaefbd6799b04cd7f1980f",
+    "verified_instruction_bytes": 145,
+    "scope": "Address and byte agreement only; pseudocode semantics not certified."
+  },
+  "candidate": [
+    "Invoke OnClickHomePlayButton on the observed manager instance.",
+    "If pending key is absent: scene = GetCurrentWorldSceneName().",
+    "Otherwise Stop(1001), read pending key with empty default.",
+    "Empty/null value: level = 2; nonempty: level = DeepLinkManager.Instance._mapLinkToLevel[value] (inferred get_Item; absent key behaviour not decoded).",
+    "Pending branch deletes the key and calls PlayerPrefs.Save().",
+    "Pending branch calls SaveBuildingData(0, level), then scene = GetSceneName(level).",
+    "Both normal paths tail-call LoadScene(scene, true, null)."
+  ],
+  "unknowns": [
+    "Confirm interface method at 0x2058174 is get_Item (decode interface-offset search and method slot).",
+    "Extract serialized DeepLinkManager._mapLinkToLevel contents (keys -> LevelType) from the original data.",
+    "Recover helpers, exceptions and independent body bounds.",
+    "Verify effect of interaction-history callback and SaveBuildingData arguments.",
+    "Validate original absent/empty/nonempty pending key scenarios on device.",
+    "Close callees of world lookup, scene load, fade and return."
+  ]
+}

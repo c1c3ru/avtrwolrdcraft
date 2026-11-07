@@ -20,6 +20,8 @@ namespace AvatarWorld.Runtime
         // Texto escuro pra ler bem sobre o painel rosa claro (quiz_panel), nao branco como antes
         // (o painel era roxo escuro; agora e um sprite claro do proprio jogo).
         static readonly Color DarkTextColor = new Color(0.25f, 0.14f, 0.32f, 1f);
+        // Tamanho das bordas/contorno do balao (Bubble, 513 px de largura no original) no Canvas 2048x1024.
+        const float BubbleScale = 2f;
         static readonly Color BackdropColor = new Color(0.09f, 0.06f, 0.16f, 0.72f);
         static readonly Color ButtonColor = new Color(0.988f, 0.329f, 0.612f, 1f);
         static readonly Color CorrectColor = new Color(0.12f, 0.55f, 0.28f, 1f);
@@ -35,11 +37,17 @@ namespace AvatarWorld.Runtime
         };
 
         LiteracyChallengeService _service;
+        ChallengeSelector _selector;
+        int _targetPrice;
+        string _header;
+        LiteracyChallenge _current;
         List<LiteracyChallenge> _queue;
         int _queueIndex;
         int _sessionCoinsEarned;
         System.Action _onProgress;
         System.Action _onClose;
+        /// <summary>Ordem do Canvas; a loja (800) usa um valor maior para os desafios aparecerem por cima.</summary>
+        public int SortingOrder = 10;
         System.Random _rng = new System.Random();
 
         GameObject _root;
@@ -62,6 +70,25 @@ namespace AvatarWorld.Runtime
             ShowCurrent();
         }
 
+        /// <summary>Modo "ganhar moedas": sorteia desafios do banco de 100 com a dificuldade do valor do
+        /// item (<paramref name="targetPrice"/>), um apos o outro ate o jogador fechar o balao.</summary>
+        public void BeginRandom(LiteracyChallengeService service, ChallengeSelector selector, int targetPrice,
+            string header, System.Action onProgress = null, System.Action onClose = null)
+        {
+            _service = service;
+            _selector = selector;
+            _targetPrice = targetPrice;
+            _header = header;
+            _queue = null;
+            _onProgress = onProgress;
+            _onClose = onClose;
+            _current = selector.Next(targetPrice);
+            UiSceneBuilder.EnsureEventSystem();
+            ShowCurrent();
+        }
+
+        LiteracyChallenge Current => _selector != null ? _current : _queue[_queueIndex];
+
         void Shuffle(List<LiteracyChallenge> list)
         {
             for (int i = list.Count - 1; i > 0; i--)
@@ -79,8 +106,11 @@ namespace AvatarWorld.Runtime
             _optionButtons.Clear();
             _optionLabels.Clear();
 
-            var challenge = _queue[_queueIndex];
-            var desc = BuildDescription(challenge, out int promptIdx, out int feedbackIdx, out int coinsIdx, out List<int> optionIdx, out List<int> optionLabelIdx);
+            var challenge = Current;
+            string header = _selector != null
+                ? _header + "  ·  Desafio " + ChallengeDifficulty.LabelFor(challenge.Difficulty) + "  ·  +" + challenge.CoinReward + " moedas por acerto"
+                : null;
+            var desc = BuildDescription(challenge, header, out int promptIdx, out int feedbackIdx, out int coinsIdx, out List<int> optionIdx, out List<int> optionLabelIdx);
 
             var actions = new System.Collections.Generic.Dictionary<string, System.Action>();
             for (int i = 0; i < optionIdx.Count; i++)
@@ -95,7 +125,7 @@ namespace AvatarWorld.Runtime
             // Canvas raiz separado do da Home: sem sortingOrder explicito, a ordem entre dois Canvas
             // ScreenSpaceOverlay no mesmo order(0) nao e garantida - podia renderizar atras da Home
             // (clique funcionava, tela so nao aparecia por cima).
-            _root.GetComponent<Canvas>().sortingOrder = 10;
+            _root.GetComponent<Canvas>().sortingOrder = SortingOrder;
             _prompt = objs[promptIdx].GetComponent<TextMeshProUGUI>();
             _feedback = objs[feedbackIdx].GetComponent<TextMeshProUGUI>();
             _coins = objs[coinsIdx].GetComponent<TextMeshProUGUI>();
@@ -109,7 +139,7 @@ namespace AvatarWorld.Runtime
 
         void OnOptionClicked(int optionIndex)
         {
-            var challenge = _queue[_queueIndex];
+            var challenge = Current;
             var result = _service.Answer(challenge, optionIndex);
 
             _feedback.gameObject.SetActive(true);
@@ -140,6 +170,12 @@ namespace AvatarWorld.Runtime
         IEnumerator AdvanceAfterDelay()
         {
             yield return new WaitForSeconds(1.2f);
+            if (_selector != null)
+            {
+                _current = _selector.Next(_targetPrice);
+                ShowCurrent();
+                yield break;
+            }
             _queueIndex++;
             if (_queueIndex >= _queue.Count) ShowCompletion();
             else ShowCurrent();
@@ -161,7 +197,7 @@ namespace AvatarWorld.Runtime
             };
             var objs = UiSceneBuilder.Build(desc, LoadIcon, actions, transform);
             _root = objs[0];
-            _root.GetComponent<Canvas>().sortingOrder = 10;
+            _root.GetComponent<Canvas>().sortingOrder = SortingOrder;
         }
 
         void Close()
@@ -174,7 +210,7 @@ namespace AvatarWorld.Runtime
 
         /// <summary>Fundo escuro de tela cheia (escurece a Home atras) + cartao com o sprite real de
         /// popup do jogo (quiz_panel, 9-slice). Retorna o indice do cartao, onde os filhos entram.</summary>
-        static int AddBackdropAndCard(List<NodeDescription> nodes)
+        static int AddBackdropAndCard(List<NodeDescription> nodes, bool bubble = false)
         {
             nodes.Add(new NodeDescription
             {
@@ -187,33 +223,63 @@ namespace AvatarWorld.Runtime
             {
                 name = "Card", parent = 0, hasRect = true,
                 anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
-                sizeDelta = new Vector2(1750, 1000),
-                hasImage = true, image = new ImageDescription { sprite = "quiz_panel", imageType = 1, color = Color.white },
+                // No modo balao o cartao e mais baixo e desce um pouco: a cauda (acima do canto
+                // superior direito) precisa caber na tela.
+                sizeDelta = bubble ? new Vector2(1750, 900) : new Vector2(1750, 1000),
+                anchoredPosition = bubble ? new Vector2(0, -50) : Vector2.zero,
+                hasImage = true, image = bubble
+                    ? new ImageDescription { sprite = "text_bubble_panel", imageType = 1, color = Color.white, pixelsPerUnitMultiplier = 1f / BubbleScale }
+                    : new ImageDescription { sprite = "quiz_panel", imageType = 1, color = Color.white },
             });
-            return nodes.Count - 1;
+            int card = nodes.Count - 1;
+            if (bubble)
+            {
+                // Cauda do balao de texto do jogo (Bubble), virada para cima no canto superior direito
+                // como no dialogo de referencia ("balao de texto"), na mesma escala das bordas do 9-slice.
+                nodes.Add(new NodeDescription
+                {
+                    name = "BubbleTail", parent = card, hasRect = true,
+                    anchorMin = new Vector2(1, 1), anchorMax = new Vector2(1, 1), pivot = new Vector2(1, 0),
+                    anchoredPosition = new Vector2(-83f * BubbleScale, -12f * BubbleScale),
+                    sizeDelta = new Vector2(70f * BubbleScale, 46f * BubbleScale),
+                    hasImage = true, image = new ImageDescription { sprite = "text_bubble_tail", color = Color.white, raycastTarget = false },
+                });
+            }
+            return card;
         }
 
-        static SceneDescription BuildDescription(LiteracyChallenge challenge, out int promptIdx, out int feedbackIdx,
+        static SceneDescription BuildDescription(LiteracyChallenge challenge, string header, out int promptIdx, out int feedbackIdx,
             out int coinsIdx, out List<int> optionIdx, out List<int> optionLabelIdx)
         {
             var desc = new SceneDescription { name = "LiteracyChallenge" };
             var nodes = desc.nodes;
 
             nodes.Add(new NodeDescription { name = "Canvas", isCanvas = true, hasRect = true, parent = -1 });
-            int panel = AddBackdropAndCard(nodes);
+            int panel = AddBackdropAndCard(nodes, bubble: header != null);
+
+            if (header != null)
+            {
+                nodes.Add(new NodeDescription
+                {
+                    name = "Header", parent = panel, hasRect = true,
+                    anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
+                    anchoredPosition = new Vector2(0, 410), sizeDelta = new Vector2(1250, 60),
+                    hasText = true, text = new TextDescription { text = header, fontSize = 30, color = CaptionColor, hAlign = 2, vAlign = 512 },
+                });
+            }
 
             nodes.Add(new NodeDescription
             {
                 name = "Prompt", parent = panel, hasRect = true,
                 anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
-                anchoredPosition = new Vector2(0, 380), sizeDelta = new Vector2(1500, 180),
+                anchoredPosition = new Vector2(0, header != null ? 320 : 380), sizeDelta = new Vector2(1500, 180),
                 hasText = true, text = new TextDescription { text = challenge.Prompt, fontSize = 44, color = DarkTextColor, hAlign = 2, vAlign = 512 },
             });
             promptIdx = nodes.Count - 1;
 
             optionIdx = new List<int>();
             optionLabelIdx = new List<int>();
-            float[] ys = { 150f, 10f, -130f, -270f };
+            float[] ys = header != null ? new[] { 120f, -20f, -160f, -300f } : new[] { 150f, 10f, -130f, -270f };
             for (int i = 0; i < challenge.Options.Count && i < ys.Length; i++)
             {
                 nodes.Add(new NodeDescription
@@ -221,7 +287,9 @@ namespace AvatarWorld.Runtime
                     name = "Option" + i, parent = panel, hasRect = true,
                     anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
                     anchoredPosition = new Vector2(0, ys[i]), sizeDelta = new Vector2(900, 110),
-                    hasImage = true, image = new ImageDescription { color = ButtonColor },
+                    hasImage = true, image = header != null
+                        ? new ImageDescription { sprite = "pill_green", imageType = 1, color = Color.white }
+                        : new ImageDescription { color = ButtonColor },
                     hasButton = true, button = new ButtonDescription(),
                 });
                 int buttonNode = nodes.Count - 1;
@@ -231,7 +299,7 @@ namespace AvatarWorld.Runtime
                 {
                     name = "Option" + i + "Label", parent = buttonNode, hasRect = true,
                     anchorMin = Vector2.zero, anchorMax = Vector2.one, pivot = new Vector2(0.5f, 0.5f),
-                    hasText = true, text = new TextDescription { text = challenge.Options[i], fontSize = 36, color = Color.white, hAlign = 2, vAlign = 512 },
+                    hasText = true, text = new TextDescription { text = challenge.Options[i], fontSize = 36, color = header != null ? DarkTextColor : Color.white, hAlign = 2, vAlign = 512 },
                 });
                 optionLabelIdx.Add(nodes.Count - 1);
             }
@@ -240,7 +308,7 @@ namespace AvatarWorld.Runtime
             {
                 name = "Feedback", parent = panel, hasRect = true,
                 anchorMin = new Vector2(0.5f, 0.5f), anchorMax = new Vector2(0.5f, 0.5f), pivot = new Vector2(0.5f, 0.5f),
-                anchoredPosition = new Vector2(0, -400), sizeDelta = new Vector2(1600, 100),
+                anchoredPosition = new Vector2(0, header != null ? -395 : -400), sizeDelta = new Vector2(1600, 100),
                 hasText = true, text = new TextDescription { text = "", fontSize = 36, color = Color.white, hAlign = 2, vAlign = 512 },
             });
             feedbackIdx = nodes.Count - 1;

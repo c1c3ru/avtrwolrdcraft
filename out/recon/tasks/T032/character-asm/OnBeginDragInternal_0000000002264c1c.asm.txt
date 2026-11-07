@@ -1,0 +1,60 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 2264c1c: f81d0ffe     	str	x30, [sp, #-0x30]!
+ 2264c20: a90157f6     	stp	x22, x21, [sp, #0x10]
+ 2264c24: a9024ff4     	stp	x20, x19, [sp, #0x20]
+ 2264c28: b00114d6     	adrp	x22, 0x44fd000
+ 2264c2c: b000fad5     	adrp	x21, 0x41bd000
+ 2264c30: 39644ec8     	ldrb	w8, [x22, #0x913]
+ 2264c34: f942a6b5     	ldr	x21, [x21, #0x548]
+ 2264c38: aa0103f4     	mov	x20, x1
+ 2264c3c: aa0003f3     	mov	x19, x0
+ 2264c40: 370000c8     	tbnz	w8, #0x0, 0x2264c58 <__start_il2cpp+0x613a48>
+ 2264c44: b000fac0     	adrp	x0, 0x41bd000
+ 2264c48: f942a400     	ldr	x0, [x0, #0x548]
+ 2264c4c: 97e48ea7     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2264c50: 52800028     	mov	w8, #0x1                // =1
+ 2264c54: 39244ec8     	strb	w8, [x22, #0x913]
+ 2264c58: aa1303e0     	mov	x0, x19
+ 2264c5c: aa1403e1     	mov	x1, x20
+ 2264c60: aa1f03e2     	mov	x2, xzr
+ 2264c64: 9402457f     	bl	0x22f6260 <__start_il2cpp+0x6a5050>
+ 2264c68: f94002a8     	ldr	x8, [x21]
+ 2264c6c: f9405d08     	ldr	x8, [x8, #0xb8]
+ 2264c70: f9400108     	ldr	x8, [x8]
+ 2264c74: b40000e8     	cbz	x8, 0x2264c90 <__start_il2cpp+0x613a80>
+ 2264c78: f9400d09     	ldr	x9, [x8, #0x18]
+ 2264c7c: f9402100     	ldr	x0, [x8, #0x40]
+ 2264c80: f9401503     	ldr	x3, [x8, #0x28]
+ 2264c84: 52800022     	mov	w2, #0x1                // =1
+ 2264c88: aa1303e1     	mov	x1, x19
+ 2264c8c: d63f0120     	blr	x9
+ 2264c90: f9400268     	ldr	x8, [x19]
+ 2264c94: aa1303e0     	mov	x0, x19
+ 2264c98: f9452509     	ldr	x9, [x8, #0xa48]
+ 2264c9c: f9452901     	ldr	x1, [x8, #0xa50]
+ 2264ca0: d63f0120     	blr	x9
+ 2264ca4: 360000c0     	tbz	w0, #0x0, 0x2264cbc <__start_il2cpp+0x613aac>
+ 2264ca8: aa1303e0     	mov	x0, x19
+ 2264cac: a9424ff4     	ldp	x20, x19, [sp, #0x20]
+ 2264cb0: a94157f6     	ldp	x22, x21, [sp, #0x10]
+ 2264cb4: f84307fe     	ldr	x30, [sp], #0x30
+ 2264cb8: 1400000f     	b	0x2264cf4 <__start_il2cpp+0x613ae4>
+ 2264cbc: f9400268     	ldr	x8, [x19]
+ 2264cc0: aa1303e0     	mov	x0, x19
+ 2264cc4: f9456d09     	ldr	x9, [x8, #0xad8]
+ 2264cc8: f9457101     	ldr	x1, [x8, #0xae0]
+ 2264ccc: d63f0120     	blr	x9
+ 2264cd0: aa0003e1     	mov	x1, x0
+ 2264cd4: aa1303e0     	mov	x0, x19
+ 2264cd8: a9424ff4     	ldp	x20, x19, [sp, #0x20]
+ 2264cdc: a94157f6     	ldp	x22, x21, [sp, #0x10]
+ 2264ce0: 52800022     	mov	w2, #0x1                // =1
+ 2264ce4: 2a1f03e3     	mov	w3, wzr
+ 2264ce8: 2a1f03e4     	mov	w4, wzr
+ 2264cec: f84307fe     	ldr	x30, [sp], #0x30
+ 2264cf0: 140006c9     	b	0x2266814 <__start_il2cpp+0x615604>

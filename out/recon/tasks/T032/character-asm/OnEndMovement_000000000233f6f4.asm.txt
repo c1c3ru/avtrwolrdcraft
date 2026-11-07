@@ -1,0 +1,48 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 233f6f4: f81e0ffe     	str	x30, [sp, #-0x20]!
+ 233f6f8: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 233f6fc: f0010df4     	adrp	x20, 0x44fe000
+ 233f700: 39493688     	ldrb	w8, [x20, #0x24d]
+ 233f704: aa0003f3     	mov	x19, x0
+ 233f708: 370000c8     	tbnz	w8, #0x0, 0x233f720 <__start_il2cpp+0x6ee510>
+ 233f70c: b000f360     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 233f710: f945dc00     	ldr	x0, [x0, #0xbb8]
+ 233f714: 97e123f5     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 233f718: 52800028     	mov	w8, #0x1                // =1
+ 233f71c: 39093688     	strb	w8, [x20, #0x24d]
+ 233f720: 1e2703e0     	fmov	s0, wzr
+ 233f724: 52800021     	mov	w1, #0x1                // =1
+ 233f728: aa1303e0     	mov	x0, x19
+ 233f72c: b903827f     	str	wzr, [x19, #0x380]
+ 233f730: 390e227f     	strb	wzr, [x19, #0x388]
+ 233f734: 9400028b     	bl	0x2340160 <__start_il2cpp+0x6eef50>
+ 233f738: 39514268     	ldrb	w8, [x19, #0x450]
+ 233f73c: 34000148     	cbz	w8, 0x233f764 <__start_il2cpp+0x6ee554>
+ 233f740: f941a660     	ldr	x0, [x19, #0x348]
+ 233f744: b40002a0     	cbz	x0, 0x233f798 <__start_il2cpp+0x6ee588>
+ 233f748: aa1f03e1     	mov	x1, xzr
+ 233f74c: 944764a3     	bl	0x35189d8 <__start_il2cpp+0x18c77c8>
+ 233f750: b4000240     	cbz	x0, 0x233f798 <__start_il2cpp+0x6ee588>
+ 233f754: f9422e61     	ldr	x1, [x19, #0x458]
+ 233f758: aa1f03e2     	mov	x2, xzr
+ 233f75c: 944657fe     	bl	0x34d5754 <__start_il2cpp+0x1884544>
+ 233f760: 3911427f     	strb	wzr, [x19, #0x450]
+ 233f764: b000f368     	adrp	x8, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 233f768: f945dd08     	ldr	x8, [x8, #0xbb8]
+ 233f76c: f941fe73     	ldr	x19, [x19, #0x3f8]
+ 233f770: f9400100     	ldr	x0, [x8]
+ 233f774: b940e008     	ldr	w8, [x0, #0xe0]
+ 233f778: 35000048     	cbnz	w8, 0x233f780 <__start_il2cpp+0x6ee570>
+ 233f77c: 97e12438     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 233f780: aa1303e0     	mov	x0, x19
+ 233f784: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 233f788: aa1f03e1     	mov	x1, xzr
+ 233f78c: aa1f03e2     	mov	x2, xzr
+ 233f790: f84207fe     	ldr	x30, [sp], #0x20
+ 233f794: 14662cff     	b	0x3ccab90 <__start_il2cpp+0x2079980>
+ 233f798: 97e1247a     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

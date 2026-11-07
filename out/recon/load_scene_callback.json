@@ -1,0 +1,607 @@
+{
+  "schema_version": 1,
+  "scope": "bounded static callback probe; no runtime equivalence claim",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+  "method": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "<>c__DisplayClass28_0",
+    "name": "<LoadScene>b__0",
+    "token": "0x0600570f",
+    "method_definition_index": 22286,
+    "parameter_count": 0,
+    "vaddr": "0x2073488",
+    "file_offset": "0x206f488"
+  },
+  "start": "0x2073488",
+  "exclusive_stop": "0x207378c",
+  "window_sha256": "f7107ca39328c2c5ea44bba68b3dbf0ffe373da39073fab7393d2f6336a2bb17",
+  "scene_guard_literal": {
+    "got_vaddr": "0x41b0f60",
+    "usage_vaddr": "0x434abf8",
+    "encoded": "0xa00037ef",
+    "kind": 5,
+    "index": 7159,
+    "literal": "Home",
+    "literal_file_offset": 381507,
+    "literal_bytes": 4
+  },
+  "control_encodings": [
+    {
+      "site": "0x20734b0",
+      "kind": "TBNZ",
+      "register": 8,
+      "bit": 0,
+      "target": 34026720,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20734bc",
+      "kind": "BL",
+      "target": 28870376,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20734c8",
+      "kind": "BL",
+      "target": 28870376,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20734d4",
+      "kind": "BL",
+      "target": 28870376,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20734f8",
+      "kind": "BL",
+      "target": 52295004,
+      "metadata_targets": [
+        {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.String",
+          "name": "op_Inequality",
+          "token": "0x06000234",
+          "method_definition_index": 36984,
+          "parameter_count": 2,
+          "vaddr": "0x31df55c",
+          "file_offset": "0x31db55c"
+        }
+      ]
+    },
+    {
+      "site": "0x20734fc",
+      "kind": "TBZ",
+      "register": 0,
+      "bit": 0,
+      "target": 34026872,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073504",
+      "kind": "CBZ",
+      "register": 8,
+      "width": 32,
+      "target": 34026872,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073510",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34026792,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207351c",
+      "kind": "BL",
+      "target": 28870376,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207353c",
+      "kind": "CBZ",
+      "register": 9,
+      "width": 32,
+      "target": 34026872,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073548",
+      "kind": "CBNZ",
+      "register": 9,
+      "width": 32,
+      "target": 34026852,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073550",
+      "kind": "BL",
+      "target": 28870376,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073568",
+      "kind": "CBZ",
+      "register": 0,
+      "width": 64,
+      "target": 34027400,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073570",
+      "kind": "BL",
+      "target": 34417772,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPManager",
+          "name": "IsHostAndOnlyPlayer",
+          "token": "0x06005e3f",
+          "method_definition_index": 24126,
+          "parameter_count": 0,
+          "vaddr": "0x20d2c6c",
+          "file_offset": "0x20cec6c"
+        }
+      ]
+    },
+    {
+      "site": "0x2073574",
+      "kind": "TBZ",
+      "register": 0,
+      "bit": 0,
+      "target": 34026924,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073584",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34026892,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073588",
+      "kind": "BL",
+      "target": 28870748,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073590",
+      "kind": "BL",
+      "target": 34024648,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "LoadSceneImplement",
+          "token": "0x060056ff",
+          "method_definition_index": 22270,
+          "parameter_count": 1,
+          "vaddr": "0x2072cc8",
+          "file_offset": "0x206ecc8"
+        }
+      ]
+    },
+    {
+      "site": "0x20735a8",
+      "kind": "RET",
+      "register": 30,
+      "target": null,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20735b0",
+      "kind": "BL",
+      "target": 53800412,
+      "metadata_targets": [
+        {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Guid",
+          "name": "NewGuid",
+          "token": "0x06000741",
+          "method_definition_index": 38277,
+          "parameter_count": 0,
+          "vaddr": "0x334eddc",
+          "file_offset": "0x334addc"
+        }
+      ]
+    },
+    {
+      "site": "0x20735c0",
+      "kind": "BL",
+      "target": 53809008,
+      "metadata_targets": [
+        {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Guid",
+          "name": "ToString",
+          "token": "0x0600075a",
+          "method_definition_index": 38302,
+          "parameter_count": 0,
+          "vaddr": "0x3350f70",
+          "file_offset": "0x334cf70"
+        }
+      ]
+    },
+    {
+      "site": "0x20735cc",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34026980,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20735d8",
+      "kind": "BL",
+      "target": 28870376,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20735f0",
+      "kind": "CBZ",
+      "register": 0,
+      "width": 64,
+      "target": 34027400,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20735f8",
+      "kind": "BL",
+      "target": 34417648,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPManager",
+          "name": "IsHost",
+          "token": "0x06005e3e",
+          "method_definition_index": 24125,
+          "parameter_count": 0,
+          "vaddr": "0x20d2bf0",
+          "file_offset": "0x20cebf0"
+        }
+      ]
+    },
+    {
+      "site": "0x20735fc",
+      "kind": "TBZ",
+      "register": 0,
+      "bit": 0,
+      "target": 34027184,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207360c",
+      "kind": "BL",
+      "target": 28871024,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073618",
+      "kind": "BL",
+      "target": 34591476,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.DataTypes.MPData_SceneChangeRequest",
+          "name": ".ctor",
+          "token": "0x06005fa3",
+          "method_definition_index": 24482,
+          "parameter_count": 0,
+          "vaddr": "0x20fd2f4",
+          "file_offset": "0x20f92f4"
+        }
+      ]
+    },
+    {
+      "site": "0x207361c",
+      "kind": "CBZ",
+      "register": 22,
+      "width": 64,
+      "target": 34027400,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207362c",
+      "kind": "BL",
+      "target": 28870292,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073638",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34027072,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207363c",
+      "kind": "BL",
+      "target": 28870748,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073640",
+      "kind": "BL",
+      "target": 34024836,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "GetActiveSceneId",
+          "token": "0x06005700",
+          "method_definition_index": 22271,
+          "parameter_count": 0,
+          "vaddr": "0x2072d84",
+          "file_offset": "0x206ed84"
+        }
+      ]
+    },
+    {
+      "site": "0x2073650",
+      "kind": "BL",
+      "target": 28870292,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073658",
+      "kind": "CBNZ",
+      "register": 1,
+      "width": 64,
+      "target": 34027104,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207366c",
+      "kind": "BL",
+      "target": 28870292,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207367c",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34027152,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073688",
+      "kind": "BL",
+      "target": 28870376,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207369c",
+      "kind": "CBZ",
+      "register": 0,
+      "width": 64,
+      "target": 34027400,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20736a8",
+      "kind": "BL",
+      "target": 34435160,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPManager",
+          "name": "SendWaitForPlayerForSceneChangeRequest",
+          "token": "0x06005e6e",
+          "method_definition_index": 24173,
+          "parameter_count": 1,
+          "vaddr": "0x20d7058",
+          "file_offset": "0x20d3058"
+        }
+      ]
+    },
+    {
+      "site": "0x20736ac",
+      "kind": "B",
+      "target": 34027228,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20736b8",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34027200,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20736bc",
+      "kind": "BL",
+      "target": 28870748,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20736c0",
+      "kind": "BL",
+      "target": 34024836,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "GetActiveSceneId",
+          "token": "0x06005700",
+          "method_definition_index": 22271,
+          "parameter_count": 0,
+          "vaddr": "0x2072d84",
+          "file_offset": "0x206ed84"
+        }
+      ]
+    },
+    {
+      "site": "0x20736c8",
+      "kind": "CBNZ",
+      "register": 1,
+      "width": 64,
+      "target": 34027216,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20736d8",
+      "kind": "BL",
+      "target": 34335968,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPDataHelper_SceneChangeRequest",
+          "name": "TrySendEvent",
+          "token": "0x06005d09",
+          "method_definition_index": 23816,
+          "parameter_count": 3,
+          "vaddr": "0x20bece0",
+          "file_offset": "0x20bace0"
+        }
+      ]
+    },
+    {
+      "site": "0x20736e0",
+      "kind": "BL",
+      "target": 34478420,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPUtils",
+          "name": "DestroyAllGameObjectsInLoadedScenes",
+          "token": "0x06005f12",
+          "method_definition_index": 24337,
+          "parameter_count": 0,
+          "vaddr": "0x20e1954",
+          "file_offset": "0x20dd954"
+        }
+      ]
+    },
+    {
+      "site": "0x20736e8",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34027264,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20736f4",
+      "kind": "BL",
+      "target": 28870376,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207370c",
+      "kind": "CBZ",
+      "register": 20,
+      "width": 64,
+      "target": 34027400,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073718",
+      "kind": "BL",
+      "target": 34387772,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPManager",
+          "name": "GetPlayerUID",
+          "token": "0x06005e40",
+          "method_definition_index": 24127,
+          "parameter_count": 0,
+          "vaddr": "0x20cb73c",
+          "file_offset": "0x20c773c"
+        }
+      ]
+    },
+    {
+      "site": "0x2073728",
+      "kind": "BL",
+      "target": 34420396,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPManager",
+          "name": "ClearPlayerFromScenes",
+          "token": "0x06005e45",
+          "method_definition_index": 24132,
+          "parameter_count": 1,
+          "vaddr": "0x20d36ac",
+          "file_offset": "0x20cf6ac"
+        }
+      ]
+    },
+    {
+      "site": "0x2073738",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34027328,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207373c",
+      "kind": "BL",
+      "target": 28870748,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073748",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34027360,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073754",
+      "kind": "BL",
+      "target": 28870376,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073768",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": 34027380,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207376c",
+      "kind": "BL",
+      "target": 28870748,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073780",
+      "kind": "BL",
+      "target": 28870292,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073784",
+      "kind": "B",
+      "target": 34026900,
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073788",
+      "kind": "BL",
+      "target": 28871040,
+      "metadata_targets": []
+    }
+  ],
+  "limitations": [
+    "Linear window ending at next metadata start is not a complete CFG/body proof.",
+    "Metadata targets revalidated; unresolved helpers remain unnamed.",
+    "Field names require declarations; shared static flag semantics remain open.",
+    "No multiplayer operation, target execution or queue acceptance performed."
+  ]
+}

@@ -1,0 +1,1121 @@
+{
+  "level": "level237",
+  "scene_bytes": 46504,
+  "object_count": 331,
+  "object_type_counts": {
+    "GameObject": 83,
+    "Transform": 3,
+    "Camera": 1,
+    "AudioListener": 1,
+    "RenderSettings": 1,
+    "LightmapSettings": 1,
+    "NavMeshSettings": 1,
+    "CanvasRenderer": 55,
+    "Canvas": 2,
+    "RectTransform": 80,
+    "MonoBehaviour": 103
+  },
+  "external_files": [
+    "globalgamemanagers.assets",
+    "Library/unity default resources",
+    "resources.assets",
+    "sharedassets237.assets"
+  ],
+  "roots": [
+    {
+      "game_object": "Main Camera",
+      "game_object_path_id": 13,
+      "transform_path_id": 84
+    },
+    {
+      "game_object": "EventSystem",
+      "game_object_path_id": 16,
+      "transform_path_id": 85
+    },
+    {
+      "game_object": "StoreViewManager",
+      "game_object_path_id": 45,
+      "transform_path_id": 86
+    },
+    {
+      "game_object": "BackgroundCanvas",
+      "game_object_path_id": 2,
+      "transform_path_id": 150
+    },
+    {
+      "game_object": "Canvas",
+      "game_object_path_id": 20,
+      "transform_path_id": 220
+    }
+  ],
+  "sprite_renderer_count": 0,
+  "sprite_renderers": [],
+  "behaviour_counts": {
+    "UnityEngine.EventSystems.EventSystem": 1,
+    "TMPro.TextMeshProUGUI": 17,
+    "UnityEngine.UI.Image": 34,
+    "UnityEngine.UI.RectMask2D": 2,
+    "UnityEngine.UI.GraphicRaycaster": 2,
+    "UnityEngine.UI.CanvasScaler": 2,
+    "UnityEngine.UI.Button": 3,
+    "PazuCore.ScaleToLandscapeScreen": 5,
+    "PazuCore.PositionToLandscapeScreen": 5,
+    "PWC.UISlideAnimator": 1,
+    "UnityEngine.UI.ScrollRect": 3,
+    "PWC.RawImageOffsetTweener": 1,
+    "UnityEngine.UI.RawImage": 1,
+    "UnityEngine.UI.ContentSizeFitter": 3,
+    "UnityEngine.UI.VerticalLayoutGroup": 2,
+    "PazuCore.PazuCoreAddressables.AFC.AFCLayoutGroupSpacingToScreen": 1,
+    "PWC.UITools.RectTransformOffsetToScreen": 1,
+    "PWC.DragThresholdFixer": 1,
+    "UnityEngine.EventSystems.StandaloneInputModule": 1,
+    "Game.Store.StoreViewManager": 1,
+    "PazuCore.PazuCoreAddressables.AFC.AFCLocalizedText": 1,
+    "StarsPass.StarsPassBarManager": 2,
+    "StarsPass.StarsAnimationManager": 1,
+    "Game.Store.CoinAnimationManager": 1,
+    "Spine.Unity.SkeletonGraphic": 2,
+    "MaxDummyStarsPassData.StarsPassManager": 1,
+    "Game.Store.StorePazuCurrencyViewer": 1,
+    "PazuCore.UniversalRectTransfromToScreenLandscape": 1,
+    "UnityEngine.UI.Text": 1,
+    "UnityEngine.UI.Mask": 1,
+    "UnityEngine.UI.HorizontalLayoutGroup": 1,
+    "PazuCore.PazuCoreAddressables.AFC.AFCLayoutGroupPaddingToScreen": 1,
+    "PWC.UITools.RectTransformToScreen": 2
+  },
+  "behaviours": [
+    {
+      "game_object": "EventSystem",
+      "game_object_path_id": 16,
+      "mono_behaviour_path_id": 229,
+      "script": {
+        "name": "EventSystem",
+        "namespace": "UnityEngine.EventSystems",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Target Milestone Number Text (Legacy)",
+      "game_object_path_id": 29,
+      "mono_behaviour_path_id": 230,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Target Milestone Number Text (Legacy)",
+      "game_object_path_id": 30,
+      "mono_behaviour_path_id": 231,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Text (Legacy)",
+      "game_object_path_id": 31,
+      "mono_behaviour_path_id": 232,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Text (Legacy)",
+      "game_object_path_id": 32,
+      "mono_behaviour_path_id": 233,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Text (TMP)",
+      "game_object_path_id": 46,
+      "mono_behaviour_path_id": 234,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Current Stars Text (Legacy)",
+      "game_object_path_id": 23,
+      "mono_behaviour_path_id": 235,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Current Stars Text (Legacy)",
+      "game_object_path_id": 22,
+      "mono_behaviour_path_id": 236,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Text (Legacy) (2)",
+      "game_object_path_id": 57,
+      "mono_behaviour_path_id": 237,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Text (Legacy) (2)",
+      "game_object_path_id": 56,
+      "mono_behaviour_path_id": 238,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "StarsAnimation_Text",
+      "game_object_path_id": 21,
+      "mono_behaviour_path_id": 239,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Target Stars Text (Legacy) (1)",
+      "game_object_path_id": 60,
+      "mono_behaviour_path_id": 240,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Target Stars Text (Legacy) (1)",
+      "game_object_path_id": 59,
+      "mono_behaviour_path_id": 241,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Current Milestone Number Text (Legacy)",
+      "game_object_path_id": 79,
+      "mono_behaviour_path_id": 242,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Current Milestone Number Text (Legacy)",
+      "game_object_path_id": 78,
+      "mono_behaviour_path_id": 243,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "CoinAnimation_Text",
+      "game_object_path_id": 26,
+      "mono_behaviour_path_id": 244,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Text (Legacy)",
+      "game_object_path_id": 72,
+      "mono_behaviour_path_id": 245,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Text (Legacy)",
+      "game_object_path_id": 73,
+      "mono_behaviour_path_id": 246,
+      "script": {
+        "name": "TextMeshProUGUI",
+        "namespace": "TMPro",
+        "assembly": "Unity.TextMeshPro"
+      }
+    },
+    {
+      "game_object": "Glow",
+      "game_object_path_id": 1,
+      "mono_behaviour_path_id": 247,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "BackgroundCanvas",
+      "game_object_path_id": 2,
+      "mono_behaviour_path_id": 248,
+      "script": {
+        "name": "RectMask2D",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "BackgroundCanvas",
+      "game_object_path_id": 2,
+      "mono_behaviour_path_id": 249,
+      "script": {
+        "name": "GraphicRaycaster",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "BackgroundCanvas",
+      "game_object_path_id": 2,
+      "mono_behaviour_path_id": 250,
+      "script": {
+        "name": "CanvasScaler",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "IconsBar_3Layer",
+      "game_object_path_id": 3,
+      "mono_behaviour_path_id": 251,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "IconsBar_1Layer",
+      "game_object_path_id": 4,
+      "mono_behaviour_path_id": 252,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "RestorePurchases",
+      "game_object_path_id": 5,
+      "mono_behaviour_path_id": 253,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "RestorePurchases",
+      "game_object_path_id": 5,
+      "mono_behaviour_path_id": 254,
+      "script": {
+        "name": "Button",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "RestorePurchases",
+      "game_object_path_id": 5,
+      "mono_behaviour_path_id": 255,
+      "script": {
+        "name": "ScaleToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "RestorePurchases",
+      "game_object_path_id": 5,
+      "mono_behaviour_path_id": 256,
+      "script": {
+        "name": "PositionToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Background",
+      "game_object_path_id": 6,
+      "mono_behaviour_path_id": 257,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "StarsPassBarDynamic",
+      "game_object_path_id": 54,
+      "mono_behaviour_path_id": 258,
+      "script": {
+        "name": "UISlideAnimator",
+        "namespace": "PWC",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Scroll View",
+      "game_object_path_id": 8,
+      "mono_behaviour_path_id": 259,
+      "script": {
+        "name": "ScrollRect",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "IconsBar",
+      "game_object_path_id": 9,
+      "mono_behaviour_path_id": 260,
+      "script": {
+        "name": "PositionToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Logos",
+      "game_object_path_id": 10,
+      "mono_behaviour_path_id": 261,
+      "script": {
+        "name": "RawImageOffsetTweener",
+        "namespace": "PWC",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Logos",
+      "game_object_path_id": 10,
+      "mono_behaviour_path_id": 262,
+      "script": {
+        "name": "RawImage",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Content",
+      "game_object_path_id": 11,
+      "mono_behaviour_path_id": 263,
+      "script": {
+        "name": "ContentSizeFitter",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Content",
+      "game_object_path_id": 11,
+      "mono_behaviour_path_id": 264,
+      "script": {
+        "name": "VerticalLayoutGroup",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Content",
+      "game_object_path_id": 11,
+      "mono_behaviour_path_id": 265,
+      "script": {
+        "name": "AFCLayoutGroupSpacingToScreen",
+        "namespace": "PazuCore.PazuCoreAddressables.AFC",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Subcategories",
+      "game_object_path_id": 14,
+      "mono_behaviour_path_id": 266,
+      "script": {
+        "name": "RectTransformOffsetToScreen",
+        "namespace": "PWC.UITools",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "EventSystem",
+      "game_object_path_id": 16,
+      "mono_behaviour_path_id": 267,
+      "script": {
+        "name": "DragThresholdFixer",
+        "namespace": "PWC",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "EventSystem",
+      "game_object_path_id": 16,
+      "mono_behaviour_path_id": 268,
+      "script": {
+        "name": "StandaloneInputModule",
+        "namespace": "UnityEngine.EventSystems",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Canvas",
+      "game_object_path_id": 20,
+      "mono_behaviour_path_id": 269,
+      "script": {
+        "name": "GraphicRaycaster",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "PazuCurrencyViewer",
+      "game_object_path_id": 19,
+      "mono_behaviour_path_id": 270,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Button (Legacy)",
+      "game_object_path_id": 77,
+      "mono_behaviour_path_id": 271,
+      "script": {
+        "name": "Button",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "StarsPassBarDynamic",
+      "game_object_path_id": 54,
+      "mono_behaviour_path_id": 272,
+      "script": {
+        "name": "ScaleToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "StarsPassBarStatic",
+      "game_object_path_id": 55,
+      "mono_behaviour_path_id": 273,
+      "script": {
+        "name": "ScaleToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Viewport",
+      "game_object_path_id": 38,
+      "mono_behaviour_path_id": 274,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Content",
+      "game_object_path_id": 67,
+      "mono_behaviour_path_id": 275,
+      "script": {
+        "name": "ContentSizeFitter",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "StoreViewManager",
+      "game_object_path_id": 45,
+      "mono_behaviour_path_id": 276,
+      "script": {
+        "name": "StoreViewManager",
+        "namespace": "Game.Store",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Claim Image",
+      "game_object_path_id": 18,
+      "mono_behaviour_path_id": 277,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Claim Image",
+      "game_object_path_id": 17,
+      "mono_behaviour_path_id": 278,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "LeftBar",
+      "game_object_path_id": 27,
+      "mono_behaviour_path_id": 279,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "LeftBar",
+      "game_object_path_id": 28,
+      "mono_behaviour_path_id": 280,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "BalanceInfoText",
+      "game_object_path_id": 58,
+      "mono_behaviour_path_id": 281,
+      "script": {
+        "name": "AFCLocalizedText",
+        "namespace": "PazuCore.PazuCoreAddressables.AFC",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "MiddleBar",
+      "game_object_path_id": 75,
+      "mono_behaviour_path_id": 282,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "MiddleBar",
+      "game_object_path_id": 76,
+      "mono_behaviour_path_id": 283,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "RightBar",
+      "game_object_path_id": 69,
+      "mono_behaviour_path_id": 284,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "RightBar",
+      "game_object_path_id": 68,
+      "mono_behaviour_path_id": 285,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Viewport",
+      "game_object_path_id": 47,
+      "mono_behaviour_path_id": 286,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Background",
+      "game_object_path_id": 81,
+      "mono_behaviour_path_id": 287,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Scroll View",
+      "game_object_path_id": 41,
+      "mono_behaviour_path_id": 288,
+      "script": {
+        "name": "ScrollRect",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Image",
+      "game_object_path_id": 39,
+      "mono_behaviour_path_id": 289,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "StarsPassBarStatic",
+      "game_object_path_id": 55,
+      "mono_behaviour_path_id": 290,
+      "script": {
+        "name": "StarsPassBarManager",
+        "namespace": "StarsPass",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "StarsPassBarDynamic",
+      "game_object_path_id": 54,
+      "mono_behaviour_path_id": 291,
+      "script": {
+        "name": "StarsPassBarManager",
+        "namespace": "StarsPass",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "StarsAnimation_Spawner",
+      "game_object_path_id": 51,
+      "mono_behaviour_path_id": 292,
+      "script": {
+        "name": "StarsAnimationManager",
+        "namespace": "StarsPass",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Scroll View",
+      "game_object_path_id": 80,
+      "mono_behaviour_path_id": 293,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "CoinAnimation_Prefab",
+      "game_object_path_id": 37,
+      "mono_behaviour_path_id": 294,
+      "script": {
+        "name": "CoinAnimationManager",
+        "namespace": "Game.Store",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "GiftBox_Spine",
+      "game_object_path_id": 49,
+      "mono_behaviour_path_id": 295,
+      "script": {
+        "name": "SkeletonGraphic",
+        "namespace": "Spine.Unity",
+        "assembly": "spine-unity"
+      }
+    },
+    {
+      "game_object": "GiftBox_Spine",
+      "game_object_path_id": 48,
+      "mono_behaviour_path_id": 296,
+      "script": {
+        "name": "SkeletonGraphic",
+        "namespace": "Spine.Unity",
+        "assembly": "spine-unity"
+      }
+    },
+    {
+      "game_object": "Scroll View",
+      "game_object_path_id": 80,
+      "mono_behaviour_path_id": 297,
+      "script": {
+        "name": "ScrollRect",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Scroll View",
+      "game_object_path_id": 41,
+      "mono_behaviour_path_id": 298,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "BackButton",
+      "game_object_path_id": 44,
+      "mono_behaviour_path_id": 299,
+      "script": {
+        "name": "Button",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "BackButton",
+      "game_object_path_id": 44,
+      "mono_behaviour_path_id": 300,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "BackButton",
+      "game_object_path_id": 44,
+      "mono_behaviour_path_id": 301,
+      "script": {
+        "name": "ScaleToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "BackButton",
+      "game_object_path_id": 44,
+      "mono_behaviour_path_id": 302,
+      "script": {
+        "name": "PositionToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "StoreViewManager",
+      "game_object_path_id": 45,
+      "mono_behaviour_path_id": 303,
+      "script": {
+        "name": "StarsPassManager",
+        "namespace": "MaxDummyStarsPassData",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Target Star",
+      "game_object_path_id": 35,
+      "mono_behaviour_path_id": 304,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Target Star",
+      "game_object_path_id": 36,
+      "mono_behaviour_path_id": 305,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "PazuCurrencyViewer",
+      "game_object_path_id": 19,
+      "mono_behaviour_path_id": 306,
+      "script": {
+        "name": "StorePazuCurrencyViewer",
+        "namespace": "Game.Store",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "PazuCurrencyViewer",
+      "game_object_path_id": 19,
+      "mono_behaviour_path_id": 307,
+      "script": {
+        "name": "UniversalRectTransfromToScreenLandscape",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Claim",
+      "game_object_path_id": 70,
+      "mono_behaviour_path_id": 308,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Claim",
+      "game_object_path_id": 71,
+      "mono_behaviour_path_id": 309,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "StarsPassBarStatic",
+      "game_object_path_id": 55,
+      "mono_behaviour_path_id": 310,
+      "script": {
+        "name": "PositionToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "StarsPassBarDynamic",
+      "game_object_path_id": 54,
+      "mono_behaviour_path_id": 311,
+      "script": {
+        "name": "PositionToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "NewBadge",
+      "game_object_path_id": 52,
+      "mono_behaviour_path_id": 312,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "NewBadge",
+      "game_object_path_id": 53,
+      "mono_behaviour_path_id": 313,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Star",
+      "game_object_path_id": 34,
+      "mono_behaviour_path_id": 314,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Star",
+      "game_object_path_id": 33,
+      "mono_behaviour_path_id": 315,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "BalanceInfoText",
+      "game_object_path_id": 58,
+      "mono_behaviour_path_id": 316,
+      "script": {
+        "name": "Text",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Fill_RightSide",
+      "game_object_path_id": 25,
+      "mono_behaviour_path_id": 317,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Fill_RightSide",
+      "game_object_path_id": 24,
+      "mono_behaviour_path_id": 318,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Viewport",
+      "game_object_path_id": 38,
+      "mono_behaviour_path_id": 319,
+      "script": {
+        "name": "Mask",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Content",
+      "game_object_path_id": 67,
+      "mono_behaviour_path_id": 320,
+      "script": {
+        "name": "VerticalLayoutGroup",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Button (Legacy)",
+      "game_object_path_id": 77,
+      "mono_behaviour_path_id": 321,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Content",
+      "game_object_path_id": 40,
+      "mono_behaviour_path_id": 322,
+      "script": {
+        "name": "ContentSizeFitter",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Content",
+      "game_object_path_id": 40,
+      "mono_behaviour_path_id": 323,
+      "script": {
+        "name": "HorizontalLayoutGroup",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Content",
+      "game_object_path_id": 40,
+      "mono_behaviour_path_id": 324,
+      "script": {
+        "name": "ScaleToLandscapeScreen",
+        "namespace": "PazuCore",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Content",
+      "game_object_path_id": 40,
+      "mono_behaviour_path_id": 325,
+      "script": {
+        "name": "AFCLayoutGroupPaddingToScreen",
+        "namespace": "PazuCore.PazuCoreAddressables.AFC",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Canvas",
+      "game_object_path_id": 20,
+      "mono_behaviour_path_id": 326,
+      "script": {
+        "name": "CanvasScaler",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Canvas",
+      "game_object_path_id": 20,
+      "mono_behaviour_path_id": 327,
+      "script": {
+        "name": "RectMask2D",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Fill",
+      "game_object_path_id": 42,
+      "mono_behaviour_path_id": 328,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Fill",
+      "game_object_path_id": 43,
+      "mono_behaviour_path_id": 329,
+      "script": {
+        "name": "Image",
+        "namespace": "UnityEngine.UI",
+        "assembly": "UnityEngine.UI"
+      }
+    },
+    {
+      "game_object": "Scroll View",
+      "game_object_path_id": 80,
+      "mono_behaviour_path_id": 330,
+      "script": {
+        "name": "RectTransformToScreen",
+        "namespace": "PWC.UITools",
+        "assembly": "Assembly-CSharp"
+      }
+    },
+    {
+      "game_object": "Categories",
+      "game_object_path_id": 82,
+      "mono_behaviour_path_id": 331,
+      "script": {
+        "name": "RectTransformToScreen",
+        "namespace": "PWC.UITools",
+        "assembly": "Assembly-CSharp"
+      }
+    }
+  ],
+  "unresolved_script_ids": {}
+}

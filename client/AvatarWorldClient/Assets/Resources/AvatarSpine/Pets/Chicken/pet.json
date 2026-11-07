@@ -1,0 +1,58 @@
+{
+ "species": "Chicken",
+ "idle": "General/Chilling",
+ "basePieces": [
+  {
+   "template": "Templates/MultiPack__General",
+   "file": "multipack__general__89310.png",
+   "skin": "default"
+  }
+ ],
+ "variants": [
+  {
+   "id": "chicken_a_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__89310.png",
+     "skin": "Chicken_A_1"
+    },
+    {
+     "template": "Templates/MultiPack__Chicken_1",
+     "file": "multipack__chicken_1__14609.png",
+     "skin": "Chicken_A_1"
+    }
+   ]
+  },
+  {
+   "id": "chicken_a_2",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__89310.png",
+     "skin": "Chicken_A_2"
+    },
+    {
+     "template": "Templates/MultiPack__Chicken_2",
+     "file": "multipack__chicken_2__86565.png",
+     "skin": "Chicken_A_2"
+    }
+   ]
+  },
+  {
+   "id": "chicken_a_3",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__General",
+     "file": "multipack__general__89310.png",
+     "skin": "Chicken_A_3"
+    },
+    {
+     "template": "Templates/MultiPack__Chicken_3",
+     "file": "multipack__chicken_3__54961.png",
+     "skin": "Chicken_A_3"
+    }
+   ]
+  }
+ ]
+}

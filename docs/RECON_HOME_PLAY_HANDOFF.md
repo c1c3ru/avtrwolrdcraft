@@ -1,0 +1,47 @@
+# Handoff — contrato Home → Play (T025), 2026-11-03
+
+Para outra IA continuar. Tudo aqui é **candidato estático + 1 observação em aparelho**; nada está certificado.
+
+## Estado
+- Binário/metadata: `out/recon/il2cpp/{libil2cpp.so,global-metadata.dat}` (hashes em `docs/RECON_NAVIGATION_CONTRACT.md`). Método `Game.Home.HomePlayButton.LoadPlayScene`, token `0x060054ef`, VA `0x2057fa8..0x20581ec`.
+- Verificador: `python3 tools/recon_home_play.py --craft-listing out/recon/tasks/T025/METHOD/5fe1bb4a25183678/craft-home-slice.json` (`craft-home-disassembly.json` é um erro `bad_input`, não usar). Testes: `python3 -m unittest discover -s tools -p "test_recon_*.py"` → 86 OK.
+- Saídas: `out/recon/tasks/T025/METHOD/5fe1bb4a25183678/{method-contract,control-flow,result}.json`, `unknowns.jsonl`.
+
+## Fluxo recuperado (candidato)
+1. `InteractionHistoryManager.OnClickHomePlayButton()`.
+2. `PlayerPrefs.HasKey("pazucore_pending_deep_link")` falso → `scene = GameSceneManager.GetCurrentWorldSceneName()`.
+   - Getter (já verificado em `docs/RECON_NAVIGATION_CONTRACT.md`): `PlayerPrefs.GetString("GAME_CURRENT_WORLD", "World")`, usado se `IsSceneAvailable`, senão `"World"`.
+3. Chave presente: `SoundManager.Stop(1001)`; lê a chave; vazia → level 2, senão `level = DeepLinkManager.Instance._mapLinkToLevel[valor]` (**inferido**: receptor = campo `+0x28` do singleton, chamada de interface em `0x2058174`); apaga a chave, `PlayerPrefs.Save()`, `WorldBuildingsDataManager.SaveBuildingData(0, level)`, `scene = CoreExtensions.GetSceneName(level)`.
+4. Ambos os ramos terminam em `GameSceneManager.LoadScene(scene, true, null)`.
+
+## Observação em aparelho (ramo sem deep link)
+Xiaomi M2101K7BI, original 1.227. Home → toque em Play → tela de carregamento amarela → mapa do mundo (cidade com obras). Evidência: `out/recon/tasks/T025/DEVICE/{01-home,02-loading,03-world}.png` + `SHA256SUMS`. Consistente com cena `World` (candidata `level4`, 59 edifícios, `Main_Theme_Loop`, ver `docs/REA_NAVIGATION_MAPPING_2026-11-01.md`); o mapeamento `World`→`level4` é **inferido** por convenção de índice, não observado.
+
+## Desconhecidos (ordem sugerida)
+1. ~~Extrair `DeepLinkManager._mapLinkToLevel`~~ **Feito (candidato):** `out/recon/tasks/T025/DEVICE/deeplink_map_link_to_level.json` — 149 chaves → `LevelType` (ex.: `girlslivingroom`=1, `streetmain`=51, `gym`=162, `basketball`=163). Fonte: `datapack.unity3d`, `sharedassets1.assets`, MonoBehaviour path_id 265, script `DeepLinkManager` (MonoScript 5132 em `data.unity3d`). Layout resolvido: `SerializableDictionaryBase` serializa `_keyValues` (List), `_keys` (array) e `_values` (array); por isso há duas listas de chaves idênticas e o pareamento `_keys[i]`↔`_values[i]` é o do próprio desenho da biblioteca (ordem dos campos inferida da declaração no dump e do consumo exato dos 6028 bytes). 
+   **Feito também:** `CoreExtensions.GetSceneName(level)` (VA `0x206a798`) = `String.Concat("Level_", level.ToString())`, verificado no assembly (literal índice 8767 = `Level_`, enum `PWC.Game.LevelType`). Tabela completa em `out/recon/tasks/T025/DEVICE/deeplink_to_scene.json`: 149 deep links → `Level_<LevelType>`; **146 existem no BuildSettings** (254 cenas); não encontrados: `apthmf2`, `dock`, `conveniencestore` (investigar: Addressables/remoto ou nome diferente). O BuildSettings contém as cenas `Home` e `World`, confirmando por nome o padrão `"World"` do getter (o vínculo `World`→`level4` por índice continua inferido).
+2. ~~Confirmar `get_Item`~~ **Slot 0 decodificado** nos dois caminhos de despacho (`0x2058150 mov w2,wzr`; fast path sem soma de slot) e `IDictionary`2` slot 0 = `get_Item` (token `0x06002fb8`). Ainda inferido: a identidade da interface (`IDictionary<string,LevelType>`, vem do tipo do campo; o slot de uso `0x41c7a98` tem codificação não padrão) e o comportamento com chave ausente (`KeyNotFoundException` esperada do `SerializableDictionaryBase`, não decodificada). Verificador com âncoras e teste de mutação (86 OK).
+3. ~~Explicar os 3 deep links sem cena~~ **Explicado (inferido):** só 7 dos 230 `LevelType` não têm cena no BuildSettings (`AptHM_F2_L131`, `Dock_L134`, `ConvenienceStore_L167`, `GalxeHMLuniRoom_F2_L182`, `BurgerRestaurant_L239`, `GasStation_L235`, `CarWash_L238`); são conteúdo previsto e não distribuído na 1.227. Os três últimos coincidem com os prédios com fita de obra no mapa original. Não decodificado: o que `LoadScene`/`IsSceneAvailable` fazem com cena ausente — o clone não deve inventar cena para eles.
+4. Valor salvo de `GAME_CURRENT_WORLD` no aparelho (não legível: app não depurável, sem root). Alternativa: observar após usar um mundo diferente.
+4. Cobrir no aparelho os cenários chave ausente/vazia/não vazia (exige injetar a chave; avaliar risco ao save — **não** reinstalar/atualizar com assinatura diferente nem perder o save).
+5. Efeito de `OnClickHomePlayButton` e dos argumentos de `SaveBuildingData`; callees de `LoadScene`/fade.
+6. Revisão independente antes de marcar T025 como done (`docs/RECON_RESUME_SPEC.md`).
+
+## Armadilhas
+- O pseudocódigo do Craft Anything perdeu o valor da cena em um ramo; use o assembly (anchors no verificador).
+- Craft não achou a função no ELF inteiro; só desmonta recortes com endereço conhecido.
+- Disassembler ad hoc: `capstone` num venv fora do repo (`pip install capstone`); não nomear script `dis.py` (sombreia o stdlib).
+- Clone: o Play do original abre o **mapa do mundo**, não a quadra; a quadra segue protótipo sem equivalência.
+
+## Índice da cadeia Home → Play → prédio → cena (todos candidatos estáticos)
+1. Home Play: este documento (`tools/recon_home_play.py`).
+2. `GameSceneManager.LoadScene/LoadSceneImplement` e reset de estado: `docs/RECON_LOAD_SCENE_CONTRACT.md` (`tools/recon_load_scene.py`); callback `<LoadScene>b__0`: `docs/RECON_CALLBACK_2026-11-03.md`.
+3. Toque em prédio → nível → cena; gates UGC/drag/reset; persistência `WorldBuildingData_*` e `GAME_CURRENT_WORLD`; gate de acesso (`IsAllWorldFree=true`): `docs/RECON_WORLD_CLICK_CONTRACT.md` (`tools/recon_world_click.py`, `tools/recon_access_gate.py`).
+4. Mapa deep link → `LevelType` → `Level_<nome>`: `out/recon/tasks/T025/DEVICE/deeplink_*.json`.
+
+## O que NÃO foi feito (próxima IA / humano)
+- **Validação em runtime** de qualquer contrato (precisa do aparelho; avaliar risco ao save antes de injetar `pazucore_pending_deep_link`).
+- **Revisão independente** — obrigatória antes de marcar T025/T029 como done (`docs/RECON_RESUME_SPEC.md`). Nenhuma tarefa da fila foi promovida.
+- Decodificar: fade/`StartSceneTransition` (`0x20fe2d8`), assinantes de `OnBeforeSceneLoadStage1-3`, quem assina `OnActiveSceneChanged`, vtables (slots virtuais), `MarkBuildingAsInteracted`/`SetFocusedBuildingType`, UI do `WorldBuildingPreviewPopup`.
+- Clone: o Play deve abrir o **mapa do mundo** (`World`), todo prédio com cena abre (sem paywall), `LevelType` sem cena não abre; a quadra de basquete atual é protótipo sem equivalência.
+- Restante da fila (`reports/recon/tasks.json`, 3 done / ~444 pending): esta cadeia cobre só uma fatia de T025/T029.

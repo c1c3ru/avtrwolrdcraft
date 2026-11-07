@@ -1,0 +1,877 @@
+{
+  "description": "sanitized structural summary of original runtime scene saves; raw saves are not copied",
+  "source": {
+    "save_file_count": 5,
+    "raw_source_retained": false
+  },
+  "scene_reports": {
+    "World": {
+      "path": "out/recon/tasks/T030/scene-pilot.json",
+      "sha256": "71b1c661ade74af406cba8e2068df5fb70b5a5b0c664f2f4529c632a0c7a6fb3"
+    }
+  },
+  "saves": [
+    {
+      "path": "Levels/Regular/Level_Garage_L232",
+      "bytes": 76315,
+      "sha256": "331690d324de07c93d20ff6e6d13d84fd3625a95922ece73d6b32090be0cd7c5",
+      "root_schema": {
+        "BuildNumber": "number",
+        "NewAndSyncedSceneObjects": "array",
+        "Prefabs": "object",
+        "SceneObjects": "object"
+      },
+      "unknown_root_keys": [],
+      "build_number": 228,
+      "counts": {
+        "prefab_guids": 60,
+        "prefab_instances": 153,
+        "scene_objects": 279,
+        "new_and_synced_scene_objects": 0
+      },
+      "payloads": {
+        "schemas": {
+          "GameCameraPD": {
+            "count": 1,
+            "fields": {
+              "size:number": 1,
+              "xPosition:number": 1,
+              "yPosition:number": 1
+            }
+          },
+          "GameSoundPlayerPD": {
+            "count": 2,
+            "fields": {
+              "clipName:string": 2,
+              "isPlayingLoop:boolean": 2,
+              "pitch:number": 2,
+              "volume:number": 2
+            }
+          },
+          "LevelBag": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelCAPD": {
+            "count": 8,
+            "fields": {
+              "config:object": 8,
+              "handlerName:string": 8,
+              "handlerSceneGuid:string": 8,
+              "isPlaying:boolean": 8,
+              "playType:number": 8
+            }
+          },
+          "LevelCarAppearance_carId": {
+            "count": 2,
+            "fields": {
+              "value:number": 2
+            }
+          },
+          "LevelCharacterPD": {
+            "count": 8,
+            "fields": {
+              "animationName:string": 8,
+              "currentArea:string": 8,
+              "id:number": 8,
+              "isDynamicSpawn:boolean": 8
+            }
+          },
+          "LevelClothingItemPD": {
+            "count": 7,
+            "fields": {
+              "bottomColor:object": 7,
+              "categoryType:number": 7,
+              "colors:array": 7,
+              "hasColors:boolean": 7,
+              "skinName:string": 7,
+              "topColor:object": 7
+            }
+          },
+          "LevelDoorPD": {
+            "count": 23,
+            "fields": {
+              "isOpen:boolean": 23
+            }
+          },
+          "LevelDrinkDispenserPD": {
+            "count": 1,
+            "fields": {
+              "isOpen:boolean": 1
+            }
+          },
+          "LevelEventCounterHandler": {
+            "count": 1,
+            "fields": {
+              "value:number": 1
+            }
+          },
+          "LevelEventCounterPD": {
+            "count": 4,
+            "fields": {
+              "count:number": 4,
+              "hasReachedTarget:boolean": 4
+            }
+          },
+          "LevelEventOnDropAreaContainsSpecificItemsHandler": {
+            "count": 14,
+            "fields": {
+              "value:boolean": 14
+            }
+          },
+          "LevelFireExtinguisherPD": {
+            "count": 6,
+            "fields": {
+              "isOn:boolean": 6
+            }
+          },
+          "LevelItemOrientationHandlerPD": {
+            "count": 13,
+            "fields": {
+              "orientationType:number": 13
+            }
+          },
+          "LevelItemPD": {
+            "count": 151,
+            "fields": {
+              "isFlipped:boolean": 151,
+              "isMoving:boolean": 151,
+              "itemOnAvatarType:number": 151,
+              "itemOnCharacterType:number": 151,
+              "parent:string": 151,
+              "position:object": 151
+            }
+          },
+          "LevelLightPD": {
+            "count": 19,
+            "fields": {
+              "isOn:boolean": 19
+            }
+          },
+          "LevelLockedDoorHandler": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelOnSecretSolvedEvent": {
+            "count": 2,
+            "fields": {
+              "value:boolean": 2
+            }
+          },
+          "LevelPlayerVehicle_backDoorOpenState": {
+            "count": 2,
+            "fields": {
+              "value:boolean": 2
+            }
+          },
+          "LevelPlayerVehicle_centralDoorOpenState": {
+            "count": 2,
+            "fields": {
+              "value:boolean": 2
+            }
+          },
+          "LevelPlayerVehicle_frontdoorOpenState": {
+            "count": 2,
+            "fields": {
+              "value:boolean": 2
+            }
+          },
+          "LevelPlayerVehicle_isParkedState": {
+            "count": 2,
+            "fields": {
+              "value:number": 2
+            }
+          },
+          "LevelSetActiveStateOnLoad": {
+            "count": 11,
+            "fields": {
+              "value:boolean": 11
+            }
+          },
+          "LevelSimpleToggleableSpineItemPD": {
+            "count": 2,
+            "fields": {
+              "currentIndex:number": 2
+            }
+          },
+          "LevelSpawnerPD": {
+            "count": 9,
+            "fields": {
+              "spawns:array": 9
+            }
+          },
+          "LevelToggleableAudio": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelToggleableGameObject": {
+            "count": 25,
+            "fields": {
+              "value:number": 25
+            }
+          },
+          "LevelToggleableSprite": {
+            "count": 2,
+            "fields": {
+              "value:number": 2
+            }
+          },
+          "LevelUnlockableObject": {
+            "count": 3,
+            "fields": {
+              "value:boolean": 3
+            }
+          },
+          "LevelVehicleGarageLiftParkingSpotAreaHandler_liftLevel": {
+            "count": 2,
+            "fields": {
+              "value:number": 2
+            }
+          },
+          "LevelVehicleParkingSpotAreaHandler": {
+            "count": 4,
+            "fields": {
+              "value:boolean": 4
+            }
+          },
+          "LightSourcePD": {
+            "count": 19,
+            "fields": {
+              "isEnabled:boolean": 19
+            }
+          },
+          "OneTimeEvent": {
+            "count": 3,
+            "fields": {
+              "value:boolean": 3
+            }
+          },
+          "TransformPD": {
+            "count": 2,
+            "fields": {
+              "isFlipped:boolean": 2,
+              "parent:string": 2,
+              "position:object": 2
+            }
+          }
+        },
+        "malformed": {}
+      },
+      "transform_pd": {
+        "count": 2,
+        "decoded_positions": 2,
+        "with_parent": 0,
+        "flipped": 1,
+        "position_range": {
+          "x_min": -55.689998626708984,
+          "x_max": -1.5999999046325684,
+          "y_min": -1.9199999570846558,
+          "y_max": 2.5
+        }
+      }
+    },
+    {
+      "path": "Levels/Regular/Level_MainCampusHallways_F1_L198",
+      "bytes": 72493,
+      "sha256": "aa7809b86b53041b335dfac2fa4ef361173f7ec5fd75bf0b4cb18440c3f4ed84",
+      "root_schema": {
+        "BuildNumber": "number",
+        "NewAndSyncedSceneObjects": "array",
+        "Prefabs": "object",
+        "SceneObjects": "object"
+      },
+      "unknown_root_keys": [],
+      "build_number": 228,
+      "counts": {
+        "prefab_guids": 113,
+        "prefab_instances": 149,
+        "scene_objects": 213,
+        "new_and_synced_scene_objects": 0
+      },
+      "payloads": {
+        "schemas": {
+          "GameCameraPD": {
+            "count": 1,
+            "fields": {
+              "size:number": 1,
+              "xPosition:number": 1,
+              "yPosition:number": 1
+            }
+          },
+          "GameSoundPlayerPD": {
+            "count": 1,
+            "fields": {
+              "clipName:string": 1,
+              "isPlayingLoop:boolean": 1,
+              "pitch:number": 1,
+              "volume:number": 1
+            }
+          },
+          "LevelActionOnAnimationDropAreaHandler": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelBag": {
+            "count": 4,
+            "fields": {
+              "value:boolean": 4
+            }
+          },
+          "LevelCAPD": {
+            "count": 10,
+            "fields": {
+              "config:object": 10,
+              "handlerName:string": 10,
+              "handlerSceneGuid:string": 10,
+              "isPlaying:boolean": 10,
+              "playType:number": 10
+            }
+          },
+          "LevelCharacterPD": {
+            "count": 10,
+            "fields": {
+              "animationName:string": 10,
+              "currentArea:string": 10,
+              "id:number": 10,
+              "isDynamicSpawn:boolean": 10
+            }
+          },
+          "LevelClothingItemPD": {
+            "count": 8,
+            "fields": {
+              "bottomColor:object": 8,
+              "categoryType:number": 8,
+              "colors:array": 8,
+              "hasColors:boolean": 8,
+              "skinName:string": 8,
+              "topColor:object": 8
+            }
+          },
+          "LevelDestroyableObjectHandler": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelDoorPD": {
+            "count": 16,
+            "fields": {
+              "isOpen:boolean": 16
+            }
+          },
+          "LevelDrinkDispenserPD": {
+            "count": 1,
+            "fields": {
+              "isOpen:boolean": 1
+            }
+          },
+          "LevelEventOnDropAreaContainsSpecificItemsHandler": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelFoldableMattressPD": {
+            "count": 1,
+            "fields": {
+              "isFolded:boolean": 1
+            }
+          },
+          "LevelItemOrientationHandlerPD": {
+            "count": 27,
+            "fields": {
+              "orientationType:number": 27
+            }
+          },
+          "LevelItemPD": {
+            "count": 149,
+            "fields": {
+              "isFlipped:boolean": 149,
+              "isMoving:boolean": 149,
+              "itemOnAvatarType:number": 149,
+              "itemOnCharacterType:number": 149,
+              "parent:string": 149,
+              "position:object": 149
+            }
+          },
+          "LevelLightPD": {
+            "count": 15,
+            "fields": {
+              "isOn:boolean": 15
+            }
+          },
+          "LevelLockedDoorHandler": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelMakerCustomizationPD": {
+            "count": 3,
+            "fields": {
+              "color:object": 3,
+              "spritePath:string": 3,
+              "texturePath:string": 3
+            }
+          },
+          "LevelOnSecretSolvedEvent": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelPaintableAreaPD": {
+            "count": 1,
+            "fields": {
+              "texturePath:string": 1
+            }
+          },
+          "LevelRuntimeColoredSpriteHandlerPD": {
+            "count": 4,
+            "fields": {
+              "color:object": 4,
+              "colorType:number": 4
+            }
+          },
+          "LevelSpawnerPD": {
+            "count": 12,
+            "fields": {
+              "spawns:array": 12
+            }
+          },
+          "LevelToggleableAudio": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelToggleableGameObject": {
+            "count": 5,
+            "fields": {
+              "value:number": 5
+            }
+          },
+          "LevelToggleableSprite": {
+            "count": 2,
+            "fields": {
+              "value:number": 2
+            }
+          },
+          "LevelUnlockableObject": {
+            "count": 2,
+            "fields": {
+              "value:boolean": 2
+            }
+          },
+          "LightSourcePD": {
+            "count": 15,
+            "fields": {
+              "isEnabled:boolean": 15
+            }
+          }
+        },
+        "malformed": {}
+      },
+      "transform_pd": {
+        "count": 0,
+        "decoded_positions": 0,
+        "with_parent": 0,
+        "flipped": 0,
+        "position_range": null
+      }
+    },
+    {
+      "path": "Levels/Regular/Level_TalentShow_Z2B4L1",
+      "bytes": 60700,
+      "sha256": "c5036d86f7dab7e3c4135cba034a6fc6af680fe470ba30584a9991102ddbe0d2",
+      "root_schema": {
+        "BuildNumber": "number",
+        "NewAndSyncedSceneObjects": "array",
+        "Prefabs": "object",
+        "SceneObjects": "object"
+      },
+      "unknown_root_keys": [],
+      "build_number": 228,
+      "counts": {
+        "prefab_guids": 13,
+        "prefab_instances": 21,
+        "scene_objects": 199,
+        "new_and_synced_scene_objects": 5
+      },
+      "payloads": {
+        "schemas": {
+          "GameCameraPD": {
+            "count": 1,
+            "fields": {
+              "size:number": 1,
+              "xPosition:number": 1,
+              "yPosition:number": 1
+            }
+          },
+          "LevelBoxItemPD": {
+            "count": 10,
+            "fields": {
+              "isOpen:boolean": 10
+            }
+          },
+          "LevelCAPD": {
+            "count": 7,
+            "fields": {
+              "config:object": 7,
+              "handlerName:string": 7,
+              "handlerSceneGuid:string": 7,
+              "isPlaying:boolean": 7,
+              "playType:number": 7
+            }
+          },
+          "LevelCameraScreenPhotoPD": {
+            "count": 2,
+            "fields": {
+              "texturePath:string": 2
+            }
+          },
+          "LevelCharacterPD": {
+            "count": 7,
+            "fields": {
+              "animationName:string": 7,
+              "currentArea:string": 7,
+              "id:number": 7,
+              "isDynamicSpawn:boolean": 7
+            }
+          },
+          "LevelClothingItemPD": {
+            "count": 27,
+            "fields": {
+              "bottomColor:object": 27,
+              "categoryType:number": 27,
+              "colors:array": 27,
+              "hasColors:boolean": 27,
+              "skinName:string": 27,
+              "topColor:object": 27
+            }
+          },
+          "LevelCookieMachineMilkPD": {
+            "count": 1,
+            "fields": {
+              "isOn:boolean": 1
+            }
+          },
+          "LevelDigAreaPD": {
+            "count": 1,
+            "fields": {
+              "isInteractable:boolean": 1
+            }
+          },
+          "LevelDoorPD": {
+            "count": 3,
+            "fields": {
+              "isOpen:boolean": 3
+            }
+          },
+          "LevelDragonEggPD": {
+            "count": 1,
+            "fields": {
+              "stateType:number": 1
+            }
+          },
+          "LevelDrinkDispenserPD": {
+            "count": 1,
+            "fields": {
+              "isOpen:boolean": 1
+            }
+          },
+          "LevelFillableItemHandlerPD": {
+            "count": 2,
+            "fields": {
+              "isFull:boolean": 2
+            }
+          },
+          "LevelFoodTruckDoorPD": {
+            "count": 1,
+            "fields": {
+              "isOpen:boolean": 1
+            }
+          },
+          "LevelItemOrientationHandlerPD": {
+            "count": 25,
+            "fields": {
+              "orientationType:number": 25
+            }
+          },
+          "LevelItemPD": {
+            "count": 157,
+            "fields": {
+              "isFlipped:boolean": 157,
+              "isMoving:boolean": 157,
+              "itemOnAvatarType:number": 157,
+              "itemOnCharacterType:number": 157,
+              "parent:string": 157,
+              "position:object": 157
+            }
+          },
+          "LevelLightPD": {
+            "count": 5,
+            "fields": {
+              "isOn:boolean": 5
+            }
+          },
+          "LevelMakeupBrushItemHandler": {
+            "count": 1,
+            "fields": {
+              "characterMakeupData:object": 1
+            }
+          },
+          "LevelMannequinPD": {
+            "count": 1,
+            "fields": {
+              "avatarSpineData:object": 1
+            }
+          },
+          "LevelPumpableItemPD": {
+            "count": 1,
+            "fields": {
+              "isPumped:boolean": 1
+            }
+          },
+          "LevelRuntimeColoredRendererHandlerPD": {
+            "count": 2,
+            "fields": {
+              "color:object": 2,
+              "colorType:number": 2
+            }
+          },
+          "LevelSimpleContainerPD": {
+            "count": 1,
+            "fields": {
+              "isContentActive:boolean": 1
+            }
+          },
+          "LevelSimpleSoundOnClickItem": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelSimpleToggleableAudioItemPD": {
+            "count": 2,
+            "fields": {
+              "isOn:boolean": 2
+            }
+          },
+          "LevelSpawnerPD": {
+            "count": 5,
+            "fields": {
+              "spawns:array": 5
+            }
+          },
+          "LevelSpotlightPD": {
+            "count": 2,
+            "fields": {
+              "colorsCounter:number": 2
+            }
+          },
+          "LevelStageCurtainPD": {
+            "count": 1,
+            "fields": {
+              "currentStageTriggerType:number": 1
+            }
+          },
+          "LevelStageThemePD": {
+            "count": 3,
+            "fields": {
+              "isOn:boolean": 3
+            }
+          },
+          "LevelStageTriggerPD": {
+            "count": 3,
+            "fields": {
+              "isOn:boolean": 3
+            }
+          },
+          "LevelStationaryRotatingItemPD": {
+            "count": 2,
+            "fields": {
+              "zRotation:number": 2
+            }
+          },
+          "LightSourcePD": {
+            "count": 11,
+            "fields": {
+              "isEnabled:boolean": 11
+            }
+          },
+          "ScavengerHuntItemSpawnerPD": {
+            "count": 3,
+            "fields": {
+              "gameGuid:string": 3,
+              "prefabGuid:string": 3
+            }
+          }
+        },
+        "malformed": {}
+      },
+      "transform_pd": {
+        "count": 0,
+        "decoded_positions": 0,
+        "with_parent": 0,
+        "flipped": 0,
+        "position_range": null
+      }
+    },
+    {
+      "path": "Levels/World/College",
+      "bytes": 202,
+      "sha256": "6a4ef3970585c3b39b98f4b67a6904b217686793bf8fea28eb7f08e5f0f6234e",
+      "root_schema": {
+        "BuildNumber": "number",
+        "NewAndSyncedSceneObjects": "array",
+        "Prefabs": "object",
+        "SceneObjects": "object"
+      },
+      "unknown_root_keys": [],
+      "build_number": 228,
+      "counts": {
+        "prefab_guids": 0,
+        "prefab_instances": 0,
+        "scene_objects": 1,
+        "new_and_synced_scene_objects": 0
+      },
+      "payloads": {
+        "schemas": {
+          "GameCameraPD": {
+            "count": 1,
+            "fields": {
+              "size:number": 1,
+              "xPosition:number": 1,
+              "yPosition:number": 1
+            }
+          }
+        },
+        "malformed": {}
+      },
+      "transform_pd": {
+        "count": 0,
+        "decoded_positions": 0,
+        "with_parent": 0,
+        "flipped": 0,
+        "position_range": null
+      }
+    },
+    {
+      "path": "Levels/World/World",
+      "bytes": 137395,
+      "sha256": "58e869cd29f192f971c571fbbc4b44ba7fc2dc92d02a11bb41df3b206f72e9fd",
+      "root_schema": {
+        "BuildNumber": "number",
+        "NewAndSyncedSceneObjects": "array",
+        "Prefabs": "object",
+        "SceneObjects": "object"
+      },
+      "unknown_root_keys": [],
+      "build_number": 228,
+      "counts": {
+        "prefab_guids": 118,
+        "prefab_instances": 133,
+        "scene_objects": 496,
+        "new_and_synced_scene_objects": 0
+      },
+      "payloads": {
+        "schemas": {
+          "BoolPD": {
+            "count": 10,
+            "fields": {
+              "value:boolean": 10
+            }
+          },
+          "GameCameraPD": {
+            "count": 1,
+            "fields": {
+              "size:number": 1,
+              "xPosition:number": 1,
+              "yPosition:number": 1
+            }
+          },
+          "LevelMakerCustomizationPD": {
+            "count": 350,
+            "fields": {
+              "color:object": 350,
+              "spritePath:string": 350,
+              "texturePath:string": 350
+            }
+          },
+          "TransformPD": {
+            "count": 133,
+            "fields": {
+              "isFlipped:boolean": 133,
+              "parent:string": 133,
+              "position:object": 133
+            }
+          },
+          "UGCFlatFloorItem": {
+            "count": 31,
+            "fields": {
+              "value:number": 31
+            }
+          },
+          "UGCLevelEntrancePD": {
+            "count": 10,
+            "fields": {
+              "isUnique:boolean": 10,
+              "levelDefaultDataType:number": 10,
+              "levelType:number": 10,
+              "preventDeletion:boolean": 10
+            }
+          },
+          "UGCNewPresetGridFloorHandlerPD": {
+            "count": 9,
+            "fields": {
+              "didCameraFocusOnGift:boolean": 9,
+              "didSpawnPreset:boolean": 9
+            }
+          },
+          "UGCStorePackGridFloorHandlerPD": {
+            "count": 3,
+            "fields": {
+              "didCameraFocusOnGift:boolean": 3,
+              "didSpawnPreset:boolean": 3
+            }
+          }
+        },
+        "malformed": {}
+      },
+      "transform_pd": {
+        "count": 133,
+        "decoded_positions": 133,
+        "with_parent": 133,
+        "flipped": 0,
+        "position_range": {
+          "x_min": -4.487879323278321e-06,
+          "x_max": 4.5168256759643555,
+          "y_min": -2.384185791015625e-07,
+          "y_max": 1.4557996988296509
+        }
+      },
+      "static_scene_comparison": {
+        "static_scene_guids": 41,
+        "runtime_scene_keys": 496,
+        "intersection": 13,
+        "static_only": 28,
+        "runtime_only": 483
+      }
+    }
+  ],
+  "skipped_non_json": [],
+  "limits": [
+    "Hashes identify the local capture but the raw save is intentionally not versioned.",
+    "Aggregate schemas and ranges prove serialization shape, not complete gameplay semantics.",
+    "A static scene match compares keys only; runtime-spawned prefabs legitimately add keys."
+  ]
+}

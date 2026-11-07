@@ -1,0 +1,45 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 229a808: d10103ff     	sub	sp, sp, #0x40
+ 229a80c: a9015ffe     	stp	x30, x23, [sp, #0x10]
+ 229a810: a90257f6     	stp	x22, x21, [sp, #0x20]
+ 229a814: a9034ff4     	stp	x20, x19, [sp, #0x30]
+ 229a818: f0011317     	adrp	x23, 0x44fd000
+ 229a81c: b000f9f5     	adrp	x21, 0x41d7000
+ 229a820: f000f896     	adrp	x22, 0x41ad000
+ 229a824: 396dd6e8     	ldrb	w8, [x23, #0xb75]
+ 229a828: f945b6b5     	ldr	x21, [x21, #0xb68]
+ 229a82c: f9453ed6     	ldr	x22, [x22, #0xa78]
+ 229a830: aa0103f4     	mov	x20, x1
+ 229a834: aa0003f3     	mov	x19, x0
+ 229a838: 37000128     	tbnz	w8, #0x0, 0x229a85c <__start_il2cpp+0x64964c>
+ 229a83c: f000f880     	adrp	x0, 0x41ad000
+ 229a840: f9453c00     	ldr	x0, [x0, #0xa78]
+ 229a844: 97e3b7a9     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 229a848: b000f9e0     	adrp	x0, 0x41d7000
+ 229a84c: f945b400     	ldr	x0, [x0, #0xb68]
+ 229a850: 97e3b7a6     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 229a854: 52800028     	mov	w8, #0x1                // =1
+ 229a858: 392dd6e8     	strb	w8, [x23, #0xb75]
+ 229a85c: f94002a3     	ldr	x3, [x21]
+ 229a860: f94002c4     	ldr	x4, [x22]
+ 229a864: 910023e1     	add	x1, sp, #0x8
+ 229a868: 52800022     	mov	w2, #0x1                // =1
+ 229a86c: aa1403e0     	mov	x0, x20
+ 229a870: f90007ff     	str	xzr, [sp, #0x8]
+ 229a874: 940c852c     	bl	0x25bbd24 <__start_il2cpp+0x96ab14>
+ 229a878: 360000a0     	tbz	w0, #0x0, 0x229a88c <__start_il2cpp+0x64967c>
+ 229a87c: f94007e8     	ldr	x8, [sp, #0x8]
+ 229a880: b4000108     	cbz	x8, 0x229a8a0 <__start_il2cpp+0x649690>
+ 229a884: 39404108     	ldrb	w8, [x8, #0x10]
+ 229a888: 39010668     	strb	w8, [x19, #0x41]
+ 229a88c: a9434ff4     	ldp	x20, x19, [sp, #0x30]
+ 229a890: a94257f6     	ldp	x22, x21, [sp, #0x20]
+ 229a894: a9415ffe     	ldp	x30, x23, [sp, #0x10]
+ 229a898: 910103ff     	add	sp, sp, #0x40
+ 229a89c: d65f03c0     	ret
+ 229a8a0: 97e3b838     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

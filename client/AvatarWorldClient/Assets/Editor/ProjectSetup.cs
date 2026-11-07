@@ -115,6 +115,64 @@ namespace AvatarWorld.EditorTools
             if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) EditorApplication.Exit(1);
         }
 
+        /// <summary>
+        /// Build de teste que instala AO LADO do app principal (outro applicationIdentifier, save proprio),
+        /// para validar no aparelho sem desinstalar o app existente (assinatura diferente => update recusado).
+        /// O identificador original e restaurado ao final; nada disto vai para o ProjectSettings.
+        /// </summary>
+        public static void BuildAndroidSideBySide()
+        {
+            ConfigureAndroid();
+            try
+            {
+                PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android, AppId + ".sbs");
+                PlayerSettings.productName = "Avatar World (teste)";
+                Directory.CreateDirectory("Builds");
+                var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+                {
+                    scenes = new[] { HomeScenePath },
+                    locationPathName = "Builds/AvatarWorldOffline-sidebyside.apk",
+                    target = BuildTarget.Android,
+                    options = BuildOptions.None,
+                });
+                Debug.Log("ProjectSetup: sidebyside build " + report.summary.result + " (" + report.summary.totalSize + " bytes)");
+                if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) EditorApplication.Exit(1);
+            }
+            finally
+            {
+                ConfigureAndroid();
+            }
+        }
+
+        /// <summary>
+        /// Build de teste com id PROPRIO (.test), distinto do app principal e do build lado a lado (.sbs).
+        /// Existe porque `adb install -r` de um build com o mesmo id substitui a versao que ja esta no aparelho.
+        /// O identificador original e restaurado ao final.
+        /// </summary>
+        public static void BuildAndroidTest()
+        {
+            ConfigureAndroid();
+            try
+            {
+                PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android, AppId + ".test");
+                PlayerSettings.productName = "AW (teste dev)";
+                Directory.CreateDirectory("Builds");
+                var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+                {
+                    scenes = new[] { HomeScenePath },
+                    locationPathName = "Builds/AvatarWorldOffline-test.apk",
+                    target = BuildTarget.Android,
+                    options = BuildOptions.Development,
+                });
+                Debug.Log("ProjectSetup: test build " + report.summary.result + " (" + report.summary.totalSize + " bytes)");
+                if (report.summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) EditorApplication.Exit(1);
+            }
+            finally
+            {
+                ConfigureAndroid();
+            }
+        }
+
         const string AvatarValidationScenePath = "Assets/Scenes/AvatarValidation.unity";
 
         /// <summary>

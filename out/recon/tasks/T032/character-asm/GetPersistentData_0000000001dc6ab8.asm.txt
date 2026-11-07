@@ -1,0 +1,47 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 1dc6ab8: a9be57fe     	stp	x30, x21, [sp, #-0x20]!
+ 1dc6abc: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 1dc6ac0: 900139b5     	adrp	x21, 0x44fa000
+ 1dc6ac4: d0011f94     	adrp	x20, 0x41b8000
+ 1dc6ac8: 3965c2a8     	ldrb	w8, [x21, #0x970]
+ 1dc6acc: f9434694     	ldr	x20, [x20, #0x688]
+ 1dc6ad0: aa0003f3     	mov	x19, x0
+ 1dc6ad4: 37000128     	tbnz	w8, #0x0, 0x1dc6af8 <__start_il2cpp+0x1758e8>
+ 1dc6ad8: d0011f80     	adrp	x0, 0x41b8000
+ 1dc6adc: f9434400     	ldr	x0, [x0, #0x688]
+ 1dc6ae0: 97f70702     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1dc6ae4: d0011f80     	adrp	x0, 0x41b8000
+ 1dc6ae8: f9434800     	ldr	x0, [x0, #0x690]
+ 1dc6aec: 97f706ff     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1dc6af0: 52800028     	mov	w8, #0x1                // =1
+ 1dc6af4: 3925c2a8     	strb	w8, [x21, #0x970]
+ 1dc6af8: aa1303e0     	mov	x0, x19
+ 1dc6afc: aa1f03e1     	mov	x1, xzr
+ 1dc6b00: 94128160     	bl	0x2267080 <__start_il2cpp+0x615e70>
+ 1dc6b04: f9400288     	ldr	x8, [x20]
+ 1dc6b08: aa0003f4     	mov	x20, x0
+ 1dc6b0c: aa0803e0     	mov	x0, x8
+ 1dc6b10: 97f70798     	bl	0x1b88970 <JNI_OnUnload+0xa5b4>
+ 1dc6b14: aa1f03e1     	mov	x1, xzr
+ 1dc6b18: aa0003f5     	mov	x21, x0
+ 1dc6b1c: 941095b7     	bl	0x21ec1f8 <__start_il2cpp+0x59afe8>
+ 1dc6b20: b40001d5     	cbz	x21, 0x1dc6b58 <__start_il2cpp+0x175948>
+ 1dc6b24: b9443e68     	ldr	w8, [x19, #0x43c]
+ 1dc6b28: d0011f89     	adrp	x9, 0x41b8000
+ 1dc6b2c: f9434929     	ldr	x9, [x9, #0x690]
+ 1dc6b30: aa1403e0     	mov	x0, x20
+ 1dc6b34: b90012a8     	str	w8, [x21, #0x10]
+ 1dc6b38: aa1503e1     	mov	x1, x21
+ 1dc6b3c: f9400123     	ldr	x3, [x9]
+ 1dc6b40: aa1f03e2     	mov	x2, xzr
+ 1dc6b44: 941fd442     	bl	0x25bbc4c <__start_il2cpp+0x96aa3c>
+ 1dc6b48: aa1403e0     	mov	x0, x20
+ 1dc6b4c: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 1dc6b50: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 1dc6b54: d65f03c0     	ret
+ 1dc6b58: 97f7078a     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>

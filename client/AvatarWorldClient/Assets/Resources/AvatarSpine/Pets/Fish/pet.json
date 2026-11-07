@@ -1,0 +1,58 @@
+{
+ "species": "Fish",
+ "idle": "General/Chilling",
+ "basePieces": [
+  {
+   "template": "Templates/MultiPack__General",
+   "file": "multipack__general__90968.png",
+   "skin": "default"
+  }
+ ],
+ "variants": [
+  {
+   "id": "fish_a_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__Fish_A_1",
+     "file": "multipack__fish_a_1__60846.png",
+     "skin": "Fish_A_1"
+    }
+   ]
+  },
+  {
+   "id": "fish_a_2",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__Fish_A_2",
+     "file": "multipack__fish_a_2__68805.png",
+     "skin": "Fish_A_2"
+    }
+   ]
+  },
+  {
+   "id": "fish_a_3",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__Fish_A_2",
+     "file": "multipack__fish_a_2__68805.png",
+     "skin": "Fish_A_3"
+    },
+    {
+     "template": "Templates/MultiPack__Fish_A_3",
+     "file": "multipack__fish_a_3__83035.png",
+     "skin": "Fish_A_3"
+    }
+   ]
+  },
+  {
+   "id": "fish_b_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__Fish_B_1",
+     "file": "multipack__fish_b_1__98897.png",
+     "skin": "Fish_B_1"
+    }
+   ]
+  }
+ ]
+}

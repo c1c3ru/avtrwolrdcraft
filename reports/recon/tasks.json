@@ -31509,7 +31509,7 @@
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "stale",
       "planning_seed": false,
       "scope": {
         "method_identity": {
@@ -31586,11 +31586,21 @@
       "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion.",
       "evidence_refs": [],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "c4367f313f81471d8bb32036b094d2ea",
+          "owner": "codex-navigation",
+          "started_at": 1793727862.8903441,
+          "lease_id": "8ddff22c9b254016b77143f95a5b08f6",
+          "recovered_at": 1793795084.08067,
+          "recovery_note": "Lease expirado; não há processo de análise ativo. Evidências locais preservadas e hashes das entradas conferidos.",
+          "recovery_actor": "codex"
+        }
+      ],
+      "owner": "codex-navigation",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Lease expirado; não há processo de análise ativo. Evidências locais preservadas e hashes das entradas conferidos.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -31985,8 +31995,8 @@
       }
     }
   ],
-  "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 16,
+  "root": "/home/deppi/avatarworld-re",
+  "revision": 20,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -32492,6 +32502,37 @@
       "task": "T022/PILOT_INDEX/b63661fa60c2",
       "actor": "/root/review_plan_gaps",
       "at": 1793656044.432524
+    },
+    {
+      "revision": 17,
+      "action": "relocate",
+      "actor": "codex",
+      "at": 1793727857.9614058,
+      "note": "Retomada do checkout em outra maquina; conferir evidencias aceitas sem mudar hashes ou estados",
+      "previous_root": "/home/c1c3ru/avtrwolrdcraft",
+      "root": "/home/deppi/avatarworld-re",
+      "verified_refs": 17
+    },
+    {
+      "revision": 18,
+      "action": "claim",
+      "task": "T025/METHOD/5fe1bb4a25183678",
+      "actor": "codex-navigation",
+      "at": 1793727862.9001431
+    },
+    {
+      "revision": 19,
+      "action": "start",
+      "task": "T025/METHOD/5fe1bb4a25183678",
+      "actor": "codex-navigation",
+      "at": 1793727913.777807
+    },
+    {
+      "revision": 20,
+      "action": "recover",
+      "task": "T025/METHOD/5fe1bb4a25183678",
+      "actor": "codex",
+      "at": 1793795084.0892339
     }
   ]
 }

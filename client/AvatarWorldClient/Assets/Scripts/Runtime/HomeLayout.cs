@@ -20,10 +20,11 @@ namespace AvatarWorld.Runtime
                 var scaler = go.GetComponent<CanvasScaler>();
                 if (scaler != null)
                 {
-                    // Referencia confirmada em out/mb/UnityEngine.UI.CanvasScaler.
-                    scaler.referenceResolution = new Vector2(2048f, 1024f);
-                    // Mantem toda a area de controles visivel em telas mais estreitas.
-                    scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
+                    float ratio = Screen.width > 0 && Screen.height > 0
+                        ? (float)System.Math.Max(Screen.width, Screen.height) /
+                          System.Math.Min(Screen.width, Screen.height)
+                        : 16f / 9f;
+                    ConfigureScaler(scaler, ratio, !background);
                 }
                 if (!background) continue;
 
@@ -55,6 +56,33 @@ namespace AvatarWorld.Runtime
                 if (button == null || button.targetGraphic != null) continue;
                 var graphic = go.transform.Find("Graphic");
                 if (graphic != null) button.targetGraphic = graphic.GetComponent<Graphic>();
+            }
+        }
+
+        /// <summary>
+        /// Aplica os valores serializados do CanvasScaler da Home e, no Canvas principal, as tres
+        /// faixas observadas no AFCCanvasScalerRangeToScreen do original.
+        /// </summary>
+        public static void ConfigureScaler(CanvasScaler scaler, float aspectRatio, bool adaptive)
+        {
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(2048f, 1024f);
+            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            scaler.matchWidthOrHeight = 1f;
+            if (!adaptive) return;
+
+            if (aspectRatio >= 1f && aspectRatio <= 1.3333334f)
+                scaler.matchWidthOrHeight = Mathf.Lerp(0.7f, 1f,
+                    Mathf.InverseLerp(1f, 1.3333334f, aspectRatio));
+            else if (aspectRatio >= 1.6f && aspectRatio <= 1.777778f)
+                scaler.matchWidthOrHeight = Mathf.Lerp(0.5f, 1f,
+                    Mathf.InverseLerp(1.6f, 1.777778f, aspectRatio));
+
+            if (aspectRatio >= 2f)
+            {
+                float height = Mathf.Lerp(1106f, 1024f,
+                    Mathf.InverseLerp(2f, 2.164251f, aspectRatio));
+                scaler.referenceResolution = new Vector2(2048f, height);
             }
         }
     }

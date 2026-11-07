@@ -1,0 +1,86 @@
+
+/home/deppi/avatarworld-re/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 1e6ca94: f81c0ffe     	str	x30, [sp, #-0x40]!
+ 1e6ca98: a9015ff8     	stp	x24, x23, [sp, #0x10]
+ 1e6ca9c: a90257f6     	stp	x22, x21, [sp, #0x20]
+ 1e6caa0: a9034ff4     	stp	x20, x19, [sp, #0x30]
+ 1e6caa4: f0013477     	adrp	x23, 0x44fb000
+ 1e6caa8: b0011a18     	adrp	x24, 0x41ad000
+ 1e6caac: b0011a14     	adrp	x20, 0x41ad000
+ 1e6cab0: b0011a15     	adrp	x21, 0x41ad000
+ 1e6cab4: b0011a16     	adrp	x22, 0x41ad000
+ 1e6cab8: 39447ae8     	ldrb	w8, [x23, #0x11e]
+ 1e6cabc: f9449f18     	ldr	x24, [x24, #0x938]
+ 1e6cac0: f9449a94     	ldr	x20, [x20, #0x930]
+ 1e6cac4: f94546b5     	ldr	x21, [x21, #0xa88]
+ 1e6cac8: f943c6d6     	ldr	x22, [x22, #0x788]
+ 1e6cacc: aa0003f3     	mov	x19, x0
+ 1e6cad0: 370002a8     	tbnz	w8, #0x0, 0x1e6cb24 <__start_il2cpp+0x21b914>
+ 1e6cad4: b0011a00     	adrp	x0, 0x41ad000
+ 1e6cad8: f9449800     	ldr	x0, [x0, #0x930]
+ 1e6cadc: 97f46f03     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1e6cae0: b0011a00     	adrp	x0, 0x41ad000
+ 1e6cae4: f9449c00     	ldr	x0, [x0, #0x938]
+ 1e6cae8: 97f46f00     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1e6caec: b0011a00     	adrp	x0, 0x41ad000
+ 1e6caf0: f943c400     	ldr	x0, [x0, #0x788]
+ 1e6caf4: 97f46efd     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1e6caf8: b0011a00     	adrp	x0, 0x41ad000
+ 1e6cafc: f9454400     	ldr	x0, [x0, #0xa88]
+ 1e6cb00: 97f46efa     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1e6cb04: b0011a00     	adrp	x0, 0x41ad000
+ 1e6cb08: f9454800     	ldr	x0, [x0, #0xa90]
+ 1e6cb0c: 97f46ef7     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1e6cb10: 90011a80     	adrp	x0, 0x41bc000
+ 1e6cb14: f9403000     	ldr	x0, [x0, #0x60]
+ 1e6cb18: 97f46ef4     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1e6cb1c: 52800028     	mov	w8, #0x1                // =1
+ 1e6cb20: 39047ae8     	strb	w8, [x23, #0x11e]
+ 1e6cb24: f9400300     	ldr	x0, [x24]
+ 1e6cb28: 97f46f92     	bl	0x1b88970 <JNI_OnUnload+0xa5b4>
+ 1e6cb2c: f9400281     	ldr	x1, [x20]
+ 1e6cb30: aa0003f4     	mov	x20, x0
+ 1e6cb34: 942a311d     	bl	0x28f8fa8 <__start_il2cpp+0xca7d98>
+ 1e6cb38: f94002a0     	ldr	x0, [x21]
+ 1e6cb3c: 97f46f8d     	bl	0x1b88970 <JNI_OnUnload+0xa5b4>
+ 1e6cb40: aa1f03e1     	mov	x1, xzr
+ 1e6cb44: aa0003f5     	mov	x21, x0
+ 1e6cb48: 940daea8     	bl	0x21d85e8 <__start_il2cpp+0x5873d8>
+ 1e6cb4c: f94002c0     	ldr	x0, [x22]
+ 1e6cb50: 52800041     	mov	w1, #0x2                // =2
+ 1e6cb54: 97f46f1e     	bl	0x1b887cc <JNI_OnUnload+0xa410>
+ 1e6cb58: b40003a0     	cbz	x0, 0x1e6cbcc <__start_il2cpp+0x21b9bc>
+ 1e6cb5c: b9401808     	ldr	w8, [x0, #0x18]
+ 1e6cb60: aa0003e1     	mov	x1, x0
+ 1e6cb64: 34000368     	cbz	w8, 0x1e6cbd0 <__start_il2cpp+0x21b9c0>
+ 1e6cb68: b9404269     	ldr	w9, [x19, #0x40]
+ 1e6cb6c: 7100051f     	cmp	w8, #0x1
+ 1e6cb70: b9002029     	str	w9, [x1, #0x20]
+ 1e6cb74: 540002e0     	b.eq	0x1e6cbd0 <__start_il2cpp+0x21b9c0>
+ 1e6cb78: b9404668     	ldr	w8, [x19, #0x44]
+ 1e6cb7c: b9002428     	str	w8, [x1, #0x24]
+ 1e6cb80: b4000275     	cbz	x21, 0x1e6cbcc <__start_il2cpp+0x21b9bc>
+ 1e6cb84: 90011a93     	adrp	x19, 0x41bc000
+ 1e6cb88: b0011a16     	adrp	x22, 0x41ad000
+ 1e6cb8c: f9403273     	ldr	x19, [x19, #0x60]
+ 1e6cb90: f9454ad6     	ldr	x22, [x22, #0xa90]
+ 1e6cb94: aa1503e0     	mov	x0, x21
+ 1e6cb98: f8010c01     	str	x1, [x0, #0x10]!
+ 1e6cb9c: 97f46ebe     	bl	0x1b88694 <JNI_OnUnload+0xa2d8>
+ 1e6cba0: f9400262     	ldr	x2, [x19]
+ 1e6cba4: f94002c3     	ldr	x3, [x22]
+ 1e6cba8: aa1403e0     	mov	x0, x20
+ 1e6cbac: aa1503e1     	mov	x1, x21
+ 1e6cbb0: 941d3c27     	bl	0x25bbc4c <__start_il2cpp+0x96aa3c>
+ 1e6cbb4: aa1403e0     	mov	x0, x20
+ 1e6cbb8: a9434ff4     	ldp	x20, x19, [sp, #0x30]
+ 1e6cbbc: a94257f6     	ldp	x22, x21, [sp, #0x20]
+ 1e6cbc0: a9415ff8     	ldp	x24, x23, [sp, #0x10]
+ 1e6cbc4: f84407fe     	ldr	x30, [sp], #0x40
+ 1e6cbc8: d65f03c0     	ret
+ 1e6cbcc: 97f46f6d     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>
+ 1e6cbd0: 97f46f6e     	bl	0x1b88988 <JNI_OnUnload+0xa5cc>

@@ -10,8 +10,8 @@ namespace AvatarWorld.Runtime
     /// <summary>Monta uma hierarquia de UI (Canvas, Image, TextMeshPro, Button) a partir de uma SceneDescription.</summary>
     public static class UiSceneBuilder
     {
-        /// <summary>Resolucao de referencia do CanvasScaler. O original nao foi lido; ajustavel pelo chamador.</summary>
-        public static Vector2 ReferenceResolution = new Vector2(1920f, 1080f);
+        /// <summary>Resolucao de referencia serializada nos CanvasScaler da Home original.</summary>
+        public static Vector2 ReferenceResolution = new Vector2(2048f, 1024f);
 
         /// <param name="loadSprite">Resolve a chave de sprite do JSON em um Sprite (pode devolver null).</param>
         /// <param name="actions">Acoes de clique, procuradas pelo nome do objeto e depois pelo nome do metodo.</param>
@@ -82,25 +82,6 @@ namespace AvatarWorld.Runtime
             return objs;
         }
 
-        /// <summary>
-        /// Reproduz PazuCore.PazuCoreAddressables.AFC.AFCCanvasScalerRangeToScreen do original: em
-        /// telas muito largas (ratio >= 2.0 - a maioria dos celulares atuais, 18:9 a 21:9) a altura de
-        /// referencia encolhe de 1080 ate 1024, dando mais espaco horizontal aos elementos de borda em
-        /// vez de deixa-los fora de tela. Valores confirmados no MonoBehaviour real da cena Home
-        /// (out/mb/PazuCore.PazuCoreAddressables.AFC.AFCCanvasScalerRangeToScreen.jsonl.gz, _file=level3):
-        /// screenType=2 (VeryWide), propertyType=Height, ratio 2.0..2.164, altura 1106..1024.
-        /// matchWidthOrHeight ja satura em 1.0 nessa faixa (regra screenType=1 para ratio 1.6..1.778),
-        /// entao so a altura de referencia precisa variar aqui.
-        /// </summary>
-        static Vector2 ResolveReferenceResolution()
-        {
-            float ratio = Screen.width > 0 && Screen.height > 0
-                ? (float)System.Math.Max(Screen.width, Screen.height) / System.Math.Min(Screen.width, Screen.height)
-                : 16f / 9f;
-            float height = ratio <= 2.0f ? ReferenceResolution.y : Mathf.Lerp(1106f, 1024f, Mathf.InverseLerp(2.0f, 2.1643f, ratio));
-            return new Vector2(ReferenceResolution.x, height);
-        }
-
         static void AddCanvas(GameObject go, bool isRoot)
         {
             var canvas = go.AddComponent<Canvas>();
@@ -108,10 +89,8 @@ namespace AvatarWorld.Runtime
             if (!isRoot) return;
             var scaler = go.AddComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = ResolveReferenceResolution();
-            // Casa pela altura: a maioria dos nos da Home usa ancora central com deslocamento fixo em
-            // pixel (herdado do original), entao em telas mais largas que a referencia isso da MAIS
-            // espaco horizontal em vez de cortar os elementos das bordas.
+            scaler.referenceResolution = ReferenceResolution;
+            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
             scaler.matchWidthOrHeight = 1f;
             go.AddComponent<GraphicRaycaster>();
         }
@@ -129,6 +108,7 @@ namespace AvatarWorld.Runtime
             img.color = d.color;
             img.type = (Image.Type)d.imageType;
             img.preserveAspect = d.preserveAspect;
+            img.pixelsPerUnitMultiplier = d.pixelsPerUnitMultiplier > 0f ? d.pixelsPerUnitMultiplier : 1f;
             img.raycastTarget = d.raycastTarget;
             img.enabled = d.enabled;
         }

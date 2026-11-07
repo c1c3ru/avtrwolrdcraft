@@ -33,9 +33,10 @@ namespace AvatarWorld.EditorTools
         public static void Inspect()
         {
             var root = Path.GetFullPath(Path.Combine(Application.dataPath, "../../.."));
-            var inputs = Path.Combine(root, "assets/spine_textasset/TextAsset");
-            var atlas = new Atlas(new StringReader(File.ReadAllText(Path.Combine(inputs, "Avatar_Spine.atlas_109005.txt"))), "", new MetadataTextureLoader());
-            using (var stream = File.OpenRead(Path.Combine(inputs, "Avatar_Spine.skel_108595.txt")))
+            // Usa os mesmos arquivos que o cliente carrega em runtime (Resources/AvatarSpine).
+            var inputs = Path.Combine(Application.dataPath, "Resources/AvatarSpine");
+            var atlas = new Atlas(new StringReader(File.ReadAllText(Path.Combine(inputs, "Avatar_Spine.atlas.txt"))), "", new MetadataTextureLoader());
+            using (var stream = File.OpenRead(Path.Combine(inputs, "Avatar_Spine.skel.bytes")))
             {
                 var data = new SkeletonBinary(atlas).ReadSkeletonData(stream);
                 var result = new Inventory {

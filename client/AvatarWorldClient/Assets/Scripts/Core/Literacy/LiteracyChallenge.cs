@@ -8,6 +8,10 @@ namespace AvatarWorld.Core.Literacy
         LetterRecognition,
         SyllableBuilding,
         ReadingComprehension,
+        /// <summary>Banco de 100 desafios (ChallengeBank): portugues.</summary>
+        LanguageArts,
+        /// <summary>Banco de 100 desafios (ChallengeBank): matematica.</summary>
+        Mathematics,
     }
 
     /// <summary>
@@ -25,5 +29,12 @@ namespace AvatarWorld.Core.Literacy
         public List<string> Options = new List<string>();
         public int CorrectOptionIndex;
         public int CoinReward = 5;
+        /// <summary>Grupo do banco de desafios (ex.: "Matematica 6-8"); vazio nos desafios iniciais.</summary>
+        public string Group;
+        /// <summary>1 = facil, 2 = intermediario, 3 = dificil (ChallengeDifficulty); 0 = sem nivel.</summary>
+        public int Difficulty;
+        /// <summary>Paga moeda a cada acerto, nao so no primeiro. O sorteio sem repeticao excessiva
+        /// (ChallengeSelector) e que impede o farm do mesmo desafio em sequencia.</summary>
+        public bool Repeatable;
     }
 }

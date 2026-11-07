@@ -1,0 +1,934 @@
+{
+  "scene": "level8",
+  "inputs": {
+    "scene": "out/scene-extract/level8",
+    "scene_sha256": "dff6d557630a579e05a48f65519b75c0aefb41c55623b4ad89078e9d290c38f5",
+    "inspector_report": "out/recon/tasks/T030/level8-inspect.json",
+    "inspector_sha256": "265566b90aa4d618a344473fe2212d3eda0275eb6eb862473ba0592df5e13022"
+  },
+  "scene_counts": {
+    "unity_objects": 2403,
+    "mono_behaviours": 957,
+    "PersistentDataManager_components": 1,
+    "PDSceneObject_components": 81,
+    "PDPrefab_components": 22,
+    "serialized_persistent_handlers": 34
+  },
+  "persistent_components": [
+    {
+      "game_object": "Scoreboard_Z1B3L1",
+      "game_object_path_id": 15,
+      "mono_behaviour_path_id": 1490,
+      "type": "LevelBasketballScoreBoard",
+      "serialized_bytes": 80,
+      "serialized_script_payload_hex": "00000000d30200000000000000000000d202000000000000000000008b0700000000000000000000c706000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "LightSource",
+      "game_object_path_id": 72,
+      "mono_behaviour_path_id": 1618,
+      "type": "LightSource",
+      "serialized_bytes": 60,
+      "serialized_script_payload_hex": "0000803f0000803f0000803f0000803f00004040010000008fc2f53c",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "LightSource",
+      "game_object_path_id": 73,
+      "mono_behaviour_path_id": 1619,
+      "type": "LightSource",
+      "serialized_bytes": 60,
+      "serialized_script_payload_hex": "0000803f0000803f0000803f0000803f00004040010000008fc2f53c",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Lamp_Z1B3L1 (1)",
+      "game_object_path_id": 74,
+      "mono_behaviour_path_id": 1621,
+      "type": "LevelLight",
+      "serialized_bytes": 180,
+      "serialized_script_payload_hex": "00000000000000000000000000000000030000001600000000000000030000001f000000000000000000000000000000000000000e0000004c616d705f5377697463685f4f6e00000f0000004c616d705f5377697463685f4f6666000000000000000000000000002b03000000000000000000000000000000000000010000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Lamp_Z1B3L1 (2)",
+      "game_object_path_id": 75,
+      "mono_behaviour_path_id": 1622,
+      "type": "LevelLight",
+      "serialized_bytes": 180,
+      "serialized_script_payload_hex": "00000000000000000000000000000000030000001600000000000000030000001f000000000000000000000000000000000000000e0000004c616d705f5377697463685f4f6e00000f0000004c616d705f5377697463685f4f6666000000000000000000000000002c03000000000000000000000000000000000000010000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Bag_Z1B3L1",
+      "game_object_path_id": 449,
+      "mono_behaviour_path_id": 1628,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000e10800000000000000000000520300000000000000000000000300000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Cardboard_Sign_02_Z2B3L1",
+      "game_object_path_id": 162,
+      "mono_behaviour_path_id": 1776,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000f106000000000000000000003303000000000000000000000000000000000000cdcc4c3e",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Cardboard_Sign_01_Z2B3L1",
+      "game_object_path_id": 163,
+      "mono_behaviour_path_id": 1781,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000f406000000000000000000003403000000000000000000000000000000000000cdcc4c3e",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "SummerCampBackgroundPlanetSoundHandler",
+      "game_object_path_id": 383,
+      "mono_behaviour_path_id": 1789,
+      "type": "GameSoundPlayer",
+      "serialized_bytes": 44,
+      "serialized_fields": {
+        "_ignoreDistance": false,
+        "_ignorePD": false,
+        "_distanceFactor": 1.0
+      }
+    },
+    {
+      "game_object": "Flag_01_Z1B3L1",
+      "game_object_path_id": 204,
+      "mono_behaviour_path_id": 1836,
+      "type": "LevelItemOrientationHandler",
+      "serialized_bytes": 132,
+      "serialized_script_payload_hex": "00000000d00000000000000000000000370300000000000000000000000087430100000001000000008098430000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Flag_01_Z1B3L1",
+      "game_object_path_id": 204,
+      "mono_behaviour_path_id": 1838,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000350700000000000000000000370300000000000000000000fc02000000000000cdcc4c3e",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Flag_02_Z1B3L1",
+      "game_object_path_id": 207,
+      "mono_behaviour_path_id": 1841,
+      "type": "LevelItemOrientationHandler",
+      "serialized_bytes": 132,
+      "serialized_script_payload_hex": "00000000cd0000000000000000000000360300000000000000000000000087430100000001000000008098430000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Flag_02_Z1B3L1",
+      "game_object_path_id": 207,
+      "mono_behaviour_path_id": 1844,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000300700000000000000000000360300000000000000000000fd02000000000000cdcc4c3e",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Food_Popsicle_01_Box",
+      "game_object_path_id": 251,
+      "mono_behaviour_path_id": 1919,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000d10600000000000000000000380300000000000000000000f90200000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Speaker_L1",
+      "game_object_path_id": 202,
+      "mono_behaviour_path_id": 1984,
+      "type": "GameSoundPlayer",
+      "serialized_bytes": 44,
+      "serialized_fields": {
+        "_ignoreDistance": false,
+        "_ignorePD": true,
+        "_distanceFactor": 1.0
+      }
+    },
+    {
+      "game_object": "Food_Snackbar_01_Box",
+      "game_object_path_id": 349,
+      "mono_behaviour_path_id": 2043,
+      "type": "LevelItemOrientationHandler",
+      "serialized_bytes": 132,
+      "serialized_script_payload_hex": "000000007c01000000000000000000002d0300000000000000008743000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "PersistentDataManager",
+      "game_object_path_id": 329,
+      "mono_behaviour_path_id": 2047,
+      "type": "PersistentDataManager",
+      "serialized_bytes": 32,
+      "serialized_custom_payload_bytes": 0,
+      "interpretation": "scene contains the manager component; its runtime file path/state is not serialized here"
+    },
+    {
+      "game_object": "Food_Snackbar_02_Box",
+      "game_object_path_id": 348,
+      "mono_behaviour_path_id": 2078,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "00000000000000001c08000000000000000000002a0300000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Food_Snackbar_01_Box",
+      "game_object_path_id": 349,
+      "mono_behaviour_path_id": 2083,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "00000000000000005a07000000000000000000002d0300000000000000000000080300000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Food_Snackbar_02_Box",
+      "game_object_path_id": 348,
+      "mono_behaviour_path_id": 2117,
+      "type": "LevelItemOrientationHandler",
+      "serialized_bytes": 132,
+      "serialized_script_payload_hex": "00000000e800000000000000000000002a0300000000000000008743000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Food_Water",
+      "game_object_path_id": 371,
+      "mono_behaviour_path_id": 2131,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Food_Juice_02",
+      "game_object_path_id": 372,
+      "mono_behaviour_path_id": 2136,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Food_Rotten_Banana",
+      "game_object_path_id": 403,
+      "mono_behaviour_path_id": 2183,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Liquid",
+      "game_object_path_id": 337,
+      "mono_behaviour_path_id": 2218,
+      "type": "LevelRuntimeColoredSpriteHandler",
+      "serialized_bytes": 56,
+      "serialized_script_payload_hex": "000000000000000000000000000000004303000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Speaker_L1",
+      "game_object_path_id": 202,
+      "mono_behaviour_path_id": 2221,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "00000000000000001f0700000000000000000000400300000000000000000000f80200000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Cup_L1",
+      "game_object_path_id": 428,
+      "mono_behaviour_path_id": 2226,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "0000000000000000b30800000000000000000000510300000000000000000000050300000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Bag_Z1B3L1",
+      "game_object_path_id": 449,
+      "mono_behaviour_path_id": 2231,
+      "type": "GameSoundPlayer",
+      "serialized_bytes": 44,
+      "serialized_fields": {
+        "_ignoreDistance": false,
+        "_ignorePD": false,
+        "_distanceFactor": 1.0
+      }
+    },
+    {
+      "game_object": "Bag_Z1B3L1",
+      "game_object_path_id": 449,
+      "mono_behaviour_path_id": 2261,
+      "type": "LevelBag",
+      "serialized_bytes": 168,
+      "serialized_script_payload_hex": "000000005203000000000000010000000200000052dc02000000000002000000421203000000000000000000bc0600000000000000000000d50000000000000000000000b7080000000000000f0000004261675f5a69707065725f4f70656e00100000004261675f5a69707065725f436c6f73650000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Ball_02_Z2B3L1",
+      "game_object_path_id": 99,
+      "mono_behaviour_path_id": 2280,
+      "type": "GameSoundPlayer",
+      "serialized_bytes": 44,
+      "serialized_fields": {
+        "_ignoreDistance": false,
+        "_ignorePD": true,
+        "_distanceFactor": 1.0
+      }
+    },
+    {
+      "game_object": "Ball_03_Z2B3L1",
+      "game_object_path_id": 100,
+      "mono_behaviour_path_id": 2281,
+      "type": "GameSoundPlayer",
+      "serialized_bytes": 44,
+      "serialized_fields": {
+        "_ignoreDistance": false,
+        "_ignorePD": true,
+        "_distanceFactor": 1.0
+      }
+    },
+    {
+      "game_object": "Ball_04_Z2B3L1",
+      "game_object_path_id": 101,
+      "mono_behaviour_path_id": 2282,
+      "type": "GameSoundPlayer",
+      "serialized_bytes": 44,
+      "serialized_fields": {
+        "_ignoreDistance": false,
+        "_ignorePD": true,
+        "_distanceFactor": 1.0
+      }
+    },
+    {
+      "game_object": "Cup_L1",
+      "game_object_path_id": 428,
+      "mono_behaviour_path_id": 2315,
+      "type": "LevelFillableItemHandler",
+      "serialized_bytes": 80,
+      "serialized_script_payload_hex": "000000000c08000000000000000000005101000000000000000000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Food_Popsicle_01_Box",
+      "game_object_path_id": 251,
+      "mono_behaviour_path_id": 2327,
+      "type": "LevelItemOrientationHandler",
+      "serialized_bytes": 132,
+      "serialized_script_payload_hex": "00000000a7000000000000000000000038030000000000000000b442000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Box_Z1B3L1",
+      "game_object_path_id": 511,
+      "mono_behaviour_path_id": 2380,
+      "type": "LevelItem",
+      "serialized_bytes": 76,
+      "serialized_script_payload_hex": "00000000000000004b09000000000000000000005403000000000000000000001a030000000000006666e63f",
+      "interpretation": "raw Unity serialization retained; field-by-field decode requires its serialized type tree"
+    },
+    {
+      "game_object": "Ball_01_Z2B3L1",
+      "game_object_path_id": 13,
+      "mono_behaviour_path_id": 2389,
+      "type": "GameSoundPlayer",
+      "serialized_bytes": 44,
+      "serialized_fields": {
+        "_ignoreDistance": false,
+        "_ignorePD": true,
+        "_distanceFactor": 1.0
+      }
+    }
+  ],
+  "PDSceneObjects": [
+    {
+      "game_object": "Floor",
+      "game_object_path_id": 3,
+      "mono_behaviour_path_id": 1455,
+      "scene_guid": "1ebc7636-c55b-4d30-8907-b22e66f55500",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 3",
+      "game_object_path_id": 4,
+      "mono_behaviour_path_id": 1460,
+      "scene_guid": "8e117ead-badc-470b-9410-dbcbb7de8e5a",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 3 (1)",
+      "game_object_path_id": 6,
+      "mono_behaviour_path_id": 1462,
+      "scene_guid": "72458e66-197a-42d2-b6eb-47de79d39abf",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 4 (1)",
+      "game_object_path_id": 7,
+      "mono_behaviour_path_id": 1466,
+      "scene_guid": "00cb631f-cb36-441a-bc59-9f7b0a187f6a",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 5",
+      "game_object_path_id": 9,
+      "mono_behaviour_path_id": 1472,
+      "scene_guid": "d267850e-ca9d-4e74-a69d-8f1aacb99dd2",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Trashcan_Z1B3L1",
+      "game_object_path_id": 11,
+      "mono_behaviour_path_id": 1478,
+      "scene_guid": "7834a7ea-7357-420f-89ed-814d747447b2",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Ball_01_Z2B3L1",
+      "game_object_path_id": 13,
+      "mono_behaviour_path_id": 1481,
+      "scene_guid": "e07426e1-9165-4c27-9405-fd2c19fea4b6",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "LeftBasketballHoop",
+      "game_object_path_id": 218,
+      "mono_behaviour_path_id": 1485,
+      "scene_guid": "ea6bc795-bbb9-4a0c-b3ed-dfa64190149b",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea 1",
+      "game_object_path_id": 14,
+      "mono_behaviour_path_id": 1486,
+      "scene_guid": "6223f00d-26d8-456f-a907-a14039b3355b",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Scoreboard_Z1B3L1",
+      "game_object_path_id": 15,
+      "mono_behaviour_path_id": 1492,
+      "scene_guid": "5ed526c1-b90b-47b1-8c5c-a08ab039c57e",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 5 (1)",
+      "game_object_path_id": 17,
+      "mono_behaviour_path_id": 1494,
+      "scene_guid": "e52c3a3a-98a9-4d60-b787-47b336b1cb63",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Front",
+      "game_object_path_id": 18,
+      "mono_behaviour_path_id": 1498,
+      "scene_guid": "b5079e81-4393-4438-b04d-36453f90e218",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 4",
+      "game_object_path_id": 19,
+      "mono_behaviour_path_id": 1501,
+      "scene_guid": "acc639f9-7392-4f17-afcd-2e264c8873cb",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Fence_02_Z1B3L1",
+      "game_object_path_id": 21,
+      "mono_behaviour_path_id": 1504,
+      "scene_guid": "1da72596-13b5-4395-ad20-ba4a61a502dc",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Lamp_Z1B3L1 (1)",
+      "game_object_path_id": 74,
+      "mono_behaviour_path_id": 1505,
+      "scene_guid": "a45bb2cd-402b-4e67-b33c-ab6b632d341f",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "LightSource",
+      "game_object_path_id": 72,
+      "mono_behaviour_path_id": 1506,
+      "scene_guid": "71ed4330-c25b-433c-a883-bc48f73b9bbb",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 2",
+      "game_object_path_id": 23,
+      "mono_behaviour_path_id": 1509,
+      "scene_guid": "7124cd9b-06f4-4052-8e33-005a0d83c0a0",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea 2",
+      "game_object_path_id": 26,
+      "mono_behaviour_path_id": 1512,
+      "scene_guid": "e640f540-0eaf-4df6-8f6e-8f67bea5ef3d",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SummerCampBackgroundPlanetSoundHandler",
+      "game_object_path_id": 383,
+      "mono_behaviour_path_id": 1516,
+      "scene_guid": "4d33a25e-29a1-4c43-afa2-cb577ad336df",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "MascotMergeSecret",
+      "game_object_path_id": 30,
+      "mono_behaviour_path_id": 1522,
+      "scene_guid": "aa895876-0430-40db-8589-02d5af7efae0",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "KillArea",
+      "game_object_path_id": 31,
+      "mono_behaviour_path_id": 1524,
+      "scene_guid": "c0c509f2-8bf0-4417-988d-ac5a53a7fb22",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Sitting_Stage_Z1B3L1",
+      "game_object_path_id": 33,
+      "mono_behaviour_path_id": 1531,
+      "scene_guid": "85e18c15-01ea-4044-a841-a0bb01b6db2f",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Lamp_Z1B3L1 (2)",
+      "game_object_path_id": 75,
+      "mono_behaviour_path_id": 1532,
+      "scene_guid": "947b8923-1107-450b-818a-9f4c32c16fb7",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "LightSource",
+      "game_object_path_id": 73,
+      "mono_behaviour_path_id": 1533,
+      "scene_guid": "f4b72b73-21a1-4a20-a551-190af79ae618",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Plant_Tire_Z1B3L1",
+      "game_object_path_id": 35,
+      "mono_behaviour_path_id": 1535,
+      "scene_guid": "a08c3429-c58c-4b4a-b65a-c682159d34e5",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 6",
+      "game_object_path_id": 38,
+      "mono_behaviour_path_id": 1541,
+      "scene_guid": "db4605c2-e58d-475c-9934-d2ceeaa8f25d",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 6 (1)",
+      "game_object_path_id": 40,
+      "mono_behaviour_path_id": 1544,
+      "scene_guid": "0ab86b7e-5282-4452-819f-d410e7baee82",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Plant_Tire_Z1B3L1 (1)",
+      "game_object_path_id": 42,
+      "mono_behaviour_path_id": 1550,
+      "scene_guid": "aab9e1ad-1952-4b95-b577-479feab7aa9d",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 7",
+      "game_object_path_id": 44,
+      "mono_behaviour_path_id": 1554,
+      "scene_guid": "f3386002-2758-42e4-bd19-c4977fc79f93",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea",
+      "game_object_path_id": 45,
+      "mono_behaviour_path_id": 1555,
+      "scene_guid": "ea0a3d9c-9095-4fc3-948f-2f5140be7b09",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "SitArea Bottom 2 (1)",
+      "game_object_path_id": 46,
+      "mono_behaviour_path_id": 1558,
+      "scene_guid": "ab793021-1a3d-461a-a7b6-8f7371435d07",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "PuddleDropArea_06",
+      "game_object_path_id": 169,
+      "mono_behaviour_path_id": 1646,
+      "scene_guid": "43ba8fd4-4f45-43d2-aabf-49dc0e2a8882",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Ball_02_Z2B3L1",
+      "game_object_path_id": 99,
+      "mono_behaviour_path_id": 1676,
+      "scene_guid": "66b89da3-2a78-44c2-8276-5f13c674d78e",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Ball_03_Z2B3L1",
+      "game_object_path_id": 100,
+      "mono_behaviour_path_id": 1679,
+      "scene_guid": "332432c7-e5f6-4902-af05-b7279a970d3a",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Ball_04_Z2B3L1",
+      "game_object_path_id": 101,
+      "mono_behaviour_path_id": 1685,
+      "scene_guid": "080f4660-9d38-4ab2-9fa9-4d5a5e1bd594",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea",
+      "game_object_path_id": 148,
+      "mono_behaviour_path_id": 1704,
+      "scene_guid": "317864f6-28dc-4de3-b43f-27871bf2d712",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea",
+      "game_object_path_id": 104,
+      "mono_behaviour_path_id": 1748,
+      "scene_guid": "e85124d1-87fc-42d1-b9ab-c3c8032a0d76",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea",
+      "game_object_path_id": 122,
+      "mono_behaviour_path_id": 1768,
+      "scene_guid": "0c8d0d34-d783-4c3c-9dce-800c5feb8c94",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Cardboard_Sign_02_Z2B3L1",
+      "game_object_path_id": 162,
+      "mono_behaviour_path_id": 1775,
+      "scene_guid": "68318dfd-2c65-4f88-8d0b-82cb957309b0",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Cardboard_Sign_01_Z2B3L1",
+      "game_object_path_id": 163,
+      "mono_behaviour_path_id": 1782,
+      "scene_guid": "d1bb0454-a692-42f2-b9f7-7d1ad9581abb",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "LevelCamera",
+      "game_object_path_id": 450,
+      "mono_behaviour_path_id": 1787,
+      "scene_guid": "67a3bf3e-ce9b-4ef1-a641-53fde6e7465f",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "TargetsArea",
+      "game_object_path_id": 113,
+      "mono_behaviour_path_id": 1827,
+      "scene_guid": "208eb040-41b7-4001-931e-c3493cee4891",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Liquid",
+      "game_object_path_id": 337,
+      "mono_behaviour_path_id": 1832,
+      "scene_guid": "1eac6d9e-e321-4c9c-93d2-26754e78d0b2",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Flag_01_Z1B3L1",
+      "game_object_path_id": 204,
+      "mono_behaviour_path_id": 1837,
+      "scene_guid": "7feea57f-a1e1-458f-b857-29e4b859526d",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Flag_02_Z1B3L1",
+      "game_object_path_id": 207,
+      "mono_behaviour_path_id": 1843,
+      "scene_guid": "07985692-54c7-47ca-ba2c-02fb61c4a338",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "RightBasketballHoop",
+      "game_object_path_id": 20,
+      "mono_behaviour_path_id": 1858,
+      "scene_guid": "40d11670-3f5c-473c-a5cf-16c5f45218a1",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "PuddleDropArea_07",
+      "game_object_path_id": 138,
+      "mono_behaviour_path_id": 1887,
+      "scene_guid": "eae8229d-de32-4e63-bcba-7f816d1b9eb1",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "PuddleDropArea_03",
+      "game_object_path_id": 141,
+      "mono_behaviour_path_id": 1892,
+      "scene_guid": "55bfa4af-9ef6-4882-beec-dde89f79dcbf",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "PuddleDropArea_03 (1)",
+      "game_object_path_id": 142,
+      "mono_behaviour_path_id": 1893,
+      "scene_guid": "e8617bc4-eac2-4e68-a00f-a3e8994916f5",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Food_Popsicle_01_Box",
+      "game_object_path_id": 251,
+      "mono_behaviour_path_id": 1918,
+      "scene_guid": "28fdd477-a1fa-4f99-8b3e-47f8c240e1d1",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Speaker_L1",
+      "game_object_path_id": 202,
+      "mono_behaviour_path_id": 1927,
+      "scene_guid": "e157be09-22c1-4e04-9d86-6ede0e3fcd65",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Food_Rotten_Banana",
+      "game_object_path_id": 403,
+      "mono_behaviour_path_id": 1932,
+      "scene_guid": "76898a5e-3ce4-44fe-9221-62d25ba33240",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "BackgroundPlanet",
+      "game_object_path_id": 286,
+      "mono_behaviour_path_id": 1969,
+      "scene_guid": "d131421f-ddc2-42c8-841a-513f31e82e7d",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "ClosedObjects",
+      "game_object_path_id": 405,
+      "mono_behaviour_path_id": 1985,
+      "scene_guid": "2436c781-93f0-40bd-80fe-6b1c1cacdcb4",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "FrontSticker",
+      "game_object_path_id": 406,
+      "mono_behaviour_path_id": 1999,
+      "scene_guid": "129ec1d6-d998-4d68-8fda-46fc583b687a",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea",
+      "game_object_path_id": 285,
+      "mono_behaviour_path_id": 2000,
+      "scene_guid": "7f05543b-d58a-4739-9402-97e2be77d3ac",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "PuddleDropArea_02",
+      "game_object_path_id": 500,
+      "mono_behaviour_path_id": 2065,
+      "scene_guid": "74cabb66-090e-4657-8226-4651895023cf",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Food_Snackbar_02_Box",
+      "game_object_path_id": 348,
+      "mono_behaviour_path_id": 2079,
+      "scene_guid": "2269b30c-afad-48ee-bf5b-22014742ca15",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Food_Snackbar_01_Box",
+      "game_object_path_id": 349,
+      "mono_behaviour_path_id": 2082,
+      "scene_guid": "437e8c34-4d76-49cb-99cd-d9621a62437f",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Bottom_Special_29",
+      "game_object_path_id": 352,
+      "mono_behaviour_path_id": 2090,
+      "scene_guid": "44146808-61a5-4ab7-85b1-d5ce3707ce2a",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Bottom_Special_30",
+      "game_object_path_id": 353,
+      "mono_behaviour_path_id": 2091,
+      "scene_guid": "c5fdc925-b90a-4e7d-b841-7996f0e82d24",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea Top",
+      "game_object_path_id": 359,
+      "mono_behaviour_path_id": 2100,
+      "scene_guid": "e05225cc-c760-43e7-83ab-60feefd14002",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea Top",
+      "game_object_path_id": 360,
+      "mono_behaviour_path_id": 2101,
+      "scene_guid": "36999201-3766-410c-8fc9-576206a12a1e",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "PuddleDropArea_05",
+      "game_object_path_id": 452,
+      "mono_behaviour_path_id": 2116,
+      "scene_guid": "36d2e1ac-fd40-4647-8ab8-09c590c72d09",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "PuddleDropArea_08",
+      "game_object_path_id": 473,
+      "mono_behaviour_path_id": 2142,
+      "scene_guid": "3d73e89b-ca16-49f2-8845-13d1fe0e5ffb",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Shirt_Special_24",
+      "game_object_path_id": 393,
+      "mono_behaviour_path_id": 2166,
+      "scene_guid": "94d19b6a-96cc-436d-a21f-2e0d75ddbfc5",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea Top",
+      "game_object_path_id": 394,
+      "mono_behaviour_path_id": 2167,
+      "scene_guid": "eb20becb-a783-40d4-ba30-c63d3605de30",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea Top",
+      "game_object_path_id": 397,
+      "mono_behaviour_path_id": 2174,
+      "scene_guid": "75c56f28-6e00-489b-906e-f1ca1a2c1141",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Shirt_Special_22",
+      "game_object_path_id": 398,
+      "mono_behaviour_path_id": 2176,
+      "scene_guid": "5f3052a8-2937-45dc-91b3-abc747b23f6e",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Cup_L1",
+      "game_object_path_id": 428,
+      "mono_behaviour_path_id": 2228,
+      "scene_guid": "50d7e805-03c9-40e1-ac6b-881148712d3a",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Food_Juice_02",
+      "game_object_path_id": 372,
+      "mono_behaviour_path_id": 2239,
+      "scene_guid": "2ed01ee2-a599-4e58-bc89-89b86d056c70",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Food_Water",
+      "game_object_path_id": 371,
+      "mono_behaviour_path_id": 2240,
+      "scene_guid": "75378630-53da-46f3-99b0-d933cd0941e4",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Bag_Z1B3L1",
+      "game_object_path_id": 449,
+      "mono_behaviour_path_id": 2275,
+      "scene_guid": "e73d0ab2-a45c-423a-8a11-e2c636b01496",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea",
+      "game_object_path_id": 493,
+      "mono_behaviour_path_id": 2283,
+      "scene_guid": "15b4de4c-ec42-4190-bf59-6b22b9a37b0f",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea",
+      "game_object_path_id": 492,
+      "mono_behaviour_path_id": 2284,
+      "scene_guid": "3beb5185-a882-43bb-9187-e041a0a0c5b0",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea",
+      "game_object_path_id": 490,
+      "mono_behaviour_path_id": 2314,
+      "scene_guid": "823f6a7d-9aa9-4d91-b27b-19c78c9473f6",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "DropArea",
+      "game_object_path_id": 470,
+      "mono_behaviour_path_id": 2319,
+      "scene_guid": "c6fe051d-fc6e-43cc-9271-704868a21b91",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "ContainerArea",
+      "game_object_path_id": 491,
+      "mono_behaviour_path_id": 2346,
+      "scene_guid": "edb30673-811d-45cd-bfbd-dd4dfb6c2d20",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "ContainerArea",
+      "game_object_path_id": 508,
+      "mono_behaviour_path_id": 2370,
+      "scene_guid": "1e3d53a1-aadc-45cf-b636-b5fc06afe13b",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "TopDropArea",
+      "game_object_path_id": 510,
+      "mono_behaviour_path_id": 2374,
+      "scene_guid": "35ec5147-8e17-4c77-8fae-679fddc4151d",
+      "serialized_bytes": 72
+    },
+    {
+      "game_object": "Box_Z1B3L1",
+      "game_object_path_id": 511,
+      "mono_behaviour_path_id": 2377,
+      "scene_guid": "19416a00-1415-4b69-b3da-264b7134d513",
+      "serialized_bytes": 72
+    }
+  ],
+  "scene_guid_summary": {
+    "unique_count": 81,
+    "uuid_shaped_count": 81,
+    "name_shaped_count": 0
+  },
+  "interpretation_limits": [
+    "Unity's MonoBehaviour base envelope is separated from script payload at byte offset 32 for this scene format.",
+    "Decoded fields are matched to Cpp2IL field order/types; this does not reveal saved PlayerPrefs/files or runtime values.",
+    "Scene GUID uniqueness is measured within this scene only; cross-scene collision behavior and GUID assignment are not proven by this sample."
+  ]
+}
