@@ -44,6 +44,9 @@ namespace AvatarWorld.Runtime
         List<LiteracyChallenge> _queue;
         int _queueIndex;
         int _sessionCoinsEarned;
+        /// <summary>Tentativas no desafio atual (reseta a cada ShowCurrent); recompensa cai a partir
+        /// da 2a tentativa (ver LiteracyChallengeService.Answer) pra desincentivar chutar as opcoes.</summary>
+        int _attemptCount;
         System.Action _onProgress;
         System.Action _onClose;
         /// <summary>Ordem do Canvas; a loja (800) usa um valor maior para os desafios aparecerem por cima.</summary>
@@ -105,6 +108,7 @@ namespace AvatarWorld.Runtime
             if (_root != null) Destroy(_root);
             _optionButtons.Clear();
             _optionLabels.Clear();
+            _attemptCount = 0;
 
             var challenge = Current;
             string header = _selector != null
@@ -140,7 +144,8 @@ namespace AvatarWorld.Runtime
         void OnOptionClicked(int optionIndex)
         {
             var challenge = Current;
-            var result = _service.Answer(challenge, optionIndex);
+            _attemptCount++;
+            var result = _service.Answer(challenge, optionIndex, _attemptCount);
 
             _feedback.gameObject.SetActive(true);
             if (result.Correct)

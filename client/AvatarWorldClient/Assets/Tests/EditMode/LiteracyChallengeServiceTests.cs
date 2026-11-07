@@ -63,6 +63,42 @@ namespace AvatarWorld.Core.Tests
         }
 
         [Test]
+        public void SecondAttempt_PaysHalfReward()
+        {
+            var svc = NewService(out var state);
+            var r = svc.Answer(Challenge(reward: 10), 1, attemptNumber: 2);
+
+            Assert.IsTrue(r.Correct);
+            Assert.IsTrue(r.CoinsAwarded);
+            Assert.AreEqual(5, r.CoinsEarned);
+            Assert.AreEqual(5, state.PazuCurrency);
+        }
+
+        [Test]
+        public void SecondAttempt_AlwaysPaysAtLeastOneCoinWhenRewardIsSmall()
+        {
+            var svc = NewService(out var state);
+            var r = svc.Answer(Challenge(reward: 1), 1, attemptNumber: 2);
+
+            Assert.IsTrue(r.CoinsAwarded);
+            Assert.AreEqual(1, r.CoinsEarned);
+        }
+
+        [Test]
+        public void ThirdAttemptOrLater_PaysNothing()
+        {
+            var svc = NewService(out var state);
+            var third = svc.Answer(Challenge(reward: 10), 1, attemptNumber: 3);
+            var fifth = svc.Answer(Challenge(reward: 10), 1, attemptNumber: 5);
+
+            Assert.IsTrue(third.Correct);
+            Assert.IsFalse(third.CoinsAwarded);
+            Assert.AreEqual(0, third.CoinsEarned);
+            Assert.IsFalse(fifth.CoinsAwarded);
+            Assert.AreEqual(0, state.PazuCurrency);
+        }
+
+        [Test]
         public void ZeroRewardChallenge_CompletesWithoutCallingEarn()
         {
             var svc = NewService(out var state);
