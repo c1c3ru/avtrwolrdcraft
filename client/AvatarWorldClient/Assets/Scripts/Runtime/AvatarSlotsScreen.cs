@@ -9,7 +9,7 @@ namespace AvatarWorld.Runtime
     /// <summary>
     /// Tela de slots (AvatarMakerLobby do original, prints 16.07.17 e 16.07.35): voltar, abas humano/pet/carro,
     /// slots com silhueta tracejada e lixeira. Cada slot humano mostra o avatar salvo (ou a silhueta para criar) e abre o editor;
-    /// os slots humanos 1-3 criam/editam avatares; pets e veiculos ainda nao existem offline (aviso: sem arte/esqueleto extraidos). O slot de veiculo bloqueado leva a loja.
+    /// os slots humanos 1-3 criam/editam avatares; pets e veiculos ainda nao existem offline (aviso: sem arte/esqueleto extraidos). O slot de veiculo bloqueado leva a tela de compra da vaga (VehicleSlotPurchaseScreen), nao a loja geral.
     /// Posicoes em unidades do canvas 2048x1024 convertidas dos prints (x1,42); arte em Resources/Slots.
     /// O pedestal rosa nao foi extraido: e desenhado em codigo.
     /// </summary>
@@ -20,7 +20,7 @@ namespace AvatarWorld.Runtime
 
         SaveStore _saves;
         PlayerState _state;
-        Action _onClose, _onOpenStore;
+        Action _onClose, _onPurchaseVehicleSlot;
         Camera _camera;
         Canvas _backCanvas, _frontCanvas;
         Transform _slotsRoot;
@@ -38,9 +38,9 @@ namespace AvatarWorld.Runtime
         public string Tab { get; private set; }
         public bool EditorOpen => _editorHost != null;
 
-        public void Begin(SaveStore saves, PlayerState state, Action onClose, Action onOpenStore)
+        public void Begin(SaveStore saves, PlayerState state, Action onClose, Action onPurchaseVehicleSlot)
         {
-            _saves = saves; _state = state; _onClose = onClose; _onOpenStore = onOpenStore;
+            _saves = saves; _state = state; _onClose = onClose; _onPurchaseVehicleSlot = onPurchaseVehicleSlot;
             _font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             UiSceneBuilder.EnsureEventSystem();
             BuildCamera();
@@ -181,12 +181,28 @@ namespace AvatarWorld.Runtime
             Place(pedestal.rectTransform, new Vector2(0f, -190f), new Vector2(620f, 130f));
             Button("CarSlot1", _slotsRoot, Art("Slots/empty_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(0f, 20f), new Vector2(519f, 217f),
                 () => { UiSound.PlayClick(); ShowToast("Veículos ainda não estão disponíveis."); });
-            // Slot bloqueado (laranja) com o carrinho de compras do original: leva a loja.
-            Button("CarSlot2", _slotsRoot, Art("Slots/banner_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(SlotSpacing + 90f, 20f), new Vector2(437f, 218f),
-                () => { UiSound.PlayClick(); _onOpenStore?.Invoke(); });
-            var cartLabel = NewText("OpenStore", _slotsRoot, 40, new Color(0.45f, 0.2f, 0.6f));
-            Place(cartLabel.rectTransform, new Vector2(SlotSpacing + 90f, -120f), new Vector2(520f, 60f));
-            cartLabel.text = "Toque para abrir a loja";
+
+            bool unlocked = VehicleSlotCatalog.IsUnlocked(_state);
+            if (unlocked)
+            {
+                // Vaga ja comprada (VehicleSlotPurchaseScreen): sem esqueleto de carro extraido ainda, so
+                // mostra a reserva feita; a cor do rotulo acompanha a faixa escolhida (premium = dourado).
+                Button("CarSlot2", _slotsRoot, Art("Slots/empty_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(SlotSpacing + 90f, 20f), new Vector2(519f, 217f),
+                    () => { UiSound.PlayClick(); ShowToast("Vaga reservada. Veículos ainda não estão disponíveis."); });
+                var ownedLabel = NewText("CarSlot2Label", _slotsRoot, 40,
+                    VehicleSlotCatalog.IsPremium(_state) ? new Color(0.72f, 0.52f, 0.1f) : new Color(0.45f, 0.2f, 0.6f));
+                Place(ownedLabel.rectTransform, new Vector2(SlotSpacing + 90f, -120f), new Vector2(520f, 60f));
+                ownedLabel.text = VehicleSlotCatalog.IsPremium(_state) ? "Vaga premium reservada" : "Vaga reservada";
+            }
+            else
+            {
+                // Slot bloqueado (laranja) com o carrinho de compras do original: leva a tela de compra da vaga.
+                Button("CarSlot2", _slotsRoot, Art("Slots/banner_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(SlotSpacing + 90f, 20f), new Vector2(437f, 218f),
+                    () => { UiSound.PlayClick(); _onPurchaseVehicleSlot?.Invoke(); });
+                var cartLabel = NewText("CarSlot2Label", _slotsRoot, 40, new Color(0.45f, 0.2f, 0.6f));
+                Place(cartLabel.rectTransform, new Vector2(SlotSpacing + 90f, -120f), new Vector2(520f, 60f));
+                cartLabel.text = "Toque para desbloquear";
+            }
         }
 
         void BuildPetSlots()

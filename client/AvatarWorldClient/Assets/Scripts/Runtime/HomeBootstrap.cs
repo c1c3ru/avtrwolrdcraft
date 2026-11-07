@@ -137,7 +137,28 @@ namespace AvatarWorld.Runtime
                 _save.Save(_state);
                 Destroy(host);
                 if (_worldMap != null) _worldMap.gameObject.SetActive(true);
-            }, () => OpenStore(() => { }));
+            }, OpenVehicleSlotPurchase);
+        }
+
+        /// <summary>
+        /// Tela dedicada (fundo roxo animado, item ao centro, faixas de 100/300 moedas) aberta pelo slot de
+        /// veiculo bloqueado da tela de slots - nao a loja geral, que so mostra "Em breve" para Veículos.
+        /// </summary>
+        void OpenVehicleSlotPurchase()
+        {
+            if (FindFirstObjectByType<VehicleSlotPurchaseScreen>() != null) return;
+            var host = new GameObject("VehicleSlotPurchase");
+            var screen = host.AddComponent<VehicleSlotPurchaseScreen>();
+            screen.Begin(_state, _save, () => Destroy(host), price =>
+            {
+                if (FindFirstObjectByType<LiteracyChallengeScreen>() != null) return;
+                var screenGo = new GameObject("VehicleSlotChallenges");
+                var challenge = screenGo.AddComponent<LiteracyChallengeScreen>();
+                challenge.SortingOrder = 900;
+                challenge.BeginRandom(_literacy, new ChallengeSelector(_state), price, "Moedas AW",
+                    () => { _save.Save(_state); screen.RefreshCoins(); },
+                    () => screen.RefreshCoins());
+            });
         }
 
         void CloseWorldMap()
