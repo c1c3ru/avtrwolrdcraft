@@ -31713,7 +31713,7 @@
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "ready",
       "planning_seed": false,
       "scope": {
         "method_identity": {
@@ -31736,40 +31736,57 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/il2cpp_bootstrap.json",
-          "sha256": "6668aaef31e7d1474fa4504ec40f9649806d147f9d0b1c239f03d141ffa1dd9c",
-          "bytes": 56727
+          "sha256": "6668aaef31e7d1474fa4504ec40f9649806d147f9d0b1c239f03d141ffa1dd9c"
         },
         {
           "path": "out/recon/il2cpp/libil2cpp.so",
-          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
-          "bytes": 74680624
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
         },
         {
           "path": "out/recon/il2cpp/global-metadata.dat",
-          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
-          "bytes": 16072324
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
         },
         {
           "path": "out/recon/il2cpp/assembly_csharp_methods.jsonl",
-          "sha256": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8",
-          "bytes": 25894414,
-          "selector": {
-            "image": "Assembly-CSharp.dll",
-            "token": "0x060056fe"
-          }
+          "sha256": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8"
+        },
+        {
+          "path": "out/mb/PWC.LoadingScreen.LoadingScreenManager.jsonl.gz",
+          "sha256": "c8a304eeb28c6e6be1f97b70fe8401e2fce9797acbc2a745aef9ce8b3086695b"
+        },
+        {
+          "path": "out/mb/PWC.LoadingScreen.LoadingScreenScreen.jsonl.gz",
+          "sha256": "f32585d06f8ba5a5670f62452a457262ae519c4093ba9175c7b6c70e80056fba"
+        },
+        {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LoadingScreen/LoadingScreenScreen.cs",
+          "sha256": "3161d40a7404d6e0daf6009feddcf95bf99f240f204ed2b864a51ee08860c3eb"
+        },
+        {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LoadingScreen/LoadingScreenManager.cs",
+          "sha256": "c7c716a05f212386c892ba46a49ff038af91f56b3c46edbb186843de22fcfe6a"
         }
       ],
       "allowed_paths": [
-        "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/**"
+        "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/**",
+        "tools/recon_loading_fade.py",
+        "tools/test_recon_loading_fade.py",
+        "docs/RECON_LOADING_FADE_CONTRACT.md",
+        "docs/RECON_SCENE_SUBSCRIBERS.md",
+        "reports/recon/loading_fade_contract.json",
+        "reports/recon/scene_subscribers.json",
+        "out/recon/loading-fade/**",
+        "out/recon/scene-subscribers/**",
+        "tools/recon_scene_subscribers.py",
+        "tools/test_recon_scene_subscribers.py"
       ],
       "resource_locks": [
-        "task-output:T025/METHOD/8e708ca7d06e0b52",
-        "native-analysis:avatar-arm64"
+        "native-analysis:avatar-arm64",
+        "task-output:T025/METHOD/8e708ca7d06e0b52"
       ],
       "questions": [
         "What are complete executable body ranges, CFG, guards, state and side effects of this method?",
@@ -31788,13 +31805,107 @@
         "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/result.json"
       ],
       "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion.",
-      "evidence_refs": [],
-      "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "evidence_refs": [
+        {
+          "path": "reports/recon/loading_fade_contract.json",
+          "sha256": "7101aaff91c018fae1f576e7745b22f3c611c53f2e9d25d90a0beba8b785cf0b"
+        },
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "370315f50a33bf43f04f32d54584c2fccc2227d26a7c733f2a6572e0603c7adf"
+        },
+        {
+          "path": "reports/recon/review_loading_subscribers.json",
+          "sha256": "b570c8c2290aedbc8aef7d50dac1271addcf5ec0b3dc6fb468666d18a0136af3"
+        },
+        {
+          "path": "docs/RECON_LOADING_FADE_CONTRACT.md",
+          "sha256": "28b903393903305c734ee82e338d2422d0f32c7d0823a13bcf9d9683e030c890"
+        },
+        {
+          "path": "docs/RECON_SCENE_SUBSCRIBERS.md",
+          "sha256": "99e9acef504c806460f5a6d00d8b1f52a3cfcc92a292a35e0631ae72b3b97545"
+        },
+        {
+          "path": "tools/recon_loading_fade.py",
+          "sha256": "4f4ec5747e0acf3012928d92f8192bb8b2577890f16a7e21eab95ea51b6f597b"
+        },
+        {
+          "path": "tools/recon_scene_subscribers.py",
+          "sha256": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce"
+        },
+        {
+          "path": "tools/test_recon_loading_fade.py",
+          "sha256": "9bb6cf49d5633aa002be7ac8392beaee7d4eefeae2b0d74a689bf0f03b0a54c9"
+        },
+        {
+          "path": "tools/test_recon_scene_subscribers.py",
+          "sha256": "697f664c93fc3fd5fb6bb7b29cb567ef6c6b26a35b40a0475a04a5ed3e7717d6"
+        }
+      ],
+      "unknown_ids": [
+        "T029/runtime_class_layout",
+        "T029/instantiate_and_library_effects",
+        "T029/tween_scheduling",
+        "T029/scene_loaded_registration",
+        "T029/remaining_stage_registrations",
+        "T029/handler_effects_lifetime",
+        "T029/runtime_comparison",
+        "T025/complete_body_and_cfg"
+      ],
+      "attempts": [
+        {
+          "id": "1eb3e2eb329b4fe497ccf96171f98ea3",
+          "owner": "/root",
+          "started_at": 1794074086.473391,
+          "lease_id": "5f0b84823e874dec92b0ed7088022543",
+          "checkpoint_at": 1794074793.5786347,
+          "state": "ready",
+          "note": "Recorte estático revisado: dois slots virtuais, prefab original, fade/coroutine e cinco inscrições. Retomar nove candidatos de Stage, efeitos/lifetime e dependências/runtime; método completo permanece aberto.",
+          "evidence_refs": [
+            {
+              "path": "reports/recon/loading_fade_contract.json",
+              "sha256": "7101aaff91c018fae1f576e7745b22f3c611c53f2e9d25d90a0beba8b785cf0b"
+            },
+            {
+              "path": "reports/recon/scene_subscribers.json",
+              "sha256": "370315f50a33bf43f04f32d54584c2fccc2227d26a7c733f2a6572e0603c7adf"
+            },
+            {
+              "path": "reports/recon/review_loading_subscribers.json",
+              "sha256": "b570c8c2290aedbc8aef7d50dac1271addcf5ec0b3dc6fb468666d18a0136af3"
+            },
+            {
+              "path": "docs/RECON_LOADING_FADE_CONTRACT.md",
+              "sha256": "28b903393903305c734ee82e338d2422d0f32c7d0823a13bcf9d9683e030c890"
+            },
+            {
+              "path": "docs/RECON_SCENE_SUBSCRIBERS.md",
+              "sha256": "99e9acef504c806460f5a6d00d8b1f52a3cfcc92a292a35e0631ae72b3b97545"
+            },
+            {
+              "path": "tools/recon_loading_fade.py",
+              "sha256": "4f4ec5747e0acf3012928d92f8192bb8b2577890f16a7e21eab95ea51b6f597b"
+            },
+            {
+              "path": "tools/recon_scene_subscribers.py",
+              "sha256": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce"
+            },
+            {
+              "path": "tools/test_recon_loading_fade.py",
+              "sha256": "9bb6cf49d5633aa002be7ac8392beaee7d4eefeae2b0d74a689bf0f03b0a54c9"
+            },
+            {
+              "path": "tools/test_recon_scene_subscribers.py",
+              "sha256": "697f664c93fc3fd5fb6bb7b29cb567ef6c6b26a35b40a0475a04a5ed3e7717d6"
+            }
+          ]
+        }
+      ],
+      "owner": "/root",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Recorte estático revisado: dois slots virtuais, prefab original, fade/coroutine e cinco inscrições. Retomar nove candidatos de Stage, efeitos/lifetime e dependências/runtime; método completo permanece aberto.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -31995,8 +32106,8 @@
       }
     }
   ],
-  "root": "/home/deppi/avatarworld-re",
-  "revision": 20,
+  "root": "/home/c1c3ru/avtrwolrdcraft",
+  "revision": 27,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -32533,6 +32644,58 @@
       "task": "T025/METHOD/5fe1bb4a25183678",
       "actor": "codex",
       "at": 1793795084.0892339
+    },
+    {
+      "revision": 21,
+      "action": "relocate",
+      "actor": "/root",
+      "at": 1794074002.9590812,
+      "note": "Retomada de 2026-11-07 no workspace atual; revalidar hashes aceitos sem alterar aprovações ou resultados.",
+      "previous_root": "/home/deppi/avatarworld-re",
+      "root": "/home/c1c3ru/avtrwolrdcraft",
+      "verified_refs": 17
+    },
+    {
+      "revision": 22,
+      "action": "configure",
+      "task": "T025/METHOD/8e708ca7d06e0b52",
+      "actor": "/root",
+      "at": 1794074080.6692708
+    },
+    {
+      "revision": 23,
+      "action": "claim",
+      "task": "T025/METHOD/8e708ca7d06e0b52",
+      "actor": "/root",
+      "at": 1794074086.4905043
+    },
+    {
+      "revision": 24,
+      "action": "start",
+      "task": "T025/METHOD/8e708ca7d06e0b52",
+      "actor": "/root",
+      "at": 1794074086.5965152
+    },
+    {
+      "revision": 25,
+      "action": "extend_owned_output_scope",
+      "task": "T025/METHOD/8e708ca7d06e0b52",
+      "actor": "/root",
+      "at": 1794074134.012428
+    },
+    {
+      "revision": 26,
+      "action": "record_loading_slice_unknowns",
+      "task": "T025/METHOD/8e708ca7d06e0b52",
+      "actor": "/root",
+      "at": 1794074793.171936
+    },
+    {
+      "revision": 27,
+      "action": "checkpoint",
+      "task": "T025/METHOD/8e708ca7d06e0b52",
+      "actor": "/root",
+      "at": 1794074793.5889754
     }
   ]
 }

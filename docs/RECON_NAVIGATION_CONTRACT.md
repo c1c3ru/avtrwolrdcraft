@@ -1,5 +1,7 @@
 # T029 — contrato estático de navegação, rodada de 2026-11-02
 
+Atualização de 2026-11-07: [loading/fade](RECON_LOADING_FADE_CONTRACT.md) resolve condicionalmente os dois slots virtuais do prefab distribuído; [assinantes](RECON_SCENE_SUBSCRIBERS.md) confirma cinco registros concretos. Os desconhecidos abaixo descrevem a rodada original; consultar esses complementos antes de refazer trabalho. Os contratos continuam parciais, sem equivalência em runtime.
+
 Esta rodada estende o [bootstrap IL2CPP](RECON_IL2CPP_BOOTSTRAP.md), reaproveitando os binários e índices existentes. Não houve extração completa, instalação de ferramentas, rede, alteração do cliente, execução do original, emulação ou uso de um alvo REA compartilhado. O resultado é um conjunto de **contratos estáticos candidatos**, não equivalência certificada.
 
 ## Artefatos e reprodução

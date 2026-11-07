@@ -82,3 +82,36 @@ O usuário solicitou também publicar o trabalho preexistente e, em seguida, par
 - `git ls-remote origin refs/heads/main` confirmou `8fa788b4d45feed47818cafecf2bcc85b9bb40c3`, igual ao HEAD local antes desta anotação. A consulta precisou ser repetida no host porque a resolução DNS falhou no sandbox.
 - Existem alterações posteriores de catálogo/avatares, assets de roupas e movimento do mapa no workspace. Não fazem parte da antiga pendência de publicação; foram preservadas sem inclusão incidental em commit.
 - A tarefa anterior de publicar as alterações preexistentes está concluída. Esta retomada apenas registra o desfecho; não restaura funcionalidades revertidas, não executa novos testes do jogo e não inicia outro lote de implementação.
+
+## 2026-11-07 — nova continuação: loading e assinantes de cena
+
+Após nova instrução explícita para continuar, retomada a recuperação da lógica original de navegação. O workspace contém alterações de catálogo/roupas/editor/mapa em andamento; este lote de análise mantém esses arquivos fora de sua edição e de seu commit.
+
+1. Conferidos fila, contratos e ferramentas já existentes, incluindo callback de `LoadScene`, deep links e save. O callback já analisado em 03/11 não foi refeito como se fosse uma descoberta nova.
+2. `prepare` detectou que a fila ainda apontava para `/home/deppi/avatarworld-re`, ausente neste host. Usado `relocate --root /home/c1c3ru/avtrwolrdcraft`, que revalidou 17 referências aceitas e registrou revisão 21. Nenhum hash ou aceite foi alterado para ignorar o erro.
+3. Preparado o filho `T025/METHOD/8e708ca7d06e0b52` (`GameSceneManager.LoadScene`), sem bloqueadores e com os inputs conferidos. Adquirido lease para a investigação limitada dos callees de loading e das inscrições em eventos; o corpo inteiro permanece sujeito ao aceite original.
+4. Reutilizados o par IL2CPP/metadata e os índices existentes. O Hopper já tinha bloqueio de bridge registrado; não foi repetido o timeout sem mudança desse bloqueio. As novas evidências são de leitura estática local/LLVM, não de decompilação REA bem-sucedida nem execução Android.
+5. Uma frente recupera o binding do método virtual de fade e os callbacks; outra identifica inscrições concretas nos estágios de troca de cena. A revisão independente usa os bytes e metadata originais, além dos relatórios finais. Outputs volumosos ficam em diretórios locais exclusivos.
+
+### Resultado e checkpoint
+
+- Resolvidos, para o prefab distribuído e sob as precondições documentadas, os slots de `LoadingScreenScreen.Fade` e `Graphic.set_raycastTarget`. Manager 259 → screen 242 e os scripts foram revalidados nos bytes serializados originais.
+- Recuperado o fluxo estático de alpha 1/0 com argumento de duração 0,25, atualização do CanvasGroup, completion true com Action opcional e completion false com cancelamento do clock e destruição da tela. A coroutine posterior ao carregamento possui um `yield null` antes do fade de saída. Isso não mede tempo real nem prova toda a interação com Unity.
+- Confirmadas cinco inscrições: som no Stage1, persistência no Stage2, LevelManager nos Stage2/3 e `OnActiveSceneChanged` no evento Unity. O scan contém 13 candidatos diretos dos estágios; quatro foram aprofundados e nove permanecem abertos. A quinta ligação positiva é a Unity e está fora desse conjunto.
+- **30 testes focados passaram:** 21 de loading/fade (2,293 s) e nove de assinantes (9,667 s). A revisão independente rejeitou oito mutações adicionais e aceitou a evidência estática parcial sem bloqueios no recorte declarado.
+- Salvo checkpoint retomável no filho de LoadScene, estado `ready`, com oito grupos de desconhecidos explícitos. A fila ficou na revisão **27**: 3 `done`, 442 `pending`, 1 `stale`, 1 `ready`; nenhum lease ativo. Nenhum método inteiro ou pai foi concluído por esse recorte.
+- Próximas investigações: os nove candidatos de registro restantes, remoções/lifetime/efeitos dos handlers, hook de OnSceneLoaded, bibliotecas/helpers/exceções, comportamento temporal/input e comparação em runtime.
+
+Fontes: [contrato loading/fade](RECON_LOADING_FADE_CONTRACT.md), [assinantes de cena](RECON_SCENE_SUBSCRIBERS.md), [revisão independente](../reports/recon/review_loading_subscribers.json) e [checkpoint estruturado](../reports/recon/loading_wave_checkpoint.json).
+
+Comandos de verificação desta rodada:
+
+```bash
+python3 tools/recon_queue.py prepare T025/METHOD/8e708ca7d06e0b52
+python3 tools/recon_loading_fade.py
+python3 tools/recon_scene_subscribers.py
+python3 -m unittest discover -s tools -p test_recon_loading_fade.py -v
+python3 -m unittest discover -s tools -p test_recon_scene_subscribers.py -v
+```
+
+O produtor de loading verifica os hashes dos APKs e só materializa a entrada UnityFS selecionada, com 726.336 bytes; o bundle inteiro não foi redumpado. Os índices nativos e as evidências anteriores foram reutilizados. Nenhuma execução Android, build Unity ou alteração no cliente integra este lote. Commit e push deste recorte são feitos depois dessas verificações; resultados de publicação são confirmados pelo Git.

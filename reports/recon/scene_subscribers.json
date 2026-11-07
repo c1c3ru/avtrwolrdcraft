@@ -1,0 +1,1267 @@
+{
+  "schema_version": 1,
+  "scope": "Five positive static scene-event signup/handler edges; bounded investigation only.",
+  "evidence_class": "STATIC_bytes_and_metadata_with_DERIVED_edges",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "method_index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+  "producer_sha256": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce",
+  "helper_sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+  "summary": {
+    "validated_positive_edges": 5,
+    "inspected_windows": 4,
+    "raw_direct_candidates": 13,
+    "candidate_event_add_counts": {
+      "add_OnBeforeSceneLoadStage1Action": 8,
+      "add_OnBeforeSceneLoadStage2Action": 3,
+      "add_OnBeforeSceneLoadStage3Action": 2
+    }
+  },
+  "edges": [
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "event": "GameSceneManager.OnBeforeSceneLoadStage1Action",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.BackgroundPlanetSoundHandler",
+        "name": "Awake",
+        "token": "0x060055ff",
+        "method_definition_index": 22014,
+        "parameter_count": 0,
+        "vaddr": "0x20691dc",
+        "file_offset": "0x20651dc"
+      },
+      "handler": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.BackgroundPlanetSoundHandler",
+        "name": "OnBeforeSceneLoadStage1",
+        "token": "0x06005601",
+        "method_definition_index": 22016,
+        "parameter_count": 0,
+        "vaddr": "0x2069448",
+        "file_offset": "0x2065448"
+      },
+      "event_add_method": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "add_OnBeforeSceneLoadStage1Action",
+        "token": "0x060056f0",
+        "method_definition_index": 22255,
+        "parameter_count": 1,
+        "vaddr": "0x20692dc",
+        "file_offset": "0x20652dc"
+      },
+      "target_object": "this saved in x19",
+      "handler_metadata_usage": {
+        "got_vaddr": "0x41c8240",
+        "usage_vaddr": "0x4319618",
+        "encoded": "0x6000ac01",
+        "kind": 3,
+        "index": 22016
+      },
+      "handler_got_reference": {
+        "adrp_site": "0x20691f0",
+        "ldr_site": "0x2069200",
+        "got_vaddr": "0x41c8240",
+        "base_register": 20,
+        "destination_register": 20
+      },
+      "constructor_call": {
+        "site": "0x206927c",
+        "file_offset": "0x206527c",
+        "word": "0x94498fb0",
+        "bytes_le": "b08f4994",
+        "target": "0x32cd13c",
+        "metadata_method": {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Action",
+          "name": ".ctor",
+          "token": "0x06000379",
+          "method_definition_index": 37309,
+          "parameter_count": 2,
+          "vaddr": "0x32cd13c",
+          "file_offset": "0x32c913c"
+        },
+        "identity_limit": null
+      },
+      "registration_branch": {
+        "site": "0x2069294",
+        "file_offset": "0x2065294",
+        "word": "0x94000012",
+        "bytes_le": "12000094",
+        "kind": "BL",
+        "target": "0x20692dc"
+      },
+      "raw_argument_flow_anchors": [
+        {
+          "site": "0x20691f0",
+          "file_offset": "0x20651f0",
+          "word": "0xf0010af4",
+          "bytes_le": "f40a01f0"
+        },
+        {
+          "site": "0x2069200",
+          "file_offset": "0x2065200",
+          "word": "0xf9412294",
+          "bytes_le": "942241f9"
+        },
+        {
+          "site": "0x2069208",
+          "file_offset": "0x2065208",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x206926c",
+          "file_offset": "0x206526c",
+          "word": "0xf9400282",
+          "bytes_le": "820240f9"
+        },
+        {
+          "site": "0x2069270",
+          "file_offset": "0x2065270",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x2069274",
+          "file_offset": "0x2065274",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x2069278",
+          "file_offset": "0x2065278",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x206927c",
+          "file_offset": "0x206527c",
+          "word": "0x94498fb0",
+          "bytes_le": "b08f4994"
+        },
+        {
+          "site": "0x2069290",
+          "file_offset": "0x2065290",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x2069294",
+          "file_offset": "0x2065294",
+          "word": "0x94000012",
+          "bytes_le": "12000094"
+        }
+      ],
+      "precondition": "Normal execution reaches the signup after metadata/class initialization and object/delegate construction.",
+      "limits": [
+        "Does not prove handler invocation, side effects, subscription order across instances or lifetime/unsubscription.",
+        "Exceptions, lazy-init helpers and indirect/generated calls outside this guarded flow remain unmodeled."
+      ]
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.PersistentData.PersistentDataManager",
+        "name": "Awake",
+        "token": "0x06006e3e",
+        "method_definition_index": 28221,
+        "parameter_count": 0,
+        "vaddr": "0x21e0658",
+        "file_offset": "0x21dc658"
+      },
+      "handler": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.PersistentData.PersistentDataManager",
+        "name": "OnBeforeSceneLoadStage2",
+        "token": "0x06006e44",
+        "method_definition_index": 28227,
+        "parameter_count": 0,
+        "vaddr": "0x21e09b0",
+        "file_offset": "0x21dc9b0"
+      },
+      "event_add_method": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "add_OnBeforeSceneLoadStage2Action",
+        "token": "0x060056f2",
+        "method_definition_index": 22257,
+        "parameter_count": 1,
+        "vaddr": "0x2071fec",
+        "file_offset": "0x206dfec"
+      },
+      "target_object": "this saved in x19",
+      "handler_metadata_usage": {
+        "got_vaddr": "0x41d2938",
+        "usage_vaddr": "0x4328c88",
+        "encoded": "0x6000dc87",
+        "kind": 3,
+        "index": 28227
+      },
+      "handler_got_reference": {
+        "adrp_site": "0x21e06a8",
+        "ldr_site": "0x21e06b8",
+        "got_vaddr": "0x41d2938",
+        "base_register": 20,
+        "destination_register": 20
+      },
+      "constructor_call": {
+        "site": "0x21e070c",
+        "file_offset": "0x21dc70c",
+        "word": "0x9443b28c",
+        "bytes_le": "8cb24394",
+        "target": "0x32cd13c",
+        "metadata_method": {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Action",
+          "name": ".ctor",
+          "token": "0x06000379",
+          "method_definition_index": 37309,
+          "parameter_count": 2,
+          "vaddr": "0x32cd13c",
+          "file_offset": "0x32c913c"
+        },
+        "identity_limit": null
+      },
+      "registration_branch": {
+        "site": "0x21e0734",
+        "file_offset": "0x21dc734",
+        "word": "0x17fa462e",
+        "bytes_le": "2e46fa17",
+        "kind": "B",
+        "target": "0x2071fec"
+      },
+      "raw_argument_flow_anchors": [
+        {
+          "site": "0x21e066c",
+          "file_offset": "0x21dc66c",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x21e06a8",
+          "file_offset": "0x21dc6a8",
+          "word": "0xd000ff94",
+          "bytes_le": "94ff00d0"
+        },
+        {
+          "site": "0x21e06b8",
+          "file_offset": "0x21dc6b8",
+          "word": "0xf9449e94",
+          "bytes_le": "949e44f9"
+        },
+        {
+          "site": "0x21e06fc",
+          "file_offset": "0x21dc6fc",
+          "word": "0xf9400282",
+          "bytes_le": "820240f9"
+        },
+        {
+          "site": "0x21e0700",
+          "file_offset": "0x21dc700",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x21e0704",
+          "file_offset": "0x21dc704",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x21e0708",
+          "file_offset": "0x21dc708",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x21e070c",
+          "file_offset": "0x21dc70c",
+          "word": "0x9443b28c",
+          "bytes_le": "8cb24394"
+        },
+        {
+          "site": "0x21e0720",
+          "file_offset": "0x21dc720",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x21e072c",
+          "file_offset": "0x21dc72c",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        },
+        {
+          "site": "0x21e0734",
+          "file_offset": "0x21dc734",
+          "word": "0x17fa462e",
+          "bytes_le": "2e46fa17"
+        }
+      ],
+      "precondition": "Normal execution reaches the signup after metadata/class initialization and object/delegate construction.",
+      "limits": [
+        "Does not prove handler invocation, side effects, subscription order across instances or lifetime/unsubscription.",
+        "Exceptions, lazy-init helpers and indirect/generated calls outside this guarded flow remain unmodeled."
+      ]
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelManager",
+        "name": "Awake",
+        "token": "0x0600848e",
+        "method_definition_index": 33933,
+        "parameter_count": 0,
+        "vaddr": "0x2310b8c",
+        "file_offset": "0x230cb8c"
+      },
+      "handler": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelManager",
+        "name": "OnBeforeSceneLoadStage2",
+        "token": "0x0600849c",
+        "method_definition_index": 33947,
+        "parameter_count": 0,
+        "vaddr": "0x2313e64",
+        "file_offset": "0x230fe64"
+      },
+      "event_add_method": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "add_OnBeforeSceneLoadStage2Action",
+        "token": "0x060056f2",
+        "method_definition_index": 22257,
+        "parameter_count": 1,
+        "vaddr": "0x2071fec",
+        "file_offset": "0x206dfec"
+      },
+      "target_object": "this saved in x19",
+      "handler_metadata_usage": {
+        "got_vaddr": "0x41d9aa8",
+        "usage_vaddr": "0x4325128",
+        "encoded": "0x60010937",
+        "kind": 3,
+        "index": 33947
+      },
+      "handler_got_reference": {
+        "adrp_site": "0x2310cac",
+        "ldr_site": "0x2310cc4",
+        "got_vaddr": "0x41d9aa8",
+        "base_register": 22,
+        "destination_register": 22
+      },
+      "constructor_call": {
+        "site": "0x2310d48",
+        "file_offset": "0x230cd48",
+        "word": "0x943ef0fd",
+        "bytes_le": "fdf03e94",
+        "target": "0x32cd13c",
+        "metadata_method": {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Action",
+          "name": ".ctor",
+          "token": "0x06000379",
+          "method_definition_index": 37309,
+          "parameter_count": 2,
+          "vaddr": "0x32cd13c",
+          "file_offset": "0x32c913c"
+        },
+        "identity_limit": null
+      },
+      "registration_branch": {
+        "site": "0x2310d64",
+        "file_offset": "0x230cd64",
+        "word": "0x97f584a2",
+        "bytes_le": "a284f597",
+        "kind": "BL",
+        "target": "0x2071fec"
+      },
+      "raw_argument_flow_anchors": [
+        {
+          "site": "0x2310bb4",
+          "file_offset": "0x230cbb4",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x2310cac",
+          "file_offset": "0x230ccac",
+          "word": "0xb000f656",
+          "bytes_le": "56f600b0"
+        },
+        {
+          "site": "0x2310cc4",
+          "file_offset": "0x230ccc4",
+          "word": "0xf94556d6",
+          "bytes_le": "d65645f9"
+        },
+        {
+          "site": "0x2310d38",
+          "file_offset": "0x230cd38",
+          "word": "0xf94002c2",
+          "bytes_le": "c20240f9"
+        },
+        {
+          "site": "0x2310d3c",
+          "file_offset": "0x230cd3c",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x2310d40",
+          "file_offset": "0x230cd40",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x2310d44",
+          "file_offset": "0x230cd44",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x2310d48",
+          "file_offset": "0x230cd48",
+          "word": "0x943ef0fd",
+          "bytes_le": "fdf03e94"
+        },
+        {
+          "site": "0x2310d5c",
+          "file_offset": "0x230cd5c",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x2310d60",
+          "file_offset": "0x230cd60",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        },
+        {
+          "site": "0x2310d64",
+          "file_offset": "0x230cd64",
+          "word": "0x97f584a2",
+          "bytes_le": "a284f597"
+        }
+      ],
+      "precondition": "Normal execution reaches the signup after metadata/class initialization and object/delegate construction.",
+      "limits": [
+        "Does not prove handler invocation, side effects, subscription order across instances or lifetime/unsubscription.",
+        "Exceptions, lazy-init helpers and indirect/generated calls outside this guarded flow remain unmodeled."
+      ]
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "event": "GameSceneManager.OnBeforeSceneLoadStage3Action",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelManager",
+        "name": "Awake",
+        "token": "0x0600848e",
+        "method_definition_index": 33933,
+        "parameter_count": 0,
+        "vaddr": "0x2310b8c",
+        "file_offset": "0x230cb8c"
+      },
+      "handler": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelManager",
+        "name": "OnBeforeSceneLoadStage3",
+        "token": "0x0600849d",
+        "method_definition_index": 33948,
+        "parameter_count": 0,
+        "vaddr": "0x2313e70",
+        "file_offset": "0x230fe70"
+      },
+      "event_add_method": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "add_OnBeforeSceneLoadStage3Action",
+        "token": "0x060056f4",
+        "method_definition_index": 22259,
+        "parameter_count": 1,
+        "vaddr": "0x20721a4",
+        "file_offset": "0x206e1a4"
+      },
+      "target_object": "this saved in x19",
+      "handler_metadata_usage": {
+        "got_vaddr": "0x41d9ab0",
+        "usage_vaddr": "0x4325130",
+        "encoded": "0x60010939",
+        "kind": 3,
+        "index": 33948
+      },
+      "handler_got_reference": {
+        "adrp_site": "0x2310cd8",
+        "ldr_site": "0x2310ce8",
+        "got_vaddr": "0x41d9ab0",
+        "base_register": 29,
+        "destination_register": 29
+      },
+      "constructor_call": {
+        "site": "0x2310d80",
+        "file_offset": "0x230cd80",
+        "word": "0x943ef0ef",
+        "bytes_le": "eff03e94",
+        "target": "0x32cd13c",
+        "metadata_method": {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Action",
+          "name": ".ctor",
+          "token": "0x06000379",
+          "method_definition_index": 37309,
+          "parameter_count": 2,
+          "vaddr": "0x32cd13c",
+          "file_offset": "0x32c913c"
+        },
+        "identity_limit": null
+      },
+      "registration_branch": {
+        "site": "0x2310d8c",
+        "file_offset": "0x230cd8c",
+        "word": "0x97f58506",
+        "bytes_le": "0685f597",
+        "kind": "BL",
+        "target": "0x20721a4"
+      },
+      "raw_argument_flow_anchors": [
+        {
+          "site": "0x2310bb4",
+          "file_offset": "0x230cbb4",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x2310cd8",
+          "file_offset": "0x230ccd8",
+          "word": "0xb000f65d",
+          "bytes_le": "5df600b0"
+        },
+        {
+          "site": "0x2310ce8",
+          "file_offset": "0x230cce8",
+          "word": "0xf9455bbd",
+          "bytes_le": "bd5b45f9"
+        },
+        {
+          "site": "0x2310d70",
+          "file_offset": "0x230cd70",
+          "word": "0xf94003a2",
+          "bytes_le": "a20340f9"
+        },
+        {
+          "site": "0x2310d74",
+          "file_offset": "0x230cd74",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x2310d78",
+          "file_offset": "0x230cd78",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x2310d7c",
+          "file_offset": "0x230cd7c",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x2310d80",
+          "file_offset": "0x230cd80",
+          "word": "0x943ef0ef",
+          "bytes_le": "eff03e94"
+        },
+        {
+          "site": "0x2310d84",
+          "file_offset": "0x230cd84",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x2310d88",
+          "file_offset": "0x230cd88",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        },
+        {
+          "site": "0x2310d8c",
+          "file_offset": "0x230cd8c",
+          "word": "0x97f58506",
+          "bytes_le": "0685f597"
+        }
+      ],
+      "precondition": "Normal execution reaches the signup after metadata/class initialization and object/delegate construction.",
+      "limits": [
+        "Does not prove handler invocation, side effects, subscription order across instances or lifetime/unsubscription.",
+        "Exceptions, lazy-init helpers and indirect/generated calls outside this guarded flow remain unmodeled."
+      ]
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "event": "UnityEngine.SceneManagement.SceneManager.activeSceneChanged",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": ".cctor",
+        "token": "0x060056fa",
+        "method_definition_index": 22265,
+        "parameter_count": 0,
+        "vaddr": "0x20724cc",
+        "file_offset": "0x206e4cc"
+      },
+      "handler": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "OnActiveSceneChanged",
+        "token": "0x060056fc",
+        "method_definition_index": 22267,
+        "parameter_count": 2,
+        "vaddr": "0x2072644",
+        "file_offset": "0x206e644"
+      },
+      "event_add_method": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.SceneManagement.SceneManager",
+        "name": "add_activeSceneChanged",
+        "token": "0x060009c6",
+        "method_definition_index": 87582,
+        "parameter_count": 1,
+        "vaddr": "0x3cdc02c",
+        "file_offset": "0x3cd802c"
+      },
+      "target_object": "null (static handler)",
+      "handler_metadata_usage": {
+        "got_vaddr": "0x41c85a8",
+        "usage_vaddr": "0x4320ce8",
+        "encoded": "0x6000adf7",
+        "kind": 3,
+        "index": 22267
+      },
+      "handler_got_reference": {
+        "adrp_site": "0x20724e0",
+        "ldr_site": "0x20724f0",
+        "got_vaddr": "0x41c85a8",
+        "base_register": 19,
+        "destination_register": 19
+      },
+      "constructor_call": {
+        "site": "0x2072540",
+        "file_offset": "0x206e540",
+        "word": "0x943fa006",
+        "bytes_le": "06a03f94",
+        "target": "0x305a558",
+        "metadata_method": null,
+        "identity_limit": "Typed delegate-construction helper at this VA is not named by this metadata index; argument flow and final Unity event add are guarded."
+      },
+      "registration_branch": {
+        "site": "0x2072568",
+        "file_offset": "0x206e568",
+        "word": "0x1471a6b1",
+        "bytes_le": "b1a67114",
+        "kind": "B",
+        "target": "0x3cdc02c"
+      },
+      "raw_argument_flow_anchors": [
+        {
+          "site": "0x20724e0",
+          "file_offset": "0x206e4e0",
+          "word": "0xd0010ab3",
+          "bytes_le": "b30a01d0"
+        },
+        {
+          "site": "0x20724f0",
+          "file_offset": "0x206e4f0",
+          "word": "0xf942d673",
+          "bytes_le": "73d642f9"
+        },
+        {
+          "site": "0x2072530",
+          "file_offset": "0x206e530",
+          "word": "0xf9400262",
+          "bytes_le": "620240f9"
+        },
+        {
+          "site": "0x2072534",
+          "file_offset": "0x206e534",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        },
+        {
+          "site": "0x2072538",
+          "file_offset": "0x206e538",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x207253c",
+          "file_offset": "0x206e53c",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x2072540",
+          "file_offset": "0x206e540",
+          "word": "0x943fa006",
+          "bytes_le": "06a03f94"
+        },
+        {
+          "site": "0x2072554",
+          "file_offset": "0x206e554",
+          "word": "0xaa1303e0",
+          "bytes_le": "e00313aa"
+        },
+        {
+          "site": "0x2072560",
+          "file_offset": "0x206e560",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        },
+        {
+          "site": "0x2072568",
+          "file_offset": "0x206e568",
+          "word": "0x1471a6b1",
+          "bytes_le": "b1a67114"
+        }
+      ],
+      "precondition": "Normal execution reaches the signup after metadata/class initialization and object/delegate construction.",
+      "limits": [
+        "Does not prove handler invocation, side effects, subscription order across instances or lifetime/unsubscription.",
+        "Exceptions, lazy-init helpers and indirect/generated calls outside this guarded flow remain unmodeled."
+      ]
+    }
+  ],
+  "inspection_windows": {
+    "PWC.BackgroundPlanetSoundHandler.Awake": {
+      "start": "0x20691dc",
+      "exclusive_stop": "0x20692dc",
+      "bytes": 256,
+      "sha256": "9fc8ea0facba1599424f1061cb13096e738025c5d4b8fcf69bfabdcfab741388",
+      "limit": "Next metadata start is only a bounded inspection window, not full/noncontiguous CFG/body proof."
+    },
+    "PWC.PersistentData.PersistentDataManager.Awake": {
+      "start": "0x21e0658",
+      "exclusive_stop": "0x21e0738",
+      "bytes": 224,
+      "sha256": "5a59ed3730161216a2bb9d7183a5687f073f72d8d49478ba3b8c56bf193229ef",
+      "limit": "Next metadata start is only a bounded inspection window, not full/noncontiguous CFG/body proof."
+    },
+    "PWC.Level.LevelManager.Awake": {
+      "start": "0x2310b8c",
+      "exclusive_stop": "0x2310e50",
+      "bytes": 708,
+      "sha256": "a7a37c0934dac0ffa38f54bdc80150dbe323dc79220c5864676ad4b85fad1659",
+      "limit": "Next metadata start is only a bounded inspection window, not full/noncontiguous CFG/body proof."
+    },
+    "PWC.GameSceneManager..cctor": {
+      "start": "0x20724cc",
+      "exclusive_stop": "0x207256c",
+      "bytes": 160,
+      "sha256": "bf248845f1d65705b017fb7c9a0fda74330a56b05e956d214f3f7315641ed8de",
+      "limit": "Next metadata start is only a bounded inspection window, not full/noncontiguous CFG/body proof."
+    }
+  },
+  "direct_encoding_candidates": [
+    {
+      "site": "0x1e2987c",
+      "file_offset": "0x1e2587c",
+      "word": "0x1408fe98",
+      "bytes_le": "98fe0814",
+      "target": "0x20692dc",
+      "kind": "B",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.LevelDigHoleArea",
+          "name": "Awake",
+          "token": "0x06002d6f",
+          "method_definition_index": 11630,
+          "parameter_count": 0,
+          "vaddr": "0x1e29750",
+          "file_offset": "0x1e25750"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x1e64304",
+      "file_offset": "0x1e60304",
+      "word": "0x940813f6",
+      "bytes_le": "f6130894",
+      "target": "0x20692dc",
+      "kind": "BL",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.LevelSpawnOnLevelPostInit",
+          "name": "Awake",
+          "token": "0x060032a1",
+          "method_definition_index": 12960,
+          "parameter_count": 0,
+          "vaddr": "0x1e6419c",
+          "file_offset": "0x1e6019c"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x1f04e80",
+      "file_offset": "0x1f00e80",
+      "word": "0x14059117",
+      "bytes_le": "17910514",
+      "target": "0x20692dc",
+      "kind": "B",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.WaterSlide.LevelSlideSwitcherHandler",
+          "name": "Awake",
+          "token": "0x06003cd0",
+          "method_definition_index": 15567,
+          "parameter_count": 0,
+          "vaddr": "0x1f04de0",
+          "file_offset": "0x1f00de0"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x1f14dbc",
+      "file_offset": "0x1f10dbc",
+      "word": "0x14055148",
+      "bytes_le": "48510514",
+      "target": "0x20692dc",
+      "kind": "B",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.Locker.LevelLockerSpawnOnPostInit",
+          "name": "Awake",
+          "token": "0x06003e39",
+          "method_definition_index": 15928,
+          "parameter_count": 0,
+          "vaddr": "0x1f14d10",
+          "file_offset": "0x1f10d10"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x2069294",
+      "file_offset": "0x2065294",
+      "word": "0x94000012",
+      "bytes_le": "12000094",
+      "target": "0x20692dc",
+      "kind": "BL",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.BackgroundPlanetSoundHandler",
+          "name": "Awake",
+          "token": "0x060055ff",
+          "method_definition_index": 22014,
+          "parameter_count": 0,
+          "vaddr": "0x20691dc",
+          "file_offset": "0x20651dc"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x2194518",
+      "file_offset": "0x2190518",
+      "word": "0x97fb5371",
+      "bytes_le": "7153fb97",
+      "target": "0x20692dc",
+      "kind": "BL",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.AvatarSpeech.AvatarSpeechUIMenu",
+          "name": "Awake",
+          "token": "0x06006997",
+          "method_definition_index": 27030,
+          "parameter_count": 0,
+          "vaddr": "0x21943d8",
+          "file_offset": "0x21903d8"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x21e0734",
+      "file_offset": "0x21dc734",
+      "word": "0x17fa462e",
+      "bytes_le": "2e46fa17",
+      "target": "0x2071fec",
+      "kind": "B",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage2Action",
+          "token": "0x060056f2",
+          "method_definition_index": 22257,
+          "parameter_count": 1,
+          "vaddr": "0x2071fec",
+          "file_offset": "0x206dfec"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.PersistentData.PersistentDataManager",
+          "name": "Awake",
+          "token": "0x06006e3e",
+          "method_definition_index": 28221,
+          "parameter_count": 0,
+          "vaddr": "0x21e0658",
+          "file_offset": "0x21dc658"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x22842dc",
+      "file_offset": "0x22802dc",
+      "word": "0x97f79400",
+      "bytes_le": "0094f797",
+      "target": "0x20692dc",
+      "kind": "BL",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelKillArea",
+          "name": "Awake",
+          "token": "0x06007840",
+          "method_definition_index": 30783,
+          "parameter_count": 0,
+          "vaddr": "0x2284144",
+          "file_offset": "0x2280144"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x2310d64",
+      "file_offset": "0x230cd64",
+      "word": "0x97f584a2",
+      "bytes_le": "a284f597",
+      "target": "0x2071fec",
+      "kind": "BL",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage2Action",
+          "token": "0x060056f2",
+          "method_definition_index": 22257,
+          "parameter_count": 1,
+          "vaddr": "0x2071fec",
+          "file_offset": "0x206dfec"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelManager",
+          "name": "Awake",
+          "token": "0x0600848e",
+          "method_definition_index": 33933,
+          "parameter_count": 0,
+          "vaddr": "0x2310b8c",
+          "file_offset": "0x230cb8c"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x2310d8c",
+      "file_offset": "0x230cd8c",
+      "word": "0x97f58506",
+      "bytes_le": "0685f597",
+      "target": "0x20721a4",
+      "kind": "BL",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage3Action",
+          "token": "0x060056f4",
+          "method_definition_index": 22259,
+          "parameter_count": 1,
+          "vaddr": "0x20721a4",
+          "file_offset": "0x206e1a4"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelManager",
+          "name": "Awake",
+          "token": "0x0600848e",
+          "method_definition_index": 33933,
+          "parameter_count": 0,
+          "vaddr": "0x2310b8c",
+          "file_offset": "0x230cb8c"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x2319798",
+      "file_offset": "0x2315798",
+      "word": "0x17f56215",
+      "bytes_le": "1562f517",
+      "target": "0x2071fec",
+      "kind": "B",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage2Action",
+          "token": "0x060056f2",
+          "method_definition_index": 22257,
+          "parameter_count": 1,
+          "vaddr": "0x2071fec",
+          "file_offset": "0x206dfec"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelScreenshotManager",
+          "name": "Awake",
+          "token": "0x060084fe",
+          "method_definition_index": 34045,
+          "parameter_count": 0,
+          "vaddr": "0x23196f8",
+          "file_offset": "0x23156f8"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x23368c4",
+      "file_offset": "0x23328c4",
+      "word": "0x17f4ca86",
+      "bytes_le": "86caf417",
+      "target": "0x20692dc",
+      "kind": "B",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelNewAvatarManager",
+          "name": "Awake",
+          "token": "0x060085cd",
+          "method_definition_index": 34252,
+          "parameter_count": 0,
+          "vaddr": "0x23366d4",
+          "file_offset": "0x23326d4"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    },
+    {
+      "site": "0x233d35c",
+      "file_offset": "0x233935c",
+      "word": "0x17f4d392",
+      "bytes_le": "92d3f417",
+      "target": "0x20721a4",
+      "kind": "B",
+      "target_methods": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage3Action",
+          "token": "0x060056f4",
+          "method_definition_index": 22259,
+          "parameter_count": 1,
+          "vaddr": "0x20721a4",
+          "file_offset": "0x206e1a4"
+        }
+      ],
+      "owner_candidate": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelMakerSwitcher",
+          "name": "Awake",
+          "token": "0x06008659",
+          "method_definition_index": 34392,
+          "parameter_count": 0,
+          "vaddr": "0x233d2b4",
+          "file_offset": "0x23392b4"
+        }
+      ],
+      "classification": "STATIC_direct_encoding_candidate_nearest_owner_not_CFG_proven"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x20691dc",
+        "--stop-address=0x20692dc",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.028,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/scene-subscribers/PWC.BackgroundPlanetSoundHandler.Awake.asm.txt",
+      "output_sha256": "31ca636301aa3da87a18f6da7ef2ad9d2188822775495ea9248625d71e7c8c79"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x21e0658",
+        "--stop-address=0x21e0738",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/scene-subscribers/PWC.PersistentData.PersistentDataManager.Awake.asm.txt",
+      "output_sha256": "39a30abf248740e8d54e9237632ee5b93b3e8d8617f639c57a82f628c367c1ac"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x2310b8c",
+        "--stop-address=0x2310e50",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.024,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/scene-subscribers/PWC.Level.LevelManager.Awake.asm.txt",
+      "output_sha256": "e45ce66f2cbe980f2ea9e542e548812dce4de53df81e2505ce6cfe782c22df9d"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x20724cc",
+        "--stop-address=0x207256c",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/scene-subscribers/PWC.GameSceneManager..cctor.asm.txt",
+      "output_sha256": "d29e299a3578e36142e162aa3ac055791790348fd7de010e2a456761a6b097eb"
+    }
+  ],
+  "unknowns": [
+    "No runtime registration or invocation was observed.",
+    "The other direct candidates are discovery leads, not validated signup/handler edges in this report.",
+    "Indirect registration, delegates created elsewhere, reflection, dynamically loaded code, unsubscription and cross-instance ordering remain open.",
+    "The activeSceneChanged typed construction helper at 0x305a558 has no resolved metadata identity here.",
+    "Handler bodies/effects and full method extents are outside this registration probe.",
+    "No absence claim or complete subscriber graph follows from this bounded scan."
+  ],
+  "queue_modified": false,
+  "game_executed": false,
+  "active_REA_target_used": false
+}
