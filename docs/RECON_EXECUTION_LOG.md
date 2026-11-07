@@ -115,3 +115,10 @@ python3 -m unittest discover -s tools -p test_recon_scene_subscribers.py -v
 ```
 
 O produtor de loading verifica os hashes dos APKs e só materializa a entrada UnityFS selecionada, com 726.336 bytes; o bundle inteiro não foi redumpado. Os índices nativos e as evidências anteriores foram reutilizados. Nenhuma execução Android, build Unity ou alteração no cliente integra este lote. Commit e push deste recorte são feitos depois dessas verificações; resultados de publicação são confirmados pelo Git.
+
+### Publicação do lote de loading/eventos
+
+- Commit de análise: `e93581bc907a9008f7b3639c3125d1eecfabc56c`.
+- `git push origin main` concluiu com código zero, publicando `df96ea726 → e93581bc9`.
+- O recibo de publicação foi adicionado ao checkpoint estruturado em commit documental posterior; os relatórios de evidência revisados permanecem intactos.
+- As alterações locais de catálogo/editor/mapa não foram incluídas nesse lote.
