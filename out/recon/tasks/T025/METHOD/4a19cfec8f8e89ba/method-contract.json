@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "task_id": "T025/METHOD/4a19cfec8f8e89ba",
+  "scope": "Bounded static ARM64/IL2CPP-metadata contract for PWC.World.Buildings.WorldBuilding.ClickOnLevel; no runtime execution, emulation, or device validation performed here",
+  "method_identity": {
+    "image": "Assembly-CSharp.dll",
+    "token": "0x06006081",
+    "method_definition_index": 24704,
+    "declaring_type": "PWC.World.Buildings.WorldBuilding",
+    "name": "ClickOnLevel",
+    "parameter_count": 1,
+    "vaddr": "0x2108e90",
+    "exclusive_stop": "0x2109014",
+    "body_bytes": 388,
+    "body_sha256": "e3fb66f7c132e9941b417e8450f9c239f93c691abeb45476d5fc5caef3fe144d",
+    "bound_basis": "Next method in metadata (WorldBuildingsDataManager.TryLoadBuildingData at 0x2109014) re-resolved and confirmed as the exclusive upper bound."
+  },
+  "input_pair": {
+    "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+  },
+  "tool_source": {
+    "script": "tools/recon_world_click.py",
+    "function": "verify (WorldBuilding.ClickOnLevel subset of the wider tap-to-scene chain it already covers)",
+    "note": "Reran the existing verifier (20 calls, 37 operand anchors, all passed) against the current cached binary/metadata pair, then isolated the subset of calls/branches whose address falls inside ClickOnLevel's own bounded body and independently re-decoded that body's full control flow and exact byte hash."
+  },
+  "status": "STATIC_candidate_contract_checked_not_certified",
+  "parameters": ["level:LevelType (enum, passed in register per the single-int-parameter ABI)"],
+  "return": "void",
+  "pseudocode": [
+    "ensure metadata/class initialization (guarded helper calls, same idiom as other methods in this binary)",
+    "if OnClickBuildingAction delegate is set (non-null check before 0x2108ee4): invoke it indirectly with (this, level) -- indirect call, target not decoded",
+    "InteractionHistoryManager.MarkBuildingAsInteracted(...)",
+    "InteractionHistoryManager.SetFocusedBuildingType(...)",
+    "access gate: if SettingsManager.Instance/ExtraSettings null -> early-return via shared failure helper at 0x2109010; else if useTimeLock flag set OR IsCurrentlyFree() OR Utils.IsGameUnlocked(null): proceed to enter",
+    "if OnClickAction delegate is set: invoke it (UnityEvent.Invoke)",
+    "SaveBuildingData(buildingType, level)",
+    "scene = CoreExtensions.GetSceneName(level) (\"Level_\"+enum name)",
+    "virtual dispatch through a vtable slot (BLR at 0x2108fe0) with the scene string -- inferred to be WorldEnterableEntity.LoadScene(string) from the override set in the Cpp2IL dump, vtable itself not decoded here",
+    "else (gate fails): TryGetRemoteConfigItem(...) then WorldBuildingPreviewPopup.Show(buildingType, item); tail-branch back without entering (B to 0x2108fe4, which itself leads to RET at 0x2108ff0)"
+  ],
+  "verified_calls": [
+    {"site": "0x2108f28", "target": "0x2141b50", "callee": {"declaring_type": "PWC.InteractionHistory.InteractionHistoryManager", "name": "MarkBuildingAsInteracted"}},
+    {"site": "0x2108f68", "target": "0x2141d58", "callee": {"declaring_type": "PWC.InteractionHistory.InteractionHistoryManager", "name": "SetFocusedBuildingType"}},
+    {"site": "0x2108f90", "target": "0x2109138", "callee": {"declaring_type": "PWC.World.Buildings.WorldBuilding", "name": "IsCurrentlyFree"}},
+    {"site": "0x2108f9c", "target": "0x1cbb7a8", "callee": {"declaring_type": "PazuCore.Utils", "name": "IsGameUnlocked"}},
+    {"site": "0x2108fb0", "target": "0x3cda874", "callee": {"declaring_type": "UnityEngine.Events.UnityEvent", "name": "Invoke"}},
+    {"site": "0x2108fbc", "target": "0x2109220", "callee": {"declaring_type": "PWC.World.Buildings.WorldBuildingsDataManager", "name": "SaveBuildingData"}},
+    {"site": "0x2108fc8", "target": "0x206a798", "callee": {"declaring_type": "PWC.CoreExtensions", "name": "GetSceneName"}},
+    {"site": "0x2108ffc", "target": "0x21091b4", "callee": {"declaring_type": "PWC.World.Buildings.WorldBuilding", "name": "TryGetRemoteConfigItem"}},
+    {"site": "0x2109008", "target": "0x20feda8", "callee": {"declaring_type": "PWC.World.WorldBuildingPreviewPopup", "name": "Show"}},
+    {"site": "0x2108eb8", "target": "0x1b886e8", "callee": "unresolved native IL2CPP runtime helper (metadata-init guard, same target family seen across this binary)"},
+    {"site": "0x2108efc", "target": "0x1b886e8", "callee": "unresolved native IL2CPP runtime helper (same as above)"},
+    {"site": "0x2108f3c", "target": "0x1b886e8", "callee": "unresolved native IL2CPP runtime helper (same as above)"},
+    {"site": "0x2109010", "target": "0x1b88980", "callee": "unresolved native IL2CPP runtime helper; reached only from the guard-failure branches (null SettingsManager/ExtraSettings paths) -- candidate: a shared null-check/exception-throw helper, not decoded"}
+  ],
+  "unresolved_indirect_calls": [
+    {"site": "0x2108ee4", "kind": "BLR", "candidate": "OnClickBuildingAction delegate invocation with (this, level)", "confidence": "inferred from surrounding null-guard shape and the tool's existing documented pseudocode; delegate target not decoded"},
+    {"site": "0x2108fe0", "kind": "BLR", "candidate": "virtual WorldEnterableEntity.LoadScene(string scene) via vtable slot 0x298", "confidence": "inferred (same inference already recorded by tools/recon_world_click.py); vtable itself not decoded in this task"}
+  ],
+  "verification": {
+    "input_identity": "passed (native+metadata sha256 match pinned pair)",
+    "method_identity_and_exact_bounds": "passed (re-resolved both ClickOnLevel and the next method to confirm the 388-byte exclusive bound)",
+    "control_flow_decode": "passed (29 control-flow instructions decoded in-range)",
+    "callee_symbol_bindings": "passed (9 of 13 BL targets resolved and revalidated against metadata_methods.jsonl; 4 are shared unresolved native IL2CPP runtime helpers already seen in sibling methods)",
+    "target_executed": false,
+    "emulated": false,
+    "semantic_certification": false
+  },
+  "unknowns": [
+    "OnClickBuildingAction delegate's actual bound target at the indirect call site 0x2108ee4.",
+    "Virtual vtable slot 0x298 dispatch target at 0x2108fe0; inferred as WorldEnterableEntity.LoadScene(string) from the dump's override set, not decoded from the vtable itself.",
+    "Identity/semantics of the shared native helper at 0x1b88980 (reached only on guard-failure paths).",
+    "SettingsManager.Instance.ExtraSettings.useTimeLock's shipped value (ScriptableObject data not read in this task).",
+    "MarkBuildingAsInteracted/SetFocusedBuildingType/TryGetRemoteConfigItem/WorldBuildingPreviewPopup.Show's own bodies and effects (not inspected here)."
+  ]
+}
