@@ -10,7 +10,7 @@ namespace AvatarWorld.Core.Tests
         [Test]
         public void Catalog_HasUniqueIdsPricesInTheObservedRangeAndExistingArt()
         {
-            Assert.AreEqual(22, StoreCatalog.All.Count);
+            Assert.AreEqual(23, StoreCatalog.All.Count);
             Assert.AreEqual(StoreCatalog.All.Count, StoreCatalog.All.Select(o => o.Id).Distinct().Count());
             foreach (var offer in StoreCatalog.All)
             {
@@ -50,6 +50,8 @@ namespace AvatarWorld.Core.Tests
                 foreach (var offer in StoreCatalog.InCategory(StoreCatalog.CategoryHouses, sub))
                     Assert.AreEqual(sub, offer.Sub);
             Assert.AreEqual(0, StoreCatalog.SubCategories(StoreCatalog.CategoryCelebrations).Count);
+            // Volta as Aulas (PB3, arte real extraida de resources.assets) deu ao Profissoes seu 2o item e um sub-trilho.
+            Assert.AreEqual(2, StoreCatalog.SubCategories(StoreCatalog.CategoryProfessions).Count);
             Assert.AreEqual(StoreCatalog.InCategory(StoreCatalog.CategoryHouses).Count,
                 StoreCatalog.InCategory(StoreCatalog.CategoryHouses, null).Count);
         }

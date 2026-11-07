@@ -26,9 +26,12 @@ namespace AvatarWorld.Core.Economy
     }
 
     /// <summary>
-    /// Catalogo local da loja. A arte e os nomes de arquivo (PB2..PB27) vem do original; o original vende
-    /// por dinheiro real e os precos em moedas so aparecem em prints (6 ids marcados em Observed). Os demais
-    /// precos sao decisao local, dentro da faixa observada (300 a 1400 moedas).
+    /// Catalogo local da loja. A arte e os nomes de arquivo (PB2..PB27, mais PB3) vem do original; o original
+    /// vende por dinheiro real e os precos em moedas so aparecem em prints (6 ids marcados em Observed). Os
+    /// demais precos sao decisao local, dentro da faixa observada (300 a 1400 moedas).
+    /// PB3 ("Volta as Aulas") foi extraido direto de out/assets/resources.assets (BackToSchoolPB3Pack,
+    /// 2026-11-07): e o unico dos 3 bundles do enum StorePackType ausentes do catalogo (PB1, PB3, PB4) que
+    /// tem arte real completa -- PB1/PB4 nao tem nenhum sprite no APK (docs/STORE_WORLD_UI_SPEC.md).
     /// </summary>
     public static class StoreCatalog
     {
@@ -81,6 +84,7 @@ namespace AvatarWorld.Core.Economy
             O("PB15", "Cachorrinho", CategoryPets, "Cães", 600),
             O("PB16", "Crescendo", CategoryFashion, "Infantil", 750),
             O("PB17", "Estilista de Celebridades", CategoryProfessions, "Estilista", 650),
+            O("PB3", "Volta às Aulas", CategoryProfessions, "Escola", 650),
             O("PB18", "Moda Drip", CategoryFashion, "Drip", 600),
             O("PB19", "Gatinhos", CategoryPets, "Gatos", 550),
             O("PB20", "Pop Star", CategoryFashion, "Palco", 900),
