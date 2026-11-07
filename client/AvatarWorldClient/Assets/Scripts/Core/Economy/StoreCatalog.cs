@@ -81,15 +81,22 @@ namespace AvatarWorld.Core.Economy
             O("PB15", "Cachorrinho", CategoryPets, "Cães", 600),
             O("PB16", "Crescendo", CategoryFashion, "Infantil", 750),
             O("PB17", "Estilista de Celebridades", CategoryProfessions, "Estilista", 650),
-            O("PB18", "Moda Drip", CategoryFashion, "Urbano", 600),
+            O("PB18", "Moda Drip", CategoryFashion, "Drip", 600),
             O("PB19", "Gatinhos", CategoryPets, "Gatos", 550),
             O("PB20", "Pop Star", CategoryFashion, "Palco", 900),
-            O("PB21", "Moda Daisy", CategoryFashion, "Casual", 500),
-            O("PB24", "Férias de Primavera", CategoryFashion, "Casual", 800),
+            O("PB21", "Moda Daisy", CategoryFashion, "Daisy", 500),
+            O("PB24", "Férias de Primavera", CategoryFashion, "Férias", 800),
             O("PB27", "Festa à Fantasia", CategoryCelebrations, "Festas", 450),
         };
 
-        /// <summary>Subgrupos (sub-trilho) de uma categoria, na ordem de aparicao. Vazio se houver menos de 2.</summary>
+        /// <summary>
+        /// Subgrupos (sub-trilho) de uma categoria, na ordem de aparicao. Vazio se houver menos de 2.
+        /// Para Moda, os 6 nomes (Drip, Daisy, Ferias, Palco, Luxo, Infantil) batem com a contagem de 6
+        /// icones confirmada no print original (docs/STORE_WORLD_UI_SPEC.md) e usam os nomes internos reais
+        /// do jogo (enum Store.StorePackType, decompilado: DripFashionBundlePB18, DaisyFashionBundlePB21,
+        /// SpringBreakBundlePB24 etc.) em vez de rotulos puramente inventados; o agrupamento em si (quais
+        /// cartoes caem em qual dos 6 icones) continua sem confirmacao, pois vem de config remota ausente do APK.
+        /// </summary>
         public static IReadOnlyList<string> SubCategories(string category)
         {
             var subs = InCategory(category).Select(o => o.Sub).Where(s => !string.IsNullOrEmpty(s)).Distinct().ToList();
