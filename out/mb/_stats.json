@@ -16,7 +16,7 @@
    "err": 1
   },
   "PWC.Inventory.InventoryBuildData": {
-   "err": 1
+   "ok": 1
   },
   "PazuCore.AndroidFileManager": {
    "ok": 1
@@ -5194,7 +5194,7 @@
    "ok": 26
   },
   "PWC.Inventory.InventorySkinsBuildData": {
-   "err": 2
+   "ok": 2
   },
   "PWC.AvatarMaker.SUTSkinsDataMap": {
    "err": 6
@@ -7271,7 +7271,6 @@
  "erros": {
   "PazuCore.GameExtraSettings": "ValueError: Expected to read 544 bytes, but only read 52 bytes",
   "PazuCore.GameSettings": "EOFError: read_str out of bounds",
-  "PWC.Inventory.InventoryBuildData": "EOFError: read_str out of bounds",
   "PazuCore.WindowManager": "ValueError: Expected to read 168 bytes, but only read 32 bytes",
   "PazuCore.LocalizationManager": "ValueError: Expected to read 4528 bytes, but only read 32 bytes",
   "PazuCore.DeepLink.DeepLinkManager": "ValueError: Expected to read 6028 bytes, but only read 32 bytes",
@@ -7336,7 +7335,6 @@
   "PWC.EditorApp.EASUTEAddedSkinsScreen": "ValueError: Expected to read 56 bytes, but only read 32 bytes",
   "PWC.EditorApp.EASUTEManager": "ValueError: Expected to read 88 bytes, but only read 32 bytes",
   "PWC.EditorApp.EASUTEMenuManager": "ValueError: Expected to read 80 bytes, but only read 32 bytes",
-  "PWC.Inventory.InventorySkinsBuildData": "EOFError: read_str out of bounds",
   "PWC.AvatarMaker.SUTSkinsDataMap": "ValueError: Expected to read 7156 bytes, but only read 572 bytes",
   "BWYW.DailyTasksData": "ValueError: Failed to get ref type node",
   "BWYW.BWYWGiftData": "ValueError: Failed to get ref type node",

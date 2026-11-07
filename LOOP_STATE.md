@@ -1,5 +1,23 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Loja: categoria Casas — bug de extração corrigido, pacotes decodificados — 2026-11-07
+- Usuário observou ao vivo que Casas tem 8 submenus (doc anterior só tinha "5 tipos" por print). Investigado: não
+  estava mapeado por engenharia reversa nenhum.
+- Achada e corrigida a causa raiz de um bug que afetava `out/mb/_stats.json` (126 classes com erro): o gerador de
+  type-tree do IL2CPP rotula a raiz de campos `List<String>` como `m_Type="string"` em vez de `"vector"`, fazendo o
+  leitor da UnityPy ler a lista como string escalar e corromper tudo depois (`EOFError: read_str out of bounds`).
+  Fix em `tools/mb_dump.py` (`fix_mislabeled_vectors`), validado com `check_read=True` passando exatamente.
+  Dependência que faltava no ambiente: pacote pip `TypeTreeGeneratorAPI`.
+- Com o fix, `PWC.Inventory.InventoryBuildData` (224 pacotes, só 1 instância no jogo todo) ficou legível pela
+  primeira vez: `packGuid -> lista de itens`. Resolvido contra `store_catalog.json`. Achados 7 temas de Casas
+  (`...PBnBox_Pack`): Galxe Mansion e Natural Chic **confirmados** contra prints; Beach House/Island, Bubble Glam,
+  Kawaii House **inferidos** por padrão de nome; Modern House **incerto**; Mansão **não resolvido** (sem cômodos
+  encontrados). Candidato a 8º tema (não confirmado): Casinha de Brincar ~ `FairyTreeDollhouseP224`.
+- Detalhe completo: `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md`. Dados: `out/recon/store_house_bundles.json`,
+  `out/mb/PWC.Inventory.InventoryBuildData.jsonl.gz`, `out/mb/PWC.Inventory.InventorySkinsBuildData.jsonl.gz`.
+- NÃO implementado no cliente (não há editor de casas ainda; sem Unity Editor neste ambiente para validar). Também
+  não reextraí as outras ~124 classes que tinham o mesmo bug — fica para depois.
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
