@@ -1,5 +1,25 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Loja por item: corrige categoria artefato e da cor por categoria — 2026-11-07
+- `tools/build_item_catalog.py`: categoria de 1 caractere ("c" de "C_Scissors", "x" de "X_Obstacle_L150",
+  417+4 itens) era artefato do extrator (primeiro token do nome antes de "_"), nao categoria real - "c"
+  aparecia como um dos 8 chips mostrados ao jogador sem significado nenhum. Corrigido na origem: categoria
+  de 1 char cai em "outros" (mesmo tratamento que categoria vazia ja tinha). `Store/items.json`
+  regenerado (25.812 itens, mesma contagem). Teste novo `ShippedCatalog_HasNoOneLetterCategories`.
+- `ItemBrowserScreen`: cartoes e chips de categoria ganharam uma cor deterministica por categoria
+  (`CategoryColor`, hash do nome -> matiz HSV) para alguma distincao visual sem inventar arte - a tela
+  continua sem imagem por item (nao exportada ainda), mas deixa de parecer um dump plano identico.
+- A regra de preco por categoria (3 faixas, `ItemPricing.cs`) ja estava decidida em 2026-11-05, apesar de
+  `docs/PRD_WORLD_INTERIORS_2026-11-05.md` secao 5 ainda listar como "decisao pendente do autor" - a nota
+  no codigo e mais recente/especifica, confiavel; o doc esta desatualizado nesse ponto.
+- **Validacao automatizada PENDENTE** (mesma causa do commit `87148a4f8`/`6ae0003d9` em
+  `worktree-loja-criador-avatar`): `unity test --mode EditMode` morto pelo OOM killer do kernel, confirmado
+  via `journalctl` (`global_oom`, maquina de 7,1 GB RAM com varios jobs Claude Code concorrentes) mesmo apos
+  copiar `Library/` do checkout principal para o worktree. Decisao do usuario: seguir sem validacao
+  automatizada por ora. Fica pendente rodar a suite quando a maquina tiver folga de memoria.
+- O gap real e maior que esta mudanca cobre: arte por item para 25.811 GUIDs unicos exigiria um pipeline de
+  extracao/match GUID->sprite ainda nao construido (fora de escopo desta rodada).
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
