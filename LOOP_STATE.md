@@ -1,5 +1,28 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: causa-raiz das 126 classes com erro de dump — 2026-11-07
+- Ferramenta nova `tools/diagnose_dump_errors.py`: gera o typetree de cada uma das 126 classes de
+  `reports/recon/dump_coverage.json#error_classes` via `TypeTreeGenerator` (mesma lib do `mb_dump.py`),
+  sem reprocessar o bundle de 1,3 GB - so a geracao de nos, leve. Resultado completo em
+  `out/recon/tasks/T020/error_class_diagnosis.json`; leitura em `docs/RECON_DUMP_ERRORS_2026-11-07.md`.
+- Classificacao: **20 classes `PWC.EditorApp.*`** (ferramenta de editor interna do estudio, stripada do
+  build publicado por IL2CPP code stripping) sao confirmadas **irrecuperaveis** sem o assembly original -
+  nao e pendencia de retrabalho, e perda permanente de dado. **27 classes** (14 `AvatarMaker*ColorsConfig`/
+  `*SubcategoriesConfig` + 6 `PWC.LevelPhone.*` + outras) quebram o gerador por um **unico root cause**
+  confirmado lendo o `.cs` decompilado de cada uma: campo `SerializableDictionaryBase<TKey,TValue>`
+  (dicionario serializavel customizado que o gerador automatico nao resolve). Corrigir isso de uma vez
+  exigiria achar o layout real de `SerializableDictionaryBase` nos dumps e ensinar o pipeline sobre ele -
+  nao tentado nesta rodada, maior alavancagem possivel para continuar T020 depois. As 76 restantes (geram
+  typetree ok, falham so no tamanho em bytes do dump completo) e as outras 3 com NullRef sem causa isolada
+  ficam com hipoteses registradas no doc, nao investigadas a fundo.
+- Pegadinha encontrada e corrigida no proprio diagnostico: a primeira versao fixava
+  `assembly="Assembly-CSharp"` e dava falso-positivo em 2 classes Spine (`SkeletonAnimation`/
+  `SkeletonDataAsset`, que vivem em `spine-unity`); a versao final resolve o assembly real por classe via
+  `MonoScript`, como o `mb_dump.py` ja faz. Licao: nao supor o assembly ao escrever ferramentas de
+  diagnostico sobre este dump.
+- Nenhum dado de `out/mb/*.jsonl.gz` foi reprocessado; `reports/recon/dump_coverage.json` continua com a
+  mesma contagem (126 erros) - isto e so diagnostico de causa, nao correcao de cobertura ainda.
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
