@@ -1,0 +1,35 @@
+
+/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 1cb83f8: a9be57fe     	stp	x30, x21, [sp, #-0x20]!
+ 1cb83fc: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 1cb8400: b0014214     	adrp	x20, 0x44f9000
+ 1cb8404: 900127d5     	adrp	x21, 0x41b0000
+ 1cb8408: 39774e88     	ldrb	w8, [x20, #0xdd3]
+ 1cb840c: f94112b5     	ldr	x21, [x21, #0x220]
+ 1cb8410: aa0003f3     	mov	x19, x0
+ 1cb8414: 370000c8     	tbnz	w8, #0x0, 0x1cb842c <__start_il2cpp+0x6721c>
+ 1cb8418: 900127c0     	adrp	x0, 0x41b0000
+ 1cb841c: f9411000     	ldr	x0, [x0, #0x220]
+ 1cb8420: 97fb40b2     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1cb8424: 52800028     	mov	w8, #0x1                // =1
+ 1cb8428: 39374e88     	strb	w8, [x20, #0xdd3]
+ 1cb842c: f94002a0     	ldr	x0, [x21]
+ 1cb8430: 97fb4150     	bl	0x1b88970 <JNI_OnUnload+0xa5b4>
+ 1cb8434: 2a1f03e1     	mov	w1, wzr
+ 1cb8438: aa1f03e2     	mov	x2, xzr
+ 1cb843c: aa0003f4     	mov	x20, x0
+ 1cb8440: 94001a3a     	bl	0x1cbed28 <__start_il2cpp+0x6db18>
+ 1cb8444: b4000134     	cbz	x20, 0x1cb8468 <__start_il2cpp+0x67258>
+ 1cb8448: aa1403e0     	mov	x0, x20
+ 1cb844c: f8020c13     	str	x19, [x0, #0x20]!
+ 1cb8450: aa1303e1     	mov	x1, x19
+ 1cb8454: 97fb4090     	bl	0x1b88694 <JNI_OnUnload+0xa2d8>
+ 1cb8458: aa1403e0     	mov	x0, x20
+ 1cb845c: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 1cb8460: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 1cb8464: d65f03c0     	ret
+ 1cb8468: 97fb4146     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>
