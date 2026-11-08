@@ -32023,40 +32023,28 @@
       "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion.",
       "evidence_refs": [
         {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/method-contract.json",
+          "sha256": "f4e7471d8b4df958c44ab83ed7a52ed5432680ebdeb486cf7572e8d715edcb1c"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/control-flow.json",
+          "sha256": "0558e3939d614cd5f58a241a3d91bbad089584927b3b0580714cbf70e0d4436e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/unknowns.jsonl",
+          "sha256": "2b2b19fb27a2868d80721eff1934a2615a5a9b8561238281f294362e9dbafa67"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/result.json",
+          "sha256": "4587d73cdf0914557f7d46eac6e33b41641bf3e4e140e585031e0825f61f4e52"
+        },
+        {
           "path": "reports/recon/loading_fade_contract.json",
           "sha256": "7101aaff91c018fae1f576e7745b22f3c611c53f2e9d25d90a0beba8b785cf0b"
         },
         {
           "path": "reports/recon/scene_subscribers.json",
-          "sha256": "370315f50a33bf43f04f32d54584c2fccc2227d26a7c733f2a6572e0603c7adf"
-        },
-        {
-          "path": "reports/recon/review_loading_subscribers.json",
-          "sha256": "b570c8c2290aedbc8aef7d50dac1271addcf5ec0b3dc6fb468666d18a0136af3"
-        },
-        {
-          "path": "docs/RECON_LOADING_FADE_CONTRACT.md",
-          "sha256": "28b903393903305c734ee82e338d2422d0f32c7d0823a13bcf9d9683e030c890"
-        },
-        {
-          "path": "docs/RECON_SCENE_SUBSCRIBERS.md",
-          "sha256": "99e9acef504c806460f5a6d00d8b1f52a3cfcc92a292a35e0631ae72b3b97545"
-        },
-        {
-          "path": "tools/recon_loading_fade.py",
-          "sha256": "4f4ec5747e0acf3012928d92f8192bb8b2577890f16a7e21eab95ea51b6f597b"
-        },
-        {
-          "path": "tools/recon_scene_subscribers.py",
-          "sha256": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce"
-        },
-        {
-          "path": "tools/test_recon_loading_fade.py",
-          "sha256": "9bb6cf49d5633aa002be7ac8392beaee7d4eefeae2b0d74a689bf0f03b0a54c9"
-        },
-        {
-          "path": "tools/test_recon_scene_subscribers.py",
-          "sha256": "697f664c93fc3fd5fb6bb7b29cb567ef6c6b26a35b40a0475a04a5ed3e7717d6"
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
         }
       ],
       "unknown_ids": [
@@ -32116,12 +32104,47 @@
               "sha256": "697f664c93fc3fd5fb6bb7b29cb567ef6c6b26a35b40a0475a04a5ed3e7717d6"
             }
           ]
+        },
+        {
+          "id": "690a730c218b46728ba0ba78426700d7",
+          "owner": "agente-logica-claude",
+          "started_at": 1794097761.569723,
+          "lease_id": "92d1fa3ce2504ea3aad2650420f19700",
+          "checkpoint_at": 1794097850.959903,
+          "state": "ready",
+          "note": "Revalidei os tres verificadores estaticos ja existentes (recon_navigation.py para o corpo de LoadScene, recon_loading_fade.py para a cadeia fade/tween/prefab, recon_scene_subscribers.py para o registro de OnSceneLoaded) contra o par atual, apos simlinkar o split_UnityDataAssetPack.apk (1,5GB) e base.apk no worktree -- a extracao fica limitada a <=64MB por bloco, nunca carrega o datapack inteiro. Consolidei em method-contract.json/control-flow.json/unknowns.jsonl/result.json. Os 8 unknown_ids da tentativa anterior continuam abertos (nao avancei nenhum nesta rodada); 3 ainda sao estaticamente decodificaveis (alvos Stage1-3, candidatos remanescentes do subscriber), os outros 5 dependem de runtime/aparelho. Mantenho ready (nao evidence_ready): o criterio de aceite completo nao foi atingido.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/method-contract.json",
+              "sha256": "f4e7471d8b4df958c44ab83ed7a52ed5432680ebdeb486cf7572e8d715edcb1c"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/control-flow.json",
+              "sha256": "0558e3939d614cd5f58a241a3d91bbad089584927b3b0580714cbf70e0d4436e"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/unknowns.jsonl",
+              "sha256": "2b2b19fb27a2868d80721eff1934a2615a5a9b8561238281f294362e9dbafa67"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/result.json",
+              "sha256": "4587d73cdf0914557f7d46eac6e33b41641bf3e4e140e585031e0825f61f4e52"
+            },
+            {
+              "path": "reports/recon/loading_fade_contract.json",
+              "sha256": "7101aaff91c018fae1f576e7745b22f3c611c53f2e9d25d90a0beba8b785cf0b"
+            },
+            {
+              "path": "reports/recon/scene_subscribers.json",
+              "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+            }
+          ]
         }
       ],
-      "owner": "/root",
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Recorte estático revisado: dois slots virtuais, prefab original, fade/coroutine e cinco inscrições. Retomar nove candidatos de Stage, efeitos/lifetime e dependências/runtime; método completo permanece aberto.",
+      "next_action": "Revalidei os tres verificadores estaticos ja existentes (recon_navigation.py para o corpo de LoadScene, recon_loading_fade.py para a cadeia fade/tween/prefab, recon_scene_subscribers.py para o registro de OnSceneLoaded) contra o par atual, apos simlinkar o split_UnityDataAssetPack.apk (1,5GB) e base.apk no worktree -- a extracao fica limitada a <=64MB por bloco, nunca carrega o datapack inteiro. Consolidei em method-contract.json/control-flow.json/unknowns.jsonl/result.json. Os 8 unknown_ids da tentativa anterior continuam abertos (nao avancei nenhum nesta rodada); 3 ainda sao estaticamente decodificaveis (alvos Stage1-3, candidatos remanescentes do subscriber), os outros 5 dependem de runtime/aparelho. Mantenho ready (nao evidence_ready): o criterio de aceite completo nao foi atingido.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -32413,7 +32436,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 50,
+  "revision": 53,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -33163,6 +33186,27 @@
       "task": "T002",
       "actor": "agente-logica-claude",
       "at": 1794097061.7337646
+    },
+    {
+      "revision": 51,
+      "action": "claim",
+      "task": "T025/METHOD/8e708ca7d06e0b52",
+      "actor": "agente-logica-claude",
+      "at": 1794097761.580328
+    },
+    {
+      "revision": 52,
+      "action": "start",
+      "task": "T025/METHOD/8e708ca7d06e0b52",
+      "actor": "agente-logica-claude",
+      "at": 1794097766.7854962
+    },
+    {
+      "revision": 53,
+      "action": "checkpoint",
+      "task": "T025/METHOD/8e708ca7d06e0b52",
+      "actor": "agente-logica-claude",
+      "at": 1794097850.9705484
     }
   ]
 }

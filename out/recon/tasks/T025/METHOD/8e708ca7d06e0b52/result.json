@@ -1,0 +1,13 @@
+{
+  "task_id": "T025/METHOD/8e708ca7d06e0b52",
+  "status": "partial",
+  "semantic_completion": false,
+  "method_body_fully_bounded": true,
+  "contract": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/method-contract.json",
+  "control_flow": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/control-flow.json",
+  "unknowns": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/unknowns.jsonl",
+  "method": "LoadScene's own body (904 bytes) is fully bounded and all its named direct calls re-verified. Revalidated two previously-written deeper probes (fade/tween chain, scene-loaded subscriber graph) against the current pinned pair, after symlinking the required 1.5GB asset-pack APK into this worktree and confirming the extraction stays memory-bounded (<=64MB, never loads the full datapack). All 8 of this task's own unknown_ids remain open: 3 are static-decodable in principle (Stage1-3 delegate targets, remaining subscriber candidates) but were not newly resolved this attempt; the other 5 are irreducibly runtime/device-dependent and out of scope while avoiding Unity/device work.",
+  "no_full_unity_or_device_work_performed": true,
+  "note": "This consolidation reused and revalidated three existing static tools (recon_navigation.py, recon_loading_fade.py, recon_scene_subscribers.py) rather than writing new analysis; it did not advance any of the 8 open unknown_ids beyond their prior status, per the current instruction to avoid Unity/device work. The task remains correctly 'ready' (partial), not 'evidence_ready' -- the acceptance bar ('all observable effects and callee conditions... validated') is not met.",
+  "awaiting": "Either static decoding of the Stage1-3 delegate targets and remaining subscriber candidates (still feasible without Unity/device), or device/runtime observation for the rest, then independent review."
+}

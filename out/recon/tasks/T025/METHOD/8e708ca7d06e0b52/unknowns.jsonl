@@ -1,0 +1,8 @@
+{"question": "The 3 Stage1-3 delegate targets inside LoadScene's own body (BLR at 0x2072b70/0x2072ba0/0x2072bd0) are inferred from position, not decoded from a vtable or delegate target.", "unknown_id": "T025/complete_body_and_cfg"}
+{"question": "Actual elapsed tween duration/ease/time-scale and LeanTween callback dispatch semantics (Unity-engine-native, outside this IL2CPP binary).", "unknown_id": "T029/tween_scheduling"}
+{"question": "Generic Instantiate binding and runtime class overrides/replacement for the loading-screen prefab.", "unknown_id": "T029/instantiate_and_library_effects"}
+{"question": "Runtime Il2CppClass layout not observed; native-slot offset correlation with metadata slots and the concrete shipped prefab.", "unknown_id": "T029/runtime_class_layout"}
+{"question": "Who subscribes LoadingScreenManager.OnSceneLoaded and re-enables input/EventSystem after loading.", "unknown_id": "T029/scene_loaded_registration"}
+{"question": "The other 13 raw caller candidates from the subscriber probe are discovery leads only, not validated signup/handler edges.", "unknown_id": "T029/remaining_stage_registrations"}
+{"question": "Handler bodies/effects and complete native CFG ranges for the subscriber callbacks are not certified.", "unknown_id": "T029/handler_effects_lifetime"}
+{"question": "No runtime/device comparison against the original has been performed for this flow.", "unknown_id": "T029/runtime_comparison"}
