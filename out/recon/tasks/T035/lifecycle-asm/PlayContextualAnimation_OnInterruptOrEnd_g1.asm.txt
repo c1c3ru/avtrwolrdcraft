@@ -1,0 +1,63 @@
+23afcb0  stp    x30, x21, [sp, #-0x20]!
+23afcb4  stp    x20, x19, [sp, #0x10]
+23afcb8  adrp   x20, #0x44fe000
+23afcbc  ldrb   w8, [x20, #0x66b]
+23afcc0  mov    x19, x0
+23afcc4  tbnz   w8, #0, #0x23afce8
+23afcc8  adrp   x0, #0x41bd000
+23afccc  ldr    x0, [x0, #0x548]
+23afcd0  bl     #0x1b886e8
+23afcd4  adrp   x0, #0x41b8000
+23afcd8  ldr    x0, [x0, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23afcdc  bl     #0x1b886e8
+23afce0  mov    w8, #1
+23afce4  strb   w8, [x20, #0x66b]
+23afce8  ldr    x20, [x19, #0x10]
+23afcec  cbz    x20, #0x23afda8
+23afcf0  adrp   x10, #0x41b8000
+23afcf4  ldr    x8, [x20]
+23afcf8  ldr    x10, [x10, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23afcfc  ldr    w21, [x19, #0x20]
+23afd00  ldrh   w9, [x8, #0x12e]
+23afd04  ldr    x1, [x10]
+23afd08  cbz    x9, #0x23afd2c
+23afd0c  ldr    x10, [x8, #0xb0]
+23afd10  add    x10, x10, #8
+23afd14  ldur   x11, [x10, #-8]
+23afd18  cmp    x11, x1
+23afd1c  b.eq   #0x23afd3c
+23afd20  subs   x9, x9, #1
+23afd24  add    x10, x10, #0x10
+23afd28  b.ne   #0x23afd14
+23afd2c  mov    w2, #6
+23afd30  mov    x0, x20
+23afd34  bl     #0x1b7ba44  ; IFACE ICATarget.get_ContexualAnimationCounter
+23afd38  b      #0x23afd4c
+23afd3c  ldr    w9, [x10]
+23afd40  add    w9, w9, #6
+23afd44  add    x8, x8, w9, sxtw #4
+23afd48  add    x0, x8, #0x138
+23afd4c  ldp    x8, x1, [x0]
+23afd50  mov    x0, x20
+23afd54  blr    x8
+23afd58  cmp    w21, w0
+23afd5c  b.ne   #0x23afd9c
+23afd60  adrp   x8, #0x41bd000
+23afd64  ldr    x8, [x8, #0x548]
+23afd68  ldr    x8, [x8]
+23afd6c  ldr    x8, [x8, #0xb8]
+23afd70  ldr    x8, [x8, #0x10]
+23afd74  cbz    x8, #0x23afd8c
+23afd78  ldr    x1, [x19, #0x10]
+23afd7c  ldr    x9, [x8, #0x18]
+23afd80  ldr    x0, [x8, #0x40]  ; type <Fill>d__14
+23afd84  ldr    x2, [x8, #0x28]
+23afd88  blr    x9
+23afd8c  mov    x0, x19
+23afd90  ldp    x20, x19, [sp, #0x10]
+23afd94  ldp    x30, x21, [sp], #0x20
+23afd98  b      #0x23afa08  ; -> <>c__DisplayClass1_0.<PlayContextualAnimation>g__EndAnimation|0
+23afd9c  ldp    x20, x19, [sp, #0x10]
+23afda0  ldp    x30, x21, [sp], #0x20
+23afda4  ret    
+23afda8  bl     #0x1b88980
