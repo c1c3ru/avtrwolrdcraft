@@ -1,0 +1,33 @@
+22ca3e0  str    x30, [sp, #-0x30]!
+22ca3e4  stp    x22, x21, [sp, #0x10]
+22ca3e8  stp    x20, x19, [sp, #0x20]
+22ca3ec  adrp   x22, #0x44fd000
+22ca3f0  adrp   x21, #0x41d8000
+22ca3f4  ldrb   w8, [x22, #0xd7d]
+22ca3f8  ldr    x21, [x21, #0xaa0]  ; type PWC.Level.LevelSceneAvatarMap
+22ca3fc  mov    x19, x1
+22ca400  mov    x20, x0
+22ca404  tbnz   w8, #0, #0x22ca428
+22ca408  adrp   x0, #0x41d8000
+22ca40c  ldr    x0, [x0, #0xaa8]
+22ca410  bl     #0x1b886e8
+22ca414  adrp   x0, #0x41d8000
+22ca418  ldr    x0, [x0, #0xaa0]  ; type PWC.Level.LevelSceneAvatarMap
+22ca41c  bl     #0x1b886e8
+22ca420  mov    w8, #1
+22ca424  strb   w8, [x22, #0xd7d]
+22ca428  bl     #0x22ca464  ; -> LevelSceneAvatarMap.LoadDataIfNeeded
+22ca42c  ldr    x8, [x21]
+22ca430  ldr    x8, [x8, #0xb8]
+22ca434  ldr    x0, [x8]
+22ca438  cbz    x0, #0x22ca460
+22ca43c  adrp   x8, #0x41d8000
+22ca440  ldr    x8, [x8, #0xaa8]
+22ca444  mov    x1, x20
+22ca448  mov    x2, x19
+22ca44c  ldp    x20, x19, [sp, #0x20]
+22ca450  ldr    x3, [x8]
+22ca454  ldp    x22, x21, [sp, #0x10]
+22ca458  ldr    x30, [sp], #0x30
+22ca45c  b      #0x28fb570
+22ca460  bl     #0x1b88980
