@@ -226,8 +226,8 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
-      "planning_seed": true,
+      "state": "ready",
+      "planning_seed": false,
       "input_and_steps": "REA, Cpp2IL, UnityPy, Unity/Android, decompilador nativo; consultar disponibilidade e versões. Identificar capacidade por operação, licença, host e entradas. Planejar reparo só do bloqueio observado.",
       "outputs": "matriz capacidade→ferramenta→comando→limites e ambiente reproduzível.",
       "acceptance": "rota suportada para inventário e recuperação nativa, ou bloqueio exato registrado; sem instalar/alterar configuração global silenciosamente.",
@@ -240,16 +240,56 @@
         "out/recon/tasks/T004/**"
       ],
       "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
-      "resource_locks": [],
+      "resource_locks": [
+        "canonical_task_queue_write"
+      ],
       "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
-      "input_refs": [],
-      "evidence_refs": [],
+      "input_refs": [
+        {
+          "path": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+          "sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f"
+        },
+        {
+          "path": "LOOP_STATE.md",
+          "sha256": "77bf4dbead9dcd88d085a0aa12d5acf35f4c793271842b286226831a70e0f8f1"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T004/tool_capability_matrix.json",
+          "sha256": "d9446294e283f82737c640a0386509874387d492d84895988d957d148d06749d"
+        },
+        {
+          "path": "out/recon/tasks/T004/result.json",
+          "sha256": "b17559c6ea4c196bfc1622a892060401daf40f13d50137672dfeb148c741b256"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "db00cc0f18a8486aa3434740b55be30e",
+          "owner": "agente-logica-claude",
+          "started_at": 1794096340.4648592,
+          "lease_id": "97f1a145a9884c15a9da2f7f5bbe20d6",
+          "checkpoint_at": 1794096440.183594,
+          "state": "ready",
+          "note": "Entrega parcial: matriz de capacidade por ferramenta (out/recon/tasks/T004/tool_capability_matrix.json) montada a partir do que foi de fato exercitado nesta sessao, com o unico bloqueio exato encontrado registrado (UnityPy.load() em datapack.unity3d sofre OOM, confirmado via strace). Nao fiz a geracao de tarefas filhas que esta tarefa coordenadora pede (next_action original); isso fica para decisao de coordenador. Nao e evidence_ready porque o campo outputs desta tarefa e texto descritivo, nao uma lista de arquivos, e a acao de coordenacao (gerar filhos) nao foi executada.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T004/tool_capability_matrix.json",
+              "sha256": "d9446294e283f82737c640a0386509874387d492d84895988d957d148d06749d"
+            },
+            {
+              "path": "out/recon/tasks/T004/result.json",
+              "sha256": "b17559c6ea4c196bfc1622a892060401daf40f13d50137672dfeb148c741b256"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+      "next_action": "Entrega parcial: matriz de capacidade por ferramenta (out/recon/tasks/T004/tool_capability_matrix.json) montada a partir do que foi de fato exercitado nesta sessao, com o unico bloqueio exato encontrado registrado (UnityPy.load() em datapack.unity3d sofre OOM, confirmado via strace). Nao fiz a geracao de tarefas filhas que esta tarefa coordenadora pede (next_action original); isso fica para decisao de coordenador. Nao e evidence_ready porque o campo outputs desta tarefa e texto descritivo, nao uma lista de arquivos, e a acao de coordenacao (gerar filhos) nao foi executada."
     },
     {
       "id": "T005",
@@ -32307,7 +32347,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 42,
+  "revision": 46,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -33001,6 +33041,34 @@
       "task": "T025/METHOD/5fe1bb4a25183678",
       "actor": "agente-logica-claude",
       "at": 1794095769.0660543
+    },
+    {
+      "revision": 43,
+      "action": "configure",
+      "task": "T004",
+      "actor": "agente-logica-claude",
+      "at": 1794096328.7927291
+    },
+    {
+      "revision": 44,
+      "action": "claim",
+      "task": "T004",
+      "actor": "agente-logica-claude",
+      "at": 1794096340.4758348
+    },
+    {
+      "revision": 45,
+      "action": "start",
+      "task": "T004",
+      "actor": "agente-logica-claude",
+      "at": 1794096345.1904786
+    },
+    {
+      "revision": 46,
+      "action": "checkpoint",
+      "task": "T004",
+      "actor": "agente-logica-claude",
+      "at": 1794096440.2174292
     }
   ]
 }
