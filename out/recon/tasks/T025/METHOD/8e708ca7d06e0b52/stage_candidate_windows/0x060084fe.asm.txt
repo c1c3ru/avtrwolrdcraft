@@ -1,0 +1,47 @@
+
+/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 23196f8: a9bd5ffe     	stp	x30, x23, [sp, #-0x30]!
+ 23196fc: a90157f6     	stp	x22, x21, [sp, #0x10]
+ 2319700: a9024ff4     	stp	x20, x19, [sp, #0x20]
+ 2319704: b0010f36     	adrp	x22, 0x44fe000
+ 2319708: f000f497     	adrp	x23, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 231970c: 9000f614     	adrp	x20, 0x41d9000
+ 2319710: f000f4d5     	adrp	x21, 0x41b4000
+ 2319714: 39443ac8     	ldrb	w8, [x22, #0x10e]
+ 2319718: f9475af7     	ldr	x23, [x23, #0xeb0]
+ 231971c: f946b294     	ldr	x20, [x20, #0xd60]
+ 2319720: f94732b5     	ldr	x21, [x21, #0xe60]
+ 2319724: aa0003f3     	mov	x19, x0
+ 2319728: 37000188     	tbnz	w8, #0x0, 0x2319758 <__start_il2cpp+0x6c8548>
+ 231972c: f000f480     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 2319730: f9475800     	ldr	x0, [x0, #0xeb0]
+ 2319734: 97e1bbed     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2319738: f000f4c0     	adrp	x0, 0x41b4000
+ 231973c: f9473000     	ldr	x0, [x0, #0xe60]
+ 2319740: 97e1bbea     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2319744: 9000f600     	adrp	x0, 0x41d9000
+ 2319748: f946b000     	ldr	x0, [x0, #0xd60]
+ 231974c: 97e1bbe7     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 2319750: 52800028     	mov	w8, #0x1                // =1
+ 2319754: 39043ac8     	strb	w8, [x22, #0x10e]
+ 2319758: f94002e0     	ldr	x0, [x23]
+ 231975c: 97e1bc85     	bl	0x1b88970 <JNI_OnUnload+0xa5b4>
+ 2319760: f9400282     	ldr	x2, [x20]
+ 2319764: aa1303e1     	mov	x1, x19
+ 2319768: aa1f03e3     	mov	x3, xzr
+ 231976c: aa0003f4     	mov	x20, x0
+ 2319770: 943ece73     	bl	0x32cd13c <__start_il2cpp+0x167bf2c>
+ 2319774: f94002a0     	ldr	x0, [x21]
+ 2319778: b940e008     	ldr	w8, [x0, #0xe0]
+ 231977c: 35000048     	cbnz	w8, 0x2319784 <__start_il2cpp+0x6c8574>
+ 2319780: 97e1bc37     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 2319784: aa1403e0     	mov	x0, x20
+ 2319788: a9424ff4     	ldp	x20, x19, [sp, #0x20]
+ 231978c: a94157f6     	ldp	x22, x21, [sp, #0x10]
+ 2319790: aa1f03e1     	mov	x1, xzr
+ 2319794: a8c35ffe     	ldp	x30, x23, [sp], #0x30
+ 2319798: 17f56215     	b	0x2071fec <__start_il2cpp+0x420ddc>

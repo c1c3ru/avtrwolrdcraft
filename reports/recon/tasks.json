@@ -32240,7 +32240,7 @@
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "ready",
       "planning_seed": false,
       "scope": {
         "method_identity": {
@@ -32315,13 +32315,74 @@
         "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/result.json"
       ],
       "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/method-contract.json",
+          "sha256": "4bb006b0c4918b0c370ef16fe72f377f2d5a05e8e99506cf6197fb33a3726112"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/control-flow.json",
+          "sha256": "73f4ed21a3267382cf0d12363feb580e8f0f804908225d0844c5c6d9e074957f"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/unknowns.jsonl",
+          "sha256": "5046e25e2125ab379f500eea4907ad15c0a6ca5f86f54ed273795de9b1cb58f6"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/result.json",
+          "sha256": "34c40fb8e0827df8f46663957b615b047d8da0fffd6dfe78f5e06623c13653de"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/world_click/full_report.json",
+          "sha256": "97a6c4f82b9bfa209f93b116833e70107afa44bdb045f7a2e0a834d8ae912ce9"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/test_click_on_level_evidence.py",
+          "sha256": "a20f483592ec4a63f3ae2e6b47b3789a391c11751d544b444a6d83637407ffa1"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "4e57271f37354b59a88dc81636dbc55a",
+          "owner": "codex-t025",
+          "started_at": 1794142216.4587333,
+          "lease_id": "1ff06a8a406a470496497e422cc4c85c",
+          "checkpoint_at": 1794142320.6781433,
+          "state": "ready",
+          "note": "Corrigida a afirmação sem suporte de corpo completo: a janela de 388 bytes termina no próximo início metadata, mas cobertura de corpo/exception regions permanece desconhecida. Preservados os 9 calls managed resolvidos, 4 helpers nativos comuns não resolvidos e 2 dispatches BLR candidatos sem alvo decodificado. 3 testes focados do contrato e 8 testes existentes de world-click passaram. Continuar revisão independente, helpers/dispatch e efeitos de callees antes de qualquer done.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/method-contract.json",
+              "sha256": "4bb006b0c4918b0c370ef16fe72f377f2d5a05e8e99506cf6197fb33a3726112"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/control-flow.json",
+              "sha256": "73f4ed21a3267382cf0d12363feb580e8f0f804908225d0844c5c6d9e074957f"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/unknowns.jsonl",
+              "sha256": "5046e25e2125ab379f500eea4907ad15c0a6ca5f86f54ed273795de9b1cb58f6"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/result.json",
+              "sha256": "34c40fb8e0827df8f46663957b615b047d8da0fffd6dfe78f5e06623c13653de"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/world_click/full_report.json",
+              "sha256": "97a6c4f82b9bfa209f93b116833e70107afa44bdb045f7a2e0a834d8ae912ce9"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/test_click_on_level_evidence.py",
+              "sha256": "a20f483592ec4a63f3ae2e6b47b3789a391c11751d544b444a6d83637407ffa1"
+            }
+          ]
+        }
+      ],
+      "owner": "codex-t025",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Corrigida a afirmação sem suporte de corpo completo: a janela de 388 bytes termina no próximo início metadata, mas cobertura de corpo/exception regions permanece desconhecida. Preservados os 9 calls managed resolvidos, 4 helpers nativos comuns não resolvidos e 2 dispatches BLR candidatos sem alvo decodificado. 3 testes focados do contrato e 8 testes existentes de world-click passaram. Continuar revisão independente, helpers/dispatch e efeitos de callees antes de qualquer done.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -66030,7 +66091,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 51,
+  "revision": 54,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -67246,6 +67307,27 @@
       "task": "T025/METHOD/8e708ca7d06e0b52",
       "actor": "codex-t025",
       "at": 1794142201.1562603
+    },
+    {
+      "revision": 52,
+      "action": "claim",
+      "task": "T025/METHOD/4a19cfec8f8e89ba",
+      "actor": "codex-t025",
+      "at": 1794142216.492407
+    },
+    {
+      "revision": 53,
+      "action": "start",
+      "task": "T025/METHOD/4a19cfec8f8e89ba",
+      "actor": "codex-t025",
+      "at": 1794142220.5299792
+    },
+    {
+      "revision": 54,
+      "action": "checkpoint",
+      "task": "T025/METHOD/4a19cfec8f8e89ba",
+      "actor": "codex-t025",
+      "at": 1794142320.7148824
     }
   ]
 }
