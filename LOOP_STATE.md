@@ -2,7 +2,7 @@
 
 ## Política — testes e validação no aparelho virão como backlog final (2026-11-07)
 - Decisão do usuário: parar de gatear cada ciclo com testes EditMode/build/aparelho. Esses passos agora são um ÚNICO backlog a rodar no final de tudo (todas as categorias/ciclos implementados), não a cada etapa.
-- Isso desbloqueia os ciclos atuais (ex.: C3–C7 da etapa "Avatar completo e funcional") mesmo sem Unity Editor com licença válida ou device ADB disponível nesta sessão (ver pendência em "Retomada do ciclo 4 — 2026-11-07").
+- Isso desbloqueia os ciclos atuais (ex.: C3–C7 da etapa "Avatar completo e funcional") mesmo sem device ADB disponível nesta sessão (ver pendência em "Retomada do ciclo 4 — 2026-11-07"). CORREÇÃO: a licença Unity NÃO está ausente — o usuário usa a licença Personal/free, normalmente válida. A falha de build do ciclo 4 ("Editor encerrou... falha de conexão com LicenseClient-c1c3ru") foi uma falha transitória de conexão do LicenseClient, não falta de licença; confirmado em sessão seguinte com outro worktree rodando testes Unity com sucesso usando a mesma licença no mesmo host.
 - Itens represados para o backlog final: rodar EditMode completo e corrigir as 5 falhas atuais de `AvatarSlotsTests` (categoria `Hat`), build Android, e toda validação tátil/visual no Xiaomi (cabelo frente/trás do ciclo 4, e cada categoria nova adicionada depois).
 - Isso NÃO elimina os critérios de conclusão (ex.: C7 "0 erros no logcat, testes verdes") — só muda QUANDO são verificados: no fechamento geral, não ciclo a ciclo.
 
