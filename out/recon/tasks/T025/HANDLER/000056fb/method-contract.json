@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "task_id": "T025/HANDLER/000056fb",
+  "status": "STATIC_candidate_contract_checked_not_certified",
+  "semantic_completion": false,
+  "method_identity": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "PWC.GameSceneManager",
+    "name": "OnActiveSceneChanged",
+    "token": "0x060056fc",
+    "method_definition_index": 22267,
+    "parameter_count": 2,
+    "vaddr": "0x2072644",
+    "file_offset": "0x206e644"
+  },
+  "bounded_window": {
+    "start": "0x2072644",
+    "exclusive_stop": "0x207271c",
+    "bytes": 216,
+    "sha256": "235c2fb4ef71cdaa2e78db6b3b45849edb072930ef4470513ed9a4b901778094",
+    "bound_limit": "candidate window capped at next distinct metadata method start; noncontiguous body and exception extents are not proven"
+  },
+  "assembly_path": "out/recon/tasks/T025/HANDLER/000056fb/handler.asm.txt",
+  "assembly_sha256": "60bb45b827602f064f373ce86a466f0b13fc476b0a72e730a53480cb49583904",
+  "disassembly_command": [
+    "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+    "-d",
+    "--start-address=0x2072644",
+    "--stop-address=0x207271c",
+    "/home/c1c3ru/avtrwolrdcraft/.claude/worktrees/recon-stage-handler-effects/out/recon/il2cpp/libil2cpp.so"
+  ],
+  "detail": {
+    "field_targets": [
+      {
+        "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+        "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+        "declaration": "private static bool <IsSceneChangingInProgress>k__BackingField; //Field offset: 0x30"
+      },
+      {
+        "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+        "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+        "declaration": "public static string CurrentlyLoadingSceneName; //Field offset: 0x28"
+      },
+      {
+        "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+        "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+        "declaration": "private static string <Multiplayer_LoadingSceneNameInProgress>k__BackingField; //Field offset: 0x40"
+      }
+    ],
+    "pseudocode": [
+      "GameSceneManager.IsSceneChangingInProgress = false",
+      "GameSceneManager.Multiplayer_LoadingSceneNameInProgress = null",
+      "GameSceneManager.CurrentlyLoadingSceneName = null"
+    ],
+    "effects": [
+      "writes static field IsSceneChangingInProgress (offset 0x30) to false",
+      "writes static field Multiplayer_LoadingSceneNameInProgress (offset 0x40) to null, with GC write barrier",
+      "writes static field CurrentlyLoadingSceneName (offset 0x28) to null, with GC write barrier"
+    ],
+    "calls": [],
+    "unknowns": [
+      "this closes the long-open 'who clears IsSceneChangingInProgress' question from docs/RECON_NAVIGATION_CONTRACT.md (2026-11-04), but the Unity activeSceneChanged (Scene,LoadSceneMode) parameters themselves are unused in this window and the subscriber (un)registration lifetime/order remain open"
+    ]
+  },
+  "input_pair": {
+    "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+  },
+  "source_registration_edge": {
+    "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+    "event": "UnityEngine.SceneManagement.SceneManager.activeSceneChanged",
+    "caller": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.GameSceneManager",
+      "name": ".cctor",
+      "token": "0x060056fa",
+      "method_definition_index": 22265,
+      "parameter_count": 0,
+      "vaddr": "0x20724cc",
+      "file_offset": "0x206e4cc"
+    },
+    "handler": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.GameSceneManager",
+      "name": "OnActiveSceneChanged",
+      "token": "0x060056fc",
+      "method_definition_index": 22267,
+      "parameter_count": 2,
+      "vaddr": "0x2072644",
+      "file_offset": "0x206e644"
+    },
+    "event_add_method": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.SceneManagement.SceneManager",
+      "name": "add_activeSceneChanged",
+      "token": "0x060009c6",
+      "method_definition_index": 87582,
+      "parameter_count": 1,
+      "vaddr": "0x3cdc02c",
+      "file_offset": "0x3cd802c"
+    },
+    "target_object": "null (static handler)",
+    "handler_metadata_usage": {
+      "got_vaddr": "0x41c85a8",
+      "usage_vaddr": "0x4320ce8",
+      "encoded": "0x6000adf7",
+      "kind": 3,
+      "index": 22267
+    },
+    "handler_got_reference": {
+      "adrp_site": "0x20724e0",
+      "ldr_site": "0x20724f0",
+      "got_vaddr": "0x41c85a8",
+      "base_register": 19,
+      "destination_register": 19
+    },
+    "constructor_call": {
+      "site": "0x2072540",
+      "file_offset": "0x206e540",
+      "word": "0x943fa006",
+      "bytes_le": "06a03f94",
+      "target": "0x305a558",
+      "metadata_method": null,
+      "identity_limit": "Typed delegate-construction helper at this VA is not named by this metadata index; argument flow and final Unity event add are guarded."
+    },
+    "registration_branch": {
+      "site": "0x2072568",
+      "file_offset": "0x206e568",
+      "word": "0x1471a6b1",
+      "bytes_le": "b1a67114",
+      "kind": "B",
+      "target": "0x3cdc02c"
+    },
+    "raw_argument_flow_anchors": [
+      {
+        "site": "0x20724e0",
+        "file_offset": "0x206e4e0",
+        "word": "0xd0010ab3",
+        "bytes_le": "b30a01d0"
+      },
+      {
+        "site": "0x20724f0",
+        "file_offset": "0x206e4f0",
+        "word": "0xf942d673",
+        "bytes_le": "73d642f9"
+      },
+      {
+        "site": "0x2072530",
+        "file_offset": "0x206e530",
+        "word": "0xf9400262",
+        "bytes_le": "620240f9"
+      },
+      {
+        "site": "0x2072534",
+        "file_offset": "0x206e534",
+        "word": "0xaa1f03e1",
+        "bytes_le": "e1031faa"
+      },
+      {
+        "site": "0x2072538",
+        "file_offset": "0x206e538",
+        "word": "0xaa1f03e3",
+        "bytes_le": "e3031faa"
+      },
+      {
+        "site": "0x207253c",
+        "file_offset": "0x206e53c",
+        "word": "0xaa0003f3",
+        "bytes_le": "f30300aa"
+      },
+      {
+        "site": "0x2072540",
+        "file_offset": "0x206e540",
+        "word": "0x943fa006",
+        "bytes_le": "06a03f94"
+      },
+      {
+        "site": "0x2072554",
+        "file_offset": "0x206e554",
+        "word": "0xaa1303e0",
+        "bytes_le": "e00313aa"
+      },
+      {
+        "site": "0x2072560",
+        "file_offset": "0x206e560",
+        "word": "0xaa1f03e1",
+        "bytes_le": "e1031faa"
+      },
+      {
+        "site": "0x2072568",
+        "file_offset": "0x206e568",
+        "word": "0x1471a6b1",
+        "bytes_le": "b1a67114"
+      }
+    ],
+    "precondition": "Normal execution reaches the signup after metadata/class initialization and object/delegate construction.",
+    "limits": [
+      "Does not prove handler invocation, side effects, subscription order across instances or lifetime/unsubscription.",
+      "Exceptions, lazy-init helpers and indirect/generated calls outside this guarded flow remain unmodeled."
+    ]
+  },
+  "evidence_class": "STATIC_and_DERIVED_from_original_cached_bytes",
+  "runtime_or_device_observed": false
+}
