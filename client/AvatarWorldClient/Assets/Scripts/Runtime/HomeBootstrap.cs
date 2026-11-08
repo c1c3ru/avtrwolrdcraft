@@ -129,6 +129,7 @@ namespace AvatarWorld.Runtime
         void OpenAvatarSlots()
         {
             if (FindFirstObjectByType<AvatarSlotsScreen>() != null) return;
+            LoadingScreen.Show();
             if (_worldMap != null) _worldMap.gameObject.SetActive(false);
             var host = new GameObject("AvatarSlots");
             var slots = host.AddComponent<AvatarSlotsScreen>();
@@ -136,8 +137,11 @@ namespace AvatarWorld.Runtime
             {
                 _save.Save(_state);
                 Destroy(host);
+                LoadingScreen.Show();
                 if (_worldMap != null) _worldMap.gameObject.SetActive(true);
+                LoadingScreen.Hide(0.5f);
             }, () => OpenStore(() => { }));
+            LoadingScreen.Hide(0.7f);
         }
 
         void CloseWorldMap()
