@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Política — testes e validação no aparelho virão como backlog final (2026-11-07)
+- Decisão do usuário: parar de gatear cada ciclo com testes EditMode/build/aparelho. Esses passos agora são um ÚNICO backlog a rodar no final de tudo (todas as categorias/ciclos implementados), não a cada etapa.
+- Isso desbloqueia os ciclos atuais (ex.: C3–C7 da etapa "Avatar completo e funcional") mesmo sem Unity Editor com licença válida ou device ADB disponível nesta sessão (ver pendência em "Retomada do ciclo 4 — 2026-11-07").
+- Itens represados para o backlog final: rodar EditMode completo e corrigir as 5 falhas atuais de `AvatarSlotsTests` (categoria `Hat`), build Android, e toda validação tátil/visual no Xiaomi (cabelo frente/trás do ciclo 4, e cada categoria nova adicionada depois).
+- Isso NÃO elimina os critérios de conclusão (ex.: C7 "0 erros no logcat, testes verdes") — só muda QUANDO são verificados: no fechamento geral, não ciclo a ciclo.
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
@@ -304,7 +310,8 @@
 ## ETAPA "Avatar completo e funcional" — loop (iniciada 2026-11-04)
 
 **Objetivo:** o avatar aparece e é editado de forma completa e funcional como no jogo original.
-**Regras do loop:** um erro por ciclo; máximo 5 tentativas por erro (depois parar e escalar com: o que tentei, erro exato, 2 hipóteses); cada ciclo = Pensar → Agir → Observar (testes EditMode + build + aparelho/logcat) → Decidir. Instalação no aparelho exige o usuário tocar em "Instalar" (MIUI): só pedir quando houver algo novo a verificar.
+**Regras do loop:** um erro por ciclo; máximo 5 tentativas por erro (depois parar e escalar com: o que tentei, erro exato, 2 hipóteses); cada ciclo = Pensar → Agir → Decidir (sem gate de testes/build/aparelho por ciclo). Instalação no aparelho exige o usuário tocar em "Instalar" (MIUI).
+**Mudança 2026-11-07:** testes EditMode, build Android e validação no aparelho/logcat saem do loop por ciclo e vão para um backlog único no final de tudo (ver "Política" no topo do arquivo). Cada ciclo deste histórico a partir de agora registra o que foi implementado estaticamente/por código; "OK no aparelho" só volta a aparecer quando o backlog final for executado.
 
 **Estado verificado no aparelho (2026-11-04):** editor com layout do original (CharacterMenu), 400 itens reais (100 camisas/calças/sapatos/acessórios; `tools/avatar_catalog_build.py`), texturas carregadas sob demanda, miniaturas geradas do próprio avatar (~27 ms cada), atlas 2172/2172 sem avisos, 109 testes EditMode. Bug resolvido: texturas novas sem Read/Write (`ClothingTextureImporter`).
 
