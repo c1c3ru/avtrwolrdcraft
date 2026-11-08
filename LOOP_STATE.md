@@ -35,6 +35,23 @@ de pacotes, (1) terminar Casas (Mansão/Modern House/8º submenu).
 - Nada commitado foi testado no Unity (sem editor neste ambiente). Próxima sessão: rodar (3) com mais RAM livre,
   revisar manualmente os 58 pacotes "Indefinido", e só depois decidir o que efetivamente implementar no cliente.
 
+## Tentativa (3) de novo — 2026-11-08
+- Usuário pediu pra tentar de novo. Primeira checagem: RAM quase zerada (147 MB livres, swap 100% cheio) — havia
+  Unity Editor rodando EditMode tests em paralelo no worktree `loja-criador-avatar` (Burst + AssetImportWorker).
+  Decidido esperar em vez de arriscar derrubar aqueles testes.
+- Botei um loop em background pra esperar RAM livre antes de tentar de novo — **tinha um bug**: `free -m` nesta
+  máquina mostra a linha como `Mem.` (com ponto, locale pt-BR), não `Mem:`; meu `awk '/^Mem:/{...}'` nunca casou,
+  então o loop rodou **~19h inutilmente** (de 07/11 tarde até 08/11 de manhã) sem nunca dar match. Corrigido para
+  `/^Mem\./`.
+- Com a correção, RAM aparentava estar livre (4,5–4,8 GiB "disponível") e o Unity Editor da outra worktree já não
+  estava mais rodando — mas a reextração **falhou de novo com OOM (exit 137), no mesmo ponto exato** (carregando
+  `datapack.unity3d`, antes de tocar qualquer classe-alvo). Causa real: **swap**, não RAM — `livre` de swap estava
+  em 14–193 MiB de 4 GiB o tempo todo, mesmo com RAM "disponível" alta. Não achei um processo único responsável
+  (swap espalhado entre várias sessões/daemons pequenos nesta máquina de 7,1 GB) — não é algo pra eu simplesmente
+  matar sem saber o que é de quem.
+- Condição de retry agora exige RAM disponível **e** swap livre (não só RAM) antes de tentar de novo. Sem sucesso
+  ainda nesta rodada; ver próxima entrada deste arquivo para o resultado seguinte.
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
