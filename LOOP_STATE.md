@@ -1,5 +1,27 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Catch-up de documentacao: interiores de predio ja implementados — 2026-11-07
+- Ao planejar um "piloto" de interior de predio (`docs/PRD_WORLD_INTERIORS_2026-11-05.md` e
+  `docs/SBS_BASELINE_2026-11-05.md` diziam "toque no predio nao abre nada"), descobri que o trabalho ja
+  foi feito em 2026-11-06 e mergeado no `main`, so nunca documentado aqui:
+  - `9ba0f5768` "Open the Dentist interior from the world map (pilot)"
+  - `abd426c33` "Add Ballet and Cabin interiors, export_interior.py, readable item names"
+  - `198835576` "Maps, interiors, animations, sky and tint for the world"
+- Resultado atual: `InteriorCatalog.cs` mapeia **59 dos 65 predios** (defaultLevel -> chave de
+  `Resources/Interiors/<chave>`, os 6 restantes sao "em obras" de proposito, `defaultLevel 0`).
+  `WorldMapRuntime.OnTap` ja chama `InteriorCatalog.TryGetKey` e abre qualquer um deles via
+  `InteriorRuntime` (camera que rola arrastando, avatar salvo que anda ate o toque, itens originais
+  arrastaveis marcados por `tools/mark_interior_items.py`). Testes de dados em
+  `InteriorCatalogTests.cs`. Limitacao ja documentada no proprio codigo (nao invento como pendencia
+  nova): sem NPCs, luz ou som do original (389 avatares em 52/57 interiores existem na cena original
+  segundo `docs/RECON_INTERIOR_NPCS.md`, mas sem aparencia nos dados locais).
+- **Nao reimplementado** porque ja esta feito; isto e so a entrada de catalogo que faltava. **Validacao ao
+  vivo no aparelho PENDENTE**: nenhum dispositivo ADB conectado nesta sessao (`adb devices` vazio) para
+  tocar num predio (ex.: Dentista/Dentist, Balé/Ballet, Cabana/Cabin) e confirmar na pratica.
+- Docs desatualizados que citam "toque no predio nao abre nada": `docs/SBS_BASELINE_2026-11-05.md` linha
+  12, `docs/PRD_WORLD_INTERIORS_2026-11-05.md` secao 2 - datados de antes do merge, nao corrigidos aqui
+  para preservar o registro historico da sessao em que foram escritos.
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
