@@ -1,5 +1,26 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Estrategia de memoria para o Unity — 2026-11-07
+- Varias rodadas de `unity test --mode EditMode` nesta maquina (7,1 GB RAM, muitos jobs Claude Code
+  concorrentes) morreram por OOM killer do kernel (`global_oom`, confirmado via `journalctl` - uma das
+  vitimas foi um processo de outro job, nao o Unity). Duas estrategias documentadas em
+  `docs/UNITY_MEMORY_STRATEGY_2026-11-07.md`:
+  1. **`tools/unity_locked.sh`** (feito e testado): serializa toda chamada ao Unity entre worktrees via
+     `flock` num lockfile por maquina (`~/.cache/avatarworld-unity-lock/`). Usar isto em vez de chamar
+     `unity` direto daqui pra frente evita rodar mais de um Unity ao mesmo tempo nesta maquina.
+  2. **Unity Cache Server** (infra pronta, nao ligada): `unity-cache-server` (npm, da propria Unity
+     Technologies, hoje deprecated mas sem alternativa melhor confirmada) instalado em
+     `~/.local/share/unity-cache-server/`, script de controle em
+     `~/.local/share/unity-cache-server/cache_server_ctl.sh`. Evitaria reimportar o projeto inteiro (texturas,
+     >120 mil arquivos) a cada worktree novo - hoje contornado na mao copiando os 45 GB de `Library/` via
+     rsync. **Dois passos ficaram bloqueados pelo modo automatico do Claude Code e precisam de aprovacao
+     do usuario**: iniciar o servidor (`cache_server_ctl.sh start`, bloqueado como "Expose Local Services")
+     e criar um servico systemd `--user` para ele sobreviver a reboot (bloqueado como "Unauthorized
+     Persistence", unidade ja redigida mas nao aplicada). Depois de rodando, falta apontar
+     `ProjectSettings/EditorSettings.asset` (`m_CacheServerMode`/`m_CacheServerEndpoint`) para
+     `127.0.0.1:8126` em cada checkout/worktree e validar com um teste real - nada disso foi validado
+     ainda, o servidor nunca chegou a subir nesta sessao.
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
