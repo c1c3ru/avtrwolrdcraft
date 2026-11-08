@@ -155,8 +155,8 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
-      "planning_seed": true,
+      "state": "ready",
+      "planning_seed": false,
       "input_and_steps": "docs atuais, SceneType, catálogo e regras autorizadas; enumerar recursos locais, integrações online, conteúdo ausente e extensões pedagógicas. Registrar política por recurso: paridade, adaptação offline ou ausência externa.",
       "outputs": "`scope.json`, `features.jsonl`, `divergences.jsonl` com domínio e plataformas.",
       "acceptance": "nenhuma exclusão oculta; mudanças de preço/recompensa não são confundidas com regra recuperada.",
@@ -173,14 +173,80 @@
         "canonical_task_queue_write"
       ],
       "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
-      "input_refs": [],
-      "evidence_refs": [],
+      "input_refs": [
+        {
+          "path": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+          "sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f"
+        },
+        {
+          "path": "docs/OFFLINE_HOME_RULES.md",
+          "sha256": "8ecccd1cba0a9d832f9e04fcf294e4a71408c0bd4249dc7c2cd790e15e499919"
+        },
+        {
+          "path": "docs/OFFLINE_RECONSTRUCTION_STATUS.md",
+          "sha256": "10c0522a01076264f17f1abeb513218f0c53f646f25efac051b3e5765c9cb6f0"
+        },
+        {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/SceneType.cs",
+          "sha256": "374e66aed5ebf321cb689851283b6cfb3b979cf0bb83a1fe9178bf2060102308"
+        },
+        {
+          "path": "LOOP_STATE.md",
+          "sha256": "77bf4dbead9dcd88d085a0aa12d5acf35f4c793271842b286226831a70e0f8f1"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T002/scope.json",
+          "sha256": "fe39137e1a5287495cc9bc9da1a067af783c900068c685b32af42fa96ecc0da5"
+        },
+        {
+          "path": "out/recon/tasks/T002/features.jsonl",
+          "sha256": "86c1b75d910119e66dbfdf61d009e95e0aceacb8cc335664f4daf9e729023e48"
+        },
+        {
+          "path": "out/recon/tasks/T002/divergences.jsonl",
+          "sha256": "92c559ee27a4686453501a4bb7e344f77567211cc7e6e91ce22ad2459cf29d58"
+        },
+        {
+          "path": "out/recon/tasks/T002/result.json",
+          "sha256": "ed34b04b87584cddbb484f72e96c0df90e2ecb941ee7df919795018b31a6ab19"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "18a817c0faf64ef89622a77a95780272",
+          "owner": "agente-logica-claude",
+          "started_at": 1794096961.538834,
+          "lease_id": "0b5ecd72afeb4152b10013633eeebce1",
+          "checkpoint_at": 1794097061.722706,
+          "state": "ready",
+          "note": "Entrega parcial: matriz de escopo (scope.json, 13 dominios de SceneType.cs com status/politica), features.jsonl (20 recursos locais/integracoes ausentes/conteudo faltante/extensoes pedagogicas) e divergences.jsonl (6 itens, incluindo os 3 casos de preco/recompensa local vs original exigidos pelo criterio de aceite). Sintese pura de docs existentes + leitura do clothing-manifest.json atual (4.965 itens, nao commitado); sem Unity/aparelho/datapack. Nao gerei tarefas filhas (decisao de coordenador); Street e StoreBundle ficam UNKNOWN por falta de evidencia nesta sessao.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T002/scope.json",
+              "sha256": "fe39137e1a5287495cc9bc9da1a067af783c900068c685b32af42fa96ecc0da5"
+            },
+            {
+              "path": "out/recon/tasks/T002/features.jsonl",
+              "sha256": "86c1b75d910119e66dbfdf61d009e95e0aceacb8cc335664f4daf9e729023e48"
+            },
+            {
+              "path": "out/recon/tasks/T002/divergences.jsonl",
+              "sha256": "92c559ee27a4686453501a4bb7e344f77567211cc7e6e91ce22ad2459cf29d58"
+            },
+            {
+              "path": "out/recon/tasks/T002/result.json",
+              "sha256": "ed34b04b87584cddbb484f72e96c0df90e2ecb941ee7df919795018b31a6ab19"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+      "next_action": "Entrega parcial: matriz de escopo (scope.json, 13 dominios de SceneType.cs com status/politica), features.jsonl (20 recursos locais/integracoes ausentes/conteudo faltante/extensoes pedagogicas) e divergences.jsonl (6 itens, incluindo os 3 casos de preco/recompensa local vs original exigidos pelo criterio de aceite). Sintese pura de docs existentes + leitura do clothing-manifest.json atual (4.965 itens, nao commitado); sem Unity/aparelho/datapack. Nao gerei tarefas filhas (decisao de coordenador); Street e StoreBundle ficam UNKNOWN por falta de evidencia nesta sessao."
     },
     {
       "id": "T003",
@@ -32347,7 +32413,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 46,
+  "revision": 50,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -33069,6 +33135,34 @@
       "task": "T004",
       "actor": "agente-logica-claude",
       "at": 1794096440.2174292
+    },
+    {
+      "revision": 47,
+      "action": "configure",
+      "task": "T002",
+      "actor": "agente-logica-claude",
+      "at": 1794096956.4543993
+    },
+    {
+      "revision": 48,
+      "action": "claim",
+      "task": "T002",
+      "actor": "agente-logica-claude",
+      "at": 1794096961.557501
+    },
+    {
+      "revision": 49,
+      "action": "start",
+      "task": "T002",
+      "actor": "agente-logica-claude",
+      "at": 1794096966.4226058
+    },
+    {
+      "revision": 50,
+      "action": "checkpoint",
+      "task": "T002",
+      "actor": "agente-logica-claude",
+      "at": 1794097061.7337646
     }
   ]
 }
