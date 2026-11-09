@@ -1,0 +1,3703 @@
+{
+  "schema_version": 1,
+  "scope": "static metadata/native dispatch joins; no target execution",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "interface_usage": {
+    "got_vaddr": "0x41acdb8",
+    "usage_vaddr": "0x42f2380",
+    "encoded": "0x2000ab7f",
+    "kind": 1,
+    "index": 21951
+  },
+  "virtual_calls": [
+    {
+      "site": "0x22af374",
+      "native_offset": "0x508",
+      "instructions": [
+        {
+          "site": "0x22af354",
+          "word": "0xaa1f03f4"
+        },
+        {
+          "site": "0x22af358",
+          "word": "0x14000017"
+        },
+        {
+          "site": "0x22af35c",
+          "word": "0xb4001c34"
+        },
+        {
+          "site": "0x22af360",
+          "word": "0xf9400288"
+        },
+        {
+          "site": "0x22af364",
+          "word": "0x52800021"
+        },
+        {
+          "site": "0x22af368",
+          "word": "0xaa1403e0"
+        },
+        {
+          "site": "0x22af36c",
+          "word": "0xf9428509"
+        },
+        {
+          "site": "0x22af370",
+          "word": "0xf9428902"
+        },
+        {
+          "site": "0x22af374",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelCharacter",
+      "slot": 61,
+      "metadata_file_offset": 12734668,
+      "encoded": "0x6000f5b1",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelCharacter",
+        "name": "DetachFromParentIfExists",
+        "token": "0x06007ad9",
+        "method_definition_index": 31448,
+        "parameter_count": 1,
+        "vaddr": "0x22a3454",
+        "file_offset": "0x229f454"
+      }
+    },
+    {
+      "site": "0x2264fd0",
+      "native_offset": "0xad8",
+      "instructions": [
+        {
+          "site": "0x2264fb0",
+          "word": "0xf9400102"
+        },
+        {
+          "site": "0x2264fb4",
+          "word": "0x942a2ebe"
+        },
+        {
+          "site": "0x2264fb8",
+          "word": "0x36000440"
+        },
+        {
+          "site": "0x2264fbc",
+          "word": "0x390dea7f"
+        },
+        {
+          "site": "0x2264fc0",
+          "word": "0xf9400268"
+        },
+        {
+          "site": "0x2264fc4",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x2264fc8",
+          "word": "0xf9456d09"
+        },
+        {
+          "site": "0x2264fcc",
+          "word": "0xf9457101"
+        },
+        {
+          "site": "0x2264fd0",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelAnimal",
+      "slot": 154,
+      "metadata_file_offset": 12722552,
+      "encoded": "0x6000eb9d",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelAnimal",
+        "name": "GetPickUpLoopAnimationName",
+        "token": "0x060075cf",
+        "method_definition_index": 30158,
+        "parameter_count": 0,
+        "vaddr": "0x2266d08",
+        "file_offset": "0x2262d08"
+      }
+    },
+    {
+      "site": "0x2264de0",
+      "native_offset": "0x2e8",
+      "instructions": [
+        {
+          "site": "0x2264dc0",
+          "word": "0xaa1f03e2"
+        },
+        {
+          "site": "0x2264dc4",
+          "word": "0x94699773"
+        },
+        {
+          "site": "0x2264dc8",
+          "word": "0x36000260"
+        },
+        {
+          "site": "0x2264dcc",
+          "word": "0xf941da60"
+        },
+        {
+          "site": "0x2264dd0",
+          "word": "0xb4001800"
+        },
+        {
+          "site": "0x2264dd4",
+          "word": "0xf9400008"
+        },
+        {
+          "site": "0x2264dd8",
+          "word": "0xf9417509"
+        },
+        {
+          "site": "0x2264ddc",
+          "word": "0xf9417901"
+        },
+        {
+          "site": "0x2264de0",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.ContextualAnimation.LevelCAHandlerBase",
+      "slot": 27,
+      "metadata_file_offset": 12774360,
+      "encoded": "0x600119ef",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ContextualAnimation.LevelCAHandlerBase",
+        "name": "GetLockedAnimationName",
+        "token": "0x06008cf8",
+        "method_definition_index": 36087,
+        "parameter_count": 0,
+        "vaddr": "0x23a14fc",
+        "file_offset": "0x239d4fc"
+      }
+    },
+    {
+      "site": "0x2265494",
+      "native_offset": "0xad8",
+      "instructions": [
+        {
+          "site": "0x2265474",
+          "word": "0xaa1f03e1"
+        },
+        {
+          "site": "0x2265478",
+          "word": "0xaa1f03e2"
+        },
+        {
+          "site": "0x226547c",
+          "word": "0x94699917"
+        },
+        {
+          "site": "0x2265480",
+          "word": "0x36000360"
+        },
+        {
+          "site": "0x2265484",
+          "word": "0xf9400268"
+        },
+        {
+          "site": "0x2265488",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x226548c",
+          "word": "0xf9456d09"
+        },
+        {
+          "site": "0x2265490",
+          "word": "0xf9457101"
+        },
+        {
+          "site": "0x2265494",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelAnimal",
+      "slot": 154,
+      "metadata_file_offset": 12722552,
+      "encoded": "0x6000eb9d",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelAnimal",
+        "name": "GetPickUpLoopAnimationName",
+        "token": "0x060075cf",
+        "method_definition_index": 30158,
+        "parameter_count": 0,
+        "vaddr": "0x2266d08",
+        "file_offset": "0x2262d08"
+      }
+    },
+    {
+      "site": "0x226560c",
+      "native_offset": "0xad8",
+      "instructions": [
+        {
+          "site": "0x22655ec",
+          "word": "0xaa1f03e1"
+        },
+        {
+          "site": "0x22655f0",
+          "word": "0xaa1f03e2"
+        },
+        {
+          "site": "0x22655f4",
+          "word": "0x946998b9"
+        },
+        {
+          "site": "0x22655f8",
+          "word": "0x36002040"
+        },
+        {
+          "site": "0x22655fc",
+          "word": "0xf9400268"
+        },
+        {
+          "site": "0x2265600",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x2265604",
+          "word": "0xf9456d09"
+        },
+        {
+          "site": "0x2265608",
+          "word": "0xf9457101"
+        },
+        {
+          "site": "0x226560c",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelAnimal",
+      "slot": 154,
+      "metadata_file_offset": 12722552,
+      "encoded": "0x6000eb9d",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelAnimal",
+        "name": "GetPickUpLoopAnimationName",
+        "token": "0x060075cf",
+        "method_definition_index": 30158,
+        "parameter_count": 0,
+        "vaddr": "0x2266d08",
+        "file_offset": "0x2262d08"
+      }
+    },
+    {
+      "site": "0x22656c8",
+      "native_offset": "0xa68",
+      "instructions": [
+        {
+          "site": "0x22656a8",
+          "word": "0x1e202100"
+        },
+        {
+          "site": "0x22656ac",
+          "word": "0x5400050c"
+        },
+        {
+          "site": "0x22656b0",
+          "word": "0x52800028"
+        },
+        {
+          "site": "0x22656b4",
+          "word": "0x14000019"
+        },
+        {
+          "site": "0x22656b8",
+          "word": "0xf9400268"
+        },
+        {
+          "site": "0x22656bc",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x22656c0",
+          "word": "0xf9453509"
+        },
+        {
+          "site": "0x22656c4",
+          "word": "0xf9453901"
+        },
+        {
+          "site": "0x22656c8",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelAnimal",
+      "slot": 147,
+      "metadata_file_offset": 12722524,
+      "encoded": "0x6000eb5f",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelAnimal",
+        "name": "HasRunningAnimations",
+        "token": "0x060075b0",
+        "method_definition_index": 30127,
+        "parameter_count": 0,
+        "vaddr": "0x2265b28",
+        "file_offset": "0x2261b28"
+      }
+    },
+    {
+      "site": "0x226576c",
+      "native_offset": "0xb18",
+      "instructions": [
+        {
+          "site": "0x226574c",
+          "word": "0x394dea68"
+        },
+        {
+          "site": "0x2265750",
+          "word": "0x34000068"
+        },
+        {
+          "site": "0x2265754",
+          "word": "0xf941ba74"
+        },
+        {
+          "site": "0x2265758",
+          "word": "0x14000007"
+        },
+        {
+          "site": "0x226575c",
+          "word": "0xf9400268"
+        },
+        {
+          "site": "0x2265760",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x2265764",
+          "word": "0xf9458d09"
+        },
+        {
+          "site": "0x2265768",
+          "word": "0xf9459101"
+        },
+        {
+          "site": "0x226576c",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelAnimal",
+      "slot": 158,
+      "metadata_file_offset": 12722568,
+      "encoded": "0x6000eba5",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelAnimal",
+        "name": "GetWalkingAnimationName",
+        "token": "0x060075d3",
+        "method_definition_index": 30162,
+        "parameter_count": 0,
+        "vaddr": "0x2266e08",
+        "file_offset": "0x2262e08"
+      }
+    },
+    {
+      "site": "0x2265868",
+      "native_offset": "0xad8",
+      "instructions": [
+        {
+          "site": "0x2265848",
+          "word": "0xb4000068"
+        },
+        {
+          "site": "0x226584c",
+          "word": "0xf9400916"
+        },
+        {
+          "site": "0x2265850",
+          "word": "0x14000002"
+        },
+        {
+          "site": "0x2265854",
+          "word": "0xaa1f03f6"
+        },
+        {
+          "site": "0x2265858",
+          "word": "0xf9400268"
+        },
+        {
+          "site": "0x226585c",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x2265860",
+          "word": "0xf9456d09"
+        },
+        {
+          "site": "0x2265864",
+          "word": "0xf9457101"
+        },
+        {
+          "site": "0x2265868",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelAnimal",
+      "slot": 154,
+      "metadata_file_offset": 12722552,
+      "encoded": "0x6000eb9d",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelAnimal",
+        "name": "GetPickUpLoopAnimationName",
+        "token": "0x060075cf",
+        "method_definition_index": 30158,
+        "parameter_count": 0,
+        "vaddr": "0x2266d08",
+        "file_offset": "0x2262d08"
+      }
+    },
+    {
+      "site": "0x22658c0",
+      "native_offset": "0xb18",
+      "instructions": [
+        {
+          "site": "0x22658a0",
+          "word": "0x394dea68"
+        },
+        {
+          "site": "0x22658a4",
+          "word": "0x340005c8"
+        },
+        {
+          "site": "0x22658a8",
+          "word": "0xaa0003f4"
+        },
+        {
+          "site": "0x22658ac",
+          "word": "0x34000299"
+        },
+        {
+          "site": "0x22658b0",
+          "word": "0xf9400268"
+        },
+        {
+          "site": "0x22658b4",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x22658b8",
+          "word": "0xf9458d09"
+        },
+        {
+          "site": "0x22658bc",
+          "word": "0xf9459101"
+        },
+        {
+          "site": "0x22658c0",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelAnimal",
+      "slot": 158,
+      "metadata_file_offset": 12722568,
+      "encoded": "0x6000eba5",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelAnimal",
+        "name": "GetWalkingAnimationName",
+        "token": "0x060075d3",
+        "method_definition_index": 30162,
+        "parameter_count": 0,
+        "vaddr": "0x2266e08",
+        "file_offset": "0x2262e08"
+      }
+    },
+    {
+      "site": "0x2265974",
+      "native_offset": "0xa68",
+      "instructions": [
+        {
+          "site": "0x2265954",
+          "word": "0x394dee68"
+        },
+        {
+          "site": "0x2265958",
+          "word": "0x3901b288"
+        },
+        {
+          "site": "0x226595c",
+          "word": "0xb9036278"
+        },
+        {
+          "site": "0x2265960",
+          "word": "0x17fffe54"
+        },
+        {
+          "site": "0x2265964",
+          "word": "0xf9400268"
+        },
+        {
+          "site": "0x2265968",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x226596c",
+          "word": "0xf9453509"
+        },
+        {
+          "site": "0x2265970",
+          "word": "0xf9453901"
+        },
+        {
+          "site": "0x2265974",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelAnimal",
+      "slot": 147,
+      "metadata_file_offset": 12722524,
+      "encoded": "0x6000eb5f",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelAnimal",
+        "name": "HasRunningAnimations",
+        "token": "0x060075b0",
+        "method_definition_index": 30127,
+        "parameter_count": 0,
+        "vaddr": "0x2265b28",
+        "file_offset": "0x2261b28"
+      }
+    },
+    {
+      "site": "0x2265a78",
+      "native_offset": "0xb28",
+      "instructions": [
+        {
+          "site": "0x2265a58",
+          "word": "0xf9400100"
+        },
+        {
+          "site": "0x2265a5c",
+          "word": "0xaa1f03e1"
+        },
+        {
+          "site": "0x2265a60",
+          "word": "0x9469004a"
+        },
+        {
+          "site": "0x2265a64",
+          "word": "0x17fffe13"
+        },
+        {
+          "site": "0x2265a68",
+          "word": "0xf9400268"
+        },
+        {
+          "site": "0x2265a6c",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x2265a70",
+          "word": "0xf9459509"
+        },
+        {
+          "site": "0x2265a74",
+          "word": "0xf9459901"
+        },
+        {
+          "site": "0x2265a78",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelAnimal",
+      "slot": 159,
+      "metadata_file_offset": 12722572,
+      "encoded": "0x6000eba7",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelAnimal",
+        "name": "GetRunningAnimationName",
+        "token": "0x060075d4",
+        "method_definition_index": 30163,
+        "parameter_count": 0,
+        "vaddr": "0x2266e48",
+        "file_offset": "0x2262e48"
+      }
+    },
+    {
+      "site": "0x22a1284",
+      "native_offset": "0x2e8",
+      "instructions": [
+        {
+          "site": "0x22a1264",
+          "word": "0x360002e0"
+        },
+        {
+          "site": "0x22a1268",
+          "word": "0xf9400e68"
+        },
+        {
+          "site": "0x22a126c",
+          "word": "0xb40016e8"
+        },
+        {
+          "site": "0x22a1270",
+          "word": "0xf941f100"
+        },
+        {
+          "site": "0x22a1274",
+          "word": "0xb40016a0"
+        },
+        {
+          "site": "0x22a1278",
+          "word": "0xf9400008"
+        },
+        {
+          "site": "0x22a127c",
+          "word": "0xf9417509"
+        },
+        {
+          "site": "0x22a1280",
+          "word": "0xf9417901"
+        },
+        {
+          "site": "0x22a1284",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.ContextualAnimation.LevelCAHandlerBase",
+      "slot": 27,
+      "metadata_file_offset": 12774360,
+      "encoded": "0x600119ef",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ContextualAnimation.LevelCAHandlerBase",
+        "name": "GetLockedAnimationName",
+        "token": "0x06008cf8",
+        "method_definition_index": 36087,
+        "parameter_count": 0,
+        "vaddr": "0x23a14fc",
+        "file_offset": "0x239d4fc"
+      }
+    },
+    {
+      "site": "0x1dc4c20",
+      "native_offset": "0x318",
+      "instructions": [
+        {
+          "site": "0x1dc4c00",
+          "word": "0x947c17e4"
+        },
+        {
+          "site": "0x1dc4c04",
+          "word": "0x36000120"
+        },
+        {
+          "site": "0x1dc4c08",
+          "word": "0xf9414a60"
+        },
+        {
+          "site": "0x1dc4c0c",
+          "word": "0xb4000520"
+        },
+        {
+          "site": "0x1dc4c10",
+          "word": "0xf9400008"
+        },
+        {
+          "site": "0x1dc4c14",
+          "word": "0xaa1303e1"
+        },
+        {
+          "site": "0x1dc4c18",
+          "word": "0xf9418d09"
+        },
+        {
+          "site": "0x1dc4c1c",
+          "word": "0xf9419102"
+        },
+        {
+          "site": "0x1dc4c20",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelDropArea",
+      "slot": 30,
+      "metadata_file_offset": 12726712,
+      "encoded": "0x6000ef91",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelDropArea",
+        "name": "OverrideAvatarEndDropAnimation",
+        "token": "0x060077c9",
+        "method_definition_index": 30664,
+        "parameter_count": 1,
+        "vaddr": "0x227fe6c",
+        "file_offset": "0x227be6c"
+      }
+    },
+    {
+      "site": "0x1dc60fc",
+      "native_offset": "0x318",
+      "instructions": [
+        {
+          "site": "0x1dc60dc",
+          "word": "0x947c12ad"
+        },
+        {
+          "site": "0x1dc60e0",
+          "word": "0x36000120"
+        },
+        {
+          "site": "0x1dc60e4",
+          "word": "0xf9414a60"
+        },
+        {
+          "site": "0x1dc60e8",
+          "word": "0xb4000520"
+        },
+        {
+          "site": "0x1dc60ec",
+          "word": "0xf9400008"
+        },
+        {
+          "site": "0x1dc60f0",
+          "word": "0xaa1303e1"
+        },
+        {
+          "site": "0x1dc60f4",
+          "word": "0xf9418d09"
+        },
+        {
+          "site": "0x1dc60f8",
+          "word": "0xf9419102"
+        },
+        {
+          "site": "0x1dc60fc",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelDropArea",
+      "slot": 30,
+      "metadata_file_offset": 12726712,
+      "encoded": "0x6000ef91",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelDropArea",
+        "name": "OverrideAvatarEndDropAnimation",
+        "token": "0x060077c9",
+        "method_definition_index": 30664,
+        "parameter_count": 1,
+        "vaddr": "0x227fe6c",
+        "file_offset": "0x227be6c"
+      }
+    },
+    {
+      "site": "0x1dc9150",
+      "native_offset": "0x318",
+      "instructions": [
+        {
+          "site": "0x1dc9130",
+          "word": "0x947c0698"
+        },
+        {
+          "site": "0x1dc9134",
+          "word": "0x36000120"
+        },
+        {
+          "site": "0x1dc9138",
+          "word": "0xf9414a60"
+        },
+        {
+          "site": "0x1dc913c",
+          "word": "0xb4000520"
+        },
+        {
+          "site": "0x1dc9140",
+          "word": "0xf9400008"
+        },
+        {
+          "site": "0x1dc9144",
+          "word": "0xaa1303e1"
+        },
+        {
+          "site": "0x1dc9148",
+          "word": "0xf9418d09"
+        },
+        {
+          "site": "0x1dc914c",
+          "word": "0xf9419102"
+        },
+        {
+          "site": "0x1dc9150",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelDropArea",
+      "slot": 30,
+      "metadata_file_offset": 12726712,
+      "encoded": "0x6000ef91",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelDropArea",
+        "name": "OverrideAvatarEndDropAnimation",
+        "token": "0x060077c9",
+        "method_definition_index": 30664,
+        "parameter_count": 1,
+        "vaddr": "0x227fe6c",
+        "file_offset": "0x227be6c"
+      }
+    },
+    {
+      "site": "0x229b960",
+      "native_offset": "0x318",
+      "instructions": [
+        {
+          "site": "0x229b940",
+          "word": "0x9468bc94"
+        },
+        {
+          "site": "0x229b944",
+          "word": "0x36000120"
+        },
+        {
+          "site": "0x229b948",
+          "word": "0xf9414a60"
+        },
+        {
+          "site": "0x229b94c",
+          "word": "0xb4000300"
+        },
+        {
+          "site": "0x229b950",
+          "word": "0xf9400008"
+        },
+        {
+          "site": "0x229b954",
+          "word": "0xaa1303e1"
+        },
+        {
+          "site": "0x229b958",
+          "word": "0xf9418d09"
+        },
+        {
+          "site": "0x229b95c",
+          "word": "0xf9419102"
+        },
+        {
+          "site": "0x229b960",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelDropArea",
+      "slot": 30,
+      "metadata_file_offset": 12726712,
+      "encoded": "0x6000ef91",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelDropArea",
+        "name": "OverrideAvatarEndDropAnimation",
+        "token": "0x060077c9",
+        "method_definition_index": 30664,
+        "parameter_count": 1,
+        "vaddr": "0x227fe6c",
+        "file_offset": "0x227be6c"
+      }
+    },
+    {
+      "site": "0x2299798",
+      "native_offset": "0x2d8",
+      "instructions": [
+        {
+          "site": "0x2299778",
+          "word": "0xb9401be1"
+        },
+        {
+          "site": "0x229977c",
+          "word": "0xf9401ea2"
+        },
+        {
+          "site": "0x2299780",
+          "word": "0x94000138"
+        },
+        {
+          "site": "0x2299784",
+          "word": "0xaa0003f3"
+        },
+        {
+          "site": "0x2299788",
+          "word": "0x1400009f"
+        },
+        {
+          "site": "0x229978c",
+          "word": "0xf9416d09"
+        },
+        {
+          "site": "0x2299790",
+          "word": "0xf9417101"
+        },
+        {
+          "site": "0x2299794",
+          "word": "0xaa1403e0"
+        },
+        {
+          "site": "0x2299798",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelSitArea",
+      "slot": 26,
+      "metadata_file_offset": 12723548,
+      "encoded": "0x6000ecb3",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelSitArea",
+        "name": "IsAvailableForAvatar",
+        "token": "0x0600765a",
+        "method_definition_index": 30297,
+        "parameter_count": 0,
+        "vaddr": "0x226c1c4",
+        "file_offset": "0x22681c4"
+      }
+    },
+    {
+      "site": "0x2299814",
+      "native_offset": "0x2d8",
+      "instructions": [
+        {
+          "site": "0x22997f4",
+          "word": "0x54ffff61"
+        },
+        {
+          "site": "0x22997f8",
+          "word": "0x52800262"
+        },
+        {
+          "site": "0x22997fc",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x2299800",
+          "word": "0x97e38891"
+        },
+        {
+          "site": "0x2299804",
+          "word": "0x1400005b"
+        },
+        {
+          "site": "0x2299808",
+          "word": "0xf9416d09"
+        },
+        {
+          "site": "0x229980c",
+          "word": "0xf9417101"
+        },
+        {
+          "site": "0x2299810",
+          "word": "0xaa1403e0"
+        },
+        {
+          "site": "0x2299814",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelSleepArea",
+      "slot": 26,
+      "metadata_file_offset": 12723660,
+      "encoded": "0x6000ecbf",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelSleepArea",
+        "name": "IsAvailableForAvatar",
+        "token": "0x06007660",
+        "method_definition_index": 30303,
+        "parameter_count": 0,
+        "vaddr": "0x226cb24",
+        "file_offset": "0x2268b24"
+      }
+    },
+    {
+      "site": "0x2299898",
+      "native_offset": "0x3b8",
+      "instructions": [
+        {
+          "site": "0x2299878",
+          "word": "0x52800022"
+        },
+        {
+          "site": "0x229987c",
+          "word": "0xaa1403e1"
+        },
+        {
+          "site": "0x2299880",
+          "word": "0xaa1f03e3"
+        },
+        {
+          "site": "0x2299884",
+          "word": "0x94000208"
+        },
+        {
+          "site": "0x2299888",
+          "word": "0x1400005f"
+        },
+        {
+          "site": "0x229988c",
+          "word": "0xf941dd09"
+        },
+        {
+          "site": "0x2299890",
+          "word": "0xf941e101"
+        },
+        {
+          "site": "0x2299894",
+          "word": "0xaa1403e0"
+        },
+        {
+          "site": "0x2299898",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelDropArea",
+      "slot": 40,
+      "metadata_file_offset": 12726752,
+      "encoded": "0x6000efad",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelDropArea",
+        "name": "IsAvailableForItems",
+        "token": "0x060077d7",
+        "method_definition_index": 30678,
+        "parameter_count": 0,
+        "vaddr": "0x22805e4",
+        "file_offset": "0x227c5e4"
+      }
+    },
+    {
+      "site": "0x22999bc",
+      "native_offset": "0x218",
+      "instructions": [
+        {
+          "site": "0x229999c",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x22999a0",
+          "word": "0xd63f0100"
+        },
+        {
+          "site": "0x22999a4",
+          "word": "0xf9400288"
+        },
+        {
+          "site": "0x22999a8",
+          "word": "0xaa0003f5"
+        },
+        {
+          "site": "0x22999ac",
+          "word": "0xaa1403e0"
+        },
+        {
+          "site": "0x22999b0",
+          "word": "0xaa1503e1"
+        },
+        {
+          "site": "0x22999b4",
+          "word": "0xf9410d09"
+        },
+        {
+          "site": "0x22999b8",
+          "word": "0xf9411102"
+        },
+        {
+          "site": "0x22999bc",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelDropArea",
+      "slot": 14,
+      "metadata_file_offset": 12726648,
+      "encoded": "0x6000ef95",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelDropArea",
+        "name": "CanConsumeItem",
+        "token": "0x060077cb",
+        "method_definition_index": 30666,
+        "parameter_count": 1,
+        "vaddr": "0x227cc60",
+        "file_offset": "0x2278c60"
+      }
+    },
+    {
+      "site": "0x22999e4",
+      "native_offset": "0x578",
+      "instructions": [
+        {
+          "site": "0x22999c4",
+          "word": "0xb40002d5"
+        },
+        {
+          "site": "0x22999c8",
+          "word": "0xf94002a8"
+        },
+        {
+          "site": "0x22999cc",
+          "word": "0xaa1503e0"
+        },
+        {
+          "site": "0x22999d0",
+          "word": "0xaa1403e1"
+        },
+        {
+          "site": "0x22999d4",
+          "word": "0xaa1f03e2"
+        },
+        {
+          "site": "0x22999d8",
+          "word": "0xf942bd09"
+        },
+        {
+          "site": "0x22999dc",
+          "word": "0xf942c104"
+        },
+        {
+          "site": "0x22999e0",
+          "word": "0xaa1f03e3"
+        },
+        {
+          "site": "0x22999e4",
+          "word": "0xd63f0120"
+        }
+      ],
+      "receiver": "PWC.Level.LevelItem",
+      "slot": 68,
+      "metadata_file_offset": 12748292,
+      "encoded": "0x60010559",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelItem",
+        "name": "SnapToDropArea",
+        "token": "0x060082ad",
+        "method_definition_index": 33452,
+        "parameter_count": 2,
+        "vaddr": "0x22ff2f4",
+        "file_offset": "0x22fb2f4"
+      }
+    }
+  ],
+  "interface_calls": [
+    {
+      "slow_resolver": "0x2299764",
+      "fast_slot_add": "0x229990c",
+      "call": "0x2299920",
+      "interface_index": 7,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ILevelAvatar",
+        "name": "GetLevelItem",
+        "token": "0x06007978",
+        "method_definition_index": 31095,
+        "parameter_count": 0,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x2299900",
+          "word": "0x97e38851"
+        },
+        {
+          "site": "0x2299904",
+          "word": "0x14000025"
+        },
+        {
+          "site": "0x2299908",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x229990c",
+          "word": "0x11001d29"
+        },
+        {
+          "site": "0x2299910",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x2299914",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x2299918",
+          "word": "0xa9400408"
+        },
+        {
+          "site": "0x229991c",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x2299920",
+          "word": "0xd63f0100"
+        }
+      ]
+    },
+    {
+      "slow_resolver": "0x2299800",
+      "fast_slot_add": "0x2299964",
+      "call": "0x2299980",
+      "interface_index": 19,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ILevelAvatar",
+        "name": "SitAvatarOn",
+        "token": "0x06007984",
+        "method_definition_index": 31107,
+        "parameter_count": 2,
+        "vaddr": "0x228f830",
+        "file_offset": "0x228b830"
+      },
+      "instructions": [
+        {
+          "site": "0x2299960",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x2299964",
+          "word": "0x11004d29"
+        },
+        {
+          "site": "0x2299968",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x229996c",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x2299970",
+          "word": "0xa9400c08"
+        },
+        {
+          "site": "0x2299974",
+          "word": "0x52800022"
+        },
+        {
+          "site": "0x2299978",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x229997c",
+          "word": "0xaa1403e1"
+        },
+        {
+          "site": "0x2299980",
+          "word": "0xd63f0100"
+        }
+      ]
+    },
+    {
+      "slow_resolver": "0x2299900",
+      "fast_slot_add": "0x229998c",
+      "call": "0x22999a0",
+      "interface_index": 7,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ILevelAvatar",
+        "name": "GetLevelItem",
+        "token": "0x06007978",
+        "method_definition_index": 31095,
+        "parameter_count": 0,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x2299980",
+          "word": "0xd63f0100"
+        },
+        {
+          "site": "0x2299984",
+          "word": "0x14000020"
+        },
+        {
+          "site": "0x2299988",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x229998c",
+          "word": "0x11001d29"
+        },
+        {
+          "site": "0x2299990",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x2299994",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x2299998",
+          "word": "0xa9400408"
+        },
+        {
+          "site": "0x229999c",
+          "word": "0xaa1303e0"
+        },
+        {
+          "site": "0x22999a0",
+          "word": "0xd63f0100"
+        }
+      ]
+    },
+    {
+      "slow_resolver": "0x2294534",
+      "fast_slot_add": "0x2294540",
+      "call": "0x2294554",
+      "interface_index": 7,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ILevelAvatar",
+        "name": "GetLevelItem",
+        "token": "0x06007978",
+        "method_definition_index": 31095,
+        "parameter_count": 0,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x2294534",
+          "word": "0x97e39d44"
+        },
+        {
+          "site": "0x2294538",
+          "word": "0x14000005"
+        },
+        {
+          "site": "0x229453c",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x2294540",
+          "word": "0x11001d29"
+        },
+        {
+          "site": "0x2294544",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x2294548",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x229454c",
+          "word": "0xa9400408"
+        },
+        {
+          "site": "0x2294550",
+          "word": "0xaa1403e0"
+        },
+        {
+          "site": "0x2294554",
+          "word": "0xd63f0100"
+        }
+      ]
+    },
+    {
+      "slow_resolver": "0x2294610",
+      "fast_slot_add": "0x229461c",
+      "call": "0x2294630",
+      "interface_index": 8,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ILevelAvatar",
+        "name": "GetPDPrefab",
+        "token": "0x06007979",
+        "method_definition_index": 31096,
+        "parameter_count": 0,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x2294610",
+          "word": "0x97e39d0d"
+        },
+        {
+          "site": "0x2294614",
+          "word": "0x14000005"
+        },
+        {
+          "site": "0x2294618",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x229461c",
+          "word": "0x11002129"
+        },
+        {
+          "site": "0x2294620",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x2294624",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x2294628",
+          "word": "0xa9400408"
+        },
+        {
+          "site": "0x229462c",
+          "word": "0xaa1403e0"
+        },
+        {
+          "site": "0x2294630",
+          "word": "0xd63f0100"
+        }
+      ]
+    },
+    {
+      "slow_resolver": "0x2294684",
+      "fast_slot_add": "0x2294690",
+      "call": "0x22946a4",
+      "interface_index": 4,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ILevelAvatar",
+        "name": "get_ID",
+        "token": "0x06007975",
+        "method_definition_index": 31092,
+        "parameter_count": 0,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x2294684",
+          "word": "0x97e39cf0"
+        },
+        {
+          "site": "0x2294688",
+          "word": "0x14000005"
+        },
+        {
+          "site": "0x229468c",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x2294690",
+          "word": "0x11001129"
+        },
+        {
+          "site": "0x2294694",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x2294698",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x229469c",
+          "word": "0xa9400408"
+        },
+        {
+          "site": "0x22946a0",
+          "word": "0xaa1403e0"
+        },
+        {
+          "site": "0x22946a4",
+          "word": "0xd63f0100"
+        }
+      ]
+    },
+    {
+      "slow_resolver": "0x2294868",
+      "fast_slot_add": "0x2294874",
+      "call": "0x2294888",
+      "interface_index": 7,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ILevelAvatar",
+        "name": "GetLevelItem",
+        "token": "0x06007978",
+        "method_definition_index": 31095,
+        "parameter_count": 0,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x2294868",
+          "word": "0x97e39c77"
+        },
+        {
+          "site": "0x229486c",
+          "word": "0x14000005"
+        },
+        {
+          "site": "0x2294870",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x2294874",
+          "word": "0x11001d29"
+        },
+        {
+          "site": "0x2294878",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x229487c",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x2294880",
+          "word": "0xa9400408"
+        },
+        {
+          "site": "0x2294884",
+          "word": "0xaa1403e0"
+        },
+        {
+          "site": "0x2294888",
+          "word": "0xd63f0100"
+        }
+      ]
+    },
+    {
+      "slow_resolver": "0x22956cc",
+      "fast_slot_add": "0x22956d8",
+      "call": "0x22956ec",
+      "interface_index": 7,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ILevelAvatar",
+        "name": "GetLevelItem",
+        "token": "0x06007978",
+        "method_definition_index": 31095,
+        "parameter_count": 0,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x22956cc",
+          "word": "0x97e398de"
+        },
+        {
+          "site": "0x22956d0",
+          "word": "0x14000005"
+        },
+        {
+          "site": "0x22956d4",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x22956d8",
+          "word": "0x11001d29"
+        },
+        {
+          "site": "0x22956dc",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x22956e0",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x22956e4",
+          "word": "0xa9400408"
+        },
+        {
+          "site": "0x22956e8",
+          "word": "0xaa1903e0"
+        },
+        {
+          "site": "0x22956ec",
+          "word": "0xd63f0100"
+        }
+      ]
+    },
+    {
+      "slow_resolver": "0x22958e8",
+      "fast_slot_add": "0x2295abc",
+      "call": "0x2295ad0",
+      "interface_index": 8,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.ILevelAvatar",
+        "name": "GetPDPrefab",
+        "token": "0x06007979",
+        "method_definition_index": 31096,
+        "parameter_count": 0,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x2295ab0",
+          "word": "0x94684036"
+        },
+        {
+          "site": "0x2295ab4",
+          "word": "0x17ffff4f"
+        },
+        {
+          "site": "0x2295ab8",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x2295abc",
+          "word": "0x11002129"
+        },
+        {
+          "site": "0x2295ac0",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x2295ac4",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x2295ac8",
+          "word": "0xa9400408"
+        },
+        {
+          "site": "0x2295acc",
+          "word": "0xaa1903e0"
+        },
+        {
+          "site": "0x2295ad0",
+          "word": "0xd63f0100"
+        }
+      ]
+    }
+  ],
+  "persistent_interface_calls": [
+    {
+      "interface_usage": {
+        "got_vaddr": "0x41c9c38",
+        "usage_vaddr": "0x42f22a0",
+        "encoded": "0x2000aaf5",
+        "kind": 1,
+        "index": 21882
+      },
+      "slow_resolver": "0x2294acc",
+      "fast_slot": "0x2294ad8",
+      "call": "0x2294ae8",
+      "interface_index": 0,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.PersistentData.IHasPersistentData",
+        "name": "GetPersistentData",
+        "token": "0x06006dc3",
+        "method_definition_index": 28098,
+        "parameter_count": 0,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x2294ac8",
+          "word": "0x2a1f03e2"
+        },
+        {
+          "site": "0x2294acc",
+          "word": "0x97e39bde"
+        },
+        {
+          "site": "0x2294ad0",
+          "word": "0x14000004"
+        },
+        {
+          "site": "0x2294ad4",
+          "word": "0xb9800149"
+        },
+        {
+          "site": "0x2294ad8",
+          "word": "0x8b091108"
+        },
+        {
+          "site": "0x2294adc",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x2294ae0",
+          "word": "0xa9400408"
+        },
+        {
+          "site": "0x2294ae4",
+          "word": "0xaa1c03e0"
+        },
+        {
+          "site": "0x2294ae8",
+          "word": "0xd63f0100"
+        }
+      ]
+    },
+    {
+      "interface_usage": {
+        "got_vaddr": "0x41c9c38",
+        "usage_vaddr": "0x42f22a0",
+        "encoded": "0x2000aaf5",
+        "kind": 1,
+        "index": 21882
+      },
+      "slow_resolver": "0x2295d88",
+      "fast_slot": "0x2295d94",
+      "call": "0x2295db0",
+      "interface_index": 1,
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.PersistentData.IHasPersistentData",
+        "name": "SetPersistentData",
+        "token": "0x06006dc4",
+        "method_definition_index": 28099,
+        "parameter_count": 2,
+        "vaddr": null,
+        "file_offset": null
+      },
+      "instructions": [
+        {
+          "site": "0x2295d90",
+          "word": "0xb9400149"
+        },
+        {
+          "site": "0x2295d94",
+          "word": "0x11000529"
+        },
+        {
+          "site": "0x2295d98",
+          "word": "0x8b29d108"
+        },
+        {
+          "site": "0x2295d9c",
+          "word": "0x9104e100"
+        },
+        {
+          "site": "0x2295da0",
+          "word": "0xa9400c08"
+        },
+        {
+          "site": "0x2295da4",
+          "word": "0xaa1903e0"
+        },
+        {
+          "site": "0x2295da8",
+          "word": "0xaa1a03e1"
+        },
+        {
+          "site": "0x2295dac",
+          "word": "0xaa1603e2"
+        },
+        {
+          "site": "0x2295db0",
+          "word": "0xd63f0100"
+        }
+      ]
+    }
+  ],
+  "step_callbacks": [
+    {
+      "receiver": "PWC.Level.LevelAnimal",
+      "method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelAnimal",
+          "name": "<OnMovement>b__88_0",
+          "token": "0x060075e3",
+          "method_definition_index": 30178,
+          "parameter_count": 2,
+          "vaddr": "0x2267430",
+          "file_offset": "0x2263430"
+        }
+      ],
+      "start": "0x2267430",
+      "stop": "0x2267450",
+      "window_sha256": "c5cccd40d55fa13baca00964eaa19568d02d47b38b1857c70806e622340d80cc",
+      "instructions": [
+        {
+          "site": "0x2267430",
+          "word": "0xf941f408"
+        },
+        {
+          "site": "0x2267434",
+          "word": "0xb40000c8"
+        },
+        {
+          "site": "0x2267438",
+          "word": "0xaa0003e1"
+        },
+        {
+          "site": "0x226743c",
+          "word": "0xf9400d04"
+        },
+        {
+          "site": "0x2267440",
+          "word": "0xf9402100"
+        },
+        {
+          "site": "0x2267444",
+          "word": "0xf9401503"
+        },
+        {
+          "site": "0x2267448",
+          "word": "0xd61f0080"
+        },
+        {
+          "site": "0x226744c",
+          "word": "0xd65f03c0"
+        }
+      ],
+      "event_field_offset": "0x3e8",
+      "event": "OnStepContact",
+      "receiver_argument": "this",
+      "behavior": "null delegate returns; otherwise forwards receiver and incoming spineEvent; ignores trackEntry; no event-name filter"
+    },
+    {
+      "receiver": "PWC.Level.LevelCharacterAnimator",
+      "method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelCharacterAnimator",
+          "name": "<OnMovement>b__27_0",
+          "token": "0x06007b20",
+          "method_definition_index": 31519,
+          "parameter_count": 2,
+          "vaddr": "0x22a66b4",
+          "file_offset": "0x22a26b4"
+        }
+      ],
+      "start": "0x22a66b4",
+      "stop": "0x22a66d4",
+      "window_sha256": "b0a581a8f7bf455443836c0705a559a9df615bd467f5c1bd5c890d9d9ee859c8",
+      "instructions": [
+        {
+          "site": "0x22a66b4",
+          "word": "0xf9403408"
+        },
+        {
+          "site": "0x22a66b8",
+          "word": "0xb40000c8"
+        },
+        {
+          "site": "0x22a66bc",
+          "word": "0xf9400c01"
+        },
+        {
+          "site": "0x22a66c0",
+          "word": "0xf9400d04"
+        },
+        {
+          "site": "0x22a66c4",
+          "word": "0xf9402100"
+        },
+        {
+          "site": "0x22a66c8",
+          "word": "0xf9401503"
+        },
+        {
+          "site": "0x22a66cc",
+          "word": "0xd61f0080"
+        },
+        {
+          "site": "0x22a66d0",
+          "word": "0xd65f03c0"
+        }
+      ],
+      "event_field_offset": "0x68",
+      "event": "OnStepContact",
+      "receiver_argument": "animator._character",
+      "behavior": "null delegate returns; otherwise forwards receiver and incoming spineEvent; ignores trackEntry; no event-name filter"
+    },
+    {
+      "receiver": "PWC.Level.LevelToddler",
+      "method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelToddler",
+          "name": "<OnMovement>b__109_0",
+          "token": "0x060086e1",
+          "method_definition_index": 34528,
+          "parameter_count": 2,
+          "vaddr": "0x23442d4",
+          "file_offset": "0x23402d4"
+        }
+      ],
+      "start": "0x23442d4",
+      "stop": "0x23442f4",
+      "window_sha256": "bc4c248d18ff382bfffc3e0988c3fc9edc3d37dcfaf0b4a0f86758b1cc43e151",
+      "instructions": [
+        {
+          "site": "0x23442d4",
+          "word": "0xf9422408"
+        },
+        {
+          "site": "0x23442d8",
+          "word": "0xb40000c8"
+        },
+        {
+          "site": "0x23442dc",
+          "word": "0xaa0003e1"
+        },
+        {
+          "site": "0x23442e0",
+          "word": "0xf9400d04"
+        },
+        {
+          "site": "0x23442e4",
+          "word": "0xf9402100"
+        },
+        {
+          "site": "0x23442e8",
+          "word": "0xf9401503"
+        },
+        {
+          "site": "0x23442ec",
+          "word": "0xd61f0080"
+        },
+        {
+          "site": "0x23442f0",
+          "word": "0xd65f03c0"
+        }
+      ],
+      "event_field_offset": "0x448",
+      "event": "OnStepContact",
+      "receiver_argument": "this",
+      "behavior": "null delegate returns; otherwise forwards receiver and incoming spineEvent; ignores trackEntry; no event-name filter"
+    }
+  ],
+  "declaration_sources": [
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelAnimal.cs",
+      "sha256": "953bbde72d3388c9029489690637b96316b7900f9c6ea8d7a08a32f421a82d22"
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelCharacterAnimator.cs",
+      "sha256": "8891bbb239a616a2571b4951026459e958750fc021b3b03534106755ca2dc416"
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelToddler.cs",
+      "sha256": "f433c08a19289f660de059114287e92702a6230cd0ea8052de0f1f7a499fc163"
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelBaby.cs",
+      "sha256": "6516968850a04b36790c34690eda58179c0874be35a81ab3cbe7ac1930aad170"
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/ILevelAvatar.cs",
+      "sha256": "2ae7b05548184b54a00e6245c1fcd802daa82fa9971189519fd3cc265ca13756"
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelDropArea.cs",
+      "sha256": "cc5545111d9c1049f6bb5ef183de035dba0ae97a6bb957e76e65ab1d79a521b7"
+    }
+  ],
+  "spawn_area_types": [
+    {
+      "type": "PWC.Level.LevelSitArea",
+      "usage": {
+        "got_vaddr": "0x41b8a00",
+        "usage_vaddr": "0x42f4020",
+        "encoded": "0x2000cad3",
+        "kind": 1,
+        "index": 25961
+      }
+    },
+    {
+      "type": "PWC.Level.LevelSleepArea",
+      "usage": {
+        "got_vaddr": "0x41bb970",
+        "usage_vaddr": "0x42f4030",
+        "encoded": "0x2000cb01",
+        "kind": 1,
+        "index": 25984
+      }
+    },
+    {
+      "type": "PWC.Level.LevelDropArea",
+      "usage": {
+        "got_vaddr": "0x41b8908",
+        "usage_vaddr": "0x42f3a20",
+        "encoded": "0x2000c2cf",
+        "kind": 1,
+        "index": 24935
+      }
+    }
+  ],
+  "families": [
+    {
+      "receiver": "PWC.Level.LevelCharacter",
+      "drag_slots": [
+        {
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 27,
+          "metadata_file_offset": 12734532,
+          "encoded": "0x6000f59d",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "OnSyncPosition",
+            "token": "0x06007acf",
+            "method_definition_index": 31438,
+            "parameter_count": 1,
+            "vaddr": "0x22a154c",
+            "file_offset": "0x229d54c"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 29,
+          "metadata_file_offset": 12734540,
+          "encoded": "0x6000f59b",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "OnBeginDragInternal",
+            "token": "0x06007ace",
+            "method_definition_index": 31437,
+            "parameter_count": 1,
+            "vaddr": "0x22a112c",
+            "file_offset": "0x229d12c"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 30,
+          "metadata_file_offset": 12734544,
+          "encoded": "0x6000f5a5",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "OnEndDragInternal",
+            "token": "0x06007ad3",
+            "method_definition_index": 31442,
+            "parameter_count": 1,
+            "vaddr": "0x22a1f44",
+            "file_offset": "0x229df44"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 74,
+          "metadata_file_offset": 12734720,
+          "encoded": "0x60010583",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "OnBeginLand",
+            "token": "0x060082c2",
+            "method_definition_index": 33473,
+            "parameter_count": 1,
+            "vaddr": "0x23002cc",
+            "file_offset": "0x22fc2cc"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 75,
+          "metadata_file_offset": 12734724,
+          "encoded": "0x6000f58d",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "OnEndLand",
+            "token": "0x06007ac7",
+            "method_definition_index": 31430,
+            "parameter_count": 0,
+            "vaddr": "0x22a0af0",
+            "file_offset": "0x229caf0"
+          }
+        }
+      ],
+      "avatar_interface": [
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 4,
+          "interface_offset_file_offset": 13292648,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 134,
+          "metadata_file_offset": 12734960,
+          "encoded": "0x6000f533",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "get_ID",
+            "token": "0x06007a9a",
+            "method_definition_index": 31385,
+            "parameter_count": 0,
+            "vaddr": "0x229e6a8",
+            "file_offset": "0x229a6a8"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 7,
+          "interface_offset_file_offset": 13292648,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 137,
+          "metadata_file_offset": 12734972,
+          "encoded": "0x6000f591",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "GetLevelItem",
+            "token": "0x06007ac9",
+            "method_definition_index": 31432,
+            "parameter_count": 0,
+            "vaddr": "0x22a0dc0",
+            "file_offset": "0x229cdc0"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 8,
+          "interface_offset_file_offset": 13292648,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 138,
+          "metadata_file_offset": 12734976,
+          "encoded": "0x600104ef",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "GetPDPrefab",
+            "token": "0x06008278",
+            "method_definition_index": 33399,
+            "parameter_count": 0,
+            "vaddr": "0x22f424c",
+            "file_offset": "0x22f024c"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 9,
+          "interface_offset_file_offset": 13292648,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 139,
+          "metadata_file_offset": 12734980,
+          "encoded": "0x6000f581",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "Init",
+            "token": "0x06007ac1",
+            "method_definition_index": 31424,
+            "parameter_count": 1,
+            "vaddr": "0x229fe44",
+            "file_offset": "0x229be44"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 10,
+          "interface_offset_file_offset": 13292648,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 140,
+          "metadata_file_offset": 12734984,
+          "encoded": "0x6000f5c7",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "PWC.Level.ILevelAvatar.PlayProperIdleAnimation",
+            "token": "0x06007ae4",
+            "method_definition_index": 31459,
+            "parameter_count": 0,
+            "vaddr": "0x22a3d28",
+            "file_offset": "0x229fd28"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 12,
+          "interface_offset_file_offset": 13292648,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 142,
+          "metadata_file_offset": 12734992,
+          "encoded": "0x6000f5cf",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "PWC.Level.ILevelAvatar.GetSkinsManager",
+            "token": "0x06007ae8",
+            "method_definition_index": 31463,
+            "parameter_count": 0,
+            "vaddr": "0x22a3d58",
+            "file_offset": "0x229fd58"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 13,
+          "interface_offset_file_offset": 13292648,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 143,
+          "metadata_file_offset": 12734996,
+          "encoded": "0x6000f2fb",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "OnPostSaveProgress",
+            "token": "0x0600797e",
+            "method_definition_index": 31101,
+            "parameter_count": 0,
+            "vaddr": "0x228eb18",
+            "file_offset": "0x228ab18"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 15,
+          "interface_offset_file_offset": 13292648,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 145,
+          "metadata_file_offset": 12735004,
+          "encoded": "0x6000f5ad",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelCharacter",
+            "name": "DestroyAvatar",
+            "token": "0x06007ad7",
+            "method_definition_index": 31446,
+            "parameter_count": 1,
+            "vaddr": "0x22a2890",
+            "file_offset": "0x229e890"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 19,
+          "interface_offset_file_offset": 13292648,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelCharacter",
+          "slot": 149,
+          "metadata_file_offset": 12735020,
+          "encoded": "0x6000f307",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "SitAvatarOn",
+            "token": "0x06007984",
+            "method_definition_index": 31107,
+            "parameter_count": 2,
+            "vaddr": "0x228f830",
+            "file_offset": "0x228b830"
+          }
+        }
+      ]
+    },
+    {
+      "receiver": "PWC.Level.LevelToddler",
+      "drag_slots": [
+        {
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 27,
+          "metadata_file_offset": 12760012,
+          "encoded": "0x60010d21",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "OnSyncPosition",
+            "token": "0x06008691",
+            "method_definition_index": 34448,
+            "parameter_count": 1,
+            "vaddr": "0x233f8f4",
+            "file_offset": "0x233b8f4"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 29,
+          "metadata_file_offset": 12760020,
+          "encoded": "0x60010d19",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "OnBeginDragInternal",
+            "token": "0x0600868d",
+            "method_definition_index": 34444,
+            "parameter_count": 1,
+            "vaddr": "0x233f26c",
+            "file_offset": "0x233b26c"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 30,
+          "metadata_file_offset": 12760024,
+          "encoded": "0x60010d1d",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "OnEndDragInternal",
+            "token": "0x0600868f",
+            "method_definition_index": 34446,
+            "parameter_count": 1,
+            "vaddr": "0x233f66c",
+            "file_offset": "0x233b66c"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 74,
+          "metadata_file_offset": 12760200,
+          "encoded": "0x60010583",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "OnBeginLand",
+            "token": "0x060082c2",
+            "method_definition_index": 33473,
+            "parameter_count": 1,
+            "vaddr": "0x23002cc",
+            "file_offset": "0x22fc2cc"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 75,
+          "metadata_file_offset": 12760204,
+          "encoded": "0x60010d1f",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "OnEndLand",
+            "token": "0x06008690",
+            "method_definition_index": 34447,
+            "parameter_count": 0,
+            "vaddr": "0x233f79c",
+            "file_offset": "0x233b79c"
+          }
+        }
+      ],
+      "avatar_interface": [
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 4,
+          "interface_offset_file_offset": 13301144,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 134,
+          "metadata_file_offset": 12760440,
+          "encoded": "0x60010ced",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "get_ID",
+            "token": "0x06008677",
+            "method_definition_index": 34422,
+            "parameter_count": 0,
+            "vaddr": "0x233db5c",
+            "file_offset": "0x2339b5c"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 7,
+          "interface_offset_file_offset": 13301144,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 137,
+          "metadata_file_offset": 12760452,
+          "encoded": "0x60010d5f",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "GetLevelItem",
+            "token": "0x060086b0",
+            "method_definition_index": 34479,
+            "parameter_count": 0,
+            "vaddr": "0x2342214",
+            "file_offset": "0x233e214"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 8,
+          "interface_offset_file_offset": 13301144,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 138,
+          "metadata_file_offset": 12760456,
+          "encoded": "0x600104ef",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "GetPDPrefab",
+            "token": "0x06008278",
+            "method_definition_index": 33399,
+            "parameter_count": 0,
+            "vaddr": "0x22f424c",
+            "file_offset": "0x22f024c"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 9,
+          "interface_offset_file_offset": 13301144,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 139,
+          "metadata_file_offset": 12760460,
+          "encoded": "0x60010d0d",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "Init",
+            "token": "0x06008687",
+            "method_definition_index": 34438,
+            "parameter_count": 1,
+            "vaddr": "0x233e6e0",
+            "file_offset": "0x233a6e0"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 10,
+          "interface_offset_file_offset": 13301144,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 140,
+          "metadata_file_offset": 12760464,
+          "encoded": "0x60010d61",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "PWC.Level.ILevelAvatar.PlayProperIdleAnimation",
+            "token": "0x060086b1",
+            "method_definition_index": 34480,
+            "parameter_count": 0,
+            "vaddr": "0x2342218",
+            "file_offset": "0x233e218"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 12,
+          "interface_offset_file_offset": 13301144,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 142,
+          "metadata_file_offset": 12760472,
+          "encoded": "0x60010d63",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "PWC.Level.ILevelAvatar.GetSkinsManager",
+            "token": "0x060086b2",
+            "method_definition_index": 34481,
+            "parameter_count": 0,
+            "vaddr": "0x2342240",
+            "file_offset": "0x233e240"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 13,
+          "interface_offset_file_offset": 13301144,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 143,
+          "metadata_file_offset": 12760476,
+          "encoded": "0x6000f2fb",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "OnPostSaveProgress",
+            "token": "0x0600797e",
+            "method_definition_index": 31101,
+            "parameter_count": 0,
+            "vaddr": "0x228eb18",
+            "file_offset": "0x228ab18"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 15,
+          "interface_offset_file_offset": 13301144,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 145,
+          "metadata_file_offset": 12760484,
+          "encoded": "0x60010d3d",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelToddler",
+            "name": "DestroyAvatar",
+            "token": "0x0600869f",
+            "method_definition_index": 34462,
+            "parameter_count": 1,
+            "vaddr": "0x2340e30",
+            "file_offset": "0x233ce30"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 19,
+          "interface_offset_file_offset": 13301144,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelToddler",
+          "slot": 149,
+          "metadata_file_offset": 12760500,
+          "encoded": "0x6000f307",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "SitAvatarOn",
+            "token": "0x06007984",
+            "method_definition_index": 31107,
+            "parameter_count": 2,
+            "vaddr": "0x228f830",
+            "file_offset": "0x228b830"
+          }
+        }
+      ]
+    },
+    {
+      "receiver": "PWC.Level.LevelBaby",
+      "drag_slots": [
+        {
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 27,
+          "metadata_file_offset": 12733564,
+          "encoded": "0x60010539",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "OnSyncPosition",
+            "token": "0x0600829d",
+            "method_definition_index": 33436,
+            "parameter_count": 1,
+            "vaddr": "0x22fc998",
+            "file_offset": "0x22f8998"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 29,
+          "metadata_file_offset": 12733572,
+          "encoded": "0x6000f48d",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelBaby",
+            "name": "OnBeginDragInternal",
+            "token": "0x06007a47",
+            "method_definition_index": 31302,
+            "parameter_count": 1,
+            "vaddr": "0x229b784",
+            "file_offset": "0x2297784"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 30,
+          "metadata_file_offset": 12733576,
+          "encoded": "0x6000f48f",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelBaby",
+            "name": "OnEndDragInternal",
+            "token": "0x06007a48",
+            "method_definition_index": 31303,
+            "parameter_count": 1,
+            "vaddr": "0x229b814",
+            "file_offset": "0x2297814"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 74,
+          "metadata_file_offset": 12733752,
+          "encoded": "0x60010583",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "OnBeginLand",
+            "token": "0x060082c2",
+            "method_definition_index": 33473,
+            "parameter_count": 1,
+            "vaddr": "0x23002cc",
+            "file_offset": "0x22fc2cc"
+          }
+        },
+        {
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 75,
+          "metadata_file_offset": 12733756,
+          "encoded": "0x6000f491",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelBaby",
+            "name": "OnEndLand",
+            "token": "0x06007a49",
+            "method_definition_index": 31304,
+            "parameter_count": 0,
+            "vaddr": "0x229b898",
+            "file_offset": "0x2297898"
+          }
+        }
+      ],
+      "avatar_interface": [
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 4,
+          "interface_offset_file_offset": 13292400,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 134,
+          "metadata_file_offset": 12733992,
+          "encoded": "0x6000f477",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelBaby",
+            "name": "get_ID",
+            "token": "0x06007a3c",
+            "method_definition_index": 31291,
+            "parameter_count": 0,
+            "vaddr": "0x229b1a4",
+            "file_offset": "0x22971a4"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 7,
+          "interface_offset_file_offset": 13292400,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 137,
+          "metadata_file_offset": 12734004,
+          "encoded": "0x6000f4b9",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelBaby",
+            "name": "GetLevelItem",
+            "token": "0x06007a5d",
+            "method_definition_index": 31324,
+            "parameter_count": 0,
+            "vaddr": "0x229d164",
+            "file_offset": "0x2299164"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 8,
+          "interface_offset_file_offset": 13292400,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 138,
+          "metadata_file_offset": 12734008,
+          "encoded": "0x600104ef",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "GetPDPrefab",
+            "token": "0x06008278",
+            "method_definition_index": 33399,
+            "parameter_count": 0,
+            "vaddr": "0x22f424c",
+            "file_offset": "0x22f024c"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 9,
+          "interface_offset_file_offset": 13292400,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 139,
+          "metadata_file_offset": 12734012,
+          "encoded": "0x6000f485",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelBaby",
+            "name": "Init",
+            "token": "0x06007a43",
+            "method_definition_index": 31298,
+            "parameter_count": 1,
+            "vaddr": "0x229b3e8",
+            "file_offset": "0x22973e8"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 10,
+          "interface_offset_file_offset": 13292400,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 140,
+          "metadata_file_offset": 12734016,
+          "encoded": "0x6000f4bd",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelBaby",
+            "name": "PWC.Level.ILevelAvatar.PlayProperIdleAnimation",
+            "token": "0x06007a5f",
+            "method_definition_index": 31326,
+            "parameter_count": 0,
+            "vaddr": "0x229d178",
+            "file_offset": "0x2299178"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 12,
+          "interface_offset_file_offset": 13292400,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 142,
+          "metadata_file_offset": 12734024,
+          "encoded": "0x6000f4c1",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelBaby",
+            "name": "PWC.Level.ILevelAvatar.GetSkinsManager",
+            "token": "0x06007a61",
+            "method_definition_index": 31328,
+            "parameter_count": 0,
+            "vaddr": "0x229d184",
+            "file_offset": "0x2299184"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 13,
+          "interface_offset_file_offset": 13292400,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 143,
+          "metadata_file_offset": 12734028,
+          "encoded": "0x6000f2fb",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "OnPostSaveProgress",
+            "token": "0x0600797e",
+            "method_definition_index": 31101,
+            "parameter_count": 0,
+            "vaddr": "0x228eb18",
+            "file_offset": "0x228ab18"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 15,
+          "interface_offset_file_offset": 13292400,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 145,
+          "metadata_file_offset": 12734036,
+          "encoded": "0x6000f4a5",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelBaby",
+            "name": "DestroyAvatar",
+            "token": "0x06007a53",
+            "method_definition_index": 31314,
+            "parameter_count": 1,
+            "vaddr": "0x229c478",
+            "file_offset": "0x2298478"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 19,
+          "interface_offset_file_offset": 13292400,
+          "interface_vtable_offset": 130,
+          "receiver": "PWC.Level.LevelBaby",
+          "slot": 149,
+          "metadata_file_offset": 12734052,
+          "encoded": "0x6000f307",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "SitAvatarOn",
+            "token": "0x06007984",
+            "method_definition_index": 31107,
+            "parameter_count": 2,
+            "vaddr": "0x228f830",
+            "file_offset": "0x228b830"
+          }
+        }
+      ]
+    },
+    {
+      "receiver": "Game.Level.LevelCat",
+      "drag_slots": [
+        {
+          "receiver": "Game.Level.LevelCat",
+          "slot": 27,
+          "metadata_file_offset": 12413372,
+          "encoded": "0x6000eb59",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelAnimal",
+            "name": "OnSyncPosition",
+            "token": "0x060075ad",
+            "method_definition_index": 30124,
+            "parameter_count": 1,
+            "vaddr": "0x2265158",
+            "file_offset": "0x2261158"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelCat",
+          "slot": 29,
+          "metadata_file_offset": 12413380,
+          "encoded": "0x6000eb51",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelAnimal",
+            "name": "OnBeginDragInternal",
+            "token": "0x060075a9",
+            "method_definition_index": 30120,
+            "parameter_count": 1,
+            "vaddr": "0x2264c1c",
+            "file_offset": "0x2260c1c"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelCat",
+          "slot": 30,
+          "metadata_file_offset": 12413384,
+          "encoded": "0x60004b53",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelCat",
+            "name": "OnEndDragInternal",
+            "token": "0x060025aa",
+            "method_definition_index": 9641,
+            "parameter_count": 1,
+            "vaddr": "0x1dc4b04",
+            "file_offset": "0x1dc0b04"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelCat",
+          "slot": 74,
+          "metadata_file_offset": 12413560,
+          "encoded": "0x6000eb6b",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelAnimal",
+            "name": "OnBeginLand",
+            "token": "0x060075b6",
+            "method_definition_index": 30133,
+            "parameter_count": 1,
+            "vaddr": "0x2265e8c",
+            "file_offset": "0x2261e8c"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelCat",
+          "slot": 75,
+          "metadata_file_offset": 12413564,
+          "encoded": "0x60004b55",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelCat",
+            "name": "OnEndLand",
+            "token": "0x060025ab",
+            "method_definition_index": 9642,
+            "parameter_count": 0,
+            "vaddr": "0x1dc4b88",
+            "file_offset": "0x1dc0b88"
+          }
+        }
+      ],
+      "avatar_interface": [
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 4,
+          "interface_offset_file_offset": 13244664,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelCat",
+          "slot": 164,
+          "metadata_file_offset": 12413920,
+          "encoded": "0x60004b41",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelCat",
+            "name": "get_ID",
+            "token": "0x060025a1",
+            "method_definition_index": 9632,
+            "parameter_count": 0,
+            "vaddr": "0x1dc474c",
+            "file_offset": "0x1dc074c"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 7,
+          "interface_offset_file_offset": 13244664,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelCat",
+          "slot": 167,
+          "metadata_file_offset": 12413932,
+          "encoded": "0x60004b57",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelCat",
+            "name": "GetLevelItem",
+            "token": "0x060025ac",
+            "method_definition_index": 9643,
+            "parameter_count": 0,
+            "vaddr": "0x1dc4cb4",
+            "file_offset": "0x1dc0cb4"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 8,
+          "interface_offset_file_offset": 13244664,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelCat",
+          "slot": 168,
+          "metadata_file_offset": 12413936,
+          "encoded": "0x600104ef",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "GetPDPrefab",
+            "token": "0x06008278",
+            "method_definition_index": 33399,
+            "parameter_count": 0,
+            "vaddr": "0x22f424c",
+            "file_offset": "0x22f024c"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 9,
+          "interface_offset_file_offset": 13244664,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelCat",
+          "slot": 169,
+          "metadata_file_offset": 12413940,
+          "encoded": "0x60004b4d",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelCat",
+            "name": "Init",
+            "token": "0x060025a7",
+            "method_definition_index": 9638,
+            "parameter_count": 1,
+            "vaddr": "0x1dc4984",
+            "file_offset": "0x1dc0984"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 10,
+          "interface_offset_file_offset": 13244664,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelCat",
+          "slot": 170,
+          "metadata_file_offset": 12413944,
+          "encoded": "0x60004b5b",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelCat",
+            "name": "PlayProperIdleAnimation",
+            "token": "0x060025ae",
+            "method_definition_index": 9645,
+            "parameter_count": 0,
+            "vaddr": "0x1dc55c4",
+            "file_offset": "0x1dc15c4"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 12,
+          "interface_offset_file_offset": 13244664,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelCat",
+          "slot": 172,
+          "metadata_file_offset": 12413952,
+          "encoded": "0x60004b5f",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelCat",
+            "name": "PWC.Level.ILevelAvatar.GetSkinsManager",
+            "token": "0x060025b0",
+            "method_definition_index": 9647,
+            "parameter_count": 0,
+            "vaddr": "0x1dc55d4",
+            "file_offset": "0x1dc15d4"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 13,
+          "interface_offset_file_offset": 13244664,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelCat",
+          "slot": 173,
+          "metadata_file_offset": 12413956,
+          "encoded": "0x6000f2fb",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "OnPostSaveProgress",
+            "token": "0x0600797e",
+            "method_definition_index": 31101,
+            "parameter_count": 0,
+            "vaddr": "0x228eb18",
+            "file_offset": "0x228ab18"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 15,
+          "interface_offset_file_offset": 13244664,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelCat",
+          "slot": 175,
+          "metadata_file_offset": 12413964,
+          "encoded": "0x60004b59",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelCat",
+            "name": "DestroyAvatar",
+            "token": "0x060025ad",
+            "method_definition_index": 9644,
+            "parameter_count": 1,
+            "vaddr": "0x1dc4cb8",
+            "file_offset": "0x1dc0cb8"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 19,
+          "interface_offset_file_offset": 13244664,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelCat",
+          "slot": 179,
+          "metadata_file_offset": 12413980,
+          "encoded": "0x6000f307",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "SitAvatarOn",
+            "token": "0x06007984",
+            "method_definition_index": 31107,
+            "parameter_count": 2,
+            "vaddr": "0x228f830",
+            "file_offset": "0x228b830"
+          }
+        }
+      ]
+    },
+    {
+      "receiver": "Game.Level.LevelDog",
+      "drag_slots": [
+        {
+          "receiver": "Game.Level.LevelDog",
+          "slot": 27,
+          "metadata_file_offset": 12414188,
+          "encoded": "0x6000eb59",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelAnimal",
+            "name": "OnSyncPosition",
+            "token": "0x060075ad",
+            "method_definition_index": 30124,
+            "parameter_count": 1,
+            "vaddr": "0x2265158",
+            "file_offset": "0x2261158"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelDog",
+          "slot": 29,
+          "metadata_file_offset": 12414196,
+          "encoded": "0x6000eb51",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelAnimal",
+            "name": "OnBeginDragInternal",
+            "token": "0x060075a9",
+            "method_definition_index": 30120,
+            "parameter_count": 1,
+            "vaddr": "0x2264c1c",
+            "file_offset": "0x2260c1c"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelDog",
+          "slot": 30,
+          "metadata_file_offset": 12414200,
+          "encoded": "0x60004b83",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelDog",
+            "name": "OnEndDragInternal",
+            "token": "0x060025c2",
+            "method_definition_index": 9665,
+            "parameter_count": 1,
+            "vaddr": "0x1dc5e74",
+            "file_offset": "0x1dc1e74"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelDog",
+          "slot": 74,
+          "metadata_file_offset": 12414376,
+          "encoded": "0x6000eb6b",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelAnimal",
+            "name": "OnBeginLand",
+            "token": "0x060075b6",
+            "method_definition_index": 30133,
+            "parameter_count": 1,
+            "vaddr": "0x2265e8c",
+            "file_offset": "0x2261e8c"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelDog",
+          "slot": 75,
+          "metadata_file_offset": 12414380,
+          "encoded": "0x60004b89",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelDog",
+            "name": "OnEndLand",
+            "token": "0x060025c5",
+            "method_definition_index": 9668,
+            "parameter_count": 0,
+            "vaddr": "0x1dc6064",
+            "file_offset": "0x1dc2064"
+          }
+        }
+      ],
+      "avatar_interface": [
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 4,
+          "interface_offset_file_offset": 13244896,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelDog",
+          "slot": 164,
+          "metadata_file_offset": 12414736,
+          "encoded": "0x60004b71",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelDog",
+            "name": "get_ID",
+            "token": "0x060025b9",
+            "method_definition_index": 9656,
+            "parameter_count": 0,
+            "vaddr": "0x1dc5abc",
+            "file_offset": "0x1dc1abc"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 7,
+          "interface_offset_file_offset": 13244896,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelDog",
+          "slot": 167,
+          "metadata_file_offset": 12414748,
+          "encoded": "0x60004b8b",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelDog",
+            "name": "GetLevelItem",
+            "token": "0x060025c6",
+            "method_definition_index": 9669,
+            "parameter_count": 0,
+            "vaddr": "0x1dc6190",
+            "file_offset": "0x1dc2190"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 8,
+          "interface_offset_file_offset": 13244896,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelDog",
+          "slot": 168,
+          "metadata_file_offset": 12414752,
+          "encoded": "0x600104ef",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "GetPDPrefab",
+            "token": "0x06008278",
+            "method_definition_index": 33399,
+            "parameter_count": 0,
+            "vaddr": "0x22f424c",
+            "file_offset": "0x22f024c"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 9,
+          "interface_offset_file_offset": 13244896,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelDog",
+          "slot": 169,
+          "metadata_file_offset": 12414756,
+          "encoded": "0x60004b7d",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelDog",
+            "name": "Init",
+            "token": "0x060025bf",
+            "method_definition_index": 9662,
+            "parameter_count": 1,
+            "vaddr": "0x1dc5cf4",
+            "file_offset": "0x1dc1cf4"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 10,
+          "interface_offset_file_offset": 13244896,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelDog",
+          "slot": 170,
+          "metadata_file_offset": 12414760,
+          "encoded": "0x60004b8f",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelDog",
+            "name": "PlayProperIdleAnimation",
+            "token": "0x060025c8",
+            "method_definition_index": 9671,
+            "parameter_count": 0,
+            "vaddr": "0x1dc6aa0",
+            "file_offset": "0x1dc2aa0"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 12,
+          "interface_offset_file_offset": 13244896,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelDog",
+          "slot": 172,
+          "metadata_file_offset": 12414768,
+          "encoded": "0x60004b93",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelDog",
+            "name": "PWC.Level.ILevelAvatar.GetSkinsManager",
+            "token": "0x060025ca",
+            "method_definition_index": 9673,
+            "parameter_count": 0,
+            "vaddr": "0x1dc6ab0",
+            "file_offset": "0x1dc2ab0"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 13,
+          "interface_offset_file_offset": 13244896,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelDog",
+          "slot": 173,
+          "metadata_file_offset": 12414772,
+          "encoded": "0x6000f2fb",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "OnPostSaveProgress",
+            "token": "0x0600797e",
+            "method_definition_index": 31101,
+            "parameter_count": 0,
+            "vaddr": "0x228eb18",
+            "file_offset": "0x228ab18"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 15,
+          "interface_offset_file_offset": 13244896,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelDog",
+          "slot": 175,
+          "metadata_file_offset": 12414780,
+          "encoded": "0x60004b8d",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelDog",
+            "name": "DestroyAvatar",
+            "token": "0x060025c7",
+            "method_definition_index": 9670,
+            "parameter_count": 1,
+            "vaddr": "0x1dc6194",
+            "file_offset": "0x1dc2194"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 19,
+          "interface_offset_file_offset": 13244896,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelDog",
+          "slot": 179,
+          "metadata_file_offset": 12414796,
+          "encoded": "0x6000f307",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "SitAvatarOn",
+            "token": "0x06007984",
+            "method_definition_index": 31107,
+            "parameter_count": 2,
+            "vaddr": "0x228f830",
+            "file_offset": "0x228b830"
+          }
+        }
+      ]
+    },
+    {
+      "receiver": "Game.Level.LevelHorse",
+      "drag_slots": [
+        {
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 27,
+          "metadata_file_offset": 12415004,
+          "encoded": "0x6000eb59",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelAnimal",
+            "name": "OnSyncPosition",
+            "token": "0x060075ad",
+            "method_definition_index": 30124,
+            "parameter_count": 1,
+            "vaddr": "0x2265158",
+            "file_offset": "0x2261158"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 29,
+          "metadata_file_offset": 12415012,
+          "encoded": "0x6000eb51",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelAnimal",
+            "name": "OnBeginDragInternal",
+            "token": "0x060075a9",
+            "method_definition_index": 30120,
+            "parameter_count": 1,
+            "vaddr": "0x2264c1c",
+            "file_offset": "0x2260c1c"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 30,
+          "metadata_file_offset": 12415016,
+          "encoded": "0x60004bd7",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelHorse",
+            "name": "OnEndDragInternal",
+            "token": "0x060025ec",
+            "method_definition_index": 9707,
+            "parameter_count": 1,
+            "vaddr": "0x1dc9034",
+            "file_offset": "0x1dc5034"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 74,
+          "metadata_file_offset": 12415192,
+          "encoded": "0x6000eb6b",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelAnimal",
+            "name": "OnBeginLand",
+            "token": "0x060075b6",
+            "method_definition_index": 30133,
+            "parameter_count": 1,
+            "vaddr": "0x2265e8c",
+            "file_offset": "0x2261e8c"
+          }
+        },
+        {
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 75,
+          "metadata_file_offset": 12415196,
+          "encoded": "0x60004bd9",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelHorse",
+            "name": "OnEndLand",
+            "token": "0x060025ed",
+            "method_definition_index": 9708,
+            "parameter_count": 0,
+            "vaddr": "0x1dc90b8",
+            "file_offset": "0x1dc50b8"
+          }
+        }
+      ],
+      "avatar_interface": [
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 4,
+          "interface_offset_file_offset": 13245128,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 164,
+          "metadata_file_offset": 12415552,
+          "encoded": "0x60004ba9",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelHorse",
+            "name": "get_ID",
+            "token": "0x060025d5",
+            "method_definition_index": 9684,
+            "parameter_count": 0,
+            "vaddr": "0x1dc7204",
+            "file_offset": "0x1dc3204"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 7,
+          "interface_offset_file_offset": 13245128,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 167,
+          "metadata_file_offset": 12415564,
+          "encoded": "0x60004bdb",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelHorse",
+            "name": "GetLevelItem",
+            "token": "0x060025ee",
+            "method_definition_index": 9709,
+            "parameter_count": 0,
+            "vaddr": "0x1dc91e4",
+            "file_offset": "0x1dc51e4"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 8,
+          "interface_offset_file_offset": 13245128,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 168,
+          "metadata_file_offset": 12415568,
+          "encoded": "0x600104ef",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.LevelItem",
+            "name": "GetPDPrefab",
+            "token": "0x06008278",
+            "method_definition_index": 33399,
+            "parameter_count": 0,
+            "vaddr": "0x22f424c",
+            "file_offset": "0x22f024c"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 9,
+          "interface_offset_file_offset": 13245128,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 169,
+          "metadata_file_offset": 12415572,
+          "encoded": "0x60004bd1",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelHorse",
+            "name": "Init",
+            "token": "0x060025e9",
+            "method_definition_index": 9704,
+            "parameter_count": 1,
+            "vaddr": "0x1dc8db4",
+            "file_offset": "0x1dc4db4"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 10,
+          "interface_offset_file_offset": 13245128,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 170,
+          "metadata_file_offset": 12415576,
+          "encoded": "0x60004be1",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelHorse",
+            "name": "PlayProperIdleAnimation",
+            "token": "0x060025f1",
+            "method_definition_index": 9712,
+            "parameter_count": 0,
+            "vaddr": "0x1dc9c20",
+            "file_offset": "0x1dc5c20"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 12,
+          "interface_offset_file_offset": 13245128,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 172,
+          "metadata_file_offset": 12415584,
+          "encoded": "0x60004be7",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelHorse",
+            "name": "PWC.Level.ILevelAvatar.GetSkinsManager",
+            "token": "0x060025f4",
+            "method_definition_index": 9715,
+            "parameter_count": 0,
+            "vaddr": "0x1dc9c38",
+            "file_offset": "0x1dc5c38"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 13,
+          "interface_offset_file_offset": 13245128,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 173,
+          "metadata_file_offset": 12415588,
+          "encoded": "0x6000f2fb",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "OnPostSaveProgress",
+            "token": "0x0600797e",
+            "method_definition_index": 31101,
+            "parameter_count": 0,
+            "vaddr": "0x228eb18",
+            "file_offset": "0x228ab18"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 15,
+          "interface_offset_file_offset": 13245128,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 175,
+          "metadata_file_offset": 12415596,
+          "encoded": "0x60004bdd",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "Game.Level.LevelHorse",
+            "name": "DestroyAvatar",
+            "token": "0x060025ef",
+            "method_definition_index": 9710,
+            "parameter_count": 1,
+            "vaddr": "0x1dc91e8",
+            "file_offset": "0x1dc51e8"
+          }
+        },
+        {
+          "interface": "PWC.Level.ILevelAvatar",
+          "interface_method_index": 19,
+          "interface_offset_file_offset": 13245128,
+          "interface_vtable_offset": 160,
+          "receiver": "Game.Level.LevelHorse",
+          "slot": 179,
+          "metadata_file_offset": 12415612,
+          "encoded": "0x6000f307",
+          "target": {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "PWC.Level.ILevelAvatar",
+            "name": "SitAvatarOn",
+            "token": "0x06007984",
+            "method_definition_index": 31107,
+            "parameter_count": 2,
+            "vaddr": "0x228f830",
+            "file_offset": "0x228b830"
+          }
+        }
+      ]
+    }
+  ],
+  "verified_historical_disassembly": [
+    {
+      "path": "out/recon/tasks/T032/character-asm/ApplyDataInternal_00000000022954e0.asm.txt",
+      "sha256": "07a68b38f2bd210cb8c6baab74b6bc444015e6063cdea6dd28892a64fd7952ef",
+      "verified_instruction_count": 890
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/OnBeginMovement_0000000002264cf4.asm.txt",
+      "sha256": "eca9499f1e0e4496cbc7002e68aa79f08cf5b26151d39e469a03c4f38ff16efd",
+      "verified_instruction_count": 248
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/OnBeginMovement_00000000022a1150.asm.txt",
+      "sha256": "5ab025185bd884f15b84751ecad74063a4b990f9349d2b85d99bee62212d5d56",
+      "verified_instruction_count": 255
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/OnBeginMovement_000000000233f288.asm.txt",
+      "sha256": "afcb10158592e5d0b51d317d220104cf8b31833d5139b2940b9d9efe1c324c30",
+      "verified_instruction_count": 229
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/OnEndLand_0000000001dc4b88.asm.txt",
+      "sha256": "d735ae4ab11ae8f0ba243e5810ed66b56edbe2e12c2513ea97b5633e695bbd52",
+      "verified_instruction_count": 75
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/OnEndLand_0000000001dc6064.asm.txt",
+      "sha256": "58fb9e6df84c7234ba549924f2dfd25d2350a3f4136c184c80efd6a2bd15b360",
+      "verified_instruction_count": 75
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/OnEndLand_0000000001dc90b8.asm.txt",
+      "sha256": "d37e7659c323205bef5f08fc52bd0a8e6cea027a8ad8b548ee124ec0e76193d4",
+      "verified_instruction_count": 75
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/OnMovement_0000000002265194.asm.txt",
+      "sha256": "23009bf5cad4970cc966928a79addb27fc49419e499a2e87d93083513930cc5e",
+      "verified_instruction_count": 609
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/OnMovement_00000000022a1570.asm.txt",
+      "sha256": "9cd80f955fe979bd129281931ae44f8a5cd32f272dd8ca7c0125661e3e843fa0",
+      "verified_instruction_count": 553
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/OnMovement_000000000233f910.asm.txt",
+      "sha256": "dd6b786e227f29ed69bb3b594ec65c9e0acb4f6cf5ba516fa3dfd8e14ef6f815",
+      "verified_instruction_count": 532
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/PlaceAvatarInScene_00000000022994cc.asm.txt",
+      "sha256": "7b1fa5e608e70f6353d32f160dd5af776de21d7d0e3989102964a9aa79568c6a",
+      "verified_instruction_count": 341
+    },
+    {
+      "path": "out/recon/tasks/T032/character-asm/SaveDataInternal_0000000002294340.asm.txt",
+      "sha256": "73e5672cedfca97f3587f860f0eec7ee261ee4b8422c9d6e571c5e1530fc1232",
+      "verified_instruction_count": 809
+    }
+  ],
+  "limits": [
+    "Il2CppClass vtable base0x138/stride16 is correlated with native fast paths; live memory not observed.",
+    "Native virtual receiver is conditional on declared field/base type; subclasses may override.",
+    "Metadata methods and native pointers do not prove dynamic callback cardinality or full CFG.",
+    "ILevelAvatar method indices are declaration order; concrete mappings use metadata interface offsets."
+  ]
+}

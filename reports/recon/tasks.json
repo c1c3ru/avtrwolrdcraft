@@ -155,8 +155,8 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
-      "planning_seed": true,
+      "state": "ready",
+      "planning_seed": false,
       "input_and_steps": "docs atuais, SceneType, catálogo e regras autorizadas; enumerar recursos locais, integrações online, conteúdo ausente e extensões pedagógicas. Registrar política por recurso: paridade, adaptação offline ou ausência externa.",
       "outputs": "`scope.json`, `features.jsonl`, `divergences.jsonl` com domínio e plataformas.",
       "acceptance": "nenhuma exclusão oculta; mudanças de preço/recompensa não são confundidas com regra recuperada.",
@@ -173,14 +173,80 @@
         "canonical_task_queue_write"
       ],
       "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
-      "input_refs": [],
-      "evidence_refs": [],
+      "input_refs": [
+        {
+          "path": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+          "sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f"
+        },
+        {
+          "path": "docs/OFFLINE_HOME_RULES.md",
+          "sha256": "8ecccd1cba0a9d832f9e04fcf294e4a71408c0bd4249dc7c2cd790e15e499919"
+        },
+        {
+          "path": "docs/OFFLINE_RECONSTRUCTION_STATUS.md",
+          "sha256": "10c0522a01076264f17f1abeb513218f0c53f646f25efac051b3e5765c9cb6f0"
+        },
+        {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/SceneType.cs",
+          "sha256": "374e66aed5ebf321cb689851283b6cfb3b979cf0bb83a1fe9178bf2060102308"
+        },
+        {
+          "path": "LOOP_STATE.md",
+          "sha256": "77bf4dbead9dcd88d085a0aa12d5acf35f4c793271842b286226831a70e0f8f1"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T002/scope.json",
+          "sha256": "fe39137e1a5287495cc9bc9da1a067af783c900068c685b32af42fa96ecc0da5"
+        },
+        {
+          "path": "out/recon/tasks/T002/features.jsonl",
+          "sha256": "86c1b75d910119e66dbfdf61d009e95e0aceacb8cc335664f4daf9e729023e48"
+        },
+        {
+          "path": "out/recon/tasks/T002/divergences.jsonl",
+          "sha256": "92c559ee27a4686453501a4bb7e344f77567211cc7e6e91ce22ad2459cf29d58"
+        },
+        {
+          "path": "out/recon/tasks/T002/result.json",
+          "sha256": "ed34b04b87584cddbb484f72e96c0df90e2ecb941ee7df919795018b31a6ab19"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "18a817c0faf64ef89622a77a95780272",
+          "owner": "agente-logica-claude",
+          "started_at": 1794096961.538834,
+          "lease_id": "0b5ecd72afeb4152b10013633eeebce1",
+          "checkpoint_at": 1794097061.722706,
+          "state": "ready",
+          "note": "Entrega parcial: matriz de escopo (scope.json, 13 dominios de SceneType.cs com status/politica), features.jsonl (20 recursos locais/integracoes ausentes/conteudo faltante/extensoes pedagogicas) e divergences.jsonl (6 itens, incluindo os 3 casos de preco/recompensa local vs original exigidos pelo criterio de aceite). Sintese pura de docs existentes + leitura do clothing-manifest.json atual (4.965 itens, nao commitado); sem Unity/aparelho/datapack. Nao gerei tarefas filhas (decisao de coordenador); Street e StoreBundle ficam UNKNOWN por falta de evidencia nesta sessao.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T002/scope.json",
+              "sha256": "fe39137e1a5287495cc9bc9da1a067af783c900068c685b32af42fa96ecc0da5"
+            },
+            {
+              "path": "out/recon/tasks/T002/features.jsonl",
+              "sha256": "86c1b75d910119e66dbfdf61d009e95e0aceacb8cc335664f4daf9e729023e48"
+            },
+            {
+              "path": "out/recon/tasks/T002/divergences.jsonl",
+              "sha256": "92c559ee27a4686453501a4bb7e344f77567211cc7e6e91ce22ad2459cf29d58"
+            },
+            {
+              "path": "out/recon/tasks/T002/result.json",
+              "sha256": "ed34b04b87584cddbb484f72e96c0df90e2ecb941ee7df919795018b31a6ab19"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+      "next_action": "Entrega parcial: matriz de escopo (scope.json, 13 dominios de SceneType.cs com status/politica), features.jsonl (20 recursos locais/integracoes ausentes/conteudo faltante/extensoes pedagogicas) e divergences.jsonl (6 itens, incluindo os 3 casos de preco/recompensa local vs original exigidos pelo criterio de aceite). Sintese pura de docs existentes + leitura do clothing-manifest.json atual (4.965 itens, nao commitado); sem Unity/aparelho/datapack. Nao gerei tarefas filhas (decisao de coordenador); Street e StoreBundle ficam UNKNOWN por falta de evidencia nesta sessao."
     },
     {
       "id": "T003",
@@ -226,8 +292,8 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
-      "planning_seed": true,
+      "state": "ready",
+      "planning_seed": false,
       "input_and_steps": "REA, Cpp2IL, UnityPy, Unity/Android, decompilador nativo; consultar disponibilidade e versões. Identificar capacidade por operação, licença, host e entradas. Planejar reparo só do bloqueio observado.",
       "outputs": "matriz capacidade→ferramenta→comando→limites e ambiente reproduzível.",
       "acceptance": "rota suportada para inventário e recuperação nativa, ou bloqueio exato registrado; sem instalar/alterar configuração global silenciosamente.",
@@ -240,16 +306,56 @@
         "out/recon/tasks/T004/**"
       ],
       "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
-      "resource_locks": [],
+      "resource_locks": [
+        "canonical_task_queue_write"
+      ],
       "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
-      "input_refs": [],
-      "evidence_refs": [],
+      "input_refs": [
+        {
+          "path": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+          "sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f"
+        },
+        {
+          "path": "LOOP_STATE.md",
+          "sha256": "77bf4dbead9dcd88d085a0aa12d5acf35f4c793271842b286226831a70e0f8f1"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T004/tool_capability_matrix.json",
+          "sha256": "d9446294e283f82737c640a0386509874387d492d84895988d957d148d06749d"
+        },
+        {
+          "path": "out/recon/tasks/T004/result.json",
+          "sha256": "b17559c6ea4c196bfc1622a892060401daf40f13d50137672dfeb148c741b256"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "db00cc0f18a8486aa3434740b55be30e",
+          "owner": "agente-logica-claude",
+          "started_at": 1794096340.4648592,
+          "lease_id": "97f1a145a9884c15a9da2f7f5bbe20d6",
+          "checkpoint_at": 1794096440.183594,
+          "state": "ready",
+          "note": "Entrega parcial: matriz de capacidade por ferramenta (out/recon/tasks/T004/tool_capability_matrix.json) montada a partir do que foi de fato exercitado nesta sessao, com o unico bloqueio exato encontrado registrado (UnityPy.load() em datapack.unity3d sofre OOM, confirmado via strace). Nao fiz a geracao de tarefas filhas que esta tarefa coordenadora pede (next_action original); isso fica para decisao de coordenador. Nao e evidence_ready porque o campo outputs desta tarefa e texto descritivo, nao uma lista de arquivos, e a acao de coordenacao (gerar filhos) nao foi executada.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T004/tool_capability_matrix.json",
+              "sha256": "d9446294e283f82737c640a0386509874387d492d84895988d957d148d06749d"
+            },
+            {
+              "path": "out/recon/tasks/T004/result.json",
+              "sha256": "b17559c6ea4c196bfc1622a892060401daf40f13d50137672dfeb148c741b256"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+      "next_action": "Entrega parcial: matriz de capacidade por ferramenta (out/recon/tasks/T004/tool_capability_matrix.json) montada a partir do que foi de fato exercitado nesta sessao, com o unico bloqueio exato encontrado registrado (UnityPy.load() em datapack.unity3d sofre OOM, confirmado via strace). Nao fiz a geracao de tarefas filhas que esta tarefa coordenadora pede (next_action original); isso fica para decisao de coordenador. Nao e evidence_ready porque o campo outputs desta tarefa e texto descritivo, nao uma lista de arquivos, e a acao de coordenacao (gerar filhos) nao foi executada."
     },
     {
       "id": "T005",
@@ -2340,7 +2446,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "BWYW.BWYWGiftData",
@@ -2389,13 +2495,34 @@
         "out/recon/tasks/T020/CLASS/d723b7b66951bef8/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/d723b7b66951bef8/attempt1-oom.log",
+          "sha256": "e5da6a5c51999f257a1be6c2cbd0d53ac6eeb0582b370a41988643039d6abed5"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "a660426a6c26474d8353862cb8bf57bf",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1794091605.6769128,
+          "lease_id": "f770b80406834b018593dbd78773c678",
+          "checkpoint_at": 1794092035.085336,
+          "state": "blocked_external",
+          "note": "Reproducao da falha (TypeTreeGenerator.load_il2cpp com libil2cpp.so+global-metadata.dat) foi OOM-killed (exit 137) duas vezes, mesmo com ~5.5GB livres e nenhum outro job Unity visivel no momento. Maquina tem 7302MB RAM total e swap (4095MB) ja ~75% ocupado por multiplos processos claude/MCP concorrentes nesta sessao de trabalho. Nao cheguei a executar get_nodes_as_json nem read_typetree; causa raiz do ValueError Failed to get ref type node continua desconhecida. Nota: esta tentativa rodou a partir de um worktree isolado (.claude/worktrees/recon-automation) com root da fila ainda apontando para /home/c1c3ru/avtrwolrdcraft; este checkpoint so existe na copia local da fila deste worktree, nao foi mesclado de volta ao checkout principal.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/d723b7b66951bef8/attempt1-oom.log",
+              "sha256": "e5da6a5c51999f257a1be6c2cbd0d53ac6eeb0582b370a41988643039d6abed5"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Reproducao da falha (TypeTreeGenerator.load_il2cpp com libil2cpp.so+global-metadata.dat) foi OOM-killed (exit 137) duas vezes, mesmo com ~5.5GB livres e nenhum outro job Unity visivel no momento. Maquina tem 7302MB RAM total e swap (4095MB) ja ~75% ocupado por multiplos processos claude/MCP concorrentes nesta sessao de trabalho. Nao cheguei a executar get_nodes_as_json nem read_typetree; causa raiz do ValueError Failed to get ref type node continua desconhecida. Nota: esta tentativa rodou a partir de um worktree isolado (.claude/worktrees/recon-automation) com root da fila ainda apontando para /home/c1c3ru/avtrwolrdcraft; este checkpoint so existe na copia local da fila deste worktree, nao foi mesclado de volta ao checkout principal.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -31509,7 +31636,7 @@
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "baseline_maturity": "partial",
-      "state": "stale",
+      "state": "review",
       "planning_seed": false,
       "scope": {
         "method_identity": {
@@ -31584,7 +31711,24 @@
         "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/result.json"
       ],
       "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/method-contract.json",
+          "sha256": "47287498d3802eb6b2421884b4f3e5cf35ffa4b87b9fd8a14b232c37ce0454de"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/control-flow.json",
+          "sha256": "f0c48fdd6467a29fe25c6cd57ee2e80a592a8b82473f212ae714b3c504af3f69"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/unknowns.jsonl",
+          "sha256": "e798526923963091935de1dc4c8d78d9bc495115bf9db02c28c4506d0886596d"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/result.json",
+          "sha256": "0459380628ee6b9bef269d54c05c2a6f0cda064d36a84dfd48c50f99bc206b86"
+        }
+      ],
       "unknown_ids": [],
       "attempts": [
         {
@@ -31595,12 +31739,39 @@
           "recovered_at": 1793795084.08067,
           "recovery_note": "Lease expirado; não há processo de análise ativo. Evidências locais preservadas e hashes das entradas conferidos.",
           "recovery_actor": "codex"
+        },
+        {
+          "id": "fe05af06a4a44ad9b2ac18a17f1a16bc",
+          "owner": "agente-logica-claude",
+          "started_at": 1794095726.2869189,
+          "lease_id": "294e4a4a405f4973ac960acd7fd9297c",
+          "checkpoint_at": 1794095769.0526464,
+          "state": "evidence_ready",
+          "note": "Tarefa estava stale (lease anterior do ator codex-navigation ja recuperada por codex em sessao passada, sem reclaim desde entao). Reexecutei tools/recon_home_play.py (ja escrito especificamente para esta tarefa, TASK_OUTPUT apontava para este mesmo diretorio) contra o par nativo+metadata atual: 11 chamadas e 44 ancoras revalidadas. Trabalho puramente estatico, sem Unity/aparelho. Despacho indireto em 0x2058174 permanece apenas inferido (get_Item de IDictionary via slot 0 de vtable), nao certificado.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/method-contract.json",
+              "sha256": "47287498d3802eb6b2421884b4f3e5cf35ffa4b87b9fd8a14b232c37ce0454de"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/control-flow.json",
+              "sha256": "f0c48fdd6467a29fe25c6cd57ee2e80a592a8b82473f212ae714b3c504af3f69"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/unknowns.jsonl",
+              "sha256": "e798526923963091935de1dc4c8d78d9bc495115bf9db02c28c4506d0886596d"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/result.json",
+              "sha256": "0459380628ee6b9bef269d54c05c2a6f0cda064d36a84dfd48c50f99bc206b86"
+            }
+          ]
         }
       ],
-      "owner": "codex-navigation",
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Lease expirado; não há processo de análise ativo. Evidências locais preservadas e hashes das entradas conferidos.",
+      "next_action": "Tarefa estava stale (lease anterior do ator codex-navigation ja recuperada por codex em sessao passada, sem reclaim desde entao). Reexecutei tools/recon_home_play.py (ja escrito especificamente para esta tarefa, TASK_OUTPUT apontava para este mesmo diretorio) contra o par nativo+metadata atual: 11 chamadas e 44 ancoras revalidadas. Trabalho puramente estatico, sem Unity/aparelho. Despacho indireto em 0x2058174 permanece apenas inferido (get_Item de IDictionary via slot 0 de vtable), nao certificado.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true

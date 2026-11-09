@@ -1,0 +1,9 @@
+{
+  "task_id": "T004",
+  "status": "partial",
+  "matrix": "out/recon/tasks/T004/tool_capability_matrix.json",
+  "acceptance_check": "A supported route is documented for every capability actually exercised this session (Unity batch build, Cpp2IL output, llvm-objdump + metadata cross-reference, UnityPy on small files, ADB, REA MCP), and the one exact blocker found (UnityPy.load() OOM on datapack.unity3d, confirmed via strace, independent of thread count) is registered rather than hidden or worked around silently.",
+  "not_done": "Did not generate bounded child tasks from this inventory (that is this task's stated next_action, 'Reconcile inherited evidence and generate bounded child tasks... before claim'); producing a valid child manifest is a coordinator decision this attempt leaves open rather than making unilaterally, especially since the live queue state for this attempt only exists in an isolated worktree copy, not yet merged into the shared queue.",
+  "no_global_install_or_config_change_performed": true,
+  "awaiting": "Independent review by a different actor; and a coordinator decision on whether/how to turn this matrix into child tasks."
+}

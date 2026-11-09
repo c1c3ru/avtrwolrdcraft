@@ -1,5 +1,26 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Loja "Criador de Avatar" vira atalho de navegacao — 2026-11-07
+- Commit `87148a4f8` (branch `worktree-loja-criador-avatar`, pushado): `StoreScreen.SelectCategory` trata
+  `StoreCatalog.CategoryAvatarMaker` como atalho (fecha a loja, abre `AvatarSlotsScreen` via
+  `HomeBootstrap.OpenAvatarSlots`) em vez de listar cartoes - evidencia em
+  `docs/STORE_ORIGINAL_REFERENCE_2026-11-07.md` e `docs/STORE_WORLD_UI_SPEC.md` (cena AvatarMakerLobby,
+  separada da Store). Removida do `ComingSoon`; teste novo `AvatarMaker_IsNavigationShortcutNotProductCategory`
+  em `StoreCatalogTests.cs`.
+- **Validacao automatizada PENDENTE.** Tres tentativas de `unity test --mode EditMode` nesta sessao foram
+  mortas pelo OOM killer do kernel (confirmado via `journalctl`, nao erro do codigo): a maquina (7,1 GB RAM)
+  tem varios jobs Claude Code em background concorrentes consumindo memoria ao mesmo tempo; em uma das
+  tentativas o OOM matou um processo Python de outro job, nao o Unity. Copiar `Library/` do checkout
+  principal (45 GB) para o worktree eliminou a reimportacao completa, mas nao foi suficiente para evitar o
+  OOM na ultima tentativa. Decisao do usuario: seguir sem validacao automatizada por ora.
+- Revisao manual feita com cuidado: mudanca pequena (4 arquivos), navegacao nova espelha padrao ja existente
+  no codigo (botao de carrinho de `AvatarSlotsScreen` ja abre a loja no sentido inverso). Um artefato do
+  processo Unity morto no meio (zerou `m_RuntimeSettings.m_List` em
+  `UniversalRenderPipelineGlobalSettings.asset`) foi descartado com `git checkout --`, nao commitado.
+- **Proximo passo:** rodar `unity test client/AvatarWorldClient --mode EditMode` neste worktree (Library ja
+  copiada, deve ser rapido) assim que a maquina tiver folga de memoria, e confirmar
+  `AvatarMaker_IsNavigationShortcutNotProductCategory` + suite completa verde antes de dar como fechado.
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
@@ -283,6 +304,8 @@
 - 2026-11-03: 3 deep links sem cena explicados: 7 LevelTypes não distribuídos na 1.227 (inclui Burger/GasStation/CarWash, vistos em obras no mapa). Estáticos concluídos; resta runtime (celular) e revisão independente.
 - 2026-11-03: contrato estático de `GameSceneManager.LoadScene`/`LoadSceneImplement` (T029) com verificador `tools/recon_load_scene.py`, 5 testes de mutação (91 OK) e `docs/RECON_LOAD_SCENE_CONTRACT.md`. LoadScene não chama IsSceneAvailable; ordem: guard in-progress → limpa caches → estáticos → Stage1-3 → StartSceneTransition. Próximo: quem zera IsSceneChangingInProgress (OnActiveSceneChanged 0x2072644), depois WorldBuilding.ClickOnLevel.
 - 2026-11-03: OnActiveSceneChanged e CancelCurrentSceneChangingProgress decodificados (zeram in-progress, MP loading name e CurrentlyLoadingSceneName); 18 âncoras, 92 testes OK. Falta achar assinante/chamador. Próximo: WorldBuilding.ClickOnLevel.
+- 2026-11-07: assinantes dos eventos Stage1-3 decodificados (`tools/recon_scene_subscribers.py`, `docs/RECON_SCENE_SUBSCRIBERS.md`): 5 ligações registro→handler verificadas (`BackgroundPlanetSoundHandler`/Stage1, `PersistentDataManager` e `LevelManager`/Stage2, `LevelManager`/Stage3, mais `GameSceneManager..cctor`→`activeSceneChanged`). 9 testes OK. Revalidado em T025/METHOD/8e708ca7d06e0b52 no mesmo dia.
+- 2026-11-08: decodificado o próprio despacho `blr` dos 3 Stage1-3 dentro de `LoadScene` (`tools/recon_stage_dispatch.py`, `docs/RECON_STAGE_DELEGATE_INVOKE.md`), fechando o unknown `T025/complete_body_and_cfg` até o limite estático: os três `blr x9` (antes só marcados como alvo indireto opaco) carregam o alvo e os dois primeiros argumentos de offsets fixos (`+0x18`/`+0x40`/`+0x28`) do próprio objeto delegate em runtime, nunca de um branch fixo a handler — e essa sequência exata de 4 instruções recorre 467 vezes em classes não relacionadas no mesmo `.so` (idioma genérico do IL2CPP para invocar delegate direto, não algo específico destes 3 eventos). 8 testes OK. Rótulos `invoke_impl`/`m_target`/`method` para esses offsets são candidatos pela forma pública do ABI Il2CppDelegate, não confirmados contra esta build. Não fecha: quem de fato executa em runtime (propriedade do delegate construído pelos `add_*`, não do call site), nem o fade de `StartSceneTransition`. Nenhum alvo REA ativo, nenhuma execução do jogo, fila (`reports/recon/tasks.json`) não tocada nesta rodada.
 - 2026-11-03: contrato estático do toque em prédio (`WorldBuilding.OnPointerClickInternal`/`ClickOnLevel`/`WorldEnterableEntity.LoadScene`/`SaveBuildingData`) com verificador `tools/recon_world_click.py` (17 chamadas, 20 âncoras, 6 testes de mutação) e `docs/RECON_WORLD_CLICK_CONTRACT.md`. Achado: `GAME_CURRENT_WORLD` é gravado em `WorldEnterableEntity.LoadScene` com a cena ativa; gate de entrada usa `ExtraSettings.useTimeLock`/IsCurrentlyFree/IsGameUnlocked, senão popup de preview. Próximo: gates de UGC/ponteiro, `IsCurrentlyFree`/`IsGameUnlocked`, `TryLoadBuildingData` parse.
 - 2026-11-03: gate de acesso decodificado: `PWCConstants..cctor` seta `IsAllWorldFree=true` → `IsCurrentlyFree()` sempre verdadeiro na 1.227; 115 prédios `_isFree=0`; `useTimeLock=0` (parse manual). Verificador `tools/recon_access_gate.py` (10 chamadas, 17 âncoras, 5 testes). Próximo: parse de TryLoadBuildingData, gates de UGC/ponteiro, slot virtual 0x298.
 - 2026-11-03: toque em prédio completo: OnPointerClick ignora drag/reset; OnPointerClickInternal ignora em UGC edit mode; TryLoadBuildingData = string vazia→false, senão Enum.TryParse. recon_world_click.py agora 20 chamadas/37 âncoras, 8 testes.

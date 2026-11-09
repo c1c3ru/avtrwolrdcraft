@@ -47,7 +47,6 @@ namespace AvatarWorld.Runtime
             public string Hair, HairBack, Shirt, Bottom, Shoes, Accessory, Mouth, Eyebrows, Hat, Jacket;
             public int skinIndex, eyesIndex;
             public List<NpcColor> colors = new List<NpcColor>();
-            public List<ExtraItem> extras = new List<ExtraItem>();
         }
         [Serializable] class NpcEntry { public int id; public float x, y; public NpcLook look; }
         [Serializable] class NpcFile { public List<NpcEntry> npcs = new List<NpcEntry>(); }
@@ -176,7 +175,6 @@ namespace AvatarWorld.Runtime
                 AccessoryId = l.Accessory, MouthId = l.Mouth, EyebrowsId = l.Eyebrows, HatId = l.Hat, JacketId = l.Jacket,
                 SkinIndex = l.skinIndex, EyesIndex = l.eyesIndex,
             };
-            a.Extras = l.extras;
             a.ItemColors = new List<CategoryColor>();
             foreach (var c in l.colors) a.ItemColors.Add(new CategoryColor { Category = c.Category, Index = c.Index });
             return a;

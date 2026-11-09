@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "task_id": "T004",
+  "scope": "Inventory of reverse-engineering tool capability observed in this environment/session, with exact blockers where found; no silent global install/config change performed.",
+  "host": {
+    "os": "Linux 7.0.0-42-generic (Ubuntu-based)",
+    "ram_total_mb": 7302,
+    "swap_total_mb": 4095,
+    "cpu_cores": 4,
+    "note": "A meaningful fraction of RAM/swap is persistently held by concurrent Claude Code sessions/MCP servers on this same host; see 'known_limits' below."
+  },
+  "capabilities": [
+    {
+      "capability": "Unity Editor batch build / EditMode tests",
+      "tool": "Unity Editor 6000.6.6f1 (Hub-installed)",
+      "command_example": "unity test client/AvatarWorldClient --mode EditMode -- -nographics -logFile <path>  (or Editor binary directly with -batchmode -executeMethod ...)",
+      "license": "Personal/entitlement license via local LicenseClient-c1c3ru daemon; observed working in Unity.Licensing.Client.log the same day.",
+      "status": "AVAILABLE but resource-constrained",
+      "limits": [
+        "Must run from the main checkout's client/AvatarWorldClient (has a populated Library/ cache); running from a fresh git worktree would trigger a full asset reimport, which is costly for this project's size.",
+        "Competes for RAM with any other Unity Editor instance on this host; two concurrent batch Editor/Gradle builds on this 7.3GB-RAM host is not reliable (observed Burst+AssetImportWorker+Editor together use 3GB+ RSS in one run this session).",
+        "LicenseClient daemon auto-shuts down when idle and does not always cleanly respawn under batch-mode invocation in a busy environment; a prior attempt this session failed with 'Failed to connect to LicenseClient-c1c3ru channel' (see out/unity-avatar-cycle4-resume-build.log) while the daemon was otherwise healthy minutes later in a different session."
+      ]
+    },
+    {
+      "capability": "IL2CPP decompilation to C#",
+      "tool": "Cpp2IL 2022.1.0-pre-release.21 (metadata v31)",
+      "command_example": "Cpp2IL --game-path il2cpp_in --force-binary-path il2cpp_in/libil2cpp.so --force-metadata-path il2cpp_in/global-metadata.dat --force-unity-version 2022.3.70 --output-as diffable-cs --output-to out/cpp2il",
+      "status": "ALREADY RUN; output present",
+      "evidence": "out/cpp2il/DiffableCs/Assembly-CSharp/** already on disk (field names/offsets recovered; method bodies are empty per project convention -- bodies come from ARM64 disassembly, not from Cpp2IL).",
+      "limits": ["Re-running from scratch was not attempted this session; existing output was reused as-is."]
+    },
+    {
+      "capability": "ARM64 disassembly of specific bounded method windows",
+      "tool": "llvm-objdump (Android NDK, several versions installed: 26.1-29.0)",
+      "command_example": "<ndk>/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump -d --start-address=<va> --stop-address=<va> il2cpp_in/libil2cpp.so",
+      "status": "AVAILABLE and used successfully this session",
+      "limits": ["Only disassembles a byte range the caller already bounded; does not by itself resolve call targets to C# method identity (that requires the metadata cross-reference step below)."]
+    },
+    {
+      "capability": "Call-target / literal / enum resolution against IL2CPP metadata (no binary fully loaded in bulk)",
+      "tool": "tools/recon_navigation.py (local, stdlib-only) + out/recon/il2cpp/metadata_methods.jsonl cache",
+      "status": "AVAILABLE and used successfully this session",
+      "evidence": "Used to close 4 T025/METHOD tasks and 1 T025 sibling (ClickOnLevel via tools/recon_world_click.py) entirely from libil2cpp.so (75MB) + global-metadata.dat (16MB) + cached method-index jsonl -- never touched the large datapack bundle.",
+      "limits": ["Only decodes a curated set of AArch64 opcodes (branches, ADRP/LDR literal loads, a few data-flow idioms); not a general decompiler. Indirect (BLR/BR) dispatch targets are inferred from context, not decoded from a vtable."]
+    },
+    {
+      "capability": "Unity asset/MonoBehaviour extraction via UnityPy",
+      "tool": "UnityPy 1.25.4 + TypeTreeGeneratorAPI 0.0.10, in tools/venv (Python 3.14)",
+      "status": "AVAILABLE for small files; BLOCKED for the large datapack bundle on this host right now",
+      "evidence_of_block": "UnityPy.load() on x/base/assets/bin/Data/datapack.unity3d (1.27GB compressed on disk) was reliably OOM-killed in this session (confirmed via strace: SIGKILL across worker threads during the load itself, not a clean Python-level exit), independent of thread count (RAYON_NUM_THREADS=1 still OOM'd). See out/recon/tasks/T020/CLASS/d723b7b66951bef8/attempt*.log for the full trace.",
+      "works_fine_for": "The small x/base/assets/bin/Data/data.unity3d (16MB) and assets/base.apk's embedded data.unity3d (both used successfully this session via tools/map_world_navigation.py's approach).",
+      "limits": ["Any task whose evidence requires loading datapack.unity3d directly (most of the T020/CLASS/* class-decode-fix family, and T015/SCENE/* scenes with nonzero cached_root_count beyond what out/scene_roots.json already has) is blocked on this host until more RAM/swap headroom is available or the operation runs on a host with more memory."]
+    },
+    {
+      "capability": "On-device dynamic inspection (ADB)",
+      "tool": "Android platform-tools adb (29.x) + physical Xiaomi M2101K7BI",
+      "status": "TOOL AVAILABLE; no device currently attached",
+      "evidence": "adb daemon started cleanly this session (`adb devices -l` returns an empty device list, not a permission error). A prior session this week reported 'Operation not permitted' starting the daemon in a different sandboxed context; that did not reproduce here.",
+      "limits": ["Requires the physical device connected and MIUI 'Instalar' tap for any install; not usable for unattended/background work."]
+    },
+    {
+      "capability": "REA (reverse-engineer-anything) MCP toolset",
+      "tool": "mcp__rea__* (binary_session, open_binary, procedure_pseudo_code, trace_feature, etc.)",
+      "status": "AVAILABLE as an MCP server in this coding session; NOT used for any T0xx/T025 work this session (the existing project-specific tools/recon_*.py scripts were reused instead, since they already carry this project's exact anchors/tests)",
+      "limits": ["Not evaluated against libil2cpp.so/datapack.unity3d in this session; capability against this specific binary pair is unverified, not a known blocker."]
+    }
+  ],
+  "known_limits_summary": [
+    "The single hard blocker found this session is host memory: loading datapack.unity3d (>1GB) via UnityPy reliably OOMs on this 7.3GB-RAM/4GB-swap host, regardless of thread count, independent of other concurrent jobs.",
+    "Everything that stays within libil2cpp.so + global-metadata.dat + small cached JSON/jsonl/gz indexes (ARM64 method contracts, scene-root lookups, class/field name joins) works reliably and was used successfully this session.",
+    "Unity Editor batch builds work but contend heavily for the same scarce RAM; running one alongside UnityPy-on-datapack or another Editor instance is not reliable on this host."
+  ],
+  "no_global_install_or_config_change_performed": true,
+  "verification": {"target_executed": false, "semantic_certification": false}
+}

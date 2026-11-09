@@ -1,0 +1,36 @@
+229b784  str    x30, [sp, #-0x30]!
+229b788  stp    x22, x21, [sp, #0x10]
+229b78c  stp    x20, x19, [sp, #0x20]
+229b790  adrp   x22, #0x44fd000
+229b794  adrp   x21, #0x41bd000
+229b798  ldrb   w8, [x22, #0xb84]
+229b79c  ldr    x21, [x21, #0x548]
+229b7a0  mov    x20, x1
+229b7a4  mov    x19, x0
+229b7a8  tbnz   w8, #0, #0x229b7c0
+229b7ac  adrp   x0, #0x41bd000
+229b7b0  ldr    x0, [x0, #0x548]
+229b7b4  bl     #0x1b886e8
+229b7b8  mov    w8, #1
+229b7bc  strb   w8, [x22, #0xb84]
+229b7c0  mov    x0, x19
+229b7c4  mov    x1, x20
+229b7c8  mov    x2, xzr
+229b7cc  bl     #0x22f6260  ; -> LevelItem.OnBeginDragInternal
+229b7d0  ldr    x8, [x21]
+229b7d4  ldr    x8, [x8, #0xb8]
+229b7d8  ldr    x8, [x8]
+229b7dc  cbz    x8, #0x229b804
+229b7e0  ldr    x4, [x8, #0x18]
+229b7e4  ldr    x0, [x8, #0x40]
+229b7e8  ldr    x3, [x8, #0x28]
+229b7ec  mov    x1, x19
+229b7f0  ldp    x20, x19, [sp, #0x20]
+229b7f4  ldp    x22, x21, [sp, #0x10]
+229b7f8  mov    w2, #1
+229b7fc  ldr    x30, [sp], #0x30
+229b800  br     x4
+229b804  ldp    x20, x19, [sp, #0x20]
+229b808  ldp    x22, x21, [sp, #0x10]
+229b80c  ldr    x30, [sp], #0x30
+229b810  ret    

@@ -9,6 +9,39 @@ g.load_il2cpp(open("il2cpp_in/libil2cpp.so", "rb").read(), open("il2cpp_in/globa
 base = UnityPy.load("x/base/assets/bin/Data/data.unity3d")
 scripts = {o.path_id: o.read() for o in base.objects if o.type.name == "MonoScript"}
 nodes_cache = {}
+def fix_mislabeled_vectors(nodes):
+    # TypeTreeGeneratorAPI roduz m_Type="string" na raiz de campos List<String> (ex.: List<String> items),
+    # mantendo os filhos Array/size/data corretos mas com o nome errado. Isso faz o leitor da UnityPy cair no
+    # atalho de string escalar (FUNCTION_READ_MAP["string"]) e ignorar a lista real, corrompendo a leitura
+    # (erro tipico: "EOFError: read_str out of bounds"). Corrige renomeando para "vector" quando o filho
+    # Array/data nao for "char" (ou seja, quando for de fato uma lista de nao-caracteres).
+    n = len(nodes)
+    fixed = 0
+    for i, node in enumerate(nodes):
+        if node["m_Type"] != "string":
+            continue
+        lvl = node["m_Level"]
+        j = i + 1
+        children = []
+        while j < n and nodes[j]["m_Level"] > lvl:
+            if nodes[j]["m_Level"] == lvl + 1:
+                children.append(nodes[j])
+            j += 1
+        if not children or children[0]["m_Name"] != "Array":
+            continue
+        arr_lvl = children[0]["m_Level"]
+        k = i + 2
+        arr_children = []
+        while k < n and nodes[k]["m_Level"] > arr_lvl:
+            if nodes[k]["m_Level"] == arr_lvl + 1:
+                arr_children.append(nodes[k])
+            k += 1
+        data_child = next((c for c in arr_children if c["m_Name"] == "data"), None)
+        if data_child is not None and data_child["m_Type"] != "char":
+            node["m_Type"] = "vector"
+            fixed += 1
+    return fixed
+
 def nodes_for(s):
     k = (s.m_AssemblyName, s.m_Namespace, s.m_ClassName)
     if k not in nodes_cache:
@@ -17,6 +50,7 @@ def nodes_for(s):
             ns = json.loads(g.get_nodes_as_json(asm, f"{s.m_Namespace}.{s.m_ClassName}" if s.m_Namespace else s.m_ClassName))
             for n in ns:  # m_Enabled (UInt8) precisa do flag de alinhamento, como no Unity
                 if n["m_Name"] == "m_Enabled" and n["m_Level"] == 1: n["m_MetaFlag"] = 16384
+            fix_mislabeled_vectors(ns)
             nodes_cache[k] = ns
         except Exception as e:
             nodes_cache[k] = None
