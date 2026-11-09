@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "scope": "Four paired stage-event removals across three OnDestroy windows.",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "method_index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+  "producer_sha256": "7b0f2b93fa1c678c41d103db0cdeb88942dc71e1e58ed2b3450bd226dd82757a",
+  "helpers_sha256": {
+    "recon_scene_subscribers.py": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce",
+    "recon_navigation.py": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08"
+  },
+  "edges": [
+    {
+      "classification": "STATIC_paired_remove_call_not_runtime_observed",
+      "event": "GameSceneManager.OnBeforeSceneLoadStage1Action",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.BackgroundPlanetSoundHandler",
+        "name": "OnDestroy",
+        "token": "0x06005602",
+        "method_definition_index": 22017,
+        "parameter_count": 0,
+        "vaddr": "0x20694d4",
+        "file_offset": "0x20654d4"
+      },
+      "handler": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.BackgroundPlanetSoundHandler",
+        "name": "OnBeforeSceneLoadStage1",
+        "token": "0x06005601",
+        "method_definition_index": 22016,
+        "parameter_count": 0,
+        "vaddr": "0x2069448",
+        "file_offset": "0x2065448"
+      },
+      "remove_method": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "remove_OnBeforeSceneLoadStage1Action",
+        "token": "0x060056f1",
+        "method_definition_index": 22256,
+        "parameter_count": 1,
+        "vaddr": "0x2069640",
+        "file_offset": "0x2065640"
+      },
+      "registration_site": "0x2069294",
+      "removal_site": "0x206959c",
+      "target_object": "this saved in x19, also used by paired Awake registration",
+      "handler_metadata_usage": {
+        "got_vaddr": "0x41c8240",
+        "usage_vaddr": "0x4319618",
+        "encoded": "0x6000ac01",
+        "kind": 3,
+        "index": 22016
+      },
+      "constructor_method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Action",
+        "name": ".ctor",
+        "token": "0x06000379",
+        "method_definition_index": 37309,
+        "parameter_count": 2,
+        "vaddr": "0x32cd13c",
+        "file_offset": "0x32c913c"
+      },
+      "raw_anchors": [
+        {
+          "site": "0x20694e8",
+          "file_offset": "0x20654e8",
+          "word": "0xf0010af4",
+          "bytes_le": "f40a01f0"
+        },
+        {
+          "site": "0x20694f8",
+          "file_offset": "0x20654f8",
+          "word": "0xf9412294",
+          "bytes_le": "942241f9"
+        },
+        {
+          "site": "0x2069500",
+          "file_offset": "0x2065500",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x2069574",
+          "file_offset": "0x2065574",
+          "word": "0xf9400282",
+          "bytes_le": "820240f9"
+        },
+        {
+          "site": "0x2069578",
+          "file_offset": "0x2065578",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x206957c",
+          "file_offset": "0x206557c",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x2069580",
+          "file_offset": "0x2065580",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x2069584",
+          "file_offset": "0x2065584",
+          "word": "0x94498eee",
+          "bytes_le": "ee8e4994"
+        },
+        {
+          "site": "0x2069598",
+          "file_offset": "0x2065598",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x206959c",
+          "file_offset": "0x206559c",
+          "word": "0x94000029",
+          "bytes_le": "29000094"
+        }
+      ]
+    },
+    {
+      "classification": "STATIC_paired_remove_call_not_runtime_observed",
+      "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.PersistentData.PersistentDataManager",
+        "name": "OnDestroy",
+        "token": "0x06006e3f",
+        "method_definition_index": 28222,
+        "parameter_count": 0,
+        "vaddr": "0x21e0738",
+        "file_offset": "0x21dc738"
+      },
+      "handler": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.PersistentData.PersistentDataManager",
+        "name": "OnBeforeSceneLoadStage2",
+        "token": "0x06006e44",
+        "method_definition_index": 28227,
+        "parameter_count": 0,
+        "vaddr": "0x21e09b0",
+        "file_offset": "0x21dc9b0"
+      },
+      "remove_method": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "remove_OnBeforeSceneLoadStage2Action",
+        "token": "0x060056f3",
+        "method_definition_index": 22258,
+        "parameter_count": 1,
+        "vaddr": "0x20720c8",
+        "file_offset": "0x206e0c8"
+      },
+      "registration_site": "0x21e0734",
+      "removal_site": "0x21e0828",
+      "target_object": "this saved in x19, also used by paired Awake registration",
+      "handler_metadata_usage": {
+        "got_vaddr": "0x41d2938",
+        "usage_vaddr": "0x4328c88",
+        "encoded": "0x6000dc87",
+        "kind": 3,
+        "index": 28227
+      },
+      "constructor_method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Action",
+        "name": ".ctor",
+        "token": "0x06000379",
+        "method_definition_index": 37309,
+        "parameter_count": 2,
+        "vaddr": "0x32cd13c",
+        "file_offset": "0x32c913c"
+      },
+      "raw_anchors": [
+        {
+          "site": "0x21e074c",
+          "file_offset": "0x21dc74c",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x21e07a0",
+          "file_offset": "0x21dc7a0",
+          "word": "0xd000ff94",
+          "bytes_le": "94ff00d0"
+        },
+        {
+          "site": "0x21e07b0",
+          "file_offset": "0x21dc7b0",
+          "word": "0xf9449e94",
+          "bytes_le": "949e44f9"
+        },
+        {
+          "site": "0x21e07fc",
+          "file_offset": "0x21dc7fc",
+          "word": "0xf9400282",
+          "bytes_le": "820240f9"
+        },
+        {
+          "site": "0x21e0800",
+          "file_offset": "0x21dc800",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x21e0804",
+          "file_offset": "0x21dc804",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x21e0808",
+          "file_offset": "0x21dc808",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x21e080c",
+          "file_offset": "0x21dc80c",
+          "word": "0x9443b24c",
+          "bytes_le": "4cb24394"
+        },
+        {
+          "site": "0x21e0820",
+          "file_offset": "0x21dc820",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x21e0824",
+          "file_offset": "0x21dc824",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        },
+        {
+          "site": "0x21e0828",
+          "file_offset": "0x21dc828",
+          "word": "0x97fa4628",
+          "bytes_le": "2846fa97"
+        }
+      ]
+    },
+    {
+      "classification": "STATIC_paired_remove_call_not_runtime_observed",
+      "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelManager",
+        "name": "OnDestroy",
+        "token": "0x06008490",
+        "method_definition_index": 33935,
+        "parameter_count": 0,
+        "vaddr": "0x2310ee4",
+        "file_offset": "0x230cee4"
+      },
+      "handler": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelManager",
+        "name": "OnBeforeSceneLoadStage2",
+        "token": "0x0600849c",
+        "method_definition_index": 33947,
+        "parameter_count": 0,
+        "vaddr": "0x2313e64",
+        "file_offset": "0x230fe64"
+      },
+      "remove_method": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "remove_OnBeforeSceneLoadStage2Action",
+        "token": "0x060056f3",
+        "method_definition_index": 22258,
+        "parameter_count": 1,
+        "vaddr": "0x20720c8",
+        "file_offset": "0x206e0c8"
+      },
+      "registration_site": "0x2310d64",
+      "removal_site": "0x2311204",
+      "target_object": "this saved in x19, also used by paired Awake registration",
+      "handler_metadata_usage": {
+        "got_vaddr": "0x41d9aa8",
+        "usage_vaddr": "0x4325128",
+        "encoded": "0x60010937",
+        "kind": 3,
+        "index": 33947
+      },
+      "constructor_method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Action",
+        "name": ".ctor",
+        "token": "0x06000379",
+        "method_definition_index": 37309,
+        "parameter_count": 2,
+        "vaddr": "0x32cd13c",
+        "file_offset": "0x32c913c"
+      },
+      "raw_anchors": [
+        {
+          "site": "0x2310f0c",
+          "file_offset": "0x230cf0c",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x231113c",
+          "file_offset": "0x230d13c",
+          "word": "0x9000f656",
+          "bytes_le": "56f60090"
+        },
+        {
+          "site": "0x2311154",
+          "file_offset": "0x230d154",
+          "word": "0xf94556d6",
+          "bytes_le": "d65645f9"
+        },
+        {
+          "site": "0x23111d0",
+          "file_offset": "0x230d1d0",
+          "word": "0xf94002c2",
+          "bytes_le": "c20240f9"
+        },
+        {
+          "site": "0x23111d4",
+          "file_offset": "0x230d1d4",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x23111d8",
+          "file_offset": "0x230d1d8",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x23111dc",
+          "file_offset": "0x230d1dc",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x23111e0",
+          "file_offset": "0x230d1e0",
+          "word": "0x943eefd7",
+          "bytes_le": "d7ef3e94"
+        },
+        {
+          "site": "0x23111fc",
+          "file_offset": "0x230d1fc",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x2311200",
+          "file_offset": "0x230d200",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        },
+        {
+          "site": "0x2311204",
+          "file_offset": "0x230d204",
+          "word": "0x97f583b1",
+          "bytes_le": "b183f597"
+        }
+      ]
+    },
+    {
+      "classification": "STATIC_paired_remove_call_not_runtime_observed",
+      "event": "GameSceneManager.OnBeforeSceneLoadStage3Action",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelManager",
+        "name": "OnDestroy",
+        "token": "0x06008490",
+        "method_definition_index": 33935,
+        "parameter_count": 0,
+        "vaddr": "0x2310ee4",
+        "file_offset": "0x230cee4"
+      },
+      "handler": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelManager",
+        "name": "OnBeforeSceneLoadStage3",
+        "token": "0x0600849d",
+        "method_definition_index": 33948,
+        "parameter_count": 0,
+        "vaddr": "0x2313e70",
+        "file_offset": "0x230fe70"
+      },
+      "remove_method": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.GameSceneManager",
+        "name": "remove_OnBeforeSceneLoadStage3Action",
+        "token": "0x060056f5",
+        "method_definition_index": 22260,
+        "parameter_count": 1,
+        "vaddr": "0x2072280",
+        "file_offset": "0x206e280"
+      },
+      "registration_site": "0x2310d8c",
+      "removal_site": "0x231122c",
+      "target_object": "this saved in x19, also used by paired Awake registration",
+      "handler_metadata_usage": {
+        "got_vaddr": "0x41d9ab0",
+        "usage_vaddr": "0x4325130",
+        "encoded": "0x60010939",
+        "kind": 3,
+        "index": 33948
+      },
+      "constructor_method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Action",
+        "name": ".ctor",
+        "token": "0x06000379",
+        "method_definition_index": 37309,
+        "parameter_count": 2,
+        "vaddr": "0x32cd13c",
+        "file_offset": "0x32c913c"
+      },
+      "raw_anchors": [
+        {
+          "site": "0x2310f0c",
+          "file_offset": "0x230cf0c",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x2311168",
+          "file_offset": "0x230d168",
+          "word": "0x9000f655",
+          "bytes_le": "55f60090"
+        },
+        {
+          "site": "0x231117c",
+          "file_offset": "0x230d17c",
+          "word": "0xf9455ab5",
+          "bytes_le": "b55a45f9"
+        },
+        {
+          "site": "0x2311210",
+          "file_offset": "0x230d210",
+          "word": "0xf94002a2",
+          "bytes_le": "a20240f9"
+        },
+        {
+          "site": "0x2311214",
+          "file_offset": "0x230d214",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x2311218",
+          "file_offset": "0x230d218",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x231121c",
+          "file_offset": "0x230d21c",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x2311220",
+          "file_offset": "0x230d220",
+          "word": "0x943eefc7",
+          "bytes_le": "c7ef3e94"
+        },
+        {
+          "site": "0x2311224",
+          "file_offset": "0x230d224",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x2311228",
+          "file_offset": "0x230d228",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        },
+        {
+          "site": "0x231122c",
+          "file_offset": "0x230d22c",
+          "word": "0x97f58415",
+          "bytes_le": "1584f597"
+        }
+      ]
+    }
+  ],
+  "inspection_windows": {
+    "PWC.BackgroundPlanetSoundHandler.OnDestroy": {
+      "start": "0x20694d4",
+      "exclusive_stop": "0x2069640",
+      "sha256": "e943514327c09538aec9c42dcad8610e2da1d08004d98e43e9e902cf93a2961c",
+      "limit": "Next metadata start bounds inspection, not complete CFG or method proof."
+    },
+    "PWC.PersistentData.PersistentDataManager.OnDestroy": {
+      "start": "0x21e0738",
+      "exclusive_stop": "0x21e086c",
+      "sha256": "3ded5b199f84ddd9f7c5938775ef3518f336c4eca44344510f5ef097fd072026",
+      "limit": "Next metadata start bounds inspection, not complete CFG or method proof."
+    },
+    "PWC.Level.LevelManager.OnDestroy": {
+      "start": "0x2310ee4",
+      "exclusive_stop": "0x2311714",
+      "sha256": "28c9a472bd4ea9675c0f99088aedb9e002b56e9704372f1dd961e1f074c6c4c6",
+      "limit": "Next metadata start bounds inspection, not complete CFG or method proof."
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x20694d4",
+        "--stop-address=0x2069640",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.032,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/scene-unsubscribers/PWC.BackgroundPlanetSoundHandler.OnDestroy.asm.txt",
+      "sha256": "ffc5e5ce8cb9de50f53aef2de10090b948b51093c363ef2763c20718eee58359"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x21e0738",
+        "--stop-address=0x21e086c",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.025,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/scene-unsubscribers/PWC.PersistentData.PersistentDataManager.OnDestroy.asm.txt",
+      "sha256": "d4c493f6417ff324ead1ceef010551f7881e8e158b52a5dbc7954b99a133fbb5"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x2310ee4",
+        "--stop-address=0x2311714",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.035,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/scene-unsubscribers/PWC.Level.LevelManager.OnDestroy.asm.txt",
+      "sha256": "e4786fe4fa6ab201b7f09424a53b098d5709a982af17a1b0e420b771d60b602f"
+    }
+  ],
+  "duration_seconds": 2.79,
+  "queue_modified": false,
+  "game_executed": false,
+  "active_REA_target_used": false,
+  "precondition": "Normal execution reaches each guarded delegate construction and remove call.",
+  "unknowns": [
+    "Unity OnDestroy execution, reachability and exception behavior are not observed.",
+    "Delegate equality and event accessor/library internals are not modeled: a remove call does not prove successful removal.",
+    "Lifetime, duplicate registrations, instance ordering and handler effects remain unknown.",
+    "No removal conclusion for the static activeSceneChanged subscription; not investigated here.",
+    "No full CFG or completeness claim; nine prior registration candidates remain open."
+  ]
+}

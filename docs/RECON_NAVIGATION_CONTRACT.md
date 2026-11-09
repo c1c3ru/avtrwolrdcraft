@@ -1,5 +1,7 @@
 # T029 — contrato estático de navegação, rodada de 2026-11-02
 
+Atualização de 2026-11-07: [loading/fade](RECON_LOADING_FADE_CONTRACT.md) resolve condicionalmente os dois slots virtuais do prefab distribuído; [assinantes](RECON_SCENE_SUBSCRIBERS.md) confirma cinco registros concretos. Os desconhecidos abaixo descrevem a rodada original; consultar esses complementos antes de refazer trabalho. Os contratos continuam parciais, sem equivalência em runtime.
+
 Esta rodada estende o [bootstrap IL2CPP](RECON_IL2CPP_BOOTSTRAP.md), reaproveitando os binários e índices existentes. Não houve extração completa, instalação de ferramentas, rede, alteração do cliente, execução do original, emulação ou uso de um alvo REA compartilhado. O resultado é um conjunto de **contratos estáticos candidatos**, não equivalência certificada.
 
 ## Artefatos e reprodução
@@ -159,3 +161,7 @@ Nenhum resultado está rotulado como certificado. Em particular, hashes e janela
 6. Rodar cenários do original com chave ausente, mundo válido, mundo inválido e transição em andamento; comparar com a implementação candidata antes de modificar o cliente para usar essa regra.
 
 T029 permanece parcial. Esta rodada reduziu a incerteza do getter e expandiu a cadeia de disponibilidade/loading com evidência guardada e reproduzível; não concluiu a navegação de todos os ambientes.
+
+## Atualização T025 — 2026-11-07
+
+A pendência de identidade dos três genéricos de `IsSceneAvailable` foi reduzida: MethodRef/MethodSpec/MethodDef agora confirmam `HashSet<string>..ctor/Add/Contains`, com joins aos ponteiros canônicos compartilhados. `_availableSceneNames` também foi vinculado ao offset estático `0x48` por `fieldOffsets`. Isso não certifica os corpos das coleções, exceções ou runtime. Contrato, errata do getter e evidências novas em [RECON_T025_COMPLETION_2026-11-07.md](RECON_T025_COMPLETION_2026-11-07.md); as seções anteriores descrevem o limite histórico da análise inicial.

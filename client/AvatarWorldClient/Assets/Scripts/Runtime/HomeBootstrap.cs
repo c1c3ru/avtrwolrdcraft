@@ -112,6 +112,14 @@ namespace AvatarWorld.Runtime
                     store.RefreshCoins();
                     store.SelectCategory(store.Category);
                 });
+            }, () =>
+            {
+                // "Criador de Avatar" no trilho: fecha a loja e abre os slots (AvatarMakerLobby). Se a loja foi
+                // aberta pelo carrinho dos proprios slots, eles continuam vivos por baixo (sort order menor) e
+                // reaparecem sozinhos; senao, OpenAvatarSlots cria uma tela nova.
+                Destroy(host);
+                _save.Save(_state);
+                OpenAvatarSlots();
             });
         }
 
@@ -129,6 +137,7 @@ namespace AvatarWorld.Runtime
         void OpenAvatarSlots()
         {
             if (FindFirstObjectByType<AvatarSlotsScreen>() != null) return;
+            LoadingScreen.Show();
             if (_worldMap != null) _worldMap.gameObject.SetActive(false);
             var host = new GameObject("AvatarSlots");
             var slots = host.AddComponent<AvatarSlotsScreen>();
@@ -136,29 +145,11 @@ namespace AvatarWorld.Runtime
             {
                 _save.Save(_state);
                 Destroy(host);
+                LoadingScreen.Show();
                 if (_worldMap != null) _worldMap.gameObject.SetActive(true);
-            }, OpenVehicleSlotPurchase);
-        }
-
-        /// <summary>
-        /// Tela dedicada (fundo roxo animado, item ao centro, faixas de 100/300 moedas) aberta pelo slot de
-        /// veiculo bloqueado da tela de slots - nao a loja geral, que so mostra "Em breve" para Veículos.
-        /// </summary>
-        void OpenVehicleSlotPurchase()
-        {
-            if (FindFirstObjectByType<VehicleSlotPurchaseScreen>() != null) return;
-            var host = new GameObject("VehicleSlotPurchase");
-            var screen = host.AddComponent<VehicleSlotPurchaseScreen>();
-            screen.Begin(_state, _save, () => Destroy(host), price =>
-            {
-                if (FindFirstObjectByType<LiteracyChallengeScreen>() != null) return;
-                var screenGo = new GameObject("VehicleSlotChallenges");
-                var challenge = screenGo.AddComponent<LiteracyChallengeScreen>();
-                challenge.SortingOrder = 900;
-                challenge.BeginRandom(_literacy, new ChallengeSelector(_state), price, "Moedas AW",
-                    () => { _save.Save(_state); screen.RefreshCoins(); },
-                    () => screen.RefreshCoins());
-            });
+                LoadingScreen.Hide(0.5f);
+            }, () => OpenStore(() => { }));
+            LoadingScreen.Hide(0.7f);
         }
 
         void CloseWorldMap()

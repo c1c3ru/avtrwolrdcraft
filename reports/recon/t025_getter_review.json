@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "reviewer": "root/t025_generics",
+  "author_reviewed": "root",
+  "recorded_at": "2026-11-08T01:00:45.753189+00:00",
+  "verdict": "accept_bounded_static_evidence_only",
+  "task_acceptance": false,
+  "queue_modified": false,
+  "target_executed": false,
+  "scope": "Independent review of root-authored getter producer and current refreshed dossier, not independent reimplementation of reviewer-authored generic-binding annex.",
+  "checks": {
+    "erratum_fully_bounded_false_consistent": true,
+    "semantic_completion_false": true,
+    "inspection_bytes_hash_matches": true,
+    "independent_instruction_count": 53,
+    "independent_call_count": 7,
+    "independent_conditional_branches": [
+      {
+        "site": "0x2073268",
+        "target": "0x2073298",
+        "kind": "TBNZ"
+      },
+      {
+        "site": "0x20732dc",
+        "target": "0x20732e8",
+        "kind": "CBNZ"
+      }
+    ],
+    "independent_return_sites": [
+      "0x2073308"
+    ],
+    "sole_local_exit_ret": true,
+    "exact_three_generic_annex_records_consumed": true,
+    "generic_bindings_not_promoted_to_collection_semantics": true,
+    "producer_dependency_and_pair_hashes_current": true,
+    "reviewed_files_stable_during_checks": true
+  },
+  "findings": [
+    {
+      "classification": "STATIC",
+      "finding": "The earlier fully-bounded=true inconsistency is corrected throughout result, contract and CFG."
+    },
+    {
+      "classification": "STATIC",
+      "finding": "Independent raw-word decoding finds 53 instruction addresses, 7 direct BL calls, two conditional guards and RET at0x2073308. Both conditional destinations lie inside the pinned inspection window."
+    },
+    {
+      "classification": "STATIC",
+      "finding": "The dossier copies exactly three HashSet<string> requested identities and canonical object pointer joins from the annex. Its explicit remaining unknown is collection implementation equivalence, not unresolved requested identity."
+    },
+    {
+      "classification": "STATIC",
+      "finding": "Provenance digests match the current getter, CFG, navigation, generic producer, index and native/metadata pair."
+    }
+  ],
+  "limits": [
+    "Reviewer authored the generic-binding producer; this report independently reviews integration into the root-authored getter, and does not claim a second independent review of generic-binding derivation itself.",
+    "This remains a local normal-return CFG. Full/noncontiguous/exception body regions, helper effects, Enum/PlayerPrefs behavior, collection body semantics, generic-sharing correctness, cache concurrency and original-runtime comparison remain unproved.",
+    "The generic normal_cfg function assumes unrecognized instructions fall through. This review validates its result only for these pinned, independently decoded 53 words, not arbitrary AArch64 instructions.",
+    "No repeat of the already-green integration suite; the new verification here is independent raw-word/hash/artifact-consistency checking."
+  ],
+  "input_refs": [
+    {
+      "path": "tools/recon_t025_getter.py",
+      "sha256": "aa78b22ff3bd09a8849a03a20c85616465f70905957913da38eb4e024d6f89f2"
+    },
+    {
+      "path": "tools/recon_t025_implement.py",
+      "sha256": "c8cd33ca3496cc2eec80b96b8ee010863efd6299f901ad717baec98e3c1abe91"
+    },
+    {
+      "path": "tools/recon_navigation.py",
+      "sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08"
+    },
+    {
+      "path": "tools/recon_t025_generics.py",
+      "sha256": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3"
+    },
+    {
+      "path": "out/recon/il2cpp/libil2cpp.so",
+      "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+    },
+    {
+      "path": "out/recon/il2cpp/global-metadata.dat",
+      "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+    },
+    {
+      "path": "out/recon/il2cpp/metadata_methods.jsonl",
+      "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+    },
+    {
+      "path": "reports/recon/t025_generic_bindings_investigation.json",
+      "sha256": "7739983c26b976874ffc03ac199700a6eebd1292ea68b19ce3aada3bffca4fe1"
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/method-contract.json",
+      "sha256": "1206c4e859b569f01e04894b451341e1be7307837808c8e6e7ed6daeaa2d9358"
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/control-flow.json",
+      "sha256": "2c95d7ffcdf6fe289463f23711dbcc3bfac29fcefd5b0d1f7dbb847b44b8857f"
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/result.json",
+      "sha256": "60bb4cf76c36e9a23584cc9793af43f053f48fc3f43d65f0e8862e2de1ead9dd"
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/unknowns.jsonl",
+      "sha256": "3d74fa7446080e5d5615c13360ec83685ee250efa7ba54ed031ac770e9e4113d"
+    }
+  ]
+}

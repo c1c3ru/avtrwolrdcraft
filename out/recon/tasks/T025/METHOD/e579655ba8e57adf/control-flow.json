@@ -1,0 +1,423 @@
+{
+  "entry": "0x2072cc8",
+  "inspection_exclusive_stop": "0x2072d84",
+  "reachable_instructions": 47,
+  "instruction_addresses": [
+    "0x2072cc8",
+    "0x2072ccc",
+    "0x2072cd0",
+    "0x2072cd4",
+    "0x2072cd8",
+    "0x2072cdc",
+    "0x2072ce0",
+    "0x2072ce4",
+    "0x2072ce8",
+    "0x2072cec",
+    "0x2072cf0",
+    "0x2072cf4",
+    "0x2072cf8",
+    "0x2072cfc",
+    "0x2072d00",
+    "0x2072d04",
+    "0x2072d08",
+    "0x2072d0c",
+    "0x2072d10",
+    "0x2072d14",
+    "0x2072d18",
+    "0x2072d1c",
+    "0x2072d20",
+    "0x2072d24",
+    "0x2072d28",
+    "0x2072d2c",
+    "0x2072d30",
+    "0x2072d34",
+    "0x2072d38",
+    "0x2072d3c",
+    "0x2072d40",
+    "0x2072d44",
+    "0x2072d48",
+    "0x2072d4c",
+    "0x2072d50",
+    "0x2072d54",
+    "0x2072d58",
+    "0x2072d5c",
+    "0x2072d60",
+    "0x2072d64",
+    "0x2072d68",
+    "0x2072d6c",
+    "0x2072d70",
+    "0x2072d74",
+    "0x2072d78",
+    "0x2072d7c",
+    "0x2072d80"
+  ],
+  "edges": [
+    {
+      "site": "0x2072cc8",
+      "target": "0x2072ccc",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072ccc",
+      "target": "0x2072cd0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cd0",
+      "target": "0x2072cd4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cd4",
+      "target": "0x2072cd8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cd8",
+      "target": "0x2072cdc",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cdc",
+      "target": "0x2072d00",
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072cdc",
+      "target": "0x2072ce0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072ce0",
+      "target": "0x2072ce4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072ce4",
+      "target": "0x2072ce8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072ce8",
+      "target": "0x2072cec",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cec",
+      "target": "0x2072cf0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cf0",
+      "target": "0x2072cf4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cf4",
+      "target": "0x2072cf8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cf8",
+      "target": "0x2072cfc",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cfc",
+      "target": "0x2072d00",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d00",
+      "target": "0x2072d04",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d04",
+      "target": "0x2072d08",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d08",
+      "target": "0x2072d20",
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072d08",
+      "target": "0x2072d0c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d0c",
+      "target": "0x2072d10",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d10",
+      "target": "0x2072d14",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d14",
+      "target": "0x2072d18",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d18",
+      "target": "0x2072d1c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d1c",
+      "target": "0x2072d20",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d20",
+      "target": "0x2072d24",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d24",
+      "target": "0x2072d28",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d28",
+      "target": "0x2072d2c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d2c",
+      "target": "0x2072d30",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d30",
+      "target": "0x2072d34",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d34",
+      "target": "0x2072d38",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d38",
+      "target": "0x2072d3c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d3c",
+      "target": "0x2072d60",
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072d3c",
+      "target": "0x2072d40",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d40",
+      "target": "0x2072d44",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d44",
+      "target": "0x2072d48",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d48",
+      "target": "0x2072d4c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d4c",
+      "target": "0x2072d50",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d50",
+      "target": "0x2072d58",
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072d50",
+      "target": "0x2072d54",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d54",
+      "target": "0x2072d58",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d58",
+      "target": "0x2072d5c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d5c",
+      "target": "0x2072d60",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d60",
+      "target": "0x2072d64",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d64",
+      "target": "0x2072d68",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d68",
+      "target": "0x2072d70",
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072d68",
+      "target": "0x2072d6c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d6c",
+      "target": "0x2072d70",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d70",
+      "target": "0x2072d74",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d74",
+      "target": "0x2072d78",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d78",
+      "target": "0x2072d7c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d7c",
+      "target": "0x2072d80",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d80",
+      "target": "0x3cdc604",
+      "kind": "taken",
+      "inside": false
+    }
+  ],
+  "calls": [
+    {
+      "site": "0x2072ce8",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072cf4",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072d14",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072d54",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072d5c",
+      "kind": "BL",
+      "target": "0x20d7e78",
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPOwnership",
+          "name": "Clear",
+          "token": "0x06005e99",
+          "method_definition_index": 24216,
+          "parameter_count": 0,
+          "vaddr": "0x20d7e78",
+          "file_offset": "0x20d3e78"
+        }
+      ]
+    },
+    {
+      "site": "0x2072d6c",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "metadata_targets": []
+    }
+  ],
+  "complete_body_proven": false,
+  "exception_edges_recovered": false,
+  "assumptions": [
+    "Calls return normally; exceptions and asynchronous Unity effects remain outside this CFG.",
+    "Inspection range is pinned bytes, not proof of all function regions."
+  ]
+}

@@ -10,8 +10,10 @@ namespace AvatarWorld.Runtime
 {
     /// <summary>
     /// Loja por item: os GUIDs de store_catalog.json por categoria, 12 por pagina, com preco de ItemPricing
-    /// (3 faixas, invencao local) e compra unica via LocalStoreService. Aberta pelo botao "Itens" da loja.
-    /// Sem arte por item (as imagens dos itens ainda nao foram exportadas): cartoes de texto.
+    /// (3 faixas, decidido 2026-11-05) e compra unica via LocalStoreService. Aberta pelo botao "Itens" da loja.
+    /// Sem arte por item (as imagens dos itens ainda nao foram exportadas): cartoes de texto com uma faixa de
+    /// cor por categoria (CategoryColor) para dar alguma distincao visual sem inventar arte. Categorias de 1
+    /// caractere ("c", "x") eram artefato do extrator e foram corrigidas na origem (tools/build_item_catalog.py).
     /// </summary>
     public sealed class ItemBrowserScreen : MonoBehaviour
     {
@@ -99,7 +101,7 @@ namespace AvatarWorld.Runtime
             foreach (var category in _chips)
             {
                 string c = category;
-                var chip = Img("Chip_" + c, _root, null, Color.white);
+                var chip = Img("Chip_" + c, _root, null, CategoryColor(c));
                 Place(chip.rectTransform, new Vector2(0, 1), new Vector2(x, -190f), new Vector2(200f, 70f));
                 var label = Txt("Label", chip.transform, 34, TextAnchor.MiddleCenter, TextDark);
                 Stretch(label.rectTransform);
@@ -145,7 +147,11 @@ namespace AvatarWorld.Runtime
             _category = category;
             _page = page;
             foreach (var pair in _chipImages)
-                pair.Value.color = pair.Key == category ? Color.white : new Color(1f, 1f, 1f, 0.45f);
+            {
+                var color = CategoryColor(pair.Key);
+                color.a = pair.Key == category ? 1f : 0.45f;
+                pair.Value.color = color;
+            }
             for (int i = _grid.childCount - 1; i >= 0; i--)
             {
                 var child = _grid.GetChild(i).gameObject;
@@ -157,11 +163,24 @@ namespace AvatarWorld.Runtime
             _pageLabel.text = (page + 1) + " / " + Math.Max(1, _index.PageCount(category, PageSize));
         }
 
+        /// <summary>
+        /// Cor determinística por categoria (hash do nome -> matiz), sem arte nova: da variedade visual aos
+        /// cartoes (hoje so texto, sem imagem por item - ver Begin()) para nao parecerem todos identicos.
+        /// </summary>
+        static Color CategoryColor(string category)
+        {
+            int hash = (category ?? "").GetHashCode();
+            float hue = (hash & 0xFFFF) / (float)0xFFFF;
+            return Color.HSVToRGB(hue, 0.45f, 0.95f);
+        }
+
         void BuildCard(CatalogItem item, int slot)
         {
             int col = slot % Cols, row = slot / Cols;
             var card = Img("Card_" + item.Guid, _grid, null, Card);
             Place(card.rectTransform, new Vector2(0, 1), new Vector2(430f + col * 415f, -380f - row * 190f), new Vector2(395f, 170f));
+            var accent = Img("Accent", card.transform, null, CategoryColor(item.Category));
+            Place(accent.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -5f), new Vector2(395f, 10f));
             var name = Txt("Name", card.transform, 32, TextAnchor.UpperCenter, TextDark);
             Place(name.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -50f), new Vector2(370f, 90f));
             name.text = item.DisplayName;

@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "task_id": "T025/HANDLER/0000849c",
+  "status": "STATIC_candidate_contract_checked_not_certified",
+  "semantic_completion": false,
+  "method_identity": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "PWC.Level.LevelManager",
+    "name": "OnBeforeSceneLoadStage3",
+    "token": "0x0600849d",
+    "method_definition_index": 33948,
+    "parameter_count": 0,
+    "vaddr": "0x2313e70",
+    "file_offset": "0x230fe70"
+  },
+  "bounded_window": {
+    "start": "0x2313e70",
+    "exclusive_stop": "0x2313ee0",
+    "bytes": 112,
+    "sha256": "5fd49691a0445a31478c9c42546bb9433da2e557b01b36234a72612162e67e0a",
+    "bound_limit": "candidate window capped at next distinct metadata method start; noncontiguous body and exception extents are not proven"
+  },
+  "assembly_path": "out/recon/tasks/T025/HANDLER/0000849c/handler.asm.txt",
+  "assembly_sha256": "69756278be657324d3a4fbac47ee79e756fead1aa58a71688f70372cc888f94c",
+  "disassembly_command": [
+    "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+    "-d",
+    "--start-address=0x2313e70",
+    "--stop-address=0x2313ee0",
+    "/home/c1c3ru/avtrwolrdcraft/.claude/worktrees/recon-stage-handler-effects/out/recon/il2cpp/libil2cpp.so"
+  ],
+  "detail": {
+    "literal_usage": {
+      "got_vaddr": "0x41acba0",
+      "usage_vaddr": "0x433cc50",
+      "encoded": "0xa0000001",
+      "kind": 5,
+      "index": 0,
+      "literal": "",
+      "literal_file_offset": 177072,
+      "literal_bytes": 0
+    },
+    "field_target": {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+      "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+      "declaration": "public static string CurrentSceneSuffix; //Field offset: 0x18"
+    },
+    "pseudocode": [
+      "GameSceneManager.CurrentSceneSuffix = ''"
+    ],
+    "effects": [
+      "ensures GameSceneManager static-class initialization (guarded)",
+      "writes static field CurrentSceneSuffix (offset 0x18 of GameSceneManager static fields) from a string-literal metadata usage slot (kind 5, index 0) decoding to '', with GC write barrier"
+    ],
+    "calls": [],
+    "unknowns": [
+      "the method's own `this` (LevelManager instance) parameter is unused in this window; only a GameSceneManager static field is touched",
+      "runtime timing of the metadata-usage slot self-patch (raw encoded token on disk vs resolved String* at first use) is not observed"
+    ]
+  },
+  "input_pair": {
+    "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+  },
+  "source_registration_edge": {
+    "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+    "event": "GameSceneManager.OnBeforeSceneLoadStage3Action",
+    "caller": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.Level.LevelManager",
+      "name": "Awake",
+      "token": "0x0600848e",
+      "method_definition_index": 33933,
+      "parameter_count": 0,
+      "vaddr": "0x2310b8c",
+      "file_offset": "0x230cb8c"
+    },
+    "handler": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.Level.LevelManager",
+      "name": "OnBeforeSceneLoadStage3",
+      "token": "0x0600849d",
+      "method_definition_index": 33948,
+      "parameter_count": 0,
+      "vaddr": "0x2313e70",
+      "file_offset": "0x230fe70"
+    },
+    "event_add_method": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.GameSceneManager",
+      "name": "add_OnBeforeSceneLoadStage3Action",
+      "token": "0x060056f4",
+      "method_definition_index": 22259,
+      "parameter_count": 1,
+      "vaddr": "0x20721a4",
+      "file_offset": "0x206e1a4"
+    },
+    "target_object": "this saved in x19",
+    "handler_metadata_usage": {
+      "got_vaddr": "0x41d9ab0",
+      "usage_vaddr": "0x4325130",
+      "encoded": "0x60010939",
+      "kind": 3,
+      "index": 33948
+    },
+    "handler_got_reference": {
+      "adrp_site": "0x2310cd8",
+      "ldr_site": "0x2310ce8",
+      "got_vaddr": "0x41d9ab0",
+      "base_register": 29,
+      "destination_register": 29
+    },
+    "constructor_call": {
+      "site": "0x2310d80",
+      "file_offset": "0x230cd80",
+      "word": "0x943ef0ef",
+      "bytes_le": "eff03e94",
+      "target": "0x32cd13c",
+      "metadata_method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Action",
+        "name": ".ctor",
+        "token": "0x06000379",
+        "method_definition_index": 37309,
+        "parameter_count": 2,
+        "vaddr": "0x32cd13c",
+        "file_offset": "0x32c913c"
+      },
+      "identity_limit": null
+    },
+    "registration_branch": {
+      "site": "0x2310d8c",
+      "file_offset": "0x230cd8c",
+      "word": "0x97f58506",
+      "bytes_le": "0685f597",
+      "kind": "BL",
+      "target": "0x20721a4"
+    },
+    "raw_argument_flow_anchors": [
+      {
+        "site": "0x2310bb4",
+        "file_offset": "0x230cbb4",
+        "word": "0xaa0003f3",
+        "bytes_le": "f30300aa"
+      },
+      {
+        "site": "0x2310cd8",
+        "file_offset": "0x230ccd8",
+        "word": "0xb000f65d",
+        "bytes_le": "5df600b0"
+      },
+      {
+        "site": "0x2310ce8",
+        "file_offset": "0x230cce8",
+        "word": "0xf9455bbd",
+        "bytes_le": "bd5b45f9"
+      },
+      {
+        "site": "0x2310d70",
+        "file_offset": "0x230cd70",
+        "word": "0xf94003a2",
+        "bytes_le": "a20340f9"
+      },
+      {
+        "site": "0x2310d74",
+        "file_offset": "0x230cd74",
+        "word": "0xaa1303e1",
+        "bytes_le": "e10313aa"
+      },
+      {
+        "site": "0x2310d78",
+        "file_offset": "0x230cd78",
+        "word": "0xaa1f03e3",
+        "bytes_le": "e3031faa"
+      },
+      {
+        "site": "0x2310d7c",
+        "file_offset": "0x230cd7c",
+        "word": "0xaa0003f4",
+        "bytes_le": "f40300aa"
+      },
+      {
+        "site": "0x2310d80",
+        "file_offset": "0x230cd80",
+        "word": "0x943ef0ef",
+        "bytes_le": "eff03e94"
+      },
+      {
+        "site": "0x2310d84",
+        "file_offset": "0x230cd84",
+        "word": "0xaa1403e0",
+        "bytes_le": "e00314aa"
+      },
+      {
+        "site": "0x2310d88",
+        "file_offset": "0x230cd88",
+        "word": "0xaa1f03e1",
+        "bytes_le": "e1031faa"
+      },
+      {
+        "site": "0x2310d8c",
+        "file_offset": "0x230cd8c",
+        "word": "0x97f58506",
+        "bytes_le": "0685f597"
+      }
+    ],
+    "precondition": "Normal execution reaches the signup after metadata/class initialization and object/delegate construction.",
+    "limits": [
+      "Does not prove handler invocation, side effects, subscription order across instances or lifetime/unsubscription.",
+      "Exceptions, lazy-init helpers and indirect/generated calls outside this guarded flow remain unmodeled."
+    ]
+  },
+  "evidence_class": "STATIC_and_DERIVED_from_original_cached_bytes",
+  "runtime_or_device_observed": false
+}

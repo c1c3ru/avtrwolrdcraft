@@ -1,0 +1,58 @@
+[
+  {
+    "type": "Game.Level.LevelTechBird",
+    "method": "HasWalkingAnimations",
+    "slot": 145,
+    "va": "0x1dca468",
+    "bytes": "e0031f2ac0035fd6",
+    "returns": false
+  },
+  {
+    "type": "Game.Level.LevelTechCat",
+    "method": "HasWalkingAnimations",
+    "slot": 145,
+    "va": "0x1dca628",
+    "bytes": "e0031f2ac0035fd6",
+    "returns": false
+  },
+  {
+    "type": "Game.Level.LevelTechDog",
+    "method": "HasWalkingAnimations",
+    "slot": 145,
+    "va": "0x1dcaa68",
+    "bytes": "e0031f2ac0035fd6",
+    "returns": false
+  },
+  {
+    "type": "Game.Level.LevelTechRabbit",
+    "method": "HasWalkingAnimations",
+    "slot": 145,
+    "va": "0x1dcadf0",
+    "bytes": "e0031f2ac0035fd6",
+    "returns": false
+  },
+  {
+    "type": "Game.Level.LevelTechRobot",
+    "method": "HasWalkingAnimations",
+    "slot": 145,
+    "va": "0x1dcafc4",
+    "bytes": "e0031f2ac0035fd6",
+    "returns": false
+  },
+  {
+    "type": "PWC.Level.LevelAnimal",
+    "method": "HasWalkingAnimations",
+    "slot": 145,
+    "va": "0x2265b18",
+    "bytes": "20008052c0035fd6",
+    "returns": true
+  },
+  {
+    "type": "PWC.Level.LevelAnimal",
+    "method": "HasRunningAnimations",
+    "slot": 147,
+    "va": "0x2265b28",
+    "bytes": "e0031f2ac0035fd6",
+    "returns": false
+  }
+]

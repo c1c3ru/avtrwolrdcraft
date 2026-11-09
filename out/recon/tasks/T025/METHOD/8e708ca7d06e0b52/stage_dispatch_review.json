@@ -1,0 +1,166 @@
+{
+  "classification": "STATIC_indirect_dispatch_shape_targets_unresolved",
+  "method": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "PWC.GameSceneManager",
+    "name": "LoadScene",
+    "token": "0x060056fe",
+    "method_definition_index": 22269,
+    "parameter_count": 3,
+    "vaddr": "0x20728d4",
+    "file_offset": "0x206e8d4"
+  },
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "bounded_method_window": {
+    "start": "0x20728d4",
+    "exclusive_stop": "0x2072c5c",
+    "bytes": 904,
+    "sha256": "5ad1f0b55ba081cdadf0751b05fa7db5c5cec832482e26694608d5c596ea80a7",
+    "limit": "next metadata pointer bounds the inspection window, not all body/exception regions"
+  },
+  "ordered_dispatches": [
+    {
+      "candidate_slot_offset": "0x0",
+      "anchors": [
+        {
+          "site": "0x2072b5c",
+          "word": "0xf9400108"
+        },
+        {
+          "site": "0x2072b60",
+          "word": "0xb40000c8"
+        },
+        {
+          "site": "0x2072b64",
+          "word": "0xf9400d09"
+        },
+        {
+          "site": "0x2072b68",
+          "word": "0xf9402100"
+        },
+        {
+          "site": "0x2072b6c",
+          "word": "0xf9401501"
+        },
+        {
+          "site": "0x2072b70",
+          "word": "0xd63f0120"
+        }
+      ],
+      "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+      "otherwise": "CBZ bypasses the indirect call"
+    },
+    {
+      "candidate_slot_offset": "0x8",
+      "anchors": [
+        {
+          "site": "0x2072b88",
+          "word": "0xf9405c08"
+        },
+        {
+          "site": "0x2072b90",
+          "word": "0xb40000c8"
+        },
+        {
+          "site": "0x2072b94",
+          "word": "0xf9400d09"
+        },
+        {
+          "site": "0x2072b98",
+          "word": "0xf9402100"
+        },
+        {
+          "site": "0x2072b9c",
+          "word": "0xf9401501"
+        },
+        {
+          "site": "0x2072ba0",
+          "word": "0xd63f0120"
+        }
+      ],
+      "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+      "otherwise": "CBZ bypasses the indirect call"
+    },
+    {
+      "candidate_slot_offset": "0x10",
+      "anchors": [
+        {
+          "site": "0x2072bbc",
+          "word": "0xf9400908"
+        },
+        {
+          "site": "0x2072bc0",
+          "word": "0xb40000a8"
+        },
+        {
+          "site": "0x2072bc4",
+          "word": "0xf9400d09"
+        },
+        {
+          "site": "0x2072bc8",
+          "word": "0xf9402100"
+        },
+        {
+          "site": "0x2072bcc",
+          "word": "0xf9401501"
+        },
+        {
+          "site": "0x2072bd0",
+          "word": "0xd63f0120"
+        }
+      ],
+      "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+      "otherwise": "CBZ bypasses the indirect call"
+    }
+  ],
+  "typeinfo_provenance": {
+    "adrp_site": "0x20728e8",
+    "ldr_site": "0x20728f0",
+    "got_vaddr": 68978112,
+    "base_register": 23,
+    "destination_register": 23,
+    "usage": {
+      "got_vaddr": "0x41c85c0",
+      "usage_vaddr": "0x42fa8c8",
+      "encoded": "0x20011d2f",
+      "kind": 1,
+      "index": 36503
+    },
+    "resolved_typedef_candidates": [
+      {
+        "index": 3802,
+        "name": "<>c__DisplayClass28_0",
+        "namespace": ""
+      }
+    ]
+  },
+  "candidate_field_layout": {
+    "source": "T025 fieldOffsets metadata join plus FieldDef tokens for PWC.GameSceneManager",
+    "fields": [
+      {
+        "name": "OnBeforeSceneLoadStage1Action",
+        "token": "0x04003b9d",
+        "offset": 0
+      },
+      {
+        "name": "OnBeforeSceneLoadStage2Action",
+        "token": "0x04003b9e",
+        "offset": 8
+      },
+      {
+        "name": "OnBeforeSceneLoadStage3Action",
+        "token": "0x04003b9f",
+        "offset": 16
+      }
+    ],
+    "binding_status": "CANDIDATE_only; not joined to the static-data base used at these three loads"
+  },
+  "unknowns": [
+    "The referenced TypeInfo resolves to the nested LoadScene display class; this does not establish that the three loaded values are GameSceneManager event backing fields.",
+    "Runtime delegate targets, invocation-list order, handler effects, exceptions, and Unity execution are not recovered by this sequence.",
+    "The inspected window is bounded by the next MethodDef start; complete body and exception regions remain open."
+  ],
+  "game_executed": false,
+  "runtime_observed": false
+}

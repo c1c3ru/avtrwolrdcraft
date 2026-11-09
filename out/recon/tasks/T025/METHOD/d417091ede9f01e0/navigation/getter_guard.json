@@ -1,0 +1,116 @@
+{
+  "status": "STATIC_candidate_contract_checked_not_certified",
+  "key": {
+    "got_vaddr": "0x41c85b8",
+    "usage_vaddr": "0x43498a0",
+    "encoded": "0xa0003319",
+    "kind": 5,
+    "index": 6540,
+    "literal": "GAME_CURRENT_WORLD",
+    "literal_file_offset": 369856,
+    "literal_bytes": 18
+  },
+  "default_enum": {
+    "got_vaddr": "0x41b7d08",
+    "usage_vaddr": "0x42f4268",
+    "encoded": "0x2000ce33",
+    "kind": 1,
+    "index": 26393,
+    "type_definition_index": 5176,
+    "type": "PWC.Game.LevelWorldType",
+    "constants": {
+      "None": {
+        "value": 0,
+        "encoded_byte": "0x0",
+        "field_index": 40524,
+        "default_type_index": 22702,
+        "file_offset": 8675095
+      },
+      "World": {
+        "value": 1,
+        "encoded_byte": "0x2",
+        "field_index": 40525,
+        "default_type_index": 22702,
+        "file_offset": 8675096
+      },
+      "Vacation": {
+        "value": 2,
+        "encoded_byte": "0x4",
+        "field_index": 40526,
+        "default_type_index": 22702,
+        "file_offset": 8675097
+      },
+      "StarDustCity": {
+        "value": 3,
+        "encoded_byte": "0x6",
+        "field_index": 40527,
+        "default_type_index": 22702,
+        "file_offset": 8675098
+      },
+      "Countryside": {
+        "value": 4,
+        "encoded_byte": "0x8",
+        "field_index": 40528,
+        "default_type_index": 22702,
+        "file_offset": 8675099
+      },
+      "SnowyMountain": {
+        "value": 5,
+        "encoded_byte": "0xa",
+        "field_index": 40529,
+        "default_type_index": 22702,
+        "file_offset": 8675100
+      },
+      "College": {
+        "value": 6,
+        "encoded_byte": "0xc",
+        "field_index": 40530,
+        "default_type_index": 22702,
+        "file_offset": 8675101
+      }
+    },
+    "selected": "World",
+    "value": 1,
+    "decode_scope": "one-byte nonnegative compressed defaults of this exact enum"
+  },
+  "selection": {
+    "destination": 0,
+    "if_true": 20,
+    "if_false": 19,
+    "condition": 1
+  },
+  "calls": [
+    {
+      "site": "0x20732b4",
+      "target": "0x338d9a0"
+    },
+    {
+      "site": "0x20732cc",
+      "target": "0x3cc5a70"
+    },
+    {
+      "site": "0x20732ec",
+      "target": "0x207305c"
+    }
+  ],
+  "parameters": [],
+  "return": "string: stored candidate if availability bit0 nonzero; else default World name",
+  "pseudocode": [
+    "ensure metadata/class initialization as guarded in code",
+    "fallback = LevelWorldType.World.ToString()",
+    "candidate = PlayerPrefs.GetString(\"GAME_CURRENT_WORLD\", fallback)",
+    "return (IsSceneAvailable(candidate) & 1) != 0 ? candidate : fallback"
+  ],
+  "effects": [
+    "reads PlayerPrefs through external GetString",
+    "writes lazy metadata-init flag and stack enum temporary",
+    "callee IsSceneAvailable may initialize a static scene-name cache",
+    "runtime helpers/class initialization may have further effects"
+  ],
+  "unknowns": [
+    "runtime initialization/exception behavior",
+    "Unity PlayerPrefs/Enum implementations",
+    "generic HashSet implementation equivalence",
+    "threading/concurrency and actual device behavior"
+  ]
+}

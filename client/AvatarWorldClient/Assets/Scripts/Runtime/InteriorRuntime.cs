@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using AvatarWorld.Core.Avatar;
 using AvatarWorld.Core.Economy;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,6 +41,17 @@ namespace AvatarWorld.Runtime
         const float AvatarScale = 0.6f;
 
         [Serializable] class InteriorExtras { public List<int> items = new List<int>(); }
+        [Serializable] class NpcColor { public string Category; public int Index; }
+        [Serializable] class NpcLook
+        {
+            public string Hair, HairBack, Shirt, Bottom, Shoes, Accessory, Mouth, Eyebrows, Hat, Jacket;
+            public int skinIndex, eyesIndex;
+            public List<NpcColor> colors = new List<NpcColor>();
+        }
+        [Serializable] class NpcEntry { public int id; public float x, y; public NpcLook look; }
+        [Serializable] class NpcFile { public List<NpcEntry> npcs = new List<NpcEntry>(); }
+        List<NpcEntry> _npcs = new List<NpcEntry>();
+        const float NpcScale = 0.6f;
 
         public WorldMapData Data => _data;
 
@@ -54,6 +67,8 @@ namespace AvatarWorld.Runtime
             var extras = Resources.Load<TextAsset>("Interiors/" + key + "/" + key + "_items");
             var itemIndices = new HashSet<int>(extras != null ? JsonUtility.FromJson<InteriorExtras>(extras.text).items : new List<int>());
             BuildSprites("Interiors/" + key + "/sprites/", itemIndices);
+            var npcText = Resources.Load<TextAsset>("Interiors/" + key + "/" + key + "_npcs");
+            if (npcText != null) _npcs = JsonUtility.FromJson<NpcFile>(npcText.text).npcs;
             BuildAvatar();
             BuildBackButton();
         }
@@ -119,6 +134,50 @@ namespace AvatarWorld.Runtime
             host.transform.SetParent(transform, false);
             _avatar = host.AddComponent<AvatarGpuRuntime>();
             _avatar.ConfigureAsWorldAvatar(_saves, _state, new Vector3(_camera.transform.position.x, AvatarY, 0f), AvatarScale, _topRank + 5);
+            if (_npcs.Count > 0) StartCoroutine(SpawnNpcs());
+        }
+
+        // NPCs do original (LevelSceneAvatarMap + PremadeCharactersJson): cada um e renderizado uma vez com o mesmo esqueleto do
+        // avatar do jogador (CaptureLook) e fica como sprite parado na posicao do mapa da cena. Um por quadro, para nao travar.
+        IEnumerator SpawnNpcs()
+        {
+            while (_avatar != null && !_avatar.IsReady) yield return null;
+            if (_avatar == null) yield break;
+            yield return null; // deixa o avatar do jogador assentar na pose parada
+            var root = new GameObject("NPCs").transform;
+            root.SetParent(transform, false);
+            int made = 0;
+            foreach (var npc in _npcs)
+            {
+                if (_avatar == null) yield break;
+                Sprite sprite = null;
+                try { sprite = _avatar.CaptureLook(ToAppearance(npc.look)); }
+                catch (Exception e) { Debug.LogWarning("Interior: NPC " + npc.id + " falhou: " + e.Message); }
+                if (sprite == null) { yield return null; continue; }
+                var go = new GameObject("NPC_" + npc.id);
+                go.transform.SetParent(root, false);
+                go.transform.position = new Vector3(npc.x, npc.y, 0f);
+                go.transform.localScale = Vector3.one * NpcScale;
+                var sr = go.AddComponent<SpriteRenderer>();
+                sr.sprite = sprite;
+                sr.sortingOrder = _topRank + 1 + Mathf.Clamp(Mathf.RoundToInt(2f - npc.y * 0.4f), 0, 3); // mais baixo = mais a frente
+                made++;
+                yield return null;
+            }
+            Debug.Log("Interior: " + made + "/" + _npcs.Count + " NPCs");
+        }
+
+        static AvatarAppearance ToAppearance(NpcLook l)
+        {
+            var a = new AvatarAppearance
+            {
+                HairId = l.Hair, HairBackId = l.HairBack, ShirtId = l.Shirt, BottomId = l.Bottom, ShoesId = l.Shoes,
+                AccessoryId = l.Accessory, MouthId = l.Mouth, EyebrowsId = l.Eyebrows, HatId = l.Hat, JacketId = l.Jacket,
+                SkinIndex = l.skinIndex, EyesIndex = l.eyesIndex,
+            };
+            a.ItemColors = new List<CategoryColor>();
+            foreach (var c in l.colors) a.ItemColors.Add(new CategoryColor { Category = c.Category, Index = c.Index });
+            return a;
         }
 
         void BuildBackButton()

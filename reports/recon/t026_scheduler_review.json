@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "reviewer": "root/t025_generics",
+  "author_reviewed": "root",
+  "recorded_at": "2026-11-08T12:45:25.947839+00:00",
+  "verdict": "accept_packaged_wrapper_evidence_and_separate_API_reference_only",
+  "task_acceptance": false,
+  "queue_modified": false,
+  "game_executed": false,
+  "scope": "Independent static bytes/metadata/codegen review of eight wrappers, eleven resolver string sites, three guarded input paths, six exception-constructor calls; external Unity2022.3 documentation checked separately.",
+  "checks": {
+    "eight_wrapper_identities_and_codegen_pointers_match": true,
+    "eleven_icall_strings_and_BL_resolver_sites_independently_decoded": true,
+    "three_null_and_host_predicate_guards_match": true,
+    "six_exception_constructor_calls_and_metadata_identities_match": true,
+    "null_exception_is_NullReferenceException_not_inferred_from_docs": true,
+    "routine_is_null_message_shared_by_three_guarded_overloads": true,
+    "three_exception_boundary_calls_match_unmodeled_helper": true,
+    "stop_string_only_conditional_is_cached_pointer_x2_not_input_guard": true,
+    "eight_inspection_and_listing_hashes_match": true,
+    "original_runtime_and_semantic_completion_remain_false": true,
+    "external_reference_authority_separate": true,
+    "all_hashes_current_and_stable": true
+  },
+  "findings": [
+    {
+      "classification": "STATIC",
+      "finding": "Null enumerator/Coroutine guards lead to original NullReferenceException(string) constructor calls using routine is null. Invalid host predicates lead to ArgumentException(string). These are packaged instruction/metadata observations, not API-documentation deductions."
+    },
+    {
+      "classification": "STATIC",
+      "finding": "Exact resolver argument strings are bound to direct calls to0x1b886ac and cached indirect tails. The resolved native engine function pointer implementations remain unknown."
+    },
+    {
+      "classification": "STATIC",
+      "finding": "The inspected StopCoroutine(string) wrapper has no managed null/input-host branch: its only conditional tests cached function pointer x2. Native validation is not inferred absent."
+    },
+    {
+      "classification": "EXTERNAL_OFFICIAL_API_REFERENCE",
+      "finding": "Unity2022.3 documents later-frame resumption, potentially different completion order, matching stop handle forms, per-behaviour StopAll and the differing effects of host destruction/GameObject deactivation versus disabling only the component. Those are reference contracts, not observed scheduler execution in this APK."
+    }
+  ],
+  "external_sources_checked": [
+    {
+      "url": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/MonoBehaviour.StartCoroutine.html",
+      "section": "Description, retrieved rendered lines241-244",
+      "supports": "Later-frame resumed work/completion ordering; destruction/GameObject-disable stop; component-disable alone does not stop.",
+      "authority": "external_official_API_reference_not_packaged_runtime_observation"
+    },
+    {
+      "url": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/MonoBehaviour.StopCoroutine.html",
+      "section": "Description, retrieved rendered lines267-281",
+      "supports": "Matching string/IEnumerator/Coroutine form on receiving behaviour; do not mix stop handle forms.",
+      "authority": "external_official_API_reference_not_packaged_runtime_observation"
+    },
+    {
+      "url": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/MonoBehaviour.StopAllCoroutines.html",
+      "section": "Description, retrieved rendered lines237-249",
+      "supports": "StopAll applies to the individual script/behaviour.",
+      "authority": "external_official_API_reference_not_packaged_runtime_observation"
+    }
+  ],
+  "limits": [
+    "No original engine scheduling, icall implementation, disposal/cancellation order, exception propagation or host lifecycle execution was observed.",
+    "Constructor calls and subsequent exception-boundary helper calls do not recover allocation, GC, stack unwinding or helper semantics.",
+    "Inspection stops use next metadata start and do not establish complete/noncontiguous bodies or exception-region coverage.",
+    "The producer provides version-specific pair hashes and selected opcode guards. This audit corroborates its current artifact; it is not a universal coroutine engine implementation.",
+    "No repeat of the already-green eight unit tests; review added independent raw decoding, metadata/codegen, listing/provenance and official-reference checks."
+  ],
+  "input_refs": [
+    {
+      "path": "tools/recon_t026_scheduler.py",
+      "sha256": "5e790c0ccc0701e2a8f792ce32e5b53d278851972ec59e9174668b27505d040d"
+    },
+    {
+      "path": "tools/test_recon_t026_scheduler.py",
+      "sha256": "a114ff2bf77ec7e7584542df48e1d233462cd2d76cdf763a6af072e3d2f15577"
+    },
+    {
+      "path": "tools/recon_navigation.py",
+      "sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08"
+    },
+    {
+      "path": "tools/recon_scene_subscribers.py",
+      "sha256": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce"
+    },
+    {
+      "path": "reports/recon/t026_scheduler.json",
+      "sha256": "1fe20c4f1964cac7b09eb4d21e78cf02581b9cc30b239afee0657bc19ec0328f"
+    },
+    {
+      "path": "out/recon/t026-scheduler/result.json",
+      "sha256": "1fe20c4f1964cac7b09eb4d21e78cf02581b9cc30b239afee0657bc19ec0328f"
+    },
+    {
+      "path": "out/recon/il2cpp/libil2cpp.so",
+      "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+    },
+    {
+      "path": "out/recon/il2cpp/global-metadata.dat",
+      "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+    },
+    {
+      "path": "out/recon/il2cpp/metadata_methods.jsonl",
+      "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+    }
+  ],
+  "artifact_refs": [
+    {
+      "path": "out/recon/t026-scheduler/start_enumerator.asm.txt",
+      "sha256": "ebf664aa53fc23f29254d2244a90ce7587987b52c73116c7091c8f090d61de49"
+    },
+    {
+      "path": "out/recon/t026-scheduler/stop_enumerator.asm.txt",
+      "sha256": "3fe40240cfb127c4cd5aa8072db9c07a37ac8e6ed7096bc8cf40f6a949ce54e1"
+    },
+    {
+      "path": "out/recon/t026-scheduler/stop_coroutine.asm.txt",
+      "sha256": "4df8b0e8c1b856143d2a993ba55c5a18fec62de8d1c3c8dc0956e8fffeccbed1"
+    },
+    {
+      "path": "out/recon/t026-scheduler/stop_string.asm.txt",
+      "sha256": "5a588559bd4798747e5859bd429e08e6ba4928bbfa2c555446be99eb9b85f8e7"
+    },
+    {
+      "path": "out/recon/t026-scheduler/stop_all.asm.txt",
+      "sha256": "2d7b01287c9b0122c27caf231be396fdde2aea4c160e33bf05183829d83290b7"
+    },
+    {
+      "path": "out/recon/t026-scheduler/start_managed.asm.txt",
+      "sha256": "b545c9c4c003caa0f10961e5423326fca7e5862b5e813619f7b0c61e7ba6324d"
+    },
+    {
+      "path": "out/recon/t026-scheduler/stop_enumerator_managed.asm.txt",
+      "sha256": "eb68c2e9ad4e9861f01f47814c7e4fad8f193a7cc3d3727636214b39980bd416"
+    },
+    {
+      "path": "out/recon/t026-scheduler/stop_coroutine_managed.asm.txt",
+      "sha256": "986512310016d5560058f69bb78dfb056854db4673e597ae90a82df29342201a"
+    }
+  ]
+}

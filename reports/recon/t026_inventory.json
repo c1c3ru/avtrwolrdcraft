@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "scope": "Assembly-CSharp raw interfaces/owners, historical437 reconciliation and pending lifecycle planning. No semantic acceptance.",
+  "inputs": [
+    {
+      "path": "out/recon/il2cpp/libil2cpp.so",
+      "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+    },
+    {
+      "path": "out/recon/il2cpp/global-metadata.dat",
+      "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+    },
+    {
+      "path": "out/recon/il2cpp/metadata_methods.jsonl",
+      "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+    },
+    {
+      "path": "out/recon/tasks/T032/coroutines.jsonl",
+      "sha256": "cd2f04fb27ca363c6543cba4867b63eb77d5c19df405cce37f2718d9eb4e2601"
+    },
+    {
+      "path": "docs/RECON_COROUTINES.md",
+      "sha256": "763bf4e8a7c53206938917675756795b13e5d321fd659909ab63fbeee5253653"
+    },
+    {
+      "path": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+      "sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f"
+    },
+    {
+      "path": "reports/recon/loading_fade_contract.json",
+      "sha256": "7101aaff91c018fae1f576e7745b22f3c611c53f2e9d25d90a0beba8b785cf0b"
+    }
+  ],
+  "producer_sha256": "f5a17c07c6029f4efa2ef8e52124c687d9e22627b46e9a74387902c1f4246ed5",
+  "helpers_sha256": {
+    "recon_navigation.py": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+    "recon_t025_generics.py": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3"
+  },
+  "counts": {
+    "metadata_types": 6305,
+    "historical_records": 437,
+    "interface_machine_types": 449,
+    "kinds": {
+      "enumerator_metadata_interface": 387,
+      "async_metadata_interface": 62
+    },
+    "historical_kinds": {
+      "enumerator_metadata_interface": 380,
+      "async_metadata_interface": 57
+    },
+    "newly_detected": 12,
+    "historical_unmatched": 0,
+    "scope_dispositions": {
+      "unresolved_scope_pending": 34,
+      "excluded_reimplementation_scope_only": 92,
+      "conditional_dependency_pending": 115,
+      "required_concrete_helper": 1,
+      "required_historical_169": 169,
+      "required_additional_game_candidate": 38
+    },
+    "historical_169": 169,
+    "events": 458,
+    "closure_candidates": 1147,
+    "interface_decode_unknowns": 0
+  },
+  "new_machine_identities": [
+    {
+      "type_definition_index": 230,
+      "owner": "Poly2Tri.Utility.FixedArray3`1",
+      "name": "<Enumerate>d__10",
+      "kind": "enumerator_metadata_interface",
+      "scope_disposition": "unresolved_scope_pending"
+    },
+    {
+      "type_definition_index": 321,
+      "owner": "SimpleUI.Scheduler",
+      "name": "<ForEachTask>d__18`1",
+      "kind": "enumerator_metadata_interface",
+      "scope_disposition": "unresolved_scope_pending"
+    },
+    {
+      "type_definition_index": 322,
+      "owner": "SimpleUI.Scheduler",
+      "name": "<ForEachTaskNonLinear>d__19`1",
+      "kind": "enumerator_metadata_interface",
+      "scope_disposition": "unresolved_scope_pending"
+    },
+    {
+      "type_definition_index": 2424,
+      "owner": "Game.Level.LevelHelicopterCloudsSpawner",
+      "name": "<<LoadCloudSprites>g__DefaultIndices|0>d",
+      "kind": "enumerator_metadata_interface",
+      "scope_disposition": "required_additional_game_candidate"
+    },
+    {
+      "type_definition_index": 5069,
+      "owner": "PWC.QA.Autoplay.QAAutoPlayUtils",
+      "name": "<WaitForObjects>d__6`1",
+      "kind": "enumerator_metadata_interface",
+      "scope_disposition": "excluded_reimplementation_scope_only"
+    },
+    {
+      "type_definition_index": 5094,
+      "owner": "PWC.QA.RTA.RTALevelsTester",
+      "name": "<<TestBuildingByLevelTypeAsync_Internal>g__TryEnterLevelFromBuilding|0>d",
+      "kind": "async_metadata_interface",
+      "scope_disposition": "excluded_reimplementation_scope_only"
+    },
+    {
+      "type_definition_index": 5110,
+      "owner": "PWC.QA.RTA.RTAStoreTester",
+      "name": "<<TryClaimItem_Internal>g__EnsureClaimMade|13_1>d",
+      "kind": "async_metadata_interface",
+      "scope_disposition": "excluded_reimplementation_scope_only"
+    },
+    {
+      "type_definition_index": 5111,
+      "owner": "PWC.QA.RTA.RTAStoreTester",
+      "name": "<<TryClaimItem_Internal>g__TryClickClaimButton|13_2>d",
+      "kind": "async_metadata_interface",
+      "scope_disposition": "excluded_reimplementation_scope_only"
+    },
+    {
+      "type_definition_index": 5115,
+      "owner": "PWC.QA.RTA.RTAStoreTester",
+      "name": "<<TestStorePackItemAsync_Internal>g__ClickStoreButton|1>d",
+      "kind": "async_metadata_interface",
+      "scope_disposition": "excluded_reimplementation_scope_only"
+    },
+    {
+      "type_definition_index": 5142,
+      "owner": "PWC.QA.RTA.RTATasksUtils",
+      "name": "<<WaitUntilAsync>g__CheckPredicates|0>d",
+      "kind": "async_metadata_interface",
+      "scope_disposition": "excluded_reimplementation_scope_only"
+    },
+    {
+      "type_definition_index": 5148,
+      "owner": "PWC.QA.RTA.RTATaskCoroutineBridge",
+      "name": "<<WaitEndOfFrame>g__EndOfFrame|3_0>d",
+      "kind": "enumerator_metadata_interface",
+      "scope_disposition": "excluded_reimplementation_scope_only"
+    },
+    {
+      "type_definition_index": 5149,
+      "owner": "PWC.QA.RTA.RTATaskCoroutineBridge",
+      "name": "<<WaitNextFrame>g__EndOfFrame|4_0>d",
+      "kind": "enumerator_metadata_interface",
+      "scope_disposition": "excluded_reimplementation_scope_only"
+    }
+  ],
+  "artifacts": {
+    "machines": {
+      "path": "out/recon/t026-inventory/machines.jsonl",
+      "sha256": "a618433f8fa62bbbd252421e01d8f89b8431868bf9efe62082da1fe7daa40443",
+      "records": 449
+    },
+    "events": {
+      "path": "out/recon/t026-inventory/events.jsonl",
+      "sha256": "488d1b84b40169fc166a753e2021e5baac78350ce01a9b089f565424b2fafd04",
+      "records": 458
+    },
+    "closure_candidates": {
+      "path": "out/recon/t026-inventory/closure_candidates.jsonl",
+      "sha256": "5e9a5520fc7366823da774c67b3028f1d8eb8662088625b7de10f0635d95eb57",
+      "records": 1147
+    },
+    "interface_decode_unknowns": {
+      "path": "out/recon/t026-inventory/interface_decode_unknowns.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "records": 0
+    },
+    "historical_unmatched": {
+      "path": "out/recon/t026-inventory/historical_unmatched.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "records": 0
+    },
+    "child_specs": {
+      "path": "out/recon/t026-inventory/child_specs.json",
+      "sha256": "cf93494394ab9ff369da388098aba04a5c00a0eeeffea5df57a6ecd7dfbed375",
+      "tasks": 449
+    }
+  },
+  "registration": {
+    "code_registration": "0x3f9a2d0",
+    "metadata_registration": "0x40d10c0",
+    "argument_loader": "0x198c8d0..0x198c8e8",
+    "tail_targets": [
+      "0x1b886e4",
+      "0x1bc67f0"
+    ],
+    "static_argument_storage": "0x1bc6810/0x1bc6814/0x1bc6820",
+    "anchors": [
+      {
+        "address": "0x198c8d0",
+        "word": "0xb00142a1"
+      },
+      {
+        "address": "0x198c8d4",
+        "word": "0xf9431c21"
+      },
+      {
+        "address": "0x198c8d8",
+        "word": "0xd0013060"
+      },
+      {
+        "address": "0x198c8dc",
+        "word": "0xd0ff9302"
+      },
+      {
+        "address": "0x198c8e0",
+        "word": "0x910b4000"
+      },
+      {
+        "address": "0x198c8e4",
+        "word": "0x91104042"
+      },
+      {
+        "address": "0x198c8e8",
+        "word": "0x1407ef7f"
+      },
+      {
+        "address": "0x1b886e4",
+        "word": "0x1400f843"
+      },
+      {
+        "address": "0x1bc67f8",
+        "word": "0xaa0203f3"
+      },
+      {
+        "address": "0x1bc67fc",
+        "word": "0xaa0103f4"
+      },
+      {
+        "address": "0x1bc6800",
+        "word": "0xaa0003f5"
+      },
+      {
+        "address": "0x1bc67f0",
+        "word": "0xa9be57fe"
+      },
+      {
+        "address": "0x1bc67f4",
+        "word": "0xa9014ff4"
+      },
+      {
+        "address": "0x1bc6804",
+        "word": "0x97fe3df8"
+      },
+      {
+        "address": "0x1bc6808",
+        "word": "0xb0015ac9"
+      },
+      {
+        "address": "0x1bc680c",
+        "word": "0xb0015aca"
+      },
+      {
+        "address": "0x1bc6810",
+        "word": "0xf905b934"
+      },
+      {
+        "address": "0x1bc6814",
+        "word": "0xf905bd53"
+      },
+      {
+        "address": "0x1bc6818",
+        "word": "0xa9414ff4"
+      },
+      {
+        "address": "0x1bc681c",
+        "word": "0xb0015ac8"
+      },
+      {
+        "address": "0x1bc6820",
+        "word": "0xf905b515"
+      },
+      {
+        "address": "0x1bc6824",
+        "word": "0xa8c257fe"
+      },
+      {
+        "address": "0x1bc6828",
+        "word": "0xd65f03c0"
+      }
+    ]
+  },
+  "semantic_completion": false,
+  "can_close_t026": false,
+  "state_machine_discovery_complete": false,
+  "event_and_callback_discovery_complete": false,
+  "queue_modified": false,
+  "game_executed": false,
+  "corrections": [
+    "Historical all437 are IEnumerator claim is false: original metadata includes IAsyncStateMachine types. No absence-of-async inference from narrow call scans is accepted.",
+    "Historical169 remains one prefix-defined subset, not a complete required game universe. Other Game/PWC candidates remain pending; QA/lobby exclusions alone are preserved explicitly."
+  ],
+  "closure_criteria": [
+    "entry_factory",
+    "all_states",
+    "yield_wait_order",
+    "completion",
+    "error",
+    "cancellation_disposal",
+    "current_reset",
+    "callbacks_callees",
+    "memory_effects",
+    "exceptions",
+    "temporal_assumptions",
+    "independent_validation"
+  ],
+  "remaining_universe": [
+    "Inherited-interface-only/manual machines not directly declaring a recognized interface require further inventory; direct interfaces alone are not global completeness.",
+    "Metadata event declarations are not actual subscriber lists or lifecycle proofs; registration/removal/callback targets and effects need child contracts.",
+    "Closure list uses name shapes only and is not complete for callbacks/local functions/delegates/reflection/native scheduler hooks.",
+    "SDK/multiplayer helpers enter as concrete required dependencies; unresolved ownership/reachability is not a scope exclusion.",
+    "All machine child specs remain planning pending; accepted bodies and whole temporal/state/error/cancel contracts are not created by enumeration."
+  ],
+  "duration_seconds": 2.858
+}
