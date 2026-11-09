@@ -1,0 +1,92 @@
+23afdac  str    x30, [sp, #-0x30]!
+23afdb0  stp    x22, x21, [sp, #0x10]
+23afdb4  stp    x20, x19, [sp, #0x20]
+23afdb8  adrp   x20, #0x44fe000
+23afdbc  ldrb   w8, [x20, #0x66c]
+23afdc0  mov    x19, x0
+23afdc4  tbnz   w8, #0, #0x23afde8
+23afdc8  adrp   x0, #0x41b8000
+23afdcc  ldr    x0, [x0, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23afdd0  bl     #0x1b886e8
+23afdd4  adrp   x0, #0x41ac000
+23afdd8  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+23afddc  bl     #0x1b886e8
+23afde0  mov    w8, #1
+23afde4  strb   w8, [x20, #0x66c]
+23afde8  ldr    x20, [x19, #0x10]
+23afdec  cbz    x20, #0x23aff18
+23afdf0  adrp   x21, #0x41b8000
+23afdf4  ldr    x8, [x20]
+23afdf8  ldr    x21, [x21, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23afdfc  adrp   x22, #0x41ac000
+23afe00  ldrh   w9, [x8, #0x12e]
+23afe04  ldr    x1, [x21]
+23afe08  ldr    x22, [x22, #0xbb8]  ; type UnityEngine.Object
+23afe0c  cbz    x9, #0x23afe30
+23afe10  ldr    x10, [x8, #0xb0]
+23afe14  add    x10, x10, #8
+23afe18  ldur   x11, [x10, #-8]
+23afe1c  cmp    x11, x1
+23afe20  b.eq   #0x23afe40
+23afe24  subs   x9, x9, #1
+23afe28  add    x10, x10, #0x10
+23afe2c  b.ne   #0x23afe18
+23afe30  mov    x0, x20
+23afe34  mov    w2, wzr
+23afe38  bl     #0x1b7ba44
+23afe3c  b      #0x23afe4c
+23afe40  ldrsw  x9, [x10]
+23afe44  add    x8, x8, x9, lsl #4
+23afe48  add    x0, x8, #0x138
+23afe4c  ldp    x8, x1, [x0]
+23afe50  mov    x0, x20
+23afe54  blr    x8
+23afe58  ldr    x8, [x22]
+23afe5c  mov    x20, x0
+23afe60  ldr    w9, [x8, #0xe0]
+23afe64  cbnz   w9, #0x23afe70
+23afe68  mov    x0, x8
+23afe6c  bl     #0x1b8885c
+23afe70  mov    x0, x20
+23afe74  mov    x1, xzr
+23afe78  mov    x2, xzr
+23afe7c  bl     #0x3ccb8d8
+23afe80  tbz    w0, #0, #0x23afe94
+23afe84  ldp    x20, x19, [sp, #0x20]
+23afe88  ldp    x22, x21, [sp, #0x10]
+23afe8c  ldr    x30, [sp], #0x30
+23afe90  ret    
+23afe94  ldr    x20, [x19, #0x10]
+23afe98  cbz    x20, #0x23aff18
+23afe9c  ldr    x8, [x20]
+23afea0  ldr    x1, [x21]
+23afea4  ldrh   w9, [x8, #0x12e]
+23afea8  cbz    x9, #0x23afecc
+23afeac  ldr    x10, [x8, #0xb0]
+23afeb0  add    x10, x10, #8
+23afeb4  ldur   x11, [x10, #-8]
+23afeb8  cmp    x11, x1
+23afebc  b.eq   #0x23afedc
+23afec0  subs   x9, x9, #1
+23afec4  add    x10, x10, #0x10
+23afec8  b.ne   #0x23afeb4
+23afecc  mov    x0, x20
+23afed0  mov    w2, wzr
+23afed4  bl     #0x1b7ba44
+23afed8  b      #0x23afee8
+23afedc  ldrsw  x9, [x10]
+23afee0  add    x8, x8, x9, lsl #4
+23afee4  add    x0, x8, #0x138
+23afee8  ldp    x8, x1, [x0]
+23afeec  mov    x0, x20
+23afef0  blr    x8
+23afef4  cbz    x0, #0x23aff18
+23afef8  ldr    x8, [x0]
+23afefc  ldp    x1, x2, [x19, #0x10]
+23aff00  ldp    x20, x19, [sp, #0x20]
+23aff04  ldp    x22, x21, [sp, #0x10]
+23aff08  ldr    x4, [x8, #0x298]
+23aff0c  ldr    x3, [x8, #0x2a0]
+23aff10  ldr    x30, [sp], #0x30
+23aff14  br     x4
+23aff18  bl     #0x1b88980

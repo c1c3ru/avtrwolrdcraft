@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "reviewer": "root",
+  "scope": "Independent source/raw-operand review of sceneLoaded hook producer authored by t025_audit",
+  "source_refs": [
+    {
+      "path": "reports/recon/t026_scene_hook.json",
+      "sha256": "7f5c0b0487f2c31e9db64162d5367afc76e13dc5787a3b60531c1ed6ff4cff7c"
+    },
+    {
+      "path": "tools/recon_t026_scene_hook.py",
+      "sha256": "5ae7a717ffb1e60efb5e0e904ec9aad907a9dfe18e54c6eb72cb80a7cbaf4825"
+    }
+  ],
+  "verdict": "accept_conditional_static_edges_only",
+  "task_acceptance": false,
+  "checks": [
+    "Raw klass loads and +0x180 MethodInfo operands preserved into x2 with this in x1; constructed delegate preserved into event accessor.",
+    "Metadata slot4 handler identity conditional on concrete receiver; no direct MethodDef-usage claim.",
+    "Canonical UnityAction<Scene,Int32Enum> pointer joined through MethodSpec/function table; requested LoadSceneMode remains unresolved.",
+    "Add/remove accessors have exact metadata identities, tokens and opcode destinations; no successful registration/lifetime inferred."
+  ],
+  "limits": [
+    "Source review, not original runtime execution or complete method/callee recovery.",
+    "Virtual layout and concrete runtime receiver remain preconditions."
+  ]
+}

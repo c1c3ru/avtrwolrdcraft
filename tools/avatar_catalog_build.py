@@ -38,6 +38,8 @@ CATEGORIES = {
     'Mouth': ['mouth'],  # pasta de 3 niveis: mouth/<item>/<peca>
     'Eyebrows': ['eyebrows'],  # idem; todos os itens sao _color (tinta pela paleta General)
     'HairBack': ['hair/hair_back'],  # cabelo traseiro (coques, rabos): itens _color
+    'Hat': ['hat/hat_a', 'hat/hat_b', 'hat/hat_c', 'hat/hat_d'],
+    'Jacket': ['jacket/jacket_special', 'jacket/jacket_casual', 'jacket/jacket_formal'],
 }
 THREE_LEVEL = {'mouth', 'eyebrows'}
 COLOR_CATEGORIES = {'Eyebrows', 'HairBack'}  # categorias cujos itens _color entram (recebem tinta Multiply)
@@ -51,8 +53,10 @@ KEEP_FIRST = {
     'Mouth': ['mouth_default'],
     'Eyebrows': ['eyebrows_default'],
     'HairBack': ['hair_back_none'],
+    'Hat': ['hat_none'],
+    'Jacket': ['jacket_none'],
 }
-BUILT_IN = {'mouth_default', 'eyebrows_default', 'hair_back_none'}
+BUILT_IN = {'mouth_default', 'eyebrows_default', 'hair_back_none', 'hat_none', 'jacket_none'}
 # cabelo da frente = skins Hair_Front/N_Color do esqueleto (1 pagina cada); os dois primeiros ja existiam
 HAIR_FRONT_FIRST = ['Hair_Front/1_Color', 'Hair_Front/2_Color']
 
@@ -70,6 +74,7 @@ def natural(value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--per-category', type=int, default=100)
+    parser.add_argument('--hidden-items', type=Path, help='JSON {campo: [ids]}: itens que entram no manifesto (PNGs) mas nao nas listas do editor (NPCs)')
     parser.add_argument('--selection', type=Path, help='JSON with exact category IDs from recon_clothing_gap.py')
     args = parser.parse_args()
 
@@ -116,7 +121,7 @@ def main():
         selection = json.loads(args.selection.read_text(encoding='utf-8'))
         if selection.get('status') != 'provisional_review_only' or not isinstance(selection.get('items_by_category'), dict):
             raise SystemExit('selection must be a provisional candidate JSON from recon_clothing_gap.py')
-        if not set(selection['items_by_category']).issubset(CATEGORIES):
+        if not set(selection['items_by_category']).issubset(set(CATEGORIES) | {'Hair'}):
             raise SystemExit('selection contains a category not supported by this generator')
         if any(not isinstance(v, list) for v in selection['items_by_category'].values()):
             raise SystemExit('each selected category must contain an ID array')
@@ -141,6 +146,11 @@ def main():
                 front[skin['name']] = (page, cands[0][0], cands[0][1])
     front_ids = list(HAIR_FRONT_FIRST) + [k for k in sorted(front, key=natural) if k not in HAIR_FRONT_FIRST]
     front_ids = [i for i in front_ids if i in front][:max(args.per_category, 2)]
+    if selection and 'Hair' in selection['items_by_category']:
+        # selecao exata do cabelo da frente (ids Hair_Front/N_Color, incluindo os de pacotes): sem o corte da cota
+        front_ids = list(selection['items_by_category']['Hair'])
+        missing = [i for i in front_ids if i not in front]
+        if missing: raise SystemExit(f'Hair_Front sem skin/textura unicos: {missing[:5]}')
     chosen = {}
     for category, prefixes in CATEGORIES.items():
         if selection and category in selection['items_by_category']:
@@ -223,6 +233,34 @@ def main():
                 ensure_meta(CLOTHING / out_name)
                 pieces.append({'template': 'Templates/' + page_case[piece], 'file': out_name})
             new_items.append({'id': item_id, 'pieces': pieces})
+    # itens so de NPC: PNG + manifesto, sem entrar em AvatarCatalogData (o editor nao os lista)
+    if args.hidden_items:
+        known = {it['id'] for it in new_items} | set(existing)
+        skipped = 0
+        for field, ids in json.loads(args.hidden_items.read_text(encoding='utf-8')).items():
+            for item_id in ids:
+                if item_id in known: continue
+                if field == 'Hair':
+                    if item_id not in front: skipped += 1; continue
+                    page, filename, pid = front[item_id]
+                    out_name = f'{page.casefold()}__{pid}.png'
+                    shutil.copyfile(TEXTURES / filename, CLOTHING / out_name)
+                    ensure_meta(CLOTHING / out_name)
+                    new_items.append({'id': item_id, 'pieces': [{'template': 'Templates/' + page, 'file': out_name, 'skin': item_id}]})
+                    known.add(item_id)
+                    continue
+                key = next((k for (k, it) in groups if it == item_id), None)
+                built = resolve(key, item_id) if key else None
+                if not built: skipped += 1; continue
+                pieces = []
+                for piece, filename, pid in sorted(built):
+                    out_name = f'{piece}__{pid}.png'
+                    shutil.copyfile(TEXTURES / filename, CLOTHING / out_name)
+                    ensure_meta(CLOTHING / out_name)
+                    pieces.append({'template': 'Templates/' + page_case[piece], 'file': out_name})
+                new_items.append({'id': item_id, 'pieces': pieces})
+                known.add(item_id)
+        print(f'itens de NPC: {len(known)} conhecidos, {skipped} sem skin/textura')
     manifest['items'] = list(existing.values()) + [it for it in new_items if it['id'] not in existing]
     chosen['Hair'] = front_ids
     MANIFEST.write_text(json.dumps(manifest, indent=2), encoding='utf-8')

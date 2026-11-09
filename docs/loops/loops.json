@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "premise": "O dump IL2CPP (Cpp2IL DiffableCs) contém só assinaturas, sem corpos de método. A lógica só é recuperada por sondas pontuais sobre libil2cpp.so + global-metadata.dat (ver tools/recon_*.py) e por cruzamento com assets/cenas. Nada aqui executa o jogo original.",
+  "grades": {
+    "A": "Corpo recuperado: desmontagem/literal/xref reproduzível por sonda versionada em tools/, com endereço e hash do par .so/metadata.",
+    "B": "Estrutural: assinatura + campos + referências cruzadas + dados de asset/cena concordam, mas o fluxo do corpo não foi lido.",
+    "C": "Inferência: nome/herança/uso sugerem o comportamento; nenhuma prova direta. Nunca promover a regra de jogo sem teste de campo.",
+    "U": "Desconhecido ou bloqueado; exige motivo explícito."
+  },
+  "loops": [
+    {
+      "id": "L01",
+      "title": "Callback do LoadScene",
+      "task_ref": "T029",
+      "goal": "Fechar o contrato completo de <LoadScene>b__0 e do caminho LoadSceneImplement: guardas, ordem das chamadas, ramos locais vs multiplayer, efeitos colaterais de estado.",
+      "seed_docs": ["docs/RECON_CALLBACK_2026-11-03.md", "docs/RECON_LOAD_SCENE_CONTRACT.md", "docs/RECON_LOADING_FADE_CONTRACT.md", "docs/RECON_SCENE_LIFETIME_2026-11-07.md"],
+      "seed_tools": ["tools/recon_callback_probe.py", "tools/recon_load_scene.py", "tools/recon_navigation.py", "tools/recon_disasm.py"],
+      "known_facts": [
+        "Callback <LoadScene>b__0 token 0x0600570f, intervalo 0x2073488-0x207378c.",
+        "Guarda literal 'Home' em 0x20734a0; chamada a LoadSceneImplement em 0x2073590."
+      ],
+      "units": [
+        "Quais condições (além de 'Home') escolhem cada ramo do callback e qual valor cada uma lê?",
+        "Quais chamadas multiplayer existem, em que ordem, e o que as habilita?",
+        "O que LoadSceneImplement recebe (argumentos/modo) em cada ramo?",
+        "Que estado global/estático é lido ou escrito antes e depois da troca de cena?",
+        "Como o fade/loading se encadeia ao callback (quem inicia, quem conclui)?",
+        "Qual o comportamento em falha/cena inexistente/reentrância?"
+      ],
+      "stop": "Todas as unidades em A ou B justificado; fluxo reproduzível por teste em tools/test_recon_*.py; contrato escrito em docs/RECON_LOAD_SCENE_CONTRACT.md."
+    },
+    {
+      "id": "L02",
+      "title": "Contrato de input e drag",
+      "task_ref": "T031",
+      "goal": "Recuperar o contrato de seleção, arraste, soltura e câmera: eventos, limiares, hit-test, camadas, conflitos entre UI e mundo.",
+      "seed_docs": ["docs/RECON_INPUT_CONTRACT.md", "docs/RECON_WORLD_CLICK_CONTRACT.md", "docs/RECON_NAVIGATION_CONTRACT.md"],
+      "seed_tools": ["tools/recon_t031_dispatch.py", "tools/recon_t031_vtable.py", "tools/recon_input_scene.py", "tools/recon_world_click.py"],
+      "known_facts": ["Despacho e vtable de input já sondados em recon_t031_*."],
+      "units": [
+        "Qual a máquina de estados do drag (início, movimento, fim, cancelamento) e seus limiares numéricos?",
+        "Como o hit-test escolhe o alvo (raycast 2D/3D, layer mask, ordem de sorting)?",
+        "Como toque em UI bloqueia ou deixa passar o toque ao mundo?",
+        "Como multitoque/pinça/pan de câmera interage com o drag de objeto?",
+        "Onde o drag soltura em DropArea e o que valida a soltura?",
+        "Quais callbacks/eventos públicos o drag emite e quem os assina?"
+      ],
+      "stop": "Cada unidade em A/B com números (limiares) ou prova de ausência; teste diferencial contra o cliente novo em tools/ ou client/ passando."
+    },
+    {
+      "id": "L03",
+      "title": "Save e persistência",
+      "task_ref": "T030",
+      "goal": "Recuperar o esquema, chaves, momentos de gravação e migrações do save original para o save local do cliente novo ser compatível em semântica.",
+      "seed_docs": ["docs/RECON_SAVE_CONTRACT.md", "docs/RECON_SAVE_CFG_2026-11-08.md", "docs/RECON_RUNTIME_SAVE_2026-11-04.md"],
+      "seed_tools": ["tools/recon_save_static.py", "tools/recon_save_dispatch.py", "tools/recon_save_scene.py", "tools/recon_save_cfg.py", "tools/recon_runtime_save.py"],
+      "known_facts": ["Despacho e cfg do save já sondados; ver docs de save."],
+      "units": [
+        "Quais classes/campos compõem o payload persistido e seus tipos?",
+        "Quais chaves (PlayerPrefs/arquivo) existem e quais literais as nomeiam?",
+        "Quando o save é gravado (gatilhos) e quando é lido (boot/cena)?",
+        "Qual a política de versão/migração e de valores default?",
+        "Quais partes são cloud-only (servidor) e quais são locais?",
+        "Como itens comprados/vestidos/desbloqueados são serializados?"
+      ],
+      "stop": "Esquema completo com grau por campo; testes de ida-e-volta do save local; lacunas cloud-only listadas em NOT_REPRODUCED.md."
+    },
+    {
+      "id": "L04",
+      "title": "Animações contextuais",
+      "task_ref": "T035",
+      "goal": "Mapear quando e por que cada animação contextual toca (gatilho, pré-condição, par de personagens/objeto, duração, saída).",
+      "seed_docs": ["docs/RECON_CONTEXTUAL_LINKS.md", "docs/RECON_ANIMATION_INVENTORY.md", "docs/RECON_AUDIO_ANIMATION_COVERAGE.md", "docs/RECON_SPINE_LINKS.md", "docs/RECON_STAGE_HANDLER_EFFECTS.md"],
+      "seed_tools": ["tools/recon_contextual_links.py", "tools/recon_animation_inventory.py", "tools/recon_animation_coverage.py", "tools/recon_spine_links.py", "tools/recon_stage_handler_effects.py"],
+      "known_facts": ["Inventário de animações e vínculos contextuais já existem; falta a lógica de disparo."],
+      "units": [
+        "Qual conjunto de animações contextuais existe e qual classe/método dispara cada uma?",
+        "Que pré-condições (item na mão, local, parceiro) habilitam cada uma?",
+        "Como o nome da animação Spine é escolhido (literal, tabela, concatenação)?",
+        "Como o estado volta ao idle e o que interrompe a animação?",
+        "Quais efeitos acompanham (áudio, partículas, troca de item/roupa)?",
+        "Quais interações especializadas (pets, veículos, cavalo) têm máquina própria?"
+      ],
+      "stop": "Tabela gatilho→animação→condição→saída com grau por linha e cobertura >= 95% do inventário de animações classificada."
+    },
+    {
+      "id": "L05",
+      "title": "NPCs (PremadeCharactersJson)",
+      "task_ref": "T032",
+      "goal": "Recuperar como PremadeCharactersJson define NPCs (aparência, local, rotina, diálogo) e como são instanciados nos interiores e no mundo.",
+      "seed_docs": ["docs/RECON_INTERIOR_NPCS.md", "docs/RECON_CHARACTER_CONTRACT.md", "docs/PRD_WORLD_INTERIORS_2026-11-05.md"],
+      "seed_tools": ["tools/recon_interior_npcs.py", "tools/recon_character_inventory.py", "tools/recon_spawn_census.py", "tools/recon_spawner_census.py"],
+      "known_facts": ["Há out/recon/interior_npcs.json e npc_hidden_items.json (não versionados) como saídas anteriores."],
+      "units": [
+        "Qual o esquema de PremadeCharactersJson (campos, tipos, defaults) e onde o JSON vive nos assets?",
+        "Como cada NPC mapeia para roupas/cores/itens (ids do catálogo)?",
+        "Qual regra decide em que cena/ponto cada NPC aparece (spawner)?",
+        "Existem rotinas, caminhos ou diálogos por NPC e de onde vêm?",
+        "Que itens ocultos/escondidos NPCs carregam e qual o gatilho de revelação?",
+        "Como NPC difere de avatar do jogador no pipeline de carregamento?"
+      ],
+      "stop": "Todos os NPCs dos interiores reconstruídos a partir do JSON original com diferença zero de ids; esquema documentado e testado."
+    },
+    {
+      "id": "L06",
+      "title": "Mapa de carros",
+      "task_ref": "T034",
+      "goal": "Recuperar o mapa de carros do mundo: rotas/waypoints, spawn, velocidade, regras de parada, tipos de veículo e como o tráfego interage com avatar.",
+      "seed_docs": ["docs/RECON_WORLD_ASSET_MAP.md", "docs/AVATAR_PETS_VEHICLES_PLAN.md"],
+      "seed_tools": ["tools/export_world_motion.py", "tools/export_world_map.py", "tools/recon_spawner_census.py", "tools/recon_world_assets.py"],
+      "known_facts": ["Sem doc de contrato de carros ainda: a iteração 1 localiza classes por busca em DiffableCs (Car, Vehicle, Traffic, Waypoint, Path) e dados nas cenas."],
+      "units": [
+        "Quais classes e prefabs representam carros/tráfego e quais campos serializados controlam o movimento?",
+        "Onde estão os dados de rota (waypoints/splines) na cena do mundo e qual a topologia?",
+        "Qual a regra de spawn/despawn (cadência, limite, culling)?",
+        "Qual a velocidade/aceleração e as regras de parada (cruzamento, avatar)?",
+        "Quais variantes de carro (visual/áudio) existem e como são sorteadas?",
+        "O tráfego depende de horário/clima/estado de jogo?"
+      ],
+      "stop": "Rotas exportadas dos dados originais reproduzíveis no cliente novo; parâmetros numéricos com grau A/B; ausências provadas."
+    },
+    {
+      "id": "L07",
+      "title": "Céu por horário",
+      "task_ref": "T036",
+      "goal": "Recuperar a lógica de céu/iluminação por horário: fonte do tempo, curva de transição, assets de céu, luz e efeitos associados.",
+      "seed_docs": ["docs/RECON_WORLD_ASSET_MAP.md"],
+      "seed_tools": ["tools/recon_world_assets.py", "tools/recon_string_literals.py", "tools/export_world_map.py"],
+      "known_facts": ["Sem doc de contrato de céu ainda: a iteração 1 busca em DiffableCs por Sky, TimeOfDay, DayNight, Skybox, Daylight e nos assets/cenas."],
+      "units": [
+        "Qual a fonte do horário (relógio do aparelho, servidor, tempo de jogo acelerado)?",
+        "Quais estados discretos de céu existem (manhã/tarde/noite etc.) e seus limites de hora?",
+        "A transição é contínua (curva/gradiente) ou por troca de sprite/material?",
+        "Quais assets (sprites, materiais, cores) compõem cada estado?",
+        "Que outros sistemas leem o horário (luzes de janela, NPCs, carros, áudio)?",
+        "Interiores ignoram ou herdam o horário?"
+      ],
+      "stop": "Função hora→visual reproduzida no cliente novo com tabela de limites A/B; testes de borda de horário."
+    },
+    {
+      "id": "L08",
+      "title": "Varredura de Game/Level",
+      "task_ref": "T028",
+      "goal": "Classificar toda classe do namespace Game.Level (~1.5 mil) por papel, dependências e grau de recuperação da lógica, priorizando o que alimenta L01-L07.",
+      "seed_docs": ["docs/RECON_COVERAGE_2026-11-04.md", "docs/RECON_COROUTINES.md", "docs/RECON_CHARACTER_CONTRACT.md"],
+      "seed_tools": ["tools/recon_method_extents.py", "tools/recon_method_literals.py", "tools/recon_callers.py", "tools/recon_call_targets.py", "tools/recon_coroutines.py"],
+      "known_facts": ["Quase nenhuma classe tem lógica recuperada; a maioria segue padrões repetidos (LevelAnimal, ILevelAvatar, handlers de estágio) que permitem classificação por família."],
+      "max_iterations": 300,
+      "unit_source": {
+        "kind": "classes",
+        "root_env": "RECON_DUMP_ROOT",
+        "default_root": "out/cpp2il/DiffableCs/Assembly-CSharp",
+        "glob": "Game/Level/**/*.cs"
+      },
+      "units": [],
+      "stop": "100% das classes com linha no ledger (grau A/B/C/U); toda C/U com motivo; famílias recorrentes documentadas com uma sonda por família, não por classe."
+    }
+  ]
+}

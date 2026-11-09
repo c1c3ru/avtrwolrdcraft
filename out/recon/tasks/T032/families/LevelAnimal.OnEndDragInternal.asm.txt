@@ -1,0 +1,22 @@
+2266200  stp    x30, x19, [sp, #-0x10]!
+2266204  mov    x2, xzr
+2266208  mov    x19, x0
+226620c  bl     #0x22f68bc  ; -> LevelItem.OnEndDragInternal
+2266210  ldr    x8, [x19]
+2266214  mov    x0, x19
+2266218  ldr    x9, [x8, #0xa48]
+226621c  ldr    x1, [x8, #0xa50]
+2266220  blr    x9
+2266224  tbz    w0, #0, #0x2266230
+2266228  mov    x0, x19
+226622c  bl     #0x2265d7c  ; -> LevelAnimal.OnEndMovement
+2266230  ldr    x8, [x19, #0x1a0]
+2266234  cbnz   x8, #0x2266250
+2266238  mov    x0, x19
+226623c  bl     #0x2265ee4  ; -> LevelAnimal.IsAboutToLandOnFloor
+2266240  tbz    w0, #0, #0x2266250
+2266244  mov    x0, x19
+2266248  ldp    x30, x19, [sp], #0x10
+226624c  b      #0x22660c4  ; -> LevelAnimal.PlayStandingIdle
+2266250  ldp    x30, x19, [sp], #0x10
+2266254  ret    

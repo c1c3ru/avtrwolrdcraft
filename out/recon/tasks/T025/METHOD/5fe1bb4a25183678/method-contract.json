@@ -203,11 +203,6 @@
   "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
   "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
   "window_sha256": "72476cc7e4ae431c5cad01a362bde7014ca1e7c2e548b7e3536be954ee0db668",
-  "craft_comparison": {
-    "evidence_id": "ev_ee773a5b408e1c597da3f5de0946ba5c75c9ef8e6dfaefbd6799b04cd7f1980f",
-    "verified_instruction_bytes": 145,
-    "scope": "Address and byte agreement only; pseudocode semantics not certified."
-  },
   "candidate": [
     "Invoke OnClickHomePlayButton on the observed manager instance.",
     "If pending key is absent: scene = GetCurrentWorldSceneName().",

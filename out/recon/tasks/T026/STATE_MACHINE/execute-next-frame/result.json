@@ -1,0 +1,607 @@
+{
+  "methods": {
+    "factory": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PazuCore.Utils",
+      "name": "ExecuteNextFrameCoroutine",
+      "token": "0x060011d5",
+      "method_definition_index": 4564,
+      "parameter_count": 1,
+      "vaddr": "0x1cb83f8",
+      "file_offset": "0x1cb43f8"
+    },
+    "start": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PazuCore.Utils",
+      "name": "ExecuteNextFrame",
+      "token": "0x060011d4",
+      "method_definition_index": 4563,
+      "parameter_count": 2,
+      "vaddr": "0x1cb3a60",
+      "file_offset": "0x1cafa60"
+    },
+    "ctor": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<ExecuteNextFrameCoroutine>d__38",
+      "name": ".ctor",
+      "token": "0x06001263",
+      "method_definition_index": 4706,
+      "parameter_count": 1,
+      "vaddr": "0x1cbed28",
+      "file_offset": "0x1cbad28"
+    },
+    "dispose": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<ExecuteNextFrameCoroutine>d__38",
+      "name": "System.IDisposable.Dispose",
+      "token": "0x06001264",
+      "method_definition_index": 4707,
+      "parameter_count": 0,
+      "vaddr": "0x1cbed50",
+      "file_offset": "0x1cbad50"
+    },
+    "move": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<ExecuteNextFrameCoroutine>d__38",
+      "name": "MoveNext",
+      "token": "0x06001265",
+      "method_definition_index": 4708,
+      "parameter_count": 0,
+      "vaddr": "0x1cbed54",
+      "file_offset": "0x1cbad54"
+    },
+    "generic_current": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<ExecuteNextFrameCoroutine>d__38",
+      "name": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+      "token": "0x06001266",
+      "method_definition_index": 4709,
+      "parameter_count": 0,
+      "vaddr": "0x1cbedc0",
+      "file_offset": "0x1cbadc0"
+    },
+    "reset": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<ExecuteNextFrameCoroutine>d__38",
+      "name": "System.Collections.IEnumerator.Reset",
+      "token": "0x06001267",
+      "method_definition_index": 4710,
+      "parameter_count": 0,
+      "vaddr": "0x1cbedc8",
+      "file_offset": "0x1cbadc8"
+    },
+    "current": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<ExecuteNextFrameCoroutine>d__38",
+      "name": "System.Collections.IEnumerator.get_Current",
+      "token": "0x06001268",
+      "method_definition_index": 4711,
+      "parameter_count": 0,
+      "vaddr": "0x1cbee00",
+      "file_offset": "0x1cbae00"
+    }
+  },
+  "fields": [
+    {
+      "name": "<>1__state",
+      "field_index": 3092,
+      "token": "0x4000c15",
+      "offset": 16,
+      "offset_address": "0xb59b5c"
+    },
+    {
+      "name": "<>2__current",
+      "field_index": 3093,
+      "token": "0x4000c16",
+      "offset": 24,
+      "offset_address": "0xb59b60"
+    },
+    {
+      "name": "action",
+      "field_index": 3094,
+      "token": "0x4000c17",
+      "offset": 32,
+      "offset_address": "0xb59b64"
+    }
+  ],
+  "calls": [
+    {
+      "site": "0x1cb3a6c",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.Utils",
+        "name": "ExecuteNextFrameCoroutine",
+        "token": "0x060011d5",
+        "method_definition_index": 4564,
+        "parameter_count": 1,
+        "vaddr": "0x1cb83f8",
+        "file_offset": "0x1cb43f8"
+      }
+    },
+    {
+      "site": "0x1cb3a84",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.MonoBehaviour",
+        "name": "StartCoroutine",
+        "token": "0x0600075c",
+        "method_definition_index": 86964,
+        "parameter_count": 1,
+        "vaddr": "0x3ccbf8c",
+        "file_offset": "0x3cc7f8c"
+      }
+    },
+    {
+      "site": "0x1cb8440",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "<ExecuteNextFrameCoroutine>d__38",
+        "name": ".ctor",
+        "token": "0x06001263",
+        "method_definition_index": 4706,
+        "parameter_count": 1,
+        "vaddr": "0x1cbed28",
+        "file_offset": "0x1cbad28"
+      }
+    },
+    {
+      "site": "0x1cbed3c",
+      "target": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Object",
+        "name": ".ctor",
+        "token": "0x06000fb2",
+        "method_definition_index": 40438,
+        "parameter_count": 0,
+        "vaddr": "0x339a46c",
+        "file_offset": "0x339646c"
+      }
+    },
+    {
+      "site": "0x1cbede4",
+      "target": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.NotSupportedException",
+        "name": ".ctor",
+        "token": "0x0600089e",
+        "method_definition_index": 38626,
+        "parameter_count": 0,
+        "vaddr": "0x3359350",
+        "file_offset": "0x3355350"
+      }
+    }
+  ],
+  "factory_allocated_type": {
+    "usage": {
+      "got_vaddr": "0x41b0220",
+      "usage_vaddr": "0x42feb40",
+      "encoded": "0x20014025",
+      "kind": 1,
+      "index": 40978
+    },
+    "typedef_index": 629,
+    "owner": "<ExecuteNextFrameCoroutine>d__38",
+    "adrp": "0x1cb8404",
+    "ldr": "0x1cb840c"
+  },
+  "reset_exception_type": {
+    "usage": {
+      "got_vaddr": "0x41acca0",
+      "usage_vaddr": "0x42f5028",
+      "encoded": "0x2000d925",
+      "kind": 1,
+      "index": 27794
+    },
+    "typedef_index": 6541,
+    "owner": "System.NotSupportedException",
+    "adrp": "0x1cbedcc",
+    "ldr": "0x1cbedd0"
+  },
+  "reset_method_usage": {
+    "got_vaddr": "0x41b05c0",
+    "usage_vaddr": "0x433ab28",
+    "encoded": "0x600024cd",
+    "kind": 3,
+    "index": 4710
+  },
+  "inspection_windows": {
+    "factory": {
+      "start": "0x1cb83f8",
+      "exclusive_stop": "0x1cb846c",
+      "bytes": 116,
+      "sha256": "1cf2cd50855ca836446d61c38f34b56acbc3246b26f78c0a6a7039b56bc1c6e2",
+      "complete_body_proven": false
+    },
+    "start": {
+      "start": "0x1cb3a60",
+      "exclusive_stop": "0x1cb3a8c",
+      "bytes": 44,
+      "sha256": "b539e72689e47554a43d2b6701c4888bddfe83fc3e0e05dbf132cbe2cabb6a70",
+      "complete_body_proven": false
+    },
+    "ctor": {
+      "start": "0x1cbed28",
+      "exclusive_stop": "0x1cbed50",
+      "bytes": 40,
+      "sha256": "057621e47c296d7cbbc9a70fff3ee5c4429de6681ca1c6e6788f9dcef5520d11",
+      "complete_body_proven": false
+    },
+    "dispose": {
+      "start": "0x1cbed50",
+      "exclusive_stop": "0x1cbed54",
+      "bytes": 4,
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+      "complete_body_proven": false
+    },
+    "move": {
+      "start": "0x1cbed54",
+      "exclusive_stop": "0x1cbedc0",
+      "bytes": 108,
+      "sha256": "c5f87133fc4a51712fe5194261f4469db9c16d843c3dc8f6deba76540dd55ee5",
+      "complete_body_proven": false
+    },
+    "generic_current": {
+      "start": "0x1cbedc0",
+      "exclusive_stop": "0x1cbedc8",
+      "bytes": 8,
+      "sha256": "bd237e5d99f6462770946dd64c9d5273577f92aeb78154ba485fef49e0d73851",
+      "complete_body_proven": false
+    },
+    "reset": {
+      "start": "0x1cbedc8",
+      "exclusive_stop": "0x1cbee00",
+      "bytes": 56,
+      "sha256": "a7e057c68e3450c52f67dd512df93d091b6168131521ab960013478bb5741fc9",
+      "complete_body_proven": false
+    },
+    "current": {
+      "start": "0x1cbee00",
+      "exclusive_stop": "0x1cbee08",
+      "bytes": 8,
+      "sha256": "bd237e5d99f6462770946dd64c9d5273577f92aeb78154ba485fef49e0d73851",
+      "complete_body_proven": false
+    }
+  },
+  "registration": {
+    "code_registration": "0x3f9a2d0",
+    "metadata_registration": "0x40d10c0",
+    "argument_loader": "0x198c8d0..0x198c8e8",
+    "tail_targets": [
+      "0x1b886e4",
+      "0x1bc67f0"
+    ],
+    "static_argument_storage": "0x1bc6810/0x1bc6814/0x1bc6820",
+    "anchors": [
+      {
+        "address": "0x198c8d0",
+        "word": "0xb00142a1"
+      },
+      {
+        "address": "0x198c8d4",
+        "word": "0xf9431c21"
+      },
+      {
+        "address": "0x198c8d8",
+        "word": "0xd0013060"
+      },
+      {
+        "address": "0x198c8dc",
+        "word": "0xd0ff9302"
+      },
+      {
+        "address": "0x198c8e0",
+        "word": "0x910b4000"
+      },
+      {
+        "address": "0x198c8e4",
+        "word": "0x91104042"
+      },
+      {
+        "address": "0x198c8e8",
+        "word": "0x1407ef7f"
+      },
+      {
+        "address": "0x1b886e4",
+        "word": "0x1400f843"
+      },
+      {
+        "address": "0x1bc67f8",
+        "word": "0xaa0203f3"
+      },
+      {
+        "address": "0x1bc67fc",
+        "word": "0xaa0103f4"
+      },
+      {
+        "address": "0x1bc6800",
+        "word": "0xaa0003f5"
+      },
+      {
+        "address": "0x1bc67f0",
+        "word": "0xa9be57fe"
+      },
+      {
+        "address": "0x1bc67f4",
+        "word": "0xa9014ff4"
+      },
+      {
+        "address": "0x1bc6804",
+        "word": "0x97fe3df8"
+      },
+      {
+        "address": "0x1bc6808",
+        "word": "0xb0015ac9"
+      },
+      {
+        "address": "0x1bc680c",
+        "word": "0xb0015aca"
+      },
+      {
+        "address": "0x1bc6810",
+        "word": "0xf905b934"
+      },
+      {
+        "address": "0x1bc6814",
+        "word": "0xf905bd53"
+      },
+      {
+        "address": "0x1bc6818",
+        "word": "0xa9414ff4"
+      },
+      {
+        "address": "0x1bc681c",
+        "word": "0xb0015ac8"
+      },
+      {
+        "address": "0x1bc6820",
+        "word": "0xf905b515"
+      },
+      {
+        "address": "0x1bc6824",
+        "word": "0xa8c257fe"
+      },
+      {
+        "address": "0x1bc6828",
+        "word": "0xd65f03c0"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "scope": "One iterator lifecycle plus factory/StartCoroutine boundary",
+  "classification": "STATIC_bytes_metadata_derived_transition_table",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "producer_sha256": "fdc009b089a4c16b16614e20440bbee9708dbfccd4ebbc81d79bb3f64f102503",
+  "helpers_sha256": {
+    "recon_navigation.py": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+    "recon_scene_subscribers.py": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce",
+    "recon_t025_generics.py": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3"
+  },
+  "type_usage_helper_sha256": "c8cd33ca3496cc2eec80b96b8ee010863efd6299f901ad717baec98e3c1abe91",
+  "index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+  "transitions": [
+    {
+      "operation": "factory",
+      "precondition": "allocation/base constructor/write barrier return normally",
+      "state_after": 0,
+      "action": "store argument at +0x20",
+      "result": "new iterator"
+    },
+    {
+      "operation": "MoveNext",
+      "state_before": 0,
+      "steps": [
+        "Current=null",
+        "state=-1",
+        "write barrier",
+        "state=1"
+      ],
+      "state_after": 1,
+      "result": true,
+      "callback_invoked": false,
+      "evidence_sites": [
+        "0x1cbed6c",
+        "0x1cbed7c",
+        "0x1cbed88"
+      ]
+    },
+    {
+      "operation": "MoveNext",
+      "state_before": 1,
+      "action_nonnull": true,
+      "steps": [
+        "state=-1",
+        "invoke Action via delegate registers",
+        "return false if callback returns"
+      ],
+      "state_after": -1,
+      "result": false,
+      "callback_invoked": true,
+      "evidence_sites": [
+        "0x1cbed98",
+        "0x1cbedac"
+      ]
+    },
+    {
+      "operation": "MoveNext",
+      "state_before": 1,
+      "action_nonnull": false,
+      "steps": [
+        "state=-1",
+        "branch to helper 0x1b88980"
+      ],
+      "state_after": -1,
+      "result": "UNKNOWN_failure_helper_does_not_return_in_modeled_path",
+      "callback_invoked": false,
+      "evidence_sites": [
+        "0x1cbed98",
+        "0x1cbed9c",
+        "0x1cbedbc"
+      ]
+    },
+    {
+      "operation": "MoveNext",
+      "state_before": "any int32 except 0 and 1",
+      "state_after": "unchanged",
+      "result": false,
+      "callback_invoked": false,
+      "evidence_sites": [
+        "0x1cbed68",
+        "0x1cbedb0"
+      ]
+    },
+    {
+      "operation": "Dispose",
+      "state_before": "any",
+      "state_after": "unchanged",
+      "effects": "one RET; no state/action/current stores in inspected body",
+      "callback_invoked": false,
+      "evidence_sites": [
+        "0x1cbed50"
+      ]
+    },
+    {
+      "operation": "get_Current (both interfaces)",
+      "result": "read reference at +0x18",
+      "state_after": "unchanged",
+      "evidence_sites": [
+        "0x1cbedc0",
+        "0x1cbee00"
+      ]
+    },
+    {
+      "operation": "Reset",
+      "steps": [
+        "construct NotSupportedException",
+        "pass exception and Reset MethodInfo to helper 0x1b8884c"
+      ],
+      "result": "INFERRED_throw; exact helper semantics unknown",
+      "state_after": "no local state write",
+      "evidence_sites": [
+        "0x1cbede4",
+        "0x1cbedfc"
+      ]
+    }
+  ],
+  "normal_path_precondition": "Calls to initialization, constructors, allocation and write barriers return normally unless an error path is explicitly described.",
+  "exception_order": "state=-1 store precedes callback dispatch: if callback throws after entry, this local state write has already occurred; subsequent scheduler handling unknown.",
+  "cancellation_limit": "Dispose is a no-op in inspected bytes. It does not itself prevent a subsequent manual MoveNext(state=1) from reaching Action.",
+  "current_limit": "Normal first yield sets Current=null; later MoveNext(state=1) does not rewrite Current/action. Constructor only initializes state, not those reference fields.",
+  "commands": [
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cb83f8",
+        "--stop-address=0x1cb846c",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/factory.asm.txt",
+      "sha256": "f08bd3c3f704ee79a105a328e00a7da0eeaf19ab80c8842d1845ddade56fb533"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cb3a60",
+        "--stop-address=0x1cb3a8c",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/start.asm.txt",
+      "sha256": "4820cedca83d6a6c8ca296802c7254c351cd7eb0830d8dcda1ff3a0a857ebf7f"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbed28",
+        "--stop-address=0x1cbed50",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/ctor.asm.txt",
+      "sha256": "0ad98e3c021120da453b17fa3818bdd9d99074226c7acedfe7fb8421f7e8a9cd"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbed50",
+        "--stop-address=0x1cbed54",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.027,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/dispose.asm.txt",
+      "sha256": "091094839c40da689958e6034d5ed6808aa6816e1251a6ddf4822361948cb217"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbed54",
+        "--stop-address=0x1cbedc0",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.025,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/move.asm.txt",
+      "sha256": "e3ba6d6ae6e86d167edea39bb2388f53f38d0d95099b2ca9bf216f5c21b8a069"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbedc0",
+        "--stop-address=0x1cbedc8",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.032,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/generic_current.asm.txt",
+      "sha256": "359daa5c41ee622764e78f6be6aa00e2baff0e862fa9dbf29e91392e378cc886"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbedc8",
+        "--stop-address=0x1cbee00",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/reset.asm.txt",
+      "sha256": "6f117fc4e21d4e85e807aca8cbad476a8e85d2f2015e7e714d41263a6f065901"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbee00",
+        "--stop-address=0x1cbee08",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.024,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/current.asm.txt",
+      "sha256": "3b49791b321c9113d73b3fa222a527db31c042f1db1ce60db4e19212011e347d"
+    }
+  ],
+  "unknowns": [
+    "Unity scheduler semantics of yield null and StartCoroutine; no measured frame/time duration.",
+    "StopCoroutine, host destruction, pause/timescale and cancellation dispatch are external; Dispose alone does not mark iterator cancelled.",
+    "Helper initialization/allocation/write barrier/null-failure/exception dispatch internals and full exception regions.",
+    "Callback target, side effects, exceptions and thread behavior; no target execution or reentrancy experiment.",
+    "Inspection windows end at next metadata start; no global async/event/coroutine coverage."
+  ],
+  "semantic_completion": false,
+  "game_executed": false,
+  "duration_seconds": 2.36,
+  "queue_modified": false
+}
