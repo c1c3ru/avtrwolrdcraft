@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-08",
+  "tool": "tools/recon_t031_vtable.py (new) over out/recon/il2cpp/global-metadata.dat; tools/recon_disasm.py (existing, one correctness fix applied)",
+  "binary_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "method": "IL2CPP vtable slot = (loaded_offset - 0x138) / 16 (VirtualInvokeData is 16 bytes: {methodPtr, MethodInfo*}). Slot numbers resolved against Il2CppMethodDefinition.slot read directly from global-metadata.dat for the owning image (Assembly-CSharp.dll or UnityEngine.UI.dll), not guessed from names.",
+  "indirect_dispatches_resolved": [
+    {
+      "function": "MPStandaloneInputModule.ProcessTouchEvents",
+      "vaddr": "0x20cddfc",
+      "blr_sites": [
+        {"addr": "0x20cde48", "offset": "0x308/0x310", "slot": 29, "on": "this.input (BaseInput)", "resolved": "UnityEngine.EventSystems.BaseInput.get_touchCount"},
+        {"addr": "0x20cde7c", "offset": "0x318/0x320", "slot": 30, "on": "this.input (BaseInput)", "resolved": "UnityEngine.EventSystems.BaseInput.GetTouch(int)"},
+        {"addr": "0x20cdf0c", "offset": "0x308/0x310", "slot": 29, "on": "this (MPStandaloneInputModule : PointerInputModule)", "resolved": "UnityEngine.EventSystems.PointerInputModule.ProcessMove(PointerEventData)"},
+        {"addr": "0x20cdf24", "offset": "0x318/0x320", "slot": 30, "on": "this", "resolved": "UnityEngine.EventSystems.PointerInputModule.ProcessDrag(PointerEventData)"},
+        {"addr": "0x20cdf4c", "offset": "0x308/0x310", "slot": 29, "on": "this.input (loop-exit path)", "resolved": "BaseInput.get_touchCount (final bool-return check: touchCount > 0)"}
+      ],
+      "confidence": "confirmed against global-metadata.dat slot field for BaseInput and PointerInputModule (UnityEngine.UI.dll)"
+    },
+    {
+      "function": "LevelItem.OnBeginDragInternal",
+      "vaddr": "0x22f6260",
+      "blr_sites": [
+        {"addr": "0x22f62f0", "offset": "0x4d8/0x4e0", "slot": 58, "resolved": "LevelItem.PlayPickUpSound()", "note": "guarded by this+0x231==0"},
+        {"addr": "0x22f64a8", "offset": "0x508/0x510", "slot": 61, "resolved": "LevelItem.DetachFromParentIfExists(true)"},
+        {"addr": "0x22f65dc", "offset": "0x528/0x530", "slot": 63, "resolved": "LevelItem.GetDefaultScaleForCurrentFlipState()"},
+        {"addr": "0x22f66dc", "offset": "0x4f8/0x500", "slot": 60, "resolved": "LevelItem.CacheLevelItemsUnderSelfForNotifyEvents()"},
+        {"addr": "0x22f67cc", "offset": "field+0x18/+0x28/+0x40 (delegate Invoke, not vtable)", "resolved": "Action<LevelItem>.Invoke(this) off a global static registry (field chain static.0xb8 -> [+0x10] list entry), guarded by a HashSet/List add-if-absent check at 0x2cf0aac/0x2cf071c", "open": "exact field/event name not recovered"}
+      ],
+      "confidence": "slots 58/60/61/63 confirmed against global-metadata.dat for PWC.Level.LevelItem"
+    },
+    {
+      "function": "LevelItem.OnEndDragInternal",
+      "vaddr": "0x22f68bc",
+      "blr_sites": [
+        {"addr": "0x22f6984", "resolved": "delegate Invoke(this) off the same global static registry as OnBeginDragInternal's field+0xb8->[0x18]", "open": "exact field/event name not recovered"},
+        {"addr": "0x22f69c8", "offset": "this+0x328 field (delegate Invoke(this, eventData) -> bool)", "resolved": "a LevelItem-specific override hook; returning true at this call short-circuits the rest of OnEndDragInternal (fall/snap resolution is skipped) -- a second, item-level cancellation layer on top of DragDropItemBase.TryOverridePreEndDragAction", "open": "exact field/event name not recovered, but behavior (bool short-circuit) is proven from the tbnz branch at 0x22f69cc"},
+        {"addr": "0x22f69f0", "offset": "0x528/0x530", "slot": 63, "resolved": "LevelItem.GetDefaultScaleForCurrentFlipState() (recomputed on drag end)"}
+      ]
+    }
+  ],
+  "cancellation_contract": {
+    "DragDropItemBase.OnBeginDrag (0x206b864)": "field+0xe8 == TryOverridePreBeginDragAction(this, eventData) -> bool; true aborts before StartSyncPosition/OnBeginDragInternal/OnBeginDragAction notify. Proven by the direct `tbz w0,#0,0x206b9e0` branch wrapping that call.",
+    "DragDropItemBase.OnEndDrag (0x206bb40)": "field+0xf0 == TryOverridePreEndDragAction(this, eventData) -> bool; true aborts before clearing this+0x39, StopSyncPosition, this+0xc8 (OnPreEndDragAction notify), OnEndDragInternal (slot 30) and this+0xd0 (OnEndDragAction notify, tail call). Proven symmetric to OnBeginDrag's gate.",
+    "DragDropItemBase field layout inferred from add_/remove_ method declaration order, 8 bytes apart starting at 0xC0": "OnClickAction(?), OnBeginDragAction=0xC0 (matches prior doc note), OnPreEndDragAction=0xC8, OnEndDragAction=0xD0, OnSyncPositionAction=0xD8, OverrideSyncPositionAction=0xE0, TryOverridePreBeginDragAction=0xE8, TryOverridePreEndDragAction=0xF0, TryOverrideGetPointerPositionForDragAction=0xF8. Offsets 0xE8/0xF0/0xC8/0xD0 are directly observed in the disassembly; the rest are inferred from declaration order and are unverified.",
+    "this+0x39 (bool)": "cleared (strb wzr) only on the non-cancelled path of OnEndDrag, right before StopSyncPosition; read by OnPointerClick (0x206c244) to suppress the click when set. Set site NOT found in this pass (not in OnBeginDrag, OnPointerDown/Up, OnDrag [4-byte stub], StartSyncPosition or StopSyncPosition) -- open."
+  },
+  "hitbox_priority": {
+    "CShapes.CShapeRaycaster": "confirmed UnityEngine.EventSystems.BaseRaycaster subclass (slot 17 Raycast override, slot 18 get_eventCamera override, both confirmed against UnityEngine.UI.dll metadata). Participates in Unity's standard multi-raycaster EventSystem.RaycastAll alongside UnityEngine.UI.GraphicRaycaster (UI) and the game's Physics2DRaycasterAllRenderers : UnityEngine.EventSystems.Physics2DRaycaster (world sprites/colliders, slot 17 override only).",
+    "cross-layer ordering": "Neither custom raycaster overrides BaseRaycaster.sortOrderPriority/renderOrderPriority (slots 20/21), so cross-layer precedence between UI, 2D colliders and CShape hits falls through to Unity's own RaycastComparer (sortOrderPriority desc, then renderOrderPriority desc, then distance asc) using whatever serialized per-instance values the scene sets -- not a custom in-code rule.",
+    "CShapeRaycaster.Raycast (0x23b98e8)": "fires an OnBeforeRaycastAction event first; iterates a static-registry list of candidate CShapes (same family of static fields touched by Lock/UnlockEventSystemToCurrentCShape); invokes this.eventCamera (slot 18) to reject when null; computed per-candidate test not fully traced in this pass.",
+    "DragDropItemBase.OnPointerDown/Up -> Lock/UnlockEventSystemToCurrentCShape": "while flag this+0x38 is set, PointerDown adds this.currentCShape (this+0x28) to a global 'locked CShapes' List only if a parallel global HashSet does not already contain it (checked via HashSet<T>.Contains at 0x2cf0aac); PointerUp calls the symmetric Unlock. This gives the actively-dragged CShape an exclusivity mechanism layered on top of the generic raycaster sort, though the exact consumer inside CShapeRaycaster.Raycast that reads the lock list was not fully traced.",
+    "tooling_correction": "An earlier read of CShapeRaycaster.Raycast with tools/recon_disasm.py produced two false string annotations (\"Basketball_Net_1\", \"Dunk\") on two `ldr x9,[x8,#0x258]` / `ldr x1,[x8,#0x260]` instructions. Root cause: the script tracked `pages[reg]` (adrp page base) per register but never invalidated it when that register was later overwritten by something other than adrp (here, `ldr x8,[x0]` reusing x8 for a vtable pointer). Fixed in tools/recon_disasm.py by clearing pages[dst] on every ldr destination; re-run confirms both instructions are the ordinary vtable slot-18 (get_eventCamera) dispatch, not string/GOT references. No other doc in this repo was produced with the unfixed tool as far as checked in this pass; flagging this as a correction, not a finding about basketball naming."
+  },
+  "basketball_physics_scoring_level8": {
+    "classes": {
+      "PWC.Level.BasketballSystem.LevelBSBasketballItemHandler": "ScoreInternal(1 param, slot 4) / MissInternal(2 params, slot 5) are the virtual hook points; both are called on the ball's item handler component.",
+      "PWC.Level.BasketballSystem.LevelBSHoop": "GetPointPosition(point index, out Vector2) and GetProperHoop(3 params) select the geometric anchor on a given hoop (two hoops exist in level8, left/right); all methods non-virtual.",
+      "PWC.Level.LevelBouncyBall": "OverrideItemFallTween(LevelDropArea, out tween) is the one virtual override (slot 70) of LevelItem's generic landing-tween hook.",
+      "Game.Level.LevelBasketballScoreBoard": "OnScore(2 params) does reference-equality checks against two stored hoop/side fields (offsets 0x30/0x38) to decide which of two capped (0..99) counters (offsets 0x40/0x44) to increment, then calls SyncScoreText and schedules a 0.5s LeanTween.delayedCall follow-up."
+    },
+    "ScoreInternal (0x2358abc)": "Builds a compiler-generated closure capturing (handler, item), reads LevelBSHoop.GetPointPosition(hoop, pointIndex=6) for the target anchor, schedules two LeanTween.delayedCall callbacks (one near-immediate, one at 1.0s) plus a LeanTween.value(0,1,duration=20) tween with setOnUpdate computing the ball's position by linear interpolation toward the hoop anchor (delta stored at closure+0x30/0x34). No Rigidbody2D/physics-engine collision resolution is involved in the final approach to the net: it is a scripted LeanTween interpolation, not simulated physics.",
+    "MissInternal (0x2358db4)": "Same closure-based LeanTween pattern keyed off the thrown velocity/direction (incoming v0/v1 args), computing a speed scalar (sqrt(dx^2+dy^2)) and driving a LeanTween.value tween with both setOnUpdate and setOnComplete callbacks -- the miss path is also tween-driven, not a free body-physics fall.",
+    "LevelBouncyBall.OverrideItemFallTween (0x22f1a9c)": "Returns 'no override' (false, null out-param) for any drop area that is not assignable to PWC.Level.LevelFloorArea (checked via an inlined IL2CPP class-assignability test on the drop area's actual type); only when the ball is landing on the floor does it build and return a custom bouncy LeanTween callback. Landing on a LevelDropArea/hoop net uses LevelItem's generic default landing tween (GetLandTweenDuration/GetLandTweenEaseType on LevelCharacter, not re-checked here for LevelBouncyBall specifically).",
+    "open": [
+      "LevelBSBasketballItemHandler.Shoot(6 params), ShootFromCurrentHolder, OnHolderBeginDrag and the OnScoreAction/OnFailedToScoreAction/OverrideAnimationShootScoreChanceAction delegate fields were inventoried (names + vaddr) but not disassembled in this pass.",
+      "GetProperHoop(3 params) (which of the two hoops a given shot targets) not disassembled.",
+      "LevelDropAreaQuery.IsDroppableUnderItem's own body (the actual accept/reject test consulted by GetMostRelevantDropAreaUnderPosition) not disassembled; only confirmed as the call target and that candidates are tried in SortDropAreas' sorted order, first match wins."
+    ]
+  }
+}

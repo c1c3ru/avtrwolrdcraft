@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "reviewer": "root",
+  "scope": "Independent raw interface/type enumeration and source review of inventory authored by t025_audit",
+  "sources": [
+    {
+      "path": "tools/recon_t026_inventory.py",
+      "sha256": "f5a17c07c6029f4efa2ef8e52124c687d9e22627b46e9a74387902c1f4246ed5"
+    },
+    {
+      "path": "reports/recon/t026_inventory.json",
+      "sha256": "358d6a046ae62461b5c8d45eef4d188572b6d417f351fd44ffced7ab338aec7a"
+    },
+    {
+      "path": "tools/test_recon_t026_inventory.py",
+      "sha256": "816ac818a9823bbbf02996a87ace0b2c27cdb3cab3e09c1172a9243111d05bcd"
+    },
+    {
+      "path": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-review/check_inventory.py",
+      "sha256": "8f509571d06094f888240af17b762aa6bc414c44832def4bf2a11261491f1d1b"
+    }
+  ],
+  "counts": {
+    "machines": 449,
+    "enumerators": 387,
+    "async_machines": 62,
+    "events": 458,
+    "closure_name_candidates": 1147
+  },
+  "validation": {
+    "tests": 8,
+    "failures": 0,
+    "duration_seconds": 3.487
+  },
+  "verdict": "accept_inventory_and_pending_planning_only",
+  "task_acceptance": false,
+  "can_close_t026": false,
+  "limits": [
+    "Direct interfaces only; inherited/manual machines and callbacks/reflection still require discovery.",
+    "Scope dispositions are pending rules, not proofs of reachability or absence of dependency.",
+    "Event declarations and closure names do not prove callback behavior or subscriber lifetime."
+  ],
+  "review_attempt_note": "An initial independent decoder used raw generic pointer bytes; corrected to relocation-aware pointers before producing this review."
+}

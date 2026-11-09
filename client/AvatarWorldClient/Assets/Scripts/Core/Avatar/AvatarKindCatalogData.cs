@@ -728,6 +728,16 @@ namespace AvatarWorld.Core.Avatar
                 "tdl_carrier_1",
                 "tdl_carrier_3",
                 "tdl_carrier_4",
+                "tdl_item_bicycle_1",
+                "tdl_item_bicycle_2",
+                "tdl_item_bicycle_3",
+                "tdl_item_cymbals_1",
+                "tdl_item_drum_1",
+                "tdl_item_horseonstick_1",
+                "tdl_item_horseonstick_2",
+                "tdl_item_triangle_1",
+                "tdl_item_woodblock_1",
+                "tdl_item_xylophone_1",
             };
             public static readonly string[] Mouth =
             {

@@ -34,7 +34,7 @@ KINDS = {
         'skel': 'Toddler_Spine.skel_109615.txt', 'atlas': 'Toddler_Spine.atlas_108537.txt', 'prefix': 'tdl_',
         'cats': {'Shirt': [('toddler', 'shirt'), ('toddler', 'jacket'), ('toddler', 'onepiece')], 'Bottom': [('toddler', 'bottom'), ('toddler', 'diaper')],
                  'Shoes': [('toddler', 'legs')],
-                 'Accessory': [('toddler', 'neck'), ('toddler', 'bag'), ('toddler', 'back'), ('toddler', 'carrier')]},
+                 'Accessory': [('toddler', 'neck'), ('toddler', 'bag'), ('toddler', 'back'), ('toddler', 'carrier'), ('toddler', 'item')]},
         'body': [('Body_Whites/Body_Whites', 'skin'), ('Body_Shad/Body_Shad', 'shadow'), ('Ear_Shad/Ear_Shad', 'ear'), ('Body_Other/Body_Other', '')],
     },
     'Baby': {
@@ -74,6 +74,13 @@ def parse_atlas(path):
             regions[line] = current
         i += 1
     return pages, regions
+
+
+def piece_entry(page, out_name, skins):
+    entry = {'template': 'Templates/' + page, 'file': out_name}
+    if 'Templates/' + page not in skins:
+        entry['skin'] = 'Item_Templates/' + page  # itens de mao da crianca (bicicleta, instrumentos)
+    return entry
 
 
 def main():
@@ -185,7 +192,7 @@ def main():
                             ok = False
                             break
                         page = pages[piece][0]
-                        if 'Templates/' + page not in skins:
+                        if 'Templates/' + page not in skins and 'Item_Templates/' + page not in skins:
                             ok = False
                             break
                         pid = int(cands[0].rsplit('_', 1)[1][:-4])
@@ -198,7 +205,7 @@ def main():
                         continue
                     for page, filename, out_name in pieces:
                         copy_texture(filename, out_name)
-                    manifest.append({'id': item_id, 'pieces': [{'template': 'Templates/' + page, 'file': out_name} for page, _, out_name in pieces]})
+                    manifest.append({'id': item_id, 'pieces': [piece_entry(page, out_name, skins) for page, _, out_name in pieces]})
                     chosen[category].append(item_id)
 
         out_dir = KINDS_DIR / kind

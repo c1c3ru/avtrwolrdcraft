@@ -44,3 +44,25 @@ O cliente ainda não aplica os gates de compra e expõe as 2.174 opções. Não 
 4. Validar thumbnails e renderização em runtime posteriormente.
 
 T033 continua parcial. A fila canônica ainda lista T017–T019 e T025–T027 como dependências pendentes; este levantamento é uma reconciliação de evidências e não promove o estado da tarefa.
+
+## Grafo de chamadas do pipeline de thumbs (2026-11-08)
+
+A corrotina `AvatarMakerThumbsManager.AfterThumbsScaleDownAnimation` (`MoveNext` em `0x21ce8d4`) é o orquestrador confirmado: uma varredura de todo o binário por instruções `bl`/`b` (`tools/recon_callers.py`) mostra que ela é a **única** chamadora direta de `AddItemSpritesOutsideAnyPack`, `FillSections`, `AddOwnedExpansionPacksThumbs`, `FilterByClaimedInventoryFlags` e `GetRelevantInventorySkins`. Os alvos `bl` dessas e de outras funções do pipeline foram resolvidos por endereço (`tools/recon_call_targets.py`), de forma determinística.
+
+Duas descobertas novas, independentes das duas tabelas de flags já conhecidas:
+
+- `PWC.AvatarSpine.AvatarSpineSkinsRestrictionsManager.IsSkinAllowed(SpineType, AvatarSizeType, skinName)` — um gate de **compatibilidade por tamanho de avatar** (adulto/toddler/baby), chamado pelo próprio pipeline de thumbs e por `AvatarMakerCharacterManager.RandomizeSkins`. É evidência direta para o critério de aceite "combinação inválida e opção indisponível têm regra", mas não é um gate de compra.
+- `PWC.AvatarSpine.AvatarSpineDataManager` declara `MAKER_INCLUDED_SKINS_RESOURCES_PATH = "AvatarMaker/MakerIncludedSkinsJson/"` e carrega, por `SpineType`, uma lista de skins permitidas a partir de um recurso com esse caminho. O literal existe no `global-metadata.dat` (código real, não eliminado), mas **nenhum objeto `TextAsset`/JSON correspondente foi encontrado** em `out/assets/resources.assets` (0 objetos `TextAsset` no arquivo todo), `avatar-datapack.unity3d`, `avatar-resource-manager.json`, `avatar-resources.json` nem `avatar-bundle-directory.json`. Não está provado se o recurso está ausente/vazio nesta build ou se está em um contêiner ainda não extraído.
+
+A hipótese inicial desta sessão — "`AddItemSpritesOutsideAnyPack` é o mecanismo universal que torna gratuito qualquer item fora das duas tabelas" — **não se confirmou** e foi retratada: dentro da corrotina, essa função só é chamada por um dos ramos de um switch de 4 vias (casos 1/2/3/padrão) cujo valor despachado (rastreado até o registrador `w23`, reaproveitado de dois laços anteriores não relacionados) não foi determinado com certeza. Os valores inteiros 1/2/3 só coincidem com categorias "de forma corporal" específicas por `SpineType` (ex.: em `CharacterCategoryType`, `Accessories=1` e `Accessories_Face_Glasses=3`, mas `Bottom=13`, `Shirt=45` e `Legs_Shoes=38` caem no ramo padrão, não fatal). Onde a lista-base de sprites por categoria é montada para as categorias comuns (Camisa/Calça/Sapato/Acessório gerais) **não foi localizado** nesta sessão.
+
+`FilterByClaimedInventoryFlags` foi parcialmente traçado manualmente (confiança média, sem segunda verificação): para cada uma das 3 flags premium, chama `InventoryData.ContainsFlag` (posse) e, quando a flag NÃO está reivindicada, remove da lista exibida as sprites cujo nome bate com as skins daquela flag — ou seja, filtra para fora os itens premium não comprados. Isso só cobre a tabela de 3 flags/11 skins (cabelos toddler), não a de 48 flags/1.763 skins.
+
+Evidências e desconhecidos registrados em `out/recon/tasks/T033/thumbs-pipeline-findings.json`, `out/recon/tasks/T033/pipeline-call-targets.json`, `out/recon/tasks/T033/pipeline-callers.json` e `out/recon/tasks/T033/pipeline-asm/`. Nenhum item foi reclassificado como grátis ou pago a partir deste levantamento.
+
+### Próximo recorte (atualizado)
+
+1. Localizar onde a lista-base de sprites por categoria é montada para categorias comuns (não cobertas por `AddItemSpritesOutsideAnyPack`).
+2. Resolver a proveniência real do valor despachado no switch de 4 vias de `AfterThumbsScaleDownAnimation`.
+3. Decidir se `AvatarMaker/MakerIncludedSkinsJson/` existe em algum contêiner de assets ainda não extraído.
+4. Itens 2–4 da lista anterior (distribuição original dos 2.174 IDs; coloração/compatibilidade `_color`/`_p`; validação visual em runtime) continuam abertos.

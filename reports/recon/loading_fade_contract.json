@@ -1,0 +1,587 @@
+{
+  "methods": [
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.LoadingScreen.LoadingScreenManager",
+      "name": "StartSceneTransition",
+      "token": "0x06005fc3",
+      "method_definition_index": 24514,
+      "parameter_count": 1,
+      "vaddr": "0x20fe2d8",
+      "file_offset": "0x20fa2d8"
+    },
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.LoadingScreen.LoadingScreenManager",
+      "name": "OnSceneLoaded",
+      "token": "0x06005fc4",
+      "method_definition_index": 24515,
+      "parameter_count": 2,
+      "vaddr": "0x20fe4b4",
+      "file_offset": "0x20fa4b4"
+    },
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<>c__DisplayClass8_0",
+      "name": "<OnSceneLoaded>b__0",
+      "token": "0x06005fc8",
+      "method_definition_index": 24519,
+      "parameter_count": 0,
+      "vaddr": "0x20fe6c4",
+      "file_offset": "0x20fa6c4"
+    },
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.LoadingScreen.LoadingScreenScreen",
+      "name": "Fade",
+      "token": "0x06005fc9",
+      "method_definition_index": 24520,
+      "parameter_count": 2,
+      "vaddr": "0x20fe6ec",
+      "file_offset": "0x20fa6ec"
+    },
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.LoadingScreen.LoadingScreenScreen",
+      "name": "AnimateClock",
+      "token": "0x06005fca",
+      "method_definition_index": 24521,
+      "parameter_count": 1,
+      "vaddr": "0x20fe92c",
+      "file_offset": "0x20fa92c"
+    },
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<>c__DisplayClass5_0",
+      "name": "<Fade>b__0",
+      "token": "0x06005fcd",
+      "method_definition_index": 24524,
+      "parameter_count": 1,
+      "vaddr": "0x20feab4",
+      "file_offset": "0x20faab4"
+    },
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<>c__DisplayClass5_0",
+      "name": "<Fade>b__1",
+      "token": "0x06005fce",
+      "method_definition_index": 24525,
+      "parameter_count": 0,
+      "vaddr": "0x20fead8",
+      "file_offset": "0x20faad8"
+    },
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PazuCore.Utils",
+      "name": "ExecuteNextFrame",
+      "token": "0x060011d4",
+      "method_definition_index": 4563,
+      "parameter_count": 2,
+      "vaddr": "0x1cb3a60",
+      "file_offset": "0x1cafa60"
+    },
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PazuCore.Utils",
+      "name": "ExecuteNextFrameCoroutine",
+      "token": "0x060011d5",
+      "method_definition_index": 4564,
+      "parameter_count": 1,
+      "vaddr": "0x1cb83f8",
+      "file_offset": "0x1cb43f8"
+    },
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "<ExecuteNextFrameCoroutine>d__38",
+      "name": "MoveNext",
+      "token": "0x06001265",
+      "method_definition_index": 4708,
+      "parameter_count": 0,
+      "vaddr": "0x1cbed54",
+      "file_offset": "0x1cbad54"
+    }
+  ],
+  "verified_native_anchors": 55,
+  "verified_calls": [
+    {
+      "site": "0x20fe7dc",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.LoadingScreen.LoadingScreenScreen",
+        "name": "AnimateClock",
+        "token": "0x06005fca",
+        "method_definition_index": 24521,
+        "parameter_count": 1,
+        "vaddr": "0x20fe92c",
+        "file_offset": "0x20fa92c"
+      }
+    },
+    {
+      "site": "0x20fe818",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LeanTween",
+        "name": "cancel",
+        "token": "0x06000213",
+        "method_definition_index": 530,
+        "parameter_count": 1,
+        "vaddr": "0x1c6e33c",
+        "file_offset": "0x1c6a33c"
+      }
+    },
+    {
+      "site": "0x20fe838",
+      "target": {
+        "image": "UnityEngine.UIModule.dll",
+        "declaring_type": "UnityEngine.CanvasGroup",
+        "name": "get_alpha",
+        "token": "0x06000002",
+        "method_definition_index": 119300,
+        "parameter_count": 0,
+        "vaddr": "0x3f02b98",
+        "file_offset": "0x3efeb98"
+      }
+    },
+    {
+      "site": "0x20fe88c",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LeanTween",
+        "name": "value",
+        "token": "0x06000264",
+        "method_definition_index": 611,
+        "parameter_count": 4,
+        "vaddr": "0x1c6e438",
+        "file_offset": "0x1c6a438"
+      }
+    },
+    {
+      "site": "0x20fe8d4",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LTDescr",
+        "name": "setOnUpdate",
+        "token": "0x06000458",
+        "method_definition_index": 1111,
+        "parameter_count": 1,
+        "vaddr": "0x1d93f74",
+        "file_offset": "0x1d8ff74"
+      }
+    },
+    {
+      "site": "0x20fe91c",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LTDescr",
+        "name": "setOnComplete",
+        "token": "0x06000454",
+        "method_definition_index": 1107,
+        "parameter_count": 1,
+        "vaddr": "0x1d93e90",
+        "file_offset": "0x1d8fe90"
+      }
+    },
+    {
+      "site": "0x20fead0",
+      "target": {
+        "image": "UnityEngine.UIModule.dll",
+        "declaring_type": "UnityEngine.CanvasGroup",
+        "name": "set_alpha",
+        "token": "0x06000003",
+        "method_definition_index": 119301,
+        "parameter_count": 1,
+        "vaddr": "0x3f02bd4",
+        "file_offset": "0x3efebd4"
+      }
+    },
+    {
+      "site": "0x20feb38",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.LoadingScreen.LoadingScreenScreen",
+        "name": "AnimateClock",
+        "token": "0x06005fca",
+        "method_definition_index": 24521,
+        "parameter_count": 1,
+        "vaddr": "0x20fe92c",
+        "file_offset": "0x20fa92c"
+      }
+    },
+    {
+      "site": "0x20feb48",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.Component",
+        "name": "get_gameObject",
+        "token": "0x060006e7",
+        "method_definition_index": 86847,
+        "parameter_count": 0,
+        "vaddr": "0x3cc84e4",
+        "file_offset": "0x3cc44e4"
+      }
+    },
+    {
+      "site": "0x20feb7c",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.Object",
+        "name": "Destroy",
+        "token": "0x060007b5",
+        "method_definition_index": 87053,
+        "parameter_count": 1,
+        "vaddr": "0x3ccf03c",
+        "file_offset": "0x3ccb03c"
+      }
+    },
+    {
+      "site": "0x20fe5b8",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.Utils",
+        "name": "ExecuteNextFrame",
+        "token": "0x060011d4",
+        "method_definition_index": 4563,
+        "parameter_count": 2,
+        "vaddr": "0x1cb3a60",
+        "file_offset": "0x1cafa60"
+      }
+    },
+    {
+      "site": "0x20fe54c",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.Object",
+        "name": "op_Equality",
+        "token": "0x060007c6",
+        "method_definition_index": 87070,
+        "parameter_count": 2,
+        "vaddr": "0x3ccb8d8",
+        "file_offset": "0x3cc78d8"
+      }
+    },
+    {
+      "site": "0x20fe9e0",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LeanTween",
+        "name": "rotateAroundLocal",
+        "token": "0x0600025e",
+        "method_definition_index": 605,
+        "parameter_count": 4,
+        "vaddr": "0x1c7926c",
+        "file_offset": "0x1c7526c"
+      }
+    },
+    {
+      "site": "0x20fea38",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LeanTween",
+        "name": "rotateAroundLocal",
+        "token": "0x0600025e",
+        "method_definition_index": 605,
+        "parameter_count": 4,
+        "vaddr": "0x1c7926c",
+        "file_offset": "0x1c7526c"
+      }
+    },
+    {
+      "site": "0x20fe9f4",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LTDescr",
+        "name": "setLoopType",
+        "token": "0x06000449",
+        "method_definition_index": 1096,
+        "parameter_count": 1,
+        "vaddr": "0x1d93dc8",
+        "file_offset": "0x1d8fdc8"
+      }
+    },
+    {
+      "site": "0x20fea5c",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LTDescr",
+        "name": "setLoopType",
+        "token": "0x06000449",
+        "method_definition_index": 1096,
+        "parameter_count": 1,
+        "vaddr": "0x1d93dc8",
+        "file_offset": "0x1d8fdc8"
+      }
+    },
+    {
+      "site": "0x20fea78",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LeanTween",
+        "name": "cancel",
+        "token": "0x06000213",
+        "method_definition_index": 530,
+        "parameter_count": 1,
+        "vaddr": "0x1c6e33c",
+        "file_offset": "0x1c6a33c"
+      }
+    },
+    {
+      "site": "0x20fea84",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LeanTween",
+        "name": "cancel",
+        "token": "0x06000213",
+        "method_definition_index": 530,
+        "parameter_count": 1,
+        "vaddr": "0x1c6e33c",
+        "file_offset": "0x1c6a33c"
+      }
+    },
+    {
+      "site": "0x20feaa4",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "LeanTween",
+        "name": "cancel",
+        "token": "0x06000213",
+        "method_definition_index": 530,
+        "parameter_count": 1,
+        "vaddr": "0x1c6e33c",
+        "file_offset": "0x1c6a33c"
+      }
+    },
+    {
+      "site": "0x1cb3a6c",
+      "target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.Utils",
+        "name": "ExecuteNextFrameCoroutine",
+        "token": "0x060011d5",
+        "method_definition_index": 4564,
+        "parameter_count": 1,
+        "vaddr": "0x1cb83f8",
+        "file_offset": "0x1cb43f8"
+      }
+    },
+    {
+      "site": "0x1cb3a84",
+      "target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.MonoBehaviour",
+        "name": "StartCoroutine",
+        "token": "0x0600075c",
+        "method_definition_index": 86964,
+        "parameter_count": 1,
+        "vaddr": "0x3ccbf8c",
+        "file_offset": "0x3cc7f8c"
+      }
+    }
+  ],
+  "virtual_fade_target": {
+    "receiver_type": "PWC.LoadingScreen.LoadingScreenScreen",
+    "type_definition_index": 4259,
+    "slot": 4,
+    "encoded": "0x6000bf91",
+    "encoded_file_offset": 12685840,
+    "method_definition_index": 24520,
+    "name": "Fade",
+    "declaring_type_index": 4259,
+    "token": "0x6005fc9",
+    "parameters": 2
+  },
+  "virtual_background_target": {
+    "receiver_type": "UnityEngine.UI.Image",
+    "type_definition_index": 13354,
+    "slot": 25,
+    "encoded": "0x60030b11",
+    "encoded_file_offset": 13123756,
+    "method_definition_index": 99720,
+    "name": "set_raycastTarget",
+    "declaring_type_index": 13341,
+    "token": "0x60000e7",
+    "parameters": 1
+  },
+  "virtual_layout_limit": "native offset0x178/0x2c8 corresponds slots4/25 if vtable starts at0x138; runtime class memory not observed",
+  "callback_usages": [
+    {
+      "got_vaddr": "0x41cc838",
+      "usage_vaddr": "0x4338850",
+      "encoded": "0x6000bf99",
+      "kind": 3,
+      "index": 24524,
+      "name": "<Fade>b__0"
+    },
+    {
+      "got_vaddr": "0x41cc840",
+      "usage_vaddr": "0x4338858",
+      "encoded": "0x6000bf9b",
+      "kind": 3,
+      "index": 24525,
+      "name": "<Fade>b__1"
+    },
+    {
+      "got_vaddr": "0x41cc828",
+      "usage_vaddr": "0x4338848",
+      "encoded": "0x6000bf8f",
+      "kind": 3,
+      "index": 24519,
+      "name": "<OnSceneLoaded>b__0"
+    }
+  ],
+  "fade_duration_seconds": 0.25,
+  "fade_alpha_targets": {
+    "value_true": 1.0,
+    "value_false": 0.0
+  },
+  "effects_status": "STATIC_candidate_not_runtime_certified",
+  "prefab_binding": {
+    "manager": {
+      "file": "sharedassets1.assets",
+      "path_id": 259,
+      "game_object": 86,
+      "prefab": 242
+    },
+    "screen": {
+      "file": "sharedassets1.assets",
+      "path_id": 242,
+      "game_object": 81,
+      "script": 4067,
+      "canvas_group": 210,
+      "background": 291,
+      "clock_hours": 83,
+      "clock_minutes": 37,
+      "clock_nose": 40
+    },
+    "runtime_precondition": "serialized prefab and runtime type not replaced before Instantiate; generic Instantiate semantics remain external"
+  },
+  "serialized_evidence": {
+    "asset_apk_sha256": "66fd0e2732064ddfeaf2d4f596b8f25d81376a703e7b5878c2d9585c5e3ec792",
+    "base_apk_sha256": "c7edf76ff14254ecab9dc4162962f5d49d8e13be6e2e74e38f7d992f8c77ca07",
+    "base_unityfs_member_sha256": "da96c7f34a3c3974d88954716bb2c33dc576eb26f36c96b63cb427051d586a1a",
+    "selected_entry": {
+      "path": "sharedassets1.assets",
+      "offset": 0,
+      "size": 726336,
+      "flags": 4
+    },
+    "selected_sha256": "26dfd17a8ee7fe41621de3feabed192f66f81343322eecf81e314d4d0c91d91c",
+    "compressed_block_bytes_read": 443149,
+    "engine": "2022.3.70f1",
+    "canvas_alpha": 0.0,
+    "canvas_blocks_raycasts": true,
+    "canvas_interactable": true,
+    "manager_go_name": "LoadingScreenCanvas",
+    "screen_go_name": "LoadingScreenScreen"
+  },
+  "schema_version": 1,
+  "status": "partial_static_candidate_no_semantic_certification",
+  "binary_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "script_sha256": "4f4ec5747e0acf3012928d92f8192bb8b2577890f16a7e21eab95ea51b6f597b",
+  "windows": [
+    {
+      "method_definition_index": 24514,
+      "start": "0x20fe2d8",
+      "exclusive_stop": "0x20fe4b4",
+      "sha256": "8b96fdcc0a263cc55ed4fb582e76124b1efbcc8d7033f42c53bc8a23ca1c957f",
+      "path": "out/recon/loading-fade/24514-StartSceneTransition.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    },
+    {
+      "method_definition_index": 24515,
+      "start": "0x20fe4b4",
+      "exclusive_stop": "0x20fe5dc",
+      "sha256": "bd9150da6b86e01fb062c7d5b520f13ca1c9ba74684243799fc8bb31b08493b7",
+      "path": "out/recon/loading-fade/24515-OnSceneLoaded.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    },
+    {
+      "method_definition_index": 24519,
+      "start": "0x20fe6c4",
+      "exclusive_stop": "0x20fe6ec",
+      "sha256": "fe27829e4b95cb88ff9492f30d1dbfced2b563a4d2c8ec8e3b9e836dac87dbb1",
+      "path": "out/recon/loading-fade/24519-OnSceneLoadedb__0.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    },
+    {
+      "method_definition_index": 24520,
+      "start": "0x20fe6ec",
+      "exclusive_stop": "0x20fe924",
+      "sha256": "c81916a2534311a66ff1324f8c042cade9e334b1b9d70421735197595988be63",
+      "path": "out/recon/loading-fade/24520-Fade.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    },
+    {
+      "method_definition_index": 24521,
+      "start": "0x20fe92c",
+      "exclusive_stop": "0x20feaac",
+      "sha256": "bc48fc0df73d78784f9aaeddc2b4ab214ee91e126a2eb7e82d5ffee57b6a6e7b",
+      "path": "out/recon/loading-fade/24521-AnimateClock.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    },
+    {
+      "method_definition_index": 24524,
+      "start": "0x20feab4",
+      "exclusive_stop": "0x20fead8",
+      "sha256": "2af1047577bbfbc0276f3a691e1752f1fb591be411891ad8c7c36cecfbb46e51",
+      "path": "out/recon/loading-fade/24524-Fadeb__0.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    },
+    {
+      "method_definition_index": 24525,
+      "start": "0x20fead8",
+      "exclusive_stop": "0x20feb90",
+      "sha256": "b02a9a458eade42f396e5d886b7483fc7c935ba466e4699994b515ac7212544d",
+      "path": "out/recon/loading-fade/24525-Fadeb__1.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    },
+    {
+      "method_definition_index": 4563,
+      "start": "0x1cb3a60",
+      "exclusive_stop": "0x1cb3a8c",
+      "sha256": "b539e72689e47554a43d2b6701c4888bddfe83fc3e0e05dbf132cbe2cabb6a70",
+      "path": "out/recon/loading-fade/4563-ExecuteNextFrame.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    },
+    {
+      "method_definition_index": 4564,
+      "start": "0x1cb83f8",
+      "exclusive_stop": "0x1cb846c",
+      "sha256": "1cf2cd50855ca836446d61c38f34b56acbc3246b26f78c0a6a7039b56bc1c6e2",
+      "path": "out/recon/loading-fade/4564-ExecuteNextFrameCoroutine.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    },
+    {
+      "method_definition_index": 4708,
+      "start": "0x1cbed54",
+      "exclusive_stop": "0x1cbedc0",
+      "sha256": "c5f87133fc4a51712fe5194261f4469db9c16d843c3dc8f6deba76540dd55ee5",
+      "path": "out/recon/loading-fade/4708-MoveNext.asm.txt",
+      "bound": "next metadata method candidate, not proof of complete/noncontiguous body"
+    }
+  ],
+  "runtime_executed": false,
+  "emulated": false,
+  "queue_promoted": false,
+  "candidate_lifecycle": [
+    "StartSceneTransition instantiates serialized LoadingScreenScreen, calls virtual slot4 Fade(true,onFadeComplete).",
+    "Fade(true) sets Image.raycastTarget=true via slot25 and starts clock tweens; false skips this start branch.",
+    "Fade cancels existing CanvasGroup.gameObject tweens; reads current alpha; LeanTween.value(gameObject,current,target,0.25).",
+    "Target is1.0 for true,0.0 for false; onUpdate callback writes CanvasGroup.alpha; completion handler is Fadeb__1.",
+    "Completion true: invoke onComplete if nonnull, otherwise return; do not destroy loading screen in this branch.",
+    "Completion false: AnimateClock(false), Destroy(screen.gameObject); onComplete is not invoked in this branch.",
+    "OnSceneLoaded: when current screen is non-null, capture it, ExecuteNextFrame(manager,closure), clear manager._currentScreen.",
+    "ExecuteNextFrame wraps coroutine: first MoveNext yields null, second invokes Action and returns false (scheduling is Unity-owned).",
+    "OnSceneLoaded closure calls capturedScreen.Fade(false,null) through slot4.",
+    "AnimateClock(true) rotates hours/minutes by-360 with durations1.0/0.5 and setLoopType(1); actual loop scheduling/effect still external.",
+    "AnimateClock(false) cancels tween by clockHours,clockMinutes,clockNose object references."
+  ],
+  "unknowns": [
+    "Actual elapsed tween duration/ease/time scale, interruptions and LeanTween callback dispatch semantics not executed.",
+    "Generic Instantiate binding and runtime class overrides/replacement not inspected; target conditional on shipped prefab.",
+    "Runtime Il2CppClass layout not observed; native-slot offset correlated with metadata slots and concrete prefab.",
+    "Who subscribes LoadingScreenManager.OnSceneLoaded and re-enables input/EventSystem after loading remains open.",
+    "Exception/GC/class-init bodies and complete native CFG ranges are not certified.",
+    "Scene-load callback body handled by existing recon_load_scene/callback contract, not re-proven here."
+  ]
+}

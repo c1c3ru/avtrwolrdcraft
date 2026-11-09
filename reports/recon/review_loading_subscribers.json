@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/review_plan_gaps",
+  "reviewed_at": "2026-11-07T18:05:22.386808+00:00",
+  "independence": "Reviewer did not author either loading-fade or subscriber source, tests or contracts. Reviewer authored historical queue tools, which are outside this read-only review.",
+  "scope": "Independent review of Nov7 bounded static loading/prefab/fade/coroutine evidence and five signup/handler edges. No full method or parent completion.",
+  "verdict": "accept_partial_static_evidence",
+  "blocking_findings": [],
+  "evidence_refs": [
+    {
+      "path": "tools/recon_loading_fade.py",
+      "sha256": "4f4ec5747e0acf3012928d92f8192bb8b2577890f16a7e21eab95ea51b6f597b"
+    },
+    {
+      "path": "tools/test_recon_loading_fade.py",
+      "sha256": "9bb6cf49d5633aa002be7ac8392beaee7d4eefeae2b0d74a689bf0f03b0a54c9"
+    },
+    {
+      "path": "tools/recon_scene_subscribers.py",
+      "sha256": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce"
+    },
+    {
+      "path": "tools/test_recon_scene_subscribers.py",
+      "sha256": "697f664c93fc3fd5fb6bb7b29cb567ef6c6b26a35b40a0475a04a5ed3e7717d6"
+    },
+    {
+      "path": "tools/recon_navigation.py",
+      "sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08"
+    },
+    {
+      "path": "tools/recon_il2cpp.py",
+      "sha256": "5b07fad8003143f5d9e41f4711e0e20f587ea76c0f84aa3b842400ba12a0bb73"
+    },
+    {
+      "path": "reports/recon/loading_fade_contract.json",
+      "sha256": "7101aaff91c018fae1f576e7745b22f3c611c53f2e9d25d90a0beba8b785cf0b"
+    },
+    {
+      "path": "reports/recon/scene_subscribers.json",
+      "sha256": "370315f50a33bf43f04f32d54584c2fccc2227d26a7c733f2a6572e0603c7adf"
+    },
+    {
+      "path": "docs/RECON_LOADING_FADE_CONTRACT.md",
+      "sha256": "28b903393903305c734ee82e338d2422d0f32c7d0823a13bcf9d9683e030c890"
+    },
+    {
+      "path": "docs/RECON_SCENE_SUBSCRIBERS.md",
+      "sha256": "99e9acef504c806460f5a6d00d8b1f52a3cfcc92a292a35e0631ae72b3b97545"
+    }
+  ],
+  "input_pair": {
+    "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+    "independently_rehashed_cached_bytes": true,
+    "baseline_reference": "reports/recon/baseline.json and previously accepted scoped T001 identity; complete dumps were not reread",
+    "active_target_or_app_executed": false
+  },
+  "loading_fade": {
+    "verdict": "accept_bounded_static_candidate",
+    "parent_completion_recommended": false,
+    "frozen_producer_hash_matches_contract": true,
+    "original_checks": {
+      "native_anchors_passed": 55,
+      "named_call_targets_checked": 21,
+      "original_candidate_window_hashes_checked": 10,
+      "window_extent_status": "next metadata start is an inspection bound, not full CFG/body or exception-range proof"
+    },
+    "virtual_binding": {
+      "type_definition_index": 4259,
+      "receiver_type": "PWC.LoadingScreen.LoadingScreenScreen",
+      "vtable_start": 84248,
+      "slot": 4,
+      "encoded": "0x6000bf91",
+      "method_definition_index": 24520,
+      "method_token": "0x06005fc9",
+      "method": "Fade",
+      "method_slot_field": 4,
+      "method_vaddr": "0x20fe6ec",
+      "independent_raw_v31_decode": true,
+      "limit": "Native offset0x178 is correlated to slot4 using assumed Il2CppClass vtable base0x138; runtime class layout/overrides were not observed."
+    },
+    "prefab": {
+      "serialized_file": "sharedassets1.assets",
+      "serialized_file_sha256": "26dfd17a8ee7fe41621de3feabed192f66f81343322eecf81e314d4d0c91d91c",
+      "component259_field_at32": "(fileID0,pathID242)",
+      "screen242_script_at16": "(fileID1,pathID4067)",
+      "script_file1_resolved": "globalgamemanagers.assets",
+      "script4067": "PWC.LoadingScreen.LoadingScreenScreen / Assembly-CSharp",
+      "background291_script": "(fileID1,pathID5535) -> UnityEngine.UI.Image / UnityEngine.UI",
+      "independently_checked_raw_component_bytes_and_unique_script_identities": true,
+      "runtime_type_precondition": "Shipped serialized prefab and type must not be replaced before Instantiate; generic Instantiate implementation remains external."
+    },
+    "fade_contract_checked": {
+      "duration_argument": {
+        "instruction": "0x20fe878: 0x1e2a1002",
+        "decoded": "FMOV s2,#0.25",
+        "claim_limit": "Literal duration argument only; elapsed tween time/ease/time-scale and execution not proven"
+      },
+      "alpha_targets": {
+        "true": 1.0,
+        "false": 0.0
+      },
+      "true_path": "Begins clock animations and background raycastTarget=true; completion optionally tail-dispatches onComplete and does not take false-destroy branch.",
+      "false_path": "Completion calls AnimateClock(false), then Destroy(screen.gameObject); does not dispatch onComplete on that branch.",
+      "nextframe_path": "OnSceneLoaded captures current screen, calls PazuCore.Utils.ExecuteNextFrame, clears manager field. Iterator state0 yields null/state1; subsequent state invokes Action. Closure token0x06005fc8 dispatches captured screen slot4 with false and null callback.",
+      "scheduler_limit": "Coroutine/Unity scheduling and actual callback timing not executed; no claim of measured one-frame latency."
+    },
+    "remaining": [
+      "Runtime Il2CppClass layout and dynamic type/prefab replacement",
+      "Generic Instantiate semantics and callback/coroutine/tween runtime timing",
+      "Class-init/GC/exceptions/null/interrupt behavior and whole CFG extents",
+      "Who subscribes LoadingScreenManager.OnSceneLoaded and re-enables input/EventSystem",
+      "Complete LoadScene callback chain and required differential/device route"
+    ]
+  },
+  "subscribers": {
+    "verdict": "accept_five_guarded_static_signup_edges",
+    "frozen_producer_and_helper_hashes_match_contract": true,
+    "edges": [
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage1Action",
+        "caller_token": "0x060055ff",
+        "caller": "PWC.BackgroundPlanetSoundHandler.Awake",
+        "handler_token": "0x06005601",
+        "handler": "PWC.BackgroundPlanetSoundHandler.OnBeforeSceneLoadStage1",
+        "signup_site": "0x2069294",
+        "event_add_target": "0x20692dc",
+        "raw_methodinfo_and_argument_flow_independently_checked": true,
+        "runtime_observed": false
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller_token": "0x06006e3e",
+        "caller": "PWC.PersistentData.PersistentDataManager.Awake",
+        "handler_token": "0x06006e44",
+        "handler": "PWC.PersistentData.PersistentDataManager.OnBeforeSceneLoadStage2",
+        "signup_site": "0x21e0734",
+        "event_add_target": "0x2071fec",
+        "raw_methodinfo_and_argument_flow_independently_checked": true,
+        "runtime_observed": false
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller_token": "0x0600848e",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler_token": "0x0600849c",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage2",
+        "signup_site": "0x2310d64",
+        "event_add_target": "0x2071fec",
+        "raw_methodinfo_and_argument_flow_independently_checked": true,
+        "runtime_observed": false
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage3Action",
+        "caller_token": "0x0600848e",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler_token": "0x0600849d",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage3",
+        "signup_site": "0x2310d8c",
+        "event_add_target": "0x20721a4",
+        "raw_methodinfo_and_argument_flow_independently_checked": true,
+        "runtime_observed": false
+      },
+      {
+        "event": "UnityEngine.SceneManagement.SceneManager.activeSceneChanged",
+        "caller_token": "0x060056fa",
+        "caller": "PWC.GameSceneManager..cctor",
+        "handler_token": "0x060056fc",
+        "handler": "PWC.GameSceneManager.OnActiveSceneChanged",
+        "signup_site": "0x2072568",
+        "event_add_target": "0x3cdc02c",
+        "raw_methodinfo_and_argument_flow_independently_checked": true,
+        "runtime_observed": false
+      }
+    ],
+    "candidate_accounting": {
+      "raw_stage_event_add_candidates": 13,
+      "expanded_stage_signup_edges": 4,
+      "unexpanded_raw_stage_candidates": 9,
+      "separate_unity_activeSceneChanged_edge": 1,
+      "complete_graph_claim": false
+    },
+    "fifth_edge_limit": "cctor passes the exact OnActiveSceneChanged MethodDef usage and null target through helper0x305a558, then passes its constructed object to exact Unity add_activeSceneChanged. Helper identity/implementation is unresolved; argument flow and target call are verified, not runtime delegate invocation.",
+    "remaining": [
+      "Remaining nine raw direct Stage candidates require owner/CFG/delegate-flow work",
+      "Indirect/deferred/reflection registrations and unsubscription/lifetime",
+      "Runtime invocation order across instances and handler side effects",
+      "Complete subscriber graph and native-only/generated paths"
+    ]
+  },
+  "independent_mutation_checks": {
+    "passed": 8,
+    "failed": 0,
+    "method": "Disposable in-memory copies; called core guards without outer full-pair hash gate. Original files unchanged.",
+    "cases": [
+      {
+        "case": "fade duration .25->.5",
+        "result": "rejected: duration/register changed"
+      },
+      {
+        "case": "completion true/false branch inverted",
+        "result": "rejected: opcode mismatch"
+      },
+      {
+        "case": "fade completion callback metadata usage retargeted",
+        "result": "rejected: callback metadata usage mismatch"
+      },
+      {
+        "case": "next-frame coroutine yield removed",
+        "result": "rejected: opcode mismatch"
+      },
+      {
+        "case": "Fade metadata virtual slot retargeted",
+        "result": "rejected: virtual metadata method target mismatch"
+      },
+      {
+        "case": "manager prefab ptr242->243",
+        "result": "rejected: manager prefab reference changed"
+      },
+      {
+        "case": "subscriber signup BL target+4",
+        "result": "rejected: registration branch target/kind mismatch"
+      },
+      {
+        "case": "subscriber handler MethodDef usage retargeted",
+        "result": "rejected: handler MethodDef usage mismatch"
+      }
+    ]
+  },
+  "tests_reviewed": {
+    "loading_source_cases": 21,
+    "subscriber_source_cases": 9,
+    "producer_reports": "Producers reported21/21 and9/9 focused tests after freeze; not misrepresented as reviewer reruns. Reviewer independently executed the eight mutations above and original core guards. Root owns combined-suite execution.",
+    "skip_not_used_for_missing_inputs": true
+  },
+  "operational_review": {
+    "parent_T025_LoadScene_may_be_done": false,
+    "other_parent_completion_authorized": false,
+    "queue_state_changed_by_reviewer": false,
+    "recommended_checkpoint": "Record new evidence and remaining unknowns; keep parent incomplete until complete acceptance is independently met."
+  },
+  "not_executed": [
+    "Game/device/runtime replay",
+    "Active-target REA mutation",
+    "Unity/client/queue changes",
+    "Full-scope semantic equivalence proof",
+    "All dumps/backend/all subscriber inventory reanalysis"
+  ],
+  "review_commands": [
+    "Independently SHA256-check cached native/metadata pair",
+    "Decode raw metadata-v31 type/vtable/MethodDef rows",
+    "Read original selected Unity serialized MB259/242/291 envelopes and fileID1 MonoScript identities",
+    "LLVM bounded disassembly of Fade, completion, OnSceneLoaded and its false-fade closure",
+    "Cross-check five subscriber caller/handler/add rows and codegen pointers, MethodInfo usages, raw argument opcodes and direct branch targets",
+    "Compare ten loading candidate-window SHA256 values against original bytes",
+    "Execute original core verifiers and eight isolated in-memory mutation cases"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+ "species": "Cow",
+ "idle": "General/Blinking",
+ "basePieces": [
+  {
+   "template": "Templates/MultiPack__General",
+   "file": "multipack__general__79606.png",
+   "skin": "default"
+  }
+ ],
+ "variants": [
+  {
+   "id": "cow_a_1",
+   "pieces": [
+    {
+     "template": "Templates/MultiPack__Cow_A_1",
+     "file": "multipack__cow_a_1__77408.png",
+     "skin": "Cow_A_1"
+    }
+   ]
+  }
+ ]
+}

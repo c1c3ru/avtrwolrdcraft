@@ -191,9 +191,45 @@ namespace AvatarWorld.Runtime
 
         void BuildPetSlots()
         {
-            for (int i = 0; i < 3; i++)
-                Button("PetSlot" + (i + 1), _slotsRoot, Art("Slots/empty_pet"), new Vector2(0.5f, 0.5f), new Vector2(-455f + SlotSpacing * i, 0f), new Vector2(262f, 260f),
-                    () => { UiSound.PlayClick(); ShowToast("Pets ainda não estão disponíveis."); });
+            // Um slot por pet: o pet salvo (animado) sobre o pedestal, ou a silhueta para criar um novo.
+            for (int slot = 0; slot < PlayerState.PetSlotCount; slot++)
+            {
+                int captured = slot;
+                float x = -SlotSpacing + SlotSpacing * slot;
+                var pet = _state.GetPet(slot);
+                if (pet != null)
+                {
+                    var pedestal = NewImage("PetPedestal" + (slot + 1), _slotsRoot, PedestalSprite(), Color.white);
+                    Place(pedestal.rectTransform, new Vector2(x, -150f), new Vector2(380f, 110f));
+                    var hit = Button("PetSlot" + (slot + 1), _slotsRoot, null, new Vector2(0.5f, 0.5f), new Vector2(x, 0f), new Vector2(330f, 360f), () => OpenPetEditor(captured));
+                    hit.color = new Color(0, 0, 0, 0);
+                    var host = new GameObject("Pet salvo no slot " + (slot + 1));
+                    host.transform.SetParent(transform, false);
+                    host.AddComponent<PetGpuRuntime>().Configure(pet, new Vector3(x / 100f, -1.5f, 0f), 0.8f);
+                    _avatarHosts.Add(host);
+                    var label = NewText("PetName" + (slot + 1), _slotsRoot, 40, new Color(0.45f, 0.2f, 0.6f));
+                    Place(label.rectTransform, new Vector2(x, -260f), new Vector2(420f, 60f));
+                    label.text = PetCatalog.DisplayName(pet.Species);
+                }
+                else
+                {
+                    Button("PetSlot" + (slot + 1), _slotsRoot, Art("Slots/empty_pet"), new Vector2(0.5f, 0.5f), new Vector2(x, 0f), new Vector2(262f, 260f),
+                        () => OpenPetEditor(captured));
+                    var plus = NewImage("PetPlus" + (slot + 1), _slotsRoot, Art("Slots/plus"), Color.white);
+                    Place(plus.rectTransform, new Vector2(x, 0f), new Vector2(100f, 100f));
+                }
+            }
+        }
+
+        void OpenPetEditor(int slot)
+        {
+            if (_editorHost != null) return;
+            UiSound.PlayClick();
+            SetVisible(false);
+            ClearAvatarHosts();
+            _editorHost = new GameObject("PetEditorSession");
+            _editorHost.transform.SetParent(transform, false);
+            _editorHost.AddComponent<PetEditorScreen>().Begin(_saves, _state, slot, CloseEditor);
         }
 
         // ---------- editor do avatar (slot 1) ----------
@@ -260,7 +296,8 @@ namespace AvatarWorld.Runtime
 
         void CloseEditor()
         {
-            bool saved = _editorHost != null && _editorHost.GetComponent<AvatarEditorScreen>().Saved;
+            var avatarEditor = _editorHost != null ? _editorHost.GetComponent<AvatarEditorScreen>() : null;
+            bool saved = avatarEditor != null && avatarEditor.Saved;
             if (_editorHost != null) Destroy(_editorHost);
             _editorHost = null;
             if (_editingNew && !saved)

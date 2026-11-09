@@ -109,6 +109,37 @@ namespace AvatarWorld.Core.Economy
             }
         }
 
+        /// <summary>Quantidade de slots de pet da tela de slots (o original mostra 3).</summary>
+        public const int PetSlotCount = 3;
+        /// <summary>Pets criados (um por slot). Saves antigos sem o campo comecam sem pets.</summary>
+        public List<SavedPet> Pets = new List<SavedPet>();
+
+        public PetAppearance GetPet(int slot)
+        {
+            foreach (var p in Pets) if (p != null && p.Slot == slot) return p.Pet;
+            return null;
+        }
+
+        /// <summary>Grava (ou troca) o pet do slot com uma copia da aparencia; false se o slot ou a aparencia sao invalidos.</summary>
+        public bool SetPet(int slot, PetAppearance pet)
+        {
+            if (slot < 0 || slot >= PetSlotCount || pet == null || !pet.IsValid()) return false;
+            Pets.RemoveAll(p => p == null || p.Slot == slot);
+            Pets.Add(new SavedPet { Slot = slot, Pet = pet.Clone() });
+            return true;
+        }
+
+        public void RemovePet(int slot) => Pets.RemoveAll(p => p == null || p.Slot == slot);
+
+        /// <summary>Corrige save invalido: slots fora do intervalo/duplicados e pets nulos ou invalidos.</summary>
+        public void SanitizePets()
+        {
+            if (Pets == null) Pets = new List<SavedPet>();
+            var seen = new HashSet<int>();
+            Pets.RemoveAll(p => p == null || p.Pet == null || p.Slot < 0 || p.Slot >= PetSlotCount || !seen.Add(p.Slot));
+            foreach (var p in Pets) p.Pet.SanitizeInPlace();
+        }
+
         SavedAvatar FindOther(int slot)
         {
             foreach (var o in OtherAvatars) if (o != null && o.Slot == slot) return o;

@@ -1,0 +1,1902 @@
+{
+  "schema_version": 1,
+  "kind": "T025_LoadScene_stage_add_candidate_followup",
+  "classification": "STATIC_only_not_runtime_observed",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "method_index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+  "input_report_sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e",
+  "producer_sha256": "79bd0a71d28bca621c270bf4f45579acc6299128537585356831520b1f041da2",
+  "summary": {
+    "raw_candidates_reviewed": 9,
+    "handler_methoddefs_resolved_at_last_Action_ctor": 9,
+    "delegate_result_register_flows_candidate_proved": 9,
+    "positive_static_registration_edges": 9,
+    "add_accessor_targets_resolved": 9
+  },
+  "candidates": [
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "call_site": {
+        "address": "0x1e2987c",
+        "word": "0x1408fe98",
+        "bytes_le": "98fe0814"
+      },
+      "owner_candidate": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "Game.Level.LevelDigHoleArea",
+        "name": "Awake",
+        "token": "0x06002d6f",
+        "method_definition_index": 11630,
+        "parameter_count": 0,
+        "vaddr": "0x1e29750",
+        "file_offset": "0x1e25750"
+      },
+      "bounded_window": {
+        "start": "0x1e29750",
+        "stop_exclusive": "0x1e29880",
+        "bytes": 304,
+        "limit": "next metadata start is a bounded inspection limit, not a complete body/CFG"
+      },
+      "event_add_target": {
+        "kind": "B",
+        "target": 33985244
+      },
+      "resolved_add_method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "action_constructor_calls_before_add": [
+        "0x1e29800",
+        "0x1e29828",
+        "0x1e29850"
+      ],
+      "last_constructor_argument_window": [
+        {
+          "address": 31627332,
+          "word": 2853372897,
+          "text": "mov\tx1, x19"
+        },
+        {
+          "address": 31627336,
+          "word": 2854159331,
+          "text": "mov\tx3, xzr"
+        },
+        {
+          "address": 31627340,
+          "word": 2852127732,
+          "text": "mov\tx20, x0"
+        },
+        {
+          "address": 31627344,
+          "word": 2488438331,
+          "text": "bl\t0x32cd13c <__start_il2cpp+0x167bf2c>"
+        }
+      ],
+      "handler_resolution": {
+        "status": "resolved_methoddef_usage",
+        "method_info_load": {
+          "address": 31627328,
+          "word": 4181721794,
+          "text": "ldr\tx2, [x22]"
+        },
+        "method_info_source_register": 22,
+        "method_info_load_offset": 0,
+        "got_reference": {
+          "adrp": {
+            "address": 31627120,
+            "word": 3489733782,
+            "text": "adrp\tx22, 0x41bb000"
+          },
+          "ldr": {
+            "address": 31627144,
+            "word": 4181782230,
+            "text": "ldr\tx22, [x22, #0x1d8]"
+          },
+          "address": "0x41bb1d8"
+        },
+        "metadata_usage": {
+          "got_vaddr": "0x41bb1d8",
+          "usage_vaddr": "0x4324278",
+          "encoded": "0x60005ae5",
+          "kind": 3,
+          "index": 11634
+        },
+        "handler": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.LevelDigHoleArea",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x06002d73",
+          "method_definition_index": 11634,
+          "parameter_count": 0,
+          "vaddr": "0x1e29da8",
+          "file_offset": "0x1e25da8"
+        }
+      },
+      "delegate_result_to_event_argument": {
+        "status": "candidate_proved_by_register_flow",
+        "constructor_result_saved_in": "x20",
+        "restored_to_event_argument_x0_at": "0x1e29864",
+        "intervening_instructions_to_add": [
+          {
+            "address": 31627368,
+            "word": 2839760884,
+            "text": "ldp\tx20, x19, [sp, #0x30]"
+          },
+          {
+            "address": 31627372,
+            "word": 2839697398,
+            "text": "ldp\tx22, x21, [sp, #0x20]"
+          },
+          {
+            "address": 31627376,
+            "word": 2839633912,
+            "text": "ldp\tx24, x23, [sp, #0x10]"
+          },
+          {
+            "address": 31627380,
+            "word": 2854159329,
+            "text": "mov\tx1, xzr"
+          },
+          {
+            "address": 31627384,
+            "word": 2831443966,
+            "text": "ldp\tx30, x25, [sp], #0x40"
+          }
+        ],
+        "target_argument_setup_before_ctor": [
+          {
+            "address": 31627328,
+            "word": 4181721794,
+            "text": "ldr\tx2, [x22]"
+          },
+          {
+            "address": 31627332,
+            "word": 2853372897,
+            "text": "mov\tx1, x19"
+          },
+          {
+            "address": 31627336,
+            "word": 2854159331,
+            "text": "mov\tx3, xzr"
+          },
+          {
+            "address": 31627340,
+            "word": 2852127732,
+            "text": "mov\tx20, x0"
+          }
+        ],
+        "entry_x0_saved_as_this_x19": true,
+        "delegate_receiver_x1_is_this_x19": true,
+        "event_add_methodinfo_x1_is_null": true,
+        "owner_and_handler_type_compatible": true,
+        "base_type_resolution_candidates": [],
+        "owner_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelDigHoleArea.cs",
+          "exists": true,
+          "sha256": "ef8a511d5b2bbe958c148beffae8c30dc0f204e989ed56a719bea4920ad88f4e",
+          "declaration": "class LevelDigHoleArea : LevelDigArea, ILevelSpawnInRandomLocationTarget",
+          "base_list": [
+            "LevelDigArea",
+            "ILevelSpawnInRandomLocationTarget"
+          ]
+        },
+        "handler_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelDigHoleArea.cs",
+          "exists": true,
+          "sha256": "ef8a511d5b2bbe958c148beffae8c30dc0f204e989ed56a719bea4920ad88f4e",
+          "declaration": "class LevelDigHoleArea : LevelDigArea, ILevelSpawnInRandomLocationTarget",
+          "base_list": [
+            "LevelDigArea",
+            "ILevelSpawnInRandomLocationTarget"
+          ]
+        },
+        "positive_static_registration_edge": true
+      },
+      "assembly_path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_windows/0x06002d6f.asm.txt",
+      "assembly_sha256": "1ec19f22023350849bf64afde871428114d55029038def01a6690946bf06dcd4"
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "call_site": {
+        "address": "0x1e64304",
+        "word": "0x940813f6",
+        "bytes_le": "f6130894"
+      },
+      "owner_candidate": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "Game.Level.LevelSpawnOnLevelPostInit",
+        "name": "Awake",
+        "token": "0x060032a1",
+        "method_definition_index": 12960,
+        "parameter_count": 0,
+        "vaddr": "0x1e6419c",
+        "file_offset": "0x1e6019c"
+      },
+      "bounded_window": {
+        "start": "0x1e6419c",
+        "stop_exclusive": "0x1e64348",
+        "bytes": 428,
+        "limit": "next metadata start is a bounded inspection limit, not a complete body/CFG"
+      },
+      "event_add_target": {
+        "kind": "BL",
+        "target": 33985244
+      },
+      "resolved_add_method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "action_constructor_calls_before_add": [
+        "0x1e642a4",
+        "0x1e642e8"
+      ],
+      "last_constructor_argument_window": [
+        {
+          "address": 31867612,
+          "word": 2853372897,
+          "text": "mov\tx1, x19"
+        },
+        {
+          "address": 31867616,
+          "word": 2854159331,
+          "text": "mov\tx3, xzr"
+        },
+        {
+          "address": 31867620,
+          "word": 2852127732,
+          "text": "mov\tx20, x0"
+        },
+        {
+          "address": 31867624,
+          "word": 2488378261,
+          "text": "bl\t0x32cd13c <__start_il2cpp+0x167bf2c>"
+        }
+      ],
+      "handler_resolution": {
+        "status": "resolved_methoddef_usage",
+        "method_info_load": {
+          "address": 31867608,
+          "word": 4181721890,
+          "text": "ldr\tx2, [x25]"
+        },
+        "method_info_source_register": 25,
+        "method_info_load_offset": 0,
+        "got_reference": {
+          "adrp": {
+            "address": 31867476,
+            "word": 2415991513,
+            "text": "adrp\tx25, 0x41bc000"
+          },
+          "ldr": {
+            "address": 31867500,
+            "word": 4182007609,
+            "text": "ldr\tx25, [x25, #0x8b8]"
+          },
+          "address": "0x41bc8b8"
+        },
+        "metadata_usage": {
+          "got_vaddr": "0x41bc8b8",
+          "usage_vaddr": "0x4325ca8",
+          "encoded": "0x60006551",
+          "kind": 3,
+          "index": 12968
+        },
+        "handler": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.LevelSpawnOnLevelPostInit",
+          "name": "DestroyCurrentItems",
+          "token": "0x060032a9",
+          "method_definition_index": 12968,
+          "parameter_count": 0,
+          "vaddr": "0x1e64abc",
+          "file_offset": "0x1e60abc"
+        }
+      },
+      "delegate_result_to_event_argument": {
+        "status": "candidate_proved_by_register_flow",
+        "constructor_result_saved_in": "x20",
+        "restored_to_event_argument_x0_at": "0x1e642fc",
+        "intervening_instructions_to_add": [
+          {
+            "address": 31867648,
+            "word": 2854159329,
+            "text": "mov\tx1, xzr"
+          }
+        ],
+        "target_argument_setup_before_ctor": [
+          {
+            "address": 31867608,
+            "word": 4181721890,
+            "text": "ldr\tx2, [x25]"
+          },
+          {
+            "address": 31867612,
+            "word": 2853372897,
+            "text": "mov\tx1, x19"
+          },
+          {
+            "address": 31867616,
+            "word": 2854159331,
+            "text": "mov\tx3, xzr"
+          },
+          {
+            "address": 31867620,
+            "word": 2852127732,
+            "text": "mov\tx20, x0"
+          }
+        ],
+        "entry_x0_saved_as_this_x19": true,
+        "delegate_receiver_x1_is_this_x19": true,
+        "event_add_methodinfo_x1_is_null": true,
+        "owner_and_handler_type_compatible": true,
+        "base_type_resolution_candidates": [],
+        "owner_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelSpawnOnLevelPostInit.cs",
+          "exists": true,
+          "sha256": "6c76d1352d0ff7199cfacdeb91599edbf51f1751c83a6d7627842c8a32344de1",
+          "declaration": "class LevelSpawnOnLevelPostInit : MonoBehaviour, IHasPersistentData, IRequirePDSceneObject",
+          "base_list": [
+            "MonoBehaviour",
+            "IHasPersistentData",
+            "IRequirePDSceneObject"
+          ]
+        },
+        "handler_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelSpawnOnLevelPostInit.cs",
+          "exists": true,
+          "sha256": "6c76d1352d0ff7199cfacdeb91599edbf51f1751c83a6d7627842c8a32344de1",
+          "declaration": "class LevelSpawnOnLevelPostInit : MonoBehaviour, IHasPersistentData, IRequirePDSceneObject",
+          "base_list": [
+            "MonoBehaviour",
+            "IHasPersistentData",
+            "IRequirePDSceneObject"
+          ]
+        },
+        "positive_static_registration_edge": true
+      },
+      "assembly_path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_windows/0x060032a1.asm.txt",
+      "assembly_sha256": "1551d2d93dd3d84f03401e7b45d194802e80d2941c2fdfb975cf6a69d17570ec"
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "call_site": {
+        "address": "0x1f04e80",
+        "word": "0x14059117",
+        "bytes_le": "17910514"
+      },
+      "owner_candidate": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "Game.Level.WaterSlide.LevelSlideSwitcherHandler",
+        "name": "Awake",
+        "token": "0x06003cd0",
+        "method_definition_index": 15567,
+        "parameter_count": 0,
+        "vaddr": "0x1f04de0",
+        "file_offset": "0x1f00de0"
+      },
+      "bounded_window": {
+        "start": "0x1f04de0",
+        "stop_exclusive": "0x1f04e84",
+        "bytes": 164,
+        "limit": "next metadata start is a bounded inspection limit, not a complete body/CFG"
+      },
+      "event_add_target": {
+        "kind": "B",
+        "target": 33985244
+      },
+      "resolved_add_method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "action_constructor_calls_before_add": [
+        "0x1f04e58"
+      ],
+      "last_constructor_argument_window": [
+        {
+          "address": 32525900,
+          "word": 2853372897,
+          "text": "mov\tx1, x19"
+        },
+        {
+          "address": 32525904,
+          "word": 2854159331,
+          "text": "mov\tx3, xzr"
+        },
+        {
+          "address": 32525908,
+          "word": 2852127732,
+          "text": "mov\tx20, x0"
+        },
+        {
+          "address": 32525912,
+          "word": 2488213689,
+          "text": "bl\t0x32cd13c <__start_il2cpp+0x167bf2c>"
+        }
+      ],
+      "handler_resolution": {
+        "status": "resolved_methoddef_usage",
+        "method_info_load": {
+          "address": 32525896,
+          "word": 4181721730,
+          "text": "ldr\tx2, [x20]"
+        },
+        "method_info_source_register": 20,
+        "method_info_load_offset": 0,
+        "got_reference": {
+          "adrp": {
+            "address": 32525812,
+            "word": 4026602964,
+            "text": "adrp\tx20, 0x41bf000"
+          },
+          "ldr": {
+            "address": 32525828,
+            "word": 4182084244,
+            "text": "ldr\tx20, [x20, #0xb10]"
+          },
+          "address": "0x41bfb10"
+        },
+        "metadata_usage": {
+          "got_vaddr": "0x41bfb10",
+          "usage_vaddr": "0x4325b78",
+          "encoded": "0x600079a3",
+          "kind": 3,
+          "index": 15569
+        },
+        "handler": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.WaterSlide.LevelSlideSwitcherHandler",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x06003cd2",
+          "method_definition_index": 15569,
+          "parameter_count": 0,
+          "vaddr": "0x1f04f28",
+          "file_offset": "0x1f00f28"
+        }
+      },
+      "delegate_result_to_event_argument": {
+        "status": "candidate_proved_by_register_flow",
+        "constructor_result_saved_in": "x20",
+        "restored_to_event_argument_x0_at": "0x1f04e6c",
+        "intervening_instructions_to_add": [
+          {
+            "address": 32525936,
+            "word": 2839695348,
+            "text": "ldp\tx20, x19, [sp, #0x20]"
+          },
+          {
+            "address": 32525940,
+            "word": 2839631862,
+            "text": "ldp\tx22, x21, [sp, #0x10]"
+          },
+          {
+            "address": 32525944,
+            "word": 2854159329,
+            "text": "mov\tx1, xzr"
+          },
+          {
+            "address": 32525948,
+            "word": 2831376382,
+            "text": "ldp\tx30, x23, [sp], #0x30"
+          }
+        ],
+        "target_argument_setup_before_ctor": [
+          {
+            "address": 32525896,
+            "word": 4181721730,
+            "text": "ldr\tx2, [x20]"
+          },
+          {
+            "address": 32525900,
+            "word": 2853372897,
+            "text": "mov\tx1, x19"
+          },
+          {
+            "address": 32525904,
+            "word": 2854159331,
+            "text": "mov\tx3, xzr"
+          },
+          {
+            "address": 32525908,
+            "word": 2852127732,
+            "text": "mov\tx20, x0"
+          }
+        ],
+        "entry_x0_saved_as_this_x19": true,
+        "delegate_receiver_x1_is_this_x19": true,
+        "event_add_methodinfo_x1_is_null": true,
+        "owner_and_handler_type_compatible": true,
+        "base_type_resolution_candidates": [],
+        "owner_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/WaterSlide/LevelSlideSwitcherHandler.cs",
+          "exists": true,
+          "sha256": "dd3c7c55069b81baa4f7a919a90960c6ec3e3a72a110709426081248baa07ed0",
+          "declaration": "class LevelSlideSwitcherHandler : MonoBehaviour",
+          "base_list": [
+            "MonoBehaviour"
+          ]
+        },
+        "handler_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/WaterSlide/LevelSlideSwitcherHandler.cs",
+          "exists": true,
+          "sha256": "dd3c7c55069b81baa4f7a919a90960c6ec3e3a72a110709426081248baa07ed0",
+          "declaration": "class LevelSlideSwitcherHandler : MonoBehaviour",
+          "base_list": [
+            "MonoBehaviour"
+          ]
+        },
+        "positive_static_registration_edge": true
+      },
+      "assembly_path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_windows/0x06003cd0.asm.txt",
+      "assembly_sha256": "5a828f35aadc171689ec76cf1b941b9f8669da58e9b76911717797f643790ef6"
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "call_site": {
+        "address": "0x1f14dbc",
+        "word": "0x14055148",
+        "bytes_le": "48510514"
+      },
+      "owner_candidate": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "Game.Level.Locker.LevelLockerSpawnOnPostInit",
+        "name": "Awake",
+        "token": "0x06003e39",
+        "method_definition_index": 15928,
+        "parameter_count": 0,
+        "vaddr": "0x1f14d10",
+        "file_offset": "0x1f10d10"
+      },
+      "bounded_window": {
+        "start": "0x1f14d10",
+        "stop_exclusive": "0x1f14dc0",
+        "bytes": 176,
+        "limit": "next metadata start is a bounded inspection limit, not a complete body/CFG"
+      },
+      "event_add_target": {
+        "kind": "B",
+        "target": 33985244
+      },
+      "resolved_add_method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "action_constructor_calls_before_add": [
+        "0x1f14d94"
+      ],
+      "last_constructor_argument_window": [
+        {
+          "address": 32591240,
+          "word": 2853372897,
+          "text": "mov\tx1, x19"
+        },
+        {
+          "address": 32591244,
+          "word": 2854159331,
+          "text": "mov\tx3, xzr"
+        },
+        {
+          "address": 32591248,
+          "word": 2852127732,
+          "text": "mov\tx20, x0"
+        },
+        {
+          "address": 32591252,
+          "word": 2488197354,
+          "text": "bl\t0x32cd13c <__start_il2cpp+0x167bf2c>"
+        }
+      ],
+      "handler_resolution": {
+        "status": "resolved_methoddef_usage",
+        "method_info_load": {
+          "address": 32591236,
+          "word": 4181721730,
+          "text": "ldr\tx2, [x20]"
+        },
+        "method_info_source_register": 20,
+        "method_info_load_offset": 0,
+        "got_reference": {
+          "adrp": {
+            "address": 32591140,
+            "word": 2415990100,
+            "text": "adrp\tx20, 0x41bc000"
+          },
+          "ldr": {
+            "address": 32591156,
+            "word": 4182007444,
+            "text": "ldr\tx20, [x20, #0x8b8]"
+          },
+          "address": "0x41bc8b8"
+        },
+        "metadata_usage": {
+          "got_vaddr": "0x41bc8b8",
+          "usage_vaddr": "0x4325ca8",
+          "encoded": "0x60006551",
+          "kind": 3,
+          "index": 12968
+        },
+        "handler": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.LevelSpawnOnLevelPostInit",
+          "name": "DestroyCurrentItems",
+          "token": "0x060032a9",
+          "method_definition_index": 12968,
+          "parameter_count": 0,
+          "vaddr": "0x1e64abc",
+          "file_offset": "0x1e60abc"
+        }
+      },
+      "delegate_result_to_event_argument": {
+        "status": "candidate_proved_by_register_flow",
+        "constructor_result_saved_in": "x20",
+        "restored_to_event_argument_x0_at": "0x1f14da8",
+        "intervening_instructions_to_add": [
+          {
+            "address": 32591276,
+            "word": 2839695348,
+            "text": "ldp\tx20, x19, [sp, #0x20]"
+          },
+          {
+            "address": 32591280,
+            "word": 2839631862,
+            "text": "ldp\tx22, x21, [sp, #0x10]"
+          },
+          {
+            "address": 32591284,
+            "word": 2854159329,
+            "text": "mov\tx1, xzr"
+          },
+          {
+            "address": 32591288,
+            "word": 2831376382,
+            "text": "ldp\tx30, x23, [sp], #0x30"
+          }
+        ],
+        "target_argument_setup_before_ctor": [
+          {
+            "address": 32591236,
+            "word": 4181721730,
+            "text": "ldr\tx2, [x20]"
+          },
+          {
+            "address": 32591240,
+            "word": 2853372897,
+            "text": "mov\tx1, x19"
+          },
+          {
+            "address": 32591244,
+            "word": 2854159331,
+            "text": "mov\tx3, xzr"
+          },
+          {
+            "address": 32591248,
+            "word": 2852127732,
+            "text": "mov\tx20, x0"
+          }
+        ],
+        "entry_x0_saved_as_this_x19": true,
+        "delegate_receiver_x1_is_this_x19": true,
+        "event_add_methodinfo_x1_is_null": true,
+        "owner_and_handler_type_compatible": true,
+        "base_type_resolution_candidates": [
+          "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelSpawnOnLevelPostInit.cs"
+        ],
+        "owner_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/Locker/LevelLockerSpawnOnPostInit.cs",
+          "exists": true,
+          "sha256": "48d02a359b90b5013d5dd39f0e369ac8fc71c17937e4161648cf1c004471a9fb",
+          "declaration": "class LevelLockerSpawnOnPostInit : LevelSpawnOnLevelPostInit",
+          "base_list": [
+            "LevelSpawnOnLevelPostInit"
+          ]
+        },
+        "handler_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelSpawnOnLevelPostInit.cs",
+          "exists": true,
+          "sha256": "6c76d1352d0ff7199cfacdeb91599edbf51f1751c83a6d7627842c8a32344de1",
+          "declaration": "class LevelSpawnOnLevelPostInit : MonoBehaviour, IHasPersistentData, IRequirePDSceneObject",
+          "base_list": [
+            "MonoBehaviour",
+            "IHasPersistentData",
+            "IRequirePDSceneObject"
+          ]
+        },
+        "positive_static_registration_edge": true
+      },
+      "assembly_path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_windows/0x06003e39.asm.txt",
+      "assembly_sha256": "d3eafa95b892bb9c09f888320fe73718800f71b23c0adc1c94c69b2a12d8df1e"
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "call_site": {
+        "address": "0x2194518",
+        "word": "0x97fb5371",
+        "bytes_le": "7153fb97"
+      },
+      "owner_candidate": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.AvatarSpeech.AvatarSpeechUIMenu",
+        "name": "Awake",
+        "token": "0x06006997",
+        "method_definition_index": 27030,
+        "parameter_count": 0,
+        "vaddr": "0x21943d8",
+        "file_offset": "0x21903d8"
+      },
+      "bounded_window": {
+        "start": "0x21943d8",
+        "stop_exclusive": "0x2194628",
+        "bytes": 592,
+        "limit": "next metadata start is a bounded inspection limit, not a complete body/CFG"
+      },
+      "event_add_target": {
+        "kind": "BL",
+        "target": 33985244
+      },
+      "resolved_add_method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "action_constructor_calls_before_add": [
+        "0x21944fc"
+      ],
+      "last_constructor_argument_window": [
+        {
+          "address": 35210480,
+          "word": 2853372897,
+          "text": "mov\tx1, x19"
+        },
+        {
+          "address": 35210484,
+          "word": 2854159331,
+          "text": "mov\tx3, xzr"
+        },
+        {
+          "address": 35210488,
+          "word": 2852127732,
+          "text": "mov\tx20, x0"
+        },
+        {
+          "address": 35210492,
+          "word": 2487542544,
+          "text": "bl\t0x32cd13c <__start_il2cpp+0x167bf2c>"
+        }
+      ],
+      "handler_resolution": {
+        "status": "resolved_methoddef_usage",
+        "method_info_load": {
+          "address": 35210476,
+          "word": 4181721858,
+          "text": "ldr\tx2, [x24]"
+        },
+        "method_info_source_register": 24,
+        "method_info_load_offset": 0,
+        "got_reference": {
+          "adrp": {
+            "address": 35210236,
+            "word": 2415985144,
+            "text": "adrp\tx24, 0x41d0000"
+          },
+          "ldr": {
+            "address": 35210260,
+            "word": 4182117144,
+            "text": "ldr\tx24, [x24, #0xc10]"
+          },
+          "address": "0x41d0c10"
+        },
+        "metadata_usage": {
+          "got_vaddr": "0x41d0c10",
+          "usage_vaddr": "0x43194d8",
+          "encoded": "0x6000d333",
+          "kind": 3,
+          "index": 27033
+        },
+        "handler": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.AvatarSpeech.AvatarSpeechUIMenu",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x0600699a",
+          "method_definition_index": 27033,
+          "parameter_count": 0,
+          "vaddr": "0x2194904",
+          "file_offset": "0x2190904"
+        }
+      },
+      "delegate_result_to_event_argument": {
+        "status": "candidate_proved_by_register_flow",
+        "constructor_result_saved_in": "x20",
+        "restored_to_event_argument_x0_at": "0x2194510",
+        "intervening_instructions_to_add": [
+          {
+            "address": 35210516,
+            "word": 2854159329,
+            "text": "mov\tx1, xzr"
+          }
+        ],
+        "target_argument_setup_before_ctor": [
+          {
+            "address": 35210476,
+            "word": 4181721858,
+            "text": "ldr\tx2, [x24]"
+          },
+          {
+            "address": 35210480,
+            "word": 2853372897,
+            "text": "mov\tx1, x19"
+          },
+          {
+            "address": 35210484,
+            "word": 2854159331,
+            "text": "mov\tx3, xzr"
+          },
+          {
+            "address": 35210488,
+            "word": 2852127732,
+            "text": "mov\tx20, x0"
+          }
+        ],
+        "entry_x0_saved_as_this_x19": true,
+        "delegate_receiver_x1_is_this_x19": true,
+        "event_add_methodinfo_x1_is_null": true,
+        "owner_and_handler_type_compatible": true,
+        "base_type_resolution_candidates": [],
+        "owner_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarSpeech/AvatarSpeechUIMenu.cs",
+          "exists": true,
+          "sha256": "520fa0e89ad1a4190634ac7d8ed4108ee83eba80835e94a547f1748b3e39ac34",
+          "declaration": "class AvatarSpeechUIMenu : MonoBehaviour",
+          "base_list": [
+            "MonoBehaviour"
+          ]
+        },
+        "handler_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarSpeech/AvatarSpeechUIMenu.cs",
+          "exists": true,
+          "sha256": "520fa0e89ad1a4190634ac7d8ed4108ee83eba80835e94a547f1748b3e39ac34",
+          "declaration": "class AvatarSpeechUIMenu : MonoBehaviour",
+          "base_list": [
+            "MonoBehaviour"
+          ]
+        },
+        "positive_static_registration_edge": true
+      },
+      "assembly_path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_windows/0x06006997.asm.txt",
+      "assembly_sha256": "fe7102e72cccf1f0451fcc76c6c91e7b7c467710f37c7058eacb736fab0f6b4c"
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "call_site": {
+        "address": "0x22842dc",
+        "word": "0x97f79400",
+        "bytes_le": "0094f797"
+      },
+      "owner_candidate": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelKillArea",
+        "name": "Awake",
+        "token": "0x06007840",
+        "method_definition_index": 30783,
+        "parameter_count": 0,
+        "vaddr": "0x2284144",
+        "file_offset": "0x2280144"
+      },
+      "bounded_window": {
+        "start": "0x2284144",
+        "stop_exclusive": "0x22843e4",
+        "bytes": 672,
+        "limit": "next metadata start is a bounded inspection limit, not a complete body/CFG"
+      },
+      "event_add_target": {
+        "kind": "BL",
+        "target": 33985244
+      },
+      "resolved_add_method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "action_constructor_calls_before_add": [
+        "0x228427c",
+        "0x22842c0"
+      ],
+      "last_constructor_argument_window": [
+        {
+          "address": 36192948,
+          "word": 2853372897,
+          "text": "mov\tx1, x19"
+        },
+        {
+          "address": 36192952,
+          "word": 2854159331,
+          "text": "mov\tx3, xzr"
+        },
+        {
+          "address": 36192956,
+          "word": 2852127732,
+          "text": "mov\tx20, x0"
+        },
+        {
+          "address": 36192960,
+          "word": 2487296927,
+          "text": "bl\t0x32cd13c <__start_il2cpp+0x167bf2c>"
+        }
+      ],
+      "handler_resolution": {
+        "status": "resolved_methoddef_usage",
+        "method_info_load": {
+          "address": 36192944,
+          "word": 4181721858,
+          "text": "ldr\tx2, [x24]"
+        },
+        "method_info_source_register": 24,
+        "method_info_load_offset": 0,
+        "got_reference": {
+          "adrp": {
+            "address": 36192792,
+            "word": 4026595992,
+            "text": "adrp\tx24, 0x41d7000"
+          },
+          "ldr": {
+            "address": 36192812,
+            "word": 4181880600,
+            "text": "ldr\tx24, [x24, #0x4d8]"
+          },
+          "address": "0x41d74d8"
+        },
+        "metadata_usage": {
+          "got_vaddr": "0x41d74d8",
+          "usage_vaddr": "0x4324cb0",
+          "encoded": "0x6000f09b",
+          "kind": 3,
+          "index": 30797
+        },
+        "handler": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelKillArea",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x0600784e",
+          "method_definition_index": 30797,
+          "parameter_count": 0,
+          "vaddr": "0x22855a4",
+          "file_offset": "0x22815a4"
+        }
+      },
+      "delegate_result_to_event_argument": {
+        "status": "candidate_proved_by_register_flow",
+        "constructor_result_saved_in": "x20",
+        "restored_to_event_argument_x0_at": "0x22842d4",
+        "intervening_instructions_to_add": [
+          {
+            "address": 36192984,
+            "word": 2854159329,
+            "text": "mov\tx1, xzr"
+          }
+        ],
+        "target_argument_setup_before_ctor": [
+          {
+            "address": 36192944,
+            "word": 4181721858,
+            "text": "ldr\tx2, [x24]"
+          },
+          {
+            "address": 36192948,
+            "word": 2853372897,
+            "text": "mov\tx1, x19"
+          },
+          {
+            "address": 36192952,
+            "word": 2854159331,
+            "text": "mov\tx3, xzr"
+          },
+          {
+            "address": 36192956,
+            "word": 2852127732,
+            "text": "mov\tx20, x0"
+          }
+        ],
+        "entry_x0_saved_as_this_x19": true,
+        "delegate_receiver_x1_is_this_x19": true,
+        "event_add_methodinfo_x1_is_null": true,
+        "owner_and_handler_type_compatible": true,
+        "base_type_resolution_candidates": [],
+        "owner_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelKillArea.cs",
+          "exists": true,
+          "sha256": "3f7b5183ad4bf5eaf1b4b6b0f4152d7083d42fa25e261e9de908244ffc9e89fc",
+          "declaration": "class LevelKillArea : LevelDropArea, IPointerClickHandler, IEventSystemHandler, IPointerDownHandler, IMultiplayer_Messageable, IMultiplayer_NetworkIdentityBase, ILevelMakerDisabledWhileInEditMode",
+          "base_list": [
+            "LevelDropArea",
+            "IPointerClickHandler",
+            "IEventSystemHandler",
+            "IPointerDownHandler",
+            "IMultiplayer_Messageable",
+            "IMultiplayer_NetworkIdentityBase",
+            "ILevelMakerDisabledWhileInEditMode"
+          ]
+        },
+        "handler_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelKillArea.cs",
+          "exists": true,
+          "sha256": "3f7b5183ad4bf5eaf1b4b6b0f4152d7083d42fa25e261e9de908244ffc9e89fc",
+          "declaration": "class LevelKillArea : LevelDropArea, IPointerClickHandler, IEventSystemHandler, IPointerDownHandler, IMultiplayer_Messageable, IMultiplayer_NetworkIdentityBase, ILevelMakerDisabledWhileInEditMode",
+          "base_list": [
+            "LevelDropArea",
+            "IPointerClickHandler",
+            "IEventSystemHandler",
+            "IPointerDownHandler",
+            "IMultiplayer_Messageable",
+            "IMultiplayer_NetworkIdentityBase",
+            "ILevelMakerDisabledWhileInEditMode"
+          ]
+        },
+        "positive_static_registration_edge": true
+      },
+      "assembly_path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_windows/0x06007840.asm.txt",
+      "assembly_sha256": "ec82a85aec121c5fe1fbeef03f994f63eacf02b3f14ef51617f10f1a319aeff6"
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "call_site": {
+        "address": "0x2319798",
+        "word": "0x17f56215",
+        "bytes_le": "1562f517"
+      },
+      "owner_candidate": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelScreenshotManager",
+        "name": "Awake",
+        "token": "0x060084fe",
+        "method_definition_index": 34045,
+        "parameter_count": 0,
+        "vaddr": "0x23196f8",
+        "file_offset": "0x23156f8"
+      },
+      "bounded_window": {
+        "start": "0x23196f8",
+        "stop_exclusive": "0x231979c",
+        "bytes": 164,
+        "limit": "next metadata start is a bounded inspection limit, not a complete body/CFG"
+      },
+      "event_add_target": {
+        "kind": "B",
+        "target": 34021356
+      },
+      "resolved_add_method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage2Action",
+          "token": "0x060056f2",
+          "method_definition_index": 22257,
+          "parameter_count": 1,
+          "vaddr": "0x2071fec",
+          "file_offset": "0x206dfec"
+        }
+      ],
+      "action_constructor_calls_before_add": [
+        "0x2319770"
+      ],
+      "last_constructor_argument_window": [
+        {
+          "address": 36804452,
+          "word": 2853372897,
+          "text": "mov\tx1, x19"
+        },
+        {
+          "address": 36804456,
+          "word": 2854159331,
+          "text": "mov\tx3, xzr"
+        },
+        {
+          "address": 36804460,
+          "word": 2852127732,
+          "text": "mov\tx20, x0"
+        },
+        {
+          "address": 36804464,
+          "word": 2487144051,
+          "text": "bl\t0x32cd13c <__start_il2cpp+0x167bf2c>"
+        }
+      ],
+      "handler_resolution": {
+        "status": "resolved_methoddef_usage",
+        "method_info_load": {
+          "address": 36804448,
+          "word": 4181721730,
+          "text": "ldr\tx2, [x20]"
+        },
+        "method_info_source_register": 20,
+        "method_info_load_offset": 0,
+        "got_reference": {
+          "adrp": {
+            "address": 36804364,
+            "word": 2415982100,
+            "text": "adrp\tx20, 0x41d9000"
+          },
+          "ldr": {
+            "address": 36804380,
+            "word": 4182160020,
+            "text": "ldr\tx20, [x20, #0xd60]"
+          },
+          "address": "0x41d9d60"
+        },
+        "metadata_usage": {
+          "got_vaddr": "0x41d9d60",
+          "usage_vaddr": "0x4325840",
+          "encoded": "0x600109fd",
+          "kind": 3,
+          "index": 34046
+        },
+        "handler": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelScreenshotManager",
+          "name": "OnBeforeSceneLoad",
+          "token": "0x060084ff",
+          "method_definition_index": 34046,
+          "parameter_count": 0,
+          "vaddr": "0x231979c",
+          "file_offset": "0x231579c"
+        }
+      },
+      "delegate_result_to_event_argument": {
+        "status": "candidate_proved_by_register_flow",
+        "constructor_result_saved_in": "x20",
+        "restored_to_event_argument_x0_at": "0x2319784",
+        "intervening_instructions_to_add": [
+          {
+            "address": 36804488,
+            "word": 2839695348,
+            "text": "ldp\tx20, x19, [sp, #0x20]"
+          },
+          {
+            "address": 36804492,
+            "word": 2839631862,
+            "text": "ldp\tx22, x21, [sp, #0x10]"
+          },
+          {
+            "address": 36804496,
+            "word": 2854159329,
+            "text": "mov\tx1, xzr"
+          },
+          {
+            "address": 36804500,
+            "word": 2831376382,
+            "text": "ldp\tx30, x23, [sp], #0x30"
+          }
+        ],
+        "target_argument_setup_before_ctor": [
+          {
+            "address": 36804448,
+            "word": 4181721730,
+            "text": "ldr\tx2, [x20]"
+          },
+          {
+            "address": 36804452,
+            "word": 2853372897,
+            "text": "mov\tx1, x19"
+          },
+          {
+            "address": 36804456,
+            "word": 2854159331,
+            "text": "mov\tx3, xzr"
+          },
+          {
+            "address": 36804460,
+            "word": 2852127732,
+            "text": "mov\tx20, x0"
+          }
+        ],
+        "entry_x0_saved_as_this_x19": true,
+        "delegate_receiver_x1_is_this_x19": true,
+        "event_add_methodinfo_x1_is_null": true,
+        "owner_and_handler_type_compatible": true,
+        "base_type_resolution_candidates": [],
+        "owner_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelScreenshotManager.cs",
+          "exists": true,
+          "sha256": "092e2442d4f24ea8410da4dab20c16c462c49d00fe97c6a5c21e2bda88cd833a",
+          "declaration": "class LevelScreenshotManager : MonoBehaviour",
+          "base_list": [
+            "MonoBehaviour"
+          ]
+        },
+        "handler_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelScreenshotManager.cs",
+          "exists": true,
+          "sha256": "092e2442d4f24ea8410da4dab20c16c462c49d00fe97c6a5c21e2bda88cd833a",
+          "declaration": "class LevelScreenshotManager : MonoBehaviour",
+          "base_list": [
+            "MonoBehaviour"
+          ]
+        },
+        "positive_static_registration_edge": true
+      },
+      "assembly_path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_windows/0x060084fe.asm.txt",
+      "assembly_sha256": "5bd4b5c1899e927959f4dc35282eb9241c87a75110c8e107bc4dfc2405fb90ea"
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "call_site": {
+        "address": "0x23368c4",
+        "word": "0x17f4ca86",
+        "bytes_le": "86caf417"
+      },
+      "owner_candidate": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelNewAvatarManager",
+        "name": "Awake",
+        "token": "0x060085cd",
+        "method_definition_index": 34252,
+        "parameter_count": 0,
+        "vaddr": "0x23366d4",
+        "file_offset": "0x23326d4"
+      },
+      "bounded_window": {
+        "start": "0x23366d4",
+        "stop_exclusive": "0x23368c8",
+        "bytes": 500,
+        "limit": "next metadata start is a bounded inspection limit, not a complete body/CFG"
+      },
+      "event_add_target": {
+        "kind": "B",
+        "target": 33985244
+      },
+      "resolved_add_method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage1Action",
+          "token": "0x060056f0",
+          "method_definition_index": 22255,
+          "parameter_count": 1,
+          "vaddr": "0x20692dc",
+          "file_offset": "0x20652dc"
+        }
+      ],
+      "action_constructor_calls_before_add": [
+        "0x23367d8",
+        "0x2336828",
+        "0x233686c",
+        "0x2336890"
+      ],
+      "last_constructor_argument_window": [
+        {
+          "address": 36923524,
+          "word": 2853372897,
+          "text": "mov\tx1, x19"
+        },
+        {
+          "address": 36923528,
+          "word": 2854159331,
+          "text": "mov\tx3, xzr"
+        },
+        {
+          "address": 36923532,
+          "word": 2852127732,
+          "text": "mov\tx20, x0"
+        },
+        {
+          "address": 36923536,
+          "word": 2487114283,
+          "text": "bl\t0x32cd13c <__start_il2cpp+0x167bf2c>"
+        }
+      ],
+      "handler_resolution": {
+        "status": "resolved_methoddef_usage",
+        "method_info_load": {
+          "address": 36923520,
+          "word": 4181721858,
+          "text": "ldr\tx2, [x24]"
+        },
+        "method_info_source_register": 24,
+        "method_info_load_offset": 0,
+        "got_reference": {
+          "adrp": {
+            "address": 36923268,
+            "word": 2415981880,
+            "text": "adrp\tx24, 0x41da000"
+          },
+          "ldr": {
+            "address": 36923300,
+            "word": 4181838616,
+            "text": "ldr\tx24, [x24, #0x390]"
+          },
+          "address": "0x41da390"
+        },
+        "metadata_usage": {
+          "got_vaddr": "0x41da390",
+          "usage_vaddr": "0x4325230",
+          "encoded": "0x60010b9f",
+          "kind": 3,
+          "index": 34255
+        },
+        "handler": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelNewAvatarManager",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x060085d0",
+          "method_definition_index": 34255,
+          "parameter_count": 0,
+          "vaddr": "0x2336b68",
+          "file_offset": "0x2332b68"
+        }
+      },
+      "delegate_result_to_event_argument": {
+        "status": "candidate_proved_by_register_flow",
+        "constructor_result_saved_in": "x20",
+        "restored_to_event_argument_x0_at": "0x23368a4",
+        "intervening_instructions_to_add": [
+          {
+            "address": 36923560,
+            "word": 2839891956,
+            "text": "ldp\tx20, x19, [sp, #0x50]"
+          },
+          {
+            "address": 36923564,
+            "word": 2839828470,
+            "text": "ldp\tx22, x21, [sp, #0x40]"
+          },
+          {
+            "address": 36923568,
+            "word": 2839764984,
+            "text": "ldp\tx24, x23, [sp, #0x30]"
+          },
+          {
+            "address": 36923572,
+            "word": 2839701498,
+            "text": "ldp\tx26, x25, [sp, #0x20]"
+          },
+          {
+            "address": 36923576,
+            "word": 2839638012,
+            "text": "ldp\tx28, x27, [sp, #0x10]"
+          },
+          {
+            "address": 36923580,
+            "word": 2854159329,
+            "text": "mov\tx1, xzr"
+          },
+          {
+            "address": 36923584,
+            "word": 4165339134,
+            "text": "ldr\tx30, [sp], #0x60"
+          }
+        ],
+        "target_argument_setup_before_ctor": [
+          {
+            "address": 36923520,
+            "word": 4181721858,
+            "text": "ldr\tx2, [x24]"
+          },
+          {
+            "address": 36923524,
+            "word": 2853372897,
+            "text": "mov\tx1, x19"
+          },
+          {
+            "address": 36923528,
+            "word": 2854159331,
+            "text": "mov\tx3, xzr"
+          },
+          {
+            "address": 36923532,
+            "word": 2852127732,
+            "text": "mov\tx20, x0"
+          }
+        ],
+        "entry_x0_saved_as_this_x19": true,
+        "delegate_receiver_x1_is_this_x19": true,
+        "event_add_methodinfo_x1_is_null": true,
+        "owner_and_handler_type_compatible": true,
+        "base_type_resolution_candidates": [],
+        "owner_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelNewAvatarManager.cs",
+          "exists": true,
+          "sha256": "c55be9c528793e421d4d4decac76ea423ac4718c90dffb0c556d62fb3589e08b",
+          "declaration": "class LevelNewAvatarManager : MonoBehaviour",
+          "base_list": [
+            "MonoBehaviour"
+          ]
+        },
+        "handler_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelNewAvatarManager.cs",
+          "exists": true,
+          "sha256": "c55be9c528793e421d4d4decac76ea423ac4718c90dffb0c556d62fb3589e08b",
+          "declaration": "class LevelNewAvatarManager : MonoBehaviour",
+          "base_list": [
+            "MonoBehaviour"
+          ]
+        },
+        "positive_static_registration_edge": true
+      },
+      "assembly_path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_windows/0x060085cd.asm.txt",
+      "assembly_sha256": "55793956b690b6ccbd12bc8e672e3d7b8ea08c087eaadb19454d632bac2d81a7"
+    },
+    {
+      "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+      "call_site": {
+        "address": "0x233d35c",
+        "word": "0x17f4d392",
+        "bytes_le": "92d3f417"
+      },
+      "owner_candidate": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.Level.LevelMakerSwitcher",
+        "name": "Awake",
+        "token": "0x06008659",
+        "method_definition_index": 34392,
+        "parameter_count": 0,
+        "vaddr": "0x233d2b4",
+        "file_offset": "0x23392b4"
+      },
+      "bounded_window": {
+        "start": "0x233d2b4",
+        "stop_exclusive": "0x233d360",
+        "bytes": 172,
+        "limit": "next metadata start is a bounded inspection limit, not a complete body/CFG"
+      },
+      "event_add_target": {
+        "kind": "B",
+        "target": 34021796
+      },
+      "resolved_add_method": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "add_OnBeforeSceneLoadStage3Action",
+          "token": "0x060056f4",
+          "method_definition_index": 22259,
+          "parameter_count": 1,
+          "vaddr": "0x20721a4",
+          "file_offset": "0x206e1a4"
+        }
+      ],
+      "action_constructor_calls_before_add": [
+        "0x233d334"
+      ],
+      "last_constructor_argument_window": [
+        {
+          "address": 36950824,
+          "word": 2853372897,
+          "text": "mov\tx1, x19"
+        },
+        {
+          "address": 36950828,
+          "word": 2854159331,
+          "text": "mov\tx3, xzr"
+        },
+        {
+          "address": 36950832,
+          "word": 2852127732,
+          "text": "mov\tx20, x0"
+        },
+        {
+          "address": 36950836,
+          "word": 2487107458,
+          "text": "bl\t0x32cd13c <__start_il2cpp+0x167bf2c>"
+        }
+      ],
+      "handler_resolution": {
+        "status": "resolved_methoddef_usage",
+        "method_info_load": {
+          "address": 36950820,
+          "word": 4181721730,
+          "text": "ldr\tx2, [x20]"
+        },
+        "method_info_source_register": 20,
+        "method_info_load_offset": 0,
+        "got_reference": {
+          "adrp": {
+            "address": 36950728,
+            "word": 2952852724,
+            "text": "adrp\tx20, 0x41da000"
+          },
+          "ldr": {
+            "address": 36950744,
+            "word": 4181916308,
+            "text": "ldr\tx20, [x20, #0x5f0]"
+          },
+          "address": "0x41da5f0"
+        },
+        "metadata_usage": {
+          "got_vaddr": "0x41da5f0",
+          "usage_vaddr": "0x4325100",
+          "encoded": "0x60010cb3",
+          "kind": 3,
+          "index": 34393
+        },
+        "handler": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelMakerSwitcher",
+          "name": "OnBeforeSceneLoadStage3",
+          "token": "0x0600865a",
+          "method_definition_index": 34393,
+          "parameter_count": 0,
+          "vaddr": "0x233d360",
+          "file_offset": "0x2339360"
+        }
+      },
+      "delegate_result_to_event_argument": {
+        "status": "candidate_proved_by_register_flow",
+        "constructor_result_saved_in": "x20",
+        "restored_to_event_argument_x0_at": "0x233d348",
+        "intervening_instructions_to_add": [
+          {
+            "address": 36950860,
+            "word": 2839695348,
+            "text": "ldp\tx20, x19, [sp, #0x20]"
+          },
+          {
+            "address": 36950864,
+            "word": 2839631862,
+            "text": "ldp\tx22, x21, [sp, #0x10]"
+          },
+          {
+            "address": 36950868,
+            "word": 2854159329,
+            "text": "mov\tx1, xzr"
+          },
+          {
+            "address": 36950872,
+            "word": 2831376382,
+            "text": "ldp\tx30, x23, [sp], #0x30"
+          }
+        ],
+        "target_argument_setup_before_ctor": [
+          {
+            "address": 36950820,
+            "word": 4181721730,
+            "text": "ldr\tx2, [x20]"
+          },
+          {
+            "address": 36950824,
+            "word": 2853372897,
+            "text": "mov\tx1, x19"
+          },
+          {
+            "address": 36950828,
+            "word": 2854159331,
+            "text": "mov\tx3, xzr"
+          },
+          {
+            "address": 36950832,
+            "word": 2852127732,
+            "text": "mov\tx20, x0"
+          }
+        ],
+        "entry_x0_saved_as_this_x19": true,
+        "delegate_receiver_x1_is_this_x19": true,
+        "event_add_methodinfo_x1_is_null": true,
+        "owner_and_handler_type_compatible": true,
+        "base_type_resolution_candidates": [],
+        "owner_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelMakerSwitcher.cs",
+          "exists": true,
+          "sha256": "823efc15ee77c82d83f7b5b9600f2fcb5dd9fc4f8f4847e6cb502d73a2a95f0d",
+          "declaration": "class LevelMakerSwitcher : LevelLevelSwitcher",
+          "base_list": [
+            "LevelLevelSwitcher"
+          ]
+        },
+        "handler_class_source": {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelMakerSwitcher.cs",
+          "exists": true,
+          "sha256": "823efc15ee77c82d83f7b5b9600f2fcb5dd9fc4f8f4847e6cb502d73a2a95f0d",
+          "declaration": "class LevelMakerSwitcher : LevelLevelSwitcher",
+          "base_list": [
+            "LevelLevelSwitcher"
+          ]
+        },
+        "positive_static_registration_edge": true
+      },
+      "assembly_path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_windows/0x06008659.asm.txt",
+      "assembly_sha256": "2c84be93b14c21541668af5868c2be5d05fb63726de39696a11028820dbd8034"
+    }
+  ],
+  "limits": [
+    "Candidate owners are tied to the nearest metadata start; this bounded report does not assert complete body/CFG extents.",
+    "Positive edges require the exact add accessor, MethodDef usage passed to Action constructor, same-instance receiver identity (or source-confirmed base type), and delegate-result flow into x0.",
+    "No runtime subscription, invocation, order, lifetime, exception behavior, or handler effects are observed."
+  ],
+  "game_manager_stage_field_declarations": {
+    "source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+    "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+    "fields": [
+      {
+        "name": "OnBeforeSceneLoadStage1Action",
+        "offset": "0x0"
+      },
+      {
+        "name": "OnBeforeSceneLoadStage2Action",
+        "offset": "0x8"
+      },
+      {
+        "name": "OnBeforeSceneLoadStage3Action",
+        "offset": "0x10"
+      }
+    ],
+    "dispatch_review_sha256": "055d2eafca19ec8f9260875cf64841cbf7b7f767476d726b8d19d635d07b9b1b",
+    "ordered_dispatches": [
+      {
+        "candidate_slot_offset": "0x0",
+        "anchors": [
+          {
+            "site": "0x2072b5c",
+            "word": "0xf9400108"
+          },
+          {
+            "site": "0x2072b60",
+            "word": "0xb40000c8"
+          },
+          {
+            "site": "0x2072b64",
+            "word": "0xf9400d09"
+          },
+          {
+            "site": "0x2072b68",
+            "word": "0xf9402100"
+          },
+          {
+            "site": "0x2072b6c",
+            "word": "0xf9401501"
+          },
+          {
+            "site": "0x2072b70",
+            "word": "0xd63f0120"
+          }
+        ],
+        "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+        "otherwise": "CBZ bypasses the indirect call"
+      },
+      {
+        "candidate_slot_offset": "0x8",
+        "anchors": [
+          {
+            "site": "0x2072b88",
+            "word": "0xf9405c08"
+          },
+          {
+            "site": "0x2072b90",
+            "word": "0xb40000c8"
+          },
+          {
+            "site": "0x2072b94",
+            "word": "0xf9400d09"
+          },
+          {
+            "site": "0x2072b98",
+            "word": "0xf9402100"
+          },
+          {
+            "site": "0x2072b9c",
+            "word": "0xf9401501"
+          },
+          {
+            "site": "0x2072ba0",
+            "word": "0xd63f0120"
+          }
+        ],
+        "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+        "otherwise": "CBZ bypasses the indirect call"
+      },
+      {
+        "candidate_slot_offset": "0x10",
+        "anchors": [
+          {
+            "site": "0x2072bbc",
+            "word": "0xf9400908"
+          },
+          {
+            "site": "0x2072bc0",
+            "word": "0xb40000a8"
+          },
+          {
+            "site": "0x2072bc4",
+            "word": "0xf9400d09"
+          },
+          {
+            "site": "0x2072bc8",
+            "word": "0xf9402100"
+          },
+          {
+            "site": "0x2072bcc",
+            "word": "0xf9401501"
+          },
+          {
+            "site": "0x2072bd0",
+            "word": "0xd63f0120"
+          }
+        ],
+        "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+        "otherwise": "CBZ bypasses the indirect call"
+      }
+    ],
+    "typeinfo_provenance": {
+      "adrp_site": "0x20728e8",
+      "ldr_site": "0x20728f0",
+      "got_vaddr": 68978112,
+      "base_register": 23,
+      "destination_register": 23,
+      "usage": {
+        "got_vaddr": "0x41c85c0",
+        "usage_vaddr": "0x42fa8c8",
+        "encoded": "0x20011d2f",
+        "kind": 1,
+        "index": 36503
+      },
+      "resolved_typedef_candidates": [
+        {
+          "index": 3802,
+          "name": "<>c__DisplayClass28_0",
+          "namespace": ""
+        }
+      ]
+    },
+    "binding_status": "CANDIDATE_ONLY_unresolved_static_data_base",
+    "limit": "The three null-guarded indirect calls and load offsets 0/8/16 are observed. The TypeInfo resolves to <>c__DisplayClass28_0 and the static-data base is not joined to GameSceneManager, so named-field association is unproven; actual delegate targets remain runtime-dependent."
+  },
+  "reconciled_direct_stage_registration_scan": {
+    "prior_probe_sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e",
+    "raw_direct_candidates": 13,
+    "prior_positive_stage_edges": 4,
+    "newly_verified_stage_edges": 9,
+    "total_direct_candidates_verified": 13,
+    "by_event_candidate_counts": {
+      "add_OnBeforeSceneLoadStage1Action": 8,
+      "add_OnBeforeSceneLoadStage2Action": 3,
+      "add_OnBeforeSceneLoadStage3Action": 2
+    },
+    "previous_edges": [
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.BackgroundPlanetSoundHandler.Awake",
+        "handler": "PWC.BackgroundPlanetSoundHandler.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06005601",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.PersistentData.PersistentDataManager.Awake",
+        "handler": "PWC.PersistentData.PersistentDataManager.OnBeforeSceneLoadStage2",
+        "handler_token": "0x06006e44",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage2",
+        "handler_token": "0x0600849c",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage3Action",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage3",
+        "handler_token": "0x0600849d",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      }
+    ],
+    "new_edges": [
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.LevelDigHoleArea.Awake",
+        "handler": "Game.Level.LevelDigHoleArea.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06002d73",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.LevelSpawnOnLevelPostInit.Awake",
+        "handler": "Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems",
+        "handler_token": "0x060032a9",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.Awake",
+        "handler": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06003cd2",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.Locker.LevelLockerSpawnOnPostInit.Awake",
+        "handler": "Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems",
+        "handler_token": "0x060032a9",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.AvatarSpeech.AvatarSpeechUIMenu.Awake",
+        "handler": "PWC.AvatarSpeech.AvatarSpeechUIMenu.OnBeforeSceneLoadStage1",
+        "handler_token": "0x0600699a",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.Level.LevelKillArea.Awake",
+        "handler": "PWC.Level.LevelKillArea.OnBeforeSceneLoadStage1",
+        "handler_token": "0x0600784e",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.Level.LevelScreenshotManager.Awake",
+        "handler": "PWC.Level.LevelScreenshotManager.OnBeforeSceneLoad",
+        "handler_token": "0x060084ff",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.Level.LevelNewAvatarManager.Awake",
+        "handler": "PWC.Level.LevelNewAvatarManager.OnBeforeSceneLoadStage1",
+        "handler_token": "0x060085d0",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage3Action",
+        "caller": "PWC.Level.LevelMakerSwitcher.Awake",
+        "handler": "PWC.Level.LevelMakerSwitcher.OnBeforeSceneLoadStage3",
+        "handler_token": "0x0600865a",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      }
+    ],
+    "limit": "The 13 direct B/BL add candidates in this bounded executable-code scan are verified. This is not a complete subscriber graph; indirect, reflection, dynamically loaded and other code paths remain open."
+  }
+}

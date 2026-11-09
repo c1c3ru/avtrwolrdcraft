@@ -64,6 +64,8 @@ namespace AvatarWorld.Runtime
         Dictionary<string, Material> _materialByPage;
         readonly HashSet<string> _loadedClothingPages = new HashSet<string>();
         readonly Dictionary<string, string> _pageFileLoaded = new Dictionary<string, string>(); // pagina -> arquivo da textura atual
+        // Cor assada (Overlay) na textura atual da pagina; ausente = textura sem tinta. So crianca/bebe: o original mistura Overlay.
+        readonly Dictionary<string, Color> _pageOverlay = new Dictionary<string, Color>();
         readonly Dictionary<string, Texture2D> _pageTextures = new Dictionary<string, Texture2D>();
         readonly Dictionary<string, bool> _available = new Dictionary<string, bool>();
         Texture2D _blank;
@@ -94,6 +96,8 @@ namespace AvatarWorld.Runtime
         Action _onClose;
         bool _useSharedState;
         bool _embeddedWorldAvatar;
+        /// <summary>Ordem de desenho do avatar quando embutido numa cena (padrao 4: quadra de basquete).</summary>
+        public int EmbeddedSortingOrder = 4;
         Vector3 _worldPosition;
         int _worldSortingOrder = 4;
         float _worldScale = 1f;
@@ -288,65 +292,6 @@ namespace AvatarWorld.Runtime
         }
 
         /// <summary>Esqueleto e skin prontos (Start concluiu); o editor visual espera isto antes de gerar miniaturas.</summary>
-        /// <summary>
-        /// Renderiza uma aparencia qualquer (NPC) numa textura transparente e devolve um sprite com o pivo nos pes. Troca a
-        /// aparencia do avatar so durante a captura (mesmo quadro) e a restaura. Os ids do look nao precisam estar nas listas do
-        /// editor, so no manifesto; "none" ou ids desconhecidos simplesmente nao desenham peca.
-        /// </summary>
-        public Sprite CaptureLook(AvatarAppearance look, int size = 256)
-        {
-            if (!IsReady || look == null || _kind != AvatarKind.Adult) return null; // NPCs sao adultos; outro tipo = outro esqueleto
-            var t = _skeletonAnimation.transform;
-            var backup = Appearance.Clone();
-            var position = t.position; var scale = t.localScale; float facing = _skeletonAnimation.Skeleton.ScaleX;
-            var spot = new Vector3(0f, 500f, 0f);
-            RenderTexture rt = null; GameObject camGo = null; Texture2D tex = null;
-            try
-            {
-                CopyAppearance(look, Appearance);
-                RebuildSkin();
-                t.position = spot; t.localScale = Vector3.one; _skeletonAnimation.Skeleton.ScaleX = 1f;
-                RefreshMesh();
-                var mr = t.GetComponent<MeshRenderer>();
-                var bounds = mr != null ? mr.bounds : new Bounds(spot + Vector3.up, Vector3.one * 2f);
-                float ortho = Mathf.Max(bounds.extents.x, bounds.extents.y, 0.1f) * 1.05f;
-                camGo = new GameObject("NpcCaptureCamera", typeof(Camera));
-                var cam = camGo.GetComponent<Camera>();
-                cam.orthographic = true; cam.orthographicSize = ortho; cam.enabled = false;
-                cam.clearFlags = CameraClearFlags.SolidColor; cam.backgroundColor = new Color(0f, 0f, 0f, 0f);
-                camGo.transform.position = new Vector3(bounds.center.x, bounds.center.y, -10f);
-                rt = new RenderTexture(size, size, 16, RenderTextureFormat.ARGB32);
-                cam.targetTexture = rt;
-                cam.Render();
-                RenderTexture.active = rt;
-                tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
-                tex.ReadPixels(new Rect(0, 0, size, size), 0, 0);
-                tex.Apply();
-                var pivot = new Vector2((t.position.x - (bounds.center.x - ortho)) / (2f * ortho), (t.position.y - (bounds.center.y - ortho)) / (2f * ortho));
-                return Sprite.Create(tex, new Rect(0, 0, size, size), pivot, size / (2f * ortho));
-            }
-            finally
-            {
-                RenderTexture.active = null;
-                if (camGo != null) Destroy(camGo);
-                if (rt != null) { rt.Release(); Destroy(rt); }
-                CopyAppearance(backup, Appearance);
-                RebuildSkin();
-                t.position = position; t.localScale = scale; _skeletonAnimation.Skeleton.ScaleX = facing;
-                RefreshMesh();
-            }
-        }
-
-        // Copia todos os campos sem validar contra o catalogo (NPCs usam itens fora das listas do editor).
-        static void CopyAppearance(AvatarAppearance from, AvatarAppearance to)
-        {
-            to.HairId = from.HairId; to.ShirtId = from.ShirtId; to.BottomId = from.BottomId; to.ShoesId = from.ShoesId;
-            to.AccessoryId = from.AccessoryId; to.MouthId = from.MouthId; to.EyebrowsId = from.EyebrowsId;
-            to.HairBackId = from.HairBackId; to.HatId = from.HatId; to.JacketId = from.JacketId;
-            to.SkinIndex = from.SkinIndex; to.EyesIndex = from.EyesIndex;
-            to.ItemColors = from.Clone().ItemColors;
-        }
-
         /// <summary>Avatar embutido (mundo/interior): toca uma animacao do esqueleto se ela existir.</summary>
         public void PlayAnimation(string animationName, bool loop)
         {
@@ -414,6 +359,7 @@ namespace AvatarWorld.Runtime
                 _materialByPage[page].mainTexture = _blank;
                 _pageTextures.Remove(page);
                 _pageFileLoaded.Remove(page);
+                _pageOverlay.Remove(page);
             }
         }
 
@@ -470,18 +416,21 @@ namespace AvatarWorld.Runtime
             _skeletonAnimation.LateUpdate();
         }
 
-        void LoadItemTextures(ManifestItem item)
+        void LoadItemTextures(ManifestItem item, Color? overlay = null)
         {
             foreach (var piece in item.pieces)
             {
                 var pageName = piece.template.Substring("Templates/".Length);
-                if (_pageFileLoaded.TryGetValue(pageName, out var loadedFile) && loadedFile == piece.file) continue;
+                bool hadOverlay = _pageOverlay.TryGetValue(pageName, out var oldOverlay);
+                bool sameOverlay = overlay.HasValue ? hadOverlay && oldOverlay == overlay.Value : !hadOverlay;
+                if (_pageFileLoaded.TryGetValue(pageName, out var loadedFile) && loadedFile == piece.file && sameOverlay) continue;
                 var resourceName = System.IO.Path.GetFileNameWithoutExtension(piece.file);
                 var source = Resources.Load<Texture2D>("AvatarSpine/Clothing/" + resourceName);
                 if (source == null) { Debug.LogError("AvatarGpuRuntime: textura de roupa ausente " + resourceName); continue; }
-                var texture = PremultipliedCopy(source);
+                var texture = PremultipliedCopy(source, overlay);
                 Resources.UnloadAsset(source);
                 texture.name = pageName;
+                if (overlay.HasValue) _pageOverlay[pageName] = overlay.Value; else _pageOverlay.Remove(pageName);
                 if (_pageTextures.TryGetValue(pageName, out var old) && old != null) Destroy(old);
                 _materialByPage[pageName].mainTexture = texture;
                 _pageTextures[pageName] = texture;
@@ -523,9 +472,13 @@ namespace AvatarWorld.Runtime
             foreach (var category in _categories)
             {
                 if (!_itemsById.TryGetValue(Appearance.Get(category.key), out var item)) continue; // item embutido (boca padrao)
-                LoadItemTextures(item);
-                // Itens _color: tinta Multiply com a cor escolhida na paleta General (AvatarSpineSkinsColoringConfigs: Single/Multiply).
-                var tint = AvatarCatalog.IsColorItem(item.id) ? GeneralColor(Appearance.GetItemColor(AvatarCatalog.ColorKey(category.key))) : Color.white;
+                // Itens _color: adulto = tinta Multiply na paleta General (ColoringConfigs Single/Multiply);
+                // crianca/bebe = Overlay (ColoringConfigs Single/Overlay), assado na textura da pagina.
+                bool colored = AvatarCatalog.IsColorItem(item.id);
+                var chosen = colored ? GeneralColor(Appearance.GetItemColor(AvatarCatalog.ColorKey(category.key))) : Color.white;
+                bool bake = colored && _kind != AvatarKind.Adult;
+                LoadItemTextures(item, bake ? chosen : (Color?)null);
+                var tint = colored && !bake ? chosen : Color.white;
                 foreach (var piece in item.pieces)
                     AddSkin(_skeletonData, skin, tints, SkinOf(piece), tint);
             }
@@ -608,12 +561,22 @@ namespace AvatarWorld.Runtime
             }
         }
 
-        static Texture2D PremultipliedCopy(Texture2D source)
+        // Overlay (base = textura, mistura = cor): escuro 2*b*t, claro 1-2*(1-b)*(1-t).
+        static float OverlayChannel(float b, float t) => b < 0.5f ? 2f * b * t : 1f - 2f * (1f - b) * (1f - t);
+
+        static Texture2D PremultipliedCopy(Texture2D source, Color? overlay = null)
         {
             var pixels = source.GetPixels32();
             for (int i = 0; i < pixels.Length; i++)
             {
                 var p = pixels[i];
+                if (overlay.HasValue)
+                {
+                    var o = overlay.Value;
+                    p.r = (byte)Mathf.Clamp(Mathf.RoundToInt(OverlayChannel(p.r / 255f, o.r) * 255f), 0, 255);
+                    p.g = (byte)Mathf.Clamp(Mathf.RoundToInt(OverlayChannel(p.g / 255f, o.g) * 255f), 0, 255);
+                    p.b = (byte)Mathf.Clamp(Mathf.RoundToInt(OverlayChannel(p.b / 255f, o.b) * 255f), 0, 255);
+                }
                 float a = p.a / 255f;
                 pixels[i] = new Color32((byte)(p.r * a), (byte)(p.g * a), (byte)(p.b * a), p.a);
             }

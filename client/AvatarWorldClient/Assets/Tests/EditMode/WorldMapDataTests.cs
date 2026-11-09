@@ -22,6 +22,30 @@ namespace AvatarWorld.Core.Tests
         }
 
         [Test]
+        public void Motion_CloudsAndTrainMatchStaticRenderersByNameAndPosition()
+        {
+            var world = Load();
+            var motion = JsonUtility.FromJson<WorldMotionData>(Resources.Load<TextAsset>("WorldSlice/motion").text);
+            Assert.AreEqual(26, motion.clouds.Count);
+            Assert.AreEqual(1, motion.trains.Count);
+            Assert.AreEqual(2, motion.spines.Count);
+            bool Has(string go, float x, float y) =>
+                world.renderers.Any(r => r.go == go && Mathf.Abs(r.x - x) + Mathf.Abs(r.y - y) < 0.05f);
+            // nuvens nascem sem sprite no level4: o spawner sorteia das listas (12 sprites exportados a parte)
+            foreach (var m in motion.cloudSprites.clear.Concat(motion.cloudSprites.rain).Concat(motion.cloudSprites.heavy))
+                Assert.IsNotNull(Resources.Load<Texture2D>("WorldSlice/sprites/" + m.file), m.file);
+            Assert.AreEqual(4, motion.cloudSprites.clear.Count);
+            Assert.AreEqual(4, motion.cloudSprites.rain.Count);
+            Assert.AreEqual(4, motion.cloudSprites.heavy.Count);
+            var t = motion.trains[0];
+            Assert.IsTrue(Has(t.go, t.x, t.y), "trem " + t.go);
+            Assert.Less(t.start.x, t.x);
+            Assert.Greater(t.goTo.x, t.x);
+            Assert.AreEqual(3.5f, t.toInitialSeconds);
+            Assert.AreEqual(5f, t.toGoToSeconds);
+        }
+
+        [Test]
         public void Weather_VisibilityFollowsTheOriginalSupportedWeatherList()
         {
             var always = new WorldRendererData();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 using AvatarWorld.Core.Economy;
 using AvatarWorld.Core.Literacy;
 using UnityEngine;
@@ -24,8 +25,12 @@ namespace AvatarWorld.Runtime
         HomeActions _homeActions;
         WorldMapRuntime _worldMap;
 
-        void Start()
+        IEnumerator Start()
         {
+            LoadingScreen.Show();
+            // Libera ao menos um frame para a composição laranja aparecer antes da montagem
+            // síncrona da Home e dos seus 149 elementos exportados.
+            yield return null;
             // Builds de desenvolvimento por padrao nao logam stack trace completo de excecao no
             // Android; sem isso o logcat so mostra "NullReferenceException" sem dizer onde.
             Application.SetStackTraceLogType(LogType.Exception, StackTraceLogType.Full);
@@ -36,7 +41,12 @@ namespace AvatarWorld.Runtime
             _literacy = new LiteracyChallengeService(_state, economy);
 
             var json = Resources.Load<TextAsset>(SceneJson);
-            if (json == null) { Debug.LogError("Home: " + SceneJson + ".json nao encontrado em Resources"); return; }
+            if (json == null)
+            {
+                Debug.LogError("Home: " + SceneJson + ".json nao encontrado em Resources");
+                LoadingScreen.Hide(0f);
+                yield break;
+            }
 
             var desc = JsonUtility.FromJson<SceneDescription>(json.text);
             var objs = UiSceneBuilder.Build(desc, key => Resources.Load<Sprite>(SpriteDir + key));
@@ -58,6 +68,8 @@ namespace AvatarWorld.Runtime
             _homeActions.Initialize(objs, _save, _state, OpenWorldMap, OpenStarterPackChallenges, () => OpenStore());
 
             BackgroundMusic.Play("Audio/home_music");
+            yield return new WaitForSecondsRealtime(.65f);
+            LoadingScreen.Hide();
         }
 
         /// <summary>"Pacote Inicial": desafios aleatorios do banco de 100, na dificuldade do valor do pacote.</summary>
@@ -117,6 +129,7 @@ namespace AvatarWorld.Runtime
         void OpenAvatarSlots()
         {
             if (FindFirstObjectByType<AvatarSlotsScreen>() != null) return;
+            LoadingScreen.Show();
             if (_worldMap != null) _worldMap.gameObject.SetActive(false);
             var host = new GameObject("AvatarSlots");
             var slots = host.AddComponent<AvatarSlotsScreen>();
@@ -124,8 +137,11 @@ namespace AvatarWorld.Runtime
             {
                 _save.Save(_state);
                 Destroy(host);
+                LoadingScreen.Show();
                 if (_worldMap != null) _worldMap.gameObject.SetActive(true);
+                LoadingScreen.Hide(0.5f);
             }, () => OpenStore(() => { }));
+            LoadingScreen.Hide(0.7f);
         }
 
         void CloseWorldMap()
