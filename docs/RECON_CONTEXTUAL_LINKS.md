@@ -91,3 +91,6 @@ As duas discrepâncias já registradas (`Bubble_Blower_Tube_L209_Baby_ReactionDa
 `PWC.PSDToLevel.LevelContextualAnimation.LevelCAItemHandlerWithData.GetData()` (a família `*WithData`, que detém a maior parte dos 974 assets `LevelCAItemHandlerData`) só devolve o campo `Data`, uma referência serializada direta — sem `Resources.Load` por nome nem busca por string. Isso descarta essa classe como fonte dos 85 assets órfãos, mas não identifica o mecanismo real; `LevelCAReactionsData` e as famílias `LevelCAParentHandlerBase`/`LevelCAItemOnBoneHandlerBase` ainda não foram checadas.
 
 T035 continua parcial.
+
+## Atualização L04 (2026-11-09): slots de vtable resolvidos por nome
+Os slots que este documento inferia por posição foram resolvidos pelo metadata e provados por `tools/recon_ca_lifecycle.py`: +0x198 `IsValidForTarget`, +0x1f8 `OnAddedToTarget`, +0x208 `OnRemovedFromTarget`, +0x298 `OnAnimationFullCycleEnd`. Correções: +0x338 é `IsLockedToTarget` (não "bool não identificado") e +0x3a8 é `IsRelevantForTarget` (não "TryForceToSit-like"). Regra de nome, gatilhos e eventos em `docs/loops/results/L04.md`.

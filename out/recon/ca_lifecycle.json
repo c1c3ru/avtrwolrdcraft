@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "scope": "bounded static proof; no execution",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "add": {
+    "handler_virtual_calls_in_order": [
+      "IsValidForTarget",
+      "IsLockedToTarget",
+      "GetLockedAnimationName",
+      "OnAddedToTarget",
+      "IsRelevantForTarget",
+      "IsSilent"
+    ],
+    "direct_calls_in_order": [
+      "Behaviour.get_enabled",
+      "CATargetExtensionMethods.AddCAHandler",
+      "Object.op_Inequality",
+      "CATargetExtensionMethods.SetForceSitIfNeeded"
+    ],
+    "inferred": [
+      "GetLockedAnimationName is called on the target's locked handler (result of the previous call), not on the handler argument; its slot name is proven, its receiver is inferred"
+    ]
+  },
+  "remove": {
+    "handler_virtual_calls_in_order": [
+      "OnRemovedFromTarget",
+      "AllowReturnToIdleAnimationWhenRemovedFromTarget",
+      "IsSilent"
+    ],
+    "direct_calls_in_order": [
+      "Object.op_Equality",
+      "Object.op_Equality"
+    ]
+  },
+  "triggers": {
+    "PlayContextualAnimation": {
+      "user menu": [
+        "PWC.LevelContextualAnimation.LevelContextualAnimationMenu.OnAnimationItemClick"
+      ],
+      "multiplayer replay": [
+        "PWC.Multiplayer.MPDataHelper_CA.HandleData"
+      ],
+      "spawn / randomizer": [
+        "Game.Level.LevelInitAnimalStateOnPack.InitIfNeeded",
+        "Game.Level.LevelInitCharacterStateOnPack.InitIfNeeded",
+        "PWC.Level.LevelAvatarOneTimeSpawner.HandleCAHandlers",
+        "PWC.Level.LevelCharactersRandomizer.HandleCAHandlers"
+      ],
+      "drop-area events": [
+        "Game.Level.ContextualAnimation.LevelCAAlterSideDropAreaHandler.OnEventTrigger",
+        "Game.Level.ContextualAnimation.LevelCAPenaltyKickDropAreaHandler.OnAnimationBegin",
+        "Game.Level.LevelFoodFightDropAreaHandler.SpawnAndThrowGoo"
+      ],
+      "conductor (reaction on others)": [
+        "Game.Level.ContextualAnimation.LevelCAConductorDropAreaHandler.SetAnimationOnOther"
+      ]
+    },
+    "AddCAHandlerAndUpdateGame": {
+      "item drop lands": [
+        "PWC.Level.LevelDropActionAreaWithCAData.OnItemEndLand"
+      ],
+      "pair interaction": [
+        "PWC.Level.LevelPairInteractionAreaBase.TryAddCAHandler"
+      ],
+      "gear ramps/rails": [
+        "PWC.Level.LevelRollerBladesItemHandler.AddRampDropAreaCA",
+        "PWC.Level.LevelSkateboardItemHandler.AddRampDropAreaCA",
+        "PWC.Level.LevelSnowboardItemHandler.AddRailDropAreaCA",
+        "PWC.Level.LevelToddlerCarItemHandler.AddRampDropAreaCA"
+      ],
+      "clothing": [
+        "PWC.Level.LevelClothingUtils.TryAddCAHandlerFromSkinName"
+      ],
+      "carrying": [
+        "Game.Level.ContextualAnimation.LevelBabyOnCharacterHandlerSelector.AddCarrierHandler",
+        "Game.Level.ContextualAnimation.LevelDogOnCharacterHandlerSelector.AddCarrierHandler",
+        "Game.Level.ContextualAnimation.LevelToddlerOnCharacterHandlerSelector.AddCarrierHandler"
+      ],
+      "weather": [
+        "Game.Level.LevelAddCAOnAllCharactersHandlerByWeather.AddCaScriptToAvatar"
+      ],
+      "character init": [
+        "PWC.Level.LevelCharacter.Init"
+      ]
+    },
+    "RemoveCAHandlerAndUpdateGame": {
+      "drag begin": [
+        "PWC.Level.LevelDropActionAreaWithCAData.OnBeginDrag"
+      ],
+      "pair interaction": [
+        "PWC.Level.LevelPairInteractionAreaBase.TryRemoveCurrentCAHandler"
+      ],
+      "clothing": [
+        "PWC.Level.LevelClothingUtils.TryRemoveCAHandlerFromSkinName"
+      ],
+      "weather": [
+        "Game.Level.LevelAddCAOnAllCharactersHandlerByWeather.RemoveCAScriptFromAvatar"
+      ],
+      "pair animation begin": [
+        "Game.Level.ContextualAnimation.LevelCAPairCharacterNearCharacterHandler.OnAnimationBegin",
+        "PWC.Level.ContextualAnimation.LevelCAPairAnimalNearCharacterHandlerBase.OnAnimationBegin"
+      ]
+    }
+  },
+  "animation_name": {
+    "rule": "isNameFullAnimationName ? config.name : String.Concat(prefix, folder, \"/\", config.name, handler.GetAnimationSuffix())",
+    "folder": "config.folderNameOverride unless empty, else handler.GetFolderName()",
+    "prefix": "\"CA/\" when HasCAPrefixForCAAnimations(handler.GetSpineType()) else \"\"; true for SpineType 1 (Character), 2 (Baby), 13 (Toddler)",
+    "literals": {
+      "prefix": "CA/",
+      "empty": "",
+      "separator": "/"
+    }
+  },
+  "list_updated_event": {
+    "add": "if handler.IsRelevantForTarget(target): CATargetEvents.OnUpdateCAListAction?.Invoke(target, true, handler.IsSilent())",
+    "remove": "CATargetEvents.OnUpdateCAListAction?.Invoke(target, false, handler.IsSilent()) (no relevance gate)",
+    "inference": "class identity by declared layout: CATargetEvents static +0x8 is Action<ICATarget,bool,bool> OnUpdateCAListAction"
+  },
+  "event_users": {
+    "subscribers_awake_ondestroy": [
+      "Game.Level.ContextualAnimation.LevelCACellPhoneItemHandler",
+      "PWC.AvatarSpeech.AvatarSpeechUIMenu",
+      "PWC.LevelContextualAnimation.LevelContextualAnimationItem",
+      "PWC.LevelContextualAnimation.LevelContextualAnimationMenu"
+    ],
+    "publishers": [
+      "PWC.Level.ContextualAnimation.CATargetExtensionMethods.AddCAHandlerAndUpdateGame",
+      "PWC.Level.ContextualAnimation.CATargetExtensionMethods.RemoveCAHandlerAndUpdateGame",
+      "PWC.Level.LevelAnimal.OnPointerClickInternal",
+      "PWC.Level.LevelBaby.OnPointerClickInternal",
+      "PWC.Level.LevelCharacter.OnPointerClickInternal",
+      "PWC.Level.LevelToddler.OnPointerClickInternal"
+    ],
+    "methods_touching_events": 59,
+    "caveat": "touching the class slot does not prove which of the three static delegates is used"
+  }
+}

@@ -1,0 +1,4917 @@
+{
+ "schema_version": 1,
+ "scope": "declared inheritance only",
+ "root": "LevelCAHandlerBase",
+ "handlers": 798,
+ "direct_children": [
+  "LevelCAAirportF2CharacterHandler",
+  "LevelCABabyHandler",
+  "LevelCABirdHandler",
+  "LevelCAByWeatherCharacterHandlerBase",
+  "LevelCACampusAuditoriumCharacterHandler",
+  "LevelCACarrierBabyHandler",
+  "LevelCACatHandler",
+  "LevelCACharacterHandler",
+  "LevelCAChickenHandler",
+  "LevelCACowHandler",
+  "LevelCADogHandler",
+  "LevelCADropActionAreaHandlerWithData",
+  "LevelCAFarmingFieldsCharacterHandler",
+  "LevelCAFishHandler",
+  "LevelCAFurnitureShopCharacterHandler",
+  "LevelCAGarageCharacterHandler",
+  "LevelCAHamsterHandler",
+  "LevelCAHandlerWithData",
+  "LevelCAHorseHandler",
+  "LevelCAHospitalCharacterHandler",
+  "LevelCAHospitalIllCharacterHandler",
+  "LevelCAItemHandlerBase",
+  "LevelCAKPopShopCharacterHandler",
+  "LevelCALizardHandler",
+  "LevelCAMusicStudioCharacterHandler",
+  "LevelCAPairHandlerBase",
+  "LevelCAParentHandlerBase",
+  "LevelCAPetPoopHandler",
+  "LevelCARabbitHandler",
+  "LevelCAScarecrowMascotHandler",
+  "LevelCAShoeShopMascotHandler",
+  "LevelCASignBurgerHandler",
+  "LevelCASignMascotAirplaneHandler",
+  "LevelCASignRobotHandler",
+  "LevelCASkeletonHandler",
+  "LevelCASnakeHandler",
+  "LevelCASnowLadyHandler",
+  "LevelCASnowManHandler",
+  "LevelCASpineSkinHandlerBase",
+  "LevelCAStarsBoulevardCharacterHandler",
+  "LevelCATalkingCharacterHandler",
+  "LevelCATechBirdHandler",
+  "LevelCATechCatHandler",
+  "LevelCATechDogHandler",
+  "LevelCATechRabbitHandler",
+  "LevelCATechRobotHandler",
+  "LevelCAToddlerHandler",
+  "LevelCAToddlerSittingHandler",
+  "LevelCAToddlerStandingHandler",
+  "LevelCATurtleHandler",
+  "LevelCAWalkwayCharacterHandler"
+ ],
+ "by_family_word": {
+  "Item": 367,
+  "DropArea": 158,
+  "Skin": 117,
+  "Other": 47,
+  "Sit": 28,
+  "Toddler": 21,
+  "Cat": 12,
+  "Carrier": 10,
+  "Dog": 10,
+  "Pair": 9,
+  "Baby": 4,
+  "Bird": 3,
+  "Sleep": 3,
+  "Horse": 3,
+  "OnBone": 3,
+  "Parent": 2,
+  "Fish": 1
+ },
+ "namespaces": [
+  ".",
+  "Game/Level",
+  "Game/Level/ContextualAnimation",
+  "PWC/Level",
+  "PWC/Level/ContextualAnimation",
+  "PWC/Level/Water",
+  "PWC/PSDToLevel/LevelContextualAnimation"
+ ],
+ "classes": {
+  "CheckIfHaveEventInAnimation": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "CheckIfHaveEventInAnimation.cs"
+  },
+  "LevelCAAgilityLadderDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAgilityLadderDropAreaHandler.cs"
+  },
+  "LevelCAAirFreshnerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAirFreshnerItemHandler.cs"
+  },
+  "LevelCAAirHockeyPlayerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAirHockeyPlayerDropAreaHandler.cs"
+  },
+  "LevelCAAirplaneToyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAirplaneToyItemHandler.cs"
+  },
+  "LevelCAAirportF2CharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAirportF2CharacterHandler.cs"
+  },
+  "LevelCAAisleDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAisleDropAreaHandler.cs"
+  },
+  "LevelCAAlarmClockItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAlarmClockItemHandler.cs"
+  },
+  "LevelCAAlcogelItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAlcogelItemHandler.cs"
+  },
+  "LevelCAAlienClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAlienClothingSpineSkinHandler.cs"
+  },
+  "LevelCAAlterBackDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAlterBackDropAreaHandler.cs"
+  },
+  "LevelCAAlterOfficiantDropAreaHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAlterOfficiantDropAreaHandler.cs"
+  },
+  "LevelCAAlterSideDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAlterSideDropAreaHandler.cs"
+  },
+  "LevelCAAnimalBowlItemHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAnimalBowlItemHandler.cs"
+  },
+  "LevelCAAppliancesContainerItemHandler": {
+   "bases": [
+    "LevelCAMakeUpContainerItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAppliancesContainerItemHandler.cs"
+  },
+  "LevelCAAppliancesHairDryerItemHandler": {
+   "bases": [
+    "LevelCAHairDryerItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAppliancesHairDryerItemHandler.cs"
+  },
+  "LevelCAAquariumDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAquariumDropAreaHandler.cs"
+  },
+  "LevelCAArcadeBasketBallItemHandler": {
+   "bases": [
+    "LevelCABasketBallItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAArcadeBasketBallItemHandler.cs"
+  },
+  "LevelCAArcadeBoxingDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase",
+    "IArcadePlayable"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAArcadeBoxingDropAreaHandler.cs"
+  },
+  "LevelCAArmCastSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAArmCastSpineSkinHandler.cs"
+  },
+  "LevelCAArrowSignItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAArrowSignItemHandler.cs"
+  },
+  "LevelCAAudienceDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAudienceDropAreaHandler.cs"
+  },
+  "LevelCAAudienceReactionItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAAudienceReactionItemHandler.cs"
+  },
+  "LevelCABabyBathtubCharacterDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyBathtubCharacterDropAreaHandler.cs"
+  },
+  "LevelCABabyBathtubCharacterItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyBathtubCharacterItemHandler.cs"
+  },
+  "LevelCABabyBathtubDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyBathtubDropAreaHandler.cs"
+  },
+  "LevelCABabyBibSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyBibSpineSkinHandler.cs"
+  },
+  "LevelCABabyBiteToyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyBiteToyItemHandler.cs"
+  },
+  "LevelCABabyBottleCharacterItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyBottleCharacterItemHandler.cs"
+  },
+  "LevelCABabyBottleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyBottleItemHandler.cs"
+  },
+  "LevelCABabyBubbleSerumItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyBubbleSerumItemHandler.cs"
+  },
+  "LevelCABabyCarrierDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyCarrierDropAreaHandler.cs"
+  },
+  "LevelCABabyCarrierItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyCarrierItemHandler.cs"
+  },
+  "LevelCABabyChangingTableDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyChangingTableDropAreaHandler.cs"
+  },
+  "LevelCABabyCribCharacterDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyCribCharacterDropAreaHandler.cs"
+  },
+  "LevelCABabyCribDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyCribDropAreaHandler.cs"
+  },
+  "LevelCABabyGlassesSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyGlassesSpineSkinHandler.cs"
+  },
+  "LevelCABabyGymDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyGymDropAreaHandler.cs"
+  },
+  "LevelCABabyHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyHandler.cs"
+  },
+  "LevelCABabyHatSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyHatSpineSkinHandler.cs"
+  },
+  "LevelCABabyOnCharacterHandler": {
+   "bases": [
+    "LevelCABabyOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyOnCharacterHandler.cs"
+  },
+  "LevelCABabyOnCharacterHandlerBase": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyOnCharacterHandlerBase.cs"
+  },
+  "LevelCABabyPacifierCharacterItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyPacifierCharacterItemHandler.cs"
+  },
+  "LevelCABabyPacifierItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyPacifierItemHandler.cs"
+  },
+  "LevelCABabyStorllerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyStorllerDropAreaHandler.cs"
+  },
+  "LevelCABabyStrollerItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyStrollerItemHandler.cs"
+  },
+  "LevelCABabySwingParentDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabySwingParentDropAreaHandler.cs"
+  },
+  "LevelCABabyTwinStrollerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyTwinStrollerDropAreaHandler.cs"
+  },
+  "LevelCABabyTwinStrollerSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyTwinStrollerSitAreaHandler.cs"
+  },
+  "LevelCABabyTwinsStrollerItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABabyTwinsStrollerItemHandler.cs"
+  },
+  "LevelCABackARemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABackARemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCABackBRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABackBRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCABackCRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABackCRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCABackSpriteItemItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABackSpriteItemItemHandler.cs"
+  },
+  "LevelCABadgeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABadgeItemHandler.cs"
+  },
+  "LevelCABagClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABagClothingItemHandler.cs"
+  },
+  "LevelCABagItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABagItemHandler.cs"
+  },
+  "LevelCABagSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABagSpineSkinHandler.cs"
+  },
+  "LevelCABalanceBoardItemHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABalanceBoardItemHandler.cs"
+  },
+  "LevelCABallBouncingItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABallBouncingItemHandler.cs"
+  },
+  "LevelCABallPitDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABallPitDropAreaHandler.cs"
+  },
+  "LevelCABalletMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABalletMatDropAreaHandler.cs"
+  },
+  "LevelCABalletPianoSitAreaHandler": {
+   "bases": [
+    "LevelCAPianoSitAreaHandler",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABalletPianoSitAreaHandler.cs"
+  },
+  "LevelCABarberClipperItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABarberClipperItemHandler.cs"
+  },
+  "LevelCABaristaDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABaristaDropAreaHandler.cs"
+  },
+  "LevelCABarreDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABarreDropAreaHandler.cs"
+  },
+  "LevelCABasketBallItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABasketBallItemHandler.cs"
+  },
+  "LevelCABasketItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABasketItemHandler.cs"
+  },
+  "LevelCABeachBallItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABeachBallItemHandler.cs"
+  },
+  "LevelCABeachPaddleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABeachPaddleItemHandler.cs"
+  },
+  "LevelCABeardColorBrushItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABeardColorBrushItemHandler.cs"
+  },
+  "LevelCABigAquariumDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABigAquariumDropAreaHandler.cs"
+  },
+  "LevelCABigCameraItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABigCameraItemHandler.cs"
+  },
+  "LevelCABinderItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABinderItemHandler.cs"
+  },
+  "LevelCABinocularsDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABinocularsDropAreaHandler.cs"
+  },
+  "LevelCABirdHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABirdHandler.cs"
+  },
+  "LevelCABirdOnCharacterHandler": {
+   "bases": [
+    "LevelCAPetOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABirdOnCharacterHandler.cs"
+  },
+  "LevelCABirthDayPipingBagCraftingItemHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABirthDayPipingBagCraftingItemHandler.cs"
+  },
+  "LevelCABirthdayChairSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABirthdayChairSitAreaHandler.cs"
+  },
+  "LevelCABirthdayPhotoBoothDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABirthdayPhotoBoothDropAreaHandler.cs"
+  },
+  "LevelCABiteToyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABiteToyItemHandler.cs"
+  },
+  "LevelCABlackCatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABlackCatClothingSpineSkinHandler.cs"
+  },
+  "LevelCABlindfoldedClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABlindfoldedClothingSpineSkinHandler.cs"
+  },
+  "LevelCABlushItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABlushItemHandler.cs"
+  },
+  "LevelCABottomClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABottomClothingItemHandler.cs"
+  },
+  "LevelCABouquetItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABouquetItemHandler.cs"
+  },
+  "LevelCABraceletHipHopDanceClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCABraceletsRemovalOnlySpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABraceletHipHopDanceClothingSpineSkinHandler.cs"
+  },
+  "LevelCABraceletsRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABraceletsRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCABrideBouquetItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABrideBouquetItemHandler.cs"
+  },
+  "LevelCABrochureItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABrochureItemHandler.cs"
+  },
+  "LevelCABrochureSearchItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABrochureSearchItemHandler.cs"
+  },
+  "LevelCABrokenSkateboardItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABrokenSkateboardItemHandler.cs"
+  },
+  "LevelCABrouchureStandDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABrouchureStandDropAreaHandler.cs"
+  },
+  "LevelCABrowPenItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABrowPenItemHandler.cs"
+  },
+  "LevelCABucketToddlerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABucketToddlerItemHandler.cs"
+  },
+  "LevelCABusSitAreaHandler": {
+   "bases": [
+    "LevelCADefaultSitAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABusSitAreaHandler.cs"
+  },
+  "LevelCABusStationDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCABusStationDropAreaHandler.cs"
+  },
+  "LevelCAByWeatherCharacterHandlerBase": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAByWeatherCharacterHandlerBase.cs"
+  },
+  "LevelCACEOOfficeDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACEOOfficeDropAreaHandler.cs"
+  },
+  "LevelCACEOOfficeSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACEOOfficeSitAreaHandler.cs"
+  },
+  "LevelCACalendarItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACalendarItemHandler.cs"
+  },
+  "LevelCACameraItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACameraItemHandler.cs"
+  },
+  "LevelCACampusAuditoriumCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACampusAuditoriumCharacterHandler.cs"
+  },
+  "LevelCACandleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACandleItemHandler.cs"
+  },
+  "LevelCACaneItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACaneItemHandler.cs"
+  },
+  "LevelCACaneSeatItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACaneSeatItemHandler.cs"
+  },
+  "LevelCACarDriverSitAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/LevelCACarDriverSitAreaHandler.cs"
+  },
+  "LevelCACarPassengerSitAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/LevelCACarPassengerSitAreaHandler.cs"
+  },
+  "LevelCACarToddlerSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACarToddlerSitAreaHandler.cs"
+  },
+  "LevelCACarrierBabyHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "LevelCACarrierBabyHandler.cs"
+  },
+  "LevelCACarrierBabyOnCharacterHandler": {
+   "bases": [
+    "LevelCABabyOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACarrierBabyOnCharacterHandler.cs"
+  },
+  "LevelCACarrierDogOnCharacterHandler": {
+   "bases": [
+    "LevelCAPetOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACarrierDogOnCharacterHandler.cs"
+  },
+  "LevelCACarrierSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase",
+    "ICarrierNotifiable"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACarrierSpineSkinHandler.cs"
+  },
+  "LevelCACarrierToddlerOnCharacterHandler": {
+   "bases": [
+    "LevelCAToddlerOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACarrierToddlerOnCharacterHandler.cs"
+  },
+  "LevelCACartItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACartItemHandler.cs"
+  },
+  "LevelCACashierDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACashierDropAreaHandler.cs"
+  },
+  "LevelCACashierWithoutAMachineDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACashierWithoutAMachineDropAreaHandler.cs"
+  },
+  "LevelCACastMoldItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACastMoldItemHandler.cs"
+  },
+  "LevelCACatCarrierBagDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatCarrierBagDropAreaHandler.cs"
+  },
+  "LevelCACatGlassesRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatGlassesRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCACatGrassAreaHandler": {
+   "bases": [
+    "LevelCAPetGrassAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatGrassAreaHandler.cs"
+  },
+  "LevelCACatHandler": {
+   "bases": [
+    "LevelCAHandlerBase",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatHandler.cs"
+  },
+  "LevelCACatHatRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatHatRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCACatInABoxDropAreaHandler": {
+   "bases": [
+    "LevelCAPetInABoxDropAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatInABoxDropAreaHandler.cs"
+  },
+  "LevelCACatInSnowDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatInSnowDropAreaHandler.cs"
+  },
+  "LevelCACatLitterBoxHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatLitterBoxHandler.cs"
+  },
+  "LevelCACatLuxuryPillowDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatLuxuryPillowDropAreaHandler.cs"
+  },
+  "LevelCACatMirrorAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatMirrorAreaHandler.cs"
+  },
+  "LevelCACatNecklaceRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatNecklaceRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCACatOnCharacterHandler": {
+   "bases": [
+    "LevelCAPetOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatOnCharacterHandler.cs"
+  },
+  "LevelCACatOnToddlerHandler": {
+   "bases": [
+    "LevelCAPetOnToddlerHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatOnToddlerHandler.cs"
+  },
+  "LevelCACatOnepieceNHRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatOnepieceNHRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCACatOnepieceRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatOnepieceRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCACatPoolMiddleDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatPoolMiddleDropAreaHandler.cs"
+  },
+  "LevelCACatPoolSideDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatPoolSideDropAreaHandler.cs"
+  },
+  "LevelCACatPuddleDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatPuddleDropAreaHandler.cs"
+  },
+  "LevelCACatScratchTowerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatScratchTowerDropAreaHandler.cs"
+  },
+  "LevelCACatShoesRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatShoesRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCACatSuitSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatSuitSpineSkinHandler.cs"
+  },
+  "LevelCACatTowerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatTowerDropAreaHandler.cs"
+  },
+  "LevelCACatTowerHangingBallDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatTowerHangingBallDropAreaHandler.cs"
+  },
+  "LevelCACatTreatPouchSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatTreatPouchSpineSkinHandler.cs"
+  },
+  "LevelCACatTreatToyBaseDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatTreatToyBaseDropAreaHandler.cs"
+  },
+  "LevelCACatTreatToyLeftDropAreaHandler": {
+   "bases": [
+    "LevelCACatTreatToyBaseDropAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatTreatToyLeftDropAreaHandler.cs"
+  },
+  "LevelCACatTreatToyRightDropAreaHandler": {
+   "bases": [
+    "LevelCACatTreatToyBaseDropAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatTreatToyRightDropAreaHandler.cs"
+  },
+  "LevelCACatTunnelHoleAreaHandlerBase": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatTunnelHoleAreaHandlerBase.cs"
+  },
+  "LevelCACatTunnelHoleSideAreaHandler": {
+   "bases": [
+    "LevelCACatTunnelHoleAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatTunnelHoleSideAreaHandler.cs"
+  },
+  "LevelCACatTunnelHoleTopAreaHandler": {
+   "bases": [
+    "LevelCACatTunnelHoleAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatTunnelHoleTopAreaHandler.cs"
+  },
+  "LevelCACatamaranWheelDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACatamaranWheelDropAreaHandler.cs"
+  },
+  "LevelCACellPhoneItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACellPhoneItemHandler.cs"
+  },
+  "LevelCACharacterBicycleItemHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterBicycleItemHandler.cs"
+  },
+  "LevelCACharacterButtonsSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterButtonsSpineSkinHandler.cs"
+  },
+  "LevelCACharacterCarrierSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler",
+    "ICarrierNotifiable"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterCarrierSpineSkinHandler.cs"
+  },
+  "LevelCACharacterGlassesUpSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterGlassesUpSpineSkinHandler.cs"
+  },
+  "LevelCACharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterHandler.cs"
+  },
+  "LevelCACharacterHelmetBuckleSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterHelmetBuckleSpineSkinHandler.cs"
+  },
+  "LevelCACharacterHoodieJacketSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterHoodieJacketSpineSkinHandler.cs"
+  },
+  "LevelCACharacterSleeveRollingJacketSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterSleeveRollingJacketSpineSkinHandler.cs"
+  },
+  "LevelCACharacterSleeveRollingShirtSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterSleeveRollingShirtSpineSkinHandler.cs"
+  },
+  "LevelCACharacterSummoningBellItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterSummoningBellItemHandler.cs"
+  },
+  "LevelCACharacterTieShirtAroundWaistSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "LevelCACharacterTieShirtAroundWaistSpineSkinHandler.cs"
+  },
+  "LevelCACharacterTuckingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "LevelCACharacterTuckingSpineSkinHandler.cs"
+  },
+  "LevelCACharacterTurnHatSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "LevelCACharacterTurnHatSpineSkinHandler.cs"
+  },
+  "LevelCACharacterZippersAndCollarSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACharacterZippersAndCollarSpineSkinHandler.cs"
+  },
+  "LevelCACheeringFlagItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACheeringFlagItemHandler.cs"
+  },
+  "LevelCACheeringSignItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACheeringSignItemHandler.cs"
+  },
+  "LevelCAChickenDanceMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAChickenDanceMatDropAreaHandler.cs"
+  },
+  "LevelCAChickenHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAChickenHandler.cs"
+  },
+  "LevelCAChickenOnCharacterHandler": {
+   "bases": [
+    "LevelCAPetOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAChickenOnCharacterHandler.cs"
+  },
+  "LevelCAChopsticksItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAChopsticksItemHandler.cs"
+  },
+  "LevelCAChristmasDanceMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAChristmasDanceMatDropAreaHandler.cs"
+  },
+  "LevelCAChristmasElfClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAChristmasElfClothingSpineSkinHandler.cs"
+  },
+  "LevelCAChristmasMsClausClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAChristmasMsClausClothingSpineSkinHandler.cs"
+  },
+  "LevelCAChristmasSantaClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAChristmasSantaClothingSpineSkinHandler.cs"
+  },
+  "LevelCACleaningItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACleaningItemHandler.cs"
+  },
+  "LevelCACliquesGeekClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACliquesGeekClothingSpineSkinHandler.cs"
+  },
+  "LevelCACliquesGothBagsSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACliquesGothBagsSpineSkinHandler.cs"
+  },
+  "LevelCACliquesGothNeckSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACliquesGothNeckSpineSkinHandler.cs"
+  },
+  "LevelCACliquesSkaterClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACliquesSkaterClothingSpineSkinHandler.cs"
+  },
+  "LevelCAClothingItemHandlerWithData": {
+   "bases": [
+    "LevelCAItemHandlerBase",
+    "IHasCAData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAClothingItemHandlerWithData.cs"
+  },
+  "LevelCAClownFlowerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAClownFlowerItemHandler.cs"
+  },
+  "LevelCACoffeeMachineItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACoffeeMachineItemHandler.cs"
+  },
+  "LevelCACoinItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACoinItemHandler.cs"
+  },
+  "LevelCACombItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACombItemHandler.cs"
+  },
+  "LevelCAComputerDeskSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAComputerDeskSitAreaHandler.cs"
+  },
+  "LevelCAConductorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAConductorDropAreaHandler.cs"
+  },
+  "LevelCAConeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAConeItemHandler.cs"
+  },
+  "LevelCAConfettiCannonItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAConfettiCannonItemHandler.cs"
+  },
+  "LevelCAConsoleSwitchItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAConsoleSwitchItemHandler.cs"
+  },
+  "LevelCACookieJarItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACookieJarItemHandler.cs"
+  },
+  "LevelCACookingKnifeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACookingKnifeItemHandler.cs"
+  },
+  "LevelCACookingPanItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACookingPanItemHandler.cs"
+  },
+  "LevelCACookingScoopItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACookingScoopItemHandler.cs"
+  },
+  "LevelCACowHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACowHandler.cs"
+  },
+  "LevelCACreditCardItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACreditCardItemHandler.cs"
+  },
+  "LevelCACrownLocketClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCAPlayAnimationOnOthersClothingSpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACrownLocketClothingSpineSkinHandler.cs"
+  },
+  "LevelCACrutchesItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACrutchesItemHandler.cs"
+  },
+  "LevelCACrystalBallItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACrystalBallItemHandler.cs"
+  },
+  "LevelCACypherCircleDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCACypherCircleDropAreaHandler.cs"
+  },
+  "LevelCADJTableDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADJTableDropAreaHandler.cs"
+  },
+  "LevelCADanceCarpetDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADanceCarpetDropAreaHandler.cs"
+  },
+  "LevelCADanceEarPieceGALXECutieSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCADanceEarPieceGALXECutieSpineSkinHandler.cs"
+  },
+  "LevelCADanceEarPieceGALXELeaderSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCADanceEarPieceGALXELeaderSpineSkinHandler.cs"
+  },
+  "LevelCADanceEarPieceGALXERapperSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCADanceEarPieceGALXERapperSpineSkinHandler.cs"
+  },
+  "LevelCADanceEarPieceMOONZCutieSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCADanceEarPieceMOONZCutieSpineSkinHandler.cs"
+  },
+  "LevelCADanceEarPieceMOONZLeaderSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCADanceEarPieceMOONZLeaderSpineSkinHandler.cs"
+  },
+  "LevelCADanceEarPieceMOONZRapperSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCADanceEarPieceMOONZRapperSpineSkinHandler.cs"
+  },
+  "LevelCADanceFloorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADanceFloorDropAreaHandler.cs"
+  },
+  "LevelCADanceMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADanceMatDropAreaHandler.cs"
+  },
+  "LevelCADartItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADartItemHandler.cs"
+  },
+  "LevelCADefaultSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCADefaultSitAreaHandler.cs"
+  },
+  "LevelCADefaultSleepAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCADefaultSleepAreaHandler.cs"
+  },
+  "LevelCADeflatedBallItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADeflatedBallItemHandler.cs"
+  },
+  "LevelCADeflatedFloatItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADeflatedFloatItemHandler.cs"
+  },
+  "LevelCADeliveryBoxItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADeliveryBoxItemHandler.cs"
+  },
+  "LevelCADiceItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADiceItemHandler.cs"
+  },
+  "LevelCADinosaurBrushItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADinosaurBrushItemHandler.cs"
+  },
+  "LevelCADocumentItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADocumentItemHandler.cs"
+  },
+  "LevelCADogBagRemovalOnlySpineSkinHander": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogBagRemovalOnlySpineSkinHander.cs"
+  },
+  "LevelCADogBallHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "LevelCADogBallHandler.cs"
+  },
+  "LevelCADogBellToyAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogBellToyAreaHandler.cs"
+  },
+  "LevelCADogCarrierBagDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogCarrierBagDropAreaHandler.cs"
+  },
+  "LevelCADogGlassesRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogGlassesRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCADogGrassAreaHandler": {
+   "bases": [
+    "LevelCAPetGrassAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogGrassAreaHandler.cs"
+  },
+  "LevelCADogHandler": {
+   "bases": [
+    "LevelCAHandlerBase",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogHandler.cs"
+  },
+  "LevelCADogHatRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogHatRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCADogInABoxDropAreaHandler": {
+   "bases": [
+    "LevelCAPetInABoxDropAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogInABoxDropAreaHandler.cs"
+  },
+  "LevelCADogInSnowDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogInSnowDropAreaHandler.cs"
+  },
+  "LevelCADogMirrorAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogMirrorAreaHandler.cs"
+  },
+  "LevelCADogNecklaceRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogNecklaceRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCADogOnCharacterHandler": {
+   "bases": [
+    "LevelCAPetOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogOnCharacterHandler.cs"
+  },
+  "LevelCADogOnToddlerHandler": {
+   "bases": [
+    "LevelCAPetOnToddlerHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogOnToddlerHandler.cs"
+  },
+  "LevelCADogOnePieceNHRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogOnePieceNHRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCADogOnePieceRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogOnePieceRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCADogPoolDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogPoolDropAreaHandler.cs"
+  },
+  "LevelCADogPuddleDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogPuddleDropAreaHandler.cs"
+  },
+  "LevelCADogShirtRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogShirtRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCADogShoesRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogShoesRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCADogTreatPouchSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogTreatPouchSpineSkinHandler.cs"
+  },
+  "LevelCADogWhistleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADogWhistleItemHandler.cs"
+  },
+  "LevelCADonkeyTailItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADonkeyTailItemHandler.cs"
+  },
+  "LevelCADoughCutterItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADoughCutterItemHandler.cs"
+  },
+  "LevelCADoughItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADoughItemHandler.cs"
+  },
+  "LevelCADragCartItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "LevelCADragCartItemHandler.cs"
+  },
+  "LevelCADrawingPaperItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADrawingPaperItemHandler.cs"
+  },
+  "LevelCADrinkableItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCADrinkableItemHandler.cs"
+  },
+  "LevelCADrinkingFountainDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADrinkingFountainDropAreaHandler.cs"
+  },
+  "LevelCADropActionAreaHandlerWithData": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCADropActionAreaHandlerWithData.cs"
+  },
+  "LevelCADropAreaForAnimalsHandlerWithData": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADropAreaForAnimalsHandlerWithData.cs"
+  },
+  "LevelCADropAreaHandlerBase": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCADropAreaHandlerBase.cs"
+  },
+  "LevelCADropAreaHandlerWithData": {
+   "bases": [
+    "LevelCADropAreaHandlerBase",
+    "IHasCAData"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCADropAreaHandlerWithData.cs"
+  },
+  "LevelCADropAreaHandlerWithDataAndOverrides": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCADropAreaHandlerWithDataAndOverrides.cs"
+  },
+  "LevelCADropAreaHandlerWithSearchWithData": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData",
+    "IHaveAnimationSearch"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCADropAreaHandlerWithSearchWithData.cs"
+  },
+  "LevelCADropAreaHandlerWithSwappableData": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCADropAreaHandlerWithSwappableData.cs"
+  },
+  "LevelCADropAreaWithSkinHandlerBase": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCADropAreaWithSkinHandlerBase.cs"
+  },
+  "LevelCADropAreaWithSkinHandlerWithData": {
+   "bases": [
+    "LevelCADropAreaWithSkinHandlerBase",
+    "IHasCAData"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCADropAreaWithSkinHandlerWithData.cs"
+  },
+  "LevelCADropAreaWithSoundHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCADropAreaWithSoundHandler.cs"
+  },
+  "LevelCADropAreaWithSpineObjectHandlerWithData": {
+   "bases": [
+    "LevelCADropActionAreaHandlerWithData"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCADropAreaWithSpineObjectHandlerWithData.cs"
+  },
+  "LevelCADrumsMusicClassroomHandler": {
+   "bases": [
+    "LevelCAMusicalInstrumentWithSpecialNamesWithCADataDropAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADrumsMusicClassroomHandler.cs"
+  },
+  "LevelCADustBrushItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCADustBrushItemHandler.cs"
+  },
+  "LevelCAEatableItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAEatableItemHandler.cs"
+  },
+  "LevelCAEconomySeatAirplaneDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAEconomySeatAirplaneDropAreaHandler.cs"
+  },
+  "LevelCAEmptyPoopBagItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAEmptyPoopBagItemHandler.cs"
+  },
+  "LevelCAEraserItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAEraserItemHandler.cs"
+  },
+  "LevelCAEventHandlerByAnimationIndexItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAEventHandlerByAnimationIndexItemHandler.cs"
+  },
+  "LevelCAEventHandlerByAnimationNameItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAEventHandlerByAnimationNameItemHandler.cs"
+  },
+  "LevelCAExaminationTableDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAExaminationTableDropAreaHandler.cs"
+  },
+  "LevelCAExcerciseBallItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAExcerciseBallItemHandler.cs"
+  },
+  "LevelCAEyeShadowItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAEyeShadowItemHandler.cs"
+  },
+  "LevelCAFabregeEggItemHandler": {
+   "bases": [
+    "LevelCAItemSpineNoSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFabregeEggItemHandler.cs"
+  },
+  "LevelCAFaceCreamItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFaceCreamItemHandler.cs"
+  },
+  "LevelCAFamilyLuggageItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFamilyLuggageItemHandler.cs"
+  },
+  "LevelCAFarmingFieldsCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFarmingFieldsCharacterHandler.cs"
+  },
+  "LevelCAFingerGloveItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFingerGloveItemHandler.cs"
+  },
+  "LevelCAFingernailsSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFingernailsSpineSkinHandler.cs"
+  },
+  "LevelCAFireExtinguisherItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFireExtinguisherItemHandler.cs"
+  },
+  "LevelCAFireTruckLadderBucketDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFireTruckLadderBucketDropAreaHandler.cs"
+  },
+  "LevelCAFiredContractItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFiredContractItemHandler.cs"
+  },
+  "LevelCAFishHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFishHandler.cs"
+  },
+  "LevelCAFlaskItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFlaskItemHandler.cs"
+  },
+  "LevelCAFlightAttendantHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFlightAttendantHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCAFlightAttendentSeatAirplaneDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFlightAttendentSeatAirplaneDropAreaHandler.cs"
+  },
+  "LevelCAFloatSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFloatSitAreaHandler.cs"
+  },
+  "LevelCAFoamRollerItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFoamRollerItemHandler.cs"
+  },
+  "LevelCAFoodBowlItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFoodBowlItemHandler.cs"
+  },
+  "LevelCAFoodCartDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFoodCartDropAreaHandler.cs"
+  },
+  "LevelCAFoodTableDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFoodTableDropAreaHandler.cs"
+  },
+  "LevelCAFoodTableRestaurantSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFoodTableRestaurantSitAreaHandler.cs"
+  },
+  "LevelCAFootballItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFootballItemHandler.cs"
+  },
+  "LevelCAForkItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAForkItemHandler.cs"
+  },
+  "LevelCAFoundationItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFoundationItemHandler.cs"
+  },
+  "LevelCAFountainDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFountainDropAreaHandler.cs"
+  },
+  "LevelCAFountainL123DropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFountainL123DropAreaHandler.cs"
+  },
+  "LevelCAFreeStyleCrowdDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFreeStyleCrowdDropAreaHandler.cs"
+  },
+  "LevelCAFrisbeeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "LevelCAFrisbeeItemHandler.cs"
+  },
+  "LevelCAFrontBabyStrollerItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFrontBabyStrollerItemHandler.cs"
+  },
+  "LevelCAFullPoopBagItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFullPoopBagItemHandler.cs"
+  },
+  "LevelCAFurnitrueStoreClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFurnitrueStoreClothingSpineSkinHandler.cs"
+  },
+  "LevelCAFurnitureConstructionDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFurnitureConstructionDropAreaHandler.cs"
+  },
+  "LevelCAFurnitureShopCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFurnitureShopCharacterHandler.cs"
+  },
+  "LevelCAFurnitureShopSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFurnitureShopSitAreaHandler.cs"
+  },
+  "LevelCAFurnitureShopSleepAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFurnitureShopSleepAreaHandler.cs"
+  },
+  "LevelCAFurnitureShopToddlerSleepAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAFurnitureShopToddlerSleepAreaHandler.cs"
+  },
+  "LevelCAGachaponCapsuleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGachaponCapsuleItemHandler.cs"
+  },
+  "LevelCAGameBoyItemHandler": {
+   "bases": [
+    "LevelCAHandHeldDeviceItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGameBoyItemHandler.cs"
+  },
+  "LevelCAGamerChairSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGamerChairSitAreaHandler.cs"
+  },
+  "LevelCAGamingControllerItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGamingControllerItemHandler.cs"
+  },
+  "LevelCAGarageCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGarageCharacterHandler.cs"
+  },
+  "LevelCAGiftBoxItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGiftBoxItemHandler.cs"
+  },
+  "LevelCAGiftExchangeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGiftExchangeItemHandler.cs"
+  },
+  "LevelCAGlassesClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGlassesClothingItemHandler.cs"
+  },
+  "LevelCAGlassesSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCAGlassesSpineSkinHandler.cs"
+  },
+  "LevelCAGlovesItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGlovesItemHandler.cs"
+  },
+  "LevelCAGlovesSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGlovesSpineSkinHandler.cs"
+  },
+  "LevelCAGoProItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGoProItemHandler.cs"
+  },
+  "LevelCAGoalKeeperDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGoalKeeperDropAreaHandler.cs"
+  },
+  "LevelCAGolfClubItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGolfClubItemHandler.cs"
+  },
+  "LevelCAGooFoodFightItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGooFoodFightItemHandler.cs"
+  },
+  "LevelCAGraduateHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGraduateHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCAGraffitiColorSprayItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGraffitiColorSprayItemHandler.cs"
+  },
+  "LevelCAGragersItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGragersItemHandler.cs"
+  },
+  "LevelCAGuardHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGuardHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCAGuestBookDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGuestBookDropAreaHandler.cs"
+  },
+  "LevelCAGuitarItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGuitarItemHandler.cs"
+  },
+  "LevelCAGumItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGumItemHandler.cs"
+  },
+  "LevelCAGymMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAGymMatDropAreaHandler.cs"
+  },
+  "LevelCAHairColorSprayItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHairColorSprayItemHandler.cs"
+  },
+  "LevelCAHairCurlerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHairCurlerItemHandler.cs"
+  },
+  "LevelCAHairDryerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHairDryerItemHandler.cs"
+  },
+  "LevelCAHairWaterSprayItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHairWaterSprayItemHandler.cs"
+  },
+  "LevelCAHalloweenCustomSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHalloweenCustomSpineSkinHandler.cs"
+  },
+  "LevelCAHalloweenMummySpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHalloweenMummySpineSkinHandler.cs"
+  },
+  "LevelCAHalloweenSkeletonSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHalloweenSkeletonSkinHandler.cs"
+  },
+  "LevelCAHalloweenSpiderSpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHalloweenSpiderSpineSkinHandler.cs"
+  },
+  "LevelCAHalloweenVampireSpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHalloweenVampireSpineSkinHandler.cs"
+  },
+  "LevelCAHalloweenZombieSpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHalloweenZombieSpineSkinHandler.cs"
+  },
+  "LevelCAHamsterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHamsterHandler.cs"
+  },
+  "LevelCAHandDrumItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHandDrumItemHandler.cs"
+  },
+  "LevelCAHandFanItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHandFanItemHandler.cs"
+  },
+  "LevelCAHandHeldDeviceItemHandlerBase": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHandHeldDeviceItemHandlerBase.cs"
+  },
+  "LevelCAHandMirrorItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHandMirrorItemHandler.cs"
+  },
+  "LevelCAHandSanitizerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHandSanitizerDropAreaHandler.cs"
+  },
+  "LevelCAHandVacuumeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHandVacuumeItemHandler.cs"
+  },
+  "LevelCAHandlerWithData": {
+   "bases": [
+    "LevelCAHandlerBase",
+    "IHasCAData"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCAHandlerWithData.cs"
+  },
+  "LevelCAHatClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHatClothingItemHandler.cs"
+  },
+  "LevelCAHatSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCAHatSpineSkinHandler.cs"
+  },
+  "LevelCAHeartLocketClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCAPlayAnimationOnOthersClothingSpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHeartLocketClothingSpineSkinHandler.cs"
+  },
+  "LevelCAHighChairToddlerSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHighChairToddlerSitAreaHandler.cs"
+  },
+  "LevelCAHipHopBarreDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHipHopBarreDropAreaHandler.cs"
+  },
+  "LevelCAHipHopDanceMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHipHopDanceMatDropAreaHandler.cs"
+  },
+  "LevelCAHockeyStrikerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHockeyStrikerItemHandler.cs"
+  },
+  "LevelCAHoldingSkateboardItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHoldingSkateboardItemHandler.cs"
+  },
+  "LevelCAHorseHandler": {
+   "bases": [
+    "LevelCAHandlerBase",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHorseHandler.cs"
+  },
+  "LevelCAHorseOnStickItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHorseOnStickItemHandler.cs"
+  },
+  "LevelCAHospitalCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHospitalCharacterHandler.cs"
+  },
+  "LevelCAHospitalIllCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHospitalIllCharacterHandler.cs"
+  },
+  "LevelCAHoverboardItemHandler": {
+   "bases": [
+    "LevelCASkateboardItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHoverboardItemHandler.cs"
+  },
+  "LevelCAHulaHoopItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAHulaHoopItemHandler.cs"
+  },
+  "LevelCAIceCreamCraftingItemHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAIceCreamCraftingItemHandler.cs"
+  },
+  "LevelCAInfantsPlayMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAInfantsPlayMatDropAreaHandler.cs"
+  },
+  "LevelCAInflatedFloatItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAInflatedFloatItemHandler.cs"
+  },
+  "LevelCAInkPenItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAInkPenItemHandler.cs"
+  },
+  "LevelCAInkQuillItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAInkQuillItemHandler.cs"
+  },
+  "LevelCAInspectorConfigItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAInspectorConfigItemHandler.cs"
+  },
+  "LevelCAInspectorConfigParentHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAInspectorConfigParentHandler.cs"
+  },
+  "LevelCAItemCharacterChangeHairForOtherAvatarHandler": {
+   "bases": [
+    "LevelCAItemCharacterChangeHairHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAItemCharacterChangeHairForOtherAvatarHandler.cs"
+  },
+  "LevelCAItemCharacterChangeHairHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAItemCharacterChangeHairHandler.cs"
+  },
+  "LevelCAItemCharacterChangeSkinForOtherAvatarHandler": {
+   "bases": [
+    "LevelCAItemCharacterChangeSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAItemCharacterChangeSkinForOtherAvatarHandler.cs"
+  },
+  "LevelCAItemCharacterChangeSkinHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAItemCharacterChangeSkinHandler.cs"
+  },
+  "LevelCAItemCharacterHairCombHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAItemCharacterHairCombHandler.cs"
+  },
+  "LevelCAItemCraftingHandlerBase": {
+   "bases": [
+    "LevelCAItemHandlerBase",
+    "ILevelHintBubbleLeadingTarget",
+    "ILevelHintBubbleTarget"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAItemCraftingHandlerBase.cs"
+  },
+  "LevelCAItemHandlerBase": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAItemHandlerBase.cs"
+  },
+  "LevelCAItemHandlerWithData": {
+   "bases": [
+    "LevelCAItemHandlerBase",
+    "IHasCAData"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCAItemHandlerWithData.cs"
+  },
+  "LevelCAItemHandlerWithSearchWithData": {
+   "bases": [
+    "LevelCAItemHandlerWithData",
+    "IHaveAnimationSearch"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCAItemHandlerWithSearchWithData.cs"
+  },
+  "LevelCAItemHandlerWithSwappableData": {
+   "bases": [
+    "LevelCAItemHandlerWithData",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCAItemHandlerWithSwappableData.cs"
+  },
+  "LevelCAItemHorseHairCombHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAItemHorseHairCombHandler.cs"
+  },
+  "LevelCAItemOnBoneHandlerBase": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAItemOnBoneHandlerBase.cs"
+  },
+  "LevelCAItemOnBoneHandlerWithData": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase",
+    "IHasCAData"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCAItemOnBoneHandlerWithData.cs"
+  },
+  "LevelCAItemOnBoneHandlerWithSwappableData": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerWithData",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCAItemOnBoneHandlerWithSwappableData.cs"
+  },
+  "LevelCAItemSpineNoSkinHandlerBase": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAItemSpineNoSkinHandlerBase.cs"
+  },
+  "LevelCAItemWithSkinHandlerBase": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAItemWithSkinHandlerBase.cs"
+  },
+  "LevelCAItemWithSkinHandlerWithData": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase",
+    "IHasCAData"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCAItemWithSkinHandlerWithData.cs"
+  },
+  "LevelCAJacketSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCAJacketSpineSkinHandler.cs"
+  },
+  "LevelCAJetPackItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/LevelCAJetPackItemHandler.cs"
+  },
+  "LevelCAJewelryBoxItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAJewelryBoxItemHandler.cs"
+  },
+  "LevelCAJugglingItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAJugglingItemHandler.cs"
+  },
+  "LevelCAKPopShopCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKPopShopCharacterHandler.cs"
+  },
+  "LevelCAKawaiiBearDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKawaiiBearDropAreaHandler.cs"
+  },
+  "LevelCAKawaiiShopBrandPhotoBoothDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKawaiiShopBrandPhotoBoothDropAreaHandler.cs"
+  },
+  "LevelCAKettleBellItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKettleBellItemHandler.cs"
+  },
+  "LevelCAKettleItemHandler": {
+   "bases": [
+    "LevelCAPouringItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKettleItemHandler.cs"
+  },
+  "LevelCAKeyCardItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKeyCardItemHandler.cs"
+  },
+  "LevelCAKeychainItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKeychainItemHandler.cs"
+  },
+  "LevelCAKeytarItemHandler": {
+   "bases": [
+    "LevelCAMusicalInstrumentItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKeytarItemHandler.cs"
+  },
+  "LevelCAKitchenScaleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKitchenScaleItemHandler.cs"
+  },
+  "LevelCAKitchenScraperItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKitchenScraperItemHandler.cs"
+  },
+  "LevelCAKnittingNeedleCraftingItemHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKnittingNeedleCraftingItemHandler.cs"
+  },
+  "LevelCAKpopPosterDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAKpopPosterDropAreaHandler.cs"
+  },
+  "LevelCALadderDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALadderDropAreaHandler.cs"
+  },
+  "LevelCALadleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALadleItemHandler.cs"
+  },
+  "LevelCALaptopItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALaptopItemHandler.cs"
+  },
+  "LevelCALegCastSpineSkinHandler": {
+   "bases": [
+    "LevelCAShoesSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALegCastSpineSkinHandler.cs"
+  },
+  "LevelCALemonadeHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALemonadeHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCALifeJacketClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALifeJacketClothingSpineSkinHandler.cs"
+  },
+  "LevelCALifeguardRescueWheelItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALifeguardRescueWheelItemHandler.cs"
+  },
+  "LevelCALimoDriverHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALimoDriverHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCALipstickItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALipstickItemHandler.cs"
+  },
+  "LevelCALizardHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALizardHandler.cs"
+  },
+  "LevelCALongBalloonAnimalShapingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALongBalloonAnimalShapingItemHandler.cs"
+  },
+  "LevelCALuxuryMirrorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCALuxuryMirrorDropAreaHandler.cs"
+  },
+  "LevelCAMagicianHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMagicianHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCAMagicianHatItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMagicianHatItemHandler.cs"
+  },
+  "LevelCAMagicianWandItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMagicianWandItemHandler.cs"
+  },
+  "LevelCAMagnetItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMagnetItemHandler.cs"
+  },
+  "LevelCAMakeUpContainerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMakeUpContainerItemHandler.cs"
+  },
+  "LevelCAMakeupBrushItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMakeupBrushItemHandler.cs"
+  },
+  "LevelCAMakeupConcealerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "LevelCAMakeupConcealerItemHandler.cs"
+  },
+  "LevelCAMakeupDataItemHandlerWithData": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMakeupDataItemHandlerWithData.cs"
+  },
+  "LevelCAMakeupRemoverItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMakeupRemoverItemHandler.cs"
+  },
+  "LevelCAMarkerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMarkerItemHandler.cs"
+  },
+  "LevelCAMaskSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCAMaskSpineSkinHandler.cs"
+  },
+  "LevelCAMeasuringCupItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMeasuringCupItemHandler.cs"
+  },
+  "LevelCAMeasuringSpoonItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMeasuringSpoonItemHandler.cs"
+  },
+  "LevelCAMedalItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMedalItemHandler.cs"
+  },
+  "LevelCAMeetingRoomSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMeetingRoomSitAreaHandler.cs"
+  },
+  "LevelCAMenuDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMenuDropAreaHandler.cs"
+  },
+  "LevelCAMetalDetectorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMetalDetectorDropAreaHandler.cs"
+  },
+  "LevelCAMetalDetectorWandItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMetalDetectorWandItemHandler.cs"
+  },
+  "LevelCAMicHeadphonesHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMicHeadphonesHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCAMicrophoneItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMicrophoneItemHandler.cs"
+  },
+  "LevelCAMicroscopeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMicroscopeItemHandler.cs"
+  },
+  "LevelCAMimeOutfitClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMimeOutfitClothingSpineSkinHandler.cs"
+  },
+  "LevelCAMirrorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMirrorDropAreaHandler.cs"
+  },
+  "LevelCAMobileLampItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMobileLampItemHandler.cs"
+  },
+  "LevelCAMonsterClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMonsterClothingSpineSkinHandler.cs"
+  },
+  "LevelCAMopCartItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMopCartItemHandler.cs"
+  },
+  "LevelCAMopItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMopItemHandler.cs"
+  },
+  "LevelCAMovingWalkwayDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMovingWalkwayDropAreaHandler.cs"
+  },
+  "LevelCAMusicStudioCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMusicStudioCharacterHandler.cs"
+  },
+  "LevelCAMusicalInstrumentCADataItemHandler": {
+   "bases": [
+    "LevelCAMusicalInstrumentItemHandlerBase",
+    "IHaveAnimationSearch"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMusicalInstrumentCADataItemHandler.cs"
+  },
+  "LevelCAMusicalInstrumentItemHandlerBase": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMusicalInstrumentItemHandlerBase.cs"
+  },
+  "LevelCAMusicalInstrumentWithSpecialNamesWithCADataDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithSearchWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAMusicalInstrumentWithSpecialNamesWithCADataDropAreaHandler.cs"
+  },
+  "LevelCANailsBrushItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCANailsBrushItemHandler.cs"
+  },
+  "LevelCANapkinItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCANapkinItemHandler.cs"
+  },
+  "LevelCANecklaceClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCANecklaceClothingItemHandler.cs"
+  },
+  "LevelCANecklaceSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCANecklaceSpineSkinHandler.cs"
+  },
+  "LevelCANewspaperBagClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCABagSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCANewspaperBagClothingSpineSkinHandler.cs"
+  },
+  "LevelCANewspaperItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCANewspaperItemHandler.cs"
+  },
+  "LevelCANotBouncingBasketBallItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCANotBouncingBasketBallItemHandler.cs"
+  },
+  "LevelCANozzleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCANozzleItemHandler.cs"
+  },
+  "LevelCAOfficeMiniGolfDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOfficeMiniGolfDropAreaHandler.cs"
+  },
+  "LevelCAOfficePhoneItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOfficePhoneItemHandler.cs"
+  },
+  "LevelCAOfficeStampCraftingItemHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOfficeStampCraftingItemHandler.cs"
+  },
+  "LevelCAOnepieceSpecialSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCAOnepieceSpecialSpineSkinHandler.cs"
+  },
+  "LevelCAOrigamiBirdItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOrigamiBirdItemHandler.cs"
+  },
+  "LevelCAOrigamiBoatItemHandler": {
+   "bases": [
+    "LevelCAOrigamiItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOrigamiBoatItemHandler.cs"
+  },
+  "LevelCAOrigamiFlowerItemHandler": {
+   "bases": [
+    "LevelCAOrigamiItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOrigamiFlowerItemHandler.cs"
+  },
+  "LevelCAOrigamiItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOrigamiItemHandler.cs"
+  },
+  "LevelCAOrigamiNupkinItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOrigamiNupkinItemHandler.cs"
+  },
+  "LevelCAOrigamiPlaneItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOrigamiPlaneItemHandler.cs"
+  },
+  "LevelCAOxygenMaskSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAOxygenMaskSpineSkinHandler.cs"
+  },
+  "LevelCAPaintingBrushItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPaintingBrushItemHandler.cs"
+  },
+  "LevelCAPairAnimalNearCharacterHandlerBase": {
+   "bases": [
+    "LevelCAPairHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAPairAnimalNearCharacterHandlerBase.cs"
+  },
+  "LevelCAPairAnimalNearDogHandlerBase": {
+   "bases": [
+    "LevelCAPairHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAPairAnimalNearDogHandlerBase.cs"
+  },
+  "LevelCAPairCatNearCharacterHandler": {
+   "bases": [
+    "LevelCAPairAnimalNearCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPairCatNearCharacterHandler.cs"
+  },
+  "LevelCAPairCharacterNearCharacterHandler": {
+   "bases": [
+    "LevelCAPairHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPairCharacterNearCharacterHandler.cs"
+  },
+  "LevelCAPairDogNearCharacterHandler": {
+   "bases": [
+    "LevelCAPairAnimalNearCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPairDogNearCharacterHandler.cs"
+  },
+  "LevelCAPairDogNearDogHandler": {
+   "bases": [
+    "LevelCAPairAnimalNearDogHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPairDogNearDogHandler.cs"
+  },
+  "LevelCAPairHandlerBase": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAPairHandlerBase.cs"
+  },
+  "LevelCAPairHorseNearCharacterHandler": {
+   "bases": [
+    "LevelCAPairAnimalNearCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPairHorseNearCharacterHandler.cs"
+  },
+  "LevelCAPairSmallPetNearCharacterHandler": {
+   "bases": [
+    "LevelCAPairAnimalNearCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPairSmallPetNearCharacterHandler.cs"
+  },
+  "LevelCAPaparWeightItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPaparWeightItemHandler.cs"
+  },
+  "LevelCAPaparatzziBushDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPaparatzziBushDropAreaHandler.cs"
+  },
+  "LevelCAPaparatzziTrushDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPaparatzziTrushDropAreaHandler.cs"
+  },
+  "LevelCAPaperBallItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPaperBallItemHandler.cs"
+  },
+  "LevelCAParentHandlerBase": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAParentHandlerBase.cs"
+  },
+  "LevelCAPartyHornItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPartyHornItemHandler.cs"
+  },
+  "LevelCAPedicureChairSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPedicureChairSitAreaHandler.cs"
+  },
+  "LevelCAPenaltyKickDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPenaltyKickDropAreaHandler.cs"
+  },
+  "LevelCAPencilItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPencilItemHandler.cs"
+  },
+  "LevelCAPencilSharpnerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPencilSharpnerItemHandler.cs"
+  },
+  "LevelCAPerfumeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPerfumeItemHandler.cs"
+  },
+  "LevelCAPetEnclosureDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPetEnclosureDropAreaHandler.cs"
+  },
+  "LevelCAPetGrassAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPetGrassAreaHandler.cs"
+  },
+  "LevelCAPetInABoxDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPetInABoxDropAreaHandler.cs"
+  },
+  "LevelCAPetOnCharacterHandlerBase": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAPetOnCharacterHandlerBase.cs"
+  },
+  "LevelCAPetOnToddlerHandlerBase": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPetOnToddlerHandlerBase.cs"
+  },
+  "LevelCAPetPoopHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPetPoopHandler.cs"
+  },
+  "LevelCAPetToyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPetToyItemHandler.cs"
+  },
+  "LevelCAPetToyRodItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPetToyRodItemHandler.cs"
+  },
+  "LevelCAPetTreatsItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPetTreatsItemHandler.cs"
+  },
+  "LevelCAPhotoBoothDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPhotoBoothDropAreaHandler.cs"
+  },
+  "LevelCAPhotoBoothPackDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPhotoBoothPackDropAreaHandler.cs"
+  },
+  "LevelCAPianoSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPianoSitAreaHandler.cs"
+  },
+  "LevelCAPictureItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPictureItemHandler.cs"
+  },
+  "LevelCAPiercingRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPiercingRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCAPillowItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPillowItemHandler.cs"
+  },
+  "LevelCAPilotHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPilotHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCAPinataStickItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPinataStickItemHandler.cs"
+  },
+  "LevelCAPipingBagCraftingItemHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPipingBagCraftingItemHandler.cs"
+  },
+  "LevelCAPlateItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPlateItemHandler.cs"
+  },
+  "LevelCAPlayAnimationOnOthersClothingSpineSkinHandlerBase": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPlayAnimationOnOthersClothingSpineSkinHandlerBase.cs"
+  },
+  "LevelCAPlayFountainDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPlayFountainDropAreaHandler.cs"
+  },
+  "LevelCAPlayFountainToddlerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPlayFountainToddlerDropAreaHandler.cs"
+  },
+  "LevelCAPodiumDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPodiumDropAreaHandler.cs"
+  },
+  "LevelCAPointUpTalkingDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPointUpTalkingDropAreaHandler.cs"
+  },
+  "LevelCAPoleAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPoleAreaHandler.cs"
+  },
+  "LevelCAPompomsItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPompomsItemHandler.cs"
+  },
+  "LevelCAPoolDanceFloorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPoolDanceFloorDropAreaHandler.cs"
+  },
+  "LevelCAPoolDanceFloorToddlerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPoolDanceFloorToddlerDropAreaHandler.cs"
+  },
+  "LevelCAPoolMatressSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPoolMatressSitAreaHandler.cs"
+  },
+  "LevelCAPoolNoodleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPoolNoodleItemHandler.cs"
+  },
+  "LevelCAPouringItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPouringItemHandler.cs"
+  },
+  "LevelCAPregnancyClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPregnancyClothingSpineSkinHandler.cs"
+  },
+  "LevelCAPregnancyMaternityClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPregnancyMaternityClothingSpineSkinHandler.cs"
+  },
+  "LevelCAPremiereCinemaCameraItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPremiereCinemaCameraItemHandler.cs"
+  },
+  "LevelCAPrinceCrownClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPrinceCrownClothingSpineSkinHandler.cs"
+  },
+  "LevelCAPrincessCrownClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPrincessCrownClothingSpineSkinHandler.cs"
+  },
+  "LevelCAPrincessDanceMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPrincessDanceMatDropAreaHandler.cs"
+  },
+  "LevelCAPrincessPhotoBoothDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPrincessPhotoBoothDropAreaHandler.cs"
+  },
+  "LevelCAPrincessThroneSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPrincessThroneSitAreaHandler.cs"
+  },
+  "LevelCAPrincipalChairCharacterSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPrincipalChairCharacterSitAreaHandler.cs"
+  },
+  "LevelCAPrincipalDecorationsItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPrincipalDecorationsItemHandler.cs"
+  },
+  "LevelCAPrincipalMicrophoneSitAreaHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPrincipalMicrophoneSitAreaHandler.cs"
+  },
+  "LevelCAPrincipalStudentChairCharacterSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPrincipalStudentChairCharacterSitAreaHandler.cs"
+  },
+  "LevelCAProjectorScreenDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAProjectorScreenDropAreaHandler.cs"
+  },
+  "LevelCAPromotionContractItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPromotionContractItemHandler.cs"
+  },
+  "LevelCAPumpkinClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPumpkinClothingSpineSkinHandler.cs"
+  },
+  "LevelCAPutOnMakeupFromSpawnerItemHandlerWithData": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPutOnMakeupFromSpawnerItemHandlerWithData.cs"
+  },
+  "LevelCAPutOnMakeupFromTransformableItemHandlerWithData": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPutOnMakeupFromTransformableItemHandlerWithData.cs"
+  },
+  "LevelCAPutOnMakeupItemHandlerWithData": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAPutOnMakeupItemHandlerWithData.cs"
+  },
+  "LevelCARabbitHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARabbitHandler.cs"
+  },
+  "LevelCARailRollerSkatesDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARailRollerSkatesDropAreaHandler.cs"
+  },
+  "LevelCARailSkateboardDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARailSkateboardDropAreaHandler.cs"
+  },
+  "LevelCARainCatHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARainCatHandler.cs"
+  },
+  "LevelCARainCharacterHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARainCharacterHandler.cs"
+  },
+  "LevelCARainDogHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARainDogHandler.cs"
+  },
+  "LevelCARainToddlerHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARainToddlerHandler.cs"
+  },
+  "LevelCARampCarDropAreaHandler": {
+   "bases": [
+    "LevelCARampDropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARampCarDropAreaHandler.cs"
+  },
+  "LevelCARampDropAreaHandlerBase": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARampDropAreaHandlerBase.cs"
+  },
+  "LevelCARampRollerSkatesDropAreaHandler": {
+   "bases": [
+    "LevelCARampDropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARampRollerSkatesDropAreaHandler.cs"
+  },
+  "LevelCARampSkateboardDropAreaHandler": {
+   "bases": [
+    "LevelCARampDropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARampSkateboardDropAreaHandler.cs"
+  },
+  "LevelCARampSkiDropAreaHandler": {
+   "bases": [
+    "LevelCARampSnowboardDropAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARampSkiDropAreaHandler.cs"
+  },
+  "LevelCARampSnowboardDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARampSnowboardDropAreaHandler.cs"
+  },
+  "LevelCAReadingAloudItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAReadingAloudItemHandler.cs"
+  },
+  "LevelCAReadingGothBookItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAReadingGothBookItemHandler.cs"
+  },
+  "LevelCAReadingInfantsBookItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAReadingInfantsBookItemHandler.cs"
+  },
+  "LevelCAReadingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAReadingItemHandler.cs"
+  },
+  "LevelCAReceptionDeskSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAReceptionDeskSitAreaHandler.cs"
+  },
+  "LevelCARefCardItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARefCardItemHandler.cs"
+  },
+  "LevelCARefFlagItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARefFlagItemHandler.cs"
+  },
+  "LevelCARefWhistleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARefWhistleItemHandler.cs"
+  },
+  "LevelCAReporterMicrophoneItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAReporterMicrophoneItemHandler.cs"
+  },
+  "LevelCARescueShoesDogSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCARescueShoesDogSpineSkinHandler.cs"
+  },
+  "LevelCARescueVestDogSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCARescueVestDogSpineSkinHandler.cs"
+  },
+  "LevelCAResistanceBandItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAResistanceBandItemHandler.cs"
+  },
+  "LevelCARestaurantMenuOrderFoodItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARestaurantMenuOrderFoodItemHandler.cs"
+  },
+  "LevelCARingBoxItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARingBoxItemHandler.cs"
+  },
+  "LevelCARingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARingItemHandler.cs"
+  },
+  "LevelCARingRemovalOnlySpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARingRemovalOnlySpineSkinHandler.cs"
+  },
+  "LevelCARingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARingSpineSkinHandler.cs"
+  },
+  "LevelCARollerBladeItemHandler": {
+   "bases": [
+    "LevelCAShoesSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARollerBladeItemHandler.cs"
+  },
+  "LevelCARollingPinItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARollingPinItemHandler.cs"
+  },
+  "LevelCARoseLocketClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCAPlayAnimationOnOthersClothingSpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARoseLocketClothingSpineSkinHandler.cs"
+  },
+  "LevelCARoyaltyHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARoyaltyHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCARubberballItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARubberballItemHandler.cs"
+  },
+  "LevelCARugDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARugDropAreaHandler.cs"
+  },
+  "LevelCARulerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARulerItemHandler.cs"
+  },
+  "LevelCARunningTrackFieldDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARunningTrackFieldDropAreaHandler.cs"
+  },
+  "LevelCARunningTrackFieldFinishLineDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARunningTrackFieldFinishLineDropAreaHandler.cs"
+  },
+  "LevelCARunningTrackFieldStartingLineDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCARunningTrackFieldStartingLineDropAreaHandler.cs"
+  },
+  "LevelCASandBoxToddlerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASandBoxToddlerDropAreaHandler.cs"
+  },
+  "LevelCASaxophoneItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASaxophoneItemHandler.cs"
+  },
+  "LevelCAScarecrowClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAScarecrowClothingSpineSkinHandler.cs"
+  },
+  "LevelCAScarecrowMascotHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAScarecrowMascotHandler.cs"
+  },
+  "LevelCASchoolBoardDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASchoolBoardDropAreaHandler.cs"
+  },
+  "LevelCASchoolEntranceDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASchoolEntranceDropAreaHandler.cs"
+  },
+  "LevelCAScissorsCraftingItemHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAScissorsCraftingItemHandler.cs"
+  },
+  "LevelCAScissorsItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAScissorsItemHandler.cs"
+  },
+  "LevelCAScrewdriverCraftingItemHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAScrewdriverCraftingItemHandler.cs"
+  },
+  "LevelCASecateursItemHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASecateursItemHandler.cs"
+  },
+  "LevelCASecretItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCASecretItemHandler.cs"
+  },
+  "LevelCASecretKeyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASecretKeyItemHandler.cs"
+  },
+  "LevelCASecurityDogSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "LevelCASecurityDogSpineSkinHandler.cs"
+  },
+  "LevelCASecurityGuardClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASecurityGuardClothingSpineSkinHandler.cs"
+  },
+  "LevelCASecurityGuardEarPieceClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASecurityGuardEarPieceClothingSpineSkinHandler.cs"
+  },
+  "LevelCASeesawBaseSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASeesawBaseSitAreaHandler.cs"
+  },
+  "LevelCASeesawCharacterSitAreaHandler": {
+   "bases": [
+    "LevelCASeesawBaseSitAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASeesawCharacterSitAreaHandler.cs"
+  },
+  "LevelCASeesawToddlerSitAreaHandler": {
+   "bases": [
+    "LevelCASeesawBaseSitAreaHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASeesawToddlerSitAreaHandler.cs"
+  },
+  "LevelCASegwayItemHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASegwayItemHandler.cs"
+  },
+  "LevelCAShakerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShakerItemHandler.cs"
+  },
+  "LevelCAShampooChairClientDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShampooChairClientDropAreaHandler.cs"
+  },
+  "LevelCAShampooChairDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShampooChairDropAreaHandler.cs"
+  },
+  "LevelCAShampooItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShampooItemHandler.cs"
+  },
+  "LevelCAShampooSkinChangeItemHandler": {
+   "bases": [
+    "LevelCAShampooItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShampooSkinChangeItemHandler.cs"
+  },
+  "LevelCAShirtClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShirtClothingItemHandler.cs"
+  },
+  "LevelCAShoeShopBrandPhotoBoothDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShoeShopBrandPhotoBoothDropAreaHandler.cs"
+  },
+  "LevelCAShoeShopMascotHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShoeShopMascotHandler.cs"
+  },
+  "LevelCAShoesClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShoesClothingItemHandler.cs"
+  },
+  "LevelCAShoesMirrorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShoesMirrorDropAreaHandler.cs"
+  },
+  "LevelCAShoesSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShoesSpineSkinHandler.cs"
+  },
+  "LevelCAShopDisplayDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShopDisplayDropAreaHandler.cs"
+  },
+  "LevelCAShovelSmallToddlerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAShovelSmallToddlerItemHandler.cs"
+  },
+  "LevelCASignBurgerHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASignBurgerHandler.cs"
+  },
+  "LevelCASignMascotAirplaneHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASignMascotAirplaneHandler.cs"
+  },
+  "LevelCASignRobotHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASignRobotHandler.cs"
+  },
+  "LevelCASimpleItemCraftingHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASimpleItemCraftingHandler.cs"
+  },
+  "LevelCASinkDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASinkDropAreaHandler.cs"
+  },
+  "LevelCASittingToddlerMirrorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASittingToddlerMirrorDropAreaHandler.cs"
+  },
+  "LevelCASkateboardItemHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASkateboardItemHandler.cs"
+  },
+  "LevelCASkeletonHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASkeletonHandler.cs"
+  },
+  "LevelCASkiPolesItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithSwappableData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASkiPolesItemHandler.cs"
+  },
+  "LevelCASkinRemoverByCategory": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "LevelCASkinRemoverByCategory.cs"
+  },
+  "LevelCASleepingNecklaceSpineSkinHandler": {
+   "bases": [
+    "LevelCANecklaceSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASleepingNecklaceSpineSkinHandler.cs"
+  },
+  "LevelCASleepingToddlerDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASleepingToddlerDropAreaHandler.cs"
+  },
+  "LevelCASmallCatToyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASmallCatToyItemHandler.cs"
+  },
+  "LevelCASmallPetOnCharacterHandler": {
+   "bases": [
+    "LevelCAPetOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASmallPetOnCharacterHandler.cs"
+  },
+  "LevelCASmallPetOnToddlerHandler": {
+   "bases": [
+    "LevelCAPetOnToddlerHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASmallPetOnToddlerHandler.cs"
+  },
+  "LevelCASmellingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASmellingItemHandler.cs"
+  },
+  "LevelCASnakeHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnakeHandler.cs"
+  },
+  "LevelCASnakeOnCharacterHandler": {
+   "bases": [
+    "LevelCAPetOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnakeOnCharacterHandler.cs"
+  },
+  "LevelCASnareDrumItemHandler": {
+   "bases": [
+    "LevelCAItemSpineNoSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnareDrumItemHandler.cs"
+  },
+  "LevelCASnowBallItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowBallItemHandler.cs"
+  },
+  "LevelCASnowCatHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowCatHandler.cs"
+  },
+  "LevelCASnowCharacterHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowCharacterHandler.cs"
+  },
+  "LevelCASnowDogHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowDogHandler.cs"
+  },
+  "LevelCASnowDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowDropAreaHandler.cs"
+  },
+  "LevelCASnowHorseHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowHorseHandler.cs"
+  },
+  "LevelCASnowLadyHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowLadyHandler.cs"
+  },
+  "LevelCASnowManHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowManHandler.cs"
+  },
+  "LevelCASnowSurfaceCatHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowSurfaceCatHandler.cs"
+  },
+  "LevelCASnowSurfaceCharacterHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowSurfaceCharacterHandler.cs"
+  },
+  "LevelCASnowSurfaceDogHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowSurfaceDogHandler.cs"
+  },
+  "LevelCASnowSurfaceHorseHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowSurfaceHorseHandler.cs"
+  },
+  "LevelCASnowSurfaceToddlerHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowSurfaceToddlerHandler.cs"
+  },
+  "LevelCASnowToddlerHandler": {
+   "bases": [
+    "LevelCAByWeatherCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowToddlerHandler.cs"
+  },
+  "LevelCASnowboardDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASnowboardDropAreaHandler.cs"
+  },
+  "LevelCASoapBarItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASoapBarItemHandler.cs"
+  },
+  "LevelCASoccerBallItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASoccerBallItemHandler.cs"
+  },
+  "LevelCASoccerFieldDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASoccerFieldDropAreaHandler.cs"
+  },
+  "LevelCASocksClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASocksClothingItemHandler.cs"
+  },
+  "LevelCASocksSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASocksSpineSkinHandler.cs"
+  },
+  "LevelCASofaSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASofaSitAreaHandler.cs"
+  },
+  "LevelCASoundMakerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASoundMakerItemHandler.cs"
+  },
+  "LevelCASparklesCannonItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASparklesCannonItemHandler.cs"
+  },
+  "LevelCASpawnItemDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASpawnItemDropAreaHandler.cs"
+  },
+  "LevelCASpeakerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASpeakerItemHandler.cs"
+  },
+  "LevelCASpecialClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASpecialClothingSpineSkinHandler.cs"
+  },
+  "LevelCASpineAnimationOnDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASpineAnimationOnDropAreaHandler.cs"
+  },
+  "LevelCASpineRulerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase",
+    "IPointerClickHandler",
+    "IEventSystemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASpineRulerItemHandler.cs"
+  },
+  "LevelCASpineSkinHandlerBase": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCASpineSkinHandlerBase.cs"
+  },
+  "LevelCASpineSkinHandlerWithData": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase",
+    "IHasCAData"
+   ],
+   "file": "PWC/PSDToLevel/LevelContextualAnimation/LevelCASpineSkinHandlerWithData.cs"
+  },
+  "LevelCASpongeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASpongeItemHandler.cs"
+  },
+  "LevelCASpoonItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASpoonItemHandler.cs"
+  },
+  "LevelCASportsCardItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASportsCardItemHandler.cs"
+  },
+  "LevelCASpringboardDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASpringboardDropAreaHandler.cs"
+  },
+  "LevelCASqueezerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASqueezerItemHandler.cs"
+  },
+  "LevelCAStampCraftingItemHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStampCraftingItemHandler.cs"
+  },
+  "LevelCAStandingToddlerMirrorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStandingToddlerMirrorDropAreaHandler.cs"
+  },
+  "LevelCAStandingVacuumeItemHandler": {
+   "bases": [
+    "LevelCAHandVacuumeItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStandingVacuumeItemHandler.cs"
+  },
+  "LevelCAStarsBoulevardCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStarsBoulevardCharacterHandler.cs"
+  },
+  "LevelCAStencilItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStencilItemHandler.cs"
+  },
+  "LevelCAStethoscopeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStethoscopeItemHandler.cs"
+  },
+  "LevelCAStickerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStickerItemHandler.cs"
+  },
+  "LevelCAStopSignItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStopSignItemHandler.cs"
+  },
+  "LevelCAStressBallItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStressBallItemHandler.cs"
+  },
+  "LevelCAStudentDeskSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAStudentDeskSitAreaHandler.cs"
+  },
+  "LevelCASuitcaseItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASuitcaseItemHandler.cs"
+  },
+  "LevelCASunscreenItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASunscreenItemHandler.cs"
+  },
+  "LevelCASunscreenSprayItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASunscreenSprayItemHandler.cs"
+  },
+  "LevelCASuspiciousGlassesClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASuspiciousGlassesClothingSpineSkinHandler.cs"
+  },
+  "LevelCASwordItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCASwordItemHandler.cs"
+  },
+  "LevelCATalkingCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATalkingCharacterHandler.cs"
+  },
+  "LevelCATamagotchiItemHandler": {
+   "bases": [
+    "LevelCAHandHeldDeviceItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATamagotchiItemHandler.cs"
+  },
+  "LevelCATapeGunCraftingItemHandler": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATapeGunCraftingItemHandler.cs"
+  },
+  "LevelCATeaBagItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATeaBagItemHandler.cs"
+  },
+  "LevelCATechBirdHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATechBirdHandler.cs"
+  },
+  "LevelCATechCatHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATechCatHandler.cs"
+  },
+  "LevelCATechDogHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATechDogHandler.cs"
+  },
+  "LevelCATechRabbitHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATechRabbitHandler.cs"
+  },
+  "LevelCATechRobotHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATechRobotHandler.cs"
+  },
+  "LevelCATemplatedItemCharacterChangeHairForOtherAvatarHandler": {
+   "bases": [
+    "LevelCATemplatedItemCharacterChangeHairHandler"
+   ],
+   "file": "LevelCATemplatedItemCharacterChangeHairForOtherAvatarHandler.cs"
+  },
+  "LevelCATemplatedItemCharacterChangeHairHandler": {
+   "bases": [
+    "LevelCAItemCharacterChangeHairHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATemplatedItemCharacterChangeHairHandler.cs"
+  },
+  "LevelCATemplatedItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "PWC/Level/LevelCATemplatedItemHandler.cs"
+  },
+  "LevelCATennisBallWithDogItemHandler": {
+   "bases": [
+    "LevelCATennisballItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATennisBallWithDogItemHandler.cs"
+  },
+  "LevelCATennisRacketItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/LevelCATennisRacketItemHandler.cs"
+  },
+  "LevelCATennisballItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATennisballItemHandler.cs"
+  },
+  "LevelCATennisballServingQueenItemHandler": {
+   "bases": [
+    "LevelCATennisballItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATennisballServingQueenItemHandler.cs"
+  },
+  "LevelCATentAndSleepingBagSleepAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCATentAndSleepingBagSleepAreaHandler.cs"
+  },
+  "LevelCATerrasseSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATerrasseSitAreaHandler.cs"
+  },
+  "LevelCATimerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATimerItemHandler.cs"
+  },
+  "LevelCAToddlerBackSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerBackSpineSkinHandler.cs"
+  },
+  "LevelCAToddlerBallPitDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerBallPitDropAreaHandler.cs"
+  },
+  "LevelCAToddlerBathtubDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerBathtubDropAreaHandler.cs"
+  },
+  "LevelCAToddlerBicycleItemHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerBicycleItemHandler.cs"
+  },
+  "LevelCAToddlerBlanketItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerBlanketItemHandler.cs"
+  },
+  "LevelCAToddlerBottleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerBottleItemHandler.cs"
+  },
+  "LevelCAToddlerChangingTableDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerChangingTableDropAreaHandler.cs"
+  },
+  "LevelCAToddlerDancingClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerDancingClothingSpineSkinHandler.cs"
+  },
+  "LevelCAToddlerDrinkablesItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerDrinkablesItemHandler.cs"
+  },
+  "LevelCAToddlerEdiblesItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerEdiblesItemHandler.cs"
+  },
+  "LevelCAToddlerFavoritePlushieItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerFavoritePlushieItemHandler.cs"
+  },
+  "LevelCAToddlerFireFighterSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerFireFighterSpineSkinHandler.cs"
+  },
+  "LevelCAToddlerFlightTicketItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerFlightTicketItemHandler.cs"
+  },
+  "LevelCAToddlerHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerHandler.cs"
+  },
+  "LevelCAToddlerHoodieJacketSpineSkinHandler": {
+   "bases": [
+    "LevelCASpecialClothingSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerHoodieJacketSpineSkinHandler.cs"
+  },
+  "LevelCAToddlerInflatableTubeSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerInflatableTubeSitAreaHandler.cs"
+  },
+  "LevelCAToddlerItemCraftingHandlerBase": {
+   "bases": [
+    "LevelCAItemCraftingHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAToddlerItemCraftingHandlerBase.cs"
+  },
+  "LevelCAToddlerKidsRiderDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase",
+    "IArcadePlayable"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerKidsRiderDropAreaHandler.cs"
+  },
+  "LevelCAToddlerMirrorDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerMirrorDropAreaHandler.cs"
+  },
+  "LevelCAToddlerMusicalInstrumentItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData",
+    "IHaveAnimationSearch"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAToddlerMusicalInstrumentItemHandler.cs"
+  },
+  "LevelCAToddlerOnCharacterHandler": {
+   "bases": [
+    "LevelCAToddlerOnCharacterHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerOnCharacterHandler.cs"
+  },
+  "LevelCAToddlerOnCharacterHandlerBase": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerOnCharacterHandlerBase.cs"
+  },
+  "LevelCAToddlerPacifierItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerPacifierItemHandler.cs"
+  },
+  "LevelCAToddlerPilotHatClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerPilotHatClothingSpineSkinHandler.cs"
+  },
+  "LevelCAToddlerPlayablesItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerPlayablesItemHandler.cs"
+  },
+  "LevelCAToddlerRollerBladeItemHandler": {
+   "bases": [
+    "LevelCAToddlerShoesSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerRollerBladeItemHandler.cs"
+  },
+  "LevelCAToddlerShoesClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerShoesClothingItemHandler.cs"
+  },
+  "LevelCAToddlerShoesSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerShoesSpineSkinHandler.cs"
+  },
+  "LevelCAToddlerSimpleItemCraftingHandler": {
+   "bases": [
+    "LevelCAToddlerItemCraftingHandlerBase"
+   ],
+   "file": "LevelCAToddlerSimpleItemCraftingHandler.cs"
+  },
+  "LevelCAToddlerSittingHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerSittingHandler.cs"
+  },
+  "LevelCAToddlerSnowDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerSnowDropAreaHandler.cs"
+  },
+  "LevelCAToddlerSocksClothingItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerSocksClothingItemHandler.cs"
+  },
+  "LevelCAToddlerSocksSpineSkinHandler": {
+   "bases": [
+    "LevelCASpineSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerSocksSpineSkinHandler.cs"
+  },
+  "LevelCAToddlerSprinkleToyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerSprinkleToyItemHandler.cs"
+  },
+  "LevelCAToddlerStandingHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerStandingHandler.cs"
+  },
+  "LevelCAToddlerTamagotchiItemHandler": {
+   "bases": [
+    "LevelCAHandHeldDeviceItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerTamagotchiItemHandler.cs"
+  },
+  "LevelCAToddlerToyBubbleGunItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerToyBubbleGunItemHandler.cs"
+  },
+  "LevelCAToddlerTwinsStrollerItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerTwinsStrollerItemHandler.cs"
+  },
+  "LevelCAToddlerWalkerItemHandler": {
+   "bases": [
+    "LevelCAItemOnBoneHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerWalkerItemHandler.cs"
+  },
+  "LevelCAToddlerWaterCannonDropAreaHandler": {
+   "bases": [
+    "LevelCAWaterCannonDropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerWaterCannonDropAreaHandler.cs"
+  },
+  "LevelCAToddlerWaterPuddleDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToddlerWaterPuddleDropAreaHandler.cs"
+  },
+  "LevelCAToggleGameObjectEventItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToggleGameObjectEventItemHandler.cs"
+  },
+  "LevelCAToggleSpriteInHandItemHandlerWithData": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "LevelCAToggleSpriteInHandItemHandlerWithData.cs"
+  },
+  "LevelCAToiletSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToiletSitAreaHandler.cs"
+  },
+  "LevelCAToolBoxItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCAToolBoxItemHandler.cs"
+  },
+  "LevelCAToothbrushItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToothbrushItemHandler.cs"
+  },
+  "LevelCAToothbrushTeethSkinItemHandler": {
+   "bases": [
+    "LevelCAToothbrushItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToothbrushTeethSkinItemHandler.cs"
+  },
+  "LevelCAToothpasteItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToothpasteItemHandler.cs"
+  },
+  "LevelCATowelItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATowelItemHandler.cs"
+  },
+  "LevelCATowelSwanItemHandler": {
+   "bases": [
+    "LevelCATowelItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATowelSwanItemHandler.cs"
+  },
+  "LevelCAToyBubbleGunItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToyBubbleGunItemHandler.cs"
+  },
+  "LevelCAToyCarItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToyCarItemHandler.cs"
+  },
+  "LevelCAToyCarToddlerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToyCarToddlerItemHandler.cs"
+  },
+  "LevelCAToyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToyItemHandler.cs"
+  },
+  "LevelCAToyLaserGunItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAToyLaserGunItemHandler.cs"
+  },
+  "LevelCATrainSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "PWC/Level/ContextualAnimation/LevelCATrainSitAreaHandler.cs"
+  },
+  "LevelCATrainTicketItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATrainTicketItemHandler.cs"
+  },
+  "LevelCATrainWhistleItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATrainWhistleItemHandler.cs"
+  },
+  "LevelCATrainingPottyToddlerSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATrainingPottyToddlerSitAreaHandler.cs"
+  },
+  "LevelCATransformOptionsItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATransformOptionsItemHandler.cs"
+  },
+  "LevelCATravelStrollerToddlerSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATravelStrollerToddlerSitAreaHandler.cs"
+  },
+  "LevelCATravellingBagItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATravellingBagItemHandler.cs"
+  },
+  "LevelCATrayItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATrayItemHandler.cs"
+  },
+  "LevelCATrickOrTreatItemHandler": {
+   "bases": [
+    "LevelCAGiftExchangeItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATrickOrTreatItemHandler.cs"
+  },
+  "LevelCATrolleyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATrolleyItemHandler.cs"
+  },
+  "LevelCATrophyItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATrophyItemHandler.cs"
+  },
+  "LevelCATumblerCupsItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATumblerCupsItemHandler.cs"
+  },
+  "LevelCATurtleHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATurtleHandler.cs"
+  },
+  "LevelCATwinStrollerToddlerSitAreaHandler": {
+   "bases": [
+    "LevelCAParentHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCATwinStrollerToddlerSitAreaHandler.cs"
+  },
+  "LevelCAUkeleleItemHandler": {
+   "bases": [
+    "LevelCAMusicalInstrumentItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAUkeleleItemHandler.cs"
+  },
+  "LevelCAUltrasoundProbeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerWithData"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAUltrasoundProbeItemHandler.cs"
+  },
+  "LevelCAUmbrellaItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase",
+    "IHasPersistentData",
+    "IRequirePDSceneObject"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAUmbrellaItemHandler.cs"
+  },
+  "LevelCAUnfoldOrigamiItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAUnfoldOrigamiItemHandler.cs"
+  },
+  "LevelCAUnicycleItemHandler": {
+   "bases": [
+    "LevelCAItemSpineNoSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAUnicycleItemHandler.cs"
+  },
+  "LevelCAVRControllerItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAVRControllerItemHandler.cs"
+  },
+  "LevelCAValentineConfessionItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAValentineConfessionItemHandler.cs"
+  },
+  "LevelCAValentinesRoseItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAValentinesRoseItemHandler.cs"
+  },
+  "LevelCAVideoCameraItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAVideoCameraItemHandler.cs"
+  },
+  "LevelCAVinylItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAVinylItemHandler.cs"
+  },
+  "LevelCAVollyballItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAVollyballItemHandler.cs"
+  },
+  "LevelCAWalkwayCharacterHandler": {
+   "bases": [
+    "LevelCAHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWalkwayCharacterHandler.cs"
+  },
+  "LevelCAWandMaskItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWandMaskItemHandler.cs"
+  },
+  "LevelCAWatchItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWatchItemHandler.cs"
+  },
+  "LevelCAWaterAreaAnimalHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWaterAreaAnimalHandler.cs"
+  },
+  "LevelCAWaterAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "PWC/Level/Water/LevelCAWaterAreaHandler.cs"
+  },
+  "LevelCAWaterAreaToddlerHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "PWC/Level/Water/LevelCAWaterAreaToddlerHandler.cs"
+  },
+  "LevelCAWaterCannonDropAreaHandler": {
+   "bases": [
+    "LevelCAWaterCannonDropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWaterCannonDropAreaHandler.cs"
+  },
+  "LevelCAWaterCannonDropAreaHandlerBase": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWaterCannonDropAreaHandlerBase.cs"
+  },
+  "LevelCAWaterGunItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWaterGunItemHandler.cs"
+  },
+  "LevelCAWaterParkSlideDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWaterParkSlideDropAreaHandler.cs"
+  },
+  "LevelCAWaterPuddleDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWaterPuddleDropAreaHandler.cs"
+  },
+  "LevelCAWateringCanItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWateringCanItemHandler.cs"
+  },
+  "LevelCAWaterparkTubeItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWaterparkTubeItemHandler.cs"
+  },
+  "LevelCAWeightHeightMeasureDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWeightHeightMeasureDropAreaHandler.cs"
+  },
+  "LevelCAWerewolfClothingSpineSkinHandler": {
+   "bases": [
+    "LevelCAHalloweenCustomSpineSkinHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWerewolfClothingSpineSkinHandler.cs"
+  },
+  "LevelCAWheelChairItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWheelChairItemHandler.cs"
+  },
+  "LevelCAWindsurfDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWindsurfDropAreaHandler.cs"
+  },
+  "LevelCAWitchBroomItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWitchBroomItemHandler.cs"
+  },
+  "LevelCAWrenchCaftingDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWrenchCaftingDropAreaHandler.cs"
+  },
+  "LevelCAWrenchItemHandler": {
+   "bases": [
+    "LevelCAItemHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAWrenchItemHandler.cs"
+  },
+  "LevelCAXmasGiftExchangerItemHandler": {
+   "bases": [
+    "LevelCAGiftExchangeItemHandler"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAXmasGiftExchangerItemHandler.cs"
+  },
+  "LevelCAYardMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAYardMatDropAreaHandler.cs"
+  },
+  "LevelCAYogaBlockItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAYogaBlockItemHandler.cs"
+  },
+  "LevelCAYogaBouncingChairDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAYogaBouncingChairDropAreaHandler.cs"
+  },
+  "LevelCAYogaGongItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAYogaGongItemHandler.cs"
+  },
+  "LevelCAYogaMatDropAreaHandler": {
+   "bases": [
+    "LevelCADropAreaHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAYogaMatDropAreaHandler.cs"
+  },
+  "LevelCAYoyoItemHandler": {
+   "bases": [
+    "LevelCAItemWithSkinHandlerBase"
+   ],
+   "file": "Game/Level/ContextualAnimation/LevelCAYoyoItemHandler.cs"
+  }
+ }
+}
