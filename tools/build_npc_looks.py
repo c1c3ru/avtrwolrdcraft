@@ -6,7 +6,8 @@ Entradas: out/assets/TextAsset/*.txt com "AvatarSpineDatas" (ID, SkinsData[SkinN
 Saidas: Resources/Interiors/<chave>/<chave>_npcs.json  ({"npcs":[{id,x,y,look}]}) e out/recon/npc_hidden_items.json
 (ids que precisam de PNG no manifesto mas NAO entram nas listas do editor; usado por avatar_catalog_build.py --hidden-items).
 Cada campo do look e um id de item, "none" (sem peca) ou o padrao; cores viram o indice mais proximo nas paletas oficiais.
-Categorias sem suporte no cliente (rosto/bochechas, meias, bolsas, pulseiras, piercing, barba) ficam de fora.
+Pecas extras sem categoria no editor (bochechas, complexion, meias, bolsas, pulseiras, piercing, aneis, luvas, mascara, barba)
+vao em look.extras = [{id, tint:[r,g,b]|[]}], aplicadas como skins soltas no render do NPC (tinta = Colors[0]/255 quando existe).
 uso: python3 tools/build_npc_looks.py
 """
 import glob, hashlib, json, re, sys
@@ -38,6 +39,17 @@ def item_for(skin_name):
     return None
 
 
+EXTRA_PREFIXES = ('face_cheeks', 'face_complexion', 'legs_socks', 'accessories_face_piercing', 'accessories_body_bags',
+                  'accessories_body_bracelets', 'accessories_body_rings', 'accessories_body_gloves', 'accessories_face_general',
+                  'accessories_face_mask', 'hair_facial')
+
+
+def extra_for(skin_name):
+    prefix, _, rest = skin_name.partition('/')
+    if prefix.lower() not in EXTRA_PREFIXES: return None
+    return f'{prefix.lower()}_{rest.lower()}'.replace('/', '_')
+
+
 def nearest(rgb, palette):
     return min(range(len(palette)), key=lambda i: sum((a - b) ** 2 for a, b in zip(rgb, palette[i])))
 
@@ -65,11 +77,20 @@ def main():
             a = looks.get(av['id'])
             if not a or a['SpineType'] != 1: continue  # so adultos/criancas "Character" (SpineType 1); bebes/pets depois
             look = {k: 'none' for k in FIELDS}
-            look.update(skinIndex=0, eyesIndex=0, colors=[])
+            look.update(skinIndex=0, eyesIndex=0, colors=[], extras=[])
             for s in a['SkinsData']:
                 name = s['SkinName']
                 if name.startswith('Body_Whites'): look['skinIndex'] = nearest(rgb(s), skin_pal)
                 elif name.startswith('Eyes/'): look['eyesIndex'] = nearest(rgb(s), eye_pal)
+                ex = extra_for(name)
+                if ex:
+                    if resolvable(ex) == 'ok':
+                        c = (s.get('Colors') or [None])[0]
+                        tint = [round(c[k] / 255.0, 4) for k in 'rgb'] if c else []
+                        look['extras'].append({'id': ex, 'tint': tint})
+                        hidden.add(('Extra', ex))
+                    else: missing_tex += 1
+                    continue
                 m = item_for(name)
                 if not m:
                     unsupported += 1

@@ -17,6 +17,14 @@ namespace AvatarWorld.Core.Avatar
         public int Index;
     }
 
+    /// <summary>Peca solta (bochecha, meia, bolsa...) so de NPC: id do manifesto + tinta RGB opcional (vazio = sem tinta).</summary>
+    [Serializable]
+    public sealed class ExtraItem
+    {
+        public string Id;
+        public float[] Tint = new float[0];
+    }
+
     [Serializable]
     public sealed class AvatarAppearance
     {
@@ -38,6 +46,9 @@ namespace AvatarWorld.Core.Avatar
 
         /// <summary>Tipo do avatar (adulto, crianca, bebe). Saves antigos sem o campo ficam Adult (0).</summary>
         public AvatarKind Kind = AvatarKind.Adult;
+
+        /// <summary>Pecas extras so de NPC (sem categoria no editor). Nao entra em Clone/SameAs: o jogador nunca as tem.</summary>
+        [NonSerialized] public List<ExtraItem> Extras;
 
         public static AvatarAppearance CreateDefault() => new AvatarAppearance();
 
