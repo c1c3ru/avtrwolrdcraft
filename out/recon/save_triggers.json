@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "scope": "bounded static proof; no execution",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "triggers": {
+    "writes": [
+      "scene change: GameSceneManager.LoadScene invokes OnBeforeSceneLoadStage2Action (after IsSceneChangingInProgress = true) -> PersistentDataManager.OnBeforeSceneLoadStage2 -> SaveProgressInAllScenes (no CanSaveScene check)",
+      "OnApplicationPause(true) -> CanSaveScene() -> SaveProgressInAllScenes",
+      "LevelMakerSplitLevelManager.SaveCurrentData and MPManager.TrySaveCurrentSceneAndGetSceneData call SaveProgress directly"
+    ],
+    "can_save_scene": "!GameSceneManager.IsSceneChangingInProgress && (LevelManager.Instance == null || LevelManager.Instance.IsPostInit)",
+    "not_found": "no OnApplicationQuit or OnApplicationFocus handler exists on PersistentDataManager (method list)"
+  },
+  "direct_callers": {
+    "SaveProgressInAllScenes": [
+      "PWC.PersistentData.PersistentDataManager.OnApplicationPause",
+      "PWC.PersistentData.PersistentDataManager.OnBeforeSceneLoadStage2"
+    ],
+    "SaveProgress": [
+      "PWC.Level.Maker.LevelMakerSplitLevelManager.SaveCurrentData",
+      "PWC.Multiplayer.MPManager.TrySaveCurrentSceneAndGetSceneData",
+      "PWC.PersistentData.PersistentDataManager.SaveProgressInAllScenes"
+    ],
+    "LoadProgress": [
+      "PWC.Level.LevelManager.Init",
+      "PWC.Level.Maker.LevelMakerSplitLevelManager.LoadCurrentLevel",
+      "PWC.World.WorldManager.Init"
+    ],
+    "DeleteDataForActiveScene": [
+      "PWC.Level.LevelUpgradeTracker.ResetCurrentLevelPD"
+    ],
+    "CanSaveScene": [
+      "PWC.PersistentData.PersistentDataManager.OnApplicationPause"
+    ]
+  },
+  "playerprefs_keys": {
+    "PWC.AvatarSpine.AvatarSpineDataManager.SaveCharacter": [
+      "AvatarSpineData_"
+    ],
+    "PWC.AvatarSpine.AvatarSpineDataManager.SaveIDList": [
+      "AvatarSpineDataIDList"
+    ],
+    "PWC.Level.LevelAvatarData.Save": [
+      "LevelCharacterData_"
+    ],
+    "PWC.Level.LevelAvatarData.SetIDsList": [
+      "LevelCharacterData_List"
+    ],
+    "PWC.World.Buildings.WorldBuildingsDataManager.SaveBuildingData": [
+      "WorldBuildingData_"
+    ],
+    "PWC.WorldMakerData.WorldMakerDataManager.SaveMakerHouseData": [
+      "WorldMakerHouseData_"
+    ],
+    "PWC.WorldMakerData.WorldMakerDataManager.SaveMakerStreetData": [
+      "WorldMakerStreetData_"
+    ],
+    "PWC.PersistentData.PersistentDataManager.SaveSceneObjectsToKeepOnLoad": [
+      "PazuWorld_PersistantData_KeepObjectsOnLoad"
+    ],
+    "PWC.AWGameSettings.SetMusicMute": [
+      "AW_Mute_Music"
+    ],
+    "PWC.AWGameSettings.SetSFXMute": [
+      "AW_Mute_SFX"
+    ],
+    "PWC.AWGameSettings.SetLanguageCode": [
+      "AW_Language_Code"
+    ],
+    "Game.Store.StoreManager.MigrateStateFileIfNeeded": [
+      "Store_DidMigrateStateFileIfNeeded",
+      "StoreState"
+    ],
+    "PWC.Inventory.ItemsTracker.InventoryItemsTracker.MigrateStateFileIfNeeded": [
+      "InventoryItemsTracker_DidMigrateStateFileIfNeeded",
+      "PWCInventoryItemsTracker_State"
+    ]
+  },
+  "versioning": {
+    "migrations": "StoreManager and InventoryItemsTracker run a one-time, flag-guarded file-location migration (GetInt flag -> User.HasAccessToken branch -> SetInt flag -> MigrateAndroidBuildFileFromPrivateToNormalIfNeeded)",
+    "schema_versioning": "scene data JSON carries a BuildNumber key (written in GetDataFromRootGameObjects, read in LoadDataInternal)",
+    "build_number_consumers": {
+      "get_direct_callers": [],
+      "set_direct_callers": [],
+      "caveat": "both accessors have no direct callers although LoadDataInternal must set the value: the compiler inlines trivial accessors, so absence of callers proves nothing"
+    }
+  },
+  "cloud_boundary": {
+    "server_bound": {
+      "SendOperation": [
+        "Game.Store.StoreManager.ClaimItemInternal",
+        "PWC.Achievements.AWACloudBridge.ClaimAchievementsImplement",
+        "PWC.Achievements.AWACloudBridge.GetAchievementsWorth",
+        "PWC.AvatarPassChange.AvatarPassChangeWindow.SendAcceptToCloud",
+        "PWC.CloudProgress.CPManager.Download",
+        "PWC.CloudProgress.CPManager.Upload",
+        "PWC.GamePopups.RefundGamePopup.OnButtonPress"
+      ],
+      "SendOperationWhenPossible": [
+        "Game.Store.StoreManager.GetStoreData",
+        "PWC.CloudProgress.CPManager.GetCurrentProfileMetadataFromCloud"
+      ],
+      "VerifyReceipt": [
+        "PazuCore.PazuUnityPurchaser.ProcessPurchase"
+      ]
+    },
+    "reading": [
+      "store claims, achievement claims, IAP receipts, cloud profile upload/download and avatar-pass changes go through PazuCloudManager.SendOperation (server-only)",
+      "PersistentDataManager does not call SendOperation directly: scene persistence is local files"
+    ],
+    "persistent_data_manager_direct_server_calls": []
+  }
+}

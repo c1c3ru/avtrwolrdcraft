@@ -81,3 +81,7 @@ contracts/store-claim.contract.json -- tools/dotnet/dotnet <ReplayCore.dll>`.
   então qualquer vetor seria só a reimplementação comparada a si mesma.
 
 **Corrigido** nesta branch (decisão do autor): `PB25` → 1200 e `PB27` → 450 (preço exibido, como nos demais combos), ambos agora em `ObservedPrintPrices_AreKept`. Replay: 6/6 idênticos. Testes Unity EditMode rodados em 2026-11-05 (Unity 6000.6.6f1, `unity test … --mode EditMode`): **144/144 aprovados**, incluindo `ObservedPrintPrices_AreKept` com PB25/PB27 (`out/test-results-pr4.xml`, ignorado no Git).
+
+## L03 — Persistência local e fronteira da nuvem (2026-11-09)
+
+Evidências e lacunas detalhadas em [docs/loops/results/L03.md](docs/loops/results/L03.md). O `PersistentDataManager` grava progresso de cena localmente; resgates da loja, conquistas, recibos IAP e upload/download de perfil passam por `PazuCloudManager.SendOperation`. Ainda não foram reproduzidos o payload de `GetGameData/SetGameData`, um save real de `level8`, os consumidores de `BuildNumber` nem o papel das demais gravações em `PlayerPrefs`.

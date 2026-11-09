@@ -1,5 +1,9 @@
 # Persistência original — contrato parcial
 
+## Atualização L03 (2026-11-09)
+
+Gatilhos de gravação/leitura/reset, regra `CanSaveScene`, inventário parcial de chaves, fronteira com a nuvem e catálogo do esquema estão em [docs/loops/results/L03.md](loops/results/L03.md). Provas reproduzíveis: `tools/recon_save_triggers.py` e `tools/recon_pd_schema.py`. O contrato C# de `CanSaveScene` e dos dois gatilhos automáticos está em `Core/Persistence/SaveGate` com `SaveGateTests`.
+
 Data da reconciliação: 2026-11-04  
 Escopo: inventário estático de `Assembly-CSharp` e comparação com o estado local. Este documento não declara a persistência original totalmente recuperada.
 

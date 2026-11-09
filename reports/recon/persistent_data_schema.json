@@ -1,0 +1,3525 @@
+{
+ "schema_version": 1,
+ "scope": "declared types only; no serialization, migration or default semantics",
+ "counts": {
+  "types": 185,
+  "payload_pd_types": 129,
+  "interfaces": 8,
+  "enums": 0,
+  "payload_fields": 220
+ },
+ "implements_has_persistent_data": [
+  "GameCameraBase",
+  "GameSoundPlayer",
+  "Level50thAnniversarySecret",
+  "LevelAOScareIceCreamHandler",
+  "LevelAOScareRobotHandler",
+  "LevelActionOnAnimationDropAreaHandler",
+  "LevelAirHockeyScoreBoard",
+  "LevelAirplaneExitDoor",
+  "LevelAirportDividerHandler",
+  "LevelAirportDividerManager",
+  "LevelAllItemsFaceTheSameDirectionSecret",
+  "LevelAnimalIDHandler",
+  "LevelAnimationDropArea",
+  "LevelAnimationDropAreaHandler",
+  "LevelAracdeTicketMachine",
+  "LevelArcadeBasketballScoreBoard",
+  "LevelArcadeDancingButton",
+  "LevelArcadeSecretLightsManager",
+  "LevelAvatarOneTimeSpawner",
+  "LevelBabyBlanketItemHandler",
+  "LevelBabyMonitorScreenHandler",
+  "LevelBag",
+  "LevelBakeryToppingHandler",
+  "LevelBalloonPopHandler",
+  "LevelBarbershopMachineTablet",
+  "LevelBaristaMachine",
+  "LevelBasketballScoreBoard",
+  "LevelBlockWallWithActiveItem",
+  "LevelBox",
+  "LevelBoxedFurnitureSpawn",
+  "LevelBreadCarpet",
+  "LevelBushAnimalHidingSpot",
+  "LevelCABalletPianoSitAreaHandler",
+  "LevelCACatHandler",
+  "LevelCADefaultSleepAreaHandler",
+  "LevelCADogHandler",
+  "LevelCADropAreaHandlerWithSwappableData",
+  "LevelCAEnableOnActionConditionalFieldHandler",
+  "LevelCAHorseHandler",
+  "LevelCAItemHandlerWithSwappableData",
+  "LevelCAItemOnBoneHandlerWithSwappableData",
+  "LevelCASpecialClothingSpineSkinHandler",
+  "LevelCAUmbrellaItemHandler",
+  "LevelCafetariaWallSecret",
+  "LevelCafeteriaFoodDisplayKeySecret",
+  "LevelCafeteriaFoodFightSecret",
+  "LevelCafeteriaSignSecret",
+  "LevelCameraScreenPhotohItemHandler",
+  "LevelCampfireFireSpine",
+  "LevelCarAppearance",
+  "LevelCashRegisterMonitor",
+  "LevelCatEatingSign",
+  "LevelCaterpillarPotter",
+  "LevelChainSortingItemHandler",
+  "LevelChairLift",
+  "LevelChalkGround",
+  "LevelChangeCAOnDropAreaHelper",
+  "LevelChangeColorOnClick",
+  "LevelChangeSpriteOnDropAreaItemHandler",
+  "LevelCharacterIDTogglerHandler",
+  "LevelCharactersFilter",
+  "LevelCharactersRandomizer",
+  "LevelCheckPianoSequence",
+  "LevelClawMachine",
+  "LevelCleanableArea",
+  "LevelClickCountEventsHandler",
+  "LevelClothesForDuration",
+  "LevelClothingMannequinSecret",
+  "LevelCoffeeContainer",
+  "LevelCoffeeMachine",
+  "LevelCoinRewardGiftHandler",
+  "LevelColorChangingLight",
+  "LevelColoringAutoPump",
+  "LevelCookableItemHandler",
+  "LevelCooker",
+  "LevelCookieCarpet",
+  "LevelCookieMachineMilk",
+  "LevelCoralNiche",
+  "LevelCustomIceCreamContainerItemHandler",
+  "LevelDJLightsMachine",
+  "LevelDJMusicRecordPlayerHandler",
+  "LevelDartsDropAreaHandler",
+  "LevelDestroyableObjectHandler",
+  "LevelDigArea",
+  "LevelDigHolesManager",
+  "LevelDoor",
+  "LevelDragActionAreaEventHandler",
+  "LevelDragActionAreaMultiLabelEventHandler",
+  "LevelDrawSketchArea",
+  "LevelDrinkDispenser",
+  "LevelDrinkDispenserItemHandler",
+  "LevelDrinkDispenserListener",
+  "LevelDrinkableWithFillItemHandler",
+  "LevelEggCabinet",
+  "LevelEggHatcheryItemHandler",
+  "LevelElectricGate",
+  "LevelEventCashRegisterCardMachine",
+  "LevelEventCounterHandler",
+  "LevelEventOnDropAreaContainsSpecificItemsHandler",
+  "LevelFairyTreeDoor",
+  "LevelFan",
+  "LevelFillableHandler",
+  "LevelFillableItemHandler",
+  "LevelFillableMeshItemHandler",
+  "LevelFireplace",
+  "LevelFishingRod",
+  "LevelFlightManager",
+  "LevelFoldedObjectHandler",
+  "LevelFoodFightDropAreaHandler",
+  "LevelFoodTruckDoor",
+  "LevelFruitTree",
+  "LevelFryArea",
+  "LevelFryDropAreaHandler",
+  "LevelGiftsTrain",
+  "LevelGivenToCharacterForExchangeItemFurnitureShopItemUnlocker",
+  "LevelGramophone",
+  "LevelGreenScreenSpriteRenderer",
+  "LevelHanoiTowerItemHandler",
+  "LevelHayContainerHandler",
+  "LevelHelicopter",
+  "LevelHiddenDoor",
+  "LevelHoveringItemHandler",
+  "LevelIceCreamItemHandler",
+  "LevelIceCreamTruck",
+  "LevelItem",
+  "LevelItemOnAvatarMouthHandlerBase",
+  "LevelItemOrientationHandler",
+  "LevelItemsAutoPlayAnimationOnAvatar",
+  "LevelItemsMenuShopPack",
+  "LevelLemonBasket",
+  "LevelLight",
+  "LevelLightSecretHandler",
+  "LevelLimitedTimeClothesDrop",
+  "LevelLockPositionItemHandler",
+  "LevelLockedDoorHandler",
+  "LevelLockedDoorKeyCardHandler",
+  "LevelMakerCustomizationHandlerBase",
+  "LevelMakerFurnitureSpawnItemHandler",
+  "LevelMakerItem",
+  "LevelMakerRotatingItemHandlerBase",
+  "LevelMakeupBrushItemHandler",
+  "LevelMakeupDropItemHandler",
+  "LevelMannequin",
+  "LevelMidiController",
+  "LevelMixerMachine",
+  "LevelMultiPositionSlider",
+  "LevelMusicRecordPlayer",
+  "LevelMusicRecordPlayerHandler",
+  "LevelNewEventCounterHandler",
+  "LevelNoteLineTextItemHandler",
+  "LevelNoteLinesSimpleSpawner",
+  "LevelOnActionRotatableObject",
+  "LevelOnPairInteractionEvent",
+  "LevelOnPointerToggleEvent",
+  "LevelOnSecretSolvedEvent",
+  "LevelPC",
+  "LevelPCMonitor",
+  "LevelPDBulkDataShopPack",
+  "LevelPackBox",
+  "LevelPaintableArea",
+  "LevelPaperItemHandler",
+  "LevelPetEggItemHandler",
+  "LevelPinata",
+  "LevelPlantBase",
+  "LevelPlayerVehicle",
+  "LevelPoopBagCollectingCounter",
+  "LevelPuddle",
+  "LevelPumpableItemHandler",
+  "LevelRacingGameManager",
+  "LevelRadio",
+  "LevelReceptionBirdSecret",
+  "LevelRhythmGameManager",
+  "LevelRoadBlockAreaHandler",
+  "LevelRotatingPicture",
+  "LevelRotatingPicturesManager",
+  "LevelRotatingSpotlight",
+  "LevelRuntimeColoredMeshHandler",
+  "LevelRuntimeColoredSpineHandler",
+  "LevelRuntimeColoredSpriteHandler",
+  "LevelSafePermutationNumber",
+  "LevelSafePermutationSprite",
+  "LevelSafeWithNumbers",
+  "LevelSafeWithoutSpine",
+  "LevelSavedStateButton",
+  "LevelSecretAvatarAnimationSolvedListener",
+  "LevelSecretAvatarAnimationWithExampleAvatarSolvedListener",
+  "LevelSecretAvatarPutClothingsListener",
+  "LevelSecretBushManager",
+  "LevelSecretContentButton",
+  "LevelSecretMultiPositionSliderCheck",
+  "LevelSecretSolvedActionsListenerWithCounter",
+  "LevelSeesaw",
+  "LevelSetActiveStateOnLoad",
+  "LevelShakingDoor",
+  "LevelSimpleContainer",
+  "LevelSimpleMultiPrefabSpawner",
+  "LevelSimpleToggleableAudioStationaryItem",
+  "LevelSimpleToggleableSpine",
+  "LevelSimpleTransparentContainer",
+  "LevelSingleUsePrefabSpawner",
+  "LevelSlider",
+  "LevelSlidingCatShelf",
+  "LevelSoccerScoreBoard",
+  "LevelSolveSecretWithAnimationOnDropAreaHandler",
+  "LevelSolveSecretWithSkinOnDropAreaHandler",
+  "LevelSoundEnhancerOnDropAreaHandler",
+  "LevelSpawnOnBurgerFlag",
+  "LevelSpawnOnLevelPostInit",
+  "LevelSpawnPrefabForInventoryFlag",
+  "LevelSpawnPrefabOneTime",
+  "LevelSpawner",
+  "LevelSpawnerInRandomLocations",
+  "LevelSpineAnimationOnClick",
+  "LevelSpineBlender",
+  "LevelSpineRoombaItemHandler",
+  "LevelSpineScaleItemHandler",
+  "LevelSpotlightLight",
+  "LevelSpriteVariantsHandler",
+  "LevelStageTheme",
+  "LevelStageTrigger",
+  "LevelStashArea",
+  "LevelStaticSignRobot",
+  "LevelStationManager",
+  "LevelStationaryConsole",
+  "LevelTelevision",
+  "LevelTextCounterOnClick",
+  "LevelTicTacToe",
+  "LevelTicTacToeImitateSecret",
+  "LevelTicTacToeSecret",
+  "LevelTimedLocker",
+  "LevelToggleableAudio",
+  "LevelToggleableGameObject",
+  "LevelToggleableGameobjectsSequenceHandler",
+  "LevelToggleableItemHandler",
+  "LevelToggleableParticleSystem",
+  "LevelToggleablePot",
+  "LevelToggleableSprite",
+  "LevelToggleableSpriteOverTime",
+  "LevelToggleableTransform",
+  "LevelToggleableUnityEvent",
+  "LevelToggleableUnityEventItemHandler",
+  "LevelTowerDoorPianoUnlocker",
+  "LevelToyDollItemHandler",
+  "LevelTrainStopSign",
+  "LevelTransformPDHandler",
+  "LevelTransformableCustomItemHandler",
+  "LevelTreasureHuntButton",
+  "LevelTurtleSimonGame",
+  "LevelUnlockableObject",
+  "LevelValentinesRoseItemHandler",
+  "LevelVehicleParkingSpotAreaHandler",
+  "LevelWallClock",
+  "LevelWallProjectionsDayCareHandler",
+  "LevelWardrobeShelfSwitcher",
+  "LevelWeightAvatarIDHandler",
+  "LevelWeightCalculater",
+  "LevelWeightHeightMeasureHandler",
+  "LevelXrayDisplay",
+  "LevelXrayPhotoItemHandler",
+  "LevelZiplineSeat",
+  "LightSource",
+  "MeshSkewPDHandler",
+  "OneTimeEvent",
+  "ScavengerHuntItemHandler",
+  "ScavengerHuntItemSpawner",
+  "UGCFlatWallItem",
+  "UGCLevelEntrance",
+  "UGCNewPresetGridFloorHandler",
+  "UGCStorePackGridFloorHandler"
+ ],
+ "item_related_payloads": [
+  "CoinGiftPD",
+  "LevelBagItemPD",
+  "LevelBoxItemPD",
+  "LevelCAItemHandlerDataPD",
+  "LevelClothingItemPD",
+  "LevelCookableItemHandlerPD",
+  "LevelDrinkableWithFillItemHandlerPD",
+  "LevelFillableItemHandlerPD",
+  "LevelFoldableItemPD",
+  "LevelGiftTrainPD",
+  "LevelIceCreamItemHandlerPD",
+  "LevelItemOrientationHandlerPD",
+  "LevelItemPD",
+  "LevelMakerItemWithAreaPD",
+  "LevelPetEggItemHandlerPD",
+  "LevelPlantItemPD",
+  "LevelPumpableItemPD",
+  "LevelSimpleToggleableAudioItemPD",
+  "LevelSimpleToggleableItemPD",
+  "LevelSimpleToggleableSpineItemPD",
+  "LevelStationaryRotatingItemPD",
+  "LevelToggleableItemHandlerPD",
+  "LevelTransformableCustomItemPD",
+  "ScavengerHuntItemHandlerPD",
+  "ScavengerHuntItemSpawnerPD"
+ ],
+ "types": [
+  {
+   "name": "BoolPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/BoolPD.cs",
+   "fields": [
+    {
+     "name": "value",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "CoinGiftPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/CoinGiftPD.cs",
+   "fields": [
+    {
+     "name": "guid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "coins",
+     "type": "int",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "ColorPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/ColorPD.cs",
+   "fields": [
+    {
+     "name": "value",
+     "type": "Color",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "FloatArrayPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/FloatArrayPD.cs",
+   "fields": [
+    {
+     "name": "values",
+     "type": "Single[]",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "FloatPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/FloatPD.cs",
+   "fields": [
+    {
+     "name": "value",
+     "type": "float",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "GameCameraPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/GameCameraPD.cs",
+   "fields": [
+    {
+     "name": "xPosition",
+     "type": "float",
+     "offset": "0x10"
+    },
+    {
+     "name": "yPosition",
+     "type": "float",
+     "offset": "0x14"
+    },
+    {
+     "name": "size",
+     "type": "float",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "GameSoundPlayerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/GameSoundPlayerPD.cs",
+   "fields": [
+    {
+     "name": "isPlayingLoop",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "clipName",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "volume",
+     "type": "float",
+     "offset": "0x20"
+    },
+    {
+     "name": "pitch",
+     "type": "float",
+     "offset": "0x24"
+    }
+   ]
+  },
+  {
+   "name": "GlobalPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/GlobalPD.cs",
+   "fields": []
+  },
+  {
+   "name": "IExcludeFromBulkData",
+   "kind": "interface",
+   "bases": "",
+   "file": "PWC/PersistentData/IExcludeFromBulkData.cs",
+   "fields": []
+  },
+  {
+   "name": "IHasPDTextBulkData",
+   "kind": "interface",
+   "bases": "",
+   "file": "PWC/PersistentData/IHasPDTextBulkData.cs",
+   "fields": []
+  },
+  {
+   "name": "IHasPersistentData",
+   "kind": "interface",
+   "bases": "IRequirePDSceneObject",
+   "file": "PWC/PersistentData/IHasPersistentData.cs",
+   "fields": []
+  },
+  {
+   "name": "IHasSceneGuidUsedOutsideOfLevel",
+   "kind": "interface",
+   "bases": "",
+   "file": "PWC/PersistentData/IHasSceneGuidUsedOutsideOfLevel.cs",
+   "fields": []
+  },
+  {
+   "name": "IPDItemsMenuPack",
+   "kind": "interface",
+   "bases": "IPDPack",
+   "file": "PWC/PersistentData/IPDItemsMenuPack.cs",
+   "fields": []
+  },
+  {
+   "name": "IPDPack",
+   "kind": "interface",
+   "bases": "",
+   "file": "PWC/PersistentData/IPDPack.cs",
+   "fields": []
+  },
+  {
+   "name": "IPDPrefabPackSpawn",
+   "kind": "interface",
+   "bases": "",
+   "file": "PWC/PersistentData/IPDPrefabPackSpawn.cs",
+   "fields": []
+  },
+  {
+   "name": "IRequirePDSceneObject",
+   "kind": "interface",
+   "bases": "",
+   "file": "PWC/PersistentData/IRequirePDSceneObject.cs",
+   "fields": []
+  },
+  {
+   "name": "IntArrayPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/IntArrayPD.cs",
+   "fields": [
+    {
+     "name": "values",
+     "type": "Int32[]",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "IntPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/IntPD.cs",
+   "fields": [
+    {
+     "name": "value",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelAnimalPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelAnimalPD.cs",
+   "fields": [
+    {
+     "name": "animationName",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelBabyPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelBabyPD.cs",
+   "fields": [
+    {
+     "name": "id",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "currentArea",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "animationName",
+     "type": "string",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "LevelBagItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelBagItemPD.cs",
+   "fields": [
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelBoxItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelBoxItemPD.cs",
+   "fields": [
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelBoxPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelBoxPD.cs",
+   "fields": [
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelCADefaultSleepAreaPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelCADefaultSleepAreaPD.cs",
+   "fields": [
+    {
+     "name": "animationState",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "animationName",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "animationLoop",
+     "type": "bool",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "LevelCatPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelCatPD.cs",
+   "fields": [
+    {
+     "name": "id",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelCharacterPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelCharacterPD.cs",
+   "fields": [
+    {
+     "name": "id",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "currentArea",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "isDynamicSpawn",
+     "type": "bool",
+     "offset": "0x20"
+    },
+    {
+     "name": "animationName",
+     "type": "string",
+     "offset": "0x28"
+    }
+   ]
+  },
+  {
+   "name": "LevelCharactersRandomizerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelCharactersRandomizerPD.cs",
+   "fields": [
+    {
+     "name": "dateTimeTicks",
+     "type": "long",
+     "offset": "0x10"
+    },
+    {
+     "name": "characterIds",
+     "type": "Int32[]",
+     "offset": "0x18"
+    },
+    {
+     "name": "itemsSceneGuids",
+     "type": "String[]",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "LevelClothingItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelClothingItemPD.cs",
+   "fields": [
+    {
+     "name": "categoryType",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "skinName",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "colors",
+     "type": "Color[]",
+     "offset": "0x20"
+    },
+    {
+     "name": "hasColors",
+     "type": "bool",
+     "offset": "0x28"
+    },
+    {
+     "name": "topColor",
+     "type": "Color",
+     "offset": "0x2C"
+    },
+    {
+     "name": "bottomColor",
+     "type": "Color",
+     "offset": "0x3C"
+    }
+   ]
+  },
+  {
+   "name": "LevelColorChangingLightPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelColorChangingLightPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "color",
+     "type": "Color",
+     "offset": "0x14"
+    },
+    {
+     "name": "colorIndex",
+     "type": "int",
+     "offset": "0x24"
+    }
+   ]
+  },
+  {
+   "name": "LevelCookableItemHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelCookableItemHandlerPD.cs",
+   "fields": [
+    {
+     "name": "isFried",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelCookieCarpetPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelCookieCarpetPD.cs",
+   "fields": [
+    {
+     "name": "index",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "giftTaken",
+     "type": "bool",
+     "offset": "0x14"
+    }
+   ]
+  },
+  {
+   "name": "LevelDogPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelDogPD.cs",
+   "fields": [
+    {
+     "name": "id",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelDoorPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelDoorPD.cs",
+   "fields": [
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelDrinkDispenserListenerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelDrinkDispenserListenerPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelDrinkDispenserPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelDrinkDispenserPD.cs",
+   "fields": [
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelDrinkableWithFillItemHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelDrinkableWithFillItemHandlerPD.cs",
+   "fields": [
+    {
+     "name": "isFull",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "color",
+     "type": "Color",
+     "offset": "0x14"
+    }
+   ]
+  },
+  {
+   "name": "LevelElectricGatePD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelElectricGatePD.cs",
+   "fields": [
+    {
+     "name": "state",
+     "type": "StateType",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelExcludeAvatarsFromDefaultDataUnderHierarchy",
+   "kind": "class",
+   "bases": "MonoBehaviour",
+   "file": "PWC/PersistentData/LevelExcludeAvatarsFromDefaultDataUnderHierarchy.cs",
+   "fields": []
+  },
+  {
+   "name": "LevelFillableItemHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelFillableItemHandlerPD.cs",
+   "fields": [
+    {
+     "name": "isFull",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFireplacePD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelFireplacePD.cs",
+   "fields": [
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFryAreaPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelFryAreaPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelGiftTrainPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelGiftTrainPD.cs",
+   "fields": [
+    {
+     "name": "giftindex",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "lastTimeGiftReceived",
+     "type": "long",
+     "offset": "0x18"
+    },
+    {
+     "name": "currentPresentGuid",
+     "type": "string",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "LevelHorsePD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelHorsePD.cs",
+   "fields": [
+    {
+     "name": "id",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelItemOrientationHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelItemOrientationHandlerPD.cs",
+   "fields": [
+    {
+     "name": "orientationType",
+     "type": "ItemOrientationType",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelItemPD.cs",
+   "fields": [
+    {
+     "name": "parent",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "position",
+     "type": "Vector2",
+     "offset": "0x18"
+    },
+    {
+     "name": "isMoving",
+     "type": "bool",
+     "offset": "0x20"
+    },
+    {
+     "name": "itemOnAvatarType",
+     "type": "ItemOnAvatarType",
+     "offset": "0x24"
+    },
+    {
+     "name": "itemOnCharacterType",
+     "type": "ItemOnAvatarType",
+     "offset": "0x28"
+    },
+    {
+     "name": "isFlipped",
+     "type": "bool",
+     "offset": "0x2C"
+    }
+   ]
+  },
+  {
+   "name": "LevelLightPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelLightPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelMakerCustomizationPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelMakerCustomizationPD.cs",
+   "fields": [
+    {
+     "name": "color",
+     "type": "Color",
+     "offset": "0x10"
+    },
+    {
+     "name": "spritePath",
+     "type": "string",
+     "offset": "0x20"
+    },
+    {
+     "name": "texturePath",
+     "type": "string",
+     "offset": "0x28"
+    }
+   ]
+  },
+  {
+   "name": "LevelMakerItemWithAreaPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelMakerItemWithAreaPD.cs",
+   "fields": [
+    {
+     "name": "isInGoodPosition",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelMakerTexturedPlanePD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelMakerTexturedPlanePD.cs",
+   "fields": [
+    {
+     "name": "textureName",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "textureBasePath",
+     "type": "string",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelOnSecretSolvedEvent",
+   "kind": "class",
+   "bases": "MonoBehaviour, IHasPersistentData, IRequirePDSceneObject, ILevelResetLevelWithItemData",
+   "file": "PWC/PersistentData/LevelOnSecretSolvedEvent.cs",
+   "fields": [
+    {
+     "name": "onSecretSolvedEvent",
+     "type": "UnityEvent",
+     "offset": "0x20"
+    },
+    {
+     "name": "_secretsToCheckList",
+     "type": "List<SecretFullId>",
+     "offset": "0x28"
+    },
+    {
+     "name": "_isOneTimeResolved",
+     "type": "bool",
+     "offset": "0x30"
+    },
+    {
+     "name": "_ensureExtraDataMatch",
+     "type": "bool",
+     "offset": "0x31"
+    },
+    {
+     "name": "_totalSecretsSolved",
+     "type": "int",
+     "offset": "0x34"
+    },
+    {
+     "name": "_wasSolved",
+     "type": "bool",
+     "offset": "0x38"
+    }
+   ]
+  },
+  {
+   "name": "LevelOnSecretSolvedEventGuidBased",
+   "kind": "class",
+   "bases": "LevelOnSecretSolvedEvent",
+   "file": "PWC/PersistentData/LevelOnSecretSolvedEventGuidBased.cs",
+   "fields": []
+  },
+  {
+   "name": "LevelPaintableAreaPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelPaintableAreaPD.cs",
+   "fields": [
+    {
+     "name": "texturePath",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelPlantBasePD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelPlantBasePD.cs",
+   "fields": [
+    {
+     "name": "plantIndex",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelPlantItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelPlantItemPD.cs",
+   "fields": [
+    {
+     "name": "plantIndex",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelRuntimeColoredRendererHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelRuntimeColoredRendererHandlerPD.cs",
+   "fields": [
+    {
+     "name": "colorType",
+     "type": "PWSpriteColorType",
+     "offset": "0x10"
+    },
+    {
+     "name": "color",
+     "type": "Color",
+     "offset": "0x14"
+    }
+   ]
+  },
+  {
+   "name": "LevelSecretSolveBroadcaster",
+   "kind": "class",
+   "bases": "MonoBehaviour",
+   "file": "PWC/PersistentData/LevelSecretSolveBroadcaster.cs",
+   "fields": [
+    {
+     "name": "_secret",
+     "type": "SecretFullId",
+     "offset": "0x20"
+    },
+    {
+     "name": "_extraData",
+     "type": "string",
+     "offset": "0x28"
+    },
+    {
+     "name": "_sceneObject",
+     "type": "PDSceneObject",
+     "offset": "0x30"
+    }
+   ]
+  },
+  {
+   "name": "LevelSimpleContainerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelSimpleContainerPD.cs",
+   "fields": [
+    {
+     "name": "isContentActive",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelSimpleToggleableItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelSimpleToggleableItemPD.cs",
+   "fields": [
+    {
+     "name": "currentIndex",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelSimpleToggleableSpineItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelSimpleToggleableSpineItemPD.cs",
+   "fields": [
+    {
+     "name": "currentIndex",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelSimpleTransparentContainerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelSimpleTransparentContainerPD.cs",
+   "fields": [
+    {
+     "name": "isDropAreaEnabled",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelSpawnerInRandomLocationsPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelSpawnerInRandomLocationsPD.cs",
+   "fields": [
+    {
+     "name": "locationsStates",
+     "type": "List<LocationState>",
+     "offset": "0x10"
+    },
+    {
+     "name": "indexes",
+     "type": "List<Int32>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelSpawnerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelSpawnerPD.cs",
+   "fields": [
+    {
+     "name": "spawns",
+     "type": "List<String>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelSpriteVariantsHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelSpriteVariantsHandlerPD.cs",
+   "fields": [
+    {
+     "name": "spriteName",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelStationaryPlantPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelStationaryPlantPD.cs",
+   "fields": [
+    {
+     "name": "year",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "month",
+     "type": "int",
+     "offset": "0x14"
+    },
+    {
+     "name": "day",
+     "type": "int",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelStationaryRotatingItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelStationaryRotatingItemPD.cs",
+   "fields": [
+    {
+     "name": "zRotation",
+     "type": "float",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelToddlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelToddlerPD.cs",
+   "fields": [
+    {
+     "name": "id",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "currentArea",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "animationName",
+     "type": "string",
+     "offset": "0x20"
+    },
+    {
+     "name": "postureType",
+     "type": "PostureType",
+     "offset": "0x28"
+    }
+   ]
+  },
+  {
+   "name": "LevelToggleableItemHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelToggleableItemHandlerPD.cs",
+   "fields": [
+    {
+     "name": "currentIndex",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelTransformableCustomItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LevelTransformableCustomItemPD.cs",
+   "fields": [
+    {
+     "name": "type",
+     "type": "ReferenceType",
+     "offset": "0x10"
+    },
+    {
+     "name": "value",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "spineType",
+     "type": "SpineType",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "LightSourcePD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LightSourcePD.cs",
+   "fields": [
+    {
+     "name": "isEnabled",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LongArrayPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LongArrayPD.cs",
+   "fields": [
+    {
+     "name": "values",
+     "type": "Int64[]",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LongPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/LongPD.cs",
+   "fields": [
+    {
+     "name": "value",
+     "type": "long",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "PDNewSceneItem",
+   "kind": "class",
+   "bases": "MonoBehaviour",
+   "file": "PWC/PersistentData/PDNewSceneItem.cs",
+   "fields": []
+  },
+  {
+   "name": "PDPrefab",
+   "kind": "class",
+   "bases": "MonoBehaviour",
+   "file": "PWC/PersistentData/PDPrefab.cs",
+   "fields": [
+    {
+     "name": "_prefabGuid",
+     "type": "string",
+     "offset": "0x20"
+    },
+    {
+     "name": "_sceneObjects",
+     "type": "PDSceneObject[]",
+     "offset": "0x28"
+    },
+    {
+     "name": "isRuntimeSpawn",
+     "type": "bool",
+     "offset": "0x30"
+    },
+    {
+     "name": "OnRuntimeSpawnAction",
+     "type": "Action<Boolean>",
+     "offset": "0x38"
+    },
+    {
+     "name": "OnBeforeDestroyOnSceneLoadAction",
+     "type": "Action",
+     "offset": "0x40"
+    }
+   ]
+  },
+  {
+   "name": "SceneData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDPrefab.cs",
+   "fields": [
+    {
+     "name": "sceneObjects",
+     "type": "List<String>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "PDPrefabNames",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDPrefabNames.cs",
+   "fields": []
+  },
+  {
+   "name": "PDPrefabPDSnapshot",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDPrefabPDSnapshot.cs",
+   "fields": [
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "sceneObjectsData",
+     "type": "List<SceneObjectData>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "SceneObjectData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDPrefabPDSnapshot.cs",
+   "fields": [
+    {
+     "name": "sceneGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "persistentDataList",
+     "type": "List<String>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "PDPrefabPack",
+   "kind": "class",
+   "bases": "MonoBehaviour, IPDPack",
+   "file": "PWC/PersistentData/PDPrefabPack.cs",
+   "fields": [
+    {
+     "name": "_pdPrefab",
+     "type": "PDPrefab",
+     "offset": "0x20"
+    },
+    {
+     "name": "<ChildPrefabs>k__BackingField",
+     "type": "List<PDPrefab>",
+     "offset": "0x28"
+    },
+    {
+     "name": "<ImmediateChildren>k__BackingField",
+     "type": "List<Transform>",
+     "offset": "0x30"
+    }
+   ]
+  },
+  {
+   "name": "PDPrefabReference",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDPrefabReference.cs",
+   "fields": [
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "PDScene",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDScene.cs",
+   "fields": [
+    {
+     "name": "_allData",
+     "type": "Dictionary<String, Object>",
+     "offset": "0x10"
+    },
+    {
+     "name": "_prefabs",
+     "type": "Dictionary<String, Object>",
+     "offset": "0x18"
+    },
+    {
+     "name": "_sceneObjects",
+     "type": "Dictionary<String, Object>",
+     "offset": "0x20"
+    },
+    {
+     "name": "_sceneGuidToPrefabData",
+     "type": "Dictionary<String, PrefabData>",
+     "offset": "0x28"
+    }
+   ]
+  },
+  {
+   "name": "PrefabData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDScene.cs",
+   "fields": [
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "sceneData",
+     "type": "SceneData",
+     "offset": "0x18"
+    },
+    {
+     "name": "dataIndex",
+     "type": "int",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "PDSceneObject",
+   "kind": "class",
+   "bases": "MonoBehaviour",
+   "file": "PWC/PersistentData/PDSceneObject.cs",
+   "fields": [
+    {
+     "name": "sceneGuid",
+     "type": "string",
+     "offset": "0x20"
+    },
+    {
+     "name": "TryOverrideGuidCreationAction",
+     "type": "TryOverrideGuidCreationDelegate",
+     "offset": "0x28"
+    }
+   ]
+  },
+  {
+   "name": "TryOverrideGuidCreationDelegate",
+   "kind": "class",
+   "bases": "MulticastDelegate",
+   "file": "PWC/PersistentData/PDSceneObject.cs",
+   "fields": []
+  },
+  {
+   "name": "PDTextBulkData",
+   "kind": "class",
+   "bases": "ScriptableObject",
+   "file": "PWC/PersistentData/PDTextBulkData.cs",
+   "fields": [
+    {
+     "name": "_textAsset",
+     "type": "TextAsset",
+     "offset": "0x18"
+    },
+    {
+     "name": "_clothingItemsBySpineType",
+     "type": "List<ClothingItemsBySpineType>",
+     "offset": "0x20"
+    },
+    {
+     "name": "_bulkData",
+     "type": "BulkData",
+     "offset": "0x28"
+    }
+   ]
+  },
+  {
+   "name": "ClothingItemsBySpineType",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDTextBulkData.cs",
+   "fields": [
+    {
+     "name": "spineType",
+     "type": "SpineType",
+     "offset": "0x10"
+    },
+    {
+     "name": "clothingPD",
+     "type": "List<LevelClothingItemPD>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "PDTexture2DReference",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDTexture2DReference.cs",
+   "fields": [
+    {
+     "name": "Path",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "PDUtils",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PDUtils.cs",
+   "fields": []
+  },
+  {
+   "name": "PWCSecretsToAchievementsManager",
+   "kind": "class",
+   "bases": "MonoBehaviour",
+   "file": "PWC/PersistentData/PWCSecretsToAchievementsManager.cs",
+   "fields": [
+    {
+     "name": "_isDataDirty",
+     "type": "bool",
+     "offset": "0x20"
+    },
+    {
+     "name": "_kittyBankBalance",
+     "type": "int",
+     "offset": "0x24"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass13_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PWCSecretsToAchievementsManager.cs",
+   "fields": [
+    {
+     "name": "<>4__this",
+     "type": "PWCSecretsToAchievementsManager",
+     "offset": "0x10"
+    },
+    {
+     "name": "OnFinish",
+     "type": "Action<Int32>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass15_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PWCSecretsToAchievementsManager.cs",
+   "fields": [
+    {
+     "name": "<>4__this",
+     "type": "PWCSecretsToAchievementsManager",
+     "offset": "0x10"
+    },
+    {
+     "name": "item",
+     "type": "LevelItem",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass18_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PWCSecretsToAchievementsManager.cs",
+   "fields": [
+    {
+     "name": "OnFinish",
+     "type": "Action<Int32>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass22_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PWCSecretsToAchievementsManager.cs",
+   "fields": [
+    {
+     "name": "item",
+     "type": "LevelItem",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "PersistentDataManager",
+   "kind": "class",
+   "bases": "MonoBehaviour",
+   "file": "PWC/PersistentData/PersistentDataManager.cs",
+   "fields": [
+    {
+     "name": "_newAndSyncedSceneGuidsPerScene",
+     "type": "Dictionary<String, HashSet`1<String>>",
+     "offset": "0x20"
+    },
+    {
+     "name": "<LastLoadedDataBuildNumber>k__BackingField",
+     "type": "int",
+     "offset": "0x28"
+    },
+    {
+     "name": "_loadedDataScenes",
+     "type": "HashSet<Scene>",
+     "offset": "0x30"
+    }
+   ]
+  },
+  {
+   "name": "SceneDataDelegate",
+   "kind": "class",
+   "bases": "MulticastDelegate",
+   "file": "PWC/PersistentData/PersistentDataManager.cs",
+   "fields": []
+  },
+  {
+   "name": "StringList",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PersistentDataManager.cs",
+   "fields": [
+    {
+     "name": "list",
+     "type": "List<String>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "PrefabGuidPaths",
+   "kind": "class",
+   "bases": "ScriptableObject",
+   "file": "PWC/PersistentData/PrefabGuidPaths.cs",
+   "fields": [
+    {
+     "name": "paths",
+     "type": "List<PrefabGuidPath>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "PrefabGuidPath",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/PrefabGuidPaths.cs",
+   "fields": [
+    {
+     "name": "guid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "path",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "flags",
+     "type": "ulong",
+     "offset": "0x20"
+    },
+    {
+     "name": "dimentions",
+     "type": "Vector2",
+     "offset": "0x28"
+    }
+   ]
+  },
+  {
+   "name": "SecretData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SecretData.cs",
+   "fields": [
+    {
+     "name": "secretId",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "extraData",
+     "type": "string",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "SecretFullId",
+   "kind": "class",
+   "bases": "IEquatable<SecretFullId>",
+   "file": "PWC/PersistentData/SecretFullId.cs",
+   "fields": [
+    {
+     "name": "secretId",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "secretLeveType",
+     "type": "LevelType",
+     "offset": "0x14"
+    }
+   ]
+  },
+  {
+   "name": "SecretSystemManager",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SecretSystemManager.cs",
+   "fields": []
+  },
+  {
+   "name": "SecretTable",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SecretTable.cs",
+   "fields": [
+    {
+     "name": "secretsList",
+     "type": "List<SecretData>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "SeparatedPDManager",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": []
+  },
+  {
+   "name": "<>c",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": []
+  },
+  {
+   "name": "<>c__DisplayClass11_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "count",
+     "type": "int",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass12_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "result",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass13_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "sceneGuids",
+     "type": "HashSet<String>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass14_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "prefabGuids",
+     "type": "HashSet<String>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass15_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "sceneGuids",
+     "type": "HashSet<String>",
+     "offset": "0x10"
+    },
+    {
+     "name": "<>9__1",
+     "type": "Predicate<ItemData>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass16_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "prefabGuids",
+     "type": "HashSet<String>",
+     "offset": "0x10"
+    },
+    {
+     "name": "<>9__1",
+     "type": "Predicate<ItemData>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "BulkData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "isDirty",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "extraData",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "items",
+     "type": "List<ObjectData>",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "ObjectData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "sceneGuid",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "items",
+     "type": "List<ItemData>",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "ItemData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "sceneObjectsData",
+     "type": "List<SceneObjectData>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "SceneObjectData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/SeparatedPDManager.cs",
+   "fields": [
+    {
+     "name": "sceneGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "persistentDataList",
+     "type": "List<String>",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "StringArrayPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/StringArrayPD.cs",
+   "fields": [
+    {
+     "name": "values",
+     "type": "String[]",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "StringPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/StringPD.cs",
+   "fields": [
+    {
+     "name": "value",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "TransformPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/TransformPD.cs",
+   "fields": [
+    {
+     "name": "parent",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "position",
+     "type": "Vector2",
+     "offset": "0x18"
+    },
+    {
+     "name": "isFlipped",
+     "type": "bool",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "VehicleBulkDataName",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/PersistentData/VehicleBulkDataName.cs",
+   "fields": []
+  },
+  {
+   "name": "LevelAlarmClockPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelAlarmClockPD.cs",
+   "fields": [
+    {
+     "name": "stateTypeIndex",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelAnimationDropAreaPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelAnimationDropAreaPD.cs",
+   "fields": [
+    {
+     "name": "dataList",
+     "type": "List<LevelItemData>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelItemData",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelAnimationDropAreaPD.cs",
+   "fields": [
+    {
+     "name": "sceneGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "animationName",
+     "type": "string",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelBarbershopMachineTabletPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelBarbershopMachineTabletPD.cs",
+   "fields": [
+    {
+     "name": "hairIndex",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelBlenderPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelBlenderPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelBoardGameBoardPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelBoardGameBoardPD.cs",
+   "fields": [
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelCAItemHandlerDataPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelCAItemHandlerDataPD.cs",
+   "fields": [
+    {
+     "name": "Value",
+     "type": "LevelCAItemHandlerData",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelCameraPhotoPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelCameraPhotoPD.cs",
+   "fields": [
+    {
+     "name": "spriteName",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "spritePath",
+     "type": "string",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelCameraScreenPhotoPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelCameraScreenPhotoPD.cs",
+   "fields": [
+    {
+     "name": "texturePath",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelCatchableInsectPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelCatchableInsectPD.cs",
+   "fields": [
+    {
+     "name": "isInNet",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "zRotation",
+     "type": "float",
+     "offset": "0x14"
+    }
+   ]
+  },
+  {
+   "name": "LevelCharacterIDTogglerHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelCharacterIDTogglerHandlerPD.cs",
+   "fields": [
+    {
+     "name": "dateTimeTicks",
+     "type": "long",
+     "offset": "0x10"
+    },
+    {
+     "name": "idIndex",
+     "type": "int",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelCharactersFilterPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelCharactersFilterPD.cs",
+   "fields": [
+    {
+     "name": "dateTimeTicks",
+     "type": "long",
+     "offset": "0x10"
+    },
+    {
+     "name": "remainCharacters",
+     "type": "Boolean[]",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelCoffeeMachineCoffeeCupPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelCoffeeMachineCoffeeCupPD.cs",
+   "fields": [
+    {
+     "name": "spritePath",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "frontSpritePath",
+     "type": "string",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelCoffeeMachinePD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelCoffeeMachinePD.cs",
+   "fields": [
+    {
+     "name": "drinkTypeCounter",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelCookieMachineMilkPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelCookieMachineMilkPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelDigAreaPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelDigAreaPD.cs",
+   "fields": [
+    {
+     "name": "isInteractable",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelDragonEggPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelDragonEggPD.cs",
+   "fields": [
+    {
+     "name": "stateType",
+     "type": "DragonEggStateType",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelEggCabinetPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelEggCabinetPD.cs",
+   "fields": [
+    {
+     "name": "stateType",
+     "type": "EggStateType",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelEventCounterPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelEventCounterPD.cs",
+   "fields": [
+    {
+     "name": "count",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "hasReachedTarget",
+     "type": "bool",
+     "offset": "0x14"
+    }
+   ]
+  },
+  {
+   "name": "LevelFairyTreeDoorPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFairyTreeDoorPD.cs",
+   "fields": [
+    {
+     "name": "litMushroomsCounter",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFanPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFanPD.cs",
+   "fields": [
+    {
+     "name": "fanAnimationType",
+     "type": "FanAnimationType",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFireCampFirePD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFireCampFirePD.cs",
+   "fields": [
+    {
+     "name": "fireSizeType",
+     "type": "FireCampFireSizeType",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFireExtinguisherPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFireExtinguisherPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFishingRodPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFishingRodPD.cs",
+   "fields": [
+    {
+     "name": "stateType",
+     "type": "StateType",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFoldableChairPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFoldableChairPD.cs",
+   "fields": [
+    {
+     "name": "isFolded",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFoldableItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFoldableItemPD.cs",
+   "fields": [
+    {
+     "name": "isFolded",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFoldableMattressPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFoldableMattressPD.cs",
+   "fields": [
+    {
+     "name": "isFolded",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFoldableSleepingBagPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFoldableSleepingBagPD.cs",
+   "fields": [
+    {
+     "name": "isFolded",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFoldableTentPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFoldableTentPD.cs",
+   "fields": [
+    {
+     "name": "isFolded",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelFoodTruckDoorPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelFoodTruckDoorPD.cs",
+   "fields": [
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelGachaponMachineCapsulePD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelGachaponMachineCapsulePD.cs",
+   "fields": [
+    {
+     "name": "spritePath",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelGachaponMachineToyPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelGachaponMachineToyPD.cs",
+   "fields": [
+    {
+     "name": "spritePath",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelHiddenDoorPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelHiddenDoorPD.cs",
+   "fields": [
+    {
+     "name": "isSolved",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x11"
+    },
+    {
+     "name": "redLightOn",
+     "type": "bool",
+     "offset": "0x12"
+    },
+    {
+     "name": "yellowLightOn",
+     "type": "bool",
+     "offset": "0x13"
+    },
+    {
+     "name": "purpleLightOn",
+     "type": "bool",
+     "offset": "0x14"
+    },
+    {
+     "name": "blueLightOn",
+     "type": "bool",
+     "offset": "0x15"
+    }
+   ]
+  },
+  {
+   "name": "LevelIceCreamContainerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelIceCreamContainerPD.cs",
+   "fields": [
+    {
+     "name": "color",
+     "type": "Color",
+     "offset": "0x10"
+    },
+    {
+     "name": "toppingSpriteName",
+     "type": "string",
+     "offset": "0x20"
+    },
+    {
+     "name": "scoopsLeft",
+     "type": "int",
+     "offset": "0x28"
+    },
+    {
+     "name": "toppingPrefabReference",
+     "type": "string",
+     "offset": "0x30"
+    }
+   ]
+  },
+  {
+   "name": "LevelIceCreamItemHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelIceCreamItemHandlerPD.cs",
+   "fields": [
+    {
+     "name": "baseSpriteName",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelMannequinPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelMannequinPD.cs",
+   "fields": [
+    {
+     "name": "avatarSpineData",
+     "type": "AvatarSpineData",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelMarshmallowPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelMarshmallowPD.cs",
+   "fields": [
+    {
+     "name": "currentColor",
+     "type": "Color",
+     "offset": "0x10"
+    },
+    {
+     "name": "cookFactor",
+     "type": "float",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "LevelMidiControllerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelMidiControllerPD.cs",
+   "fields": [
+    {
+     "name": "clickedButtonPosition",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelMusicRecordPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelMusicRecordPD.cs",
+   "fields": [
+    {
+     "name": "isOpen",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelMusicRecordPlayerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelMusicRecordPlayerPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "recordSceneGuid",
+     "type": "string",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelPCPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelPCPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelPaperPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelPaperPD.cs",
+   "fields": [
+    {
+     "name": "spriteBasePath",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "spriteName",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "color",
+     "type": "Color",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "LevelPetEggItemHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelPetEggItemHandlerPD.cs",
+   "fields": [
+    {
+     "name": "canHatch",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "stateType",
+     "type": "EggStateType",
+     "offset": "0x14"
+    }
+   ]
+  },
+  {
+   "name": "LevelProjectorPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelProjectorPD.cs",
+   "fields": [
+    {
+     "name": "pictureIndex",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelPumpableItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelPumpableItemPD.cs",
+   "fields": [
+    {
+     "name": "isPumped",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelRacingGameManagerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelRacingGameManagerPD.cs",
+   "fields": [
+    {
+     "name": "scores",
+     "type": "Single[]",
+     "offset": "0x10"
+    },
+    {
+     "name": "giftsGiven",
+     "type": "Boolean[]",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelRadioPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelRadioPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelRoombaPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelRoombaPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelSafePermutationNumberPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelSafePermutationNumberPD.cs",
+   "fields": [
+    {
+     "name": "number",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelSimpleToggleableAudioItemPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelSimpleToggleableAudioItemPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelSpawnOnLevelPostInitPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelSpawnOnLevelPostInitPD.cs",
+   "fields": [
+    {
+     "name": "prefabsIndexes",
+     "type": "Int32[]",
+     "offset": "0x10"
+    },
+    {
+     "name": "clothesIndexes",
+     "type": "Int32[]",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelSpineBlenderPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelSpineBlenderPD.cs",
+   "fields": [
+    {
+     "name": "foodBlockerActiveSelf",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "isDropAreaEnabled",
+     "type": "bool",
+     "offset": "0x11"
+    },
+    {
+     "name": "isClosed",
+     "type": "bool",
+     "offset": "0x12"
+    },
+    {
+     "name": "isFull",
+     "type": "bool",
+     "offset": "0x13"
+    },
+    {
+     "name": "currentColor",
+     "type": "Color",
+     "offset": "0x14"
+    },
+    {
+     "name": "idleAnimationName",
+     "type": "string",
+     "offset": "0x28"
+    }
+   ]
+  },
+  {
+   "name": "LevelSpotlightPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelSpotlightPD.cs",
+   "fields": [
+    {
+     "name": "colorsCounter",
+     "type": "int",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelStageCurtainPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelStageCurtainPD.cs",
+   "fields": [
+    {
+     "name": "currentStageTriggerType",
+     "type": "StageThemeType",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelStageThemePD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelStageThemePD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelStageTriggerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelStageTriggerPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelStationaryConsolePD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelStationaryConsolePD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelStickCookablePD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelStickCookablePD.cs",
+   "fields": [
+    {
+     "name": "zRotation",
+     "type": "float",
+     "offset": "0x10"
+    },
+    {
+     "name": "isBurned",
+     "type": "bool",
+     "offset": "0x14"
+    }
+   ]
+  },
+  {
+   "name": "LevelTelevisionPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelTelevisionPD.cs",
+   "fields": [
+    {
+     "name": "isOn",
+     "type": "bool",
+     "offset": "0x10"
+    },
+    {
+     "name": "isConsoleGame",
+     "type": "bool",
+     "offset": "0x11"
+    },
+    {
+     "name": "isCarpetGame",
+     "type": "bool",
+     "offset": "0x12"
+    }
+   ]
+  },
+  {
+   "name": "LevelToySquidPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelToySquidPD.cs",
+   "fields": [
+    {
+     "name": "isHappy",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelUGCMeshSkewPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelUGCMeshSkewPD.cs",
+   "fields": [
+    {
+     "name": "panel1Guid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "panel2Guid",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "angle",
+     "type": "float",
+     "offset": "0x20"
+    },
+    {
+     "name": "pivot",
+     "type": "Vector2",
+     "offset": "0x24"
+    },
+    {
+     "name": "size",
+     "type": "Vector2",
+     "offset": "0x2C"
+    },
+    {
+     "name": "textureOffset",
+     "type": "Vector2",
+     "offset": "0x34"
+    },
+    {
+     "name": "textureScale",
+     "type": "Vector2",
+     "offset": "0x3C"
+    },
+    {
+     "name": "flipUVX",
+     "type": "bool",
+     "offset": "0x44"
+    },
+    {
+     "name": "flipUVY",
+     "type": "bool",
+     "offset": "0x45"
+    },
+    {
+     "name": "moveUVWithPositions",
+     "type": "bool",
+     "offset": "0x46"
+    },
+    {
+     "name": "preventColliderSync",
+     "type": "bool",
+     "offset": "0x47"
+    },
+    {
+     "name": "meshSkewType",
+     "type": "MeshSkewType",
+     "offset": "0x48"
+    }
+   ]
+  },
+  {
+   "name": "LevelUGCPanelPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelUGCPanelPD.cs",
+   "fields": [
+    {
+     "name": "mesh1Guid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "mesh2Guid",
+     "type": "string",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "LevelUnderwaterChestPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/LevelUnderwaterChestPD.cs",
+   "fields": [
+    {
+     "name": "isUnlocked",
+     "type": "bool",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "PDTexture2DReferencesPD",
+   "kind": "class",
+   "bases": "",
+   "file": "Game/PersistentData/PDTexture2DReferencesPD.cs",
+   "fields": [
+    {
+     "name": "Texture2DReferences",
+     "type": "PDTexture2DReference[]",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "ScavengerHuntItemHandlerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/ScavengerHunt/PersistentData/ScavengerHuntItemHandlerPD.cs",
+   "fields": [
+    {
+     "name": "gameGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "spawnerId",
+     "type": "int",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "ScavengerHuntItemSpawnerPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/ScavengerHunt/PersistentData/ScavengerHuntItemSpawnerPD.cs",
+   "fields": [
+    {
+     "name": "gameGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x18"
+    }
+   ]
+  },
+  {
+   "name": "CharacterMakeupDataPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/Level/PWC/PersistentData/CharacterMakeupDataPD.cs",
+   "fields": [
+    {
+     "name": "characterMakeupData",
+     "type": "LevelCharacterMakeupData",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "LevelCAPD",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/Level/ContextualAnimation/PersistentData/LevelCAPD.cs",
+   "fields": [
+    {
+     "name": "playType",
+     "type": "CAPlayType",
+     "offset": "0x10"
+    },
+    {
+     "name": "config",
+     "type": "LevelCAConfig",
+     "offset": "0x18"
+    },
+    {
+     "name": "handlerSceneGuid",
+     "type": "string",
+     "offset": "0x20"
+    },
+    {
+     "name": "handlerName",
+     "type": "string",
+     "offset": "0x28"
+    },
+    {
+     "name": "isPlaying",
+     "type": "bool",
+     "offset": "0x30"
+    }
+   ]
+  }
+ ],
+ "persisted_outside_pd": [
+  {
+   "name": "StoreState",
+   "kind": "class",
+   "bases": "ISerializationCallbackReceiver",
+   "file": "Game/Store/StoreState.cs",
+   "fields": [
+    {
+     "name": "claimedItems",
+     "type": "List<String>",
+     "offset": "0x10"
+    },
+    {
+     "name": "<HashedClaimedItems>k__BackingField",
+     "type": "HashSet<String>",
+     "offset": "0x18"
+    },
+    {
+     "name": "<IsDirty>k__BackingField",
+     "type": "bool",
+     "offset": "0x20"
+    }
+   ]
+  },
+  {
+   "name": "InventoryItemsTracker",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/Inventory/ItemsTracker/InventoryItemsTracker.cs",
+   "fields": [
+    {
+     "name": "_itemsState",
+     "type": "ItemsState",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass3_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/Inventory/ItemsTracker/InventoryItemsTracker.cs",
+   "fields": [
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "ItemsState",
+   "kind": "class",
+   "bases": "ISerializationCallbackReceiver",
+   "file": "PWC/Inventory/ItemsTracker/InventoryItemsTracker.cs",
+   "fields": [
+    {
+     "name": "items",
+     "type": "List<Item>",
+     "offset": "0x10"
+    },
+    {
+     "name": "itemsToRestore",
+     "type": "List<Item>",
+     "offset": "0x18"
+    },
+    {
+     "name": "_hashedItems",
+     "type": "Dictionary<String, Item>",
+     "offset": "0x20"
+    },
+    {
+     "name": "_itemsToRestoreForScenes",
+     "type": "Dictionary<String, Dictionary`2<String, Item>>",
+     "offset": "0x28"
+    },
+    {
+     "name": "<IsDirty>k__BackingField",
+     "type": "bool",
+     "offset": "0x30"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass15_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/Inventory/ItemsTracker/InventoryItemsTracker.cs",
+   "fields": [
+    {
+     "name": "sceneGuids",
+     "type": "HashSet<String>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "<>c__DisplayClass16_0",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/Inventory/ItemsTracker/InventoryItemsTracker.cs",
+   "fields": [
+    {
+     "name": "prefabGuids",
+     "type": "HashSet<String>",
+     "offset": "0x10"
+    }
+   ]
+  },
+  {
+   "name": "Item",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/Inventory/ItemsTracker/InventoryItemsTracker.cs",
+   "fields": [
+    {
+     "name": "sceneGuid",
+     "type": "string",
+     "offset": "0x10"
+    },
+    {
+     "name": "prefabGuid",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "sceneName",
+     "type": "string",
+     "offset": "0x20"
+    },
+    {
+     "name": "position",
+     "type": "Vector2",
+     "offset": "0x28"
+    },
+    {
+     "name": "pdSnapshot",
+     "type": "PDPrefabPDSnapshot",
+     "offset": "0x30"
+    }
+   ]
+  },
+  {
+   "name": "AvatarSpineData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/AvatarSpine/AvatarSpineData.cs",
+   "fields": [
+    {
+     "name": "ID",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "SkinsData",
+     "type": "List<SkinData>",
+     "offset": "0x18"
+    },
+    {
+     "name": "SizeType",
+     "type": "AvatarSizeType",
+     "offset": "0x20"
+    },
+    {
+     "name": "Config",
+     "type": "AvatarSpineConfig",
+     "offset": "0x28"
+    },
+    {
+     "name": "SpineType",
+     "type": "SpineType",
+     "offset": "0x30"
+    },
+    {
+     "name": "BuildNumber",
+     "type": "int",
+     "offset": "0x34"
+    }
+   ]
+  },
+  {
+   "name": "SkinData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/AvatarSpine/SkinData.cs",
+   "fields": [
+    {
+     "name": "CategoryType",
+     "type": "int",
+     "offset": "0x10"
+    },
+    {
+     "name": "SkinName",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "Colors",
+     "type": "Color32[]",
+     "offset": "0x20"
+    },
+    {
+     "name": "ColorA",
+     "type": "Nullable<Color>",
+     "offset": "0x28"
+    },
+    {
+     "name": "ColorB",
+     "type": "Nullable<Color>",
+     "offset": "0x3C"
+    }
+   ]
+  },
+  {
+   "name": "<>c",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/AvatarSpine/SkinData.cs",
+   "fields": []
+  },
+  {
+   "name": "TextureData",
+   "kind": "class",
+   "bases": "",
+   "file": "PWC/AvatarSpine/TextureData.cs",
+   "fields": [
+    {
+     "name": "Texture",
+     "type": "Texture2D",
+     "offset": "0x10"
+    },
+    {
+     "name": "TextureName",
+     "type": "string",
+     "offset": "0x18"
+    },
+    {
+     "name": "Counter",
+     "type": "int",
+     "offset": "0x20"
+    }
+   ]
+  }
+ ]
+}

@@ -13,6 +13,8 @@
   <ItemGroup>
     <Compile Include="NUnitShim.cs" />
     <Compile Include="../../client/AvatarWorldClient/Assets/Scripts/Core/Pointer/*.cs" />
+    <Compile Include="../../client/AvatarWorldClient/Assets/Scripts/Core/Persistence/*.cs" />
+    <Compile Include="../../client/AvatarWorldClient/Assets/Tests/EditMode/SaveGateTests.cs" />
     <Compile Include="../../client/AvatarWorldClient/Assets/Tests/EditMode/DragIntentDetectorTests.cs" />
     <Compile Include="../../client/AvatarWorldClient/Assets/Tests/EditMode/DropTargetOrderingTests.cs" />
     <Compile Include="../../client/AvatarWorldClient/Assets/Tests/EditMode/CameraPanMathTests.cs" />
