@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "task_id": "T002",
+  "scope": "Feature/scope matrix: enumerate local resources, online integrations, missing content and pedagogical extensions, each tagged with a per-resource policy (parity / offline_adaptation / external_absent). Pure synthesis of existing docs and already-extracted static evidence; no new binary/Unity/device work performed.",
+  "authorized_rules_sources": [
+    {"path": "docs/OFFLINE_HOME_RULES.md", "role": "Author-authorized local prices/rewards for the offline economy (shop, gifts, pass). Explicitly NOT recovered from the original server."},
+    {"path": "docs/OFFLINE_RECONSTRUCTION_STATUS.md", "role": "Screen/control-by-control matrix of what the original does vs. what the local client implements, with explicit non-parity callouts."},
+    {"path": "docs/AI_AGENT_REVERSE_ENGINEERING_WORKPLAN.md", "role": "Product-level framing: offline functional reconstruction including a fictional economy and pedagogical challenges; defines the pedagogical activity as optional and never a Play substitute."},
+    {"path": "docs/STORE_WORLD_UI_SPEC.md", "role": "Explicit adaptation rule: AW coins come from pedagogical activities (literacy etc.) instead of real-money purchases -- this is the product's intentional differentiator, not a reverse-engineering gap."}
+  ],
+  "domain_taxonomy_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/SceneType.cs (13 declared scene types; ground truth for the top-level domains below)",
+  "domains": [
+    {
+      "scene_type": "Home",
+      "status": "IMPLEMENTED_partial",
+      "policy": "offline_adaptation",
+      "note": "Home screen with Play/avatar/settings/account/achievements entries; several buttons (Shop, Holiday, AvatarPass, multiplayer, 35 of 39 level3 Button components) are not yet wired to local equivalents (see docs/OFFLINE_RECONSTRUCTION_STATUS.md)."
+    },
+    {
+      "scene_type": "World",
+      "status": "IMPLEMENTED_partial",
+      "policy": "offline_adaptation",
+      "note": "World map slice 1 verified on device (composition, drag, building tap, in-progress warnings); slices 2-3 (basketball building polish, top bar: weather/globe/add-avatar/edit-house) remain open per LOOP_STATE.md 2026-11-03/04."
+    },
+    {
+      "scene_type": "Level",
+      "status": "IMPLEMENTED_prototype_only",
+      "policy": "offline_adaptation",
+      "note": "Only a basketball-court prototype (level8-derived assets) exists; it is explicitly documented as NOT equivalent to the original's main gameplay sequence per world, which is not yet reconstructed."
+    },
+    {
+      "scene_type": "AvatarMakerLobby / AvatarMaker",
+      "status": "IMPLEMENTED_mature",
+      "policy": "offline_adaptation",
+      "note": "Spine-based avatar editor; clothing-manifest.json currently lists 4,965 items across categories (legs 1277, shirt 1048, bottom 976, accessories 833, hair 125, mouth 105, hairback 100, hat 100, jacket 100, face 100, onepiece 99, eyebrows 74, back 28) -- this is the author's own local catalog/content decision (see divergences.jsonl), not server-sourced entitlement."
+    },
+    {
+      "scene_type": "Street",
+      "status": "NOT_STARTED",
+      "policy": "UNKNOWN_not_scoped_yet",
+      "note": "No evidence of local implementation found this session; not covered by LOOP_STATE.md or the reconstruction-status doc."
+    },
+    {
+      "scene_type": "Store",
+      "status": "IMPLEMENTED_partial",
+      "policy": "offline_adaptation",
+      "note": "Graphical shop/gift/pass UI validated on device (72/72 tests, 2026-11-02); prices/rewards are local fictional rules per docs/OFFLINE_HOME_RULES.md, explicitly not server parity. Original server-side catalog/pricing (37,230 entries, 25,812 unique GUIDs, local dump prices are zero) is out of reach -- external_absent for that specific sub-feature."
+    },
+    {
+      "scene_type": "BWYWMenu",
+      "status": "IMPLEMENTED_partial",
+      "policy": "offline_adaptation",
+      "note": "This is the pedagogical-challenge entry point (coins-for-literacy-activity, the product's intentional differentiator per docs/STORE_WORLD_UI_SPEC.md). 100-question bank exists (docs/CHALLENGE_BANK.md); always optional, never replaces Play."
+    },
+    {
+      "scene_type": "StoreAvatarPass / StarsPass",
+      "status": "IMPLEMENTED_partial",
+      "policy": "offline_adaptation",
+      "note": "Local pass with 3 milestone rewards (4/8/12 distinct challenges) at fictional prices; no parity with server-side pass content/pricing."
+    },
+    {
+      "scene_type": "AWCloud",
+      "status": "OUT_OF_SCOPE",
+      "policy": "external_absent",
+      "note": "Login/cloud/account sync is explicitly excluded from the offline scope by the agreed rules (docs/OFFLINE_RECONSTRUCTION_STATUS.md 'Escopo acordado'); not a gap to close, a deliberate boundary."
+    },
+    {
+      "scene_type": "StoreBundle",
+      "status": "NOT_STARTED",
+      "policy": "UNKNOWN_not_scoped_yet",
+      "note": "No local-implementation evidence found this session."
+    },
+    {
+      "scene_type": "CarMaker",
+      "status": "NOT_STARTED",
+      "policy": "offline_adaptation_candidate",
+      "note": "CarMaker vehicle presets exist in the extracted asset inventory (T042, docs/RECON_WORLD_ASSET_MAP.md) but no editor/gameplay implementation found this session."
+    }
+  ],
+  "cross_cutting_systems": [
+    {"name": "Save/economy", "policy": "offline_adaptation", "note": "Single local PlayerState/SaveStore (atomic file replace); coins/points/claims/ledger/challenges/appearance persisted. Avatar position, scene objects and per-scene progress (T030-T032) are explicitly NOT yet integrated per LOOP_STATE.md 2026-11-04."},
+    {"name": "Multiplayer/online services", "policy": "external_absent", "note": "Explicitly out of scope by agreed rule; buttons/services are disabled or hidden, not simulated."},
+    {"name": "Achievements/hunts", "policy": "external_absent_with_local_substitute", "note": "Original depends on server-backed services; a local progress panel exists but is explicitly documented as non-equivalent."}
+  ],
+  "verification": {"target_executed": false, "semantic_certification": false, "method": "doc synthesis + current manifest inspection, no new binary analysis"}
+}
