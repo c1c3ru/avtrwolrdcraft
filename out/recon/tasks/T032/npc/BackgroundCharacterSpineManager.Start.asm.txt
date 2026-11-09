@@ -1,0 +1,89 @@
+1e01664  stp    x30, x23, [sp, #-0x30]!
+1e01668  stp    x22, x21, [sp, #0x10]
+1e0166c  stp    x20, x19, [sp, #0x20]
+1e01670  adrp   x20, #0x44fa000
+1e01674  ldrb   w8, [x20, #0xc29]
+1e01678  mov    x19, x0
+1e0167c  tbnz   w8, #0, #0x1e016b8
+1e01680  adrp   x0, #0x41ac000
+1e01684  ldr    x0, [x0, #0xbe0]
+1e01688  bl     #0x1b886e8
+1e0168c  adrp   x0, #0x41ba000
+1e01690  ldr    x0, [x0, #0x70]
+1e01694  bl     #0x1b886e8
+1e01698  adrp   x0, #0x41ac000
+1e0169c  ldr    x0, [x0, #0xbe8]
+1e016a0  bl     #0x1b886e8
+1e016a4  adrp   x0, #0x41ba000
+1e016a8  ldr    x0, [x0, #0x78]
+1e016ac  bl     #0x1b886e8
+1e016b0  mov    w8, #1
+1e016b4  strb   w8, [x20, #0xc29]
+1e016b8  mov    x0, x19
+1e016bc  mov    x1, xzr
+1e016c0  bl     #0x2173ee4  ; -> AvatarSpineMaterialsManager.EnsureSpine
+1e016c4  ldr    w1, [x19, #0xc8]
+1e016c8  mov    x0, x19
+1e016cc  mov    x2, xzr
+1e016d0  bl     #0x218a1d8  ; -> AvatarSpineSkinsManagerBase.Init
+1e016d4  ldr    x0, [x19, #0xd0]
+1e016d8  cbz    x0, #0x1e01798
+1e016dc  ldr    x8, [x19, #0xd8]
+1e016e0  cbz    x8, #0x1e01798
+1e016e4  ldr    w9, [x0, #0x18]
+1e016e8  cmp    w9, #1
+1e016ec  b.lt   #0x1e01798
+1e016f0  ldr    w8, [x8, #0x18]
+1e016f4  cmp    w9, w8
+1e016f8  b.ne   #0x1e01798
+1e016fc  cmp    w9, #1
+1e01700  b.lt   #0x1e01798
+1e01704  adrp   x22, #0x41ac000
+1e01708  adrp   x23, #0x41ba000
+1e0170c  ldr    x22, [x22, #0xbe8]
+1e01710  ldr    x23, [x23, #0x78]
+1e01714  mov    w20, wzr
+1e01718  ldr    x2, [x22]
+1e0171c  mov    w1, w20
+1e01720  bl     #0x2cf044c
+1e01724  mov    x1, xzr
+1e01728  bl     #0x31dffdc
+1e0172c  tbnz   w0, #0, #0x1e01780
+1e01730  ldr    x0, [x19, #0xd8]
+1e01734  cbz    x0, #0x1e017c4
+1e01738  ldr    x2, [x23]
+1e0173c  mov    w1, w20
+1e01740  bl     #0x2ca5cf0
+1e01744  ldr    x8, [x19, #0xd0]
+1e01748  cbz    x8, #0x1e017c4
+1e0174c  ldr    x2, [x22]
+1e01750  mov    w21, w0
+1e01754  mov    x0, x8
+1e01758  mov    w1, w20
+1e0175c  bl     #0x2cf044c
+1e01760  ldr    x8, [x19]
+1e01764  mov    x2, x0
+1e01768  mov    x0, x19
+1e0176c  mov    w1, w21
+1e01770  ldp    x9, x5, [x8, #0x178]
+1e01774  mov    x3, xzr
+1e01778  mov    w4, wzr
+1e0177c  blr    x9
+1e01780  ldr    x0, [x19, #0xd0]
+1e01784  cbz    x0, #0x1e017c4
+1e01788  ldr    w8, [x0, #0x18]
+1e0178c  add    w20, w20, #1
+1e01790  cmp    w20, w8
+1e01794  b.lt   #0x1e01718
+1e01798  ldr    x0, [x19, #0x20]
+1e0179c  cbz    x0, #0x1e017c4
+1e017a0  mov    x1, xzr
+1e017a4  bl     #0x351908c
+1e017a8  str    x0, [x19, #0xe0]!
+1e017ac  mov    x1, x0
+1e017b0  mov    x0, x19
+1e017b4  ldp    x20, x19, [sp, #0x20]
+1e017b8  ldp    x22, x21, [sp, #0x10]
+1e017bc  ldp    x30, x23, [sp], #0x30
+1e017c0  b      #0x1b88694
+1e017c4  bl     #0x1b88980
