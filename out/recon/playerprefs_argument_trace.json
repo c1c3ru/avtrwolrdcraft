@@ -1,0 +1,3630 @@
+{
+  "schema_version": 1,
+  "scope": "direct ARM64 BL/B call sites to UnityEngine.PlayerPrefs writers; bounded register/stack dataflow",
+  "limitations": [
+    "Indirect calls, reflection, and PlayerPrefs wrappers are outside this direct-call scan.",
+    "Only the instruction subset decoded in this tool is tracked; unsupported writes invalidate the destination register.",
+    "A literal is called exact only when all analyzed paths agree on the same string in x0.",
+    "Argument-, field-, and helper-derived keys remain symbolic and require caller/asset/runtime resolution."
+  ],
+  "counts": {
+    "methods": 145,
+    "direct_call_sites": 188,
+    "sites_with_proven_literal_key": 118,
+    "sites_with_dynamic_or_unresolved_key": 70,
+    "unique_proven_literal_keys": 88,
+    "L03_audited_sites": 13,
+    "remaining_Set_writer_methods": 108,
+    "remaining_Set_sites_with_proven_literal_key": 95
+  },
+  "literal_key_usage": {
+    "AWCurrentProfile": 1,
+    "AWStore_DidUserClickOnStoreButton": 1,
+    "AW_Language_Code": 2,
+    "AW_Mute_Music": 1,
+    "AW_Mute_SFX": 1,
+    "AvatarSpineDataIDList": 2,
+    "AvatarSpineDataMakerExcludedRestoreList": 1,
+    "BWYW_ACTIVE_SKILL_TYPE_KEY": 1,
+    "BWYW_MigrateFilesLocationForAndroidBuildIfNeeded": 1,
+    "CafeteriaPremadesTempOverrideKey": 1,
+    "CarMakerSeen": 1,
+    "Editor_PazuCore_Localization_CountryCode": 1,
+    "Editor_PazuCore_Localization_LanguageCode": 1,
+    "GAME_CURRENT_WORLD": 1,
+    "InventoryItemsTracker_DidMigrateStateFileIfNeeded": 1,
+    "LevelCharacterData_List": 4,
+    "LevelContextualAnimationMenuMoreThanOnePageFTUEKey": 1,
+    "PWC_World_InteractionHistory_LastEntryFocusBuildNumber": 1,
+    "PWC_World_InteractionHistory_LastFocusedBuildingType": 1,
+    "PazuCore_AFCPrice_LastLocalPrice": 1,
+    "PazuCore_AFCPrice_LastTrialPeriod": 1,
+    "PazuCore_AndroidFile_SavePackage": 1,
+    "PazuCore_EditorForcePlatform": 2,
+    "PazuCore_Editor_PazuCloudEnv": 2,
+    "PazuCore_Feed_Data": 2,
+    "PazuCore_Feed_LastBuildNumber": 1,
+    "PazuCore_Feed_LastLanguageCodeRequest": 1,
+    "PazuCore_Feed_UserHasNotSeenNewContent": 2,
+    "PazuCore_FilesList": 1,
+    "PazuCore_GDPR_Did_User_Accept": 1,
+    "PazuCore_Library_LibraryData_FeaturedGameIndex": 1,
+    "PazuCore_MyGames_LastBuildNumber": 1,
+    "PazuCore_PazuGameMode_GameMarketingMode": 1,
+    "PazuCore_PazuGameMode_IsGameInReview": 1,
+    "PazuCore_PazuGameMode_ShouldSendAnalyticsEvents": 1,
+    "PazuWorldContactsFirstTime": 1,
+    "PazuWorld_IsDay": 1,
+    "PazuWorld_PersistantData_KeepObjectsOnLoad": 2,
+    "PhoneNotification": 5,
+    "PhoneOpenAchievementsApplication": 2,
+    "PreganatOnepieceCasualFirstTimeScrolling": 1,
+    "PremadeEditorJsonName": 1,
+    "PromotionPopUp_Counter": 2,
+    "PromotionPopUp_LastBuildNumber": 1,
+    "PromotionPopUp_Type": 1,
+    "Reporter_clearOnNewSceneLoaded": 1,
+    "Reporter_collapse": 1,
+    "Reporter_currentView": 1,
+    "Reporter_filterText": 1,
+    "Reporter_show": 1,
+    "Reporter_showClearOnNewSceneLoadedButton": 1,
+    "Reporter_showError": 1,
+    "Reporter_showFps": 1,
+    "Reporter_showFpsButton": 1,
+    "Reporter_showGraph": 1,
+    "Reporter_showLog": 1,
+    "Reporter_showMemButton": 1,
+    "Reporter_showMemory": 1,
+    "Reporter_showScene": 1,
+    "Reporter_showSceneButton": 1,
+    "Reporter_showSearchText": 1,
+    "Reporter_showTime": 1,
+    "Reporter_showTimeButton": 1,
+    "Reporter_showWarning": 1,
+    "Reporter_size": 1,
+    "StarsPassPromoPopup_DidShow": 1,
+    "StarsPass_BarNewBadgeSeen": 1,
+    "StarsPass_LastShownTotal": 4,
+    "StarsPass_LongBar_LastShownTotal": 4,
+    "Store_DidMigrateStateFileIfNeeded": 1,
+    "UnityInstallationId": 1,
+    "checked_android_install_referrer": 1,
+    "pazucore_called_OnInitialized_with_PazuUnityPurchaser": 1,
+    "pazucore_country": 1,
+    "pazucore_finish_game": 1,
+    "pazucore_hide_rate_us_forever": 2,
+    "pazucore_language": 1,
+    "pazucore_pazucloud_did_check_for_game_data": 1,
+    "pazucore_pazucloud_should_get_game_data": 3,
+    "pazucore_pazucloud_should_get_not_consumed": 2,
+    "pazucore_pazucloud_should_send_game_data": 2,
+    "pazucore_pending_deep_link": 2,
+    "pazucore_purchased_non_consumable_products": 1,
+    "pazucore_webview_last_modified": 1,
+    "reteus_aw_last_rateus_dismiss_time": 1,
+    "reteus_aw_stop_prompt_in_game_rateus": 1,
+    "unity.cloud_userid": 1,
+    "v2_PazuCore_AndroidKeychain_HaveData": 3
+  },
+  "call_sites": [
+    {
+      "method": "PazuCore.AndroidFileManager.OnGameResume",
+      "address": "0x1c84c74",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_AndroidFile_SavePackage"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.AndroidKeycainManager.OnGetAllData",
+      "address": "0x1c8eac8",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "v2_PazuCore_AndroidKeychain_HaveData"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<Start>d__14.MoveNext",
+      "address": "0x1c8f550",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "v2_PazuCore_AndroidKeychain_HaveData"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<Start>d__14.MoveNext",
+      "address": "0x1c8f790",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "v2_PazuCore_AndroidKeychain_HaveData"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.FileManager.SaveFileNamesToPlayerPrefs",
+      "address": "0x1c94b60",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_FilesList"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuUnityPurchaser.BuyProductId",
+      "address": "0x1c9f9d4",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "unknown"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuUnityPurchaser.AddNonConsumableProductToUser",
+      "address": "0x1ca00a0",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_purchased_non_consumable_products"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuUnityPurchaser.OnInitialized",
+      "address": "0x1ca1384",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_called_OnInitialized_with_PazuUnityPurchaser"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuUnityPurchaser.UnlockFullVersionProduct",
+      "address": "0x1ca1dec",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "unknown"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.Utils.SetForcePlatformForNextPlayMode",
+      "address": "0x1cb7e64",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_EditorForcePlatform"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.Utils.LoadEditorForcePlatformIfNeeded",
+      "address": "0x1cb7fe0",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_EditorForcePlatform"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.Utils.IncrementPlayerPrefsInt",
+      "address": "0x1cb9b00",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 0
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.Utils.SetLongPlayerPrefs",
+      "address": "0x1cbb674",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 0
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.Utils.OnGamePlaySessionEnded",
+      "address": "0x1cbbb08",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_finish_game"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.RateUs.OnEmojiClick",
+      "address": "0x1cc57b0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_hide_rate_us_forever"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.RateUs.OnCloseButtonClick",
+      "address": "0x1cc5974",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "reteus_aw_stop_prompt_in_game_rateus"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.StandaloneTestingBuild.StandaloneTestingBuildManager.Init",
+      "address": "0x1cc6534",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_Editor_PazuCloudEnv"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.StandaloneTestingBuild.StandaloneTestingBuildManager.SetValues",
+      "address": "0x1cc65c4",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Editor_PazuCore_Localization_LanguageCode"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.StandaloneTestingBuild.StandaloneTestingBuildManager.SetValues",
+      "address": "0x1cc65fc",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Editor_PazuCore_Localization_CountryCode"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.StandaloneTestingBuild.StandaloneTestingBuildManager.SetValues",
+      "address": "0x1cc6648",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_Editor_PazuCloudEnv"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.StandaloneTestingBuild.StandaloneTestingBuildManager.SetValueIfPossible",
+      "address": "0x1cc6690",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 1
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuGameMode.PazuGameModeManager.OnReceivceGameMode",
+      "address": "0x1cc89bc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_PazuGameMode_IsGameInReview"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuGameMode.PazuGameModeManager.OnReceivceGameMode",
+      "address": "0x1cc89cc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_PazuGameMode_GameMarketingMode"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuGameMode.PazuGameModeManager.OnReceivceGameMode",
+      "address": "0x1cc89dc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_PazuGameMode_ShouldSendAnalyticsEvents"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.ForParents.ForParentsManager.OpenWebView",
+      "address": "0x1ccc9fc",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_webview_last_modified"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.EndSession.Serializable.CrossPromotionData.GetGamesToShow",
+      "address": "0x1cd4b6c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.EndSession.Serializable.CrossPromotionData.GetPlayerPrefsKey",
+        "helper_callsite": "0x1cd4b60",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.DeepLink.DeepLinkManager.OnDeepLinkActivated",
+      "address": "0x1cd67ac",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pending_deep_link"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.Analytics.Internal.ChangeTracking.ChangeTrackingManager.DeleteAllData",
+      "address": "0x1cdd1c4",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1cdd1b4",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCore_Analytics_ChangeTracking_GameInfo"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.Analytics.Internal.ChangeTracking.ChangeTrackingManager.SaveGameInfo",
+      "address": "0x1ce3cfc",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1ce3ce8",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCore_Analytics_ChangeTracking_GameInfo"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.Analytics.Internal.ChangeTracking.ChangeTrackingManager.DeleteGameInfoData",
+      "address": "0x1ce3ddc",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1ce3dcc",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCore_Analytics_ChangeTracking_GameInfo"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "arg",
+            "value": [
+              2
+            ]
+          },
+          {
+            "index": 3,
+            "kind": "arg",
+            "value": [
+              3
+            ]
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.GDPR.GDPRManager.OnAcceptButtonClick",
+      "address": "0x1ce3fb4",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_GDPR_Did_User_Accept"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCloud.CloudAltData.SetValue",
+      "address": "0x1ce417c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.PazuCloud.CloudAltData.GetKey",
+        "helper_callsite": "0x1ce4120",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCloud.CloudAltData.DeleteKey",
+      "address": "0x1ce4484",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.PazuCloud.CloudAltData.GetKey",
+        "helper_callsite": "0x1ce442c",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCloud.PazuCloudGameDataManager.SendGameData",
+      "address": "0x1ce58e8",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pazucloud_should_send_game_data"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCloud.PazuCloudGameDataManager.OnSync",
+      "address": "0x1ce59c4",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pazucloud_should_get_game_data"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCloud.PazuCloudGameDataManager.OnUserMerge",
+      "address": "0x1ce5c2c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pazucloud_should_get_game_data"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCloud.PazuCloudGameDataManager.BuyConsumable",
+      "address": "0x1ce5cd0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pazucloud_should_get_not_consumed"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c.<OnGameResume>b__19_1",
+      "address": "0x1ce67ec",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pazucloud_did_check_for_game_data"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass25_0.<SendGameDataInternal>b__0",
+      "address": "0x1ce68a8",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pazucloud_should_send_game_data"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass26_0.<GetGameData>b__0",
+      "address": "0x1ce694c",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pazucloud_should_get_game_data"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass29_0.<ConsumeNotConsumedProducts>b__0",
+      "address": "0x1ce6d9c",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pazucloud_should_get_not_consumed"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCloud.User.SetFullVersion",
+      "address": "0x1cf006c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.PazuCloud.User.GetFullVersionKey",
+        "helper_callsite": "0x1cf0058",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass7_0.<CheckDownload>b__0",
+      "address": "0x1cf4224",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "field",
+        "base": [
+          "arg",
+          0
+        ],
+        "byte_offset": 16
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<LoadCachedOrDefaultData>d__18.MoveNext",
+      "address": "0x1cf8f0c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_MyGames_LastBuildNumber"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.AF.Library.LibraryData.BuildSections",
+      "address": "0x1cfe93c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_Library_LibraryData_FeaturedGameIndex"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.AF.Library.LibraryDataManager.LoadCachedOrDefaultData",
+      "address": "0x1d00874",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1d00868",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCore_Library_LastBuildNumber"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass44_0.<DownloadJson>b__0",
+      "address": "0x1d031ac",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1d031a0",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCore_Library_LastLanguageCodeRequest"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass44_0.<DownloadJson>b__0",
+      "address": "0x1d031cc",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1d031c0",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCore_Library_LastCountryCodeRequest"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.AF.Feed.FeedDataManager.LoadCachedData",
+      "address": "0x1d178c0",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_Feed_Data"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.AF.Feed.FeedDataManager.LoadCachedData",
+      "address": "0x1d178d0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_Feed_LastBuildNumber"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.AF.Feed.FeedDataManager.MarkNewContentAsSeen",
+      "address": "0x1d17a80",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_Feed_UserHasNotSeenNewContent"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass37_0.<DownloadJson>b__0",
+      "address": "0x1d1917c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_Feed_Data"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass37_0.<DownloadJson>b__0",
+      "address": "0x1d19194",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_Feed_LastLanguageCodeRequest"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass37_0.<DownloadJson>b__0",
+      "address": "0x1d191d0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_Feed_UserHasNotSeenNewContent"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AddressablesManager.Init",
+      "address": "0x1d26760",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1d26754",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCore_Addressables_Version"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AddressablesManager.SetLastModifiedData",
+      "address": "0x1d26ef8",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1d26ee4",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCoreAddressables__LastModified"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass35_0.<GetAddressablesData>b__0",
+      "address": "0x1d2837c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1d28370",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCore_Addressables_LastLanguageCodeRequest"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass35_0.<GetAddressablesData>b__0",
+      "address": "0x1d28394",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PazuCore.Utils.GetKeyForEnvironment",
+        "helper_callsite": "0x1d28388",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "PazuCore_Addressables_LastCountryCodeRequest"
+          },
+          {
+            "index": 1,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.SetString",
+      "address": "0x1d338b0",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "field",
+        "base": [
+          "arg",
+          0
+        ],
+        "byte_offset": 32
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.SetInt",
+      "address": "0x1d33958",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "field",
+        "base": [
+          "arg",
+          0
+        ],
+        "byte_offset": 32
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.IncrementInt",
+      "address": "0x1d33998",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "field",
+        "base": [
+          "arg",
+          0
+        ],
+        "byte_offset": 32
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.DecrementInt",
+      "address": "0x1d339d8",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "field",
+        "base": [
+          "arg",
+          0
+        ],
+        "byte_offset": 32
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.DeleteKey",
+      "address": "0x1d33a00",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "field",
+        "base": [
+          "arg",
+          0
+        ],
+        "byte_offset": 32
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<GetProductInfo>d__5.MoveNext",
+      "address": "0x1d3415c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_AFCPrice_LastLocalPrice"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<GetProductInfo>d__5.MoveNext",
+      "address": "0x1d341f0",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuCore_AFCPrice_LastTrialPeriod"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassBarManager.Init",
+      "address": "0x1d429f4",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPass_LastShownTotal"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassTotalStarsSave.SeedIfMissing",
+      "address": "0x1d452e8",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 0
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassTotalStarsSave.SaveLastShownTotal",
+      "address": "0x1d45344",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 0
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassBarManager.FinalizeBarToCurrentTotal",
+      "address": "0x1d45a6c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPass_LastShownTotal"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass32_0.<AnimateBarProgress>g__FinishBarProgress|1",
+      "address": "0x1d46558",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPass_LastShownTotal"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassModel.EnsureLocalStateMatchesAccount",
+      "address": "0x1d47584",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPass_LastShownTotal"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassModel.EnsureLocalStateMatchesAccount",
+      "address": "0x1d475a0",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPass_LongBar_LastShownTotal"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassModel.HasLocalStateIdChanged",
+      "address": "0x1d4784c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 0
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassModel.HasLocalStateIdChanged",
+      "address": "0x1d47884",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 0
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassTotalStarsSave.DeleteSave",
+      "address": "0x1d478a4",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 0
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassPromoPopup.PresentOnce",
+      "address": "0x1d47c4c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPassPromoPopup_DidShow"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassLongBar.SyncLongBar",
+      "address": "0x1d496d8",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPass_LongBar_LastShownTotal"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass24_1.<AnimateLongBarFill>b__2",
+      "address": "0x1d4a298",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPass_LongBar_LastShownTotal"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassViewManager.Awake",
+      "address": "0x1d4b810",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPass_BarNewBadgeSeen"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassTotalStarsSave.MarkNewBadgeSeen",
+      "address": "0x1d4b848",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 0
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassViewManager.Init",
+      "address": "0x1d4c1d4",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "StarsPass_LongBar_LastShownTotal"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "StarsPass.StarsPassTotalStarsSave.SeedIfMissing",
+      "address": "0x1d4c2a0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "arg",
+        "argument_index": 0
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "BWYW.BWYWUtils.SetActiveSkillType",
+      "address": "0x1d5af54",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "BWYW_ACTIVE_SKILL_TYPE_KEY"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "BWYW.BWYWUtils.MigrateFilesLocationForAndroidBuildIfNeeded",
+      "address": "0x1d693ac",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "BWYW_MigrateFilesLocationForAndroidBuildIfNeeded"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Game.Store.StoreButtonBadge.MarkAsClicked",
+      "address": "0x1d71874",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "AWStore_DidUserClickOnStoreButton"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Game.Store.StoreManager.MigrateStateFileIfNeeded",
+      "address": "0x1d818b0",
+      "operation": "SetInt",
+      "audited_in_L03": true,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Store_DidMigrateStateFileIfNeeded"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<LoadPrice>d__14.MoveNext",
+      "address": "0x1da04d0",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x1da04c4",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "GameStore_StoreDataItem_LastLocalPrice_"
+          },
+          {
+            "index": 1,
+            "kind": "field",
+            "value": [
+              [
+                "arg",
+                0
+              ],
+              32
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<LoadPrice>d__14.MoveNext",
+      "address": "0x1da05d0",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x1da05c4",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "GameStore_StoreDataItem_Symbol_"
+          },
+          {
+            "index": 1,
+            "kind": "field",
+            "value": [
+              [
+                "arg",
+                0
+              ],
+              32
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<LoadPrice>d__14.MoveNext",
+      "address": "0x1da05f4",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x1da05e8",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "GameStore_StoreDataItem_CurrencyCode_"
+          },
+          {
+            "index": 1,
+            "kind": "field",
+            "value": [
+              [
+                "arg",
+                0
+              ],
+              32
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Game.World.WeatherManager.SaveWeatherForWorld",
+      "address": "0x1db26b8",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "Game.World.WeatherManager.GetWeatherTypePrefKey",
+        "helper_callsite": "0x1db26ac",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Game.World.HolidayGameModeButton.OnButtonPress",
+      "address": "0x1db2940",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "unknown"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Game.World.WeatherManager.<SetWeatherDataOnAllWorlds>g__SetValue|21_0",
+      "address": "0x1db5efc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "Game.World.WeatherManager.GetWeatherTypePrefKey",
+        "helper_callsite": "0x1db5ef0",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "return",
+            "value": [
+              54057376
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd116c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_currentView"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd117c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_show"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd118c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_collapse"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd119c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_clearOnNewSceneLoaded"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd11ac",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showTime"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd11bc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showScene"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd11cc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showMemory"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd11dc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showFps"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd11ec",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showGraph"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd1204",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showLog"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd121c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showWarning"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd1234",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showError"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd124c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_filterText"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd1264",
+      "operation": "SetFloat",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_size"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd127c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showClearOnNewSceneLoadedButton"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd1294",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showTimeButton"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd12ac",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showSceneButton"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd12c4",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showMemButton"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd12dc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showFpsButton"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "address": "0x1fd12f4",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "Reporter_showSearchText"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Game.Home.GameAchievementsButton.SetAutoOpenAchievementsApplication",
+      "address": "0x2056a4c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.LevelPhone.Phone.GlobalPhoneOpenAchievementsApplication",
+        "helper_callsite": "0x2056a30",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Game.Home.HomePlayButton.LoadPlayScene",
+      "address": "0x2058184",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_pending_deep_link"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AWGameSettings.SetLanguageCode",
+      "address": "0x205897c",
+      "operation": "SetString",
+      "audited_in_L03": true,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "AW_Language_Code"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AWGameSettings.LoadData",
+      "address": "0x2065944",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "AW_Language_Code"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AWGameSettings.SetMusicMute",
+      "address": "0x2065b28",
+      "operation": "SetInt",
+      "audited_in_L03": true,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "AW_Mute_Music"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AWGameSettings.SetSFXMute",
+      "address": "0x2065bac",
+      "operation": "SetInt",
+      "audited_in_L03": true,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "AW_Mute_SFX"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.BackgroundPlanet.SetIsDayData",
+      "address": "0x2067994",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuWorld_IsDay"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.GameSceneManager.SetCurrentWorldSceneName",
+      "address": "0x20728d0",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "GAME_CURRENT_WORLD"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.WorldMakerData.WorldMakerDataManager.SaveMakerHouseData",
+      "address": "0x2088a40",
+      "operation": "SetString",
+      "audited_in_L03": true,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x2088a34",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "WorldMakerHouseData_"
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.WorldMakerData.WorldMakerDataManager.SaveMakerStreetData",
+      "address": "0x2088ed8",
+      "operation": "SetString",
+      "audited_in_L03": true,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x2088ecc",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "WorldMakerStreetData_"
+          },
+          {
+            "index": 1,
+            "kind": "return",
+            "value": [
+              54057376
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.WorldMakerData.WorldMakerDataManager.DeleteMakerStreetData",
+      "address": "0x2088fbc",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x2088fb0",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "WorldMakerStreetData_"
+          },
+          {
+            "index": 1,
+            "kind": "return",
+            "value": [
+              54057376
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.RateUs.RateUsCooldown.EnterCooldown",
+      "address": "0x20b6614",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "reteus_aw_last_rateus_dismiss_time"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.PremadeCharacters.PremadeEditorJsonAssetNameHolder.SaveJsonName",
+      "address": "0x20b89ec",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PremadeEditorJsonName"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.World.Buildings.WorldBuildingRetroHuntNewBadge.Dismiss",
+      "address": "0x21058b0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.World.Buildings.WorldBuildingRetroHuntNewBadge.GetDismissedKey",
+        "helper_callsite": "0x21058a4",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "field",
+            "value": [
+              [
+                "arg",
+                0
+              ],
+              56
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.World.Buildings.WorldBuildingsDataManager.SaveBuildingData",
+      "address": "0x2109314",
+      "operation": "SetString",
+      "audited_in_L03": true,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x21092e0",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "WorldBuildingData_"
+          },
+          {
+            "index": 1,
+            "kind": "return",
+            "value": [
+              54057376
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.LevelPhone.ContactsContent.SetContactsFirstTime",
+      "address": "0x2112350",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuWorldContactsFirstTime"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.ResetNotificationOnAppOnUpdate",
+      "address": "0x211ce1c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PhoneNotification"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.OnNotificationTargetClick",
+      "address": "0x211e208",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PhoneNotification"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.DeleteNotificationExistingData",
+      "address": "0x211e464",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PhoneNotification"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.TurnOnNotificationStatus",
+      "address": "0x211e558",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PhoneNotification"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.TurnOffNotificationStatus",
+      "address": "0x211e664",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PhoneNotification"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.LevelPhone.AchievementsApp.AchievementsContent.OnApplicationClick",
+      "address": "0x212accc",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PhoneOpenAchievementsApplication"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.LevelPhone.AchievementsApp.AchievementsContent.SetAutoOpenAchievementsApplication",
+      "address": "0x212b97c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PhoneOpenAchievementsApplication"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.LevelContextualAnimation.LevelContextualAnimationMenu.InitAnimations",
+      "address": "0x2134280",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "LevelContextualAnimationMenuMoreThanOnePageFTUEKey"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.FTUE.FTUEUIButton.SetPressed",
+      "address": "0x2136708",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.FTUE.FTUEUIButton.GetIsPressedKey",
+        "helper_callsite": "0x21366fc",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "arg",
+            "value": [
+              2
+            ]
+          },
+          {
+            "index": 3,
+            "kind": "arg",
+            "value": [
+              3
+            ]
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Inventory.InventorySkinsUtils.SetNewFlagNotSeenYet",
+      "address": "0x213f2c8",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Inventory.InventorySkinsUtils.GetKey",
+        "helper_callsite": "0x213f2bc",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Inventory.InventorySkinsUtils.SetFlagInteractionPerformed",
+      "address": "0x213f4d8",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Inventory.InventorySkinsUtils.GetKey",
+        "helper_callsite": "0x213f4c4",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "arg",
+            "value": [
+              2
+            ]
+          },
+          {
+            "index": 3,
+            "kind": "arg",
+            "value": [
+              3
+            ]
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Inventory.InventorySkinsUtils.SetInteractionPerformedForAllClaimedFlags",
+      "address": "0x213f64c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Inventory.InventorySkinsUtils.GetKey",
+        "helper_callsite": "0x213f640",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Inventory.ItemsTracker.InventoryItemsTracker.MigrateStateFileIfNeeded",
+      "address": "0x2140294",
+      "operation": "SetInt",
+      "audited_in_L03": true,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "InventoryItemsTracker_DidMigrateStateFileIfNeeded"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.InteractionHistory.InteractionHistoryManager.SetFocusedBuildingType",
+      "address": "0x2141da0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PWC_World_InteractionHistory_LastFocusedBuildingType"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.InteractionHistory.InteractionHistoryManager.TryFocusOnEntryPosition",
+      "address": "0x214207c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PWC_World_InteractionHistory_LastEntryFocusBuildNumber"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.FTUE.FTUEUIButton.OnDestroy",
+      "address": "0x21467c0",
+      "operation": "SetFloat",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "unknown"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.FTUE.FTUEUIButton.ResetTimer",
+      "address": "0x2146d70",
+      "operation": "SetFloat",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "unknown"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.CloudProgress.CPManager.SetCurrentProfileID",
+      "address": "0x214bdb4",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "AWCurrentProfile"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.CarsMaker.CarMakerSeenState.MarkSeen",
+      "address": "0x2158bdc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "CarMakerSeen"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.LoadPremadeCharactersFromResources",
+      "address": "0x216cbb4",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "CafeteriaPremadesTempOverrideKey"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.LoadMakerExcludedDataToRestore",
+      "address": "0x216d408",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "AvatarSpineDataMakerExcludedRestoreList"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.SaveIDList",
+      "address": "0x216de54",
+      "operation": "SetString",
+      "audited_in_L03": true,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "AvatarSpineDataIDList"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.SaveCharacter",
+      "address": "0x216f0fc",
+      "operation": "SetString",
+      "audited_in_L03": true,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x216f0f0",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "AvatarSpineData_"
+          },
+          {
+            "index": 1,
+            "kind": "return",
+            "value": [
+              53822868
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.DeleteCharacter",
+      "address": "0x216f3e0",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x216f3d8",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "AvatarSpineData_"
+          },
+          {
+            "index": 1,
+            "kind": "return",
+            "value": [
+              53822868
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.DeleteAllMakerData",
+      "address": "0x21707fc",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x21707f4",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "AvatarSpineData_"
+          },
+          {
+            "index": 1,
+            "kind": "return",
+            "value": [
+              53822868
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.DeleteAllPremadeData",
+      "address": "0x2170b7c",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x2170b74",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "AvatarSpineData_"
+          },
+          {
+            "index": 1,
+            "kind": "return",
+            "value": [
+              53822868
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.DeleteAllData",
+      "address": "0x21711f4",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x21711ec",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "AvatarSpineData_"
+          },
+          {
+            "index": 1,
+            "kind": "return",
+            "value": [
+              53822868
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.DeleteAllData",
+      "address": "0x2171220",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "AvatarSpineDataIDList"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.WorldReset.WorldResetManager.ResetWorldData",
+      "address": "0x219e010",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuWorld_PersistantData_KeepObjectsOnLoad"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.AvatarMaker.AvatarMakerCharacterMenuSpecialInteractionsManager.SetSpecialInteractionPerformed",
+      "address": "0x21c2a48",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PreganatOnepieceCasualFirstTimeScrolling"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.PersistentData.PersistentDataManager.SaveSceneObjectsToKeepOnLoad",
+      "address": "0x21e0c94",
+      "operation": "SetString",
+      "audited_in_L03": true,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PazuWorld_PersistantData_KeepObjectsOnLoad"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.QA.RTA.RTAGameUtils.<ResetWorld>g__DisableFTUE|13_1",
+      "address": "0x222fd08",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x222fcfc",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "FTUEUIButtonPress_"
+          },
+          {
+            "index": 1,
+            "kind": "literal",
+            "value": "AvatarMakerLobbyManagerEmptySlotFTUEGuid"
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.QA.RTA.RTAGameUtils.<ResetWorld>g__DisableFTUE|13_1",
+      "address": "0x222fd24",
+      "operation": "SetFloat",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "unknown"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.QA.RTA.RTAGameUtils.<ResetWorld>g__DisableRateUs|13_2",
+      "address": "0x222fdbc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_hide_rate_us_forever"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Game.Promotions.PromotionsConfigurationUtils.EnsureIncludedBundlesData",
+      "address": "0x22431cc",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PromotionPopUp_LastBuildNumber"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Game.Promotions.PromotionsConfigurationUtils.SetPopUpType",
+      "address": "0x2243768",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PromotionPopUp_Type"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Game.Promotions.PromotionsConfigurationUtils.SetPopUpType",
+      "address": "0x2243778",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PromotionPopUp_Counter"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Game.Promotions.PromotionsConfigurationUtils.TryShowBundlePopUpMessage",
+      "address": "0x22439f0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "PromotionPopUp_Counter"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.AddToSavedListIfNeeded",
+      "address": "0x2294338",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "LevelCharacterData_List"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.Save",
+      "address": "0x2295188",
+      "operation": "SetString",
+      "audited_in_L03": true,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x2295160",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "LevelCharacterData_"
+          },
+          {
+            "index": 1,
+            "kind": "return",
+            "value": [
+              53822868
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.DeleteData",
+      "address": "0x2296e5c",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Level.LevelAvatarData.GetKeyForAvatar",
+        "helper_callsite": "0x2296e54",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.DeleteData",
+      "address": "0x2296f04",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "LevelCharacterData_List"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.SetIDsList",
+      "address": "0x229739c",
+      "operation": "SetString",
+      "audited_in_L03": true,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "LevelCharacterData_List"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.DeleteAllData",
+      "address": "0x2297598",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Level.LevelAvatarData.GetKeyForAvatar",
+        "helper_callsite": "0x2297590",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.DeleteAllData",
+      "address": "0x2297614",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "LevelCharacterData_List"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.MarkNewPack",
+      "address": "0x237700c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.GetNewPackPlayerPrefsKey",
+        "helper_callsite": "0x2376ffc",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "arg",
+            "value": [
+              2
+            ]
+          },
+          {
+            "index": 3,
+            "kind": "arg",
+            "value": [
+              3
+            ]
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.ClearPackNewFlag",
+      "address": "0x2377020",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.GetNewPackPlayerPrefsKey",
+        "helper_callsite": "0x2377014",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "arg",
+            "value": [
+              2
+            ]
+          },
+          {
+            "index": 3,
+            "kind": "arg",
+            "value": [
+              3
+            ]
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.<OnClaimedPackForTheFirstTime>g__MarkNewPackIfNeeded|18_0",
+      "address": "0x237713c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.GetNewPackPlayerPrefsKey",
+        "helper_callsite": "0x2377124",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.MarkNewPacks",
+      "address": "0x23773d0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.GetNewPackPlayerPrefsKey",
+        "helper_callsite": "0x23773c4",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.MarkNewPacks",
+      "address": "0x237748c",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.GetNewPackPlayerPrefsKey",
+        "helper_callsite": "0x2377480",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "literal",
+            "value": "GymL164"
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c__DisplayClass6_0.<UnityEngine.EventSystems.IPointerClickHandler.OnPointerClick>b__1",
+      "address": "0x23791d8",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.GetNewPackPlayerPrefsKey",
+        "helper_callsite": "0x23791d0",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "field",
+            "value": [
+              [
+                "field",
+                [
+                  "arg",
+                  0
+                ],
+                24
+              ],
+              64
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 2,
+            "kind": "unknown",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "<>c.<onInstallReferrerSetupFinished>b__2_5",
+      "address": "0x23d15c8",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "literal",
+        "value": "checked_android_install_referrer"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.LocalizationManager.SetLanguage",
+      "address": "0x23d8fb4",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_country"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "PazuCore.LocalizationManager.SetLanguage",
+      "address": "0x23d8fd0",
+      "operation": "SetInt",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "pazucore_language"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Unity.Services.Authentication.AuthenticationCache.DeleteKey",
+      "address": "0x3b819d8",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x3b819cc",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "return",
+            "value": [
+              62396596
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Unity.Services.Authentication.AuthenticationCache.SetString",
+      "address": "0x3b81a50",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x3b81a44",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "return",
+            "value": [
+              62396596
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Unity.Services.Authentication.AuthenticationCache.Migrate",
+      "address": "0x3b81ab8",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "System.String.Concat",
+        "helper_callsite": "0x3b81a98",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "return",
+            "value": [
+              62396596
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "zero",
+            "value": []
+          },
+          {
+            "index": 3,
+            "kind": "unknown",
+            "value": []
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Unity.Services.Authentication.AuthenticationCache.Migrate",
+      "address": "0x3b81acc",
+      "operation": "DeleteKey",
+      "audited_in_L03": false,
+      "branch": "B",
+      "key_argument": {
+        "kind": "return",
+        "helper_method": "Unity.Services.Authentication.AuthenticationCache.GetOldKey",
+        "helper_callsite": "0x3b81a74",
+        "helper_arguments": [
+          {
+            "index": 0,
+            "kind": "arg",
+            "value": [
+              0
+            ]
+          },
+          {
+            "index": 1,
+            "kind": "arg",
+            "value": [
+              1
+            ]
+          },
+          {
+            "index": 2,
+            "kind": "arg",
+            "value": [
+              2
+            ]
+          },
+          {
+            "index": 3,
+            "kind": "arg",
+            "value": [
+              3
+            ]
+          }
+        ]
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Unity.Services.Core.Device.InstallationId.WriteIdentifierToFile",
+      "address": "0x3b90c64",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "UnityInstallationId"
+      },
+      "argument_path_count": 1
+    },
+    {
+      "method": "Unity.Services.Core.Device.UnityAnalyticsIdentifier.set_UserId",
+      "address": "0x3b91a5c",
+      "operation": "SetString",
+      "audited_in_L03": false,
+      "branch": "BL",
+      "key_argument": {
+        "kind": "literal",
+        "value": "unity.cloud_userid"
+      },
+      "argument_path_count": 1
+    }
+  ]
+}

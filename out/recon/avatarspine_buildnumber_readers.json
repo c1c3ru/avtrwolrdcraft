@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "binary_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "scope": "Direct field-offset and ARM64 instruction review for PWC.AvatarSpine.AvatarSpineData.BuildNumber (offset 0x34).",
+  "field": {
+    "type": "PWC.AvatarSpine.AvatarSpineData",
+    "name": "BuildNumber",
+    "offset": "0x34",
+    "type_name": "int"
+  },
+  "readers": [
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.TryLoadAvatarSpineData",
+      "address": "0x216ea84",
+      "read_site": "0x216ec50",
+      "use": "Inlines the faulty-toddler validation: when SpineType at 0x30 is 13, reads BuildNumber and rejects values below 66."
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.IsFaultyToddler",
+      "address": "0x216dd4c",
+      "read_site": "0x216dd60",
+      "use": "Returns true for SpineType 13 with BuildNumber below 66; used to filter invalid saved toddler data."
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.RemoveFaultyIDsIfNeeded",
+      "address": "0x216c568",
+      "read_site": "0x216c7c0",
+      "use": "Repeats the same SpineType 13 / BuildNumber < 66 check while removing faulty saved IDs."
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.IsOldPremadePet",
+      "address": "0x2170338",
+      "read_site": "0x2170350",
+      "use": "Checks BuildNumber <= 164 together with ID thresholds to classify old premade pets."
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.SaveCharacter",
+      "address": "0x216ee68",
+      "read_site": "0x216eefc",
+      "use": "Preserves a nonzero BuildNumber from the previously loaded AvatarSpineData; if zero, falls back to SettingsManager.instance._settings.bundleVersionCode and passes that value into the new data object."
+    }
+  ],
+  "fallback_fields": {
+    "PazuCore.SettingsManager._settings": "0x20",
+    "PazuCore.GameSettings.bundleVersionCode": "0x88"
+  },
+  "runtime_observation": "Not performed: app is not debuggable; run-as fails, su is absent, and no Frida/GDB server is installed. The attached device log contained no matching cloud initialization messages."
+}
