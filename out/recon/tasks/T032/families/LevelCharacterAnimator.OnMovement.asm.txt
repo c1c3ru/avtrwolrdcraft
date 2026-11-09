@@ -1,0 +1,553 @@
+22a1570  sub    sp, sp, #0xa0
+22a1574  stp    d11, d10, [sp, #0x40]
+22a1578  stp    d9, d8, [sp, #0x50]
+22a157c  stp    x30, x25, [sp, #0x60]
+22a1580  stp    x24, x23, [sp, #0x70]
+22a1584  stp    x22, x21, [sp, #0x80]
+22a1588  stp    x20, x19, [sp, #0x90]
+22a158c  adrp   x20, #0x44fd000
+22a1590  ldrb   w8, [x20, #0xbd8]
+22a1594  mov    x19, x0
+22a1598  tbnz   w8, #0, #0x22a16a0
+22a159c  adrp   x0, #0x41ac000
+22a15a0  ldr    x0, [x0, #0xae8]
+22a15a4  bl     #0x1b886e8
+22a15a8  adrp   x0, #0x41b5000
+22a15ac  ldr    x0, [x0, #0x2a0]
+22a15b0  bl     #0x1b886e8
+22a15b4  adrp   x0, #0x41b5000
+22a15b8  ldr    x0, [x0, #0x2b0]
+22a15bc  bl     #0x1b886e8
+22a15c0  adrp   x0, #0x41b5000
+22a15c4  ldr    x0, [x0, #0x2c8]
+22a15c8  bl     #0x1b886e8
+22a15cc  adrp   x0, #0x41d7000
+22a15d0  ldr    x0, [x0, #0xd78]
+22a15d4  bl     #0x1b886e8
+22a15d8  adrp   x0, #0x41ac000
+22a15dc  ldr    x0, [x0, #0xd38]  ; type PWC.Level.LevelFloorArea
+22a15e0  bl     #0x1b886e8
+22a15e4  adrp   x0, #0x41b5000
+22a15e8  ldr    x0, [x0, #0x2f8]
+22a15ec  bl     #0x1b886e8
+22a15f0  adrp   x0, #0x41ac000
+22a15f4  ldr    x0, [x0, #0xe80]  ; type System.Math
+22a15f8  bl     #0x1b886e8
+22a15fc  adrp   x0, #0x41d7000
+22a1600  ldr    x0, [x0, #0xd80]  ; type MovementType
+22a1604  bl     #0x1b886e8
+22a1608  adrp   x0, #0x41ac000
+22a160c  ldr    x0, [x0, #0xdd8]
+22a1610  bl     #0x1b886e8
+22a1614  adrp   x0, #0x41bb000
+22a1618  ldr    x0, [x0, #0xc90]
+22a161c  bl     #0x1b886e8
+22a1620  adrp   x0, #0x41ba000
+22a1624  ldr    x0, [x0, #0x7d0]
+22a1628  bl     #0x1b886e8
+22a162c  adrp   x0, #0x41ac000
+22a1630  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+22a1634  bl     #0x1b886e8
+22a1638  adrp   x0, #0x41b9000
+22a163c  ldr    x0, [x0, #0x178]  ; type TrackEntryEventDelegate
+22a1640  bl     #0x1b886e8
+22a1644  adrp   x0, #0x41b5000
+22a1648  ldr    x0, [x0, #0xd00]  ; "Idle_Stand_1"
+22a164c  bl     #0x1b886e8
+22a1650  adrp   x0, #0x41d7000
+22a1654  ldr    x0, [x0, #0xd70]  ; "Lift_Idle"
+22a1658  bl     #0x1b886e8
+22a165c  adrp   x0, #0x41bb000
+22a1660  ldr    x0, [x0, #0xdb8]  ; "Movement_Cycles/Walk"
+22a1664  bl     #0x1b886e8
+22a1668  adrp   x0, #0x41c1000
+22a166c  ldr    x0, [x0, #0x908]  ; "Track_Animations/Forced_To_Walk"
+22a1670  bl     #0x1b886e8
+22a1674  adrp   x0, #0x41d6000
+22a1678  ldr    x0, [x0, #0xbe0]  ; "No case found for nextMovementType["
+22a167c  bl     #0x1b886e8
+22a1680  adrp   x0, #0x41bb000
+22a1684  ldr    x0, [x0, #0xdd0]  ; "Movement_Cycles/Run"
+22a1688  bl     #0x1b886e8
+22a168c  adrp   x0, #0x41ae000
+22a1690  ldr    x0, [x0, #0xf0]  ; "]"
+22a1694  bl     #0x1b886e8
+22a1698  mov    w8, #1
+22a169c  strb   w8, [x20, #0xbd8]
+22a16a0  stp    xzr, xzr, [sp, #0x20]
+22a16a4  str    xzr, [sp, #0x30]
+22a16a8  ldrb   w8, [x19, #0x34]
+22a16ac  cbz    w8, #0x22a16d0
+22a16b0  ldp    x20, x19, [sp, #0x90]
+22a16b4  ldp    x22, x21, [sp, #0x80]
+22a16b8  ldp    x24, x23, [sp, #0x70]
+22a16bc  ldp    x30, x25, [sp, #0x60]
+22a16c0  ldp    d9, d8, [sp, #0x50]
+22a16c4  ldp    d11, d10, [sp, #0x40]
+22a16c8  add    sp, sp, #0xa0
+22a16cc  ret    
+22a16d0  ldr    x0, [x19, #0x18]
+22a16d4  cbz    x0, #0x22a1d90
+22a16d8  mov    x1, xzr
+22a16dc  bl     #0x3cc84a8
+22a16e0  cbz    x0, #0x22a1d90
+22a16e4  mov    x1, xzr
+22a16e8  bl     #0x3cd4584
+22a16ec  adrp   x20, #0x41ac000
+22a16f0  ldr    x20, [x20, #0xd38]  ; type PWC.Level.LevelFloorArea
+22a16f4  mov    v8.16b, v0.16b
+22a16f8  mov    v9.16b, v1.16b
+22a16fc  ldr    x0, [x20]
+22a1700  ldr    w8, [x0, #0xe0]
+22a1704  cbnz   w8, #0x22a1710
+22a1708  bl     #0x1b8885c
+22a170c  ldr    x0, [x20]
+22a1710  ldr    x8, [x0, #0xb8]
+22a1714  ldr    x0, [x8]
+22a1718  cbz    x0, #0x22a1d90
+22a171c  adrp   x8, #0x41b5000
+22a1720  ldr    x8, [x8, #0x2f8]
+22a1724  ldr    x1, [x8]
+22a1728  add    x8, sp, #8
+22a172c  bl     #0x2cf12b4
+22a1730  ldur   q0, [sp, #8]
+22a1734  ldr    x8, [sp, #0x18]
+22a1738  adrp   x20, #0x41b5000
+22a173c  str    q0, [sp, #0x20]
+22a1740  str    x8, [sp, #0x30]
+22a1744  ldr    x20, [x20, #0x2b0]
+22a1748  ldr    x1, [x20]
+22a174c  add    x0, sp, #0x20
+22a1750  bl     #0x29c0b20
+22a1754  tbz    w0, #0, #0x22a1810
+22a1758  ldr    x8, [sp, #0x30]
+22a175c  cbz    x8, #0x22a1d88
+22a1760  ldr    x0, [x8, #0x20]  ; "Glow_Loop"
+22a1764  cbz    x0, #0x22a1d8c
+22a1768  mov    v0.16b, v8.16b
+22a176c  mov    v1.16b, v9.16b
+22a1770  mov    x1, xzr
+22a1774  bl     #0x23b66a8  ; -> CShape.IsPointInsideShape
+22a1778  tbz    w0, #0, #0x22a1748
+22a177c  adrp   x8, #0x41b5000
+22a1780  ldr    x8, [x8, #0x2a0]
+22a1784  add    x0, sp, #0x20
+22a1788  ldr    x1, [x8]
+22a178c  bl     #0x29c0b1c
+22a1790  mov    x20, x19
+22a1794  ldrb   w8, [x20, #0x40]!
+22a1798  cbz    w8, #0x22a18b8
+22a179c  adrp   x8, #0x41ba000
+22a17a0  ldr    x8, [x8, #0x7d0]
+22a17a4  mov    x0, x20
+22a17a8  ldr    x1, [x8]
+22a17ac  bl     #0x2e6038c
+22a17b0  adrp   x8, #0x41ac000
+22a17b4  ldr    x8, [x8, #0xdd8]
+22a17b8  fsub   s10, s8, s0
+22a17bc  fsub   s11, s9, s1
+22a17c0  add    x0, sp, #8
+22a17c4  ldr    x1, [x8]
+22a17c8  mov    v0.16b, v8.16b
+22a17cc  mov    v1.16b, v9.16b
+22a17d0  str    wzr, [sp, #0x10]
+22a17d4  str    xzr, [sp, #8]
+22a17d8  bl     #0x2e60374
+22a17dc  ldr    w8, [sp, #0x10]
+22a17e0  ldr    x9, [sp, #8]
+22a17e4  str    w8, [x20, #8]
+22a17e8  str    x9, [x20]
+22a17ec  ldrb   w8, [x19, #0x35]
+22a17f0  cbz    w8, #0x22a19e4
+22a17f4  ldr    s0, [x19, #0x38]
+22a17f8  fmov   s1, #3.00000000
+22a17fc  fabd   s0, s0, s8
+22a1800  fcmp   s0, s1
+22a1804  b.le   #0x22a1914
+22a1808  strb   wzr, [x19, #0x35]
+22a180c  b      #0x22a19e4
+22a1810  adrp   x8, #0x41b5000
+22a1814  ldr    x8, [x8, #0x2a0]
+22a1818  add    x0, sp, #0x20
+22a181c  ldr    x1, [x8]
+22a1820  bl     #0x29c0b1c
+22a1824  ldr    w8, [x19, #0x30]
+22a1828  cbz    w8, #0x22a16b0
+22a182c  ldrb   w8, [x19, #0x4c]
+22a1830  cbz    w8, #0x22a1840
+22a1834  ldrb   w8, [x19, #0x5c]
+22a1838  cbnz   w8, #0x22a1840
+22a183c  strb   wzr, [x19, #0x4c]
+22a1840  ldr    x0, [x19, #0x18]
+22a1844  cbz    x0, #0x22a1d90
+22a1848  mov    w1, #0x32
+22a184c  mov    x2, xzr
+22a1850  bl     #0x22f5d94  ; -> LevelItem.SetSortingOrder
+22a1854  ldr    x8, [x19, #0x18]
+22a1858  cbz    x8, #0x22a1d90
+22a185c  adrp   x9, #0x41ac000
+22a1860  ldr    x9, [x9, #0xbb8]  ; type UnityEngine.Object
+22a1864  ldr    x20, [x8, #0x3e0]
+22a1868  ldr    x0, [x9]
+22a186c  ldr    w9, [x0, #0xe0]
+22a1870  cbnz   w9, #0x22a1878
+22a1874  bl     #0x1b8885c
+22a1878  mov    x0, x20
+22a187c  mov    x1, xzr
+22a1880  mov    x2, xzr
+22a1884  bl     #0x3ccb8d8
+22a1888  tbz    w0, #0, #0x22a18f0
+22a188c  adrp   x8, #0x41d7000
+22a1890  ldr    x8, [x8, #0xd70]  ; "Lift_Idle"
+22a1894  mov    w2, #1
+22a1898  mov    x0, x19
+22a189c  mov    w3, wzr
+22a18a0  ldr    x1, [x8]
+22a18a4  mov    w4, wzr
+22a18a8  mov    w5, wzr
+22a18ac  mov    w6, wzr
+22a18b0  bl     #0x22a61e4  ; -> LevelCharacterAnimator.SetAddAnimationInternal
+22a18b4  b      #0x22a1904
+22a18b8  adrp   x8, #0x41ac000
+22a18bc  ldr    x8, [x8, #0xdd8]
+22a18c0  add    x0, sp, #8
+22a18c4  mov    v0.16b, v8.16b
+22a18c8  mov    v1.16b, v9.16b
+22a18cc  ldr    x1, [x8]
+22a18d0  str    wzr, [sp, #0x10]
+22a18d4  str    xzr, [sp, #8]
+22a18d8  bl     #0x2e60374
+22a18dc  ldr    w8, [sp, #0x10]
+22a18e0  ldr    x9, [sp, #8]
+22a18e4  str    w8, [x20, #8]
+22a18e8  str    x9, [x20]
+22a18ec  b      #0x22a16b0
+22a18f0  adrp   x8, #0xb30000
+22a18f4  ldr    s0, [x8, #0x54]
+22a18f8  mov    w1, #1
+22a18fc  mov    x0, x19
+22a1900  bl     #0x22a5d58  ; -> LevelCharacterAnimator.SetEmtyAnimation
+22a1904  str    wzr, [x19, #0x30]
+22a1908  str    xzr, [x19, #0x40]
+22a190c  str    wzr, [x19, #0x48]
+22a1910  b      #0x22a16b0
+22a1914  adrp   x21, #0x41ac000
+22a1918  ldr    x21, [x21, #0xe80]  ; type System.Math
+22a191c  ldr    x0, [x21]
+22a1920  ldr    w8, [x0, #0xe0]
+22a1924  cbnz   w8, #0x22a192c
+22a1928  bl     #0x1b8885c
+22a192c  adrp   x8, #0xb2f000
+22a1930  ldr    s0, [x8, #0xdfc]
+22a1934  fabs   s1, s10
+22a1938  fcmp   s1, s0
+22a193c  b.pl   #0x22a19e4
+22a1940  ldr    x0, [x21]
+22a1944  ldr    w8, [x0, #0xe0]
+22a1948  cbnz   w8, #0x22a1950
+22a194c  bl     #0x1b8885c
+22a1950  adrp   x8, #0xb2f000
+22a1954  ldr    s0, [x8, #0xf00]
+22a1958  fabs   s1, s11
+22a195c  fcmp   s1, s0
+22a1960  b.le   #0x22a19e4
+22a1964  ldr    x0, [x19, #0x18]
+22a1968  mov    w8, #1
+22a196c  strb   w8, [x19, #0x34]
+22a1970  cbz    x0, #0x22a1d90
+22a1974  mov    w1, #0x32
+22a1978  mov    x2, xzr
+22a197c  bl     #0x22f5d94  ; -> LevelItem.SetSortingOrder
+22a1980  ldr    x8, [x19, #0x18]
+22a1984  cbz    x8, #0x22a1d90
+22a1988  adrp   x9, #0x41ac000
+22a198c  ldr    x9, [x9, #0xbb8]  ; type UnityEngine.Object
+22a1990  ldr    x21, [x8, #0x3e0]
+22a1994  ldr    x0, [x9]
+22a1998  ldr    w9, [x0, #0xe0]
+22a199c  cbnz   w9, #0x22a19a4
+22a19a0  bl     #0x1b8885c
+22a19a4  mov    x0, x21
+22a19a8  mov    x1, xzr
+22a19ac  mov    x2, xzr
+22a19b0  bl     #0x3ccb8d8
+22a19b4  tbz    w0, #0, #0x22a1d64
+22a19b8  adrp   x8, #0x41d7000
+22a19bc  ldr    x8, [x8, #0xd70]  ; "Lift_Idle"
+22a19c0  mov    w2, #1
+22a19c4  mov    x0, x19
+22a19c8  mov    w3, wzr
+22a19cc  ldr    x1, [x8]
+22a19d0  mov    w4, wzr
+22a19d4  mov    w5, wzr
+22a19d8  mov    w6, wzr
+22a19dc  bl     #0x22a61e4  ; -> LevelCharacterAnimator.SetAddAnimationInternal
+22a19e0  b      #0x22a1d78
+22a19e4  adrp   x20, #0x44f9000
+22a19e8  ldrb   w8, [x20, #0xad7]
+22a19ec  ldr    w24, [x19, #0x30]
+22a19f0  cbnz   w8, #0x22a1a08
+22a19f4  adrp   x0, #0x41ac000
+22a19f8  ldr    x0, [x0, #0xe80]  ; type System.Math
+22a19fc  bl     #0x1b886e8
+22a1a00  mov    w8, #1
+22a1a04  strb   w8, [x20, #0xad7]
+22a1a08  adrp   x8, #0x41ac000
+22a1a0c  ldr    x8, [x8, #0xe80]  ; type System.Math
+22a1a10  ldr    x0, [x8]
+22a1a14  ldr    w8, [x0, #0xe0]
+22a1a18  cbnz   w8, #0x22a1a20
+22a1a1c  bl     #0x1b8885c
+22a1a20  fmul   s0, s10, s10
+22a1a24  fmul   s1, s11, s11
+22a1a28  fadd   s0, s0, s1
+22a1a2c  mov    x0, xzr
+22a1a30  fsqrt  s8, s0
+22a1a34  bl     #0x3cd1b3c
+22a1a38  ldr    w8, [x19, #0x30]
+22a1a3c  fdiv   s0, s8, s0
+22a1a40  cmp    w8, #3
+22a1a44  b.eq   #0x22a1a80
+22a1a48  cmp    w8, #2
+22a1a4c  b.eq   #0x22a1a6c
+22a1a50  cmp    w8, #1
+22a1a54  b.ne   #0x22a1aac
+22a1a58  adrp   x9, #0xb2f000
+22a1a5c  ldr    s1, [x9, #0xe40]
+22a1a60  fcmp   s0, s1
+22a1a64  b.le   #0x22a1a8c
+22a1a68  b      #0x22a1ad0
+22a1a6c  adrp   x9, #0xb2f000
+22a1a70  ldr    s1, [x9, #0xdd8]
+22a1a74  fcmp   s0, s1
+22a1a78  b.pl   #0x22a1a8c
+22a1a7c  b      #0x22a1aac
+22a1a80  fmov   s1, #6.00000000
+22a1a84  fcmp   s0, s1
+22a1a88  b.mi   #0x22a1ad0
+22a1a8c  cmp    w8, w24
+22a1a90  b.eq   #0x22a16b0
+22a1a94  cmp    w24, #3
+22a1a98  b.eq   #0x22a1cd8
+22a1a9c  cmp    w24, #2
+22a1aa0  b.eq   #0x22a1ad0
+22a1aa4  cmp    w24, #1
+22a1aa8  b.ne   #0x22a1ce8
+22a1aac  ldrb   w8, [x19, #0x4c]
+22a1ab0  adrp   x10, #0x41b5000
+22a1ab4  ldr    x10, [x10, #0xd00]  ; "Idle_Stand_1"
+22a1ab8  add    x9, x19, #0x50
+22a1abc  cmp    w8, #0
+22a1ac0  mov    w25, wzr
+22a1ac4  csel   x8, x10, x9, eq
+22a1ac8  mov    w24, #1
+22a1acc  b      #0x22a1b30
+22a1ad0  ldrb   w8, [x19, #0x4c]
+22a1ad4  cbz    w8, #0x22a1ae0
+22a1ad8  add    x8, x19, #0x50
+22a1adc  b      #0x22a1b28
+22a1ae0  adrp   x8, #0x41ac000
+22a1ae4  ldr    x8, [x8, #0xbb8]  ; type UnityEngine.Object
+22a1ae8  ldr    x20, [x19, #0x60]
+22a1aec  ldr    x0, [x8]
+22a1af0  ldr    w8, [x0, #0xe0]
+22a1af4  cbnz   w8, #0x22a1afc
+22a1af8  bl     #0x1b8885c
+22a1afc  mov    x0, x20
+22a1b00  mov    x1, xzr
+22a1b04  mov    x2, xzr
+22a1b08  bl     #0x3ccab90
+22a1b0c  tbz    w0, #0, #0x22a1b20
+22a1b10  ldr    x8, [x19, #0x60]
+22a1b14  cbz    x8, #0x22a1d90
+22a1b18  add    x8, x8, #0x20
+22a1b1c  b      #0x22a1b28
+22a1b20  adrp   x8, #0x41bb000
+22a1b24  ldr    x8, [x8, #0xdb8]  ; "Movement_Cycles/Walk"
+22a1b28  mov    w24, #2
+22a1b2c  mov    w25, #1
+22a1b30  ldr    x0, [x19, #0x18]
+22a1b34  cbz    x0, #0x22a1d90
+22a1b38  ldr    x20, [x8]
+22a1b3c  mov    w1, #1
+22a1b40  mov    x2, xzr
+22a1b44  bl     #0x22f5d94  ; -> LevelItem.SetSortingOrder
+22a1b48  ldr    x0, [x19, #0x10]
+22a1b4c  cbz    x0, #0x22a1d90
+22a1b50  mov    x1, xzr
+22a1b54  bl     #0x35189d8
+22a1b58  cbz    x0, #0x22a1d90
+22a1b5c  mov    w1, wzr
+22a1b60  mov    x2, xzr
+22a1b64  bl     #0x34d888c
+22a1b68  ldrb   w8, [x19, #0x70]
+22a1b6c  mov    x21, x0
+22a1b70  cbnz   w8, #0x22a1be4
+22a1b74  ldr    x8, [x19, #0x68]
+22a1b78  cbz    x8, #0x22a1be4
+22a1b7c  mov    w8, #1
+22a1b80  strb   w8, [x19, #0x70]
+22a1b84  adrp   x8, #0x41b9000
+22a1b88  ldr    x8, [x8, #0x178]  ; type TrackEntryEventDelegate
+22a1b8c  ldr    x0, [x8]
+22a1b90  bl     #0x1b88970
+22a1b94  adrp   x8, #0x41d7000
+22a1b98  ldr    x8, [x8, #0xd78]
+22a1b9c  mov    x1, x19
+22a1ba0  mov    x3, xzr
+22a1ba4  mov    x23, x0
+22a1ba8  ldr    x2, [x8]
+22a1bac  bl     #0x34d8d20
+22a1bb0  mov    x22, x19
+22a1bb4  str    x23, [x22, #0x78]!
+22a1bb8  mov    x0, x22
+22a1bbc  mov    x1, x23
+22a1bc0  bl     #0x1b88694
+22a1bc4  ldur   x0, [x22, #-0x68]
+22a1bc8  cbz    x0, #0x22a1d90
+22a1bcc  mov    x1, xzr
+22a1bd0  bl     #0x35189d8
+22a1bd4  cbz    x0, #0x22a1d90
+22a1bd8  ldr    x1, [x22]
+22a1bdc  mov    x2, xzr
+22a1be0  bl     #0x34d56b8
+22a1be4  cbz    x21, #0x22a1c1c
+22a1be8  ldr    x8, [x21, #0x10]
+22a1bec  cbz    x8, #0x22a1bf8
+22a1bf0  ldr    x0, [x8, #0x10]
+22a1bf4  b      #0x22a1bfc
+22a1bf8  mov    x0, xzr
+22a1bfc  adrp   x8, #0x41d7000
+22a1c00  ldr    x8, [x8, #0xd70]  ; "Lift_Idle"
+22a1c04  mov    x2, xzr
+22a1c08  ldr    x1, [x8]
+22a1c0c  bl     #0x31df55c
+22a1c10  tbz    w0, #0, #0x22a1c1c
+22a1c14  ldr    s0, [x21, #0x94]
+22a1c18  str    s0, [x19, #0x58]
+22a1c1c  mov    w2, #1
+22a1c20  mov    x0, x19
+22a1c24  mov    x1, x20
+22a1c28  mov    w3, wzr
+22a1c2c  mov    w4, wzr
+22a1c30  mov    w5, wzr
+22a1c34  mov    w6, wzr
+22a1c38  bl     #0x22a61e4  ; -> LevelCharacterAnimator.SetAddAnimationInternal
+22a1c3c  ldrb   w8, [x19, #0x4c]
+22a1c40  cbz    w8, #0x22a1cd0
+22a1c44  mov    x20, x0
+22a1c48  cbz    w25, #0x22a1c84
+22a1c4c  ldr    x0, [x19, #0x10]
+22a1c50  cbz    x0, #0x22a1d90
+22a1c54  mov    x1, xzr
+22a1c58  bl     #0x35189d8
+22a1c5c  cbz    x0, #0x22a1d90
+22a1c60  adrp   x8, #0x41c1000
+22a1c64  ldr    x8, [x8, #0x908]  ; "Track_Animations/Forced_To_Walk"
+22a1c68  mov    w1, #1
+22a1c6c  mov    w3, #1
+22a1c70  mov    x4, xzr
+22a1c74  ldr    x2, [x8]
+22a1c78  bl     #0x34d7c1c
+22a1c7c  cbnz   x20, #0x22a1cc0
+22a1c80  b      #0x22a1d90
+22a1c84  adrp   x8, #0xb30000
+22a1c88  ldr    s0, [x8, #0x54]
+22a1c8c  mov    w1, #1
+22a1c90  mov    x0, x19
+22a1c94  bl     #0x22a5d58  ; -> LevelCharacterAnimator.SetEmtyAnimation
+22a1c98  cbz    x20, #0x22a1d90
+22a1c9c  ldr    x8, [x20, #0x10]
+22a1ca0  cbz    x8, #0x22a1cac
+22a1ca4  ldr    x0, [x8, #0x10]
+22a1ca8  b      #0x22a1cb0
+22a1cac  mov    x0, xzr
+22a1cb0  ldr    x1, [x19, #0x50]
+22a1cb4  mov    x2, xzr
+22a1cb8  bl     #0x31d39e4
+22a1cbc  tbz    w0, #0, #0x22a1cd0
+22a1cc0  ldr    s0, [x19, #0x58]
+22a1cc4  str    s0, [x20, #0x94]
+22a1cc8  ldrb   w8, [x19, #0x5c]
+22a1ccc  strb   w8, [x20, #0x6c]
+22a1cd0  str    w24, [x19, #0x30]
+22a1cd4  b      #0x22a16b0
+22a1cd8  adrp   x8, #0x41bb000
+22a1cdc  ldr    x8, [x8, #0xdd0]  ; "Movement_Cycles/Run"
+22a1ce0  mov    w25, wzr
+22a1ce4  b      #0x22a1b30
+22a1ce8  adrp   x8, #0x41d7000
+22a1cec  ldr    x8, [x8, #0xd80]  ; type MovementType
+22a1cf0  mov    x9, #-1
+22a1cf4  add    x0, sp, #8
+22a1cf8  mov    x1, xzr
+22a1cfc  ldr    x8, [x8]
+22a1d00  str    w24, [sp, #0x18]
+22a1d04  stp    x8, x9, [sp, #8]
+22a1d08  bl     #0x338d9a0
+22a1d0c  adrp   x8, #0x41d6000
+22a1d10  ldr    x8, [x8, #0xbe0]  ; "No case found for nextMovementType["
+22a1d14  adrp   x9, #0x41ae000
+22a1d18  ldr    x9, [x9, #0xf0]  ; "]"
+22a1d1c  mov    x1, x0
+22a1d20  ldr    x8, [x8]
+22a1d24  mov    x3, xzr
+22a1d28  ldr    x2, [x9]
+22a1d2c  mov    x0, x8
+22a1d30  bl     #0x31dfa68
+22a1d34  adrp   x8, #0x41ac000
+22a1d38  ldr    x8, [x8, #0xae8]
+22a1d3c  mov    x19, x0
+22a1d40  ldr    x8, [x8]
+22a1d44  ldr    w9, [x8, #0xe0]
+22a1d48  cbnz   w9, #0x22a1d54
+22a1d4c  mov    x0, x8
+22a1d50  bl     #0x1b8885c
+22a1d54  mov    x0, x19
+22a1d58  mov    x1, xzr
+22a1d5c  bl     #0x3ca5b88
+22a1d60  b      #0x22a16b0
+22a1d64  adrp   x8, #0xb30000
+22a1d68  ldr    s0, [x8, #0x54]
+22a1d6c  mov    w1, #1
+22a1d70  mov    x0, x19
+22a1d74  bl     #0x22a5d58  ; -> LevelCharacterAnimator.SetEmtyAnimation
+22a1d78  str    wzr, [x19, #0x30]
+22a1d7c  str    wzr, [x20, #8]
+22a1d80  str    xzr, [x20]
+22a1d84  b      #0x22a16b0
+22a1d88  bl     #0x1b88980
+22a1d8c  bl     #0x1b88980
+22a1d90  bl     #0x1b88980
+22a1d94  b      #0x22a1da0
+22a1d98  b      #0x22a1da0
+22a1d9c  b      #0x22a1da0
+22a1da0  mov    x20, x0
+22a1da4  cmp    w1, #1
+22a1da8  b.ne   #0x22a1ddc
+22a1dac  mov    x0, x20
+22a1db0  bl     #0x3f939e0
+22a1db4  ldr    x21, [x0]
+22a1db8  bl     #0x3f939f0
+22a1dbc  adrp   x8, #0x41b5000
+22a1dc0  ldr    x8, [x8, #0x2a0]
+22a1dc4  add    x0, sp, #0x20
+22a1dc8  ldr    x1, [x8]
+22a1dcc  bl     #0x29c0b1c
+22a1dd0  cbz    x21, #0x22a1824
+22a1dd4  mov    x0, x21
+22a1dd8  bl     #0x1b88978
+22a1ddc  mov    x21, xzr
+22a1de0  b      #0x22a1de8
+22a1de4  mov    x20, x0
+22a1de8  adrp   x8, #0x41b5000
+22a1dec  ldr    x8, [x8, #0x2a0]
+22a1df0  ldr    x1, [x8]
+22a1df4  add    x0, sp, #0x20
+22a1df8  bl     #0x29c0b1c
+22a1dfc  cbnz   x21, #0x22a1e08
+22a1e00  mov    x0, x20
+22a1e04  bl     #0x1c4d150
+22a1e08  mov    x0, x21
+22a1e0c  bl     #0x1b88978
+22a1e10  bl     #0x1914dc0

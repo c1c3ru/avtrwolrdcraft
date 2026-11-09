@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "kind": "child_planning_specs",
+  "tasks": [
+    {
+      "id": "T026/STATE_MACHINE/execute-next-frame",
+      "parent_id": "T026",
+      "title": "Recuperar ciclo de ExecuteNextFrameCoroutine com Dispose/Reset e limites de scheduling",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T021/PAIR/b63661fa60c2-1ea14cf5829d"
+      ],
+      "acceptance": "Estado inicial, MoveNext em todos os estados, Current, Dispose, Reset, callback nulo/excecao e entrada StartCoroutine ligados aos bytes/metadados; separar grafo local condicionado dos efeitos Unity e regioes desconhecidas; revisao independente antes de done.",
+      "scope": {
+        "classification": "bounded_static_investigation",
+        "machine": "<ExecuteNextFrameCoroutine>d__38",
+        "typedef": 629,
+        "limit": "No parent T024/T025/T026 completion; external scheduling, helpers and exception regions remain explicit."
+      },
+      "input_refs": [
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        },
+        {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/Utils.cs",
+          "sha256": "de7e1a8a2bca90b4dfcfa183b0eac8b7818c5c204989c07bfd246ef01e765431"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/**",
+        "tools/recon_t026_next_frame.py",
+        "tools/test_recon_t026_next_frame.py",
+        "reports/recon/t026_next_frame.json",
+        "docs/RECON_T026_NEXT_FRAME.md"
+      ],
+      "resource_locks": [
+        "task-output:T026/STATE_MACHINE/execute-next-frame"
+      ],
+      "outputs": [
+        "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/result.json"
+      ],
+      "next_action": "Claim exact inputs, validate machine field and method bindings, recover local transitions, retain external unknowns.",
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "evidence_refs": [],
+      "attempts": []
+    }
+  ]
+}

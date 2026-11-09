@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "reviewer": "root",
+  "scope": "Source and shipped-assembly review of condition coroutine authored by t025_generics",
+  "sources": [
+    {
+      "path": "reports/recon/t026_condition.json",
+      "sha256": "433e1e0d7555144d827505f0f100ba628c51a6bcf1fee3659173318a2e3bfa0f"
+    },
+    {
+      "path": "tools/recon_t026_condition.py",
+      "sha256": "5871cdd9d0ce4490206514388f40ad6f5946b627e364f9e655d4591ef2647386"
+    }
+  ],
+  "checks": [
+    "FCMP interval/0.1 with B.PL skips clamp on ordered >= and unordered; literal float is 0x3dcccccd.",
+    "Resume stores state=-1, adds checkInterval to timer, checks positive maximum and threshold before predicate.",
+    "Predicate/action required; timeout callback nullable; Dispose RET and Current+0x18 match original.",
+    "Helper errors, actual callback targets, wait/scheduler and whole exception regions remain unknown."
+  ],
+  "validation": {
+    "tests": 15,
+    "failures": 0,
+    "duration_seconds": 19.277
+  },
+  "verdict": "accept_bounded_static_contract_only",
+  "task_acceptance": false
+}

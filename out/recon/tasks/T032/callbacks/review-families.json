@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "checks": [
+    {
+      "label": "animal running false",
+      "site": "0x2265b28",
+      "word": "0x2a1f03e0"
+    },
+    {
+      "label": "animal running ret",
+      "site": "0x2265b2c",
+      "word": "0xd65f03c0"
+    },
+    {
+      "label": "getter loads walking usage",
+      "site": "0x2266e1c",
+      "word": "0xf9448694"
+    },
+    {
+      "label": "getter returns literal slot",
+      "site": "0x2266e38",
+      "word": "0xf9400280"
+    },
+    {
+      "label": "unlocked walk selects slot158",
+      "site": "0x2265764",
+      "word": "0xf9458d09"
+    },
+    {
+      "label": "main animation trackIndex0",
+      "site": "0x2265894",
+      "word": "0x2a1f03e3"
+    },
+    {
+      "label": "locked gate",
+      "site": "0x22658a0",
+      "word": "0x394dea68"
+    },
+    {
+      "label": "locked branch uses slot158",
+      "site": "0x22658b8",
+      "word": "0xf9458d09"
+    },
+    {
+      "label": "overlay trackIndex1",
+      "site": "0x22658e0",
+      "word": "0x52800021"
+    },
+    {
+      "label": "overlay loop true",
+      "site": "0x22658e4",
+      "word": "0x52800023"
+    },
+    {
+      "label": "empty overlay trackIndex1",
+      "site": "0x2265918",
+      "word": "0x52800021"
+    },
+    {
+      "label": "Baby begin base LevelItem",
+      "site": "0x229b7cc",
+      "word": "0x94016aa5"
+    },
+    {
+      "label": "Baby begin delegate true",
+      "site": "0x229b7f8",
+      "word": "0x52800022"
+    },
+    {
+      "label": "Baby land delegate false",
+      "site": "0x229b918",
+      "word": "0x2a1f03e2"
+    },
+    {
+      "label": "Baby land delegate flag true",
+      "site": "0x229b910",
+      "word": "0x52800023"
+    }
+  ],
+  "running_definitions": [
+    {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.Level.LevelAnimal",
+      "name": "HasRunningAnimations",
+      "token": "0x060075b0",
+      "method_definition_index": 30127,
+      "parameter_count": 0,
+      "vaddr": "0x2265b28",
+      "file_offset": "0x2261b28"
+    }
+  ],
+  "concrete_running_vtables": [
+    {
+      "type": "LevelCat",
+      "slot": 147,
+      "encoded": "0x6000eb5f",
+      "target": 30127
+    },
+    {
+      "type": "LevelDog",
+      "slot": 147,
+      "encoded": "0x6000eb5f",
+      "target": 30127
+    },
+    {
+      "type": "LevelHorse",
+      "slot": 147,
+      "encoded": "0x6000eb5f",
+      "target": 30127
+    }
+  ],
+  "walking_literal": {
+    "got_vaddr": "0x41c1908",
+    "usage_vaddr": "0x4358de8",
+    "encoded": "0xa0007071",
+    "kind": 5,
+    "index": 14392,
+    "literal": "Track_Animations/Forced_To_Walk",
+    "literal_file_offset": 609216,
+    "literal_bytes": 31
+  },
+  "baby_sync": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "PWC.Level.LevelItem",
+    "name": "OnSyncPosition",
+    "token": "0x0600829d",
+    "method_definition_index": 33436,
+    "parameter_count": 1,
+    "vaddr": "0x22fc998",
+    "file_offset": "0x22f8998"
+  },
+  "pet_skeletons_with_forced_walk": [
+    "Pet_Cat_Spine.skel_109400.txt",
+    "Pet_Dog_Spine.skel_109762.txt",
+    "Pet_Horse.skel_108494.txt"
+  ],
+  "conclusions": [
+    "Forced_To_Walk is correct on track0 for unlocked default movement; track1 is required only for locked movement composition.",
+    "Locked mode keeps locked animation on track0 and applies looping forced walk on track1; stand branch empties track1.",
+    "Animal running capability false is proven for the shipped base and Cat/Dog/Horse concrete vtables.",
+    "Baby inherits LevelItem.OnSyncPosition; it should retain physical drag without Character/Toddler/Animal locomotion cycles."
+  ],
+  "minimal_safe_integration": [
+    "Change the unlocked animal walking name to Forced_To_Walk and keep its main track0.",
+    "Disable artifact animal run capability; keep generic hysteresis only if explicitly distinguished from artifact capabilities.",
+    "Route Baby and five tech types to base physical movement; do not default to Character skeleton or walking animations.",
+    "Treat locked animation as a separate composition path with track1 and cleanup; do not claim lock parity from the name-only fix."
+  ],
+  "limits": [
+    "No client or game execution in this review.",
+    "Baby static delegate names not inferred from noncanonical metadata usage.",
+    "Current client has no complete locked locomotion contract; report does not approve inferred CA/drag arbitration."
+  ]
+}

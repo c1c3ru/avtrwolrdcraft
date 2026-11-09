@@ -1,0 +1,18 @@
+{
+  "task_id": "T025/METHOD/4a19cfec8f8e89ba",
+  "status": "partial",
+  "semantic_completion": false,
+  "verified_calls": 9,
+  "unresolved_indirect_calls": 2,
+  "method_body_fully_bounded": false,
+  "method_body_extent": "388-byte inspection window ends at the next metadata-resolved method start; complete/noncontiguous body and exception ranges are not proven",
+  "contract": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/method-contract.json",
+  "control_flow": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/control-flow.json",
+  "unknowns": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/unknowns.jsonl",
+  "supporting_full_chain_report": "out/recon/tasks/T025/METHOD/4a19cfec8f8e89ba/world_click/full_report.json",
+  "method": "The inspected candidate window (0x2108e90-0x2109014, 388 bytes) has a re-derived exact byte hash; the next metadata method start bounds this inspection, not the complete body or exception regions. 9 of 13 direct calls resolved to named managed callees and revalidated; the remaining 4 are shared unresolved native IL2CPP runtime helpers already seen in sibling methods. Two indirect (BLR) dispatches remain unresolved: a guarded delegate-shaped call and a virtual call candidate for LoadScene, neither target decoded.",
+  "no_unity_or_device_work_performed": true,
+  "note": "This is a bounded static-analysis task (ARM64 disassembly + IL2CPP metadata cross-reference only, reusing tools/recon_world_click.py's existing verifier); it did not require loading the Unity datapack bundle or any Unity Editor/device step, per the current instruction to avoid those while they're resource-constrained.",
+  "awaiting": "Independent review by a different actor before this can move to done; this attempt only reaches evidence_ready.",
+  "erratum": "Supersedes the prior true value: re-resolving the next MethodDef start and hashing the 388-byte slice establish the inspected window, not complete body or exception-region coverage."
+}

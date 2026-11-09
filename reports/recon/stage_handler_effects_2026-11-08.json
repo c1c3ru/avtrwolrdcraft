@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "kind": "T025_five_identified_handler_effects",
+  "scope": "Effects of the five positive registration->handler edges from reports/recon/scene_subscribers.json",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "source_report_sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e",
+  "producer_sha256": "7fa2aa1def7d192bb2423671f09d09de32a50121261e89160abd3a3930a05893",
+  "handlers": [
+    {
+      "id": "BackgroundPlanetSoundHandler.OnBeforeSceneLoadStage1",
+      "task_dir": "T025/HANDLER/00005600",
+      "pseudocode": [
+        "if (this._tweenId >= 1):",
+        "    LeanTween.cancel(this.gameObject, this._tweenId, false)",
+        "    this._tweenId = 0"
+      ],
+      "effects": [
+        "reads instance field _tweenId (offset 0x58)",
+        "when >= 1: calls Component.get_gameObject() then LeanTween.cancel(gameObject, tweenId, false)",
+        "unconditionally writes 0 to _tweenId (offset 0x58) at method exit"
+      ]
+    },
+    {
+      "id": "PersistentDataManager.OnBeforeSceneLoadStage2",
+      "task_dir": "T025/HANDLER/00006e43",
+      "pseudocode": [
+        "OnBeforeSceneLoadStage2() -> tailcall SaveProgressInAllScenes()",
+        "SaveProgressInAllScenes():",
+        "    for (i = 0; i < SceneManager.sceneCount; i++):",
+        "        scene = SceneManager.GetSceneAt(i)",
+        "        this.SaveProgress(scene)"
+      ],
+      "effects": [
+        "no own body: OnBeforeSceneLoadStage2 is a direct tail-branch to SaveProgressInAllScenes",
+        "loops i=0..SceneManager.sceneCount-1, calling SceneManager.GetSceneAt(i) then this.SaveProgress(scene) each iteration"
+      ]
+    },
+    {
+      "id": "LevelManager.OnBeforeSceneLoadStage2",
+      "task_dir": "T025/HANDLER/0000849b",
+      "pseudocode": [
+        "this.IsAboutToLoadScene = true"
+      ],
+      "effects": [
+        "writes instance field IsAboutToLoadScene (offset 0x3a) to true; no calls, no other state read/written"
+      ]
+    },
+    {
+      "id": "LevelManager.OnBeforeSceneLoadStage3",
+      "task_dir": "T025/HANDLER/0000849c",
+      "pseudocode": [
+        "GameSceneManager.CurrentSceneSuffix = ''"
+      ],
+      "effects": [
+        "ensures GameSceneManager static-class initialization (guarded)",
+        "writes static field CurrentSceneSuffix (offset 0x18 of GameSceneManager static fields) from a string-literal metadata usage slot (kind 5, index 0) decoding to '', with GC write barrier"
+      ]
+    },
+    {
+      "id": "GameSceneManager.OnActiveSceneChanged",
+      "task_dir": "T025/HANDLER/000056fb",
+      "pseudocode": [
+        "GameSceneManager.IsSceneChangingInProgress = false",
+        "GameSceneManager.Multiplayer_LoadingSceneNameInProgress = null",
+        "GameSceneManager.CurrentlyLoadingSceneName = null"
+      ],
+      "effects": [
+        "writes static field IsSceneChangingInProgress (offset 0x30) to false",
+        "writes static field Multiplayer_LoadingSceneNameInProgress (offset 0x40) to null, with GC write barrier",
+        "writes static field CurrentlyLoadingSceneName (offset 0x28) to null, with GC write barrier"
+      ]
+    }
+  ],
+  "limits": [
+    "Each window is bounded by the next distinct metadata method start; full/noncontiguous body and exception regions are not proven.",
+    "Resolved callees (LeanTween.cancel, PersistentDataManager.SaveProgress, Unity scene APIs) are named and argument-matched, but their own bodies/exceptions are separate unrecovered dependencies.",
+    "No target execution, emulation, or device/runtime observation; all five results stay static_candidate_not_runtime_validated."
+  ]
+}

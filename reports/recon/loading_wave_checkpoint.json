@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-07",
+  "completed_at_utc": "2026-11-07T18:06:33.670177+00:00",
+  "source_commit_before": "df96ea726e0d1fa2a9e731ad10c1a280d9830049",
+  "scope": "bounded loading-callee and event-subscription evidence",
+  "task_id": "T025/METHOD/8e708ca7d06e0b52",
+  "task_state": "ready_partial_checkpoint",
+  "queue_revision": 27,
+  "task_states": {
+    "done": 3,
+    "pending": 442,
+    "stale": 1,
+    "ready": 1
+  },
+  "accepted_new_whole_methods": 0,
+  "runtime_or_unity_build_executed": false,
+  "tests": {
+    "scene_subscribers": {
+      "command": "python3 -m unittest discover -s tools -p test_recon_scene_subscribers.py -v",
+      "passed": 9,
+      "failed": 0,
+      "seconds": 9.667
+    },
+    "loading_fade": {
+      "command": "python3 -m unittest discover -s tools -p test_recon_loading_fade.py -v",
+      "passed": 21,
+      "failed": 0,
+      "seconds": 2.293
+    }
+  },
+  "review": {
+    "path": "reports/recon/review_loading_subscribers.json",
+    "sha256": "b570c8c2290aedbc8aef7d50dac1271addcf5ec0b3dc6fb468666d18a0136af3",
+    "verdict": "accept_partial_static_evidence",
+    "independent_mutations_rejected": 8
+  },
+  "evidence_refs": [
+    {
+      "path": "reports/recon/loading_fade_contract.json",
+      "sha256": "7101aaff91c018fae1f576e7745b22f3c611c53f2e9d25d90a0beba8b785cf0b"
+    },
+    {
+      "path": "reports/recon/scene_subscribers.json",
+      "sha256": "370315f50a33bf43f04f32d54584c2fccc2227d26a7c733f2a6572e0603c7adf"
+    },
+    {
+      "path": "reports/recon/review_loading_subscribers.json",
+      "sha256": "b570c8c2290aedbc8aef7d50dac1271addcf5ec0b3dc6fb468666d18a0136af3"
+    },
+    {
+      "path": "docs/RECON_LOADING_FADE_CONTRACT.md",
+      "sha256": "28b903393903305c734ee82e338d2422d0f32c7d0823a13bcf9d9683e030c890"
+    },
+    {
+      "path": "docs/RECON_SCENE_SUBSCRIBERS.md",
+      "sha256": "99e9acef504c806460f5a6d00d8b1f52a3cfcc92a292a35e0631ae72b3b97545"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "T029/runtime_class_layout",
+      "description": "Virtual bindings assume original prefab/runtime class layout, not observed in process."
+    },
+    {
+      "id": "T029/instantiate_and_library_effects",
+      "description": "Generic Instantiate, LeanTween/Unity internals, allocation/exception paths remain external."
+    },
+    {
+      "id": "T029/tween_scheduling",
+      "description": "Real duration, cancellation and event scheduling remain unmeasured."
+    },
+    {
+      "id": "T029/scene_loaded_registration",
+      "description": "Registration and full lifecycle of LoadingScreenManager.OnSceneLoaded remain open."
+    },
+    {
+      "id": "T029/remaining_stage_registrations",
+      "description": "Nine of13 direct Stage B/BL candidates remain unexpanded; Unity edge is separate."
+    },
+    {
+      "id": "T029/handler_effects_lifetime",
+      "description": "Effects, removal and lifetime of subscribers remain unproved."
+    },
+    {
+      "id": "T029/runtime_comparison",
+      "description": "No original/clone runtime comparison was performed this wave."
+    },
+    {
+      "id": "T025/complete_body_and_cfg",
+      "description": "Whole LoadScene body/CFG and all relevant dependencies are not certified by this callee slice."
+    }
+  ],
+  "catalog_changes_included": false,
+  "commit_push_state": "analysis_commit_published_to_origin_main",
+  "publication": {
+    "work_commit": "e93581bc907a9008f7b3639c3125d1eecfabc56c",
+    "remote": "origin",
+    "branch": "main",
+    "push_returncode": 0,
+    "confirmed_at_utc": "2026-11-07T18:08:41.121557+00:00",
+    "receipt_is_followup_documentation": true
+  }
+}

@@ -1,0 +1,548 @@
+{
+  "methods": [
+    {
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "<ExecuteOnConditionCoroutine>d__30",
+        "name": ".ctor",
+        "token": "0x06001269",
+        "method_definition_index": 4712,
+        "parameter_count": 1,
+        "vaddr": "0x1cbee08",
+        "file_offset": "0x1cbae08"
+      },
+      "inspection_start": "0x1cbee08",
+      "inspection_exclusive_stop": "0x1cbee30",
+      "bytes": 40,
+      "sha256": "5577ab2217be634a139e09e9e7ebb79e51b6e234f2213548a2436e090d32781b",
+      "complete_body_proven": false
+    },
+    {
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "<ExecuteOnConditionCoroutine>d__30",
+        "name": "System.IDisposable.Dispose",
+        "token": "0x0600126a",
+        "method_definition_index": 4713,
+        "parameter_count": 0,
+        "vaddr": "0x1cbee30",
+        "file_offset": "0x1cbae30"
+      },
+      "inspection_start": "0x1cbee30",
+      "inspection_exclusive_stop": "0x1cbee34",
+      "bytes": 4,
+      "sha256": "110f46b5b35c069160560c6ad6786f647dd44e8760a52a46fc22dbbcd7630b91",
+      "complete_body_proven": false
+    },
+    {
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "<ExecuteOnConditionCoroutine>d__30",
+        "name": "MoveNext",
+        "token": "0x0600126b",
+        "method_definition_index": 4714,
+        "parameter_count": 0,
+        "vaddr": "0x1cbee34",
+        "file_offset": "0x1cbae34"
+      },
+      "inspection_start": "0x1cbee34",
+      "inspection_exclusive_stop": "0x1cbef94",
+      "bytes": 352,
+      "sha256": "56b310ea63cfeec82fac5f0c952088240844e519306f27a0642f18c96f1c8b01",
+      "complete_body_proven": false
+    },
+    {
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "<ExecuteOnConditionCoroutine>d__30",
+        "name": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+        "token": "0x0600126c",
+        "method_definition_index": 4715,
+        "parameter_count": 0,
+        "vaddr": "0x1cbef94",
+        "file_offset": "0x1cbaf94"
+      },
+      "inspection_start": "0x1cbef94",
+      "inspection_exclusive_stop": "0x1cbef9c",
+      "bytes": 8,
+      "sha256": "bd237e5d99f6462770946dd64c9d5273577f92aeb78154ba485fef49e0d73851",
+      "complete_body_proven": false
+    },
+    {
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "<ExecuteOnConditionCoroutine>d__30",
+        "name": "System.Collections.IEnumerator.Reset",
+        "token": "0x0600126d",
+        "method_definition_index": 4716,
+        "parameter_count": 0,
+        "vaddr": "0x1cbef9c",
+        "file_offset": "0x1cbaf9c"
+      },
+      "inspection_start": "0x1cbef9c",
+      "inspection_exclusive_stop": "0x1cbefd4",
+      "bytes": 56,
+      "sha256": "77629be747756560c5c181d9b9943f71d6d485843c0f83e79af296fb60305647",
+      "complete_body_proven": false
+    },
+    {
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "<ExecuteOnConditionCoroutine>d__30",
+        "name": "System.Collections.IEnumerator.get_Current",
+        "token": "0x0600126e",
+        "method_definition_index": 4717,
+        "parameter_count": 0,
+        "vaddr": "0x1cbefd4",
+        "file_offset": "0x1cbafd4"
+      },
+      "inspection_start": "0x1cbefd4",
+      "inspection_exclusive_stop": "0x1cbefdc",
+      "bytes": 8,
+      "sha256": "bd237e5d99f6462770946dd64c9d5273577f92aeb78154ba485fef49e0d73851",
+      "complete_body_proven": false
+    },
+    {
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.Utils",
+        "name": "ExecuteOnCondition",
+        "token": "0x060011cc",
+        "method_definition_index": 4555,
+        "parameter_count": 6,
+        "vaddr": "0x1ca91bc",
+        "file_offset": "0x1ca51bc"
+      },
+      "inspection_start": "0x1ca91bc",
+      "inspection_exclusive_stop": "0x1ca91f0",
+      "bytes": 52,
+      "sha256": "78410228768395da3d29510b84edf97001e9448bd461a9d0e02703584d628419",
+      "complete_body_proven": false
+    },
+    {
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.Utils",
+        "name": "ExecuteOnConditionCoroutine",
+        "token": "0x060011cd",
+        "method_definition_index": 4556,
+        "parameter_count": 5,
+        "vaddr": "0x1cb8158",
+        "file_offset": "0x1cb4158"
+      },
+      "inspection_start": "0x1cb8158",
+      "inspection_exclusive_stop": "0x1cb8210",
+      "bytes": 184,
+      "sha256": "0c6fad3681b6b84086230586afc8dea296b617d10be14c0919ca08cfddb1f13b",
+      "complete_body_proven": false
+    }
+  ],
+  "fields": [
+    {
+      "name": "<>1__state",
+      "metadata_index": 3095,
+      "token": "0x4000c18",
+      "offset": 16,
+      "offset_value_address": "0xb59b68",
+      "type_index": 22703,
+      "type_pointer": "0x437e118",
+      "type_bits": "0x80080001",
+      "confirmed_managed_type": null
+    },
+    {
+      "name": "<>2__current",
+      "metadata_index": 3096,
+      "token": "0x4000c19",
+      "offset": 24,
+      "offset_value_address": "0xb59b6c",
+      "type_index": 27867,
+      "type_pointer": "0x437f978",
+      "type_bits": "0x1c0001",
+      "confirmed_managed_type": null
+    },
+    {
+      "name": "checkInterval",
+      "metadata_index": 3097,
+      "token": "0x4000c1a",
+      "offset": 32,
+      "offset_value_address": "0xb59b70",
+      "type_index": 30215,
+      "type_pointer": "0x4380738",
+      "type_bits": "0x800c0006",
+      "confirmed_managed_type": null
+    },
+    {
+      "name": "maxWaitTime",
+      "metadata_index": 3098,
+      "token": "0x4000c1b",
+      "offset": 36,
+      "offset_value_address": "0xb59b74",
+      "type_index": 30215,
+      "type_pointer": "0x4380738",
+      "type_bits": "0x800c0006",
+      "confirmed_managed_type": null
+    },
+    {
+      "name": "onMaxWaitTimeReached",
+      "metadata_index": 3099,
+      "token": "0x4000c1c",
+      "offset": 40,
+      "offset_value_address": "0xb59b78",
+      "type_index": 16324,
+      "type_pointer": "0x4385e68",
+      "type_bits": "0x120006",
+      "confirmed_managed_type": "System.Action"
+    },
+    {
+      "name": "condition",
+      "metadata_index": 3100,
+      "token": "0x4000c1d",
+      "offset": 48,
+      "offset_value_address": "0xb59b7c",
+      "type_index": 6877,
+      "type_pointer": "0x40e6a70",
+      "type_bits": "0x150006",
+      "confirmed_managed_type": "System.Func<System.Boolean>"
+    },
+    {
+      "name": "action",
+      "metadata_index": 3101,
+      "token": "0x4000c1e",
+      "offset": 56,
+      "offset_value_address": "0xb59b80",
+      "type_index": 16324,
+      "type_pointer": "0x4385e68",
+      "type_bits": "0x120006",
+      "confirmed_managed_type": "System.Action"
+    },
+    {
+      "name": "<wait>5__2",
+      "metadata_index": 3102,
+      "token": "0x4000c1f",
+      "offset": 64,
+      "offset_value_address": "0xb59b84",
+      "type_index": 33040,
+      "type_pointer": "0x43c2148",
+      "type_bits": "0x120001",
+      "confirmed_managed_type": "UnityEngine.WaitForSeconds"
+    },
+    {
+      "name": "<safeTimer>5__3",
+      "metadata_index": 3103,
+      "token": "0x4000c20",
+      "offset": 72,
+      "offset_value_address": "0xb59b88",
+      "type_index": 30212,
+      "type_pointer": "0x4380708",
+      "type_bits": "0x800c0001",
+      "confirmed_managed_type": null
+    }
+  ],
+  "callees": [
+    {
+      "site": "0x1cbee1c",
+      "target": "0x339a46c",
+      "identity": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Object",
+        "name": ".ctor",
+        "token": "0x06000fb2",
+        "method_definition_index": 40438,
+        "parameter_count": 0,
+        "vaddr": "0x339a46c",
+        "file_offset": "0x339646c"
+      }
+    },
+    {
+      "site": "0x1cbeeb0",
+      "target": "0x1ca5714",
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.Utils",
+        "name": "SystemLogError",
+        "token": "0x0600120c",
+        "method_definition_index": 4619,
+        "parameter_count": 2,
+        "vaddr": "0x1ca5714",
+        "file_offset": "0x1ca1714"
+      }
+    },
+    {
+      "site": "0x1cbeee0",
+      "target": "0x3cd11cc",
+      "identity": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.WaitForSeconds",
+        "name": ".ctor",
+        "token": "0x060007e5",
+        "method_definition_index": 87101,
+        "parameter_count": 1,
+        "vaddr": "0x3cd11cc",
+        "file_offset": "0x3ccd1cc"
+      }
+    },
+    {
+      "site": "0x1cbefb8",
+      "target": "0x3359350",
+      "identity": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.NotSupportedException",
+        "name": ".ctor",
+        "token": "0x0600089e",
+        "method_definition_index": 38626,
+        "parameter_count": 0,
+        "vaddr": "0x3359350",
+        "file_offset": "0x3355350"
+      }
+    },
+    {
+      "site": "0x1cb81b8",
+      "target": "0x1cbee08",
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "<ExecuteOnConditionCoroutine>d__30",
+        "name": ".ctor",
+        "token": "0x06001269",
+        "method_definition_index": 4712,
+        "parameter_count": 1,
+        "vaddr": "0x1cbee08",
+        "file_offset": "0x1cbae08"
+      }
+    },
+    {
+      "site": "0x1ca91d0",
+      "target": "0x1cb8158",
+      "identity": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.Utils",
+        "name": "ExecuteOnConditionCoroutine",
+        "token": "0x060011cd",
+        "method_definition_index": 4556,
+        "parameter_count": 5,
+        "vaddr": "0x1cb8158",
+        "file_offset": "0x1cb4158"
+      }
+    },
+    {
+      "site": "0x1ca91e8",
+      "target": "0x3ccbf8c",
+      "identity": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.MonoBehaviour",
+        "name": "StartCoroutine",
+        "token": "0x0600075c",
+        "method_definition_index": 86964,
+        "parameter_count": 1,
+        "vaddr": "0x3ccbf8c",
+        "file_offset": "0x3cc7f8c"
+      }
+    }
+  ],
+  "threshold": {
+    "address": "0xb2fdfc",
+    "bits": "0x3dcccccd",
+    "value_float32": 0.10000000149011612,
+    "log": {
+      "got_vaddr": "0x41b05c8",
+      "usage_vaddr": "0x435e718",
+      "encoded": "0xa00086c1",
+      "kind": 5,
+      "index": 17248,
+      "literal": "checkInterval can't be below 0.1f!",
+      "literal_file_offset": 684985,
+      "literal_bytes": 34
+    }
+  },
+  "schema_version": 1,
+  "scope": "Eight pinned methods: factory/wrapper plus six-method condition coroutine lifecycle.",
+  "classification": "STATIC_state_machine_contract_not_original_runtime_equivalence",
+  "semantic_completion": false,
+  "state_table": [
+    {
+      "state": 0,
+      "entry": "write -1; clamp ordered interval<0.1f; create one WaitForSeconds; safeTimer=0",
+      "transition": "evaluate required condition before first yield"
+    },
+    {
+      "state": 1,
+      "entry": "write -1; safeTimer=float32(safeTimer+checkInterval)",
+      "transition": "if maxWaitTime ordered >0 and timer ordered >=max: optional timeout callback then false; else evaluate condition"
+    },
+    {
+      "state": "other (including -1)",
+      "entry": "no coroutine state write",
+      "transition": "return false after lazy metadata guard"
+    }
+  ],
+  "predicate_paths": [
+    {
+      "condition": "null",
+      "effect": "call runtime failure helper0x1b88980; exception semantics outside recut"
+    },
+    {
+      "condition": "returns bool bit0=0",
+      "effect": "Current=existing wait; state=1; return true"
+    },
+    {
+      "condition": "returns bool bit0=1, action nonnull",
+      "effect": "invoke required action; return false with state -1"
+    },
+    {
+      "condition": "returns bool bit0=1, action null",
+      "effect": "call runtime failure helper0x1b88980"
+    }
+  ],
+  "timeout": {
+    "timer_source": "Accumulated checkInterval once per state1 resumption, not measured deltaTime/wall clock.",
+    "order": "Timeout check precedes condition re-evaluation on resume.",
+    "nonpositive": "maxWaitTime<=0 disables timeout; first condition check occurs regardless of positive maximum.",
+    "callback": "onMaxWaitTimeReached nullable; null means return false without invoking it.",
+    "floats": "FCMP/B.PL skips clamp for unordered NaN; B.LE/B.LT skip timeout for unordered NaN. Engine WaitForSeconds behavior for NaN/Infinity not established."
+  },
+  "disposal": {
+    "opcode": "RET only",
+    "effects": "No state change, callback, field clear or wait disposal in this method. Manual MoveNext after Dispose can still resume state1.",
+    "cancellation_limit": "Unity StopCoroutine/destruction/scheduler cancellation not observed; no cancellation token or explicit cancellation path in these pinned methods."
+  },
+  "current": "Both IEnumerator.Current getters return field+0x18; no clear on normal termination observed in the pinned MoveNext.",
+  "reset": "Allocates System.NotSupportedException and calls throw-boundary helper0x1b8884c with Reset MethodInfo; exact exception helper behavior unmodeled.",
+  "factory": "Ctor sets supplied state after Object..ctor. Factory supplies state0 and stores condition/action/interval/max/timeout fields; wrapper forwards floats s0/s1 and calls MonoBehaviour.StartCoroutine.",
+  "callbacks": [
+    {
+      "site": "0x1cbef10",
+      "kind": "Func<bool>.Invoke shape",
+      "receiver": "condition field+0x30; dynamic delegate target unknown"
+    },
+    {
+      "site": "0x1cbef60",
+      "kind": "Action.Invoke shape",
+      "receiver": "action field+0x38 or timeout field+0x28; dynamic delegate target unknown"
+    }
+  ],
+  "errors": "No catch/finally path identified in the pinned windows; out-of-window exception regions not proven; init/allocation/log/predicate/action/wait/engine/helper exceptions not modeled. State is set -1 before allocations/callback work on states0/1.",
+  "unknowns": [
+    "Full noncontiguous body and exception regions not proven by next-metadata-start inspection ranges.",
+    "Unity WaitForSeconds scaled-time/scheduling/negative/NaN semantics and StartCoroutine/StopCoroutine engine behavior not observed.",
+    "Dynamic predicate/action targets, their mutations/reentrancy/exceptions, GC and lazy-init helper behavior unknown.",
+    "No wall-clock measurement, native execution, independent behavioral oracle, or whole-T026 acceptance follows from these bytes."
+  ],
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+  "producer_sha256": "5871cdd9d0ce4490206514388f40ad6f5946b627e364f9e655d4591ef2647386",
+  "helpers_sha256": {
+    "recon_navigation.py": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+    "recon_scene_subscribers.py": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce",
+    "recon_t025_generics.py": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3"
+  },
+  "commands": [
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbee08",
+        "--stop-address=0x1cbee30",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-condition/.ctor.asm.txt",
+      "sha256": "60e033a1d6926d1d160512c220aec43a524dbcd1c480a220f58707fa86051cef"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbee30",
+        "--stop-address=0x1cbee34",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.021,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-condition/System.IDisposable.Dispose.asm.txt",
+      "sha256": "93483486bd78baeb3f7981c90d6283cf44358826c65027fe50bac637256d3d26"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbee34",
+        "--stop-address=0x1cbef94",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-condition/MoveNext.asm.txt",
+      "sha256": "06f6ffeef7d9ab094097a6d04dd9de421d15d745ac4f2f03a5ee118dc3d40504"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbef94",
+        "--stop-address=0x1cbef9c",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-condition/System.Collections.Generic.IEnumerator<System.Object>.get_Current.asm.txt",
+      "sha256": "a0bf46c634105fb64e43f10ad9effd92f66914bacdf77aa6d648931eca1eac35"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbef9c",
+        "--stop-address=0x1cbefd4",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.025,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-condition/System.Collections.IEnumerator.Reset.asm.txt",
+      "sha256": "cdc53316db43f3864bf8471d949b755699e8d59bcb30b2e28ccd53e900d77435"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cbefd4",
+        "--stop-address=0x1cbefdc",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-condition/System.Collections.IEnumerator.get_Current.asm.txt",
+      "sha256": "394b78f1cbbf3c39ee1c5c1b08c4a5a7d52baa140f0d4dbb4eac58a83a9613bd"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1ca91bc",
+        "--stop-address=0x1ca91f0",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-condition/ExecuteOnCondition.asm.txt",
+      "sha256": "649d8dc3377b6306b5c7557ab9f27f9e45ad18e6e7dc1efce004b0c230a8db50"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x1cb8158",
+        "--stop-address=0x1cb8210",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-condition/ExecuteOnConditionCoroutine.asm.txt",
+      "sha256": "0c254a2c8f7c3c82f3a9bd87509b78a78cfe0b0f75f664b0f9c20c4872775522"
+    }
+  ],
+  "duration_seconds": 2.382,
+  "game_executed": false,
+  "queue_modified": false,
+  "active_REA_target_used": false
+}

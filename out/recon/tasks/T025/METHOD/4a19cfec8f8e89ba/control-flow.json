@@ -1,0 +1,305 @@
+{
+  "method": "PWC.World.Buildings.WorldBuilding.ClickOnLevel",
+  "start": "0x2108e90",
+  "exclusive_stop": "0x2109014",
+  "bytes": 388,
+  "bound_limit": "candidate window capped at next metadata-resolved method start; this does not prove complete/noncontiguous body or exception-region extent",
+  "decode_limit": "selected branch encodings only (B/BL/BLR/CBZ/CBNZ/TBZ/TBNZ/RET); no general dataflow",
+  "control_flow_encodings": [
+    {
+      "site": "0x2108eac",
+      "opcode": "0x370000c8",
+      "kind": "TBNZ",
+      "register": 8,
+      "bit": 0,
+      "target": "0x2108ec4"
+    },
+    {
+      "site": "0x2108eb8",
+      "opcode": "0x97e9fe0c",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_target": []
+    },
+    {
+      "site": "0x2108ecc",
+      "opcode": "0xb40000e8",
+      "kind": "CBZ",
+      "register": 8,
+      "width": 64,
+      "target": "0x2108ee8"
+    },
+    {
+      "site": "0x2108ee4",
+      "opcode": "0xd63f0120",
+      "kind": "BLR",
+      "register": 9,
+      "target": null
+    },
+    {
+      "site": "0x2108ef0",
+      "opcode": "0x350000c8",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2108f08"
+    },
+    {
+      "site": "0x2108efc",
+      "opcode": "0x97e9fdfb",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_target": []
+    },
+    {
+      "site": "0x2108f1c",
+      "opcode": "0xb40007a0",
+      "kind": "CBZ",
+      "register": 0,
+      "width": 64,
+      "target": "0x2109010"
+    },
+    {
+      "site": "0x2108f28",
+      "opcode": "0x9400e30a",
+      "kind": "BL",
+      "target": "0x2141b50",
+      "metadata_target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.InteractionHistory.InteractionHistoryManager",
+        "name": "MarkBuildingAsInteracted",
+        "token": "0x060064c7",
+        "method_definition_index": 25798,
+        "parameter_count": 1,
+        "vaddr": "0x2141b50",
+        "file_offset": "0x213db50"
+      }
+    },
+    {
+      "site": "0x2108f30",
+      "opcode": "0x350000c8",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2108f48"
+    },
+    {
+      "site": "0x2108f3c",
+      "opcode": "0x97e9fdeb",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_target": []
+    },
+    {
+      "site": "0x2108f54",
+      "opcode": "0xb40005e0",
+      "kind": "CBZ",
+      "register": 0,
+      "width": 64,
+      "target": "0x2109010"
+    },
+    {
+      "site": "0x2108f68",
+      "opcode": "0x9400e37c",
+      "kind": "BL",
+      "target": "0x2141d58",
+      "metadata_target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.InteractionHistory.InteractionHistoryManager",
+        "name": "SetFocusedBuildingType",
+        "token": "0x060064ce",
+        "method_definition_index": 25805,
+        "parameter_count": 1,
+        "vaddr": "0x2141d58",
+        "file_offset": "0x213dd58"
+      }
+    },
+    {
+      "site": "0x2108f78",
+      "opcode": "0xb40004c8",
+      "kind": "CBZ",
+      "register": 8,
+      "width": 64,
+      "target": "0x2109010"
+    },
+    {
+      "site": "0x2108f80",
+      "opcode": "0xb4000488",
+      "kind": "CBZ",
+      "register": 8,
+      "width": 64,
+      "target": "0x2109010"
+    },
+    {
+      "site": "0x2108f88",
+      "opcode": "0x350000e8",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2108fa4"
+    },
+    {
+      "site": "0x2108f90",
+      "opcode": "0x9400006a",
+      "kind": "BL",
+      "target": "0x2109138",
+      "metadata_target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.World.Buildings.WorldBuilding",
+        "name": "IsCurrentlyFree",
+        "token": "0x06006083",
+        "method_definition_index": 24706,
+        "parameter_count": 0,
+        "vaddr": "0x2109138",
+        "file_offset": "0x2105138"
+      }
+    },
+    {
+      "site": "0x2108f94",
+      "opcode": "0x37000080",
+      "kind": "TBNZ",
+      "register": 0,
+      "bit": 0,
+      "target": "0x2108fa4"
+    },
+    {
+      "site": "0x2108f9c",
+      "opcode": "0x97eeca03",
+      "kind": "BL",
+      "target": "0x1cbb7a8",
+      "metadata_target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PazuCore.Utils",
+        "name": "IsGameUnlocked",
+        "token": "0x06001205",
+        "method_definition_index": 4612,
+        "parameter_count": 0,
+        "vaddr": "0x1cbb7a8",
+        "file_offset": "0x1cb77a8"
+      }
+    },
+    {
+      "site": "0x2108fa0",
+      "opcode": "0x360002a0",
+      "kind": "TBZ",
+      "register": 0,
+      "bit": 0,
+      "target": "0x2108ff4"
+    },
+    {
+      "site": "0x2108fa8",
+      "opcode": "0xb4000060",
+      "kind": "CBZ",
+      "register": 0,
+      "width": 64,
+      "target": "0x2108fb4"
+    },
+    {
+      "site": "0x2108fb0",
+      "opcode": "0x946f4631",
+      "kind": "BL",
+      "target": "0x3cda874",
+      "metadata_target": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.Events.UnityEvent",
+        "name": "Invoke",
+        "token": "0x06000976",
+        "method_definition_index": 87502,
+        "parameter_count": 0,
+        "vaddr": "0x3cda874",
+        "file_offset": "0x3cd6874"
+      }
+    },
+    {
+      "site": "0x2108fbc",
+      "opcode": "0x94000099",
+      "kind": "BL",
+      "target": "0x2109220",
+      "metadata_target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.World.Buildings.WorldBuildingsDataManager",
+        "name": "SaveBuildingData",
+        "token": "0x060060cb",
+        "method_definition_index": 24778,
+        "parameter_count": 2,
+        "vaddr": "0x2109220",
+        "file_offset": "0x2105220"
+      }
+    },
+    {
+      "site": "0x2108fc8",
+      "opcode": "0x97fd85f4",
+      "kind": "BL",
+      "target": "0x206a798",
+      "metadata_target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.CoreExtensions",
+        "name": "GetSceneName",
+        "token": "0x0600561e",
+        "method_definition_index": 22045,
+        "parameter_count": 1,
+        "vaddr": "0x206a798",
+        "file_offset": "0x2066798"
+      }
+    },
+    {
+      "site": "0x2108fe0",
+      "opcode": "0xd63f0120",
+      "kind": "BLR",
+      "register": 9,
+      "target": null
+    },
+    {
+      "site": "0x2108ff0",
+      "opcode": "0xd65f03c0",
+      "kind": "RET",
+      "register": 30,
+      "target": null
+    },
+    {
+      "site": "0x2108ffc",
+      "opcode": "0x9400006e",
+      "kind": "BL",
+      "target": "0x21091b4",
+      "metadata_target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.World.Buildings.WorldBuilding",
+        "name": "TryGetRemoteConfigItem",
+        "token": "0x06006084",
+        "method_definition_index": 24707,
+        "parameter_count": 1,
+        "vaddr": "0x21091b4",
+        "file_offset": "0x21051b4"
+      }
+    },
+    {
+      "site": "0x2109008",
+      "opcode": "0x97ffd768",
+      "kind": "BL",
+      "target": "0x20feda8",
+      "metadata_target": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.World.WorldBuildingPreviewPopup",
+        "name": "Show",
+        "token": "0x06005fd2",
+        "method_definition_index": 24529,
+        "parameter_count": 2,
+        "vaddr": "0x20feda8",
+        "file_offset": "0x20fada8"
+      }
+    },
+    {
+      "site": "0x210900c",
+      "opcode": "0x17fffff6",
+      "kind": "B",
+      "target": "0x2108fe4"
+    },
+    {
+      "site": "0x2109010",
+      "opcode": "0x97e9fe5c",
+      "kind": "BL",
+      "target": "0x1b88980",
+      "metadata_target": []
+    }
+  ]
+}

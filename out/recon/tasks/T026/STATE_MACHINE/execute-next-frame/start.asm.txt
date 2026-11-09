@@ -1,0 +1,17 @@
+
+/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 1cb3a60: a9bf4ffe     	stp	x30, x19, [sp, #-0x10]!
+ 1cb3a64: aa0003f3     	mov	x19, x0
+ 1cb3a68: aa0103e0     	mov	x0, x1
+ 1cb3a6c: 94001263     	bl	0x1cb83f8 <__start_il2cpp+0x671e8>
+ 1cb3a70: b40000d3     	cbz	x19, 0x1cb3a88 <__start_il2cpp+0x62878>
+ 1cb3a74: aa0003e1     	mov	x1, x0
+ 1cb3a78: aa1303e0     	mov	x0, x19
+ 1cb3a7c: aa1f03e2     	mov	x2, xzr
+ 1cb3a80: a8c14ffe     	ldp	x30, x19, [sp], #0x10
+ 1cb3a84: 14806142     	b	0x3ccbf8c <__start_il2cpp+0x207ad7c>
+ 1cb3a88: 97fb53be     	bl	0x1b88980 <JNI_OnUnload+0xa5c4>
