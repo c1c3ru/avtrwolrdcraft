@@ -1,0 +1,299 @@
+{
+  "handler": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "PWC.LoadingScreen.LoadingScreenManager",
+    "name": "OnSceneLoaded",
+    "token": "0x06005fc4",
+    "method_definition_index": 24515,
+    "parameter_count": 2,
+    "vaddr": "0x20fe4b4",
+    "file_offset": "0x20fa4b4"
+  },
+  "conditional_virtual_slot": {
+    "receiver_type": "PWC.LoadingScreen.LoadingScreenManager",
+    "type_definition_index": 4257,
+    "slot": 4,
+    "encoded": "0x6000bf87",
+    "encoded_file_offset": 12685804,
+    "method_definition_index": 24515,
+    "name": "OnSceneLoaded",
+    "declaring_type_index": 4257,
+    "token": "0x6005fc4",
+    "parameters": 2
+  },
+  "edges": [
+    {
+      "classification": "STATIC_conditional_virtual_handler_event_edge",
+      "operation": "add",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.LoadingScreen.LoadingScreenManager",
+        "name": "Awake",
+        "token": "0x06005fc2",
+        "method_definition_index": 24513,
+        "parameter_count": 0,
+        "vaddr": "0x20fe1b4",
+        "file_offset": "0x20fa1b4"
+      },
+      "event_accessor": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.SceneManagement.SceneManager",
+        "name": "add_sceneLoaded",
+        "token": "0x060009c2",
+        "method_definition_index": 87578,
+        "parameter_count": 1,
+        "vaddr": "0x3cdbc5c",
+        "file_offset": "0x3cd7c5c"
+      },
+      "site": "0x20fe294",
+      "target": "0x3cdbc5c",
+      "kind": "BL",
+      "constructor_site": "0x20fe278",
+      "target_object": "this preserved in x19; passed as x1",
+      "handler_source": "x2 loaded from [this.klass+0x180]",
+      "raw_anchors": [
+        {
+          "site": "0x20fe1c8",
+          "file_offset": "0x20fa1c8",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x20fe254",
+          "file_offset": "0x20fa254",
+          "word": "0xf9400268",
+          "bytes_le": "680240f9"
+        },
+        {
+          "site": "0x20fe260",
+          "file_offset": "0x20fa260",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x20fe264",
+          "file_offset": "0x20fa264",
+          "word": "0xf940c102",
+          "bytes_le": "02c140f9"
+        },
+        {
+          "site": "0x20fe270",
+          "file_offset": "0x20fa270",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x20fe274",
+          "file_offset": "0x20fa274",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x20fe28c",
+          "file_offset": "0x20fa28c",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x20fe290",
+          "file_offset": "0x20fa290",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        }
+      ]
+    },
+    {
+      "classification": "STATIC_conditional_virtual_handler_event_edge",
+      "operation": "remove",
+      "caller": {
+        "image": "Assembly-CSharp.dll",
+        "declaring_type": "PWC.LoadingScreen.LoadingScreenManager",
+        "name": "OnDestroy",
+        "token": "0x06005fc5",
+        "method_definition_index": 24516,
+        "parameter_count": 0,
+        "vaddr": "0x20fe5e4",
+        "file_offset": "0x20fa5e4"
+      },
+      "event_accessor": {
+        "image": "UnityEngine.CoreModule.dll",
+        "declaring_type": "UnityEngine.SceneManagement.SceneManager",
+        "name": "remove_sceneLoaded",
+        "token": "0x060009c3",
+        "method_definition_index": 87579,
+        "parameter_count": 1,
+        "vaddr": "0x3cdbd50",
+        "file_offset": "0x3cd7d50"
+      },
+      "site": "0x20fe6b4",
+      "target": "0x3cdbd50",
+      "kind": "B",
+      "constructor_site": "0x20fe690",
+      "target_object": "this preserved in x19; passed as x1",
+      "handler_source": "x2 loaded from [this.klass+0x180]",
+      "raw_anchors": [
+        {
+          "site": "0x20fe5f4",
+          "file_offset": "0x20fa5f4",
+          "word": "0xaa0003f3",
+          "bytes_le": "f30300aa"
+        },
+        {
+          "site": "0x20fe674",
+          "file_offset": "0x20fa674",
+          "word": "0xf9400268",
+          "bytes_le": "680240f9"
+        },
+        {
+          "site": "0x20fe67c",
+          "file_offset": "0x20fa67c",
+          "word": "0xaa1303e1",
+          "bytes_le": "e10313aa"
+        },
+        {
+          "site": "0x20fe680",
+          "file_offset": "0x20fa680",
+          "word": "0xaa1f03e3",
+          "bytes_le": "e3031faa"
+        },
+        {
+          "site": "0x20fe684",
+          "file_offset": "0x20fa684",
+          "word": "0xf940c102",
+          "bytes_le": "02c140f9"
+        },
+        {
+          "site": "0x20fe68c",
+          "file_offset": "0x20fa68c",
+          "word": "0xaa0003f4",
+          "bytes_le": "f40300aa"
+        },
+        {
+          "site": "0x20fe6a4",
+          "file_offset": "0x20fa6a4",
+          "word": "0xaa1403e0",
+          "bytes_le": "e00314aa"
+        },
+        {
+          "site": "0x20fe6ac",
+          "file_offset": "0x20fa6ac",
+          "word": "0xaa1f03e1",
+          "bytes_le": "e1031faa"
+        }
+      ]
+    }
+  ],
+  "canonical_delegate_constructor": {
+    "method": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.Events.UnityAction`2",
+      "name": ".ctor",
+      "token": "0x06000980",
+      "parameter_count": 2,
+      "method_definition_index": 87512,
+      "metadata_offset": "0x64fcb0"
+    },
+    "target": "0x305a4a0",
+    "generic_function_row_address": "0xe1a324",
+    "generic_function_row": [
+      65692,
+      58745,
+      4427,
+      -1
+    ],
+    "method_spec_address": "0xcd5ed0",
+    "method_spec": [
+      87512,
+      6724,
+      -1
+    ],
+    "pointer_slot": "0x40aff70",
+    "class_instantiation_index": 6724,
+    "class_arguments": [
+      {
+        "type": "UnityEngine.SceneManagement.Scene",
+        "type_definition_index": 11802,
+        "type_code": "0x11",
+        "address": "0x4380578"
+      },
+      {
+        "type": "System.Int32Enum",
+        "type_definition_index": 6693,
+        "type_code": "0x11",
+        "address": "0x439d028"
+      }
+    ]
+  },
+  "preconditions": [
+    "Normal execution reaches each guarded delegate construction and event accessor.",
+    "Runtime receiver resolves slot4 to the distributed LoadingScreenManager implementation; a derived override may change the handler.",
+    "Native class vtable base0x138 and16-byte pointer/MethodInfo pairs make offset0x180 the slot4 MethodInfo half. Runtime class memory was not observed."
+  ],
+  "unknowns": [
+    "Runtime delegate creation/registration/invocation/removal and Unity lifetime were not observed.",
+    "Delegate allocation type metadata and requested Scene/LoadSceneMode generic constructor MethodSpec were not resolved here. Canonical Scene/Int32Enum helper does not establish requested instantiation alone.",
+    "Accessor internals, delegate equality, generic sharing, helper effects and exceptions remain unmodeled.",
+    "Only bounded Awake/OnDestroy slices inspected; complete CFG/body and noncontiguous or exceptional ranges are not proven.",
+    "Handler body/state-machine and timing are outside this event-hook probe."
+  ],
+  "schema_version": 1,
+  "scope": "LoadingScreenManager paired sceneLoaded hook: conditional concrete virtual slot identity and canonical delegate constructor pointer join.",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "producer_sha256": "5ae7a717ffb1e60efb5e0e904ec9aad907a9dfe18e54c6eb72cb80a7cbaf4825",
+  "helpers_sha256": {
+    "recon_navigation.py": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+    "recon_loading_fade.py": "4f4ec5747e0acf3012928d92f8192bb8b2577890f16a7e21eab95ea51b6f597b",
+    "recon_scene_subscribers.py": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce",
+    "recon_t025_generics.py": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3"
+  },
+  "method_index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+  "inspection_windows": [
+    {
+      "start": "0x20fe1b4",
+      "inspection_exclusive_stop": "0x20fe2d8",
+      "sha256": "ae2332d417092b4c1d46df06e8b73a3ee799a5e004ff83c70856e3bf35b18b91",
+      "bytes": 292,
+      "complete_body_proven": false
+    },
+    {
+      "start": "0x20fe5e4",
+      "inspection_exclusive_stop": "0x20fe6bc",
+      "sha256": "0f6c5e1f1f9c0da6060d53d4aae42001f1b74ea4d1bf76bec17d9dc9190ad2a2",
+      "bytes": 216,
+      "complete_body_proven": false
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=34595252",
+        "--stop-address=34595544",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.024,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scene-hook/Awake.asm.txt",
+      "sha256": "2bc05be3bb8a6cd8b8f7cd9b2850a0302839dcc67feb18ba956e273f362fd9a5"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=34596324",
+        "--stop-address=34596540",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scene-hook/OnDestroy.asm.txt",
+      "sha256": "e25c0cfbf81c57f22dcc405476cf9e5d5a776ccb38fff30d16da17b64328c418"
+    }
+  ],
+  "game_executed": false,
+  "queue_modified": false,
+  "active_REA_target_used": false,
+  "semantic_completion": false
+}

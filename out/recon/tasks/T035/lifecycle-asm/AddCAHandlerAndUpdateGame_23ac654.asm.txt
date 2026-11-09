@@ -1,0 +1,256 @@
+23ac654  str    x30, [sp, #-0x30]!
+23ac658  stp    x22, x21, [sp, #0x10]
+23ac65c  stp    x20, x19, [sp, #0x20]
+23ac660  adrp   x21, #0x44fe000
+23ac664  ldrb   w8, [x21, #0x65b]
+23ac668  mov    x20, x1
+23ac66c  mov    x19, x0
+23ac670  tbnz   w8, #0, #0x23ac6ac
+23ac674  adrp   x0, #0x41bd000
+23ac678  ldr    x0, [x0, #0x548]
+23ac67c  bl     #0x1b886e8
+23ac680  adrp   x0, #0x41b8000
+23ac684  ldr    x0, [x0, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23ac688  bl     #0x1b886e8
+23ac68c  adrp   x0, #0x41c1000
+23ac690  ldr    x0, [x0, #0xb50]
+23ac694  bl     #0x1b886e8
+23ac698  adrp   x0, #0x41ac000
+23ac69c  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+23ac6a0  bl     #0x1b886e8
+23ac6a4  mov    w8, #1
+23ac6a8  strb   w8, [x21, #0x65b]
+23ac6ac  cbz    x20, #0x23aca50
+23ac6b0  mov    x0, x20
+23ac6b4  mov    x1, xzr
+23ac6b8  bl     #0x3cc797c
+23ac6bc  tbz    w0, #0, #0x23aca40
+23ac6c0  ldr    x8, [x20]
+23ac6c4  mov    x0, x20
+23ac6c8  mov    x1, x19
+23ac6cc  ldp    x9, x2, [x8, #0x198]
+23ac6d0  blr    x9
+23ac6d4  tbz    w0, #0, #0x23aca40
+23ac6d8  cbz    x19, #0x23aca50
+23ac6dc  adrp   x22, #0x41b8000
+23ac6e0  ldr    x8, [x19]
+23ac6e4  ldr    x22, [x22, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23ac6e8  ldrh   w9, [x8, #0x12e]
+23ac6ec  ldr    x1, [x22]
+23ac6f0  cbz    x9, #0x23ac714
+23ac6f4  ldr    x10, [x8, #0xb0]
+23ac6f8  add    x10, x10, #8
+23ac6fc  ldur   x11, [x10, #-8]
+23ac700  cmp    x11, x1
+23ac704  b.eq   #0x23ac724
+23ac708  subs   x9, x9, #1
+23ac70c  add    x10, x10, #0x10
+23ac710  b.ne   #0x23ac6fc
+23ac714  mov    w2, #0xa
+23ac718  mov    x0, x19
+23ac71c  bl     #0x1b7ba44  ; IFACE ICATarget.get_CAHandlers
+23ac720  b      #0x23ac734
+23ac724  ldr    w9, [x10]
+23ac728  add    w9, w9, #0xa
+23ac72c  add    x8, x8, w9, sxtw #4
+23ac730  add    x0, x8, #0x138
+23ac734  ldp    x8, x1, [x0]
+23ac738  mov    x0, x19
+23ac73c  blr    x8
+23ac740  cbz    x0, #0x23aca50
+23ac744  adrp   x8, #0x41c1000
+23ac748  ldr    x8, [x8, #0xb50]
+23ac74c  mov    x1, x20
+23ac750  ldr    x2, [x8]
+23ac754  bl     #0x2cf0aac
+23ac758  tbnz   w0, #0, #0x23aca40
+23ac75c  mov    x0, x19
+23ac760  mov    x1, x20
+23ac764  bl     #0x23aca54  ; -> CATargetExtensionMethods.AddCAHandler
+23ac768  ldr    x8, [x20]
+23ac76c  mov    x0, x20
+23ac770  ldr    x9, [x8, #0x338]  ; "_Folded"
+23ac774  ldr    x1, [x8, #0x340]  ; "Lights_Idle_"
+23ac778  blr    x9
+23ac77c  tbz    w0, #0, #0x23ac840
+23ac780  ldr    x8, [x19]
+23ac784  ldr    x1, [x22]
+23ac788  ldrh   w9, [x8, #0x12e]
+23ac78c  cbz    x9, #0x23ac7b0
+23ac790  ldr    x10, [x8, #0xb0]  ; "Cat_Dog_Walk_In_Snow_2"
+23ac794  add    x10, x10, #8
+23ac798  ldur   x11, [x10, #-8]
+23ac79c  cmp    x11, x1
+23ac7a0  b.eq   #0x23ac7c0
+23ac7a4  subs   x9, x9, #1
+23ac7a8  add    x10, x10, #0x10
+23ac7ac  b.ne   #0x23ac798
+23ac7b0  mov    w2, #9
+23ac7b4  mov    x0, x19
+23ac7b8  bl     #0x1b7ba44  ; IFACE ICATarget.set_LockedCAHandler
+23ac7bc  b      #0x23ac7d0
+23ac7c0  ldr    w9, [x10]
+23ac7c4  add    w9, w9, #9
+23ac7c8  add    x8, x8, w9, sxtw #4
+23ac7cc  add    x0, x8, #0x138
+23ac7d0  ldp    x8, x2, [x0]
+23ac7d4  mov    x0, x19
+23ac7d8  mov    x1, x20
+23ac7dc  blr    x8
+23ac7e0  ldr    x8, [x19]
+23ac7e4  ldr    x1, [x22]
+23ac7e8  ldrh   w9, [x8, #0x12e]
+23ac7ec  cbz    x9, #0x23ac810
+23ac7f0  ldr    x10, [x8, #0xb0]  ; "Cat_Dog_Walk_In_Snow_2"
+23ac7f4  add    x10, x10, #8
+23ac7f8  ldur   x11, [x10, #-8]
+23ac7fc  cmp    x11, x1
+23ac800  b.eq   #0x23ac820
+23ac804  subs   x9, x9, #1
+23ac808  add    x10, x10, #0x10
+23ac80c  b.ne   #0x23ac7f8
+23ac810  mov    w2, #0x10
+23ac814  mov    x0, x19
+23ac818  bl     #0x1b7ba44  ; IFACE ICATarget.OnAddedCAHandlerWithLockedAnimation
+23ac81c  b      #0x23ac830
+23ac820  ldr    w9, [x10]
+23ac824  add    w9, w9, #0x10
+23ac828  add    x8, x8, w9, sxtw #4
+23ac82c  add    x0, x8, #0x138
+23ac830  ldp    x8, x2, [x0]
+23ac834  mov    x0, x19
+23ac838  mov    x1, x20
+23ac83c  blr    x8
+23ac840  ldr    x8, [x19]
+23ac844  ldr    x1, [x22]
+23ac848  ldrh   w9, [x8, #0x12e]
+23ac84c  cbz    x9, #0x23ac870
+23ac850  ldr    x10, [x8, #0xb0]  ; "Cat_Dog_Walk_In_Snow_2"
+23ac854  add    x10, x10, #8
+23ac858  ldur   x11, [x10, #-8]
+23ac85c  cmp    x11, x1
+23ac860  b.eq   #0x23ac880
+23ac864  subs   x9, x9, #1
+23ac868  add    x10, x10, #0x10
+23ac86c  b.ne   #0x23ac858
+23ac870  mov    w2, #8
+23ac874  mov    x0, x19
+23ac878  bl     #0x1b7ba44  ; IFACE ICATarget.get_LockedCAHandler
+23ac87c  b      #0x23ac890
+23ac880  ldr    w9, [x10]
+23ac884  add    w9, w9, #8
+23ac888  add    x8, x8, w9, sxtw #4
+23ac88c  add    x0, x8, #0x138
+23ac890  ldp    x8, x1, [x0]
+23ac894  mov    x0, x19
+23ac898  blr    x8
+23ac89c  adrp   x8, #0x41ac000
+23ac8a0  ldr    x8, [x8, #0xbb8]  ; type UnityEngine.Object
+23ac8a4  mov    x21, x0
+23ac8a8  ldr    x8, [x8]
+23ac8ac  ldr    w9, [x8, #0xe0]
+23ac8b0  cbnz   w9, #0x23ac8bc
+23ac8b4  mov    x0, x8
+23ac8b8  bl     #0x1b8885c
+23ac8bc  mov    x0, x21
+23ac8c0  mov    x1, xzr
+23ac8c4  mov    x2, xzr
+23ac8c8  bl     #0x3ccab90
+23ac8cc  tbz    w0, #0, #0x23ac9b8
+23ac8d0  ldr    x8, [x19]
+23ac8d4  ldr    x1, [x22]
+23ac8d8  ldrh   w9, [x8, #0x12e]
+23ac8dc  cbz    x9, #0x23ac900
+23ac8e0  ldr    x10, [x8, #0xb0]
+23ac8e4  add    x10, x10, #8
+23ac8e8  ldur   x11, [x10, #-8]
+23ac8ec  cmp    x11, x1
+23ac8f0  b.eq   #0x23ac910
+23ac8f4  subs   x9, x9, #1
+23ac8f8  add    x10, x10, #0x10
+23ac8fc  b.ne   #0x23ac8e8
+23ac900  mov    w2, #8
+23ac904  mov    x0, x19
+23ac908  bl     #0x1b7ba44  ; IFACE ICATarget.get_LockedCAHandler
+23ac90c  b      #0x23ac920
+23ac910  ldr    w9, [x10]
+23ac914  add    w9, w9, #8
+23ac918  add    x8, x8, w9, sxtw #4
+23ac91c  add    x0, x8, #0x138
+23ac920  ldp    x8, x1, [x0]
+23ac924  mov    x0, x19
+23ac928  blr    x8
+23ac92c  cbz    x0, #0x23aca50
+23ac930  ldr    x8, [x0]
+23ac934  ldr    x9, [x8, #0x2e8]
+23ac938  ldr    x1, [x8, #0x2f0]
+23ac93c  blr    x9
+23ac940  ldr    x8, [x19]
+23ac944  ldr    x1, [x22]
+23ac948  mov    x21, x0
+23ac94c  ldrh   w9, [x8, #0x12e]
+23ac950  cbz    x9, #0x23ac974
+23ac954  ldr    x10, [x8, #0xb0]
+23ac958  add    x10, x10, #8
+23ac95c  ldur   x11, [x10, #-8]
+23ac960  cmp    x11, x1
+23ac964  b.eq   #0x23ac984
+23ac968  subs   x9, x9, #1
+23ac96c  add    x10, x10, #0x10
+23ac970  b.ne   #0x23ac95c
+23ac974  mov    w2, #0x12
+23ac978  mov    x0, x19
+23ac97c  bl     #0x1b7ba44  ; IFACE ICATarget.SetAnimation
+23ac980  b      #0x23ac994
+23ac984  ldr    w9, [x10]
+23ac988  add    w9, w9, #0x12
+23ac98c  add    x8, x8, w9, sxtw #4
+23ac990  add    x0, x8, #0x138
+23ac994  ldp    x8, x5, [x0]
+23ac998  mov    w2, #1
+23ac99c  mov    x0, x19
+23ac9a0  mov    x1, x21
+23ac9a4  mov    w3, wzr
+23ac9a8  mov    w4, wzr
+23ac9ac  blr    x8
+23ac9b0  mov    x0, x19
+23ac9b4  bl     #0x23acb70  ; -> CATargetExtensionMethods.SetForceSitIfNeeded
+23ac9b8  ldr    x8, [x20]
+23ac9bc  mov    x0, x20
+23ac9c0  mov    x1, x19
+23ac9c4  ldp    x9, x2, [x8, #0x1f8]
+23ac9c8  blr    x9
+23ac9cc  ldr    x8, [x20]
+23ac9d0  mov    x0, x20
+23ac9d4  mov    x1, x19
+23ac9d8  ldr    x9, [x8, #0x3a8]
+23ac9dc  ldr    x2, [x8, #0x3b0]
+23ac9e0  blr    x9
+23ac9e4  tbz    w0, #0, #0x23aca40
+23ac9e8  adrp   x8, #0x41bd000
+23ac9ec  ldr    x8, [x8, #0x548]
+23ac9f0  ldr    x8, [x8]
+23ac9f4  ldr    x8, [x8, #0xb8]
+23ac9f8  ldr    x21, [x8, #8]  ; type <MakeFishEatFood>d__16
+23ac9fc  cbz    x21, #0x23aca40
+23aca00  ldr    x8, [x20]
+23aca04  mov    x0, x20
+23aca08  ldr    x9, [x8, #0x488]  ; "Stealing_Food"
+23aca0c  ldr    x1, [x8, #0x490]  ; "Sitting_Sleeping"
+23aca10  blr    x9
+23aca14  ldr    x8, [x21, #0x40]
+23aca18  ldr    x5, [x21, #0x18]
+23aca1c  ldr    x4, [x21, #0x28]
+23aca20  mov    x1, x19
+23aca24  ldp    x20, x19, [sp, #0x20]
+23aca28  ldp    x22, x21, [sp, #0x10]
+23aca2c  and    w3, w0, #1
+23aca30  mov    w2, #1
+23aca34  mov    x0, x8
+23aca38  ldr    x30, [sp], #0x30
+23aca3c  br     x5
+23aca40  ldp    x20, x19, [sp, #0x20]
+23aca44  ldp    x22, x21, [sp, #0x10]
+23aca48  ldr    x30, [sp], #0x30
+23aca4c  ret    
+23aca50  bl     #0x1b88980

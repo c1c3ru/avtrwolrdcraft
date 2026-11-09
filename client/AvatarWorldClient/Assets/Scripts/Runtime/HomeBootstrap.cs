@@ -112,6 +112,14 @@ namespace AvatarWorld.Runtime
                     store.RefreshCoins();
                     store.SelectCategory(store.Category);
                 });
+            }, () =>
+            {
+                // "Criador de Avatar" no trilho: fecha a loja e abre os slots (AvatarMakerLobby). Se a loja foi
+                // aberta pelo carrinho dos proprios slots, eles continuam vivos por baixo (sort order menor) e
+                // reaparecem sozinhos; senao, OpenAvatarSlots cria uma tela nova.
+                Destroy(host);
+                _save.Save(_state);
+                OpenAvatarSlots();
             });
         }
 
@@ -129,6 +137,7 @@ namespace AvatarWorld.Runtime
         void OpenAvatarSlots()
         {
             if (FindFirstObjectByType<AvatarSlotsScreen>() != null) return;
+            LoadingScreen.Show();
             if (_worldMap != null) _worldMap.gameObject.SetActive(false);
             var host = new GameObject("AvatarSlots");
             var slots = host.AddComponent<AvatarSlotsScreen>();
@@ -136,8 +145,11 @@ namespace AvatarWorld.Runtime
             {
                 _save.Save(_state);
                 Destroy(host);
+                LoadingScreen.Show();
                 if (_worldMap != null) _worldMap.gameObject.SetActive(true);
+                LoadingScreen.Hide(0.5f);
             }, () => OpenStore(() => { }));
+            LoadingScreen.Hide(0.7f);
         }
 
         void CloseWorldMap()

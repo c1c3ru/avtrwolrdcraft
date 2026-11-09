@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "task_id": "T025/HANDLER/0000849b",
+  "status": "STATIC_candidate_contract_checked_not_certified",
+  "semantic_completion": false,
+  "method_identity": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "PWC.Level.LevelManager",
+    "name": "OnBeforeSceneLoadStage2",
+    "token": "0x0600849c",
+    "method_definition_index": 33947,
+    "parameter_count": 0,
+    "vaddr": "0x2313e64",
+    "file_offset": "0x230fe64"
+  },
+  "bounded_window": {
+    "start": "0x2313e64",
+    "exclusive_stop": "0x2313e70",
+    "bytes": 12,
+    "sha256": "f4ab308008f4c226fe52ad0579fa0ff3eb576f9856662145e2463848f1d12620",
+    "bound_limit": "candidate window capped at next distinct metadata method start; noncontiguous body and exception extents are not proven"
+  },
+  "assembly_path": "out/recon/tasks/T025/HANDLER/0000849b/handler.asm.txt",
+  "assembly_sha256": "bfd72e0813c3d8e3ce49be7f32b2d9d8f73839afa32c05c715343f560b162b91",
+  "disassembly_command": [
+    "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+    "-d",
+    "--start-address=0x2313e64",
+    "--stop-address=0x2313e70",
+    "/home/c1c3ru/avtrwolrdcraft/.claude/worktrees/recon-stage-handler-effects/out/recon/il2cpp/libil2cpp.so"
+  ],
+  "detail": {
+    "field_target": {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelManager.cs",
+      "sha256": "bae3f18957069995689388dc9f443a1cdf30d9c1d8b010f61a7d459f5b515683",
+      "declaration": "private bool <IsAboutToLoadScene>k__BackingField; //Field offset: 0x3A"
+    },
+    "pseudocode": [
+      "this.IsAboutToLoadScene = true"
+    ],
+    "effects": [
+      "writes instance field IsAboutToLoadScene (offset 0x3a) to true; no calls, no other state read/written"
+    ],
+    "calls": [],
+    "unknowns": [
+      "downstream readers of IsAboutToLoadScene are outside this bounded window"
+    ]
+  },
+  "input_pair": {
+    "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+  },
+  "source_registration_edge": {
+    "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+    "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+    "caller": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.Level.LevelManager",
+      "name": "Awake",
+      "token": "0x0600848e",
+      "method_definition_index": 33933,
+      "parameter_count": 0,
+      "vaddr": "0x2310b8c",
+      "file_offset": "0x230cb8c"
+    },
+    "handler": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.Level.LevelManager",
+      "name": "OnBeforeSceneLoadStage2",
+      "token": "0x0600849c",
+      "method_definition_index": 33947,
+      "parameter_count": 0,
+      "vaddr": "0x2313e64",
+      "file_offset": "0x230fe64"
+    },
+    "event_add_method": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.GameSceneManager",
+      "name": "add_OnBeforeSceneLoadStage2Action",
+      "token": "0x060056f2",
+      "method_definition_index": 22257,
+      "parameter_count": 1,
+      "vaddr": "0x2071fec",
+      "file_offset": "0x206dfec"
+    },
+    "target_object": "this saved in x19",
+    "handler_metadata_usage": {
+      "got_vaddr": "0x41d9aa8",
+      "usage_vaddr": "0x4325128",
+      "encoded": "0x60010937",
+      "kind": 3,
+      "index": 33947
+    },
+    "handler_got_reference": {
+      "adrp_site": "0x2310cac",
+      "ldr_site": "0x2310cc4",
+      "got_vaddr": "0x41d9aa8",
+      "base_register": 22,
+      "destination_register": 22
+    },
+    "constructor_call": {
+      "site": "0x2310d48",
+      "file_offset": "0x230cd48",
+      "word": "0x943ef0fd",
+      "bytes_le": "fdf03e94",
+      "target": "0x32cd13c",
+      "metadata_method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Action",
+        "name": ".ctor",
+        "token": "0x06000379",
+        "method_definition_index": 37309,
+        "parameter_count": 2,
+        "vaddr": "0x32cd13c",
+        "file_offset": "0x32c913c"
+      },
+      "identity_limit": null
+    },
+    "registration_branch": {
+      "site": "0x2310d64",
+      "file_offset": "0x230cd64",
+      "word": "0x97f584a2",
+      "bytes_le": "a284f597",
+      "kind": "BL",
+      "target": "0x2071fec"
+    },
+    "raw_argument_flow_anchors": [
+      {
+        "site": "0x2310bb4",
+        "file_offset": "0x230cbb4",
+        "word": "0xaa0003f3",
+        "bytes_le": "f30300aa"
+      },
+      {
+        "site": "0x2310cac",
+        "file_offset": "0x230ccac",
+        "word": "0xb000f656",
+        "bytes_le": "56f600b0"
+      },
+      {
+        "site": "0x2310cc4",
+        "file_offset": "0x230ccc4",
+        "word": "0xf94556d6",
+        "bytes_le": "d65645f9"
+      },
+      {
+        "site": "0x2310d38",
+        "file_offset": "0x230cd38",
+        "word": "0xf94002c2",
+        "bytes_le": "c20240f9"
+      },
+      {
+        "site": "0x2310d3c",
+        "file_offset": "0x230cd3c",
+        "word": "0xaa1303e1",
+        "bytes_le": "e10313aa"
+      },
+      {
+        "site": "0x2310d40",
+        "file_offset": "0x230cd40",
+        "word": "0xaa1f03e3",
+        "bytes_le": "e3031faa"
+      },
+      {
+        "site": "0x2310d44",
+        "file_offset": "0x230cd44",
+        "word": "0xaa0003f4",
+        "bytes_le": "f40300aa"
+      },
+      {
+        "site": "0x2310d48",
+        "file_offset": "0x230cd48",
+        "word": "0x943ef0fd",
+        "bytes_le": "fdf03e94"
+      },
+      {
+        "site": "0x2310d5c",
+        "file_offset": "0x230cd5c",
+        "word": "0xaa1403e0",
+        "bytes_le": "e00314aa"
+      },
+      {
+        "site": "0x2310d60",
+        "file_offset": "0x230cd60",
+        "word": "0xaa1f03e1",
+        "bytes_le": "e1031faa"
+      },
+      {
+        "site": "0x2310d64",
+        "file_offset": "0x230cd64",
+        "word": "0x97f584a2",
+        "bytes_le": "a284f597"
+      }
+    ],
+    "precondition": "Normal execution reaches the signup after metadata/class initialization and object/delegate construction.",
+    "limits": [
+      "Does not prove handler invocation, side effects, subscription order across instances or lifetime/unsubscription.",
+      "Exceptions, lazy-init helpers and indirect/generated calls outside this guarded flow remain unmodeled."
+    ]
+  },
+  "evidence_class": "STATIC_and_DERIVED_from_original_cached_bytes",
+  "runtime_or_device_observed": false
+}

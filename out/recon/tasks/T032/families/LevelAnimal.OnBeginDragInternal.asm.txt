@@ -1,0 +1,54 @@
+2264c1c  str    x30, [sp, #-0x30]!
+2264c20  stp    x22, x21, [sp, #0x10]
+2264c24  stp    x20, x19, [sp, #0x20]
+2264c28  adrp   x22, #0x44fd000
+2264c2c  adrp   x21, #0x41bd000
+2264c30  ldrb   w8, [x22, #0x913]
+2264c34  ldr    x21, [x21, #0x548]
+2264c38  mov    x20, x1
+2264c3c  mov    x19, x0
+2264c40  tbnz   w8, #0, #0x2264c58
+2264c44  adrp   x0, #0x41bd000
+2264c48  ldr    x0, [x0, #0x548]
+2264c4c  bl     #0x1b886e8
+2264c50  mov    w8, #1
+2264c54  strb   w8, [x22, #0x913]
+2264c58  mov    x0, x19
+2264c5c  mov    x1, x20
+2264c60  mov    x2, xzr
+2264c64  bl     #0x22f6260  ; -> LevelItem.OnBeginDragInternal
+2264c68  ldr    x8, [x21]
+2264c6c  ldr    x8, [x8, #0xb8]
+2264c70  ldr    x8, [x8]
+2264c74  cbz    x8, #0x2264c90
+2264c78  ldr    x9, [x8, #0x18]
+2264c7c  ldr    x0, [x8, #0x40]
+2264c80  ldr    x3, [x8, #0x28]
+2264c84  mov    w2, #1
+2264c88  mov    x1, x19
+2264c8c  blr    x9
+2264c90  ldr    x8, [x19]
+2264c94  mov    x0, x19
+2264c98  ldr    x9, [x8, #0xa48]
+2264c9c  ldr    x1, [x8, #0xa50]
+2264ca0  blr    x9
+2264ca4  tbz    w0, #0, #0x2264cbc
+2264ca8  mov    x0, x19
+2264cac  ldp    x20, x19, [sp, #0x20]
+2264cb0  ldp    x22, x21, [sp, #0x10]
+2264cb4  ldr    x30, [sp], #0x30
+2264cb8  b      #0x2264cf4  ; -> LevelAnimal.OnBeginMovement
+2264cbc  ldr    x8, [x19]
+2264cc0  mov    x0, x19
+2264cc4  ldr    x9, [x8, #0xad8]
+2264cc8  ldr    x1, [x8, #0xae0]
+2264ccc  blr    x9
+2264cd0  mov    x1, x0
+2264cd4  mov    x0, x19
+2264cd8  ldp    x20, x19, [sp, #0x20]
+2264cdc  ldp    x22, x21, [sp, #0x10]
+2264ce0  mov    w2, #1
+2264ce4  mov    w3, wzr
+2264ce8  mov    w4, wzr
+2264cec  ldr    x30, [sp], #0x30
+2264cf0  b      #0x2266814  ; -> LevelAnimal.SetAddAnimationInternal

@@ -1,0 +1,19 @@
+{
+  "task_id": "T025/METHOD/8e708ca7d06e0b52",
+  "status": "partial",
+  "semantic_completion": false,
+  "method_body_fully_bounded": false,
+  "method_body_extent": "904-byte metadata-bounded candidate window; complete/noncontiguous and exception ranges not proven",
+  "contract": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/method-contract.json",
+  "control_flow": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/control-flow.json",
+  "unknowns": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/unknowns.jsonl",
+  "stage_registration_followup": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+  "method": "Observed three sequential null-guarded indirect calls through slots loaded at offsets 0/8/16; association to named GameSceneManager Stage fields remains candidate-only because TypeInfo/static-data provenance is unresolved. Separately verified all nine remaining raw direct add-call candidates against the pinned metadata/codegen pair, delegate constructor MethodDef usage, receiver/type compatibility and flow of the constructed delegate into the exact event accessor. Together with the four earlier positive Stage edges this verifies 13/13 candidates from the bounded direct-encoding scan. This is static registration evidence, not runtime invocation or a complete subscriber graph.",
+  "verification": {
+    "new_stage_candidates": "9/9 static registration edges",
+    "all_direct_scan_candidates": "13/13 across Stage1-3",
+    "focused_tests": "3 local mutation/identity tests and 9 existing scene-subscriber tests passed",
+    "runtime_or_device": false
+  },
+  "next_action": "Continue with handler bodies/effects and remaining T025 pilot gaps; preserve the full-body/exception and runtime unknowns. Do not mark this child or parent done without independent review and its acceptance bar."
+}
