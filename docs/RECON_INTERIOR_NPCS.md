@@ -63,3 +63,6 @@ Total: **389** avatares em 52 de 57 interiores.
 | trainstation | TrainStation_Z1B2 | 6 | 6 | 0 | 0 | 0 |
 | treetop_z2b3 | Treetop_Z2B3L1 | 1 | 1 | 0 | 0 | 0 |
 | yoga_build_t1s3 | MiniYogaStudio_Z1B2L1 | 5 | 5 | 0 | 0 | 0 |
+
+## Correção L05 (2026-11-09): a aparência dos NPCs está nos dados locais
+A frase "a aparência de cada id não está nos dados locais" está errada. `Resources/PremadeData/` tem 59 JSONs `AvatarSpineDatas` (1.324 avatares, ids únicos) e 386 dos 389 NPCs dos interiores resolvem por id; os 3 restantes são pets. Detalhes e reprodução em `docs/loops/results/L05.md` e `reports/recon/premade_characters.json`.

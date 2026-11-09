@@ -1,0 +1,501 @@
+{
+ "schema_version": 1,
+ "scope": "static data; how the game uses a premade id at run time beyond the loader proof is not shown here",
+ "files": {
+  "AWAnniversary_GE3_ALL_FINAL_109393.txt": {
+   "entries": 31,
+   "id_min": 100974,
+   "id_max": 101004
+  },
+  "Auditorium_L205_108606.txt": {
+   "entries": 13,
+   "id_min": 101186,
+   "id_max": 101198
+  },
+  "Barbershop_2_L190_108858.txt": {
+   "entries": 1,
+   "id_min": 101092,
+   "id_max": 101092
+  },
+  "Barbershop_L190_108961.txt": {
+   "entries": 7,
+   "id_min": 101085,
+   "id_max": 101091
+  },
+  "Basketball_108861.txt": {
+   "entries": 5,
+   "id_min": 101022,
+   "id_max": 101026
+  },
+  "BrandedCoffeeShopL192_109509.txt": {
+   "entries": 4,
+   "id_min": 101098,
+   "id_max": 101101
+  },
+  "BubbleTeaShopL193_109401.txt": {
+   "entries": 5,
+   "id_min": 101093,
+   "id_max": 101097
+  },
+  "Campus_Hallway_F1_L198_108378.txt": {
+   "entries": 12,
+   "id_min": 101162,
+   "id_max": 101173
+  },
+  "CandyStoreL213_109234.txt": {
+   "entries": 8,
+   "id_min": 101209,
+   "id_max": 101216
+  },
+  "Cars_Main_Characters_109752.txt": {
+   "entries": 8,
+   "id_min": 101328,
+   "id_max": 101335
+  },
+  "CityBusL168_109650.txt": {
+   "entries": 8,
+   "id_min": 101102,
+   "id_max": 101109
+  },
+  "College_Library_L206_109312.txt": {
+   "entries": 10,
+   "id_min": 101199,
+   "id_max": 101208
+  },
+  "College_Main_Characters_108844.txt": {
+   "entries": 4,
+   "id_min": 101125,
+   "id_max": 101128
+  },
+  "CountryClubStreetL187_109886.txt": {
+   "entries": 10,
+   "id_min": 101012,
+   "id_max": 101021
+  },
+  "Couples_Hallway_L215_109498.txt": {
+   "entries": 4,
+   "id_min": 101267,
+   "id_max": 101270
+  },
+  "Courtyard_L194_109546.txt": {
+   "entries": 15,
+   "id_min": 101110,
+   "id_max": 101124
+  },
+  "Dentist_Office_L208_108452.txt": {
+   "entries": 8,
+   "id_min": 101223,
+   "id_max": 101230
+  },
+  "Dorm_Hallway_L199_109423.txt": {
+   "entries": 4,
+   "id_min": 101144,
+   "id_max": 101147
+  },
+  "DormsCommonArea_L195_108350.txt": {
+   "entries": 4,
+   "id_min": 101140,
+   "id_max": 101143
+  },
+  "Event_Venue_L224_108394.txt": {
+   "entries": 5,
+   "id_min": 101310,
+   "id_max": 101327
+  },
+  "Family_Hallway_L216_109827.txt": {
+   "entries": 6,
+   "id_min": 101271,
+   "id_max": 101276
+  },
+  "Family_Room_L218_109796.txt": {
+   "entries": 3,
+   "id_min": 101277,
+   "id_max": 101279
+  },
+  "GarageL232_Cars_108892.txt": {
+   "entries": 2,
+   "id_min": 101369,
+   "id_max": 101370
+  },
+  "HairSalonL170_108552.txt": {
+   "entries": 4,
+   "id_min": 101081,
+   "id_max": 101084
+  },
+  "HotelEntrance_L225_109287.txt": {
+   "entries": 5,
+   "id_min": 101262,
+   "id_max": 101266
+  },
+  "Hotel_Lobby_L207_108721.txt": {
+   "entries": 12,
+   "id_min": 101251,
+   "id_max": 101314
+  },
+  "Hype_Plaza_L191_109847.txt": {
+   "entries": 5,
+   "id_min": 101070,
+   "id_max": 101074
+  },
+  "Jellybean_Avenue_L210_108624.txt": {
+   "entries": 11,
+   "id_min": 101231,
+   "id_max": 101241
+  },
+  "KpopClipStudio_L183_109430.txt": {
+   "entries": 6,
+   "id_min": 101043,
+   "id_max": 101048
+  },
+  "KpopGalxe_109271.txt": {
+   "entries": 3,
+   "id_min": 101040,
+   "id_max": 101042
+  },
+  "KpopHQ_L188_109057.txt": {
+   "entries": 5,
+   "id_min": 101056,
+   "id_max": 101060
+  },
+  "KpopMerchStore_L189_109225.txt": {
+   "entries": 9,
+   "id_min": 101061,
+   "id_max": 101069
+  },
+  "KpopMoonz_109914.txt": {
+   "entries": 3,
+   "id_min": 101049,
+   "id_max": 101051
+  },
+  "KpopPreMoonz_109419.txt": {
+   "entries": 5,
+   "id_min": 101035,
+   "id_max": 101039
+  },
+  "Lecture_Hall_Humanities_L204_109536.txt": {
+   "entries": 6,
+   "id_min": 101174,
+   "id_max": 101179
+  },
+  "Lecture_Hall_Natural_Sciences_L203_109895.txt": {
+   "entries": 6,
+   "id_min": 101180,
+   "id_max": 101185
+  },
+  "Main_Campus_Entrance_L197_109128.txt": {
+   "entries": 14,
+   "id_min": 101148,
+   "id_max": 101161
+  },
+  "MountainTopL109_109251.txt": {
+   "entries": 9,
+   "id_min": 100937,
+   "id_max": 100945
+  },
+  "Nail_Salon_L171_109826.txt": {
+   "entries": 6,
+   "id_min": 101075,
+   "id_max": 101080
+  },
+  "Pediatrician_L229_109614.txt": {
+   "entries": 8,
+   "id_min": 100904,
+   "id_max": 100911
+  },
+  "Pilates_P135_108791.txt": {
+   "entries": 7,
+   "id_min": 101005,
+   "id_max": 101011
+  },
+  "PremadeCharactersJson_109356.txt": {
+   "entries": 896,
+   "id_min": 100000,
+   "id_max": 100903
+  },
+  "Private_Beach_L226_108773.txt": {
+   "entries": 12,
+   "id_min": 101315,
+   "id_max": 101326
+  },
+  "Public_Pool_L169_109505.txt": {
+   "entries": 13,
+   "id_min": 100918,
+   "id_max": 100930
+  },
+  "RecordingStudio_L178_108346.txt": {
+   "entries": 4,
+   "id_min": 101052,
+   "id_max": 101055
+  },
+  "Resturaunt_L223_109448.txt": {
+   "entries": 18,
+   "id_min": 101292,
+   "id_max": 101309
+  },
+  "Rooftop_Pool_L217_109653.txt": {
+   "entries": 10,
+   "id_min": 101282,
+   "id_max": 101291
+  },
+  "ShopsBoulevard_L110_109933.txt": {
+   "entries": 6,
+   "id_min": 100950,
+   "id_max": 100955
+  },
+  "SkiLift_112_108673.txt": {
+   "entries": 5,
+   "id_min": 100956,
+   "id_max": 100960
+  },
+  "SkiSlopeL111_109295.txt": {
+   "entries": 6,
+   "id_min": 100931,
+   "id_max": 100936
+  },
+  "SkiSupplyShop_L113_108425.txt": {
+   "entries": 4,
+   "id_min": 100946,
+   "id_max": 100949
+  },
+  "Spa_L119_108493.txt": {
+   "entries": 4,
+   "id_min": 100968,
+   "id_max": 100971
+  },
+  "Suite_P219_109345.txt": {
+   "entries": 2,
+   "id_min": 101280,
+   "id_max": 101281
+  },
+  "Toy_Store_L209_108716.txt": {
+   "entries": 9,
+   "id_min": 101242,
+   "id_max": 101250
+  },
+  "TrackFootballStadium_L185_109007.txt": {
+   "entries": 11,
+   "id_min": 101129,
+   "id_max": 101139
+  },
+  "VetRemasterL212_109320.txt": {
+   "entries": 6,
+   "id_min": 101217,
+   "id_max": 101222
+  },
+  "WinterClothesStore_L105_108839.txt": {
+   "entries": 7,
+   "id_min": 100961,
+   "id_max": 100967
+  },
+  "WinterStableHorses_108959.txt": {
+   "entries": 2,
+   "id_min": 100972,
+   "id_max": 100973
+  },
+  "YogaMamaClubP144_109043.txt": {
+   "entries": 8,
+   "id_min": 101027,
+   "id_max": 101034
+  }
+ },
+ "avatars": 1324,
+ "duplicate_ids_across_files": [],
+ "schema": {
+  "entry_keys": [
+   [
+    "BuildNumber",
+    "Config",
+    "ID",
+    "SizeType",
+    "SkinsData",
+    "SpineType"
+   ]
+  ],
+  "skin_keys": [
+   [
+    "CategoryType",
+    "ColorA",
+    "ColorB",
+    "SkinName"
+   ],
+   [
+    "CategoryType",
+    "Colors",
+    "SkinName"
+   ],
+   [
+    "CategoryType",
+    "SkinName"
+   ]
+  ],
+  "color_format_by_build": {
+   "ColorA/ColorB": {
+    "entries": 1008,
+    "build_min": 0,
+    "build_max": 191
+   },
+   "Colors": {
+    "entries": 316,
+    "build_min": 195,
+    "build_max": 1000
+   },
+   "entries_mixing_both_formats": 0,
+   "formats_split_cleanly_by_build": true
+  },
+  "spine_types": {
+   "Character": 1226,
+   "Cat": 6,
+   "Toddler": 60,
+   "Dog": 10,
+   "Baby": 15,
+   "Car": 2,
+   "Horse": 5
+  },
+  "size_types": {
+   "1": 988,
+   "0": 87,
+   "2": 131,
+   "3": 118
+  },
+  "config_keys": [
+   "isDisplayInPhone"
+  ],
+  "category_folder_pairs": 116,
+  "character_category_to_folder_is_one_to_one_except_case": true
+ },
+ "pet_breeds": {
+  "rows": 35,
+  "by_species": {
+   "Dog": 19,
+   "Cat": 14,
+   "Horse": 2
+  },
+  "columns": [
+   "SpineType",
+   "Is_Default",
+   "Name",
+   "Prefab",
+   "Breed_Name",
+   "Body_Color",
+   "Size",
+   "Pattern_Name",
+   "Pattern_Color",
+   "Eyes_Name",
+   "Eye_Top_Color",
+   "Eye_Bottom_Color",
+   "Mouth_Name",
+   "Eyebrows_Name",
+   "Eyebrows_Color",
+   "Hair_Front_Name",
+   "Hair_Front_Color",
+   "Hair_Back_Name",
+   "Hair_Back_Color",
+   "Tail_Name",
+   "Tail_Color"
+  ]
+ },
+ "interior_npcs": {
+  "references": 389,
+  "distinct_ids": 384,
+  "resolved": 386,
+  "unresolved_ids": [
+   900005,
+   900009,
+   900017
+  ],
+  "unresolved_that_are_pets": {
+   "900005": {
+    "name": "Cat_A_1",
+    "in_breed_table": true
+   },
+   "900009": {
+    "name": "Cat_A_4",
+    "in_breed_table": true
+   }
+  },
+  "interiors": 52
+ },
+ "client_catalog": {
+  "character_npcs": 362,
+  "fully_dressable_with_client_catalog": 2,
+  "slots_missing_in_client_by_folder": {
+   "Legs_Socks": 246,
+   "Face_Cheeks": 192,
+   "Face_Complexion": 172,
+   "Hat_A": 152,
+   "Accessories_Face_Piercing": 136,
+   "Accessories_Body_Bags": 88,
+   "Jacket_Special": 83,
+   "Accessories_Body_Bracelets": 80,
+   "Onepiece_Special": 67,
+   "Jacket_Casual": 31,
+   "Hat_B": 27,
+   "Accessories_Body_Gloves": 23,
+   "Hat_C": 20,
+   "Jacket_Formal": 17,
+   "Onepiece_Casual": 16,
+   "Hat_D": 14,
+   "Onepiece_Formal": 9,
+   "Mouth": 8,
+   "Hair_Back": 8,
+   "Accessories_Face_Mask": 7,
+   "Accessories_Body_Rings": 6,
+   "Legs_Shoes": 5,
+   "Accessories_Body_Neck": 3,
+   "Bottom_Special": 2,
+   "Shirt_Special": 2,
+   "Fingernails_L": 1,
+   "Fingernails_R": 1
+  }
+ },
+ "loader": {
+  "list_loader": "reads every TextAsset under Resources \"PremadeData/\" (generic LoadAll, not name-resolved); per asset: empty -> error, parse failure -> error, AvatarSpineDatas null -> error; an id already seen in another file -> error \"ID[n] is already in use in file name[x]!\" (so ids are globally unique)",
+  "single_json_loader": "loads one named asset from \"PremadeData/\"; unknown name -> error",
+  "copy_to_save": "LoadPremadeCharactersFromResources: list -> PlayerPrefs.GetInt(\"CafeteriaPremadesTempOverrideKey\") -> per premade TryLoadAvatarSpineData (saved copy) -> SaveCharacter (writes AvatarSpineData_<id>) -> PlayerPrefs.SetInt(\"CafeteriaPremadesTempOverrideKey\")",
+  "inferred": [
+   "the key gates a one-time refresh of some premades; which ones, and the loop condition, were not decoded"
+  ]
+ },
+ "consumers": {
+  "boot": "AvatarSpineDataManager.Init -> LoadPremadeCharactersFromResources (premades copied into the local save)",
+  "restore_on_destroy": "DestroyAvatar of Character/Toddler/Baby/Cat/Dog/Horse -> TryLoadPremadeCharacterFromResources (original data reloaded)",
+  "random_spawn": "LevelCharactersRandomizer.SpawnCharacter -> ResetPremadeCharacter",
+  "ui": "phone ContactsPage and LevelUIScrollCharacterItem use IsPremadeID",
+  "migration": "IsOldPremadePet is called by LevelCat/LevelDog.SetPersistentData and by the PerformAvatarSpineDataMigration local function",
+  "cloud": "CPAvatarDataHelper.TryAddAvatarsSpineData -> TryLoadPremadeFromResources",
+  "callers_checked": {
+   "LoadPremadeCharactersFromResources": [
+    "PWC.AvatarSpine.AvatarSpineDataManager.Init"
+   ],
+   "ResetPremadeCharacter": [
+    "PWC.Level.LevelCharactersRandomizer.SpawnCharacter"
+   ],
+   "TryLoadPremadeCharacterFromResources": [
+    "Game.Level.LevelCat.DestroyAvatar",
+    "Game.Level.LevelDog.DestroyAvatar",
+    "Game.Level.LevelHorse.DestroyAvatar",
+    "PWC.Level.LevelBaby.DestroyAvatar",
+    "PWC.Level.LevelCharacter.DestroyAvatar",
+    "PWC.Level.LevelToddler.DestroyAvatar"
+   ],
+   "IsPremadeID": [
+    "PWC.AvatarSpine.AvatarSpineDataManager.ResetPremadeCharacter",
+    "PWC.Level.LevelAvatarData.ShouldAvatarBeInGameObjectScene",
+    "PWC.Level.LevelUIScrollCharacterItem.OnPointerClick",
+    "PWC.LevelPhone.ContactsPage.GetContactsIfNeeded"
+   ],
+   "TryLoadPremadeFromResources": [
+    "PWC.CloudProgress.CPAvatarDataHelper.TryAddAvatarsSpineData"
+   ],
+   "TryLoadPremadeListFromResources": [
+    "PWC.PremadeCharacters.PremadeCharactersDisplayManager.Start",
+    "PWC.WorldReset.WorldResetManager.ResetScene"
+   ],
+   "IsOldPremadePet": [
+    "Game.Level.LevelCat.SetPersistentData",
+    "Game.Level.LevelDog.SetPersistentData"
+   ]
+  },
+  "caveat": "direct bl/b callers only; what each caller does with the data was not opened"
+ }
+}
