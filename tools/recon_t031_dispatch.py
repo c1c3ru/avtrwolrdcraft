@@ -28,7 +28,7 @@ NATIVE_SHA = "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
 
 
 def load():
-    data_dir = Path("/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp")
+    data_dir = ROOT / "out/recon/il2cpp"
     binary = (data_dir / "libil2cpp.so").read_bytes()
     nav.require(nav.sha(binary) == NATIVE_SHA, "native identity mismatch; contract is version-specific")
     elf = Elf(binary)

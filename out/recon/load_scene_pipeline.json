@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "scope": "bounded static proof; no execution",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "LoadScene": {
+    "class_identity": "GameSceneManager inferred from declared static layout; class slot 0x41b4e60 has no decodable usage",
+    "reentrancy_guard": {
+      "field": "IsSceneChangingInProgress",
+      "on_true": "Debug.LogError('Scene loading is already in progress!') and return"
+    },
+    "cache_clears_in_order": [
+      "AvatarSpineTexturesManager.ClearAllTextureData",
+      "SUTUtils.ClearTexturesCache",
+      "CarPartsLoader.ClearLoadedParts",
+      "CarAppearance.ClearIconCache"
+    ],
+    "state_before_transition": [
+      "IsSceneChangingInProgress = true",
+      "CurrentlyLoadingSceneName = sceneName",
+      "PreviousSceneName = GetActiveSceneName()"
+    ],
+    "stage_events_invoked_if_non_null": [
+      "OnBeforeSceneLoadStage1Action",
+      "OnBeforeSceneLoadStage2Action",
+      "OnBeforeSceneLoadStage3Action"
+    ],
+    "transition": "LoadingScreenManager.Instance.StartSceneTransition(new Action(closure, <LoadScene>b__0))",
+    "delegate_method_token": "0x0600570f"
+  },
+  "LoadSceneImplement": {
+    "if_multiplayer": "MPOwnership.Clear()",
+    "then": "tail call SceneManager.LoadSceneAsync(sceneName) (1-parameter overload; result discarded, void)"
+  },
+  "OnActiveSceneChanged": {
+    "resets": [
+      "IsSceneChangingInProgress = false",
+      "Multiplayer_LoadingSceneNameInProgress = null",
+      "CurrentlyLoadingSceneName = null"
+    ],
+    "caveat": "who subscribes this handler to SceneManager.activeSceneChanged is not proven here"
+  }
+}

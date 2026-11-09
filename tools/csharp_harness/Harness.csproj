@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Runs engine-free client tests without Unity, using a minimal NUnit shim (NUnitShim.cs).
+       Not a replacement for the Unity Test Runner; see tools/csharp_harness/README.md. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="NUnitShim.cs" />
+    <Compile Include="../../client/AvatarWorldClient/Assets/Scripts/Core/Pointer/*.cs" />
+    <Compile Include="../../client/AvatarWorldClient/Assets/Tests/EditMode/DragIntentDetectorTests.cs" />
+    <Compile Include="../../client/AvatarWorldClient/Assets/Tests/EditMode/DropTargetOrderingTests.cs" />
+    <Compile Include="../../client/AvatarWorldClient/Assets/Tests/EditMode/CameraPanMathTests.cs" />
+  </ItemGroup>
+</Project>

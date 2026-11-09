@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "scope": "bounded static proof; no execution",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "SortDropAreas": {
+    "list": "LevelDropArea.List (static +0x0)",
+    "comparator": "LevelConsumers.CompareConsumers (static delegate)",
+    "unresolved": [
+      "Comparison ctor 0x27fb274 and List.Sort 0x2cf2280 are generic instantiations without a name"
+    ]
+  },
+  "CompareConsumers": {
+    "consumer_interface_slots": {
+      "0": "GetEntity",
+      "2": "GetSortPriority",
+      "4": "GetSortingElement"
+    },
+    "order": [
+      "1. if both GetEntity() are null: higher GetSortPriority() first",
+      "2. entity present before entity absent",
+      "3. both entities present: SortingElement present before absent (UnityEngine.Object null check)",
+      "4. both present: higher SortingElement.GetSortingOrderForY() first; equal -> higher GetSortPriority() first"
+    ],
+    "direction": "descending: rhs.CompareTo(lhs) for both priority and sorting order"
+  },
+  "IsDroppableUnderItem": {
+    "consumer": "overrideConsumerAreaForTest == null ? dropArea : override",
+    "steps": [
+      "PerformBasicTests(dropArea, levelItem, consumer.GetWorldXBounds(), itemXBounds) else false",
+      "consumer._cShape.IsPointInsideShape(position) -> true, isTouchingOnly=false",
+      "unless levelItem.HasTouchShapeOverride(): position.y > consumer.GetWorldBounds() top (center.y+extents.y) -> false",
+      "consumer cShapeModel.IsTouching(touchGameShape._cShapeModel) and LevelUtils.IsTouchingGameShapeAreaVisibleToUser(levelItem.transform, touchGameShape, consumer) -> true, isTouchingOnly=true"
+    ],
+    "inference": "Bounds layout (center.y at +4, extents.y at +16) is Unity's; top-edge reading follows from it"
+  },
+  "PerformBasicTests": {
+    "steps": [
+      "areaX.Intersects(itemX)",
+      "dropArea.transform is not a child of levelItem.transform",
+      "dropArea.CanConsumeItem(levelItem) (virtual slot 14)",
+      "CanItemHeightFitInsideDropArea",
+      "CanItemWidthFitInsideDropArea"
+    ]
+  }
+}

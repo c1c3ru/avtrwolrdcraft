@@ -27,6 +27,89 @@
     "literal_file_offset": 381507,
     "literal_bytes": 4
   },
+  "multiplayer_guard": {
+    "static_class": "PWC.Multiplayer.MPManager",
+    "static_flag": {
+      "site": "0x2073538",
+      "offset": "0x0",
+      "declared_as": "IsMultiplayerGame backing field"
+    },
+    "static_instance": {
+      "site": "0x2073564",
+      "offset": "0x38",
+      "declared_as": "Instance backing field"
+    },
+    "null_instance_target": "0x2073788 (helper call; NullReferenceException pattern, unnamed)",
+    "host_only_call": {
+      "site": "0x2073570",
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPManager",
+          "name": "IsHostAndOnlyPlayer",
+          "token": "0x06005e3f",
+          "method_definition_index": 24126,
+          "parameter_count": 0,
+          "vaddr": "0x20d2c6c",
+          "file_offset": "0x20cec6c"
+        }
+      ]
+    },
+    "decision": "multiplayer path iff sceneName != \"Home\" && considerMultiplayer && MPManager.IsMultiplayerGame && !MPManager.Instance.IsHostAndOnlyPlayer(); otherwise GameSceneManager.LoadSceneImplement(sceneName); null Instance raises"
+  },
+  "multiplayer_sequence": {
+    "calls": [
+      {
+        "site": "0x20735b0",
+        "name": "Guid.NewGuid"
+      },
+      {
+        "site": "0x20735c0",
+        "name": "Guid.ToString"
+      },
+      {
+        "site": "0x20735f8",
+        "name": "MPManager.IsHost"
+      },
+      {
+        "site": "0x2073618",
+        "name": "MPData_SceneChangeRequest..ctor"
+      },
+      {
+        "site": "0x2073640",
+        "name": "GameSceneManager.GetActiveSceneId"
+      },
+      {
+        "site": "0x20736a8",
+        "name": "MPManager.SendWaitForPlayerForSceneChangeRequest"
+      },
+      {
+        "site": "0x20736c0",
+        "name": "GameSceneManager.GetActiveSceneId"
+      },
+      {
+        "site": "0x20736d8",
+        "name": "MPDataHelper_SceneChangeRequest.TrySendEvent"
+      },
+      {
+        "site": "0x20736e0",
+        "name": "MPUtils.DestroyAllGameObjectsInLoadedScenes"
+      },
+      {
+        "site": "0x2073718",
+        "name": "MPManager.GetPlayerUID"
+      },
+      {
+        "site": "0x2073728",
+        "name": "MPManager.ClearPlayerFromScenes"
+      }
+    ],
+    "host": "IsHost true -> new MPData_SceneChangeRequest -> GetActiveSceneId -> SendWaitForPlayerForSceneChangeRequest",
+    "non_host": "IsHost false (0x20736b0) -> GetActiveSceneId -> MPDataHelper_SceneChangeRequest.TrySendEvent",
+    "join": "0x20736dc: DestroyAllGameObjectsInLoadedScenes -> GetPlayerUID -> ClearPlayerFromScenes -> return",
+    "loads_scene_locally": false,
+    "scene_id_choice": "mp_nextSceneId (this+0x20) when non-null, else sceneName"
+  },
   "control_encodings": [
     {
       "site": "0x20734b0",
@@ -601,7 +684,7 @@
   "limitations": [
     "Linear window ending at next metadata start is not a complete CFG/body proof.",
     "Metadata targets revalidated; unresolved helpers remain unnamed.",
-    "Field names require declarations; shared static flag semantics remain open.",
+    "Static field names come from Cpp2IL declarations (offsets 0x0/0x38), not from the binary.",
     "No multiplayer operation, target execution or queue acceptance performed."
   ]
 }

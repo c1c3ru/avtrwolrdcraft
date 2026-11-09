@@ -85,6 +85,12 @@ Atualizacao 2026-11-05: os 28 testes (LocomotionStateMachineTests 11, DragIntent
 ## Toddler e animais no mesmo fluxo (2026-11-05)
 `Assets/Tests/PlayMode/CharacterFamiliesPlayTests.cs` com esqueletos reais em `Assets/Tests/PlayMode/Fixtures/` (Toddler_Spine 4,4 MB, Pet_Dog 2,2 MB, Pet_Cat 1,3 MB; fora de `Resources`, logo fora do build; carregados via `AssetDatabase`). 4 testes PlayMode passam (9/9 com os do Character): Toddler em pe toca `Movement_Cycles/Walking_Loop`, sentado `Movement_Cycles/Crawling_Loop`, parado `General/Stand_Idle`, e nunca corre mesmo rapido; Dog anda (`General/Walking`) e corre (`General/Running`, >18 u/s com corrida) e volta a `General/Standing_Idle`; Cat sem corrida fica em `General/Walking`. `CharacterDragController` ganhou `DeltaTimeOverride` (velocidade deterministica em teste) e recalcula a animacao inicial no `Start` (Family/Posture sao configurados depois do AddComponent). Nao coberto: Horse, Baby (sem locomocao), renderizacao, camera real.
 
+## Atualização L02 (2026-11-09): prioridade de soltura, pan da câmera e consumo de toque
+Resolve o comparador de `SortDropAreas` (`LevelConsumers.CompareConsumers`), a cadeia de `IsDroppableUnderItem`/`PerformBasicTests`,
+o pan de `GameCameraBase` (fator `10.24 / Screen.height`, limiar 0.01, bloqueio por `CShapeRaycaster`) e prova que o gameplay não lê
+`touchCount`/`GetTouch`/scroll. Provas em `tools/recon_drop_priority.py` e `tools/recon_camera_drag.py`; resumo, graus e lacunas em
+`docs/loops/results/L02.md`. Contrato C#: `DropTargetOrdering` e `CameraPanMath` (`Assets/Scripts/Core/Pointer`).
+
 ## Recorte 2026-11-08: dispatches indiretos de begin/end drag e mecanismo de prioridade de hitbox
 
 Ferramenta: `tools/recon_t031_dispatch.py` (saída `out/recon/tasks/T031/dispatch-resolution.json`, testes de mutação em `tools/test_recon_t031_dispatch.py`, 7/7 OK). Ambiente sem Hopper/Ghidra/IDA utilizável (bridge do Hopper expirou por diálogo de licença/loader, igual a tentativas anteriores; `objdump` deste sandbox não tem suporte a AArch64; Ghidra/IDA não configurados) — leitura continua sendo ELF+metadata byte a byte, igual às demais ferramentas `recon_*`. Cada fato abaixo é re-derivado da tabela `fieldOffsets`/`Il2CppMethodDefinition.slot` do par atual e conferido contra o opcode exato do call site (sem confiar em cache `.jsonl`); ambos checados pelos testes de mutação.

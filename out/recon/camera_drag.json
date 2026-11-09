@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "scope": "bounded static proof; no execution",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "GameCameraBase.Update": {
+    "pointer": "primary only: Input.GetMouseButton(0) / GetMouseButtonDown(0); no touchCount/GetTouch",
+    "gate": "isDraggable && (AllowMovementWhenZoomNotDefault || !IsZoomNotDefault)",
+    "ui_vs_world": "while the button is held, if ShouldConsiderCShapes and CShapeRaycaster.LastResultCount >= 1 the camera does not pan and the last position is forgotten",
+    "release": [
+      "CShapeRaycaster.enabled = true",
+      "if IsDragging: PlayEndDragTween() unless _isCameraWiderThanScreen; OnEndDrag(); IsDragging = false",
+      "last position = null; ShouldConsiderCShapes = true",
+      "_isPointerDown is not cleared in Update"
+    ],
+    "pointer_down_event": "OnPointerDownAction invoked on GetMouseButtonDown(0) before the gate"
+  },
+  "GameCameraBase.OnDrag": {
+    "drag_factor": "HEIGHT(10.24) / Screen.height world units per pixel, set in Awake",
+    "pan": "x = clamp(camX - (mouse.x - last.x) * factor, GetCameraXBounds()); y = camY - (mouse.y - last.y) * factor; SetPosition(x, y, z)",
+    "begin_drag": "OnBeginDrag() once |clampedX - camX| > 0.01 world units; then IsDragging = true and CShapeRaycaster.enabled = false",
+    "vertical": "y is applied every frame even before IsDragging; only horizontal motion triggers OnBeginDrag",
+    "on_begin_drag": "StopTween(), then OnBeginDragAction",
+    "inertia": "PlayEndDragTween: TweenToXPosition(...) then setEaseOutExpo, skipped when _isCameraWiderThanScreen",
+    "decoded_not_asserted": [
+      "z is kept (z + factor * -0.0)",
+      "inertia target x = camX + (-10 * factor * dx), duration |factor * dx| (dx = mouse.x - last.x at release)"
+    ]
+  },
+  "input_consumers": {
+    "scope": "direct call sites of UnityEngine.Input; attribution = nearest preceding named method",
+    "consumers": {
+      "get_touchCount": [
+        "Input.get_touchCount",
+        "LTGUI.firstTouch",
+        "UnityEngine.EventSystems.BaseInput.get_touchCount"
+      ],
+      "GetTouch": [
+        "Input.GetTouch",
+        "UnityEngine.EventSystems.BaseInput.GetTouch"
+      ],
+      "get_mouseScrollDelta": [
+        "PWC.SUTSystem.SUTSystemTester.Update",
+        "UnityEngine.EventSystems.BaseInput.get_mouseScrollDelta"
+      ],
+      "get_touches": [
+        "CShapes.CShapeRaycaster.IsTouchBeginPhase",
+        "LTGUI.firstTouch",
+        "PWC.PWCUtils.GetPointerScreenPosition",
+        "Reporter.getDownPos",
+        "Reporter.getDrag",
+        "Reporter.isDoubleClickDone",
+        "Reporter.isGestureDone"
+      ],
+      "set_multiTouchEnabled": [
+        "PazuCore.AF.ActionBar.HubCanvas.Awake",
+        "PazuCore.AF.ActionBar.HubCanvas.OnDestroy",
+        "PazuCore.SettingsManager.InitExtraSettings"
+      ]
+    },
+    "reading": [
+      "no gameplay (Game.* / PWC.Level*) code calls touchCount, GetTouch, touches or mouseScrollDelta",
+      "touches only in CShapeRaycaster.IsTouchBeginPhase and PWCUtils.GetPointerScreenPosition (pointer position)",
+      "scroll wheel only in the QA tool SUTSystemTester",
+      "multiTouchEnabled written by PazuCore SettingsManager (value from GameExtraSettings.multiTouchEnabled, not recovered) and by HubCanvas (saves, sets false, restores)"
+    ]
+  }
+}
