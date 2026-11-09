@@ -25,7 +25,9 @@ PETS_DIR = UNITY / 'Resources/AvatarSpine/Pets'
 TEXTURES = ROOT / 'out/assets/Texture2D'
 TEXT = ROOT / 'out/assets/TextAsset'
 DUMPS = ROOT / 'out/recon/tasks/T034/pets'
-LISTS = {'Dog': ['Dog_Body', 'Dog_Patterns', 'Dog_Eyes', 'Dog_Eyebrows'], 'Cat': ['Cat_Body', 'Cat_Patterns', 'Cat_Eyes']}
+LISTS = {'Dog': ['Dog_Body', 'Dog_Patterns', 'Dog_Eyes', 'Dog_Eyebrows'], 'Cat': ['Cat_Body', 'Cat_Patterns', 'Cat_Eyes'],
+         'Horse': ['Horse_Body', 'Horse_Patterns', 'Horse_Eyes', 'Horse_Eyebrows', 'Horse_Hair', 'Horse_Tail']}
+FILE_PREFIX = {'Horse': 'Pet_Horse'}  # os demais seguem Pet_<Especie>_Spine
 IDLES = ['General/Chilling', 'General/Blinking']
 
 
@@ -99,9 +101,10 @@ def main():
         meta.write_text('\n'.join(line.rstrip() for line in text.splitlines()) + '\n', encoding='utf-8')
 
     summary = {}
-    for species in ('Dog', 'Cat'):
-        atlas_file = next(TEXT.glob(f'Pet_{species}_Spine.atlas_*.txt'))
-        skel_file = next(TEXT.glob(f'Pet_{species}_Spine.skel_*.txt'))
+    for species in ('Dog', 'Cat', 'Horse'):
+        prefix = FILE_PREFIX.get(species, f'Pet_{species}_Spine')
+        atlas_file = next(TEXT.glob(f'{prefix}.atlas_*.txt'))
+        skel_file = next(TEXT.glob(f'{prefix}.skel_*.txt'))
         pages, regions = parse_atlas(atlas_file)
         dump = json.loads((DUMPS / f'{species}.json').read_text(encoding='utf-8'))
         skins = {s['name']: s for s in dump['skins']}
@@ -165,6 +168,19 @@ def main():
             pieces = pieces_of(name)
             if pieces:
                 mouths.append({'id': 'mouth_' + name.rsplit('_', 1)[1], 'pieces': pieces})
+        # crina (cabelo da frente + de tras, mesmo numero) e cauda: so o cavalo
+        manes = []
+        for name in sorted((n for n in skins if n.startswith('Hair/Hair_Front/')), key=natural):
+            n = re.search(r'Hair_Front_(\d+)_Color$', name).group(1)
+            front = pieces_of(name)
+            back = pieces_of(f'Hair/Hair_Back/Hair_Back_{n}_Color')
+            if front:
+                manes.append({'id': f'mane_{n}', 'pieces': front + (back or [])})
+        tails = []
+        for name in sorted((n for n in skins if n.startswith('Tail/')), key=natural):
+            pieces = pieces_of(name)
+            if pieces:
+                tails.append({'id': 'tail_' + re.search(r'Tail_(\d+)_Color$', name).group(1), 'pieces': pieces})
         base = pieces_of('default', False) or []
         idle = next((a for a in IDLES if a in dump['animations']), dump['animations'][0])
 
@@ -173,15 +189,16 @@ def main():
         shutil.copyfile(atlas_file, out_dir / 'Spine.atlas.txt')
         shutil.copyfile(skel_file, out_dir / 'Spine.skel.bytes')
         (out_dir / 'pet.json').write_text(json.dumps({'species': species, 'idle': idle, 'layered': True, 'basePieces': base, 'variants': [],
-                                                       'breeds': breeds, 'eyes': eyes, 'mouths': mouths}, indent=1), encoding='utf-8')
+                                                       'breeds': breeds, 'eyes': eyes, 'mouths': mouths, 'manes': manes, 'tails': tails}, indent=1), encoding='utf-8')
         summary[species] = {
             'breeds': [b['id'] for b in breeds],
             'patterns': {b['id']: [p['id'] for p in b['patterns']] for b in breeds},
             'eyebrows': {b['id']: [p['id'] for p in b['eyebrows']] for b in breeds},
             'eyes': [e['id'] for e in eyes], 'mouths': [m['id'] for m in mouths],
+            'manes': [m['id'] for m in manes], 'tails': [t['id'] for t in tails],
         }
         print(species, 'racas', len(breeds), 'padroes', sum(len(b['patterns']) for b in breeds), 'sobrancelhas', sum(len(b['eyebrows']) for b in breeds),
-              'olhos', len(eyes), 'bocas', len(mouths), 'base', len(base))
+              'olhos', len(eyes), 'bocas', len(mouths), 'crinas', len(manes), 'caudas', len(tails), 'base', len(base))
 
     out = UNITY / 'Scripts/Core/Avatar/PetLayerCatalogData.cs'
     with open(out, 'w', encoding='utf-8') as fh:
@@ -189,7 +206,7 @@ def main():
         fh.write('using System.Collections.Generic;\n\nnamespace AvatarWorld.Core.Avatar\n{\n')
         fh.write('    /// <summary>Opcoes dos pets em camadas (cao e gato): racas, padroes por raca, sobrancelhas por raca, olhos e bocas.</summary>\n')
         fh.write('    public static class PetLayerCatalogData\n    {\n')
-        fh.write('        public sealed class Layered\n        {\n            public string[] Breeds, Eyes, Mouths;\n'
+        fh.write('        public sealed class Layered\n        {\n            public string[] Breeds, Eyes, Mouths, Manes, Tails;\n'
                  '            public Dictionary<string, string[]> Patterns, Eyebrows;\n        }\n\n')
         fh.write('        public static readonly Dictionary<string, Layered> Species = new Dictionary<string, Layered>\n        {\n')
 
@@ -200,7 +217,7 @@ def main():
             return 'new Dictionary<string, string[]> { ' + ', '.join(f'{{ "{k}", {arr(v)} }}' for k, v in d.items()) + ' }'
         for species, s in summary.items():
             fh.write(f'            {{ "{species}", new Layered\n            {{\n                Breeds = {arr(s["breeds"])},\n                Eyes = {arr(s["eyes"])},\n'
-                     f'                Mouths = {arr(s["mouths"])},\n                Patterns = {dic(s["patterns"])},\n                Eyebrows = {dic(s["eyebrows"])},\n            }} }},\n')
+                     f'                Mouths = {arr(s["mouths"])},\n                Manes = {arr(s["manes"])},\n                Tails = {arr(s["tails"])},\n                Patterns = {dic(s["patterns"])},\n                Eyebrows = {dic(s["eyebrows"])},\n            }} }},\n')
         fh.write('        };\n    }\n}\n')
 
 

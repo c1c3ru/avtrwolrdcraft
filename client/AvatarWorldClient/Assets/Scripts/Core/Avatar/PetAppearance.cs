@@ -4,7 +4,7 @@ using System.Linq;
 namespace AvatarWorld.Core.Avatar
 {
     /// <summary>Cores editaveis de um pet em camadas (cada uma e um indice numa paleta propria da especie).</summary>
-    public enum PetColorRole { Body, Pattern, Eyes, Eyebrows }
+    public enum PetColorRole { Body, Pattern, Eyes, Eyebrows, Mane, Tail }
 
     /// <summary>
     /// Pets do slot de pets. Especies simples (variantes prontas) vem de PetCatalogData; cao e gato sao em camadas
@@ -12,7 +12,7 @@ namespace AvatarWorld.Core.Avatar
     /// </summary>
     public static class PetCatalog
     {
-        static readonly string[] Layered = { "Dog", "Cat" };
+        static readonly string[] Layered = { "Dog", "Cat", "Horse" };
 
         public static string[] Species { get; } = Layered.Concat(PetCatalogData.Species).ToArray();
 
@@ -22,6 +22,8 @@ namespace AvatarWorld.Core.Avatar
             {
                 case "Dog": return "Cão";
                 case "Cat": return "Gato";
+                case "Horse": return "Cavalo";
+                case "Cow": return "Vaca";
                 case "Rabbit": return "Coelho";
                 case "Hamster": return "Hamster";
                 case "Bird": return "Pássaro";
@@ -57,7 +59,17 @@ namespace AvatarWorld.Core.Avatar
         public static string PaletteName(string species, PetColorRole role)
         {
             if (!IsLayered(species)) return null;
-            string name = species + (role == PetColorRole.Body ? "_Body" : role == PetColorRole.Pattern ? "_Patterns" : role == PetColorRole.Eyes ? "_Eyes" : "_Eyebrows");
+            string suffix;
+            switch (role)
+            {
+                case PetColorRole.Body: suffix = "_Body"; break;
+                case PetColorRole.Pattern: suffix = "_Patterns"; break;
+                case PetColorRole.Eyes: suffix = "_Eyes"; break;
+                case PetColorRole.Eyebrows: suffix = "_Eyebrows"; break;
+                case PetColorRole.Mane: suffix = "_Hair"; break;
+                default: suffix = "_Tail"; break;
+            }
+            string name = species + suffix;
             return PetPaletteData.Counts.ContainsKey(name) ? name : null;
         }
 
@@ -78,9 +90,11 @@ namespace AvatarWorld.Core.Avatar
         public string BreedId = "";
         public string PatternId = "";
         public string EyebrowId = "";
+        public string ManeId = "";
+        public string TailId = "";
         public string EyesId = "";
         public string MouthId = "";
-        public int BodyColor, PatternColor, EyesColor, EyebrowColor;
+        public int BodyColor, PatternColor, EyesColor, EyebrowColor, ManeColor, TailColor;
 
         public static PetAppearance CreateDefault(string species = null)
         {
@@ -92,22 +106,24 @@ namespace AvatarWorld.Core.Avatar
 
         void ResetForSpecies()
         {
-            VariantId = ""; BreedId = ""; PatternId = ""; EyebrowId = ""; EyesId = ""; MouthId = "";
-            BodyColor = PatternColor = EyesColor = EyebrowColor = 0;
+            VariantId = ""; BreedId = ""; PatternId = ""; EyebrowId = ""; ManeId = ""; TailId = ""; EyesId = ""; MouthId = "";
+            BodyColor = PatternColor = EyesColor = EyebrowColor = ManeColor = TailColor = 0;
             if (PetCatalog.IsLayered(Species))
             {
                 var layers = PetCatalog.Layers(Species);
                 BreedId = layers.Breeds[0];
                 EyesId = layers.Eyes[0];
                 MouthId = layers.Mouths[0];
+                if (layers.Manes.Length > 0) ManeId = layers.Manes[0];
+                if (layers.Tails.Length > 0) TailId = layers.Tails[0];
             }
             else VariantId = PetCatalog.DefaultVariant(Species);
         }
 
         public PetAppearance Clone() => new PetAppearance
         {
-            Species = Species, VariantId = VariantId, BreedId = BreedId, PatternId = PatternId, EyebrowId = EyebrowId, EyesId = EyesId, MouthId = MouthId,
-            BodyColor = BodyColor, PatternColor = PatternColor, EyesColor = EyesColor, EyebrowColor = EyebrowColor,
+            Species = Species, VariantId = VariantId, BreedId = BreedId, PatternId = PatternId, EyebrowId = EyebrowId, ManeId = ManeId, TailId = TailId, EyesId = EyesId, MouthId = MouthId,
+            BodyColor = BodyColor, PatternColor = PatternColor, EyesColor = EyesColor, EyebrowColor = EyebrowColor, ManeColor = ManeColor, TailColor = TailColor,
         };
 
         public bool IsValid()
@@ -118,18 +134,22 @@ namespace AvatarWorld.Core.Avatar
             return layers.Breeds.Contains(BreedId) && layers.Eyes.Contains(EyesId) && layers.Mouths.Contains(MouthId) &&
                    (string.IsNullOrEmpty(PatternId) || PetCatalog.Patterns(Species, BreedId).Contains(PatternId)) &&
                    (string.IsNullOrEmpty(EyebrowId) || PetCatalog.Eyebrows(Species, BreedId).Contains(EyebrowId)) &&
+                   (layers.Manes.Length == 0 ? string.IsNullOrEmpty(ManeId) : layers.Manes.Contains(ManeId)) &&
+                   (layers.Tails.Length == 0 ? string.IsNullOrEmpty(TailId) : layers.Tails.Contains(TailId)) &&
                    ColorsInRange();
         }
 
         bool ColorsInRange() =>
             InRange(BodyColor, PetColorRole.Body) && InRange(PatternColor, PetColorRole.Pattern) &&
-            InRange(EyesColor, PetColorRole.Eyes) && InRange(EyebrowColor, PetColorRole.Eyebrows);
+            InRange(EyesColor, PetColorRole.Eyes) && InRange(EyebrowColor, PetColorRole.Eyebrows) &&
+            InRange(ManeColor, PetColorRole.Mane) && InRange(TailColor, PetColorRole.Tail);
 
         bool InRange(int index, PetColorRole role) => index >= 0 && index < Math.Max(1, PetCatalog.ColorCount(Species, role));
 
         public bool SameAs(PetAppearance o) => o != null && Species == o.Species && VariantId == o.VariantId && BreedId == o.BreedId &&
-            PatternId == o.PatternId && EyebrowId == o.EyebrowId && EyesId == o.EyesId && MouthId == o.MouthId &&
-            BodyColor == o.BodyColor && PatternColor == o.PatternColor && EyesColor == o.EyesColor && EyebrowColor == o.EyebrowColor;
+            PatternId == o.PatternId && EyebrowId == o.EyebrowId && ManeId == o.ManeId && TailId == o.TailId && EyesId == o.EyesId && MouthId == o.MouthId &&
+            BodyColor == o.BodyColor && PatternColor == o.PatternColor && EyesColor == o.EyesColor && EyebrowColor == o.EyebrowColor &&
+            ManeColor == o.ManeColor && TailColor == o.TailColor;
 
         /// <summary>Troca de especie: tudo volta ao padrao da nova especie. False (sem alterar) se a especie nao existe.</summary>
         public bool TrySelectSpecies(string species)
@@ -188,8 +208,34 @@ namespace AvatarWorld.Core.Avatar
             return true;
         }
 
-        public int GetColor(PetColorRole role) =>
-            role == PetColorRole.Body ? BodyColor : role == PetColorRole.Pattern ? PatternColor : role == PetColorRole.Eyes ? EyesColor : EyebrowColor;
+        public bool TrySelectMane(string maneId)
+        {
+            var layers = PetCatalog.Layers(Species);
+            if (layers == null || !layers.Manes.Contains(maneId)) return false;
+            ManeId = maneId;
+            return true;
+        }
+
+        public bool TrySelectTail(string tailId)
+        {
+            var layers = PetCatalog.Layers(Species);
+            if (layers == null || !layers.Tails.Contains(tailId)) return false;
+            TailId = tailId;
+            return true;
+        }
+
+        public int GetColor(PetColorRole role)
+        {
+            switch (role)
+            {
+                case PetColorRole.Body: return BodyColor;
+                case PetColorRole.Pattern: return PatternColor;
+                case PetColorRole.Eyes: return EyesColor;
+                case PetColorRole.Eyebrows: return EyebrowColor;
+                case PetColorRole.Mane: return ManeColor;
+                default: return TailColor;
+            }
+        }
 
         public bool TrySelectColor(PetColorRole role, int index)
         {
@@ -199,7 +245,9 @@ namespace AvatarWorld.Core.Avatar
                 case PetColorRole.Body: BodyColor = index; break;
                 case PetColorRole.Pattern: PatternColor = index; break;
                 case PetColorRole.Eyes: EyesColor = index; break;
-                default: EyebrowColor = index; break;
+                case PetColorRole.Eyebrows: EyebrowColor = index; break;
+                case PetColorRole.Mane: ManeColor = index; break;
+                default: TailColor = index; break;
             }
             return true;
         }
@@ -218,6 +266,10 @@ namespace AvatarWorld.Core.Avatar
             if (!layers.Mouths.Contains(MouthId)) MouthId = layers.Mouths[0];
             if (PatternId == null || (PatternId != "" && !PetCatalog.Patterns(Species, BreedId).Contains(PatternId))) PatternId = "";
             if (EyebrowId == null || (EyebrowId != "" && !PetCatalog.Eyebrows(Species, BreedId).Contains(EyebrowId))) EyebrowId = "";
+            if (layers.Manes.Length == 0) ManeId = ""; else if (!layers.Manes.Contains(ManeId)) ManeId = layers.Manes[0];
+            if (layers.Tails.Length == 0) TailId = ""; else if (!layers.Tails.Contains(TailId)) TailId = layers.Tails[0];
+            if (!InRange(ManeColor, PetColorRole.Mane)) ManeColor = 0;
+            if (!InRange(TailColor, PetColorRole.Tail)) TailColor = 0;
             if (!InRange(BodyColor, PetColorRole.Body)) BodyColor = 0;
             if (!InRange(PatternColor, PetColorRole.Pattern)) PatternColor = 0;
             if (!InRange(EyesColor, PetColorRole.Eyes)) EyesColor = 0;

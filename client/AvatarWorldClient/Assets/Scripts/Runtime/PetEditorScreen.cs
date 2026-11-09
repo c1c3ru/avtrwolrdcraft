@@ -21,7 +21,7 @@ namespace AvatarWorld.Runtime
         static readonly Color Ink = new Color(0.45f, 0.2f, 0.6f);
         static readonly Color Pink = new Color(1f, 0.58f, 0.82f), Light = new Color(1f, 0.9f, 0.95f);
 
-        enum Tab { Breed, Pattern, BodyColor, PatternColor, Eyebrow, EyebrowColor, Eyes, EyesColor, Mouth }
+        enum Tab { Breed, Pattern, BodyColor, PatternColor, Eyebrow, EyebrowColor, Eyes, EyesColor, Mouth, Mane, ManeColor, Tail, TailColor }
 
         static string TabLabel(Tab tab)
         {
@@ -33,6 +33,10 @@ namespace AvatarWorld.Runtime
                 case Tab.PatternColor: return "Cor padrão";
                 case Tab.Eyebrow: return "Sobrancelha";
                 case Tab.EyebrowColor: return "Cor sobr.";
+                case Tab.Mane: return "Crina";
+                case Tab.ManeColor: return "Cor crina";
+                case Tab.Tail: return "Cauda";
+                case Tab.TailColor: return "Cor cauda";
                 case Tab.Eyes: return "Olhos";
                 case Tab.EyesColor: return "Cor olhos";
                 default: return "Boca";
@@ -123,8 +127,8 @@ namespace AvatarWorld.Runtime
             {
                 string key = species[i];
                 float x = -330f + (i % 5) * 165f;
-                float y = -60f - (i / 5) * 90f;
-                var button = Button("Species_" + key, panel.transform, null, new Vector2(0.5f, 1), new Vector2(x, y), new Vector2(155f, 78f), () => SelectSpecies(key));
+                float y = -50f - (i / 5) * 84f;
+                var button = Button("Species_" + key, panel.transform, null, new Vector2(0.5f, 1), new Vector2(x, y), new Vector2(155f, 74f), () => SelectSpecies(key));
                 var label = NewText("Label", button.transform, 32, Ink);
                 Stretch(label.rectTransform);
                 label.text = PetCatalog.DisplayName(key);
@@ -136,16 +140,16 @@ namespace AvatarWorld.Runtime
             _simpleGroup.transform.SetParent(panel.transform, false);
             Stretch((RectTransform)_simpleGroup.transform);
             var variantTitle = NewText("VariantTitle", _simpleGroup.transform, 52, Ink);
-            Place(variantTitle.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -330f), new Vector2(760f, 80f));
+            Place(variantTitle.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -380f), new Vector2(760f, 80f));
             variantTitle.text = "Variante";
-            var prev = Button("Prev", _simpleGroup.transform, null, new Vector2(0.5f, 1), new Vector2(-270f, -470f), new Vector2(150f, 130f), () => StepVariant(-1));
+            var prev = Button("Prev", _simpleGroup.transform, null, new Vector2(0.5f, 1), new Vector2(-270f, -520f), new Vector2(150f, 130f), () => StepVariant(-1));
             prev.color = new Color(0.95f, 0.72f, 0.84f);
             var prevLabel = NewText("Label", prev.transform, 70, Color.white); Stretch(prevLabel.rectTransform); prevLabel.text = "<";
-            var next = Button("Next", _simpleGroup.transform, null, new Vector2(0.5f, 1), new Vector2(270f, -470f), new Vector2(150f, 130f), () => StepVariant(1));
+            var next = Button("Next", _simpleGroup.transform, null, new Vector2(0.5f, 1), new Vector2(270f, -520f), new Vector2(150f, 130f), () => StepVariant(1));
             next.color = new Color(0.95f, 0.72f, 0.84f);
             var nextLabel = NewText("Label", next.transform, 70, Color.white); Stretch(nextLabel.rectTransform); nextLabel.text = ">";
             _variantLabel = NewText("VariantLabel", _simpleGroup.transform, 50, Ink);
-            Place(_variantLabel.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -470f), new Vector2(360f, 100f));
+            Place(_variantLabel.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -520f), new Vector2(360f, 100f));
 
             // Cao e gato: abas (3 colunas) e grade rolavel.
             _layeredGroup = new GameObject("Layered", typeof(RectTransform));
@@ -156,8 +160,8 @@ namespace AvatarWorld.Runtime
             {
                 var tab = tabs[i];
                 float x = -280f + (i % 3) * 280f;
-                float y = -270f - (i / 3) * 72f;
-                var button = Button("Tab_" + tab, _layeredGroup.transform, null, new Vector2(0.5f, 1), new Vector2(x, y), new Vector2(268f, 64f), () => { UiSound.PlayClick(); _tab = tab; Refresh(); });
+                float y = -330f - (i / 3) * 70f;
+                var button = Button("Tab_" + tab, _layeredGroup.transform, null, new Vector2(0.5f, 1), new Vector2(x, y), new Vector2(268f, 62f), () => { UiSound.PlayClick(); _tab = tab; Refresh(); });
                 var label = NewText("Label", button.transform, 32, Ink);
                 Stretch(label.rectTransform);
                 label.text = TabLabel(tab);
@@ -167,7 +171,7 @@ namespace AvatarWorld.Runtime
             viewport.transform.SetParent(_layeredGroup.transform, false);
             var vr = (RectTransform)viewport.transform;
             vr.anchorMin = new Vector2(0, 0); vr.anchorMax = new Vector2(1, 1);
-            vr.offsetMin = new Vector2(24f, 20f); vr.offsetMax = new Vector2(-24f, -500f);
+            vr.offsetMin = new Vector2(24f, 20f); vr.offsetMax = new Vector2(-24f, -640f);
             viewport.GetComponent<Image>().color = new Color(0, 0, 0, 0.001f);
             var content = new GameObject("Grid", typeof(RectTransform), typeof(GridLayoutGroup), typeof(ContentSizeFitter));
             content.transform.SetParent(viewport.transform, false);
@@ -218,6 +222,10 @@ namespace AvatarWorld.Runtime
                 case Tab.Eyebrow: return PetCatalog.Eyebrows(_working.Species, _working.BreedId).Length > 0;
                 case Tab.EyebrowColor: return PetCatalog.ColorCount(_working.Species, PetColorRole.Eyebrows) > 0 && !string.IsNullOrEmpty(_working.EyebrowId);
                 case Tab.PatternColor: return !string.IsNullOrEmpty(_working.PatternId);
+                case Tab.Mane: return PetCatalog.Layers(_working.Species).Manes.Length > 0;
+                case Tab.ManeColor: return PetCatalog.Layers(_working.Species).Manes.Length > 0 && PetCatalog.ColorCount(_working.Species, PetColorRole.Mane) > 0;
+                case Tab.Tail: return PetCatalog.Layers(_working.Species).Tails.Length > 0;
+                case Tab.TailColor: return PetCatalog.Layers(_working.Species).Tails.Length > 0 && PetCatalog.ColorCount(_working.Species, PetColorRole.Tail) > 0;
                 default: return true;
             }
         }
@@ -269,6 +277,14 @@ namespace AvatarWorld.Runtime
                 case Tab.Mouth:
                     foreach (var id in layers.Mouths) { string v = id; AddCell(Label(id), null, _working.MouthId == v, () => Choose(_working.TrySelectMouth(v))); }
                     break;
+                case Tab.Mane:
+                    foreach (var id in layers.Manes) { string v = id; AddCell(Label(id), null, _working.ManeId == v, () => Choose(_working.TrySelectMane(v))); }
+                    break;
+                case Tab.Tail:
+                    foreach (var id in layers.Tails) { string v = id; AddCell(Label(id), null, _working.TailId == v, () => Choose(_working.TrySelectTail(v))); }
+                    break;
+                case Tab.ManeColor: AddColorCells(PetColorRole.Mane); break;
+                case Tab.TailColor: AddColorCells(PetColorRole.Tail); break;
                 case Tab.BodyColor: AddColorCells(PetColorRole.Body); break;
                 case Tab.PatternColor: AddColorCells(PetColorRole.Pattern); break;
                 case Tab.EyebrowColor: AddColorCells(PetColorRole.Eyebrows); break;

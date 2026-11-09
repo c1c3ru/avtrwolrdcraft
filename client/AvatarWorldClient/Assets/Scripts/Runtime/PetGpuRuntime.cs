@@ -22,7 +22,7 @@ namespace AvatarWorld.Runtime
         [Serializable] class PetFile
         {
             public string species; public string idle; public bool layered; public List<Piece> basePieces; public List<Variant> variants;
-            public List<Breed> breeds; public List<EyeSet> eyes; public List<Option> mouths;
+            public List<Breed> breeds; public List<EyeSet> eyes; public List<Option> mouths; public List<Option> manes; public List<Option> tails;
         }
         [Serializable] class PaletteColor { public float[] c; }
         [Serializable] class PaletteEntry { public float[] display; public List<PaletteColor> colors; }
@@ -189,6 +189,11 @@ namespace AvatarWorld.Runtime
             if (eyes.gradient != null && eyes.gradient.Count > 0) AddAndLoad(skin, tints, eyes.gradient, PaletteColor_(species, PetColorRole.Eyes, _pet.EyesColor, 1), shown);
             AddAndLoad(skin, tints, eyes.pupils, Color.white, shown);
             AddAndLoad(skin, tints, mouth.pieces, Color.white, shown);
+            // Cavalo: crina (cabelo da frente + de tras) e cauda, cada um com a propria paleta.
+            var mane = string.IsNullOrEmpty(_pet.ManeId) || _file.manes == null ? null : _file.manes.FirstOrDefault(o => o.id == _pet.ManeId);
+            if (mane != null) AddAndLoad(skin, tints, mane.pieces, PaletteColor_(species, PetColorRole.Mane, _pet.ManeColor), shown);
+            var tail = string.IsNullOrEmpty(_pet.TailId) || _file.tails == null ? null : _file.tails.FirstOrDefault(o => o.id == _pet.TailId);
+            if (tail != null) AddAndLoad(skin, tints, tail.pieces, PaletteColor_(species, PetColorRole.Tail, _pet.TailColor), shown);
         }
 
         void AddAndLoad(Skin skin, Dictionary<Attachment, Color> tints, List<Piece> pieces, Color tint, List<string> shown)

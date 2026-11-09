@@ -248,5 +248,28 @@ namespace AvatarWorld.Core.Tests
             Assert.IsTrue(back.IsValid());
             Assert.AreEqual(0, back.BodyColor);
         }
+
+        [Test]
+        public void HorseHasManeAndTailWithOwnPalettesAndCowIsASimpleSpecies()
+        {
+            Assert.IsTrue(PetCatalog.IsLayered("Horse"));
+            Assert.IsFalse(PetCatalog.IsLayered("Cow"));
+            Assert.IsTrue(PetCatalog.Variants("Cow").Length >= 1);
+            var layers = PetCatalog.Layers("Horse");
+            Assert.Greater(layers.Manes.Length, 1);
+            Assert.Greater(layers.Tails.Length, 1);
+            Assert.Greater(PetCatalog.ColorCount("Horse", PetColorRole.Mane), 0);
+            Assert.Greater(PetCatalog.ColorCount("Horse", PetColorRole.Tail), 0);
+            var horse = PetAppearance.CreateDefault("Horse");
+            Assert.IsTrue(horse.IsValid());
+            Assert.IsTrue(horse.TrySelectMane(layers.Manes[2]));
+            Assert.IsTrue(horse.TrySelectTail(layers.Tails[1]));
+            Assert.IsTrue(horse.TrySelectColor(PetColorRole.Mane, 3));
+            Assert.IsFalse(horse.TrySelectMane("mane_999"));
+            var dog = PetAppearance.CreateDefault("Dog");
+            Assert.IsFalse(dog.TrySelectMane(layers.Manes[0]));       // cao nao tem crina
+            Assert.AreEqual("", dog.ManeId);
+            Assert.IsFalse(dog.TrySelectColor(PetColorRole.Tail, 0));
+        }
     }
 }

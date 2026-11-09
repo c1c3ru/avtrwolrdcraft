@@ -15,6 +15,12 @@ namespace AvatarWorld.Core.Avatar
             { "Dog_Eyebrows", 47 },
             { "Dog_Eyes", 20 },
             { "Dog_Patterns", 47 },
+            { "Horse_Body", 45 },
+            { "Horse_Eyebrows", 45 },
+            { "Horse_Eyes", 14 },
+            { "Horse_Hair", 45 },
+            { "Horse_Patterns", 45 },
+            { "Horse_Tail", 45 },
         };
     }
 }

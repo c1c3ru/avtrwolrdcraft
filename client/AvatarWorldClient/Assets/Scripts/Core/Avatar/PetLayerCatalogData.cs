@@ -8,7 +8,7 @@ namespace AvatarWorld.Core.Avatar
     {
         public sealed class Layered
         {
-            public string[] Breeds, Eyes, Mouths;
+            public string[] Breeds, Eyes, Mouths, Manes, Tails;
             public Dictionary<string, string[]> Patterns, Eyebrows;
         }
 
@@ -19,6 +19,8 @@ namespace AvatarWorld.Core.Avatar
                 Breeds = new string[] { "breed_a", "breed_b", "breed_c", "breed_d", "breed_e", "breed_f", "breed_g", "breed_h", "breed_i", "breed_j", "breed_k", "breed_l", "breed_m", "breed_n", "breed_o", "breed_p", "breed_q", "breed_r" },
                 Eyes = new string[] { "eyes_1", "eyes_2", "eyes_3", "eyes_4", "eyes_5", "eyes_7", "eyes_10", "eyes_14", "eyes_17" },
                 Mouths = new string[] { "mouth_1", "mouth_2", "mouth_3", "mouth_4", "mouth_5", "mouth_6", "mouth_7", "mouth_8", "mouth_9", "mouth_10", "mouth_11" },
+                Manes = new string[] {  },
+                Tails = new string[] {  },
                 Patterns = new Dictionary<string, string[]> { { "breed_a", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_b", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4", "pattern_5" } }, { "breed_c", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_d", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_e", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_f", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_g", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_h", new string[] { "pattern_1", "pattern_2", "pattern_3" } }, { "breed_i", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_j", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_k", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_l", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_m", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_n", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_o", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_p", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_q", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_r", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } } },
                 Eyebrows = new Dictionary<string, string[]> { { "breed_a", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4", "eyebrows_5", "eyebrows_6", "eyebrows_7", "eyebrows_8", "eyebrows_9", "eyebrows_10" } }, { "breed_b", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4", "eyebrows_5", "eyebrows_6", "eyebrows_7", "eyebrows_8", "eyebrows_9", "eyebrows_10" } }, { "breed_c", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_d", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_e", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_f", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_g", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_h", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_i", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_j", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_k", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_l", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_m", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_n", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_o", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_p", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_q", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } }, { "breed_r", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4" } } },
             } },
@@ -27,8 +29,20 @@ namespace AvatarWorld.Core.Avatar
                 Breeds = new string[] { "breed_a", "breed_b", "breed_c", "breed_d", "breed_e", "breed_f", "breed_g", "breed_h" },
                 Eyes = new string[] { "eyes_1", "eyes_2", "eyes_3", "eyes_4", "eyes_5", "eyes_7", "eyes_9", "eyes_10", "eyes_12", "eyes_16", "eyes_17", "eyes_18", "eyes_19", "eyes_20", "eyes_21", "eyes_22", "eyes_23", "eyes_24", "eyes_25", "eyes_26", "eyes_27", "eyes_28" },
                 Mouths = new string[] { "mouth_1", "mouth_2", "mouth_3", "mouth_4", "mouth_5", "mouth_6", "mouth_7", "mouth_8", "mouth_9", "mouth_10" },
+                Manes = new string[] {  },
+                Tails = new string[] {  },
                 Patterns = new Dictionary<string, string[]> { { "breed_a", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4", "pattern_5" } }, { "breed_b", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_c", new string[] { "pattern_2", "pattern_3", "pattern_4" } }, { "breed_d", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_e", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_f", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_g", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } }, { "breed_h", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4" } } },
                 Eyebrows = new Dictionary<string, string[]> { { "breed_a", new string[] {  } }, { "breed_b", new string[] {  } }, { "breed_c", new string[] {  } }, { "breed_d", new string[] {  } }, { "breed_e", new string[] {  } }, { "breed_f", new string[] {  } }, { "breed_g", new string[] {  } }, { "breed_h", new string[] {  } } },
+            } },
+            { "Horse", new Layered
+            {
+                Breeds = new string[] { "breed_a", "breed_b" },
+                Eyes = new string[] { "eyes_1", "eyes_2", "eyes_3", "eyes_5", "eyes_6", "eyes_7", "eyes_8", "eyes_9", "eyes_10", "eyes_11", "eyes_12", "eyes_13", "eyes_14" },
+                Mouths = new string[] { "mouth_1", "mouth_2", "mouth_3", "mouth_4", "mouth_5", "mouth_6", "mouth_7", "mouth_8", "mouth_9", "mouth_10", "mouth_11" },
+                Manes = new string[] { "mane_1", "mane_2", "mane_3", "mane_4", "mane_5", "mane_6", "mane_7", "mane_8", "mane_9", "mane_10", "mane_11", "mane_12", "mane_13", "mane_14", "mane_15", "mane_16", "mane_17", "mane_18", "mane_19", "mane_20" },
+                Tails = new string[] { "tail_1", "tail_2", "tail_3", "tail_4", "tail_5", "tail_6", "tail_7", "tail_8", "tail_9", "tail_10", "tail_11", "tail_12", "tail_13", "tail_14", "tail_15", "tail_16", "tail_17", "tail_18", "tail_19", "tail_20" },
+                Patterns = new Dictionary<string, string[]> { { "breed_a", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4", "pattern_5" } }, { "breed_b", new string[] { "pattern_1", "pattern_2", "pattern_3", "pattern_4", "pattern_5" } } },
+                Eyebrows = new Dictionary<string, string[]> { { "breed_a", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4", "eyebrows_5" } }, { "breed_b", new string[] { "eyebrows_1", "eyebrows_2", "eyebrows_3", "eyebrows_4", "eyebrows_5" } } },
             } },
         };
     }
