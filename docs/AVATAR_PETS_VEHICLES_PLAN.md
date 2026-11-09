@@ -1,6 +1,6 @@
 # Pets e veículos no slot de avatar: levantamento e plano
 
-Data: 2026-11-06. Estado: **pets simples, cão, gato, cavalo e vaca implementados** (sem validação de render); roupas de pet seguem fora; **veículos não são implementáveis com os dados extraídos** (ver abaixo).
+Data: 2026-11-06. Estado: **pets simples, cão, gato, cavalo e vaca implementados** (sem validação de render); roupas de pet (cão, gato, cavalo) implementadas; **veículos não são implementáveis com os dados extraídos** (ver abaixo).
 
 ## Implementado: pets simples
 - Espécies com variantes prontas (skin completo): coelho 4, hamster 4, pássaro 9, galinha 3, tartaruga 2, lagarto 4, cobra 2, peixe 4 (32 variantes; as `Party_Hat_Skin_*` ficaram de fora).
@@ -13,7 +13,8 @@ Data: 2026-11-06. Estado: **pets simples, cão, gato, cavalo e vaca implementado
 - Papéis de cor (hipótese, não conferida em tela): corpo/padrão/sobrancelha = cor de exibição multiplicada na textura; olhos: `Colors[0]` na base e `Colors[1]` no gradiente do cão; contornos e pupilas sem tinta.
 - Editor: abas Raça, Padrão, Cor, Cor padrão, Sobrancelha, Cor sobr., Olhos, Cor olhos, Boca, com grade rolável (rótulos numéricos, sem miniaturas).
 - Cavalo (mesmo builder): 2 raças, 10 padrões, 10 sobrancelhas, 13 conjuntos de olhos, 11 bocas, 20 crinas (cabelo da frente + de trás) e 20 caudas, com paletas `Horse_Body/Patterns/Eyes/Eyebrows/Hair/Tail`. Vaca: espécie simples (1 variante, `Cow_Pet`).
-- Fora: roupas e acessórios de cão/gato/cavalo (`Templates/*`, paths SUT `dog/*`, `cat/*`, `horse/*`: sela, rédea etc.).
+- Roupas (paths SUT `dog/*`, `cat/*`, `horse/*`, mesma regra estrita de textura): abas Chapéu, Roupa, Sapatos e Acessório. Cão 68 chapéus / 83 roupas / 14 sapatos / 48 acessórios; gato 59 / 67 / 4 / 31; cavalo: Chapéu = rédea (14) e Roupa = sela (13). Itens `_color`/`_p` ficam de fora. Sem tinta.
+- Tamanho/posição: `PetGpuRuntime.Sizes` guarda a caixa da pose inicial medida de cada esqueleto (centro, base, largura, altura); cada animal é escalado a uma altura-alvo (editor 4,2; slots 2,3 unidades) e apoiado na base. A medida usa só a pose inicial (skin padrão + corpo), então é aproximada.
 
 ## Pets
 - Esqueletos `Pet_{Dog,Cat,Rabbit,Hamster,Bird,Chicken,Fish,Lizard,Snake,Turtle}_Spine` + `Pet_Horse`/`Cow_Pet` em `out/assets/TextAsset`. Cães e gatos têm roupas SUT (`sutsystem/skins/{dog,cat,horse}`: 844/782/368 refs); os demais não têm roupas.

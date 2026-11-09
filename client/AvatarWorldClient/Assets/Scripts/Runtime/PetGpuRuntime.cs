@@ -23,6 +23,7 @@ namespace AvatarWorld.Runtime
         {
             public string species; public string idle; public bool layered; public List<Piece> basePieces; public List<Variant> variants;
             public List<Breed> breeds; public List<EyeSet> eyes; public List<Option> mouths; public List<Option> manes; public List<Option> tails;
+            public List<Option> hats; public List<Option> outfits; public List<Option> shoes; public List<Option> accessories;
         }
         [Serializable] class PaletteColor { public float[] c; }
         [Serializable] class PaletteEntry { public float[] display; public List<PaletteColor> colors; }
@@ -46,9 +47,22 @@ namespace AvatarWorld.Runtime
             return new Color(c[0], c[1], c[2], 1f);
         }
 
+        // Medidas da pose inicial (unidades do esqueleto, escala 1; skin padrao + corpo): centro X, base Y, largura, altura.
+        // Servem para ajustar cada animal a uma altura-alvo e apoia-lo no chao, ja que os esqueletos tem tamanhos muito diferentes.
+        static readonly Dictionary<string, Vector4> Sizes = new Dictionary<string, Vector4>
+        {
+            { "Rabbit", new Vector4(1.5f, -1.0f, 89.9f, 146.4f) }, { "Hamster", new Vector4(-2.5f, 1.1f, 87.8f, 100.1f) },
+            { "Bird", new Vector4(17.4f, 3.3f, 113.0f, 127.6f) }, { "Chicken", new Vector4(13.1f, 6.4f, 117.6f, 148.6f) },
+            { "Turtle", new Vector4(-3.7f, 12.0f, 81.0f, 110.6f) }, { "Lizard", new Vector4(16.7f, 7.5f, 170.1f, 133.8f) },
+            { "Snake", new Vector4(16.6f, 1.2f, 120.7f, 130.0f) }, { "Fish", new Vector4(12.4f, 6.8f, 125.9f, 106.0f) },
+            { "Cow", new Vector4(-42.3f, 1.4f, 526.3f, 533.0f) }, { "Dog", new Vector4(-1.2f, -0.7f, 237.2f, 214.5f) },
+            { "Cat", new Vector4(8.3f, -4.3f, 210.4f, 174.5f) }, { "Horse", new Vector4(-64.6f, -4.8f, 498.8f, 624.0f) },
+        };
+        const float SkeletonScale = 0.01f;
+
         PetAppearance _pet;
-        Vector3 _position;
-        float _scale = 1f;
+        Vector3 _position;     // ponto no chao (base, centro) onde o pet fica
+        float _targetHeight, _maxWidth;
         PetFile _file;
         string _loadedSpecies;
         SkeletonDataAsset _dataAsset;
@@ -65,11 +79,13 @@ namespace AvatarWorld.Runtime
         public bool IsReady => _animation != null && _animation.valid;
         public PetAppearance Pet => _pet;
 
-        public void Configure(PetAppearance pet, Vector3 position, float scale)
+        /// <summary>position = base do pet; o animal e escalado para targetHeight de altura (sem passar de maxWidth de largura), em unidades do mundo.</summary>
+        public void Configure(PetAppearance pet, Vector3 position, float targetHeight, float maxWidth)
         {
             _pet = pet ?? throw new ArgumentNullException(nameof(pet));
             _position = position;
-            _scale = scale;
+            _targetHeight = targetHeight;
+            _maxWidth = maxWidth;
             Apply(pet);
         }
 
@@ -109,8 +125,16 @@ namespace AvatarWorld.Runtime
             if (_skeletonData == null) return false;
             _avatarGo = new GameObject("Pet " + species);
             _avatarGo.transform.SetParent(transform, false);
-            _avatarGo.transform.localPosition = _position;
-            _avatarGo.transform.localScale = Vector3.one * _scale;
+            float scale = 1f;
+            Vector3 position = _position;
+            if (Sizes.TryGetValue(species, out var size))
+            {
+                // size = (centro X, base Y, largura, altura) em unidades do esqueleto; o mundo usa SkeletonScale por unidade.
+                scale = Mathf.Min(_targetHeight / (size.w * SkeletonScale), _maxWidth / (size.z * SkeletonScale));
+                position -= new Vector3(size.x * SkeletonScale * scale, size.y * SkeletonScale * scale, 0f);
+            }
+            _avatarGo.transform.localPosition = position;
+            _avatarGo.transform.localScale = Vector3.one * scale;
             _animation = SkeletonAnimation.AddToGameObject(_avatarGo, _dataAsset);
             _animation.Initialize(false);
             if (!_animation.valid) { Debug.LogError("PetGpuRuntime: SkeletonAnimation invalida para " + species); return false; }
@@ -189,11 +213,23 @@ namespace AvatarWorld.Runtime
             if (eyes.gradient != null && eyes.gradient.Count > 0) AddAndLoad(skin, tints, eyes.gradient, PaletteColor_(species, PetColorRole.Eyes, _pet.EyesColor, 1), shown);
             AddAndLoad(skin, tints, eyes.pupils, Color.white, shown);
             AddAndLoad(skin, tints, mouth.pieces, Color.white, shown);
+            // Roupas e acessorios (SUT): so as pecas do item escolhido carregam textura; skins Templates/<pagina>, sem tinta.
+            AddClothing(skin, tints, _file.outfits, _pet.OutfitId, shown);
+            AddClothing(skin, tints, _file.shoes, _pet.ShoesId, shown);
+            AddClothing(skin, tints, _file.accessories, _pet.AccessoryId, shown);
+            AddClothing(skin, tints, _file.hats, _pet.HatId, shown);
             // Cavalo: crina (cabelo da frente + de tras) e cauda, cada um com a propria paleta.
             var mane = string.IsNullOrEmpty(_pet.ManeId) || _file.manes == null ? null : _file.manes.FirstOrDefault(o => o.id == _pet.ManeId);
             if (mane != null) AddAndLoad(skin, tints, mane.pieces, PaletteColor_(species, PetColorRole.Mane, _pet.ManeColor), shown);
             var tail = string.IsNullOrEmpty(_pet.TailId) || _file.tails == null ? null : _file.tails.FirstOrDefault(o => o.id == _pet.TailId);
             if (tail != null) AddAndLoad(skin, tints, tail.pieces, PaletteColor_(species, PetColorRole.Tail, _pet.TailColor), shown);
+        }
+
+        void AddClothing(Skin skin, Dictionary<Attachment, Color> tints, List<Option> list, string id, List<string> shown)
+        {
+            if (string.IsNullOrEmpty(id) || list == null) return;
+            var item = list.FirstOrDefault(o => o.id == id);
+            if (item != null) AddAndLoad(skin, tints, item.pieces, Color.white, shown);
         }
 
         void AddAndLoad(Skin skin, Dictionary<Attachment, Color> tints, List<Piece> pieces, Color tint, List<string> shown)

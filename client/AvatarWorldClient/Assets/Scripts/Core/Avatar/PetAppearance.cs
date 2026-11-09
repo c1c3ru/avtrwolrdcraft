@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace AvatarWorld.Core.Avatar
 {
+    /// <summary>Roupas do pet em camadas (cavalo: Hat = redea, Outfit = sela). "" = nada.</summary>
+    public enum PetClothingSlot { Hat, Outfit, Shoes, Accessory }
+
     /// <summary>Cores editaveis de um pet em camadas (cada uma e um indice numa paleta propria da especie).</summary>
     public enum PetColorRole { Body, Pattern, Eyes, Eyebrows, Mane, Tail }
 
@@ -49,6 +52,19 @@ namespace AvatarWorld.Core.Avatar
 
         public static string DefaultVariant(string species) => Variants(species)[0];
 
+        public static string[] Clothing(string species, PetClothingSlot slot)
+        {
+            var layers = Layers(species);
+            if (layers == null) return new string[0];
+            switch (slot)
+            {
+                case PetClothingSlot.Hat: return layers.Hats;
+                case PetClothingSlot.Outfit: return layers.Outfits;
+                case PetClothingSlot.Shoes: return layers.Shoes;
+                default: return layers.Accessories;
+            }
+        }
+
         public static string[] Patterns(string species, string breed) =>
             Layers(species)?.Patterns.TryGetValue(breed ?? "", out var p) == true ? p : new string[0];
 
@@ -90,6 +106,7 @@ namespace AvatarWorld.Core.Avatar
         public string BreedId = "";
         public string PatternId = "";
         public string EyebrowId = "";
+        public string HatId = "", OutfitId = "", ShoesId = "", AccessoryId = "";
         public string ManeId = "";
         public string TailId = "";
         public string EyesId = "";
@@ -106,7 +123,7 @@ namespace AvatarWorld.Core.Avatar
 
         void ResetForSpecies()
         {
-            VariantId = ""; BreedId = ""; PatternId = ""; EyebrowId = ""; ManeId = ""; TailId = ""; EyesId = ""; MouthId = "";
+            VariantId = ""; BreedId = ""; PatternId = ""; EyebrowId = ""; ManeId = ""; TailId = ""; EyesId = ""; MouthId = ""; HatId = ""; OutfitId = ""; ShoesId = ""; AccessoryId = "";
             BodyColor = PatternColor = EyesColor = EyebrowColor = ManeColor = TailColor = 0;
             if (PetCatalog.IsLayered(Species))
             {
@@ -123,6 +140,7 @@ namespace AvatarWorld.Core.Avatar
         public PetAppearance Clone() => new PetAppearance
         {
             Species = Species, VariantId = VariantId, BreedId = BreedId, PatternId = PatternId, EyebrowId = EyebrowId, ManeId = ManeId, TailId = TailId, EyesId = EyesId, MouthId = MouthId,
+            HatId = HatId, OutfitId = OutfitId, ShoesId = ShoesId, AccessoryId = AccessoryId,
             BodyColor = BodyColor, PatternColor = PatternColor, EyesColor = EyesColor, EyebrowColor = EyebrowColor, ManeColor = ManeColor, TailColor = TailColor,
         };
 
@@ -134,9 +152,39 @@ namespace AvatarWorld.Core.Avatar
             return layers.Breeds.Contains(BreedId) && layers.Eyes.Contains(EyesId) && layers.Mouths.Contains(MouthId) &&
                    (string.IsNullOrEmpty(PatternId) || PetCatalog.Patterns(Species, BreedId).Contains(PatternId)) &&
                    (string.IsNullOrEmpty(EyebrowId) || PetCatalog.Eyebrows(Species, BreedId).Contains(EyebrowId)) &&
+                   ClothingValid(PetClothingSlot.Hat, HatId) && ClothingValid(PetClothingSlot.Outfit, OutfitId) &&
+                   ClothingValid(PetClothingSlot.Shoes, ShoesId) && ClothingValid(PetClothingSlot.Accessory, AccessoryId) &&
                    (layers.Manes.Length == 0 ? string.IsNullOrEmpty(ManeId) : layers.Manes.Contains(ManeId)) &&
                    (layers.Tails.Length == 0 ? string.IsNullOrEmpty(TailId) : layers.Tails.Contains(TailId)) &&
                    ColorsInRange();
+        }
+
+        bool ClothingValid(PetClothingSlot slot, string id) => string.IsNullOrEmpty(id) || PetCatalog.Clothing(Species, slot).Contains(id);
+
+        public string GetClothing(PetClothingSlot slot)
+        {
+            switch (slot)
+            {
+                case PetClothingSlot.Hat: return HatId;
+                case PetClothingSlot.Outfit: return OutfitId;
+                case PetClothingSlot.Shoes: return ShoesId;
+                default: return AccessoryId;
+            }
+        }
+
+        /// <summary>Veste (ou, com "", tira) o item do slot; false se o item nao existe nessa especie.</summary>
+        public bool TrySelectClothing(PetClothingSlot slot, string id)
+        {
+            if (!PetCatalog.IsLayered(Species) || !ClothingValid(slot, id)) return false;
+            id = id ?? "";
+            switch (slot)
+            {
+                case PetClothingSlot.Hat: HatId = id; break;
+                case PetClothingSlot.Outfit: OutfitId = id; break;
+                case PetClothingSlot.Shoes: ShoesId = id; break;
+                default: AccessoryId = id; break;
+            }
+            return true;
         }
 
         bool ColorsInRange() =>
@@ -147,7 +195,7 @@ namespace AvatarWorld.Core.Avatar
         bool InRange(int index, PetColorRole role) => index >= 0 && index < Math.Max(1, PetCatalog.ColorCount(Species, role));
 
         public bool SameAs(PetAppearance o) => o != null && Species == o.Species && VariantId == o.VariantId && BreedId == o.BreedId &&
-            PatternId == o.PatternId && EyebrowId == o.EyebrowId && ManeId == o.ManeId && TailId == o.TailId && EyesId == o.EyesId && MouthId == o.MouthId &&
+            PatternId == o.PatternId && EyebrowId == o.EyebrowId && HatId == o.HatId && OutfitId == o.OutfitId && ShoesId == o.ShoesId && AccessoryId == o.AccessoryId && ManeId == o.ManeId && TailId == o.TailId && EyesId == o.EyesId && MouthId == o.MouthId &&
             BodyColor == o.BodyColor && PatternColor == o.PatternColor && EyesColor == o.EyesColor && EyebrowColor == o.EyebrowColor &&
             ManeColor == o.ManeColor && TailColor == o.TailColor;
 
@@ -266,6 +314,8 @@ namespace AvatarWorld.Core.Avatar
             if (!layers.Mouths.Contains(MouthId)) MouthId = layers.Mouths[0];
             if (PatternId == null || (PatternId != "" && !PetCatalog.Patterns(Species, BreedId).Contains(PatternId))) PatternId = "";
             if (EyebrowId == null || (EyebrowId != "" && !PetCatalog.Eyebrows(Species, BreedId).Contains(EyebrowId))) EyebrowId = "";
+            foreach (PetClothingSlot slot in Enum.GetValues(typeof(PetClothingSlot)))
+                if (!ClothingValid(slot, GetClothing(slot))) TrySelectClothing(slot, "");
             if (layers.Manes.Length == 0) ManeId = ""; else if (!layers.Manes.Contains(ManeId)) ManeId = layers.Manes[0];
             if (layers.Tails.Length == 0) TailId = ""; else if (!layers.Tails.Contains(TailId)) TailId = layers.Tails[0];
             if (!InRange(ManeColor, PetColorRole.Mane)) ManeColor = 0;

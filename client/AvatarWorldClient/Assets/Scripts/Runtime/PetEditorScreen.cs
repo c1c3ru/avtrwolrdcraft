@@ -16,15 +16,17 @@ namespace AvatarWorld.Runtime
     /// </summary>
     public sealed class PetEditorScreen : MonoBehaviour
     {
-        static readonly Vector3 PetPosition = new Vector3(-3.2f, -2.2f, 0f);
-        const float PetScale = 1.3f;
+        static readonly Vector3 PetPosition = new Vector3(-3.6f, -2.2f, 0f); // base do pet
+        const float PetHeight = 4.2f, PetMaxWidth = 5.4f;
         static readonly Color Ink = new Color(0.45f, 0.2f, 0.6f);
         static readonly Color Pink = new Color(1f, 0.58f, 0.82f), Light = new Color(1f, 0.9f, 0.95f);
 
-        enum Tab { Breed, Pattern, BodyColor, PatternColor, Eyebrow, EyebrowColor, Eyes, EyesColor, Mouth, Mane, ManeColor, Tail, TailColor }
+        enum Tab { Breed, Pattern, BodyColor, PatternColor, Eyebrow, EyebrowColor, Eyes, EyesColor, Mouth, Mane, ManeColor, Tail, TailColor, Hat, Outfit, Shoes, Accessory }
 
-        static string TabLabel(Tab tab)
+        static string TabLabel(Tab tab, string species)
         {
+            if (species == "Horse" && tab == Tab.Hat) return "Rédea";
+            if (species == "Horse" && tab == Tab.Outfit) return "Sela";
             switch (tab)
             {
                 case Tab.Breed: return "Raça";
@@ -33,6 +35,10 @@ namespace AvatarWorld.Runtime
                 case Tab.PatternColor: return "Cor padrão";
                 case Tab.Eyebrow: return "Sobrancelha";
                 case Tab.EyebrowColor: return "Cor sobr.";
+                case Tab.Hat: return "Chapéu";
+                case Tab.Outfit: return "Roupa";
+                case Tab.Shoes: return "Sapatos";
+                case Tab.Accessory: return "Acessório";
                 case Tab.Mane: return "Crina";
                 case Tab.ManeColor: return "Cor crina";
                 case Tab.Tail: return "Cauda";
@@ -61,6 +67,7 @@ namespace AvatarWorld.Runtime
         ScrollRect _scroll;
         readonly Dictionary<string, Image> _speciesButtons = new Dictionary<string, Image>();
         readonly Dictionary<Tab, Image> _tabButtons = new Dictionary<Tab, Image>();
+        readonly Dictionary<Tab, Text> _tabLabels = new Dictionary<Tab, Text>();
         readonly Dictionary<string, Sprite> _art = new Dictionary<string, Sprite>();
 
         public bool Saved { get; private set; }
@@ -101,7 +108,7 @@ namespace AvatarWorld.Runtime
             var host = new GameObject("Pet em edicao");
             host.transform.SetParent(transform, false);
             _runtime = host.AddComponent<PetGpuRuntime>();
-            _runtime.Configure(_working, PetPosition, PetScale);
+            _runtime.Configure(_working, PetPosition, PetHeight, PetMaxWidth);
 
             BuildUi();
             Refresh();
@@ -159,19 +166,20 @@ namespace AvatarWorld.Runtime
             for (int i = 0; i < tabs.Length; i++)
             {
                 var tab = tabs[i];
-                float x = -280f + (i % 3) * 280f;
-                float y = -330f - (i / 3) * 70f;
-                var button = Button("Tab_" + tab, _layeredGroup.transform, null, new Vector2(0.5f, 1), new Vector2(x, y), new Vector2(268f, 62f), () => { UiSound.PlayClick(); _tab = tab; Refresh(); });
-                var label = NewText("Label", button.transform, 32, Ink);
+                float x = -315f + (i % 4) * 210f;
+                float y = -330f - (i / 4) * 60f;
+                var button = Button("Tab_" + tab, _layeredGroup.transform, null, new Vector2(0.5f, 1), new Vector2(x, y), new Vector2(200f, 54f), () => { UiSound.PlayClick(); _tab = tab; Refresh(); });
+                var label = NewText("Label", button.transform, 28, Ink);
                 Stretch(label.rectTransform);
-                label.text = TabLabel(tab);
+                label.text = TabLabel(tab, _working.Species);
+                _tabLabels[tab] = label;
                 _tabButtons[tab] = button;
             }
             var viewport = new GameObject("Viewport", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
             viewport.transform.SetParent(_layeredGroup.transform, false);
             var vr = (RectTransform)viewport.transform;
             vr.anchorMin = new Vector2(0, 0); vr.anchorMax = new Vector2(1, 1);
-            vr.offsetMin = new Vector2(24f, 20f); vr.offsetMax = new Vector2(-24f, -640f);
+            vr.offsetMin = new Vector2(24f, 20f); vr.offsetMax = new Vector2(-24f, -620f);
             viewport.GetComponent<Image>().color = new Color(0, 0, 0, 0.001f);
             var content = new GameObject("Grid", typeof(RectTransform), typeof(GridLayoutGroup), typeof(ContentSizeFitter));
             content.transform.SetParent(viewport.transform, false);
@@ -222,6 +230,7 @@ namespace AvatarWorld.Runtime
                 case Tab.Eyebrow: return PetCatalog.Eyebrows(_working.Species, _working.BreedId).Length > 0;
                 case Tab.EyebrowColor: return PetCatalog.ColorCount(_working.Species, PetColorRole.Eyebrows) > 0 && !string.IsNullOrEmpty(_working.EyebrowId);
                 case Tab.PatternColor: return !string.IsNullOrEmpty(_working.PatternId);
+                case Tab.Hat: case Tab.Outfit: case Tab.Shoes: case Tab.Accessory: return PetCatalog.Clothing(_working.Species, ClothingOf(tab)).Length > 0;
                 case Tab.Mane: return PetCatalog.Layers(_working.Species).Manes.Length > 0;
                 case Tab.ManeColor: return PetCatalog.Layers(_working.Species).Manes.Length > 0 && PetCatalog.ColorCount(_working.Species, PetColorRole.Mane) > 0;
                 case Tab.Tail: return PetCatalog.Layers(_working.Species).Tails.Length > 0;
@@ -229,6 +238,9 @@ namespace AvatarWorld.Runtime
                 default: return true;
             }
         }
+
+        static PetClothingSlot ClothingOf(Tab tab) =>
+            tab == Tab.Hat ? PetClothingSlot.Hat : tab == Tab.Outfit ? PetClothingSlot.Outfit : tab == Tab.Shoes ? PetClothingSlot.Shoes : PetClothingSlot.Accessory;
 
         void Refresh()
         {
@@ -248,6 +260,7 @@ namespace AvatarWorld.Runtime
                 bool available = TabAvailable(pair.Key);
                 pair.Value.gameObject.SetActive(available);
                 pair.Value.color = pair.Key == _tab ? Pink : Light;
+                _tabLabels[pair.Key].text = TabLabel(pair.Key, _working.Species);
             }
             RebuildGrid();
         }
@@ -277,6 +290,13 @@ namespace AvatarWorld.Runtime
                 case Tab.Mouth:
                     foreach (var id in layers.Mouths) { string v = id; AddCell(Label(id), null, _working.MouthId == v, () => Choose(_working.TrySelectMouth(v))); }
                     break;
+                case Tab.Hat: case Tab.Outfit: case Tab.Shoes: case Tab.Accessory:
+                {
+                    var slot = ClothingOf(_tab);
+                    AddCell("∅", null, string.IsNullOrEmpty(_working.GetClothing(slot)), () => Choose(_working.TrySelectClothing(slot, "")));
+                    foreach (var id in PetCatalog.Clothing(species, slot)) { string v = id; AddCell(Label(id), null, _working.GetClothing(slot) == v, () => Choose(_working.TrySelectClothing(slot, v))); }
+                    break;
+                }
                 case Tab.Mane:
                     foreach (var id in layers.Manes) { string v = id; AddCell(Label(id), null, _working.ManeId == v, () => Choose(_working.TrySelectMane(v))); }
                     break;
