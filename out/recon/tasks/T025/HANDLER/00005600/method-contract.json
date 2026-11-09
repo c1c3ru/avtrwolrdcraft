@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "task_id": "T025/HANDLER/00005600",
+  "status": "STATIC_candidate_contract_checked_not_certified",
+  "semantic_completion": false,
+  "method_identity": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "PWC.BackgroundPlanetSoundHandler",
+    "name": "OnBeforeSceneLoadStage1",
+    "token": "0x06005601",
+    "method_definition_index": 22016,
+    "parameter_count": 0,
+    "vaddr": "0x2069448",
+    "file_offset": "0x2065448"
+  },
+  "bounded_window": {
+    "start": "0x2069448",
+    "exclusive_stop": "0x20694d4",
+    "bytes": 140,
+    "sha256": "be7424d90385db660f123adb50fbe4c904761c67076fcd37ae9c6e14ff2a61fd",
+    "bound_limit": "candidate window capped at next distinct metadata method start; noncontiguous body and exception extents are not proven"
+  },
+  "assembly_path": "out/recon/tasks/T025/HANDLER/00005600/handler.asm.txt",
+  "assembly_sha256": "03f7d989c1ea88183e7c043a79bdfd326227dd3e67bacd0d64ea81dc973b050a",
+  "disassembly_command": [
+    "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+    "-d",
+    "--start-address=0x2069448",
+    "--stop-address=0x20694d4",
+    "/home/c1c3ru/avtrwolrdcraft/.claude/worktrees/recon-stage-handler-effects/out/recon/il2cpp/libil2cpp.so"
+  ],
+  "detail": {
+    "field_source": {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/BackgroundPlanetSoundHandler.cs",
+      "sha256": "d69fa484dc5495f90f9537402695fbd35a05ec2a001964a9fab1850d5037e6a2",
+      "declaration": "private int _tweenId; //Field offset: 0x58"
+    },
+    "pseudocode": [
+      "if (this._tweenId >= 1):",
+      "    LeanTween.cancel(this.gameObject, this._tweenId, false)",
+      "    this._tweenId = 0"
+    ],
+    "effects": [
+      "reads instance field _tweenId (offset 0x58)",
+      "when >= 1: calls Component.get_gameObject() then LeanTween.cancel(gameObject, tweenId, false)",
+      "unconditionally writes 0 to _tweenId (offset 0x58) at method exit"
+    ],
+    "calls": [
+      {
+        "site": "0x2069490",
+        "target": "0x3cc84e4",
+        "resolved": [
+          {
+            "image": "UnityEngine.CoreModule.dll",
+            "declaring_type": "UnityEngine.Component",
+            "name": "get_gameObject",
+            "token": "0x060006e7",
+            "method_definition_index": 86847,
+            "parameter_count": 0,
+            "vaddr": "0x3cc84e4",
+            "file_offset": "0x3cc44e4"
+          }
+        ]
+      },
+      {
+        "site": "0x20694c0",
+        "target": "0x1c74b4c",
+        "resolved": [
+          {
+            "image": "Assembly-CSharp.dll",
+            "declaring_type": "LeanTween",
+            "name": "cancel",
+            "token": "0x06000216",
+            "method_definition_index": 533,
+            "parameter_count": 3,
+            "vaddr": "0x1c74b4c",
+            "file_offset": "0x1c70b4c"
+          }
+        ]
+      }
+    ],
+    "unknowns": [
+      "LeanTween.cancel body/exceptions and actual tween-scheduler state are not observed",
+      "get_gameObject fake-null/exception behavior not observed"
+    ]
+  },
+  "input_pair": {
+    "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+  },
+  "source_registration_edge": {
+    "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+    "event": "GameSceneManager.OnBeforeSceneLoadStage1Action",
+    "caller": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.BackgroundPlanetSoundHandler",
+      "name": "Awake",
+      "token": "0x060055ff",
+      "method_definition_index": 22014,
+      "parameter_count": 0,
+      "vaddr": "0x20691dc",
+      "file_offset": "0x20651dc"
+    },
+    "handler": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.BackgroundPlanetSoundHandler",
+      "name": "OnBeforeSceneLoadStage1",
+      "token": "0x06005601",
+      "method_definition_index": 22016,
+      "parameter_count": 0,
+      "vaddr": "0x2069448",
+      "file_offset": "0x2065448"
+    },
+    "event_add_method": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.GameSceneManager",
+      "name": "add_OnBeforeSceneLoadStage1Action",
+      "token": "0x060056f0",
+      "method_definition_index": 22255,
+      "parameter_count": 1,
+      "vaddr": "0x20692dc",
+      "file_offset": "0x20652dc"
+    },
+    "target_object": "this saved in x19",
+    "handler_metadata_usage": {
+      "got_vaddr": "0x41c8240",
+      "usage_vaddr": "0x4319618",
+      "encoded": "0x6000ac01",
+      "kind": 3,
+      "index": 22016
+    },
+    "handler_got_reference": {
+      "adrp_site": "0x20691f0",
+      "ldr_site": "0x2069200",
+      "got_vaddr": "0x41c8240",
+      "base_register": 20,
+      "destination_register": 20
+    },
+    "constructor_call": {
+      "site": "0x206927c",
+      "file_offset": "0x206527c",
+      "word": "0x94498fb0",
+      "bytes_le": "b08f4994",
+      "target": "0x32cd13c",
+      "metadata_method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Action",
+        "name": ".ctor",
+        "token": "0x06000379",
+        "method_definition_index": 37309,
+        "parameter_count": 2,
+        "vaddr": "0x32cd13c",
+        "file_offset": "0x32c913c"
+      },
+      "identity_limit": null
+    },
+    "registration_branch": {
+      "site": "0x2069294",
+      "file_offset": "0x2065294",
+      "word": "0x94000012",
+      "bytes_le": "12000094",
+      "kind": "BL",
+      "target": "0x20692dc"
+    },
+    "raw_argument_flow_anchors": [
+      {
+        "site": "0x20691f0",
+        "file_offset": "0x20651f0",
+        "word": "0xf0010af4",
+        "bytes_le": "f40a01f0"
+      },
+      {
+        "site": "0x2069200",
+        "file_offset": "0x2065200",
+        "word": "0xf9412294",
+        "bytes_le": "942241f9"
+      },
+      {
+        "site": "0x2069208",
+        "file_offset": "0x2065208",
+        "word": "0xaa0003f3",
+        "bytes_le": "f30300aa"
+      },
+      {
+        "site": "0x206926c",
+        "file_offset": "0x206526c",
+        "word": "0xf9400282",
+        "bytes_le": "820240f9"
+      },
+      {
+        "site": "0x2069270",
+        "file_offset": "0x2065270",
+        "word": "0xaa1303e1",
+        "bytes_le": "e10313aa"
+      },
+      {
+        "site": "0x2069274",
+        "file_offset": "0x2065274",
+        "word": "0xaa1f03e3",
+        "bytes_le": "e3031faa"
+      },
+      {
+        "site": "0x2069278",
+        "file_offset": "0x2065278",
+        "word": "0xaa0003f4",
+        "bytes_le": "f40300aa"
+      },
+      {
+        "site": "0x206927c",
+        "file_offset": "0x206527c",
+        "word": "0x94498fb0",
+        "bytes_le": "b08f4994"
+      },
+      {
+        "site": "0x2069290",
+        "file_offset": "0x2065290",
+        "word": "0xaa1403e0",
+        "bytes_le": "e00314aa"
+      },
+      {
+        "site": "0x2069294",
+        "file_offset": "0x2065294",
+        "word": "0x94000012",
+        "bytes_le": "12000094"
+      }
+    ],
+    "precondition": "Normal execution reaches the signup after metadata/class initialization and object/delegate construction.",
+    "limits": [
+      "Does not prove handler invocation, side effects, subscription order across instances or lifetime/unsubscription.",
+      "Exceptions, lazy-init helpers and indirect/generated calls outside this guarded flow remain unmodeled."
+    ]
+  },
+  "evidence_class": "STATIC_and_DERIVED_from_original_cached_bytes",
+  "runtime_or_device_observed": false
+}
