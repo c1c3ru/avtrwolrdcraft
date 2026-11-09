@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "task": "T026/STATE_MACHINE/execute-next-frame",
+  "state": "ready",
+  "queue_revision_at_checkpoint": 43,
+  "own_lease_released": true,
+  "evidence": [
+    {
+      "path": "reports/recon/t026_next_frame.json",
+      "sha256": "f90b96c323d44afc43fd1a31b8c7f07386ad2bbb68f1d8823fc3439885d7ff5c"
+    },
+    {
+      "path": "reports/recon/t026_next_frame_review.json",
+      "sha256": "1a28b22950d3d6250a3a371d3e3ca3aa19232d4603f66db58cb1b1a06f45e84e"
+    },
+    {
+      "path": "reports/recon/t026_scene_hook.json",
+      "sha256": "7f5c0b0487f2c31e9db64162d5367afc76e13dc5787a3b60531c1ed6ff4cff7c"
+    },
+    {
+      "path": "reports/recon/t026_scene_hook_review.json",
+      "sha256": "646ace6e3974e2d8143210541ed7b6d70b84cc1de95cb4fb1aa6f83b400f1625"
+    }
+  ],
+  "validation": {
+    "tests": 16,
+    "failures": 0,
+    "duration_seconds": 19.58,
+    "command": "python3 -m unittest discover -s tools -p 'test_recon_t026_*.py' -v"
+  },
+  "parent_completion": false,
+  "game_executed": false,
+  "client_modified": false,
+  "concurrent_work_note": "A different T025 child has an active lease; it was preserved. This record claims release only of this T026 lease."
+}

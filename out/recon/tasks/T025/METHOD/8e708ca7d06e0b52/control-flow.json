@@ -1,0 +1,987 @@
+{
+  "method": "PWC.GameSceneManager.LoadScene",
+  "start": "0x20728d4",
+  "exclusive_stop": "0x2072c5c",
+  "bytes": 904,
+  "bound_limit": "candidate window capped at next metadata start; noncontiguous body and exception extents not proven",
+  "decode_limit": "selected branch encodings only; dataflow checks are explicit in getter guard",
+  "control_flow_encodings": [
+    {
+      "site": "0x2072900",
+      "opcode": "0x37000428",
+      "kind": "TBNZ",
+      "register": 8,
+      "bit": 0,
+      "target": "0x2072984",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x207290c",
+      "opcode": "0x97ec5777",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072918",
+      "opcode": "0x97ec5774",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072924",
+      "opcode": "0x97ec5771",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072930",
+      "opcode": "0x97ec576e",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x207293c",
+      "opcode": "0x97ec576b",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072948",
+      "opcode": "0x97ec5768",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072954",
+      "opcode": "0x97ec5765",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072960",
+      "opcode": "0x97ec5762",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x207296c",
+      "opcode": "0x97ec575f",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072978",
+      "opcode": "0x97ec575c",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072988",
+      "opcode": "0x97ec57fa",
+      "kind": "BL",
+      "target": "0x1b88970",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072994",
+      "opcode": "0x944c9eb6",
+      "kind": "BL",
+      "target": "0x339a46c",
+      "target_inside_window": false,
+      "metadata_targets": [
+        {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Object",
+          "name": ".ctor",
+          "token": "0x06000fb2",
+          "method_definition_index": 40438,
+          "parameter_count": 0,
+          "vaddr": "0x339a46c",
+          "file_offset": "0x339646c"
+        }
+      ],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072998",
+      "opcode": "0xb4001613",
+      "kind": "CBZ",
+      "register": 19,
+      "width": 64,
+      "target": "0x2072c58",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x20729b8",
+      "opcode": "0x97ec5737",
+      "kind": "BL",
+      "target": "0x1b88694",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x20729cc",
+      "opcode": "0x97ec5732",
+      "kind": "BL",
+      "target": "0x1b88694",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x20729d8",
+      "opcode": "0x35000048",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x20729e0",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x20729dc",
+      "opcode": "0x97ec57a0",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x20729e8",
+      "opcode": "0x350000c8",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072a00",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x20729f4",
+      "opcode": "0x97ec573d",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a08",
+      "opcode": "0x35000068",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072a14",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a0c",
+      "opcode": "0x97ec5794",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a1c",
+      "opcode": "0x34000208",
+      "kind": "CBZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072a5c",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a38",
+      "opcode": "0x35000048",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072a40",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a3c",
+      "opcode": "0x97ec5788",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a58",
+      "opcode": "0x1470cc4c",
+      "kind": "B",
+      "target": "0x3ca5b88",
+      "target_inside_window": false,
+      "metadata_targets": [
+        {
+          "image": "UnityEngine.CoreModule.dll",
+          "declaring_type": "UnityEngine.Debug",
+          "name": "LogError",
+          "token": "0x060001cf",
+          "method_definition_index": 85543,
+          "parameter_count": 1,
+          "vaddr": "0x3ca5b88",
+          "file_offset": "0x3ca1b88"
+        }
+      ],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a6c",
+      "opcode": "0x35000048",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072a74",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a70",
+      "opcode": "0x97ec577b",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a78",
+      "opcode": "0x94041fb8",
+      "kind": "BL",
+      "target": "0x217a958",
+      "target_inside_window": false,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.AvatarSpine.AvatarSpineTexturesManager",
+          "name": "ClearAllTextureData",
+          "token": "0x060067e7",
+          "method_definition_index": 26598,
+          "parameter_count": 0,
+          "vaddr": "0x217a958",
+          "file_offset": "0x2176958"
+        }
+      ],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a8c",
+      "opcode": "0x35000048",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072a94",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a90",
+      "opcode": "0x97ec5773",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072a98",
+      "opcode": "0x9400648a",
+      "kind": "BL",
+      "target": "0x208bcc0",
+      "target_inside_window": false,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.SUTSystem.SUTUtils",
+          "name": "ClearTexturesCache",
+          "token": "0x06005901",
+          "method_definition_index": 22784,
+          "parameter_count": 0,
+          "vaddr": "0x208bcc0",
+          "file_offset": "0x2087cc0"
+        }
+      ],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072aac",
+      "opcode": "0x35000048",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072ab4",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072ab0",
+      "opcode": "0x97ec576b",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072ab8",
+      "opcode": "0x94039c96",
+      "kind": "BL",
+      "target": "0x2159d10",
+      "target_inside_window": false,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.CarsMaker.CarPartsLoader",
+          "name": "ClearLoadedParts",
+          "token": "0x06006654",
+          "method_definition_index": 26195,
+          "parameter_count": 0,
+          "vaddr": "0x2159d10",
+          "file_offset": "0x2155d10"
+        }
+      ],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072acc",
+      "opcode": "0x35000048",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072ad4",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072ad0",
+      "opcode": "0x97ec5763",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072ad8",
+      "opcode": "0x94037f32",
+      "kind": "BL",
+      "target": "0x21527a0",
+      "target_inside_window": false,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.CarsMaker.CarAppearance",
+          "name": "ClearIconCache",
+          "token": "0x060065f4",
+          "method_definition_index": 26099,
+          "parameter_count": 0,
+          "vaddr": "0x21527a0",
+          "file_offset": "0x214e7a0"
+        }
+      ],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072ae4",
+      "opcode": "0x35000048",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072aec",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072ae8",
+      "opcode": "0x97ec575d",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072af4",
+      "opcode": "0x350000c8",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072b0c",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b00",
+      "opcode": "0x97ec56fa",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b14",
+      "opcode": "0x35000068",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072b20",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b18",
+      "opcode": "0x97ec5751",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b34",
+      "opcode": "0x97ec56d8",
+      "kind": "BL",
+      "target": "0x1b88694",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b38",
+      "opcode": "0x9400004b",
+      "kind": "BL",
+      "target": "0x2072c64",
+      "target_inside_window": false,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "GetActiveSceneName",
+          "token": "0x06005705",
+          "method_definition_index": 22276,
+          "parameter_count": 0,
+          "vaddr": "0x2072c64",
+          "file_offset": "0x206ec64"
+        }
+      ],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b50",
+      "opcode": "0x97ec56d1",
+      "kind": "BL",
+      "target": "0x1b88694",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b60",
+      "opcode": "0xb40000c8",
+      "kind": "CBZ",
+      "register": 8,
+      "width": 64,
+      "target": "0x2072b78",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b70",
+      "opcode": "0xd63f0120",
+      "kind": "BLR",
+      "register": 9,
+      "target": null,
+      "target_inside_window": null,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b7c",
+      "opcode": "0x35000068",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072b88",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b80",
+      "opcode": "0x97ec5737",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072b90",
+      "opcode": "0xb40000c8",
+      "kind": "CBZ",
+      "register": 8,
+      "width": 64,
+      "target": "0x2072ba8",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072ba0",
+      "opcode": "0xd63f0120",
+      "kind": "BLR",
+      "register": 9,
+      "target": null,
+      "target_inside_window": null,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072bac",
+      "opcode": "0x35000068",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072bb8",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072bb0",
+      "opcode": "0x97ec572b",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072bc0",
+      "opcode": "0xb40000a8",
+      "kind": "CBZ",
+      "register": 8,
+      "width": 64,
+      "target": "0x2072bd4",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072bd0",
+      "opcode": "0xd63f0120",
+      "kind": "BLR",
+      "register": 9,
+      "target": null,
+      "target_inside_window": null,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072bdc",
+      "opcode": "0x350000c8",
+      "kind": "CBNZ",
+      "register": 8,
+      "width": 32,
+      "target": "0x2072bf4",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072be8",
+      "opcode": "0x97ec56c0",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072c14",
+      "opcode": "0x97ec5757",
+      "kind": "BL",
+      "target": "0x1b88970",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072c30",
+      "opcode": "0x94496943",
+      "kind": "BL",
+      "target": "0x32cd13c",
+      "target_inside_window": false,
+      "metadata_targets": [
+        {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Action",
+          "name": ".ctor",
+          "token": "0x06000379",
+          "method_definition_index": 37309,
+          "parameter_count": 2,
+          "vaddr": "0x32cd13c",
+          "file_offset": "0x32c913c"
+        }
+      ],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072c34",
+      "opcode": "0xb4000134",
+      "kind": "CBZ",
+      "register": 20,
+      "width": 64,
+      "target": "0x2072c58",
+      "target_inside_window": true,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072c54",
+      "opcode": "0x14022da1",
+      "kind": "B",
+      "target": "0x20fe2d8",
+      "target_inside_window": false,
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.LoadingScreen.LoadingScreenManager",
+          "name": "StartSceneTransition",
+          "token": "0x06005fc3",
+          "method_definition_index": 24514,
+          "parameter_count": 1,
+          "vaddr": "0x20fe2d8",
+          "file_offset": "0x20fa2d8"
+        }
+      ],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    },
+    {
+      "site": "0x2072c58",
+      "opcode": "0x97ec574a",
+      "kind": "BL",
+      "target": "0x1b88980",
+      "target_inside_window": false,
+      "metadata_targets": [],
+      "reachability": "STATIC_encoding_not_runtime_observation"
+    }
+  ],
+  "assembly_listing": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/navigation/LoadScene.asm.txt",
+  "body_extent_status": "candidate_window_only_not_full_body_or_exception_cfg",
+  "stage_delegate_fields": {
+    "source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+    "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+    "fields": [
+      {
+        "name": "OnBeforeSceneLoadStage1Action",
+        "offset": "0x0"
+      },
+      {
+        "name": "OnBeforeSceneLoadStage2Action",
+        "offset": "0x8"
+      },
+      {
+        "name": "OnBeforeSceneLoadStage3Action",
+        "offset": "0x10"
+      }
+    ],
+    "dispatch_review_sha256": "055d2eafca19ec8f9260875cf64841cbf7b7f767476d726b8d19d635d07b9b1b",
+    "ordered_dispatches": [
+      {
+        "candidate_slot_offset": "0x0",
+        "anchors": [
+          {
+            "site": "0x2072b5c",
+            "word": "0xf9400108"
+          },
+          {
+            "site": "0x2072b60",
+            "word": "0xb40000c8"
+          },
+          {
+            "site": "0x2072b64",
+            "word": "0xf9400d09"
+          },
+          {
+            "site": "0x2072b68",
+            "word": "0xf9402100"
+          },
+          {
+            "site": "0x2072b6c",
+            "word": "0xf9401501"
+          },
+          {
+            "site": "0x2072b70",
+            "word": "0xd63f0120"
+          }
+        ],
+        "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+        "otherwise": "CBZ bypasses the indirect call"
+      },
+      {
+        "candidate_slot_offset": "0x8",
+        "anchors": [
+          {
+            "site": "0x2072b88",
+            "word": "0xf9405c08"
+          },
+          {
+            "site": "0x2072b90",
+            "word": "0xb40000c8"
+          },
+          {
+            "site": "0x2072b94",
+            "word": "0xf9400d09"
+          },
+          {
+            "site": "0x2072b98",
+            "word": "0xf9402100"
+          },
+          {
+            "site": "0x2072b9c",
+            "word": "0xf9401501"
+          },
+          {
+            "site": "0x2072ba0",
+            "word": "0xd63f0120"
+          }
+        ],
+        "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+        "otherwise": "CBZ bypasses the indirect call"
+      },
+      {
+        "candidate_slot_offset": "0x10",
+        "anchors": [
+          {
+            "site": "0x2072bbc",
+            "word": "0xf9400908"
+          },
+          {
+            "site": "0x2072bc0",
+            "word": "0xb40000a8"
+          },
+          {
+            "site": "0x2072bc4",
+            "word": "0xf9400d09"
+          },
+          {
+            "site": "0x2072bc8",
+            "word": "0xf9402100"
+          },
+          {
+            "site": "0x2072bcc",
+            "word": "0xf9401501"
+          },
+          {
+            "site": "0x2072bd0",
+            "word": "0xd63f0120"
+          }
+        ],
+        "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+        "otherwise": "CBZ bypasses the indirect call"
+      }
+    ],
+    "typeinfo_provenance": {
+      "adrp_site": "0x20728e8",
+      "ldr_site": "0x20728f0",
+      "got_vaddr": 68978112,
+      "base_register": 23,
+      "destination_register": 23,
+      "usage": {
+        "got_vaddr": "0x41c85c0",
+        "usage_vaddr": "0x42fa8c8",
+        "encoded": "0x20011d2f",
+        "kind": 1,
+        "index": 36503
+      },
+      "resolved_typedef_candidates": [
+        {
+          "index": 3802,
+          "name": "<>c__DisplayClass28_0",
+          "namespace": ""
+        }
+      ]
+    },
+    "binding_status": "CANDIDATE_ONLY_unresolved_static_data_base",
+    "limit": "The three null-guarded indirect calls and load offsets 0/8/16 are observed. The TypeInfo resolves to <>c__DisplayClass28_0 and the static-data base is not joined to GameSceneManager, so named-field association is unproven; actual delegate targets remain runtime-dependent."
+  },
+  "direct_registration_edges": {
+    "prior_probe_sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e",
+    "raw_direct_candidates": 13,
+    "prior_positive_stage_edges": 4,
+    "newly_verified_stage_edges": 9,
+    "total_direct_candidates_verified": 13,
+    "by_event_candidate_counts": {
+      "add_OnBeforeSceneLoadStage1Action": 8,
+      "add_OnBeforeSceneLoadStage2Action": 3,
+      "add_OnBeforeSceneLoadStage3Action": 2
+    },
+    "previous_edges": [
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.BackgroundPlanetSoundHandler.Awake",
+        "handler": "PWC.BackgroundPlanetSoundHandler.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06005601",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.PersistentData.PersistentDataManager.Awake",
+        "handler": "PWC.PersistentData.PersistentDataManager.OnBeforeSceneLoadStage2",
+        "handler_token": "0x06006e44",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage2",
+        "handler_token": "0x0600849c",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage3Action",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage3",
+        "handler_token": "0x0600849d",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      }
+    ],
+    "new_edges": [
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.LevelDigHoleArea.Awake",
+        "handler": "Game.Level.LevelDigHoleArea.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06002d73",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.LevelSpawnOnLevelPostInit.Awake",
+        "handler": "Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems",
+        "handler_token": "0x060032a9",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.Awake",
+        "handler": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06003cd2",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.Locker.LevelLockerSpawnOnPostInit.Awake",
+        "handler": "Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems",
+        "handler_token": "0x060032a9",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.AvatarSpeech.AvatarSpeechUIMenu.Awake",
+        "handler": "PWC.AvatarSpeech.AvatarSpeechUIMenu.OnBeforeSceneLoadStage1",
+        "handler_token": "0x0600699a",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.Level.LevelKillArea.Awake",
+        "handler": "PWC.Level.LevelKillArea.OnBeforeSceneLoadStage1",
+        "handler_token": "0x0600784e",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.Level.LevelScreenshotManager.Awake",
+        "handler": "PWC.Level.LevelScreenshotManager.OnBeforeSceneLoad",
+        "handler_token": "0x060084ff",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.Level.LevelNewAvatarManager.Awake",
+        "handler": "PWC.Level.LevelNewAvatarManager.OnBeforeSceneLoadStage1",
+        "handler_token": "0x060085d0",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage3Action",
+        "caller": "PWC.Level.LevelMakerSwitcher.Awake",
+        "handler": "PWC.Level.LevelMakerSwitcher.OnBeforeSceneLoadStage3",
+        "handler_token": "0x0600865a",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      }
+    ],
+    "limit": "The 13 direct B/BL add candidates in this bounded executable-code scan are verified. This is not a complete subscriber graph; indirect, reflection, dynamically loaded and other code paths remain open."
+  },
+  "stage_dispatch_review": "stage_dispatch_review.json"
+}

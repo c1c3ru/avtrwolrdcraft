@@ -1,0 +1,46 @@
+23125dc  stp    x30, x19, [sp, #-0x10]!
+23125e0  ldr    x0, [x0, #0x28]
+23125e4  cbz    x0, #0x23125f8
+23125e8  mov    x1, xzr
+23125ec  bl     #0x211cb94  ; -> Phone.Init
+23125f0  ldp    x30, x19, [sp], #0x10
+23125f4  ret    
+23125f8  bl     #0x1b88980
+23125fc  cmp    w1, #1
+2312600  mov    x19, x0
+2312604  b.ne   #0x2312688
+2312608  mov    x0, x19
+231260c  bl     #0x3f939e0
+2312610  mov    x19, x0
+2312614  adrp   x0, #0x41ae000
+2312618  ldr    x0, [x0, #0xd8]
+231261c  bl     #0x1b886fc
+2312620  ldr    x8, [x19]
+2312624  ldr    x1, [x8]
+2312628  bl     #0x1b88dac
+231262c  tbz    w0, #0, #0x2312660
+2312630  ldr    x19, [x19]
+2312634  bl     #0x3f939f0
+2312638  adrp   x0, #0x41ac000
+231263c  ldr    x0, [x0, #0xae8]
+2312640  bl     #0x1b886fc
+2312644  ldr    w8, [x0, #0xe0]
+2312648  cbnz   w8, #0x2312650
+231264c  bl     #0x1b8885c
+2312650  mov    x0, x19
+2312654  mov    x1, xzr
+2312658  ldp    x30, x19, [sp], #0x10
+231265c  b      #0x3ca2944
+2312660  mov    w0, #8
+2312664  bl     #0x3f93aa0
+2312668  ldr    x8, [x19]
+231266c  str    x8, [x0]
+2312670  adrp   x1, #0x3f99000
+2312674  add    x1, x1, #0xd88
+2312678  mov    x2, xzr
+231267c  bl     #0x3f93ab0
+2312680  mov    x19, x0
+2312684  bl     #0x3f939f0
+2312688  mov    x0, x19
+231268c  bl     #0x1c4d150
+2312690  bl     #0x1914dc0
