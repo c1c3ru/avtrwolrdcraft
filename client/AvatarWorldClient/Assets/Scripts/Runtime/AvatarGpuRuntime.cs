@@ -542,6 +542,15 @@ namespace AvatarWorld.Runtime
                     AddSkin(_skeletonData, skin, tints, SkinOf(piece), tint);
             }
 
+            if (Appearance.Extras != null)
+                foreach (var extra in Appearance.Extras)
+                {
+                    if (!_itemsById.TryGetValue(extra.Id, out var item)) continue;
+                    LoadItemTextures(item);
+                    var tint = extra.Tint != null && extra.Tint.Length >= 3 ? new Color(extra.Tint[0], extra.Tint[1], extra.Tint[2], 1f) : Color.white;
+                    foreach (var piece in item.pieces) AddSkin(_skeletonData, skin, tints, SkinOf(piece), tint);
+                }
+
             _skeletonAnimation.skeleton.SetSkin(skin);
             _skeletonAnimation.skeleton.SetSlotsToSetupPose();
             // Boca: embutida no esqueleto por padrao; um item do SUT traz o proprio anexo "Mouths" (skin Templates/Mouth_N).
