@@ -108,3 +108,7 @@ O produtor verifica **55 âncoras nativas**, 21 chamadas nomeadas, dois vínculo
 **21 testes focados passaram** com os inputs reais e mutações de ponteiro do prefab, referências da screen, identidade de scripts, slot nativo, slot/token metadata, duração, target alpha, polaridade do ramo de completion, guard do Action nulo, target de Destroy, callback metadata, chamada de parar clock e máquina de estado da coroutine. Os testes verificam a evidência e os guardas; não executam os métodos originais.
 
 O recorte continua parcial e não promove tarefa global. Restam o hook de OnSceneLoaded, efeitos de helpers/GC/exceções, restauração de input/EventSystem, binding da instanciação genérica, scheduling/cancelamento/tempo real do tween e comparação contra o original em aparelho. O cliente não recebeu essa tela nem teve seu loading alterado nesta rodada.
+
+## Atualização T026 — 2026-11-07
+
+O hook OnSceneLoaded agora tem duas chamadas add/remove identificadas nos bytes de Awake/OnDestroy, condicionadas ao slot virtual 4 do tipo concreto. Também foram aprofundados Dispose, Current, Reset e falhas da coroutine ExecuteNextFrame. Detalhes em [RECON_T026_NEXT_FRAME.md](RECON_T026_NEXT_FRAME.md). A pendência histórica de origem do hook foi reduzida; execução, igualdade de delegates, cancelamento Unity e ordem global dos eventos permanecem abertas.

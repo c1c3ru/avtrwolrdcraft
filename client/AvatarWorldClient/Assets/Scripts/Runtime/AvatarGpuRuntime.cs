@@ -78,6 +78,7 @@ namespace AvatarWorld.Runtime
             (AvatarCatalog.CategoryHair, "Cabelo"), (AvatarCatalog.CategoryHairBack, "Cabelo atras"), (AvatarCatalog.CategoryShirt, "Camisa"),
             (AvatarCatalog.CategoryBottom, "Calca"), (AvatarCatalog.CategoryShoes, "Sapato"), (AvatarCatalog.CategoryAccessory, "Acessorio"),
             (AvatarCatalog.CategoryMouth, "Boca"), (AvatarCatalog.CategoryEyebrows, "Sobrancelha"),
+            (AvatarCatalog.CategoryJacket, "Jaqueta"), (AvatarCatalog.CategoryHat, "Chapeu"),
         };
         // Montadas no Start, conforme o tipo do avatar (adulto, crianca, bebe).
         List<Category> _categories = new List<Category>();
@@ -291,6 +292,65 @@ namespace AvatarWorld.Runtime
         }
 
         /// <summary>Esqueleto e skin prontos (Start concluiu); o editor visual espera isto antes de gerar miniaturas.</summary>
+        /// <summary>
+        /// Renderiza uma aparencia qualquer (NPC) numa textura transparente e devolve um sprite com o pivo nos pes. Troca a
+        /// aparencia do avatar so durante a captura (mesmo quadro) e a restaura. Os ids do look nao precisam estar nas listas do
+        /// editor, so no manifesto; "none" ou ids desconhecidos simplesmente nao desenham peca.
+        /// </summary>
+        public Sprite CaptureLook(AvatarAppearance look, int size = 256)
+        {
+            if (!IsReady || look == null || _kind != AvatarKind.Adult) return null; // NPCs sao adultos; outro tipo = outro esqueleto
+            var t = _skeletonAnimation.transform;
+            var backup = Appearance.Clone();
+            var position = t.position; var scale = t.localScale; float facing = _skeletonAnimation.Skeleton.ScaleX;
+            var spot = new Vector3(0f, 500f, 0f);
+            RenderTexture rt = null; GameObject camGo = null; Texture2D tex = null;
+            try
+            {
+                CopyAppearance(look, Appearance);
+                RebuildSkin();
+                t.position = spot; t.localScale = Vector3.one; _skeletonAnimation.Skeleton.ScaleX = 1f;
+                RefreshMesh();
+                var mr = t.GetComponent<MeshRenderer>();
+                var bounds = mr != null ? mr.bounds : new Bounds(spot + Vector3.up, Vector3.one * 2f);
+                float ortho = Mathf.Max(bounds.extents.x, bounds.extents.y, 0.1f) * 1.05f;
+                camGo = new GameObject("NpcCaptureCamera", typeof(Camera));
+                var cam = camGo.GetComponent<Camera>();
+                cam.orthographic = true; cam.orthographicSize = ortho; cam.enabled = false;
+                cam.clearFlags = CameraClearFlags.SolidColor; cam.backgroundColor = new Color(0f, 0f, 0f, 0f);
+                camGo.transform.position = new Vector3(bounds.center.x, bounds.center.y, -10f);
+                rt = new RenderTexture(size, size, 16, RenderTextureFormat.ARGB32);
+                cam.targetTexture = rt;
+                cam.Render();
+                RenderTexture.active = rt;
+                tex = new Texture2D(size, size, TextureFormat.RGBA32, false);
+                tex.ReadPixels(new Rect(0, 0, size, size), 0, 0);
+                tex.Apply();
+                var pivot = new Vector2((t.position.x - (bounds.center.x - ortho)) / (2f * ortho), (t.position.y - (bounds.center.y - ortho)) / (2f * ortho));
+                return Sprite.Create(tex, new Rect(0, 0, size, size), pivot, size / (2f * ortho));
+            }
+            finally
+            {
+                RenderTexture.active = null;
+                if (camGo != null) Destroy(camGo);
+                if (rt != null) { rt.Release(); Destroy(rt); }
+                CopyAppearance(backup, Appearance);
+                RebuildSkin();
+                t.position = position; t.localScale = scale; _skeletonAnimation.Skeleton.ScaleX = facing;
+                RefreshMesh();
+            }
+        }
+
+        // Copia todos os campos sem validar contra o catalogo (NPCs usam itens fora das listas do editor).
+        static void CopyAppearance(AvatarAppearance from, AvatarAppearance to)
+        {
+            to.HairId = from.HairId; to.ShirtId = from.ShirtId; to.BottomId = from.BottomId; to.ShoesId = from.ShoesId;
+            to.AccessoryId = from.AccessoryId; to.MouthId = from.MouthId; to.EyebrowsId = from.EyebrowsId;
+            to.HairBackId = from.HairBackId; to.HatId = from.HatId; to.JacketId = from.JacketId;
+            to.SkinIndex = from.SkinIndex; to.EyesIndex = from.EyesIndex;
+            to.ItemColors = from.Clone().ItemColors;
+        }
+
         /// <summary>Avatar embutido (mundo/interior): toca uma animacao do esqueleto se ela existir.</summary>
         public void PlayAnimation(string animationName, bool loop)
         {
