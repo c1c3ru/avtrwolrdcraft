@@ -1,5 +1,26 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Loja "Criador de Avatar" vira atalho de navegacao — 2026-11-07
+- Commit `87148a4f8` (branch `worktree-loja-criador-avatar`, pushado): `StoreScreen.SelectCategory` trata
+  `StoreCatalog.CategoryAvatarMaker` como atalho (fecha a loja, abre `AvatarSlotsScreen` via
+  `HomeBootstrap.OpenAvatarSlots`) em vez de listar cartoes - evidencia em
+  `docs/STORE_ORIGINAL_REFERENCE_2026-11-07.md` e `docs/STORE_WORLD_UI_SPEC.md` (cena AvatarMakerLobby,
+  separada da Store). Removida do `ComingSoon`; teste novo `AvatarMaker_IsNavigationShortcutNotProductCategory`
+  em `StoreCatalogTests.cs`.
+- **Validacao automatizada PENDENTE.** Tres tentativas de `unity test --mode EditMode` nesta sessao foram
+  mortas pelo OOM killer do kernel (confirmado via `journalctl`, nao erro do codigo): a maquina (7,1 GB RAM)
+  tem varios jobs Claude Code em background concorrentes consumindo memoria ao mesmo tempo; em uma das
+  tentativas o OOM matou um processo Python de outro job, nao o Unity. Copiar `Library/` do checkout
+  principal (45 GB) para o worktree eliminou a reimportacao completa, mas nao foi suficiente para evitar o
+  OOM na ultima tentativa. Decisao do usuario: seguir sem validacao automatizada por ora.
+- Revisao manual feita com cuidado: mudanca pequena (4 arquivos), navegacao nova espelha padrao ja existente
+  no codigo (botao de carrinho de `AvatarSlotsScreen` ja abre a loja no sentido inverso). Um artefato do
+  processo Unity morto no meio (zerou `m_RuntimeSettings.m_List` em
+  `UniversalRenderPipelineGlobalSettings.asset`) foi descartado com `git checkout --`, nao commitado.
+- **Proximo passo:** rodar `unity test client/AvatarWorldClient --mode EditMode` neste worktree (Library ja
+  copiada, deve ser rapido) assim que a maquina tiver folga de memoria, e confirmar
+  `AvatarMaker_IsNavigationShortcutNotProductCategory` + suite completa verde antes de dar como fechado.
+
 ## Retomada em 2026-11-03
 - Checkout sincronizado com `origin/main` (`33d592e`); avanços de 02/11 estavam publicados.
 - Cache IL2CPP restaurado dos APKs locais, com hashes confirmados; 73 testes existentes e 2 novos testes do callback passaram em rodadas separadas.
