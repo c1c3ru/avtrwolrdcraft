@@ -26,5 +26,5 @@ Janelas: `LoadScene` VA `0x20728d4..0x2072c64`, `LoadSceneImplement` `0x2072cc8.
 - Assinantes dos eventos Stage1–3 e o fade de `StartSceneTransition` (`0x20fe2d8`).
 - Exceções e corpos completos.
 
-## Atualização L01 (iterações 1–2)
-Guard estático identificado como `MPManager.IsMultiplayerGame` e ordem completa do ramo multiplayer provadas pela sonda; ver `docs/loops/results/L01.md`.
+## Atualização L01 (iterações 1–3, convergido)
+O pipeline completo `LoadScene → StartSceneTransition → <LoadScene>b__0 → LoadSceneImplement → OnActiveSceneChanged` está provado por `tools/recon_callback_probe.py` e `tools/recon_load_scene_pipeline.py`, com testes. O ramo multiplayer **não** chama `LoadSceneImplement`. Detalhes, graus por unidade e lacunas em `docs/loops/results/L01.md`.
