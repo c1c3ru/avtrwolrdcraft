@@ -7,7 +7,7 @@ Saidas: Resources/Interiors/<chave>/<chave>_npcs.json  ({"npcs":[{id,x,y,look}]}
 (ids que precisam de PNG no manifesto mas NAO entram nas listas do editor; usado por avatar_catalog_build.py --hidden-items).
 Cada campo do look e um id de item, "none" (sem peca) ou o padrao; cores viram o indice mais proximo nas paletas oficiais.
 Pecas extras sem categoria no editor (bochechas, complexion, meias, bolsas, pulseiras, piercing, aneis, luvas, mascara, barba)
-vao em look.extras = [{id, tint:[r,g,b]|[]}], aplicadas como skins soltas no render do NPC (tinta = Colors[0]/255 quando existe).
+vao em look.extras = [{Id, Tint:[r,g,b]|[]}] (chaves iguais aos campos de ExtraItem: JsonUtility diferencia maiusculas), aplicadas como skins soltas no render do NPC (tinta = Colors[0]/255 quando existe).
 uso: python3 tools/build_npc_looks.py
 """
 import glob, hashlib, json, re, sys
@@ -87,7 +87,7 @@ def main():
                     if resolvable(ex) == 'ok':
                         c = (s.get('Colors') or [None])[0]
                         tint = [round(c[k] / 255.0, 4) for k in 'rgb'] if c else []
-                        look['extras'].append({'id': ex, 'tint': tint})
+                        look['extras'].append({'Id': ex, 'Tint': tint})
                         hidden.add(('Extra', ex))
                     else: missing_tex += 1
                     continue
