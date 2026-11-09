@@ -16,7 +16,35 @@ namespace AvatarWorld.Runtime
     {
         [Serializable] class Piece { public string template; public string file; public string skin; }
         [Serializable] class Variant { public string id; public List<Piece> pieces; }
-        [Serializable] class PetFile { public string species; public string idle; public List<Piece> basePieces; public List<Variant> variants; }
+        [Serializable] class Option { public string id; public List<Piece> pieces; }
+        [Serializable] class Breed { public string id; public List<Piece> body; public List<Piece> outline; public List<Option> patterns; public List<Option> eyebrows; }
+        [Serializable] class EyeSet { public string id; public List<Piece> outline; public List<Piece> @base; public List<Piece> pupils; public List<Piece> gradient; }
+        [Serializable] class PetFile
+        {
+            public string species; public string idle; public bool layered; public List<Piece> basePieces; public List<Variant> variants;
+            public List<Breed> breeds; public List<EyeSet> eyes; public List<Option> mouths;
+        }
+        [Serializable] class PaletteColor { public float[] c; }
+        [Serializable] class PaletteEntry { public float[] display; public List<PaletteColor> colors; }
+        [Serializable] class PaletteList { public string name; public List<PaletteEntry> entries; }
+        [Serializable] class PaletteFile { public List<PaletteList> lists; }
+        static PaletteFile _palettes;
+
+        // Cor de exibicao (ou a Colors[i]) da entrada da paleta do papel; branco se ausente.
+        static Color PaletteColor_(string species, PetColorRole role, int index, int colorIndex = -1)
+        {
+            if (_palettes == null)
+            {
+                var text = Resources.Load<TextAsset>("AvatarSpine/pet-palettes");
+                _palettes = text != null ? JsonUtility.FromJson<PaletteFile>(text.text) : new PaletteFile { lists = new List<PaletteList>() };
+            }
+            var name = PetCatalog.PaletteName(species, role);
+            var list = _palettes.lists.Find(l => l.name == name);
+            if (list == null || list.entries.Count == 0) return Color.white;
+            var entry = list.entries[Mathf.Clamp(index, 0, list.entries.Count - 1)];
+            var c = colorIndex >= 0 && colorIndex < entry.colors.Count ? entry.colors[colorIndex].c : entry.display;
+            return new Color(c[0], c[1], c[2], 1f);
+        }
 
         PetAppearance _pet;
         Vector3 _position;
@@ -30,6 +58,9 @@ namespace AvatarWorld.Runtime
         Texture2D _blank;
         GameObject _avatarGo;
         SkeletonAnimation _animation;
+
+        /// <summary>Cor de amostra (exibicao) da entrada da paleta do papel; branco se a especie nao tem esse papel.</summary>
+        public static Color Swatch(string species, PetColorRole role, int index) => PaletteColor_(species, role, index);
 
         public bool IsReady => _animation != null && _animation.valid;
         public PetAppearance Pet => _pet;
@@ -94,8 +125,7 @@ namespace AvatarWorld.Runtime
 
         void BuildSkin()
         {
-            var variant = _file.variants.FirstOrDefault(v => v.id == _pet.VariantId) ?? _file.variants[0];
-            // Texturas: as da base e as da variante escolhida; as demais paginas ficam em branco.
+            // Texturas: as da base e as do pet escolhido; as demais paginas ficam em branco.
             foreach (var texture in _textures) if (texture != null) Destroy(texture);
             _textures.Clear();
             if (_blank == null)
@@ -105,18 +135,78 @@ namespace AvatarWorld.Runtime
                 _blank.Apply(false, true);
             }
             foreach (var material in _materialByPage.Values) material.mainTexture = _blank;
-            foreach (var piece in (_file.basePieces ?? new List<Piece>()).Concat(variant.pieces)) LoadPage(piece);
 
             var skin = new Skin("pet-runtime-composite");
+            var tints = new Dictionary<Attachment, Color>();
+            var shown = new List<string>();
             var basic = _skeletonData.FindSkin("default");
             if (basic != null) skin.AddSkin(basic);
-            var chosen = _skeletonData.FindSkin(variant.pieces[0].skin);
-            if (chosen == null) { Debug.LogError("PetGpuRuntime: skin ausente " + variant.pieces[0].skin); return; }
-            skin.AddSkin(chosen);
+            foreach (var piece in _file.basePieces ?? new List<Piece>()) LoadPage(piece);
+
+            if (!_file.layered)
+            {
+                var variant = _file.variants.FirstOrDefault(v => v.id == _pet.VariantId) ?? _file.variants[0];
+                foreach (var piece in variant.pieces) LoadPage(piece);
+                AddPieces(skin, tints, variant.pieces, Color.white, shown);
+            }
+            else BuildLayered(skin, tints, shown);
+
             _animation.skeleton.SetSkin(skin);
             _animation.skeleton.SetSlotsToSetupPose();
+            // Camadas (padrao, sobrancelha, olhos, boca) podem nao ter anexo na pose inicial: liga o primeiro anexo que o proprio skin traz.
+            if (_file.layered)
+                foreach (var name in shown)
+                {
+                    var source = _skeletonData.FindSkin(name);
+                    if (source == null) continue;
+                    foreach (var entry in source.Attachments)
+                    {
+                        var slot = _animation.skeleton.Slots.Items[entry.SlotIndex];
+                        if (slot.Attachment == null) slot.Attachment = entry.Attachment; // primeiro anexo do slot (os demais sao alternativas de pose)
+                    }
+                }
+            foreach (var slot in _animation.skeleton.Slots)
+                if (slot.Attachment != null && tints.TryGetValue(slot.Attachment, out var color)) { slot.R = color.r; slot.G = color.g; slot.B = color.b; }
             _animation.Update(0f);
             _animation.LateUpdate();
+        }
+
+        void BuildLayered(Skin skin, Dictionary<Attachment, Color> tints, List<string> shown)
+        {
+            string species = _pet.Species;
+            var breed = _file.breeds.FirstOrDefault(b => b.id == _pet.BreedId) ?? _file.breeds[0];
+            var eyes = _file.eyes.FirstOrDefault(e => e.id == _pet.EyesId) ?? _file.eyes[0];
+            var mouth = _file.mouths.FirstOrDefault(m => m.id == _pet.MouthId) ?? _file.mouths[0];
+            var pattern = string.IsNullOrEmpty(_pet.PatternId) ? null : breed.patterns.FirstOrDefault(o => o.id == _pet.PatternId);
+            var eyebrow = string.IsNullOrEmpty(_pet.EyebrowId) ? null : breed.eyebrows.FirstOrDefault(o => o.id == _pet.EyebrowId);
+            // Papeis de cor (AWSpineColorsList Dog_*/Cat_*): corpo, padrao e sobrancelha = cor de exibicao; olhos: Colors[0] na base e Colors[1] no gradiente.
+            AddAndLoad(skin, tints, breed.body, PaletteColor_(species, PetColorRole.Body, _pet.BodyColor), shown);
+            AddAndLoad(skin, tints, breed.outline, Color.white, shown);
+            if (pattern != null) AddAndLoad(skin, tints, pattern.pieces, PaletteColor_(species, PetColorRole.Pattern, _pet.PatternColor), shown);
+            if (eyebrow != null) AddAndLoad(skin, tints, eyebrow.pieces, PaletteColor_(species, PetColorRole.Eyebrows, _pet.EyebrowColor), shown);
+            AddAndLoad(skin, tints, eyes.outline, Color.white, shown);
+            AddAndLoad(skin, tints, eyes.@base, PaletteColor_(species, PetColorRole.Eyes, _pet.EyesColor, 0), shown);
+            if (eyes.gradient != null && eyes.gradient.Count > 0) AddAndLoad(skin, tints, eyes.gradient, PaletteColor_(species, PetColorRole.Eyes, _pet.EyesColor, 1), shown);
+            AddAndLoad(skin, tints, eyes.pupils, Color.white, shown);
+            AddAndLoad(skin, tints, mouth.pieces, Color.white, shown);
+        }
+
+        void AddAndLoad(Skin skin, Dictionary<Attachment, Color> tints, List<Piece> pieces, Color tint, List<string> shown)
+        {
+            foreach (var piece in pieces) LoadPage(piece);
+            AddPieces(skin, tints, pieces, tint, shown);
+        }
+
+        void AddPieces(Skin skin, Dictionary<Attachment, Color> tints, List<Piece> pieces, Color tint, List<string> shown)
+        {
+            foreach (var name in pieces.Select(p => p.skin).Distinct())
+            {
+                var source = _skeletonData.FindSkin(name);
+                if (source == null) { Debug.LogError("PetGpuRuntime: skin ausente " + name); continue; }
+                skin.AddSkin(source);
+                foreach (var entry in source.Attachments) tints[entry.Attachment] = tint;
+                shown.Add(name);
+            }
         }
 
         void LoadPage(Piece piece)
