@@ -1,0 +1,1602 @@
+{
+  "schema_version": 1,
+  "scope": "direct ARM64 BL callers of PlayerPrefs writers; nearby string literals are candidates only",
+  "coverage_caveats": [
+    "Indirect calls and aliases are not attributed by this scan.",
+    "A nearby identifier-shaped string is not proved to be the argument passed as the key.",
+    "A writer with no candidate literal may receive a dynamic key from its caller or a static field."
+  ],
+  "counts": {
+    "writer_callers_by_operation": {
+      "SetInt": 73,
+      "SetFloat": 4,
+      "SetString": 50,
+      "DeleteKey": 27
+    },
+    "writer_operations_total": 127,
+    "unique_writer_methods": 121,
+    "delete_key_methods": 27,
+    "methods_with_L03_key_assertions": 13
+  },
+  "methods": [
+    {
+      "method": "<>c.<OnGameResume>b__19_1",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "pazucore_pazucloud_did_check_for_game_data"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c.<onInstallReferrerSetupFinished>b__2_5",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "checked_android_install_referrer"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass24_1.<AnimateLongBarFill>b__2",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "StarsPass_LongBar_LastShownTotal"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass25_0.<SendGameDataInternal>b__0",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "pazucore_pazucloud_should_send_game_data"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass26_0.<GetGameData>b__0",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "MoreGamesButtonBottomLeft",
+        "pazucore_pazucloud_should_get_game_data"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass29_0.<ConsumeNotConsumedProducts>b__0",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "MoreGamesButtonBottomLeft",
+        "PazuCore/Art/flags/",
+        "pazucore_pazucloud_should_get_not_consumed"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass32_0.<AnimateBarProgress>g__FinishBarProgress|1",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "StarsPass_LastShownTotal"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass35_0.<GetAddressablesData>b__0",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuCore_Addressables_LastCountryCodeRequest",
+        "PazuCore_Addressables_LastLanguageCodeRequest"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass37_0.<DownloadJson>b__0",
+      "operations": [
+        "SetInt",
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore_Feed_Data",
+        "PazuCore_Feed_LastLanguageCodeRequest",
+        "PazuCore_Feed_UserHasNotSeenNewContent"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass44_0.<DownloadJson>b__0",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuCore_Library_Data",
+        "PazuCore_Library_LastCountryCodeRequest",
+        "PazuCore_Library_LastLanguageCodeRequest",
+        "identifierForVendor",
+        "old_device_token",
+        "scale"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass6_0.<UnityEngine.EventSystems.IPointerClickHandler.OnPointerClick>b__1",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<>c__DisplayClass7_0.<CheckDownload>b__0",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<GetProductInfo>d__5.MoveNext",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuCore_AFCPrice_LastLocalPrice",
+        "PazuCore_AFCPrice_LastTrialPeriod"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<LoadCachedOrDefaultData>d__18.MoveNext",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/AF/MyGames/DefaultData/MyGamesDefaultJson",
+        "PazuCore/Art/flags/",
+        "PazuCore_MyGames_Data",
+        "PazuCore_MyGames_LastBuildNumber",
+        "old_device_token"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<LoadPrice>d__14.MoveNext",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "GameStore_StoreDataItem_CurrencyCode_",
+        "GameStore_StoreDataItem_LastLocalPrice_",
+        "GameStore_StoreDataItem_Symbol_"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "<Start>d__14.MoveNext",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "canGetFirstValue",
+        "clearAll",
+        "tryToGetDataFromExternalApp",
+        "v2_PazuCore_AndroidKeychain_HaveData"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "BWYW.BWYWUtils.MigrateFilesLocationForAndroidBuildIfNeeded",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "BWYW_Data_",
+        "BWYW_MigrateFilesLocationForAndroidBuildIfNeeded",
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "BWYW.BWYWUtils.SetActiveSkillType",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "BWYW_ACTIVE_SKILL_TYPE_KEY"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Game.Home.GameAchievementsButton.SetAutoOpenAchievementsApplication",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Game.Home.HomePlayButton.LoadPlayScene",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "Cry_Standing",
+        "PazuCore/Art/flags/",
+        "Playable_Items_Sitting",
+        "Try_To_Dig_Ground_Sitting",
+        "alpha",
+        "pazucore_pending_deep_link"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Game.Store.StoreButtonBadge.MarkAsClicked",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "AWStore_DidUserClickOnStoreButton"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Game.Store.StoreManager.MigrateStateFileIfNeeded",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "StoreState",
+        "Store_DidMigrateStateFileIfNeeded"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "Game.World.HolidayGameModeButton.OnButtonPress",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "Hat"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Game.World.WeatherManager.<SetWeatherDataOnAllWorlds>g__SetValue|21_0",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "Hat"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Game.World.WeatherManager.SaveWeatherForWorld",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "Prize_Claim"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.AWGameSettings.LoadData",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "AW_Language_Code",
+        "AW_Mute_Music",
+        "AW_Mute_SFX",
+        "MoreGamesButtonBottomLeft",
+        "Playable_Items_Sitting"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.AWGameSettings.SetLanguageCode",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "AW_Language_Code",
+        "Playable_Items_Sitting",
+        "Try_To_Dig_Ground_Sitting"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.AWGameSettings.SetMusicMute",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "AW_Mute_Music",
+        "Playable_Items_Sitting",
+        "Try_To_Dig_Ground_Sitting"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.AWGameSettings.SetSFXMute",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "AW_Mute_SFX",
+        "Playable_Items_Sitting",
+        "Try_To_Dig_Ground_Sitting"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.AvatarMaker.AvatarMakerCharacterMenuSpecialInteractionsManager.SetSpecialInteractionPerformed",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PreganatOnepieceCasualFirstTimeScrolling"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.DeleteAllData",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "AvatarSpineDataIDList",
+        "AvatarSpineData_"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.DeleteAllMakerData",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "AvatarSpineData_",
+        "old_device_token"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.DeleteAllPremadeData",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "AvatarSpineData_",
+        "old_device_token"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.DeleteCharacter",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "AvatarSpineData_"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.LoadMakerExcludedDataToRestore",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "AvatarSpineDataMakerExcludedDataToRestore",
+        "AvatarSpineDataMakerExcludedRestoreList"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.LoadPremadeCharactersFromResources",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "CafeteriaPremadesTempOverrideKey"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.SaveCharacter",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "AvatarSpineData_",
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.SaveIDList",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "AvatarSpineDataIDList"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.BackgroundPlanet.SetIsDayData",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuWorld_IsDay"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.CarsMaker.CarMakerSeenState.MarkSeen",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "CarMakerSeen"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.CloudProgress.CPManager.SetCurrentProfileID",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "AWCurrentProfile"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.FTUE.FTUEUIButton.OnDestroy",
+      "operations": [
+        "SetFloat"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.FTUE.FTUEUIButton.ResetTimer",
+      "operations": [
+        "SetFloat"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.FTUE.FTUEUIButton.SetPressed",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Game.Promotions.PromotionsConfigurationUtils.EnsureIncludedBundlesData",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "Legs_Shoes_48",
+        "Level_TrainStation_Z1B2",
+        "PazuCore/Art/flags/",
+        "PromotionPopUp_LastBuildNumber"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Game.Promotions.PromotionsConfigurationUtils.SetPopUpType",
+      "operations": [
+        "SetInt",
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "Level_TrainStation_Z1B2",
+        "PromotionPopUp_Counter",
+        "PromotionPopUp_Type"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Game.Promotions.PromotionsConfigurationUtils.TryShowBundlePopUpMessage",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "Level_TrainStation_Z1B2",
+        "PromotionPopUp_Cooldown_StartTime",
+        "PromotionPopUp_Counter",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.GameSceneManager.SetCurrentWorldSceneName",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "GAME_CURRENT_WORLD"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.InteractionHistory.InteractionHistoryManager.SetFocusedBuildingType",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PWC_World_InteractionHistory_LastFocusedBuildingType"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.InteractionHistory.InteractionHistoryManager.TryFocusOnEntryPosition",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PWC_World_InteractionHistory_LastEntryFocusBuildNumber"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Inventory.InventorySkinsUtils.SetFlagInteractionPerformed",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Inventory.InventorySkinsUtils.SetInteractionPerformedForAllClaimedFlags",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "Hat"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Inventory.InventorySkinsUtils.SetNewFlagNotSeenYet",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Inventory.ItemsTracker.InventoryItemsTracker.MigrateStateFileIfNeeded",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "InventoryItemsTracker_DidMigrateStateFileIfNeeded",
+        "PWCInventoryItemsTracker_State",
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.AddToSavedListIfNeeded",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "H_Collar",
+        "J_Arm_R",
+        "J_Collar",
+        "LevelCharacterData_List",
+        "Prize_Claim",
+        "Shirt",
+        "Turn_Hat_Around"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.DeleteAllData",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "LevelCharacterData_List"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.DeleteData",
+      "operations": [
+        "DeleteKey",
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "LevelCharacterData_List",
+        "old_device_token",
+        "registerDevice"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.Save",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "LevelCharacterData_"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.SetIDsList",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "LevelCharacterData_List"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.<OnClaimedPackForTheFirstTime>g__MarkNewPackIfNeeded|18_0",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.ClearPackNewFlag",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.MarkNewPack",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.Level.Maker.LevelMakerItemsMenuUtils.MarkNewPacks",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "GymL164",
+        "LevelMakerItemsMenu_PacksTracking_",
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.LevelContextualAnimation.LevelContextualAnimationMenu.InitAnimations",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "LevelContextualAnimationMenuMoreThanOnePageFTUEKey"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.LevelPhone.AchievementsApp.AchievementsContent.OnApplicationClick",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "PhoneOpenAchievementsApplication"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.LevelPhone.AchievementsApp.AchievementsContent.SetAutoOpenAchievementsApplication",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PhoneOpenAchievementsApplication"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.LevelPhone.ContactsContent.SetContactsFirstTime",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuWorldContactsFirstTime"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.DeleteNotificationExistingData",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "PhoneNotification"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.OnNotificationTargetClick",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PhoneNotification"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.ResetNotificationOnAppOnUpdate",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PhoneNotification",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.TurnOffNotificationStatus",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PhoneNotification"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.LevelPhone.Phone.TurnOnNotificationStatus",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PhoneNotification",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.PersistentData.PersistentDataManager.SaveSceneObjectsToKeepOnLoad",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuWorld_PersistantData_KeepObjectsOnLoad",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.PremadeCharacters.PremadeEditorJsonAssetNameHolder.SaveJsonName",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PremadeEditorJsonName"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.QA.RTA.RTAGameUtils.<ResetWorld>g__DisableFTUE|13_1",
+      "operations": [
+        "SetFloat",
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "AvatarMakerLobbyManagerEmptySlotFTUEGuid",
+        "FTUEUIButtonPress_",
+        "FTUEUITimer_",
+        "Snowboard_Base"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.QA.RTA.RTAGameUtils.<ResetWorld>g__DisableRateUs|13_2",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "Snowboard_Base",
+        "pazucore_hide_rate_us_forever",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.RateUs.RateUsCooldown.EnterCooldown",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "public.app-category.casino-games",
+        "reteus_aw_last_rateus_dismiss_time"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.World.Buildings.WorldBuildingRetroHuntNewBadge.Dismiss",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.World.Buildings.WorldBuildingsDataManager.SaveBuildingData",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "WorldBuildingData_"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.WorldMakerData.WorldMakerDataManager.DeleteMakerStreetData",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "WorldMakerStreetData_"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PWC.WorldMakerData.WorldMakerDataManager.SaveMakerHouseData",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "WorldMakerHouseData_"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.WorldMakerData.WorldMakerDataManager.SaveMakerStreetData",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "WorldMakerStreetData_"
+      ],
+      "audited_in_L03": true
+    },
+    {
+      "method": "PWC.WorldReset.WorldResetManager.ResetWorldData",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuWorld_PersistantData_KeepObjectsOnLoad",
+        "Phone_ContactsContent_Favorites"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.AF.Feed.FeedDataManager.LoadCachedData",
+      "operations": [
+        "DeleteKey",
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuCore_Feed_Data",
+        "PazuCore_Feed_LastBuildNumber"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.AF.Feed.FeedDataManager.MarkNewContentAsSeen",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "PazuCore_Feed_UserHasNotSeenNewContent"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.AF.Library.LibraryData.BuildSections",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuCore_Library_LibraryData_FeaturedGameChangedTime",
+        "PazuCore_Library_LibraryData_FeaturedGameIndex",
+        "old_device_token",
+        "public.app-category.casino-games",
+        "registerDevice"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.AF.Library.LibraryDataManager.LoadCachedOrDefaultData",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/AF/Library/DefaultData/LibraryDefaultJson",
+        "PazuCore/Art/flags/",
+        "PazuCore_Library_Data",
+        "PazuCore_Library_LastBuildNumber",
+        "old_device_token"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.Analytics.Internal.ChangeTracking.ChangeTrackingManager.DeleteAllData",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuCore_Analytics_ChangeTracking_DeviceInfo",
+        "PazuCore_Analytics_ChangeTracking_GameInfo"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.Analytics.Internal.ChangeTracking.ChangeTrackingManager.DeleteGameInfoData",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "PazuCore_Analytics_ChangeTracking_GameInfo"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.Analytics.Internal.ChangeTracking.ChangeTrackingManager.SaveGameInfo",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore_Analytics_ChangeTracking_GameInfo"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.AndroidFileManager.OnGameResume",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "Languages",
+        "PazuCore/Art/flags/",
+        "PazuCore_AndroidFile_SavePackage",
+        "alpha",
+        "exists.txt"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.AndroidKeycainManager.OnGetAllData",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "v2_PazuCore_AndroidKeychain_HaveData"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.DeepLink.DeepLinkManager.OnDeepLinkActivated",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "pazucore_pending_deep_link"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.EndSession.Serializable.CrossPromotionData.GetGamesToShow",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "Waist_Tie",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.FileManager.SaveFileNamesToPlayerPrefs",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuCore_FilesList"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.ForParents.ForParentsManager.OpenWebView",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "WebViewObject",
+        "pazucore_webview_last_modified",
+        "public.app-category.casino-games",
+        "public.app-category.healthcare-fitness",
+        "public.app-category.utilities",
+        "public.app-category.weather"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.GDPR.GDPRManager.OnAcceptButtonClick",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore_GDPR_Did_User_Accept",
+        "Start"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.LocalizationManager.SetLanguage",
+      "operations": [
+        "SetInt",
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "pazucore_country",
+        "pazucore_language"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCloud.CloudAltData.DeleteKey",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCloud.CloudAltData.SetValue",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCloud.PazuCloudGameDataManager.BuyConsumable",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "pazucore_pazucloud_should_get_not_consumed"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCloud.PazuCloudGameDataManager.OnSync",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "pazucore_pazucloud_should_get_game_data",
+        "pazucore_pazucloud_should_get_not_consumed"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCloud.PazuCloudGameDataManager.OnUserMerge",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "pazucore_pazucloud_should_get_game_data"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCloud.PazuCloudGameDataManager.SendGameData",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "pazucore_pazucloud_should_send_game_data"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCloud.User.SetFullVersion",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.DecrementInt",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.DeleteKey",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.IncrementInt",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.SetInt",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AFC.AFCPlayerPrefsSetValue.SetString",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AddressablesManager.Init",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "Hat",
+        "PazuCore/Art/flags/",
+        "PazuCoreAddressables_Global_Data",
+        "PazuCore_Addressables_Version"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuCoreAddressables.AddressablesManager.SetLastModifiedData",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuCoreAddressables__LastModified"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuGameMode.PazuGameModeManager.OnReceivceGameMode",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "PazuCore_PazuGameMode_GameMarketingMode",
+        "PazuCore_PazuGameMode_IsGameInReview",
+        "PazuCore_PazuGameMode_ShouldSendAnalyticsEvents",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuUnityPurchaser.AddNonConsumableProductToUser",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "pazucore_purchased_non_consumable_products"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuUnityPurchaser.BuyProductId",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuUnityPurchaser.OnInitialized",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "Languages",
+        "PazuCore/Art/flags/",
+        "alpha",
+        "pazucore_called_OnInitialized_with_PazuUnityPurchaser"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.PazuUnityPurchaser.UnlockFullVersionProduct",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.RateUs.OnCloseButtonClick",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "public.app-category.casino-games",
+        "reteus_aw_close_rateus_menu_count",
+        "reteus_aw_stop_prompt_in_game_rateus"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.RateUs.OnEmojiClick",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "pazucore_hide_rate_us_forever",
+        "public.app-category.casino-games",
+        "public.app-category.educational-games",
+        "public.app-category.entertainment",
+        "public.app-category.healthcare-fitness",
+        "public.app-category.social-networking"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.StandaloneTestingBuild.StandaloneTestingBuildManager.Init",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "Dev",
+        "PazuCore/Art/flags/",
+        "PazuCore_Editor_PazuCloudEnv",
+        "StandaloneTestingBuildConfig.json",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.StandaloneTestingBuild.StandaloneTestingBuildManager.SetValueIfPossible",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.StandaloneTestingBuild.StandaloneTestingBuildManager.SetValues",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "Editor_PazuCore_Localization_CountryCode",
+        "Editor_PazuCore_Localization_LanguageCode",
+        "PazuCore_Editor_PazuCloudEnv",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.Utils.IncrementPlayerPrefsInt",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.Utils.LoadEditorForcePlatformIfNeeded",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "PazuCore_EditorForcePlatform",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.Utils.OnGamePlaySessionEnded",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "pazucore_finish_game",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.Utils.SetForcePlatformForNextPlayMode",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore_EditorForcePlatform",
+        "public.app-category.casino-games"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "PazuCore.Utils.SetLongPlayerPrefs",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Reporter.OnApplicationQuit",
+      "operations": [
+        "SetFloat",
+        "SetInt",
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "Reporter_clearOnNewSceneLoaded",
+        "Reporter_collapse",
+        "Reporter_currentView",
+        "Reporter_filterText",
+        "Reporter_show",
+        "Reporter_showClearOnNewSceneLoadedButton",
+        "Reporter_showError",
+        "Reporter_showFps",
+        "Reporter_showFpsButton",
+        "Reporter_showGraph",
+        "Reporter_showLog",
+        "Reporter_showMemButton",
+        "Reporter_showMemory",
+        "Reporter_showScene",
+        "Reporter_showSceneButton",
+        "Reporter_showSearchText",
+        "Reporter_showTime",
+        "Reporter_showTimeButton",
+        "Reporter_showWarning",
+        "Reporter_size"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassBarManager.FinalizeBarToCurrentTotal",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "StarsPass_LastShownTotal"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassBarManager.Init",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "StarsPass_LastShownTotal",
+        "Static"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassLongBar.SyncLongBar",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "StarsPass_LongBar_LastShownTotal"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassModel.EnsureLocalStateMatchesAccount",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "StarsPass_LastShownTotal",
+        "StarsPass_LocalStateCloudId",
+        "StarsPass_LocalStateProfileId",
+        "StarsPass_LongBar_LastShownTotal",
+        "old_device_token",
+        "pazu_cloud_id"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassModel.HasLocalStateIdChanged",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassPromoPopup.PresentOnce",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "StarsPassPromoPopup_DidShow"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassTotalStarsSave.DeleteSave",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassTotalStarsSave.MarkNewBadgeSeen",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassTotalStarsSave.SaveLastShownTotal",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassTotalStarsSave.SeedIfMissing",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassViewManager.Awake",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "PazuCore/Art/flags/",
+        "StarsPass_BarNewBadgeSeen"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "StarsPass.StarsPassViewManager.Init",
+      "operations": [
+        "SetInt"
+      ],
+      "key_literal_candidates": [
+        "FinalizeInitCoroutine",
+        "StarsPass_LongBar_LastShownTotal"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Unity.Services.Authentication.AuthenticationCache.DeleteKey",
+      "operations": [
+        "DeleteKey"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Unity.Services.Authentication.AuthenticationCache.Migrate",
+      "operations": [
+        "DeleteKey",
+        "SetString"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Unity.Services.Authentication.AuthenticationCache.SetString",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Unity.Services.Core.Device.InstallationId.WriteIdentifierToFile",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "UnityInstallationId"
+      ],
+      "audited_in_L03": false
+    },
+    {
+      "method": "Unity.Services.Core.Device.UnityAnalyticsIdentifier.set_UserId",
+      "operations": [
+        "SetString"
+      ],
+      "key_literal_candidates": [
+        "unity.cloud_userid"
+      ],
+      "audited_in_L03": false
+    }
+  ]
+}

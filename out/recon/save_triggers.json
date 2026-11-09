@@ -79,6 +79,34 @@
   },
   "versioning": {
     "migrations": "StoreManager and InventoryItemsTracker run a one-time, flag-guarded file-location migration (GetInt flag -> User.HasAccessToken branch -> SetInt flag -> MigrateAndroidBuildFileFromPrivateToNormalIfNeeded)",
+    "file_migration_helper": {
+      "method": "PWC.PWCUtils.MigrateAndroidBuildFileFromPrivateToNormalIfNeeded",
+      "direct_callers": [
+        "BWYW.BWYWUtils.MigrateFilesLocationForAndroidBuildIfNeeded",
+        "ExtraAnimations.CAAnimationsExtensionsUtils.MigrateExtraAnimationsFileLocationIfNeeded",
+        "Game.Store.StoreManager.MigrateStateFileIfNeeded",
+        "PWC.Inventory.ItemsTracker.InventoryItemsTracker.MigrateStateFileIfNeeded"
+      ],
+      "calls": [
+        {
+          "address": "0x2084dac",
+          "method": "Utils.IsAndroidBuild"
+        },
+        {
+          "address": "0x2084ddc",
+          "method": "FileManager.TryLoadTextFile"
+        },
+        {
+          "address": "0x2084e04",
+          "method": "FileManager.SaveTextFile"
+        },
+        {
+          "address": "0x2084e28",
+          "method": "FileManager.DeleteTextFile"
+        }
+      ],
+      "interpretation": "Android guard, attempt to read the named file, save it through the normal FileManager path, then delete the source file; no schema conversion observed"
+    },
     "schema_versioning": "scene data JSON carries a BuildNumber key (written in GetDataFromRootGameObjects, read in LoadDataInternal)",
     "build_number_consumers": {
       "get_direct_callers": [],
@@ -109,6 +137,40 @@
       "store claims, achievement claims, IAP receipts, cloud profile upload/download and avatar-pass changes go through PazuCloudManager.SendOperation (server-only)",
       "PersistentDataManager does not call SendOperation directly: scene persistence is local files"
     ],
-    "persistent_data_manager_direct_server_calls": []
+    "persistent_data_manager_direct_server_calls": [],
+    "game_data_sync": {
+      "scope": "direct ARM64 BL callers; indirect/reflection calls are not ruled out",
+      "direct_callers": {
+        "GameDataManager.Init": [],
+        "GameDataManager.GetGameData": [
+          "PazuCore.PazuCloud.PazuCloudGameDataManager.OnGameResume",
+          "PazuCore.PazuCloud.PazuCloudGameDataManager.OnSync",
+          "PazuCore.PazuCloud.PazuCloudGameDataManager.OnUserMerge"
+        ],
+        "GameDataManager.SendGameData": [
+          "PazuCore.PazuCloud.PazuCloudGameDataManager.OnGameResume",
+          "PazuCore.PazuCloud.PazuCloudGameDataManager.ProcessConsumable"
+        ],
+        "GameDataManager.SendGameDataInternal": [
+          "<SendGameDataCoroutine>d__24.MoveNext"
+        ],
+        "PazuCloudManager.GetGameData": [
+          "PazuCore.PazuCloud.PazuCloudGameDataManager.GetGameData"
+        ],
+        "PazuCloudManager.SetGameData": [
+          "PazuCore.PazuCloud.PazuCloudGameDataManager.SendGameDataInternal"
+        ]
+      },
+      "declarations": {
+        "init_callbacks": "Init(Func<string> gameDataGetter, Action<string> gameDataSetter, Action<string> entitlementsAdder, Action gameDataSaver)",
+        "get_response": {
+          "GetGameDataResponse.gameDataJson": "string",
+          "GetGameDataResponse.hasData": "bool"
+        },
+        "set_request": "SetGameData(string gameDataJson, Action<Response> onResponse)",
+        "source": "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCloud/"
+      },
+      "inner_game_payload": "unknown: the Init callbacks that define which game data is serialized have no direct caller in this call-site scan"
+    }
   }
 }

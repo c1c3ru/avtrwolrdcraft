@@ -6,6 +6,7 @@ call is evidence the method uses that key, not proof of the key's role.
 """
 import argparse
 import bisect
+import os
 import struct
 from pathlib import Path
 
@@ -165,6 +166,24 @@ def prove_versioning(elf, meta, resolve, rows):
         names, _ = drop.named_sequence(elf, resolve, (start, stop))
         nav.require([n for _, n in names] == MIGRATION_CALLS, f'{method} call sequence changed')
     windows = method_windows(rows)
+    helper_name = 'PWC.PWCUtils.MigrateAndroidBuildFileFromPrivateToNormalIfNeeded'
+    nav.require(len(windows.get(helper_name, [])) == 1, 'Android file migration helper identity is missing or ambiguous')
+    helper_window = windows[helper_name][0]
+    helper_owner = resolve(helper_window[0])
+    nav.require(len(helper_owner) == 1 and helper_owner[0]['declaring_type'] + '.' + helper_owner[0]['name'] == helper_name,
+                'Android file migration helper metadata identity changed')
+    helper_calls, _ = drop.named_sequence(elf, resolve, helper_window)
+    expected_helper_calls = ['Utils.IsAndroidBuild', 'FileManager.TryLoadTextFile',
+                             'FileManager.SaveTextFile', 'FileManager.DeleteTextFile']
+    nav.require([name for _, name in helper_calls] == expected_helper_calls,
+                'Android file migration helper call sequence changed')
+    helper_callers = camera.direct_callers(elf, [row for row in rows if row.get('vaddr')],
+                                           {'helper': int(helper_window[0])})['helper']
+    expected_helper_callers = set(MIGRATIONS) | {
+        'BWYW.BWYWUtils.MigrateFilesLocationForAndroidBuildIfNeeded',
+        'ExtraAnimations.CAAnimationsExtensionsUtils.MigrateExtraAnimationsFileLocationIfNeeded'}
+    nav.require(helper_callers == expected_helper_callers,
+                f'Android file migration helper callers changed: {sorted(helper_callers ^ expected_helper_callers)}')
     for method in BUILD_NUMBER_METHODS:
         literals = set()
         for start, stop in windows[method]:
@@ -176,6 +195,12 @@ def prove_versioning(elf, meta, resolve, rows):
     return {
         'migrations': 'StoreManager and InventoryItemsTracker run a one-time, flag-guarded file-location migration '
                       '(GetInt flag -> User.HasAccessToken branch -> SetInt flag -> MigrateAndroidBuildFileFromPrivateToNormalIfNeeded)',
+        'file_migration_helper': {
+            'method': helper_name,
+            'direct_callers': sorted(helper_callers),
+            'calls': [{'address': hex(address), 'method': name} for address, name in helper_calls],
+            'interpretation': 'Android guard, attempt to read the named file, save it through the normal FileManager path, then delete the source file; no schema conversion observed',
+        },
         'schema_versioning': 'scene data JSON carries a BuildNumber key (written in GetDataFromRootGameObjects, read in LoadDataInternal)',
         'build_number_consumers': {'get_direct_callers': sorted(callers['get']), 'set_direct_callers': sorted(callers['set']),
                                    'caveat': 'both accessors have no direct callers although LoadDataInternal must set the value: the '
@@ -201,12 +226,54 @@ def prove_cloud_boundary(elf, rows):
         nav.require(expected <= found[name], f'cloud callers of {name} missing: {sorted(expected - found[name])}')
     leaks = sorted(owner for owner in found['SendOperation'] | found['SendOperationWhenPossible'] if owner.startswith(PDM))
     nav.require(not leaks, f'PersistentDataManager calls the server directly: {leaks}')
+    game_data_methods = {
+        'GameDataManager.Init': 'PazuCore.PazuCloud.PazuCloudGameDataManager.Init',
+        'GameDataManager.GetGameData': 'PazuCore.PazuCloud.PazuCloudGameDataManager.GetGameData',
+        'GameDataManager.SendGameData': 'PazuCore.PazuCloud.PazuCloudGameDataManager.SendGameData',
+        'GameDataManager.SendGameDataInternal': 'PazuCore.PazuCloud.PazuCloudGameDataManager.SendGameDataInternal',
+        'PazuCloudManager.GetGameData': 'PazuCore.PazuCloud.PazuCloudManager.GetGameData',
+        'PazuCloudManager.SetGameData': 'PazuCore.PazuCloud.PazuCloudManager.SetGameData',
+    }
+    method_addresses = {}
+    for label, full_name in game_data_methods.items():
+        declaring_type, method_name = full_name.rsplit('.', 1)
+        matches = [int(row['vaddr'], 16) for row in rows
+                   if row.get('vaddr') and row['declaring_type'] == declaring_type and row['name'] == method_name]
+        nav.require(len(matches) == 1, f'{full_name} identity is missing or ambiguous')
+        method_addresses[label] = matches[0]
+    game_data_callers = camera.direct_callers(elf, [row for row in rows if row.get('vaddr')], method_addresses)
+    expected_game_data_callers = {
+        'GameDataManager.Init': set(),
+        'GameDataManager.GetGameData': {
+            'PazuCore.PazuCloud.PazuCloudGameDataManager.OnGameResume',
+            'PazuCore.PazuCloud.PazuCloudGameDataManager.OnSync',
+            'PazuCore.PazuCloud.PazuCloudGameDataManager.OnUserMerge'},
+        'GameDataManager.SendGameData': {
+            'PazuCore.PazuCloud.PazuCloudGameDataManager.OnGameResume',
+            'PazuCore.PazuCloud.PazuCloudGameDataManager.ProcessConsumable'},
+        'GameDataManager.SendGameDataInternal': {'<SendGameDataCoroutine>d__24.MoveNext'},
+        'PazuCloudManager.GetGameData': {'PazuCore.PazuCloud.PazuCloudGameDataManager.GetGameData'},
+        'PazuCloudManager.SetGameData': {'PazuCore.PazuCloud.PazuCloudGameDataManager.SendGameDataInternal'},
+    }
+    for name, expected in expected_game_data_callers.items():
+        nav.require(game_data_callers[name] == expected,
+                    f'direct callers of {name} changed: {sorted(game_data_callers[name] ^ expected)}')
     return {
         'server_bound': {name: sorted(expected) for name, expected in CLOUD_CALLERS.items()},
         'reading': ['store claims, achievement claims, IAP receipts, cloud profile upload/download and avatar-pass changes go '
                     'through PazuCloudManager.SendOperation (server-only)',
                     'PersistentDataManager does not call SendOperation directly: scene persistence is local files'],
         'persistent_data_manager_direct_server_calls': leaks,
+        'game_data_sync': {
+            'scope': 'direct ARM64 BL callers; indirect/reflection calls are not ruled out',
+            'direct_callers': {name: sorted(owners) for name, owners in game_data_callers.items()},
+            'declarations': {
+                'init_callbacks': 'Init(Func<string> gameDataGetter, Action<string> gameDataSetter, Action<string> entitlementsAdder, Action gameDataSaver)',
+                'get_response': {'GetGameDataResponse.gameDataJson': 'string', 'GetGameDataResponse.hasData': 'bool'},
+                'set_request': 'SetGameData(string gameDataJson, Action<Response> onResponse)',
+                'source': 'out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCloud/'},
+            'inner_game_payload': 'unknown: the Init callbacks that define which game data is serialized have no direct caller in this call-site scan',
+        },
     }
 
 
@@ -232,7 +299,8 @@ def probe(source):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', type=Path, default=nav.ROOT / 'out/recon/il2cpp')
+    parser.add_argument('--source', type=Path,
+                        default=Path(os.environ.get('RECON_IL2CPP_ROOT') or nav.ROOT / 'out/recon/il2cpp'))
     parser.add_argument('--report', type=Path, default=nav.ROOT / 'out/recon/save_triggers.json')
     args = parser.parse_args()
     nav.atomic_json(args.report, probe(args.source))

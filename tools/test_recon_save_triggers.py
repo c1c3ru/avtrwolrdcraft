@@ -1,11 +1,17 @@
 """Pins the save/load trigger proof, CanSaveScene and the PlayerPrefs key inventory."""
 import unittest
+import os
+from pathlib import Path
 
 import recon_save_triggers as triggers
 
 
+SOURCE = Path(os.environ.get('RECON_IL2CPP_ROOT') or triggers.nav.ROOT / 'out/recon/il2cpp')
+
+
+@unittest.skipUnless(SOURCE.is_dir(), 'IL2CPP cache unavailable (set RECON_IL2CPP_ROOT)')
 class SaveTriggerTests(unittest.TestCase):
-    source = triggers.nav.ROOT / 'out/recon/il2cpp'
+    source = SOURCE
 
     @classmethod
     def setUpClass(cls):
@@ -41,12 +47,25 @@ class SaveTriggerTests(unittest.TestCase):
         self.assertIn('file-location migration', versioning['migrations'])
         self.assertIn('BuildNumber', versioning['schema_versioning'])
         self.assertIn('inlines trivial accessors', versioning['build_number_consumers']['caveat'])
+        helper = versioning['file_migration_helper']
+        self.assertEqual([call['method'] for call in helper['calls']], [
+            'Utils.IsAndroidBuild', 'FileManager.TryLoadTextFile',
+            'FileManager.SaveTextFile', 'FileManager.DeleteTextFile'])
 
     def test_scene_persistence_is_local_and_economy_claims_are_server_bound(self):
         cloud = self.report['cloud_boundary']
         self.assertIn('Game.Store.StoreManager.ClaimItemInternal', cloud['server_bound']['SendOperation'])
         self.assertIn('PWC.CloudProgress.CPManager.Upload', cloud['server_bound']['SendOperation'])
         self.assertEqual(cloud['persistent_data_manager_direct_server_calls'], [])
+
+    def test_cloud_game_data_is_a_string_but_its_game_payload_initializer_is_unresolved(self):
+        sync = self.report['cloud_boundary']['game_data_sync']
+        callers = sync['direct_callers']
+        self.assertEqual(callers['GameDataManager.Init'], [])
+        self.assertEqual(callers['PazuCloudManager.SetGameData'], [
+            'PazuCore.PazuCloud.PazuCloudGameDataManager.SendGameDataInternal'])
+        self.assertIn('gameDataJson', sync['declarations']['set_request'])
+        self.assertIn('unknown', sync['inner_game_payload'])
 
     def test_missing_cloud_caller_is_rejected(self):
         original = triggers.CLOUD_CALLERS['VerifyReceipt']

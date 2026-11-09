@@ -2,7 +2,7 @@
 
 ## Atualização L03 (2026-11-09)
 
-Gatilhos de gravação/leitura/reset, regra `CanSaveScene`, inventário parcial de chaves, fronteira com a nuvem e catálogo do esquema estão em [docs/loops/results/L03.md](loops/results/L03.md). Provas reproduzíveis: `tools/recon_save_triggers.py` e `tools/recon_pd_schema.py`. O contrato C# de `CanSaveScene` e dos dois gatilhos automáticos está em `Core/Persistence/SaveGate` com `SaveGateTests`.
+Gatilhos de gravação/leitura/reset, regra `CanSaveScene`, inventário de chaves, fronteira com a nuvem, catálogo do esquema e evidência adicional do save real de `level8` estão em [docs/loops/results/L03.md](loops/results/L03.md). Provas reproduzíveis: `tools/recon_save_triggers.py`, `tools/recon_pd_schema.py` e `tools/recon_playerprefs_inventory.py`. O resumo sanitizado do save real está em `out/recon/tasks/T030/level8-runtime-save-2026-11-09.json`; o arquivo bruto permanece local em `/tmp`. O contrato C# de `CanSaveScene` e dos dois gatilhos automáticos está em `Core/Persistence/SaveGate` com `SaveGateTests`.
 
 Data da reconciliação: 2026-11-04  
 Escopo: inventário estático de `Assembly-CSharp` e comparação com o estado local. Este documento não declara a persistência original totalmente recuperada.

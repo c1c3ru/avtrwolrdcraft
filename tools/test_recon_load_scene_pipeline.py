@@ -1,5 +1,6 @@
 """Pins the scene-change pipeline proof and rejects tampered inputs."""
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -7,8 +8,12 @@ import unittest
 import recon_load_scene_pipeline as pipeline
 
 
+SOURCE = Path(os.environ.get('RECON_IL2CPP_ROOT') or pipeline.nav.ROOT / 'out/recon/il2cpp')
+
+
+@unittest.skipUnless(SOURCE.is_dir(), 'IL2CPP cache unavailable (set RECON_IL2CPP_ROOT)')
 class PipelineTests(unittest.TestCase):
-    source = pipeline.nav.ROOT / 'out/recon/il2cpp'
+    source = SOURCE
 
     @classmethod
     def setUpClass(cls):

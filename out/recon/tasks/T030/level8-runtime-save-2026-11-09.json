@@ -1,0 +1,172 @@
+{
+  "description": "sanitized structural summary of original runtime scene saves; raw saves are not copied",
+  "source": {
+    "save_file_count": 1,
+    "raw_source_retained": false
+  },
+  "scene_reports": {
+    "Level_MiniBasketball_L1": {
+      "path": "out/recon/tasks/T030/level8-scene-pilot.json",
+      "sha256": "b19bc152d16bf0cea7ceab8ceb6987d0a915c114cf8d691ebe9a8ae16b9c7ce4"
+    }
+  },
+  "saves": [
+    {
+      "path": "Levels/Regular/Level_MiniBasketball_L1",
+      "bytes": 12345,
+      "sha256": "df34d93033ff7a38c2db6d34b349a7e088050845c92ffc7b9026b7f33a8e8830",
+      "root_schema": {
+        "BuildNumber": "number",
+        "NewAndSyncedSceneObjects": "array",
+        "Prefabs": "object",
+        "SceneObjects": "object"
+      },
+      "unknown_root_keys": [],
+      "build_number": 229,
+      "counts": {
+        "prefab_guids": 2,
+        "prefab_instances": 6,
+        "scene_objects": 35,
+        "new_and_synced_scene_objects": 0
+      },
+      "payloads": {
+        "schemas": {
+          "GameCameraPD": {
+            "count": 1,
+            "fields": {
+              "size:number": 1,
+              "xPosition:number": 1,
+              "yPosition:number": 1
+            }
+          },
+          "GameSoundPlayerPD": {
+            "count": 1,
+            "fields": {
+              "clipName:string": 1,
+              "isPlayingLoop:boolean": 1,
+              "pitch:number": 1,
+              "volume:number": 1
+            }
+          },
+          "LevelBag": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LevelBasketballScoreBoard": {
+            "count": 1,
+            "fields": {
+              "values:array": 1
+            }
+          },
+          "LevelBoxPD": {
+            "count": 1,
+            "fields": {
+              "isOpen:boolean": 1
+            }
+          },
+          "LevelCAPD": {
+            "count": 5,
+            "fields": {
+              "config:object": 5,
+              "handlerName:string": 5,
+              "handlerSceneGuid:string": 5,
+              "isPlaying:boolean": 5,
+              "playType:number": 5
+            }
+          },
+          "LevelCharacterPD": {
+            "count": 5,
+            "fields": {
+              "animationName:string": 5,
+              "currentArea:string": 5,
+              "id:number": 5,
+              "isDynamicSpawn:boolean": 5
+            }
+          },
+          "LevelClothingItemPD": {
+            "count": 4,
+            "fields": {
+              "bottomColor:object": 4,
+              "categoryType:number": 4,
+              "colors:array": 4,
+              "hasColors:boolean": 4,
+              "skinName:string": 4,
+              "topColor:object": 4
+            }
+          },
+          "LevelFillableItemHandlerPD": {
+            "count": 1,
+            "fields": {
+              "isFull:boolean": 1
+            }
+          },
+          "LevelItemOrientationHandlerPD": {
+            "count": 4,
+            "fields": {
+              "orientationType:number": 4
+            }
+          },
+          "LevelItemPD": {
+            "count": 27,
+            "fields": {
+              "isFlipped:boolean": 27,
+              "isMoving:boolean": 27,
+              "itemOnAvatarType:number": 27,
+              "itemOnCharacterType:number": 27,
+              "parent:string": 27,
+              "position:object": 27
+            }
+          },
+          "LevelLightPD": {
+            "count": 2,
+            "fields": {
+              "isOn:boolean": 2
+            }
+          },
+          "LevelRuntimeColoredSpriteHandlerPD": {
+            "count": 1,
+            "fields": {
+              "color:object": 1,
+              "colorType:number": 1
+            }
+          },
+          "LevelToggleableAudio": {
+            "count": 1,
+            "fields": {
+              "value:boolean": 1
+            }
+          },
+          "LightSourcePD": {
+            "count": 2,
+            "fields": {
+              "isEnabled:boolean": 2
+            }
+          }
+        },
+        "malformed": {}
+      },
+      "transform_pd": {
+        "count": 0,
+        "decoded_positions": 0,
+        "with_parent": 0,
+        "flipped": 0,
+        "position_range": null
+      },
+      "static_scene_comparison": {
+        "static_scene_guids": 81,
+        "runtime_scene_keys": 35,
+        "intersection": 29,
+        "static_only": 52,
+        "runtime_only": 6
+      }
+    }
+  ],
+  "skipped_non_json": [],
+  "limits": [
+    "Hashes identify the local capture but the raw save is intentionally not versioned.",
+    "Aggregate schemas and ranges prove serialization shape, not complete gameplay semantics.",
+    "A static scene match compares keys only; runtime-spawned prefabs legitimately add keys."
+  ]
+}
