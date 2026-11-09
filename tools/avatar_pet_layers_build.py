@@ -27,6 +27,12 @@ TEXT = ROOT / 'out/assets/TextAsset'
 DUMPS = ROOT / 'out/recon/tasks/T034/pets'
 LISTS = {'Dog': ['Dog_Body', 'Dog_Patterns', 'Dog_Eyes', 'Dog_Eyebrows'], 'Cat': ['Cat_Body', 'Cat_Patterns', 'Cat_Eyes'],
          'Horse': ['Horse_Body', 'Horse_Patterns', 'Horse_Eyes', 'Horse_Eyebrows', 'Horse_Hair', 'Horse_Tail']}
+# roupas SUT (sutsystem/skins/<especie>/<categoria>) agrupadas nas categorias do editor de pet
+CLOTHES = {
+    'Dog': {'Hat': ['hat'], 'Outfit': ['shirt', 'onepiece', 'onepiecenh'], 'Shoes': ['shoes'], 'Accessory': ['accessories', 'bag', 'carrier']},
+    'Cat': {'Hat': ['hat'], 'Outfit': ['onepiece', 'onepiecenh'], 'Shoes': ['shoes'], 'Accessory': ['accessories', 'glasses']},
+    'Horse': {'Hat': ['bridle'], 'Outfit': ['saddle']},  # cavalo: Hat = rédea, Outfit = sela
+}
 FILE_PREFIX = {'Horse': 'Pet_Horse'}  # os demais seguem Pet_<Especie>_Spine
 IDLES = ['General/Chilling', 'General/Blinking']
 
@@ -84,6 +90,7 @@ def export_palettes():
 
 
 def main():
+    resources = json.loads((DUMPS.parent / 'other-skins.json').read_text(encoding='utf-8'))
     print('paletas', export_palettes())
     by_name = collections.defaultdict(list)
     for f in TEXTURES.iterdir():
@@ -181,6 +188,34 @@ def main():
             pieces = pieces_of(name)
             if pieces:
                 tails.append({'id': 'tail_' + re.search(r'Tail_(\d+)_Color$', name).group(1), 'pieces': pieces})
+        # roupas e acessorios (itens SUT por pasta; todas as pecas precisam de textura <peca>_<path_id>.png unica, pagina de mesmas dimensoes e skin Templates/<pagina>)
+        by_tex = {f.name.casefold(): f.name for f in TEXTURES.iterdir()}
+        groups = collections.defaultdict(lambda: collections.defaultdict(set))
+        for r in resources:
+            parts = r['path'].casefold().split('/')
+            if len(parts) >= 6 and parts[2] == species.casefold():
+                groups[(parts[3], parts[-2])][parts[-1]].add(r['path_id'])
+        clothes = {k: [] for k in ('Hat', 'Outfit', 'Shoes', 'Accessory')}
+        for slot, cats in CLOTHES[species].items():
+            for cat in cats:
+                for item in sorted((it for (c, it) in groups if c == cat and not re.search(r'(_color|_p)$', it)), key=natural):
+                    pieces, ok = [], True
+                    for piece, pids in sorted(groups[(cat, item)].items()):
+                        cands = [by_tex[f'{piece}_{pid}.png'] for pid in pids if f'{piece}_{pid}.png' in by_tex]
+                        if len(cands) != 1 or piece not in pages or png_size(TEXTURES / cands[0]) != pages[piece][1] or 'Templates/' + pages[piece][0] not in skins:
+                            ok = False
+                            break
+                        pid = int(cands[0].rsplit('_', 1)[1][:-4])
+                        pieces.append((pages[piece][0], cands[0], f'{piece}__{pid}.png'))
+                    item_id = f'{slot.lower()}_{item}'
+                    if not ok or not pieces or any(o['id'] == item_id for o in clothes[slot]):
+                        continue
+                    for page, filename, out_name in pieces:
+                        dest = CLOTHING / out_name
+                        if not dest.exists():
+                            shutil.copyfile(TEXTURES / filename, dest)
+                        ensure_meta(dest)
+                    clothes[slot].append({'id': item_id, 'pieces': [{'template': 'Templates/' + page, 'file': out_name, 'skin': 'Templates/' + page} for page, _, out_name in pieces]})
         base = pieces_of('default', False) or []
         idle = next((a for a in IDLES if a in dump['animations']), dump['animations'][0])
 
@@ -189,16 +224,19 @@ def main():
         shutil.copyfile(atlas_file, out_dir / 'Spine.atlas.txt')
         shutil.copyfile(skel_file, out_dir / 'Spine.skel.bytes')
         (out_dir / 'pet.json').write_text(json.dumps({'species': species, 'idle': idle, 'layered': True, 'basePieces': base, 'variants': [],
-                                                       'breeds': breeds, 'eyes': eyes, 'mouths': mouths, 'manes': manes, 'tails': tails}, indent=1), encoding='utf-8')
+                                                       'breeds': breeds, 'eyes': eyes, 'mouths': mouths, 'manes': manes, 'tails': tails,
+                                                       'hats': clothes['Hat'], 'outfits': clothes['Outfit'], 'shoes': clothes['Shoes'], 'accessories': clothes['Accessory']}, indent=1), encoding='utf-8')
         summary[species] = {
             'breeds': [b['id'] for b in breeds],
             'patterns': {b['id']: [p['id'] for p in b['patterns']] for b in breeds},
             'eyebrows': {b['id']: [p['id'] for p in b['eyebrows']] for b in breeds},
             'eyes': [e['id'] for e in eyes], 'mouths': [m['id'] for m in mouths],
             'manes': [m['id'] for m in manes], 'tails': [t['id'] for t in tails],
+            'hats': [o['id'] for o in clothes['Hat']], 'outfits': [o['id'] for o in clothes['Outfit']],
+            'shoes': [o['id'] for o in clothes['Shoes']], 'accessories': [o['id'] for o in clothes['Accessory']],
         }
         print(species, 'racas', len(breeds), 'padroes', sum(len(b['patterns']) for b in breeds), 'sobrancelhas', sum(len(b['eyebrows']) for b in breeds),
-              'olhos', len(eyes), 'bocas', len(mouths), 'crinas', len(manes), 'caudas', len(tails), 'base', len(base))
+              'olhos', len(eyes), 'bocas', len(mouths), 'crinas', len(manes), 'caudas', len(tails), 'chapeus', len(clothes['Hat']), 'roupas', len(clothes['Outfit']), 'sapatos', len(clothes['Shoes']), 'acessorios', len(clothes['Accessory']), 'base', len(base))
 
     out = UNITY / 'Scripts/Core/Avatar/PetLayerCatalogData.cs'
     with open(out, 'w', encoding='utf-8') as fh:
@@ -206,7 +244,7 @@ def main():
         fh.write('using System.Collections.Generic;\n\nnamespace AvatarWorld.Core.Avatar\n{\n')
         fh.write('    /// <summary>Opcoes dos pets em camadas (cao e gato): racas, padroes por raca, sobrancelhas por raca, olhos e bocas.</summary>\n')
         fh.write('    public static class PetLayerCatalogData\n    {\n')
-        fh.write('        public sealed class Layered\n        {\n            public string[] Breeds, Eyes, Mouths, Manes, Tails;\n'
+        fh.write('        public sealed class Layered\n        {\n            public string[] Breeds, Eyes, Mouths, Manes, Tails, Hats, Outfits, Shoes, Accessories;\n'
                  '            public Dictionary<string, string[]> Patterns, Eyebrows;\n        }\n\n')
         fh.write('        public static readonly Dictionary<string, Layered> Species = new Dictionary<string, Layered>\n        {\n')
 
@@ -217,7 +255,7 @@ def main():
             return 'new Dictionary<string, string[]> { ' + ', '.join(f'{{ "{k}", {arr(v)} }}' for k, v in d.items()) + ' }'
         for species, s in summary.items():
             fh.write(f'            {{ "{species}", new Layered\n            {{\n                Breeds = {arr(s["breeds"])},\n                Eyes = {arr(s["eyes"])},\n'
-                     f'                Mouths = {arr(s["mouths"])},\n                Manes = {arr(s["manes"])},\n                Tails = {arr(s["tails"])},\n                Patterns = {dic(s["patterns"])},\n                Eyebrows = {dic(s["eyebrows"])},\n            }} }},\n')
+                     f'                Mouths = {arr(s["mouths"])},\n                Manes = {arr(s["manes"])},\n                Tails = {arr(s["tails"])},\n                Hats = {arr(s["hats"])},\n                Outfits = {arr(s["outfits"])},\n                Shoes = {arr(s["shoes"])},\n                Accessories = {arr(s["accessories"])},\n                Patterns = {dic(s["patterns"])},\n                Eyebrows = {dic(s["eyebrows"])},\n            }} }},\n')
         fh.write('        };\n    }\n}\n')
 
 

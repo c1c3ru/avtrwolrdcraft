@@ -205,7 +205,7 @@ namespace AvatarWorld.Runtime
                     hit.color = new Color(0, 0, 0, 0);
                     var host = new GameObject("Pet salvo no slot " + (slot + 1));
                     host.transform.SetParent(transform, false);
-                    host.AddComponent<PetGpuRuntime>().Configure(pet, new Vector3(x / 100f, -1.5f, 0f), 0.8f);
+                    host.AddComponent<PetGpuRuntime>().Configure(pet, new Vector3(x / 100f, -1.5f, 0f), 2.3f, 3.4f);
                     _avatarHosts.Add(host);
                     var label = NewText("PetName" + (slot + 1), _slotsRoot, 40, new Color(0.45f, 0.2f, 0.6f));
                     Place(label.rectTransform, new Vector2(x, -260f), new Vector2(420f, 60f));

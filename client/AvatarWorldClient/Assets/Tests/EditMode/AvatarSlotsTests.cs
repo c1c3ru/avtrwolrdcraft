@@ -271,5 +271,25 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual("", dog.ManeId);
             Assert.IsFalse(dog.TrySelectColor(PetColorRole.Tail, 0));
         }
+
+        [Test]
+        public void PetClothingIsPerSpeciesAndValidated()
+        {
+            var dog = PetAppearance.CreateDefault("Dog");
+            var hats = PetCatalog.Clothing("Dog", PetClothingSlot.Hat);
+            Assert.Greater(hats.Length, 0);
+            Assert.IsTrue(dog.TrySelectClothing(PetClothingSlot.Hat, hats[0]));
+            Assert.AreEqual(hats[0], dog.GetClothing(PetClothingSlot.Hat));
+            Assert.IsFalse(dog.TrySelectClothing(PetClothingSlot.Hat, "hat_zzz"));
+            Assert.IsFalse(dog.TrySelectClothing(PetClothingSlot.Outfit, hats[0]));   // id de outro slot
+            Assert.IsTrue(dog.TrySelectClothing(PetClothingSlot.Hat, ""));
+            Assert.AreEqual(0, PetCatalog.Clothing("Horse", PetClothingSlot.Shoes).Length);
+            Assert.Greater(PetCatalog.Clothing("Horse", PetClothingSlot.Outfit).Length, 0);   // sela
+            Assert.AreEqual(0, PetCatalog.Clothing("Rabbit", PetClothingSlot.Hat).Length);
+            Assert.IsFalse(PetAppearance.CreateDefault("Rabbit").TrySelectClothing(PetClothingSlot.Hat, hats[0]));
+            dog.HatId = "nope"; dog.SanitizeInPlace();
+            Assert.AreEqual("", dog.HatId);
+            Assert.IsTrue(dog.IsValid());
+        }
     }
 }
