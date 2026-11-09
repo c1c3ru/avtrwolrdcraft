@@ -1,0 +1,642 @@
+{
+ "schema_version": 1,
+ "scope": "raw length-prefixed strings of MonoBehaviours whose class failed to decode; evidence that the class holds a string, not how it is used",
+ "bundle_blocks_decoded": 1608,
+ "monobehaviours_seen": 881898,
+ "objects_scanned": 5336,
+ "objects_with_unknown_script": 0,
+ "failing_classes": 126,
+ "classes_found": 126,
+ "classes": {
+  "Spine.Unity.SkeletonAnimation": {
+   "objects": 1963,
+   "files": 234,
+   "strings": 507
+  },
+  "Spine.Unity.SkeletonDataAsset": {
+   "objects": 588,
+   "files": 111,
+   "strings": 611
+  },
+  "PWC.LevelPhone.PhoneBackground": {
+   "objects": 225,
+   "files": 225,
+   "strings": 0
+  },
+  "PWC.LevelPhone.ContactsContent": {
+   "objects": 225,
+   "files": 225,
+   "strings": 0
+  },
+  "PWC.LevelPhone.PhoneSeparator": {
+   "objects": 225,
+   "files": 225,
+   "strings": 0
+  },
+  "PWC.LevelPhone.DeliveryApp.DeliveryContent": {
+   "objects": 225,
+   "files": 225,
+   "strings": 0
+  },
+  "PWC.LevelPhone.PhoneContentIcon": {
+   "objects": 225,
+   "files": 225,
+   "strings": 0
+  },
+  "PWC.Level.LevelSimpleToggleableSpine": {
+   "objects": 208,
+   "files": 59,
+   "strings": 224
+  },
+  "Game.Level.LevelPlayAnimation": {
+   "objects": 108,
+   "files": 1,
+   "strings": 5
+  },
+  "PazuCore.PazuCoreAddressables.AFC.AFCAnalyticsEventCreator": {
+   "objects": 98,
+   "files": 1,
+   "strings": 26
+  },
+  "Game.Level.LevelSpineObjectEventHelper": {
+   "objects": 84,
+   "files": 14,
+   "strings": 13
+  },
+  "Game.Level.LevelSecretAvatarAnimationSolvedListener": {
+   "objects": 79,
+   "files": 21,
+   "strings": 65
+  },
+  "PWC.Level.LevelActionOnAnimationDropAreaHandler": {
+   "objects": 74,
+   "files": 20,
+   "strings": 132
+  },
+  "Game.Level.LevelPDBulkDataShopPack": {
+   "objects": 72,
+   "files": 1,
+   "strings": 18
+  },
+  "PWC.Level.LevelPlant": {
+   "objects": 66,
+   "files": 4,
+   "strings": 64
+  },
+  "PWC.Level.LevelMultiLabelHandler": {
+   "objects": 60,
+   "files": 7,
+   "strings": 46
+  },
+  "PWC.Level.BasketballSystem.LevelBSBasketballItemHandler": {
+   "objects": 58,
+   "files": 7,
+   "strings": 5
+  },
+  "Game.Level.ContextualAnimation.LevelCAMusicalInstrumentCADataItemHandler": {
+   "objects": 48,
+   "files": 4,
+   "strings": 18
+  },
+  "PWC.Level.LevelLabelConditionsUnlockableObjectHandler": {
+   "objects": 47,
+   "files": 21,
+   "strings": 116
+  },
+  "Game.Level.LevelItemsMenuShopPack": {
+   "objects": 46,
+   "files": 1,
+   "strings": 3
+  },
+  "BWYW.DailyTasksData": {
+   "objects": 45,
+   "files": 1,
+   "strings": 434
+  },
+  "Game.Level.LevelShopPack": {
+   "objects": 34,
+   "files": 1,
+   "strings": 3
+  },
+  "Game.Level.LevelSecretAvatarPutClothingsListener": {
+   "objects": 27,
+   "files": 13,
+   "strings": 63
+  },
+  "PWC.Level.LevelToggleableMultipleAudio": {
+   "objects": 26,
+   "files": 11,
+   "strings": 63
+  },
+  "LevelDropAreaEventOnAvatarWithSkinDropHandler": {
+   "objects": 22,
+   "files": 5,
+   "strings": 13
+  },
+  "Game.Level.LevelPlayerVehicle": {
+   "objects": 22,
+   "files": 1,
+   "strings": 20
+  },
+  "PWC.Game.LevelToggleableTransform": {
+   "objects": 19,
+   "files": 3,
+   "strings": 10
+  },
+  "Game.Level.ContextualAnimation.LevelCAMusicalInstrumentWithSpecialNamesWithCADataDropAreaHandler": {
+   "objects": 19,
+   "files": 2,
+   "strings": 9
+  },
+  "Game.Level.ContextualAnimation.LevelCAXmasGiftExchangerItemHandler": {
+   "objects": 18,
+   "files": 1,
+   "strings": 80
+  },
+  "Game.Level.ContextualAnimation.LevelCAEventHandlerByAnimationNameItemHandler": {
+   "objects": 17,
+   "files": 4,
+   "strings": 6
+  },
+  "PWC.Level.LevelAnimationDropAreaHandler": {
+   "objects": 16,
+   "files": 4,
+   "strings": 8
+  },
+  "Game.Level.LevelChainSortingItemHandler": {
+   "objects": 16,
+   "files": 2,
+   "strings": 13
+  },
+  "Game.Level.BackgroundCharacterSpineManager": {
+   "objects": 16,
+   "files": 3,
+   "strings": 3
+  },
+  "Game.Level.LevelOnSpecificPairAnimationBetweenSpecificAvatars": {
+   "objects": 14,
+   "files": 10,
+   "strings": 10
+  },
+  "Game.Level.MovingTraingBackground.LevelStationButton": {
+   "objects": 12,
+   "files": 4,
+   "strings": 1
+  },
+  "Game.Level.LevelStaticConditionsResolverWithDropAreas": {
+   "objects": 12,
+   "files": 5,
+   "strings": 22
+  },
+  "Game.Level.LevelDragActionAreaMultiLabelEventHandler": {
+   "objects": 12,
+   "files": 6,
+   "strings": 16
+  },
+  "Game.Level.LevelSecretAvatarAnimationByScreenCaptureListener": {
+   "objects": 11,
+   "files": 8,
+   "strings": 25
+  },
+  "PWC.Level.LevelStationaryPlant": {
+   "objects": 10,
+   "files": 5,
+   "strings": 6
+  },
+  "PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler": {
+   "objects": 10,
+   "files": 1,
+   "strings": 25
+  },
+  "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRText": {
+   "objects": 10,
+   "files": 1,
+   "strings": 5
+  },
+  "PWC.Level.LevelUpgradeTrackerGuidsFilter": {
+   "objects": 8,
+   "files": 8,
+   "strings": 287
+  },
+  "PWC.Game.LevelPinata": {
+   "objects": 8,
+   "files": 2,
+   "strings": 42
+  },
+  "Game.Level.LevelOutfit": {
+   "objects": 8,
+   "files": 1,
+   "strings": 29
+  },
+  "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRKeyExistConditionHandler": {
+   "objects": 8,
+   "files": 1,
+   "strings": 6
+  },
+  "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRAnalyticsContextSetter": {
+   "objects": 8,
+   "files": 1,
+   "strings": 12
+  },
+  "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRAnalyticsEventCreator": {
+   "objects": 8,
+   "files": 1,
+   "strings": 5
+  },
+  "PWC.Level.LevelSimpleToggleableSpineItem": {
+   "objects": 7,
+   "files": 2,
+   "strings": 12
+  },
+  "PWC.Level.LevelConsumerAreaSkinNameConditionHandler": {
+   "objects": 7,
+   "files": 5,
+   "strings": 10
+  },
+  "Game.Level.ContextualAnimation.LevelCADrumsMusicClassroomHandler": {
+   "objects": 7,
+   "files": 2,
+   "strings": 16
+  },
+  "PWC.AvatarMaker.SUTSkinsDataMap": {
+   "objects": 6,
+   "files": 1,
+   "strings": 9990
+  },
+  "Game.Level.LevelRecipeSecret": {
+   "objects": 6,
+   "files": 1,
+   "strings": 21
+  },
+  "Game.Level.LevelItemConditionsResolver": {
+   "objects": 6,
+   "files": 1,
+   "strings": 9
+  },
+  "PWC.Level.LevelMultiToggleableAudio": {
+   "objects": 5,
+   "files": 3,
+   "strings": 16
+  },
+  "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRTextureComponent": {
+   "objects": 5,
+   "files": 1,
+   "strings": 8
+  },
+  "Game.Level.LevelPeriodicSpine": {
+   "objects": 4,
+   "files": 2,
+   "strings": 5
+  },
+  "PWC.Level.LevelToggleableMultipleAudioItemHandler": {
+   "objects": 4,
+   "files": 3,
+   "strings": 10
+  },
+  "Game.Level.LevelSecretAvatarAnimationWithExampleAvatarSolvedListener": {
+   "objects": 4,
+   "files": 3,
+   "strings": 17
+  },
+  "PWC.Level.LevelConsumerAreaSUTNameConditionHandler": {
+   "objects": 4,
+   "files": 1,
+   "strings": 1
+  },
+  "BWYW.BWYWGiftData": {
+   "objects": 4,
+   "files": 1,
+   "strings": 113
+  },
+  "PWC.World.Buildings.TransportationResetData": {
+   "objects": 4,
+   "files": 1,
+   "strings": 39
+  },
+  "Game.Level.LevelToggleableMap": {
+   "objects": 3,
+   "files": 3,
+   "strings": 6
+  },
+  "PWC.Level.LevelSkinsRandomizer": {
+   "objects": 3,
+   "files": 3,
+   "strings": 23
+  },
+  "Game.Level.LevelBaristaMachine": {
+   "objects": 3,
+   "files": 3,
+   "strings": 20
+  },
+  "Game.Level.LevelRoadBlockAreaToggleableSpine": {
+   "objects": 3,
+   "files": 3,
+   "strings": 9
+  },
+  "Game.Level.LevelSecretVehicleInWorldPositionListener": {
+   "objects": 3,
+   "files": 1,
+   "strings": 8
+  },
+  "PWC.EditorApp.EAEditorDirectoryIndexer": {
+   "objects": 3,
+   "files": 1,
+   "strings": 2
+  },
+  "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode": {
+   "objects": 3,
+   "files": 1,
+   "strings": 0
+  },
+  "Game.Level.LevelWaffleMachine": {
+   "objects": 2,
+   "files": 2,
+   "strings": 11
+  },
+  "Game.Level.LevelCopyAnimationsFromOtherDropArea": {
+   "objects": 2,
+   "files": 1,
+   "strings": 3
+  },
+  "Game.Level.ContextualAnimation.LevelCAConductorDropAreaHandler": {
+   "objects": 2,
+   "files": 2,
+   "strings": 6
+  },
+  "Game.Level.LevelStaticConditionsResolver": {
+   "objects": 2,
+   "files": 2,
+   "strings": 9
+  },
+  "PWC.Level.LevelSetAnimationOnAvatarsInConsumerAreaHandler": {
+   "objects": 2,
+   "files": 2,
+   "strings": 3
+  },
+  "Game.Level.LevelStaticConditionsResolverWithParkedVehicles": {
+   "objects": 2,
+   "files": 1,
+   "strings": 6
+  },
+  "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode": {
+   "objects": 2,
+   "files": 2,
+   "strings": 0
+  },
+  "PWC.Inventory.InventorySkinsBuildData": {
+   "objects": 2,
+   "files": 1,
+   "strings": 1724
+  },
+  "PWC.AvatarMaker.AvatarMakerBabyColorsConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EADelayedEventInputField": {
+   "objects": 2,
+   "files": 1,
+   "strings": 5
+  },
+  "PWC.AvatarMaker.AvatarMakerDogColorsConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerCatColorsConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRVideoComponent": {
+   "objects": 2,
+   "files": 1,
+   "strings": 6
+  },
+  "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EAResultPool": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PazuCore.PazuCoreAddressables.AFC.CR.AFCCROpenGame": {
+   "objects": 2,
+   "files": 1,
+   "strings": 3
+  },
+  "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerHorseColorsConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig": {
+   "objects": 2,
+   "files": 1,
+   "strings": 0
+  },
+  "PazuCore.GameExtraSettings": {
+   "objects": 1,
+   "files": 1,
+   "strings": 6
+  },
+  "PazuCore.GameSettings": {
+   "objects": 1,
+   "files": 1,
+   "strings": 155
+  },
+  "PWC.Inventory.InventoryBuildData": {
+   "objects": 1,
+   "files": 1,
+   "strings": 10210
+  },
+  "PazuCore.WindowManager": {
+   "objects": 1,
+   "files": 1,
+   "strings": 4
+  },
+  "PazuCore.LocalizationManager": {
+   "objects": 1,
+   "files": 1,
+   "strings": 89
+  },
+  "PazuCore.DeepLink.DeepLinkManager": {
+   "objects": 1,
+   "files": 1,
+   "strings": 149
+  },
+  "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.Level.LevelAnimationDropArea": {
+   "objects": 1,
+   "files": 1,
+   "strings": 1
+  },
+  "Game.Level.LevelIceCreamContainerMachine": {
+   "objects": 1,
+   "files": 1,
+   "strings": 4
+  },
+  "Game.Level.Baking.LevelMixerMachine": {
+   "objects": 1,
+   "files": 1,
+   "strings": 12
+  },
+  "PWC.AvatarMakerLobby.AvatarMakerLobbyManager": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.CarsMaker.CarMakerDoorOpener": {
+   "objects": 1,
+   "files": 1,
+   "strings": 1
+  },
+  "PWC.EditorApp.EASUTEThumbButtonHandler": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EASUTEDirectoryButtonHandler": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EASUTEAddedSkinsScreen": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EASUTEManager": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EASUTEMenuManager": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EAEditorAssetsIndexer": {
+   "objects": 1,
+   "files": 1,
+   "strings": 1
+  },
+  "PWC.EditorApp.EAHierarchyPanel": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EALevelEditorPanel": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerCarThumbsConfig": {
+   "objects": 1,
+   "files": 1,
+   "strings": 12
+  },
+  "PWC.EditorApp.EASearchPanel": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EAHierarchyResult": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "Game.Level.LevelSpineObjectSymmetricMovement": {
+   "objects": 1,
+   "files": 1,
+   "strings": 2
+  },
+  "PWC.EditorApp.EACAInfoManager": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EACAItemInfo": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EAItemPreviewPanel": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EAItemPreviewPanelSpritePreview": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EACAMenuInfo": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "Game.Level.LevelCatTunnel": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.AvatarMaker.AvatarMakerCarColorsConfig": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EALoginPanel": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  },
+  "PWC.EditorApp.EASearchResult": {
+   "objects": 1,
+   "files": 1,
+   "strings": 0
+  }
+ }
+}

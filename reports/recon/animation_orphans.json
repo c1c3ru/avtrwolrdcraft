@@ -1,0 +1,1505 @@
+{
+ "schema_version": 1,
+ "summary": {
+  "names": 5067,
+  "counts": {
+   "authoring": 40,
+   "exact_decoded": 2730,
+   "prefix_only": 1730,
+   "unreferenced": 251,
+   "exact_undecoded_weak": 11,
+   "absent_folder": 84,
+   "exact_undecoded": 221
+  },
+  "percent": {
+   "authoring": 0.79,
+   "exact_decoded": 53.88,
+   "prefix_only": 34.14,
+   "unreferenced": 4.95,
+   "exact_undecoded_weak": 0.22,
+   "absent_folder": 1.66,
+   "exact_undecoded": 4.36
+  },
+  "with_exact_evidence_percent": 58.24,
+  "with_any_link_percent": 92.6,
+  "classified_percent": 95.05,
+  "unresolved_percent": 4.95,
+  "reading": {
+   "classified": "every class except unreferenced; authoring and absent_folder are classifications as probable non-use, NOT evidence of use",
+   "weak_short_hits": [
+    "Blow",
+    "Pump",
+    "Spin",
+    "fill",
+    "fold",
+    "hit_1",
+    "hit_2",
+    "hit_3",
+    "hit_4",
+    "hit_5",
+    "spin"
+   ]
+  },
+  "undecoded_classes_that_explain_names": {
+   "BWYW.DailyTasksData": 100,
+   "PWC.Level.LevelSimpleToggleableSpine": 76,
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler": 22,
+   "Spine.Unity.SkeletonAnimation": 9,
+   "Spine.Unity.SkeletonDataAsset": 8,
+   "Game.Level.Baking.LevelMixerMachine": 5,
+   "Game.Level.LevelSecretAvatarAnimationByScreenCaptureListener": 3,
+   "PWC.Game.LevelPinata": 3,
+   "Game.Level.LevelPlayAnimation": 2,
+   "PWC.Level.LevelAnimationDropAreaHandler": 2,
+   "PWC.Level.LevelSimpleToggleableSpineItem": 2,
+   "Game.Level.LevelWaffleMachine": 2,
+   "Game.Level.LevelIceCreamContainerMachine": 2,
+   "Game.Level.LevelSpineObjectEventHelper": 2,
+   "PWC.Level.LevelAnimationDropArea": 1,
+   "Game.Level.LevelItemsMenuShopPack": 1,
+   "Game.Level.LevelPDBulkDataShopPack": 1,
+   "Game.Level.LevelShopPack": 1,
+   "Game.Level.LevelBaristaMachine": 1,
+   "Game.Level.LevelPeriodicSpine": 1
+  }
+ },
+ "skeletons_with_open_names": {
+  "Agility_Cave_P116": {
+   "exact_undecoded": 4,
+   "unreferenced": 1,
+   "exact_decoded": 1
+  },
+  "Ambulance": {
+   "prefix_only": 7,
+   "exact_decoded": 8,
+   "exact_undecoded": 1,
+   "unreferenced": 1
+  },
+  "Ambulance_Siren": {
+   "exact_decoded": 1,
+   "unreferenced": 1
+  },
+  "Avatar_Spine": {
+   "exact_undecoded": 123,
+   "prefix_only": 1378,
+   "exact_decoded": 1881,
+   "absent_folder": 35,
+   "authoring": 24,
+   "unreferenced": 38
+  },
+  "Baby_Spine": {
+   "exact_decoded": 30,
+   "prefix_only": 30,
+   "unreferenced": 1,
+   "authoring": 2
+  },
+  "Black_Taxi_L225": {
+   "prefix_only": 7,
+   "exact_decoded": 8,
+   "exact_undecoded": 1,
+   "unreferenced": 1
+  },
+  "Boxing_Machine_L10": {
+   "prefix_only": 4,
+   "exact_decoded": 3,
+   "unreferenced": 5
+  },
+  "Brinks_Armored_Car_P111": {
+   "prefix_only": 7,
+   "exact_decoded": 8,
+   "exact_undecoded": 1,
+   "unreferenced": 1
+  },
+  "Butterfly_L23": {
+   "unreferenced": 6,
+   "exact_decoded": 1
+  },
+  "C_Scissors": {
+   "exact_decoded": 2,
+   "unreferenced": 2
+  },
+  "Cable_Row_P151": {
+   "exact_decoded": 4,
+   "unreferenced": 2,
+   "exact_undecoded": 1
+  },
+  "Car_Private_01": {
+   "prefix_only": 3,
+   "exact_decoded": 10,
+   "exact_undecoded": 1,
+   "absent_folder": 4,
+   "unreferenced": 1
+  },
+  "Car_Private_02": {
+   "prefix_only": 7,
+   "exact_decoded": 13,
+   "exact_undecoded": 1,
+   "absent_folder": 4,
+   "unreferenced": 2
+  },
+  "Car_Service_01": {
+   "prefix_only": 7,
+   "exact_decoded": 15,
+   "exact_undecoded": 1,
+   "unreferenced": 2
+  },
+  "Cat": {
+   "unreferenced": 8,
+   "exact_decoded": 5
+  },
+  "Cat_Tree_Secret": {
+   "exact_decoded": 4,
+   "unreferenced": 2
+  },
+  "CeilingFan_Z2B5L1": {
+   "exact_decoded": 1,
+   "unreferenced": 4
+  },
+  "Cow_Pet": {
+   "unreferenced": 3,
+   "exact_decoded": 28
+  },
+  "Delivery_Truck_L146": {
+   "prefix_only": 7,
+   "exact_decoded": 8,
+   "exact_undecoded": 1,
+   "unreferenced": 1
+  },
+  "Dog_Slalom_P117": {
+   "exact_decoded": 1,
+   "unreferenced": 1,
+   "exact_undecoded": 2
+  },
+  "Family_Car_P168": {
+   "prefix_only": 7,
+   "exact_decoded": 11,
+   "exact_undecoded": 1,
+   "unreferenced": 2
+  },
+  "Fan_Z2B5L1": {
+   "exact_decoded": 1,
+   "unreferenced": 4
+  },
+  "Finish_Line_L13": {
+   "exact_decoded": 3,
+   "exact_undecoded": 1,
+   "unreferenced": 3
+  },
+  "Fire_Truck": {
+   "exact_decoded": 8,
+   "prefix_only": 3,
+   "exact_undecoded": 1,
+   "unreferenced": 1
+  },
+  "Foam_Roller_01_P135": {
+   "unreferenced": 2,
+   "exact_decoded": 2
+  },
+  "Foam_Roller_02_P135": {
+   "unreferenced": 2,
+   "exact_decoded": 2
+  },
+  "Foam_Roller_P204": {
+   "unreferenced": 2,
+   "exact_decoded": 2
+  },
+  "Foam_Roller_P205": {
+   "unreferenced": 2,
+   "exact_decoded": 2
+  },
+  "Hand_Puppet_C1SE2": {
+   "exact_decoded": 4,
+   "authoring": 1
+  },
+  "Hotel_Luggage_Car_P225": {
+   "prefix_only": 7,
+   "exact_decoded": 8,
+   "exact_undecoded": 1,
+   "unreferenced": 1
+  },
+  "Kart_L232": {
+   "unreferenced": 3,
+   "exact_decoded": 2
+  },
+  "LA_Pink_Mini_Car": {
+   "prefix_only": 3,
+   "exact_decoded": 13,
+   "exact_undecoded": 1,
+   "unreferenced": 2
+  },
+  "Limousine": {
+   "exact_decoded": 16,
+   "prefix_only": 11,
+   "exact_undecoded": 1,
+   "absent_folder": 1,
+   "unreferenced": 2
+  },
+  "Limousine_P93": {
+   "exact_decoded": 16,
+   "prefix_only": 11,
+   "exact_undecoded": 1,
+   "absent_folder": 1,
+   "unreferenced": 2
+  },
+  "Movie_Studio_WitchAsset": {
+   "exact_decoded": 3,
+   "unreferenced": 1
+  },
+  "PAZU_BTN": {
+   "exact_decoded": 2,
+   "unreferenced": 1
+  },
+  "PAZU_LOGO": {
+   "exact_decoded": 2,
+   "unreferenced": 1
+  },
+  "PE34_-_Electric_Scooter": {
+   "exact_decoded": 2,
+   "unreferenced": 1
+  },
+  "Packing_Machine_Z1B4L1": {
+   "unreferenced": 2,
+   "exact_decoded": 2
+  },
+  "Pet_Bird_Spine": {
+   "unreferenced": 14,
+   "exact_decoded": 60,
+   "prefix_only": 3,
+   "absent_folder": 6,
+   "authoring": 1
+  },
+  "Pet_Cat_Spine": {
+   "unreferenced": 68,
+   "exact_decoded": 82,
+   "absent_folder": 16,
+   "prefix_only": 5
+  },
+  "Pet_Chicken_Spine": {
+   "authoring": 4,
+   "exact_decoded": 36,
+   "unreferenced": 6
+  },
+  "Pet_Dog_Spine": {
+   "unreferenced": 68,
+   "exact_decoded": 106,
+   "absent_folder": 25,
+   "prefix_only": 13
+  },
+  "Pet_Fish_Spine": {
+   "exact_decoded": 34,
+   "unreferenced": 13
+  },
+  "Pet_Hamster_Spine": {
+   "absent_folder": 6,
+   "exact_decoded": 53,
+   "unreferenced": 14,
+   "prefix_only": 3
+  },
+  "Pet_Horse": {
+   "prefix_only": 1,
+   "exact_decoded": 37,
+   "unreferenced": 6
+  },
+  "Pet_Lizard_Spine": {
+   "absent_folder": 6,
+   "exact_decoded": 42,
+   "unreferenced": 16,
+   "prefix_only": 3
+  },
+  "Pet_Rabbit_Spine": {
+   "unreferenced": 17,
+   "exact_decoded": 58,
+   "absent_folder": 15,
+   "prefix_only": 3,
+   "authoring": 2
+  },
+  "Pet_Snake_Spine": {
+   "absent_folder": 11,
+   "exact_decoded": 42,
+   "unreferenced": 16,
+   "prefix_only": 4
+  },
+  "Pet_Turtle_Spine": {
+   "absent_folder": 6,
+   "exact_decoded": 44,
+   "unreferenced": 14,
+   "prefix_only": 3
+  },
+  "Police_Car": {
+   "prefix_only": 7,
+   "exact_decoded": 15,
+   "exact_undecoded": 1,
+   "unreferenced": 2
+  },
+  "Police_Car_Siren": {
+   "exact_decoded": 1,
+   "unreferenced": 2
+  },
+  "Private_Vehicle_04.": {
+   "prefix_only": 7,
+   "exact_decoded": 11,
+   "exact_undecoded": 1,
+   "unreferenced": 4
+  },
+  "Ramp_L155": {
+   "exact_decoded": 3,
+   "unreferenced": 1
+  },
+  "Recycle_Machine_Z1B4L1": {
+   "unreferenced": 1,
+   "exact_decoded": 5,
+   "exact_undecoded": 1
+  },
+  "Scissors_Z1B5L1": {
+   "exact_decoded": 2,
+   "unreferenced": 1
+  },
+  "Secret_door_L17": {
+   "exact_decoded": 5,
+   "unreferenced": 1
+  },
+  "Seesaw_L23": {
+   "exact_decoded": 10,
+   "unreferenced": 2
+  },
+  "Shore_Waves_L93": {
+   "exact_undecoded": 1,
+   "authoring": 2
+  },
+  "Slime_Toy_L209": {
+   "unreferenced": 1,
+   "exact_decoded": 1
+  },
+  "Snowmobile_P51": {
+   "exact_decoded": 2,
+   "unreferenced": 1
+  },
+  "Standing_Curtain_L17": {
+   "unreferenced": 1,
+   "exact_decoded": 5
+  },
+  "Star_Pass-Side_Bar_Coins": {
+   "exact_decoded": 1,
+   "unreferenced": 1
+  },
+  "Star_Pass-Superstar_Popup": {
+   "exact_decoded": 1,
+   "unreferenced": 2
+  },
+  "Star_Pass-Top_Bar_Box": {
+   "exact_decoded": 3,
+   "unreferenced": 2
+  },
+  "TechCat": {
+   "exact_decoded": 10,
+   "unreferenced": 2
+  },
+  "TechDog": {
+   "exact_decoded": 13,
+   "unreferenced": 1
+  },
+  "TechRabbit": {
+   "exact_decoded": 10,
+   "unreferenced": 1
+  },
+  "TechRobot": {
+   "exact_decoded": 9,
+   "unreferenced": 1
+  },
+  "Tech_Bird": {
+   "exact_decoded": 10,
+   "unreferenced": 1
+  },
+  "Toddler_Spine": {
+   "prefix_only": 309,
+   "exact_decoded": 258,
+   "authoring": 5,
+   "unreferenced": 4,
+   "exact_undecoded": 4,
+   "absent_folder": 1
+  },
+  "TourBus": {
+   "prefix_only": 7,
+   "exact_decoded": 8,
+   "exact_undecoded": 1,
+   "unreferenced": 1
+  },
+  "Vault_Door_L148": {
+   "unreferenced": 1,
+   "exact_decoded": 2
+  },
+  "Wave_Full_Split": {
+   "exact_undecoded": 1,
+   "authoring": 2
+  }
+ },
+ "unreferenced": [
+  "Baggage/Baggage_Close2",
+  "Baggage/Baggage_Close3",
+  "Baggage/Baggage_Close_Idle",
+  "Ball_Pit/Playing_1",
+  "Ball_Pit/Playing_2",
+  "Ball_Pit/Playing_3",
+  "Bell_Toy/Bell_Toy",
+  "Bell_Toy/Pressing_Bell",
+  "Bridge_Balancing_End",
+  "Bridge_Balancing_Start",
+  "Cable_Row/High_Row_Start",
+  "Cable_Row/Low_Row_Start",
+  "Carrier_Bag/Look_Around_Judging",
+  "Carrier_Bag/Look_Dissappointed",
+  "Carrier_Bag/Sitting_In_Bag",
+  "Charge_The_Teeth",
+  "Coins_Start",
+  "Eating_Drinking/Drink_Trough",
+  "Eating_Drinking/Drinking_Loop",
+  "Eating_Drinking/Grazing_Loop",
+  "Engine_Starts",
+  "Engine_Starts2",
+  "Enter_Hurray",
+  "Enter_Loving",
+  "Enter_Thinking",
+  "Exit_Thinking",
+  "Foam_Roller/Glute_Legs",
+  "Foam_Roller/Static",
+  "Fold",
+  "Folded_Idle_Lights_Off",
+  "Folded_Idle_Lights_On",
+  "Food_Bowl/Drinking_Loop",
+  "Food_Bowl/Eating_Loop",
+  "General/Asking",
+  "General/Barking",
+  "General/Blink_Double",
+  "General/Catches_Fly",
+  "General/Crawl_To_Stand",
+  "General/Dancing_Back_Legs",
+  "General/Doing_Bubbles",
+  "General/Doing_Tricks",
+  "General/Eat",
+  "General/Eat_Treat",
+  "General/Eating_Bowl",
+  "General/Eating_Floor",
+  "General/Enjoying",
+  "General/Falling",
+  "General/Grazing_Loop",
+  "General/Happy_And_Squint",
+  "General/Hide_And_Seek",
+  "General/Hunting",
+  "General/Jump_Short",
+  "General/Kneeling_Idle",
+  "General/Laying_On_Back",
+  "General/Look_Down_Not_Interested",
+  "General/Loosing",
+  "General/Peeing",
+  "General/Petting_Head",
+  "General/Playing_W_Tail",
+  "General/Playing_With_Bubbles",
+  "General/Preparation_For_Race",
+  "General/Preparing",
+  "General/Puppy_Eyes",
+  "General/Rearing",
+  "General/Shaking",
+  "General/Singing",
+  "General/Sitting_Down_Slow",
+  "General/Sitting_Idle_Excited",
+  "General/Sitting_Up",
+  "General/Sleeping_Fart",
+  "General/Sleeping_Run",
+  "General/Sliding",
+  "General/Sliding_2",
+  "General/Sniffing_Ground",
+  "General/Standing_To_Chilling",
+  "General/Stratching",
+  "General/Turn",
+  "General/Wagging_Tail",
+  "General/Walking",
+  "General/Walking_Happy",
+  "General/Washing",
+  "General/Winning",
+  "General/Winning_ver_2",
+  "Grass/Rub_On_Back",
+  "Hide_In_The_Box_End",
+  "Hide_In_The_Box_Loop",
+  "Hide_In_The_Box_Start",
+  "Idle_2",
+  "Idle_Breaker_1",
+  "Idle_Breaker_2",
+  "Idle_Loving",
+  "Idle_Short",
+  "Idle_Stand_2",
+  "Idle_Stand_3",
+  "Idle_Stand_4",
+  "Idle_Static_Flipped",
+  "Idle_Thinking",
+  "In_A_Box/Sitting_In_A_Box_Falling_Asleep",
+  "Looking_At_Pic",
+  "Luxury_Bath/Feeling_Fabulous",
+  "Luxury_Bath/Look_Up_Dissappointed",
+  "Luxury_Bath/Relaxing_Spa_Laying",
+  "Luxury_Bath/Relaxing_Spa_Sitting",
+  "Luxury_Bath/Wet_Paw",
+  "Luxury_Pillow/Stretch_Elegant",
+  "Mirror/Mirror_Angry",
+  "Mirror/Mirror_Confirmation",
+  "Mirror/Mirror_Confused",
+  "Mirror/Mirror_Kiss",
+  "Mirror/Mirror_Posing",
+  "Mirror/Mirror_Practice",
+  "Movement_Loving",
+  "Movement_Thinking",
+  "Pet_Dog_Interactions/Dancing",
+  "Pet_Dog_Interactions/Greeting_Cautious",
+  "Pet_Dog_Interactions/Greeting_Happy",
+  "Pet_Dog_Interactions/Nose_Boop",
+  "Pet_Dog_Interactions/Playing",
+  "Pet_Toy_Rod/Toy_Rod_Playing",
+  "Piano/Jump_On_Keys",
+  "Piano/Play_Masterfully",
+  "Piano/Smash_Keys",
+  "Piano/Touch_Keys",
+  "Platform_Jump",
+  "Playing_With_Toy",
+  "Pool/Chilling",
+  "Pool/Sweating",
+  "Reach_To_Grab_Left_End",
+  "Reach_To_Grab_Left_Loop",
+  "Reach_To_Grab_Left_Start",
+  "Reach_To_Grab_Right_End",
+  "Reach_To_Grab_Right_Loop",
+  "Reach_To_Grab_Right_Start",
+  "Rescue_Dog/Sniff_Bark_Happy",
+  "Rescue_Dog/Sniff_Point",
+  "Rescue_Dog/Sniff_Suspicious",
+  "Rescue_Dog/Sniff_Suspicious_Bark_Point",
+  "Rescue_Dog/Wagging_Tail",
+  "Reverse_Driving_Idle",
+  "Running_Track/Losing",
+  "Running_Track/Prepare",
+  "Running_Track/Winning",
+  "Scratcher/Device_Scratching",
+  "Scratcher/Floor_Scratching",
+  "Shower/Cold_Water",
+  "Shower/Eat_Bubble",
+  "Shower/Enjoy_Shower",
+  "Shower/Enjoying",
+  "Shower/Hot_Water",
+  "Shower/Playing_In_Puddle",
+  "Shower/Shower_Slips",
+  "Shower/Washing",
+  "Shower/Washing_Face",
+  "Siren_On",
+  "Siren_Slow",
+  "Sit_In_Tube_Loop",
+  "Sit_In_Tube_Start",
+  "Sit_On_Chair",
+  "Sit_On_Chair_Down",
+  "Sit_On_Chair_Get_Up",
+  "Sit_On_Chair_Idle",
+  "Sit_On_Chair_Up",
+  "Sit_On_Window",
+  "Sit_On_Window_Get_Up",
+  "Sit_On_Window_Idle",
+  "Slide/Slide_to_Float",
+  "Sliding_Mud",
+  "Sliding_Mud_End",
+  "Slime/Slime_Check_Toddler",
+  "Small_Toy/Jump_Catch_Toy",
+  "Small_Toy/Shakes_Item",
+  "Small_Toy/Throw_Item_Jump_Go_Back",
+  "Snow/Catch_Falling_Snowflake",
+  "Snow/Catching_Snowflake",
+  "Snow/Check_Solid",
+  "Snow/Cold_Outside",
+  "Snow/Curls_Up_To_Rest",
+  "Snow/Get_Cold",
+  "Snow/Lick_Snow",
+  "Snow/Look_Up_Excited",
+  "Snow/Paw_Freeze",
+  "Snow/Pounces_On_Snowflakes",
+  "Snow/Rub_On_Back_Loop",
+  "Snow/Shaking_Head_Sneeze",
+  "Snow/Sneezing",
+  "Standing_Up",
+  "Superstar_Start-no-VFX",
+  "Superstar_Static",
+  "Surfboard/Sitting_Surf",
+  "Surfboard/Standing_Back_Legs",
+  "Surfboard/Standing_Front_Legs",
+  "Swimming/Diving",
+  "Swimming/Laying_On_Back",
+  "TEST",
+  "Track_Animations/Forced_To_Bicycle_Drive",
+  "Track_Animations/Forced_To_Bicycle_Stand",
+  "Track_Animations/Forced_To_Hold_Suitcase_Front",
+  "Track_Animations/Forced_To_Horse_R(DEPRECATED)",
+  "Track_Animations/Forced_To_Not_Hold_Reins",
+  "Track_Animations/Forced_To_Run",
+  "Track_Animations/Forced_To_Sit_Legs_On_Top",
+  "Track_Animations/Forced_To_Sit_On_Knees",
+  "Track_Animations/Forced_To_Wheelchair",
+  "Track_Animations/Forced_To_Witch",
+  "Track_Animations/Forсed_To_Mermaid",
+  "Trampoline/Jump_Pose_1",
+  "Trampoline/Jump_Scared",
+  "Trampoline/Jump_Trick",
+  "Tunnel_Laying/Check_Place_Leave",
+  "Tunnel_Laying/Washing_Face",
+  "Tunnel_Sitting/Check_Place_Leave",
+  "Tunnel_Sitting/Sleeping_Idle",
+  "Tunnel_Sitting/Washing_Face",
+  "Unfolded_Idle_Lights_Off",
+  "Unfolded_Idle_Lights_On",
+  "UpperLeft",
+  "Waking_Up",
+  "Walking_Around",
+  "Wearing_Clothes/Remove_Body_Clothes",
+  "Wearing_Clothes/Remove_Collar",
+  "Wearing_Clothes/Remove_Hat",
+  "Wearing_Clothes/Remove_Shoes",
+  "Wearing_Clothes/Shoes_Proud",
+  "Wearing_Clothes/Try_Remove_Cone",
+  "Windows/Windows_Close_Idle",
+  "animation2",
+  "close_chewing_loop",
+  "close_idle_breaker",
+  "cutting_once",
+  "cutting_short",
+  "cutting_slow",
+  "flying_side",
+  "flying_top",
+  "idle_center_line",
+  "idle_left_line",
+  "idle_right_line",
+  "on1",
+  "on2",
+  "on3",
+  "open_idle_breaker",
+  "open_idle_close_idle",
+  "pressed_on_idle",
+  "sitting_side_idle",
+  "sitting_side_random",
+  "sitting_top_idle",
+  "sitting_top_random",
+  "swing_left",
+  "swing_right",
+  "turn_off",
+  "work_end",
+  "work_start"
+ ],
+ "absent_folder": [
+  "Boxed/Boxed_Idle",
+  "Boxed/Boxed_Idle_Bounce",
+  "Boxed/Boxed_Idle_Sparkle",
+  "Boxed/Boxed_Tap",
+  "Car/Standing_Back_Legs",
+  "Dig/Dig_Ground_Fast",
+  "Dig/Dig_Hole_Fast",
+  "Dig/Sniff_Confused",
+  "Drivers_Window/Windows_Close_Idle",
+  "Fountain_L225/Fountain_Static",
+  "Mannequin_Poses/Mannequin_Pose_14",
+  "Mannequin_Poses/Mannequin_Pose_19",
+  "Mannequin_Poses/Mannequin_Pose_20",
+  "Mannequin_Poses/Mannequin_Pose_21",
+  "Mannequin_Poses/Mannequin_Pose_22",
+  "Mannequin_Poses/Mannequin_Pose_23",
+  "Mannequin_Poses/Mannequin_Pose_3",
+  "Mini_Game/Loose",
+  "Mini_Game/Place_Bottom",
+  "Mini_Game/Place_Middle",
+  "Mini_Game/Place_Top",
+  "Mini_Game/Rotate_Picture",
+  "Mini_Game/Take_Bottom",
+  "Mini_Game/Take_Bottom_Further",
+  "Mini_Game/Take_Middle",
+  "Mini_Game/Take_Middle_Further",
+  "Mini_Game/Take_Top",
+  "Mini_Game/Take_Top_Further",
+  "Mini_Game/Toss",
+  "Mini_Game/Win",
+  "Movement_Cycles/Jogging",
+  "Movement_Cycles/Jump_Forward",
+  "Movement_Cycles/Jump_In_Place",
+  "Movement_Cycles/Running_Tired",
+  "Movement_Cycles/Walking_With_Leash",
+  "Pet_Interactions/Dancing_W_Other",
+  "Pet_Interactions/Meeting_Other",
+  "Pet_Interactions/Playing_W_Other",
+  "Pet_Interactions_Reaction/Dancing_W_Other",
+  "Pet_Interactions_Reaction/Meeting_Other",
+  "Pet_Interactions_Reaction/Playing_W_Other",
+  "Pet_Leash_Connected/Run_Pull_Back",
+  "Pet_Leash_Connected/Try_Walking_But_No",
+  "Pet_Leash_Held/Fails_To_Put_On_Leash",
+  "Pet_Leash_Held/Putting_On_Leash",
+  "Pet_Leash_Held/Wave_Leash",
+  "Robot_Toy/Robot_Toy",
+  "Rommba/Riding",
+  "TEST/Dog_Park_Flip_Not_Root",
+  "TEST/Dog_Park_Flip_Root",
+  "TEST/Dog_Park_No_Flip",
+  "TEST/Dog_Park_One_Way",
+  "TEST/Dog_Park_One_Way+Idle",
+  "Toddler_Big_Dog_Close_Sitting_Interactions/Annoy",
+  "Toddler_Big_Dog_Close_Sitting_Interactions/Hugging",
+  "Toddler_Big_Dog_Close_Standing_Interactions/Annoy",
+  "Toddler_Big_Dog_Close_Standing_Interactions/Hugging",
+  "Toddler_Big_Dog_Close_Standing_Interactions/Petting",
+  "Toddler_Close_Sitting_Interactions/Annoy",
+  "Toddler_Close_Sitting_Interactions/Hugging",
+  "Toddler_Close_Sitting_Interactions/Petting",
+  "Toddler_Close_Standing_Interactions/Annoy",
+  "Toddler_Close_Standing_Interactions/Hugging",
+  "Toddler_Close_Standing_Interactions/Petting",
+  "Toy_Interactive_Ball/Toy_Interactive_Ball",
+  "Track_Emojis_Talking/Angry_Talking_Track",
+  "Track_Emojis_Talking/Confused_Talking_Track",
+  "Track_Emojis_Talking/Cry_Talking_Track",
+  "Track_Emojis_Talking/General_Talking_Track",
+  "Track_Emojis_Talking/Happy_Talking_Track",
+  "Track_Emojis_Talking/In_Love_Talking_Track",
+  "Track_Emojis_Talking/Tired_Talking_Track",
+  "Track_Emojis_Talking/Wave_Talking_Track",
+  "Track_Emojis_Talking/Worried_Talking_Track",
+  "Wearable_Idles/Idle_Fairy_Wings",
+  "Weird_Sitting_Animations/Pool_Chair_Reading",
+  "Weird_Sitting_Animations/Sitting_And_Reading_A_Book",
+  "Weird_Sitting_Animations/Sitting_And_Reading_A_Magazine",
+  "Yoga_Mat/Yoga_Trick_1",
+  "Yoga_Mat/Yoga_Trick_2",
+  "Yoga_Mat/Yoga_Trick_3",
+  "Yoga_Mat/Yoga_Trick_4",
+  "Yoga_Mat/Yoga_Trick_5",
+  "Yoga_Mat/Yoga_Trick_6"
+ ],
+ "authoring": [
+  "*Test",
+  ".Spine-Draw_Order_Templates/Nails_L_Off-On",
+  ".Spine-Draw_Order_Templates/Nails_R_Off-On",
+  ".Spine_Technical_Stuff/Face_TEST",
+  ".Spine_Technical_Stuff/Finger_TEST",
+  ".Spine_Technical_Stuff/Head_TEST",
+  ".Spine_Technical_Stuff/Idle_Pose",
+  ".Spine_Technical_Stuff/Legs_TEST",
+  ".Test_Animations/Arms_Test",
+  ".Test_Animations/Blink",
+  ".Test_Animations/Body_Mirror_Flip",
+  ".Test_Animations/Body_TEST",
+  ".Test_Animations/Eyes_L-R_Test",
+  ".Test_Animations/FACE_TEST",
+  ".Test_Animations/Face_TEST",
+  ".Test_Animations/Flip_TEST",
+  ".Test_Animations/Forced_To_Sit_TEST",
+  ".Test_Animations/Forced_To_Walk_TEST",
+  ".Test_Animations/ForeArms_TEST",
+  ".Test_Animations/Full_Body_TEST",
+  ".Test_Animations/Hair_Gravity_TEST_1-(walking)",
+  ".Test_Animations/Hair_Gravity_TEST_2-(dancing)",
+  ".Test_Animations/Hair_Gravity_TEST_3-(laying)",
+  ".Test_Animations/Hair_Gravity_TEST_4-(laying_idle)",
+  ".Test_Animations/Hair_TEST",
+  ".Test_Animations/Legs_TEST_1",
+  ".Test_Animations/Rainbow_TEST",
+  ".Test_Animations/Shoulders_TEST",
+  ".Test_Animations/Ski pose test",
+  ".Test_Animations/Skirt_TEST",
+  ".Test_Animations/Starting_Keyframe",
+  "TEST_1_interlapping",
+  "TEST_2_one-by-one",
+  "Unused/Quarelling_W_Other",
+  "Unused/Quarelling_W_Other_2",
+  "Unused/Swimming/Diving",
+  "Unused/Swimming/Floating_Idle",
+  "Unused/Swimming/Laying_On_Back",
+  "Unused/Swimming/Swimming_Idle",
+  "Unused/run_track"
+ ],
+ "exact_undecoded": {
+  "Bridge_Balancing_Loop": [
+   "PWC.Level.LevelAnimationDropArea"
+  ],
+  "Burning": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "CA/Agility_Ladder/2_Feet_Step": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Agility_Ladder/Act_Climbing Ladder": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Agility_Ladder/High_Knees": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Avatar_Interaction_Action/High_Five": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Avatar_Interaction_Reaction/High_Five": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Balance_Board/Balancing": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Balance_Board/Stand_Fail": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Balance_Board/Stand_Trying_Fail": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Balance_Board/Stand_Wobbly": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Balance_Board/Wobbly": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Balance_Board/Zen": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Ballet/Arabesque": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Ballet/Ballet_Combo": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Ballet/Double_Cabriole": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Ballet/Pas_De_Bourree": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Ballet/Pirouette": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Basketball/Ball_Dribbling_1": [
+   "Game.Level.LevelSecretAvatarAnimationByScreenCaptureListener"
+  ],
+  "CA/Basketball/Ball_Dribbling_2": [
+   "Game.Level.LevelSecretAvatarAnimationByScreenCaptureListener"
+  ],
+  "CA/Basketball/Ball_Dribbling_5": [
+   "Game.Level.LevelSecretAvatarAnimationByScreenCaptureListener"
+  ],
+  "CA/Bosu_Ball/Bosu_Ball_1": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Bosu_Ball/Bosu_Ball_2": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Bosu_Ball/Bosu_Ball_3": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Bosu_Ball/Bosu_Ball_4": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Cane_With_Seat/Step_Dance": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Cat_Suit/Cleaning": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Cat_Suit/Hissing": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Cat_Suit/Kneading": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Cat_Suit/Meowing": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing/Dance_Routine_3": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing/Down_Rock_Combo": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/ALF": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Bartman": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Baseball_Ball": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Biz_Markie": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Cabbage_Patch": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Fly_Girls": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/House_Party": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Lock_It_Down": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Robo_Cop": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Roger_Rabit": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Running_Man": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/TLC": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/The_Creep": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/The_Fila": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/The_Rooftop": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/The_Smurf": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/The_Wop": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop/Tom_And_Jerry": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Beats/HipHopBeats_Dance_1": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Beats/HipHopBeats_Dance_2": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Beats/HipHopBeats_Dance_3": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Beats/HipHopBeats_Dance_4": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Beats/HipHopBeats_Dance_5": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Beats/HipHopBeats_Dance_6": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Neon/NeonStomp_Dance_1": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Neon/NeonStomp_Dance_2": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Neon/NeonStomp_Dance_3": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Neon/NeonStomp_Dance_4": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Neon/NeonStomp_Dance_5": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Neon/NeonStomp_Dance_6": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Pop/PopDrop_Dance_1": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Pop/PopDrop_Dance_2": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Pop/PopDrop_Dance_3": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Pop/PopDrop_Dance_4": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Pop/PopDrop_Dance_5": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_2_Pop/PopDrop_Dance_6": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_Interactions/Bartman_Duo": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_Interactions/TLC_Duo": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Dancing_Hiphop_Interactions/The_Smurf_Duo": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Emojis_Exag/Anger": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Emojis_Exag/Dramatic": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Emojis_Exag/Fall_In_Love": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Emojis_Exag/Scared": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Emojis_Exag/Very_Embarrassed": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Emojis_Sitting/Happy_Sitting": [
+   "Game.Level.LevelPlayAnimation"
+  ],
+  "CA/Emojis_Sitting/Loving_Sitting": [
+   "Game.Level.LevelPlayAnimation"
+  ],
+  "CA/Excercise/Side_Plank_With_Leg_Lifts": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Exercise_Step/Steps_Bouncing": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Exercise_Step/Steps_Fast": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Exercise_Step/Steps_Good": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/General_Area/Romantic_Gesture_Loop": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Guitar/Playing_Guitar": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Guitar/Playing_In_The_Zone": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Guitar/RocknRoll": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Hair_Dryer/Dry_Hair_Other": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Hand_Drum/Drumming_Island": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Hand_Puppet/Funny_Argument": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Hand_Puppet/Makes_Fun_Of": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Hats_Worn/Adjust_Hat_Confidently": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Juggling/Juggling_Above_Head": [
+   "BWYW.DailyTasksData",
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Juggling/Juggling_Telekinesis": [
+   "BWYW.DailyTasksData",
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Juggling/Juggling_With_One_Hand": [
+   "BWYW.DailyTasksData",
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Jumping_Rope/Jumps_Hard": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Jumping_Rope/Jumps_Medium": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Jumping_Rope/Jumps_Simple": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Kettlebell/Kettlebell_Flip": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Kettlebell/Kettlebell_Swing": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Kettlebell/Single_Arm_Military_Press": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Kettlebell/Turkish_Get_Up": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Magician/Magic_Trick_Bouquet": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Phone/Shared_Selfie": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Phone/Take_Selfie": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Pole/Holding_Pole_Idle": [
+   "PWC.Level.LevelAnimationDropAreaHandler"
+  ],
+  "CA/Reporter/Taking_Interview": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Reporter/Talking_Earpiece": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Roomba/Riding": [
+   "PWC.Level.LevelAnimationDropAreaHandler"
+  ],
+  "CA/Royalty/Bow_Formal_Loop": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Royalty/Kneel_Pose_Loop": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Royalty/Short_Curtsy_Loop": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Script_Basic/Over_Acting": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Script_Basic/Over_Reacting": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Script_Good/Comic": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Script_Good/Theatric": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Sitting_Floor/Crafting_With_Wrench": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Skateboard/Skateboard_Jump_Mount": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Snare_Drum/Drumming_Fast": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Snare_Drum/Drumming_Marching": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Snare_Drum/Drumming_Slow": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Stunts_Mat/Jump_Roll_Good": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Stunts_Mat/Jump_Roll_Pro": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Toddler_Car_Ramp/Start_Ride": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Training_Area/Skiing_Backwards": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Warmup_Barre/Air_Chair": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Waterpark_Sliding_Sitting/Slide_Excited_Sitting": [
+   "PWC.Level.LevelActionOnAnimationDropAreaHandler"
+  ],
+  "CA/Yoga_Exercises/Yoga1_Wrong_Loop": [
+   "BWYW.DailyTasksData"
+  ],
+  "CA/Yoga_Exercises/Yoga3_Wrong_Loop": [
+   "BWYW.DailyTasksData"
+  ],
+  "Cable_Pulley/Biceps_Start": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Cable_Pulley/Triceps_Start": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Cable_Row/Idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Dentist_Chair/Laying_Idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Dentist_Chair/Sitting_Idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Doors/Door_1_Close_Idle": [
+   "Spine.Unity.SkeletonAnimation"
+  ],
+  "Emergency": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Fountain_Streaming": [
+   "Spine.Unity.SkeletonAnimation"
+  ],
+  "Hair_Swing": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Idle_Bounce": [
+   "Game.Level.LevelItemsMenuShopPack",
+   "Game.Level.LevelPDBulkDataShopPack",
+   "Game.Level.LevelShopPack",
+   "Spine.Unity.SkeletonAnimation"
+  ],
+  "Idle_Clean": [
+   "Game.Level.Baking.LevelMixerMachine",
+   "Spine.Unity.SkeletonAnimation"
+  ],
+  "Idle_Closed": [
+   "Game.Level.LevelBaristaMachine"
+  ],
+  "Idle_Dirty": [
+   "Game.Level.Baking.LevelMixerMachine"
+  ],
+  "Kite/Flying": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Kite/Folding": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Kite/Idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Kite/Launching": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Leg_Extension/Leg_Extension_Idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Leg_Press/Leg_Press_Idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Moving_Right": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "On_Without_Cable": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Open_Kitchen/Cutting_Food_Expert": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Open_Kitchen/Cutting_Food_Intermediate": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Open_Kitchen/Cutting_Food_Noob": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Run_Go_Back_L_To_R": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Run_Go_Back_R_To_L": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Run_Slalom_L_To_R": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Run_Slalom_R_To_L": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Run_Success_L_To_R": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Run_Success_R_To_L": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Spin_Stops": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Start_Running": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Start_Without_Cable": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Stop_Without_Cable": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Studio_Mixer_On": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Wave_Movement": [
+   "Spine.Unity.SkeletonAnimation"
+  ],
+  "Waving_Hello": [
+   "PWC.Level.LevelSimpleToggleableSpineItem"
+  ],
+  "Wheel_Fast": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Wheel_Med": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Wipers_On": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "Working_Clean": [
+   "Game.Level.Baking.LevelMixerMachine"
+  ],
+  "Working_Dirty": [
+   "Game.Level.Baking.LevelMixerMachine"
+  ],
+  "Working_Stained": [
+   "Game.Level.Baking.LevelMixerMachine"
+  ],
+  "appearing": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "bottom_idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "cheering": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "down_idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "down_to_bottom": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "down_to_middle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "go_crazy": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "green_idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "green_to_yellow": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "idle_2": [
+   "PWC.Game.LevelPinata",
+   "PWC.Level.LevelSimpleToggleableSpine",
+   "Spine.Unity.SkeletonDataAsset"
+  ],
+  "idle_3": [
+   "PWC.Game.LevelPinata",
+   "PWC.Level.LevelSimpleToggleableSpine",
+   "Spine.Unity.SkeletonDataAsset"
+  ],
+  "idle_4": [
+   "PWC.Level.LevelSimpleToggleableSpine",
+   "Spine.Unity.SkeletonDataAsset"
+  ],
+  "idle_5": [
+   "PWC.Level.LevelSimpleToggleableSpine",
+   "Spine.Unity.SkeletonDataAsset"
+  ],
+  "idle__closed": [
+   "Game.Level.LevelWaffleMachine",
+   "Spine.Unity.SkeletonAnimation"
+  ],
+  "idle__open": [
+   "Game.Level.LevelWaffleMachine"
+  ],
+  "idle_button__off": [
+   "Game.Level.LevelIceCreamContainerMachine"
+  ],
+  "idle_button__on": [
+   "Game.Level.LevelIceCreamContainerMachine",
+   "Spine.Unity.SkeletonAnimation"
+  ],
+  "idle_close": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "idle_empty": [
+   "PWC.Game.LevelPinata"
+  ],
+  "idle_full": [
+   "Spine.Unity.SkeletonAnimation"
+  ],
+  "item_spawn": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "middle_idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "middle_to_down": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "middle_to_up": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "pose_1": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "pose_2": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "pose_3": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "pose_4": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "pose_5": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "pour_1": [
+   "PWC.Level.LevelSimpleToggleableSpine",
+   "Spine.Unity.SkeletonDataAsset"
+  ],
+  "pour_2": [
+   "PWC.Level.LevelSimpleToggleableSpine",
+   "Spine.Unity.SkeletonDataAsset"
+  ],
+  "pour_3": [
+   "PWC.Level.LevelSimpleToggleableSpine",
+   "Spine.Unity.SkeletonDataAsset"
+  ],
+  "pour_4": [
+   "PWC.Level.LevelSimpleToggleableSpine",
+   "Spine.Unity.SkeletonDataAsset"
+  ],
+  "red_idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "red_to_green": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "rolled_down": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "rolled_down_static": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "rolled_up": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "rotates_anti_clockwise": [
+   "Game.Level.LevelSpineObjectEventHelper",
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "rotates_clockwise": [
+   "Game.Level.LevelSpineObjectEventHelper",
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "shaking": [
+   "Game.Level.LevelPeriodicSpine",
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "slow_dance": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "sound_1": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "sound_2": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "spinning": [
+   "PWC.Level.LevelSimpleToggleableSpine",
+   "PWC.Level.LevelSimpleToggleableSpineItem"
+  ],
+  "splash": [
+   "Spine.Unity.SkeletonAnimation"
+  ],
+  "unfold": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "unfolded_idle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "up_to_middle": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ],
+  "yellow_to_red": [
+   "PWC.Level.LevelSimpleToggleableSpine"
+  ]
+ }
+}
