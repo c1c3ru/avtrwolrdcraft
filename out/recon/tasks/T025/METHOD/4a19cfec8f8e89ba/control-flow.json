@@ -3,7 +3,7 @@
   "start": "0x2108e90",
   "exclusive_stop": "0x2109014",
   "bytes": 388,
-  "bound_limit": "candidate window capped at next metadata-resolved method start",
+  "bound_limit": "candidate window capped at next metadata-resolved method start; this does not prove complete/noncontiguous body or exception-region extent",
   "decode_limit": "selected branch encodings only (B/BL/BLR/CBZ/CBNZ/TBZ/TBNZ/RET); no general dataflow",
   "control_flow_encodings": [
     {

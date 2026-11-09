@@ -25,3 +25,6 @@ Janelas: `LoadScene` VA `0x20728d4..0x2072c64`, `LoadSceneImplement` `0x2072cc8.
 - Quem assina `OnActiveSceneChanged` (provável `SceneManager.activeSceneChanged`) e quem chama `CancelCurrentSceneChangingProgress`; sem isso o ciclo do indicador não está fechado.
 - ~~Assinantes dos eventos Stage1–3~~: resolvido em [RECON_SCENE_SUBSCRIBERS.md](RECON_SCENE_SUBSCRIBERS.md) (5 ligações registro→handler verificadas: `BackgroundPlanetSoundHandler`/Stage1, `PersistentDataManager` e `LevelManager`/Stage2, `LevelManager`/Stage3). O próprio despacho `blr` dentro de `LoadScene` (quem chama, com quais registradores/offsets) está decodificado em [RECON_STAGE_DELEGATE_INVOKE.md](RECON_STAGE_DELEGATE_INVOKE.md): é sempre indireto através de um campo do objeto delegate em runtime (offset `+0x18`, com args em `+0x40`/`+0x28`), nunca um branch fixo — o que ainda falta é o fade de `StartSceneTransition` (`0x20fe2d8`), que não invoca o delegate dentro da própria janela analisada.
 - Exceções e corpos completos.
+
+## Atualização L01 (iterações 1–2)
+Guard estático identificado como `MPManager.IsMultiplayerGame` e ordem completa do ramo multiplayer provadas pela sonda; ver `docs/loops/results/L01.md`.

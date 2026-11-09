@@ -2,12 +2,18 @@
   "task_id": "T025/METHOD/8e708ca7d06e0b52",
   "status": "partial",
   "semantic_completion": false,
-  "method_body_fully_bounded": true,
+  "method_body_fully_bounded": false,
+  "method_body_extent": "904-byte metadata-bounded candidate window; complete/noncontiguous and exception ranges not proven",
   "contract": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/method-contract.json",
   "control_flow": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/control-flow.json",
   "unknowns": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/unknowns.jsonl",
-  "method": "LoadScene's own body (904 bytes) is fully bounded and all its named direct calls re-verified. Revalidated two previously-written deeper probes (fade/tween chain, scene-loaded subscriber graph) against the current pinned pair, after symlinking the required 1.5GB asset-pack APK into this worktree and confirming the extraction stays memory-bounded (<=64MB, never loads the full datapack). All 8 of this task's own unknown_ids remain open: 3 are static-decodable in principle (Stage1-3 delegate targets, remaining subscriber candidates) but were not newly resolved this attempt; the other 5 are irreducibly runtime/device-dependent and out of scope while avoiding Unity/device work.",
-  "no_full_unity_or_device_work_performed": true,
-  "note": "This consolidation reused and revalidated three existing static tools (recon_navigation.py, recon_loading_fade.py, recon_scene_subscribers.py) rather than writing new analysis; it did not advance any of the 8 open unknown_ids beyond their prior status, per the current instruction to avoid Unity/device work. The task remains correctly 'ready' (partial), not 'evidence_ready' -- the acceptance bar ('all observable effects and callee conditions... validated') is not met.",
-  "awaiting": "Either static decoding of the Stage1-3 delegate targets and remaining subscriber candidates (still feasible without Unity/device), or device/runtime observation for the rest, then independent review."
+  "stage_registration_followup": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+  "method": "Observed three sequential null-guarded indirect calls through slots loaded at offsets 0/8/16; association to named GameSceneManager Stage fields remains candidate-only because TypeInfo/static-data provenance is unresolved. Separately verified all nine remaining raw direct add-call candidates against the pinned metadata/codegen pair, delegate constructor MethodDef usage, receiver/type compatibility and flow of the constructed delegate into the exact event accessor. Together with the four earlier positive Stage edges this verifies 13/13 candidates from the bounded direct-encoding scan. This is static registration evidence, not runtime invocation or a complete subscriber graph.",
+  "verification": {
+    "new_stage_candidates": "9/9 static registration edges",
+    "all_direct_scan_candidates": "13/13 across Stage1-3",
+    "focused_tests": "3 local mutation/identity tests and 9 existing scene-subscriber tests passed",
+    "runtime_or_device": false
+  },
+  "next_action": "Continue with handler bodies/effects and remaining T025 pilot gaps; preserve the full-body/exception and runtime unknowns. Do not mark this child or parent done without independent review and its acceptance bar."
 }

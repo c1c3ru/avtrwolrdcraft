@@ -1,5 +1,5 @@
-{"question": "Runtime initialization/exception behavior of the metadata/class-init guard."}
-{"question": "Unity PlayerPrefs/Enum.ToString() native engine implementation semantics (outside this IL2CPP binary)."}
-{"question": "IsSceneAvailable's generic HashSet<string> construct/Add/Contains bindings (callee body itself is STATIC_candidate_with_unresolved_generic_operations)."}
-{"question": "Threading/concurrency and actual device behavior for the PlayerPrefs read and cached scene-name check."}
-{"question": "Original/device validation of the three LevelWorldType scenarios (no saved GAME_CURRENT_WORLD, a value IsSceneAvailable accepts, a value it rejects) was not performed in this task."}
+{"id": "body-regions", "question": "Full/noncontiguous body and exception regions not proven by bounded CFG."}
+{"id": "helpers", "question": "Runtime lazy metadata/class initialization, exceptions and GC behavior."}
+{"id": "external", "question": "Enum.ToString and Unity PlayerPrefs GetString behavior beyond the guarded calling convention."}
+{"id": "collection", "question": "HashSet requested identities resolved; canonical bodies, sharing correctness, null/errors and cache concurrency remain open."}
+{"id": "reference", "question": "No original runtime/emulation/oracle comparison in this task."}

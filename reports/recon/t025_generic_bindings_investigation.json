@@ -1,0 +1,723 @@
+{
+  "tables": {
+    "generic_classes": {
+      "label": "generic_classes",
+      "vaddr": "0x3febfc0",
+      "count": 13115,
+      "stride": 8,
+      "bytes": 104920,
+      "sha256": "49bae28395ccf7c3c078dc37b096f38b5d43efc30ccc6c460beb2d0792a3135f",
+      "count_field": "0x40d10c0",
+      "pointer_field": "0x40d10c8"
+    },
+    "generic_insts": {
+      "label": "generic_insts",
+      "vaddr": "0x402aaf8",
+      "count": 9494,
+      "stride": 8,
+      "bytes": 75952,
+      "sha256": "74a532e82044925c0425bb9f3561800617c379401737e298f193582e97964810",
+      "count_field": "0x40d10d0",
+      "pointer_field": "0x40d10d8"
+    },
+    "generic_method_functions": {
+      "label": "generic_method_functions",
+      "vaddr": "0xd34124",
+      "count": 75923,
+      "stride": 16,
+      "bytes": 1214768,
+      "sha256": "6f5d297b20f7d67b7964d84160cda1fa812336c668f6a7c378fd81b548bac173",
+      "count_field": "0x40d10e0",
+      "pointer_field": "0x40d10e8"
+    },
+    "types": {
+      "label": "types",
+      "vaddr": "0x410cb80",
+      "count": 46980,
+      "stride": 8,
+      "bytes": 375840,
+      "sha256": "313eb5f2e000bb8a0789b75d19199f7232754ec8963f369da12bfc7309eb75ed",
+      "count_field": "0x40d10f0",
+      "pointer_field": "0x40d10f8"
+    },
+    "method_specs": {
+      "label": "method_specs",
+      "vaddr": "0xc15780",
+      "count": 97827,
+      "stride": 12,
+      "bytes": 1173924,
+      "sha256": "31df87d8ca1b3a2825b92ebc60ca3e0ed841d8dffe13a317be6004c5a0b6da10",
+      "count_field": "0x40d1100",
+      "pointer_field": "0x40d1108"
+    },
+    "field_offsets": {
+      "label": "field_offsets",
+      "vaddr": "0x4235148",
+      "count": 16859,
+      "stride": 8,
+      "bytes": 134872,
+      "sha256": "94394be654935e945557e61ca62e308a9722aaf061929f62793996bbe867f89a",
+      "count_field": "0x40d1110",
+      "pointer_field": "0x40d1118"
+    },
+    "type_definition_sizes": {
+      "label": "type_definition_sizes",
+      "vaddr": "0x4256020",
+      "count": 16859,
+      "stride": 8,
+      "bytes": 134872,
+      "sha256": "94394be654935e945557e61ca62e308a9722aaf061929f62793996bbe867f89a",
+      "count_field": "0x40d1120",
+      "pointer_field": "0x40d1128"
+    },
+    "generic_method_pointers": {
+      "label": "generic_method_pointers",
+      "vaddr": "0x403d3a8",
+      "count": 75683,
+      "stride": 8,
+      "bytes": 605464,
+      "sha256": "731b0dedc82a83589c86537d54a92ab7ea75f7d470f98d04a3e7d96fbd5ae371",
+      "count_field": "0x3f9a2e0",
+      "pointer_field": "0x3f9a2e8"
+    },
+    "invokers": {
+      "label": "invokers",
+      "vaddr": "0x3f9a358",
+      "count": 16451,
+      "stride": 8,
+      "bytes": 131608,
+      "sha256": "74f9e1467680f90e3b13a1d254b1620ee064f53e2b2cfc0f225ec1b5de751875",
+      "count_field": "0x3f9a2f8",
+      "pointer_field": "0x3f9a300"
+    },
+    "codegen_modules": {
+      "label": "codegen_modules",
+      "vaddr": "0x4276ef8",
+      "count": 96,
+      "stride": 8,
+      "bytes": 768,
+      "sha256": "ef115a0e0c15cdc41958ca46b5b14b456115f4baec5e3ca68599d2a8f435e3b8",
+      "count_field": "0x3f9a348",
+      "pointer_field": "0x3f9a350"
+    }
+  },
+  "bindings": [
+    {
+      "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+      "call_site": "0x2073120",
+      "target": "0x2b5a3bc",
+      "kind": "BL",
+      "method": {
+        "image": "System.Core.dll",
+        "declaring_type": "System.Collections.Generic.HashSet`1",
+        "name": ".ctor",
+        "token": "0x06000ccb",
+        "parameter_count": 0,
+        "method_definition_index": 91258,
+        "metadata_offset": "0x670b78"
+      },
+      "requested_method_spec": {
+        "index": 90082,
+        "raw": [
+          91258,
+          320,
+          -1
+        ]
+      },
+      "requested_class_instantiation": {
+        "index": 320,
+        "address": "0x4006d98",
+        "argc": 1,
+        "argv": "0x42c8fe0",
+        "type_address": "0x4380d08",
+        "type_code": "0xe",
+        "type_definition_index": 6409,
+        "type_name": "System.String",
+        "raw_type_bytes": "091900000000000000000e0000000000"
+      },
+      "method_info_usage": {
+        "got_vaddr": "0x41af358",
+        "usage_vaddr": "0x430b120",
+        "encoded": "0xc002bfc5",
+        "kind": 6,
+        "index": 90082
+      },
+      "canonical_method_spec": {
+        "index": 31746,
+        "raw": [
+          91258,
+          62,
+          -1
+        ]
+      },
+      "canonical_class_instantiation": {
+        "index": 62,
+        "address": "0x4005d78",
+        "argc": 1,
+        "argv": "0x42c87b8",
+        "type_address": "0x437f968",
+        "type_code": "0x1c",
+        "type_definition_index": 6710,
+        "type_name": "System.Object",
+        "raw_type_bytes": "361a00000000000000001c0000000000"
+      },
+      "generic_function_row": {
+        "index": 28129,
+        "vaddr": "0xda1f34",
+        "raw": [
+          31746,
+          28106,
+          9616,
+          -1
+        ]
+      },
+      "function_pointer_slot": "0x40741f8"
+    },
+    {
+      "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+      "call_site": "0x20731e4",
+      "target": "0x2b5b5a0",
+      "kind": "BL",
+      "method": {
+        "image": "System.Core.dll",
+        "declaring_type": "System.Collections.Generic.HashSet`1",
+        "name": "Add",
+        "token": "0x06000cdf",
+        "parameter_count": 1,
+        "method_definition_index": 91278,
+        "metadata_offset": "0x670e48"
+      },
+      "requested_method_spec": {
+        "index": 90084,
+        "raw": [
+          91278,
+          320,
+          -1
+        ]
+      },
+      "requested_class_instantiation": {
+        "index": 320,
+        "address": "0x4006d98",
+        "argc": 1,
+        "argv": "0x42c8fe0",
+        "type_address": "0x4380d08",
+        "type_code": "0xe",
+        "type_definition_index": 6409,
+        "type_name": "System.String",
+        "raw_type_bytes": "091900000000000000000e0000000000"
+      },
+      "method_info_usage": {
+        "got_vaddr": "0x41af0a8",
+        "usage_vaddr": "0x430b130",
+        "encoded": "0xc002bfc9",
+        "kind": 6,
+        "index": 90084
+      },
+      "canonical_method_spec": {
+        "index": 31753,
+        "raw": [
+          91278,
+          62,
+          -1
+        ]
+      },
+      "canonical_class_instantiation": {
+        "index": 62,
+        "address": "0x4005d78",
+        "argc": 1,
+        "argv": "0x42c87b8",
+        "type_address": "0x437f968",
+        "type_code": "0x1c",
+        "type_definition_index": 6710,
+        "type_name": "System.Object",
+        "raw_type_bytes": "361a00000000000000001c0000000000"
+      },
+      "generic_function_row": {
+        "index": 28136,
+        "vaddr": "0xda1fa4",
+        "raw": [
+          31753,
+          28113,
+          5684,
+          -1
+        ]
+      },
+      "function_pointer_slot": "0x4074230"
+    },
+    {
+      "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+      "call_site": "0x2073230",
+      "target": "0x2b5aab0",
+      "kind": "B",
+      "method": {
+        "image": "System.Core.dll",
+        "declaring_type": "System.Collections.Generic.HashSet`1",
+        "name": "Contains",
+        "token": "0x06000cd5",
+        "parameter_count": 1,
+        "method_definition_index": 91268,
+        "metadata_offset": "0x670ce0"
+      },
+      "requested_method_spec": {
+        "index": 90086,
+        "raw": [
+          91268,
+          320,
+          -1
+        ]
+      },
+      "requested_class_instantiation": {
+        "index": 320,
+        "address": "0x4006d98",
+        "argc": 1,
+        "argv": "0x42c8fe0",
+        "type_address": "0x4380d08",
+        "type_code": "0xe",
+        "type_definition_index": 6409,
+        "type_name": "System.String",
+        "raw_type_bytes": "091900000000000000000e0000000000"
+      },
+      "method_info_usage": {
+        "got_vaddr": "0x41af1f0",
+        "usage_vaddr": "0x430b140",
+        "encoded": "0xc002bfcd",
+        "kind": 6,
+        "index": 90086
+      },
+      "canonical_method_spec": {
+        "index": 31759,
+        "raw": [
+          91268,
+          62,
+          -1
+        ]
+      },
+      "canonical_class_instantiation": {
+        "index": 62,
+        "address": "0x4005d78",
+        "argc": 1,
+        "argv": "0x42c87b8",
+        "type_address": "0x437f968",
+        "type_code": "0x1c",
+        "type_definition_index": 6710,
+        "type_name": "System.Object",
+        "raw_type_bytes": "361a00000000000000001c0000000000"
+      },
+      "generic_function_row": {
+        "index": 28142,
+        "vaddr": "0xda2004",
+        "raw": [
+          31759,
+          28119,
+          5684,
+          -1
+        ]
+      },
+      "function_pointer_slot": "0x4074260"
+    }
+  ],
+  "clear_bindings": [
+    {
+      "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+      "method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Collections.Generic.Dictionary`2",
+        "name": "Clear",
+        "token": "0x06002f5e",
+        "parameter_count": 0,
+        "method_definition_index": 48546,
+        "metadata_offset": "0x4f9518"
+      },
+      "call_sites": [
+        "0x20d7eec",
+        "0x20d7f04"
+      ],
+      "target": "0x28f3898",
+      "method_info_usage": {
+        "got_vaddr": "0x41cb6b0",
+        "usage_vaddr": "0x4303050",
+        "encoded": "0xc002a27d",
+        "kind": 6,
+        "index": 86334
+      },
+      "requested_method_spec": {
+        "index": 86334,
+        "raw": [
+          48546,
+          1038,
+          -1
+        ]
+      },
+      "requested_class_instantiation": {
+        "index": 1038,
+        "address": "0x4009a78",
+        "argc": 2,
+        "argv": "0x42cb140",
+        "arguments": [
+          {
+            "type_name": "UnityEngine.GameObject",
+            "type_code": "0x12",
+            "type_definition_index": 11692,
+            "type_address": "0x437d9d8",
+            "raw_type_bytes": "ac2d0000000000000000120000000000"
+          },
+          {
+            "type_name": "System.Int32",
+            "type_code": "0x8",
+            "type_definition_index": 6522,
+            "type_address": "0x437e108",
+            "raw_type_bytes": "7a190000000000000000088000000000"
+          }
+        ]
+      },
+      "canonical_method_spec": {
+        "index": 15142,
+        "raw": [
+          48546,
+          1166,
+          -1
+        ]
+      },
+      "canonical_class_instantiation": {
+        "index": 1166,
+        "address": "0x400a278",
+        "argc": 2,
+        "argv": "0x42cb940",
+        "arguments": [
+          {
+            "type_name": "System.Object",
+            "type_code": "0x1c",
+            "type_definition_index": 6710,
+            "type_address": "0x437f968",
+            "raw_type_bytes": "361a00000000000000001c0000000000"
+          },
+          {
+            "type_name": "System.Int32",
+            "type_code": "0x8",
+            "type_definition_index": 6522,
+            "type_address": "0x437e108",
+            "raw_type_bytes": "7a190000000000000000088000000000"
+          }
+        ]
+      },
+      "generic_function_row": {
+        "index": 12881,
+        "vaddr": "0xd66634",
+        "raw": [
+          15142,
+          12863,
+          9616,
+          -1
+        ]
+      },
+      "function_pointer_slot": "0x40565a0"
+    },
+    {
+      "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+      "method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.Collections.Generic.Dictionary`2",
+        "name": "Clear",
+        "token": "0x06002f5e",
+        "parameter_count": 0,
+        "method_definition_index": 48546,
+        "metadata_offset": "0x4f9518"
+      },
+      "call_sites": [
+        "0x20d7f24"
+      ],
+      "target": "0x28f9eec",
+      "method_info_usage": {
+        "got_vaddr": "0x41cb6b8",
+        "usage_vaddr": "0x4303088",
+        "encoded": "0xc002a28b",
+        "kind": 6,
+        "index": 86341
+      },
+      "requested_method_spec": {
+        "index": 86341,
+        "raw": [
+          48546,
+          1039,
+          -1
+        ]
+      },
+      "requested_class_instantiation": {
+        "index": 1039,
+        "address": "0x4009a88",
+        "argc": 2,
+        "argv": "0x42cb150",
+        "arguments": [
+          {
+            "type_name": "UnityEngine.GameObject",
+            "type_code": "0x12",
+            "type_definition_index": 11692,
+            "type_address": "0x437d9d8",
+            "raw_type_bytes": "ac2d0000000000000000120000000000"
+          },
+          {
+            "type_name": "System.Object",
+            "type_code": "0x1c",
+            "type_definition_index": 6710,
+            "type_address": "0x437f968",
+            "raw_type_bytes": "361a00000000000000001c0000000000"
+          }
+        ]
+      },
+      "canonical_method_spec": {
+        "index": 15252,
+        "raw": [
+          48546,
+          73,
+          -1
+        ]
+      },
+      "canonical_class_instantiation": {
+        "index": 73,
+        "address": "0x4005e28",
+        "argc": 2,
+        "argv": "0x42c8820",
+        "arguments": [
+          {
+            "type_name": "System.Object",
+            "type_code": "0x1c",
+            "type_definition_index": 6710,
+            "type_address": "0x437f968",
+            "raw_type_bytes": "361a00000000000000001c0000000000"
+          },
+          {
+            "type_name": "System.Object",
+            "type_code": "0x1c",
+            "type_definition_index": 6710,
+            "type_address": "0x437f968",
+            "raw_type_bytes": "361a00000000000000001c0000000000"
+          }
+        ]
+      },
+      "generic_function_row": {
+        "index": 12991,
+        "vaddr": "0xd66d14",
+        "raw": [
+          15252,
+          12973,
+          9616,
+          -1
+        ]
+      },
+      "function_pointer_slot": "0x4056910"
+    }
+  ],
+  "field_bindings": [
+    {
+      "classification": "STATIC_metadata_field_and_registered_offset_join",
+      "declaring_type": "PWC.Multiplayer.MPManager",
+      "type_definition_index": 4173,
+      "field_index": 16360,
+      "local_field_index": 17,
+      "field_name": "<IsMultiplayerGame>k__BackingField",
+      "token": "0x4003fe9",
+      "field_metadata_offset": "0xacd838",
+      "offset_table_pointer": "0xb66acc",
+      "offset_value_address": "0xb66b10",
+      "offset": 0,
+      "type_table_index": 17677,
+      "type_pointer": "0x437bff8",
+      "type_data": 6458,
+      "type_bits": "0x80020011",
+      "static": true
+    },
+    {
+      "classification": "STATIC_metadata_field_and_registered_offset_join",
+      "declaring_type": "PWC.GameSceneManager",
+      "type_definition_index": 3803,
+      "field_index": 15270,
+      "local_field_index": 10,
+      "field_name": "_availableSceneNames",
+      "token": "0x4003ba7",
+      "field_metadata_offset": "0xaca520",
+      "offset_table_pointer": "0xb659a0",
+      "offset_value_address": "0xb659c8",
+      "offset": 72,
+      "type_table_index": 7635,
+      "type_pointer": "0x40eabf0",
+      "type_data": 0,
+      "type_bits": "0x150011",
+      "static": true
+    }
+  ],
+  "registration": {
+    "code_registration": "0x3f9a2d0",
+    "metadata_registration": "0x40d10c0",
+    "argument_loader": "0x198c8d0..0x198c8e8",
+    "tail_targets": [
+      "0x1b886e4",
+      "0x1bc67f0"
+    ],
+    "static_argument_storage": "0x1bc6810/0x1bc6814/0x1bc6820",
+    "anchors": [
+      {
+        "address": "0x198c8d0",
+        "word": "0xb00142a1"
+      },
+      {
+        "address": "0x198c8d4",
+        "word": "0xf9431c21"
+      },
+      {
+        "address": "0x198c8d8",
+        "word": "0xd0013060"
+      },
+      {
+        "address": "0x198c8dc",
+        "word": "0xd0ff9302"
+      },
+      {
+        "address": "0x198c8e0",
+        "word": "0x910b4000"
+      },
+      {
+        "address": "0x198c8e4",
+        "word": "0x91104042"
+      },
+      {
+        "address": "0x198c8e8",
+        "word": "0x1407ef7f"
+      },
+      {
+        "address": "0x1b886e4",
+        "word": "0x1400f843"
+      },
+      {
+        "address": "0x1bc67f8",
+        "word": "0xaa0203f3"
+      },
+      {
+        "address": "0x1bc67fc",
+        "word": "0xaa0103f4"
+      },
+      {
+        "address": "0x1bc6800",
+        "word": "0xaa0003f5"
+      },
+      {
+        "address": "0x1bc67f0",
+        "word": "0xa9be57fe"
+      },
+      {
+        "address": "0x1bc67f4",
+        "word": "0xa9014ff4"
+      },
+      {
+        "address": "0x1bc6804",
+        "word": "0x97fe3df8"
+      },
+      {
+        "address": "0x1bc6808",
+        "word": "0xb0015ac9"
+      },
+      {
+        "address": "0x1bc680c",
+        "word": "0xb0015aca"
+      },
+      {
+        "address": "0x1bc6810",
+        "word": "0xf905b934"
+      },
+      {
+        "address": "0x1bc6814",
+        "word": "0xf905bd53"
+      },
+      {
+        "address": "0x1bc6818",
+        "word": "0xa9414ff4"
+      },
+      {
+        "address": "0x1bc681c",
+        "word": "0xb0015ac8"
+      },
+      {
+        "address": "0x1bc6820",
+        "word": "0xf905b515"
+      },
+      {
+        "address": "0x1bc6824",
+        "word": "0xa8c257fe"
+      },
+      {
+        "address": "0x1bc6828",
+        "word": "0xd65f03c0"
+      }
+    ]
+  },
+  "unknowns": [
+    "Registration argument loader invocation and runtime initialization were not observed.",
+    "Exact MethodRef identities do not prove ctor/Add/Contains body behavior, exceptions or generic sharing correctness.",
+    "Call targets correspond to canonical HashSet<object> table entries; no direct string table row is asserted.",
+    "Collection cache concurrency, invalidation, effects and Unity PlayerPrefs behavior remain open.",
+    "Narrow v31 registration layout is pair-specific; no claim of a universal parser or T024/T025 completion."
+  ],
+  "schema_version": 1,
+  "scope": "IsSceneAvailable HashSet MethodRefs, MPOwnership Dictionary.Clear MethodRefs, MP flag/cache field offsets; narrow static joins.",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "producer_sha256": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3",
+  "helper_sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+  "commands": [
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=26790096",
+        "--stop-address=26790124",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t025-generics-investigation/registration.asm.txt",
+      "sha256": "ed7dba64704402b0831b2e5fe068ed6eb667ede3ea0daccf6fdce45ced52b224"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=29124592",
+        "--stop-address=29124652",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t025-generics-investigation/registration-storage.asm.txt",
+      "sha256": "f4d8dc17aff5d71949c80e7e0e473ead331c9216cd179d9a80ef5fbf59bb9d0a"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=34025564",
+        "--stop-address=34026040",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t025-generics-investigation/IsSceneAvailable.asm.txt",
+      "sha256": "6f107e7751a81e7f03f971781cb247d5c67d15216e6773935826b3a7ba722a8d"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=34438776",
+        "--stop-address=34438980",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t025-generics-investigation/MPOwnership.Clear.asm.txt",
+      "sha256": "eafde73ab6e95790e49028e22a59e6c7ad83a6b9559dcf7a7d20ec7030240b8c"
+    }
+  ],
+  "duration_seconds": 1.107,
+  "game_executed": false,
+  "queue_modified": false,
+  "active_REA_target_used": false
+}

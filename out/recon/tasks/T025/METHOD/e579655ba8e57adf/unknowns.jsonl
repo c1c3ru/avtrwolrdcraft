@@ -1,4 +1,5 @@
-{"question": "Identity and default value of the static multiplayer flag tested at 0x2072d3c; not traced back to a named C# field in this task."}
-{"question": "SceneManager.LoadSceneAsync's own async lifecycle/behavior (Unity engine-native, outside this IL2CPP binary)."}
-{"question": "Exact semantics of the two distinct unresolved native IL2CPP runtime helper targets (0x1b886e8, 0x1b8885c)."}
-{"question": "Error/exception behavior if LoadSceneAsync is called with an invalid or unavailable sceneName."}
+{"id": "body-regions", "question": "Noncontiguous body/exception regions not proven by this bounded local CFG."}
+{"id": "init", "question": "Metadata initialization, class initialization, GC and exception behavior of native helpers."}
+{"id": "clear", "question": "Full memory, callbacks, exceptions and termination effects of MPOwnership.Clear()."}
+{"id": "unity-load", "question": "Native engine LoadSceneAsync failure/null/invalid-string semantics and later completion."}
+{"id": "runtime", "question": "No original runtime or independent behavioral oracle execution."}

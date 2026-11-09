@@ -727,5 +727,261 @@
       "reachability": "STATIC_encoding_not_runtime_observation"
     }
   ],
-  "assembly_listing": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/navigation/LoadScene.asm.txt"
+  "assembly_listing": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/navigation/LoadScene.asm.txt",
+  "body_extent_status": "candidate_window_only_not_full_body_or_exception_cfg",
+  "stage_delegate_fields": {
+    "source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+    "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+    "fields": [
+      {
+        "name": "OnBeforeSceneLoadStage1Action",
+        "offset": "0x0"
+      },
+      {
+        "name": "OnBeforeSceneLoadStage2Action",
+        "offset": "0x8"
+      },
+      {
+        "name": "OnBeforeSceneLoadStage3Action",
+        "offset": "0x10"
+      }
+    ],
+    "dispatch_review_sha256": "055d2eafca19ec8f9260875cf64841cbf7b7f767476d726b8d19d635d07b9b1b",
+    "ordered_dispatches": [
+      {
+        "candidate_slot_offset": "0x0",
+        "anchors": [
+          {
+            "site": "0x2072b5c",
+            "word": "0xf9400108"
+          },
+          {
+            "site": "0x2072b60",
+            "word": "0xb40000c8"
+          },
+          {
+            "site": "0x2072b64",
+            "word": "0xf9400d09"
+          },
+          {
+            "site": "0x2072b68",
+            "word": "0xf9402100"
+          },
+          {
+            "site": "0x2072b6c",
+            "word": "0xf9401501"
+          },
+          {
+            "site": "0x2072b70",
+            "word": "0xd63f0120"
+          }
+        ],
+        "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+        "otherwise": "CBZ bypasses the indirect call"
+      },
+      {
+        "candidate_slot_offset": "0x8",
+        "anchors": [
+          {
+            "site": "0x2072b88",
+            "word": "0xf9405c08"
+          },
+          {
+            "site": "0x2072b90",
+            "word": "0xb40000c8"
+          },
+          {
+            "site": "0x2072b94",
+            "word": "0xf9400d09"
+          },
+          {
+            "site": "0x2072b98",
+            "word": "0xf9402100"
+          },
+          {
+            "site": "0x2072b9c",
+            "word": "0xf9401501"
+          },
+          {
+            "site": "0x2072ba0",
+            "word": "0xd63f0120"
+          }
+        ],
+        "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+        "otherwise": "CBZ bypasses the indirect call"
+      },
+      {
+        "candidate_slot_offset": "0x10",
+        "anchors": [
+          {
+            "site": "0x2072bbc",
+            "word": "0xf9400908"
+          },
+          {
+            "site": "0x2072bc0",
+            "word": "0xb40000a8"
+          },
+          {
+            "site": "0x2072bc4",
+            "word": "0xf9400d09"
+          },
+          {
+            "site": "0x2072bc8",
+            "word": "0xf9402100"
+          },
+          {
+            "site": "0x2072bcc",
+            "word": "0xf9401501"
+          },
+          {
+            "site": "0x2072bd0",
+            "word": "0xd63f0120"
+          }
+        ],
+        "normal_local_path": "if loaded reference is non-null, load three words at object offsets 0x18/0x40/0x28 into x9/x0/x1, then BLR x9",
+        "otherwise": "CBZ bypasses the indirect call"
+      }
+    ],
+    "typeinfo_provenance": {
+      "adrp_site": "0x20728e8",
+      "ldr_site": "0x20728f0",
+      "got_vaddr": 68978112,
+      "base_register": 23,
+      "destination_register": 23,
+      "usage": {
+        "got_vaddr": "0x41c85c0",
+        "usage_vaddr": "0x42fa8c8",
+        "encoded": "0x20011d2f",
+        "kind": 1,
+        "index": 36503
+      },
+      "resolved_typedef_candidates": [
+        {
+          "index": 3802,
+          "name": "<>c__DisplayClass28_0",
+          "namespace": ""
+        }
+      ]
+    },
+    "binding_status": "CANDIDATE_ONLY_unresolved_static_data_base",
+    "limit": "The three null-guarded indirect calls and load offsets 0/8/16 are observed. The TypeInfo resolves to <>c__DisplayClass28_0 and the static-data base is not joined to GameSceneManager, so named-field association is unproven; actual delegate targets remain runtime-dependent."
+  },
+  "direct_registration_edges": {
+    "prior_probe_sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e",
+    "raw_direct_candidates": 13,
+    "prior_positive_stage_edges": 4,
+    "newly_verified_stage_edges": 9,
+    "total_direct_candidates_verified": 13,
+    "by_event_candidate_counts": {
+      "add_OnBeforeSceneLoadStage1Action": 8,
+      "add_OnBeforeSceneLoadStage2Action": 3,
+      "add_OnBeforeSceneLoadStage3Action": 2
+    },
+    "previous_edges": [
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.BackgroundPlanetSoundHandler.Awake",
+        "handler": "PWC.BackgroundPlanetSoundHandler.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06005601",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.PersistentData.PersistentDataManager.Awake",
+        "handler": "PWC.PersistentData.PersistentDataManager.OnBeforeSceneLoadStage2",
+        "handler_token": "0x06006e44",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage2",
+        "handler_token": "0x0600849c",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage3Action",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage3",
+        "handler_token": "0x0600849d",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      }
+    ],
+    "new_edges": [
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.LevelDigHoleArea.Awake",
+        "handler": "Game.Level.LevelDigHoleArea.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06002d73",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.LevelSpawnOnLevelPostInit.Awake",
+        "handler": "Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems",
+        "handler_token": "0x060032a9",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.Awake",
+        "handler": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06003cd2",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.Locker.LevelLockerSpawnOnPostInit.Awake",
+        "handler": "Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems",
+        "handler_token": "0x060032a9",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.AvatarSpeech.AvatarSpeechUIMenu.Awake",
+        "handler": "PWC.AvatarSpeech.AvatarSpeechUIMenu.OnBeforeSceneLoadStage1",
+        "handler_token": "0x0600699a",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.Level.LevelKillArea.Awake",
+        "handler": "PWC.Level.LevelKillArea.OnBeforeSceneLoadStage1",
+        "handler_token": "0x0600784e",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.Level.LevelScreenshotManager.Awake",
+        "handler": "PWC.Level.LevelScreenshotManager.OnBeforeSceneLoad",
+        "handler_token": "0x060084ff",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.Level.LevelNewAvatarManager.Awake",
+        "handler": "PWC.Level.LevelNewAvatarManager.OnBeforeSceneLoadStage1",
+        "handler_token": "0x060085d0",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage3Action",
+        "caller": "PWC.Level.LevelMakerSwitcher.Awake",
+        "handler": "PWC.Level.LevelMakerSwitcher.OnBeforeSceneLoadStage3",
+        "handler_token": "0x0600865a",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      }
+    ],
+    "limit": "The 13 direct B/BL add candidates in this bounded executable-code scan are verified. This is not a complete subscriber graph; indirect, reflection, dynamically loaded and other code paths remain open."
+  },
+  "stage_dispatch_review": "stage_dispatch_review.json"
 }

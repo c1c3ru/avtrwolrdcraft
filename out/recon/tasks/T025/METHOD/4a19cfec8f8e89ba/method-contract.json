@@ -25,18 +25,19 @@
     "note": "Reran the existing verifier (20 calls, 37 operand anchors, all passed) against the current cached binary/metadata pair, then isolated the subset of calls/branches whose address falls inside ClickOnLevel's own bounded body and independently re-decoded that body's full control flow and exact byte hash."
   },
   "status": "STATIC_candidate_contract_checked_not_certified",
+  "method_body_extent_status": "candidate_window_only; next metadata start does not prove complete or noncontiguous body/exception extents",
   "parameters": ["level:LevelType (enum, passed in register per the single-int-parameter ABI)"],
   "return": "void",
   "pseudocode": [
-    "ensure metadata/class initialization (guarded helper calls, same idiom as other methods in this binary)",
-    "if OnClickBuildingAction delegate is set (non-null check before 0x2108ee4): invoke it indirectly with (this, level) -- indirect call, target not decoded",
+    "ensure metadata/class initialization (guarded helper calls at 0x2108eb8/0x2108efc/0x2108f3c; helper target identity/effects unresolved)",
+    "if the reference guarding 0x2108ee4 is non-null, invoke indirectly through x9; candidate OnClickBuildingAction(this, level), but field identity and delegate target are not decoded",
     "InteractionHistoryManager.MarkBuildingAsInteracted(...)",
     "InteractionHistoryManager.SetFocusedBuildingType(...)",
     "access gate: if SettingsManager.Instance/ExtraSettings null -> early-return via shared failure helper at 0x2109010; else if useTimeLock flag set OR IsCurrentlyFree() OR Utils.IsGameUnlocked(null): proceed to enter",
     "if OnClickAction delegate is set: invoke it (UnityEvent.Invoke)",
     "SaveBuildingData(buildingType, level)",
     "scene = CoreExtensions.GetSceneName(level) (\"Level_\"+enum name)",
-    "virtual dispatch through a vtable slot (BLR at 0x2108fe0) with the scene string -- inferred to be WorldEnterableEntity.LoadScene(string) from the override set in the Cpp2IL dump, vtable itself not decoded here",
+    "virtual dispatch through x9 (BLR at 0x2108fe0) with the scene string -- candidate WorldEnterableEntity.LoadScene(string), inferred from the Cpp2IL override set; vtable slot/target are not decoded here",
     "else (gate fails): TryGetRemoteConfigItem(...) then WorldBuildingPreviewPopup.Show(buildingType, item); tail-branch back without entering (B to 0x2108fe4, which itself leads to RET at 0x2108ff0)"
   ],
   "verified_calls": [
@@ -68,6 +69,7 @@
     "semantic_certification": false
   },
   "unknowns": [
+    "The 388-byte inspection window is metadata-bounded; complete/noncontiguous method body and exception-region extents are not established.",
     "OnClickBuildingAction delegate's actual bound target at the indirect call site 0x2108ee4.",
     "Virtual vtable slot 0x298 dispatch target at 0x2108fe0; inferred as WorldEnterableEntity.LoadScene(string) from the dump's override set, not decoded from the vtable itself.",
     "Identity/semantics of the shared native helper at 0x1b88980 (reached only on guard-failure paths).",

@@ -75,5 +75,18 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual(25812 - 0, idx.Count, 100); // um por GUID unico (algumas linhas sem nome sao descartadas)
             Assert.IsTrue(idx.Categories().All(c => ItemPricing.PriceFor(c) >= ItemPricing.Small));
         }
+
+        [Test]
+        public void ShippedCatalog_HasNoOneLetterCategories()
+        {
+            // "c" (417 itens como "C_Scissors") e "x" (4 itens como "X_Obstacle_L150") eram artefato do
+            // extrator (primeiro token antes de "_"), nao categoria real; viravam chip sem sentido no
+            // trilho da loja por item. tools/build_item_catalog.py agora funde categoria de 1 caractere
+            // em "outros". Ver docs/STORE_ORIGINAL_REFERENCE_2026-11-07.md.
+            var json = Resources.Load<TextAsset>("Store/items");
+            var data = JsonUtility.FromJson<Runtime.ItemCatalogFile>(json.text);
+            var idx = new ItemCatalogIndex(data.items.Select(e => new CatalogItem { Guid = e.g, Name = e.n, Category = e.c }));
+            CollectionAssert.DoesNotContain(idx.Categories().Select(c => c.Length), 1);
+        }
     }
 }

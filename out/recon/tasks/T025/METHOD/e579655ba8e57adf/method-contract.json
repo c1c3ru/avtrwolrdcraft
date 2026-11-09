@@ -1,67 +1,439 @@
 {
   "schema_version": 1,
   "task_id": "T025/METHOD/e579655ba8e57adf",
-  "scope": "Bounded static ARM64/IL2CPP-metadata contract for PWC.GameSceneManager.LoadSceneImplement; no runtime execution, emulation, or device validation performed here",
+  "status": "STATIC_local_contract_with_explicit_dependencies",
+  "semantic_completion": false,
   "method_identity": {
     "image": "Assembly-CSharp.dll",
-    "token": "0x060056ff",
     "declaring_type": "PWC.GameSceneManager",
     "name": "LoadSceneImplement",
+    "token": "0x060056ff",
+    "method_definition_index": 22270,
     "parameter_count": 1,
     "vaddr": "0x2072cc8",
-    "exclusive_stop": "0x2072d84",
-    "body_bytes": 188,
-    "body_sha256": "b083d22fd95c3607d455eda12cae911668727b55f99a5e7bfb9392c879cfb0ed"
+    "file_offset": "0x206ecc8"
   },
   "input_pair": {
     "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
     "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
   },
-  "tool_source": {
-    "script": "tools/recon_navigation.py",
-    "function": "run (windows/transition_contracts for LoadSceneImplement)",
-    "note": "Reused the existing navigation verifier's control-flow decode and metadata symbol resolution instead of re-deriving the window from scratch; reran it against the current cached binary/metadata pair before packaging this task's evidence."
+  "signature_abi": {
+    "signature": "static void LoadSceneImplement(string sceneName)",
+    "entry": "AAPCS64 x0=managed string reference; no this; hidden MethodInfo is not consumed in this slice.",
+    "return_value": "Managed declaration void; tailcall passes through engine native return register without consuming it."
   },
-  "status": "STATIC_candidate_contract_checked_not_certified",
-  "parameters": ["sceneName:string"],
-  "return": "void (tail call into SceneManager.LoadSceneAsync; no explicit return path observed)",
-  "pseudocode": [
-    "ensure metadata/class initialization as guarded in code (three guarded helper calls, same pattern as GetCurrentWorldSceneName)",
-    "if multiplayer-static-flag at loaded static-fields byte 0 is set: MPOwnership.Clear()",
-    "tailcall SceneManager.LoadSceneAsync(sceneName)"
+  "bytes_ranges": {
+    "inspection_start": "0x2072cc8",
+    "inspection_exclusive_stop": "0x2072d84",
+    "bytes": 188,
+    "sha256": "b083d22fd95c3607d455eda12cae911668727b55f99a5e7bfb9392c879cfb0ed",
+    "complete_body_proven": false
+  },
+  "source_declarations": [
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+      "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+      "declaration": "public static void LoadSceneImplement(string sceneName)",
+      "classification": "STATIC_extracted_declaration_not_recovered_body"
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Multiplayer/MPManager.cs",
+      "sha256": "db865b7d7a2c341759fd412018417d9ea0b1078bc59e09273111bd4fca671244",
+      "declaration": "<IsMultiplayerGame>k__BackingField; //Field offset: 0x0",
+      "classification": "STATIC_extracted_declaration_not_recovered_body"
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/UnityEngine.CoreModule/UnityEngine/SceneManagement/SceneManager.cs",
+      "sha256": "bb636f6a7d05636ecc38ebe7fd744d40c0e495c29e16ab23fee4c53355c7fa85",
+      "declaration": "public static AsyncOperation LoadSceneAsync(string sceneName)",
+      "classification": "STATIC_extracted_declaration_not_recovered_body"
+    }
   ],
-  "verified_calls": [
-    {"site": "0x2072ce8", "target": "0x1b886e8", "callee": "unresolved native IL2CPP runtime helper (metadata/class-init guard, same target seen in GetCurrentWorldSceneName's prologue)"},
-    {"site": "0x2072cf4", "target": "0x1b886e8", "callee": "unresolved native IL2CPP runtime helper (same as above)"},
-    {"site": "0x2072d14", "target": "0x1b886e8", "callee": "unresolved native IL2CPP runtime helper (same as above)"},
-    {"site": "0x2072d54", "target": "0x1b8885c", "callee": "unresolved native IL2CPP runtime helper (class-init, distinct target from the metadata-init one)"},
-    {"site": "0x2072d5c", "target": "0x20d7e78", "callee": {"declaring_type": "PWC.Multiplayer.MPOwnership", "name": "Clear", "token": "0x06005e99"}, "resolved_via": "metadata_methods.jsonl cross-reference, re-validated"},
-    {"site": "0x2072d6c", "target": "0x1b8885c", "callee": "unresolved native IL2CPP runtime helper (same as 0x2072d54)"},
-    {"site": "0x2072d80", "target": "0x3cdc604", "kind": "B (tail call, not BL)", "callee": {"declaring_type": "UnityEngine.SceneManagement.SceneManager", "name": "LoadSceneAsync", "token": "0x060009d0"}, "resolved_via": "metadata_methods.jsonl cross-reference, re-validated"}
+  "bindings": {
+    "mp_manager": {
+      "usage": {
+        "got_vaddr": "0x41b5350",
+        "usage_vaddr": "0x42f47a0",
+        "encoded": "0x2000d263",
+        "kind": 1,
+        "index": 26929
+      },
+      "typedef_index": 4173,
+      "owner": "PWC.Multiplayer.MPManager",
+      "adrp": "0x2072d20",
+      "ldr": "0x2072d24"
+    },
+    "ownership": {
+      "usage": {
+        "got_vaddr": "0x41c85e8",
+        "usage_vaddr": "0x42f47c8",
+        "encoded": "0x2000d27b",
+        "kind": 1,
+        "index": 26941
+      },
+      "typedef_index": 4178,
+      "owner": "PWC.Multiplayer.MPOwnership",
+      "adrp": "0x2072d40",
+      "ldr": "0x2072d44"
+    },
+    "unity": {
+      "usage": {
+        "got_vaddr": "0x41acc90",
+        "usage_vaddr": "0x42f64e0",
+        "encoded": "0x2000e8c5",
+        "kind": 1,
+        "index": 29794
+      },
+      "typedef_index": 11805,
+      "owner": "UnityEngine.SceneManagement.SceneManager",
+      "adrp": "0x2072d28",
+      "ldr": "0x2072d38"
+    },
+    "clear": {
+      "image": "Assembly-CSharp.dll",
+      "declaring_type": "PWC.Multiplayer.MPOwnership",
+      "name": "Clear",
+      "token": "0x06005e99",
+      "method_definition_index": 24216,
+      "parameter_count": 0,
+      "vaddr": "0x20d7e78",
+      "file_offset": "0x20d3e78"
+    },
+    "load_scene_async": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.SceneManagement.SceneManager",
+      "name": "LoadSceneAsync",
+      "token": "0x060009d0",
+      "method_definition_index": 87592,
+      "parameter_count": 1,
+      "vaddr": "0x3cdc604",
+      "file_offset": "0x3cd8604"
+    },
+    "multiplayer_field": {
+      "classification": "STATIC_metadata_field_and_registered_offset_join",
+      "declaring_type": "PWC.Multiplayer.MPManager",
+      "type_definition_index": 4173,
+      "field_index": 16360,
+      "local_field_index": 17,
+      "field_name": "<IsMultiplayerGame>k__BackingField",
+      "token": "0x4003fe9",
+      "field_metadata_offset": "0xacd838",
+      "offset_table_pointer": "0xb66acc",
+      "offset_value_address": "0xb66b10",
+      "offset": 0,
+      "type_table_index": 17677,
+      "type_pointer": "0x437bff8",
+      "type_data": 6458,
+      "type_bits": "0x80020011",
+      "static": true
+    },
+    "ownership_clear_generic_bindings": [
+      {
+        "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+        "method": {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Collections.Generic.Dictionary`2",
+          "name": "Clear",
+          "token": "0x06002f5e",
+          "parameter_count": 0,
+          "method_definition_index": 48546,
+          "metadata_offset": "0x4f9518"
+        },
+        "call_sites": [
+          "0x20d7eec",
+          "0x20d7f04"
+        ],
+        "target": "0x28f3898",
+        "method_info_usage": {
+          "got_vaddr": "0x41cb6b0",
+          "usage_vaddr": "0x4303050",
+          "encoded": "0xc002a27d",
+          "kind": 6,
+          "index": 86334
+        },
+        "requested_method_spec": {
+          "index": 86334,
+          "raw": [
+            48546,
+            1038,
+            -1
+          ]
+        },
+        "requested_class_instantiation": {
+          "index": 1038,
+          "address": "0x4009a78",
+          "argc": 2,
+          "argv": "0x42cb140",
+          "arguments": [
+            {
+              "type_name": "UnityEngine.GameObject",
+              "type_code": "0x12",
+              "type_definition_index": 11692,
+              "type_address": "0x437d9d8",
+              "raw_type_bytes": "ac2d0000000000000000120000000000"
+            },
+            {
+              "type_name": "System.Int32",
+              "type_code": "0x8",
+              "type_definition_index": 6522,
+              "type_address": "0x437e108",
+              "raw_type_bytes": "7a190000000000000000088000000000"
+            }
+          ]
+        },
+        "canonical_method_spec": {
+          "index": 15142,
+          "raw": [
+            48546,
+            1166,
+            -1
+          ]
+        },
+        "canonical_class_instantiation": {
+          "index": 1166,
+          "address": "0x400a278",
+          "argc": 2,
+          "argv": "0x42cb940",
+          "arguments": [
+            {
+              "type_name": "System.Object",
+              "type_code": "0x1c",
+              "type_definition_index": 6710,
+              "type_address": "0x437f968",
+              "raw_type_bytes": "361a00000000000000001c0000000000"
+            },
+            {
+              "type_name": "System.Int32",
+              "type_code": "0x8",
+              "type_definition_index": 6522,
+              "type_address": "0x437e108",
+              "raw_type_bytes": "7a190000000000000000088000000000"
+            }
+          ]
+        },
+        "generic_function_row": {
+          "index": 12881,
+          "vaddr": "0xd66634",
+          "raw": [
+            15142,
+            12863,
+            9616,
+            -1
+          ]
+        },
+        "function_pointer_slot": "0x40565a0"
+      },
+      {
+        "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+        "method": {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Collections.Generic.Dictionary`2",
+          "name": "Clear",
+          "token": "0x06002f5e",
+          "parameter_count": 0,
+          "method_definition_index": 48546,
+          "metadata_offset": "0x4f9518"
+        },
+        "call_sites": [
+          "0x20d7f24"
+        ],
+        "target": "0x28f9eec",
+        "method_info_usage": {
+          "got_vaddr": "0x41cb6b8",
+          "usage_vaddr": "0x4303088",
+          "encoded": "0xc002a28b",
+          "kind": 6,
+          "index": 86341
+        },
+        "requested_method_spec": {
+          "index": 86341,
+          "raw": [
+            48546,
+            1039,
+            -1
+          ]
+        },
+        "requested_class_instantiation": {
+          "index": 1039,
+          "address": "0x4009a88",
+          "argc": 2,
+          "argv": "0x42cb150",
+          "arguments": [
+            {
+              "type_name": "UnityEngine.GameObject",
+              "type_code": "0x12",
+              "type_definition_index": 11692,
+              "type_address": "0x437d9d8",
+              "raw_type_bytes": "ac2d0000000000000000120000000000"
+            },
+            {
+              "type_name": "System.Object",
+              "type_code": "0x1c",
+              "type_definition_index": 6710,
+              "type_address": "0x437f968",
+              "raw_type_bytes": "361a00000000000000001c0000000000"
+            }
+          ]
+        },
+        "canonical_method_spec": {
+          "index": 15252,
+          "raw": [
+            48546,
+            73,
+            -1
+          ]
+        },
+        "canonical_class_instantiation": {
+          "index": 73,
+          "address": "0x4005e28",
+          "argc": 2,
+          "argv": "0x42c8820",
+          "arguments": [
+            {
+              "type_name": "System.Object",
+              "type_code": "0x1c",
+              "type_definition_index": 6710,
+              "type_address": "0x437f968",
+              "raw_type_bytes": "361a00000000000000001c0000000000"
+            },
+            {
+              "type_name": "System.Object",
+              "type_code": "0x1c",
+              "type_definition_index": 6710,
+              "type_address": "0x437f968",
+              "raw_type_bytes": "361a00000000000000001c0000000000"
+            }
+          ]
+        },
+        "generic_function_row": {
+          "index": 12991,
+          "vaddr": "0xd66d14",
+          "raw": [
+            15252,
+            12973,
+            9616,
+            -1
+          ]
+        },
+        "function_pointer_slot": "0x4056910"
+      }
+    ]
+  },
+  "arguments_return": "sceneName x0 saved x19, restored to x0 at tail; MethodInfo x1=null.",
+  "registers": "x19 preserves sceneName, x20 holds metadata class slot; caller-saved registers vary across helpers.",
+  "fields_offsets": [
+    "MPManager class +0xb8 -> statics; byte at statics+0 tested before optional Clear.",
+    "Class-init guard reads class+0xe0; lazy-init bytes at 0x44fc6fd and 0x44fa56b."
   ],
-  "branch_guards": [
-    {"site": "0x2072cdc", "kind": "TBNZ bit0", "target": "0x2072d00", "meaning": "skip metadata-init helper calls if already initialized (same guard idiom as GetCurrentWorldSceneName)"},
-    {"site": "0x2072d08", "kind": "CBNZ w8", "target": "0x2072d20", "meaning": "second guarded init check"},
-    {"site": "0x2072d3c", "kind": "CBZ w8", "target": "0x2072d60", "meaning": "branch on the multiplayer-static-flag byte; CBZ taken (flag clear) skips MPOwnership.Clear()"},
-    {"site": "0x2072d50", "kind": "CBNZ w8", "target": "0x2072d58"},
-    {"site": "0x2072d68", "kind": "CBNZ w8", "target": "0x2072d70"}
+  "memory": [
+    "Local stack frame 32 bytes and saved registers.",
+    "Writes 1 to two metadata initialization guards.",
+    "Reads class/GOT pointers and MPManager statics; transitive callee effects remain unknown."
   ],
   "effects": [
-    "may call MPOwnership.Clear() depending on an in-binary static multiplayer flag whose own default/identity is not decoded here",
-    "tail-calls into UnityEngine.SceneManagement.SceneManager.LoadSceneAsync (engine-native, outside this IL2CPP managed binary's analyzable scope)",
-    "runtime metadata/class-init helper calls (same unresolved native targets as in GetCurrentWorldSceneName)"
+    "If multiplayer byte is zero, bypass MPOwnership.Clear.",
+    "If nonzero, call parameterless MPOwnership.Clear after guarded class init.",
+    "Both local paths tailcall LoadSceneAsync with the original string reference."
   ],
-  "verification": {
-    "input_identity": "passed (native+metadata sha256 match pinned pair)",
-    "control_flow_decode_and_callee_resolution": "passed (recon_navigation.code_window re-ran; byte-exact window hash matched; all resolvable callees re-validated against metadata_methods.jsonl)",
-    "target_executed": false,
-    "emulated": false,
-    "semantic_certification": false
-  },
+  "callees_callbacks": [
+    {
+      "site": "0x2072ce8",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072cf4",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072d14",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072d54",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072d5c",
+      "kind": "BL",
+      "target": "0x20d7e78",
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Multiplayer.MPOwnership",
+          "name": "Clear",
+          "token": "0x06005e99",
+          "method_definition_index": 24216,
+          "parameter_count": 0,
+          "vaddr": "0x20d7e78",
+          "file_offset": "0x20d3e78"
+        }
+      ]
+    },
+    {
+      "site": "0x2072d6c",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "metadata_targets": []
+    }
+  ],
+  "exceptions": "No exception edges reconstructed; calls may throw or fail to return.",
+  "coroutine_async": "Not a coroutine body; delegates scheduling/loading to engine async API; completion is external.",
+  "state_before_after": "No input mutation or scene-state completion established; engine owns asynchronous state.",
+  "invalid_inputs": "No local null/empty/availability check on sceneName in this inspected path; engine response unknown.",
+  "termination": "Under normal-return helpers, all local paths reach the one engine tailcall; engine termination unknown.",
+  "pseudocode": [
+    "ensure lazy metadata/class initializations as guarded",
+    "if MPManager.IsMultiplayerGame: MPOwnership.Clear()",
+    "SceneManager.LoadSceneAsync(sceneName)  // engine contract remains external"
+  ],
   "unknowns": [
-    "Identity and default value of the static multiplayer flag tested at 0x2072d3c (byte 0 of some loaded static-fields block); not traced back to a named field here.",
-    "SceneManager.LoadSceneAsync's own async lifecycle/behavior (Unity engine-native, not in this IL2CPP binary).",
-    "Exact semantics of the two distinct unresolved native helper targets (0x1b886e8 metadata-init, 0x1b8885c class-init); treated as opaque IL2CPP runtime support, not decoded.",
-    "Error/exception behavior if LoadSceneAsync is called with an invalid or unavailable sceneName."
-  ]
+    {
+      "id": "body-regions",
+      "question": "Noncontiguous body/exception regions not proven by this bounded local CFG."
+    },
+    {
+      "id": "init",
+      "question": "Metadata initialization, class initialization, GC and exception behavior of native helpers."
+    },
+    {
+      "id": "clear",
+      "question": "Full memory, callbacks, exceptions and termination effects of MPOwnership.Clear()."
+    },
+    {
+      "id": "unity-load",
+      "question": "Native engine LoadSceneAsync failure/null/invalid-string semantics and later completion."
+    },
+    {
+      "id": "runtime",
+      "question": "No original runtime or independent behavioral oracle execution."
+    }
+  ],
+  "provenance": {
+    "producer_sha256": "c8cd33ca3496cc2eec80b96b8ee010863efd6299f901ad717baec98e3c1abe91",
+    "helpers_sha256": {
+      "recon_navigation.py": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+      "recon_scene_subscribers.py": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce",
+      "recon_t025_generics.py": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3"
+    },
+    "index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+    "command": [
+      "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+      "-d",
+      "--start-address=34024648",
+      "--stop-address=34024836",
+      "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+    ],
+    "returncode": 0,
+    "duration_seconds": 0.357,
+    "listing_sha256": "fa72b0cd54f260a2123bb6739077dbc83e93aa6acc8c6ceb458524fb20173b26"
+  },
+  "game_executed": false
 }

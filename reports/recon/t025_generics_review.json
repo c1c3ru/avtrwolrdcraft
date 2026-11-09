@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/t025_audit",
+  "date": "2026-11-07",
+  "scope": "Independent static review of HashSet requested MethodRefs/canonical pointer joins, two Dictionary.Clear requested instantiations, and MPManager/GameSceneManager raw metadata field/registered-offset joins.",
+  "sources": [
+    {
+      "path": "tools/recon_t025_generics.py",
+      "sha256": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3",
+      "bytes": 20006
+    },
+    {
+      "path": "tools/test_recon_t025_generics.py",
+      "sha256": "9057b2f47dcd9a70d3b091a8c9a663b9952b4de80a1470909821871a34ea149e",
+      "bytes": 4784
+    },
+    {
+      "path": "reports/recon/t025_generic_bindings_investigation.json",
+      "sha256": "7739983c26b976874ffc03ac199700a6eebd1292ea68b19ce3aada3bffca4fe1",
+      "bytes": 20802
+    },
+    {
+      "path": "out/recon/t025-generics-investigation/registration.asm.txt",
+      "sha256": "ed7dba64704402b0831b2e5fe068ed6eb667ede3ea0daccf6fdce45ced52b224",
+      "bytes": 467
+    },
+    {
+      "path": "out/recon/t025-generics-investigation/registration-storage.asm.txt",
+      "sha256": "f4d8dc17aff5d71949c80e7e0e473ead331c9216cd179d9a80ef5fbf59bb9d0a",
+      "bytes": 856
+    },
+    {
+      "path": "out/recon/t025-generics-investigation/IsSceneAvailable.asm.txt",
+      "sha256": "6f107e7751a81e7f03f971781cb247d5c67d15216e6773935826b3a7ba722a8d",
+      "bytes": 6008
+    },
+    {
+      "path": "out/recon/t025-generics-investigation/MPOwnership.Clear.asm.txt",
+      "sha256": "eafde73ab6e95790e49028e22a59e6c7ad83a6b9559dcf7a7d20ec7030240b8c",
+      "bytes": 2634
+    }
+  ],
+  "producer_hash_in_report": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3",
+  "source_report_profile_match": true,
+  "conclusions": [
+    {
+      "classification": "STATIC",
+      "observation": "Registration argument loader has exact x0=0x3f9a2d0 and x1=GOT relocation to0x40d10c0, tail through0x1b886e4 to0x1bc67f0 and argument preservation/storage. Metadata registration tables have bounded counts/pointers; codegen module names match all96 metadata images. This is corroborated identity/structure rather than a count/pointer scan alone."
+    },
+    {
+      "classification": "STATIC",
+      "observation": "Requested MethodRef tag6 at each original callsite decodes to MethodSpec90082/90084/90086 with exact MethodDefs91258/91278/91268 and classInst320, no method instantiation. These are HashSet`1 .ctor/Add/Contains with requested System.String argument (typecode0e plus exact metadata TypeDef name)."
+    },
+    {
+      "classification": "STATIC",
+      "observation": "Direct branch targets match generic method pointer entries28106/28113/28119 whose canonical MethodSpecs31746/31753/31759 use same MethodDefs and classInst62 with System.Object (typecode1c plus exact metadata identity). Requested string MethodInfo remains separate from canonical object native code identity."
+    },
+    {
+      "classification": "UNKNOWN",
+      "observation": "This does not prove runtime MethodInfo resolution, generic-sharing correctness, collection bodies, effects, equality comparer semantics, exceptions, init behavior or full caller semantics."
+    },
+    {
+      "classification": "STATIC",
+      "observation": "Dictionary`2.Clear MethodDef48546/token0x06002f5e, arity0, MethodSpecs86334/86341 request GameObject/Int32 and GameObject/Object respectively. Corresponding direct calls coincide with canonical Object/Int32 and Object/Object generic pointers. Identities and pointer correlation accepted; body effects not reconstructed.",
+      "call_sites": [
+        "0x20d7eec",
+        "0x20d7f04",
+        "0x20d7f24"
+      ]
+    },
+    {
+      "classification": "STATIC",
+      "observation": "MPManager TypeDef4173 local field17/index16360/token0x04003fe9 is <IsMultiplayerGame>k__BackingField; metadata type-table entry17677 is Boolean with static attr, registered field offset is0 (value at0xb66b10). This supplies original metadata/registration grounding beyond Cpp2IL declaration."
+    },
+    {
+      "classification": "STATIC",
+      "observation": "GameSceneManager TypeDef3803 local field10/index15270/token0x04003ba7 is _availableSceneNames with static attr and registered offset72 (0x48, value at0xb659c8). Decoder does not establish complete generic field-type identity from this field type entry alone."
+    }
+  ],
+  "permitted_consumption": "Getter/LoadSceneImplement may cite exact requested method identities, canonical native target correlations, and raw registered field offsets under pinned pair/layout. Continue to retain body, runtime, exception and shared-generic correctness unknowns. No direct HashSet<string> native-code row, Add/Contains/Clear semantic completeness or done claim follows.",
+  "test_result": {
+    "command": "python3 -m unittest discover -s tools -p test_recon_t025_generics.py -v",
+    "tests": 13,
+    "failures": 0,
+    "returncode": 0,
+    "duration_seconds": 2.335
+  },
+  "verdict": {
+    "narrow_HashSet_identity_progress_supported": true,
+    "final_current_producer_review_complete": true,
+    "body_or_runtime_semantic_approval": false,
+    "queue_done_supported": false,
+    "field_offset_joins_supported": true,
+    "dictionary_identity_joins_supported": true
+  },
+  "remaining_review": [
+    "No further blocking finding for consumption as narrow static identity/offset evidence. Body/runtime, exceptions, field lifetime and semantic completion remain unapproved."
+  ],
+  "limits": [
+    "Only this exclusive report written; original artifacts, contracts and queue unchanged.",
+    "Tests mutate in-memory copies and prove verifier rejection of selected corruptions; they do not execute original method bodies.",
+    "Registration/table decoder is pinned to this v31/AArch64 pair and should not be generalized without new layout evidence."
+  ],
+  "initial_review_snapshot": {
+    "sources": [
+      {
+        "path": "tools/recon_t025_generics.py",
+        "sha256": "2a413223243ed9c988ec4e03d2a64ea4c060af96b887cff95073a6a138eb5b40",
+        "bytes": 19796
+      },
+      {
+        "path": "tools/test_recon_t025_generics.py",
+        "sha256": "970d2c88b4cb1394de6e128d11f77d8c1caa5701bf4f62d1a4d9cda7db54eade",
+        "bytes": 3629
+      },
+      {
+        "path": "reports/recon/t025_generic_bindings_investigation.json",
+        "sha256": "a0a87a96106904268737e87f2e122e2c05290f1c8ed9ec7390eba25ed3b10a43",
+        "bytes": 20100
+      },
+      {
+        "path": "out/recon/t025-generics-investigation/registration.asm.txt",
+        "sha256": "ed7dba64704402b0831b2e5fe068ed6eb667ede3ea0daccf6fdce45ced52b224",
+        "bytes": 467
+      },
+      {
+        "path": "out/recon/t025-generics-investigation/registration-storage.asm.txt",
+        "sha256": "f4d8dc17aff5d71949c80e7e0e473ead331c9216cd179d9a80ef5fbf59bb9d0a",
+        "bytes": 856
+      },
+      {
+        "path": "out/recon/t025-generics-investigation/IsSceneAvailable.asm.txt",
+        "sha256": "6f107e7751a81e7f03f971781cb247d5c67d15216e6773935826b3a7ba722a8d",
+        "bytes": 6008
+      }
+    ],
+    "producer_hash_in_report": "2a413223243ed9c988ec4e03d2a64ea4c060af96b887cff95073a6a138eb5b40",
+    "source_report_profile_match": true,
+    "test_result": {
+      "command": "python3 -m unittest discover -s tools -p test_recon_t025_generics.py -v",
+      "tests": 9,
+      "failures": 0,
+      "returncode": 0,
+      "duration_seconds": 1.843
+    },
+    "remaining_review": [
+      "Source changed concurrently and report producer hash differs; final regeneration and source-profile/hash reconciliation required.",
+      "FieldOffsets and Dictionary additions require separate final review before consuming those conclusions."
+    ]
+  }
+}

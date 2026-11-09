@@ -1,97 +1,399 @@
 {
-  "method": "PWC.GameSceneManager.LoadSceneImplement",
-  "start": "0x2072cc8",
-  "exclusive_stop": "0x2072d84",
-  "bytes": 188,
-  "bound_limit": "candidate window capped at next metadata start; noncontiguous body and exception extents not proven",
-  "decode_limit": "selected branch encodings only; dataflow checks are explicit in getter guard",
-  "control_flow_encodings": [
+  "entry": "0x2072cc8",
+  "inspection_exclusive_stop": "0x2072d84",
+  "reachable_instructions": 47,
+  "instruction_addresses": [
+    "0x2072cc8",
+    "0x2072ccc",
+    "0x2072cd0",
+    "0x2072cd4",
+    "0x2072cd8",
+    "0x2072cdc",
+    "0x2072ce0",
+    "0x2072ce4",
+    "0x2072ce8",
+    "0x2072cec",
+    "0x2072cf0",
+    "0x2072cf4",
+    "0x2072cf8",
+    "0x2072cfc",
+    "0x2072d00",
+    "0x2072d04",
+    "0x2072d08",
+    "0x2072d0c",
+    "0x2072d10",
+    "0x2072d14",
+    "0x2072d18",
+    "0x2072d1c",
+    "0x2072d20",
+    "0x2072d24",
+    "0x2072d28",
+    "0x2072d2c",
+    "0x2072d30",
+    "0x2072d34",
+    "0x2072d38",
+    "0x2072d3c",
+    "0x2072d40",
+    "0x2072d44",
+    "0x2072d48",
+    "0x2072d4c",
+    "0x2072d50",
+    "0x2072d54",
+    "0x2072d58",
+    "0x2072d5c",
+    "0x2072d60",
+    "0x2072d64",
+    "0x2072d68",
+    "0x2072d6c",
+    "0x2072d70",
+    "0x2072d74",
+    "0x2072d78",
+    "0x2072d7c",
+    "0x2072d80"
+  ],
+  "edges": [
+    {
+      "site": "0x2072cc8",
+      "target": "0x2072ccc",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072ccc",
+      "target": "0x2072cd0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cd0",
+      "target": "0x2072cd4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cd4",
+      "target": "0x2072cd8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cd8",
+      "target": "0x2072cdc",
+      "kind": "fallthrough",
+      "inside": true
+    },
     {
       "site": "0x2072cdc",
-      "opcode": "0x37000128",
-      "kind": "TBNZ",
-      "register": 8,
-      "bit": 0,
       "target": "0x2072d00",
-      "target_inside_window": true,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072cdc",
+      "target": "0x2072ce0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072ce0",
+      "target": "0x2072ce4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072ce4",
+      "target": "0x2072ce8",
+      "kind": "fallthrough",
+      "inside": true
     },
     {
       "site": "0x2072ce8",
-      "opcode": "0x97ec5680",
-      "kind": "BL",
-      "target": "0x1b886e8",
-      "target_inside_window": false,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      "target": "0x2072cec",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cec",
+      "target": "0x2072cf0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cf0",
+      "target": "0x2072cf4",
+      "kind": "fallthrough",
+      "inside": true
     },
     {
       "site": "0x2072cf4",
-      "opcode": "0x97ec567d",
-      "kind": "BL",
-      "target": "0x1b886e8",
-      "target_inside_window": false,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      "target": "0x2072cf8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cf8",
+      "target": "0x2072cfc",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072cfc",
+      "target": "0x2072d00",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d00",
+      "target": "0x2072d04",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d04",
+      "target": "0x2072d08",
+      "kind": "fallthrough",
+      "inside": true
     },
     {
       "site": "0x2072d08",
-      "opcode": "0x350000c8",
-      "kind": "CBNZ",
-      "register": 8,
-      "width": 32,
       "target": "0x2072d20",
-      "target_inside_window": true,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072d08",
+      "target": "0x2072d0c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d0c",
+      "target": "0x2072d10",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d10",
+      "target": "0x2072d14",
+      "kind": "fallthrough",
+      "inside": true
     },
     {
       "site": "0x2072d14",
-      "opcode": "0x97ec5675",
-      "kind": "BL",
-      "target": "0x1b886e8",
-      "target_inside_window": false,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      "target": "0x2072d18",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d18",
+      "target": "0x2072d1c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d1c",
+      "target": "0x2072d20",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d20",
+      "target": "0x2072d24",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d24",
+      "target": "0x2072d28",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d28",
+      "target": "0x2072d2c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d2c",
+      "target": "0x2072d30",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d30",
+      "target": "0x2072d34",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d34",
+      "target": "0x2072d38",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d38",
+      "target": "0x2072d3c",
+      "kind": "fallthrough",
+      "inside": true
     },
     {
       "site": "0x2072d3c",
-      "opcode": "0x34000128",
-      "kind": "CBZ",
-      "register": 8,
-      "width": 32,
       "target": "0x2072d60",
-      "target_inside_window": true,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072d3c",
+      "target": "0x2072d40",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d40",
+      "target": "0x2072d44",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d44",
+      "target": "0x2072d48",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d48",
+      "target": "0x2072d4c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d4c",
+      "target": "0x2072d50",
+      "kind": "fallthrough",
+      "inside": true
     },
     {
       "site": "0x2072d50",
-      "opcode": "0x35000048",
-      "kind": "CBNZ",
-      "register": 8,
-      "width": 32,
       "target": "0x2072d58",
-      "target_inside_window": true,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072d50",
+      "target": "0x2072d54",
+      "kind": "fallthrough",
+      "inside": true
     },
     {
       "site": "0x2072d54",
-      "opcode": "0x97ec56c2",
-      "kind": "BL",
-      "target": "0x1b8885c",
-      "target_inside_window": false,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      "target": "0x2072d58",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d58",
+      "target": "0x2072d5c",
+      "kind": "fallthrough",
+      "inside": true
     },
     {
       "site": "0x2072d5c",
-      "opcode": "0x94019447",
+      "target": "0x2072d60",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d60",
+      "target": "0x2072d64",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d64",
+      "target": "0x2072d68",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d68",
+      "target": "0x2072d70",
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2072d68",
+      "target": "0x2072d6c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d6c",
+      "target": "0x2072d70",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d70",
+      "target": "0x2072d74",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d74",
+      "target": "0x2072d78",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d78",
+      "target": "0x2072d7c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d7c",
+      "target": "0x2072d80",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2072d80",
+      "target": "0x3cdc604",
+      "kind": "taken",
+      "inside": false
+    }
+  ],
+  "calls": [
+    {
+      "site": "0x2072ce8",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072cf4",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072d14",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072d54",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2072d5c",
       "kind": "BL",
       "target": "0x20d7e78",
-      "target_inside_window": false,
       "metadata_targets": [
         {
           "image": "Assembly-CSharp.dll",
@@ -103,49 +405,19 @@
           "vaddr": "0x20d7e78",
           "file_offset": "0x20d3e78"
         }
-      ],
-      "reachability": "STATIC_encoding_not_runtime_observation"
-    },
-    {
-      "site": "0x2072d68",
-      "opcode": "0x35000048",
-      "kind": "CBNZ",
-      "register": 8,
-      "width": 32,
-      "target": "0x2072d70",
-      "target_inside_window": true,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      ]
     },
     {
       "site": "0x2072d6c",
-      "opcode": "0x97ec56bc",
       "kind": "BL",
       "target": "0x1b8885c",
-      "target_inside_window": false,
-      "metadata_targets": [],
-      "reachability": "STATIC_encoding_not_runtime_observation"
-    },
-    {
-      "site": "0x2072d80",
-      "opcode": "0x1471a621",
-      "kind": "B",
-      "target": "0x3cdc604",
-      "target_inside_window": false,
-      "metadata_targets": [
-        {
-          "image": "UnityEngine.CoreModule.dll",
-          "declaring_type": "UnityEngine.SceneManagement.SceneManager",
-          "name": "LoadSceneAsync",
-          "token": "0x060009d0",
-          "method_definition_index": 87592,
-          "parameter_count": 1,
-          "vaddr": "0x3cdc604",
-          "file_offset": "0x3cd8604"
-        }
-      ],
-      "reachability": "STATIC_encoding_not_runtime_observation"
+      "metadata_targets": []
     }
   ],
-  "assembly_listing": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/navigation/LoadSceneImplement.asm.txt"
+  "complete_body_proven": false,
+  "exception_edges_recovered": false,
+  "assumptions": [
+    "Calls return normally; exceptions and asynchronous Unity effects remain outside this CFG.",
+    "Inspection range is pinned bytes, not proof of all function regions."
+  ]
 }

@@ -11,47 +11,105 @@
     "vaddr": "0x20728d4",
     "exclusive_stop": "0x2072c5c",
     "body_bytes": 904,
-    "body_sha256": "5ad1f0b55ba081cdadf0751b05fa7db5c5cec832482e26694608d5c596ea80a7"
+    "body_sha256": "5ad1f0b55ba081cdadf0751b05fa7db5c5cec832482e26694608d5c596ea80a7",
+    "body_extent_status": "candidate_window_only; next metadata start does not prove complete or noncontiguous body/exception extents"
   },
   "input_pair": {
     "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
     "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
   },
   "tool_sources": [
-    {"script": "tools/recon_navigation.py", "role": "LoadScene's own 904-byte body: control flow (64 decoded instructions) and its 3 unresolved indirect Stage1-3 delegate calls plus the direct named calls, revalidated this session."},
-    {"script": "tools/recon_loading_fade.py", "role": "Extends into the callee chain: LoadingScreenManager.StartSceneTransition -> LoadingScreenScreen.Fade/clock tween, prefab binding in sharedassets1.assets. Revalidated this session (55 anchors, 21 calls) after symlinking the required split_UnityDataAssetPack.apk/base.apk into this worktree -- reads only a bounded (<=64MB) slice of the 1.5GB asset-pack APK via stored-ZIP block seeking, never loading the full datapack."},
-    {"script": "tools/recon_scene_subscribers.py", "role": "Probes who registers LoadingScreenManager.OnSceneLoaded; 5 guarded static edges confirmed, 13 raw caller candidates unvalidated. Revalidated this session."}
+    {
+      "script": "tools/recon_navigation.py",
+      "role": "LoadScene's own 904-byte body: control flow (64 decoded instructions) and its 3 unresolved indirect Stage1-3 delegate calls plus the direct named calls, revalidated this session."
+    },
+    {
+      "script": "tools/recon_loading_fade.py",
+      "role": "Extends into the callee chain: LoadingScreenManager.StartSceneTransition -> LoadingScreenScreen.Fade/clock tween, prefab binding in sharedassets1.assets. Revalidated this session (55 anchors, 21 calls) after symlinking the required split_UnityDataAssetPack.apk/base.apk into this worktree -- reads only a bounded (<=64MB) slice of the 1.5GB asset-pack APK via stored-ZIP block seeking, never loading the full datapack."
+    },
+    {
+      "script": "tools/recon_scene_subscribers.py",
+      "role": "Probes who registers LoadingScreenManager.OnSceneLoaded; 5 guarded static edges confirmed, 13 raw caller candidates unvalidated. Revalidated this session."
+    },
+    {
+      "script": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/followup_stage_candidates.py",
+      "role": "Resolves all nine remaining raw Stage1-3 add-call candidates to exact handler MethodDefs and delegate argument flows; reconciles 13/13 raw direct candidates, without claiming complete subscriber graph."
+    },
+    {
+      "script": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/followup_stage_candidates.py",
+      "role": "Resolves all nine remaining raw Stage1-3 add-call candidates to exact handler MethodDefs and delegate argument flows; reconciles 13/13 raw direct candidates, without claiming complete subscriber graph."
+    }
   ],
   "status": "STATIC_candidate_contract_partially_checked_not_certified",
-  "parameters": ["sceneName:string", "considerMultiplayer:bool", "mp_nextSceneId:string"],
+  "parameters": [
+    "sceneName:string",
+    "considerMultiplayer:bool",
+    "mp_nextSceneId:string"
+  ],
   "return": "void",
   "pseudocode": [
     "allocate closure; store sceneName, considerMultiplayer&1, mp_nextSceneId",
     "if IsSceneChangingInProgress: tailcall Debug.LogError(message); no scene-transition dispatch on that path",
     "clear avatar/SUT/car caches via four named calls",
     "IsSceneChangingInProgress=true; CurrentlyLoadingSceneName=sceneName; PreviousSceneName=GetActiveSceneName()",
-    "invoke optional stage1, stage2, stage3 delegates in order (BLR at 0x2072b70/0x2072ba0/0x2072bd0, targets not decoded)",
+    "perform three sequential null-guarded indirect calls at 0x2072b70/0x2072ba0/0x2072bd0 after loading references at candidate offsets 0x0/0x8/0x10; named Stage-field association is unresolved because the observed TypeInfo/static-data base does not establish GameSceneManager identity. Static scan separately verifies 13 direct add-call candidates and their handler MethodDefs",
     "construct Action bound to closure; tailcall LoadingScreenManager.Instance.StartSceneTransition(action)",
     "[callee, not this method's own body] StartSceneTransition disables prior Behaviour/EventSystem, instantiates _screenPrefab (sharedassets1.assets path_id 242), tail-dispatches a virtual slot via BR x4",
     "[callee] LoadingScreenScreen.Fade(bool,callback) via virtual slot 4 of type_definition_index 4259, animates a 0.25s LeanTween alpha fade plus a clock-hands rotation tween"
   ],
   "verified_calls_in_body": [
-    "4 named cache-clear calls (avatar/SUT/car), GetActiveSceneName, LoadingScreenManager.Instance.StartSceneTransition (tail call) -- all previously confirmed by recon_navigation.py's verify_transition_anchors, re-passed this session"
+    "4 named cache-clear calls (avatar/SUT/car), GetActiveSceneName, LoadingScreenManager.Instance.StartSceneTransition (tail call) -- all previously confirmed by recon_navigation.py's verify_transition_anchors, re-passed this session",
+    "Stage1-3 event fields at offsets 0x0/0x8/0x10 match GameSceneManager metadata and native loads; invocation uses BLR at 0x2072b70/0x2072ba0/0x2072bd0.",
+    "Three sequential null-guarded indirect calls use references loaded at object offsets 0x0/0x8/0x10 (BLR at 0x2072b70/0x2072ba0/0x2072bd0); these offsets are not bound to named GameSceneManager Stage fields."
   ],
   "unresolved_indirect_calls_in_body": [
-    {"site": "0x2072b70", "kind": "BLR", "candidate": "stage1 delegate", "confidence": "inferred from pseudocode position; target not decoded"},
-    {"site": "0x2072ba0", "kind": "BLR", "candidate": "stage2 delegate", "confidence": "inferred; target not decoded"},
-    {"site": "0x2072bd0", "kind": "BLR", "candidate": "stage3 delegate", "confidence": "inferred; target not decoded"}
+    {
+      "site": "0x2072b70",
+      "kind": "BLR",
+      "candidate": "stage1 delegate",
+      "confidence": "inferred from pseudocode position; target not decoded"
+    },
+    {
+      "site": "0x2072ba0",
+      "kind": "BLR",
+      "candidate": "stage2 delegate",
+      "confidence": "inferred; target not decoded"
+    },
+    {
+      "site": "0x2072bd0",
+      "kind": "BLR",
+      "candidate": "stage3 delegate",
+      "confidence": "inferred; target not decoded"
+    }
   ],
   "fade_chain_evidence": {
-    "virtual_fade_target": {"receiver_type": "PWC.LoadingScreen.LoadingScreenScreen", "slot": 4, "method": "Fade", "parameters": 2},
+    "virtual_fade_target": {
+      "receiver_type": "PWC.LoadingScreen.LoadingScreenScreen",
+      "slot": 4,
+      "method": "Fade",
+      "parameters": 2
+    },
     "fade_duration_seconds": 0.25,
-    "prefab_binding": {"manager_prefab_path_id": 242, "screen_game_object": 81, "canvas_group": 210, "clock_parts": {"hours": 83, "minutes": 37, "nose": 40}, "runtime_precondition": "serialized prefab and runtime type not replaced before Instantiate; generic Instantiate semantics remain external"},
-    "tween_effects": ["LeanTween alpha fade (0.25s)", "clock hands rotateAroundLocal (1.0s hours / 0.5s minutes, loop type 1)", "LeanTween.cancel on clockHours/clockMinutes/clockNose for the disable path"],
+    "prefab_binding": {
+      "manager_prefab_path_id": 242,
+      "screen_game_object": 81,
+      "canvas_group": 210,
+      "clock_parts": {
+        "hours": 83,
+        "minutes": 37,
+        "nose": 40
+      },
+      "runtime_precondition": "serialized prefab and runtime type not replaced before Instantiate; generic Instantiate semantics remain external"
+    },
+    "tween_effects": [
+      "LeanTween alpha fade (0.25s)",
+      "clock hands rotateAroundLocal (1.0s hours / 0.5s minutes, loop type 1)",
+      "LeanTween.cancel on clockHours/clockMinutes/clockNose for the disable path"
+    ],
     "source": "reports/recon/loading_fade_contract.json (full detail; not duplicated here)"
   },
   "scene_loaded_subscriber_evidence": {
-    "status": "5 guarded static edges confirmed; 13 raw caller candidates discovered but NOT validated as real signup/handler edges",
+    "status": "The prior scan's 13 direct Stage add-call candidates are now all verified as static registration edges (13/13); separate OnSceneLoaded add/remove evidence is in reports/recon/t026_scene_hook.json but is not independently accepted here.",
     "open_question": "Who subscribes LoadingScreenManager.OnSceneLoaded and re-enables input/EventSystem after loading remains open",
     "source": "reports/recon/scene_subscribers.json (full detail; not duplicated here)"
   },
@@ -62,17 +120,147 @@
     "scene_subscriber_static_edges": "passed (5 guarded edges re-verified)",
     "target_executed": false,
     "emulated": false,
-    "semantic_certification": false
+    "semantic_certification": false,
+    "direct_stage_add_candidate_edges": "passed (13/13 bounded direct B/BL candidates; 9 newly decoded here)",
+    "body_extent": "not certified; 904 bytes is a candidate window bounded by next metadata start"
   },
   "open_unknown_ids_from_prior_attempt": [
-    "T029/runtime_class_layout", "T029/instantiate_and_library_effects", "T029/tween_scheduling",
-    "T029/scene_loaded_registration", "T029/remaining_stage_registrations", "T029/handler_effects_lifetime",
-    "T029/runtime_comparison", "T025/complete_body_and_cfg"
+    "T029/runtime_class_layout",
+    "T029/instantiate_and_library_effects",
+    "T029/tween_scheduling",
+    "T029/scene_loaded_registration",
+    "T029/remaining_stage_registrations",
+    "T029/handler_effects_lifetime",
+    "T029/runtime_comparison",
+    "T025/complete_body_and_cfg"
   ],
   "unknowns": [
-    "The 3 Stage1-3 delegate targets inside LoadScene's own body are inferred from position, not decoded from a vtable or delegate target.",
-    "Actual elapsed tween duration/ease/time-scale and LeanTween callback dispatch are Unity-engine-native and not observable from this IL2CPP binary.",
-    "Generic Instantiate binding and runtime class overrides for the loading-screen prefab are not inspected; the fade/clock targets are conditional on the shipped prefab's current contents, not re-verified from scratch this session.",
-    "Who subscribes LoadingScreenManager.OnSceneLoaded and re-enables input/EventSystem afterward (9 of the task's own named unknown_ids concern this and related runtime/lifetime questions) remains open and is not resolvable by static analysis alone -- it requires either deeper delegate-target decoding or device/runtime observation, both out of scope for this attempt."
-  ]
+    "The 904-byte method window is capped by the next metadata start; complete/noncontiguous body and exception CFG extents are unproven.",
+    "All 13 raw direct Stage1-3 add-call candidates found by the bounded scanner are now linked to handler MethodDefs; indirect/reflection/dynamic registrations and complete graph absence remain unproven.",
+    "Stage handler effects, exception paths, accessor internals, delegate equality and actual runtime invocation/order are not certified.",
+    "The new OnSceneLoaded add/remove report is static and not independently accepted by this child; runtime effects and global event order remain open.",
+    "Unity-native tween scheduling/time-scale, generic Instantiate binding, runtime class overrides and device comparison remain open."
+  ],
+  "stage_registration_followup": {
+    "prior_probe_sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e",
+    "raw_direct_candidates": 13,
+    "prior_positive_stage_edges": 4,
+    "newly_verified_stage_edges": 9,
+    "total_direct_candidates_verified": 13,
+    "by_event_candidate_counts": {
+      "add_OnBeforeSceneLoadStage1Action": 8,
+      "add_OnBeforeSceneLoadStage2Action": 3,
+      "add_OnBeforeSceneLoadStage3Action": 2
+    },
+    "previous_edges": [
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.BackgroundPlanetSoundHandler.Awake",
+        "handler": "PWC.BackgroundPlanetSoundHandler.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06005601",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.PersistentData.PersistentDataManager.Awake",
+        "handler": "PWC.PersistentData.PersistentDataManager.OnBeforeSceneLoadStage2",
+        "handler_token": "0x06006e44",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage2",
+        "handler_token": "0x0600849c",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      },
+      {
+        "event": "GameSceneManager.OnBeforeSceneLoadStage3Action",
+        "caller": "PWC.Level.LevelManager.Awake",
+        "handler": "PWC.Level.LevelManager.OnBeforeSceneLoadStage3",
+        "handler_token": "0x0600849d",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed"
+      }
+    ],
+    "new_edges": [
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.LevelDigHoleArea.Awake",
+        "handler": "Game.Level.LevelDigHoleArea.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06002d73",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.LevelSpawnOnLevelPostInit.Awake",
+        "handler": "Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems",
+        "handler_token": "0x060032a9",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.Awake",
+        "handler": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1",
+        "handler_token": "0x06003cd2",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "Game.Level.Locker.LevelLockerSpawnOnPostInit.Awake",
+        "handler": "Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems",
+        "handler_token": "0x060032a9",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.AvatarSpeech.AvatarSpeechUIMenu.Awake",
+        "handler": "PWC.AvatarSpeech.AvatarSpeechUIMenu.OnBeforeSceneLoadStage1",
+        "handler_token": "0x0600699a",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.Level.LevelKillArea.Awake",
+        "handler": "PWC.Level.LevelKillArea.OnBeforeSceneLoadStage1",
+        "handler_token": "0x0600784e",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage2Action",
+        "caller": "PWC.Level.LevelScreenshotManager.Awake",
+        "handler": "PWC.Level.LevelScreenshotManager.OnBeforeSceneLoad",
+        "handler_token": "0x060084ff",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage1Action",
+        "caller": "PWC.Level.LevelNewAvatarManager.Awake",
+        "handler": "PWC.Level.LevelNewAvatarManager.OnBeforeSceneLoadStage1",
+        "handler_token": "0x060085d0",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      },
+      {
+        "event": "OnBeforeSceneLoadStage3Action",
+        "caller": "PWC.Level.LevelMakerSwitcher.Awake",
+        "handler": "PWC.Level.LevelMakerSwitcher.OnBeforeSceneLoadStage3",
+        "handler_token": "0x0600865a",
+        "classification": "DERIVED_static_registration_edge_not_runtime_observed",
+        "evidence": "stage_candidate_analysis.json"
+      }
+    ],
+    "limit": "The 13 direct B/BL add candidates in this bounded executable-code scan are verified. This is not a complete subscriber graph; indirect, reflection, dynamically loaded and other code paths remain open."
+  },
+  "stage_dispatch_followup": {
+    "evidence": "stage_dispatch_review.json",
+    "classification": "STATIC_indirect_dispatch_shape_targets_unresolved",
+    "summary": "Three sequential null-guarded indirect calls load method/target/MethodInfo words from each delegate-like object and BLR through x9. The three candidate field slots are 0,8,16. Cpp2IL/fieldOffsets name these as Stage1/2/3 Actions, and the direct-candidate followup validates 13 static registrations, but the TypeInfo use at 0x20728f0 resolves to nested DisplayClass28_0; its relationship to the static-data base at +0xb8 must be reconciled before treating that field join as unqualified."
+  }
 }

@@ -1,70 +1,607 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "task_id": "T025/METHOD/d417091ede9f01e0",
-  "scope": "Bounded static ARM64/IL2CPP-metadata contract for PWC.GameSceneManager.GetCurrentWorldSceneName; no runtime execution, emulation, or device validation performed here",
+  "scope": "Bounded local ARM64 getter contract with exact generic binding annex",
+  "status": "STATIC_local_contract_not_semantic_certification",
+  "semantic_completion": false,
   "method_identity": {
     "image": "Assembly-CSharp.dll",
-    "token": "0x06005708",
     "declaring_type": "PWC.GameSceneManager",
     "name": "GetCurrentWorldSceneName",
+    "token": "0x06005708",
+    "method_definition_index": 22279,
     "parameter_count": 0,
     "vaddr": "0x2073238",
-    "exclusive_stop": "0x207330c",
-    "body_bytes": 212,
-    "body_sha256": "95abb656b53d704fc34a79caa08b727e730a0ce46076f64dddd2a83bfc97d8c2"
+    "file_offset": "0x206f238"
   },
   "input_pair": {
     "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
     "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
   },
-  "tool_source": {
-    "script": "tools/recon_navigation.py",
-    "function": "verify_getter",
-    "note": "Reused the existing, already-anchored navigation verifier instead of re-deriving the decode from scratch; reran it against the current cached binary/metadata pair to revalidate every anchor and literal before packaging this task's evidence."
+  "signature_abi": "Static zero managed arguments; hidden MethodInfo not consumed; x0 returns managed string reference.",
+  "bytes_ranges": {
+    "inspection_start": "0x2073238",
+    "inspection_exclusive_stop": "0x207330c",
+    "bytes": 212,
+    "sha256": "95abb656b53d704fc34a79caa08b727e730a0ce46076f64dddd2a83bfc97d8c2",
+    "complete_body_proven": false
   },
-  "status": "STATIC_candidate_contract_checked_not_certified",
-  "parameters": [],
-  "return": "string: stored candidate if availability bit0 nonzero; else default World name",
+  "arguments_return": "string: stored candidate if availability bit0 nonzero; else default World name",
+  "registers": "x19 fallback, x20 PlayerPrefs candidate, x0 result; SP temporary enum.",
+  "fields_offsets": [
+    "Enum temporary type pointer +0, -1 sentinel +8, value1 +16; native class-init +0xe0 guard."
+  ],
+  "memory": [
+    "reads PlayerPrefs through external GetString",
+    "writes lazy metadata-init flag and stack enum temporary",
+    "callee IsSceneAvailable may initialize a static scene-name cache",
+    "runtime helpers/class initialization may have further effects"
+  ],
+  "effects": [
+    "reads PlayerPrefs through external GetString",
+    "writes lazy metadata-init flag and stack enum temporary",
+    "callee IsSceneAvailable may initialize a static scene-name cache",
+    "runtime helpers/class initialization may have further effects"
+  ],
+  "callees_callbacks": [
+    {
+      "site": "0x2073274",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073280",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207328c",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20732b4",
+      "kind": "BL",
+      "target": "0x338d9a0",
+      "metadata_targets": [
+        {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Enum",
+          "name": "ToString",
+          "token": "0x06000dba",
+          "method_definition_index": 39934,
+          "parameter_count": 0,
+          "vaddr": "0x338d9a0",
+          "file_offset": "0x33899a0"
+        }
+      ]
+    },
+    {
+      "site": "0x20732cc",
+      "kind": "BL",
+      "target": "0x3cc5a70",
+      "metadata_targets": [
+        {
+          "image": "UnityEngine.CoreModule.dll",
+          "declaring_type": "UnityEngine.PlayerPrefs",
+          "name": "GetString",
+          "token": "0x06000671",
+          "method_definition_index": 86729,
+          "parameter_count": 2,
+          "vaddr": "0x3cc5a70",
+          "file_offset": "0x3cc1a70"
+        }
+      ]
+    },
+    {
+      "site": "0x20732e4",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20732ec",
+      "kind": "BL",
+      "target": "0x207305c",
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "IsSceneAvailable",
+          "token": "0x06005707",
+          "method_definition_index": 22278,
+          "parameter_count": 1,
+          "vaddr": "0x207305c",
+          "file_offset": "0x206f05c"
+        }
+      ]
+    }
+  ],
+  "exceptions": "No exception edges recovered; per-callee exceptions/initialization may prevent normal return.",
+  "coroutine_async": "No coroutine state machine identified in this pinned local body.",
+  "state_before_after": "Reads saved preference; availability callee may populate static build-scene-name cache.",
+  "invalid_inputs": "No managed inputs; stored preference validity is passed to availability callee. Null/corrupt/runtime failures open.",
+  "termination": "Under normal-return calls, both init guard paths reach RET 0x2073308.",
   "pseudocode": [
     "ensure metadata/class initialization as guarded in code",
     "fallback = LevelWorldType.World.ToString()",
     "candidate = PlayerPrefs.GetString(\"GAME_CURRENT_WORLD\", fallback)",
     "return (IsSceneAvailable(candidate) & 1) != 0 ? candidate : fallback"
   ],
-  "verified_operands": {
-    "player_prefs_key": {"literal": "GAME_CURRENT_WORLD", "got_vaddr": "0x41c85b8"},
-    "default_enum": {"type": "PWC.Game.LevelWorldType", "selected": "World", "value": 1,
-      "all_constants": {"None": 0, "World": 1, "Vacation": 2, "StarDustCity": 3,
-                         "Countryside": 4, "SnowyMountain": 5, "College": 6}},
-    "return_selection": {"kind": "CSEL x0, x20 (candidate), x19 (fallback), condition=ne(1)",
-      "meaning": "x0 = candidate (x20) if condition true, else fallback (x19)"}
+  "verified_getter": {
+    "status": "STATIC_candidate_contract_checked_not_certified",
+    "key": {
+      "got_vaddr": "0x41c85b8",
+      "usage_vaddr": "0x43498a0",
+      "encoded": "0xa0003319",
+      "kind": 5,
+      "index": 6540,
+      "literal": "GAME_CURRENT_WORLD",
+      "literal_file_offset": 369856,
+      "literal_bytes": 18
+    },
+    "default_enum": {
+      "got_vaddr": "0x41b7d08",
+      "usage_vaddr": "0x42f4268",
+      "encoded": "0x2000ce33",
+      "kind": 1,
+      "index": 26393,
+      "type_definition_index": 5176,
+      "type": "PWC.Game.LevelWorldType",
+      "constants": {
+        "None": {
+          "value": 0,
+          "encoded_byte": "0x0",
+          "field_index": 40524,
+          "default_type_index": 22702,
+          "file_offset": 8675095
+        },
+        "World": {
+          "value": 1,
+          "encoded_byte": "0x2",
+          "field_index": 40525,
+          "default_type_index": 22702,
+          "file_offset": 8675096
+        },
+        "Vacation": {
+          "value": 2,
+          "encoded_byte": "0x4",
+          "field_index": 40526,
+          "default_type_index": 22702,
+          "file_offset": 8675097
+        },
+        "StarDustCity": {
+          "value": 3,
+          "encoded_byte": "0x6",
+          "field_index": 40527,
+          "default_type_index": 22702,
+          "file_offset": 8675098
+        },
+        "Countryside": {
+          "value": 4,
+          "encoded_byte": "0x8",
+          "field_index": 40528,
+          "default_type_index": 22702,
+          "file_offset": 8675099
+        },
+        "SnowyMountain": {
+          "value": 5,
+          "encoded_byte": "0xa",
+          "field_index": 40529,
+          "default_type_index": 22702,
+          "file_offset": 8675100
+        },
+        "College": {
+          "value": 6,
+          "encoded_byte": "0xc",
+          "field_index": 40530,
+          "default_type_index": 22702,
+          "file_offset": 8675101
+        }
+      },
+      "selected": "World",
+      "value": 1,
+      "decode_scope": "one-byte nonnegative compressed defaults of this exact enum"
+    },
+    "selection": {
+      "destination": 0,
+      "if_true": 20,
+      "if_false": 19,
+      "condition": 1
+    },
+    "calls": [
+      {
+        "site": "0x20732b4",
+        "target": "0x338d9a0"
+      },
+      {
+        "site": "0x20732cc",
+        "target": "0x3cc5a70"
+      },
+      {
+        "site": "0x20732ec",
+        "target": "0x207305c"
+      }
+    ],
+    "parameters": [],
+    "return": "string: stored candidate if availability bit0 nonzero; else default World name",
+    "pseudocode": [
+      "ensure metadata/class initialization as guarded in code",
+      "fallback = LevelWorldType.World.ToString()",
+      "candidate = PlayerPrefs.GetString(\"GAME_CURRENT_WORLD\", fallback)",
+      "return (IsSceneAvailable(candidate) & 1) != 0 ? candidate : fallback"
+    ],
+    "effects": [
+      "reads PlayerPrefs through external GetString",
+      "writes lazy metadata-init flag and stack enum temporary",
+      "callee IsSceneAvailable may initialize a static scene-name cache",
+      "runtime helpers/class initialization may have further effects"
+    ],
+    "unknowns": [
+      "runtime initialization/exception behavior",
+      "Unity PlayerPrefs/Enum implementations",
+      "generic HashSet implementation equivalence",
+      "threading/concurrency and actual device behavior"
+    ]
   },
-  "verified_calls": [
-    {"site": "0x20732b4", "target": "0x338d9a0", "callee": {"declaring_type": "System.Enum", "name": "ToString"}},
-    {"site": "0x20732cc", "target": "0x3cc5a70", "callee": {"declaring_type": "UnityEngine.PlayerPrefs", "name": "GetString"}},
-    {"site": "0x20732ec", "target": "0x207305c", "callee": {"declaring_type": "PWC.GameSceneManager", "name": "IsSceneAvailable",
-      "note": "in-module sibling method; its own body is STATIC_candidate_with_unresolved_generic_operations (see dependency note below), not re-certified by this task"}}
+  "availability_generic_bindings": [
+    {
+      "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+      "call_site": "0x2073120",
+      "target": "0x2b5a3bc",
+      "kind": "BL",
+      "method": {
+        "image": "System.Core.dll",
+        "declaring_type": "System.Collections.Generic.HashSet`1",
+        "name": ".ctor",
+        "token": "0x06000ccb",
+        "parameter_count": 0,
+        "method_definition_index": 91258,
+        "metadata_offset": "0x670b78"
+      },
+      "requested_method_spec": {
+        "index": 90082,
+        "raw": [
+          91258,
+          320,
+          -1
+        ]
+      },
+      "requested_class_instantiation": {
+        "index": 320,
+        "address": "0x4006d98",
+        "argc": 1,
+        "argv": "0x42c8fe0",
+        "type_address": "0x4380d08",
+        "type_code": "0xe",
+        "type_definition_index": 6409,
+        "type_name": "System.String",
+        "raw_type_bytes": "091900000000000000000e0000000000"
+      },
+      "method_info_usage": {
+        "got_vaddr": "0x41af358",
+        "usage_vaddr": "0x430b120",
+        "encoded": "0xc002bfc5",
+        "kind": 6,
+        "index": 90082
+      },
+      "canonical_method_spec": {
+        "index": 31746,
+        "raw": [
+          91258,
+          62,
+          -1
+        ]
+      },
+      "canonical_class_instantiation": {
+        "index": 62,
+        "address": "0x4005d78",
+        "argc": 1,
+        "argv": "0x42c87b8",
+        "type_address": "0x437f968",
+        "type_code": "0x1c",
+        "type_definition_index": 6710,
+        "type_name": "System.Object",
+        "raw_type_bytes": "361a00000000000000001c0000000000"
+      },
+      "generic_function_row": {
+        "index": 28129,
+        "vaddr": "0xda1f34",
+        "raw": [
+          31746,
+          28106,
+          9616,
+          -1
+        ]
+      },
+      "function_pointer_slot": "0x40741f8"
+    },
+    {
+      "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+      "call_site": "0x20731e4",
+      "target": "0x2b5b5a0",
+      "kind": "BL",
+      "method": {
+        "image": "System.Core.dll",
+        "declaring_type": "System.Collections.Generic.HashSet`1",
+        "name": "Add",
+        "token": "0x06000cdf",
+        "parameter_count": 1,
+        "method_definition_index": 91278,
+        "metadata_offset": "0x670e48"
+      },
+      "requested_method_spec": {
+        "index": 90084,
+        "raw": [
+          91278,
+          320,
+          -1
+        ]
+      },
+      "requested_class_instantiation": {
+        "index": 320,
+        "address": "0x4006d98",
+        "argc": 1,
+        "argv": "0x42c8fe0",
+        "type_address": "0x4380d08",
+        "type_code": "0xe",
+        "type_definition_index": 6409,
+        "type_name": "System.String",
+        "raw_type_bytes": "091900000000000000000e0000000000"
+      },
+      "method_info_usage": {
+        "got_vaddr": "0x41af0a8",
+        "usage_vaddr": "0x430b130",
+        "encoded": "0xc002bfc9",
+        "kind": 6,
+        "index": 90084
+      },
+      "canonical_method_spec": {
+        "index": 31753,
+        "raw": [
+          91278,
+          62,
+          -1
+        ]
+      },
+      "canonical_class_instantiation": {
+        "index": 62,
+        "address": "0x4005d78",
+        "argc": 1,
+        "argv": "0x42c87b8",
+        "type_address": "0x437f968",
+        "type_code": "0x1c",
+        "type_definition_index": 6710,
+        "type_name": "System.Object",
+        "raw_type_bytes": "361a00000000000000001c0000000000"
+      },
+      "generic_function_row": {
+        "index": 28136,
+        "vaddr": "0xda1fa4",
+        "raw": [
+          31753,
+          28113,
+          5684,
+          -1
+        ]
+      },
+      "function_pointer_slot": "0x4074230"
+    },
+    {
+      "classification": "STATIC_exact_MethodRef_binding_and_canonical_pointer_join",
+      "call_site": "0x2073230",
+      "target": "0x2b5aab0",
+      "kind": "B",
+      "method": {
+        "image": "System.Core.dll",
+        "declaring_type": "System.Collections.Generic.HashSet`1",
+        "name": "Contains",
+        "token": "0x06000cd5",
+        "parameter_count": 1,
+        "method_definition_index": 91268,
+        "metadata_offset": "0x670ce0"
+      },
+      "requested_method_spec": {
+        "index": 90086,
+        "raw": [
+          91268,
+          320,
+          -1
+        ]
+      },
+      "requested_class_instantiation": {
+        "index": 320,
+        "address": "0x4006d98",
+        "argc": 1,
+        "argv": "0x42c8fe0",
+        "type_address": "0x4380d08",
+        "type_code": "0xe",
+        "type_definition_index": 6409,
+        "type_name": "System.String",
+        "raw_type_bytes": "091900000000000000000e0000000000"
+      },
+      "method_info_usage": {
+        "got_vaddr": "0x41af1f0",
+        "usage_vaddr": "0x430b140",
+        "encoded": "0xc002bfcd",
+        "kind": 6,
+        "index": 90086
+      },
+      "canonical_method_spec": {
+        "index": 31759,
+        "raw": [
+          91268,
+          62,
+          -1
+        ]
+      },
+      "canonical_class_instantiation": {
+        "index": 62,
+        "address": "0x4005d78",
+        "argc": 1,
+        "argv": "0x42c87b8",
+        "type_address": "0x437f968",
+        "type_code": "0x1c",
+        "type_definition_index": 6710,
+        "type_name": "System.Object",
+        "raw_type_bytes": "361a00000000000000001c0000000000"
+      },
+      "generic_function_row": {
+        "index": 28142,
+        "vaddr": "0xda2004",
+        "raw": [
+          31759,
+          28119,
+          5684,
+          -1
+        ]
+      },
+      "function_pointer_slot": "0x4074260"
+    }
   ],
-  "effects": [
-    "reads PlayerPrefs through external GetString",
-    "writes lazy metadata-init flag and stack enum temporary",
-    "callee IsSceneAvailable may initialize/query a static scene-name cache",
-    "runtime helpers/class initialization may have further effects"
-  ],
-  "dependency_note": "IsSceneAvailable(candidate)'s own contract (produced by the same tool run, out/recon/tasks/T025/METHOD/d417091ede9f01e0/navigation/navigation_contract.json -> availability) is only a STATIC candidate with unresolved generic collection operations (construct/add/contains bindings unknown). GetCurrentWorldSceneName's return value is therefore only as certain as that unresolved callee.",
-  "verification": {
-    "input_identity": "passed (native+metadata sha256 match pinned pair)",
-    "opcode_and_operand_anchors": "passed (verify_getter re-ran and all requires() succeeded)",
-    "callee_symbol_bindings": "passed (resolved via metadata_methods.jsonl + codegen module pointer table, re-validated)",
-    "exact_window_byte_hash": "passed",
-    "target_executed": false,
-    "emulated": false,
-    "semantic_certification": false
+  "registration": {
+    "code_registration": "0x3f9a2d0",
+    "metadata_registration": "0x40d10c0",
+    "argument_loader": "0x198c8d0..0x198c8e8",
+    "tail_targets": [
+      "0x1b886e4",
+      "0x1bc67f0"
+    ],
+    "static_argument_storage": "0x1bc6810/0x1bc6814/0x1bc6820",
+    "anchors": [
+      {
+        "address": "0x198c8d0",
+        "word": "0xb00142a1"
+      },
+      {
+        "address": "0x198c8d4",
+        "word": "0xf9431c21"
+      },
+      {
+        "address": "0x198c8d8",
+        "word": "0xd0013060"
+      },
+      {
+        "address": "0x198c8dc",
+        "word": "0xd0ff9302"
+      },
+      {
+        "address": "0x198c8e0",
+        "word": "0x910b4000"
+      },
+      {
+        "address": "0x198c8e4",
+        "word": "0x91104042"
+      },
+      {
+        "address": "0x198c8e8",
+        "word": "0x1407ef7f"
+      },
+      {
+        "address": "0x1b886e4",
+        "word": "0x1400f843"
+      },
+      {
+        "address": "0x1bc67f8",
+        "word": "0xaa0203f3"
+      },
+      {
+        "address": "0x1bc67fc",
+        "word": "0xaa0103f4"
+      },
+      {
+        "address": "0x1bc6800",
+        "word": "0xaa0003f5"
+      },
+      {
+        "address": "0x1bc67f0",
+        "word": "0xa9be57fe"
+      },
+      {
+        "address": "0x1bc67f4",
+        "word": "0xa9014ff4"
+      },
+      {
+        "address": "0x1bc6804",
+        "word": "0x97fe3df8"
+      },
+      {
+        "address": "0x1bc6808",
+        "word": "0xb0015ac9"
+      },
+      {
+        "address": "0x1bc680c",
+        "word": "0xb0015aca"
+      },
+      {
+        "address": "0x1bc6810",
+        "word": "0xf905b934"
+      },
+      {
+        "address": "0x1bc6814",
+        "word": "0xf905bd53"
+      },
+      {
+        "address": "0x1bc6818",
+        "word": "0xa9414ff4"
+      },
+      {
+        "address": "0x1bc681c",
+        "word": "0xb0015ac8"
+      },
+      {
+        "address": "0x1bc6820",
+        "word": "0xf905b515"
+      },
+      {
+        "address": "0x1bc6824",
+        "word": "0xa8c257fe"
+      },
+      {
+        "address": "0x1bc6828",
+        "word": "0xd65f03c0"
+      }
+    ]
   },
+  "generic_resolution_limit": [
+    "Registration argument loader invocation and runtime initialization were not observed.",
+    "Exact MethodRef identities do not prove ctor/Add/Contains body behavior, exceptions or generic sharing correctness.",
+    "Call targets correspond to canonical HashSet<object> table entries; no direct string table row is asserted.",
+    "Collection cache concurrency, invalidation, effects and Unity PlayerPrefs behavior remain open.",
+    "Narrow v31 registration layout is pair-specific; no claim of a universal parser or T024/T025 completion."
+  ],
   "unknowns": [
-    "Runtime initialization/exception behavior of the metadata/class-init guard.",
-    "Unity PlayerPrefs/Enum.ToString() implementation semantics (native engine code, not covered by this IL2CPP binary).",
-    "IsSceneAvailable's generic HashSet<string> construct/Add/Contains bindings (its own body is explicitly unresolved_generic_operations).",
-    "Threading/concurrency and actual device behavior for the PlayerPrefs read."
-  ]
+    {
+      "id": "body-regions",
+      "question": "Full/noncontiguous body and exception regions not proven by bounded CFG."
+    },
+    {
+      "id": "helpers",
+      "question": "Runtime lazy metadata/class initialization, exceptions and GC behavior."
+    },
+    {
+      "id": "external",
+      "question": "Enum.ToString and Unity PlayerPrefs GetString behavior beyond the guarded calling convention."
+    },
+    {
+      "id": "collection",
+      "question": "HashSet requested identities resolved; canonical bodies, sharing correctness, null/errors and cache concurrency remain open."
+    },
+    {
+      "id": "reference",
+      "question": "No original runtime/emulation/oracle comparison in this task."
+    }
+  ],
+  "erratum": "Supersedes prior method_body_fully_bounded=true: 53 reachable instructions in an inspection window do not prove complete body regions.",
+  "provenance": {
+    "producer_sha256": "aa78b22ff3bd09a8849a03a20c85616465f70905957913da38eb4e024d6f89f2",
+    "generic_producer_sha256": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3",
+    "cfg_producer_sha256": "c8cd33ca3496cc2eec80b96b8ee010863efd6299f901ad717baec98e3c1abe91",
+    "navigation_sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+    "index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+  },
+  "game_executed": false
 }

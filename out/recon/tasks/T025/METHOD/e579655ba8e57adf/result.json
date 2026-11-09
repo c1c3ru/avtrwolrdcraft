@@ -2,14 +2,10 @@
   "task_id": "T025/METHOD/e579655ba8e57adf",
   "status": "partial",
   "semantic_completion": false,
-  "verified_calls": 7,
-  "method_body_fully_bounded": true,
-  "contract": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/method-contract.json",
-  "control_flow": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/control-flow.json",
-  "unknowns": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/unknowns.jsonl",
-  "assembly_listing": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/navigation/LoadSceneImplement.asm.txt",
-  "method": "The method body (0x2072cc8-0x2072d84, 188 bytes) is fully bounded; both named managed callees (MPOwnership.Clear and SceneManager.LoadSceneAsync) resolved and re-validated against metadata_methods.jsonl. The remaining gaps are the identity of a static multiplayer flag and the native engine behavior of LoadSceneAsync itself, both outside what this IL2CPP binary can decode.",
-  "no_unity_or_device_work_performed": true,
-  "note": "This is a bounded static-analysis task (ARM64 disassembly + IL2CPP metadata cross-reference only); it did not require loading the Unity datapack bundle or any Unity Editor/device step, per the current instruction to avoid those while they're resource-constrained.",
-  "awaiting": "Independent review by a different actor before this can move to done; this attempt only reaches evidence_ready."
+  "method_body_fully_bounded": false,
+  "local_normal_cfg_covered": true,
+  "reachable_instructions": 47,
+  "unknowns": 5,
+  "contract": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T025/METHOD/e579655ba8e57adf/method-contract.json",
+  "control_flow": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T025/METHOD/e579655ba8e57adf/control-flow.json"
 }

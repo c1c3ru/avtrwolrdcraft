@@ -1,0 +1,536 @@
+{
+  "methods": {
+    "start_enumerator": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.MonoBehaviour",
+      "name": "StartCoroutine",
+      "token": "0x0600075c",
+      "method_definition_index": 86964,
+      "parameter_count": 1,
+      "vaddr": "0x3ccbf8c",
+      "file_offset": "0x3cc7f8c"
+    },
+    "stop_enumerator": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.MonoBehaviour",
+      "name": "StopCoroutine",
+      "token": "0x0600075e",
+      "method_definition_index": 86966,
+      "parameter_count": 1,
+      "vaddr": "0x3ccc0c4",
+      "file_offset": "0x3cc80c4"
+    },
+    "stop_coroutine": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.MonoBehaviour",
+      "name": "StopCoroutine",
+      "token": "0x0600075f",
+      "method_definition_index": 86967,
+      "parameter_count": 1,
+      "vaddr": "0x3ccc1f8",
+      "file_offset": "0x3cc81f8"
+    },
+    "stop_string": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.MonoBehaviour",
+      "name": "StopCoroutine",
+      "token": "0x06000760",
+      "method_definition_index": 86968,
+      "parameter_count": 1,
+      "vaddr": "0x3ccc32c",
+      "file_offset": "0x3cc832c"
+    },
+    "stop_all": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.MonoBehaviour",
+      "name": "StopAllCoroutines",
+      "token": "0x06000761",
+      "method_definition_index": 86969,
+      "parameter_count": 0,
+      "vaddr": "0x3ccc370",
+      "file_offset": "0x3cc8370"
+    },
+    "start_managed": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.MonoBehaviour",
+      "name": "StartCoroutineManaged2",
+      "token": "0x0600076c",
+      "method_definition_index": 86980,
+      "parameter_count": 1,
+      "vaddr": "0x3ccc07c",
+      "file_offset": "0x3cc807c"
+    },
+    "stop_enumerator_managed": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.MonoBehaviour",
+      "name": "StopCoroutineFromEnumeratorManaged",
+      "token": "0x0600076e",
+      "method_definition_index": 86982,
+      "parameter_count": 1,
+      "vaddr": "0x3ccc1b4",
+      "file_offset": "0x3cc81b4"
+    },
+    "stop_coroutine_managed": {
+      "image": "UnityEngine.CoreModule.dll",
+      "declaring_type": "UnityEngine.MonoBehaviour",
+      "name": "StopCoroutineManaged",
+      "token": "0x0600076d",
+      "method_definition_index": 86981,
+      "parameter_count": 1,
+      "vaddr": "0x3ccc2e8",
+      "file_offset": "0x3cc82e8"
+    }
+  },
+  "icall_resolver_arguments": [
+    {
+      "address": "0xb3dd50",
+      "file_offset": "0xb3dd50",
+      "value": "UnityEngine.MonoBehaviour::IsObjectMonoBehaviour(UnityEngine.Object)",
+      "sha256": "d290269295216550f7108b1122e1e84edb9e774bcbdca7784b7b2a975ed63014",
+      "argument_sites": [
+        "0x3ccbfac",
+        "0x3ccbfb0"
+      ],
+      "resolver_site": "0x3ccbfb4"
+    },
+    {
+      "address": "0xb46207",
+      "file_offset": "0xb46207",
+      "value": "UnityEngine.MonoBehaviour::StartCoroutineManaged2(System.Collections.IEnumerator)",
+      "sha256": "1a4831c0b4956ae7b6d80b56b51bb51956e9c37965583af348662ad5cba5c330",
+      "argument_sites": [
+        "0x3ccbfd8",
+        "0x3ccbfdc"
+      ],
+      "resolver_site": "0x3ccbfe0"
+    },
+    {
+      "address": "0xb3dd50",
+      "file_offset": "0xb3dd50",
+      "value": "UnityEngine.MonoBehaviour::IsObjectMonoBehaviour(UnityEngine.Object)",
+      "sha256": "d290269295216550f7108b1122e1e84edb9e774bcbdca7784b7b2a975ed63014",
+      "argument_sites": [
+        "0x3ccc0e4",
+        "0x3ccc0e8"
+      ],
+      "resolver_site": "0x3ccc0ec"
+    },
+    {
+      "address": "0xb50f93",
+      "file_offset": "0xb50f93",
+      "value": "UnityEngine.MonoBehaviour::StopCoroutineFromEnumeratorManaged(System.Collections.IEnumerator)",
+      "sha256": "925c6bafff962f9f6b5aeaa699ee47f10d254307b5cbcd406f492235fa8f9411",
+      "argument_sites": [
+        "0x3ccc110",
+        "0x3ccc114"
+      ],
+      "resolver_site": "0x3ccc118"
+    },
+    {
+      "address": "0xb3dd50",
+      "file_offset": "0xb3dd50",
+      "value": "UnityEngine.MonoBehaviour::IsObjectMonoBehaviour(UnityEngine.Object)",
+      "sha256": "d290269295216550f7108b1122e1e84edb9e774bcbdca7784b7b2a975ed63014",
+      "argument_sites": [
+        "0x3ccc218",
+        "0x3ccc21c"
+      ],
+      "resolver_site": "0x3ccc220"
+    },
+    {
+      "address": "0xb36ee1",
+      "file_offset": "0xb36ee1",
+      "value": "UnityEngine.MonoBehaviour::StopCoroutineManaged(UnityEngine.Coroutine)",
+      "sha256": "84a2bca18bca13e8426ca38590ebdc44ad2955c2236e062c293e4f9b0c9f4977",
+      "argument_sites": [
+        "0x3ccc244",
+        "0x3ccc248"
+      ],
+      "resolver_site": "0x3ccc24c"
+    },
+    {
+      "address": "0xb35c76",
+      "file_offset": "0xb35c76",
+      "value": "UnityEngine.MonoBehaviour::StopCoroutine(System.String)",
+      "sha256": "2934bfb8077a30d901b9e642e0f74ab4dd8ab4aa9c3f941f9a7c450b1eea4172",
+      "argument_sites": [
+        "0x3ccc348",
+        "0x3ccc34c"
+      ],
+      "resolver_site": "0x3ccc350"
+    },
+    {
+      "address": "0xb338ab",
+      "file_offset": "0xb338ab",
+      "value": "UnityEngine.MonoBehaviour::StopAllCoroutines()",
+      "sha256": "9086a39d3b8ff066e92b169db0407c1cfaa02f440577662f18ac5104d4ef9e23",
+      "argument_sites": [
+        "0x3ccc388",
+        "0x3ccc38c"
+      ],
+      "resolver_site": "0x3ccc390"
+    },
+    {
+      "address": "0xb46207",
+      "file_offset": "0xb46207",
+      "value": "UnityEngine.MonoBehaviour::StartCoroutineManaged2(System.Collections.IEnumerator)",
+      "sha256": "1a4831c0b4956ae7b6d80b56b51bb51956e9c37965583af348662ad5cba5c330",
+      "argument_sites": [
+        "0x3ccc098",
+        "0x3ccc09c"
+      ],
+      "resolver_site": "0x3ccc0a0"
+    },
+    {
+      "address": "0xb50f93",
+      "file_offset": "0xb50f93",
+      "value": "UnityEngine.MonoBehaviour::StopCoroutineFromEnumeratorManaged(System.Collections.IEnumerator)",
+      "sha256": "925c6bafff962f9f6b5aeaa699ee47f10d254307b5cbcd406f492235fa8f9411",
+      "argument_sites": [
+        "0x3ccc1d0",
+        "0x3ccc1d4"
+      ],
+      "resolver_site": "0x3ccc1d8"
+    },
+    {
+      "address": "0xb36ee1",
+      "file_offset": "0xb36ee1",
+      "value": "UnityEngine.MonoBehaviour::StopCoroutineManaged(UnityEngine.Coroutine)",
+      "sha256": "84a2bca18bca13e8426ca38590ebdc44ad2955c2236e062c293e4f9b0c9f4977",
+      "argument_sites": [
+        "0x3ccc304",
+        "0x3ccc308"
+      ],
+      "resolver_site": "0x3ccc30c"
+    }
+  ],
+  "guards": [
+    {
+      "entry": "0x3ccbf8c",
+      "null_guard": "0x3ccbf94",
+      "null_path": "0x3ccc000",
+      "object_kind_guard": "0x3ccbfc8",
+      "invalid_host_path": "0x3ccc034",
+      "native_tail": "0x3ccbffc"
+    },
+    {
+      "entry": "0x3ccc0c4",
+      "null_guard": "0x3ccc0cc",
+      "null_path": "0x3ccc138",
+      "object_kind_guard": "0x3ccc100",
+      "invalid_host_path": "0x3ccc16c",
+      "native_tail": "0x3ccc134"
+    },
+    {
+      "entry": "0x3ccc1f8",
+      "null_guard": "0x3ccc200",
+      "null_path": "0x3ccc26c",
+      "object_kind_guard": "0x3ccc234",
+      "invalid_host_path": "0x3ccc2a0",
+      "native_tail": "0x3ccc268"
+    }
+  ],
+  "exception_constructors": [
+    {
+      "site": "0x3ccc02c",
+      "method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.NullReferenceException",
+        "name": ".ctor",
+        "token": "0x060008a3",
+        "method_definition_index": 38631,
+        "parameter_count": 1,
+        "vaddr": "0x3359434",
+        "file_offset": "0x3355434"
+      },
+      "exception_dispatch": "helper behavior remains external"
+    },
+    {
+      "site": "0x3ccc060",
+      "method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.ArgumentException",
+        "name": ".ctor",
+        "token": "0x060003c1",
+        "method_definition_index": 37381,
+        "parameter_count": 1,
+        "vaddr": "0x32cd86c",
+        "file_offset": "0x32c986c"
+      },
+      "exception_dispatch": "helper behavior remains external"
+    },
+    {
+      "site": "0x3ccc164",
+      "method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.NullReferenceException",
+        "name": ".ctor",
+        "token": "0x060008a3",
+        "method_definition_index": 38631,
+        "parameter_count": 1,
+        "vaddr": "0x3359434",
+        "file_offset": "0x3355434"
+      },
+      "exception_dispatch": "helper behavior remains external"
+    },
+    {
+      "site": "0x3ccc198",
+      "method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.ArgumentException",
+        "name": ".ctor",
+        "token": "0x060003c1",
+        "method_definition_index": 37381,
+        "parameter_count": 1,
+        "vaddr": "0x32cd86c",
+        "file_offset": "0x32c986c"
+      },
+      "exception_dispatch": "helper behavior remains external"
+    },
+    {
+      "site": "0x3ccc298",
+      "method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.NullReferenceException",
+        "name": ".ctor",
+        "token": "0x060008a3",
+        "method_definition_index": 38631,
+        "parameter_count": 1,
+        "vaddr": "0x3359434",
+        "file_offset": "0x3355434"
+      },
+      "exception_dispatch": "helper behavior remains external"
+    },
+    {
+      "site": "0x3ccc2cc",
+      "method": {
+        "image": "mscorlib.dll",
+        "declaring_type": "System.ArgumentException",
+        "name": ".ctor",
+        "token": "0x060003c1",
+        "method_definition_index": 37381,
+        "parameter_count": 1,
+        "vaddr": "0x32cd86c",
+        "file_offset": "0x32c986c"
+      },
+      "exception_dispatch": "helper behavior remains external"
+    }
+  ],
+  "exception_literals": [
+    {
+      "got_vaddr": "0x421e938",
+      "usage_vaddr": "0x43649d0",
+      "encoded": "0xa0009f6f",
+      "kind": 5,
+      "index": 20407,
+      "literal": "routine is null",
+      "literal_file_offset": 734012,
+      "literal_bytes": 15
+    },
+    {
+      "got_vaddr": "0x421e928",
+      "usage_vaddr": "0x4346148",
+      "encoded": "0xa0002541",
+      "kind": 5,
+      "index": 4768,
+      "literal": "Coroutines can only be stopped on a MonoBehaviour",
+      "literal_file_offset": 318169,
+      "literal_bytes": 49
+    }
+  ],
+  "inspection_windows": {
+    "start_enumerator": {
+      "start": "0x3ccbf8c",
+      "exclusive_stop": "0x3ccc07c",
+      "sha256": "00bc058eca6248076cd30503b18b2fbb3e345f9e2e4e993d54096aa4a1f26569",
+      "complete_body_proven": false
+    },
+    "stop_enumerator": {
+      "start": "0x3ccc0c4",
+      "exclusive_stop": "0x3ccc1b4",
+      "sha256": "e6fecb2622361277b28965a976f4868f3a201dcaed0e8378e960e54c3011d61d",
+      "complete_body_proven": false
+    },
+    "stop_coroutine": {
+      "start": "0x3ccc1f8",
+      "exclusive_stop": "0x3ccc2e8",
+      "sha256": "cb56759d4e96db69c69f2f471d8c55a562752c3b3ff2276efd86aa44b0df59e2",
+      "complete_body_proven": false
+    },
+    "stop_string": {
+      "start": "0x3ccc32c",
+      "exclusive_stop": "0x3ccc370",
+      "sha256": "3e2cf01ea5a50ec13eda7a09b75b14b38575d5437225aa3bc253fc7631164e9d",
+      "complete_body_proven": false
+    },
+    "stop_all": {
+      "start": "0x3ccc370",
+      "exclusive_stop": "0x3ccc3ac",
+      "sha256": "368d26a244be2a2c3584c96691aa3a565987591a4b66d61a94d06e566daf6414",
+      "complete_body_proven": false
+    },
+    "start_managed": {
+      "start": "0x3ccc07c",
+      "exclusive_stop": "0x3ccc0c0",
+      "sha256": "0ccd3cb448e6136ceb278ee760f7ba4ae95d70da6e7494948f2a5623620ed823",
+      "complete_body_proven": false
+    },
+    "stop_enumerator_managed": {
+      "start": "0x3ccc1b4",
+      "exclusive_stop": "0x3ccc1f8",
+      "sha256": "bf337067f3e3905c1653cde39b748937c3a82238ab5315a04e0394f061d88064",
+      "complete_body_proven": false
+    },
+    "stop_coroutine_managed": {
+      "start": "0x3ccc2e8",
+      "exclusive_stop": "0x3ccc32c",
+      "sha256": "680b5350baa70b5f7c2f048fbebfef57a882f29fcadaecdf2ca0ac7025502be0",
+      "complete_body_proven": false
+    }
+  },
+  "schema_version": 1,
+  "scope": "Eight packaged coroutine wrappers; names/guards/ABI and external API contract separated",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "producer_sha256": "5e790c0ccc0701e2a8f792ce32e5b53d278851972ec59e9174668b27505d040d",
+  "helpers_sha256": {
+    "recon_navigation.py": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+    "recon_scene_subscribers.py": "22b0197e4c51ce5ca3ca578085da16eca6c2b6bc02ba5ce3b7efb7f863ef9fce"
+  },
+  "index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+  "commands": [
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x3ccbf8c",
+        "--stop-address=0x3ccc07c",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scheduler/start_enumerator.asm.txt",
+      "sha256": "ebf664aa53fc23f29254d2244a90ce7587987b52c73116c7091c8f090d61de49"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x3ccc0c4",
+        "--stop-address=0x3ccc1b4",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scheduler/stop_enumerator.asm.txt",
+      "sha256": "3fe40240cfb127c4cd5aa8072db9c07a37ac8e6ed7096bc8cf40f6a949ce54e1"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x3ccc1f8",
+        "--stop-address=0x3ccc2e8",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scheduler/stop_coroutine.asm.txt",
+      "sha256": "4df8b0e8c1b856143d2a993ba55c5a18fec62de8d1c3c8dc0956e8fffeccbed1"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x3ccc32c",
+        "--stop-address=0x3ccc370",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scheduler/stop_string.asm.txt",
+      "sha256": "5a588559bd4798747e5859bd429e08e6ba4928bbfa2c555446be99eb9b85f8e7"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x3ccc370",
+        "--stop-address=0x3ccc3ac",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scheduler/stop_all.asm.txt",
+      "sha256": "2d7b01287c9b0122c27caf231be396fdde2aea4c160e33bf05183829d83290b7"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x3ccc07c",
+        "--stop-address=0x3ccc0c0",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.022,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scheduler/start_managed.asm.txt",
+      "sha256": "b545c9c4c003caa0f10961e5423326fca7e5862b5e813619f7b0c61e7ba6324d"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x3ccc1b4",
+        "--stop-address=0x3ccc1f8",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scheduler/stop_enumerator_managed.asm.txt",
+      "sha256": "eb68c2e9ad4e9861f01f47814c7e4fad8f193a7cc3d3727636214b39980bd416"
+    },
+    {
+      "command": [
+        "/home/c1c3ru/Unity/Hub/Editor/6000.6.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-objdump",
+        "-d",
+        "--start-address=0x3ccc2e8",
+        "--stop-address=0x3ccc32c",
+        "/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so"
+      ],
+      "returncode": 0,
+      "duration_seconds": 0.023,
+      "output": "/home/c1c3ru/avtrwolrdcraft/out/recon/t026-scheduler/stop_coroutine_managed.asm.txt",
+      "sha256": "986512310016d5560058f69bb78dfb056854db4673e597ae90a82df29342201a"
+    }
+  ],
+  "external_reference_sources": [
+    {
+      "url": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/MonoBehaviour.StartCoroutine.html",
+      "authority": "external_official_API_reference_not_packaged_runtime_observation"
+    },
+    {
+      "url": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/MonoBehaviour.StopCoroutine.html",
+      "authority": "external_official_API_reference_not_packaged_runtime_observation"
+    },
+    {
+      "url": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/MonoBehaviour.StopAllCoroutines.html",
+      "authority": "external_official_API_reference_not_packaged_runtime_observation"
+    }
+  ],
+  "documented_contract": {
+    "start": "Declared API resumes yielded work on later frames, unless stopped/completed; order of completion is not guaranteed.",
+    "cancellation": "Declared API stops by matching name/enumerator/Coroutine on the receiving behaviour; StopAll applies to that behaviour.",
+    "lifetime": "Declared API stops on destruction of MonoBehaviour or deactivation of its GameObject; disabling only the component does not stop coroutines."
+  },
+  "unknowns": [
+    "Engine pointers resolved via icall are not statically bound to libunity implementations in this report.",
+    "No original scheduler timing, disposal order, exception propagation or host lifecycle execution observed.",
+    "External API documentation is a reference contract, not evidence the original APK executed those paths.",
+    "Native string overload has no managed routine-null or MonoBehaviour test in inspected wrapper; native validation remains external.",
+    "Wrapper slices are not proof of all method/exception regions."
+  ],
+  "game_executed": false,
+  "semantic_completion": false,
+  "queue_modified": false
+}
