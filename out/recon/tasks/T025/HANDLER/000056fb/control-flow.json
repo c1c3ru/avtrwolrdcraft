@@ -1,0 +1,132 @@
+{
+  "task_id": "T025/HANDLER/000056fb",
+  "start": "0x2072644",
+  "exclusive_stop": "0x207271c",
+  "decoded_branches": [
+    {
+      "site": "0x207265c",
+      "word": "0x370000c8",
+      "decoded": {
+        "kind": "TBNZ",
+        "register": 8,
+        "bit": 0,
+        "target": 34023028
+      }
+    },
+    {
+      "site": "0x2072668",
+      "word": "0x97ec5820",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870376
+      }
+    },
+    {
+      "site": "0x207267c",
+      "word": "0x35000048",
+      "decoded": {
+        "kind": "CBNZ",
+        "register": 8,
+        "width": 32,
+        "target": 34023044
+      }
+    },
+    {
+      "site": "0x2072680",
+      "word": "0x97ec5877",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870748
+      }
+    },
+    {
+      "site": "0x207268c",
+      "word": "0x350000c8",
+      "decoded": {
+        "kind": "CBNZ",
+        "register": 8,
+        "width": 32,
+        "target": 34023076
+      }
+    },
+    {
+      "site": "0x2072698",
+      "word": "0x97ec5814",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870376
+      }
+    },
+    {
+      "site": "0x20726ac",
+      "word": "0x35000068",
+      "decoded": {
+        "kind": "CBNZ",
+        "register": 8,
+        "width": 32,
+        "target": 34023096
+      }
+    },
+    {
+      "site": "0x20726b0",
+      "word": "0x97ec586b",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870748
+      }
+    },
+    {
+      "site": "0x20726c8",
+      "word": "0x350000c8",
+      "decoded": {
+        "kind": "CBNZ",
+        "register": 8,
+        "width": 32,
+        "target": 34023136
+      }
+    },
+    {
+      "site": "0x20726d0",
+      "word": "0x97ec5806",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870376
+      }
+    },
+    {
+      "site": "0x20726e4",
+      "word": "0x35000068",
+      "decoded": {
+        "kind": "CBNZ",
+        "register": 8,
+        "width": 32,
+        "target": 34023152
+      }
+    },
+    {
+      "site": "0x20726e8",
+      "word": "0x97ec585d",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870748
+      }
+    },
+    {
+      "site": "0x20726fc",
+      "word": "0x97ec57e6",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870292
+      }
+    },
+    {
+      "site": "0x2072718",
+      "word": "0x17ec57df",
+      "decoded": {
+        "kind": "B",
+        "target": 28870292
+      }
+    }
+  ],
+  "bound_limit": "candidate window capped at next distinct metadata method start; noncontiguous body and exception extents are not proven"
+}

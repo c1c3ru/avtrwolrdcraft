@@ -1,0 +1,7 @@
+233f8f4  stp    x30, x19, [sp, #-0x10]!
+233f8f8  mov    x1, xzr
+233f8fc  mov    x19, x0
+233f900  bl     #0x22fc998  ; -> LevelItem.OnSyncPosition
+233f904  mov    x0, x19
+233f908  ldp    x30, x19, [sp], #0x10
+233f90c  b      #0x233f910  ; -> LevelToddler.OnMovement

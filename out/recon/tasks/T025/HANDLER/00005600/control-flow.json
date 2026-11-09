@@ -1,0 +1,78 @@
+{
+  "task_id": "T025/HANDLER/00005600",
+  "start": "0x2069448",
+  "exclusive_stop": "0x20694d4",
+  "decoded_branches": [
+    {
+      "site": "0x206945c",
+      "word": "0x370000c8",
+      "decoded": {
+        "kind": "TBNZ",
+        "register": 8,
+        "bit": 0,
+        "target": 33985652
+      }
+    },
+    {
+      "site": "0x2069468",
+      "word": "0x97ec7ca0",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870376
+      }
+    },
+    {
+      "site": "0x206947c",
+      "word": "0x5400026b",
+      "decoded": {
+        "kind": "B.cond",
+        "condition": 11,
+        "target": 33985736
+      }
+    },
+    {
+      "site": "0x2069490",
+      "word": "0x94717c15",
+      "decoded": {
+        "kind": "BL",
+        "target": 63735012
+      }
+    },
+    {
+      "site": "0x20694a4",
+      "word": "0x35000069",
+      "decoded": {
+        "kind": "CBNZ",
+        "register": 9,
+        "width": 32,
+        "target": 33985712
+      }
+    },
+    {
+      "site": "0x20694ac",
+      "word": "0x97ec7cec",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870748
+      }
+    },
+    {
+      "site": "0x20694c0",
+      "word": "0x97f02da3",
+      "decoded": {
+        "kind": "BL",
+        "target": 29838156
+      }
+    },
+    {
+      "site": "0x20694d0",
+      "word": "0xd65f03c0",
+      "decoded": {
+        "kind": "RET",
+        "register": 30,
+        "target": null
+      }
+    }
+  ],
+  "bound_limit": "candidate window capped at next distinct metadata method start; noncontiguous body and exception extents are not proven"
+}

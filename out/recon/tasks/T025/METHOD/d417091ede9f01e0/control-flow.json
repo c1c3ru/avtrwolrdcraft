@@ -1,0 +1,475 @@
+{
+  "entry": "0x2073238",
+  "inspection_exclusive_stop": "0x207330c",
+  "reachable_instructions": 53,
+  "instruction_addresses": [
+    "0x2073238",
+    "0x207323c",
+    "0x2073240",
+    "0x2073244",
+    "0x2073248",
+    "0x207324c",
+    "0x2073250",
+    "0x2073254",
+    "0x2073258",
+    "0x207325c",
+    "0x2073260",
+    "0x2073264",
+    "0x2073268",
+    "0x207326c",
+    "0x2073270",
+    "0x2073274",
+    "0x2073278",
+    "0x207327c",
+    "0x2073280",
+    "0x2073284",
+    "0x2073288",
+    "0x207328c",
+    "0x2073290",
+    "0x2073294",
+    "0x2073298",
+    "0x207329c",
+    "0x20732a0",
+    "0x20732a4",
+    "0x20732a8",
+    "0x20732ac",
+    "0x20732b0",
+    "0x20732b4",
+    "0x20732b8",
+    "0x20732bc",
+    "0x20732c0",
+    "0x20732c4",
+    "0x20732c8",
+    "0x20732cc",
+    "0x20732d0",
+    "0x20732d4",
+    "0x20732d8",
+    "0x20732dc",
+    "0x20732e0",
+    "0x20732e4",
+    "0x20732e8",
+    "0x20732ec",
+    "0x20732f0",
+    "0x20732f4",
+    "0x20732f8",
+    "0x20732fc",
+    "0x2073300",
+    "0x2073304",
+    "0x2073308"
+  ],
+  "edges": [
+    {
+      "site": "0x2073238",
+      "target": "0x207323c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x207323c",
+      "target": "0x2073240",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073240",
+      "target": "0x2073244",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073244",
+      "target": "0x2073248",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073248",
+      "target": "0x207324c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x207324c",
+      "target": "0x2073250",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073250",
+      "target": "0x2073254",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073254",
+      "target": "0x2073258",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073258",
+      "target": "0x207325c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x207325c",
+      "target": "0x2073260",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073260",
+      "target": "0x2073264",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073264",
+      "target": "0x2073268",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073268",
+      "target": "0x2073298",
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x2073268",
+      "target": "0x207326c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x207326c",
+      "target": "0x2073270",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073270",
+      "target": "0x2073274",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073274",
+      "target": "0x2073278",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073278",
+      "target": "0x207327c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x207327c",
+      "target": "0x2073280",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073280",
+      "target": "0x2073284",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073284",
+      "target": "0x2073288",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073288",
+      "target": "0x207328c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x207328c",
+      "target": "0x2073290",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073290",
+      "target": "0x2073294",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073294",
+      "target": "0x2073298",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073298",
+      "target": "0x207329c",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x207329c",
+      "target": "0x20732a0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732a0",
+      "target": "0x20732a4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732a4",
+      "target": "0x20732a8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732a8",
+      "target": "0x20732ac",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732ac",
+      "target": "0x20732b0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732b0",
+      "target": "0x20732b4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732b4",
+      "target": "0x20732b8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732b8",
+      "target": "0x20732bc",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732bc",
+      "target": "0x20732c0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732c0",
+      "target": "0x20732c4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732c4",
+      "target": "0x20732c8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732c8",
+      "target": "0x20732cc",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732cc",
+      "target": "0x20732d0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732d0",
+      "target": "0x20732d4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732d4",
+      "target": "0x20732d8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732d8",
+      "target": "0x20732dc",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732dc",
+      "target": "0x20732e8",
+      "kind": "taken",
+      "inside": true
+    },
+    {
+      "site": "0x20732dc",
+      "target": "0x20732e0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732e0",
+      "target": "0x20732e4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732e4",
+      "target": "0x20732e8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732e8",
+      "target": "0x20732ec",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732ec",
+      "target": "0x20732f0",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732f0",
+      "target": "0x20732f4",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732f4",
+      "target": "0x20732f8",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732f8",
+      "target": "0x20732fc",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x20732fc",
+      "target": "0x2073300",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073300",
+      "target": "0x2073304",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073304",
+      "target": "0x2073308",
+      "kind": "fallthrough",
+      "inside": true
+    },
+    {
+      "site": "0x2073308",
+      "target": null,
+      "kind": "RET",
+      "inside": false
+    }
+  ],
+  "calls": [
+    {
+      "site": "0x2073274",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x2073280",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x207328c",
+      "kind": "BL",
+      "target": "0x1b886e8",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20732b4",
+      "kind": "BL",
+      "target": "0x338d9a0",
+      "metadata_targets": [
+        {
+          "image": "mscorlib.dll",
+          "declaring_type": "System.Enum",
+          "name": "ToString",
+          "token": "0x06000dba",
+          "method_definition_index": 39934,
+          "parameter_count": 0,
+          "vaddr": "0x338d9a0",
+          "file_offset": "0x33899a0"
+        }
+      ]
+    },
+    {
+      "site": "0x20732cc",
+      "kind": "BL",
+      "target": "0x3cc5a70",
+      "metadata_targets": [
+        {
+          "image": "UnityEngine.CoreModule.dll",
+          "declaring_type": "UnityEngine.PlayerPrefs",
+          "name": "GetString",
+          "token": "0x06000671",
+          "method_definition_index": 86729,
+          "parameter_count": 2,
+          "vaddr": "0x3cc5a70",
+          "file_offset": "0x3cc1a70"
+        }
+      ]
+    },
+    {
+      "site": "0x20732e4",
+      "kind": "BL",
+      "target": "0x1b8885c",
+      "metadata_targets": []
+    },
+    {
+      "site": "0x20732ec",
+      "kind": "BL",
+      "target": "0x207305c",
+      "metadata_targets": [
+        {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.GameSceneManager",
+          "name": "IsSceneAvailable",
+          "token": "0x06005707",
+          "method_definition_index": 22278,
+          "parameter_count": 1,
+          "vaddr": "0x207305c",
+          "file_offset": "0x206f05c"
+        }
+      ]
+    }
+  ],
+  "complete_body_proven": false,
+  "exception_edges_recovered": false,
+  "assumptions": [
+    "Calls return normally; exceptions and asynchronous Unity effects remain outside this CFG.",
+    "Inspection range is pinned bytes, not proof of all function regions."
+  ]
+}

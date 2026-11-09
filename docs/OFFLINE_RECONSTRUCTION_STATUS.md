@@ -82,3 +82,9 @@ O dump `level3` contém 39 componentes `Button`; 35 permanecem sem uma ação lo
 4. Definir catálogo local de itens bloqueados e preços em moeda fictícia, inventário, desbloqueio atômico e recuperação de save; nenhum valor de compra real.
 5. Completar desafios pedagógicos com banco aleatório, validação de respostas e concessão persistente de moedas, sem substituir Play.
 6. Mapear e classificar os controles restantes; documentar equivalência ou limitação individual. Nunca contar avisos de indisponibilidade como implementação.
+
+## Loading na entrada do editor de avatar — 2026-11-08
+
+- `HomeBootstrap.OpenAvatarSlots()` agora cobre a abertura e o retorno do editor com a tela `LoadingScreen` já montada a partir da arte extraída do jogo. O loading fica visível por pelo menos 0,7 s ao entrar e 0,5 s ao retornar, com fade controlado pelo componente.
+- Referências visuais usadas: `assets/exemplo_menu_jogo_original/WhatsApp Image 2026-11-01 at 10.17.50.jpeg` e capturas do aparelho em `out/` (incluindo `out/original-home-live.png` e `out/original-settings-live.png`).
+- Esta alteração ainda não tem validação física nova. O estado atual dos testes do ciclo de avatar e da tentativa de build está registrado em `LOOP_STATE.md`; a suíte mais recente teve 5 falhas em `AvatarSlotsTests` e o Editor não gerou uma APK validável por falha de licença.

@@ -1,0 +1,70 @@
+229b898  str    x30, [sp, #-0x30]!
+229b89c  stp    x22, x21, [sp, #0x10]
+229b8a0  stp    x20, x19, [sp, #0x20]
+229b8a4  adrp   x21, #0x44fd000
+229b8a8  adrp   x20, #0x41bd000
+229b8ac  ldrb   w8, [x21, #0xb86]
+229b8b0  ldr    x20, [x20, #0x548]
+229b8b4  mov    x19, x0
+229b8b8  tbnz   w8, #0, #0x229b8dc
+229b8bc  adrp   x0, #0x41bd000
+229b8c0  ldr    x0, [x0, #0x548]
+229b8c4  bl     #0x1b886e8
+229b8c8  adrp   x0, #0x41ac000
+229b8cc  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+229b8d0  bl     #0x1b886e8
+229b8d4  mov    w8, #1
+229b8d8  strb   w8, [x21, #0xb86]
+229b8dc  adrp   x22, #0x41ac000
+229b8e0  ldr    x22, [x22, #0xbb8]  ; type UnityEngine.Object
+229b8e4  mov    x0, x19
+229b8e8  mov    x1, xzr
+229b8ec  bl     #0x230054c  ; -> LevelItem.OnEndLand
+229b8f0  ldr    x8, [x20]
+229b8f4  mov    x20, x0
+229b8f8  ldr    x8, [x8, #0xb8]
+229b8fc  ldr    x8, [x8, #8]
+229b900  cbz    x8, #0x229b920
+229b904  ldr    x9, [x8, #0x18]
+229b908  ldr    x0, [x8, #0x40]
+229b90c  ldr    x4, [x8, #0x28]
+229b910  mov    w3, #1
+229b914  mov    x1, x19
+229b918  mov    w2, wzr
+229b91c  blr    x9
+229b920  ldr    x0, [x22]
+229b924  ldr    x21, [x19, #0x290]
+229b928  ldr    w8, [x0, #0xe0]
+229b92c  cbnz   w8, #0x229b934
+229b930  bl     #0x1b8885c
+229b934  mov    x0, x21
+229b938  mov    x1, xzr
+229b93c  mov    x2, xzr
+229b940  bl     #0x3ccab90
+229b944  tbz    w0, #0, #0x229b968
+229b948  ldr    x0, [x19, #0x290]
+229b94c  cbz    x0, #0x229b9ac
+229b950  ldr    x8, [x0]
+229b954  mov    x1, x19
+229b958  ldr    x9, [x8, #0x318]
+229b95c  ldr    x2, [x8, #0x320]
+229b960  blr    x9
+229b964  tbnz   w0, #0, #0x229b998
+229b968  ldr    x0, [x22]
+229b96c  ldr    x21, [x19, #0x3a0]
+229b970  ldr    w8, [x0, #0xe0]
+229b974  cbnz   w8, #0x229b97c
+229b978  bl     #0x1b8885c
+229b97c  mov    x0, x21
+229b980  mov    x1, xzr
+229b984  mov    x2, xzr
+229b988  bl     #0x3ccb8d8
+229b98c  tbz    w0, #0, #0x229b998
+229b990  mov    x0, x19
+229b994  bl     #0x229b9b0  ; -> LevelBaby.ReturnToIdleAnimation
+229b998  mov    x0, x20
+229b99c  ldp    x20, x19, [sp, #0x20]
+229b9a0  ldp    x22, x21, [sp, #0x10]
+229b9a4  ldr    x30, [sp], #0x30
+229b9a8  ret    
+229b9ac  bl     #0x1b88980

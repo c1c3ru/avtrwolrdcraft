@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/t025_audit",
+  "date": "2026-11-07",
+  "scope": "Independent read-only review of ExecuteNextFrameCoroutine lifecycle static transition table, raw memory addressing and selected mutation guards. Writes only this exclusive review report.",
+  "sources": [
+    {
+      "path": "tools/recon_t026_next_frame.py",
+      "sha256": "fdc009b089a4c16b16614e20440bbee9708dbfccd4ebbc81d79bb3f64f102503",
+      "bytes": 11813
+    },
+    {
+      "path": "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/result.json",
+      "sha256": "f90b96c323d44afc43fd1a31b8c7f07386ad2bbb68f1d8823fc3439885d7ff5c",
+      "bytes": 19279
+    },
+    {
+      "path": "reports/recon/t026_next_frame.json",
+      "sha256": "f90b96c323d44afc43fd1a31b8c7f07386ad2bbb68f1d8823fc3439885d7ff5c",
+      "bytes": 19279
+    },
+    {
+      "path": "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/factory.asm.txt",
+      "sha256": "f08bd3c3f704ee79a105a328e00a7da0eeaf19ab80c8842d1845ddade56fb533",
+      "bytes": 1541
+    },
+    {
+      "path": "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/start.asm.txt",
+      "sha256": "4820cedca83d6a6c8ca296802c7254c351cd7eb0830d8dcda1ff3a0a857ebf7f",
+      "bytes": 692
+    },
+    {
+      "path": "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/ctor.asm.txt",
+      "sha256": "0ad98e3c021120da453b17fa3818bdd9d99074226c7acedfe7fb8421f7e8a9cd",
+      "bytes": 598
+    },
+    {
+      "path": "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/dispose.asm.txt",
+      "sha256": "091094839c40da689958e6034d5ed6808aa6816e1251a6ddf4822361948cb217",
+      "bytes": 188
+    },
+    {
+      "path": "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/move.asm.txt",
+      "sha256": "e3ba6d6ae6e86d167edea39bb2388f53f38d0d95099b2ca9bf216f5c21b8a069",
+      "bytes": 1461
+    },
+    {
+      "path": "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/generic_current.asm.txt",
+      "sha256": "359daa5c41ee622764e78f6be6aa00e2baff0e862fa9dbf29e91392e378cc886",
+      "bytes": 232
+    },
+    {
+      "path": "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/reset.asm.txt",
+      "sha256": "6f117fc4e21d4e85e807aca8cbad476a8e85d2f2015e7e714d41263a6f065901",
+      "bytes": 880
+    },
+    {
+      "path": "out/recon/tasks/T026/STATE_MACHINE/execute-next-frame/current.asm.txt",
+      "sha256": "3b49791b321c9113d73b3fa222a527db31c042f1db1ce60db4e19212011e347d",
+      "bytes": 232
+    },
+    {
+      "path": "out/recon/il2cpp/libil2cpp.so",
+      "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+      "bytes": 74680624
+    },
+    {
+      "path": "out/recon/il2cpp/global-metadata.dat",
+      "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+      "bytes": 16072324
+    },
+    {
+      "path": "out/recon/il2cpp/metadata_methods.jsonl",
+      "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+      "bytes": 29150118
+    }
+  ],
+  "producer_matches_output": true,
+  "verdict": {
+    "bounded_static_transition_progress_supported": true,
+    "all_body_or_exception_regions_approved": false,
+    "engine_temporal_or_scheduler_certification": false,
+    "semantic_completion_or_done_approved": false
+  },
+  "findings": [
+    {
+      "id": "NEXTFRAME-001",
+      "status": "verified",
+      "classification": "STATIC",
+      "observation": "Raw0xf8018e7f at0x1cbed6c is pre-index STR xzr,[x19,#0x18]!, not post-index. It stores Current=null then updates x19 to object+0x18. STUR W8/W0,[x19,#-8] at0x1cbed7c/0x1cbed88 consequently accesses original object+0x10 state. Producer transition order Current=null,state=-1,barrier,state=1 is correct.",
+      "addresses": [
+        "0x1cbed6c",
+        "0x1cbed7c",
+        "0x1cbed80",
+        "0x1cbed88"
+      ]
+    },
+    {
+      "id": "NEXTFRAME-002",
+      "status": "verified_with_external_limits",
+      "classification": "STATIC",
+      "observation": "state1 path loads action at object+0x20 and stores state=-1 at object+0x10 before null guard and BLR. If callback throws after entry, local state write already happened. Callback effects, reentrancy and scheduler response remain external. Null action branches to0x1b88980 after same write; exact helper semantics/nonreturn remain unknown.",
+      "addresses": [
+        "0x1cbed90",
+        "0x1cbed98",
+        "0x1cbed9c",
+        "0x1cbedac",
+        "0x1cbedbc"
+      ]
+    },
+    {
+      "id": "NEXTFRAME-003",
+      "status": "verified",
+      "classification": "STATIC",
+      "observation": "Dispose inspection body contains only RET0xd65f03c0 at0x1cbed50. It performs no local state/action/current write and does not itself cancel manual subsequent MoveNext(state1). This does not establish Unity StopCoroutine/destruction cancellation semantics."
+    },
+    {
+      "id": "NEXTFRAME-004",
+      "status": "verified",
+      "classification": "STATIC",
+      "observation": "Both Current accessors LDR x0,[x0,#0x18];RET. Constructor stores its input state at+0x10 after Object constructor; factory supplies0 and stores passed action at+0x20. Constructor does not explicitly initialize current/action references in inspected bytes."
+    },
+    {
+      "id": "NEXTFRAME-005",
+      "status": "correctly_inferred_not_proven",
+      "classification": "STATIC_and_INFERRED",
+      "observation": "Reset allocates/constructs System.NotSupportedException and passes exception plus MethodInfo usage4710 of Reset to helper0x1b8884c. INFERRED_throw label is appropriate; do not promote helper identity/exception semantics to observed or fully recovered. No local state write exists in Reset window."
+    },
+    {
+      "id": "NEXTFRAME-006",
+      "status": "verified_limits_preserved",
+      "classification": "STATIC",
+      "observation": "Producer keeps semantic_completion=false, complete_body_proven=false per window and unknown helpers/exception regions/Unity scheduler. A yield Current=null plus next MoveNext callback path is not a measured next-frame duration or engine guarantee."
+    }
+  ],
+  "verification": {
+    "baseline_verify_reexecuted": true,
+    "baseline_result_matches_all_saved_verify_fields": true,
+    "mutation_fixture_type": "Isolated in-memory copies of pinned original native bytes; original files/queue untouched",
+    "mutations": [
+      {
+        "name": "preindexed_current_offset",
+        "rejected": true
+      },
+      {
+        "name": "state_minus8_offset",
+        "rejected": true
+      },
+      {
+        "name": "callback_state_write",
+        "rejected": true
+      },
+      {
+        "name": "dispose_changes_state",
+        "rejected": true
+      },
+      {
+        "name": "reset_helper_target",
+        "rejected": true
+      },
+      {
+        "name": "callback_dispatch",
+        "rejected": true
+      }
+    ],
+    "fixture_returncode": 0,
+    "duration_seconds": 6.183,
+    "note": "No author test file existed at first review read; independent baseline and six negative fixtures executed rather than inventing an author test result."
+  },
+  "remaining_unknowns": [
+    "Full complete/noncontiguous body and exceptional region coverage",
+    "Native helper initialization/allocation/write-barrier/null-failure/throw dispatch semantics",
+    "Callback target, memory effects, throw/reentrancy and thread behavior",
+    "Unity StartCoroutine scheduler, StopCoroutine and host-destruction behavior",
+    "Measured frame/time/timescale/pause semantics and runtime differential comparison"
+  ],
+  "limits": [
+    "Review does not certify T026 or any queue task done.",
+    "Known state table is a static derivation, not an executable oracle compared with original runtime.",
+    "Sources may change after this hash-pinned review and require revalidation."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "raw_census_PWC.Level.LevelSceneAvatarMap",
+      "passed": true
+    },
+    {
+      "check": "raw_census_PWC.Level.LevelCharacterCallerConfig",
+      "passed": true
+    },
+    {
+      "check": "raw_census_PWC.Level.LevelCharacterCaller",
+      "passed": true
+    },
+    {
+      "check": "raw_census_Game.Level.BackgroundCharacterSpineManager",
+      "passed": true
+    },
+    {
+      "check": "raw_census_Game.Level.BackgroundToddlerSpineManager",
+      "passed": true
+    },
+    {
+      "check": "raw_census_Game.Level.LevelAirportWalkwayDropAreaHandler",
+      "passed": true
+    },
+    {
+      "check": "raw_census_Game.Level.LevelButlerCaller",
+      "passed": true
+    }
+  ],
+  "review": [
+    "npc validate.py rerun passes 16 checks",
+    "Census independently compared to original gzip rows and hashes",
+    "Caller decision and walkway moveLocalX/setSpeed claims match captured instruction sequences",
+    "No blocker found in report; report correctly limits absence of autonomy to examined managers",
+    "Validation cannot establish runtime behavior, and does not purport to"
+  ]
+}
