@@ -56,3 +56,38 @@ tools/venv/bin/python tools/recon_contextual_links.py
 ```
 
 O relatório completo fica em `out/recon/tasks/T035/contextual-links.json`; o cache em `contextual-metadata-cache.json`; as 33 janelas ARM64 em `contextual-asm/`. O estado canônico de T035 permanece parcial, com dependências pendentes. O próximo recorte é recuperar o ciclo de adicionar/remover/cancelar/concluir dos handlers básicos e reconciliar os dois assets de reação e os carregamentos indiretos. A validação no aparelho continua adiada conforme combinado.
+
+## Ciclo adicionar/remover/cancelar/concluir (2026-11-08)
+
+O orquestrador é `PWC.Level.ContextualAnimation.CATargetExtensionMethods`, métodos de extensão sobre `ICATarget`. `AddCAHandler` (`0x23aca54`) só faz `target.CAHandlers.Add(handler)`; o orquestrador real é `AddCAHandlerAndUpdateGame` (`0x23ac654`).
+
+**Adicionar**, ordem confirmada por desmontagem anotada (`tools/recon_disasm.py`, chamadas `bl` resolvidas por endereço) mais leitura manual das chamadas virtuais indiretas (`blr` em slots da vtable do próprio handler, não da tabela de interface, por isso sem nome automático — identificações marcadas como inferidas):
+1. gate de compatibilidade (slot vtable +0x198, inferido `IsValidForTarget`);
+2. `target.CAHandlers` + `List.Contains(handler)` — evita duplicata;
+3. `AddCAHandler` (acrescenta à lista);
+4. um segundo bool do handler (slot ~+0x338, não identificado com certeza);
+5. `SetLockedCAHandler`/`OnAddedCAHandlerWithLockedAnimation`/`get_LockedCAHandler` (resolvidos por interface);
+6. `SetAnimation` (interface);
+7. `SetForceSitIfNeeded`;
+8. slot vtable +0x1f8, inferido **`OnAddedToTarget(target)`** — chamado **por último**, depois que o estado de animação/lock do alvo já foi montado;
+9. slot vtable +0x3a8 (bool, inferido um `TryForceToSit`-like), que em caso verdadeiro dispara uma corrotina cujo tipo gerado se chama literalmente `<MakeFishEatFood>d__16` — ou seja, há pelo menos um caso especial específico de handler embutido no orquestrador genérico.
+
+**Remover** (`RemoveCAHandlerAndUpdateGame`, `0x23acdb0`): `target.CAHandlers` → `List.Remove(handler)` (aborta se não estava na lista) → slot vtable +0x208, inferido **`OnRemovedFromTarget(target)`**, chamado **imediatamente após a remoção**, antes de qualquer limpeza do lado do alvo → `get/set_LockedCAHandler`, `get_IsMoving` (×2), `ReturnToIdleAnimation`, `OnCARemoved` (todas por interface, resolvidas). A ordem é o inverso do adicionar: lá o hook do handler é o último passo; aqui é o primeiro depois da remoção da lista.
+
+**Cancelar/Concluir**: `PlayContextualAnimation` registra três funções locais como delegates do Spine `TrackEntry` mais uma rotina de limpeza compartilhada:
+- `g__EndAnimation|0`: zera `CurrentCAPlayType`/`CurrentCAConfig`/`CurrentCAHandler` do alvo (três setters de interface resolvidos) antes de um tail call.
+- `g__OnInterruptOrEnd|1` (**cancelar**): lê `target.ContexualAnimationCounter` e compara com o contador capturado no closure quando a animação começou; se diferente, é um callback **obsoleto** (uma animação mais nova já começou) e a função retorna sem fazer nada — um guarda por contador de geração contra corridas entre pedidos de animação sobrepostos. Só chama `EndAnimation` se o contador ainda bate.
+- `g__OnCompleteFullCycle|2` (**concluir, ciclo completo**): busca o handler atual do alvo duas vezes em sequência (padrão de cache de interface, checagem de nulo entre as duas) antes de um tail call para um slot da vtable do PRÓPRIO handler (+0x298), inferido **`OnAnimationFullCycleEnd(target, config)`** pelo nome e assinatura.
+- `g__OnCompleteNotLooped|3` (**concluir, sem loop**): mesmo guarda de contador; dependendo do `CurrentCAPlayType`, chama `OnCompleteFullCycle` ou `EndAnimation`; pode **rechamar `PlayContextualAnimation`** (mecanismo de "repetir até outra coisa acontecer"); termina com `get_LockedCAHandler`/`ReturnToIdleAnimation`/`SetAnimation`/`SetForceSitIfNeeded` e um tail call ainda não identificado.
+
+As identificações de slot de vtable do handler (+0x198, +0x1f8, +0x208, +0x298, +0x3a8, +0x338) são inferidas por posição/assinatura, não resolvidas por nome como as chamadas de interface; não foram confirmadas por uma segunda passada ou teste de mutação. Evidência completa em `out/recon/tasks/T035/ca-handler-lifecycle.json` e `out/recon/tasks/T035/lifecycle-asm/`.
+
+### Reações — reconciliação proposta
+
+As duas discrepâncias já registradas (`Bubble_Blower_Tube_L209_Baby_ReactionData`, `ToddlerBookReadingAnimationsReactionsData2`) têm o mesmo formato: o dado de reação grava o nome já com o prefixo `CA/` embutido como literal, mas o inventário do rig (construído a partir dos dados brutos do Spine) lista o nome **sem** esse prefixo. Como o prefixo `CA/` é adicionado em runtime por `CreateAnimationName` (já documentado acima), e essas duas entradas armazenam a string final diretamente, a comparação correta deveria remover um `CA/<pasta>/` inicial antes de comparar com o rig — exatamente a alternativa que a auditoria original já tinha encontrado presente no rig. Isso eleva essas alternativas de "candidatas" para "interpretação mais sustentada", mas o verificador (`tools/recon_contextual_links.py`) não foi alterado para aplicar essa regra.
+
+### Carregamentos indiretos — checagem negativa
+
+`PWC.PSDToLevel.LevelContextualAnimation.LevelCAItemHandlerWithData.GetData()` (a família `*WithData`, que detém a maior parte dos 974 assets `LevelCAItemHandlerData`) só devolve o campo `Data`, uma referência serializada direta — sem `Resources.Load` por nome nem busca por string. Isso descarta essa classe como fonte dos 85 assets órfãos, mas não identifica o mecanismo real; `LevelCAReactionsData` e as famílias `LevelCAParentHandlerBase`/`LevelCAItemOnBoneHandlerBase` ainda não foram checadas.
+
+T035 continua parcial.

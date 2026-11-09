@@ -66,3 +66,15 @@ LLVM objdump já existente no NDK do Unity foi utilizado, com janelas explícita
 **Nove testes passaram**, sem skipped, em 9,798 segundos. Os testes mutam apenas cópias em memória/índice temporário: alvo BL de registro, tail branch Unity, destino do construtor, MethodDef usage do handler, token metadata, registrador de argumento e cache com nome/token aparentando coincidência mas definição incorreta. As guardas de metadata prevalecem sobre o cache. O hash integral do par também rejeita bytes alterados; as mutações locais são testadas sem depender somente desse gate externo.
 
 A entrega reduz os desconhecidos de origem dos callbacks. Próximos recortes possíveis: revisar estes cinco encadeamentos independentemente, rastrear efeitos dos handlers e verificar pares de remoção por evidência direta. Nenhum deles deve ser presumido a partir desta tabela de registros.
+
+## Continuação: chamadas de remoção
+
+A rodada seguinte confirmou quatro pares estáticos `Awake` → `OnDestroy`, com o mesmo alvo `this` e MethodDef, para os quatro registros de estágio. Detalhes e limites em [RECON_SCENE_LIFETIME_2026-11-07.md](RECON_SCENE_LIFETIME_2026-11-07.md). As afirmações anteriores sobre remoção desconhecida descrevem o limite da primeira rodada; execução Unity, remoção efetiva e lifetime do registro estático Unity seguem abertos.
+
+## Continuação: os nove candidatos Stage restantes
+
+Em 2026-11-08, o follow-up filho [T025](../out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json) expandiu os nove candidatos diretos restantes: cada edge liga chamada ao accessor `add_OnBeforeSceneLoadStageNAction`, MethodDef do delegate passado ao construtor `Action` e fluxo do objeto/resultado até o argumento do accessor. Com os quatro edges Stage anteriores, os **13 candidatos B/BL** desta busca limitada têm edges positivos estáticos. Os nove novos sites cobrem `LevelDigHoleArea`, `LevelSpawnOnLevelPostInit`, `LevelSlideSwitcherHandler`, `LevelLockerSpawnOnPostInit`, `AvatarSpeechUIMenu`, `LevelKillArea`, `LevelScreenshotManager`, `LevelNewAvatarManager` e `LevelMakerSwitcher`.
+
+O mesmo follow-up associa provisoriamente os três dispatches em `LoadScene` aos campos Stage1/2/3 pelos offsets `0`, `8` e `0x10`; os bytes mostram guardas nulas, sequência e chamada indireta em `BLR x9`. A checagem [stage_dispatch_review.json](../out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_dispatch_review.json) registra que o TypeInfo observado aponta ao tipo nested `<>c__DisplayClass28_0`, então a identidade da base estática precisa de reconciliação antes de tratar o vínculo como incondicional.
+
+Os 13 são apenas os candidatos diretos `B/BL` encontrados no scan: não provam grafo global completo, execução, ordem de invocation lists, lifetime ou efeitos dos callbacks. Indiretos, reflection, carregamento dinâmico, exceções e corpos completos seguem abertos. Os testes de expansão (3), dispatch (4) e remoção (5) passaram nesta retomada.

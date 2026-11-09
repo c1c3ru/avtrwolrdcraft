@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/t025_audit",
+  "date": "2026-11-07",
+  "task_id": "T025/METHOD/e579655ba8e57adf",
+  "scope": "Independent source/outputs/assembly and original metadata review of bounded LoadSceneImplement dossier. No queue changes, provider work or game execution.",
+  "sources": [
+    {
+      "path": "tools/recon_t025_implement.py",
+      "sha256": "c8cd33ca3496cc2eec80b96b8ee010863efd6299f901ad717baec98e3c1abe91",
+      "bytes": 12569
+    },
+    {
+      "path": "tools/test_recon_t025_implement.py",
+      "sha256": "3bb3ac3c05f22ba3a7cd4485a252fd8611d43eb0e0dab3bacf35e392c5b16eac",
+      "bytes": 2175
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/method-contract.json",
+      "sha256": "9aa98e4e894ae4512f67b4baa0c16221aa361cff9ff6ac11f301cbfb058fe104",
+      "bytes": 14553
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/control-flow.json",
+      "sha256": "e1437458cacc7fc993fbb81388163905ec4b30fde95e1bfaf0f5d24eb2b70d84",
+      "bytes": 8430
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/result.json",
+      "sha256": "926c2c1e4f7ca5b8cdb9f027e15666f802f20d2116aaec3e9b8d2b0bcf14d97f",
+      "bytes": 449
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/unknowns.jsonl",
+      "sha256": "129a6289b298f7ebb0765f7729860bf542003ac3efadb8cb1d80879a22a0ebb5",
+      "bytes": 571
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/LoadSceneImplement.asm.txt",
+      "sha256": "fa72b0cd54f260a2123bb6739077dbc83e93aa6acc8c6ceb458524fb20173b26",
+      "bytes": 2570
+    },
+    {
+      "path": "tools/recon_t025_generics.py",
+      "sha256": "ff9be2f3b7579d0f7a8add54f7ad4d2a3bf1ebab5ab3a88844f0b6c136a458a3",
+      "bytes": 20006
+    },
+    {
+      "path": "reports/recon/t025_generic_bindings_investigation.json",
+      "sha256": "7739983c26b976874ffc03ac199700a6eebd1292ea68b19ce3aada3bffca4fe1",
+      "bytes": 20802
+    },
+    {
+      "path": "reports/recon/t025_generics_review.json",
+      "sha256": "d2bb80cda1f73fd4de3d1cc4ddf5f22cacfcf8b113e8a8ed4b3ddea276dc3347",
+      "bytes": 7722
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+      "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+      "bytes": 4573
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Multiplayer/MPManager.cs",
+      "sha256": "db865b7d7a2c341759fd412018417d9ea0b1078bc59e09273111bd4fca671244",
+      "bytes": 12788
+    },
+    {
+      "path": "out/cpp2il/DiffableCs/UnityEngine.CoreModule/UnityEngine/SceneManagement/SceneManager.cs",
+      "sha256": "bb636f6a7d05636ecc38ebe7fd744d40c0e495c29e16ab23fee4c53355c7fa85",
+      "bytes": 5783
+    }
+  ],
+  "verdict": {
+    "bounded_static_progress_accepted": true,
+    "full_body_or_semantic_completion_approved": false,
+    "queue_done_supported": false
+  },
+  "findings": [
+    {
+      "id": "IMPLEMENT-001",
+      "status": "verified",
+      "classification": "STATIC",
+      "observation": "Exact caller, Clear and LoadSceneAsync identities/arity checked through original metadata/codegen joins; tests exercise branch, target, scene reference and typeinfo mutations.",
+      "metadata_observations": [
+        {
+          "address": "0x2072cc8",
+          "name": "LoadSceneImplement",
+          "token": "0x060056ff",
+          "static_flag": true,
+          "parameter_count": 1,
+          "return_type_index": 33025
+        },
+        {
+          "address": "0x20d7e78",
+          "name": "Clear",
+          "token": "0x06005e99",
+          "static_flag": true,
+          "parameter_count": 0,
+          "return_type_index": 33025
+        },
+        {
+          "address": "0x3cdc604",
+          "name": "LoadSceneAsync",
+          "token": "0x060009d0",
+          "static_flag": true,
+          "parameter_count": 1,
+          "return_type_index": 16891
+        }
+      ]
+    },
+    {
+      "id": "IMPLEMENT-002",
+      "status": "verified_with_limits",
+      "classification": "STATIC",
+      "observation": "All 47 aligned instructions in pinned inspection slice are reachable in local CFG under normal-return call assumption. Only explicit local outgoing branch is 0x2072d80 -> 0x3cdc604. Complete body/exception and semantic_completion flags correctly remain false.",
+      "limit": "Next-metadata boundary, instruction reachability and pinning do not establish whole method body or exceptional CFG."
+    },
+    {
+      "id": "IMPLEMENT-003",
+      "status": "supported_declaration_and_static_ABI",
+      "classification": "STATIC",
+      "observation": "Managed wrapper declaration is static void; engine overload declaration returns AsyncOperation. Tail B restores caller LR/SP and does not consume eventual x0, so native return-register pass-through does not make managed wrapper return AsyncOperation. No actual callee return observed.",
+      "declaration_sources": [
+        "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+        "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Multiplayer/MPManager.cs",
+        "out/cpp2il/DiffableCs/UnityEngine.CoreModule/UnityEngine/SceneManagement/SceneManager.cs"
+      ]
+    },
+    {
+      "id": "IMPLEMENT-004",
+      "status": "resolved_in_final_source_and_outputs",
+      "severity": "medium",
+      "classification": "STATIC_and_INFERRED",
+      "observation": "Pinned raw read establishes MPManager statics+0 byte, while semantic field name IsMultiplayerGame is taken from Cpp2IL backing-field declaration. Existing unknowns explicitly say fieldOffsets registration is not recovered, which is correct. Producer provenance does not hash declaration files used for field meaning and ABI signatures.",
+      "required_change": "Record declaration path/hashes for GameSceneManager, MPManager and Unity SceneManager, and label named field/pseudocode as declaration-backed inference until fieldOffsets recovered. Reviewer source refs here retain current declaration hashes.",
+      "resolution": "Producer hashes and validates three declaration sources. MP semantic field name, static Boolean type and offset0 now independently grounded by raw metadata/fieldOffsets joins, so no longer declaration-only inference."
+    }
+  ],
+  "test_result": {
+    "command": "python3 -m unittest discover -s tools -p test_recon_t025_implement.py -v",
+    "returncode": 0,
+    "tests": 5,
+    "failures": 0,
+    "duration_seconds": 4.898
+  },
+  "required_before_done": [
+    "Justify complete body/exception ranges or accepted explicit external contracts matching required acceptance",
+    "Resolve native metadata/class initialization behavior, GC/exception effects",
+    "Recover MPOwnership.Clear memory/callback/termination effects",
+    "Close relevant Unity LoadSceneAsync invalid-input/failure and engine completion conditions",
+    "Independent review against actual task acceptance, with accepted prerequisite evidence and current hashes",
+    "Raw return/parameter native type mapping remains distinct from declaration-backed signature; field name/layout gap has been resolved."
+  ],
+  "limits": [
+    "Read-only against originals and task outputs; this review writes only this exclusive review JSON.",
+    "Tests verify evidence decoder/guards; they do not execute original methods or compare runtime behavior.",
+    "Original raw static flag and type indices checked, but reviewer did not fully decode Il2CppType native registration for return and argument types."
+  ],
+  "initial_review_snapshot": {
+    "sources": [
+      {
+        "path": "tools/recon_t025_implement.py",
+        "sha256": "83499166ff44c3e4fb414641db89c8d453721831c856f4ddd019ae6cd650da40",
+        "bytes": 11373
+      },
+      {
+        "path": "tools/test_recon_t025_implement.py",
+        "sha256": "3bb3ac3c05f22ba3a7cd4485a252fd8611d43eb0e0dab3bacf35e392c5b16eac",
+        "bytes": 2175
+      },
+      {
+        "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/method-contract.json",
+        "sha256": "8ee45a20367b6effe83d55942f52d0419e66a63defb5593e6c2bc89018a3342c",
+        "bytes": 7433
+      },
+      {
+        "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/control-flow.json",
+        "sha256": "e1437458cacc7fc993fbb81388163905ec4b30fde95e1bfaf0f5d24eb2b70d84",
+        "bytes": 8430
+      },
+      {
+        "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/result.json",
+        "sha256": "f3b1d8bc4be66e2b7f8e47115cb4f5a5ba380e9e1e2ad93be1e301148100eb6b",
+        "bytes": 449
+      },
+      {
+        "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/unknowns.jsonl",
+        "sha256": "a8927b85477b5d1e71a3a5be9dc7166be70f86c6d7e6a8724a90221daa0fbc17",
+        "bytes": 738
+      },
+      {
+        "path": "out/recon/tasks/T025/METHOD/e579655ba8e57adf/LoadSceneImplement.asm.txt",
+        "sha256": "fa72b0cd54f260a2123bb6739077dbc83e93aa6acc8c6ceb458524fb20173b26",
+        "bytes": 2570
+      },
+      {
+        "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/GameSceneManager.cs",
+        "sha256": "be8a97b3eff58b17b9fd091fce3c6e187d68dc589676f39e9929d9feefd42609",
+        "bytes": 4573
+      },
+      {
+        "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Multiplayer/MPManager.cs",
+        "sha256": "db865b7d7a2c341759fd412018417d9ea0b1078bc59e09273111bd4fca671244",
+        "bytes": 12788
+      },
+      {
+        "path": "out/cpp2il/DiffableCs/UnityEngine.CoreModule/UnityEngine/SceneManagement/SceneManager.cs",
+        "sha256": "bb636f6a7d05636ecc38ebe7fd744d40c0e495c29e16ab23fee4c53355c7fa85",
+        "bytes": 5783
+      },
+      {
+        "path": "out/recon/il2cpp/metadata_methods.jsonl",
+        "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+        "bytes": 29150118
+      }
+    ],
+    "test_result": {
+      "command": "python3 -m unittest discover -s tools -p test_recon_t025_implement.py -v",
+      "returncode": 0,
+      "tests": 5,
+      "failures": 0,
+      "duration_seconds": 4.898
+    }
+  },
+  "final_review": {
+    "producer_and_helpers_match": true,
+    "source_declaration_hashes_match": true,
+    "direct_verify_result_matches_saved_bindings_and_cfg": true,
+    "reachable_instructions": 47,
+    "multiplayer_field": {
+      "classification": "STATIC_metadata_field_and_registered_offset_join",
+      "declaring_type": "PWC.Multiplayer.MPManager",
+      "type_definition_index": 4173,
+      "field_index": 16360,
+      "local_field_index": 17,
+      "field_name": "<IsMultiplayerGame>k__BackingField",
+      "token": "0x4003fe9",
+      "field_metadata_offset": "0xacd838",
+      "offset_table_pointer": "0xb66acc",
+      "offset_value_address": "0xb66b10",
+      "offset": 0,
+      "type_table_index": 17677,
+      "type_pointer": "0x437bff8",
+      "type_data": 6458,
+      "type_bits": "0x80020011",
+      "static": true
+    },
+    "ownership_dictionary_identities": 2,
+    "verified_unknowns": [
+      "body-regions",
+      "init",
+      "clear",
+      "unity-load",
+      "runtime"
+    ],
+    "verdict": "Accept narrow static dossier progress with original field/MethodRef joins. Full-body, exception/runtime/callee semantic completion remains false. No done approval.",
+    "verification_note": "Current verify re-executed independently once and compared to saved CFG/bindings. Earlier five tests and final independent thirteen generic mutation tests already recorded; no unnecessary repeat of unchanged full integration suite."
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/t025_audit",
+  "review_date": "2026-11-07",
+  "classification": "STATIC_independent_scope_review_not_semantic_approval",
+  "scope": "Read-only audit of T025 scope, live queue, five pilot acceptance conditions, and selected existing getter/LoadSceneImplement evidence. This report is the only file written by this reviewer.",
+  "queue_revision_at_review": 28,
+  "source_refs": [
+    {
+      "path": "reports/recon/tasks.json",
+      "sha256": "26e498a73ee9a6bb24bb30f089ae07ade9b573f0fc68e81a164623f76dc4dd72",
+      "bytes": 1570773
+    },
+    {
+      "path": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+      "sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f",
+      "bytes": 57512
+    },
+    {
+      "path": "docs/RECON_NAVIGATION_CONTRACT.md",
+      "sha256": "25042bff10e43fea9a9a7e493024db7bc6f77ad5320fbdb3a8b6154ccb7ca7bc",
+      "bytes": 12577
+    },
+    {
+      "path": "docs/RECON_LOAD_SCENE_CONTRACT.md",
+      "sha256": "f3623426b461e3527fda12a2c1cc074e12db946fab799596ca4691c00e5f8ca1",
+      "bytes": 2860
+    },
+    {
+      "path": "docs/RECON_HOME_PLAY_HANDOFF.md",
+      "sha256": "546bbed873566be8dee271a8f9488be36dee17714c427fc415ac7ffd7f7cd7ed",
+      "bytes": 7187
+    },
+    {
+      "path": "out/recon/il2cpp/assembly_csharp_methods.jsonl",
+      "sha256": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8",
+      "bytes": 25894414
+    },
+    {
+      "path": "out/recon/il2cpp/libil2cpp.so",
+      "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+      "bytes": 74680624
+    },
+    {
+      "path": "out/recon/il2cpp/global-metadata.dat",
+      "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+      "bytes": 16072324
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/result.json",
+      "sha256": "56b3564cc0aac4c7f502fd5a46d90e735da5340d767828171988847f763c432e",
+      "bytes": 1437
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/control-flow.json",
+      "sha256": "5a121c7baaa9971b7a8daab3123fff9b133755554f5ebf4fdf3d6e4568150688",
+      "bytes": 4086
+    },
+    {
+      "path": "out/recon/tasks/T025/METHOD/d417091ede9f01e0/method-contract.json",
+      "sha256": "01eae64cdfed679af720ca75d94f088300c91ab639a19338e8359f41a1ceb374",
+      "bytes": 4341
+    },
+    {
+      "path": "out/recon/il2cpp/PWC.GameSceneManager.GetCurrentWorldSceneName.asm.txt",
+      "sha256": "afc5bed6967645643d80fbc4d84d568cd32feae296bb5f53e2348869566819b9",
+      "bytes": 2643
+    }
+  ],
+  "counts": {
+    "assembly_csharp_metadata_records": 36421,
+    "with_vaddr": 35831,
+    "distinct_vaddrs": 35831,
+    "live_T025_children": 5,
+    "live_T025_children_done": 0
+  },
+  "parent": {
+    "id": "T025",
+    "state": "pending",
+    "dependencies": [
+      {
+        "id": "T022",
+        "state": "pending"
+      },
+      {
+        "id": "T023",
+        "state": "pending"
+      },
+      {
+        "id": "T024",
+        "state": "pending"
+      }
+    ],
+    "scope_limit": "Assembly-CSharp metadata records are a measured inventory, not proof that every record requires an independently implemented game-body contract; abstract/external/generic/shared code must be explicitly classified before defining required closure."
+  },
+  "pilots": [
+    {
+      "id": "T025/METHOD/5fe1bb4a25183678",
+      "title": "Recuperar contrato de Game.Home.HomePlayButton.LoadPlayScene (0x060054ef)",
+      "state": "stale",
+      "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion."
+    },
+    {
+      "id": "T025/METHOD/d417091ede9f01e0",
+      "title": "Recuperar contrato de PWC.GameSceneManager.GetCurrentWorldSceneName (0x06005708)",
+      "state": "pending",
+      "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion."
+    },
+    {
+      "id": "T025/METHOD/8e708ca7d06e0b52",
+      "title": "Recuperar contrato de PWC.GameSceneManager.LoadScene (0x060056fe)",
+      "state": "ready",
+      "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion."
+    },
+    {
+      "id": "T025/METHOD/e579655ba8e57adf",
+      "title": "Recuperar contrato de PWC.GameSceneManager.LoadSceneImplement (0x060056ff)",
+      "state": "leased",
+      "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion."
+    },
+    {
+      "id": "T025/METHOD/4a19cfec8f8e89ba",
+      "title": "Recuperar contrato de PWC.World.Buildings.WorldBuilding.ClickOnLevel (0x06006081)",
+      "state": "pending",
+      "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion."
+    }
+  ],
+  "findings": [
+    {
+      "id": "T025-REVIEW-001",
+      "severity": "blocking_acceptance",
+      "classification": "STATIC",
+      "subject": "GetCurrentWorldSceneName structural completion claim",
+      "observation": "result.json declares method_body_fully_bounded=true and says fully bounded, whereas control-flow.json says candidate window capped at next metadata start; noncontiguous body and exception extents not proven.",
+      "sources": [
+        "out/recon/tasks/T025/METHOD/d417091ede9f01e0/result.json",
+        "out/recon/tasks/T025/METHOD/d417091ede9f01e0/control-flow.json"
+      ],
+      "required_resolution": "Downgrade result structural-completeness claim to match the evidenced bounded window, or supply independent complete-body/CFG evidence; RET and next start alone are insufficient."
+    },
+    {
+      "id": "T025-REVIEW-002",
+      "severity": "blocking_parent_acceptance",
+      "classification": "STATIC",
+      "observation": "Only five pilot children exist; no full required-method inventory reconciliation is evidenced, and none of these children is done. Parent dependencies remain pending.",
+      "sources": [
+        "reports/recon/tasks.json",
+        "docs/AVATAR_WORLD_MASTER_PLAN.md"
+      ],
+      "required_resolution": "Classify required original methods and shared/generic/external exceptions; create traceable children for required work, close their true dependencies and acceptance, then reconcile all discovered children before parent review."
+    },
+    {
+      "id": "T025-REVIEW-003",
+      "severity": "blocking_getter_semantic_acceptance",
+      "classification": "STATIC",
+      "observation": "Existing getter contract explicitly retains unresolved IsSceneAvailable generic HashSet constructor/Add/Contains bindings, runtime initialization and external-call semantics.",
+      "sources": [
+        "docs/RECON_NAVIGATION_CONTRACT.md",
+        "out/recon/tasks/T025/METHOD/d417091ede9f01e0/method-contract.json"
+      ],
+      "required_resolution": "Bind availability generic callees and explicit library/runtime conditions or retain them as unresolved dependencies; do not equate predicate-relative local CFG with full semantic completion."
+    }
+  ],
+  "priority_candidates": [
+    {
+      "id": "T025/METHOD/e579655ba8e57adf",
+      "name": "PWC.GameSceneManager.LoadSceneImplement",
+      "candidate_window_start": "0x2072cc8",
+      "candidate_window_exclusive_stop": "0x2072d84",
+      "window_bytes": 188,
+      "reason": "Smallest of the two reviewed method candidates. Existing static contract identifies multiplayer flag, Clear call and tail LoadSceneAsync.",
+      "remaining": [
+        "Prove or explicitly limit complete body/CFG coverage",
+        "Pin field/layout and helper/callee contracts",
+        "Handle initialization/exceptions and conditional termination",
+        "Independent semantic review"
+      ]
+    },
+    {
+      "id": "T025/METHOD/d417091ede9f01e0",
+      "name": "PWC.GameSceneManager.GetCurrentWorldSceneName",
+      "candidate_window_start": "0x2073238",
+      "candidate_window_exclusive_stop": "0x207330c",
+      "window_bytes": 212,
+      "reason": "Listing has only metadata-init and class-init conditional guards, direct calls and terminal RET. Local conditional CFG can be described with normal-call-return assumptions.",
+      "remaining": [
+        "Resolve contradictory fully_bounded claim",
+        "Close availability generic bindings",
+        "Explicit init/library effects and exceptions",
+        "Independent semantic review"
+      ]
+    }
+  ],
+  "pilot_closure_criteria": [
+    "Exact native/metadata/method identity pinned and current inputs revalidated",
+    "Complete justified bytes/ranges and CFG; bounded inspection windows clearly distinguished from full body proof",
+    "Signature/ABI, arguments/return, register and field/layout meanings grounded in original evidence",
+    "All relevant memory effects, state transitions, invalid inputs, termination and exception paths accounted for or explicitly limited through accepted external contracts",
+    "All relevant indirect/callback/generic call targets resolved; required unknown semantic paths prevent completion",
+    "Meaningful mutation/contract checks plus independent reviewer verifies evidence and acceptance",
+    "Queue submission and review occur only after actual technical acceptance; distinct actor names alone are not independent review"
+  ],
+  "parent_closure_criteria": [
+    "Full inventory-derived required universe reconciled, including methods absent from initial five pilots",
+    "All obligatory methods have traceable children or justified shared/external classification",
+    "T022/T023/T024 dependencies actually satisfy their own acceptance",
+    "All discovered children accepted independently and hashes current",
+    "Aggregate coverage reports remaining unknowns honestly; no relevant body/indirect/effect gaps disguised as completed methods"
+  ],
+  "verdict": {
+    "parent_completion_supported": false,
+    "any_pilot_semantic_completion_approved": false,
+    "bounded_static_progress_supported": true
+  },
+  "limits": [
+    "No game execution, emulation, Unity work, provider opening, queue mutation or producer rerun was performed in this audit.",
+    "No conclusion about full runtime parity or all game methods follows from inventory counts.",
+    "Review did not inspect every opcode of all five methods or independently establish complete CFG/body ranges.",
+    "Report reflects queue revision at audit time; later queue/source changes require new hash checks."
+  ],
+  "readiness_producer_review": {
+    "source": {
+      "path": "tools/recon_t025_readiness.py",
+      "sha256": "86b23fe02d8d15553b71836dc587648d001ed3f981c03ad41ad26809c65732c2",
+      "bytes": 6468
+    },
+    "review_type": "Source review plus isolated temporary-root mutation fixtures; no live queue or producer output changed.",
+    "counts_and_certification_verdict": "Supported: each unique inventory image/token is counted once, null pointers remain unclassified, child states are not semantic proof, can_close_t025 is unconditionally false. Scope correctly limited to Assembly-CSharp MethodDefs.",
+    "findings": [
+      {
+        "id": "T025-READINESS-001",
+        "severity": "high",
+        "lines": [
+          78,
+          80,
+          91
+        ],
+        "observation": "Index is parsed from one read but input hash is computed from a later read. Queue also re-read for hash after one stability comparison. Report can attribute old analyzed data to new input hashes.",
+        "fixture_result": "During reconcile, changed index fixture method name Before->After. run succeeded; ledger retains Before while report records hash of After.",
+        "required_resolution": "Capture both input byte snapshots once, parse and hash those exact bytes, and compare both current inputs with snapshots before publishing. Preserve claimed revision as snapshot revision.",
+        "status": "resolved_in_revised_producer"
+      },
+      {
+        "id": "T025-READINESS-002",
+        "severity": "medium",
+        "lines": [
+          89,
+          90,
+          94
+        ],
+        "observation": "Registry is replaced before input-stability validation. A detected queue change aborts report generation after already altering registry, leaving previous report/new registry or unreferenced output.",
+        "fixture_result": "Set registry to OLD_REGISTRY and mutate queue revision inside reconcile. run raises queue changed as expected but registry no longer equals OLD_REGISTRY.",
+        "required_resolution": "Validate input snapshots before publishing outputs. For report+registry consistency, use content-addressed/exclusive generation registry and publish referencing report last, or clearly state per-file atomicity only. Avoid overwriting a registry referenced by a previous accepted manifest.",
+        "status": "resolved_in_revised_producer"
+      }
+    ],
+    "limitations": [
+      "Mutation fixtures use temporary directories and synthetic method metadata; they test IO consistency, not shipped method semantics.",
+      "The producer is an audit and intentionally cannot certify T025; findings do not suggest turning its can_close gate true.",
+      "Review hash identifies this observed source version; fixes require source/test re-review."
+    ],
+    "historical_integrity_verdict": "Changes required before snapshot provenance can be trusted under concurrent input mutation.",
+    "integrity_verdict": "Accepted for snapshot provenance and per-report publication under stated local/cooperative-writer model; two reproduced defects resolved.",
+    "followup_review": {
+      "sources": [
+        {
+          "path": "tools/recon_t025_readiness.py",
+          "sha256": "adcab243d0a3fc7c2b307c5c55266b5d5af80686840d368234305b2890c18439",
+          "bytes": 7338
+        },
+        {
+          "path": "tools/test_recon_t025_readiness.py",
+          "sha256": "05266c53e1cf3a2fbba1a34655e11158742df09c2d5b8ebefc30eac3ba117b16",
+          "bytes": 3142
+        }
+      ],
+      "verified_changes": [
+        "SH flock uses same tasks.json.lock path as live queue CLI EX flock",
+        "Queue and index parsed and hashed from captured byte snapshots",
+        "Both input snapshots compared again before registry publication",
+        "Registry generation path incorporates content SHA-256 and preserves prior registry",
+        "Report atomically publishes pointer to generated registry; can_close_t025 remains false"
+      ],
+      "independent_fixture_results": [
+        {
+          "mutation": "Index changed Before->After during reconcile",
+          "result": "Rejected with index changed during scope audit; OLD_REGISTRY and OLD_REPORT both preserved"
+        },
+        {
+          "mutation": "Queue revision changed during reconcile",
+          "result": "Rejected with queue changed during scope audit; OLD_REGISTRY and OLD_REPORT both preserved"
+        }
+      ],
+      "test_result": {
+        "command": "python3 -m unittest discover -s tools -p test_recon_t025_readiness.py -v",
+        "returncode": 0,
+        "tests": 5,
+        "failed": 0,
+        "duration_seconds": 0.004
+      },
+      "remaining_limits": [
+        "flock coordinates only cooperating queue writers; arbitrary writes after validation are not prevented, but report hashes remain hashes of analyzed snapshots.",
+        "Registry and report do not form a two-file transaction; an interrupted publication can leave an unreferenced registry generation, while previous report remains valid.",
+        "No claim of power-loss durability or hostile multiwriter protection.",
+        "No body or semantic completion follows from readiness audit."
+      ]
+    }
+  }
+}

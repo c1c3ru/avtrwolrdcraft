@@ -1,0 +1,2192 @@
+{
+  "universe": {
+    "method_rows": 36421,
+    "distinct_declaring_types": 4810,
+    "source": "out/recon/il2cpp/assembly_csharp_methods.jsonl",
+    "sha256": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8"
+  },
+  "patterns": {
+    "explicit_ai_npc": "NPC|Npc|AI(?=[A-Z_.$]|$)|(?i:Autonom|Wander|Patrol|NavMesh|Pathfind|BehaviourTree|BehaviorTree|DecisionTree)",
+    "movement_related": "(?i)Walk|Mov(e|ement)|Follow|RandomPosition|Destination|Waypoint|Steer",
+    "entity_related": "(?i)Character|Toddler|Baby|Animal|LevelCat|LevelDog|LevelHorse|Avatar|Pet"
+  },
+  "explicit_ai_npc": [
+    {
+      "method": "PazuCore.PazuCloud.PazuCloudDuplicatedDeviceTracker.GetAID",
+      "vaddr": "0x1cdadcc"
+    }
+  ],
+  "entity_movement": [
+    {
+      "method": "LevelCAToddlerSimpleItemCraftingHandler.OnRemovedFromTarget",
+      "vaddr": "0x1c630b8"
+    },
+    {
+      "method": "LevelCAToggleSpriteInHandItemHandlerWithData.OnRemovedFromTarget",
+      "vaddr": "0x20e90c4"
+    },
+    {
+      "method": "Game.Level.LevelItemConditionsResolver.OnRemovedFromAvatar",
+      "vaddr": "0x1dc1adc"
+    },
+    {
+      "method": "Game.Level.LevelHorse.OnRemoveClothing",
+      "vaddr": "0x1dc8284"
+    },
+    {
+      "method": "Game.Level.LevelCharacterIDTogglerHandler.remove_OnCharacterInitAction",
+      "vaddr": "0x1dd26ac"
+    },
+    {
+      "method": "Game.Level.LevelItemCharacterSizeScaler.OnRemovedFromAvatar",
+      "vaddr": "0x1ddd238"
+    },
+    {
+      "method": "<>c__DisplayClass13_0.<LevelCatTunnel_OnEndEnterTunnelHole>g__OnEventMoveOut|10",
+      "vaddr": "0x1de4fc4"
+    },
+    {
+      "method": "Game.Level.LevelGivenToCharacterForExchangeItemHandler.remove_CanPlaceOnAvatarHandsAction",
+      "vaddr": "0x1df564c"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForCA.Awake",
+      "vaddr": "0x1df71c8"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForCA.OnDestroy",
+      "vaddr": "0x1df7354"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForCA.TryGetRotationAngle",
+      "vaddr": "0x1df74e0"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForCA.OnAnimationBegin",
+      "vaddr": "0x1df7500"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForCA.OnAnimationEnd",
+      "vaddr": "0x1df76d4"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForCA.OnRemovedFromTarget",
+      "vaddr": "0x1df76dc"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForCA.SetIsPlayingCA",
+      "vaddr": "0x1df7508"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForCA..ctor",
+      "vaddr": "0x1df76e4"
+    },
+    {
+      "method": "Game.Level.LevelMultiGivenToCharacterForExchangeItemHandlerBasedOnGUID.remove_OnAllItemsGivenAction",
+      "vaddr": "0x1df8fd0"
+    },
+    {
+      "method": "Game.Level.LevelOnAvatarHandEventItemHandler.OnRemovedFromAvatar",
+      "vaddr": "0x1dfb540"
+    },
+    {
+      "method": "Game.Level.LevelCrossWalkAreaHandler.GetNumberOfCrossingCharacters",
+      "vaddr": "0x1e3f254"
+    },
+    {
+      "method": "Game.Level.LevelIDTogglerItemHandler.OnRemovedFromCharacter",
+      "vaddr": "0x1e4edc0"
+    },
+    {
+      "method": "Game.Level.LevelBabyMonitorScreenHandler.OnRemovedFromCharacter",
+      "vaddr": "0x1e50e04"
+    },
+    {
+      "method": "<CallCharacterCoroutine>d__5.MoveNext",
+      "vaddr": "0x1e567a4"
+    },
+    {
+      "method": "Game.Level.LevelDanceCarpet.remove_OnGameSetActiveAction",
+      "vaddr": "0x1e57868"
+    },
+    {
+      "method": "Game.Level.LevelEnsurePickupItemHandler.OnRemovedFromAvatar",
+      "vaddr": "0x1e58414"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForContainers.GetLocalPositionInCharacterBone",
+      "vaddr": "0x1e5ec5c"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForContainers.TryGetRotationAngle",
+      "vaddr": "0x1e5eca0"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForContainers..ctor",
+      "vaddr": "0x1e5ecd4"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForToggleable.get_IsOverriding",
+      "vaddr": "0x1e5ecdc"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForToggleable.Awake",
+      "vaddr": "0x1e5ed04"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForToggleable.OnDestroy",
+      "vaddr": "0x1e5eda0"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForToggleable.GetLocalPositionInCharacterBone",
+      "vaddr": "0x1e5ee7c"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForToggleable.TryGetRotationAngle",
+      "vaddr": "0x1e5f054"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForToggleable.OnToggled",
+      "vaddr": "0x1e5f090"
+    },
+    {
+      "method": "Game.Level.LevelItemInCharacterBoneTransformOverrideForToggleable..ctor",
+      "vaddr": "0x1e5f240"
+    },
+    {
+      "method": "Game.Level.LevelLifeguardBoueyItemHandler.OnRemovedFromAvatar",
+      "vaddr": "0x1e5f99c"
+    },
+    {
+      "method": "Game.Level.LevelValentinesRoseItemHandler.OnCARemovedFromCharacter",
+      "vaddr": "0x1e695c0"
+    },
+    {
+      "method": "Game.Level.LevelWeightAvatarIDHandler.remove_OnWeightUpdated",
+      "vaddr": "0x1e69ac4"
+    },
+    {
+      "method": "Game.Level.LevelSecretAvatarPutClothingsListener.OnRemoveClothing",
+      "vaddr": "0x1ec641c"
+    },
+    {
+      "method": "<GetAllAnimals>d__39.MoveNext",
+      "vaddr": "0x1ee4e20"
+    },
+    {
+      "method": "Game.Level.LevelSSSoccerballItemHandler.OnCARemovedFromCharacter",
+      "vaddr": "0x1eecaf4"
+    },
+    {
+      "method": "Game.Level.LevelAddCAOnAllCharactersHandlerByWeather.TryRemoveCaScriptFromAvatar",
+      "vaddr": "0x1efbfc0"
+    },
+    {
+      "method": "Game.Level.LevelAddCAOnAllCharactersHandlerByWeather.RemoveCAScriptFromAvatar",
+      "vaddr": "0x1efc668"
+    },
+    {
+      "method": "<>c__DisplayClass15_0.<TryRemoveCaScriptFromAvatar>b__0",
+      "vaddr": "0x1efcbdc"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATransformOptionsItemHandler.AllowReturnToIdleAnimationWhenRemovedFromTarget",
+      "vaddr": "0x1f27ea8"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAAnimalBowlItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x1f28524"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAPetInABoxDropAreaHandler.OnRemovedFromTarget",
+      "vaddr": "0x1f297a0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCABabyOnCharacterHandlerBase.OnRemovedFromCharacter",
+      "vaddr": "0x1f2e3d4"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCABabyOnCharacterHandlerBase.RemoveSkin",
+      "vaddr": "0x1f2e794"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACarrierBabyOnCharacterHandler.OnRemovedFromTarget",
+      "vaddr": "0x1f2f434"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACarrierBabyOnCharacterHandler.RemoveCarrierSkin",
+      "vaddr": "0x1f2f520"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCABabyBibSpineSkinHandler.AllowReturnToIdleAnimationWhenRemovedFromTarget",
+      "vaddr": "0x1f309e0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCABabyGlassesSpineSkinHandler.AllowReturnToIdleAnimationWhenRemovedFromTarget",
+      "vaddr": "0x1f30cd8"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCABabyHatSpineSkinHandler.AllowReturnToIdleAnimationWhenRemovedFromTarget",
+      "vaddr": "0x1f30fd0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerKidsRiderDropAreaHandler.OnRemovedFromTarget",
+      "vaddr": "0x1f61024"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACharacterBicycleItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x1f7b45c"
+    },
+    {
+      "method": "<TryColorOtherCharacters>d__8.MoveNext",
+      "vaddr": "0x1f91ff8"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAItemCharacterChangeHairHandler.OnRemovedFromTarget",
+      "vaddr": "0x1f970e0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAItemCharacterChangeSkinHandler.OnRemovedFromTarget",
+      "vaddr": "0x1f97fc4"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAItemCharacterChangeSkinHandler.RemoveOrRestoreSkin",
+      "vaddr": "0x1f984e4"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCALongBalloonAnimalShapingItemHandler.AllowReturnToIdleAnimationWhenRemovedFromTarget",
+      "vaddr": "0x1f9e338"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATemplatedItemCharacterChangeHairHandler.OnRemovedFromTarget",
+      "vaddr": "0x1fd78d8"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerBicycleItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x1fd8cdc"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATrainWhistleItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x1fdd40c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATrickOrTreatItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x1fddd4c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAUmbrellaItemHandler.OnRemovedFromAvatar",
+      "vaddr": "0x1fe0a4c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerRollerBladeItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x1fefc54"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCASnowSurfaceCharacterHandler.OnRemovedFromTarget",
+      "vaddr": "0x1ff489c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAWalkwayCharacterHandler.GetAnimations",
+      "vaddr": "0x1ff67c0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAWalkwayCharacterHandler.TryOverrideMainThumb",
+      "vaddr": "0x1ff67c8"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAWalkwayCharacterHandler.IsValidForTarget",
+      "vaddr": "0x1ff6874"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAWalkwayCharacterHandler.GetFolderName",
+      "vaddr": "0x1ff687c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAWalkwayCharacterHandler.GetSpineType",
+      "vaddr": "0x1ff68bc"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAWalkwayCharacterHandler..ctor",
+      "vaddr": "0x1ff68c4"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.ICarrierNotifiable.NotifyAvatarRemoved",
+      "vaddr": null
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACarrierSpineSkinHandler.NotifyAvatarRemoved",
+      "vaddr": "0x2005134"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACharacterCarrierSpineSkinHandler.NotifyAvatarRemoved",
+      "vaddr": "0x20069a0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACharacterCarrierSpineSkinHandler.OnRemovedFromTarget",
+      "vaddr": "0x20069f4"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAChickenOnCharacterHandler.OnRemovedFromTarget",
+      "vaddr": "0x201a8e8"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACarrierDogOnCharacterHandler.OnRemovedFromTarget",
+      "vaddr": "0x201c4c4"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACarrierDogOnCharacterHandler.RemoveCarrierSkin",
+      "vaddr": "0x201c5b0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATechCatHandler.OnRemovedFromTarget",
+      "vaddr": "0x202edf0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATechDogHandler.OnRemovedFromTarget",
+      "vaddr": "0x202f9ec"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATechRobotHandler.OnRemovedFromTarget",
+      "vaddr": "0x2030590"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerFavoritePlushieItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x203a948"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.Awake",
+      "vaddr": "0x203d1a0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.GetAnimations",
+      "vaddr": "0x203d24c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.GetLockedAnimationName",
+      "vaddr": "0x203d2dc"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.OnAddedToTarget",
+      "vaddr": "0x203d42c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.ShouldRegisterToEventSystemTargetEvents",
+      "vaddr": "0x203d538"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.OnTargetBeginDrag",
+      "vaddr": "0x203d540"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.OnTargetEndDrag",
+      "vaddr": "0x203d63c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.OnAnimationBegin",
+      "vaddr": "0x203d71c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x203d764"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.OnAnimationEnd",
+      "vaddr": "0x203d788"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.TryOverrideMainThumb",
+      "vaddr": "0x203d940"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.GetFolderName",
+      "vaddr": "0x203d9ec"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.GetSpineType",
+      "vaddr": "0x203dae0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler.GetBoneName",
+      "vaddr": "0x203dae8"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerWalkerItemHandler..ctor",
+      "vaddr": "0x203db28"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACarrierToddlerOnCharacterHandler.OnRemovedFromTarget",
+      "vaddr": "0x203ee3c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCACarrierToddlerOnCharacterHandler.RemoveCarrierSkin",
+      "vaddr": "0x203ef28"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAPetOnToddlerHandlerBase.remove_OnPetGivenToToddlerStatic",
+      "vaddr": "0x2040ec8"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAPetOnToddlerHandlerBase.OnRemovedFromToddler",
+      "vaddr": "0x20416ec"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCASnowSurfaceToddlerHandler.OnRemovedFromTarget",
+      "vaddr": "0x20431c8"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerOnCharacterHandlerBase.OnRemovedFromCharacter",
+      "vaddr": "0x2045ed0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerOnCharacterHandlerBase.RemoveSkin",
+      "vaddr": "0x2046220"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerInflatableTubeSitAreaHandler.RemoveParticles",
+      "vaddr": "0x20483c4"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerBackSpineSkinHandler.AllowReturnToIdleAnimationWhenRemovedFromTarget",
+      "vaddr": "0x204a710"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerPilotHatClothingSpineSkinHandler.OnRemovedFromTarget",
+      "vaddr": "0x204b01c"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerShoesSpineSkinHandler.AllowReturnToIdleAnimationWhenRemovedFromTarget",
+      "vaddr": "0x204b4d0"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCAToddlerSocksSpineSkinHandler.AllowReturnToIdleAnimationWhenRemovedFromTarget",
+      "vaddr": "0x204ba48"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATennisballItemHandler.remove_OnServeAction",
+      "vaddr": "0x204cdec"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATennisballItemHandler.remove_OnOpponentServeAction",
+      "vaddr": "0x204cf88"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATennisballItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x204da84"
+    },
+    {
+      "method": "Game.Level.ContextualAnimation.LevelCATennisBallWithDogItemHandler.remove_OnCatchAction",
+      "vaddr": "0x204fb54"
+    },
+    {
+      "method": "PWC.Multiplayer.MPDataHelper_MoveAvatar.TrySendEvent",
+      "vaddr": "0x20bd4b4"
+    },
+    {
+      "method": "PWC.Multiplayer.MPDataHelper_MoveAvatar.HandleData",
+      "vaddr": "0x20bd630"
+    },
+    {
+      "method": "PWC.Multiplayer.MPDataHelper_MoveAvatar.SpawnAvatar",
+      "vaddr": "0x20bd744"
+    },
+    {
+      "method": "PWC.Multiplayer.MPDataHelper_MoveAvatarRequest.TrySendEvent",
+      "vaddr": "0x20bd85c"
+    },
+    {
+      "method": "PWC.Multiplayer.MPDataHelper_MoveAvatarRequest.HandleData",
+      "vaddr": "0x20bd934"
+    },
+    {
+      "method": "PWC.Multiplayer.MPDataHelper_RemoveAvatar.TrySendEvent",
+      "vaddr": "0x20be86c"
+    },
+    {
+      "method": "PWC.Multiplayer.MPDataHelper_RemoveAvatar.HandleData",
+      "vaddr": "0x20be95c"
+    },
+    {
+      "method": "PWC.Multiplayer.MPManager.AddWaitToMoveAvatar",
+      "vaddr": "0x20d534c"
+    },
+    {
+      "method": "PWC.Multiplayer.MPManager.SetMoveAvatarData",
+      "vaddr": "0x20d54f8"
+    },
+    {
+      "method": "PWC.Multiplayer.MPMoveAvatarCollectedData..ctor",
+      "vaddr": "0x20d5414"
+    },
+    {
+      "method": "PWC.Multiplayer.MPMoveAvatarRequestsHandler..ctor",
+      "vaddr": "0x20d27e4"
+    },
+    {
+      "method": "PWC.Multiplayer.MPMoveAvatarRequestsHandler.Add",
+      "vaddr": "0x20d541c"
+    },
+    {
+      "method": "PWC.Multiplayer.MPMoveAvatarRequestsHandler.SetMoveAvatarData",
+      "vaddr": "0x20d5510"
+    },
+    {
+      "method": "PWC.Multiplayer.MPMoveAvatarRequestsHandler.HandleMoveAvatarRequest",
+      "vaddr": "0x20d99c8"
+    },
+    {
+      "method": "<>c__DisplayClass6_0.<SetMoveAvatarData>b__0",
+      "vaddr": "0x20d9a64"
+    },
+    {
+      "method": "<HandleMoveAvatarRequest>d__7..ctor",
+      "vaddr": "0x20d9a3c"
+    },
+    {
+      "method": "<HandleMoveAvatarRequest>d__7.System.IDisposable.Dispose",
+      "vaddr": "0x20d9a88"
+    },
+    {
+      "method": "<HandleMoveAvatarRequest>d__7.MoveNext",
+      "vaddr": "0x20d9a8c"
+    },
+    {
+      "method": "<HandleMoveAvatarRequest>d__7.System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+      "vaddr": "0x20d9e94"
+    },
+    {
+      "method": "<HandleMoveAvatarRequest>d__7.System.Collections.IEnumerator.Reset",
+      "vaddr": "0x20d9e9c"
+    },
+    {
+      "method": "<HandleMoveAvatarRequest>d__7.System.Collections.IEnumerator.get_Current",
+      "vaddr": "0x20d9ed4"
+    },
+    {
+      "method": "PWC.Multiplayer.DataTypes.MPData_MoveAvatar.ShouldHostHanldeData",
+      "vaddr": "0x20fd27c"
+    },
+    {
+      "method": "PWC.Multiplayer.DataTypes.MPData_MoveAvatar.HandleReceviedData",
+      "vaddr": "0x20fd284"
+    },
+    {
+      "method": "PWC.Multiplayer.DataTypes.MPData_MoveAvatar..ctor",
+      "vaddr": "0x20fd28c"
+    },
+    {
+      "method": "PWC.Multiplayer.DataTypes.MPData_MoveAvatarRequest.HandleReceviedData",
+      "vaddr": "0x20fd294"
+    },
+    {
+      "method": "PWC.Multiplayer.DataTypes.MPData_MoveAvatarRequest..ctor",
+      "vaddr": "0x20fd29c"
+    },
+    {
+      "method": "PWC.Multiplayer.DataTypes.MPData_RemoveAvatar.HandleReceviedData",
+      "vaddr": "0x20fd2cc"
+    },
+    {
+      "method": "PWC.Multiplayer.DataTypes.MPData_RemoveAvatar..ctor",
+      "vaddr": "0x20fd2d4"
+    },
+    {
+      "method": "PWC.LevelPhone.PhoneBody.remove_OnCharacterConsumedAction",
+      "vaddr": "0x2116438"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.RemoveFaultyIDsIfNeeded",
+      "vaddr": "0x216c568"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.HandleMakerExcludedRemovedSkin",
+      "vaddr": "0x21712c8"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineDataManager.Multiplayer_RemovePlayer",
+      "vaddr": "0x2171e60"
+    },
+    {
+      "method": "PWC.AvatarSpine.MakerExcludedRestoreData.Remove",
+      "vaddr": "0x217333c"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineMaterialsManager.RemoveSkinImplement",
+      "vaddr": "0x2175cc8"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineMaterialsManager.SUTRemoveSkinsImplement",
+      "vaddr": "0x2176368"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineSkinsManagerBase.remove_OnAddSkinStaticAction",
+      "vaddr": "0x2189da8"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineSkinsManagerBase.add_OnRemoveSkinStaticAction",
+      "vaddr": "0x2189e74"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineSkinsManagerBase.remove_OnRemoveSkinStaticAction",
+      "vaddr": "0x2189f44"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineSkinsManagerBase.remove_OnColorSkinStaticAction",
+      "vaddr": "0x218a0e4"
+    },
+    {
+      "method": "PWC.AvatarSpine.AvatarSpineSkinsManagerBase.RemoveSkin",
+      "vaddr": "0x218bb90"
+    },
+    {
+      "method": "PWC.AvatarSpine.AWSpineSkinsManagerBase.RemoveSkin",
+      "vaddr": "0x218bc50"
+    },
+    {
+      "method": "PWC.AvatarSpine.AWSpineSkinsManagerBase.RemoveAllSkins",
+      "vaddr": "0x218d128"
+    },
+    {
+      "method": "PWC.AvatarSpine.AWSpineSkinsManagerBase.PreRemoveSkinInternal",
+      "vaddr": null
+    },
+    {
+      "method": "PWC.AvatarSpine.AWSpineSkinsManagerBase.RemoveSkinInternal",
+      "vaddr": null
+    },
+    {
+      "method": "PWC.AvatarSpine.AWSpineSkinsManagerBase.RemoveSkinChainEvent",
+      "vaddr": null
+    },
+    {
+      "method": "PWC.AvatarSpine.AWSpineSkinsManagerBase.PostRemoveSkinInternal",
+      "vaddr": null
+    },
+    {
+      "method": "PWC.AvatarSpine.AWSpineSkinsManagerBase.<RemoveAllSkins>b__31_0",
+      "vaddr": "0x218d3d4"
+    },
+    {
+      "method": "PWC.AvatarSpine.BabySpineSkinsManager.PreRemoveSkinInternal",
+      "vaddr": "0x218d5fc"
+    },
+    {
+      "method": "PWC.AvatarSpine.BabySpineSkinsManager.RemoveSkinInternal",
+      "vaddr": "0x218d60c"
+    },
+    {
+      "method": "PWC.AvatarSpine.BabySpineSkinsManager.RemoveSkinChainEvent",
+      "vaddr": "0x218d6a4"
+    },
+    {
+      "method": "PWC.AvatarSpine.BabySpineSkinsManager.PostRemoveSkinInternal",
+      "vaddr": "0x218d6a8"
+    },
+    {
+      "method": "PWC.AvatarSpine.CatSpineSkinsManager.PreRemoveSkinInternal",
+      "vaddr": "0x218e218"
+    },
+    {
+      "method": "PWC.AvatarSpine.CatSpineSkinsManager.RemoveSkinInternal",
+      "vaddr": "0x218e228"
+    },
+    {
+      "method": "PWC.AvatarSpine.CatSpineSkinsManager.RemoveSkinChainEvent",
+      "vaddr": "0x218e22c"
+    },
+    {
+      "method": "PWC.AvatarSpine.CatSpineSkinsManager.PostRemoveSkinInternal",
+      "vaddr": "0x218e230"
+    },
+    {
+      "method": "PWC.AvatarSpine.CharacterSpineSkinsManager.PreRemoveSkinInternal",
+      "vaddr": "0x218e634"
+    },
+    {
+      "method": "PWC.AvatarSpine.CharacterSpineSkinsManager.RemoveSkinInternal",
+      "vaddr": "0x218e754"
+    },
+    {
+      "method": "PWC.AvatarSpine.CharacterSpineSkinsManager.RemoveSkinChainEvent",
+      "vaddr": "0x218e7ec"
+    },
+    {
+      "method": "PWC.AvatarSpine.CharacterSpineSkinsManager.PostRemoveSkinInternal",
+      "vaddr": "0x218ea04"
+    },
+    {
+      "method": "PWC.AvatarSpine.CharacterSpineSkinsManager.<RemoveSkinChainEvent>g__HasOnepiece|11_0",
+      "vaddr": "0x218e9c4"
+    },
+    {
+      "method": "PWC.AvatarSpine.CharacterSpineSkinsManager.<RemoveSkinChainEvent>g__HasShirt|11_1",
+      "vaddr": "0x218e924"
+    },
+    {
+      "method": "PWC.AvatarSpine.CharacterSpineSkinsManager.<RemoveSkinChainEvent>g__HasBottom|11_2",
+      "vaddr": "0x218e974"
+    },
+    {
+      "method": "PWC.AvatarSpine.DogSpineSkinsManager.PreRemoveSkinInternal",
+      "vaddr": "0x218fb6c"
+    },
+    {
+      "method": "PWC.AvatarSpine.DogSpineSkinsManager.RemoveSkinInternal",
+      "vaddr": "0x218fb78"
+    },
+    {
+      "method": "PWC.AvatarSpine.DogSpineSkinsManager.RemoveSkinChainEvent",
+      "vaddr": "0x218fb7c"
+    },
+    {
+      "method": "PWC.AvatarSpine.DogSpineSkinsManager.PostRemoveSkinInternal",
+      "vaddr": "0x218fb80"
+    },
+    {
+      "method": "PWC.AvatarSpine.HorseSpineSkinsManager.PreRemoveSkinInternal",
+      "vaddr": "0x2190770"
+    },
+    {
+      "method": "PWC.AvatarSpine.HorseSpineSkinsManager.RemoveSkinInternal",
+      "vaddr": "0x2190784"
+    },
+    {
+      "method": "PWC.AvatarSpine.HorseSpineSkinsManager.RemoveSkinChainEvent",
+      "vaddr": "0x2190788"
+    },
+    {
+      "method": "PWC.AvatarSpine.HorseSpineSkinsManager.PostRemoveSkinInternal",
+      "vaddr": "0x219078c"
+    },
+    {
+      "method": "PWC.AvatarSpine.ToddlerSpineSkinsManager.PreRemoveSkinInternal",
+      "vaddr": "0x2190d64"
+    },
+    {
+      "method": "PWC.AvatarSpine.ToddlerSpineSkinsManager.RemoveSkinInternal",
+      "vaddr": "0x2190d70"
+    },
+    {
+      "method": "PWC.AvatarSpine.ToddlerSpineSkinsManager.RemoveSkinChainEvent",
+      "vaddr": "0x2190e08"
+    },
+    {
+      "method": "PWC.AvatarSpine.ToddlerSpineSkinsManager.PostRemoveSkinInternal",
+      "vaddr": "0x2190ed0"
+    },
+    {
+      "method": "PWC.AvatarPassChange.AvatarPassChangeWindow.remove_OnAcceptdAction",
+      "vaddr": "0x2196624"
+    },
+    {
+      "method": "PWC.AvatarMakerLobby.AvatarMakerLobbyEmptySlot.remove_OnEmptySlotClickAction",
+      "vaddr": "0x2197964"
+    },
+    {
+      "method": "PWC.AvatarMakerLobby.AvatarMakerLobbyFilledSlot.remove_OnFilledSlotClickAction",
+      "vaddr": "0x2198108"
+    },
+    {
+      "method": "PWC.AvatarMakerLobby.AvatarMakerLobbyManager.MoveToScrollPoint",
+      "vaddr": "0x219a7f4"
+    },
+    {
+      "method": "PWC.AvatarMaker.MakerExecuteRestoreTemplateAction.HandleRemovedSkin",
+      "vaddr": "0x21a6054"
+    },
+    {
+      "method": "PWC.AvatarMaker.AvatarMakerCategory.remove_OnCategoryButtonClickAction",
+      "vaddr": "0x21ad4b4"
+    },
+    {
+      "method": "PWC.AvatarMaker.AvatarMakerColorThumb.remove_OnColorThumbClickAction",
+      "vaddr": "0x21be4b0"
+    },
+    {
+      "method": "PWC.AvatarMaker.AvatarMakerMenuSpecialInteractionsManagerBase.remove_OnSpecialInteractionPerformedAction",
+      "vaddr": "0x21c2c58"
+    },
+    {
+      "method": "PWC.AvatarMaker.AvatarMakerThumb.remove_OnThumbClickAction",
+      "vaddr": "0x21c5670"
+    },
+    {
+      "method": "PWC.AvatarMaker.AvatarMakerThumb.remove_OnDeleteAction",
+      "vaddr": "0x21c580c"
+    },
+    {
+      "method": "<ClickOnRandomCharacterContactButton>d__12.MoveNext",
+      "vaddr": "0x21f2d44"
+    },
+    {
+      "method": "<DragCharacterToClosestDropArea>d__28.MoveNext",
+      "vaddr": "0x21f3db0"
+    },
+    {
+      "method": "<DragCharacterToClosestRestArea>d__17.MoveNext",
+      "vaddr": "0x21f3fd8"
+    },
+    {
+      "method": "<DragCharacterToSitArea>d__44.MoveNext",
+      "vaddr": "0x21f42d0"
+    },
+    {
+      "method": "<DragCharacterToSleepArea>d__46.MoveNext",
+      "vaddr": "0x21f44a8"
+    },
+    {
+      "method": "<DragRandomCharacterFromPhone>d__13.MoveNext",
+      "vaddr": "0x21f4dc0"
+    },
+    {
+      "method": "<PutItemInCharacterHand>d__35.MoveNext",
+      "vaddr": "0x21f8590"
+    },
+    {
+      "method": "<PutItemsInCharactersHandsAndPlayCAAnimations>d__33.MoveNext",
+      "vaddr": "0x21f87f8"
+    },
+    {
+      "method": "<PutRandomItemInCharacterHand>d__34.MoveNext",
+      "vaddr": "0x21f8d84"
+    },
+    {
+      "method": "<PutRandomItemWithCAInCharacterHand>d__32.MoveNext",
+      "vaddr": "0x21f8ed4"
+    },
+    {
+      "method": "PWC.Level.LevelCATemplatedItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x224bac8"
+    },
+    {
+      "method": "PWC.Level.LevelRollerBladesItemHandler.MoveCharacterCShapeToSkateboard",
+      "vaddr": "0x2250fe0"
+    },
+    {
+      "method": "PWC.Level.LevelToddlerCarItemHandler.RemoveRampDropAreaCA",
+      "vaddr": "0x225536c"
+    },
+    {
+      "method": "PWC.Level.LevelActionOnAnimationDropAreaHandler.RemoveListenerOfAvatar",
+      "vaddr": "0x2258c20"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.remove_OnSpineEventAction",
+      "vaddr": "0x22645c4"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.remove_OnStepContact",
+      "vaddr": "0x226472c"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.GetCameraMovementSpeedFactor",
+      "vaddr": "0x2265108"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.GetCameraMovementThreshold",
+      "vaddr": "0x2265128"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.HasWalkingAnimations",
+      "vaddr": "0x2265b18"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.OnBeginMovement",
+      "vaddr": "0x2264cf4"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.OnEndMovement",
+      "vaddr": "0x2265d7c"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.OnMovement",
+      "vaddr": "0x2265194"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.GetWalkingAnimationName",
+      "vaddr": "0x2266e08"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.OnCARemoved",
+      "vaddr": "0x2266f84"
+    },
+    {
+      "method": "PWC.Level.LevelAnimal.<OnMovement>b__88_0",
+      "vaddr": "0x2267430"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarRestAreaBase.remove_OnAvatarBeginDropAction",
+      "vaddr": "0x2263d6c"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarRestAreaBase.remove_OnAvatarEndDropAction",
+      "vaddr": "0x226afa8"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarRestAreaBase.remove_OnAvatarPickUpAction",
+      "vaddr": "0x2263e1c"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarRestAreaBase.remove_OnItemsHolderItemEndDropAction",
+      "vaddr": "0x226b108"
+    },
+    {
+      "method": "PWC.Level.LevelDropArea.remove_OverrideCharacterEndDropAnimationAction",
+      "vaddr": "0x227df8c"
+    },
+    {
+      "method": "PWC.Level.ILevelAvatar.remove_OnSpineEventAction",
+      "vaddr": null
+    },
+    {
+      "method": "PWC.Level.ILevelAvatar.FollowBone",
+      "vaddr": "0x228f6e4"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarExtensionMethods.RemoveClothingMissingInUserInventory",
+      "vaddr": "0x228fdcc"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingAreaBase.OnRemoveClothing",
+      "vaddr": "0x22918e4"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingHandler.remove_OnPutClothingAction",
+      "vaddr": "0x2291128"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingHandler.add_OnRemoveClothingAction",
+      "vaddr": "0x22916f4"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingHandler.remove_OnRemoveClothingAction",
+      "vaddr": "0x22911d8"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingHandler.remove_OnCurrentSkinsSyncedAction",
+      "vaddr": "0x229108c"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingHandler.remove_OnPutClothingStaticAction",
+      "vaddr": "0x2292774"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingHandler.add_OnRemoveClothingStaticAction",
+      "vaddr": "0x2292840"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingHandler.remove_OnRemoveClothingStaticAction",
+      "vaddr": "0x2292910"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingHandler.TryRemoveSkinAndThrowClothingItem",
+      "vaddr": "0x22930b8"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarClothingHandler.TryRemoveSkinAndThrowClothingItem",
+      "vaddr": "0x22930e0"
+    },
+    {
+      "method": "PWC.Level.LevelAvatarData.Multiplayer_RemovePlayer",
+      "vaddr": "0x22982e0"
+    },
+    {
+      "method": "PWC.Level.LevelBaby.remove_OnBeginDropOnRestAreaAction",
+      "vaddr": "0x229adf0"
+    },
+    {
+      "method": "PWC.Level.LevelBaby.remove_OnEndDropOnRestAreaAction",
+      "vaddr": "0x229af58"
+    },
+    {
+      "method": "PWC.Level.LevelBaby.remove_OnSpineEventAction",
+      "vaddr": "0x229b0f0"
+    },
+    {
+      "method": "PWC.Level.LevelBaby.OnCARemoved",
+      "vaddr": "0x229d1ac"
+    },
+    {
+      "method": "PWC.Level.LevelCharacter.remove_OnBeginDropOnRestAreaAction",
+      "vaddr": "0x229e45c"
+    },
+    {
+      "method": "PWC.Level.LevelCharacter.remove_OnEndDropOnRestAreaAction",
+      "vaddr": "0x229e5c4"
+    },
+    {
+      "method": "PWC.Level.LevelCharacter.remove_OnSpineEventAction",
+      "vaddr": "0x229e7a0"
+    },
+    {
+      "method": "PWC.Level.LevelCharacter.GetCameraMovementSpeedFactor",
+      "vaddr": "0x22a1e14"
+    },
+    {
+      "method": "PWC.Level.LevelCharacter.GetCameraMovementThreshold",
+      "vaddr": "0x22a1e48"
+    },
+    {
+      "method": "PWC.Level.LevelCharacter.OnCARemoved",
+      "vaddr": "0x22a4588"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterAnimator.remove_OverridePlayProperIdleAnimationAction",
+      "vaddr": "0x22a5978"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterAnimator.remove_OnStepContact",
+      "vaddr": "0x22a5ad8"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterAnimator.GetMovementType",
+      "vaddr": "0x22a5b88"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterAnimator.OnBeginMovement",
+      "vaddr": "0x22a1150"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterAnimator.UpdateMovementOverrideHandler",
+      "vaddr": "0x22a5c10"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterAnimator.OnMovement",
+      "vaddr": "0x22a1570"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterAnimator.OnEndMovement",
+      "vaddr": "0x22a1fe0"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterAnimator.<UpdateMovementOverrideHandler>g__GetHeldItem|26_0",
+      "vaddr": "0x22a5cbc"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterAnimator.<OnMovement>b__27_0",
+      "vaddr": "0x22a66b4"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterInteractionHandler.remove_OnPutItemInBoneAction",
+      "vaddr": "0x22a6998"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterInteractionHandler.GetHandBoneFollower",
+      "vaddr": "0x22a6c1c"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterInteractionHandler.TryGetBoneFollower",
+      "vaddr": "0x22a6d20"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterInteractionHandler.FollowBone",
+      "vaddr": "0x22a88b0"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterMovementOverrideHandler.get_MovementCyclesWalkOverride",
+      "vaddr": "0x22a95a8"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterMovementOverrideHandler.set_MovementCyclesWalkOverride",
+      "vaddr": "0x22a95b0"
+    },
+    {
+      "method": "PWC.Level.LevelCharacterMovementOverrideHandler..ctor",
+      "vaddr": "0x22a95b4"
+    },
+    {
+      "method": "PWC.Level.LevelCharactersRandomizer.remove_OnCharactersChangedAction",
+      "vaddr": "0x22a966c"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.get_Point",
+      "vaddr": "0x22df5d4"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.set_Point",
+      "vaddr": "0x22df5dc"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.Awake",
+      "vaddr": "0x22df5e4"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.OnDestroy",
+      "vaddr": "0x22df6cc"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.Init",
+      "vaddr": "0x22df7b4"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.GetLocalPositionInCharacterBone",
+      "vaddr": "0x22df9ac"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.TryGetRotationAngle",
+      "vaddr": "0x22dfa9c"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.OnLevelPostInit",
+      "vaddr": "0x22dfac0"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.PWC.Level.ILevelSpawnDuringGameplay.OnSpawnDuringGameplay",
+      "vaddr": "0x22dfac4"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.SetPoint",
+      "vaddr": "0x22dfac8"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride.SetOverrideAngle",
+      "vaddr": "0x22dfad0"
+    },
+    {
+      "method": "PWC.Level.LevelItemInCharacterBoneTransformOverride..ctor",
+      "vaddr": "0x22dfad8"
+    },
+    {
+      "method": "PWC.Level.LevelMakeupRemoverItemHandler.GetAreaTypeToCheck",
+      "vaddr": "0x22e29d0"
+    },
+    {
+      "method": "PWC.Level.LevelItem.remove_TryDropInteractionWithCharacterAction",
+      "vaddr": "0x22e2334"
+    },
+    {
+      "method": "PWC.Level.LevelItem.remove_CanPutInCharacterHandAction",
+      "vaddr": "0x22f9084"
+    },
+    {
+      "method": "PWC.Level.LevelItem.remove_OnBeforePlacedOnAvatarAction",
+      "vaddr": "0x22f91d8"
+    },
+    {
+      "method": "PWC.Level.LevelItem.remove_OnPlacedOnAvatarAction",
+      "vaddr": "0x22ee398"
+    },
+    {
+      "method": "PWC.Level.LevelItem.add_OnRemovedFromAvatarAction",
+      "vaddr": "0x22f928c"
+    },
+    {
+      "method": "PWC.Level.LevelItem.remove_OnRemovedFromAvatarAction",
+      "vaddr": "0x22f9340"
+    },
+    {
+      "method": "PWC.Level.LevelItem.remove_SnapItemToAvatarAction",
+      "vaddr": "0x22f98e0"
+    },
+    {
+      "method": "PWC.Level.LevelItem.OnRemovedFromAvatar",
+      "vaddr": "0x2300fc8"
+    },
+    {
+      "method": "PWC.Level.LevelScreenCaptureItemHandler.OnRemovedFromCharacter",
+      "vaddr": "0x23188fc"
+    },
+    {
+      "method": "PWC.Level.LevelUtils.remove_OnAfterAvatarSpawnAction",
+      "vaddr": "0x23307d0"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.remove_OnBeginDropOnRestAreaAction",
+      "vaddr": "0x233d7a8"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.remove_OnEndDropOnRestAreaAction",
+      "vaddr": "0x233d910"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.remove_OnSpineEventAction",
+      "vaddr": "0x233daa8"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.remove_OnIsHeldByCharacterChangedStatic",
+      "vaddr": "0x233dc74"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.remove_OnStepContact",
+      "vaddr": "0x233de90"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.OnBeginMovement",
+      "vaddr": "0x233f288"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.OnMovement",
+      "vaddr": "0x233f910"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.OnEndMovement",
+      "vaddr": "0x233f6f4"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.GetCameraMovementThreshold",
+      "vaddr": "0x23401a0"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.GetCameraMovementSpeedFactor",
+      "vaddr": "0x23401bc"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.PWC.Level.ContextualAnimation.ICATarget.OnCARemoved",
+      "vaddr": "0x2342178"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.RemoveCAHAndlersFromHandItemIfNeeded",
+      "vaddr": "0x2343400"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.remove_OnPostureTypeChangedStatic",
+      "vaddr": "0x2343a4c"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.GetMovementType",
+      "vaddr": "0x2343b1c"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.OnCARemoved",
+      "vaddr": "0x2343b24"
+    },
+    {
+      "method": "PWC.Level.LevelToddler.<OnMovement>b__109_0",
+      "vaddr": "0x23442d4"
+    },
+    {
+      "method": "PWC.Level.LevelUIScrollCharacterItem.remove_OnCharacterSpawnOnDragAction",
+      "vaddr": "0x23454f8"
+    },
+    {
+      "method": "PWC.Level.LevelUIScrollCharacterItem.remove_OnSyncAvatarPhoneStateAction",
+      "vaddr": "0x234566c"
+    },
+    {
+      "method": "PWC.Level.LevelUIScrollCharacterItem.remove_OnCharacterPreConsumedAction",
+      "vaddr": "0x23457f8"
+    },
+    {
+      "method": "PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler.OnRemovedFromTarget",
+      "vaddr": "0x239cb58"
+    },
+    {
+      "method": "PWC.Level.ContextualAnimation.LevelCAToddlerItemCraftingHandlerBase.OnRemovedFromTarget",
+      "vaddr": "0x239e604"
+    },
+    {
+      "method": "PWC.Level.ContextualAnimation.LevelCAPairAnimalNearCharacterHandlerBase.OnRemovedFromTarget",
+      "vaddr": "0x23a52c0"
+    },
+    {
+      "method": "PWC.Level.ContextualAnimation.LevelCAPairAnimalNearDogHandlerBase.OnRemovedFromTarget",
+      "vaddr": "0x23a5d14"
+    },
+    {
+      "method": "PWC.Level.ContextualAnimation.LevelCAPetOnCharacterHandlerBase.remove_OnPetGivenToAvatarStatic",
+      "vaddr": "0x23a69b0"
+    },
+    {
+      "method": "PWC.Level.ContextualAnimation.LevelCAPetOnCharacterHandlerBase.OnRemovedFromCharacter",
+      "vaddr": "0x23a6da4"
+    },
+    {
+      "method": "PWC.Level.ContextualAnimation.LevelCAPetOnCharacterHandlerBase.OnRemovedFromTarget",
+      "vaddr": "0x23a7008"
+    },
+    {
+      "method": "PWC.Level.ContextualAnimation.LevelCAPetOnCharacterHandlerBase.RemoveSkin",
+      "vaddr": "0x23a7294"
+    }
+  ],
+  "other_movement_types": [
+    "<Start>d__32",
+    "<StartAnimations>d__34",
+    "<ThrowDogBall>d__11",
+    "<ThrowFrisbee>d__12",
+    "LevelCAMakeupConcealerItemHandler",
+    "LevelCAGlassesSpineSkinHandler",
+    "LevelCAHatSpineSkinHandler",
+    "LevelCAJacketSpineSkinHandler",
+    "LevelCAMaskSpineSkinHandler",
+    "TiledPolygonRenderer",
+    "LevelCountItemsInDropAreaInMakerItemsByGUID",
+    "LevelSkinDataDropAreaHandler",
+    "<timeoutCheck>d__2",
+    "LeanTween",
+    "<>c__DisplayClass193_0",
+    "<>c__DisplayClass194_0",
+    "<>c__DisplayClass195_0",
+    "<>c__DisplayClass196_0",
+    "LeanTweenExt",
+    "LTDescr",
+    "ListBox",
+    "ListPositionCtrl",
+    "IMovementCtrl",
+    "FreeMovementCtrl",
+    "UnitMovementCtrl",
+    "VelocityMovement",
+    "DistanceMovement",
+    "iTween",
+    "<Start>d__229",
+    "<TweenDelay>d__145",
+    "<TweenRestart>d__147",
+    "MoveSample",
+    "ArabicFixerTool",
+    "<readInfo>d__188",
+    "LevelCASkinRemoverByCategory",
+    "LevelLockPositionItemHandler",
+    "<FollowCoroutine>d__10",
+    "LevelChairLift",
+    "<>c__DisplayClass16_0",
+    "LevelMultiPositionSlider",
+    "<>c__DisplayClass9_0",
+    "<CleanupDemoLobbyAsync>d__5",
+    "<ExecuteLobbyDemoAsync>d__6",
+    "<GetPlayerFromAnonymousLoginAsync>d__7",
+    "<Start>d__4",
+    "<Enumerate>d__10",
+    "Poly2Tri.Utility.Point2DList",
+    "Poly2Tri.Triangulation.Sets.PointSet",
+    "Poly2Tri.Triangulation.Polygon.Contour",
+    "Poly2Tri.Triangulation.Polygon.Polygon",
+    "Poly2Tri.Triangulation.Polygon.SplitComplexPolygonNode",
+    "Poly2Tri.Triangulation.Delaunay.Sweep.DTSweepContext",
+    "ClipperLib.ClipperBase",
+    "CShapes.CShape",
+    "CShapes.CShapeRaycaster",
+    "<DoUntilTask>d__16",
+    "<DoWhileTask>d__15",
+    "<ForEachTask>d__18`1",
+    "<ForEachTaskNonLinear>d__19`1",
+    "<Task>d__13",
+    "<Task>d__14",
+    "<WatchTask>d__17",
+    "<UpdateDistanceDelay>d__3",
+    "SimpleUI.ScrollExtensions.EasedScrollRectMover",
+    "<>c__DisplayClass14_0",
+    "<>c__DisplayClass15_0",
+    "SimpleUI.ScrollExtensions.ScrollFocusController",
+    "<>c__DisplayClass28_0",
+    "SimpleUI.ScrollExtensions.ScrollPoint",
+    "SimpleEasing.ExtensionMethods",
+    "<>c__DisplayClass0_0",
+    "<>c__DisplayClass2_0",
+    "<Animate>d__3",
+    "<Chain>d__4",
+    "RotaryHeart.Lib.SerializableDictionary.SerializableDictionaryBase`2",
+    "PazuCore.FullGamePackButton",
+    "<Init>d__19",
+    "PazuCore.MoreGamesButton",
+    "<Init>d__16",
+    "<LoadIcon>d__17",
+    "<Start>d__15",
+    "PazuCore.FlagCubeController",
+    "PazuCore.AndroidFileManager",
+    "<GetTexture2DAsync>d__22",
+    "<SaveTextureBytesAsync>d__24",
+    "<Start>d__14",
+    "<DownloadData>d__15",
+    "<DownloadOrLoadTextures>d__18",
+    "<DownloadTexture>d__19",
+    "<OnBlackFridayProductAvailableInternal>d__17",
+    "PazuCore.CompanySplashManager",
+    "<TransitAfterAnimationEnd>d__8",
+    "PazuCore.FileManager",
+    "<SaveSharedTextureAsync>d__38",
+    "<TryLoadAudioClipInternal>d__64",
+    "<TryLoadSharedAudioClip>d__56",
+    "<TryLoadSharedTextureAsyncInternal>d__50",
+    "PazuCore.IOSPazuAPI",
+    "PazuCore.Loader",
+    "PazuCore.PazuUnityPurchaser",
+    "<RestoreAllProducts>d__40",
+    "<Start>d__19",
+    "PazuCore.Purchaser",
+    "PazuCore.RemoteAssetsManager",
+    "<DownloadRequestsInQueue>d__22",
+    "<WaitForAsset>d__35",
+    "PazuCore.ScreenLoader",
+    "<StartNoneAnimation>d__22",
+    "<StartSlideAnimation>d__23",
+    "PazuCore.ScreenOrientationManager",
+    "<CheckForChange>d__32",
+    "<WaitForOrientationIfNeeded>d__38",
+    "PazuCore.SoundManager",
+    "PazuCore.UnityLifecycleListener",
+    "<Start>d__3",
+    "PazuCore.UniversalRectTransfromToScreen",
+    "PazuCore.UniversalRectTransfromToScreenLandscape",
+    "PazuCore.UniversalRectTransfromToScreenPortrait",
+    "<DownloadAudioClip>d__60",
+    "<DownloadAudioClipAndSave>d__59",
+    "<DownloadTexture>d__58",
+    "<DownloadTextureAndSave>d__51",
+    "<ExecuteAfterEndOfFrameCoroutine>d__40",
+    "<ExecuteNextFrameCoroutine>d__38",
+    "<ExecuteOnConditionCoroutine>d__30",
+    "<RateAppDirect>d__42",
+    "<SetRealTimeTimerCoroutine>d__36",
+    "<SetSecondsTickTimer>d__32",
+    "<SetTimerCoroutine>d__34",
+    "<TryLoadGameplaySceneInternal>d__110",
+    "<PlayCatIdleAnimation>d__8",
+    "PazuCore.ParentalGateDate",
+    "<WindowCloseAnim>d__8",
+    "PazuCore.RateUs",
+    "PazuCore.Window",
+    "<GetGameModeIfPossible>d__34",
+    "<Start>d__22",
+    "<Start>d__8",
+    "<AutoScroll>d__17",
+    "<WaitForInit>d__16",
+    "PazuCore.DeepLink.DeepLinkManager",
+    "<WaitForKeychainReady>d__19",
+    "PazuCore.Analytics.Context",
+    "<Start>d__27",
+    "<TrackAlive>d__4",
+    "PazuCore.Analytics.Internal.EventQueueManager",
+    "<LoadNextBatch>d__32",
+    "PazuCore.PazuCloud.PazuCloudGameDataManager",
+    "<RetryConsumeNotConsumedProducts>d__28",
+    "<SendGameDataCoroutine>d__24",
+    "PazuCore.PazuCloud.PazuCloudManager",
+    "<PrepareIntegrityToken>d__42",
+    "<SendRequest>d__75",
+    "<OfflineTimer>d__10",
+    "<Start>d__6",
+    "PazuCore.PazuCloud.User",
+    "PazuCore.PazuCloud.ClientMessage",
+    "<CheckDeviceInfo>d__6",
+    "<CheckDownload>d__7",
+    "<UpdateCloudIfNeeded>d__5",
+    "PazuCore.AF.TimeLimit.TimeLimitDataManager",
+    "<GetDeviceTime>d__39",
+    "<GetTimeLimitData>d__37",
+    "<OnTimeLimitReachedGameplay>d__53",
+    "<OnTimeLimitReachedNotGameplay>d__54",
+    "<Start>d__35",
+    "<Timer>d__52",
+    "<DestroyErrorMessageIfNeeded>d__8",
+    "<GetSuggestionsIfNeededCoroutine>d__25",
+    "<LoadCachedOrDefaultData>d__18",
+    "<ShowGameSuggestions>d__26",
+    "<Start>d__1",
+    "<InvisibleCheck>d__19",
+    "PazuCore.AF.Library.LibraryData",
+    "<>c__DisplayClass24_0",
+    "<DownloadEverythingIfNeeded>d__40",
+    "<DownloadJson>d__44",
+    "PazuCore.AF.Library.LibraryManager",
+    "<Start>d__54",
+    "<InvisibleCheck>d__23",
+    "<WaitForPreparationAndLoadScene>d__14",
+    "<DownloadDataFromServerIfNeeded>d__33",
+    "<DownloadJson>d__37",
+    "PazuCore.AF.Feed.FeedItemCTA",
+    "<InvisibleCheck>d__17",
+    "<Start>d__16",
+    "<UpdateFeedViewWhenFinishedGetNewData>d__18",
+    "PazuCore.AF.ActionBar.GameHomePlayButton",
+    "PazuCore.AF.ActionBar.LibraryButton",
+    "<PlayAnimation>d__8",
+    "PazuCore.PazuCoreAddressables.AddressablesManager",
+    "<DownloadDependenciesIfNeeded>d__38",
+    "<GetAddressablesData>d__35",
+    "<DownloadDependencies>d__1",
+    "<InstantiateAsync>d__6",
+    "<TryLoadAssetAsync>d__4",
+    "<UpdateCatalog>d__2",
+    "PazuCore.PazuCoreAddressables.AddressablesButton",
+    "PazuCore.PazuCoreAddressables.AddressablesParentalGateKeypadDeleteButton",
+    "PazuCore.PazuCoreAddressables.AddressablesParentalGateKeypadNumberButton",
+    "PazuCore.PazuCoreAddressables.AddressablesFeatureViewBase",
+    "PazuCore.PazuCoreAddressables.AFC.AFCItweenMoveToPositionByDrawingGraphics",
+    "PazuCore.PazuCoreAddressables.AFC.AFCItweenMoveToRandomPosition",
+    "<GetProductInfo>d__5",
+    "<PlayVideoCoroutine>d__13",
+    "PazuCore.PazuCoreAddressables.AFC.AFCAnalyticsContextRemover",
+    "PazuCore.PazuCoreAddressables.AFC.RD.AFCRDHandlerBase",
+    "<GetDataFromServer>d__16",
+    "<WaitForResponseData>d__5",
+    "<RotateCarouselLoop>d__32",
+    "StarsPass.StarsPassCarouselPackItem",
+    "StarsPass.StarsAnimationManager",
+    "<>c__DisplayClass23_0",
+    "StarsPass.StarsAnimationUtils",
+    "<>c__DisplayClass7_0",
+    "<>c__DisplayClass7_1",
+    "<MoveAllStarsToStarsPassBar>d__7",
+    "<SpawnStarsAndMoveToRandomPositions>d__5",
+    "StarsPass.StarsPassModel",
+    "StarsPass.StarsPassPacksWidgetsPanel",
+    "StarsPass.StarsPassPackWidget",
+    "StarsPass.StarsPassViewManager",
+    "<FinalizeInitCoroutine>d__38",
+    "<Start>d__36",
+    "<WaitUntilStoreReady>d__0",
+    "BWYW.SkillData",
+    "BWYW.BWYWMenuManager",
+    "<Init>d__67",
+    "<LevelUpCoroutine>d__31",
+    "<Init>d__20",
+    "<Start>d__10",
+    "<AnimateCoroutine>d__8",
+    "BWYW.BWYWSlotBase",
+    "Game.Store.CoinAnimationUtils",
+    "<>c__DisplayClass6_1",
+    "<>c__DisplayClass9_1",
+    "<MoveAllCoinsToEnd>d__9",
+    "<SpawnCoinsAndMoveToRandomPositions>d__6",
+    "<Start>d__2",
+    "<SyncAvailableInDurationTimer>d__11",
+    "<WaitForData>d__10",
+    "<Start>d__12",
+    "<Start>d__5",
+    "Game.Store.StoreData",
+    "<>c",
+    "Game.Store.StoreManager",
+    "<SpawnPackWhenPossible>d__75",
+    "<Start>d__56",
+    "Game.Store.StorePackItem",
+    "<SyncAvailableInDurationTimer>d__31",
+    "<LoadPrice>d__14",
+    "Game.Store.StorePackPrefabGenerator",
+    "<Start>d__33",
+    "<PlayItemsFlyingAway>d__0",
+    "Game.ScavengerHunt.Level.Treetop.SHTreetopManager",
+    "<DelayedStartFade>d__9",
+    "<OnWeatherChangeCoroutine>d__13",
+    "Game.World.WeatherManager",
+    "Game.Level.LevelStaticConditionsResolverWithCrosswalkVehicles",
+    "Game.Level.LevelTechBird",
+    "Game.Level.LevelTechCat",
+    "Game.Level.LevelTechDog",
+    "Game.Level.LevelTechRabbit",
+    "Game.Level.LevelTechRobot",
+    "<DestroyParticles>d__20",
+    "<OnRainIntensityChangeWithDelay>d__12",
+    "<OnRainIntensityChangeWithDelay>d__20",
+    "<CountdownRoutine>d__40",
+    "Game.Level.LevelOnVinylEnterMusicRecordPlayerHandler",
+    "Game.Level.LevelCAJetPackItemHandler",
+    "Game.Level.LevelRecipeRevertItemHandler",
+    "Game.Level.LevelShopPack",
+    "<DestroyPack>d__26",
+    "<DisableCShape>d__25",
+    "<ParticlesCoroutine>d__24",
+    "<PlayAlternateIdleAnimations>d__20",
+    "<HuntedSequenceCoroutine>d__10",
+    "<StartCounting>d__12",
+    "<DestroyPack>d__37",
+    "<ParticlesCoroutine>d__36",
+    "<PlayAlternateIdleAnimations>d__28",
+    "<DestroyPack>d__43",
+    "<ParticlesCoroutine>d__42",
+    "<PlayAlternateIdleAnimations>d__34",
+    "<SpawnScatter>d__39",
+    "Game.Level.LevelNailBrushDragItemHandler",
+    "<PaintRoutine>d__23",
+    "Game.Level.LevelProjector",
+    "<OnLandCoroutine>d__25",
+    "<OnLandCoroutine>d__13",
+    "Game.Level.LevelRoomba",
+    "Game.Level.LevelScreenCameraItem",
+    "<PlaySound>d__14",
+    "Game.Level.LevelBackgroundAirPlaneFar",
+    "<>c__DisplayClass8_0",
+    "Game.Level.LevelBackgroundAirPlaneNear",
+    "Game.Level.LevelBarbershopMachineSkinsManager",
+    "Game.Level.LevelClothingMannequinSecret",
+    "Game.Level.LevelDeliveryReceivingPlatformHandler",
+    "<ClickOnAllScreens>d__3",
+    "Game.Level.LevelFurnitureSpawner",
+    "<Cook>d__14",
+    "<SpawnPuddles>d__8",
+    "Game.Level.LevelSpawnsReturner",
+    "<PlaySound>d__10",
+    "Game.Level.LevelMannequinArea",
+    "Game.Level.LevelMannequinSkinsManager",
+    "Game.Level.LevelPlayerVehicle",
+    "<VerifyIfEnteringParking>d__129",
+    "<VerifyIfLeavingParking>d__130",
+    "Game.Level.LevelVehicleAreaHolder",
+    "Game.Level.LevelWeatherManager",
+    "Game.Level.LevelCameraFollowSking",
+    "<FollowCamera>d__11",
+    "<Changing>d__20",
+    "Game.Level.LevelSpineObjectSymmetricMovement",
+    "Game.Level.LevelStageTrigger",
+    "Game.Level.LevelFairyTreeMushroom",
+    "Game.Level.LevelStageCurtain",
+    "<SyncPosition>d__5",
+    "Game.Level.LevelZiplineSeatMoveArea",
+    "Game.Level.LevelAirportSecurityConveyorDropAreaHandler",
+    "<>c__DisplayClass25_0",
+    "Game.Level.LevelAirportWalkwayDropAreaHandler",
+    "<>c__DisplayClass6_0",
+    "Game.Level.LevelBlanketDropArea",
+    "Game.Level.LevelCrossWalkAreaHandler",
+    "Game.Level.LevelEndKillConveyorDropAreaHandler",
+    "<>c__DisplayClass13_0",
+    "Game.Level.LevelRoundConveyorDropAreaHandler",
+    "<>c__DisplayClass18_0",
+    "<>c__DisplayClass21_0",
+    "<SyncWaterDeep>d__22",
+    "Game.Level.LevelVehicleGarageLiftParkingSpotAreaHandler",
+    "RaisedMovedTransform",
+    "<>c__DisplayClass70_1",
+    "Game.Level.LevelVehicleParkingSpotAreaHandler",
+    "Game.Level.LevelRotateInteractable",
+    "Game.Level.LevelHockeyPuckItemHandler",
+    "<OnPointerPress>d__30",
+    "Game.Level.LevelChangeColorOnClick",
+    "<RandomLightsCoroutine>d__9",
+    "<Paint>d__41",
+    "Game.Level.LevelHiddenDoorPlush",
+    "Game.Level.LevelMovingFish",
+    "<UpdatePositionCoroutine>d__21",
+    "Game.Level.LevelSticklightItemHandler",
+    "Game.Level.LevelBasketballScoreBoard",
+    "Game.Level.LevelSeesawSit",
+    "Game.Level.LevelTicTacToe",
+    "<PeriodicSpawnCoroutine>d__9",
+    "Game.Level.LevelGachaponMachineCoinSlot",
+    "Game.Level.LevelAirportDividerHandler",
+    "<Fill>d__14",
+    "<MakeFishEatFood>d__16",
+    "Game.Level.LevelBaristaMachine",
+    "Game.Level.LevelBleepOnEnterElement",
+    "<SwitchSprite>d__7",
+    "Game.Level.LevelChalkGround",
+    "Game.Level.LevelDJLightsMachine",
+    "<RaveLights>d__27",
+    "Game.Level.LevelDJMusicRecordPlayerHandler",
+    "Game.Level.LevelDynamicSignRobot",
+    "Game.Level.LevelHelicopter",
+    "Game.Level.LevelHelicopterBackgroundSwitcher",
+    "Game.Level.LevelHelicopterCloudsSpawner",
+    "<<LoadCloudSprites>g__DefaultIndices|0>d",
+    "<>c__DisplayClass39_0",
+    "Game.Level.LevelLemonBasket",
+    "<PeriodicSpawnCoroutine>d__15",
+    "Game.Level.LevelOrderTable",
+    "<>c__DisplayClass19_0",
+    "Game.Level.LevelSideMovingObject",
+    "<StartCountdown>d__8",
+    "<WaitAndClose>d__5",
+    "<Animate>d__4",
+    "<PlayItemsFlyingAway>d__14",
+    "Game.Level.LevelWaffleMachine",
+    "Game.Level.LevelWallProjectionsDayCareHandler",
+    "<MoveProjection>d__11",
+    "Game.Level.LevelMidiController",
+    "Game.Level.LevelTweenSeesaw",
+    "<AnimateLights>d__3",
+    "<AnimateGivingGifts>d__47",
+    "<GameOver>d__46",
+    "<LightButton>d__41",
+    "<PlayIdleState>d__36",
+    "<StartGamePlay>d__39",
+    "<StartRound>d__40",
+    "<Unpress>d__44",
+    "<Blink>d__9",
+    "<FlickerLight>d__13",
+    "Game.Level.LevelTrainStopSign",
+    "<FlickerLight>d__11",
+    "<TurnOffLightWhenNeeded>d__12",
+    "Game.Level.LevelSSSoccerballItemHandler",
+    "<PlayCorutine>d__8",
+    "Game.Level.LevelLinkedSlide",
+    "<UpdateTransformBySlideSlope>d__33",
+    "Game.Level.Lighthouse",
+    "<PlayParticlesAndSound>d__5",
+    "<PlayParticlesAndSound>d__4",
+    "Game.Level.LevelTelevision",
+    "<ImagesAnimation>d__26",
+    "<Animate>d__2",
+    "<ChangeToNextAnimationAfterIdle>d__11",
+    "Game.Level.WaterSlide.LevelSlideCameraFollower",
+    "<SlideItems>d__7",
+    "<SlideItems>d__9",
+    "<AnimateExplosion>d__9",
+    "Game.Level.RotatingPictures.LevelRotatingPicture",
+    "Game.Level.MovingTraingBackground.MovingBG",
+    "<Movement>d__35",
+    "Game.Level.MovingTraingBackground.LevelStationButton",
+    "<BlinkLight>d__20",
+    "Game.Level.MovingTraingBackground.LevelStationManager",
+    "Game.Level.Supermarket.FoodDelivery.FoodDeliveryManager",
+    "<Timer>d__25",
+    "Game.Level.TimedLocker.LevelLockerCard",
+    "<UpdateTimer>d__12",
+    "Game.Level.RacingGame.LevelRacingGameCloud",
+    "<InstructionsAnimation>d__7",
+    "<CountdownToRace>d__62",
+    "<PrintTickets>d__71",
+    "Game.Level.RacingGame.LevelRacingGameMoveButton",
+    "Game.Level.RacingGame.LevelRacingGamePlayerCar",
+    "<SpawnTickets>d__51",
+    "Game.Level.Arcade.LevelArcadeSecretLight",
+    "Game.Level.Arcade.LevelSlushyDispenser",
+    "<TurnOffDispenser>d__7",
+    "Game.Level.Arcade.RhythmGame.LevelLifesRhythmGame",
+    "Game.Level.Arcade.RhythmGame.LevelLineRhythmGame",
+    "<StartGameCorotine>d__24",
+    "<CountdownToGame>d__23",
+    "Game.Level.Arcade.RhythmGame.LevelTapButtonRhythmGame",
+    "<RandomLightsCoroutine>d__8",
+    "Game.Level.Arcade.Dancing.LevelArcadeDancingButton",
+    "<PlayLightsSequence>d__19",
+    "Game.Level.Arcade.ClawMachine.LevelClawMachineClaw",
+    "Game.Level.Arcade.Prizes.LevelAracdeTicketMachine",
+    "Game.Level.Arcade.Prizes.LevelArcadePrizeSpawner",
+    "Game.Level.ContextualAnimation.LevelCACatTunnelHoleAreaHandlerBase",
+    "Game.Level.ContextualAnimation.LevelCACatHandler",
+    "Game.Level.ContextualAnimation.LevelCASnowSurfaceCatHandler",
+    "Game.Level.ContextualAnimation.LevelCAAisleDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCAAlterSideDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCAAquariumDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCABalanceBoardItemHandler",
+    "<WaitForSpineBgAnimation>d__5",
+    "Game.Level.ContextualAnimation.LevelCAEconomySeatAirplaneDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCAFlightAttendentSeatAirplaneDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCAFoodCartDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCAFreeStyleCrowdDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCAKpopPosterDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCALayeredDefaultAnimationHandler",
+    "Game.Level.ContextualAnimation.LevelCAMetalDetectorDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCAMovingWalkwayDropAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCAPaparatzziTrushDropAreaHandler",
+    "<PlayParticles>d__6",
+    "<HideBubble>d__5",
+    "Game.Level.ContextualAnimation.LevelCAHatClothingItemHandler",
+    "Game.Level.ContextualAnimation.LevelCABackSpriteItemItemHandler",
+    "<ThrowBeachBall>d__9",
+    "Game.Level.ContextualAnimation.LevelCABeachPaddleItemHandler",
+    "Game.Level.ContextualAnimation.LevelCACellPhoneItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAChopsticksItemHandler",
+    "Game.Level.ContextualAnimation.LevelCACrutchesItemHandler",
+    "Game.Level.ContextualAnimation.LevelCADiceItemHandler",
+    "Game.Level.ContextualAnimation.LevelCADonkeyTailItemHandler",
+    "Game.Level.ContextualAnimation.LevelCADrumsMusicClassroomHandler",
+    "Game.Level.ContextualAnimation.LevelCAEmptyPoopBagItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAExcerciseBallItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAFamilyLuggageItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAGiftExchangeItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAGragersItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAGuitarItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAHandHeldDeviceItemHandlerBase",
+    "Game.Level.ContextualAnimation.LevelCAHoverboardItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAHulaHoopItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAItemHorseHairCombHandler",
+    "Game.Level.ContextualAnimation.LevelCAMakeupRemoverItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAMusicalInstrumentItemHandlerBase",
+    "Game.Level.ContextualAnimation.LevelCANewspaperItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAOrigamiNupkinItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAReadingGothBookItemHandler",
+    "Game.Level.ContextualAnimation.LevelCARestaurantMenuOrderFoodItemHandler",
+    "Game.Level.ContextualAnimation.LevelCASecateursItemHandler",
+    "Game.Level.ContextualAnimation.LevelCASegwayItemHandler",
+    "Game.Level.ContextualAnimation.LevelCASkiPolesItemHandler",
+    "<FallCoroutine>d__28",
+    "Game.Level.ContextualAnimation.LevelCASnareDrumItemHandler",
+    "Game.Level.ContextualAnimation.LevelCASnowBallItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAStandingVacuumeItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAStethoscopeItemHandler",
+    "Game.Level.ContextualAnimation.LevelCASuitcaseItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAUmbrellaItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAValentineConfessionItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAWitchBroomItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAXmasGiftExchangerItemHandler",
+    "Game.Level.ContextualAnimation.LevelCAHoldingSkateboardItemHandler",
+    "<StartCustomRail>d__7",
+    "<StartRail>d__6",
+    "<StartCustomRail>d__8",
+    "<StartRail>d__7",
+    "<RouteCoroutine>d__8",
+    "<RouteCoroutine>d__9",
+    "Game.Level.ContextualAnimation.LevelCARollerBladeItemHandler",
+    "Game.Level.ContextualAnimation.LevelCARollerBladeItemHelper",
+    "<FallCoroutine>d__17",
+    "Game.Level.ContextualAnimation.LevelCAFoodTableRestaurantSitAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCASeesawBaseSitAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCASofaSitAreaHandler",
+    "Game.Level.ContextualAnimation.LevelCAAlienClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAArmCastSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCABagSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCABlackCatClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCABlindfoldedClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCABraceletHipHopDanceClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCACarrierSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCACatSuitSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCACliquesGeekClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCACliquesGothBagsSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCACliquesGothNeckSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCACliquesSkaterClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCACrownLocketClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCADogTreatPouchSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAFingernailsSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAGlovesSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAHalloweenSpiderSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAHalloweenVampireSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAHeartLocketClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCALegCastSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCALimoDriverHatClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAMonsterClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCANecklaceSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAPregnancyMaternityClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAPumpkinClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCARingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCARoseLocketClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAScarecrowClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAShoesSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCASocksSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCASpecialClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCASuspiciousGlassesClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAWerewolfClothingSpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCABackARemovalOnlySpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCABackBRemovalOnlySpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCABackCRemovalOnlySpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCABraceletsRemovalOnlySpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCAPiercingRemovalOnlySpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCARingRemovalOnlySpineSkinHandler",
+    "Game.Level.ContextualAnimation.LevelCADogHandler",
+    "Game.Level.ContextualAnimation.LevelCASnowSurfaceDogHandler",
+    "Game.Level.ContextualAnimation.LevelCAHorseHandler",
+    "Game.Level.ContextualAnimation.LevelCASnowSurfaceHorseHandler",
+    "Game.Level.ContextualAnimation.LevelCAWaterCannonDropAreaHandlerBase",
+    "<WaitForRain>d__13",
+    "<WaitForReaction>d__14",
+    "<LobTennisBall>d__35",
+    "<ThrowDogBall>d__12",
+    "Game.Level.ContextualAnimation.LevelCAVollyballItemHandler",
+    "<ThrowBeachBall>d__17",
+    "Game.Level.ContextualAnimation.LevelCASpawnerHelper",
+    "Game.Level.ContextualAnimation.LevelCAWithSkinHelper",
+    "PWC.UISlideAnimator",
+    "PWC.LevelRamp",
+    "<ScrollToStart>d__18",
+    "PWC.BackgroundPlanet",
+    "<Start>d__9",
+    "PWC.DragDropItemBase",
+    "<SyncPosition>d__75",
+    "PWC.CameraMovementClampper",
+    "PWC.GameCameraBase",
+    "PWC.GameSceneManager",
+    "PWC.GameSyncedSoundPlayer",
+    "PWC.GameSoundHub",
+    "<ListenOnlyToUI>d__7",
+    "PWC.MeshSkew",
+    "PWC.PWCSpineUtils",
+    "PWC.PWCUtils",
+    "<Animate>d__5",
+    "PWC.SUTSystem.SUTSystemTester",
+    "PWC.Street.StreetCamera",
+    "PWC.Street.StreetHouse",
+    "PWC.Street.StreetSelectionManager",
+    "<SpawnVehicles>d__8",
+    "PWC.LightSystem.LightManager",
+    "PWC.LightSystem.MovableLightSystemObject",
+    "PWC.UGC.UGCGridItem",
+    "PWC.UGC.UGCItemBase",
+    "PWC.UGC.UGCManager",
+    "PWC.LevelScreenRecording.ScreenRecordingManager",
+    "<PreviewControllerCoroutine>d__41",
+    "<Timer>d__34",
+    "<WaitForRecordingToBeAvailableForPreview>d__40",
+    "PWC.ScavengerHunt.ScavengerHuntTypeHandler",
+    "<Timer>d__43",
+    "PWC.RemoteConfig.PWCRemoteConfigManager",
+    "<Init>d__18",
+    "PWC.Multiplayer.MPDataHelper_PlayerRemoved",
+    "<HandleChangeSceneRequest>d__8",
+    "PWC.Multiplayer.MPClient",
+    "<InitInternal>d__16",
+    "<JoinHost>d__17",
+    "PWC.Multiplayer.MPDataGenerator",
+    "PWC.Multiplayer.MPHost",
+    "<AllocateHost>d__33",
+    "<GetJoinCode>d__35",
+    "<InitInternal>d__32",
+    "PWC.Multiplayer.MPPointerInputModule",
+    "PWC.Multiplayer.MPStandaloneInputModule",
+    "<CleanupDemoLobbyAsync>d__9",
+    "<CreateInstance>d__6",
+    "<CreateLobby>d__11",
+    "<DeleteInstance>d__7",
+    "<GetAvailableLobbies>d__10",
+    "<GetPlayerFromAnonymousLoginAsync>d__13",
+    "<Init>d__8",
+    "<JoinLobby>d__12",
+    "PWC.Multiplayer.MPManager",
+    "<WaitingForPlayers>d__89",
+    "<EnsureInitServices>d__30",
+    "<EnsureSignIn>d__34",
+    "<Init>d__22",
+    "<InitInternal>d__23",
+    "<SendMessagesForUser>d__27",
+    "<SignUserWithCustomTokenWithAutoRefresh>d__31",
+    "PWC.Multiplayer.MPUtils",
+    "PWC.Multiplayer.WorldScene.WorldMPUIPlayersCountViewer",
+    "PWC.Multiplayer.DataTypes.MPData_ItemDropWithDestinationBase",
+    "PWC.Multiplayer.DataTypes.MPData_PlayerRemoved",
+    "PWC.World.WorldManager",
+    "<TryShowRefundPopup>d__3",
+    "<SetTime>d__7",
+    "PWC.World.Buildings.WorldBuilding",
+    "<Start>d__23",
+    "PWC.LevelPhone.Application",
+    "PWC.LevelPhone.ApplicationContentBase",
+    "PWC.LevelPhone.ContactsPage",
+    "PWC.LevelPhone.ContactsThumb",
+    "<Start>d__38",
+    "PWC.LevelPhone.VehiclePage",
+    "PWC.LevelPhone.Phone",
+    "PWC.LevelPhone.PhoneBackButton",
+    "PWC.LevelPhone.PhoneButton",
+    "<DisplayTime>d__2",
+    "PWC.LevelPhone.VehicleApp.VehicleThumb",
+    "PWC.LevelPhone.DeliveryApp.DeliveryBusinessThumb",
+    "PWC.LevelPhone.DeliveryApp.DeliveryOrderNowButton",
+    "PWC.LevelPhone.DeliveryApp.DeliveryProductThumb",
+    "PWC.LevelPhone.DeliveryApp.DeliveryProgressBar",
+    "PWC.LevelPhone.AchievementsApp.AchievementsHuntThumb",
+    "PWC.LevelPhone.AchievementsApp.HuntsAchievementData",
+    "PWC.LevelContextualAnimation.LevelContextualAnimationItem",
+    "PWC.LevelContextualAnimation.LevelContextualAnimationMenu",
+    "PWC.GamePopups.CancelableGamePopup",
+    "PWC.GamePopups.GamePopup",
+    "<TimeCheckCoroutine>d__17",
+    "<SendDownloadRequest>d__41",
+    "<SendUploadRequest>d__40",
+    "PWC.CarsMaker.CarMakerCameraFocus",
+    "PWC.CarsMaker.CarSkinsManager",
+    "<SyncUserPostLogin>d__4",
+    "<>c__DisplayClass12_0",
+    "<PlayAnimationAndWait>d__4",
+    "<PlayAnimationsInternal>d__3",
+    "<Start>d__25",
+    "PWC.WorldReset.WorldResetManager",
+    "<Start>d__39",
+    "<AnimationTimer>d__29",
+    "<AfterThumbsScaleDownAnimation>d__40",
+    "PWC.Achievements.AWADeviceData",
+    "PWC.PersistentData.LevelSecretSolveBroadcaster",
+    "PWC.PersistentData.PDPrefab",
+    "PWC.PersistentData.PDScene",
+    "PWC.PersistentData.PersistentDataManager",
+    "PWC.PersistentData.SecretSystemManager",
+    "PWC.PersistentData.SeparatedPDManager",
+    "<Init>d__7",
+    "PWC.QA.Autoplay.QAAutoPlayLevel",
+    "<Click>d__52",
+    "<Click>d__53",
+    "<ClickOnAllVisibleNonUIObjects>d__49",
+    "<ClickOnLevelChanger>d__20",
+    "<ClickOnRandomCAAnimationUIItem>d__16",
+    "<ClickOnRandomClickableNonUIObject>d__48",
+    "<ClickPhoneButton>d__9",
+    "<ClickPhoneContactsButton>d__10",
+    "<DragAllSavedLevelItemsToTheirSavedPositions>d__40",
+    "<DragAllVisibleLevelItemsToVisibleDropAreas>d__42",
+    "<DragLevelItemTo>d__47",
+    "<DragLevelItemToDropArea>d__45",
+    "<DragLevelItemToRandomConsumer>d__26",
+    "<DragTo>d__54",
+    "<DragVisibleLevelItemsToRandomConsumers>d__24",
+    "<DragVisibleLevelItemsToRandomDragActionConsumers>d__23",
+    "<DragVisibleLevelItemsToRandomDragActionConsumers_Multiple>d__22",
+    "<DragVisibleLevelItemsToRandomDropConsumers>d__18",
+    "<DropVisibleLevelItemsFromTopToBottom>d__41",
+    "<EnsurePhoneContactsPageOpen>d__11",
+    "<FocusOnClickOn>d__21",
+    "<MoveCamera>d__30",
+    "<MoveCameraToTheRight>d__29",
+    "<RunGeneralCoroutine>d__5",
+    "<WaitFor>d__58",
+    "PWC.QA.Autoplay.QAAutoPlayUtils",
+    "<>c__DisplayClass3_0",
+    "<>c__DisplayClass4_0",
+    "<ClickOnGameObjectWhenPossible>d__2",
+    "<DragGameObjectTo>d__12",
+    "<MoveCamera>d__3",
+    "<MoveCameraToTheRight>d__4",
+    "<WaitFor>d__5",
+    "<WaitForGameObject>d__7",
+    "<WaitForObjects>d__6`1",
+    "<RunCoroutine>d__5",
+    "<StartTests>d__0",
+    "<StartTests>d__1",
+    "<StartTests>d__7",
+    "<ResetWorld>d__32",
+    "<ResetWorldAsync_Internal>d__21",
+    "<ShowPanel>d__19",
+    "PWC.QA.RTA.RTALevelsTester",
+    "<<TestBuildingByLevelTypeAsync_Internal>g__TryEnterLevelFromBuilding|0>d",
+    "<GetAllCachedLevelTypesAsync>d__8",
+    "<GetAllLevelsToTestAsync>d__10",
+    "<StartTestAsync>d__12",
+    "<TestBuildingByLevelTypeAsync_Internal>d__14",
+    "<TestSwitcherFlowAsync_Internal>d__15",
+    "<TestWorldByNameAndGetErrorsAsync_Internal>d__13",
+    "<TryMoveToWorld_Internal>d__9",
+    "<Init>d__3",
+    "<PerformTests_Internal>d__13",
+    "<StartTestsAsync>d__12",
+    "<<TryClaimItem_Internal>g__EnsureClaimMade|13_1>d",
+    "<<TryClaimItem_Internal>g__TryClickClaimButton|13_2>d",
+    "<<TestStorePackItemAsync_Internal>g__ClickStoreButton|1>d",
+    "<CacheStoreDataItems>d__10",
+    "<StartTestAsync>d__11",
+    "<TestStorePackItemAsync_Internal>d__12",
+    "<TryClaimItem_Internal>d__13",
+    "<LoadSceneAsync>d__7",
+    "<ResetWorld>d__13",
+    "<TryClickBackButtonAsync>d__8",
+    "<WaitUntilSceneLoadedAsync_Internal>d__11",
+    "<WaitUntilSceneUnloadedAsync>d__9",
+    "<WaitUntilScenesLoadedAsync>d__10",
+    "<PrepareInteractionAsync_Internal>d__5",
+    "<TryClickAsync>d__2",
+    "<TrySwipeAsync>d__3",
+    "<SaveScreenCaptureAsync>d__0",
+    "<<WaitUntilAsync>g__CheckPredicates|0>d",
+    "<SafeDelayAsync>d__0",
+    "<WaitUntilAsync>d__1",
+    "<<WaitEndOfFrame>g__EndOfFrame|3_0>d",
+    "<<WaitNextFrame>g__EndOfFrame|4_0>d",
+    "<WaitEndOfFrame>d__3",
+    "<WaitNextFrame>d__4",
+    "<Wrapper_Internal>d__5",
+    "<ParticlesCoroutine>d__9",
+    "<LookAtPiniata>d__4",
+    "PWC.Game.LevelPinataArea",
+    "<SolvedPlay>d__16",
+    "PWC.Game.LevelPiano",
+    "PWC.Game.LevelPianoKey",
+    "<OpenDoor>d__17",
+    "<UpdateTransformByRampSlope>d__20",
+    "PWC.Level.LevelRollerBladesItemHandler",
+    "PWC.Level.LevelSkateboardAnimationItemHandler",
+    "PWC.Level.LevelSkateboardAnimationItemHandlerBase",
+    "PWC.Level.LevelSkateboardItemHandler",
+    "PWC.Level.LevelSkateboardItemHandlerBase",
+    "<EnterRailFromRailDropArea>d__62",
+    "<EnterRamp>d__63",
+    "<EnterRampFromRampDropArea>d__61",
+    "<RailRouteCoroutine>d__67",
+    "<RampRouteCoroutine>d__66",
+    "<Slide>d__69",
+    "PWC.Level.LevelSnowboardItemHandler",
+    "PWC.Level.LevelWardrobeShelfSwitcher",
+    "PWC.Level.LevelRoofTopDropAreaHandler",
+    "PWC.Level.LevelCrossLevelSlide",
+    "<CastCoroutine>d__16",
+    "<WaitForDropAreaEmpty>d__27",
+    "PWC.Level.LevelEventOnDropAreaContainsSpecificItemsHandler",
+    "PWC.Level.LevelConveyorDropArea",
+    "<Move>d__38",
+    "PWC.Level.LevelDropArea",
+    "OverrideItemLendDestinationDelegate",
+    "OverridTweenToProperPositionOnDropAreaDestinationDelegate",
+    "PWC.Level.LevelFreeFormDropArea",
+    "PWC.Level.LevelKillArea",
+    "PWC.Level.LevelDragActionArea",
+    "<TrackItems>d__28",
+    "PWC.Level.LevelDropActionArea",
+    "PWC.Level.LevelHangArea",
+    "PWC.Level.LevelPairInteractionAreaBase",
+    "PWC.Level.IItemsHolderArea",
+    "PWC.Level.LevelConsumerAreaBase",
+    "PWC.Level.ILevelCanRest",
+    "PWC.Level.LevelCamera",
+    "PWC.Level.LevelClothingUtils",
+    "PWC.Level.LevelFillableHandler",
+    "PWC.Level.LevelLight",
+    "<Flicker>d__42",
+    "PWC.Level.LevelSpawner",
+    "PWC.Level.LevelToggleableGameObject",
+    "PWC.Level.LevelToggleableSprite",
+    "PWC.Level.LevelToggleableSpriteOverTime",
+    "<StartToggling>d__18",
+    "<ToggleSprites>d__23",
+    "PWC.Level.LevelUnlockableObject",
+    "PWC.Level.LevelSkinCATargetHandler",
+    "PWC.Level.LevelDrinkDispenser",
+    "PWC.Level.LevelDrinkDispenserItemHandler",
+    "<Operate>d__6",
+    "PWC.Level.IEditor_LevelPDPrefabOverrideTest",
+    "PWC.Level.ILevelFillable",
+    "PWC.Level.LevelCookableItemHandler",
+    "PWC.Level.LevelCookableSpawner",
+    "PWC.Level.LevelDragActionHandler",
+    "PWC.Level.LevelDragActionItemHandlerBase",
+    "<Paint>d__12",
+    "PWC.Level.LevelDragActionPointHandler",
+    "PWC.Level.LevelDrinkableWithFillItemHandler",
+    "PWC.Level.LevelDrinkFillerOnDragItemHandler",
+    "PWC.Level.LevelFillableItemHandler",
+    "PWC.Level.LevelFillableMeshItemHandler",
+    "<Fry>d__11",
+    "<UpdatePart>d__8",
+    "PWC.Level.LevelMakeupRemoverItemHandler",
+    "PWC.Level.LevelNewSimpleTransparentContainer",
+    "PWC.Level.LevelRecipeItemHandler",
+    "PWC.Level.LevelSimpleTransparentContainer",
+    "<PlaySoundWithIntervals>d__13",
+    "PWC.Level.LevelPlantBase",
+    "PWC.Level.LevelDoor",
+    "PWC.Level.LevelItem",
+    "PWC.Level.LevelSpineDoor",
+    "<TryIrrigate>d__13",
+    "PWC.Level.LevelSimpleSpawnerBase",
+    "PWC.Level.LevelManager",
+    "PWC.Level.LevelSlider",
+    "PWC.Level.LevelSpawnerInRandomLocations",
+    "<AutoToggleBackCoroutine>d__12",
+    "PWC.Level.LevelStorageUnitHelper",
+    "PWC.Level.LevelUpgradeTracker",
+    "PWC.Level.LevelUtils",
+    "<OnLevelPrePostInitCoroutine>d__18",
+    "<ShowRateAppWindowIfNeeded>d__23",
+    "PWC.Level.LevelInstancedLevelExitSwitcher",
+    "PWC.Level.LevelInstancedLevelSwitcher",
+    "PWC.Level.LevelLevelSwitcher",
+    "PWC.Level.Water.LevelCAWaterAreaHandler",
+    "PWC.Level.Water.LevelWaterArea",
+    "<InWaterRoutineCoroutine>d__40",
+    "<InWaterRoutineCoroutine>d__6",
+    "PWC.Level.HintBubble.LevelHintBubbleTargets",
+    "PWC.Level.BasketballSystem.LevelBSBasketballItemHandler",
+    "PWC.Level.Maker.LevelMakerRotatingItemHandlerBase",
+    "PWC.Level.Maker.LevelMakerItem",
+    "PWC.Level.Maker.LevelMakerItemWithArea",
+    "<CreateItemsWithIntervalsCoroutine>d__56",
+    "<AnimateItemsToLevelMakerMenu>d__13",
+    "PWC.Level.Maker.LevelMakerManager",
+    "PWC.Level.Maker.LevelMakerSplitLevelManager",
+    "PWC.Level.Maker.LevelMakerSplitLevelView",
+    "PWC.Level.Maker.LevelFurnitureReturnButton",
+    "PWC.Level.Maker.LevelMakerAllColoringPalettesButton",
+    "PWC.Level.Maker.LevelMakerItemDestroyButton",
+    "PWC.Level.Maker.LevelMakerItemSaveAsPresetButton",
+    "PWC.Level.Maker.LevelMakerRotationButton",
+    "PWC.Level.Maker.Customization.LevelMakerCustomizationObjectHandlerBase",
+    "PWC.Level.Maker.Customization.CustomizationUIItemBase",
+    "PWC.Level.ContextualAnimation.LevelCADropAreaWithSkinHandlerBase",
+    "PWC.Level.ContextualAnimation.LevelCADropAreaHandlerBase",
+    "PWC.Level.ContextualAnimation.LevelCAHandlerBase",
+    "PWC.Level.ContextualAnimation.LevelCAItemOnBoneHandlerBase",
+    "PWC.Level.ContextualAnimation.LevelCAItemWithSkinHandlerBase",
+    "PWC.Level.ContextualAnimation.LevelCAPairHandlerBase",
+    "PWC.Level.ContextualAnimation.LevelCAParentHandlerBase",
+    "PWC.Level.ContextualAnimation.LevelCADefaultSleepAreaHandler",
+    "PWC.Level.ContextualAnimation.ICATarget",
+    "PWC.Level.ContextualAnimation.CATargetExtensionMethods",
+    "PWC.Level.ContextualAnimation.LevelCAItemCraftingHandlerBase"
+  ],
+  "limits": [
+    "Case-sensitive NPC/AI markers and case-insensitive explicit concepts only. Obfuscated/generic names and data-driven event graphs can hide behavior.",
+    "Method names establish candidates, not behavior. No negative global AI claim."
+  ]
+}

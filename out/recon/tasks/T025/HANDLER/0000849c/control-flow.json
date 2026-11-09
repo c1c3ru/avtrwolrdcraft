@@ -1,0 +1,60 @@
+{
+  "task_id": "T025/HANDLER/0000849c",
+  "start": "0x2313e70",
+  "exclusive_stop": "0x2313ee0",
+  "decoded_branches": [
+    {
+      "site": "0x2313e88",
+      "word": "0x37000128",
+      "decoded": {
+        "kind": "TBNZ",
+        "register": 8,
+        "bit": 0,
+        "target": 36781740
+      }
+    },
+    {
+      "site": "0x2313e94",
+      "word": "0x97e1d215",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870376
+      }
+    },
+    {
+      "site": "0x2313ea0",
+      "word": "0x97e1d212",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870376
+      }
+    },
+    {
+      "site": "0x2313ebc",
+      "word": "0x35000068",
+      "decoded": {
+        "kind": "CBNZ",
+        "register": 8,
+        "width": 32,
+        "target": 36781768
+      }
+    },
+    {
+      "site": "0x2313ec0",
+      "word": "0x97e1d267",
+      "decoded": {
+        "kind": "BL",
+        "target": 28870748
+      }
+    },
+    {
+      "site": "0x2313edc",
+      "word": "0x17e1d1ee",
+      "decoded": {
+        "kind": "B",
+        "target": 28870292
+      }
+    }
+  ],
+  "bound_limit": "candidate window capped at next distinct metadata method start; noncontiguous body and exception extents are not proven"
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "scope": "Assembly-CSharp MethodDefs only; not a complete native/generic-instantiation universe",
+  "queue_revision": 36,
+  "parent_state": "pending",
+  "dependencies": [
+    {
+      "id": "T022",
+      "state": "pending"
+    },
+    {
+      "id": "T023",
+      "state": "pending"
+    },
+    {
+      "id": "T024",
+      "state": "pending"
+    }
+  ],
+  "summary": {
+    "indexed_methods": 36421,
+    "indexed_nonnull_addresses": 35831,
+    "indexed_null_pointers": 590,
+    "distinct_nonnull_addresses": 35831,
+    "methods_with_children": 5,
+    "methods_without_children": 36416,
+    "live_children": 5,
+    "child_state_counts": {
+      "stale": 1,
+      "ready": 3,
+      "pending": 1
+    }
+  },
+  "unmatched_children": [],
+  "blockers": [
+    "Parent prerequisites not accepted: T022, T023, T024",
+    "Inventory entries without T025 children or reviewed scope disposition",
+    "Null method pointers require classification/resolution; absence does not establish abstract or irrelevant code",
+    "Discovered child tasks remain unaccepted",
+    "Independent semantic and hash validation of all required dossiers is not performed by this scope audit"
+  ],
+  "required_dossier_fields": [
+    "signature_abi",
+    "bytes_ranges",
+    "cfg",
+    "arguments_return",
+    "registers",
+    "fields_offsets",
+    "memory",
+    "effects",
+    "callees_callbacks",
+    "exceptions",
+    "coroutine_async",
+    "state_before_after",
+    "invalid_inputs",
+    "termination"
+  ],
+  "can_close_t025": false,
+  "queue_modified": false,
+  "limits": [
+    "Method index reused as a structural baseline; no bodies or generic instances recovered by enumeration.",
+    "No automatic done promotion; queue state and files alone do not establish semantic acceptance.",
+    "Third-party ownership, generated methods, shared code and non-metadata native methods require explicit scope reconciliation."
+  ],
+  "inputs": [
+    {
+      "path": "reports/recon/tasks.json",
+      "sha256": "5a0f88ad335a801a48effe421ea78887f2d3b222f40981aabb88fd6311cfac91"
+    },
+    {
+      "path": "out/recon/il2cpp/assembly_csharp_methods.jsonl",
+      "sha256": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8"
+    }
+  ],
+  "registry": {
+    "path": "out/recon/t025/method_registry.4ec66894631e14af44dce3c5def25803ccd92b9a1d1b5db99aad4bb424f117ab.jsonl",
+    "sha256": "4ec66894631e14af44dce3c5def25803ccd92b9a1d1b5db99aad4bb424f117ab",
+    "records": 36421
+  },
+  "producer_sha256": "adcab243d0a3fc7c2b307c5c55266b5d5af80686840d368234305b2890c18439",
+  "publication": "Immutable registry generation; atomic report publishes snapshot. It is not a live queue monitor."
+}

@@ -25,3 +25,6 @@ Janelas: `LoadScene` VA `0x20728d4..0x2072c64`, `LoadSceneImplement` `0x2072cc8.
 - Quem assina `OnActiveSceneChanged` (provável `SceneManager.activeSceneChanged`) e quem chama `CancelCurrentSceneChangingProgress`; sem isso o ciclo do indicador não está fechado.
 - Assinantes dos eventos Stage1–3 e o fade de `StartSceneTransition` (`0x20fe2d8`).
 - Exceções e corpos completos.
+
+## Atualização L01 (iterações 1–2)
+Guard estático identificado como `MPManager.IsMultiplayerGame` e ordem completa do ramo multiplayer provadas pela sonda; ver `docs/loops/results/L01.md`.

@@ -1,0 +1,9 @@
+{"unknown_id": "T025/complete_body_and_cfg", "question": "The 904-byte window ends at a metadata boundary; full/noncontiguous body and exception CFG extents are not proven."}
+{"unknown_id": "T025/stage_dispatch_binding", "question": "Three null-guarded indirect calls use slots at offsets 0/8/16, but TypeInfo/static-data provenance does not bind those slots to named GameSceneManager Stage fields."}
+{"unknown_id": "T029/remaining_stage_registrations", "question": "All 13 raw direct B/BL Stage add candidates were confirmed as static edges. Indirect, reflection, dynamically loaded or otherwise missed registrations and a complete absence claim remain open."}
+{"unknown_id": "T029/handler_effects_lifetime", "question": "The 13 static registrations identify handlers, but their complete effects, exceptions, delegate equality and runtime lifetimes are not certified."}
+{"unknown_id": "T029/scene_loaded_registration", "question": "A separate static OnSceneLoaded add/remove report exists, but it is not independently accepted by this child; runtime callback/effect/order remains open."}
+{"unknown_id": "T029/runtime_class_layout", "question": "Concrete runtime Il2CppClass layout and dispatch are not observed."}
+{"unknown_id": "T029/instantiate_and_library_effects", "question": "Generic Unity Instantiate and runtime class replacement effects remain external."}
+{"unknown_id": "T029/tween_scheduling", "question": "Actual tween scheduling, elapsed time, time scale and engine callback dispatch remain unobserved."}
+{"unknown_id": "T029/runtime_comparison", "question": "No original-versus-client runtime comparison was performed."}
