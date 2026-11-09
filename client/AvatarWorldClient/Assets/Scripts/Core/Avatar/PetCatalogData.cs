@@ -6,7 +6,7 @@ namespace AvatarWorld.Core.Avatar
     /// <summary>Pets simples (variantes prontas): especie -> ids de variante; cada variante e um skin completo do esqueleto Pet_&lt;Especie&gt;_Spine.</summary>
     public static class PetCatalogData
     {
-        public static readonly string[] Species = { "Rabbit", "Hamster", "Bird", "Chicken", "Turtle", "Lizard", "Snake", "Fish" };
+        public static readonly string[] Species = { "Rabbit", "Hamster", "Bird", "Chicken", "Turtle", "Lizard", "Snake", "Fish", "Cow" };
 
         public static readonly Dictionary<string, string[]> Variants = new Dictionary<string, string[]>
         {
@@ -18,6 +18,7 @@ namespace AvatarWorld.Core.Avatar
             { "Lizard", new[] { "lizard_a_1", "lizard_a_2", "lizard_a_3", "lizard_a_4" } },
             { "Snake", new[] { "snake_a_1", "snake_a_2" } },
             { "Fish", new[] { "fish_a_1", "fish_a_2", "fish_a_3", "fish_b_1" } },
+            { "Cow", new[] { "cow_a_1" } },
         };
     }
 }
