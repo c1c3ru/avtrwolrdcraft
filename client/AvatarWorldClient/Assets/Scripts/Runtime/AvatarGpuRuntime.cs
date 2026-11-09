@@ -78,6 +78,7 @@ namespace AvatarWorld.Runtime
             (AvatarCatalog.CategoryHair, "Cabelo"), (AvatarCatalog.CategoryHairBack, "Cabelo atras"), (AvatarCatalog.CategoryShirt, "Camisa"),
             (AvatarCatalog.CategoryBottom, "Calca"), (AvatarCatalog.CategoryShoes, "Sapato"), (AvatarCatalog.CategoryAccessory, "Acessorio"),
             (AvatarCatalog.CategoryMouth, "Boca"), (AvatarCatalog.CategoryEyebrows, "Sobrancelha"),
+            (AvatarCatalog.CategoryJacket, "Jaqueta"), (AvatarCatalog.CategoryHat, "Chapeu"),
         };
         // Montadas no Start, conforme o tipo do avatar (adulto, crianca, bebe).
         List<Category> _categories = new List<Category>();
