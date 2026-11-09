@@ -1,0 +1,523 @@
+{
+ "AddItemSpritesOutsideAnyPack_00000000021cafec.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.GetExpansionPackDataAsset",
+   "PWC.Inventory.InventorySkinsBuildData.GetPremiumSkinsInventoryFlags",
+   "PWC.Inventory.InventorySkinsBuildData.TryGetSkinsFromFlag",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.AddItemSpritesWithNoThumb"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 17,
+   "0x1b88970": 2,
+   "0x2b5a3bc": 2,
+   "0x1b8885c": 1,
+   "0x3ccab90": 1,
+   "0x2b5765c": 1,
+   "0x29bc024": 1,
+   "0x2b5b5b0": 1,
+   "0x29bc020": 3,
+   "0x2cf12b4": 1,
+   "0x29c0b20": 1,
+   "0x3cce6d0": 1,
+   "0x31e1930": 1,
+   "0x2b5aab0": 1,
+   "0x2b5b5a0": 1,
+   "0x1b88694": 1,
+   "0x2cf071c": 1,
+   "0x29c0b1c": 3,
+   "0x1b88980": 9,
+   "0x3f939e0": 2,
+   "0x3f939f0": 2,
+   "0x1b88978": 4,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "AddItemSpritesWithNoThumb_00000000021cb4f0.asm.txt": {
+  "resolved": [],
+  "unresolved_targets": {
+   "0x1b886e8": 8,
+   "0x1b88970": 1,
+   "0x2cefee8": 1,
+   "0x2cf12b4": 1,
+   "0x29c0b20": 1,
+   "0x2b5aab0": 2,
+   "0x1b88694": 1,
+   "0x2cf071c": 1,
+   "0x29c0b1c": 3,
+   "0x1b88980": 7,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "FillSections_00000000021c976c.asm.txt": {
+  "resolved": [
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.GetPooledSection",
+   "PWC.AvatarMaker.AvatarMakerThumbsSection.InitAsPack",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.FillSection",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.GetPooledSection",
+   "PWC.AvatarMaker.AvatarMakerThumbsSection.InitAsPack",
+   "PWC.AvatarMaker.AvatarMakerThumbsSection.Init",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.FillSection"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 5,
+   "0x1b88970": 1,
+   "0x28972d0": 1,
+   "0x2ca5cf0": 2,
+   "0x28b1b90": 1,
+   "0x3cc84e4": 1,
+   "0x3ccad98": 1,
+   "0x1b88980": 1
+  }
+ },
+ "FilterByClaimedInventoryFlags_00000000021cb7e8.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.GetDataAsset",
+   "PWC.Inventory.InventorySkinsBuildData.GetPremiumSkinsInventoryFlags",
+   "PWC.Inventory.InventoryData.ContainsFlag",
+   "PWC.Inventory.InventorySkinsBuildData.TryGetSkinsFromFlag",
+   "PWC.Inventory.InventorySkinsBuildData.TryGetSkinsFromFlag"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 21,
+   "0x1b8885c": 2,
+   "0x2520358": 1,
+   "0x1b88970": 2,
+   "0x2b5a3bc": 1,
+   "0x2b5765c": 1,
+   "0x29bc024": 1,
+   "0x338d9a0": 1,
+   "0x2b5b5b0": 1,
+   "0x2cf12b4": 1,
+   "0x29c0b20": 1,
+   "0x3cce6d0": 1,
+   "0x31e1930": 1,
+   "0x2b5aab0": 1,
+   "0x2cf1ce4": 1,
+   "0x29c0b1c": 2,
+   "0x2cf0010": 1,
+   "0x1b88694": 1,
+   "0x1b88980": 8,
+   "0x3f939e0": 2,
+   "0x3f939f0": 2,
+   "0x29bc020": 3,
+   "0x1b88978": 4,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "GetRelevantInventorySkins_00000000021ca47c.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.GetDataAsset",
+   "PWC.Inventory.InventorySkinsBuildData.GetPremiumSkinsInventoryFlags",
+   "PWC.Inventory.InventorySkinsBuildData.TryGetSkinsFromFlag"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 7,
+   "0x1b88970": 1,
+   "0x2b5a3bc": 1,
+   "0x2b5765c": 1,
+   "0x29bc024": 1,
+   "0x2b5b5b0": 1,
+   "0x29bc020": 3,
+   "0x1b88980": 2,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "AddOwnedExpansionPacksThumbs_00000000021ccec8.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.GetExpansionPackDataAsset",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.GetOwnedPackFlagsInTabOrder",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.AddExpansionPackThumbs"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 14,
+   "0x1b8885c": 1,
+   "0x3ccb8d8": 1,
+   "0x2ca5cf0": 1,
+   "0x28b33a4": 1,
+   "0x1b88970": 1,
+   "0x28972d0": 1,
+   "0x28b1c30": 1,
+   "0x2b53d74": 1,
+   "0x29bb66c": 1,
+   "0x289983c": 1,
+   "0x29bb668": 3,
+   "0x2ca5fe0": 1,
+   "0x1b88980": 3,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "EnsureInit_000000000213c6f0.asm.txt": {
+  "resolved": [],
+  "unresolved_targets": {
+   "0x1b886e8": 19,
+   "0x28b18e0": 1,
+   "0x28b1db8": 1,
+   "0x2cf12b4": 3,
+   "0x29c0b20": 3,
+   "0x1b88970": 2,
+   "0x28b0e50": 1,
+   "0x2b5a4ac": 1,
+   "0x28b1c30": 2,
+   "0x29c0b1c": 8,
+   "0x1b88980": 8,
+   "0x3f939e0": 3,
+   "0x3f939f0": 3,
+   "0x2b57168": 1,
+   "0x2b57cd8": 1,
+   "0x1b88978": 5,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "ContainsItem_000000000213dbd4.asm.txt": {
+  "resolved": [],
+  "unresolved_targets": {
+   "0x1b886e8": 1,
+   "0x1b88980": 1
+  }
+ },
+ "GetPremiumItemsNames_00000000021ca004.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.GetDataAsset",
+   "PWC.Inventory.InventorySkinsBuildData.GetPremiumSkinsInventoryFlags",
+   "PWC.Inventory.InventoryData.ContainsFlag",
+   "PWC.Inventory.InventorySkinsBuildData.TryGetSkinsFromFlag"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 10,
+   "0x1b8885c": 2,
+   "0x1b88970": 1,
+   "0x2b5a3bc": 1,
+   "0x2b5765c": 1,
+   "0x29bc024": 1,
+   "0x338d9a0": 1,
+   "0x2b5b5b0": 1,
+   "0x29bc020": 3,
+   "0x1b88980": 3,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "TryGetSkinsFromFlag_000000000213cc30.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsBuildData.TryGetSkinsFromFlagForSpine",
+   "PWC.AvatarSpine.ToddlerCategoryTypeExtensionMethods.TryGetCategoryTypeOfBabyClothes",
+   "PWC.Inventory.InventorySkinsBuildData.TryGetSkinsFromFlagForSpine"
+  ],
+  "unresolved_targets": {}
+ },
+ "TryGetCategoriesFromFlag_000000000213d204.asm.txt": {
+  "resolved": [
+   "PWC.PWCUtils.TryGetCategoryTypeFromSkinName",
+   "PWC.AvatarSpine.CategoryTypeUtils.GetSlotCategoryTypesOfArt",
+   "PWC.PWCUtils.TryGetCategoryTypeFromSkinName",
+   "PWC.AvatarSpine.ToddlerCategoryTypeExtensionMethods.TryGetCategoryTypeOfBabyClothes"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 25,
+   "0x1b88970": 3,
+   "0x2b531ec": 3,
+   "0x1b88694": 7,
+   "0x28b33a4": 3,
+   "0x2b5af24": 2,
+   "0x29c05b0": 2,
+   "0x1b8885c": 5,
+   "0x2b54400": 1,
+   "0x1b887cc": 1,
+   "0x338d9a0": 1,
+   "0x31e0104": 1,
+   "0x3ca5b88": 1,
+   "0x29c05ac": 6,
+   "0x2b543f0": 2,
+   "0x33659d0": 1,
+   "0x338c064": 1,
+   "0x337cd00": 1,
+   "0x1b7ba44": 4,
+   "0x1b88868": 1,
+   "0x2b538e0": 1,
+   "0x1b88860": 2,
+   "0x1b88980": 8,
+   "0x1b88d1c": 1,
+   "0x1b88988": 5,
+   "0x1b88978": 5,
+   "0x3f939e0": 3,
+   "0x3f939f0": 3,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "GetAllCategories_000000000213eb04.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.GetDataAsset",
+   "PWC.Inventory.InventorySkinsBuildData.GetDictionaryForSpecificFlagType",
+   "PWC.PWCUtils.TryGetCategoryTypeFromSkinName"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 16,
+   "0x1b88970": 1,
+   "0x2b531ec": 1,
+   "0x28b33a4": 1,
+   "0x2b5af24": 1,
+   "0x29c05b0": 1,
+   "0x1b8885c": 2,
+   "0x2b538e0": 1,
+   "0x2b543f0": 1,
+   "0x1b887cc": 1,
+   "0x1b88694": 5,
+   "0x338d9a0": 1,
+   "0x31e0104": 1,
+   "0x3ca5b88": 1,
+   "0x29c05ac": 3,
+   "0x1b88988": 5,
+   "0x1b88980": 3,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "OnThumbClick_00000000021c8150.asm.txt": {
+  "resolved": [
+   "PWC.AvatarSpine.CategoryTypeUtils.IsCategoryTypeSize",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.ClearCache",
+   "PWC.AvatarSpine.CategoryTypeUtils.IsCategoryTypeParentCategory"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 3,
+   "0x3f202d4": 1,
+   "0x1b88980": 1
+  }
+ },
+ "OnExpansionPackChanged_00000000021ca924.asm.txt": {
+  "resolved": [
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.ClearCache",
+   "PWC.AvatarSpine.CategoryTypeUtils.TryGetCategorySizeType",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.OnCategoryButtonClick"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 1,
+   "0x1b88980": 1
+  }
+ },
+ "AddExpansionPackCategory_00000000021c1660.asm.txt": {
+  "resolved": [
+   "PWC.AvatarMaker.AvatarMakerExpansionPackCategory.Init"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 3,
+   "0x1b8885c": 1,
+   "0x25bb3a4": 1,
+   "0x1b88694": 1,
+   "0x2cf071c": 1,
+   "0x1b88980": 1
+  }
+ },
+ "AddExpansionPackThumbs_00000000021cc5a8.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.GetExpansionPackDataAsset",
+   "PWC.Inventory.InventorySkinsBuildData.TryGetSkinsFromFlag",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.GetSpriteAtlas",
+   "PWC.AvatarSpine.CategoryTypeUtils.GetCategoryTypeName",
+   "PWC.AvatarSpine.AvatarSpineSkinsRestrictionsManager.IsSkinAllowed",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.TryGetSpriteFromThumbSolution",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.ApplyAuthoredThumbOrder"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 24,
+   "0x1b88970": 5,
+   "0x339a46c": 1,
+   "0x2b5a3bc": 1,
+   "0x1b88694": 2,
+   "0x289983c": 1,
+   "0x28802a0": 1,
+   "0x2cf11fc": 1,
+   "0x2cefee8": 2,
+   "0x1b8885c": 2,
+   "0x3ccab90": 1,
+   "0x3cd81b4": 1,
+   "0x1b887cc": 1,
+   "0x3cd8278": 1,
+   "0x2520358": 1,
+   "0x2b5af24": 1,
+   "0x29c05b0": 1,
+   "0x31dfa68": 2,
+   "0x3cce6d0": 1,
+   "0x2b5aab0": 1,
+   "0x2cf071c": 1,
+   "0x29c05ac": 3,
+   "0x28998b4": 1,
+   "0x1b88980": 8,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "GetAvailableExpansionPackCategories_00000000021c1780.asm.txt": {
+  "resolved": [],
+  "unresolved_targets": {}
+ },
+ "GetOwnedPackFlagsInTabOrder_00000000021cd280.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.ForEachOwnedPremiumSkinFlag"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 12,
+   "0x1b88970": 3,
+   "0x339a46c": 1,
+   "0x2ca578c": 1,
+   "0x1b88694": 1,
+   "0x1b8885c": 1,
+   "0x3ccb8d8": 1,
+   "0x2cf12b4": 1,
+   "0x29c0b20": 1,
+   "0x2ca5fe0": 1,
+   "0x2b2ff44": 1,
+   "0x29c0b1c": 3,
+   "0x1b88980": 4,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "InitAvailableExpansionPacks_00000000021c0fb8.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.GetExpansionPackDataAsset",
+   "PWC.Inventory.InventorySkinsBuildData.GetPremiumSkinsInventoryFlags",
+   "PWC.Inventory.InventorySkinsUtils.ForEachOwnedPremiumSkinFlag",
+   "PWC.AvatarMaker.AvatarMakerExpansionPackCategory.IsCarPack",
+   "PWC.AvatarMaker.AvatarMakerExpansionPackManager.AddExpansionPackCategory",
+   "PWC.AvatarMaker.AvatarMakerExpansionPackManager.AddExpansionPackCategory"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 15,
+   "0x1b88970": 4,
+   "0x339a46c": 1,
+   "0x1b88694": 4,
+   "0x2ca578c": 2,
+   "0x2b2ff44": 1,
+   "0x2ca6b54": 2,
+   "0x29bc28c": 2,
+   "0x29bc288": 6,
+   "0x31dffdc": 1,
+   "0x338d9a0": 1,
+   "0x31d39e4": 1,
+   "0x3cc84e4": 1,
+   "0x3ccad98": 1,
+   "0x1b88980": 1,
+   "0x3f939e0": 2,
+   "0x3f939f0": 2,
+   "0x1b88978": 4,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "TryFillColorSections_00000000021c896c.asm.txt": {
+  "resolved": [
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.GetPooledSection",
+   "PWC.AvatarMaker.AvatarMakerThumbsSection.InitAsPack",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.FillColorSection",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.GetPooledSection",
+   "PWC.AvatarMaker.AvatarMakerThumbsSection.InitAsPack",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.GetPooledSection",
+   "PWC.AvatarMaker.AvatarMakerThumbsSection.Init",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.FillColorSection",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.DeactivateSectionsFrom",
+   "PWC.AvatarMaker.AvatarMakerThumbsSection.Init",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.FillColorSection",
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.DeactivateSectionsFrom"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 9,
+   "0x1b8885c": 6,
+   "0x3ccb8d8": 4,
+   "0x3ccab90": 1,
+   "0x2ca5cf0": 2,
+   "0x3354594": 1,
+   "0x31dfa68": 1,
+   "0x3ca5c90": 1,
+   "0x1b88980": 1
+  }
+ },
+ "TryGetRelevantCategoryInCurrentExpansion_00000000021c0750.asm.txt": {
+  "resolved": [
+   "PWC.Inventory.InventorySkinsUtils.GetExpansionPackDataAsset",
+   "PWC.Inventory.InventorySkinsBuildData.TryGetCategoriesFromFlag",
+   "PWC.AvatarSpine.CategoryTypeUtils.GetParentAndSisterCategories",
+   "PWC.AvatarSpine.CharacterCategoryTypeExtensionMethods.CountAccessoriesSubCategories"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 13,
+   "0x1b88970": 1,
+   "0x2ca2ea0": 1,
+   "0x1b88694": 1,
+   "0x2ca41f8": 1,
+   "0x29bb8d4": 1,
+   "0x2b538e0": 1,
+   "0x2ca39fc": 1,
+   "0x2ca3684": 3,
+   "0x29bb8d0": 3,
+   "0x2ca3394": 1,
+   "0x1b88980": 5,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ },
+ "TryGetSkinsFromFlagForSpine_000000000213ccbc.asm.txt": {
+  "resolved": [
+   "PWC.AvatarSpine.CategoryTypeUtils.GetArtCategoryType",
+   "PWC.PWCUtils.TryGetCategoryTypeFromSkinName",
+   "PWC.AvatarSpine.CategoryTypeUtils.GetArtCategoryType",
+   "PWC.AvatarSpine.CategoryTypeUtils.GetCategoryTypeName"
+  ],
+  "unresolved_targets": {
+   "0x1b886e8": 19,
+   "0x1b88970": 2,
+   "0x2b5a3bc": 2,
+   "0x1b88694": 7,
+   "0x28b33a4": 2,
+   "0x2b5af24": 1,
+   "0x29c05b0": 1,
+   "0x1b8885c": 2,
+   "0x31d3914": 1,
+   "0x31e1930": 1,
+   "0x2b5b5a0": 1,
+   "0x1b887cc": 1,
+   "0x338d9a0": 1,
+   "0x31e0104": 1,
+   "0x3ca5b88": 1,
+   "0x29c05ac": 3,
+   "0x1b88988": 5,
+   "0x1b88980": 4,
+   "0x3f939e0": 1,
+   "0x3f939f0": 1,
+   "0x1b88978": 2,
+   "0x1c4d150": 1,
+   "0x1914dc0": 1
+  }
+ }
+}

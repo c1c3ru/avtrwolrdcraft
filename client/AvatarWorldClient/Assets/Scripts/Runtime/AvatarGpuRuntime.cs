@@ -95,7 +95,10 @@ namespace AvatarWorld.Runtime
         Action _onClose;
         bool _useSharedState;
         bool _embeddedWorldAvatar;
+        /// <summary>Ordem de desenho do avatar quando embutido numa cena (padrao 4: quadra de basquete).</summary>
+        public int EmbeddedSortingOrder = 4;
         Vector3 _worldPosition;
+        int _worldSortingOrder = 4;
         float _worldScale = 1f;
         AvatarAppearance Appearance => _playerState.Appearance;
 
@@ -107,8 +110,9 @@ namespace AvatarWorld.Runtime
             _useSharedState = true;
         }
 
-        public void ConfigureAsWorldAvatar(SaveStore saveStore, PlayerState playerState, Vector3 position, float scale)
+        public void ConfigureAsWorldAvatar(SaveStore saveStore, PlayerState playerState, Vector3 position, float scale, int sortingOrder = 4)
         {
+            _worldSortingOrder = sortingOrder;
             Configure(saveStore, playerState, null);
             _embeddedWorldAvatar = true;
             _worldPosition = position;
@@ -258,7 +262,7 @@ namespace AvatarWorld.Runtime
             var meshFilter = avatarGo.GetComponent<MeshFilter>();
             int tris = meshFilter != null && meshFilter.sharedMesh != null ? meshFilter.sharedMesh.triangles.Length / 3 : 0;
             var avatarRenderer = avatarGo.GetComponent<MeshRenderer>();
-            if (_embeddedWorldAvatar && avatarRenderer != null) avatarRenderer.sortingOrder = 4;
+            if (_embeddedWorldAvatar && avatarRenderer != null) avatarRenderer.sortingOrder = _worldSortingOrder;
             if (avatarRenderer != null)
             {
                 BodyHeight = avatarRenderer.bounds.size.y / Mathf.Max(avatarGo.transform.lossyScale.y, 0.0001f);
@@ -287,6 +291,22 @@ namespace AvatarWorld.Runtime
         }
 
         /// <summary>Esqueleto e skin prontos (Start concluiu); o editor visual espera isto antes de gerar miniaturas.</summary>
+        /// <summary>Avatar embutido (mundo/interior): toca uma animacao do esqueleto se ela existir.</summary>
+        public void PlayAnimation(string animationName, bool loop)
+        {
+            if (!IsReady || _skeletonAnimation.Skeleton.Data.FindAnimation(animationName) == null) return;
+            _skeletonAnimation.state.SetAnimation(0, animationName, loop);
+        }
+
+        /// <summary>Espelha o avatar horizontalmente (true = olhando para a esquerda).</summary>
+        public void SetFacing(bool left)
+        {
+            if (IsReady) _skeletonAnimation.Skeleton.ScaleX = left ? -1f : 1f;
+        }
+
+        /// <summary>Transform do avatar (posicao no mundo), ou null antes de ficar pronto.</summary>
+        public Transform AvatarTransform => _skeletonAnimation != null ? _skeletonAnimation.transform : null;
+
         public bool IsReady => _skeletonAnimation != null && _skeletonAnimation.valid;
 
         /// <summary>Aparencia em edicao (a mesma de PlayerState; nada e gravado ate o editor salvar).</summary>

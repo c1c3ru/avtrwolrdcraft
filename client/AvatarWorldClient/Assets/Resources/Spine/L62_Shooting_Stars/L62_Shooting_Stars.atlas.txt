@@ -1,0 +1,34 @@
+
+L62_Shooting_Stars.png
+size: 104,180
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Particle_circle
+  rotate: false
+  xy: 75, 5
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: -1
+Particle_star
+  rotate: false
+  xy: 58, 3
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: false
+  xy: 57, 20
+  size: 43, 153
+  orig: 43, 153
+  offset: 0, 0
+  index: -1
+Tail2
+  rotate: false
+  xy: 2, 10
+  size: 54, 166
+  orig: 54, 166
+  offset: 0, 0
+  index: -1

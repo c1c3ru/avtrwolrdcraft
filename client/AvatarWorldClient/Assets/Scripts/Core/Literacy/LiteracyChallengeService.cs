@@ -21,7 +21,10 @@ namespace AvatarWorld.Core.Literacy
 
         public int PazuCurrencyBalance => _state.PazuCurrency;
 
-        public AnswerResult Answer(LiteracyChallenge challenge, int selectedOptionIndex)
+        /// <param name="attemptNumber">1a tentativa no desafio atual = 1. Chutar varias opcoes ate
+        /// acertar reduz a recompensa (2a tentativa paga metade, da 3a em diante nao paga nada) sem
+        /// descontar moedas ja ganhas - desincentiva brute-force sem punir quem errou de verdade.</param>
+        public AnswerResult Answer(LiteracyChallenge challenge, int selectedOptionIndex, int attemptNumber = 1)
         {
             if (challenge == null) throw new ArgumentNullException(nameof(challenge));
             if (string.IsNullOrEmpty(challenge.ChallengeId)) throw new ArgumentException("ChallengeId vazio", nameof(challenge));
@@ -32,17 +35,25 @@ namespace AvatarWorld.Core.Literacy
 
             bool alreadyDone = _state.IsChallengeCompleted(challenge.ChallengeId);
             if (!alreadyDone) _state.MarkChallengeCompleted(challenge.ChallengeId);
+            int reward = RewardForAttempt(challenge.CoinReward, attemptNumber);
             // Desafios repetiveis (banco de 100) pagam a cada acerto; o seletor evita a repeticao.
-            bool pays = (!alreadyDone || challenge.Repeatable) && challenge.CoinReward > 0;
-            if (pays) _economy.Earn(challenge.CoinReward, "desafio:" + challenge.ChallengeId);
+            bool pays = (!alreadyDone || challenge.Repeatable) && reward > 0;
+            if (pays) _economy.Earn(reward, "desafio:" + challenge.ChallengeId);
 
             return new AnswerResult
             {
                 Correct = true,
                 CoinsAwarded = pays,
-                CoinsEarned = pays ? challenge.CoinReward : 0,
+                CoinsEarned = pays ? reward : 0,
                 PazuCurrencyBalance = _state.PazuCurrency,
             };
+        }
+
+        static int RewardForAttempt(int baseReward, int attemptNumber)
+        {
+            if (baseReward <= 0 || attemptNumber <= 1) return baseReward;
+            if (attemptNumber == 2) return Math.Max(1, baseReward / 2);
+            return 0;
         }
     }
 }

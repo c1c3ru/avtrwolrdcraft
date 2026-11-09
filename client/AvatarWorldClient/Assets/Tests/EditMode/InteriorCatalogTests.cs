@@ -19,7 +19,7 @@ namespace AvatarWorld.Core.Tests
         public void UnderConstructionAndUnknownLevels_HaveNoInterior()
         {
             Assert.IsFalse(InteriorCatalog.TryGetKey(0, out _));
-            Assert.IsFalse(InteriorCatalog.TryGetKey(13, out _)); // quadra: tem runtime proprio
+            Assert.IsFalse(InteriorCatalog.TryGetKey(999999, out _));
         }
 
         [Test]

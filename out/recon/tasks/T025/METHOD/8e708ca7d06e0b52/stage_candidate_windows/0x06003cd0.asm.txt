@@ -1,0 +1,47 @@
+
+/home/c1c3ru/avtrwolrdcraft/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 1f04de0: a9bd5ffe     	stp	x30, x23, [sp, #-0x30]!
+ 1f04de4: a90157f6     	stp	x22, x21, [sp, #0x10]
+ 1f04de8: a9024ff4     	stp	x20, x19, [sp, #0x20]
+ 1f04dec: f0012fb6     	adrp	x22, 0x44fb000
+ 1f04df0: 90011557     	adrp	x23, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 1f04df4: f00115d4     	adrp	x20, 0x41bf000
+ 1f04df8: 90011595     	adrp	x21, 0x41b4000
+ 1f04dfc: 395baac8     	ldrb	w8, [x22, #0x6ea]
+ 1f04e00: f9475af7     	ldr	x23, [x23, #0xeb0]
+ 1f04e04: f9458a94     	ldr	x20, [x20, #0xb10]
+ 1f04e08: f94732b5     	ldr	x21, [x21, #0xe60]
+ 1f04e0c: aa0003f3     	mov	x19, x0
+ 1f04e10: 37000188     	tbnz	w8, #0x0, 0x1f04e40 <__start_il2cpp+0x2b3c30>
+ 1f04e14: 90011540     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 1f04e18: f9475800     	ldr	x0, [x0, #0xeb0]
+ 1f04e1c: 97f20e33     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1f04e20: 90011580     	adrp	x0, 0x41b4000
+ 1f04e24: f9473000     	ldr	x0, [x0, #0xe60]
+ 1f04e28: 97f20e30     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1f04e2c: f00115c0     	adrp	x0, 0x41bf000
+ 1f04e30: f9458800     	ldr	x0, [x0, #0xb10]
+ 1f04e34: 97f20e2d     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 1f04e38: 52800028     	mov	w8, #0x1                // =1
+ 1f04e3c: 391baac8     	strb	w8, [x22, #0x6ea]
+ 1f04e40: f94002e0     	ldr	x0, [x23]
+ 1f04e44: 97f20ecb     	bl	0x1b88970 <JNI_OnUnload+0xa5b4>
+ 1f04e48: f9400282     	ldr	x2, [x20]
+ 1f04e4c: aa1303e1     	mov	x1, x19
+ 1f04e50: aa1f03e3     	mov	x3, xzr
+ 1f04e54: aa0003f4     	mov	x20, x0
+ 1f04e58: 944f20b9     	bl	0x32cd13c <__start_il2cpp+0x167bf2c>
+ 1f04e5c: f94002a0     	ldr	x0, [x21]
+ 1f04e60: b940e008     	ldr	w8, [x0, #0xe0]
+ 1f04e64: 35000048     	cbnz	w8, 0x1f04e6c <__start_il2cpp+0x2b3c5c>
+ 1f04e68: 97f20e7d     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 1f04e6c: aa1403e0     	mov	x0, x20
+ 1f04e70: a9424ff4     	ldp	x20, x19, [sp, #0x20]
+ 1f04e74: a94157f6     	ldp	x22, x21, [sp, #0x10]
+ 1f04e78: aa1f03e1     	mov	x1, xzr
+ 1f04e7c: a8c35ffe     	ldp	x30, x23, [sp], #0x30
+ 1f04e80: 14059117     	b	0x20692dc <__start_il2cpp+0x4180cc>

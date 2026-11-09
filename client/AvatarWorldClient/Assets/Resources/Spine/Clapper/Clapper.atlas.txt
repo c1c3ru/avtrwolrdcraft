@@ -1,0 +1,62 @@
+
+Clapper.png
+size: 768,712
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+clapper_body
+  rotate: false
+  xy: 2, 372
+  size: 478, 338
+  orig: 478, 338
+  offset: 0, 0
+  index: -1
+clapper_clap thing
+  rotate: false
+  xy: 288, 2
+  size: 478, 96
+  orig: 478, 96
+  offset: 0, 0
+  index: -1
+clapper_snap1
+  rotate: false
+  xy: 288, 100
+  size: 120, 94
+  orig: 120, 94
+  offset: 0, 0
+  index: -1
+clapper_snap2
+  rotate: false
+  xy: 2, 37
+  size: 78, 47
+  orig: 78, 47
+  offset: 0, 0
+  index: -1
+countdown_green
+  rotate: false
+  xy: 2, 86
+  size: 284, 284
+  orig: 300, 300
+  offset: 8, 8
+  index: -1
+countdown_off
+  rotate: false
+  xy: 288, 196
+  size: 174, 174
+  orig: 300, 300
+  offset: 63, 63
+  index: -1
+countdown_red
+  rotate: false
+  xy: 482, 426
+  size: 284, 284
+  orig: 300, 300
+  offset: 8, 8
+  index: -1
+countdown_yellow
+  rotate: false
+  xy: 482, 140
+  size: 284, 284
+  orig: 300, 300
+  offset: 8, 8
+  index: -1

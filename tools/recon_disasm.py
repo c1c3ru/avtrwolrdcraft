@@ -88,6 +88,10 @@ def main():
                             note = '  ; "' + meta.data[so + di:so + di + ln].decode("utf-8", "replace") + '"'
                     except Exception:
                         pass
+                # dst no longer holds a page base after this load (even when it was not
+                # itself the GOT-chase base above): drop any stale adrp page recorded for
+                # it so a later unrelated `ldr x9,[x8,#off]` is not misread as a GOT chase.
+                pages.pop(dst, None)
             print("%x  %-6s %s%s" % (ins.address, ins.mnemonic, ins.op_str, note))
 
 

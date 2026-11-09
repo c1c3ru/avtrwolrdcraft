@@ -1,0 +1,12 @@
+{
+  "task_id": "T025/METHOD/d417091ede9f01e0",
+  "status": "partial",
+  "semantic_completion": false,
+  "method_body_fully_bounded": false,
+  "local_normal_cfg_covered": true,
+  "reachable_instructions": 53,
+  "exact_generic_identities": 3,
+  "contract": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T025/METHOD/d417091ede9f01e0/method-contract.json",
+  "control_flow": "/home/c1c3ru/avtrwolrdcraft/out/recon/tasks/T025/METHOD/d417091ede9f01e0/control-flow.json",
+  "erratum": "Supersedes prior method_body_fully_bounded=true: 53 reachable instructions in an inspection window do not prove complete body regions."
+}

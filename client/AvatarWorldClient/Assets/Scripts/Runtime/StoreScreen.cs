@@ -65,6 +65,13 @@ namespace AvatarWorld.Runtime
         public void RefreshCoins()
         {
             if (_coinText != null) _coinText.text = _state.PazuCurrency.ToString();
+            // Pacotes habilitam/desabilitam conforme o saldo: redesenha mantendo a posicao de rolagem.
+            if (_content != null && _category != null)
+            {
+                var position = _content.anchoredPosition;
+                ShowCards();
+                _content.anchoredPosition = position;
+            }
         }
 
         // ---------- moldura ----------
@@ -353,7 +360,11 @@ namespace AvatarWorld.Runtime
             card.GetComponent<LayoutElement>().preferredWidth = 520f;
             card.GetComponent<LayoutElement>().preferredHeight = 700f;
 
-            var art = NewImage("Art", card.transform, Art("Store/packs/" + offer.Art), Color.white);
+            bool owned = StoreCatalog.IsOwned(_state, offer);
+            bool affordable = owned || _state.PazuCurrency >= offer.Price;
+            // Sem moedas suficientes o pacote fica acinzentado (desabilitado); com saldo, volta ao normal.
+            var art = NewImage("Art", card.transform, Art("Store/packs/" + offer.Art),
+                affordable ? Color.white : new Color(0.5f, 0.5f, 0.55f, 0.85f));
             Anchor(art.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, -22f), new Vector2(480f, 610f));
             art.preserveAspect = true;
             StoreOffer captured = offer;
@@ -365,7 +376,6 @@ namespace AvatarWorld.Runtime
             title.text = offer.Title;
             title.raycastTarget = false;
 
-            bool owned = StoreCatalog.IsOwned(_state, offer);
             var pill = NewImage("Price", card.transform, Art("Store/ui/currency_bg"), Color.white);
             Anchor(pill.rectTransform, new Vector2(1f, 0f), new Vector2(-150f, 70f), new Vector2(250f, 80f));
             pill.raycastTarget = false;
@@ -382,6 +392,14 @@ namespace AvatarWorld.Runtime
                 var price = NewText("Value", pill.transform, 46, TextAnchor.MiddleRight, Color.white);
                 Anchor(price.rectTransform, new Vector2(1f, 0.5f), new Vector2(-105f, 0f), new Vector2(150f, 80f));
                 price.text = offer.Price.ToString();
+                if (!affordable) price.color = new Color(1f, 0.55f, 0.55f);
+                else
+                {
+                    var buy = NewText("BuyBadge", card.transform, 40, TextAnchor.MiddleCenter, new Color(0.6f, 1f, 0.7f));
+                    buy.gameObject.AddComponent<Outline>().effectColor = new Color(0.15f, 0.04f, 0.3f);
+                    Anchor(buy.rectTransform, new Vector2(0f, 0f), new Vector2(150f, 70f), new Vector2(240f, 80f));
+                    buy.text = "Comprar";
+                }
             }
         }
 
