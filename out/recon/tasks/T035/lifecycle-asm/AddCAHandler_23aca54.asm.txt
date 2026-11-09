@@ -1,0 +1,71 @@
+23aca54  stp    x30, x21, [sp, #-0x20]!
+23aca58  stp    x20, x19, [sp, #0x10]
+23aca5c  adrp   x21, #0x44fe000
+23aca60  ldrb   w8, [x21, #0x665]
+23aca64  mov    x19, x1
+23aca68  mov    x20, x0
+23aca6c  tbnz   w8, #0, #0x23aca90
+23aca70  adrp   x0, #0x41b8000
+23aca74  ldr    x0, [x0, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23aca78  bl     #0x1b886e8
+23aca7c  adrp   x0, #0x41c5000
+23aca80  ldr    x0, [x0, #0xa10]
+23aca84  bl     #0x1b886e8
+23aca88  mov    w8, #1
+23aca8c  strb   w8, [x21, #0x665]
+23aca90  cbz    x20, #0x23acb6c
+23aca94  adrp   x10, #0x41b8000
+23aca98  ldr    x8, [x20]
+23aca9c  ldr    x10, [x10, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23acaa0  ldrh   w9, [x8, #0x12e]
+23acaa4  ldr    x1, [x10]
+23acaa8  cbz    x9, #0x23acacc
+23acaac  ldr    x10, [x8, #0xb0]
+23acab0  add    x10, x10, #8
+23acab4  ldur   x11, [x10, #-8]
+23acab8  cmp    x11, x1
+23acabc  b.eq   #0x23acadc
+23acac0  subs   x9, x9, #1
+23acac4  add    x10, x10, #0x10
+23acac8  b.ne   #0x23acab4
+23acacc  mov    w2, #0xa
+23acad0  mov    x0, x20
+23acad4  bl     #0x1b7ba44  ; IFACE ICATarget.get_CAHandlers
+23acad8  b      #0x23acaec
+23acadc  ldr    w9, [x10]
+23acae0  add    w9, w9, #0xa
+23acae4  add    x8, x8, w9, sxtw #4
+23acae8  add    x0, x8, #0x138
+23acaec  ldp    x8, x1, [x0]
+23acaf0  mov    x0, x20
+23acaf4  blr    x8
+23acaf8  cbz    x0, #0x23acb6c
+23acafc  adrp   x9, #0x41c5000
+23acb00  ldr    x9, [x9, #0xa10]
+23acb04  ldr    w10, [x0, #0x1c]
+23acb08  ldr    x8, [x0, #0x10]  ; "Frog_Leap_Over"
+23acb0c  ldr    x9, [x9]
+23acb10  add    w10, w10, #1
+23acb14  str    w10, [x0, #0x1c]
+23acb18  cbz    x8, #0x23acb6c
+23acb1c  ldrsw  x10, [x0, #0x18]
+23acb20  ldr    w11, [x8, #0x18]
+23acb24  cmp    w10, w11
+23acb28  b.hs   #0x23acb50
+23acb2c  add    w9, w10, #1
+23acb30  add    x8, x8, x10, lsl #3
+23acb34  str    w9, [x0, #0x18]
+23acb38  str    x19, [x8, #0x20]!
+23acb3c  mov    x1, x19
+23acb40  ldp    x20, x19, [sp, #0x10]
+23acb44  mov    x0, x8
+23acb48  ldp    x30, x21, [sp], #0x20
+23acb4c  b      #0x1b88694
+23acb50  ldr    x8, [x9, #0x20]  ; "Heavy_Lifting"
+23acb54  mov    x1, x19
+23acb58  ldp    x20, x19, [sp, #0x10]
+23acb5c  ldr    x8, [x8, #0xc0]
+23acb60  ldr    x2, [x8, #0x70]
+23acb64  ldp    x30, x21, [sp], #0x20
+23acb68  b      #0x2cf071c
+23acb6c  bl     #0x1b88980
