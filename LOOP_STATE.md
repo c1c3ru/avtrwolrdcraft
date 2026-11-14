@@ -1,5 +1,40 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Hipótese revisada: sufixo `_st` em skins = sticker, não sombra/template — 2026-11-14
+- Hipótese anterior ("camada auxiliar de sombra/template, não visível") era só inferência pelo
+  nome; nunca tinha sido checada contra o atlas original nem contra o código. Escopo real é
+  pequeno: só 2 skins em todo o catálogo capturado têm sufixo `_st` (`hat_3_st` em
+  `hat_a_207_color`, `j_arm_r_2_st` em `jacket_91_color`; 4 `path_id` no total).
+- Checado diretamente no `resources.assets` ORIGINAL (extraído de `apk/base.apk`, via
+  UnityPy): as 4 entradas `_st` existem como Texture2D+Sprite reais, mesmo tamanho de canvas
+  da versão sem `_st` — a extração do clone não pulou nenhuma página do atlas.
+- Pixels decodificados mostram que `_st` NÃO é sombra/silhueta do item base: `Hat_3_ST` é um
+  rosto de urso de pelúcia pequeno (3,9% opaco), `J_Arm_R_2_ST` é um emblema circular pequeno —
+  ambos sem relação de forma com `Hat_3`/`J_Arm_R_2`. Uma sombra real replicaria a silhueta;
+  aqui não replica.
+- Strings do binário/metadata IL2CPP originais (`il2cpp_in/`) confirmam um sistema de
+  "sticker" ativo e não trivial: `LevelCAStickerItemHandler`, `CarStickerDecal`/
+  `CarStickerMapping`/`CarStickerSlotExclusion`, `TryGetStickerForTarget`, mensagens de
+  validação de runtime ("sticker area has no size", "a part can only wear one [sticker]"),
+  e dezenas de assets de sticker nomeados alhures no catálogo. `_st` muito provavelmente
+  abrevia "sticker": um decalque pequeno associado à skin, não uma camada invisível.
+- **Pendência não fechada:** decompilação do call-path real (`LevelSkinCATargetHandler.
+  TryAddCAHandlerFromSkinName`/`OnPutClothing`, `LevelCAStickerItemHandler.OnAddedToTarget`/
+  `GetFolderName`, `LevelClothingItemHandler.GetSkinName`) foi tentada via REA
+  (`open_binary` em `il2cpp_in/libil2cpp.so`) em duas rodadas, com duas causas raiz
+  diferentes: (1) OOM do provider Hopper enquanto um teste Unity EditMode concorrente
+  saturava a máquina compartilhada (7,1 GiB); (2) depois da máquina liberar memória (3,3 GiB
+  livres confirmados), duas tentativas limpas travaram do mesmo jeito em
+  `provider_timeout`/`QDialog::WaitDialog` do Hopper — sem banco de análise (`.hop`)
+  pré-existente para este binário de ~75MB e sem Ghidra instalado como alternativa headless,
+  a análise completa não termina dentro da janela de prontidão de 120s do bridge, não importa
+  quantas vezes se repita. Não é mais um problema de memória; é limitação estrutural do
+  provider disponível. Vaddrs exatos anotados para retomar com banco Hopper pré-analisado ou
+  Ghidra configurado (`GHIDRA_INSTALL_DIR`). Classificação: `static_candidate_not_runtime_validated`
+  até essa etapa fechar.
+- Evidência completa: `out/recon/tasks/T034/ST_SUFFIX_FINDINGS.md`. Sem alteração do cliente,
+  sem execução/emulação, sem aparelho.
+
 ## Loja "Criador de Avatar" vira atalho de navegacao — 2026-11-07
 - Commit `87148a4f8` (branch `worktree-loja-criador-avatar`, pushado): `StoreScreen.SelectCategory` trata
   `StoreCatalog.CategoryAvatarMaker` como atalho (fecha a loja, abre `AvatarSlotsScreen` via
