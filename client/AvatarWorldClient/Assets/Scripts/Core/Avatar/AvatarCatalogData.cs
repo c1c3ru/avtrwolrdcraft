@@ -1054,7 +1054,8 @@ namespace AvatarWorld.Core.Avatar
             "shirt_special_1194",
             "shirt_special_1196",
             "shirt_special_1195",
-        };
+                    "shirt_special_1177_color",
+};
 
         public static readonly string[] Bottom =
         {
@@ -2034,7 +2035,10 @@ namespace AvatarWorld.Core.Avatar
             "bottom_special_1095",
             "bottom_special_1099",
             "bottom_special_1096",
-        };
+                    "bottom_special_1077_color",
+            "bottom_special_1078_color",
+            "bottom_special_1079_color",
+};
 
         public static readonly string[] Shoes =
         {
@@ -4052,7 +4056,8 @@ namespace AvatarWorld.Core.Avatar
             "accessories_body_neck_506",
             "accessories_body_neck_508",
             "accessories_body_neck_509",
-        };
+                    "accessories_body_neck_515_color",
+};
 
         public static readonly string[] Mouth =
         {

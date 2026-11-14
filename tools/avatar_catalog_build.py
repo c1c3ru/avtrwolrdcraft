@@ -48,7 +48,7 @@ CATEGORIES = {
     'FaceCheeks': ['face/face_cheeks'],
 }
 THREE_LEVEL = {'mouth', 'eyebrows'}
-COLOR_CATEGORIES = {'Eyebrows', 'HairBack'}  # categorias cujos itens _color entram (recebem tinta Multiply)
+COLOR_CATEGORIES = {'Eyebrows', 'HairBack', 'Shirt', 'Bottom', 'Shoes', 'Accessory'}  # categorias cujos itens _color entram (recebem tinta Multiply)
 # IDs que ja existiam (os padroes) continuam sendo os primeiros de cada categoria
 KEEP_FIRST = {
     'Shirt': ['shirt_formal_1', 'shirt_casual_1'],
