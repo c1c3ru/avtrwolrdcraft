@@ -79,6 +79,8 @@ namespace AvatarWorld.Runtime
             (AvatarCatalog.CategoryBottom, "Calca"), (AvatarCatalog.CategoryShoes, "Sapato"), (AvatarCatalog.CategoryAccessory, "Acessorio"),
             (AvatarCatalog.CategoryMouth, "Boca"), (AvatarCatalog.CategoryEyebrows, "Sobrancelha"),
             (AvatarCatalog.CategoryJacket, "Jaqueta"), (AvatarCatalog.CategoryHat, "Chapeu"),
+            (AvatarCatalog.CategoryOnepiece, "Vestido"), (AvatarCatalog.CategoryLegs, "Meia"),
+            (AvatarCatalog.CategoryBackA, "Acessorio costas"), (AvatarCatalog.CategoryFaceCheeks, "Bochecha"),
         };
         // Montadas no Start, conforme o tipo do avatar (adulto, crianca, bebe).
         List<Category> _categories = new List<Category>();
@@ -347,6 +349,7 @@ namespace AvatarWorld.Runtime
             to.HairId = from.HairId; to.ShirtId = from.ShirtId; to.BottomId = from.BottomId; to.ShoesId = from.ShoesId;
             to.AccessoryId = from.AccessoryId; to.MouthId = from.MouthId; to.EyebrowsId = from.EyebrowsId;
             to.HairBackId = from.HairBackId; to.HatId = from.HatId; to.JacketId = from.JacketId;
+            to.OnepieceId = from.OnepieceId; to.LegsId = from.LegsId; to.BackAId = from.BackAId; to.FaceCheeksId = from.FaceCheeksId;
             to.SkinIndex = from.SkinIndex; to.EyesIndex = from.EyesIndex;
             to.ItemColors = from.Clone().ItemColors;
         }

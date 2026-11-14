@@ -27,7 +27,7 @@ namespace AvatarWorld.PlayModeTests
         InputSettings.EditorInputBehaviorInPlayMode _oldEditorBehavior;
         InputSettings.BackgroundBehavior _oldBackground;
 
-        void Build(string baseName, LocomotionFamily family, PostureKind posture, bool hasRunning)
+        void Build(string baseName, LocomotionFamily family, PostureKind posture)
         {
             var shader = Shader.Find("Spine/Skeleton");
             Assert.IsNotNull(shader, "shader Spine/Skeleton");
@@ -57,7 +57,6 @@ namespace AvatarWorld.PlayModeTests
             _controller.Skeleton = _spine;
             _controller.Family = family;
             _controller.Posture = posture;
-            _controller.HasRunningAnimations = hasRunning;
             _controller.DeltaTimeOverride = 0.016f;          // 40 px = 0.4 u -> 25 u/s por quadro
             _controller.ScreenToWorld = s => s / 100f;
 
@@ -98,7 +97,7 @@ namespace AvatarWorld.PlayModeTests
         [UnityTest]
         public IEnumerator ToddlerStandingWalksAndCrawlsWhenSitting()
         {
-            Build("Toddler_Spine", LocomotionFamily.Toddler, PostureKind.Standing, false);
+            Build("Toddler_Spine", LocomotionFamily.Toddler, PostureKind.Standing);
             foreach (var n in new[] { "General/Stand_Idle", "Movement_Cycles/Walking_Loop", "Movement_Cycles/Crawling_Loop" })
                 Assert.IsNotNull(_spine.Skeleton.Data.FindAnimation(n), "Toddler " + n);
             yield return null;
@@ -116,7 +115,7 @@ namespace AvatarWorld.PlayModeTests
         [UnityTest]
         public IEnumerator ToddlerNeverRunsEvenAtHighSpeed()
         {
-            Build("Toddler_Spine", LocomotionFamily.Toddler, PostureKind.Standing, true);
+            Build("Toddler_Spine", LocomotionFamily.Toddler, PostureKind.Standing);
             yield return null;
             yield return Drag();
             yield return MoveMouse(new Vector2(80f, 0f), true);
@@ -125,17 +124,19 @@ namespace AvatarWorld.PlayModeTests
         }
 
         [UnityTest]
-        public IEnumerator DogWalksThenRunsWhenFastAndHasRunningAnimations()
+        public IEnumerator DogKeepsRecoveredWalkCycleAboveRunThreshold()
         {
-            Build("Pet_Dog_Spine", LocomotionFamily.Animal, PostureKind.Standing, true);
-            foreach (var n in new[] { "General/Standing_Idle", "General/Walking", "General/Running" })
+            Build("Pet_Dog_Spine", LocomotionFamily.Animal, PostureKind.Standing);
+            foreach (var n in new[] { "General/Standing_Idle", "Track_Animations/Forced_To_Walk" })
                 Assert.IsNotNull(_spine.Skeleton.Data.FindAnimation(n), "Dog " + n);
             yield return null;
             Assert.AreEqual("General/Standing_Idle", Current);
             yield return Drag();
-            Assert.AreEqual("General/Walking", Current);
-            yield return MoveMouse(new Vector2(80f, 0f), true);          // 25 u/s > 18: Walk -> Run
-            Assert.AreEqual("General/Running", Current);
+            Assert.AreEqual("Track_Animations/Forced_To_Walk", Current);
+            yield return MoveMouse(new Vector2(80f, 0f), true);          // 25 u/s > 18, capability false
+            Assert.AreEqual(MovementKind.Walk, _controller.Movement);
+            Assert.IsFalse(_controller.HasRunningAnimations);
+            Assert.AreEqual("Track_Animations/Forced_To_Walk", Current);
             yield return MoveMouse(new Vector2(80f, 0f), false);
             Assert.AreEqual("General/Standing_Idle", Current);
         }
@@ -143,11 +144,11 @@ namespace AvatarWorld.PlayModeTests
         [UnityTest]
         public IEnumerator CatWithoutRunningAnimationsStaysWalking()
         {
-            Build("Pet_Cat_Spine", LocomotionFamily.Animal, PostureKind.Standing, false);
+            Build("Pet_Cat_Spine", LocomotionFamily.Animal, PostureKind.Standing);
             yield return null;
             yield return Drag();
             yield return MoveMouse(new Vector2(80f, 0f), true);
-            Assert.AreEqual("General/Walking", Current);
+            Assert.AreEqual("Track_Animations/Forced_To_Walk", Current);
         }
     }
 }

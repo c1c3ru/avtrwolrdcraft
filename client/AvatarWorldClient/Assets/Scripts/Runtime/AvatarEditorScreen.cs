@@ -36,6 +36,11 @@ namespace AvatarWorld.Runtime
             (AvatarCatalog.CategoryShoes, "shoes"), (AvatarCatalog.CategoryAccessory, "accessory"), (AvatarCatalog.CategoryMouth, "mouth"),
             (AvatarCatalog.CategoryEyebrows, "eyebrows"),
             (AvatarCatalog.CategorySkin, "skin"), (AvatarCatalog.CategoryEyes, "eyes"),
+            // Confirmadas no CharacterCategoryType do original, adicionadas nesta rodada; ainda sem
+            // icone proprio extraido (AvatarMaker/cat_<art>.png ausente) - usam rotulo de texto no
+            // lugar do icone ate a arte original ser localizada/extraida.
+            (AvatarCatalog.CategoryHat, "hat"), (AvatarCatalog.CategoryJacket, "jacket"), (AvatarCatalog.CategoryOnepiece, "onepiece"),
+            (AvatarCatalog.CategoryLegs, "legs"), (AvatarCatalog.CategoryBackA, "back_a"), (AvatarCatalog.CategoryFaceCheeks, "face_cheeks"),
         };
 
         static readonly CategoryView[] Views =
@@ -48,8 +53,15 @@ namespace AvatarWorld.Runtime
             new CategoryView { key = AvatarCatalog.CategoryMouth,     art = "mouth",     centerY = 2.75f, half = 0.70f },
             new CategoryView { key = AvatarCatalog.CategoryHairBack,  art = "hair",      centerY = 3.30f, half = 1.60f },
             new CategoryView { key = AvatarCatalog.CategoryEyebrows,  art = "eyebrows",  centerY = 3.50f, half = 0.70f },
-            new CategoryView { key = AvatarCatalog.CategoryHat,       art = "accessory", centerY = 3.50f, half = 1.30f },
-            new CategoryView { key = AvatarCatalog.CategoryJacket,    art = "shirt",     centerY = 1.65f, half = 0.95f },
+            // Enquadramentos estimados por semelhanca com a categoria de corpo mais proxima (sem
+            // print do original para medir): Hat ~ Hair, Jacket/Onepiece ~ Shirt/Bottom, Legs ~ Shoes,
+            // BackA ~ Accessory, FaceCheeks ~ Mouth/Eyebrows.
+            new CategoryView { key = AvatarCatalog.CategoryHat,       art = "hat",       centerY = 3.60f, half = 1.50f },
+            new CategoryView { key = AvatarCatalog.CategoryJacket,    art = "jacket",    centerY = 1.65f, half = 1.00f },
+            new CategoryView { key = AvatarCatalog.CategoryOnepiece,  art = "onepiece",  centerY = 1.10f, half = 1.30f },
+            new CategoryView { key = AvatarCatalog.CategoryLegs,      art = "legs",      centerY = 0.45f, half = 0.65f },
+            new CategoryView { key = AvatarCatalog.CategoryBackA,     art = "back_a",    centerY = 3.00f, half = 1.35f },
+            new CategoryView { key = AvatarCatalog.CategoryFaceCheeks,art = "face_cheeks",centerY = 2.80f, half = 0.65f },
         };
 
         // Categorias do menu do tipo de avatar em edicao (crianca/bebe nao tem todas).
@@ -190,19 +202,48 @@ namespace AvatarWorld.Runtime
             _undo = Button(_frontCanvas.transform, "UndoButton", Art("AvatarMaker/undo"), new Vector2(0, 0), new Vector2(271f, 94f), new Vector2(151f, 149f), Undo);
             _redo = Button(_frontCanvas.transform, "RedoButton", Art("AvatarMaker/redo"), new Vector2(0, 0), new Vector2(447f, 94f), new Vector2(151f, 149f), Redo);
 
-            // Categorias (icones do original; so as suportadas).
-            float y = -110f;
+            // Categorias (icones do original; so as suportadas). Coluna com rolagem vertical: a
+            // versao com so 9 categorias cabia sem rolar, 15 nao cabe mais na altura fixa do painel.
+            var catViewportGo = new GameObject("CategoryViewport", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
+            catViewportGo.transform.SetParent(_panel, false);
+            var catViewport = (RectTransform)catViewportGo.transform;
+            catViewport.anchorMin = new Vector2(0, 0); catViewport.anchorMax = new Vector2(0, 1);
+            catViewport.pivot = new Vector2(0, 1f);
+            catViewport.offsetMin = new Vector2(0f, 20f); catViewport.offsetMax = new Vector2(127f, -20f);
+            catViewportGo.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            var catContentGo = new GameObject("Content", typeof(RectTransform));
+            var catContent = (RectTransform)catContentGo.transform;
+            catContent.SetParent(catViewport, false);
+            catContent.anchorMin = new Vector2(0, 1); catContent.anchorMax = new Vector2(1, 1);
+            catContent.pivot = new Vector2(0.5f, 1f);
+            catContent.sizeDelta = new Vector2(0f, MenuCategories.Length * 100f + 20f);
+            catContent.anchoredPosition = Vector2.zero;
+            float y = -10f;
             foreach (var entry in MenuCategories)
             {
                 string key = entry.key;
-                var backdrop = NewImage("Indicator_" + key, _panel, Art("AvatarMaker/indicator"), Color.white);
+                var backdrop = NewImage("Indicator_" + key, catContent, Art("AvatarMaker/indicator"), Color.white);
                 Place(backdrop.rectTransform, new Vector2(0, 1), new Vector2(64f, y), new Vector2(105f, 107f));
-                var icon = Button(_panel, "Category_" + key, Art("AvatarMaker/cat_" + entry.art), new Vector2(0, 1), new Vector2(64f, y), new Vector2(105f, 107f),
+                var icon = Button(catContent, "Category_" + key, Art("AvatarMaker/cat_" + entry.art), new Vector2(0, 1), new Vector2(64f, y), new Vector2(105f, 107f),
                     () => { UiSound.PlayClick(); SelectCategory(key); });
                 icon.preserveAspect = true;
                 _categoryButtons[key] = icon;
+                if (icon.sprite == null)
+                {
+                    // Sem icone original extraido ainda: rotulo de texto no lugar (mesmo recurso usado
+                    // para categorias sem arte propria na loja, StoreScreen.BuildRail).
+                    var label = NewText("Label_" + key, icon.transform, 20, new Color(0.25f, 0.1f, 0.2f));
+                    Stretch(label.rectTransform);
+                    label.text = entry.art;
+                    label.horizontalOverflow = HorizontalWrapMode.Wrap;
+                }
                 y -= 100f;
             }
+            var catScroll = catViewportGo.GetComponent<ScrollRect>();
+            catScroll.viewport = catViewport; catScroll.content = catContent;
+            catScroll.horizontal = false; catScroll.vertical = true;
+            catScroll.movementType = ScrollRect.MovementType.Clamped;
+            catScroll.scrollSensitivity = 40f;
 
             // Grade de miniaturas com rolagem vertical (centenas de itens): 3 colunas de celas 217x207.
             var viewport = new GameObject("Viewport", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
