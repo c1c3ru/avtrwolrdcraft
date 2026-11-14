@@ -66588,15 +66588,108 @@
       "parent_id": "T025",
       "title": "Recuperar efeitos do callback Game.Level.WaterSlide.LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1 (0x06003cd2)",
       "role": "lógica",
-      "state": "pending",
+      "state": "ready",
       "dependencies": [
         "T001",
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "planning_seed": false,
-      "evidence_refs": [],
-      "attempts": [],
-      "owner": null,
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/method-contract.json",
+          "sha256": "22497a432928ecd056af8df8c530fe08f5f7a6dc2704e771c24e6e465e784702"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/control-flow.json",
+          "sha256": "aed4384a2536f1dbfcc62f824efbd4819ad1ec039c260e2fc4985e0f05c013ec"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/unknowns.jsonl",
+          "sha256": "8bcb26a40d8f314d02ee6ea21fb259a0a66d915e9872032bdda38799686b41a8"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/result.json",
+          "sha256": "9e5dbd453005074a9e03e1ddb5b8cb23c6b03ba0754a081a664c2fbb07210f33"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/handler.asm.txt",
+          "sha256": "0ad3cdbc1bd9ceb483ce0b848f6605bb7435f42c3cb6a5b1d86a12fbcc43bd29"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/save_item_in_bulk_data.asm.txt",
+          "sha256": "0ae32e697d162a7aaf660e8e736f1c75b13b5e8c775d7e04a389d8874142ae58"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/set_in_slide_data.asm.txt",
+          "sha256": "ad7a9cbe3f62116e5b45f47def7e698953d8228ec1f0bda96b3166e3426f5371"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/save_helper_trampoline.asm.txt",
+          "sha256": "893385eb2346a3f67d2cb2fce44d5e65b50db1f30ce92422d29a9d1f6184f40d"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/test_contract_integrity.py",
+          "sha256": "7afd66f57052d0fac200df3fa6585f50280890c0ee2fa55c5815c7ab7068ddb1"
+        },
+        {
+          "path": "docs/RECON_EXECUTION_LOG.md",
+          "sha256": "10d7313f0c723603b2dbcb93bf8a2bbe92f1033cd5738edc3f6c14ef22e24449"
+        }
+      ],
+      "attempts": [
+        {
+          "id": "5c1b41fde6a746d985c8547addc7ca10",
+          "owner": "/root",
+          "started_at": 1794697551.4733102,
+          "lease_id": "c322ed4573a64176a0c0613f2b3a6714",
+          "checkpoint_at": 1794697970.9975426,
+          "state": "ready",
+          "note": "Checkpoint parcial: handler de 32 bytes e fluxo condicional documentados; helpers/callees genéricos, exceções e efeitos end-to-end continuam abertos. 3 checks estruturais e parse passaram; não declarar semantic_completion.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/method-contract.json",
+              "sha256": "22497a432928ecd056af8df8c530fe08f5f7a6dc2704e771c24e6e465e784702"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/control-flow.json",
+              "sha256": "aed4384a2536f1dbfcc62f824efbd4819ad1ec039c260e2fc4985e0f05c013ec"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/unknowns.jsonl",
+              "sha256": "8bcb26a40d8f314d02ee6ea21fb259a0a66d915e9872032bdda38799686b41a8"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/result.json",
+              "sha256": "9e5dbd453005074a9e03e1ddb5b8cb23c6b03ba0754a081a664c2fbb07210f33"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/handler.asm.txt",
+              "sha256": "0ad3cdbc1bd9ceb483ce0b848f6605bb7435f42c3cb6a5b1d86a12fbcc43bd29"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/save_item_in_bulk_data.asm.txt",
+              "sha256": "0ae32e697d162a7aaf660e8e736f1c75b13b5e8c775d7e04a389d8874142ae58"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/set_in_slide_data.asm.txt",
+              "sha256": "ad7a9cbe3f62116e5b45f47def7e698953d8228ec1f0bda96b3166e3426f5371"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/save_helper_trampoline.asm.txt",
+              "sha256": "893385eb2346a3f67d2cb2fce44d5e65b50db1f30ce92422d29a9d1f6184f40d"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/test_contract_integrity.py",
+              "sha256": "7afd66f57052d0fac200df3fa6585f50280890c0ee2fa55c5815c7ab7068ddb1"
+            },
+            {
+              "path": "docs/RECON_EXECUTION_LOG.md",
+              "sha256": "10d7313f0c723603b2dbcb93bf8a2bbe92f1033cd5738edc3f6c14ef22e24449"
+            }
+          ]
+        }
+      ],
+      "owner": "/root",
       "lease": null,
       "review": null,
       "unknown_ids": [
@@ -66658,7 +66751,7 @@
         "Quais delegates, eventos, coroutines e cenas são acionados?",
         "Quais guards/errors/exception paths afetam o fluxo?"
       ],
-      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "next_action": "Checkpoint parcial: handler de 32 bytes e fluxo condicional documentados; helpers/callees genéricos, exceções e efeitos end-to-end continuam abertos. 3 checks estruturais e parse passaram; não declarar semantic_completion.",
       "resource_locks": [
         "native-method-analysis:00003cd1"
       ],
@@ -67395,7 +67488,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 64,
+  "revision": 67,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -68719,6 +68812,27 @@
       "task": "T025/HANDLER/000032a8",
       "actor": "/root",
       "at": 1794696190.0519276
+    },
+    {
+      "revision": 65,
+      "action": "claim",
+      "task": "T025/HANDLER/00003cd1",
+      "actor": "/root",
+      "at": 1794697551.5833
+    },
+    {
+      "revision": 66,
+      "action": "start",
+      "task": "T025/HANDLER/00003cd1",
+      "actor": "/root",
+      "at": 1794697558.0117695
+    },
+    {
+      "revision": 67,
+      "action": "checkpoint",
+      "task": "T025/HANDLER/00003cd1",
+      "actor": "/root",
+      "at": 1794697971.0663195
     }
   ]
 }
