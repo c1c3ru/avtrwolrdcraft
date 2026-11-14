@@ -35,7 +35,10 @@
   disponível no momento (fechar outras sessões/apps, aumentar swap — decisão do usuário) ou
   rodar numa máquina com mais RAM. Vaddrs exatos seguem anotados em
   `out/recon/tasks/T034/ST_SUFFIX_FINDINGS.md`. Classificação:
-  `static_candidate_not_runtime_validated` até essa etapa fechar.
+  `static_candidate_not_runtime_validated` até essa etapa fechar. **Decisão do usuário:
+  fechar essa pendência por ora, sem nova tentativa agendada** — a hipótese revisada
+  (`_st` = sticker) fica como está, apoiada por evidência visual + strings, sem confirmação
+  do call-path exato.
 - Evidência completa: `out/recon/tasks/T034/ST_SUFFIX_FINDINGS.md`. Sem alteração do cliente,
   sem execução/emulação, sem aparelho.
 

@@ -137,3 +137,11 @@ para fechar essa pendência é preciso (a) mais memória/swap disponível no mom
 (fechar outras sessões/apps pesados, ou aumentar o swap do sistema — ação que precisa de
 decisão e permissão explícita do usuário, não foi feita), ou (b) rodar essa análise específica
 numa máquina com mais RAM. Vaddrs continuam válidos para quando isso for viável.
+
+**Decisão do usuário (2026-11-14): pendência fechada por ora, sem nova tentativa agendada.**
+Depois de três tentativas sem sucesso por limitação de recurso da máquina, o usuário optou por
+não perseguir a decompilação deste call-path específico no momento. A hipótese revisada
+(`_st` = sticker) permanece como está — apoiada por evidência visual + strings do sistema de
+sticker ativo, classificada como `inferred`/`static_candidate_not_runtime_validated`, não
+`observed`. Retomar esta etapa específica (vaddrs listados acima) fica em aberto para uma
+sessão futura com mais memória disponível, sem urgência.
