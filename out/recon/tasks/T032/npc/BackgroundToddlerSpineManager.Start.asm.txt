@@ -1,0 +1,18 @@
+1e01840  stp    x30, x19, [sp, #-0x10]!
+1e01844  mov    x1, xzr
+1e01848  mov    x19, x0
+1e0184c  bl     #0x2173ee4  ; -> AvatarSpineMaterialsManager.EnsureSpine
+1e01850  ldr    w1, [x19, #0xc0]
+1e01854  mov    x0, x19
+1e01858  mov    x2, xzr
+1e0185c  bl     #0x218a1d8  ; -> AvatarSpineSkinsManagerBase.Init
+1e01860  ldr    x0, [x19, #0x20]
+1e01864  cbz    x0, #0x1e01884
+1e01868  mov    x1, xzr
+1e0186c  bl     #0x351908c
+1e01870  str    x0, [x19, #0xc8]!
+1e01874  mov    x1, x0
+1e01878  mov    x0, x19
+1e0187c  ldp    x30, x19, [sp], #0x10
+1e01880  b      #0x1b88694
+1e01884  bl     #0x1b88980

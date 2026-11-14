@@ -28,5 +28,6 @@ Pesquisa apenas; nenhuma implementação nesta etapa. Base: `docs/SBS_BASELINE_2
 
 ## 5. Decisões pendentes (do autor)
 1. Prédio piloto.
-2. Regra de preço por item (proposta: por categoria em 3 faixas, sem preço de dinheiro real).
+2. ~~Regra de preço por item~~ — decidida em 2026-11-05: por categoria em 3 faixas (`Core/Economy/ItemPricing.cs`,
+   `Small`/`Medium`/`Large`), sem preço de dinheiro real. Já implementada e coberta por teste.
 3. Se o efeito visual de chuva entra no escopo.

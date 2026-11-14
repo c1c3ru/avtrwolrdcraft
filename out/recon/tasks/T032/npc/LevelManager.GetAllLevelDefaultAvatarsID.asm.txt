@@ -1,0 +1,158 @@
+2314150  sub    sp, sp, #0x70
+2314154  str    x30, [sp, #0x40]
+2314158  stp    x22, x21, [sp, #0x50]
+231415c  stp    x20, x19, [sp, #0x60]
+2314160  adrp   x22, #0x44fe000
+2314164  adrp   x21, #0x41ad000
+2314168  adrp   x19, #0x41ad000
+231416c  adrp   x20, #0x41ac000
+2314170  ldrb   w8, [x22, #0xdd]
+2314174  ldr    x21, [x21, #0x510]
+2314178  ldr    x19, [x19, #0x518]
+231417c  ldr    x20, [x20, #0xc90]  ; type UnityEngine.SceneManagement.SceneManager
+2314180  tbnz   w8, #0, #0x23141f8
+2314184  adrp   x0, #0x41d8000
+2314188  ldr    x0, [x0, #0xae0]
+231418c  bl     #0x1b886e8
+2314190  adrp   x0, #0x41d8000
+2314194  ldr    x0, [x0, #0xae8]
+2314198  bl     #0x1b886e8
+231419c  adrp   x0, #0x41d8000
+23141a0  ldr    x0, [x0, #0xaf0]
+23141a4  bl     #0x1b886e8
+23141a8  adrp   x0, #0x41ad000
+23141ac  ldr    x0, [x0, #0x568]
+23141b0  bl     #0x1b886e8
+23141b4  adrp   x0, #0x41d8000
+23141b8  ldr    x0, [x0, #0xb00]
+23141bc  bl     #0x1b886e8
+23141c0  adrp   x0, #0x41ad000
+23141c4  ldr    x0, [x0, #0x518]
+23141c8  bl     #0x1b886e8
+23141cc  adrp   x0, #0x41d9000
+23141d0  ldr    x0, [x0, #0xbe0]
+23141d4  bl     #0x1b886e8
+23141d8  adrp   x0, #0x41ad000
+23141dc  ldr    x0, [x0, #0x510]
+23141e0  bl     #0x1b886e8
+23141e4  adrp   x0, #0x41ac000
+23141e8  ldr    x0, [x0, #0xc90]  ; type UnityEngine.SceneManagement.SceneManager
+23141ec  bl     #0x1b886e8
+23141f0  mov    w8, #1
+23141f4  strb   w8, [x22, #0xdd]
+23141f8  ldr    x0, [x21]
+23141fc  str    xzr, [sp, #0x48]
+2314200  stp    xzr, xzr, [sp, #0x20]
+2314204  str    xzr, [sp, #0x30]
+2314208  bl     #0x1b88970
+231420c  ldr    x1, [x19]
+2314210  mov    x19, x0
+2314214  bl     #0x2ca2e30
+2314218  ldr    x0, [x20]
+231421c  ldr    w8, [x0, #0xe0]
+2314220  cbnz   w8, #0x2314228
+2314224  bl     #0x1b8885c
+2314228  mov    x0, xzr
+231422c  bl     #0x3cdb658
+2314230  str    w0, [sp, #0x38]
+2314234  add    x0, sp, #0x38
+2314238  mov    x1, xzr
+231423c  bl     #0x3cdad18
+2314240  add    x1, sp, #0x48
+2314244  mov    x2, xzr
+2314248  bl     #0x22ca3e0  ; -> LevelSceneAvatarMap.TryGetAvatars
+231424c  ldr    x0, [sp, #0x48]
+2314250  cbz    x0, #0x2314324
+2314254  ldr    w8, [x0, #0x18]
+2314258  cmp    w8, #1
+231425c  b.lt   #0x2314324
+2314260  adrp   x8, #0x41d8000
+2314264  ldr    x8, [x8, #0xb00]
+2314268  ldr    x1, [x8]
+231426c  add    x8, sp, #8
+2314270  bl     #0x2cf12b4
+2314274  ldur   q0, [sp, #8]
+2314278  ldr    x8, [sp, #0x18]
+231427c  adrp   x20, #0x41d8000
+2314280  ldr    x20, [x20, #0xae8]
+2314284  str    q0, [sp, #0x20]
+2314288  str    x8, [sp, #0x30]
+231428c  adrp   x21, #0x41ad000
+2314290  ldr    x21, [x21, #0x568]
+2314294  ldr    x1, [x20]
+2314298  add    x0, sp, #0x20
+231429c  bl     #0x29c0b20
+23142a0  tbz    w0, #0, #0x2314310
+23142a4  ldr    x8, [sp, #0x30]
+23142a8  cbz    x8, #0x231433c
+23142ac  ldrb   w9, [x8, #0x28]
+23142b0  cbz    w9, #0x2314294
+23142b4  cbz    x19, #0x2314344
+23142b8  ldr    w10, [x19, #0x1c]
+23142bc  ldr    w1, [x8, #0x10]
+23142c0  ldr    x8, [x19, #0x10]  ; "J_Arm_R"
+23142c4  ldr    x9, [x21]
+23142c8  add    w10, w10, #1
+23142cc  str    w10, [x19, #0x1c]
+23142d0  cbz    x8, #0x2314340
+23142d4  ldrsw  x10, [x19, #0x18]
+23142d8  ldr    w11, [x8, #0x18]
+23142dc  cmp    w10, w11
+23142e0  b.hs   #0x23142f8
+23142e4  add    w9, w10, #1
+23142e8  add    x8, x8, x10, lsl #2
+23142ec  str    w9, [x19, #0x18]
+23142f0  str    w1, [x8, #0x20]
+23142f4  b      #0x2314294
+23142f8  ldr    x8, [x9, #0x20]
+23142fc  ldr    x8, [x8, #0xc0]  ; ": Failed to add CAHandler for skinName["
+2314300  ldr    x2, [x8, #0x70]  ; "Level/ClothingCAData"
+2314304  mov    x0, x19
+2314308  bl     #0x2ca3684
+231430c  b      #0x2314294
+2314310  adrp   x8, #0x41d8000
+2314314  ldr    x8, [x8, #0xae0]
+2314318  add    x0, sp, #0x20
+231431c  ldr    x1, [x8]
+2314320  bl     #0x29c0b1c
+2314324  mov    x0, x19
+2314328  ldp    x20, x19, [sp, #0x60]
+231432c  ldp    x22, x21, [sp, #0x50]
+2314330  ldr    x30, [sp, #0x40]
+2314334  add    sp, sp, #0x70
+2314338  ret    
+231433c  bl     #0x1b88980
+2314340  bl     #0x1b88980
+2314344  bl     #0x1b88980
+2314348  b      #0x2314354
+231434c  b      #0x2314354
+2314350  b      #0x2314354
+2314354  mov    x20, x0
+2314358  cmp    w1, #1
+231435c  b.ne   #0x2314390
+2314360  mov    x0, x20
+2314364  bl     #0x3f939e0
+2314368  ldr    x21, [x0]
+231436c  bl     #0x3f939f0
+2314370  adrp   x8, #0x41d8000
+2314374  ldr    x8, [x8, #0xae0]
+2314378  add    x0, sp, #0x20
+231437c  ldr    x1, [x8]
+2314380  bl     #0x29c0b1c
+2314384  cbz    x21, #0x2314324
+2314388  mov    x0, x21
+231438c  bl     #0x1b88978
+2314390  mov    x21, xzr
+2314394  b      #0x231439c
+2314398  mov    x20, x0
+231439c  adrp   x8, #0x41d8000
+23143a0  ldr    x8, [x8, #0xae0]
+23143a4  ldr    x1, [x8]
+23143a8  add    x0, sp, #0x20
+23143ac  bl     #0x29c0b1c
+23143b0  cbnz   x21, #0x23143bc
+23143b4  mov    x0, x20
+23143b8  bl     #0x1c4d150
+23143bc  mov    x0, x21
+23143c0  bl     #0x1b88978
+23143c4  bl     #0x1914dc0

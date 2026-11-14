@@ -24,6 +24,7 @@ namespace AvatarWorld.Runtime
         Action _onClose;
         Action<int> _onEarnCoins;
         Action _onOpenItems;
+        Action _onOpenAvatarMaker;
         Font _font;
         Transform _root;
         RectTransform _content;
@@ -48,10 +49,14 @@ namespace AvatarWorld.Runtime
         public string Sub => _sub;
         public int ShownCardCount => _content != null ? _content.childCount : 0;
 
-        /// <summary>onEarnCoins(preco) abre os desafios cuja dificuldade corresponde ao preco.</summary>
-        public void Begin(PlayerState state, SaveStore saves, Action onClose, Action<int> onEarnCoins, Action onOpenItems = null)
+        /// <summary>onEarnCoins(preco) abre os desafios cuja dificuldade corresponde ao preco. onOpenAvatarMaker
+        /// e chamado ao tocar "Criador de Avatar" no trilho (atalho de navegacao, nao uma categoria de cartoes -
+        /// ver StoreCatalog.CategoryAvatarMaker).</summary>
+        public void Begin(PlayerState state, SaveStore saves, Action onClose, Action<int> onEarnCoins,
+            Action onOpenItems = null, Action onOpenAvatarMaker = null)
         {
             _onOpenItems = onOpenItems;
+            _onOpenAvatarMaker = onOpenAvatarMaker;
             _state = state ?? throw new ArgumentNullException(nameof(state));
             _saves = saves;
             _onClose = onClose;
@@ -303,6 +308,13 @@ namespace AvatarWorld.Runtime
 
         public void SelectCategory(string category)
         {
+            // "Criador de Avatar" nunca tem cartoes (StoreCatalog.CategoryAvatarMaker): e um atalho que leva
+            // para o editor/slots, nao uma categoria para filtrar. Nao troca _category, so navega.
+            if (category == StoreCatalog.CategoryAvatarMaker)
+            {
+                _onOpenAvatarMaker?.Invoke();
+                return;
+            }
             _category = category;
             _sub = null;
             ShowCards();

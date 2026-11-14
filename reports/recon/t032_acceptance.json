@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "task_id": "T032",
+  "date": "2026-11-08",
+  "scope": "bounded static callback dispatch, NPC position/autonomy and movement-family recovery",
+  "evidence_integrity_passed": true,
+  "checks": [
+    {
+      "check": "sha256:out/recon/il2cpp/libil2cpp.so",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/il2cpp/global-metadata.dat",
+      "passed": true
+    },
+    {
+      "check": "dispatch_pair",
+      "passed": true
+    },
+    {
+      "check": "virtual_calls",
+      "passed": true
+    },
+    {
+      "check": "interface_calls",
+      "passed": true
+    },
+    {
+      "check": "persistent_interface_calls",
+      "passed": true
+    },
+    {
+      "check": "step_callbacks",
+      "passed": true
+    },
+    {
+      "check": "families",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/il2cpp/libil2cpp.so",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/il2cpp/global-metadata.dat",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/il2cpp/assembly_csharp_methods.jsonl",
+      "passed": true
+    },
+    {
+      "check": "sha256:tools/recon_disasm.py",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelAnimal.HasRunningAnimations.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelAnimal.GetWalkingAnimationName.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelAnimal.GetRunningAnimationName.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelAnimal.HasSwimmingAnimations.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelAnimal.OnMovement.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelAnimal.OnBeginDragInternal.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelAnimal.OnSyncPosition.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelAnimal.OnEndDragInternal.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelBaby.OnBeginDragInternal.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelBaby.OnEndDragInternal.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelBaby.OnEndLand.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelToddler.OnBeginDragInternal.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelToddler.OnSyncPosition.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelToddler.OnEndDragInternal.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelCharacterAnimator.OnMovement.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/tasks/T032/families/LevelHorse.HasSwimmingAnimations.asm.txt",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/il2cpp/libil2cpp.so",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/il2cpp/global-metadata.dat",
+      "passed": true
+    },
+    {
+      "check": "sha256:out/recon/il2cpp/assembly_csharp_methods.jsonl",
+      "passed": true
+    },
+    {
+      "check": "seven_capabilities",
+      "passed": true
+    },
+    {
+      "check": "running_is_false",
+      "passed": true
+    },
+    {
+      "check": "five_techs_no_walking",
+      "passed": true
+    },
+    {
+      "check": "229_maps_1170_phone_records",
+      "passed": true
+    },
+    {
+      "check": "npc_checks",
+      "passed": true
+    },
+    {
+      "check": "runtime_not_misrepresented",
+      "passed": true
+    },
+    {
+      "check": "parent_not_falsely_done",
+      "passed": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "out/recon/tasks/T032/callbacks/REPORT.md",
+      "sha256": "80e5b0c9f2f30196f947b564e4f9880f491b92e994ce9a67980fc27e0b193102"
+    },
+    {
+      "path": "out/recon/tasks/T032/callbacks/dispatch.json",
+      "sha256": "587ae2669548983031df5d9644edd84b252a26d9169dbf375b135e143051e335"
+    },
+    {
+      "path": "out/recon/tasks/T032/callbacks/probe.py",
+      "sha256": "a1642063f4af74d9471cb50f15b448a1f58da6a69babbd40af7ba4b8bb9befc2"
+    },
+    {
+      "path": "out/recon/tasks/T032/callbacks/review-families.json",
+      "sha256": "29ac1c23aa26eecbb8af782088e67f200cf29472682947709a7d66e9d8dde1d7"
+    },
+    {
+      "path": "out/recon/tasks/T032/callbacks/review_families.py",
+      "sha256": "b0b6efa00c5296f5bffd1f3863037d2609febeeeb14375a72fb67269da29129e"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/CATargetExtensionMethods.AddCAHandlerAndUpdateGame.asm.txt",
+      "sha256": "8e5d715853d8601097ee723cc1444c9327794a6eeb65564ddbad4659b7ec7bec"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelAnimal.GetRunningAnimationName.asm.txt",
+      "sha256": "385e1c7e68804da17999b459a28d613b285a0a7259ca255fd2a3a2700c094a15"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelAnimal.GetWalkingAnimationName.asm.txt",
+      "sha256": "0ef6581857b4dc2ce68c7519e6106a4dd11f9bb3866841df99594386a27bcb41"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelAnimal.HasRunningAnimations.asm.txt",
+      "sha256": "5bc3bb8a55f9e2e258c2de7a63972f23082658bbd21a3005ed31b3cbe059bdfc"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelAnimal.HasSwimmingAnimations.asm.txt",
+      "sha256": "2388d6428692ac8db0a6dcdaca7eca3e84a5eccbcbff35f1f6d23d5f75a0f747"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelAnimal.OnBeginDragInternal.asm.txt",
+      "sha256": "1d9eb17fa5c03e6928086700b32489fc2964d1ea42c8e1343ab8393dd8ecee19"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelAnimal.OnEndDragInternal.asm.txt",
+      "sha256": "e3cf86ed74a5842d0e49e6562485dee303cee493d1a24d432f6baf99a5eb7574"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelAnimal.OnMovement.asm.txt",
+      "sha256": "947a7f450523864f2951c19fe235faa1fb0243d6ccbfdc41442a217ff1d4b837"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelAnimal.OnSyncPosition.asm.txt",
+      "sha256": "a3e3cc493498183cc825e1b5463bbcb431830778ea75bcca41e385195ce4cb6d"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelBaby.OnBeginDragInternal.asm.txt",
+      "sha256": "fa357569acf4bb58c8019a05b68315d662e6c92f83c983955a701cdc7caf186b"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelBaby.OnEndDragInternal.asm.txt",
+      "sha256": "118d86708be82d71acb87b9c7041a746aed023cc6308003b7eb7d20017470c06"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelBaby.OnEndLand.asm.txt",
+      "sha256": "6c59e782d277e37544494dd6e0287119e93882a598291832cba0eed6d97bf735"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelCharacterAnimator.OnMovement.asm.txt",
+      "sha256": "94fd4317649800c150046e878cbfb1d9226f9b6aaca4983afde87133d67bd41e"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelHorse.HasSwimmingAnimations.asm.txt",
+      "sha256": "369390ae318d9a36b9170dfdc8a0ae05e8abe22b8789d772f87ca76d17865f10"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelToddler.OnBeginDragInternal.asm.txt",
+      "sha256": "345aa024b4fdadca7430f76d1b36b77737d6963ddf60cf8233b3c2bcdf61caa3"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelToddler.OnEndDragInternal.asm.txt",
+      "sha256": "bcf70be1dc18ec05135e7fcf64d7bde08cebec4c44bf31d362b2881b517ca2a0"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/LevelToddler.OnSyncPosition.asm.txt",
+      "sha256": "285c9ac2f0c68aab243346ac96256a34daa14a1be104b50c510aaed31fa7171e"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/REPORT.md",
+      "sha256": "3428f57a1a4e2c5788a6b44bf71b22a6b9617b56593a086239a4abce77da08bd"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/acceptance_review.md",
+      "sha256": "ab4975b06517424a76c42defce6638bd042c6199570a197b79ba2ce0b35e8cfc"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/capabilities.json",
+      "sha256": "5c1198590f3673994a35591c40d7601de9f5089971e61fbf682469736ce7e0ca"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/check.py",
+      "sha256": "13c42e7d8dfba9de83e5f79cd3e6dca480a1d8120572e1c48f8a483829affff0"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/collect.py",
+      "sha256": "f137b75718d9b68be1307582d842ccf3c07aba1f458884574523ecbeae4163fb"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/delegates.json",
+      "sha256": "51e99bb89799b447f8e24355f69efc86b8b5bb1b583f1e7297ad76a83643601a"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/delegates.py",
+      "sha256": "048fcf9be4531d083c8cf3f71deddce50f40cde04801057d503f715b4cac6702"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/engine_calls.json",
+      "sha256": "55b84f4485cbec7f9f3316984ae7ef20d4188fc9628ad14a9bb4ba04d3f2d9cb"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/engine_calls.py",
+      "sha256": "44c83504e625e125e55aa5dd123b8b31c48d300a344839815f9466622a643d56"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/manifest.json",
+      "sha256": "4888befcc706f136aa486d2b30405cb8c5207aa8ff233142e2b3e818a88609f8"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/npc_review.json",
+      "sha256": "82f6dfeb304a3a48e040691b4d6ca6aec9932c6ec75bafe8b9004e4f2e62a4ff"
+    },
+    {
+      "path": "out/recon/tasks/T032/families/review_npc.py",
+      "sha256": "a42dc7438efd9fb213cd3d50d9996e97362fffa0ddc26401a7bf54240db8df18"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/AvatarAwake.TryOverrideGuidCreation.asm.txt",
+      "sha256": "02b38ee701681f42aedc30d110cdb928d025b7b9df931ac1b7d151ed752805d0"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/BackgroundCharacterSpineManager.SetAnimation.asm.txt",
+      "sha256": "595d3a00129ef438f5eb89bf24150a5e5b2af4fff8b2e2e87c9a864317fd0b3a"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/BackgroundCharacterSpineManager.Start.asm.txt",
+      "sha256": "324fd988d7231f713de4371c6e27ead37e49465142fbbb1f6eef004e65723cc7"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/BackgroundToddlerSpineManager.SetAnimation.asm.txt",
+      "sha256": "d1c72dfdfbf7265679c35aafa3c5dc4966aac6e73e554261b8f3063eceb690ae"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/BackgroundToddlerSpineManager.Start.asm.txt",
+      "sha256": "38c74f277b5e8eaf9bc98554354a415420e463b6762a13758ae5eefaaffe9b0b"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelAirportWalkwayDropAreaHandler.CancelMovement.asm.txt",
+      "sha256": "848812c7e3e77aeecf3efd4cef1e38f481c88296117b6c5ced5aa835f77fd935"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelAirportWalkwayDropAreaHandler.SyncMovement.asm.txt",
+      "sha256": "50664e00862d87d7a432ef26621db1875e4659eca31d422f42324b023886908b"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelAvatarExtensionMethods.<AvatarAwake>g__TryOverrideGuidCreation|3_0.asm.txt",
+      "sha256": "02b38ee701681f42aedc30d110cdb928d025b7b9df931ac1b7d151ed752805d0"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelButlerCaller.OnPointerClick.asm.txt",
+      "sha256": "0bdd00dd87029a130063ac92302009a4799f3bf5312d19b2f935d6f0b46158ce"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelCharacterCaller.<CallCharacter>b__3_0.asm.txt",
+      "sha256": "7e394f7cfdaba6f957d46827b174eabde812d76455eefad207d063a0a648232f"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelCharacterCaller.CallCharacter.asm.txt",
+      "sha256": "6dbc3e0d7fbc754006d01f249794b6243455357c5f0befe9c42527f23af1fc4b"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelManager.GetAllLevelDefaultAvatarsID.asm.txt",
+      "sha256": "3f39479faf7d30944592832012ed30a2bd21afd8f36b2fabd60323744e0d85f2"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelManager.Init.asm.txt",
+      "sha256": "0f3887e0eeb3bf2f0050d6e9e594285185640049ed1ded4666d232fca3301f11"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelManager.InitPhone.asm.txt",
+      "sha256": "b685a4e917c84acf07044aace91094316af59d521794880308c7d3afb842aed5"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelManager.RestoreMakerExcludedSkinClothingIfNeeded.asm.txt",
+      "sha256": "e039837a293d56fa74b58e4457106786013eeb8ffd5a66049bec5511688d3d9c"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelSceneAvatarMap.LoadDataIfNeeded.asm.txt",
+      "sha256": "ee8a9095b4b6fd9d4106fc327eb532dda3a74fe9e1c64e4ae0b82267ac3f546f"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelSceneAvatarMap.TryGetAvatar.asm.txt",
+      "sha256": "c26db7beb38e3b6c5b92537e586fc24965df6efd386062e59edca326f1e33058"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/LevelSceneAvatarMap.TryGetAvatars.asm.txt",
+      "sha256": "dbbf152d3951b37f45cb0b85fdd21662bbad2f4cb876a71a8a560a9c5c51e52c"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/REPORT.md",
+      "sha256": "05413d57a476b01a45ee264e238c281a69356a0bc22f033a54cf2587801f549a"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/autonomy-name-scan.json",
+      "sha256": "6818e571e99535bc00d0f3c482d331d9f62a2cdd67a320dbad4fdef53b31bc8e"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/census.json",
+      "sha256": "fa548ea0d0f8af1d6ad0a08621fa7124306d0b0121c1d00be7dfd652d54975b3"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/direct-callers.json",
+      "sha256": "598e47be49951ffbf1b9d7869c2c21d7d8bf2d2a9998ab40ced4cef01494f002"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/external-methods.json",
+      "sha256": "16d327d97b8fd206dd484b64ba623769e114b9e953c87c8d32b00e463eb9f45f"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/extract.py",
+      "sha256": "f22339112faf00ccc676573d965b204b727af980875c00ec7bd78b0a1f95f7b2"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/manifest.json",
+      "sha256": "bad449a1ef05205dc3858744a3bebe0c5428e89d3769f416620ebe9f84dd9fb2"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/scan_autonomy.py",
+      "sha256": "a14a8192bfacd47859e29dda663d6087d9cf6be9a36806c267856adb5f89ea39"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/validate.py",
+      "sha256": "c3137bda9e89409a87852738d8a5cfb43e7b5d149a304f6cbc833b181c2487d8"
+    },
+    {
+      "path": "out/recon/tasks/T032/npc/validation.json",
+      "sha256": "af8a3ec483781e3d44d39675aa832b550ccbcdb4cf19b3061b3d1b2bcaa3bec0"
+    }
+  ],
+  "probe_runs": [
+    {
+      "script": "out/recon/tasks/T032/callbacks/probe.py",
+      "sha256": "a1642063f4af74d9471cb50f15b448a1f58da6a69babbd40af7ba4b8bb9befc2",
+      "exit_code": 0
+    },
+    {
+      "script": "out/recon/tasks/T032/families/check.py",
+      "sha256": "13c42e7d8dfba9de83e5f79cd3e6dca480a1d8120572e1c48f8a483829affff0",
+      "exit_code": 0
+    },
+    {
+      "script": "out/recon/tasks/T032/families/engine_calls.py",
+      "sha256": "44c83504e625e125e55aa5dd123b8b31c48d300a344839815f9466622a643d56",
+      "exit_code": 0
+    },
+    {
+      "script": "out/recon/tasks/T032/families/delegates.py",
+      "sha256": "048fcf9be4531d083c8cf3f71deddce50f40cde04801057d503f715b4cac6702",
+      "exit_code": 0
+    },
+    {
+      "script": "out/recon/tasks/T032/callbacks/review_families.py",
+      "sha256": "b0b6efa00c5296f5bffd1f3863037d2609febeeeb14375a72fb67269da29129e",
+      "exit_code": 0
+    },
+    {
+      "script": "out/recon/tasks/T032/npc/validate.py",
+      "sha256": "c3137bda9e89409a87852738d8a5cfb43e7b5d149a304f6cbc833b181c2487d8",
+      "exit_code": 0
+    },
+    {
+      "script": "out/recon/tasks/T032/families/review_npc.py",
+      "sha256": "a42dc7438efd9fb213cd3d50d9996e97362fffa0ddc26401a7bf54240db8df18",
+      "exit_code": 0
+    }
+  ],
+  "queue_snapshot": {
+    "state": "pending",
+    "blockers": [
+      {
+        "id": "T018",
+        "state": "pending"
+      },
+      {
+        "id": "T025",
+        "state": "pending"
+      },
+      {
+        "id": "T026",
+        "state": "pending"
+      },
+      {
+        "id": "T027",
+        "state": "pending"
+      },
+      {
+        "id": "T031",
+        "state": "pending"
+      }
+    ]
+  },
+  "runtime_acceptance": false,
+  "implementation_acceptance": false,
+  "parent_acceptance": false,
+  "remaining": [
+    "Dynamic listener cardinality/order, cancellation and behavior on a hash-matched 1.227 runtime.",
+    "Noncanonical metadata usage for Baby static delegates; field/signature attribution is separate from type binding.",
+    "Derived virtual receivers and scripts outside the examined NPC movement paths.",
+    "Client reconciliation: animal Forced_To_Walk, track1 overlay with locked CA, false running capability, Baby/tech routing.",
+    "Canonical T018, T025-T027 and T031 dependency acceptance."
+  ]
+}

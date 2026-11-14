@@ -1,0 +1,17 @@
+{
+  "task_id": "T025/HANDLER/0000849c",
+  "status": "partial",
+  "semantic_completion": false,
+  "method_body_fully_bounded": false,
+  "method": "LevelManager.OnBeforeSceneLoadStage3: ensures GameSceneManager static-class initialization (guarded); writes static field CurrentSceneSuffix (offset 0x18 of GameSceneManager static fields) from a string-literal metadata usage slot (kind 5, index 0) decoding to '', with GC write barrier",
+  "contract": "out/recon/tasks/T025/HANDLER/0000849c/method-contract.json",
+  "control_flow": "out/recon/tasks/T025/HANDLER/0000849c/control-flow.json",
+  "unknowns": "out/recon/tasks/T025/HANDLER/0000849c/unknowns.jsonl",
+  "verification": {
+    "pinned_opcodes": "passed",
+    "named_call_targets_revalidated": "passed",
+    "field_declarations_matched_verbatim": "passed",
+    "runtime_or_device": false
+  },
+  "next_action": "Preserve open callee/runtime unknowns; do not mark done without independent review."
+}

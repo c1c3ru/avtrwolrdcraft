@@ -1,0 +1,33 @@
+{
+  "evidence_kind": "local structural metadata + ARM64 + decoded serialized fields; no REA provider or runtime",
+  "sources": {
+    "out/recon/il2cpp/libil2cpp.so": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "out/recon/il2cpp/global-metadata.dat": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+    "out/recon/il2cpp/assembly_csharp_methods.jsonl": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8",
+    "tools/recon_disasm.py": "646f814de30eec5d4dede06a7ae486648cb0091f1ef430850b3375ed7ea79e86"
+  },
+  "selected": [
+    "BackgroundCharacterSpineManager.Start",
+    "BackgroundCharacterSpineManager.SetAnimation",
+    "BackgroundToddlerSpineManager.Start",
+    "BackgroundToddlerSpineManager.SetAnimation",
+    "LevelCharacterCaller.CallCharacter",
+    "LevelCharacterCaller.<CallCharacter>b__3_0",
+    "LevelSceneAvatarMap.LoadDataIfNeeded",
+    "LevelSceneAvatarMap.TryGetAvatar",
+    "LevelSceneAvatarMap.TryGetAvatars",
+    "LevelAirportWalkwayDropAreaHandler.SyncMovement",
+    "LevelAirportWalkwayDropAreaHandler.CancelMovement",
+    "LevelButlerCaller.OnPointerClick",
+    "LevelManager.Init",
+    "LevelManager.InitPhone",
+    "LevelManager.GetAllLevelDefaultAvatarsID",
+    "LevelManager.RestoreMakerExcludedSkinClothingIfNeeded",
+    "LevelAvatarExtensionMethods.<AvatarAwake>g__TryOverrideGuidCreation|3_0"
+  ],
+  "limitations": [
+    "Disassembly ends at next known method; this is not proof of complete body extent.",
+    "Direct callers do not cover interface, virtual, delegate or UnityEvent calls.",
+    "No live device execution in this evidence."
+  ]
+}

@@ -1,0 +1,114 @@
+{
+ "AddItemSpritesOutsideAnyPack": {
+  "targets": [
+   "0x21cafec"
+  ],
+  "callers": {
+   "<AfterThumbsScaleDownAnimation>d__40.MoveNext": [
+    "bl"
+   ]
+  }
+ },
+ "AddItemSpritesWithNoThumb": {
+  "targets": [
+   "0x21cb4f0"
+  ],
+  "callers": {
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.AddItemSpritesOutsideAnyPack": [
+    "bl"
+   ]
+  }
+ },
+ "FillSection": {
+  "targets": [
+   "0x21c9988"
+  ],
+  "callers": {
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.FillSections": [
+    "bl"
+   ]
+  }
+ },
+ "FillSections": {
+  "targets": [
+   "0x21c976c"
+  ],
+  "callers": {
+   "<AfterThumbsScaleDownAnimation>d__40.MoveNext": [
+    "bl"
+   ]
+  }
+ },
+ "AddOwnedExpansionPacksThumbs": {
+  "targets": [
+   "0x21ccec8"
+  ],
+  "callers": {
+   "<AfterThumbsScaleDownAnimation>d__40.MoveNext": [
+    "bl"
+   ]
+  }
+ },
+ "AddExpansionPackThumbs": {
+  "targets": [
+   "0x21cc5a8"
+  ],
+  "callers": {
+   "<AfterThumbsScaleDownAnimation>d__40.MoveNext": [
+    "bl"
+   ],
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.AddOwnedExpansionPacksThumbs": [
+    "bl"
+   ]
+  }
+ },
+ "FilterByClaimedInventoryFlags": {
+  "targets": [
+   "0x21cb7e8"
+  ],
+  "callers": {
+   "<AfterThumbsScaleDownAnimation>d__40.MoveNext": [
+    "bl"
+   ]
+  }
+ },
+ "GetRelevantInventorySkins": {
+  "targets": [
+   "0x21ca47c"
+  ],
+  "callers": {
+   "<AfterThumbsScaleDownAnimation>d__40.MoveNext": [
+    "bl"
+   ]
+  }
+ },
+ "GetPremiumItemsNames": {
+  "targets": [
+   "0x21ca004"
+  ],
+  "callers": {
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.FillSection": [
+    "bl"
+   ]
+  }
+ },
+ "IsSkinAllowed": {
+  "targets": [
+   "0x2179764"
+  ],
+  "callers": {
+   "<AfterThumbsScaleDownAnimation>d__40.MoveNext": [
+    "bl"
+   ],
+   "PWC.AvatarMaker.AvatarMakerCharacterManager.RandomizeSkins": [
+    "bl"
+   ],
+   "PWC.AvatarMaker.AvatarMakerThumbsManager.AddExpansionPackThumbs": [
+    "bl"
+   ],
+   "PWC.AvatarSpine.AvatarSpineSkinsRestrictionsManager.IsSkinNotAllowed": [
+    "bl"
+   ]
+  }
+ }
+}

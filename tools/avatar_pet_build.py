@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera os dados dos pets simples (variantes prontas): Bird, Chicken, Fish, Hamster, Lizard, Rabbit, Snake, Turtle.
+"""Gera os dados dos pets simples (variantes prontas): Bird, Chicken, Fish, Hamster, Lizard, Rabbit, Snake, Turtle, Cow.
 
 Cada variante e um skin completo do esqueleto (ex.: Rabbit_A_1). Para cada uma resolve-se attachment -> regiao do atlas ->
 pagina -> textura unica por nome+dimensoes (nao ha paths SUT para estes pets). Variantes com alguma pagina sem textura unica
@@ -26,7 +26,9 @@ DATA_CS = UNITY / 'Scripts/Core/Avatar/PetCatalogData.cs'
 TEXTURES = ROOT / 'out/assets/Texture2D'
 TEXT = ROOT / 'out/assets/TextAsset'
 DUMPS = ROOT / 'out/recon/tasks/T034/pets'
-SPECIES = ['Rabbit', 'Hamster', 'Bird', 'Chicken', 'Turtle', 'Lizard', 'Snake', 'Fish']
+SPECIES = ['Rabbit', 'Hamster', 'Bird', 'Chicken', 'Turtle', 'Lizard', 'Snake', 'Fish', 'Cow']
+# prefixo dos arquivos do esqueleto quando nao segue Pet_<Especie>_Spine
+FILE_PREFIX = {'Cow': 'Cow_Pet'}
 IDLES = ['General/Chilling', 'General/Blinking']
 
 
@@ -72,8 +74,9 @@ def main():
 
     result = {}
     for species in SPECIES:
-        atlas_file = next(TEXT.glob(f'Pet_{species}_Spine.atlas_*.txt'))
-        skel_file = next(TEXT.glob(f'Pet_{species}_Spine.skel_*.txt'))
+        prefix = FILE_PREFIX.get(species, f'Pet_{species}_Spine')
+        atlas_file = next(TEXT.glob(f'{prefix}.atlas_*.txt'))
+        skel_file = next(TEXT.glob(f'{prefix}.skel_*.txt'))
         pages, regions = parse_atlas(atlas_file)
         dump = json.loads((DUMPS / f'{species}.json').read_text(encoding='utf-8'))
         skins = {s['name']: s for s in dump['skins']}

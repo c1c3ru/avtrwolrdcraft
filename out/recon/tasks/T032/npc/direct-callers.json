@@ -1,0 +1,79 @@
+[
+  {
+    "pc": "0x1c70224",
+    "target": "PWC.Level.LevelCharacterCaller.CallCharacter",
+    "op": "bl",
+    "nearest_preceding_method": "LevelSummonPilotSecret.OnPointerClick",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x1e56844",
+    "target": "PWC.Level.LevelCharacterCaller.CallCharacter",
+    "op": "bl",
+    "nearest_preceding_method": "<CallCharacterCoroutine>d__5.MoveNext",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x1e812e8",
+    "target": "PWC.Level.LevelCharacterCaller.CallCharacter",
+    "op": "bl",
+    "nearest_preceding_method": "<SwitchSprite>d__7.MoveNext",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x2290a34",
+    "target": "PWC.Level.LevelSceneAvatarMap.TryGetAvatar",
+    "op": "bl",
+    "nearest_preceding_method": "PWC.Level.LevelAvatarExtensionMethods.<AvatarAwake>g__TryOverrideGuidCreation|3_0",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x22af4d8",
+    "target": "PWC.Level.LevelCharacterCaller.PutInHand",
+    "op": "bl",
+    "nearest_preceding_method": "PWC.Level.LevelCharacterCaller.CallCharacter",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x22af668",
+    "target": "PWC.Level.LevelCharacterCaller.PutInHand",
+    "op": "bl",
+    "nearest_preceding_method": "PWC.Level.LevelCharacterCaller.CallCharacter",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x22ca428",
+    "target": "PWC.Level.LevelSceneAvatarMap.LoadDataIfNeeded",
+    "op": "bl",
+    "nearest_preceding_method": "PWC.Level.LevelSceneAvatarMap.TryGetAvatars",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x22ca950",
+    "target": "PWC.Level.LevelSceneAvatarMap.LoadDataIfNeeded",
+    "op": "bl",
+    "nearest_preceding_method": "PWC.Level.LevelSceneAvatarMap.TryGetAvatar",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x231199c",
+    "target": "PWC.Level.LevelSceneAvatarMap.LoadDataIfNeeded",
+    "op": "bl",
+    "nearest_preceding_method": "PWC.Level.LevelManager.Init",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x2312a04",
+    "target": "PWC.Level.LevelSceneAvatarMap.TryGetAvatars",
+    "op": "bl",
+    "nearest_preceding_method": "PWC.Level.LevelManager.RestoreMakerExcludedSkinClothingIfNeeded",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  },
+  {
+    "pc": "0x2314248",
+    "target": "PWC.Level.LevelSceneAvatarMap.TryGetAvatars",
+    "op": "bl",
+    "nearest_preceding_method": "PWC.Level.LevelManager.GetAllLevelDefaultAvatarsID",
+    "attribution": "candidate_next_method_boundary_not_proven"
+  }
+]

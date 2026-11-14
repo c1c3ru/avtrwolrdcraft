@@ -1,0 +1,9 @@
+
+/home/c1c3ru/avtrwolrdcraft/.claude/worktrees/recon-stage-handler-effects/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 2313e64: 52800028     	mov	w8, #0x1                // =1
+ 2313e68: 3900e808     	strb	w8, [x0, #0x3a]
+ 2313e6c: d65f03c0     	ret

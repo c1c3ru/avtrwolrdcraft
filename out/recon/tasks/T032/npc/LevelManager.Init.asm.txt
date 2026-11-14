@@ -1,0 +1,581 @@
+2311714  sub    sp, sp, #0x90
+2311718  stp    x30, x27, [sp, #0x40]
+231171c  stp    x26, x25, [sp, #0x50]
+2311720  stp    x24, x23, [sp, #0x60]
+2311724  stp    x22, x21, [sp, #0x70]
+2311728  stp    x20, x19, [sp, #0x80]
+231172c  adrp   x20, #0x44fe000
+2311730  ldrb   w8, [x20, #0xd2]
+2311734  mov    x19, x0
+2311738  tbnz   w8, #0, #0x2311834
+231173c  adrp   x0, #0x41ac000
+2311740  ldr    x0, [x0, #0xeb0]
+2311744  bl     #0x1b886e8
+2311748  adrp   x0, #0x41cf000
+231174c  ldr    x0, [x0, #0x998]
+2311750  bl     #0x1b886e8
+2311754  adrp   x0, #0x41c9000
+2311758  ldr    x0, [x0, #0xb40]
+231175c  bl     #0x1b886e8
+2311760  adrp   x0, #0x41ac000
+2311764  ldr    x0, [x0, #0xf48]
+2311768  bl     #0x1b886e8
+231176c  adrp   x0, #0x41ac000
+2311770  ldr    x0, [x0, #0xf50]
+2311774  bl     #0x1b886e8
+2311778  adrp   x0, #0x41ac000
+231177c  ldr    x0, [x0, #0xf58]
+2311780  bl     #0x1b886e8
+2311784  adrp   x0, #0x41cf000
+2311788  ldr    x0, [x0, #0xaf0]
+231178c  bl     #0x1b886e8
+2311790  adrp   x0, #0x41ac000
+2311794  ldr    x0, [x0, #0xe48]  ; type PWC.Level.LevelCharacter
+2311798  bl     #0x1b886e8
+231179c  adrp   x0, #0x41ad000
+23117a0  ldr    x0, [x0, #0x3e8]  ; type PWC.Level.LevelManager
+23117a4  bl     #0x1b886e8
+23117a8  adrp   x0, #0x41b9000
+23117ac  ldr    x0, [x0, #0xd0]  ; type PWC.Level.LevelRecipesData
+23117b0  bl     #0x1b886e8
+23117b4  adrp   x0, #0x41c9000
+23117b8  ldr    x0, [x0, #0xb48]
+23117bc  bl     #0x1b886e8
+23117c0  adrp   x0, #0x41ac000
+23117c4  ldr    x0, [x0, #0xf60]
+23117c8  bl     #0x1b886e8
+23117cc  adrp   x0, #0x41ac000
+23117d0  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+23117d4  bl     #0x1b886e8
+23117d8  adrp   x0, #0x41ac000
+23117dc  ldr    x0, [x0, #0xbf0]  ; type PWC.PWCUtils
+23117e0  bl     #0x1b886e8
+23117e4  adrp   x0, #0x41d9000
+23117e8  ldr    x0, [x0, #0xb30]
+23117ec  bl     #0x1b886e8
+23117f0  adrp   x0, #0x41c9000
+23117f4  ldr    x0, [x0, #0xb50]
+23117f8  bl     #0x1b886e8
+23117fc  adrp   x0, #0x41ac000
+2311800  ldr    x0, [x0, #0xc90]  ; type UnityEngine.SceneManagement.SceneManager
+2311804  bl     #0x1b886e8
+2311808  adrp   x0, #0x41d9000
+231180c  ldr    x0, [x0, #0xb38]
+2311810  bl     #0x1b886e8
+2311814  adrp   x0, #0x41d9000
+2311818  ldr    x0, [x0, #0xb40]  ; type <>c
+231181c  bl     #0x1b886e8
+2311820  adrp   x0, #0x41d9000
+2311824  ldr    x0, [x0, #0xb48]  ; "rateus_aw_enter_levels_count"
+2311828  bl     #0x1b886e8
+231182c  mov    w8, #1
+2311830  strb   w8, [x20, #0xd2]
+2311834  adrp   x23, #0x44fa000
+2311838  ldrb   w8, [x23, #0x56b]
+231183c  stp    xzr, xzr, [sp, #0x20]
+2311840  str    xzr, [sp, #0x30]
+2311844  str    wzr, [sp, #0x18]
+2311848  cbnz   w8, #0x2311860
+231184c  adrp   x0, #0x41b5000
+2311850  ldr    x0, [x0, #0x350]  ; type PWC.Multiplayer.MPManager
+2311854  bl     #0x1b886e8
+2311858  mov    w8, #1
+231185c  strb   w8, [x23, #0x56b]
+2311860  adrp   x22, #0x41b5000
+2311864  ldr    x22, [x22, #0x350]  ; type PWC.Multiplayer.MPManager
+2311868  adrp   x24, #0x41ad000
+231186c  ldr    x8, [x22]
+2311870  ldr    x8, [x8, #0xb8]
+2311874  ldrb   w8, [x8]
+2311878  ldr    x24, [x24, #0x3e8]  ; type PWC.Level.LevelManager
+231187c  cbz    w8, #0x2311908
+2311880  mov    x0, x19
+2311884  mov    x1, xzr
+2311888  bl     #0x3cc84e4
+231188c  cbz    x0, #0x2311fa4
+2311890  mov    x1, xzr
+2311894  bl     #0x3ccb244
+2311898  and    x0, x0, #0xffffffff
+231189c  mov    w1, wzr
+23118a0  mov    x2, xzr
+23118a4  bl     #0x20dfbb4  ; -> MPUtils.PrepareSceneForMultiplayer
+23118a8  ldr    x0, [x24]
+23118ac  ldr    w8, [x0, #0xe0]
+23118b0  cbnz   w8, #0x23118bc
+23118b4  bl     #0x1b8885c
+23118b8  ldr    x0, [x24]
+23118bc  ldr    x8, [x0, #0xb8]
+23118c0  ldr    x0, [x8]
+23118c4  cbz    x0, #0x2311fa4
+23118c8  adrp   x20, #0x41d9000
+23118cc  ldr    x20, [x20, #0xb30]
+23118d0  ldr    x1, [x20]
+23118d4  bl     #0x2f8e034
+23118d8  ldr    x8, [x24]
+23118dc  ldr    x8, [x8, #0xb8]
+23118e0  ldr    x0, [x8, #8]
+23118e4  cbz    x0, #0x2311fa4
+23118e8  ldr    x1, [x20]
+23118ec  bl     #0x2f8e034
+23118f0  ldr    x8, [x24]
+23118f4  ldr    x8, [x8, #0xb8]
+23118f8  ldr    x0, [x8, #0x10]
+23118fc  cbz    x0, #0x2311fa4
+2311900  ldr    x1, [x20]
+2311904  bl     #0x2f8e034
+2311908  ldr    x0, [x24]
+231190c  ldr    w8, [x0, #0xe0]
+2311910  cbnz   w8, #0x231191c
+2311914  bl     #0x1b8885c
+2311918  ldr    x0, [x24]
+231191c  ldr    x8, [x0, #0xb8]
+2311920  mov    w2, wzr
+2311924  ldr    x1, [x8]
+2311928  bl     #0x2312028  ; -> LevelManager.CallSafeAction
+231192c  ldr    x8, [x24]
+2311930  ldr    x8, [x8, #0xb8]
+2311934  ldr    x8, [x8]
+2311938  cbz    x8, #0x2311fa4
+231193c  ldr    x8, [x8, #0x10]
+2311940  cbz    x8, #0x2311fa4
+2311944  ldp    w2, w9, [x8, #0x18]
+2311948  adrp   x25, #0x41cf000
+231194c  ldr    x25, [x25, #0xaf0]
+2311950  add    w9, w9, #1
+2311954  cmp    w2, #1
+2311958  stp    wzr, w9, [x8, #0x18]
+231195c  b.lt   #0x2311970
+2311960  ldr    x0, [x8, #0x10]
+2311964  mov    w1, wzr
+2311968  mov    x3, xzr
+231196c  bl     #0x3379f00
+2311970  ldr    x0, [x25]
+2311974  ldr    w8, [x0, #0xe0]
+2311978  cbnz   w8, #0x2311984
+231197c  bl     #0x1b8885c
+2311980  ldr    x0, [x25]
+2311984  ldr    x8, [x0, #0xb8]
+2311988  adrp   x21, #0x41b9000
+231198c  ldrb   w8, [x8]
+2311990  ldr    x21, [x21, #0xd0]  ; type PWC.Level.LevelRecipesData
+2311994  cbz    w8, #0x23119a0
+2311998  mov    x0, xzr
+231199c  bl     #0x22ca464  ; -> LevelSceneAvatarMap.LoadDataIfNeeded
+23119a0  adrp   x20, #0x41ac000
+23119a4  ldr    x20, [x20, #0xbb8]  ; type UnityEngine.Object
+23119a8  bl     #0x2312280  ; -> LevelManager.EnsrureDefaultSceneGameObjectsInitiated
+23119ac  ldr    x0, [x21]
+23119b0  ldr    w8, [x0, #0xe0]
+23119b4  cbnz   w8, #0x23119bc
+23119b8  bl     #0x1b8885c
+23119bc  mov    x0, xzr
+23119c0  bl     #0x2337cf8  ; -> LevelRecipesData.InitCollectionIfNeeded
+23119c4  ldr    x0, [x20]
+23119c8  ldr    x20, [x19, #0x30]
+23119cc  ldr    w8, [x0, #0xe0]
+23119d0  cbnz   w8, #0x23119d8
+23119d4  bl     #0x1b8885c
+23119d8  mov    x0, x20
+23119dc  mov    x1, xzr
+23119e0  mov    x2, xzr
+23119e4  bl     #0x3ccab90
+23119e8  tbz    w0, #0, #0x23119fc
+23119ec  ldr    x0, [x19, #0x30]
+23119f0  cbz    x0, #0x2311fa4
+23119f4  mov    x1, xzr
+23119f8  bl     #0x20663c0  ; -> BackgroundPlanet.Init
+23119fc  ldr    x0, [x19, #0x20]
+2311a00  cbz    x0, #0x2311fa4
+2311a04  mov    x1, xzr
+2311a08  bl     #0x229dd30  ; -> LevelCamera.Init
+2311a0c  ldr    x0, [x25]
+2311a10  ldr    w8, [x0, #0xe0]
+2311a14  cbnz   w8, #0x2311a20
+2311a18  bl     #0x1b8885c
+2311a1c  ldr    x0, [x25]
+2311a20  ldr    x8, [x0, #0xb8]
+2311a24  ldrb   w8, [x8]
+2311a28  cbz    w8, #0x2311af0
+2311a2c  adrp   x20, #0x41ac000
+2311a30  ldr    x20, [x20, #0xe48]  ; type PWC.Level.LevelCharacter
+2311a34  ldr    x0, [x20]
+2311a38  ldr    w8, [x0, #0xe0]
+2311a3c  cbnz   w8, #0x2311a48
+2311a40  bl     #0x1b8885c
+2311a44  ldr    x0, [x20]
+2311a48  ldr    x8, [x0, #0xb8]
+2311a4c  ldr    x0, [x8, #8]
+2311a50  cbz    x0, #0x2311fa4
+2311a54  adrp   x8, #0x41ac000
+2311a58  ldr    x8, [x8, #0xf60]
+2311a5c  adrp   x26, #0x41ac000
+2311a60  adrp   x27, #0x41ac000
+2311a64  adrp   x21, #0x41ac000
+2311a68  ldr    x1, [x8]
+2311a6c  ldr    x26, [x26, #0xf50]
+2311a70  ldr    x27, [x27, #0xbf0]  ; type PWC.PWCUtils
+2311a74  ldr    x21, [x21, #0xf48]
+2311a78  mov    x8, sp
+2311a7c  bl     #0x2cf12b4
+2311a80  ldr    q0, [sp]
+2311a84  ldr    x8, [sp, #0x10]
+2311a88  str    q0, [sp, #0x20]
+2311a8c  str    x8, [sp, #0x30]
+2311a90  ldr    x1, [x26]
+2311a94  add    x0, sp, #0x20
+2311a98  bl     #0x29c0b20
+2311a9c  tbz    w0, #0, #0x2311ae4
+2311aa0  ldr    x0, [x27]
+2311aa4  ldr    x20, [sp, #0x30]
+2311aa8  ldr    w8, [x0, #0xe0]
+2311aac  cbnz   w8, #0x2311ab4
+2311ab0  bl     #0x1b8885c
+2311ab4  mov    x0, x20
+2311ab8  mov    x1, xzr
+2311abc  bl     #0x2083020  ; -> PWCUtils.IsDestroyed
+2311ac0  tbnz   w0, #0, #0x2311a90
+2311ac4  cbz    x20, #0x2311fa8
+2311ac8  ldrb   w8, [x20, #0x342]
+2311acc  cbnz   w8, #0x2311a90
+2311ad0  mov    w1, #-1
+2311ad4  mov    x0, x20
+2311ad8  mov    x2, xzr
+2311adc  bl     #0x229fe44  ; -> LevelCharacter.Init
+2311ae0  b      #0x2311a90
+2311ae4  ldr    x1, [x21]
+2311ae8  add    x0, sp, #0x20
+2311aec  bl     #0x29c0b1c
+2311af0  adrp   x20, #0x41cf000
+2311af4  ldr    x20, [x20, #0x998]
+2311af8  mov    x0, x19
+2311afc  bl     #0x23125dc  ; -> LevelManager.InitPhone
+2311b00  ldr    x0, [x20]
+2311b04  ldr    w8, [x0, #0xe0]
+2311b08  cbnz   w8, #0x2311b10
+2311b0c  bl     #0x1b8885c
+2311b10  mov    x0, xzr
+2311b14  bl     #0x217ae44  ; -> AvatarSpineUtils.ResetEyeStencilRefCount
+2311b18  adrp   x20, #0x44fc000
+2311b1c  ldrb   w8, [x20, #0xbb3]
+2311b20  cbnz   w8, #0x2311b38
+2311b24  adrp   x0, #0x41cb000
+2311b28  ldr    x0, [x0, #0x5d8]  ; type PWC.PersistentData.PersistentDataManager
+2311b2c  bl     #0x1b886e8
+2311b30  mov    w8, #1
+2311b34  strb   w8, [x20, #0xbb3]
+2311b38  adrp   x8, #0x41cb000
+2311b3c  ldr    x8, [x8, #0x5d8]  ; type PWC.PersistentData.PersistentDataManager
+2311b40  mov    x0, x19
+2311b44  mov    x1, xzr
+2311b48  ldr    x8, [x8]
+2311b4c  ldr    x8, [x8, #0xb8]
+2311b50  ldr    x20, [x8, #0x38]
+2311b54  bl     #0x3cc84e4
+2311b58  cbz    x0, #0x2311fa4
+2311b5c  mov    x1, xzr
+2311b60  bl     #0x3ccb244
+2311b64  cbz    x20, #0x2311fa4
+2311b68  and    x1, x0, #0xffffffff
+2311b6c  mov    x0, x20
+2311b70  mov    x2, xzr
+2311b74  bl     #0x21e0c9c  ; -> PersistentDataManager.LoadProgress
+2311b78  mov    x0, xzr
+2311b7c  bl     #0x232f31c  ; -> LevelUpgradeTracker.TryLoadBulkDataPostLevelReset
+2311b80  mov    w21, #1
+2311b84  strb   w21, [x19, #0x38]
+2311b88  adrp   x20, #0x44fa000
+2311b8c  ldrb   w8, [x20, #0xf26]
+2311b90  cbnz   w8, #0x2311ba4
+2311b94  adrp   x0, #0x41bb000
+2311b98  ldr    x0, [x0, #0x7e0]  ; type PWC.LightSystem.LightManager
+2311b9c  bl     #0x1b886e8
+2311ba0  strb   w21, [x20, #0xf26]
+2311ba4  adrp   x21, #0x41bb000
+2311ba8  ldr    x21, [x21, #0x7e0]  ; type PWC.LightSystem.LightManager
+2311bac  ldr    x8, [x21]
+2311bb0  ldr    x8, [x8, #0xb8]
+2311bb4  ldr    x0, [x8, #8]
+2311bb8  cbz    x0, #0x2311fa4
+2311bbc  mov    x1, xzr
+2311bc0  bl     #0x208fc80  ; -> LightManager.Init
+2311bc4  ldr    x0, [x25]
+2311bc8  ldr    w8, [x0, #0xe0]
+2311bcc  cbnz   w8, #0x2311bd8
+2311bd0  bl     #0x1b8885c
+2311bd4  ldr    x0, [x25]
+2311bd8  ldr    x8, [x0, #0xb8]
+2311bdc  ldrb   w8, [x8]
+2311be0  cbz    w8, #0x2311be8
+2311be4  bl     #0x2312694  ; -> LevelManager.RestoreMakerExcludedSkinClothingIfNeeded
+2311be8  ldr    x0, [x24]
+2311bec  ldr    w8, [x0, #0xe0]
+2311bf0  cbnz   w8, #0x2311bfc
+2311bf4  bl     #0x1b8885c
+2311bf8  ldr    x0, [x24]
+2311bfc  ldr    x8, [x0, #0xb8]
+2311c00  mov    w2, #1
+2311c04  ldr    x1, [x8, #8]
+2311c08  bl     #0x2312028  ; -> LevelManager.CallSafeAction
+2311c0c  ldr    x0, [x24]
+2311c10  ldr    x8, [x0, #0xb8]
+2311c14  ldr    x8, [x8, #0x18]
+2311c18  cbz    x8, #0x2311c30
+2311c1c  ldr    x9, [x8, #0x18]
+2311c20  ldr    x0, [x8, #0x40]
+2311c24  ldr    x1, [x8, #0x28]
+2311c28  blr    x9
+2311c2c  ldr    x0, [x24]
+2311c30  ldr    w8, [x0, #0xe0]
+2311c34  cbnz   w8, #0x2311c40
+2311c38  bl     #0x1b8885c
+2311c3c  ldr    x0, [x24]
+2311c40  ldr    x8, [x0, #0xb8]
+2311c44  mov    w2, #1
+2311c48  ldr    x1, [x8, #0x10]
+2311c4c  bl     #0x2312028  ; -> LevelManager.CallSafeAction
+2311c50  ldr    x0, [x24]
+2311c54  ldr    x8, [x0, #0xb8]
+2311c58  ldr    x8, [x8, #0x20]
+2311c5c  cbz    x8, #0x2311c74
+2311c60  ldr    x9, [x8, #0x18]
+2311c64  ldr    x0, [x8, #0x40]
+2311c68  ldr    x1, [x8, #0x28]
+2311c6c  blr    x9
+2311c70  ldr    x0, [x24]
+2311c74  ldr    w8, [x0, #0xe0]
+2311c78  cbnz   w8, #0x2311c84
+2311c7c  bl     #0x1b8885c
+2311c80  ldr    x0, [x24]
+2311c84  ldr    x8, [x0, #0xb8]
+2311c88  ldr    x9, [x8, #8]
+2311c8c  cbz    x9, #0x2311fa4
+2311c90  ldr    x9, [x9, #0x10]
+2311c94  cbz    x9, #0x2311fa4
+2311c98  ldp    w2, w10, [x9, #0x18]
+2311c9c  add    w10, w10, #1
+2311ca0  cmp    w2, #1
+2311ca4  stp    wzr, w10, [x9, #0x18]
+2311ca8  b.lt   #0x2311cc4
+2311cac  ldr    x0, [x9, #0x10]
+2311cb0  mov    w1, wzr
+2311cb4  mov    x3, xzr
+2311cb8  bl     #0x3379f00
+2311cbc  ldr    x8, [x24]
+2311cc0  ldr    x8, [x8, #0xb8]
+2311cc4  ldr    x9, [x8, #0x10]
+2311cc8  cbz    x9, #0x2311fa4
+2311ccc  ldr    x9, [x9, #0x10]
+2311cd0  cbz    x9, #0x2311fa4
+2311cd4  ldp    w2, w10, [x9, #0x18]
+2311cd8  add    w10, w10, #1
+2311cdc  cmp    w2, #1
+2311ce0  stp    wzr, w10, [x9, #0x18]
+2311ce4  b.lt   #0x2311d00
+2311ce8  ldr    x0, [x9, #0x10]
+2311cec  mov    w1, wzr
+2311cf0  mov    x3, xzr
+2311cf4  bl     #0x3379f00
+2311cf8  ldr    x8, [x24]
+2311cfc  ldr    x8, [x8, #0xb8]
+2311d00  ldr    x0, [x8, #0x28]
+2311d04  cbz    x0, #0x2311fa4
+2311d08  adrp   x8, #0x41c9000
+2311d0c  ldr    x8, [x8, #0xb40]
+2311d10  ldr    x1, [x8]
+2311d14  bl     #0x28f3898
+2311d18  ldrb   w8, [x20, #0xf26]
+2311d1c  cbnz   w8, #0x2311d34
+2311d20  adrp   x0, #0x41bb000
+2311d24  ldr    x0, [x0, #0x7e0]  ; type PWC.LightSystem.LightManager
+2311d28  bl     #0x1b886e8
+2311d2c  mov    w8, #1
+2311d30  strb   w8, [x20, #0xf26]
+2311d34  ldr    x8, [x21]
+2311d38  ldr    x8, [x8, #0xb8]  ; "Body_Whites/Body_Whites"
+2311d3c  ldr    x0, [x8, #8]
+2311d40  cbz    x0, #0x2311fa4
+2311d44  mov    x1, xzr
+2311d48  bl     #0x2094468  ; -> LightManager.UpdateAllLights
+2311d4c  mov    x0, xzr
+2311d50  bl     #0x232da4c  ; -> LevelUpgradeTracker.ShouldResetCurrentLevelPD
+2311d54  tbz    w0, #0, #0x2311da4
+2311d58  mov    x0, xzr
+2311d5c  bl     #0x232d9d8  ; -> LevelUpgradeTracker.DeleteMarkSceneForResetByUser
+2311d60  mov    x0, xzr
+2311d64  bl     #0x232dcd4  ; -> LevelUpgradeTracker.ResetCurrentLevelPD
+2311d68  adrp   x8, #0x41ac000
+2311d6c  ldr    x8, [x8, #0xc90]  ; type UnityEngine.SceneManagement.SceneManager
+2311d70  ldr    x0, [x8]
+2311d74  ldr    w8, [x0, #0xe0]
+2311d78  cbnz   w8, #0x2311d80
+2311d7c  bl     #0x1b8885c
+2311d80  mov    x0, xzr
+2311d84  bl     #0x3cdb658
+2311d88  str    w0, [sp, #0x18]
+2311d8c  add    x0, sp, #0x18
+2311d90  mov    x1, xzr
+2311d94  bl     #0x3cdad18
+2311d98  mov    x1, xzr
+2311d9c  bl     #0x3cdc320
+2311da0  b      #0x2311f88
+2311da4  mov    x0, xzr
+2311da8  bl     #0x232fb9c  ; -> LevelUpgradeTracker.ClearTrackingForCurrentScene
+2311dac  ldrb   w8, [x23, #0x56b]
+2311db0  cbnz   w8, #0x2311dc8
+2311db4  adrp   x0, #0x41b5000
+2311db8  ldr    x0, [x0, #0x350]  ; type PWC.Multiplayer.MPManager
+2311dbc  bl     #0x1b886e8
+2311dc0  mov    w8, #1
+2311dc4  strb   w8, [x23, #0x56b]
+2311dc8  ldr    x8, [x22]
+2311dcc  ldr    x8, [x8, #0xb8]
+2311dd0  ldrb   w8, [x8]
+2311dd4  cbz    w8, #0x2311e60
+2311dd8  adrp   x21, #0x41ac000
+2311ddc  ldr    x21, [x21, #0xc90]  ; type UnityEngine.SceneManagement.SceneManager
+2311de0  mov    w20, wzr
+2311de4  ldr    x0, [x21]
+2311de8  ldr    w8, [x0, #0xe0]
+2311dec  cbnz   w8, #0x2311df4
+2311df0  bl     #0x1b8885c
+2311df4  mov    x0, xzr
+2311df8  bl     #0x3cdb5a8
+2311dfc  cmp    w20, w0
+2311e00  b.ge   #0x2311e38
+2311e04  ldr    x0, [x21]
+2311e08  ldr    w8, [x0, #0xe0]
+2311e0c  cbnz   w8, #0x2311e14
+2311e10  bl     #0x1b8885c
+2311e14  mov    w0, w20
+2311e18  mov    x1, xzr
+2311e1c  bl     #0x3cdb7c8
+2311e20  and    x0, x0, #0xffffffff
+2311e24  mov    w1, #1
+2311e28  mov    x2, xzr
+2311e2c  bl     #0x20dfbb4  ; -> MPUtils.PrepareSceneForMultiplayer
+2311e30  add    w20, w20, #1
+2311e34  b      #0x2311de4
+2311e38  ldrb   w8, [x23, #0x56b]
+2311e3c  mov    w9, #1
+2311e40  strb   w9, [x19, #0x39]
+2311e44  cbnz   w8, #0x2311e6c
+2311e48  adrp   x0, #0x41b5000
+2311e4c  ldr    x0, [x0, #0x350]  ; type PWC.Multiplayer.MPManager
+2311e50  bl     #0x1b886e8
+2311e54  adrp   x8, #0x44fa000
+2311e58  add    x8, x8, #0x56b
+2311e5c  b      #0x2311e64
+2311e60  add    x8, x19, #0x39
+2311e64  mov    w9, #1
+2311e68  strb   w9, [x8]
+2311e6c  ldr    x8, [x22]
+2311e70  ldr    x8, [x8, #0xb8]
+2311e74  ldrb   w8, [x8]
+2311e78  cbz    w8, #0x2311e80
+2311e7c  strb   wzr, [x19, #0x3b]
+2311e80  adrp   x20, #0x44f9000
+2311e84  ldrb   w8, [x20, #0xcce]
+2311e88  cbnz   w8, #0x2311ea0
+2311e8c  adrp   x0, #0x41ae000
+2311e90  ldr    x0, [x0, #0x6f0]  ; type PazuCore.PazuGameMode.PazuGameModeManager
+2311e94  bl     #0x1b886e8
+2311e98  mov    w8, #1
+2311e9c  strb   w8, [x20, #0xcce]
+2311ea0  adrp   x8, #0x41ae000
+2311ea4  ldr    x8, [x8, #0x6f0]  ; type PazuCore.PazuGameMode.PazuGameModeManager
+2311ea8  ldr    x8, [x8]
+2311eac  ldr    x8, [x8, #0xb8]
+2311eb0  ldr    x8, [x8, #8]  ; "Languages"
+2311eb4  cbz    x8, #0x2311fa4
+2311eb8  ldrb   w8, [x8, #0x20]
+2311ebc  cbnz   w8, #0x2311f88
+2311ec0  adrp   x20, #0x41d9000
+2311ec4  ldr    x20, [x20, #0xb48]  ; "rateus_aw_enter_levels_count"
+2311ec8  mov    x1, xzr
+2311ecc  ldr    x0, [x20]
+2311ed0  bl     #0x1cb9adc  ; -> Utils.IncrementPlayerPrefsInt
+2311ed4  ldr    x0, [x20]
+2311ed8  mov    x1, xzr
+2311edc  bl     #0x3cc58bc
+2311ee0  cmp    w0, #0xa
+2311ee4  b.lt   #0x2311f88
+2311ee8  mov    x0, xzr
+2311eec  bl     #0x20b6740  ; -> RateUsCooldown.CanShowInGamePrompt
+2311ef0  tbz    w0, #0, #0x2311f88
+2311ef4  adrp   x22, #0x41d9000
+2311ef8  ldr    x22, [x22, #0xb40]  ; type <>c
+2311efc  ldr    x0, [x22]
+2311f00  ldr    w8, [x0, #0xe0]
+2311f04  cbnz   w8, #0x2311f10
+2311f08  bl     #0x1b8885c
+2311f0c  ldr    x0, [x22]
+2311f10  ldr    x8, [x0, #0xb8]
+2311f14  ldr    x20, [x8, #8]  ; "Languages"
+2311f18  cbnz   x20, #0x2311f74
+2311f1c  ldr    w8, [x0, #0xe0]
+2311f20  cbnz   w8, #0x2311f2c
+2311f24  bl     #0x1b8885c
+2311f28  ldr    x0, [x22]
+2311f2c  adrp   x9, #0x41ac000
+2311f30  ldr    x8, [x0, #0xb8]
+2311f34  ldr    x9, [x9, #0xeb0]
+2311f38  ldr    x21, [x8]
+2311f3c  ldr    x0, [x9]
+2311f40  bl     #0x1b88970
+2311f44  adrp   x8, #0x41d9000
+2311f48  ldr    x8, [x8, #0xb38]
+2311f4c  mov    x1, x21
+2311f50  mov    x3, xzr
+2311f54  mov    x20, x0
+2311f58  ldr    x2, [x8]
+2311f5c  bl     #0x32cd13c
+2311f60  ldr    x8, [x22]
+2311f64  mov    x1, x20
+2311f68  ldr    x0, [x8, #0xb8]
+2311f6c  str    x20, [x0, #8]!
+2311f70  bl     #0x1b88694
+2311f74  fmov   s0, #2.00000000
+2311f78  mov    x0, x19
+2311f7c  mov    x1, x20
+2311f80  mov    x2, xzr
+2311f84  bl     #0x1ca642c  ; -> Utils.SetTimer
+2311f88  ldp    x20, x19, [sp, #0x80]
+2311f8c  ldp    x22, x21, [sp, #0x70]
+2311f90  ldp    x24, x23, [sp, #0x60]
+2311f94  ldp    x26, x25, [sp, #0x50]
+2311f98  ldp    x30, x27, [sp, #0x40]
+2311f9c  add    sp, sp, #0x90
+2311fa0  ret    
+2311fa4  bl     #0x1b88980
+2311fa8  mov    x26, x21
+2311fac  bl     #0x1b88980
+2311fb0  b      #0x2311fc0
+2311fb4  b      #0x2311fc0
+2311fb8  b      #0x2311fc4
+2311fbc  b      #0x2311fc0
+2311fc0  mov    x26, x21
+2311fc4  mov    x20, x0
+2311fc8  cmp    w1, #1
+2311fcc  b.ne   #0x2311ff8
+2311fd0  mov    x0, x20
+2311fd4  bl     #0x3f939e0
+2311fd8  ldr    x21, [x0]
+2311fdc  bl     #0x3f939f0
+2311fe0  ldr    x1, [x26]
+2311fe4  add    x0, sp, #0x20
+2311fe8  bl     #0x29c0b1c
+2311fec  cbz    x21, #0x2311af0
+2311ff0  mov    x0, x21
+2311ff4  bl     #0x1b88978
+2311ff8  mov    x21, xzr
+2311ffc  b      #0x2312004
+2312000  mov    x20, x0
+2312004  ldr    x1, [x26]
+2312008  add    x0, sp, #0x20
+231200c  bl     #0x29c0b1c
+2312010  cbnz   x21, #0x231201c
+2312014  mov    x0, x20
+2312018  bl     #0x1c4d150
+231201c  mov    x0, x21
+2312020  bl     #0x1b88978
+2312024  bl     #0x1914dc0

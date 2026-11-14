@@ -1,0 +1,16 @@
+2266e48  str    x30, [sp, #-0x20]!
+2266e4c  stp    x20, x19, [sp, #0x10]
+2266e50  adrp   x19, #0x44fd000
+2266e54  adrp   x20, #0x41d6000
+2266e58  ldrb   w8, [x19, #0x927]
+2266e5c  ldr    x20, [x20, #0xc30]  ; "General/Running"
+2266e60  tbnz   w8, #0, #0x2266e78
+2266e64  adrp   x0, #0x41d6000
+2266e68  ldr    x0, [x0, #0xc30]  ; "General/Running"
+2266e6c  bl     #0x1b886e8
+2266e70  mov    w8, #1
+2266e74  strb   w8, [x19, #0x927]
+2266e78  ldr    x0, [x20]
+2266e7c  ldp    x20, x19, [sp, #0x10]
+2266e80  ldr    x30, [sp], #0x20
+2266e84  ret    

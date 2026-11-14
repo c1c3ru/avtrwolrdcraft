@@ -1,0 +1,17 @@
+{
+  "task_id": "T025/HANDLER/0000849b",
+  "start": "0x2313e64",
+  "exclusive_stop": "0x2313e70",
+  "decoded_branches": [
+    {
+      "site": "0x2313e6c",
+      "word": "0xd65f03c0",
+      "decoded": {
+        "kind": "RET",
+        "register": 30,
+        "target": null
+      }
+    }
+  ],
+  "bound_limit": "candidate window capped at next distinct metadata method start; noncontiguous body and exception extents are not proven"
+}

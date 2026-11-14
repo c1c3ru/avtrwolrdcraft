@@ -1,0 +1,94 @@
+[
+  {
+    "method": "LevelAnimal.HasRunningAnimations",
+    "path": "LevelAnimal.HasRunningAnimations.asm.txt",
+    "sha256": "5bc3bb8a55f9e2e258c2de7a63972f23082658bbd21a3005ed31b3cbe059bdfc"
+  },
+  {
+    "method": "LevelAnimal.GetWalkingAnimationName",
+    "path": "LevelAnimal.GetWalkingAnimationName.asm.txt",
+    "sha256": "0ef6581857b4dc2ce68c7519e6106a4dd11f9bb3866841df99594386a27bcb41"
+  },
+  {
+    "method": "LevelAnimal.GetRunningAnimationName",
+    "path": "LevelAnimal.GetRunningAnimationName.asm.txt",
+    "sha256": "385e1c7e68804da17999b459a28d613b285a0a7259ca255fd2a3a2700c094a15"
+  },
+  {
+    "method": "LevelAnimal.HasSwimmingAnimations",
+    "path": "LevelAnimal.HasSwimmingAnimations.asm.txt",
+    "sha256": "2388d6428692ac8db0a6dcdaca7eca3e84a5eccbcbff35f1f6d23d5f75a0f747"
+  },
+  {
+    "method": "LevelAnimal.OnMovement",
+    "path": "LevelAnimal.OnMovement.asm.txt",
+    "sha256": "947a7f450523864f2951c19fe235faa1fb0243d6ccbfdc41442a217ff1d4b837"
+  },
+  {
+    "method": "LevelAnimal.OnBeginDragInternal",
+    "path": "LevelAnimal.OnBeginDragInternal.asm.txt",
+    "sha256": "1d9eb17fa5c03e6928086700b32489fc2964d1ea42c8e1343ab8393dd8ecee19"
+  },
+  {
+    "method": "LevelAnimal.OnSyncPosition",
+    "path": "LevelAnimal.OnSyncPosition.asm.txt",
+    "sha256": "a3e3cc493498183cc825e1b5463bbcb431830778ea75bcca41e385195ce4cb6d"
+  },
+  {
+    "method": "LevelAnimal.OnEndDragInternal",
+    "path": "LevelAnimal.OnEndDragInternal.asm.txt",
+    "sha256": "e3cf86ed74a5842d0e49e6562485dee303cee493d1a24d432f6baf99a5eb7574"
+  },
+  {
+    "method": "LevelBaby.OnBeginDragInternal",
+    "path": "LevelBaby.OnBeginDragInternal.asm.txt",
+    "sha256": "fa357569acf4bb58c8019a05b68315d662e6c92f83c983955a701cdc7caf186b"
+  },
+  {
+    "method": "LevelBaby.OnEndDragInternal",
+    "path": "LevelBaby.OnEndDragInternal.asm.txt",
+    "sha256": "118d86708be82d71acb87b9c7041a746aed023cc6308003b7eb7d20017470c06"
+  },
+  {
+    "method": "LevelBaby.OnEndLand",
+    "path": "LevelBaby.OnEndLand.asm.txt",
+    "sha256": "6c59e782d277e37544494dd6e0287119e93882a598291832cba0eed6d97bf735"
+  },
+  {
+    "method": "LevelToddler.OnBeginDragInternal",
+    "path": "LevelToddler.OnBeginDragInternal.asm.txt",
+    "sha256": "345aa024b4fdadca7430f76d1b36b77737d6963ddf60cf8233b3c2bcdf61caa3"
+  },
+  {
+    "method": "LevelToddler.OnSyncPosition",
+    "path": "LevelToddler.OnSyncPosition.asm.txt",
+    "sha256": "285c9ac2f0c68aab243346ac96256a34daa14a1be104b50c510aaed31fa7171e"
+  },
+  {
+    "method": "LevelToddler.OnEndDragInternal",
+    "path": "LevelToddler.OnEndDragInternal.asm.txt",
+    "sha256": "bcf70be1dc18ec05135e7fcf64d7bde08cebec4c44bf31d362b2881b517ca2a0"
+  },
+  {
+    "method": "LevelCharacterAnimator.OnMovement",
+    "path": "LevelCharacterAnimator.OnMovement.asm.txt",
+    "sha256": "94fd4317649800c150046e878cbfb1d9226f9b6aaca4983afde87133d67bd41e"
+  },
+  {
+    "method": "LevelHorse.HasSwimmingAnimations",
+    "path": "LevelHorse.HasSwimmingAnimations.asm.txt",
+    "sha256": "369390ae318d9a36b9170dfdc8a0ae05e8abe22b8789d772f87ca76d17865f10"
+  },
+  {
+    "source": "out/recon/il2cpp/libil2cpp.so",
+    "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+  },
+  {
+    "source": "out/recon/il2cpp/global-metadata.dat",
+    "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+  },
+  {
+    "source": "out/recon/il2cpp/assembly_csharp_methods.jsonl",
+    "sha256": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8"
+  }
+]

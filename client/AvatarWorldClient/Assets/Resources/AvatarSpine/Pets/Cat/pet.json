@@ -1,0 +1,4879 @@
+{
+ "species": "Cat",
+ "idle": "General/Blinking",
+ "layered": true,
+ "basePieces": [
+  {
+   "template": "Templates/MultiPack__General",
+   "file": "multipack__general__104945.png",
+   "skin": "default"
+  }
+ ],
+ "variants": [],
+ "breeds": [
+  {
+   "id": "breed_a",
+   "body": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_A_Solid",
+     "file": "multipack__body_cat_a_solid__38532.png",
+     "skin": "Breed_A/Body/Body_Base_Color"
+    },
+    {
+     "template": "Templates/MultiPack__Body_Cat_A_Stat",
+     "file": "multipack__body_cat_a_stat__15309.png",
+     "skin": "Breed_A/Body/Body_Base_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_A_Outline",
+     "file": "multipack__body_cat_a_outline__36358.png",
+     "skin": "Breed_A/Body/Body_Outline"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "pattern_1",
+     "pieces": [
+      {
+       "template": "Templates/A_Pat_Head_01",
+       "file": "a_pat_head_01__28113.png",
+       "skin": "Breed_A/Pattern/Pattern_1_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_2",
+     "pieces": [
+      {
+       "template": "Templates/A_Pat_Head_02",
+       "file": "a_pat_head_02__36654.png",
+       "skin": "Breed_A/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Arm_L_01",
+       "file": "multipack__a_pat_arm_l_01__26415.png",
+       "skin": "Breed_A/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Arm_R_01",
+       "file": "multipack__a_pat_arm_r_01__73200.png",
+       "skin": "Breed_A/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Top_01",
+       "file": "multipack__a_pat_top_01__94062.png",
+       "skin": "Breed_A/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/A_Pat_Tail_04",
+       "file": "a_pat_tail_04__63350.png",
+       "skin": "Breed_A/Pattern/Pattern_2_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_3",
+     "pieces": [
+      {
+       "template": "Templates/A_Pat_Head_03",
+       "file": "a_pat_head_03__18604.png",
+       "skin": "Breed_A/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Leg_R_01",
+       "file": "multipack__a_pat_leg_r_01__17814.png",
+       "skin": "Breed_A/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Arm_L_02",
+       "file": "multipack__a_pat_arm_l_02__75991.png",
+       "skin": "Breed_A/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Arm_R_02",
+       "file": "multipack__a_pat_arm_r_02__78581.png",
+       "skin": "Breed_A/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/A_Pat_Tail_01",
+       "file": "a_pat_tail_01__105375.png",
+       "skin": "Breed_A/Pattern/Pattern_3_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_4",
+     "pieces": [
+      {
+       "template": "Templates/A_Pat_Head_04",
+       "file": "a_pat_head_04__7963.png",
+       "skin": "Breed_A/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Arm_L_03",
+       "file": "multipack__a_pat_arm_l_03__9728.png",
+       "skin": "Breed_A/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Arm_R_03",
+       "file": "multipack__a_pat_arm_r_03__22461.png",
+       "skin": "Breed_A/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Top_03",
+       "file": "multipack__a_pat_top_03__9370.png",
+       "skin": "Breed_A/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Leg_R_02",
+       "file": "multipack__a_pat_leg_r_02__8071.png",
+       "skin": "Breed_A/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Leg_L_01",
+       "file": "multipack__a_pat_leg_l_01__18354.png",
+       "skin": "Breed_A/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/A_Pat_Tail_02",
+       "file": "a_pat_tail_02__84066.png",
+       "skin": "Breed_A/Pattern/Pattern_4_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_5",
+     "pieces": [
+      {
+       "template": "Templates/A_Pat_R_Ear_01",
+       "file": "a_pat_r_ear_01__83223.png",
+       "skin": "Breed_A/Pattern/Pattern_5_Color"
+      },
+      {
+       "template": "Templates/A_Pat_Head_05",
+       "file": "a_pat_head_05__77483.png",
+       "skin": "Breed_A/Pattern/Pattern_5_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Leg_R_03",
+       "file": "multipack__a_pat_leg_r_03__79437.png",
+       "skin": "Breed_A/Pattern/Pattern_5_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Arm_L_04",
+       "file": "multipack__a_pat_arm_l_04__60150.png",
+       "skin": "Breed_A/Pattern/Pattern_5_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Arm_R_04",
+       "file": "multipack__a_pat_arm_r_04__74578.png",
+       "skin": "Breed_A/Pattern/Pattern_5_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Top_02",
+       "file": "multipack__a_pat_top_02__17966.png",
+       "skin": "Breed_A/Pattern/Pattern_5_Color"
+      },
+      {
+       "template": "Templates/MultiPack__A_Pat_Leg_L_02",
+       "file": "multipack__a_pat_leg_l_02__15363.png",
+       "skin": "Breed_A/Pattern/Pattern_5_Color"
+      },
+      {
+       "template": "Templates/A_Pat_Tail_03",
+       "file": "a_pat_tail_03__98250.png",
+       "skin": "Breed_A/Pattern/Pattern_5_Color"
+      }
+     ]
+    }
+   ],
+   "eyebrows": []
+  },
+  {
+   "id": "breed_b",
+   "body": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_B_Solid",
+     "file": "multipack__body_cat_b_solid__20090.png",
+     "skin": "Breed_B/Body/Body_Base_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_B_Outline",
+     "file": "multipack__body_cat_b_outline__47896.png",
+     "skin": "Breed_B/Body/Body_Outline"
+    },
+    {
+     "template": "Templates/MultiPack__Body_Cat_B_Stat",
+     "file": "multipack__body_cat_b_stat__22608.png",
+     "skin": "Breed_B/Body/Body_Outline"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "pattern_1",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__B_Pat_Head",
+       "file": "multipack__b_pat_head__75269.png",
+       "skin": "Breed_B/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Leg_R_01",
+       "file": "multipack__b_pat_leg_r_01__70399.png",
+       "skin": "Breed_B/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Arm_L_01",
+       "file": "multipack__b_pat_arm_l_01__58577.png",
+       "skin": "Breed_B/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Arm_R_01",
+       "file": "multipack__b_pat_arm_r_01__72472.png",
+       "skin": "Breed_B/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Top_01",
+       "file": "multipack__b_pat_top_01__11402.png",
+       "skin": "Breed_B/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Leg_L_01",
+       "file": "multipack__b_pat_leg_l_01__13576.png",
+       "skin": "Breed_B/Pattern/Pattern_1_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_2",
+     "pieces": [
+      {
+       "template": "Templates/B_Pat_Ear_R_02",
+       "file": "b_pat_ear_r_02__25393.png",
+       "skin": "Breed_B/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Head",
+       "file": "multipack__b_pat_head__75269.png",
+       "skin": "Breed_B/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Leg_R_02",
+       "file": "multipack__b_pat_leg_r_02__38856.png",
+       "skin": "Breed_B/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Arm_L_02",
+       "file": "multipack__b_pat_arm_l_02__36380.png",
+       "skin": "Breed_B/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Arm_R_02",
+       "file": "multipack__b_pat_arm_r_02__93747.png",
+       "skin": "Breed_B/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Top_01",
+       "file": "multipack__b_pat_top_01__11402.png",
+       "skin": "Breed_B/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Leg_L_01",
+       "file": "multipack__b_pat_leg_l_01__13576.png",
+       "skin": "Breed_B/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/B_Pat_Tail_01",
+       "file": "b_pat_tail_01__22728.png",
+       "skin": "Breed_B/Pattern/Pattern_2_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_3",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__B_Pat_Head",
+       "file": "multipack__b_pat_head__75269.png",
+       "skin": "Breed_B/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Leg_R_03",
+       "file": "multipack__b_pat_leg_r_03__22797.png",
+       "skin": "Breed_B/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Arm_L_03",
+       "file": "multipack__b_pat_arm_l_03__83089.png",
+       "skin": "Breed_B/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Arm_R_03",
+       "file": "multipack__b_pat_arm_r_03__55484.png",
+       "skin": "Breed_B/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Top_02",
+       "file": "multipack__b_pat_top_02__29173.png",
+       "skin": "Breed_B/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Leg_L_01",
+       "file": "multipack__b_pat_leg_l_01__13576.png",
+       "skin": "Breed_B/Pattern/Pattern_3_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_4",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__B_Pat_Head",
+       "file": "multipack__b_pat_head__75269.png",
+       "skin": "Breed_B/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__B_Pat_Top_03",
+       "file": "multipack__b_pat_top_03__19154.png",
+       "skin": "Breed_B/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/B_Pat_Leg_Stand_R_04",
+       "file": "b_pat_leg_stand_r_04__64514.png",
+       "skin": "Breed_B/Pattern/Pattern_4_Color"
+      }
+     ]
+    }
+   ],
+   "eyebrows": []
+  },
+  {
+   "id": "breed_c",
+   "body": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_C_Solid",
+     "file": "multipack__body_cat_c_solid__29828.png",
+     "skin": "Breed_C/Body/Body_Base_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_C_Outline",
+     "file": "multipack__body_cat_c_outline__46402.png",
+     "skin": "Breed_C/Body/Body_Outline"
+    },
+    {
+     "template": "Templates/Nose_C_Stat",
+     "file": "nose_c_stat__73582.png",
+     "skin": "Breed_C/Body/Body_Outline"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "pattern_2",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__C_Pat_Head",
+       "file": "multipack__c_pat_head__49648.png",
+       "skin": "Breed_C/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Leg_R_01",
+       "file": "multipack__c_pat_leg_r_01__72174.png",
+       "skin": "Breed_C/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Arm_L_01",
+       "file": "multipack__c_pat_arm_l_01__13037.png",
+       "skin": "Breed_C/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Arm_R_01",
+       "file": "multipack__c_pat_arm_r_01__91778.png",
+       "skin": "Breed_C/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Leg_L_01",
+       "file": "multipack__c_pat_leg_l_01__54581.png",
+       "skin": "Breed_C/Pattern/Pattern_2_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_3",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__C_Pat_Ear_L",
+       "file": "multipack__c_pat_ear_l__94607.png",
+       "skin": "Breed_C/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Head",
+       "file": "multipack__c_pat_head__49648.png",
+       "skin": "Breed_C/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Leg_R_02",
+       "file": "multipack__c_pat_leg_r_02__9221.png",
+       "skin": "Breed_C/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Arm_L_02",
+       "file": "multipack__c_pat_arm_l_02__31971.png",
+       "skin": "Breed_C/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Arm_R_02",
+       "file": "multipack__c_pat_arm_r_02__68434.png",
+       "skin": "Breed_C/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Top_02",
+       "file": "multipack__c_pat_top_02__62742.png",
+       "skin": "Breed_C/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/C_Pat_Leg_Stand_L_02",
+       "file": "c_pat_leg_stand_l_02__83799.png",
+       "skin": "Breed_C/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Tail",
+       "file": "multipack__c_pat_tail__89803.png",
+       "skin": "Breed_C/Pattern/Pattern_3_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_4",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__C_Pat_Ear_L",
+       "file": "multipack__c_pat_ear_l__94607.png",
+       "skin": "Breed_C/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/C_Pat_Ear_R_01",
+       "file": "c_pat_ear_r_01__9288.png",
+       "skin": "Breed_C/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Head",
+       "file": "multipack__c_pat_head__49648.png",
+       "skin": "Breed_C/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Leg_R_03",
+       "file": "multipack__c_pat_leg_r_03__14819.png",
+       "skin": "Breed_C/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Leg_L_03",
+       "file": "multipack__c_pat_leg_l_03__72916.png",
+       "skin": "Breed_C/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__C_Pat_Tail",
+       "file": "multipack__c_pat_tail__89803.png",
+       "skin": "Breed_C/Pattern/Pattern_4_Color"
+      }
+     ]
+    }
+   ],
+   "eyebrows": []
+  },
+  {
+   "id": "breed_d",
+   "body": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_D_Solid",
+     "file": "multipack__body_cat_d_solid__29513.png",
+     "skin": "Breed_D/Body/Body_Base_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_D_Outline",
+     "file": "multipack__body_cat_d_outline__14655.png",
+     "skin": "Breed_D/Body/Body_Outline"
+    },
+    {
+     "template": "Templates/D_Nose_Stat",
+     "file": "d_nose_stat__26923.png",
+     "skin": "Breed_D/Body/Body_Outline"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "pattern_1",
+     "pieces": [
+      {
+       "template": "Templates/D_Pat_L_Ear_01",
+       "file": "d_pat_l_ear_01__50231.png",
+       "skin": "Breed_D/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/D_Pat_R_Ear_01",
+       "file": "d_pat_r_ear_01__73862.png",
+       "skin": "Breed_D/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/D_Pat_Head_01",
+       "file": "d_pat_head_01__39646.png",
+       "skin": "Breed_D/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Leg_R_01",
+       "file": "multipack__d_pat_leg_r_01__101874.png",
+       "skin": "Breed_D/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Arm_L_01",
+       "file": "multipack__d_pat_arm_l_01__38304.png",
+       "skin": "Breed_D/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Arm_R_01",
+       "file": "multipack__d_pat_arm_r_01__99085.png",
+       "skin": "Breed_D/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Leg_L_01",
+       "file": "multipack__d_pat_leg_l_01__70250.png",
+       "skin": "Breed_D/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/D_Pat_Tail_01",
+       "file": "d_pat_tail_01__25746.png",
+       "skin": "Breed_D/Pattern/Pattern_1_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_2",
+     "pieces": [
+      {
+       "template": "Templates/D_Pat_L_Ear_01",
+       "file": "d_pat_l_ear_01__50231.png",
+       "skin": "Breed_D/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/D_Pat_R_Ear_02",
+       "file": "d_pat_r_ear_02__45155.png",
+       "skin": "Breed_D/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/D_Pat_Head_02",
+       "file": "d_pat_head_02__90679.png",
+       "skin": "Breed_D/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Leg_R_02",
+       "file": "multipack__d_pat_leg_r_02__76213.png",
+       "skin": "Breed_D/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Arm_L_02",
+       "file": "multipack__d_pat_arm_l_02__55389.png",
+       "skin": "Breed_D/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Arm_R_02",
+       "file": "multipack__d_pat_arm_r_02__14212.png",
+       "skin": "Breed_D/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/D_Pat_Top_Lay_01",
+       "file": "d_pat_top_lay_01__18131.png",
+       "skin": "Breed_D/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Leg_L_02",
+       "file": "multipack__d_pat_leg_l_02__71409.png",
+       "skin": "Breed_D/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/D_Pat_Tail_02",
+       "file": "d_pat_tail_02__48027.png",
+       "skin": "Breed_D/Pattern/Pattern_2_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_3",
+     "pieces": [
+      {
+       "template": "Templates/D_Pat_Head_03",
+       "file": "d_pat_head_03__61059.png",
+       "skin": "Breed_D/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Leg_R_03",
+       "file": "multipack__d_pat_leg_r_03__88182.png",
+       "skin": "Breed_D/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Arm_L_03",
+       "file": "multipack__d_pat_arm_l_03__48424.png",
+       "skin": "Breed_D/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Arm_R_04",
+       "file": "multipack__d_pat_arm_r_04__10906.png",
+       "skin": "Breed_D/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/D_Pat_Top_Lay_02",
+       "file": "d_pat_top_lay_02__55171.png",
+       "skin": "Breed_D/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Arm_R_03",
+       "file": "multipack__d_pat_arm_r_03__88593.png",
+       "skin": "Breed_D/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/D_Pat_Tail_03",
+       "file": "d_pat_tail_03__92898.png",
+       "skin": "Breed_D/Pattern/Pattern_3_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_4",
+     "pieces": [
+      {
+       "template": "Templates/D_Pat_L_Ear_01",
+       "file": "d_pat_l_ear_01__50231.png",
+       "skin": "Breed_D/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/D_Pat_R_Ear_01",
+       "file": "d_pat_r_ear_01__73862.png",
+       "skin": "Breed_D/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/D_Pat_Head_04",
+       "file": "d_pat_head_04__61526.png",
+       "skin": "Breed_D/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Arm_L_04",
+       "file": "multipack__d_pat_arm_l_04__34303.png",
+       "skin": "Breed_D/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__D_Pat_Arm_R_04",
+       "file": "multipack__d_pat_arm_r_04__10906.png",
+       "skin": "Breed_D/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/D_Pat_Tail_02",
+       "file": "d_pat_tail_02__48027.png",
+       "skin": "Breed_D/Pattern/Pattern_4_Color"
+      }
+     ]
+    }
+   ],
+   "eyebrows": []
+  },
+  {
+   "id": "breed_e",
+   "body": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_E_Solid",
+     "file": "multipack__body_cat_e_solid__75036.png",
+     "skin": "Breed_E/Body/Body_Base_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_E_Outline",
+     "file": "multipack__body_cat_e_outline__49301.png",
+     "skin": "Breed_E/Body/Body_Outline"
+    },
+    {
+     "template": "Templates/MultiPack__Body_Cat_A_Outline",
+     "file": "multipack__body_cat_a_outline__36358.png",
+     "skin": "Breed_E/Body/Body_Outline"
+    },
+    {
+     "template": "Templates/Nose_E_Stat",
+     "file": "nose_e_stat__19868.png",
+     "skin": "Breed_E/Body/Body_Outline"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "pattern_1",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__E_Pat_Head",
+       "file": "multipack__e_pat_head__37393.png",
+       "skin": "Breed_E/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Tail",
+       "file": "multipack__e_pat_tail__11207.png",
+       "skin": "Breed_E/Pattern/Pattern_1_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_2",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__E_Pat_Head",
+       "file": "multipack__e_pat_head__37393.png",
+       "skin": "Breed_E/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Leg_R_02",
+       "file": "multipack__e_pat_leg_r_02__45227.png",
+       "skin": "Breed_E/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Arm_L_01",
+       "file": "multipack__e_pat_arm_l_01__13678.png",
+       "skin": "Breed_E/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Arm_R_02",
+       "file": "multipack__e_pat_arm_r_02__81405.png",
+       "skin": "Breed_E/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Top_01",
+       "file": "multipack__e_pat_top_01__96727.png",
+       "skin": "Breed_E/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/E_Pat_Leg_Stand_R_01",
+       "file": "e_pat_leg_stand_r_01__37776.png",
+       "skin": "Breed_E/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/E_Pat_Leg_Stand_L_01",
+       "file": "e_pat_leg_stand_l_01__82336.png",
+       "skin": "Breed_E/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Tail",
+       "file": "multipack__e_pat_tail__11207.png",
+       "skin": "Breed_E/Pattern/Pattern_2_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_3",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__E_Pat_Head",
+       "file": "multipack__e_pat_head__37393.png",
+       "skin": "Breed_E/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Arm_L_02",
+       "file": "multipack__e_pat_arm_l_02__81844.png",
+       "skin": "Breed_E/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Arm_R_03",
+       "file": "multipack__e_pat_arm_r_03__8417.png",
+       "skin": "Breed_E/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Top_02",
+       "file": "multipack__e_pat_top_02__62797.png",
+       "skin": "Breed_E/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Leg_R_02",
+       "file": "multipack__e_pat_leg_r_02__45227.png",
+       "skin": "Breed_E/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/E_Pat_Leg_Stand_L_01",
+       "file": "e_pat_leg_stand_l_01__82336.png",
+       "skin": "Breed_E/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Top_03",
+       "file": "multipack__e_pat_top_03__11838.png",
+       "skin": "Breed_E/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Tail",
+       "file": "multipack__e_pat_tail__11207.png",
+       "skin": "Breed_E/Pattern/Pattern_3_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_4",
+     "pieces": [
+      {
+       "template": "Templates/E_Pat_Ear_L_01",
+       "file": "e_pat_ear_l_01__68217.png",
+       "skin": "Breed_E/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/E_Pat_Ear_R_01",
+       "file": "e_pat_ear_r_01__55891.png",
+       "skin": "Breed_E/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Head",
+       "file": "multipack__e_pat_head__37393.png",
+       "skin": "Breed_E/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Leg_R_03",
+       "file": "multipack__e_pat_leg_r_03__19919.png",
+       "skin": "Breed_E/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Arm_R_04",
+       "file": "multipack__e_pat_arm_r_04__28992.png",
+       "skin": "Breed_E/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Arm_L_03",
+       "file": "multipack__e_pat_arm_l_03__51202.png",
+       "skin": "Breed_E/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__E_Pat_Tail",
+       "file": "multipack__e_pat_tail__11207.png",
+       "skin": "Breed_E/Pattern/Pattern_4_Color"
+      }
+     ]
+    }
+   ],
+   "eyebrows": []
+  },
+  {
+   "id": "breed_f",
+   "body": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_F_Solid",
+     "file": "multipack__body_cat_f_solid__45408.png",
+     "skin": "Breed_F/Body/Body_Base_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_F_Outline",
+     "file": "multipack__body_cat_f_outline__26772.png",
+     "skin": "Breed_F/Body/Body_Outline"
+    },
+    {
+     "template": "Templates/MultiPack__Body_Cat_F_Stat",
+     "file": "multipack__body_cat_f_stat__82643.png",
+     "skin": "Breed_F/Body/Body_Outline"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "pattern_1",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__F_Pat_Head",
+       "file": "multipack__f_pat_head__31664.png",
+       "skin": "Breed_F/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Leg_R_01",
+       "file": "multipack__f_pat_leg_r_01__33588.png",
+       "skin": "Breed_F/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Arm_L_01",
+       "file": "multipack__f_pat_arm_l_01__94862.png",
+       "skin": "Breed_F/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Arm_R_01",
+       "file": "multipack__f_pat_arm_r_01__103942.png",
+       "skin": "Breed_F/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Top_01",
+       "file": "multipack__f_pat_top_01__39180.png",
+       "skin": "Breed_F/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Leg_L_01",
+       "file": "multipack__f_pat_leg_l_01__39345.png",
+       "skin": "Breed_F/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/F_Pat_Tail_01",
+       "file": "f_pat_tail_01__19505.png",
+       "skin": "Breed_F/Pattern/Pattern_1_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_2",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__F_Pat_Head",
+       "file": "multipack__f_pat_head__31664.png",
+       "skin": "Breed_F/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Leg_R_02",
+       "file": "multipack__f_pat_leg_r_02__105943.png",
+       "skin": "Breed_F/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Arm_L_02",
+       "file": "multipack__f_pat_arm_l_02__101176.png",
+       "skin": "Breed_F/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Arm_R_02",
+       "file": "multipack__f_pat_arm_r_02__9140.png",
+       "skin": "Breed_F/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Top_01",
+       "file": "multipack__f_pat_top_01__39180.png",
+       "skin": "Breed_F/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Leg_L_02",
+       "file": "multipack__f_pat_leg_l_02__65176.png",
+       "skin": "Breed_F/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/F_Pat_Tail_01",
+       "file": "f_pat_tail_01__19505.png",
+       "skin": "Breed_F/Pattern/Pattern_2_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_3",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__F_Pat_Head",
+       "file": "multipack__f_pat_head__31664.png",
+       "skin": "Breed_F/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Leg_R_03",
+       "file": "multipack__f_pat_leg_r_03__55759.png",
+       "skin": "Breed_F/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Arm_R_03",
+       "file": "multipack__f_pat_arm_r_03__101150.png",
+       "skin": "Breed_F/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Top_02",
+       "file": "multipack__f_pat_top_02__102873.png",
+       "skin": "Breed_F/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Arm_L_03",
+       "file": "multipack__f_pat_arm_l_03__27819.png",
+       "skin": "Breed_F/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Leg_L_03",
+       "file": "multipack__f_pat_leg_l_03__9206.png",
+       "skin": "Breed_F/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/F_Pat_Tail_01",
+       "file": "f_pat_tail_01__19505.png",
+       "skin": "Breed_F/Pattern/Pattern_3_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_4",
+     "pieces": [
+      {
+       "template": "Templates/MultiPack__F_Pat_Head",
+       "file": "multipack__f_pat_head__31664.png",
+       "skin": "Breed_F/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Arm_L_03",
+       "file": "multipack__f_pat_arm_l_03__27819.png",
+       "skin": "Breed_F/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Arm_R_04",
+       "file": "multipack__f_pat_arm_r_04__80850.png",
+       "skin": "Breed_F/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Top_01",
+       "file": "multipack__f_pat_top_01__39180.png",
+       "skin": "Breed_F/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Leg_R_04",
+       "file": "multipack__f_pat_leg_r_04__58363.png",
+       "skin": "Breed_F/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__F_Pat_Arm_L_04",
+       "file": "multipack__f_pat_arm_l_04__86249.png",
+       "skin": "Breed_F/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/F_Pat_Tail_01",
+       "file": "f_pat_tail_01__19505.png",
+       "skin": "Breed_F/Pattern/Pattern_4_Color"
+      }
+     ]
+    }
+   ],
+   "eyebrows": []
+  },
+  {
+   "id": "breed_g",
+   "body": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_G_Solid",
+     "file": "multipack__body_cat_g_solid__47705.png",
+     "skin": "Breed_G/Body/Body_Base_Color"
+    },
+    {
+     "template": "Templates/G_Nose_Stat",
+     "file": "g_nose_stat__101411.png",
+     "skin": "Breed_G/Body/Body_Base_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_G_Outline",
+     "file": "multipack__body_cat_g_outline__43220.png",
+     "skin": "Breed_G/Body/Body_Outline"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "pattern_1",
+     "pieces": [
+      {
+       "template": "Templates/G_Pat_Head_01",
+       "file": "g_pat_head_01__100899.png",
+       "skin": "Breed_G/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Leg_R_01",
+       "file": "multipack__g_pat_leg_r_01__64927.png",
+       "skin": "Breed_G/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Arm_L_01",
+       "file": "multipack__g_pat_arm_l_01__106237.png",
+       "skin": "Breed_G/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Arm_R_01",
+       "file": "multipack__g_pat_arm_r_01__57387.png",
+       "skin": "Breed_G/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Top_01",
+       "file": "multipack__g_pat_top_01__65482.png",
+       "skin": "Breed_G/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Leg_L_01",
+       "file": "multipack__g_pat_leg_l_01__14582.png",
+       "skin": "Breed_G/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/G_Pat_Tail_01",
+       "file": "g_pat_tail_01__34412.png",
+       "skin": "Breed_G/Pattern/Pattern_1_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_2",
+     "pieces": [
+      {
+       "template": "Templates/G_Pat_Head_02",
+       "file": "g_pat_head_02__46806.png",
+       "skin": "Breed_G/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Leg_R_02",
+       "file": "multipack__g_pat_leg_r_02__105507.png",
+       "skin": "Breed_G/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Arm_L_02",
+       "file": "multipack__g_pat_arm_l_02__6872.png",
+       "skin": "Breed_G/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Arm_R_02",
+       "file": "multipack__g_pat_arm_r_02__102459.png",
+       "skin": "Breed_G/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Top_02",
+       "file": "multipack__g_pat_top_02__83657.png",
+       "skin": "Breed_G/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/G_Pat_Tail_02",
+       "file": "g_pat_tail_02__13169.png",
+       "skin": "Breed_G/Pattern/Pattern_2_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_3",
+     "pieces": [
+      {
+       "template": "Templates/G_Pat_Ear_L_01",
+       "file": "g_pat_ear_l_01__35258.png",
+       "skin": "Breed_G/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/G_Pat_Ear_R_01",
+       "file": "g_pat_ear_r_01__101670.png",
+       "skin": "Breed_G/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/G_Pat_Head_03",
+       "file": "g_pat_head_03__24805.png",
+       "skin": "Breed_G/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Leg_R_03",
+       "file": "multipack__g_pat_leg_r_03__5825.png",
+       "skin": "Breed_G/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Arm_L_03",
+       "file": "multipack__g_pat_arm_l_03__102508.png",
+       "skin": "Breed_G/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Arm_R_03",
+       "file": "multipack__g_pat_arm_r_03__103980.png",
+       "skin": "Breed_G/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Top_01",
+       "file": "multipack__g_pat_top_01__65482.png",
+       "skin": "Breed_G/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Leg_L_02",
+       "file": "multipack__g_pat_leg_l_02__51677.png",
+       "skin": "Breed_G/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/G_Pat_Tail_03",
+       "file": "g_pat_tail_03__13953.png",
+       "skin": "Breed_G/Pattern/Pattern_3_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_4",
+     "pieces": [
+      {
+       "template": "Templates/G_Pat_Head_04",
+       "file": "g_pat_head_04__94545.png",
+       "skin": "Breed_G/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Leg_R_04",
+       "file": "multipack__g_pat_leg_r_04__25938.png",
+       "skin": "Breed_G/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Arm_L_04",
+       "file": "multipack__g_pat_arm_l_04__30687.png",
+       "skin": "Breed_G/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Arm_R_04",
+       "file": "multipack__g_pat_arm_r_04__98728.png",
+       "skin": "Breed_G/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Top_03",
+       "file": "multipack__g_pat_top_03__35330.png",
+       "skin": "Breed_G/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__G_Pat_Leg_L_03",
+       "file": "multipack__g_pat_leg_l_03__96691.png",
+       "skin": "Breed_G/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/G_Pat_Tail_04",
+       "file": "g_pat_tail_04__58732.png",
+       "skin": "Breed_G/Pattern/Pattern_4_Color"
+      }
+     ]
+    }
+   ],
+   "eyebrows": []
+  },
+  {
+   "id": "breed_h",
+   "body": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_H_Solid",
+     "file": "multipack__body_cat_h_solid__92618.png",
+     "skin": "Breed_H/Body/Body_Base_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Body_Cat_H_Outline",
+     "file": "multipack__body_cat_h_outline__83885.png",
+     "skin": "Breed_H/Body/Body_Outline"
+    },
+    {
+     "template": "Templates/MultiPack__Body_Cat_H_Stat",
+     "file": "multipack__body_cat_h_stat__41092.png",
+     "skin": "Breed_H/Body/Body_Outline"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "pattern_1",
+     "pieces": [
+      {
+       "template": "Templates/H_Pat_Ear_L_01",
+       "file": "h_pat_ear_l_01__78396.png",
+       "skin": "Breed_H/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Ear_R_01",
+       "file": "h_pat_ear_r_01__26909.png",
+       "skin": "Breed_H/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Head_01",
+       "file": "h_pat_head_01__59753.png",
+       "skin": "Breed_H/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Leg_R_01",
+       "file": "multipack__h_pat_leg_r_01__59930.png",
+       "skin": "Breed_H/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Arm_L_01",
+       "file": "multipack__h_pat_arm_l_01__17149.png",
+       "skin": "Breed_H/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Arm_R_01",
+       "file": "multipack__h_pat_arm_r_01__48293.png",
+       "skin": "Breed_H/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Top_Lay_01",
+       "file": "h_pat_top_lay_01__93193.png",
+       "skin": "Breed_H/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Leg_Stand_L_01",
+       "file": "h_pat_leg_stand_l_01__89145.png",
+       "skin": "Breed_H/Pattern/Pattern_1_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Tail",
+       "file": "multipack__h_pat_tail__49363.png",
+       "skin": "Breed_H/Pattern/Pattern_1_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_2",
+     "pieces": [
+      {
+       "template": "Templates/H_Pat_Ear_L_02",
+       "file": "h_pat_ear_l_02__90897.png",
+       "skin": "Breed_H/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Ear_R_02",
+       "file": "h_pat_ear_r_02__28358.png",
+       "skin": "Breed_H/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Head_02",
+       "file": "h_pat_head_02__63359.png",
+       "skin": "Breed_H/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Leg_R_02",
+       "file": "multipack__h_pat_leg_r_02__12777.png",
+       "skin": "Breed_H/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Arm_L_02",
+       "file": "multipack__h_pat_arm_l_02__63354.png",
+       "skin": "Breed_H/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Arm_R_02",
+       "file": "multipack__h_pat_arm_r_02__22581.png",
+       "skin": "Breed_H/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Leg_Stand_L_01",
+       "file": "h_pat_leg_stand_l_01__89145.png",
+       "skin": "Breed_H/Pattern/Pattern_2_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Tail",
+       "file": "multipack__h_pat_tail__49363.png",
+       "skin": "Breed_H/Pattern/Pattern_2_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_3",
+     "pieces": [
+      {
+       "template": "Templates/H_Pat_Ear_L_03",
+       "file": "h_pat_ear_l_03__75636.png",
+       "skin": "Breed_H/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Ear_R_03",
+       "file": "h_pat_ear_r_03__71785.png",
+       "skin": "Breed_H/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Head_03",
+       "file": "h_pat_head_03__106430.png",
+       "skin": "Breed_H/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Leg_R_03",
+       "file": "multipack__h_pat_leg_r_03__28712.png",
+       "skin": "Breed_H/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Arm_L_03",
+       "file": "multipack__h_pat_arm_l_03__61834.png",
+       "skin": "Breed_H/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Arm_R_03",
+       "file": "multipack__h_pat_arm_r_03__104990.png",
+       "skin": "Breed_H/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Leg_Stand_L_03",
+       "file": "h_pat_leg_stand_l_03__77577.png",
+       "skin": "Breed_H/Pattern/Pattern_3_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Tail",
+       "file": "multipack__h_pat_tail__49363.png",
+       "skin": "Breed_H/Pattern/Pattern_3_Color"
+      }
+     ]
+    },
+    {
+     "id": "pattern_4",
+     "pieces": [
+      {
+       "template": "Templates/H_Pat_Ear_L_04",
+       "file": "h_pat_ear_l_04__98383.png",
+       "skin": "Breed_H/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Ear_R_04",
+       "file": "h_pat_ear_r_04__32251.png",
+       "skin": "Breed_H/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Head_04",
+       "file": "h_pat_head_04__82951.png",
+       "skin": "Breed_H/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Leg_R_04",
+       "file": "multipack__h_pat_leg_r_04__60755.png",
+       "skin": "Breed_H/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Arm_L_04",
+       "file": "multipack__h_pat_arm_l_04__16781.png",
+       "skin": "Breed_H/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Arm_R_04",
+       "file": "multipack__h_pat_arm_r_04__45027.png",
+       "skin": "Breed_H/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/H_Pat_Leg_Stand_L_04",
+       "file": "h_pat_leg_stand_l_04__94662.png",
+       "skin": "Breed_H/Pattern/Pattern_4_Color"
+      },
+      {
+       "template": "Templates/MultiPack__H_Pat_Tail",
+       "file": "multipack__h_pat_tail__49363.png",
+       "skin": "Breed_H/Pattern/Pattern_4_Color"
+      }
+     ]
+    }
+   ],
+   "eyebrows": []
+  }
+ ],
+ "eyes": [
+  {
+   "id": "eyes_1",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_01_Base_Color",
+     "file": "multipack__eyes_01_base_color__44595.png",
+     "skin": "Eyes_Base/Eyes_Base_1_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_01_Stat",
+     "file": "multipack__eyes_01_stat__51085.png",
+     "skin": "Eyes_Outline/Eyes_Outline_1"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_01_Pupils",
+     "file": "multipack__eyes_01_pupils__58854.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_1"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_2",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_02_Base_Color",
+     "file": "multipack__eyes_02_base_color__12828.png",
+     "skin": "Eyes_Base/Eyes_Base_2_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_02_Stat",
+     "file": "multipack__eyes_02_stat__78215.png",
+     "skin": "Eyes_Outline/Eyes_Outline_2"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_02_Pupils",
+     "file": "multipack__eyes_02_pupils__8226.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_2"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_3",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_03_Base_Color",
+     "file": "multipack__eyes_03_base_color__29212.png",
+     "skin": "Eyes_Base/Eyes_Base_3_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_03_Stat",
+     "file": "multipack__eyes_03_stat__43128.png",
+     "skin": "Eyes_Outline/Eyes_Outline_3"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_03_Pupils",
+     "file": "multipack__eyes_03_pupils__55297.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_3"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_4",
+   "base": [
+    {
+     "template": "Templates/Eye_L_Base_Color_04",
+     "file": "eye_l_base_color_04__90786.png",
+     "skin": "Eyes_Base/Eyes_Base_4_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_04_Stat",
+     "file": "multipack__eyes_04_stat__64521.png",
+     "skin": "Eyes_Outline/Eyes_Outline_4"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_04_Pupils",
+     "file": "multipack__eyes_04_pupils__34350.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_4"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_5",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_05_Base_Color",
+     "file": "multipack__eyes_05_base_color__99720.png",
+     "skin": "Eyes_Base/Eyes_Base_5_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_05_Stat",
+     "file": "multipack__eyes_05_stat__38488.png",
+     "skin": "Eyes_Outline/Eyes_Outline_5"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_04_Pupils",
+     "file": "multipack__eyes_04_pupils__34350.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_5"
+    },
+    {
+     "template": "Templates/MultiPack__Eyes_05_Pupils",
+     "file": "multipack__eyes_05_pupils__31703.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_5"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_7",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_07_Base_Color",
+     "file": "multipack__eyes_07_base_color__11753.png",
+     "skin": "Eyes_Base/Eyes_Base_7_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_07_Stat",
+     "file": "multipack__eyes_07_stat__103530.png",
+     "skin": "Eyes_Outline/Eyes_Outline_7"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_07_Pupils",
+     "file": "multipack__eyes_07_pupils__92037.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_7"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_9",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_09_Base_Color",
+     "file": "multipack__eyes_09_base_color__75122.png",
+     "skin": "Eyes_Base/Eyes_Base_9_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_09_Stat",
+     "file": "multipack__eyes_09_stat__12389.png",
+     "skin": "Eyes_Outline/Eyes_Outline_9"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_09_Pupils",
+     "file": "multipack__eyes_09_pupils__37930.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_9"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_10",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_10_Base_Color",
+     "file": "multipack__eyes_10_base_color__21966.png",
+     "skin": "Eyes_Base/Eyes_Base_10_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_10_Stat",
+     "file": "multipack__eyes_10_stat__37359.png",
+     "skin": "Eyes_Outline/Eyes_Outline_10"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_10_Pupils",
+     "file": "multipack__eyes_10_pupils__31879.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_10"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_12",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_12_Base_Color",
+     "file": "multipack__eyes_12_base_color__59787.png",
+     "skin": "Eyes_Base/Eyes_Base_12_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_12_Stat",
+     "file": "multipack__eyes_12_stat__106276.png",
+     "skin": "Eyes_Outline/Eyes_Outline_12"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_12_Pupils",
+     "file": "multipack__eyes_12_pupils__42526.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_12"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_16",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_16_Base_Color",
+     "file": "multipack__eyes_16_base_color__68125.png",
+     "skin": "Eyes_Base/Eyes_Base_16_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_16_Stat",
+     "file": "multipack__eyes_16_stat__14504.png",
+     "skin": "Eyes_Outline/Eyes_Outline_16"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_16_Pupils",
+     "file": "multipack__eyes_16_pupils__87141.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_16"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_17",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_17_Base_Color",
+     "file": "multipack__eyes_17_base_color__40738.png",
+     "skin": "Eyes_Base/Eyes_Base_17_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_17_Stat",
+     "file": "multipack__eyes_17_stat__20901.png",
+     "skin": "Eyes_Outline/Eyes_Outline_17"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_17_Pupils",
+     "file": "multipack__eyes_17_pupils__50178.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_17"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_18",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_18_Base_Color",
+     "file": "multipack__eyes_18_base_color__27106.png",
+     "skin": "Eyes_Base/Eyes_Base_18_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_18_Stat",
+     "file": "multipack__eyes_18_stat__14632.png",
+     "skin": "Eyes_Outline/Eyes_Outline_18"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_18_Pupils",
+     "file": "multipack__eyes_18_pupils__38445.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_18"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_19",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_19_Base_Color",
+     "file": "multipack__eyes_19_base_color__95962.png",
+     "skin": "Eyes_Base/Eyes_Base_19_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_19_Stat",
+     "file": "multipack__eyes_19_stat__87618.png",
+     "skin": "Eyes_Outline/Eyes_Outline_19"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_19_Pupils",
+     "file": "multipack__eyes_19_pupils__41323.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_19"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_20",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_20_Base_Color",
+     "file": "multipack__eyes_20_base_color__54087.png",
+     "skin": "Eyes_Base/Eyes_Base_20_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_20_Stat",
+     "file": "multipack__eyes_20_stat__50688.png",
+     "skin": "Eyes_Outline/Eyes_Outline_20"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_20_Pupils",
+     "file": "multipack__eyes_20_pupils__39645.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_20"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_21",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_21_Base_Color",
+     "file": "multipack__eyes_21_base_color__39782.png",
+     "skin": "Eyes_Base/Eyes_Base_21_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_21_Stat",
+     "file": "multipack__eyes_21_stat__98117.png",
+     "skin": "Eyes_Outline/Eyes_Outline_21"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_21_Pupils",
+     "file": "multipack__eyes_21_pupils__99957.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_21"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_22",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_22_Base_Color",
+     "file": "multipack__eyes_22_base_color__93893.png",
+     "skin": "Eyes_Base/Eyes_Base_22_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_22_Stat",
+     "file": "multipack__eyes_22_stat__32720.png",
+     "skin": "Eyes_Outline/Eyes_Outline_22"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_22_Pupils",
+     "file": "multipack__eyes_22_pupils__82360.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_22"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_23",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_23_Base_Color",
+     "file": "multipack__eyes_23_base_color__72939.png",
+     "skin": "Eyes_Base/Eyes_Base_23_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_23_Stat",
+     "file": "multipack__eyes_23_stat__47053.png",
+     "skin": "Eyes_Outline/Eyes_Outline_23"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_23_Pupils",
+     "file": "multipack__eyes_23_pupils__18905.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_23"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_24",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_24_Base_Color",
+     "file": "multipack__eyes_24_base_color__59477.png",
+     "skin": "Eyes_Base/Eyes_Base_24_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_24_Stat",
+     "file": "multipack__eyes_24_stat__37826.png",
+     "skin": "Eyes_Outline/Eyes_Outline_24"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_24_Pupils",
+     "file": "multipack__eyes_24_pupils__64930.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_24"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_25",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_25_Base_Color",
+     "file": "multipack__eyes_25_base_color__25311.png",
+     "skin": "Eyes_Base/Eyes_Base_25_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_25_Stat",
+     "file": "multipack__eyes_25_stat__95203.png",
+     "skin": "Eyes_Outline/Eyes_Outline_25"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_25_Pupils",
+     "file": "multipack__eyes_25_pupils__75691.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_25"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_26",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_26_Base_Color",
+     "file": "multipack__eyes_26_base_color__21143.png",
+     "skin": "Eyes_Base/Eyes_Base_26_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_26_Stat",
+     "file": "multipack__eyes_26_stat__70214.png",
+     "skin": "Eyes_Outline/Eyes_Outline_26"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_26_Pupils",
+     "file": "multipack__eyes_26_pupils__61246.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_26"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_27",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_27_Base_Color",
+     "file": "multipack__eyes_27_base_color__34245.png",
+     "skin": "Eyes_Base/Eyes_Base_27_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_27_Stat",
+     "file": "multipack__eyes_27_stat__74227.png",
+     "skin": "Eyes_Outline/Eyes_Outline_27"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_27_Pupils",
+     "file": "multipack__eyes_27_pupils__39897.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_27"
+    }
+   ],
+   "gradient": []
+  },
+  {
+   "id": "eyes_28",
+   "base": [
+    {
+     "template": "Templates/MultiPack__Eyes_28_Base_Color",
+     "file": "multipack__eyes_28_base_color__86835.png",
+     "skin": "Eyes_Base/Eyes_Base_28_Color"
+    }
+   ],
+   "outline": [
+    {
+     "template": "Templates/MultiPack__Eyes_28_Stat",
+     "file": "multipack__eyes_28_stat__34107.png",
+     "skin": "Eyes_Outline/Eyes_Outline_28"
+    }
+   ],
+   "pupils": [
+    {
+     "template": "Templates/MultiPack__Eyes_27_Pupils",
+     "file": "multipack__eyes_27_pupils__39897.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_28"
+    },
+    {
+     "template": "Templates/MultiPack__Eyes_28_Pupils",
+     "file": "multipack__eyes_28_pupils__62644.png",
+     "skin": "Eyes_Pupils/Eyes_Pupils_28"
+    }
+   ],
+   "gradient": []
+  }
+ ],
+ "mouths": [
+  {
+   "id": "mouth_1",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_01",
+     "file": "mouth_01__100078.png",
+     "skin": "Mouth/Mouth_1"
+    }
+   ]
+  },
+  {
+   "id": "mouth_2",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_02",
+     "file": "mouth_02__68048.png",
+     "skin": "Mouth/Mouth_2"
+    }
+   ]
+  },
+  {
+   "id": "mouth_3",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_03",
+     "file": "mouth_03__25283.png",
+     "skin": "Mouth/Mouth_3"
+    }
+   ]
+  },
+  {
+   "id": "mouth_4",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_04",
+     "file": "mouth_04__67464.png",
+     "skin": "Mouth/Mouth_4"
+    }
+   ]
+  },
+  {
+   "id": "mouth_5",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_05",
+     "file": "mouth_05__26697.png",
+     "skin": "Mouth/Mouth_5"
+    }
+   ]
+  },
+  {
+   "id": "mouth_6",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_06",
+     "file": "mouth_06__102892.png",
+     "skin": "Mouth/Mouth_6"
+    }
+   ]
+  },
+  {
+   "id": "mouth_7",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_07",
+     "file": "mouth_07__77386.png",
+     "skin": "Mouth/Mouth_7"
+    }
+   ]
+  },
+  {
+   "id": "mouth_8",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_08",
+     "file": "mouth_08__51872.png",
+     "skin": "Mouth/Mouth_8"
+    }
+   ]
+  },
+  {
+   "id": "mouth_9",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_09",
+     "file": "mouth_09__79962.png",
+     "skin": "Mouth/Mouth_9"
+    }
+   ]
+  },
+  {
+   "id": "mouth_10",
+   "pieces": [
+    {
+     "template": "Templates/Mouth_10",
+     "file": "mouth_10__94978.png",
+     "skin": "Mouth/Mouth_10"
+    }
+   ]
+  }
+ ],
+ "manes": [],
+ "tails": [],
+ "hats": [
+  {
+   "id": "hat_hat_1",
+   "pieces": [
+    {
+     "template": "Templates/Hat_1",
+     "file": "hat_1__77787.png",
+     "skin": "Templates/Hat_1"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_2",
+   "pieces": [
+    {
+     "template": "Templates/Hat_1",
+     "file": "hat_1__15295.png",
+     "skin": "Templates/Hat_1"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_3",
+   "pieces": [
+    {
+     "template": "Templates/Hat_2",
+     "file": "hat_2__59672.png",
+     "skin": "Templates/Hat_2"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_4",
+   "pieces": [
+    {
+     "template": "Templates/Hat_9",
+     "file": "hat_9__84984.png",
+     "skin": "Templates/Hat_9"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_5",
+   "pieces": [
+    {
+     "template": "Templates/Hat_3",
+     "file": "hat_3__70799.png",
+     "skin": "Templates/Hat_3"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_6",
+   "pieces": [
+    {
+     "template": "Templates/Hat_10",
+     "file": "hat_10__18224.png",
+     "skin": "Templates/Hat_10"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_7",
+   "pieces": [
+    {
+     "template": "Templates/Hat_4",
+     "file": "hat_4__35712.png",
+     "skin": "Templates/Hat_4"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_8",
+   "pieces": [
+    {
+     "template": "Templates/Hat_10",
+     "file": "hat_10__44578.png",
+     "skin": "Templates/Hat_10"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_9",
+   "pieces": [
+    {
+     "template": "Templates/Hat_5",
+     "file": "hat_5__70868.png",
+     "skin": "Templates/Hat_5"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_10",
+   "pieces": [
+    {
+     "template": "Templates/Hat_10",
+     "file": "hat_10__16348.png",
+     "skin": "Templates/Hat_10"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_11",
+   "pieces": [
+    {
+     "template": "Templates/Hat_6",
+     "file": "hat_6__15601.png",
+     "skin": "Templates/Hat_6"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_12",
+   "pieces": [
+    {
+     "template": "Templates/Hat_7",
+     "file": "hat_7__78985.png",
+     "skin": "Templates/Hat_7"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_13",
+   "pieces": [
+    {
+     "template": "Templates/Hat_8",
+     "file": "hat_8__74816.png",
+     "skin": "Templates/Hat_8"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_14",
+   "pieces": [
+    {
+     "template": "Templates/Hat_11",
+     "file": "hat_11__10317.png",
+     "skin": "Templates/Hat_11"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_15",
+   "pieces": [
+    {
+     "template": "Templates/Hat_12",
+     "file": "hat_12__83970.png",
+     "skin": "Templates/Hat_12"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_16",
+   "pieces": [
+    {
+     "template": "Templates/Hat_13",
+     "file": "hat_13__70027.png",
+     "skin": "Templates/Hat_13"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_17",
+   "pieces": [
+    {
+     "template": "Templates/Hat_14",
+     "file": "hat_14__73446.png",
+     "skin": "Templates/Hat_14"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_18",
+   "pieces": [
+    {
+     "template": "Templates/Hat_16",
+     "file": "hat_16__106390.png",
+     "skin": "Templates/Hat_16"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_19",
+   "pieces": [
+    {
+     "template": "Templates/Hat_16",
+     "file": "hat_16__96351.png",
+     "skin": "Templates/Hat_16"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_20",
+   "pieces": [
+    {
+     "template": "Templates/Hat_15",
+     "file": "hat_15__23484.png",
+     "skin": "Templates/Hat_15"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_21",
+   "pieces": [
+    {
+     "template": "Templates/Hat_9",
+     "file": "hat_9__41204.png",
+     "skin": "Templates/Hat_9"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_22",
+   "pieces": [
+    {
+     "template": "Templates/Hat_14",
+     "file": "hat_14__55668.png",
+     "skin": "Templates/Hat_14"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_23",
+   "pieces": [
+    {
+     "template": "Templates/Hat_9",
+     "file": "hat_9__45160.png",
+     "skin": "Templates/Hat_9"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_24",
+   "pieces": [
+    {
+     "template": "Templates/Hat_17",
+     "file": "hat_17__43318.png",
+     "skin": "Templates/Hat_17"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_25",
+   "pieces": [
+    {
+     "template": "Templates/Hat_18",
+     "file": "hat_18__73232.png",
+     "skin": "Templates/Hat_18"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_26",
+   "pieces": [
+    {
+     "template": "Templates/Hat_19",
+     "file": "hat_19__26452.png",
+     "skin": "Templates/Hat_19"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_27",
+   "pieces": [
+    {
+     "template": "Templates/Hat_22",
+     "file": "hat_22__65193.png",
+     "skin": "Templates/Hat_22"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_28",
+   "pieces": [
+    {
+     "template": "Templates/Hat_14",
+     "file": "hat_14__65903.png",
+     "skin": "Templates/Hat_14"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_29",
+   "pieces": [
+    {
+     "template": "Templates/Hat_14",
+     "file": "hat_14__79595.png",
+     "skin": "Templates/Hat_14"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_30",
+   "pieces": [
+    {
+     "template": "Templates/Hat_9",
+     "file": "hat_9__18917.png",
+     "skin": "Templates/Hat_9"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_31",
+   "pieces": [
+    {
+     "template": "Templates/Hat_21",
+     "file": "hat_21__29562.png",
+     "skin": "Templates/Hat_21"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_32",
+   "pieces": [
+    {
+     "template": "Templates/Hat_24",
+     "file": "hat_24__57264.png",
+     "skin": "Templates/Hat_24"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_33",
+   "pieces": [
+    {
+     "template": "Templates/Hat_22",
+     "file": "hat_22__22147.png",
+     "skin": "Templates/Hat_22"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_34",
+   "pieces": [
+    {
+     "template": "Templates/Hat_23",
+     "file": "hat_23__12112.png",
+     "skin": "Templates/Hat_23"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_35",
+   "pieces": [
+    {
+     "template": "Templates/Hat_10",
+     "file": "hat_10__5391.png",
+     "skin": "Templates/Hat_10"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_36",
+   "pieces": [
+    {
+     "template": "Templates/Hat_10",
+     "file": "hat_10__92335.png",
+     "skin": "Templates/Hat_10"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_37",
+   "pieces": [
+    {
+     "template": "Templates/Hat_10",
+     "file": "hat_10__98134.png",
+     "skin": "Templates/Hat_10"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_38",
+   "pieces": [
+    {
+     "template": "Templates/Hat_20",
+     "file": "hat_20__84591.png",
+     "skin": "Templates/Hat_20"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_39",
+   "pieces": [
+    {
+     "template": "Templates/Hat_14",
+     "file": "hat_14__85434.png",
+     "skin": "Templates/Hat_14"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_40",
+   "pieces": [
+    {
+     "template": "Templates/Hat_14",
+     "file": "hat_14__67238.png",
+     "skin": "Templates/Hat_14"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_41",
+   "pieces": [
+    {
+     "template": "Templates/Hat_14",
+     "file": "hat_14__70930.png",
+     "skin": "Templates/Hat_14"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_43",
+   "pieces": [
+    {
+     "template": "Templates/Hat_10",
+     "file": "hat_10__32676.png",
+     "skin": "Templates/Hat_10"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_44",
+   "pieces": [
+    {
+     "template": "Templates/Hat_14",
+     "file": "hat_14__92034.png",
+     "skin": "Templates/Hat_14"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_45",
+   "pieces": [
+    {
+     "template": "Templates/Hat_22",
+     "file": "hat_22__83459.png",
+     "skin": "Templates/Hat_22"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_46",
+   "pieces": [
+    {
+     "template": "Templates/Hat_14",
+     "file": "hat_14__69883.png",
+     "skin": "Templates/Hat_14"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_47",
+   "pieces": [
+    {
+     "template": "Templates/Hat_10",
+     "file": "hat_10__15953.png",
+     "skin": "Templates/Hat_10"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_48",
+   "pieces": [
+    {
+     "template": "Templates/Hat_23",
+     "file": "hat_23__9376.png",
+     "skin": "Templates/Hat_23"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_49",
+   "pieces": [
+    {
+     "template": "Templates/Hat_23",
+     "file": "hat_23__78597.png",
+     "skin": "Templates/Hat_23"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_50",
+   "pieces": [
+    {
+     "template": "Templates/Hat_23",
+     "file": "hat_23__102720.png",
+     "skin": "Templates/Hat_23"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_51",
+   "pieces": [
+    {
+     "template": "Templates/Hat_23",
+     "file": "hat_23__71427.png",
+     "skin": "Templates/Hat_23"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_52",
+   "pieces": [
+    {
+     "template": "Templates/Hat_25",
+     "file": "hat_25__83910.png",
+     "skin": "Templates/Hat_25"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_53",
+   "pieces": [
+    {
+     "template": "Templates/Hat_23",
+     "file": "hat_23__87003.png",
+     "skin": "Templates/Hat_23"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_54",
+   "pieces": [
+    {
+     "template": "Templates/Hat_26",
+     "file": "hat_26__21890.png",
+     "skin": "Templates/Hat_26"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_55",
+   "pieces": [
+    {
+     "template": "Templates/Hat_27",
+     "file": "hat_27__16661.png",
+     "skin": "Templates/Hat_27"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_57",
+   "pieces": [
+    {
+     "template": "Templates/Hat_19",
+     "file": "hat_19__7782.png",
+     "skin": "Templates/Hat_19"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_58",
+   "pieces": [
+    {
+     "template": "Templates/Hat_23",
+     "file": "hat_23__98495.png",
+     "skin": "Templates/Hat_23"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_59",
+   "pieces": [
+    {
+     "template": "Templates/Hat_22",
+     "file": "hat_22__54086.png",
+     "skin": "Templates/Hat_22"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_60",
+   "pieces": [
+    {
+     "template": "Templates/Hat_23",
+     "file": "hat_23__43460.png",
+     "skin": "Templates/Hat_23"
+    }
+   ]
+  },
+  {
+   "id": "hat_hat_62",
+   "pieces": [
+    {
+     "template": "Templates/Hat_23",
+     "file": "hat_23__78254.png",
+     "skin": "Templates/Hat_23"
+    }
+   ]
+  }
+ ],
+ "outfits": [
+  {
+   "id": "outfit_onepiece_1",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_1",
+     "file": "addon_back_1__85469.png",
+     "skin": "Templates/Addon_Back_1"
+    },
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__74283.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_1",
+     "file": "op_cape_r_1__62282.png",
+     "skin": "Templates/OP_Cape_R_1"
+    },
+    {
+     "template": "Templates/OP_Hat_1",
+     "file": "op_hat_1__101822.png",
+     "skin": "Templates/OP_Hat_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_2",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_1",
+     "file": "addon_back_1__19061.png",
+     "skin": "Templates/Addon_Back_1"
+    },
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__35889.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_1",
+     "file": "op_cape_r_1__51357.png",
+     "skin": "Templates/OP_Cape_R_1"
+    },
+    {
+     "template": "Templates/OP_Hat_1",
+     "file": "op_hat_1__80168.png",
+     "skin": "Templates/OP_Hat_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_3",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_2",
+     "file": "addon_back_2__79232.png",
+     "skin": "Templates/Addon_Back_2"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__40827.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__35978.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Hat_2",
+     "file": "op_hat_2__105463.png",
+     "skin": "Templates/OP_Hat_2"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__63450.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__99916.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_4",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_2",
+     "file": "addon_back_2__60866.png",
+     "skin": "Templates/Addon_Back_2"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__30495.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__42841.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Hat_2",
+     "file": "op_hat_2__60227.png",
+     "skin": "Templates/OP_Hat_2"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__75391.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__28001.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_5",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_2",
+     "file": "addon_back_2__48563.png",
+     "skin": "Templates/Addon_Back_2"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__66015.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__35099.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Hat_2",
+     "file": "op_hat_2__47096.png",
+     "skin": "Templates/OP_Hat_2"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__49983.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__11579.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_6",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__32156.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__73178.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Hat_3",
+     "file": "op_hat_3__102335.png",
+     "skin": "Templates/OP_Hat_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__35020.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__55069.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_7",
+   "pieces": [
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__98334.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_3",
+     "file": "op_cape_r_3__10306.png",
+     "skin": "Templates/OP_Cape_R_3"
+    },
+    {
+     "template": "Templates/OP_Hat_4",
+     "file": "op_hat_4__97617.png",
+     "skin": "Templates/OP_Hat_4"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_8",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__6953.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__53798.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Hat_3",
+     "file": "op_hat_3__21502.png",
+     "skin": "Templates/OP_Hat_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__41826.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__74272.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_9",
+   "pieces": [
+    {
+     "template": "Templates/OP_Cape_L_3",
+     "file": "op_cape_l_3__82751.png",
+     "skin": "Templates/OP_Cape_L_3"
+    },
+    {
+     "template": "Templates/OP_Cape_R_6",
+     "file": "op_cape_r_6__35735.png",
+     "skin": "Templates/OP_Cape_R_6"
+    },
+    {
+     "template": "Templates/OP_Hat_5",
+     "file": "op_hat_5__60920.png",
+     "skin": "Templates/OP_Hat_5"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_10",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_4",
+     "file": "op_arm_l_4__29688.png",
+     "skin": "Templates/OP_Arm_L_4"
+    },
+    {
+     "template": "Templates/OP_Arm_R_4",
+     "file": "op_arm_r_4__22038.png",
+     "skin": "Templates/OP_Arm_R_4"
+    },
+    {
+     "template": "Templates/OP_Hat_6",
+     "file": "op_hat_6__65078.png",
+     "skin": "Templates/OP_Hat_6"
+    },
+    {
+     "template": "Templates/OP_Pelvis_3",
+     "file": "op_pelvis_3__25949.png",
+     "skin": "Templates/OP_Pelvis_3"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__56856.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_11",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_4",
+     "file": "op_arm_l_4__104846.png",
+     "skin": "Templates/OP_Arm_L_4"
+    },
+    {
+     "template": "Templates/OP_Arm_R_4",
+     "file": "op_arm_r_4__59374.png",
+     "skin": "Templates/OP_Arm_R_4"
+    },
+    {
+     "template": "Templates/OP_Hat_7",
+     "file": "op_hat_7__5701.png",
+     "skin": "Templates/OP_Hat_7"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__30285.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__56082.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_12",
+   "pieces": [
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__60773.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_8",
+     "file": "op_cape_r_8__51062.png",
+     "skin": "Templates/OP_Cape_R_8"
+    },
+    {
+     "template": "Templates/OP_Hat_4",
+     "file": "op_hat_4__36855.png",
+     "skin": "Templates/OP_Hat_4"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiece_13",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_4",
+     "file": "op_arm_l_4__40141.png",
+     "skin": "Templates/OP_Arm_L_4"
+    },
+    {
+     "template": "Templates/OP_Arm_R_4",
+     "file": "op_arm_r_4__26046.png",
+     "skin": "Templates/OP_Arm_R_4"
+    },
+    {
+     "template": "Templates/OP_Hat_8",
+     "file": "op_hat_8__54957.png",
+     "skin": "Templates/OP_Hat_8"
+    },
+    {
+     "template": "Templates/OP_Pelvis_8",
+     "file": "op_pelvis_8__81284.png",
+     "skin": "Templates/OP_Pelvis_8"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__83091.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_1",
+   "pieces": [
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__36786.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_1",
+     "file": "op_cape_r_1__62514.png",
+     "skin": "Templates/OP_Cape_R_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_2",
+   "pieces": [
+    {
+     "template": "Templates/Collar_1",
+     "file": "collar_1__85955.png",
+     "skin": "Templates/Collar_1"
+    },
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__75866.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_2",
+     "file": "op_cape_r_2__86052.png",
+     "skin": "Templates/OP_Cape_R_2"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_3",
+   "pieces": [
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__53331.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_4",
+     "file": "op_cape_r_4__65293.png",
+     "skin": "Templates/OP_Cape_R_4"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_4",
+   "pieces": [
+    {
+     "template": "Templates/Collar_2",
+     "file": "collar_2__22917.png",
+     "skin": "Templates/Collar_2"
+    },
+    {
+     "template": "Templates/OP_Cape_L_2",
+     "file": "op_cape_l_2__76228.png",
+     "skin": "Templates/OP_Cape_L_2"
+    },
+    {
+     "template": "Templates/OP_Cape_R_5",
+     "file": "op_cape_r_5__75637.png",
+     "skin": "Templates/OP_Cape_R_5"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_5",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__99036.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__49364.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__38131.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__80908.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_6",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__74661.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__16827.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__82675.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__41012.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_7",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__69640.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__15429.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_2",
+     "file": "op_pelvis_2__82146.png",
+     "skin": "Templates/OP_Pelvis_2"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__7756.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_8",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_4",
+     "file": "op_arm_l_4__80422.png",
+     "skin": "Templates/OP_Arm_L_4"
+    },
+    {
+     "template": "Templates/OP_Arm_R_4",
+     "file": "op_arm_r_4__103873.png",
+     "skin": "Templates/OP_Arm_R_4"
+    },
+    {
+     "template": "Templates/OP_Pelvis_3",
+     "file": "op_pelvis_3__45618.png",
+     "skin": "Templates/OP_Pelvis_3"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__66095.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_9",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__77824.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__57407.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__49306.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__58790.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_10",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__31919.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__91127.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__95933.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__14707.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_11",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__63588.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__56591.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__5256.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__35909.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_12",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_3",
+     "file": "addon_back_3__100920.png",
+     "skin": "Templates/Addon_Back_3"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__34160.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__34279.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__21887.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__84640.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_13",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_4",
+     "file": "addon_back_4__105577.png",
+     "skin": "Templates/Addon_Back_4"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__41431.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__20021.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__82348.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__59849.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_14",
+   "pieces": [
+    {
+     "template": "Templates/Collar_3",
+     "file": "collar_3__101910.png",
+     "skin": "Templates/Collar_3"
+    },
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__16064.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_7",
+     "file": "op_cape_r_7__37688.png",
+     "skin": "Templates/OP_Cape_R_7"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_15",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_5",
+     "file": "addon_back_5__95234.png",
+     "skin": "Templates/Addon_Back_5"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__84102.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__80206.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__5318.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__66545.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_16",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__88052.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__48554.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__78499.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__92156.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_17",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__63199.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__40517.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__44315.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__100332.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_18",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_5",
+     "file": "addon_back_5__79353.png",
+     "skin": "Templates/Addon_Back_5"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__21132.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__24659.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__8519.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__77830.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_19",
+   "pieces": [
+    {
+     "template": "Templates/Collar_8",
+     "file": "collar_8__23483.png",
+     "skin": "Templates/Collar_8"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__90570.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__27144.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__78248.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__85786.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_20",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_6",
+     "file": "addon_back_6__100246.png",
+     "skin": "Templates/Addon_Back_6"
+    },
+    {
+     "template": "Templates/Collar_9",
+     "file": "collar_9__50905.png",
+     "skin": "Templates/Collar_9"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__93799.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__47191.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__48522.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__32787.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_21",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__77054.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__51472.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__20658.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__104770.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_22",
+   "pieces": [
+    {
+     "template": "Templates/Collar_10",
+     "file": "collar_10__33067.png",
+     "skin": "Templates/Collar_10"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__104355.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__75189.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__65252.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__61007.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_23",
+   "pieces": [
+    {
+     "template": "Templates/Collar_3",
+     "file": "collar_3__78111.png",
+     "skin": "Templates/Collar_3"
+    },
+    {
+     "template": "Templates/OP_Cape_L_4",
+     "file": "op_cape_l_4__43346.png",
+     "skin": "Templates/OP_Cape_L_4"
+    },
+    {
+     "template": "Templates/OP_Cape_R_9",
+     "file": "op_cape_r_9__36134.png",
+     "skin": "Templates/OP_Cape_R_9"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_24",
+   "pieces": [
+    {
+     "template": "Templates/Collar_11",
+     "file": "collar_11__100737.png",
+     "skin": "Templates/Collar_11"
+    },
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__90514.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_7",
+     "file": "op_cape_r_7__17727.png",
+     "skin": "Templates/OP_Cape_R_7"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_25",
+   "pieces": [
+    {
+     "template": "Templates/Collar_12",
+     "file": "collar_12__90194.png",
+     "skin": "Templates/Collar_12"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__77792.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__77199.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_4",
+     "file": "op_pelvis_4__76722.png",
+     "skin": "Templates/OP_Pelvis_4"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__28533.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_26",
+   "pieces": [
+    {
+     "template": "Templates/Collar_13",
+     "file": "collar_13__8117.png",
+     "skin": "Templates/Collar_13"
+    },
+    {
+     "template": "Templates/OP_Cape_L_5",
+     "file": "op_cape_l_5__70724.png",
+     "skin": "Templates/OP_Cape_L_5"
+    },
+    {
+     "template": "Templates/OP_Cape_R_10",
+     "file": "op_cape_r_10__74105.png",
+     "skin": "Templates/OP_Cape_R_10"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_27",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__104318.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__98243.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_4",
+     "file": "op_pelvis_4__53883.png",
+     "skin": "Templates/OP_Pelvis_4"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__42883.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_28",
+   "pieces": [
+    {
+     "template": "Templates/Collar_4",
+     "file": "collar_4__47999.png",
+     "skin": "Templates/Collar_4"
+    },
+    {
+     "template": "Templates/OP_Cape_L_2",
+     "file": "op_cape_l_2__10730.png",
+     "skin": "Templates/OP_Cape_L_2"
+    },
+    {
+     "template": "Templates/OP_Cape_R_7",
+     "file": "op_cape_r_7__17146.png",
+     "skin": "Templates/OP_Cape_R_7"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_29",
+   "pieces": [
+    {
+     "template": "Templates/Collar_3",
+     "file": "collar_3__15689.png",
+     "skin": "Templates/Collar_3"
+    },
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__34095.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_7",
+     "file": "op_cape_r_7__71119.png",
+     "skin": "Templates/OP_Cape_R_7"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_30",
+   "pieces": [
+    {
+     "template": "Templates/Collar_5",
+     "file": "collar_5__75777.png",
+     "skin": "Templates/Collar_5"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__46583.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__13278.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__12474.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__101058.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_31",
+   "pieces": [
+    {
+     "template": "Templates/Collar_6",
+     "file": "collar_6__90723.png",
+     "skin": "Templates/Collar_6"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__89613.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__12172.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__74765.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__37003.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_32",
+   "pieces": [
+    {
+     "template": "Templates/Collar_7",
+     "file": "collar_7__63449.png",
+     "skin": "Templates/Collar_7"
+    },
+    {
+     "template": "Templates/OP_Arm_L_4",
+     "file": "op_arm_l_4__70388.png",
+     "skin": "Templates/OP_Arm_L_4"
+    },
+    {
+     "template": "Templates/OP_Arm_R_4",
+     "file": "op_arm_r_4__34774.png",
+     "skin": "Templates/OP_Arm_R_4"
+    },
+    {
+     "template": "Templates/OP_Pelvis_4",
+     "file": "op_pelvis_4__86528.png",
+     "skin": "Templates/OP_Pelvis_4"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__38338.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_33",
+   "pieces": [
+    {
+     "template": "Templates/OP_Torso_2",
+     "file": "op_torso_2__47154.png",
+     "skin": "Templates/OP_Torso_2"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_36",
+   "pieces": [
+    {
+     "template": "Templates/Collar_8",
+     "file": "collar_8__92260.png",
+     "skin": "Templates/Collar_8"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__86226.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__27683.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__65171.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__82810.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_37",
+   "pieces": [
+    {
+     "template": "Templates/OP_Pelvis_2",
+     "file": "op_pelvis_2__23414.png",
+     "skin": "Templates/OP_Pelvis_2"
+    },
+    {
+     "template": "Templates/OP_Torso_2",
+     "file": "op_torso_2__25489.png",
+     "skin": "Templates/OP_Torso_2"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_38",
+   "pieces": [
+    {
+     "template": "Templates/Collar_1",
+     "file": "collar_1__91987.png",
+     "skin": "Templates/Collar_1"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__31500.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__105524.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_2",
+     "file": "op_pelvis_2__80230.png",
+     "skin": "Templates/OP_Pelvis_2"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__106577.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_39",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__73146.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__5316.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_1",
+     "file": "op_pelvis_1__45220.png",
+     "skin": "Templates/OP_Pelvis_1"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__97898.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_40",
+   "pieces": [
+    {
+     "template": "Templates/Collar_1",
+     "file": "collar_1__89281.png",
+     "skin": "Templates/Collar_1"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__66063.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__72590.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_4",
+     "file": "op_pelvis_4__6308.png",
+     "skin": "Templates/OP_Pelvis_4"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__81339.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_41",
+   "pieces": [
+    {
+     "template": "Templates/OP_Cape_L_1",
+     "file": "op_cape_l_1__55677.png",
+     "skin": "Templates/OP_Cape_L_1"
+    },
+    {
+     "template": "Templates/OP_Cape_R_7",
+     "file": "op_cape_r_7__39499.png",
+     "skin": "Templates/OP_Cape_R_7"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_42",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__12795.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__69392.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_5",
+     "file": "op_pelvis_5__41771.png",
+     "skin": "Templates/OP_Pelvis_5"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__25531.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_43",
+   "pieces": [
+    {
+     "template": "Templates/OP_Cape_L_6",
+     "file": "op_cape_l_6__8521.png",
+     "skin": "Templates/OP_Cape_L_6"
+    },
+    {
+     "template": "Templates/OP_Cape_R_11",
+     "file": "op_cape_r_11__56242.png",
+     "skin": "Templates/OP_Cape_R_11"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_44",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__55267.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__68341.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_2",
+     "file": "op_pelvis_2__63249.png",
+     "skin": "Templates/OP_Pelvis_2"
+    },
+    {
+     "template": "Templates/OP_Torso_2",
+     "file": "op_torso_2__16121.png",
+     "skin": "Templates/OP_Torso_2"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_45",
+   "pieces": [
+    {
+     "template": "Templates/Collar_14",
+     "file": "collar_14__88239.png",
+     "skin": "Templates/Collar_14"
+    },
+    {
+     "template": "Templates/OP_Arm_L_5",
+     "file": "op_arm_l_5__57671.png",
+     "skin": "Templates/OP_Arm_L_5"
+    },
+    {
+     "template": "Templates/OP_Arm_R_5",
+     "file": "op_arm_r_5__67192.png",
+     "skin": "Templates/OP_Arm_R_5"
+    },
+    {
+     "template": "Templates/OP_Pelvis_6",
+     "file": "op_pelvis_6__56270.png",
+     "skin": "Templates/OP_Pelvis_6"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__35861.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_46",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__68874.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__92633.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_5",
+     "file": "op_pelvis_5__36473.png",
+     "skin": "Templates/OP_Pelvis_5"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__23664.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_47",
+   "pieces": [
+    {
+     "template": "Templates/Addon_Back_7",
+     "file": "addon_back_7__18233.png",
+     "skin": "Templates/Addon_Back_7"
+    },
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__98038.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__34789.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_7",
+     "file": "op_pelvis_7__88941.png",
+     "skin": "Templates/OP_Pelvis_7"
+    },
+    {
+     "template": "Templates/OP_Torso_3",
+     "file": "op_torso_3__98789.png",
+     "skin": "Templates/OP_Torso_3"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_48",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__41830.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__14549.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_9",
+     "file": "op_pelvis_9__52034.png",
+     "skin": "Templates/OP_Pelvis_9"
+    },
+    {
+     "template": "Templates/OP_Torso_4",
+     "file": "op_torso_4__77023.png",
+     "skin": "Templates/OP_Torso_4"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_49",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_3",
+     "file": "op_arm_l_3__18765.png",
+     "skin": "Templates/OP_Arm_L_3"
+    },
+    {
+     "template": "Templates/OP_Arm_R_3",
+     "file": "op_arm_r_3__66070.png",
+     "skin": "Templates/OP_Arm_R_3"
+    },
+    {
+     "template": "Templates/OP_Pelvis_10",
+     "file": "op_pelvis_10__31541.png",
+     "skin": "Templates/OP_Pelvis_10"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__52766.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_50",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_5",
+     "file": "op_arm_l_5__93467.png",
+     "skin": "Templates/OP_Arm_L_5"
+    },
+    {
+     "template": "Templates/OP_Arm_R_5",
+     "file": "op_arm_r_5__93490.png",
+     "skin": "Templates/OP_Arm_R_5"
+    },
+    {
+     "template": "Templates/OP_Pelvis_8",
+     "file": "op_pelvis_8__35603.png",
+     "skin": "Templates/OP_Pelvis_8"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__30936.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_51",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_5",
+     "file": "op_arm_l_5__25926.png",
+     "skin": "Templates/OP_Arm_L_5"
+    },
+    {
+     "template": "Templates/OP_Arm_R_5",
+     "file": "op_arm_r_5__90155.png",
+     "skin": "Templates/OP_Arm_R_5"
+    },
+    {
+     "template": "Templates/OP_Pelvis_5",
+     "file": "op_pelvis_5__54538.png",
+     "skin": "Templates/OP_Pelvis_5"
+    },
+    {
+     "template": "Templates/OP_Torso_1",
+     "file": "op_torso_1__49051.png",
+     "skin": "Templates/OP_Torso_1"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_52",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_2",
+     "file": "op_arm_l_2__55647.png",
+     "skin": "Templates/OP_Arm_L_2"
+    },
+    {
+     "template": "Templates/OP_Arm_R_2",
+     "file": "op_arm_r_2__63750.png",
+     "skin": "Templates/OP_Arm_R_2"
+    },
+    {
+     "template": "Templates/OP_Pelvis_14",
+     "file": "op_pelvis_14__72438.png",
+     "skin": "Templates/OP_Pelvis_14"
+    },
+    {
+     "template": "Templates/OP_Torso_7",
+     "file": "op_torso_7__64102.png",
+     "skin": "Templates/OP_Torso_7"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_53",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_1",
+     "file": "op_arm_l_1__52346.png",
+     "skin": "Templates/OP_Arm_L_1"
+    },
+    {
+     "template": "Templates/OP_Arm_R_1",
+     "file": "op_arm_r_1__42966.png",
+     "skin": "Templates/OP_Arm_R_1"
+    },
+    {
+     "template": "Templates/OP_Pelvis_11",
+     "file": "op_pelvis_11__99191.png",
+     "skin": "Templates/OP_Pelvis_11"
+    },
+    {
+     "template": "Templates/OP_Torso_5",
+     "file": "op_torso_5__86349.png",
+     "skin": "Templates/OP_Torso_5"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_54",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_2",
+     "file": "op_arm_l_2__53964.png",
+     "skin": "Templates/OP_Arm_L_2"
+    },
+    {
+     "template": "Templates/OP_Arm_R_2",
+     "file": "op_arm_r_2__34867.png",
+     "skin": "Templates/OP_Arm_R_2"
+    },
+    {
+     "template": "Templates/OP_Pelvis_12",
+     "file": "op_pelvis_12__23478.png",
+     "skin": "Templates/OP_Pelvis_12"
+    },
+    {
+     "template": "Templates/OP_Torso_6",
+     "file": "op_torso_6__25420.png",
+     "skin": "Templates/OP_Torso_6"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_55",
+   "pieces": [
+    {
+     "template": "Templates/OP_Arm_L_1",
+     "file": "op_arm_l_1__106410.png",
+     "skin": "Templates/OP_Arm_L_1"
+    },
+    {
+     "template": "Templates/OP_Arm_R_1",
+     "file": "op_arm_r_1__6190.png",
+     "skin": "Templates/OP_Arm_R_1"
+    },
+    {
+     "template": "Templates/OP_Pelvis_13",
+     "file": "op_pelvis_13__39772.png",
+     "skin": "Templates/OP_Pelvis_13"
+    },
+    {
+     "template": "Templates/OP_Torso_6",
+     "file": "op_torso_6__34896.png",
+     "skin": "Templates/OP_Torso_6"
+    }
+   ]
+  },
+  {
+   "id": "outfit_onepiecenh_56",
+   "pieces": [
+    {
+     "template": "Templates/Collar_15",
+     "file": "collar_15__65948.png",
+     "skin": "Templates/Collar_15"
+    }
+   ]
+  }
+ ],
+ "shoes": [
+  {
+   "id": "shoes_shoes_2",
+   "pieces": [
+    {
+     "template": "Templates/Shoe_Arm_L_2",
+     "file": "shoe_arm_l_2__11001.png",
+     "skin": "Templates/Shoe_Arm_L_2"
+    },
+    {
+     "template": "Templates/Shoe_Arm_R_2",
+     "file": "shoe_arm_r_2__50291.png",
+     "skin": "Templates/Shoe_Arm_R_2"
+    },
+    {
+     "template": "Templates/Shoe_Leg_L_2",
+     "file": "shoe_leg_l_2__41687.png",
+     "skin": "Templates/Shoe_Leg_L_2"
+    },
+    {
+     "template": "Templates/Shoe_Leg_R_2",
+     "file": "shoe_leg_r_2__70061.png",
+     "skin": "Templates/Shoe_Leg_R_2"
+    }
+   ]
+  },
+  {
+   "id": "shoes_shoes_3",
+   "pieces": [
+    {
+     "template": "Templates/Shoe_Arm_L_1",
+     "file": "shoe_arm_l_1__47600.png",
+     "skin": "Templates/Shoe_Arm_L_1"
+    },
+    {
+     "template": "Templates/Shoe_Arm_R_1",
+     "file": "shoe_arm_r_1__94812.png",
+     "skin": "Templates/Shoe_Arm_R_1"
+    },
+    {
+     "template": "Templates/Shoe_Leg_L_1",
+     "file": "shoe_leg_l_1__96641.png",
+     "skin": "Templates/Shoe_Leg_L_1"
+    },
+    {
+     "template": "Templates/Shoe_Leg_R_1",
+     "file": "shoe_leg_r_1__42956.png",
+     "skin": "Templates/Shoe_Leg_R_1"
+    }
+   ]
+  },
+  {
+   "id": "shoes_shoes_4",
+   "pieces": [
+    {
+     "template": "Templates/Shoe_Arm_L_2",
+     "file": "shoe_arm_l_2__100849.png",
+     "skin": "Templates/Shoe_Arm_L_2"
+    },
+    {
+     "template": "Templates/Shoe_Arm_R_2",
+     "file": "shoe_arm_r_2__69081.png",
+     "skin": "Templates/Shoe_Arm_R_2"
+    },
+    {
+     "template": "Templates/Shoe_Leg_L_2",
+     "file": "shoe_leg_l_2__101325.png",
+     "skin": "Templates/Shoe_Leg_L_2"
+    },
+    {
+     "template": "Templates/Shoe_Leg_R_2",
+     "file": "shoe_leg_r_2__44027.png",
+     "skin": "Templates/Shoe_Leg_R_2"
+    }
+   ]
+  },
+  {
+   "id": "shoes_shoes_5",
+   "pieces": [
+    {
+     "template": "Templates/Shoe_Arm_L_3",
+     "file": "shoe_arm_l_3__31998.png",
+     "skin": "Templates/Shoe_Arm_L_3"
+    },
+    {
+     "template": "Templates/Shoe_Arm_R_3",
+     "file": "shoe_arm_r_3__20914.png",
+     "skin": "Templates/Shoe_Arm_R_3"
+    },
+    {
+     "template": "Templates/Shoe_Leg_L_3",
+     "file": "shoe_leg_l_3__26478.png",
+     "skin": "Templates/Shoe_Leg_L_3"
+    },
+    {
+     "template": "Templates/Shoe_Leg_R_3",
+     "file": "shoe_leg_r_3__62533.png",
+     "skin": "Templates/Shoe_Leg_R_3"
+    }
+   ]
+  }
+ ],
+ "accessories": [
+  {
+   "id": "accessory_accessories_body_neck_1",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_1",
+     "file": "necklace_1__97662.png",
+     "skin": "Templates/Necklace_1"
+    },
+    {
+     "template": "Templates/Tag_2",
+     "file": "tag_2__16516.png",
+     "skin": "Templates/Tag_2"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_2",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_1",
+     "file": "necklace_1__42103.png",
+     "skin": "Templates/Necklace_1"
+    },
+    {
+     "template": "Templates/Tag_3",
+     "file": "tag_3__105354.png",
+     "skin": "Templates/Tag_3"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_3",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_1",
+     "file": "necklace_1__11428.png",
+     "skin": "Templates/Necklace_1"
+    },
+    {
+     "template": "Templates/Tag_3",
+     "file": "tag_3__103118.png",
+     "skin": "Templates/Tag_3"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_4",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_4",
+     "file": "necklace_4__34838.png",
+     "skin": "Templates/Necklace_4"
+    },
+    {
+     "template": "Templates/Tag_1",
+     "file": "tag_1__67544.png",
+     "skin": "Templates/Tag_1"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_5",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_1",
+     "file": "necklace_1__59434.png",
+     "skin": "Templates/Necklace_1"
+    },
+    {
+     "template": "Templates/Tag_3",
+     "file": "tag_3__26577.png",
+     "skin": "Templates/Tag_3"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_6",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_1",
+     "file": "necklace_1__89603.png",
+     "skin": "Templates/Necklace_1"
+    },
+    {
+     "template": "Templates/Tag_1",
+     "file": "tag_1__15157.png",
+     "skin": "Templates/Tag_1"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_7",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_1",
+     "file": "necklace_1__19007.png",
+     "skin": "Templates/Necklace_1"
+    },
+    {
+     "template": "Templates/Tag_2",
+     "file": "tag_2__88477.png",
+     "skin": "Templates/Tag_2"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_8",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_2",
+     "file": "necklace_2__14373.png",
+     "skin": "Templates/Necklace_2"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_9",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_1",
+     "file": "necklace_1__17090.png",
+     "skin": "Templates/Necklace_1"
+    },
+    {
+     "template": "Templates/Tag_1",
+     "file": "tag_1__84436.png",
+     "skin": "Templates/Tag_1"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_10",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_3",
+     "file": "necklace_3__48249.png",
+     "skin": "Templates/Necklace_3"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_11",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_3",
+     "file": "necklace_3__92345.png",
+     "skin": "Templates/Necklace_3"
+    },
+    {
+     "template": "Templates/Tag_2",
+     "file": "tag_2__52069.png",
+     "skin": "Templates/Tag_2"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_12",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_1",
+     "file": "necklace_1__91412.png",
+     "skin": "Templates/Necklace_1"
+    },
+    {
+     "template": "Templates/Tag_2",
+     "file": "tag_2__34384.png",
+     "skin": "Templates/Tag_2"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_13",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_5",
+     "file": "necklace_5__64996.png",
+     "skin": "Templates/Necklace_5"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_14",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_6",
+     "file": "necklace_6__24036.png",
+     "skin": "Templates/Necklace_6"
+    },
+    {
+     "template": "Templates/Tag_4",
+     "file": "tag_4__17487.png",
+     "skin": "Templates/Tag_4"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_15",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_7",
+     "file": "necklace_7__43365.png",
+     "skin": "Templates/Necklace_7"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_16",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_1",
+     "file": "necklace_1__50694.png",
+     "skin": "Templates/Necklace_1"
+    },
+    {
+     "template": "Templates/Tag_3",
+     "file": "tag_3__15871.png",
+     "skin": "Templates/Tag_3"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_17",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_6",
+     "file": "necklace_6__56602.png",
+     "skin": "Templates/Necklace_6"
+    },
+    {
+     "template": "Templates/Tag_5",
+     "file": "tag_5__69904.png",
+     "skin": "Templates/Tag_5"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_18",
+   "pieces": [
+    {
+     "template": "Templates/Collar_2",
+     "file": "collar_2__37847.png",
+     "skin": "Templates/Collar_2"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_19",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_3",
+     "file": "necklace_3__14286.png",
+     "skin": "Templates/Necklace_3"
+    },
+    {
+     "template": "Templates/Tag_4",
+     "file": "tag_4__98882.png",
+     "skin": "Templates/Tag_4"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_20",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_6",
+     "file": "necklace_6__107255.png",
+     "skin": "Templates/Necklace_6"
+    },
+    {
+     "template": "Templates/Tag_4",
+     "file": "tag_4__74803.png",
+     "skin": "Templates/Tag_4"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_21",
+   "pieces": [
+    {
+     "template": "Templates/Collar_6",
+     "file": "collar_6__101654.png",
+     "skin": "Templates/Collar_6"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_22",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_2",
+     "file": "necklace_2__15308.png",
+     "skin": "Templates/Necklace_2"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_23",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_8",
+     "file": "necklace_8__41000.png",
+     "skin": "Templates/Necklace_8"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_24",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_9",
+     "file": "necklace_9__105722.png",
+     "skin": "Templates/Necklace_9"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_25",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_10",
+     "file": "necklace_10__91328.png",
+     "skin": "Templates/Necklace_10"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_26",
+   "pieces": [
+    {
+     "template": "Templates/Collar_2",
+     "file": "collar_2__85707.png",
+     "skin": "Templates/Collar_2"
+    },
+    {
+     "template": "Templates/Tag_2",
+     "file": "tag_2__50854.png",
+     "skin": "Templates/Tag_2"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_27",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_11",
+     "file": "necklace_11__81933.png",
+     "skin": "Templates/Necklace_11"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_28",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_12",
+     "file": "necklace_12__107368.png",
+     "skin": "Templates/Necklace_12"
+    }
+   ]
+  },
+  {
+   "id": "accessory_accessories_body_neck_29",
+   "pieces": [
+    {
+     "template": "Templates/Necklace_13",
+     "file": "necklace_13__70002.png",
+     "skin": "Templates/Necklace_13"
+    }
+   ]
+  },
+  {
+   "id": "accessory_glasses_1",
+   "pieces": [
+    {
+     "template": "Templates/Glasses_1",
+     "file": "glasses_1__57480.png",
+     "skin": "Templates/Glasses_1"
+    }
+   ]
+  },
+  {
+   "id": "accessory_glasses_2",
+   "pieces": [
+    {
+     "template": "Templates/Glasses_1",
+     "file": "glasses_1__101917.png",
+     "skin": "Templates/Glasses_1"
+    }
+   ]
+  }
+ ]
+}

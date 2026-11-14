@@ -26,9 +26,12 @@ namespace AvatarWorld.Core.Economy
     }
 
     /// <summary>
-    /// Catalogo local da loja. A arte e os nomes de arquivo (PB2..PB27) vem do original; o original vende
-    /// por dinheiro real e os precos em moedas so aparecem em prints (6 ids marcados em Observed). Os demais
-    /// precos sao decisao local, dentro da faixa observada (300 a 1400 moedas).
+    /// Catalogo local da loja. A arte e os nomes de arquivo (PB2..PB27, mais PB3) vem do original; o original
+    /// vende por dinheiro real e os precos em moedas so aparecem em prints (6 ids marcados em Observed). Os
+    /// demais precos sao decisao local, dentro da faixa observada (300 a 1400 moedas).
+    /// PB3 ("Volta as Aulas") foi extraido direto de out/assets/resources.assets (BackToSchoolPB3Pack,
+    /// 2026-11-07): e o unico dos 3 bundles do enum StorePackType ausentes do catalogo (PB1, PB3, PB4) que
+    /// tem arte real completa -- PB1/PB4 nao tem nenhum sprite no APK (docs/STORE_WORLD_UI_SPEC.md).
     /// </summary>
     public static class StoreCatalog
     {
@@ -37,6 +40,13 @@ namespace AvatarWorld.Core.Economy
         public const string CategoryVehicles = "Veículos";
         public const string CategoryHouses = "Casas";
         public const string CategoryStory = "Narrativa";
+        /// <summary>
+        /// Nao e uma categoria de produtos: no original (level237) e um atalho do trilho que abre a cena
+        /// AvatarMakerLobby (aqui, AvatarSlotsScreen) em vez de listar cartoes - mesma relacao que ja existe
+        /// no sentido inverso (botao de carrinho dos slots abre a loja). Por isso nunca tem ofertas em
+        /// StoreCatalog.All; StoreScreen trata a selecao como navegacao, nao como filtro de cartoes.
+        /// Ver docs/STORE_ORIGINAL_REFERENCE_2026-11-07.md.
+        /// </summary>
         public const string CategoryAvatarMaker = "Criador de Avatar";
         public const string CategoryCombos = "Combos";
         public const string CategoryFashion = "Moda";
@@ -55,10 +65,17 @@ namespace AvatarWorld.Core.Economy
         };
 
         /// <summary>Categorias do original ainda sem combos locais: a loja mostra "Em breve".</summary>
-        public static readonly string[] ComingSoon = { CategoryVehicles, CategoryStory, CategoryAvatarMaker, CategorySports };
+        public static readonly string[] ComingSoon = { CategoryVehicles, CategoryStory, CategorySports };
 
         /// <summary>Ids cujo preco em moedas foi lido dos prints do original (docs/STORE_WORLD_UI_SPEC.md).</summary>
-        public static readonly string[] Observed = { "PB22", "PB7", "PB26", "PB23", "PB25", "PB27" };
+        public static readonly string[] Observed =
+        {
+            "PB22", "PB7", "PB26", "PB23", "PB25", "PB27",
+            // "motorhome" fica de fora: a captura de 2026-11-07 achou o cartao mas o preco ficou fora da tela
+            // (ver docs/STORE_WORLD_UI_SPEC.md); o valor abaixo e decisao local, nao leitura do original.
+            "jeep-aventura", "carro-familia", "viagem-inverno", "pe-na-estrada", "trator-agricola",
+            "helicoptero-vip", "limo-luxo", "limo-panda",
+        };
 
         static StoreOffer O(string id, string title, string category, string sub, int price, bool featured = false) =>
             new StoreOffer { Id = "bundle-" + id, Title = title, Category = category, Sub = sub, Price = price, Art = id, Featured = featured };
@@ -66,7 +83,7 @@ namespace AvatarWorld.Core.Economy
         public static readonly IReadOnlyList<StoreOffer> All = new List<StoreOffer>
         {
             O("PB22", "Galxe Mansion", CategoryHouses, "Mansões", 1200, true),
-            O("PB7", "Natural Chic", CategoryHouses, "Modernas", 1400, true),
+            O("PB7", "Natural Chic", CategoryHouses, "Natural Chic", 1400, true),
             O("PB26", "Casinha de brincar", CategoryHouses, "Infantis", 770, true),
             O("PB23", "Show ao vivo", CategoryFashion, "Palco", 980, true),
             O("PB25", "Amiguinhos", CategoryPets, "Variados", 1200, true),
@@ -81,15 +98,33 @@ namespace AvatarWorld.Core.Economy
             O("PB15", "Cachorrinho", CategoryPets, "Cães", 600),
             O("PB16", "Crescendo", CategoryFashion, "Infantil", 750),
             O("PB17", "Estilista de Celebridades", CategoryProfessions, "Estilista", 650),
-            O("PB18", "Moda Drip", CategoryFashion, "Urbano", 600),
+            O("PB3", "Volta às Aulas", CategoryProfessions, "Escola", 650),
+            O("PB18", "Moda Drip", CategoryFashion, "Drip", 600),
             O("PB19", "Gatinhos", CategoryPets, "Gatos", 550),
             O("PB20", "Pop Star", CategoryFashion, "Palco", 900),
-            O("PB21", "Moda Daisy", CategoryFashion, "Casual", 500),
-            O("PB24", "Férias de Primavera", CategoryFashion, "Casual", 800),
+            O("PB21", "Moda Daisy", CategoryFashion, "Daisy", 500),
+            O("PB24", "Férias de Primavera", CategoryFashion, "Férias", 800),
             O("PB27", "Festa à Fantasia", CategoryCelebrations, "Festas", 450),
+            O("jeep-aventura", "Carro de Aventura", CategoryVehicles, "Carro", 700, true),
+            O("carro-familia", "Carro da Família", CategoryVehicles, "Carro", 700, true),
+            O("viagem-inverno", "Viagem de Inverno em Família", CategoryVehicles, "Carro", 400),
+            O("pe-na-estrada", "Pé na Estrada", CategoryVehicles, "Carro", 400),
+            O("motorhome", "Motorhome", CategoryVehicles, "Van", 1200, true), // preco local; original nao mostrou o valor na captura
+            O("trator-agricola", "Trator Agrícola", CategoryVehicles, "Van", 300),
+            O("helicoptero-vip", "Helicóptero VIP", CategoryVehicles, "VIP", 800),
+            O("limo-luxo", "Limusine de Luxo", CategoryVehicles, "VIP", 300),
+            O("limo-panda", "Limusine Panda", CategoryVehicles, "VIP", 300),
         };
 
-        /// <summary>Subgrupos (sub-trilho) de uma categoria, na ordem de aparicao. Vazio se houver menos de 2.</summary>
+        /// <summary>
+        /// Subgrupos (sub-trilho) de uma categoria, na ordem de aparicao. Vazio se houver menos de 2.
+        /// Para Moda, os 6 nomes (Drip, Daisy, Ferias, Palco, Luxo, Infantil) batem com a contagem de 6
+        /// icones confirmada no print original (docs/STORE_WORLD_UI_SPEC.md); pra Casas, os 5 nomes (Mansoes,
+        /// Natural Chic, Modernas, Infantis, Familia) batem com a contagem de 5 do print. Ambos usam os nomes
+        /// internos reais do jogo (enum Store.StorePackType, decompilado: DripFashionBundlePB18,
+        /// NaturalChicBundlePB7 etc.) em vez de rotulos puramente inventados; o agrupamento em si (quais
+        /// cartoes caem em qual icone) continua sem confirmacao, pois vem de config remota ausente do APK.
+        /// </summary>
         public static IReadOnlyList<string> SubCategories(string category)
         {
             var subs = InCategory(category).Select(o => o.Sub).Where(s => !string.IsNullOrEmpty(s)).Distinct().ToList();

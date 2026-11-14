@@ -1,0 +1,17 @@
+{
+  "task_id": "T025/HANDLER/00005600",
+  "status": "partial",
+  "semantic_completion": false,
+  "method_body_fully_bounded": false,
+  "method": "BackgroundPlanetSoundHandler.OnBeforeSceneLoadStage1: reads instance field _tweenId (offset 0x58); when >= 1: calls Component.get_gameObject() then LeanTween.cancel(gameObject, tweenId, false); unconditionally writes 0 to _tweenId (offset 0x58) at method exit",
+  "contract": "out/recon/tasks/T025/HANDLER/00005600/method-contract.json",
+  "control_flow": "out/recon/tasks/T025/HANDLER/00005600/control-flow.json",
+  "unknowns": "out/recon/tasks/T025/HANDLER/00005600/unknowns.jsonl",
+  "verification": {
+    "pinned_opcodes": "passed",
+    "named_call_targets_revalidated": "passed",
+    "field_declarations_matched_verbatim": "passed",
+    "runtime_or_device": false
+  },
+  "next_action": "Preserve open callee/runtime unknowns; do not mark done without independent review."
+}

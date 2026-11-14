@@ -1,0 +1,297 @@
+22ca464  sub    sp, sp, #0xb0
+22ca468  stp    x29, x30, [sp, #0x50]
+22ca46c  stp    x28, x27, [sp, #0x60]
+22ca470  stp    x26, x25, [sp, #0x70]
+22ca474  stp    x24, x23, [sp, #0x80]
+22ca478  stp    x22, x21, [sp, #0x90]
+22ca47c  stp    x20, x19, [sp, #0xa0]
+22ca480  adrp   x19, #0x44fd000
+22ca484  adrp   x23, #0x41d8000
+22ca488  ldrb   w8, [x19, #0xd7f]
+22ca48c  ldr    x23, [x23, #0xaa0]  ; type PWC.Level.LevelSceneAvatarMap
+22ca490  tbnz   w8, #0, #0x22ca568
+22ca494  adrp   x0, #0x41d8000
+22ca498  ldr    x0, [x0, #0xaa8]
+22ca49c  bl     #0x1b886e8
+22ca4a0  adrp   x0, #0x41d8000
+22ca4a4  ldr    x0, [x0, #0xab0]
+22ca4a8  bl     #0x1b886e8
+22ca4ac  adrp   x0, #0x41d8000
+22ca4b0  ldr    x0, [x0, #0xab8]
+22ca4b4  bl     #0x1b886e8
+22ca4b8  adrp   x0, #0x41d8000
+22ca4bc  ldr    x0, [x0, #0xac0]
+22ca4c0  bl     #0x1b886e8
+22ca4c4  adrp   x0, #0x41d8000
+22ca4c8  ldr    x0, [x0, #0xac8]
+22ca4cc  bl     #0x1b886e8
+22ca4d0  adrp   x0, #0x41d8000
+22ca4d4  ldr    x0, [x0, #0xad0]
+22ca4d8  bl     #0x1b886e8
+22ca4dc  adrp   x0, #0x41d8000
+22ca4e0  ldr    x0, [x0, #0xad8]
+22ca4e4  bl     #0x1b886e8
+22ca4e8  adrp   x0, #0x41d8000
+22ca4ec  ldr    x0, [x0, #0xae0]
+22ca4f0  bl     #0x1b886e8
+22ca4f4  adrp   x0, #0x41d8000
+22ca4f8  ldr    x0, [x0, #0xae8]
+22ca4fc  bl     #0x1b886e8
+22ca500  adrp   x0, #0x41d8000
+22ca504  ldr    x0, [x0, #0xaf0]
+22ca508  bl     #0x1b886e8
+22ca50c  adrp   x0, #0x41d8000
+22ca510  ldr    x0, [x0, #0xaa0]  ; type PWC.Level.LevelSceneAvatarMap
+22ca514  bl     #0x1b886e8
+22ca518  adrp   x0, #0x41d8000
+22ca51c  ldr    x0, [x0, #0xaf8]
+22ca520  bl     #0x1b886e8
+22ca524  adrp   x0, #0x41d8000
+22ca528  ldr    x0, [x0, #0xb00]
+22ca52c  bl     #0x1b886e8
+22ca530  adrp   x0, #0x41d8000
+22ca534  ldr    x0, [x0, #0xb08]
+22ca538  bl     #0x1b886e8
+22ca53c  adrp   x0, #0x41d8000
+22ca540  ldr    x0, [x0, #0xb10]
+22ca544  bl     #0x1b886e8
+22ca548  adrp   x0, #0x41d8000
+22ca54c  ldr    x0, [x0, #0xb18]
+22ca550  bl     #0x1b886e8
+22ca554  adrp   x0, #0x41d8000
+22ca558  ldr    x0, [x0, #0xb20]  ; "Level/SceneAvatarMap/"
+22ca55c  bl     #0x1b886e8
+22ca560  mov    w8, #1
+22ca564  strb   w8, [x19, #0xd7f]
+22ca568  ldr    x8, [x23]
+22ca56c  stp    xzr, xzr, [sp, #0x30]
+22ca570  str    xzr, [sp, #0x40]
+22ca574  str    xzr, [sp, #0x28]
+22ca578  ldr    x8, [x8, #0xb8]
+22ca57c  ldrb   w8, [x8, #0x10]
+22ca580  cbnz   w8, #0x22ca8a8
+22ca584  adrp   x8, #0x41d8000
+22ca588  adrp   x9, #0x41d8000
+22ca58c  ldr    x8, [x8, #0xb20]  ; "Level/SceneAvatarMap/"
+22ca590  ldr    x9, [x9, #0xb18]
+22ca594  ldr    x0, [x8]
+22ca598  ldr    x1, [x9]
+22ca59c  bl     #0x25d6358
+22ca5a0  adrp   x8, #0x41d8000
+22ca5a4  ldr    x8, [x8, #0xad8]
+22ca5a8  mov    x19, x0
+22ca5ac  ldr    x8, [x8]
+22ca5b0  mov    x0, x8
+22ca5b4  bl     #0x1b88970
+22ca5b8  adrp   x8, #0x41d8000
+22ca5bc  ldr    x8, [x8, #0xab0]
+22ca5c0  mov    x20, x0
+22ca5c4  ldr    x1, [x8]
+22ca5c8  bl     #0x28f8fa8
+22ca5cc  ldr    x8, [x23]
+22ca5d0  mov    x1, x20
+22ca5d4  ldr    x8, [x8, #0xb8]  ; "SpineSkinCAsHolder"
+22ca5d8  str    x20, [x8]
+22ca5dc  ldr    x8, [x23]
+22ca5e0  ldr    x0, [x8, #0xb8]  ; "SpineSkinCAsHolder"
+22ca5e4  bl     #0x1b88694
+22ca5e8  adrp   x8, #0x41d8000
+22ca5ec  ldr    x8, [x8, #0xad0]
+22ca5f0  ldr    x0, [x8]
+22ca5f4  bl     #0x1b88970
+22ca5f8  adrp   x8, #0x41d8000
+22ca5fc  ldr    x8, [x8, #0xab8]
+22ca600  mov    x20, x0
+22ca604  ldr    x1, [x8]
+22ca608  bl     #0x28972d0
+22ca60c  ldr    x8, [x23]
+22ca610  mov    x1, x20
+22ca614  ldr    x0, [x8, #0xb8]  ; "SpineSkinCAsHolder"
+22ca618  str    x20, [x0, #8]!
+22ca61c  bl     #0x1b88694
+22ca620  cbz    x19, #0x22ca8c8
+22ca624  ldr    w8, [x19, #0x18]
+22ca628  mov    x9, x19
+22ca62c  cmp    w8, #1
+22ca630  b.lt   #0x22ca898
+22ca634  adrp   x27, #0x41d8000
+22ca638  adrp   x28, #0x41d8000
+22ca63c  adrp   x29, #0x41d8000
+22ca640  adrp   x24, #0x41d8000
+22ca644  adrp   x19, #0x41d8000
+22ca648  adrp   x26, #0x41d8000
+22ca64c  ldr    x27, [x27, #0xae8]
+22ca650  ldr    x28, [x28, #0xaa8]
+22ca654  ldr    x29, [x29, #0xaf8]
+22ca658  ldr    x24, [x24, #0xac0]
+22ca65c  ldr    x19, [x19, #0xb08]
+22ca660  ldr    x26, [x26, #0xac8]
+22ca664  mov    w25, wzr
+22ca668  str    x9, [sp, #8]
+22ca66c  cmp    w25, w8
+22ca670  b.hs   #0x22ca8cc
+22ca674  add    x8, x9, w25, sxtw #3
+22ca678  ldr    x20, [x8, #0x20]  ; "foldedSprite == null || hangedSprite == null"
+22ca67c  cbz    x20, #0x22ca8c8
+22ca680  ldr    x0, [x20, #0x18]
+22ca684  cbz    x0, #0x22ca8c8
+22ca688  adrp   x8, #0x41d8000
+22ca68c  ldr    x8, [x8, #0xb00]
+22ca690  ldr    x1, [x8]
+22ca694  add    x8, sp, #0x10
+22ca698  bl     #0x2cf12b4
+22ca69c  ldr    q0, [sp, #0x10]
+22ca6a0  ldr    x8, [sp, #0x20]
+22ca6a4  str    q0, [sp, #0x30]
+22ca6a8  str    x8, [sp, #0x40]
+22ca6ac  ldr    x1, [x27]
+22ca6b0  add    x0, sp, #0x30
+22ca6b4  bl     #0x29c0b20
+22ca6b8  tbz    w0, #0, #0x22ca7d0
+22ca6bc  ldr    x8, [x23]
+22ca6c0  ldr    x21, [sp, #0x40]
+22ca6c4  ldr    x8, [x8, #0xb8]  ; "SpineSkinCAsHolder"
+22ca6c8  ldr    x22, [x8]
+22ca6cc  mov    x0, x20
+22ca6d0  mov    x1, xzr
+22ca6d4  bl     #0x3cce6d0
+22ca6d8  mov    x1, x0
+22ca6dc  cbz    x22, #0x22ca814
+22ca6e0  ldr    x3, [x28]
+22ca6e4  add    x2, sp, #0x28
+22ca6e8  mov    x0, x22
+22ca6ec  bl     #0x28fb570
+22ca6f0  tbnz   w0, #0, #0x22ca744
+22ca6f4  adrp   x8, #0x41d8000
+22ca6f8  ldr    x8, [x8, #0xb10]
+22ca6fc  ldr    x0, [x8]
+22ca700  bl     #0x1b88970
+22ca704  ldr    x1, [x19]
+22ca708  mov    x22, x0
+22ca70c  bl     #0x2cefee8
+22ca710  ldr    x8, [x23]
+22ca714  str    x22, [sp, #0x28]
+22ca718  ldr    x8, [x8, #0xb8]  ; "SpineSkinCAsHolder"
+22ca71c  ldr    x22, [x8]
+22ca720  mov    x0, x20
+22ca724  mov    x1, xzr
+22ca728  bl     #0x3cce6d0
+22ca72c  mov    x1, x0
+22ca730  cbz    x22, #0x22ca824
+22ca734  ldr    x2, [sp, #0x28]
+22ca738  ldr    x3, [x26]
+22ca73c  mov    x0, x22
+22ca740  bl     #0x28f9d50
+22ca744  ldr    x0, [sp, #0x28]
+22ca748  cbz    x0, #0x22ca81c
+22ca74c  ldr    w10, [x0, #0x1c]
+22ca750  ldr    x8, [x0, #0x10]  ; "list.Count is not 1! count["
+22ca754  ldr    x9, [x29]
+22ca758  add    w10, w10, #1
+22ca75c  str    w10, [x0, #0x1c]
+22ca760  cbz    x8, #0x22ca804
+22ca764  ldrsw  x10, [x0, #0x18]
+22ca768  ldr    w11, [x8, #0x18]
+22ca76c  cmp    w10, w11
+22ca770  b.hs   #0x22ca794
+22ca774  add    w9, w10, #1
+22ca778  add    x8, x8, x10, lsl #3
+22ca77c  str    w9, [x0, #0x18]
+22ca780  str    x21, [x8, #0x20]!
+22ca784  mov    x0, x8
+22ca788  mov    x1, x21
+22ca78c  bl     #0x1b88694
+22ca790  b      #0x22ca7a8
+22ca794  ldr    x8, [x9, #0x20]  ; "foldedSprite == null || hangedSprite == null"
+22ca798  ldr    x8, [x8, #0xc0]  ; ": Failed to add CAHandler for skinName["
+22ca79c  ldr    x2, [x8, #0x70]  ; "Level/ClothingCAData"
+22ca7a0  mov    x1, x21
+22ca7a4  bl     #0x2cf071c
+22ca7a8  cbz    x21, #0x22ca80c
+22ca7ac  ldr    x8, [x23]
+22ca7b0  ldr    x8, [x8, #0xb8]  ; "SpineSkinCAsHolder"
+22ca7b4  ldr    x0, [x8, #8]  ; "hangedSprite == null"
+22ca7b8  cbz    x0, #0x22ca7fc
+22ca7bc  ldr    w1, [x21, #0x10]
+22ca7c0  ldr    x3, [x24]
+22ca7c4  mov    x2, x21
+22ca7c8  bl     #0x289809c
+22ca7cc  b      #0x22ca6ac
+22ca7d0  adrp   x8, #0x41d8000
+22ca7d4  ldr    x8, [x8, #0xae0]
+22ca7d8  add    x0, sp, #0x30
+22ca7dc  ldr    x1, [x8]
+22ca7e0  bl     #0x29c0b1c
+22ca7e4  ldr    x9, [sp, #8]
+22ca7e8  add    w25, w25, #1
+22ca7ec  ldr    w8, [x9, #0x18]
+22ca7f0  cmp    w25, w8
+22ca7f4  b.lt   #0x22ca66c
+22ca7f8  b      #0x22ca898
+22ca7fc  bl     #0x1b88980
+22ca800  b      #0x22ca8d8
+22ca804  bl     #0x1b88980
+22ca808  b      #0x22ca8d8
+22ca80c  bl     #0x1b88980
+22ca810  b      #0x22ca8d8
+22ca814  bl     #0x1b88980
+22ca818  b      #0x22ca8d8
+22ca81c  bl     #0x1b88980
+22ca820  b      #0x22ca8d8
+22ca824  bl     #0x1b88980
+22ca828  b      #0x22ca8d8
+22ca82c  b      #0x22ca85c
+22ca830  b      #0x22ca85c
+22ca834  b      #0x22ca85c
+22ca838  b      #0x22ca85c
+22ca83c  b      #0x22ca85c
+22ca840  b      #0x22ca85c
+22ca844  b      #0x22ca85c
+22ca848  b      #0x22ca85c
+22ca84c  b      #0x22ca85c
+22ca850  b      #0x22ca85c
+22ca854  b      #0x22ca85c
+22ca858  b      #0x22ca85c
+22ca85c  mov    x20, x0
+22ca860  cmp    w1, #1
+22ca864  b.ne   #0x22ca8d0
+22ca868  mov    x0, x20
+22ca86c  bl     #0x3f939e0
+22ca870  ldr    x21, [x0]
+22ca874  bl     #0x3f939f0
+22ca878  adrp   x8, #0x41d8000
+22ca87c  ldr    x8, [x8, #0xae0]
+22ca880  add    x0, sp, #0x30
+22ca884  ldr    x1, [x8]
+22ca888  bl     #0x29c0b1c
+22ca88c  cbz    x21, #0x22ca7e4
+22ca890  mov    x0, x21
+22ca894  bl     #0x1b88978
+22ca898  ldr    x8, [x23]
+22ca89c  mov    w9, #1
+22ca8a0  ldr    x8, [x8, #0xb8]  ; "SpineSkinCAsHolder"
+22ca8a4  strb   w9, [x8, #0x10]
+22ca8a8  ldp    x20, x19, [sp, #0xa0]
+22ca8ac  ldp    x22, x21, [sp, #0x90]
+22ca8b0  ldp    x24, x23, [sp, #0x80]
+22ca8b4  ldp    x26, x25, [sp, #0x70]
+22ca8b8  ldp    x28, x27, [sp, #0x60]
+22ca8bc  ldp    x29, x30, [sp, #0x50]
+22ca8c0  add    sp, sp, #0xb0
+22ca8c4  ret    
+22ca8c8  bl     #0x1b88980
+22ca8cc  bl     #0x1b88988
+22ca8d0  mov    x21, xzr
+22ca8d4  b      #0x22ca8dc
+22ca8d8  mov    x20, x0
+22ca8dc  adrp   x8, #0x41d8000
+22ca8e0  ldr    x8, [x8, #0xae0]
+22ca8e4  ldr    x1, [x8]
+22ca8e8  add    x0, sp, #0x30
+22ca8ec  bl     #0x29c0b1c
+22ca8f0  cbnz   x21, #0x22ca8fc
+22ca8f4  mov    x0, x20
+22ca8f8  bl     #0x1c4d150
+22ca8fc  mov    x0, x21
+22ca900  bl     #0x1b88978
+22ca904  bl     #0x1914dc0

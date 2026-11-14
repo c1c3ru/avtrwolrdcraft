@@ -102,7 +102,7 @@ def run(source, output):
     contract['unknowns'] = [
         'IsSceneAvailable is not called by LoadScene itself; behaviour for an unavailable scene is the Unity LoadSceneAsync failure path.',
         'Who subscribes OnActiveSceneChanged (SceneManager.activeSceneChanged) and who calls CancelCurrentSceneChangingProgress.',
-        'Subscribers of Stage1-3 actions and the fade implementation in StartSceneTransition.',
+        'Stage1-3 subscribers and the indirect blr dispatch mechanism are now decoded (see recon_scene_subscribers.py / recon_stage_dispatch.py); the fade implementation in StartSceneTransition remains open.',
         'Exception edges and the complete method bodies; windows end at the next metadata method start.',
     ]
     nav.atomic_json(output / 'method-contract.json', contract)

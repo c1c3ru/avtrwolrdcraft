@@ -1,0 +1,84 @@
+{
+  "status": "structural_callgraph_recovered_entitlement_question_not_closed",
+  "date": "2026-11-08",
+  "method": "Resolved direct bl/b call targets of AvatarMakerThumbsManager's thumb-population pipeline via tools/recon_call_targets.py (bl-target address lookup against the structural VA map) and tools/recon_callers.py (whole-binary bl/b scan for callers of a given method), both deterministic. Manual ARM64 reading (capstone, tools/recon_disasm.py) was used only to establish instruction-level order and register provenance where noted; those specific claims are flagged accordingly below and are not resolved to the same confidence as the call-graph facts.",
+  "inputs": {
+    "libil2cpp.so": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "global-metadata.dat": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+    "assembly_csharp_methods.jsonl": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8"
+  },
+  "orchestrator": {
+    "method": "PWC.AvatarMaker.<AfterThumbsScaleDownAnimation>d__40.MoveNext",
+    "address": "0x21ce8d4",
+    "role": "Coroutine body of AvatarMakerThumbsManager.AfterThumbsScaleDownAnimation(int currentCategoryType, float animationTime). Confirmed sole direct caller (whole-binary bl/b scan, tools/recon_callers.py) of AddItemSpritesOutsideAnyPack, FillSections, AddOwnedExpansionPacksThumbs, AddExpansionPackThumbs (also called once more from inside AddOwnedExpansionPacksThumbs), FilterByClaimedInventoryFlags and GetRelevantInventorySkins. This is the actual orchestration point for 'what shows in this editor category and is it locked'.",
+    "evidence_asm": "out/recon/tasks/T033/pipeline-asm/AfterThumbsScaleDownAnimation_MoveNext_21ce8d4.asm.txt (annotated disassembly, tools/recon_disasm.py, cap=0x2000)"
+  },
+  "confirmed_call_graph": {
+    "note": "Each entry is a direct bl target resolved to a declaring_type.name by address lookup (deterministic). Single-caller facts are from a whole-binary bl/b scan (deterministic); absent other callers means 'no direct call site found', not 'provably unreachable' (virtual/interface dispatch is invisible to this scan).",
+    "AddItemSpritesOutsideAnyPack@0x21cafec": {
+      "sole_caller": "AfterThumbsScaleDownAnimation.MoveNext (confirmed: exactly one bl/b call site in the whole binary)",
+      "calls": ["AddItemSpritesWithNoThumb", "InventorySkinsBuildData.GetPremiumSkinsInventoryFlags", "InventorySkinsBuildData.TryGetSkinsFromFlag", "InventorySkinsUtils.GetExpansionPackDataAsset"]
+    },
+    "FilterByClaimedInventoryFlags@0x21cb7e8": {
+      "sole_caller": "AfterThumbsScaleDownAnimation.MoveNext",
+      "calls": ["InventoryData.ContainsFlag", "InventorySkinsBuildData.GetPremiumSkinsInventoryFlags", "InventorySkinsBuildData.TryGetSkinsFromFlag", "InventorySkinsUtils.GetDataAsset"]
+    },
+    "AddOwnedExpansionPacksThumbs@0x21ccec8": {
+      "sole_caller": "AfterThumbsScaleDownAnimation.MoveNext",
+      "calls": ["AddExpansionPackThumbs", "GetOwnedPackFlagsInTabOrder", "InventorySkinsUtils.GetExpansionPackDataAsset"]
+    },
+    "AddExpansionPackThumbs@0x21cc5a8": {
+      "callers": ["AfterThumbsScaleDownAnimation.MoveNext", "AddOwnedExpansionPacksThumbs"],
+      "calls": ["ApplyAuthoredThumbOrder", "GetSpriteAtlas", "TryGetSpriteFromThumbSolution", "AvatarSpineSkinsRestrictionsManager.IsSkinAllowed", "CategoryTypeUtils.GetCategoryTypeName", "InventorySkinsBuildData.TryGetSkinsFromFlag", "InventorySkinsUtils.GetExpansionPackDataAsset"]
+    },
+    "GetRelevantInventorySkins@0x21ca47c": {
+      "sole_caller": "AfterThumbsScaleDownAnimation.MoveNext",
+      "calls": ["InventorySkinsBuildData.GetPremiumSkinsInventoryFlags", "InventorySkinsBuildData.TryGetSkinsFromFlag", "InventorySkinsUtils.GetDataAsset"]
+    },
+    "AvatarSpineSkinsRestrictionsManager.IsSkinAllowed@0x2179764": {
+      "callers": ["AfterThumbsScaleDownAnimation.MoveNext", "AvatarMakerCharacterManager.RandomizeSkins", "AddExpansionPackThumbs"],
+      "note": "NEW for T033: a size-compatibility gate (IsSkinAllowed(SpineType, AvatarSizeType, skinName)) entirely separate from the two purchase-entitlement tables (ExpansionPacksBuildData/InventorySkinsBuildData). Backed by PWC.AvatarSpine.AvatarSpineSkinsRestrictionsManager (out/cpp2il/DiffableCs/.../AvatarSpineSkinsRestrictionsManager.cs): a per-SpineType map of skinName -> allowed AvatarSizeType set. This is evidence toward T033's acceptance criterion 'combinação inválida e opção indisponível têm regra' (invalid-combination rule) -- it is a compatibility gate, not an entitlement gate."
+    },
+    "AvatarSpineDataManager.GetMakerIncludedSkinsByCategoryTypeData@0x216dad4": {
+      "caller": "AfterThumbsScaleDownAnimation.MoveNext",
+      "note": "NEW class/mechanism found: AvatarSpineDataManager declares MAKER_INCLUDED_SKINS_RESOURCES_PATH = \"AvatarMaker/MakerIncludedSkinsJson/\" and loads a per-SpineType HashSet<string> allowlist from Resources at that path (LoadMakerIncludedSkinsDataFromResources). The literal path IS present in global-metadata.dat's string table (confirmed: grep over out/recon/il2cpp/global-metadata.dat), so this is real, shipped code, not stripped/dead. UNRESOLVED: no TextAsset/JSON object matching this path or name fragment was found in any locally extracted asset container (see unknowns below)."
+    }
+  },
+  "dispatch_switch_not_fully_resolved": {
+    "location": "AfterThumbsScaleDownAnimation.MoveNext, around file offset matching case dispatch on a value read from [sp+0x28] (annotated asm lines ~1290-1348 of the evidence file)",
+    "observed_structure": "cmp/b.eq chain on an integer value with branches for ==1 (calls GetMakerIncludedSkinsByCategoryTypeData), ==2 (calls an unresolved target 0x2cf0928), ==3 (calls AddItemSpritesOutsideAnyPack), and a default branch that logs 'Avatar type not found!' before falling through to the same continuation as the other three (so the default branch is NOT fatal; it just adds nothing extra).",
+    "why_not_resolved": "The dispatched value was traced to register w23, which in this same function is reused as a loop index for two earlier, unrelated loops (a breed-name loop and a size-name loop, both reset to 0 and incremented to a bound). Whether w23 still holds a meaningful value at the switch (vs. a stale leftover from one of those loops) depends on whether the breed/size/skin-color special-case branches earlier in the function (IsCategoryTypeBreed / IsCategoryTypeSize / IsCategoryTypeSkin, all confirmed present via resolved calls) actually skip past the switch for ordinary categories, which was not fully traced.",
+    "practical_consequence": "The initial working hypothesis this session started with -- 'AddItemSpritesOutsideAnyPack is the universal mechanism that makes any item not listed in the two flag tables free' -- is NOT confirmed and should not be treated as established. Per-SpineType CategoryType enums (out/cpp2il/DiffableCs/.../CharacterCategoryType.cs etc.) show the literal values 1/2/3 only line up with a handful of 'body-shape' categories per spine (e.g. for Character: Accessories=1, [no 2], Accessories_Face_Glasses=3; for Dog/Cat: Body=1, Accessories_Body_Neck=2, Hat=3), not with the bulk categories (Character Bottom=13, Shirt=45, Legs_Shoes=38 all fall to the non-fatal default branch). So AddItemSpritesOutsideAnyPack's actual scope within this coroutine is narrower than originally hypothesized, and where the general per-category base sprite list (for ordinary Shirt/Bottom/Shoes/Accessories) is populated was not located this session."
+  },
+  "filter_by_claimed_inventory_flags_partial_trace": {
+    "address": "0x21cb7e8",
+    "manual_trace_confidence": "medium -- instruction-level trace, not independently re-verified by a second pass or a mutation test",
+    "observed": "Iterates the 3 premium flags; for each, calls InventoryData.ContainsFlag(player inventory, flag) (an ownership check) and branches: when the flag IS owned, the flag's skin names (via TryGetSkinsFromFlag) are unioned into a HashSet that the function returns; when NOT owned, a second TryGetSkinsFromFlag call feeds a different accumulator that is later used to walk the ref itemSpritesList and remove sprites whose name matches (the removal loop at asm lines ~201-237 of the file). Net reading: this function's job is to strip premium skins whose flag is unclaimed out of the displayed list, and return the claimed premium skin names (for UI highlighting). This only concerns the 3-flag/11-skin premium table (toddler hair), not the 48-flag/1763-skin expansion-pack table.",
+    "evidence_asm": "out/recon/tasks/T033/gates-asm/FilterByClaimedInventoryFlags_00000000021cb7e8.asm.txt"
+  },
+  "unknowns": [
+    {
+      "id": "T033-U1",
+      "question": "Where is the general per-category base sprite candidate list (for ordinary clothing categories like Shirt/Bottom/Legs_Shoes/Accessories, i.e. categoryType values that do not hit the 1/2/3 switch) actually populated?",
+      "status": "open",
+      "leads": "Not AddItemSpritesOutsideAnyPack (scope too narrow, see dispatch_switch_not_fully_resolved). Candidates not yet checked: AvatarMakerThumbsManager.Awake/Init (fields _itemSpritesByCategoryType / _packItemSpritesByFlag are populated somewhere, not yet located), or a SpriteAtlas.GetSprites(categoryType atlas) call earlier in MoveNext that was not traced line-by-line in full."
+    },
+    {
+      "id": "T033-U2",
+      "question": "What exact value feeds the case-1/2/3/default dispatch in AfterThumbsScaleDownAnimation.MoveNext (register w23 at the switch), and is it skipped entirely for ordinary clothing categories (so AddItemSpritesOutsideAnyPack never runs for them) or does it carry a meaningful leftover value?",
+      "status": "open"
+    },
+    {
+      "id": "T033-U3",
+      "question": "Does 'AvatarMaker/MakerIncludedSkinsJson/' resource content exist anywhere in the shipped app, and if so where?",
+      "status": "open",
+      "checked_and_absent_from": [
+        "out/assets/resources.assets (0 TextAsset objects of any name found via UnityPy enumeration)",
+        "out/assets/avatar-datapack.unity3d (grep -a for the literal string: 0 matches)",
+        "out/assets/avatar-resource-manager.json, out/assets/avatar-resources.json, out/assets/avatar-bundle-directory.json (grep: 0 matches)"
+      ],
+      "caveat": "The literal path IS present in global-metadata.dat (code side), so this is not dead code at the metadata level; absence from the asset containers checked here could mean the folder is genuinely empty/unused in this build, or that the content lives in an asset container not yet extracted/checked."
+    }
+  ],
+  "revision_of_prior_doc": "docs/RECON_CLOTHING_GAP.md's 'Próximo recorte' item 1 ('reconciliar o mapa recuperado com as listas de skins/categorias do editor') is still open; this session's structural findings narrow where to look next (U1, U2) but do not close the 2110-item status question. No item should be reclassified as free or paid based on this session's findings alone."
+}

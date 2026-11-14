@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "scope": "GameSceneManager.LoadScene's own Stage1-3 indirect dispatch sites; bounded decode, not full CFG.",
+  "evidence_class": "STATIC_bytes_and_metadata_with_DERIVED_candidate_semantics",
+  "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+  "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+  "method_index_sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb",
+  "producer_sha256": "a5d3f358f5db056f87355231ab58898d1df8261b91a74d57d4cf736baceba30c",
+  "helper_sha256": "c0d160ee3e11b638f665a35684984b8a9837aecd23722e84a4c911f22cd78f08",
+  "stages": [
+    {
+      "stage": 1,
+      "event_field_offset": "0x0",
+      "sites": {
+        "field_offset": "0x0",
+        "reload_x0": "0x2072b54",
+        "static_ptr": "0x2072b58",
+        "field": "0x2072b5c",
+        "null_guard": "0x2072b60",
+        "func_ptr": "0x2072b64",
+        "arg0": "0x2072b68",
+        "arg1": "0x2072b6c",
+        "blr": "0x2072b70",
+        "resume": "0x2072b78"
+      },
+      "null_guard": {
+        "kind": "CBZ",
+        "register": 8,
+        "width": 64,
+        "target": 34024312
+      },
+      "indirect_call": {
+        "kind": "BLR",
+        "register": 9,
+        "target": null
+      },
+      "candidate_semantics": "If GameSceneManager's static OnBeforeSceneLoadStage1Action field (static-fields+0x0) is non-null: load the delegate instance's own +0x18/+0x40/+0x28 words into x9/x0/x1 and `blr x9` -- an indirect call through a per-instance function pointer, not a branch to any fixed handler address. x0/x1 are the AArch64 ABI's first two integer arguments to that call."
+    },
+    {
+      "stage": 2,
+      "event_field_offset": "0x8",
+      "sites": {
+        "field_offset": "0x8",
+        "reload_x0": "0x2072b84",
+        "static_ptr": "0x2072b88",
+        "field": "0x2072b8c",
+        "null_guard": "0x2072b90",
+        "func_ptr": "0x2072b94",
+        "arg0": "0x2072b98",
+        "arg1": "0x2072b9c",
+        "blr": "0x2072ba0",
+        "resume": "0x2072ba8"
+      },
+      "null_guard": {
+        "kind": "CBZ",
+        "register": 8,
+        "width": 64,
+        "target": 34024360
+      },
+      "indirect_call": {
+        "kind": "BLR",
+        "register": 9,
+        "target": null
+      },
+      "candidate_semantics": "If GameSceneManager's static OnBeforeSceneLoadStage2Action field (static-fields+0x8) is non-null: load the delegate instance's own +0x18/+0x40/+0x28 words into x9/x0/x1 and `blr x9` -- an indirect call through a per-instance function pointer, not a branch to any fixed handler address. x0/x1 are the AArch64 ABI's first two integer arguments to that call."
+    },
+    {
+      "stage": 3,
+      "event_field_offset": "0x10",
+      "sites": {
+        "field_offset": "0x10",
+        "reload_x0": "0x2072bb4",
+        "static_ptr": "0x2072bb8",
+        "field": "0x2072bbc",
+        "null_guard": "0x2072bc0",
+        "func_ptr": "0x2072bc4",
+        "arg0": "0x2072bc8",
+        "arg1": "0x2072bcc",
+        "blr": "0x2072bd0",
+        "resume": "0x2072bd4"
+      },
+      "null_guard": {
+        "kind": "CBZ",
+        "register": 8,
+        "width": 64,
+        "target": 34024404
+      },
+      "indirect_call": {
+        "kind": "BLR",
+        "register": 9,
+        "target": null
+      },
+      "candidate_semantics": "If GameSceneManager's static OnBeforeSceneLoadStage3Action field (static-fields+0x10) is non-null: load the delegate instance's own +0x18/+0x40/+0x28 words into x9/x0/x1 and `blr x9` -- an indirect call through a per-instance function pointer, not a branch to any fixed handler address. x0/x1 are the AArch64 ABI's first two integer arguments to that call."
+    }
+  ],
+  "idiom_corroboration": {
+    "total_occurrences_in_executable_segments": 467,
+    "sample_sites": [
+      {
+        "site": "0x1924080",
+        "nearest_owner_candidate": []
+      },
+      {
+        "site": "0x1925d0c",
+        "nearest_owner_candidate": []
+      },
+      {
+        "site": "0x1925d70",
+        "nearest_owner_candidate": []
+      },
+      {
+        "site": "0x1926f40",
+        "nearest_owner_candidate": []
+      },
+      {
+        "site": "0x1927814",
+        "nearest_owner_candidate": []
+      },
+      {
+        "site": "0x3ecb280",
+        "nearest_owner_candidate": [
+          [
+            "UnityEngine.UIElements.BaseRuntimePanel",
+            "Dispose"
+          ]
+        ]
+      },
+      {
+        "site": "0x3ecb88c",
+        "nearest_owner_candidate": [
+          [
+            "UnityEngine.UIElements.BaseRuntimePanel",
+            "ScreenToPanel"
+          ]
+        ]
+      },
+      {
+        "site": "0x3f4b8ec",
+        "nearest_owner_candidate": [
+          [
+            "<>c__DisplayClass82_0",
+            "<WriteBytesAsync>b__0"
+          ]
+        ]
+      },
+      {
+        "site": "0x3f53c28",
+        "nearest_owner_candidate": [
+          [
+            "WebSocketSharp.WebSocket",
+            "releaseServerResources"
+          ]
+        ]
+      },
+      {
+        "site": "0x3f591bc",
+        "nearest_owner_candidate": [
+          [
+            "<>c__DisplayClass174_0",
+            "<startReceiving>b__1"
+          ]
+        ]
+      }
+    ],
+    "classification": "STATIC_recurring_idiom_candidate_not_a_claim_about_every_hit",
+    "limit": "4-byte-aligned exact-word scan of executable LOAD segments only; not a disassembly-verified count."
+  },
+  "candidate": [
+    "Each stage re-reads the static-fields pointer (GameSceneManager statics + 0xb8) fresh instead of reusing a cached register across stages -- defensive/non-CSE codegen, not three different pointers.",
+    "The event field itself (static-fields+0x0/0x8/0x10, matching the already-documented Stage1/2/3 offsets) holds a delegate object reference; CBZ on it reproduces 'invoke only if non-null' (an empty C# event is a null field).",
+    "If non-null, three words are read out of the delegate OBJECT (not out of GameSceneManager): +0x18 into x9 (the BLR target), +0x40 into x0, +0x28 into x1, then `blr x9`.",
+    "This exact 4-instruction load/load/load/blr sequence recurs widely elsewhere in the same .so across unrelated classes (UIElements, WebSocketSharp closures, generated display classes), so it reads as IL2CPP's generic compiled idiom for invoking a 0-arg/void delegate instance directly, not something special-cased for these three events."
+  ],
+  "unknowns": [
+    "Whether delegate+0x18/+0x40/+0x28 are exactly Il2CppDelegate.invoke_impl/m_target/method (or differently-named fields with the same offsets) is a candidate label from the public IL2CPP ABI shape, not independently confirmed against this build's own headers.",
+    "Which concrete handler(s) actually run through this indirect call -- and in what order for Stage2, which docs/RECON_SCENE_SUBSCRIBERS.md shows has two static-registration edges (PersistentDataManager, LevelManager) -- is a runtime property of the delegate object built by those add_* calls, not something these three call sites fix by themselves.",
+    "Whether these BLR targets are ever anything other than the Action-shaped single/multicast dispatch already described (reflection, dynamically rebuilt delegates) is not ruled out.",
+    "No device/runtime observation of these three calls was performed."
+  ],
+  "status": "static_candidate_not_runtime_validated"
+}

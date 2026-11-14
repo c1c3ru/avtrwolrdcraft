@@ -1,0 +1,170 @@
+23afa08  str    x30, [sp, #-0x30]!
+23afa0c  stp    x22, x21, [sp, #0x10]
+23afa10  stp    x20, x19, [sp, #0x20]
+23afa14  adrp   x20, #0x44fe000
+23afa18  ldrb   w8, [x20, #0x66a]
+23afa1c  mov    x19, x0
+23afa20  tbnz   w8, #0, #0x23afa44
+23afa24  adrp   x0, #0x41b8000
+23afa28  ldr    x0, [x0, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23afa2c  bl     #0x1b886e8
+23afa30  adrp   x0, #0x41ac000
+23afa34  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+23afa38  bl     #0x1b886e8
+23afa3c  mov    w8, #1
+23afa40  strb   w8, [x20, #0x66a]
+23afa44  ldr    x20, [x19, #0x10]
+23afa48  cbz    x20, #0x23afcac
+23afa4c  adrp   x21, #0x41b8000
+23afa50  ldr    x8, [x20]
+23afa54  ldr    x21, [x21, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23afa58  adrp   x22, #0x41ac000
+23afa5c  ldrh   w9, [x8, #0x12e]
+23afa60  ldr    x1, [x21]
+23afa64  ldr    x22, [x22, #0xbb8]  ; type UnityEngine.Object
+23afa68  cbz    x9, #0x23afa8c
+23afa6c  ldr    x10, [x8, #0xb0]
+23afa70  add    x10, x10, #8
+23afa74  ldur   x11, [x10, #-8]
+23afa78  cmp    x11, x1
+23afa7c  b.eq   #0x23afa9c
+23afa80  subs   x9, x9, #1
+23afa84  add    x10, x10, #0x10
+23afa88  b.ne   #0x23afa74
+23afa8c  mov    x0, x20
+23afa90  mov    w2, wzr
+23afa94  bl     #0x1b7ba44
+23afa98  b      #0x23afaa8
+23afa9c  ldrsw  x9, [x10]
+23afaa0  add    x8, x8, x9, lsl #4
+23afaa4  add    x0, x8, #0x138
+23afaa8  ldp    x8, x1, [x0]
+23afaac  mov    x0, x20
+23afab0  blr    x8
+23afab4  ldr    x8, [x22]
+23afab8  mov    x20, x0
+23afabc  ldr    w9, [x8, #0xe0]
+23afac0  cbnz   w9, #0x23afacc
+23afac4  mov    x0, x8
+23afac8  bl     #0x1b8885c
+23afacc  mov    x0, x20
+23afad0  mov    x1, xzr
+23afad4  mov    x2, xzr
+23afad8  bl     #0x3ccb8d8
+23afadc  tbz    w0, #0, #0x23afaf0
+23afae0  ldp    x20, x19, [sp, #0x20]
+23afae4  ldp    x22, x21, [sp, #0x10]
+23afae8  ldr    x30, [sp], #0x30
+23afaec  ret    
+23afaf0  ldr    x20, [x19, #0x10]
+23afaf4  cbz    x20, #0x23afcac
+23afaf8  ldr    x8, [x20]
+23afafc  ldr    x1, [x21]
+23afb00  ldrh   w9, [x8, #0x12e]
+23afb04  cbz    x9, #0x23afb28
+23afb08  ldr    x10, [x8, #0xb0]
+23afb0c  add    x10, x10, #8
+23afb10  ldur   x11, [x10, #-8]
+23afb14  cmp    x11, x1
+23afb18  b.eq   #0x23afb38
+23afb1c  subs   x9, x9, #1
+23afb20  add    x10, x10, #0x10
+23afb24  b.ne   #0x23afb10
+23afb28  mov    x0, x20
+23afb2c  mov    w2, wzr
+23afb30  bl     #0x1b7ba44
+23afb34  b      #0x23afb44
+23afb38  ldrsw  x9, [x10]
+23afb3c  add    x8, x8, x9, lsl #4
+23afb40  add    x0, x8, #0x138
+23afb44  ldp    x8, x1, [x0]
+23afb48  mov    x0, x20
+23afb4c  blr    x8
+23afb50  cbz    x0, #0x23afcac
+23afb54  ldr    x8, [x0]
+23afb58  ldp    x1, x2, [x19, #0x10]
+23afb5c  ldr    x9, [x8, #0x288]
+23afb60  ldr    x3, [x8, #0x290]
+23afb64  blr    x9
+23afb68  ldr    x20, [x19, #0x10]
+23afb6c  cbz    x20, #0x23afcac
+23afb70  ldr    x8, [x20]
+23afb74  ldr    x1, [x21]
+23afb78  ldrh   w9, [x8, #0x12e]
+23afb7c  cbz    x9, #0x23afba0
+23afb80  ldr    x10, [x8, #0xb0]
+23afb84  add    x10, x10, #8
+23afb88  ldur   x11, [x10, #-8]
+23afb8c  cmp    x11, x1
+23afb90  b.eq   #0x23afbb0
+23afb94  subs   x9, x9, #1
+23afb98  add    x10, x10, #0x10
+23afb9c  b.ne   #0x23afb88
+23afba0  mov    w2, #5
+23afba4  mov    x0, x20
+23afba8  bl     #0x1b7ba44  ; IFACE ICATarget.set_CurrentCAPlayType
+23afbac  b      #0x23afbc0
+23afbb0  ldr    w9, [x10]
+23afbb4  add    w9, w9, #5
+23afbb8  add    x8, x8, w9, sxtw #4
+23afbbc  add    x0, x8, #0x138
+23afbc0  ldp    x8, x2, [x0]
+23afbc4  mov    x0, x20
+23afbc8  mov    w1, wzr
+23afbcc  blr    x8
+23afbd0  ldr    x20, [x19, #0x10]
+23afbd4  cbz    x20, #0x23afcac
+23afbd8  ldr    x8, [x20]
+23afbdc  ldr    x1, [x21]
+23afbe0  ldrh   w9, [x8, #0x12e]
+23afbe4  cbz    x9, #0x23afc08
+23afbe8  ldr    x10, [x8, #0xb0]
+23afbec  add    x10, x10, #8
+23afbf0  ldur   x11, [x10, #-8]
+23afbf4  cmp    x11, x1
+23afbf8  b.eq   #0x23afc18
+23afbfc  subs   x9, x9, #1
+23afc00  add    x10, x10, #0x10
+23afc04  b.ne   #0x23afbf0
+23afc08  mov    w2, #3
+23afc0c  mov    x0, x20
+23afc10  bl     #0x1b7ba44  ; IFACE ICATarget.set_CurrentCAConfig
+23afc14  b      #0x23afc28
+23afc18  ldr    w9, [x10]
+23afc1c  add    w9, w9, #3
+23afc20  add    x8, x8, w9, sxtw #4
+23afc24  add    x0, x8, #0x138
+23afc28  ldp    x8, x2, [x0]
+23afc2c  mov    x0, x20
+23afc30  mov    x1, xzr
+23afc34  blr    x8
+23afc38  ldr    x19, [x19, #0x10]
+23afc3c  cbz    x19, #0x23afcac
+23afc40  ldr    x8, [x19]
+23afc44  ldr    x1, [x21]
+23afc48  ldrh   w9, [x8, #0x12e]
+23afc4c  cbz    x9, #0x23afc70
+23afc50  ldr    x10, [x8, #0xb0]
+23afc54  add    x10, x10, #8
+23afc58  ldur   x11, [x10, #-8]
+23afc5c  cmp    x11, x1
+23afc60  b.eq   #0x23afc80
+23afc64  subs   x9, x9, #1
+23afc68  add    x10, x10, #0x10
+23afc6c  b.ne   #0x23afc58
+23afc70  mov    w2, #1
+23afc74  mov    x0, x19
+23afc78  bl     #0x1b7ba44  ; IFACE ICATarget.set_CurrentCAHandler
+23afc7c  b      #0x23afc90
+23afc80  ldr    w9, [x10]
+23afc84  add    w9, w9, #1
+23afc88  add    x8, x8, w9, sxtw #4
+23afc8c  add    x0, x8, #0x138
+23afc90  ldp    x3, x2, [x0]
+23afc94  mov    x0, x19
+23afc98  ldp    x20, x19, [sp, #0x20]
+23afc9c  ldp    x22, x21, [sp, #0x10]
+23afca0  mov    x1, xzr
+23afca4  ldr    x30, [sp], #0x30
+23afca8  br     x3
+23afcac  bl     #0x1b88980

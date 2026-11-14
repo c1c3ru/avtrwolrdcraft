@@ -1,0 +1,198 @@
+1e3c7f8  sub    sp, sp, #0x40
+1e3c7fc  stp    x30, x23, [sp, #0x10]
+1e3c800  stp    x22, x21, [sp, #0x20]
+1e3c804  stp    x20, x19, [sp, #0x30]
+1e3c808  adrp   x21, #0x44fa000
+1e3c80c  adrp   x20, #0x41bb000
+1e3c810  ldrb   w8, [x21, #0xeba]
+1e3c814  ldr    x20, [x20, #0xa58]  ; type <>c__DisplayClass6_0
+1e3c818  mov    x22, x1
+1e3c81c  mov    x19, x0
+1e3c820  tbnz   w8, #0, #0x1e3c8bc
+1e3c824  adrp   x0, #0x41b8000
+1e3c828  ldr    x0, [x0, #0xda0]
+1e3c82c  bl     #0x1b886e8
+1e3c830  adrp   x0, #0x41ac000
+1e3c834  ldr    x0, [x0, #0xeb0]
+1e3c838  bl     #0x1b886e8
+1e3c83c  adrp   x0, #0x41bb000
+1e3c840  ldr    x0, [x0, #0xa60]
+1e3c844  bl     #0x1b886e8
+1e3c848  adrp   x0, #0x41bb000
+1e3c84c  ldr    x0, [x0, #0xa68]
+1e3c850  bl     #0x1b886e8
+1e3c854  adrp   x0, #0x41bb000
+1e3c858  ldr    x0, [x0, #0xa70]
+1e3c85c  bl     #0x1b886e8
+1e3c860  adrp   x0, #0x41bb000
+1e3c864  ldr    x0, [x0, #0xa78]
+1e3c868  bl     #0x1b886e8
+1e3c86c  adrp   x0, #0x41ac000
+1e3c870  ldr    x0, [x0, #0xb90]  ; type LeanTween
+1e3c874  bl     #0x1b886e8
+1e3c878  adrp   x0, #0x41bb000
+1e3c87c  ldr    x0, [x0, #0xa80]
+1e3c880  bl     #0x1b886e8
+1e3c884  adrp   x0, #0x41ac000
+1e3c888  ldr    x0, [x0, #0xbf0]  ; type PWC.PWCUtils
+1e3c88c  bl     #0x1b886e8
+1e3c890  adrp   x0, #0x41bb000
+1e3c894  ldr    x0, [x0, #0xa88]
+1e3c898  bl     #0x1b886e8
+1e3c89c  adrp   x0, #0x41bb000
+1e3c8a0  ldr    x0, [x0, #0xa58]  ; type <>c__DisplayClass6_0
+1e3c8a4  bl     #0x1b886e8
+1e3c8a8  adrp   x0, #0x41bb000
+1e3c8ac  ldr    x0, [x0, #0xa90]  ; "Moving_Left"
+1e3c8b0  bl     #0x1b886e8
+1e3c8b4  mov    w8, #1
+1e3c8b8  strb   w8, [x21, #0xeba]
+1e3c8bc  ldr    x0, [x20]
+1e3c8c0  str    wzr, [sp, #0xc]
+1e3c8c4  bl     #0x1b88970
+1e3c8c8  mov    x1, xzr
+1e3c8cc  mov    x20, x0
+1e3c8d0  bl     #0x339a46c
+1e3c8d4  cbz    x20, #0x1e3cb0c
+1e3c8d8  mov    x21, x20
+1e3c8dc  str    x22, [x21, #0x10]!
+1e3c8e0  mov    x0, x21
+1e3c8e4  mov    x1, x22
+1e3c8e8  bl     #0x1b88694
+1e3c8ec  mov    x0, x20
+1e3c8f0  str    x19, [x0, #0x20]!
+1e3c8f4  mov    x1, x19
+1e3c8f8  bl     #0x1b88694
+1e3c8fc  ldr    x0, [x19, #0x28]
+1e3c900  cbz    x0, #0x1e3cb0c
+1e3c904  adrp   x22, #0x41bb000
+1e3c908  ldr    x22, [x22, #0xa90]  ; "Moving_Left"
+1e3c90c  mov    x1, xzr
+1e3c910  bl     #0x351908c
+1e3c914  ldr    x1, [x22]
+1e3c918  mov    x2, xzr
+1e3c91c  bl     #0x31d39e4
+1e3c920  tst    w0, #1
+1e3c924  mov    w8, #-1
+1e3c928  cneg   w8, w8, eq
+1e3c92c  str    w8, [x20, #0x18]
+1e3c930  ldr    x0, [x19, #0x30]
+1e3c934  cbz    x0, #0x1e3cb0c
+1e3c938  adrp   x8, #0x41bb000
+1e3c93c  ldr    x8, [x8, #0xa68]
+1e3c940  ldr    x1, [x21]
+1e3c944  ldr    x2, [x8]
+1e3c948  bl     #0x28f3904
+1e3c94c  ldr    x8, [x19, #0x30]
+1e3c950  cbz    x8, #0x1e3cb0c
+1e3c954  ldr    x1, [x21]
+1e3c958  tbz    w0, #0, #0x1e3c9c0
+1e3c95c  adrp   x9, #0x41bb000
+1e3c960  ldr    x9, [x9, #0xa70]
+1e3c964  mov    x0, x8
+1e3c968  ldr    x2, [x9]
+1e3c96c  bl     #0x28f3690
+1e3c970  str    w0, [sp, #0xc]
+1e3c974  ldr    x0, [x21]
+1e3c978  cbz    x0, #0x1e3cb0c
+1e3c97c  mov    x1, xzr
+1e3c980  bl     #0x3cc84e4
+1e3c984  adrp   x8, #0x41ac000
+1e3c988  ldr    x8, [x8, #0xbf0]  ; type PWC.PWCUtils
+1e3c98c  mov    x22, x0
+1e3c990  ldr    x8, [x8]
+1e3c994  ldr    w9, [x8, #0xe0]
+1e3c998  cbnz   w9, #0x1e3c9a4
+1e3c99c  mov    x0, x8
+1e3c9a0  bl     #0x1b8885c
+1e3c9a4  add    x1, sp, #0xc
+1e3c9a8  mov    x0, x22
+1e3c9ac  mov    w2, wzr
+1e3c9b0  mov    w3, wzr
+1e3c9b4  mov    x4, xzr
+1e3c9b8  bl     #0x2082868  ; -> PWCUtils.TryCancelTween
+1e3c9bc  b      #0x1e3ca1c
+1e3c9c0  adrp   x9, #0x41bb000
+1e3c9c4  ldr    x9, [x9, #0xa60]
+1e3c9c8  mov    x0, x8
+1e3c9cc  mov    w2, wzr
+1e3c9d0  ldr    x3, [x9]
+1e3c9d4  bl     #0x28f3710
+1e3c9d8  adrp   x8, #0x41b8000
+1e3c9dc  ldr    x22, [x21]
+1e3c9e0  ldr    x8, [x8, #0xda0]
+1e3c9e4  ldr    x0, [x8]
+1e3c9e8  bl     #0x1b88970
+1e3c9ec  adrp   x8, #0x41bb000
+1e3c9f0  ldr    x8, [x8, #0xa80]
+1e3c9f4  mov    x1, x19
+1e3c9f8  mov    x3, xzr
+1e3c9fc  mov    x23, x0
+1e3ca00  ldr    x2, [x8]
+1e3ca04  bl     #0x2889574
+1e3ca08  cbz    x22, #0x1e3cb0c
+1e3ca0c  mov    x0, x22
+1e3ca10  mov    x1, x23
+1e3ca14  mov    x2, xzr
+1e3ca18  bl     #0x206a8fc  ; -> DragDropItemBase.add_OnClickAction
+1e3ca1c  ldr    x21, [x21]
+1e3ca20  cbz    x21, #0x1e3cb0c
+1e3ca24  adrp   x22, #0x41ac000
+1e3ca28  ldr    x19, [x19, #0x30]
+1e3ca2c  ldr    x22, [x22, #0xb90]  ; type LeanTween
+1e3ca30  mov    x0, x21
+1e3ca34  mov    x1, xzr
+1e3ca38  bl     #0x3cc84e4
+1e3ca3c  ldr    x8, [x22]
+1e3ca40  ldr    w23, [x20, #0x18]
+1e3ca44  mov    x22, x0
+1e3ca48  ldr    w9, [x8, #0xe0]
+1e3ca4c  cbnz   w9, #0x1e3ca58
+1e3ca50  mov    x0, x8
+1e3ca54  bl     #0x1b8885c
+1e3ca58  scvtf  s0, w23
+1e3ca5c  fmov   s1, #17.00000000
+1e3ca60  fmul   s0, s0, s1
+1e3ca64  fmov   s1, #1.00000000
+1e3ca68  mov    x0, x22
+1e3ca6c  mov    x1, xzr
+1e3ca70  bl     #0x1c78ab4  ; -> LeanTween.moveLocalX
+1e3ca74  cbz    x0, #0x1e3cb0c
+1e3ca78  adrp   x22, #0x41ac000
+1e3ca7c  adrp   x23, #0x41bb000
+1e3ca80  ldr    x22, [x22, #0xeb0]
+1e3ca84  ldr    x23, [x23, #0xa88]
+1e3ca88  fmov   s0, #1.00000000
+1e3ca8c  mov    x1, xzr
+1e3ca90  bl     #0x1d93d50  ; -> LTDescr.setSpeed
+1e3ca94  ldr    x8, [x22]
+1e3ca98  mov    x22, x0
+1e3ca9c  mov    x0, x8
+1e3caa0  bl     #0x1b88970
+1e3caa4  ldr    x2, [x23]
+1e3caa8  mov    x1, x20
+1e3caac  mov    x3, xzr
+1e3cab0  mov    x23, x0
+1e3cab4  bl     #0x32cd13c
+1e3cab8  cbz    x22, #0x1e3cb0c
+1e3cabc  mov    x0, x22
+1e3cac0  mov    x1, x23
+1e3cac4  mov    x2, xzr
+1e3cac8  bl     #0x1d93e90  ; -> LTDescr.setOnComplete
+1e3cacc  cbz    x0, #0x1e3cb0c
+1e3cad0  mov    x1, xzr
+1e3cad4  bl     #0x1d8b480  ; -> LTDescr.get_id
+1e3cad8  cbz    x19, #0x1e3cb0c
+1e3cadc  adrp   x8, #0x41bb000
+1e3cae0  ldr    x8, [x8, #0xa78]
+1e3cae4  mov    w2, w0
+1e3cae8  mov    x0, x19
+1e3caec  mov    x1, x21
+1e3caf0  ldr    x3, [x8]
+1e3caf4  bl     #0x28f36fc
+1e3caf8  ldp    x20, x19, [sp, #0x30]
+1e3cafc  ldp    x22, x21, [sp, #0x20]
+1e3cb00  ldp    x30, x23, [sp, #0x10]
+1e3cb04  add    sp, sp, #0x40
+1e3cb08  ret    
+1e3cb0c  bl     #0x1b88980

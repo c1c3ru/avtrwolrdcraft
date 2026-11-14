@@ -1,0 +1,265 @@
+23acdb0  str    x30, [sp, #-0x40]!
+23acdb4  stp    x24, x23, [sp, #0x10]
+23acdb8  stp    x22, x21, [sp, #0x20]
+23acdbc  stp    x20, x19, [sp, #0x30]
+23acdc0  adrp   x22, #0x44fe000
+23acdc4  ldrb   w8, [x22, #0x65c]
+23acdc8  mov    w21, w2
+23acdcc  mov    x20, x1
+23acdd0  mov    x19, x0
+23acdd4  tbnz   w8, #0, #0x23ace10
+23acdd8  adrp   x0, #0x41bd000
+23acddc  ldr    x0, [x0, #0x548]
+23acde0  bl     #0x1b886e8
+23acde4  adrp   x0, #0x41b8000
+23acde8  ldr    x0, [x0, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23acdec  bl     #0x1b886e8
+23acdf0  adrp   x0, #0x41dc000
+23acdf4  ldr    x0, [x0, #0xf20]
+23acdf8  bl     #0x1b886e8
+23acdfc  adrp   x0, #0x41ac000
+23ace00  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+23ace04  bl     #0x1b886e8
+23ace08  mov    w8, #1
+23ace0c  strb   w8, [x22, #0x65c]
+23ace10  cbz    x19, #0x23ad1d0
+23ace14  adrp   x23, #0x41b8000
+23ace18  ldr    x8, [x19]
+23ace1c  ldr    x23, [x23, #0x9e8]  ; type PWC.Level.ContextualAnimation.ICATarget
+23ace20  ldrh   w9, [x8, #0x12e]
+23ace24  ldr    x1, [x23]
+23ace28  cbz    x9, #0x23ace4c
+23ace2c  ldr    x10, [x8, #0xb0]
+23ace30  add    x10, x10, #8
+23ace34  ldur   x11, [x10, #-8]
+23ace38  cmp    x11, x1
+23ace3c  b.eq   #0x23ace5c
+23ace40  subs   x9, x9, #1
+23ace44  add    x10, x10, #0x10
+23ace48  b.ne   #0x23ace34
+23ace4c  mov    w2, #0xa
+23ace50  mov    x0, x19
+23ace54  bl     #0x1b7ba44  ; IFACE ICATarget.get_CAHandlers
+23ace58  b      #0x23ace6c
+23ace5c  ldr    w9, [x10]
+23ace60  add    w9, w9, #0xa
+23ace64  add    x8, x8, w9, sxtw #4
+23ace68  add    x0, x8, #0x138
+23ace6c  ldp    x8, x1, [x0]
+23ace70  mov    x0, x19
+23ace74  blr    x8
+23ace78  cbz    x0, #0x23ad1d0
+23ace7c  adrp   x8, #0x41dc000
+23ace80  ldr    x8, [x8, #0xf20]
+23ace84  mov    x1, x20
+23ace88  ldr    x2, [x8]
+23ace8c  bl     #0x2cf1ce4
+23ace90  tbz    w0, #0, #0x23ad1bc
+23ace94  cbz    x20, #0x23ad1d0
+23ace98  ldr    x8, [x20]
+23ace9c  mov    x0, x20
+23acea0  mov    x1, x19
+23acea4  ldr    x9, [x8, #0x208]
+23acea8  ldr    x2, [x8, #0x210]
+23aceac  blr    x9
+23aceb0  ldr    x8, [x19]
+23aceb4  ldr    x1, [x23]
+23aceb8  ldrh   w9, [x8, #0x12e]
+23acebc  cbz    x9, #0x23acee0
+23acec0  ldr    x10, [x8, #0xb0]
+23acec4  add    x10, x10, #8
+23acec8  ldur   x11, [x10, #-8]
+23acecc  cmp    x11, x1
+23aced0  b.eq   #0x23acef0
+23aced4  subs   x9, x9, #1
+23aced8  add    x10, x10, #0x10
+23acedc  b.ne   #0x23acec8
+23acee0  mov    w2, #8
+23acee4  mov    x0, x19
+23acee8  bl     #0x1b7ba44  ; IFACE ICATarget.get_LockedCAHandler
+23aceec  b      #0x23acf00
+23acef0  ldr    w9, [x10]
+23acef4  add    w9, w9, #8
+23acef8  add    x8, x8, w9, sxtw #4
+23acefc  add    x0, x8, #0x138
+23acf00  ldp    x8, x1, [x0]
+23acf04  mov    x0, x19
+23acf08  blr    x8
+23acf0c  adrp   x24, #0x41ac000
+23acf10  ldr    x24, [x24, #0xbb8]  ; type UnityEngine.Object
+23acf14  mov    x22, x0
+23acf18  ldr    x8, [x24]
+23acf1c  ldr    w9, [x8, #0xe0]
+23acf20  cbnz   w9, #0x23acf2c
+23acf24  mov    x0, x8
+23acf28  bl     #0x1b8885c
+23acf2c  mov    x0, x22
+23acf30  mov    x1, x20
+23acf34  mov    x2, xzr
+23acf38  bl     #0x3ccb8d8
+23acf3c  mov    w22, w0
+23acf40  tbz    w0, #0, #0x23acfa4
+23acf44  ldr    x8, [x19]
+23acf48  ldr    x1, [x23]
+23acf4c  ldrh   w9, [x8, #0x12e]
+23acf50  cbz    x9, #0x23acf74
+23acf54  ldr    x10, [x8, #0xb0]
+23acf58  add    x10, x10, #8
+23acf5c  ldur   x11, [x10, #-8]
+23acf60  cmp    x11, x1
+23acf64  b.eq   #0x23acf84
+23acf68  subs   x9, x9, #1
+23acf6c  add    x10, x10, #0x10
+23acf70  b.ne   #0x23acf5c
+23acf74  mov    w2, #9
+23acf78  mov    x0, x19
+23acf7c  bl     #0x1b7ba44  ; IFACE ICATarget.set_LockedCAHandler
+23acf80  b      #0x23acf94
+23acf84  ldr    w9, [x10]
+23acf88  add    w9, w9, #9
+23acf8c  add    x8, x8, w9, sxtw #4
+23acf90  add    x0, x8, #0x138
+23acf94  ldp    x8, x2, [x0]
+23acf98  mov    x0, x19
+23acf9c  mov    x1, xzr
+23acfa0  blr    x8
+23acfa4  tbz    w21, #0, #0x23ad104
+23acfa8  ldr    x8, [x19]
+23acfac  ldr    x1, [x23]
+23acfb0  ldrh   w9, [x8, #0x12e]
+23acfb4  cbz    x9, #0x23acfd8
+23acfb8  ldr    x10, [x8, #0xb0]
+23acfbc  add    x10, x10, #8
+23acfc0  ldur   x11, [x10, #-8]
+23acfc4  cmp    x11, x1
+23acfc8  b.eq   #0x23acfe8
+23acfcc  subs   x9, x9, #1
+23acfd0  add    x10, x10, #0x10
+23acfd4  b.ne   #0x23acfc0
+23acfd8  mov    w2, #0xb
+23acfdc  mov    x0, x19
+23acfe0  bl     #0x1b7ba44  ; IFACE ICATarget.get_IsMoving
+23acfe4  b      #0x23acff8
+23acfe8  ldr    w9, [x10]
+23acfec  add    w9, w9, #0xb
+23acff0  add    x8, x8, w9, sxtw #4
+23acff4  add    x0, x8, #0x138
+23acff8  ldp    x8, x1, [x0]
+23acffc  mov    x0, x19
+23ad000  blr    x8
+23ad004  tbnz   w0, #0, #0x23ad104
+23ad008  tbnz   w22, #0, #0x23ad090
+23ad00c  ldr    x8, [x19]
+23ad010  ldr    x1, [x23]
+23ad014  ldrh   w9, [x8, #0x12e]
+23ad018  cbz    x9, #0x23ad03c
+23ad01c  ldr    x10, [x8, #0xb0]
+23ad020  add    x10, x10, #8
+23ad024  ldur   x11, [x10, #-8]
+23ad028  cmp    x11, x1
+23ad02c  b.eq   #0x23ad04c
+23ad030  subs   x9, x9, #1
+23ad034  add    x10, x10, #0x10
+23ad038  b.ne   #0x23ad024
+23ad03c  mov    x0, x19
+23ad040  mov    w2, wzr
+23ad044  bl     #0x1b7ba44  ; IFACE ICATarget.get_IsMoving
+23ad048  b      #0x23ad058
+23ad04c  ldrsw  x9, [x10]
+23ad050  add    x8, x8, x9, lsl #4
+23ad054  add    x0, x8, #0x138
+23ad058  ldp    x8, x1, [x0]
+23ad05c  mov    x0, x19
+23ad060  blr    x8
+23ad064  ldr    x8, [x24]
+23ad068  mov    x21, x0
+23ad06c  ldr    w9, [x8, #0xe0]
+23ad070  cbnz   w9, #0x23ad07c
+23ad074  mov    x0, x8
+23ad078  bl     #0x1b8885c
+23ad07c  mov    x0, x20
+23ad080  mov    x1, x21
+23ad084  mov    x2, xzr
+23ad088  bl     #0x3ccb8d8
+23ad08c  tbz    w0, #0, #0x23ad104
+23ad090  ldr    x8, [x20]
+23ad094  mov    x0, x20
+23ad098  ldr    x9, [x8, #0x378]
+23ad09c  ldr    x1, [x8, #0x380]
+23ad0a0  blr    x9
+23ad0a4  tbz    w0, #0, #0x23ad104
+23ad0a8  ldr    x8, [x19]
+23ad0ac  ldr    x1, [x23]
+23ad0b0  ldrh   w9, [x8, #0x12e]
+23ad0b4  cbz    x9, #0x23ad0d8
+23ad0b8  ldr    x10, [x8, #0xb0]
+23ad0bc  add    x10, x10, #8
+23ad0c0  ldur   x11, [x10, #-8]
+23ad0c4  cmp    x11, x1
+23ad0c8  b.eq   #0x23ad0e8
+23ad0cc  subs   x9, x9, #1
+23ad0d0  add    x10, x10, #0x10
+23ad0d4  b.ne   #0x23ad0c0
+23ad0d8  mov    w2, #0xe
+23ad0dc  mov    x0, x19
+23ad0e0  bl     #0x1b7ba44  ; IFACE ICATarget.ReturnToIdleAnimation
+23ad0e4  b      #0x23ad0f8
+23ad0e8  ldr    w9, [x10]
+23ad0ec  add    w9, w9, #0xe
+23ad0f0  add    x8, x8, w9, sxtw #4
+23ad0f4  add    x0, x8, #0x138
+23ad0f8  ldp    x8, x1, [x0]
+23ad0fc  mov    x0, x19
+23ad100  blr    x8
+23ad104  ldr    x8, [x19]
+23ad108  ldr    x1, [x23]
+23ad10c  ldrh   w9, [x8, #0x12e]
+23ad110  cbz    x9, #0x23ad134
+23ad114  ldr    x10, [x8, #0xb0]
+23ad118  add    x10, x10, #8
+23ad11c  ldur   x11, [x10, #-8]
+23ad120  cmp    x11, x1
+23ad124  b.eq   #0x23ad144
+23ad128  subs   x9, x9, #1
+23ad12c  add    x10, x10, #0x10
+23ad130  b.ne   #0x23ad11c
+23ad134  mov    w2, #0x13
+23ad138  mov    x0, x19
+23ad13c  bl     #0x1b7ba44  ; IFACE ICATarget.OnCARemoved
+23ad140  b      #0x23ad154
+23ad144  ldr    w9, [x10]
+23ad148  add    w9, w9, #0x13
+23ad14c  add    x8, x8, w9, sxtw #4
+23ad150  add    x0, x8, #0x138
+23ad154  ldp    x8, x1, [x0]
+23ad158  mov    x0, x19
+23ad15c  blr    x8
+23ad160  adrp   x8, #0x41bd000
+23ad164  ldr    x8, [x8, #0x548]
+23ad168  ldr    x8, [x8]
+23ad16c  ldr    x8, [x8, #0xb8]
+23ad170  ldr    x21, [x8, #8]  ; type <MakeFishEatFood>d__16
+23ad174  cbz    x21, #0x23ad1bc
+23ad178  ldr    x8, [x20]
+23ad17c  mov    x0, x20
+23ad180  ldr    x9, [x8, #0x488]  ; "Stealing_Food"
+23ad184  ldr    x1, [x8, #0x490]  ; "Sitting_Sleeping"
+23ad188  blr    x9
+23ad18c  ldr    x8, [x21, #0x40]
+23ad190  ldr    x5, [x21, #0x18]
+23ad194  ldr    x4, [x21, #0x28]
+23ad198  mov    x1, x19
+23ad19c  ldp    x20, x19, [sp, #0x30]
+23ad1a0  ldp    x22, x21, [sp, #0x20]
+23ad1a4  ldp    x24, x23, [sp, #0x10]
+23ad1a8  and    w3, w0, #1
+23ad1ac  mov    x0, x8
+23ad1b0  mov    w2, wzr
+23ad1b4  ldr    x30, [sp], #0x40
+23ad1b8  br     x5
+23ad1bc  ldp    x20, x19, [sp, #0x30]
+23ad1c0  ldp    x22, x21, [sp, #0x20]
+23ad1c4  ldp    x24, x23, [sp, #0x10]
+23ad1c8  ldr    x30, [sp], #0x40
+23ad1cc  ret    
+23ad1d0  bl     #0x1b88980

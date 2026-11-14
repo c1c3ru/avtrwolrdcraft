@@ -1,0 +1,90 @@
+{
+  "status": "add_remove_cancel_complete_cycle_recovered_via_callgraph_and_manual_trace",
+  "date": "2026-11-08",
+  "method": "tools/recon_disasm.py (capstone, resolves direct bl targets by address and annotates interface dispatch through the GetInterfaceInvokeData pattern) plus manual reading of the remaining indirect (blr) virtual calls, whose targets are on the handler's own class vtable (not the interface table) and are therefore not auto-named by the tool. Those handler-vtable-slot identifications are inferred from argument shape (ICATarget target[, LevelCAConfig config]) and call position, and are flagged as such, not claimed at the same confidence as the resolved IFACE/bl calls.",
+  "inputs": {
+    "libil2cpp.so": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+    "global-metadata.dat": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+    "assembly_csharp_methods.jsonl": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8"
+  },
+  "orchestrator_class": "PWC.Level.ContextualAnimation.CATargetExtensionMethods (extension methods on ICATarget; out/cpp2il/DiffableCs/.../CATargetExtensionMethods.cs)",
+  "add_cycle": {
+    "entry_points": {
+      "AddCAHandler@0x23aca54": "resolved (bl), confirmed body: target.CAHandlers.Add(handler) only -- no handler lifecycle hook is called from here.",
+      "AddCAHandlerAndUpdateGame@0x23ac654": "the real orchestrator; calls AddCAHandler then does the full setup below."
+    },
+    "order_confirmed": [
+      {"step": 1, "call": "handler vtable slot +0x198 (blr), args (handler, target)", "returns": "bool", "confidence": "inferred", "likely": "LevelCAHandlerBase.IsValidForTarget(ICATarget) -- gates the whole add; aborts if false"},
+      {"step": 2, "call": "ICATarget.get_CAHandlers (IFACE, resolved)", "then": "List<LevelCAHandlerBase>.Contains(handler) via bl 0x2cf0aac", "note": "duplicate-add guard: aborts (no-op) if handler is already in the list"},
+      {"step": 3, "call": "CATargetExtensionMethods.AddCAHandler (bl, resolved)", "effect": "appends handler to target.CAHandlers"},
+      {"step": 4, "call": "handler vtable slot +0x338-ish area (blr), this-only", "returns": "bool", "confidence": "inferred_low", "note": "a further per-handler bool gate before animation/lock setup; exact method not pinned down"},
+      {"step": 5, "calls": ["ICATarget.set_LockedCAHandler (IFACE)", "ICATarget.OnAddedCAHandlerWithLockedAnimation (IFACE)", "ICATarget.get_LockedCAHandler (IFACE, x2)"], "resolved": true},
+      {"step": 6, "call": "ICATarget.SetAnimation (IFACE, resolved)"},
+      {"step": 7, "call": "CATargetExtensionMethods.SetForceSitIfNeeded (bl, resolved)"},
+      {"step": 8, "call": "handler vtable slot +0x1f8 (blr), args (handler, target), void", "confidence": "inferred", "likely": "LevelCAHandlerBase.OnAddedToTarget(ICATarget target) -- called LAST, after the target's lock/animation state is already set up, not before"},
+      {"step": 9, "call": "handler vtable slot +0x3a8 (blr), args (handler, target)", "returns": "bool", "confidence": "inferred_low", "likely": "LevelCAHandlerBase.TryForceToSit(ICATarget) or similar", "then": "on true, spawns a special-case coroutine referencing a type literally named <MakeFishEatFood>d__16 (confirmed string/type literal in the disassembly) -- i.e. there is at least one handler-specific post-add special case hard-coded into the generic orchestrator."}
+    ],
+    "evidence_asm": [
+      "out/recon/tasks/T035/lifecycle-asm/AddCAHandler_23aca54.asm.txt",
+      "out/recon/tasks/T035/lifecycle-asm/AddCAHandlerAndUpdateGame_23ac654.asm.txt"
+    ]
+  },
+  "remove_cycle": {
+    "entry_point": "RemoveCAHandlerAndUpdateGame@0x23acdb0",
+    "order_confirmed": [
+      {"step": 1, "call": "ICATarget.get_CAHandlers (IFACE, resolved)"},
+      {"step": 2, "call": "List<LevelCAHandlerBase>.Remove(handler) via bl 0x2cf1ce4 (same runtime generic method address observed independently in the T033 AddItemSpritesOutsideAnyPack trace, which cross-checks the identification)", "note": "aborts (no further effect) if the handler was not actually in the list"},
+      {"step": 3, "call": "handler vtable slot +0x208 (blr), args (handler, target), void", "confidence": "inferred", "likely": "LevelCAHandlerBase.OnRemovedFromTarget(ICATarget target) -- called IMMEDIATELY after the list removal succeeds, i.e. BEFORE any target-side cleanup. This is the opposite ordering from Add, where the handler's own hook (OnAddedToTarget) runs LAST, after target-side setup."},
+      {"step": 4, "calls": ["ICATarget.get_LockedCAHandler (IFACE)", "ICATarget.set_LockedCAHandler (IFACE)", "ICATarget.get_IsMoving (IFACE, x2)", "ICATarget.ReturnToIdleAnimation (IFACE)", "ICATarget.OnCARemoved (IFACE)"], "resolved": true}
+    ],
+    "evidence_asm": "out/recon/tasks/T035/lifecycle-asm/RemoveCAHandlerAndUpdateGame_23acdb0.asm.txt"
+  },
+  "cancel_and_complete_cycle": {
+    "source": "the three Spine TrackEntry callbacks registered by CATargetExtensionMethods.PlayContextualAnimation as local functions, plus the shared cleanup local function. Addressable and disassembled individually by their compiler-generated names.",
+    "shared_cleanup_EndAnimation_g__0": {
+      "confirmed": "sets ICATarget.CurrentCAPlayType, .CurrentCAConfig and .CurrentCAHandler back (via 3 resolved IFACE setter calls) before a tail call (br x3) onward -- i.e. this is the common 'an animation is no longer the active one' state reset, shared by both the interrupt/cancel and the complete paths below.",
+      "evidence_asm": "out/recon/tasks/T035/lifecycle-asm/PlayContextualAnimation_EndAnimation_g0.asm.txt"
+    },
+    "cancel_OnInterruptOrEnd_g__1": {
+      "role": "registered as the Spine TrackEntry 'Complete'/interrupt delegate; this is the CANCEL path (fires when a track is interrupted, e.g. a new animation pre-empts the current one, as well as on ordinary non-looped completion of some tracks)",
+      "confirmed": "reads target.ContexualAnimationCounter (IFACE, resolved) and compares it against a counter value captured in the closure when PlayContextualAnimation started; if they differ, this is treated as a STALE callback (a newer animation has since started) and the function returns immediately without touching anything -- a generation-counter guard against races between overlapping animation requests. Only if the counter still matches does it tail-call into EndAnimation.",
+      "evidence_asm": "out/recon/tasks/T035/lifecycle-asm/PlayContextualAnimation_OnInterruptOrEnd_g1.asm.txt"
+    },
+    "complete_OnCompleteFullCycle_g__2": {
+      "role": "COMPLETE path for a fully looped animation cycle",
+      "confirmed": "fetches the target's current CA handler (via the same interface-cache pattern used elsewhere, IFACE call with selector 0 both times) TWICE in sequence (first attempt, null-ish check, re-fetch) before tail-calling (br x4) a method loaded from the handler's OWN vtable at offset +0x298, with args (handler, target, config).",
+      "confidence": "inferred_medium for the +0x298 identification",
+      "likely": "LevelCAHandlerBase.OnAnimationFullCycleEnd(ICATarget target, LevelCAConfig config) -- name and signature match exactly; this is also the only base-class method whose name contains 'FullCycle', matching the caller's own compiler-generated name OnCompleteFullCycle.",
+      "evidence_asm": "out/recon/tasks/T035/lifecycle-asm/PlayContextualAnimation_OnCompleteFullCycle_g2.asm.txt"
+    },
+    "complete_OnCompleteNotLooped_g__3": {
+      "role": "COMPLETE path for a non-looped (single-shot) animation finishing",
+      "confirmed_calls_in_order": [
+        "ICATarget.get_ContexualAnimationCounter (IFACE) -- same stale-callback guard as the cancel path",
+        "ICATarget.get_CurrentCAPlayType (IFACE)",
+        "conditionally calls OnCompleteFullCycle (bl, resolved) or EndAnimation (bl, resolved) depending on that play type",
+        "conditionally calls CATargetExtensionMethods.PlayContextualAnimation again (bl, resolved) -- i.e. this path can re-trigger a new PlayContextualAnimation on completion, which is the mechanism for 'repeat until something else happens' animations (e.g. idle loops composed of non-looped clips)",
+        "ICATarget.get_LockedCAHandler (IFACE, x2), ICATarget.ReturnToIdleAnimation (IFACE), ICATarget.SetAnimation (IFACE), CATargetExtensionMethods.SetForceSitIfNeeded (b, resolved)",
+        "ends with an unresolved tail call (br x2)"
+      ],
+      "confidence": "high for the resolved calls, open for the final br x2 target",
+      "evidence_asm": "out/recon/tasks/T035/lifecycle-asm/PlayContextualAnimation_OnCompleteNotLooped_g3.asm.txt"
+    }
+  },
+  "reaction_assets_followup": {
+    "scope": "docs/RECON_CONTEXTUAL_LINKS.md flagged 4 reaction entries across 2 assets needing reconciliation (Bubble_Blower_Tube_L209_Baby_ReactionData's 3 entries and ToddlerBookReadingAnimationsReactionsData2's 1 entry).",
+    "interpretation_added_this_session": "Both mismatches are the same shape: the reaction data stores an animation name with the 'CA/' engine prefix already baked in as a literal (e.g. 'CA/General/Look_Around_Amazed'), but the rig's own animation-name inventory (built from the raw Spine skeleton data) lists the name WITHOUT that prefix ('General/Look_Around_Amazed'). This is consistent with 'CA/' being added by LevelCAConfig.CreateAnimationName at runtime on top of whatever the handler's GetFolderName()+name resolves to (confirmed in docs/RECON_CONTEXTUAL_LINKS.md's own 'Construção do nome' section), while these specific ReactionData assets instead store the fully-prefixed string directly as authored data, bypassing CreateAnimationName. If so, the correct rig-membership check for these two entries should strip a leading 'CA/<folder>/' before comparing, which is exactly the alternative the existing audit already found present in the rig. This raises confidence in the existing candidate resolution from 'alternative candidate' to 'best-supported interpretation', but does not change any stored data and was not re-verified by running the verifier with a prefix-stripping rule.",
+    "not_done": "did not modify tools/recon_contextual_links.py to apply this rule; left as a next step."
+  },
+  "indirect_loads_followup": {
+    "scope": "docs/RECON_CONTEXTUAL_LINKS.md noted 85 of 974+71 LevelCA* data assets have no direct serialized PPtr reference resolved in the dumps scanned, and flagged 'carregamento por nome' (load-by-name) as a possible explanation.",
+    "checked_this_session": "PWC.PSDToLevel.LevelContextualAnimation.LevelCAItemHandlerWithData.GetData() (the main *WithData handler family, which owns the bulk of the 974 ItemHandlerData assets): its Data field is a plain serialized reference assigned directly by Unity, and GetData() just returns it -- no Resources.Load-by-name or string-keyed lookup in this class.",
+    "result": "negative finding only -- rules out this specific class as the source of the 85 orphan assets' indirect loading, does not identify the actual mechanism. Candidates not yet checked: LevelCAReactionsData consumers (FindReactionIfExist/GetResolvedReactionAnimationName's own data source), and the LevelCAParentHandlerBase / LevelCAItemOnBoneHandlerBase families."
+  },
+  "not_done_this_session": [
+    "No code changes to tools/recon_contextual_links.py or the T033 catalog tooling.",
+    "No device/EditMode/APK validation (deferred per existing policy).",
+    "Full resolution of the 85 orphan LevelCA* assets' loading mechanism.",
+    "Independent re-verification pass (second trace / mutation test) of the inferred handler-vtable-slot identifications (+0x198, +0x1f8, +0x208, +0x298, +0x338, +0x3a8)."
+  ]
+}

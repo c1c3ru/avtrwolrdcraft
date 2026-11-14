@@ -1,0 +1,2 @@
+{"unknown_id": "T025/HANDLER/000056fb/effects_0", "question": "this closes the long-open 'who clears IsSceneChangingInProgress' question from docs/RECON_NAVIGATION_CONTRACT.md (2026-11-04), but the Unity activeSceneChanged (Scene,LoadSceneMode) parameters themselves are unused in this window and the subscriber (un)registration lifetime/order remain open"}
+{"unknown_id": "T025/HANDLER/000056fb/body_and_cfg", "question": "Bounded window ends at next metadata start; full/noncontiguous body and exception CFG extents are not proven."}

@@ -17,6 +17,30 @@ class CallbackProbeTests(unittest.TestCase):
         self.assertEqual(calls['0x2073590']['metadata_targets'][0]['name'], 'LoadSceneImplement')
         self.assertEqual(calls['0x2073504']['target'], 0x2073578)
 
+    def test_multiplayer_guard_chain_names_mpmanager_statics(self):
+        guard = callback.probe(self.source)['multiplayer_guard']
+        self.assertEqual(guard['static_class'], 'PWC.Multiplayer.MPManager')
+        self.assertEqual(guard['static_flag']['offset'], '0x0')
+        self.assertEqual(guard['static_instance']['offset'], '0x38')
+        self.assertEqual(guard['host_only_call']['metadata_targets'][0]['name'], 'IsHostAndOnlyPlayer')
+
+    def test_multiplayer_path_sends_request_and_never_loads_locally(self):
+        sequence = callback.probe(self.source)['multiplayer_sequence']
+        names = [call['name'] for call in sequence['calls']]
+        self.assertEqual(names, callback.MP_CALLS)
+        self.assertLess(names.index('MPManager.SendWaitForPlayerForSceneChangeRequest'),
+                        names.index('MPUtils.DestroyAllGameObjectsInLoadedScenes'))
+        self.assertFalse(sequence['loads_scene_locally'])
+
+    def test_wrong_static_class_is_rejected(self):
+        original = callback.typedef_name
+        callback.typedef_name = lambda meta, usage: 'PWC.Other.Manager'
+        try:
+            with self.assertRaisesRegex(ValueError, 'static class is not MPManager'):
+                callback.probe(self.source)
+        finally:
+            callback.typedef_name = original
+
     def test_corrupted_local_load_symbol_is_rejected(self):
         with tempfile.TemporaryDirectory() as temporary:
             source = Path(temporary)

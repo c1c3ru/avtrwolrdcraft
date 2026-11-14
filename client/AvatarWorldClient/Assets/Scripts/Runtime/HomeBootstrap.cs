@@ -112,6 +112,14 @@ namespace AvatarWorld.Runtime
                     store.RefreshCoins();
                     store.SelectCategory(store.Category);
                 });
+            }, () =>
+            {
+                // "Criador de Avatar" no trilho: fecha a loja e abre os slots (AvatarMakerLobby). Se a loja foi
+                // aberta pelo carrinho dos proprios slots, eles continuam vivos por baixo (sort order menor) e
+                // reaparecem sozinhos; senao, OpenAvatarSlots cria uma tela nova.
+                Destroy(host);
+                _save.Save(_state);
+                OpenAvatarSlots();
             });
         }
 

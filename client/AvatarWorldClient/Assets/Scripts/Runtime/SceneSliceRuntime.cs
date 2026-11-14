@@ -38,6 +38,18 @@ namespace AvatarWorld.Runtime
     }
 
     [Serializable]
+    public sealed class SceneSliceUndroppable
+    {
+        public string go;
+        public int priority;
+        public float[] poly;
+        public float minItemsHeight;
+        public bool dontAllowForgivingTest, dontAffectIfItemIsHigher;
+        public string kind = "LevelUndroppableArea";
+        public int entityOrder = -1;
+    }
+
+    [Serializable]
     public sealed class SceneSliceSpine
     {
         public string skeleton, animation;
@@ -56,6 +68,7 @@ namespace AvatarWorld.Runtime
         public List<SceneSliceSpine> spines = new List<SceneSliceSpine>();
         public List<SceneSliceItem> items = new List<SceneSliceItem>();
         public List<SceneSliceDropArea> dropAreas = new List<SceneSliceDropArea>();
+        public List<SceneSliceUndroppable> undroppable = new List<SceneSliceUndroppable>();
     }
 
     [Serializable] public sealed class SceneSliceEntry { public int levelType; public string name; public int renderers, sprites; }
@@ -82,6 +95,7 @@ namespace AvatarWorld.Runtime
         readonly List<Transform> _itemRoots = new List<Transform>();
         readonly List<List<SpriteRenderer>> _itemRenderers = new List<List<SpriteRenderer>>();
         readonly List<DropArea> _areas = new List<DropArea>();
+        readonly List<UndroppableArea> _undroppable = new List<UndroppableArea>();
         readonly DragIntentDetector _detector = new DragIntentDetector();
         int _grabItem = -1, _dragItem = -1;
         Vector3 _dragOffset, _dragStartPos;
@@ -176,6 +190,9 @@ namespace AvatarWorld.Runtime
             }
             foreach (var a in _data.dropAreas)
                 if (a.poly != null && a.poly.Length >= 6) _areas.Add(new DropArea(a.poly, a.priority, a.go, a.kind, a.maxH, a.maxW) { EntityOrder = a.entityOrder });
+            foreach (var u in _data.undroppable)
+                if (u.poly != null && u.poly.Length >= 6)
+                    _undroppable.Add(new UndroppableArea(u.poly, u.priority, u.minItemsHeight, u.dontAllowForgivingTest, u.dontAffectIfItemIsHigher, u.go, u.kind) { EntityOrder = u.entityOrder });
             var textures = new Dictionary<string, Texture2D>();
             var sprites = new Dictionary<string, Sprite>();
             int built = 0, missing = 0;
@@ -371,9 +388,9 @@ namespace AvatarWorld.Runtime
                     BottomWidth = _data.items[item].bottomWidth > 0f ? _data.items[item].bottomWidth : b.size.x
                 };
                 // LevelItem.DropInLevel: primeiro area sob a base (IsDroppableUnderItem), senao cai (GetDropAreaToFallOn)
-                if (DropAreaQuery.Under(_areas, info, info.X, info.BottomY) != null) target = root.position;
-                else if (DropAreaQuery.FallOn(_areas, info, info.X, info.BottomY, out float hitY) != null)
-                    target = root.position + new Vector3(0f, hitY - info.BottomY, 0f);
+                // + area nao-dropavel que afeta o pouso: a queda e' refeita a partir de GetDroppableY (DropResolver)
+                if (DropResolver.Resolve(_areas, _undroppable, info, out float landY) != null)
+                    target = root.position + new Vector3(0f, landY - info.BottomY, 0f);
             }
             StartCoroutine(SlideTo(root, target, target == _dragStartPos ? 0.2f : 0.12f));
         }

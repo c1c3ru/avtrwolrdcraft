@@ -1,0 +1,17 @@
+{
+  "task_id": "T025/HANDLER/00006e43",
+  "status": "partial",
+  "semantic_completion": false,
+  "method_body_fully_bounded": false,
+  "method": "PersistentDataManager.OnBeforeSceneLoadStage2: no own body: OnBeforeSceneLoadStage2 is a direct tail-branch to SaveProgressInAllScenes; loops i=0..SceneManager.sceneCount-1, calling SceneManager.GetSceneAt(i) then this.SaveProgress(scene) each iteration",
+  "contract": "out/recon/tasks/T025/HANDLER/00006e43/method-contract.json",
+  "control_flow": "out/recon/tasks/T025/HANDLER/00006e43/control-flow.json",
+  "unknowns": "out/recon/tasks/T025/HANDLER/00006e43/unknowns.jsonl",
+  "verification": {
+    "pinned_opcodes": "passed",
+    "named_call_targets_revalidated": "passed",
+    "field_declarations_matched_verbatim": "passed",
+    "runtime_or_device": false
+  },
+  "next_action": "Preserve open callee/runtime unknowns; do not mark done without independent review."
+}

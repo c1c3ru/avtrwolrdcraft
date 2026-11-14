@@ -44,8 +44,8 @@ As posições e o placar da quadra protótipo são estado transitório de runtim
 
 ## Próxima extração delimitada
 
-1. Refinar CFG e resolver despachos indiretos em `GetDataFromRootGameObjects`, `LoadDataInternal`, `GetFilePath` e handlers; fechar retornos, exceções e merge default/save. As janelas dos dois métodos extensos foram ampliadas acima de 2 KiB, mas seguem delimitadas por inícios de metadata, não por CFG provado.
-2. Obter uma instância real de save de `level8` após mover/arremessar objetos, ou instrumentar execução offline permitida, e comparar valores com esses handlers antes de propor equivalência.
+1. ~~Refinar CFG e resolver despachos indiretos em `GetDataFromRootGameObjects`, `LoadDataInternal`, `GetFilePath` e handlers~~ — avançado em 2026-11-08, ver [RECON_SAVE_CFG_2026-11-08.md](RECON_SAVE_CFG_2026-11-08.md): CFG de blocos básicos (todos os tipos de desvio, não só `bl`/`b`) para 42/58 janelas com limite dentro da janela verificado, e cobertura de despacho indireto ampliada de 4 para 18 sites (12 com alvo de confiança alta/média, 6 documentados como indeterminados). Ainda restam 16 janelas sem limite comprovado e 6 sites sem alvo — ver esse documento para a lista exata; retornos/exceções/merge default-save ainda não têm evidência de ciclo completo.
+2. Obter uma instância real de save de `level8` após mover/arremessar objetos, ou instrumentar execução offline permitida, e comparar valores com esses handlers antes de propor equivalência. Em 2026-11-08 um aparelho estava conectado via ADB mas com a tela bloqueada (PIN pessoal do usuário); sem desbloqueio físico não há como jogar até a quadra original nem confirmar o diálogo de `adb backup`. Continua pendente.
 3. Só então propor adaptação offline versionada por cena e GUID. Preservar saves antigos e evitar converter campos sem equivalência demonstrada.
 
 ## Critério de fechamento

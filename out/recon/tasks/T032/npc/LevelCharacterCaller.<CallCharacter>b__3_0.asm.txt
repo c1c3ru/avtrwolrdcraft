@@ -1,0 +1,11 @@
+22afcb8  str    x30, [sp, #-0x10]!
+22afcbc  cbz    x1, #0x22afce0
+22afcc0  ldr    x8, [x0, #0x20]
+22afcc4  cbz    x8, #0x22afce0
+22afcc8  ldr    w9, [x1, #0x3c8]
+22afccc  ldr    w8, [x8, #0x18]
+22afcd0  cmp    w9, w8
+22afcd4  cset   w0, eq
+22afcd8  ldr    x30, [sp], #0x10
+22afcdc  ret    
+22afce0  bl     #0x1b88980

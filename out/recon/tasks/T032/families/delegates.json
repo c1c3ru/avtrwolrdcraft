@@ -1,0 +1,50 @@
+{
+  "candidate_owner": {
+    "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/ContextualAnimation/CATargetEvents.cs",
+    "sha256": "02eaf02ad2dbe49877a072a32050d19d1420fadbc1f6731b89c2a26a9f74a8c9",
+    "text": "namespace PWC.Level.ContextualAnimation;\n\npublic static class CATargetEvents\n{\n\tpublic static Action<ICATarget, Boolean> OnSelectedAction; //Field offset: 0x0\n\tpublic static Action<ICATarget, Boolean, Boolean> OnUpdateCAListAction; //Field offset: 0x8\n\tpublic static Action<ICATarget> OnCAAnimationInterruptAction; //Field offset: 0x10\n\n}\n\n"
+  },
+  "got": "0x41bd548",
+  "usage": "0x42efa90",
+  "encoded": "0x710abf44f33b8a59",
+  "status": "INFERRED_unique_static_field_layout_plus_shared_CA_extension_consumer_not_direct_type_metadata_join",
+  "calls": [
+    {
+      "site": "Baby.OnBeginDragInternal",
+      "pc": "0x229b800",
+      "field_offset": 0,
+      "candidate": "CATargetEvents.OnSelectedAction",
+      "arguments": [
+        "this",
+        true
+      ]
+    },
+    {
+      "site": "Baby.OnEndLand",
+      "pc": "0x229b91c",
+      "field_offset": 8,
+      "candidate": "CATargetEvents.OnUpdateCAListAction",
+      "arguments": [
+        "this",
+        false,
+        true
+      ]
+    },
+    {
+      "site": "CATargetExtensionMethods.AddCAHandlerAndUpdateGame",
+      "pc": "0x23aca3c",
+      "field_offset": 8,
+      "candidate": "CATargetEvents.OnUpdateCAListAction",
+      "arguments": [
+        "target",
+        true,
+        "handler_virtual_boolean"
+      ]
+    }
+  ],
+  "limits": [
+    "GOT encoded metadata usage is noncanonical, so exact owner attribution remains inferred",
+    "Delegate subscribers and side effects are separate; calling field is not a singleton instance",
+    "No dynamic execution"
+  ]
+}

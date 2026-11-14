@@ -1,0 +1,413 @@
+22af074  stp    d9, d8, [sp, #-0x50]!
+22af078  str    x30, [sp, #0x10]
+22af07c  stp    x24, x23, [sp, #0x20]
+22af080  stp    x22, x21, [sp, #0x30]
+22af084  stp    x20, x19, [sp, #0x40]
+22af088  adrp   x20, #0x44fd000
+22af08c  adrp   x22, #0x41ac000
+22af090  ldrb   w8, [x20, #0xc35]
+22af094  ldr    x22, [x22, #0xe48]  ; type PWC.Level.LevelCharacter
+22af098  mov    x19, x0
+22af09c  tbnz   w8, #0, #0x22af120
+22af0a0  adrp   x0, #0x41bb000
+22af0a4  ldr    x0, [x0, #0xb00]
+22af0a8  bl     #0x1b886e8
+22af0ac  adrp   x0, #0x41ad000
+22af0b0  ldr    x0, [x0, #0x3c0]
+22af0b4  bl     #0x1b886e8
+22af0b8  adrp   x0, #0x41d8000
+22af0bc  ldr    x0, [x0, #0x110]
+22af0c0  bl     #0x1b886e8
+22af0c4  adrp   x0, #0x41ac000
+22af0c8  ldr    x0, [x0, #0xe48]  ; type PWC.Level.LevelCharacter
+22af0cc  bl     #0x1b886e8
+22af0d0  adrp   x0, #0x41b8000
+22af0d4  ldr    x0, [x0, #0xa00]  ; type PWC.Level.LevelSitArea
+22af0d8  bl     #0x1b886e8
+22af0dc  adrp   x0, #0x41d3000
+22af0e0  ldr    x0, [x0, #0x238]
+22af0e4  bl     #0x1b886e8
+22af0e8  adrp   x0, #0x41ac000
+22af0ec  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+22af0f0  bl     #0x1b886e8
+22af0f4  adrp   x0, #0x41ac000
+22af0f8  ldr    x0, [x0, #0xbf0]  ; type PWC.PWCUtils
+22af0fc  bl     #0x1b886e8
+22af100  adrp   x0, #0x41d3000
+22af104  ldr    x0, [x0, #0x240]
+22af108  bl     #0x1b886e8
+22af10c  adrp   x0, #0x41b8000
+22af110  ldr    x0, [x0, #0xa08]  ; "Track_Animations/Forced_To_Sit"
+22af114  bl     #0x1b886e8
+22af118  mov    w8, #1
+22af11c  strb   w8, [x20, #0xc35]
+22af120  ldr    x0, [x22]
+22af124  str    xzr, [sp, #0x18]
+22af128  adrp   x23, #0x41d3000
+22af12c  adrp   x21, #0x41d8000
+22af130  ldr    w8, [x0, #0xe0]
+22af134  ldr    x23, [x23, #0x240]
+22af138  ldr    x21, [x21, #0x110]
+22af13c  cbnz   w8, #0x22af148
+22af140  bl     #0x1b8885c
+22af144  ldr    x0, [x22]
+22af148  ldr    x8, [x0, #0xb8]
+22af14c  ldr    x0, [x23]
+22af150  ldr    x20, [x8]
+22af154  bl     #0x1b88970
+22af158  ldr    x2, [x21]
+22af15c  mov    x1, x19
+22af160  mov    x3, xzr
+22af164  mov    x21, x0
+22af168  bl     #0x2eae6ec
+22af16c  cbz    x20, #0x22af6e0
+22af170  adrp   x8, #0x41d3000
+22af174  ldr    x8, [x8, #0x238]
+22af178  adrp   x24, #0x41ac000
+22af17c  mov    x0, x20
+22af180  mov    x1, x21
+22af184  ldr    x2, [x8]
+22af188  ldr    x24, [x24, #0xbb8]  ; type UnityEngine.Object
+22af18c  bl     #0x2cf0d84
+22af190  ldr    x8, [x24]
+22af194  ldr    x21, [x19, #0x28]
+22af198  mov    x20, x0
+22af19c  ldr    w9, [x8, #0xe0]
+22af1a0  cbnz   w9, #0x22af1ac
+22af1a4  mov    x0, x8
+22af1a8  bl     #0x1b8885c
+22af1ac  mov    x0, x21
+22af1b0  mov    x1, xzr
+22af1b4  mov    x2, xzr
+22af1b8  bl     #0x3ccab90
+22af1bc  tbz    w0, #0, #0x22af1cc
+22af1c0  ldr    x0, [x19, #0x28]
+22af1c4  cbnz   x0, #0x22af1dc
+22af1c8  b      #0x22af6e0
+22af1cc  mov    x0, x19
+22af1d0  mov    x1, xzr
+22af1d4  bl     #0x3cc84a8
+22af1d8  cbz    x0, #0x22af6e0
+22af1dc  mov    x1, xzr
+22af1e0  bl     #0x3cd4584
+22af1e4  ldr    x0, [x24]
+22af1e8  mov    v8.16b, v0.16b
+22af1ec  mov    v9.16b, v1.16b
+22af1f0  ldr    w8, [x0, #0xe0]
+22af1f4  cbnz   w8, #0x22af1fc
+22af1f8  bl     #0x1b8885c
+22af1fc  mov    x0, x20
+22af200  mov    x1, xzr
+22af204  mov    x2, xzr
+22af208  bl     #0x3ccab90
+22af20c  ldr    x8, [x19, #0x20]
+22af210  cbz    x8, #0x22af6e0
+22af214  tbz    w0, #0, #0x22af30c
+22af218  ldrb   w8, [x8, #0x1c]
+22af21c  cbz    w8, #0x22af35c
+22af220  cbz    x20, #0x22af6e0
+22af224  ldr    x0, [x20, #0x110]
+22af228  cbz    x0, #0x22af6e0
+22af22c  mov    x1, xzr
+22af230  bl     #0x3caede0
+22af234  tbz    w0, #0, #0x22af360
+22af238  ldr    x0, [x24]
+22af23c  ldr    x21, [x20, #0x3e0]
+22af240  ldr    w8, [x0, #0xe0]
+22af244  cbnz   w8, #0x22af24c
+22af248  bl     #0x1b8885c
+22af24c  mov    x0, x21
+22af250  mov    x1, xzr
+22af254  mov    x2, xzr
+22af258  bl     #0x3ccb8d8
+22af25c  tbz    w0, #0, #0x22af6c8
+22af260  ldr    x8, [x19, #0x20]
+22af264  cbz    x8, #0x22af6e0
+22af268  ldr    x0, [x8, #0x20]  ; type <PutRandomItemInCharacterHand>d__34
+22af26c  mov    x1, xzr
+22af270  bl     #0x31dffdc
+22af274  tbnz   w0, #0, #0x22af6c8
+22af278  ldr    x8, [x20, #0x3b8]
+22af27c  cbz    x8, #0x22af2e4
+22af280  adrp   x10, #0x41b8000
+22af284  ldr    x10, [x10, #0xa00]  ; type PWC.Level.LevelSitArea
+22af288  ldr    x9, [x8]
+22af28c  ldr    x8, [x10]
+22af290  ldrb   w11, [x9, #0x130]
+22af294  ldrb   w10, [x8, #0x130]
+22af298  cmp    w11, w10
+22af29c  b.lo   #0x22af2e4
+22af2a0  ldr    x9, [x9, #0xc8]
+22af2a4  add    x9, x9, x10, lsl #3
+22af2a8  ldur   x9, [x9, #-8]
+22af2ac  cmp    x9, x8
+22af2b0  b.ne   #0x22af2e4
+22af2b4  ldr    x0, [x20, #0x350]
+22af2b8  cbz    x0, #0x22af6e0
+22af2bc  mov    x1, xzr
+22af2c0  bl     #0x35189d8
+22af2c4  cbz    x0, #0x22af6e0
+22af2c8  adrp   x8, #0x41b8000
+22af2cc  ldr    x8, [x8, #0xa08]  ; "Track_Animations/Forced_To_Sit"
+22af2d0  mov    w1, #2
+22af2d4  mov    w3, #1
+22af2d8  mov    x4, xzr
+22af2dc  ldr    x2, [x8]
+22af2e0  bl     #0x34d7c1c
+22af2e4  ldr    x8, [x19, #0x20]
+22af2e8  cbz    x8, #0x22af6e0
+22af2ec  ldr    x0, [x20, #0x390]
+22af2f0  cbz    x0, #0x22af6e0
+22af2f4  ldr    x1, [x8, #0x20]
+22af2f8  mov    w2, wzr
+22af2fc  mov    w3, wzr
+22af300  mov    x4, xzr
+22af304  bl     #0x22a5f8c  ; -> LevelCharacterAnimator.PlayAnimationAndReturnToProperIdle
+22af308  b      #0x22af6c8
+22af30c  ldr    w0, [x8, #0x18]
+22af310  mov    w4, #1
+22af314  mov    v0.16b, v8.16b
+22af318  mov    v1.16b, v9.16b
+22af31c  mov    x1, xzr
+22af320  mov    x2, xzr
+22af324  mov    x3, xzr
+22af328  mov    x5, xzr
+22af32c  mov    w6, wzr
+22af330  mov    x7, xzr
+22af334  bl     #0x2331cbc  ; -> LevelUtils.SpawnAvatar
+22af338  cbz    x0, #0x22af354
+22af33c  ldr    x9, [x0]
+22af340  ldr    x8, [x22]
+22af344  ldrb   w11, [x9, #0x130]
+22af348  ldrb   w10, [x8, #0x130]
+22af34c  cmp    w11, w10
+22af350  b.hs   #0x22af3a0
+22af354  mov    x20, xzr
+22af358  b      #0x22af3b4
+22af35c  cbz    x20, #0x22af6e0
+22af360  ldr    x8, [x20]
+22af364  mov    w1, #1
+22af368  mov    x0, x20
+22af36c  ldr    x9, [x8, #0x508]
+22af370  ldr    x2, [x8, #0x510]
+22af374  blr    x9
+22af378  mov    x0, x20
+22af37c  mov    x1, xzr
+22af380  bl     #0x3cc84a8
+22af384  cbz    x0, #0x22af6e0
+22af388  fmov   s2, wzr
+22af38c  mov    v0.16b, v8.16b
+22af390  mov    v1.16b, v9.16b
+22af394  mov    x1, xzr
+22af398  bl     #0x3cd4624
+22af39c  b      #0x22af3b4
+22af3a0  ldr    x9, [x9, #0xc8]
+22af3a4  add    x9, x9, x10, lsl #3
+22af3a8  ldur   x9, [x9, #-8]
+22af3ac  cmp    x9, x8
+22af3b0  csel   x20, x0, xzr, eq
+22af3b4  ldrb   w8, [x19, #0x30]
+22af3b8  cbz    w8, #0x22af3d4
+22af3bc  cbz    x20, #0x22af6e0
+22af3c0  mov    w2, #1
+22af3c4  mov    x0, x20
+22af3c8  mov    w1, wzr
+22af3cc  mov    x3, xzr
+22af3d0  bl     #0x22e5a04  ; -> LevelItem.PerformBasicDrop
+22af3d4  ldr    x8, [x19, #0x20]
+22af3d8  cbz    x8, #0x22af6e0
+22af3dc  cbz    x20, #0x22af6e0
+22af3e0  ldrb   w1, [x8, #0x32]
+22af3e4  adrp   x21, #0x41ac000
+22af3e8  ldr    x21, [x21, #0xbf0]  ; type PWC.PWCUtils
+22af3ec  mov    x0, x20
+22af3f0  mov    w2, wzr
+22af3f4  mov    x3, xzr
+22af3f8  bl     #0x22ed3a4  ; -> LevelItem.SetFlipped
+22af3fc  ldr    x0, [x21]
+22af400  ldr    w8, [x0, #0xe0]
+22af404  cbnz   w8, #0x22af40c
+22af408  bl     #0x1b8885c
+22af40c  fmov   s0, wzr
+22af410  fmov   s1, wzr
+22af414  fmov   s2, wzr
+22af418  fmov   s3, wzr
+22af41c  mov    x0, x20
+22af420  mov    x1, xzr
+22af424  mov    x2, xzr
+22af428  mov    w3, wzr
+22af42c  mov    w4, wzr
+22af430  mov    x5, xzr
+22af434  bl     #0x208034c  ; -> PWCUtils.PlayVanishEffect
+22af438  ldr    x8, [x19, #0x20]
+22af43c  cbz    x8, #0x22af6e0
+22af440  ldr    x22, [x8, #0x48]
+22af444  cbz    x22, #0x22af6e0
+22af448  ldr    x1, [x22, #0x18]
+22af44c  cbz    x1, #0x22af66c
+22af450  ldr    x0, [x21]
+22af454  ldr    w8, [x0, #0xe0]
+22af458  cbnz   w8, #0x22af464
+22af45c  bl     #0x1b8885c
+22af460  ldr    x1, [x22, #0x18]
+22af464  mov    w0, wzr
+22af468  mov    x2, xzr
+22af46c  bl     #0x2083df0  ; -> PWCUtils.GetRandomNumberInRange
+22af470  ldr    x8, [x19, #0x20]
+22af474  cbz    x8, #0x22af6e0
+22af478  ldrb   w9, [x8, #0x31]
+22af47c  mov    w21, w0
+22af480  ldr    x0, [x8, #0x40]
+22af484  cmp    w9, #0
+22af488  mov    w9, #1
+22af48c  cinc   w22, w9, ne
+22af490  cbz    x0, #0x22af624
+22af494  mov    x1, xzr
+22af498  bl     #0x21db96c  ; -> PDPrefabReference.IsValid
+22af49c  ldr    x8, [x19, #0x20]
+22af4a0  tbz    w0, #0, #0x22af620
+22af4a4  cbz    x8, #0x22af6e0
+22af4a8  ldr    x0, [x8, #0x40]
+22af4ac  cbz    x0, #0x22af6e0
+22af4b0  mov    x1, xzr
+22af4b4  mov    x2, xzr
+22af4b8  mov    x3, xzr
+22af4bc  mov    x4, xzr
+22af4c0  bl     #0x21dbad0  ; -> PDPrefabReference.Spawn
+22af4c4  mov    x23, x0
+22af4c8  mov    x0, x19
+22af4cc  mov    x1, x20
+22af4d0  mov    x2, x23
+22af4d4  mov    w3, w22
+22af4d8  bl     #0x22af6e8  ; -> LevelCharacterCaller.PutInHand
+22af4dc  ldr    x8, [x19, #0x20]
+22af4e0  cbz    x8, #0x22af6e0
+22af4e4  ldr    x8, [x8, #0x48]
+22af4e8  cbz    x8, #0x22af6e0
+22af4ec  ldr    w9, [x8, #0x18]
+22af4f0  cmp    w21, w9
+22af4f4  b.hs   #0x22af6e4
+22af4f8  add    x8, x8, w21, sxtw #3
+22af4fc  ldr    x0, [x8, #0x20]
+22af500  cbz    x0, #0x22af6e0
+22af504  mov    x1, xzr
+22af508  mov    x2, xzr
+22af50c  mov    x3, xzr
+22af510  mov    x4, xzr
+22af514  bl     #0x21dbad0  ; -> PDPrefabReference.Spawn
+22af518  cbz    x0, #0x22af6e0
+22af51c  adrp   x8, #0x41ad000
+22af520  ldr    x8, [x8, #0x3c0]
+22af524  add    x1, sp, #0x18
+22af528  ldr    x2, [x8]
+22af52c  bl     #0x24f17fc
+22af530  tbz    w0, #0, #0x22af66c
+22af534  cbz    x23, #0x22af6e0
+22af538  adrp   x8, #0x41bb000
+22af53c  ldr    x8, [x8, #0xb00]
+22af540  mov    x0, x23
+22af544  ldr    x1, [x8]
+22af548  bl     #0x24f0964
+22af54c  ldr    x8, [x24]
+22af550  mov    x21, x0
+22af554  ldr    w9, [x8, #0xe0]
+22af558  cbnz   w9, #0x22af564
+22af55c  mov    x0, x8
+22af560  bl     #0x1b8885c
+22af564  mov    x0, x21
+22af568  mov    x1, xzr
+22af56c  mov    x2, xzr
+22af570  bl     #0x3ccab90
+22af574  tbz    w0, #0, #0x22af66c
+22af578  ldr    x0, [sp, #0x18]
+22af57c  cbz    x0, #0x22af6e0
+22af580  mov    x1, xzr
+22af584  bl     #0x3cc84a8
+22af588  cbz    x21, #0x22af6e0
+22af58c  mov    x22, x0
+22af590  mov    x0, x21
+22af594  mov    x1, xzr
+22af598  bl     #0x3cc84a8
+22af59c  cbz    x22, #0x22af6e0
+22af5a0  mov    x1, x0
+22af5a4  mov    x0, x22
+22af5a8  mov    x2, xzr
+22af5ac  bl     #0x3cd4fac
+22af5b0  ldr    x0, [sp, #0x18]
+22af5b4  cbz    x0, #0x22af6e0
+22af5b8  mov    x1, xzr
+22af5bc  bl     #0x3cc84a8
+22af5c0  adrp   x22, #0x44f9000
+22af5c4  ldrb   w8, [x22, #0xad0]
+22af5c8  mov    x21, x0
+22af5cc  cbnz   w8, #0x22af5e4
+22af5d0  adrp   x0, #0x41ac000
+22af5d4  ldr    x0, [x0, #0xde0]  ; type UnityEngine.Vector2
+22af5d8  bl     #0x1b886e8
+22af5dc  mov    w8, #1
+22af5e0  strb   w8, [x22, #0xad0]
+22af5e4  cbz    x21, #0x22af6e0
+22af5e8  adrp   x8, #0x41ac000
+22af5ec  ldr    x8, [x8, #0xde0]  ; type UnityEngine.Vector2
+22af5f0  fmov   s2, wzr
+22af5f4  mov    x0, x21
+22af5f8  mov    x1, xzr
+22af5fc  ldr    x8, [x8]
+22af600  ldr    x8, [x8, #0xb8]
+22af604  ldp    s0, s1, [x8]
+22af608  bl     #0x3cd3c30
+22af60c  ldr    x0, [sp, #0x18]
+22af610  cbz    x0, #0x22af6e0
+22af614  mov    x1, xzr
+22af618  bl     #0x22ed624  ; -> LevelItem.AssignCurrentDropAreaifExists
+22af61c  b      #0x22af66c
+22af620  cbz    x8, #0x22af6e0
+22af624  ldr    x8, [x8, #0x48]
+22af628  cbz    x8, #0x22af6e0
+22af62c  ldr    w9, [x8, #0x18]
+22af630  cmp    w21, w9
+22af634  b.hs   #0x22af6e4
+22af638  add    x8, x8, w21, sxtw #3
+22af63c  ldr    x0, [x8, #0x20]
+22af640  cbz    x0, #0x22af6e0
+22af644  mov    x1, xzr
+22af648  mov    x2, xzr
+22af64c  mov    x3, xzr
+22af650  mov    x4, xzr
+22af654  bl     #0x21dbad0  ; -> PDPrefabReference.Spawn
+22af658  mov    x2, x0
+22af65c  mov    x0, x19
+22af660  mov    x1, x20
+22af664  mov    w3, w22
+22af668  bl     #0x22af6e8  ; -> LevelCharacterCaller.PutInHand
+22af66c  ldr    x8, [x19, #0x20]
+22af670  cbz    x8, #0x22af6e0
+22af674  ldr    x0, [x8, #0x28]
+22af678  mov    x1, xzr
+22af67c  bl     #0x31dffdc
+22af680  tbnz   w0, #0, #0x22af6c8
+22af684  ldr    x8, [x19, #0x20]
+22af688  cbz    x8, #0x22af6e0
+22af68c  ldr    x0, [x20, #0x390]
+22af690  cbz    x0, #0x22af6e0
+22af694  ldrb   w2, [x8, #0x30]
+22af698  ldr    x1, [x8, #0x28]
+22af69c  mov    w3, wzr
+22af6a0  mov    w4, wzr
+22af6a4  mov    w5, wzr
+22af6a8  mov    x6, xzr
+22af6ac  bl     #0x22a3d14  ; -> LevelCharacterAnimator.SetAnimation
+22af6b0  ldr    x8, [x19, #0x20]
+22af6b4  cbz    x8, #0x22af6e0
+22af6b8  ldr    x1, [x8, #0x28]
+22af6bc  add    x0, x20, #0x420
+22af6c0  str    x1, [x20, #0x420]
+22af6c4  bl     #0x1b88694
+22af6c8  ldp    x20, x19, [sp, #0x40]
+22af6cc  ldp    x22, x21, [sp, #0x30]
+22af6d0  ldp    x24, x23, [sp, #0x20]
+22af6d4  ldr    x30, [sp, #0x10]
+22af6d8  ldp    d9, d8, [sp], #0x50
+22af6dc  ret    
+22af6e0  bl     #0x1b88980
+22af6e4  bl     #0x1b88988

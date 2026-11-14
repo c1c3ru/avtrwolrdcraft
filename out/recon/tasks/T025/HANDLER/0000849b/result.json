@@ -1,0 +1,17 @@
+{
+  "task_id": "T025/HANDLER/0000849b",
+  "status": "partial",
+  "semantic_completion": false,
+  "method_body_fully_bounded": false,
+  "method": "LevelManager.OnBeforeSceneLoadStage2: writes instance field IsAboutToLoadScene (offset 0x3a) to true; no calls, no other state read/written",
+  "contract": "out/recon/tasks/T025/HANDLER/0000849b/method-contract.json",
+  "control_flow": "out/recon/tasks/T025/HANDLER/0000849b/control-flow.json",
+  "unknowns": "out/recon/tasks/T025/HANDLER/0000849b/unknowns.jsonl",
+  "verification": {
+    "pinned_opcodes": "passed",
+    "named_call_targets_revalidated": "passed",
+    "field_declarations_matched_verbatim": "passed",
+    "runtime_or_device": false
+  },
+  "next_action": "Preserve open callee/runtime unknowns; do not mark done without independent review."
+}

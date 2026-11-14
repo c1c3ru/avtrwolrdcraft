@@ -1,0 +1,16 @@
+{
+  "observation_date": "2026-11-08",
+  "evidence_class": "OBSERVED_adb_package_metadata_only",
+  "package": "com.pazugames.avatarworld",
+  "analyzed_version": {"name": "1.227", "code": 228},
+  "observed_installed_version": {"name": "1.228", "code": 229},
+  "last_update_time": "2026-11-06 01:26:02",
+  "commands": ["adb devices -l", "adb shell dumpsys activity activities", "adb shell dumpsys package com.pazugames.avatarworld | rg 'versionCode=|versionName=|lastUpdateTime='"],
+  "device_count": 1,
+  "keyguard_showing": true,
+  "matches_analyzed_version": false,
+  "installed_binary_sha256_verified": false,
+  "game_launched": false,
+  "app_data_modified": false,
+  "limits": ["Read-only host queries after sandbox socket failure. No gameplay validation, installation, downgrade or app data changes."]
+}

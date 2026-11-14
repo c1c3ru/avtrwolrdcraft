@@ -1,0 +1,41 @@
+
+/home/c1c3ru/avtrwolrdcraft/.claude/worktrees/recon-stage-handler-effects/out/recon/il2cpp/libil2cpp.so:	file format elf64-littleaarch64
+
+Disassembly of section il2cpp:
+
+0000000001c51210 <__start_il2cpp>:
+ 2069448: a9be57fe     	stp	x30, x21, [sp, #-0x20]!
+ 206944c: a9014ff4     	stp	x20, x19, [sp, #0x10]
+ 2069450: f0012494     	adrp	x20, 0x44fc000
+ 2069454: 3959ee88     	ldrb	w8, [x20, #0x67b]
+ 2069458: aa0003f3     	mov	x19, x0
+ 206945c: 370000c8     	tbnz	w8, #0x0, 0x2069474 <__start_il2cpp+0x418264>
+ 2069460: f0010a00     	adrp	x0, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 2069464: f945c800     	ldr	x0, [x0, #0xb90]
+ 2069468: 97ec7ca0     	bl	0x1b886e8 <JNI_OnUnload+0xa32c>
+ 206946c: 52800028     	mov	w8, #0x1                // =1
+ 2069470: 3919ee88     	strb	w8, [x20, #0x67b]
+ 2069474: b9405a68     	ldr	w8, [x19, #0x58]
+ 2069478: 7100051f     	cmp	w8, #0x1
+ 206947c: 5400026b     	b.lt	0x20694c8 <__start_il2cpp+0x4182b8>
+ 2069480: f0010a14     	adrp	x20, 0x41ac000 <_ZTVN10__cxxabiv121__vmi_class_type_infoE+0x48>
+ 2069484: f945ca94     	ldr	x20, [x20, #0xb90]
+ 2069488: aa1303e0     	mov	x0, x19
+ 206948c: aa1f03e1     	mov	x1, xzr
+ 2069490: 94717c15     	bl	0x3cc84e4 <__start_il2cpp+0x20772d4>
+ 2069494: f9400288     	ldr	x8, [x20]
+ 2069498: b9405a74     	ldr	w20, [x19, #0x58]
+ 206949c: aa0003f5     	mov	x21, x0
+ 20694a0: b940e109     	ldr	w9, [x8, #0xe0]
+ 20694a4: 35000069     	cbnz	w9, 0x20694b0 <__start_il2cpp+0x4182a0>
+ 20694a8: aa0803e0     	mov	x0, x8
+ 20694ac: 97ec7cec     	bl	0x1b8885c <JNI_OnUnload+0xa4a0>
+ 20694b0: aa1503e0     	mov	x0, x21
+ 20694b4: 2a1403e1     	mov	w1, w20
+ 20694b8: 2a1f03e2     	mov	w2, wzr
+ 20694bc: aa1f03e3     	mov	x3, xzr
+ 20694c0: 97f02da3     	bl	0x1c74b4c <__start_il2cpp+0x2393c>
+ 20694c4: b9005a7f     	str	wzr, [x19, #0x58]
+ 20694c8: a9414ff4     	ldp	x20, x19, [sp, #0x10]
+ 20694cc: a8c257fe     	ldp	x30, x21, [sp], #0x20
+ 20694d0: d65f03c0     	ret

@@ -1,0 +1,1947 @@
+21ce8d4  sub    sp, sp, #0x130
+21ce8d8  str    d8, [sp, #0xc0]
+21ce8dc  stp    x29, x30, [sp, #0xd0]
+21ce8e0  stp    x28, x27, [sp, #0xe0]
+21ce8e4  stp    x26, x25, [sp, #0xf0]
+21ce8e8  stp    x24, x23, [sp, #0x100]
+21ce8ec  stp    x22, x21, [sp, #0x110]
+21ce8f0  stp    x20, x19, [sp, #0x120]
+21ce8f4  adrp   x20, #0x44fd000
+21ce8f8  ldrb   w8, [x20, #0x3fe]
+21ce8fc  str    x0, [sp, #0x38]
+21ce900  tbnz   w8, #0, #0x21cec60
+21ce904  adrp   x0, #0x41ac000
+21ce908  ldr    x0, [x0, #0xeb0]
+21ce90c  bl     #0x1b886e8
+21ce910  adrp   x0, #0x41d2000
+21ce914  ldr    x0, [x0, #0x228]
+21ce918  bl     #0x1b886e8
+21ce91c  adrp   x0, #0x41d2000
+21ce920  ldr    x0, [x0, #0x230]
+21ce924  bl     #0x1b886e8
+21ce928  adrp   x0, #0x41d2000
+21ce92c  ldr    x0, [x0, #0x238]
+21ce930  bl     #0x1b886e8
+21ce934  adrp   x0, #0x41b5000
+21ce938  ldr    x0, [x0, #0x488]
+21ce93c  bl     #0x1b886e8
+21ce940  adrp   x0, #0x41b9000
+21ce944  ldr    x0, [x0, #0xbe0]
+21ce948  bl     #0x1b886e8
+21ce94c  adrp   x0, #0x41c8000
+21ce950  ldr    x0, [x0, #0x9b0]
+21ce954  bl     #0x1b886e8
+21ce958  adrp   x0, #0x41d2000
+21ce95c  ldr    x0, [x0, #0x30]
+21ce960  bl     #0x1b886e8
+21ce964  adrp   x0, #0x41ac000
+21ce968  ldr    x0, [x0, #0xae8]
+21ce96c  bl     #0x1b886e8
+21ce970  adrp   x0, #0x41d2000
+21ce974  ldr    x0, [x0, #0x1e8]
+21ce978  bl     #0x1b886e8
+21ce97c  adrp   x0, #0x41d2000
+21ce980  ldr    x0, [x0, #0x1f0]
+21ce984  bl     #0x1b886e8
+21ce988  adrp   x0, #0x41d2000
+21ce98c  ldr    x0, [x0, #0x1f8]
+21ce990  bl     #0x1b886e8
+21ce994  adrp   x0, #0x41d2000
+21ce998  ldr    x0, [x0, #0x240]
+21ce99c  bl     #0x1b886e8
+21ce9a0  adrp   x0, #0x41c7000
+21ce9a4  ldr    x0, [x0, #0x9a8]
+21ce9a8  bl     #0x1b886e8
+21ce9ac  adrp   x0, #0x41ae000
+21ce9b0  ldr    x0, [x0, #0xf40]
+21ce9b4  bl     #0x1b886e8
+21ce9b8  adrp   x0, #0x41d2000
+21ce9bc  ldr    x0, [x0, #0x248]
+21ce9c0  bl     #0x1b886e8
+21ce9c4  adrp   x0, #0x41d2000
+21ce9c8  ldr    x0, [x0, #0x80]
+21ce9cc  bl     #0x1b886e8
+21ce9d0  adrp   x0, #0x41b0000
+21ce9d4  ldr    x0, [x0, #0x9c8]
+21ce9d8  bl     #0x1b886e8
+21ce9dc  adrp   x0, #0x41ca000
+21ce9e0  ldr    x0, [x0, #0x948]
+21ce9e4  bl     #0x1b886e8
+21ce9e8  adrp   x0, #0x41ca000
+21ce9ec  ldr    x0, [x0, #0x950]
+21ce9f0  bl     #0x1b886e8
+21ce9f4  adrp   x0, #0x41b0000
+21ce9f8  ldr    x0, [x0, #0x9d8]
+21ce9fc  bl     #0x1b886e8
+21cea00  adrp   x0, #0x41b0000
+21cea04  ldr    x0, [x0, #0x9e8]
+21cea08  bl     #0x1b886e8
+21cea0c  adrp   x0, #0x41ca000
+21cea10  ldr    x0, [x0, #0x958]
+21cea14  bl     #0x1b886e8
+21cea18  adrp   x0, #0x41d2000
+21cea1c  ldr    x0, [x0, #0x110]
+21cea20  bl     #0x1b886e8
+21cea24  adrp   x0, #0x41b2000
+21cea28  ldr    x0, [x0, #0xdd8]
+21cea2c  bl     #0x1b886e8
+21cea30  adrp   x0, #0x41b0000
+21cea34  ldr    x0, [x0, #0x9f8]
+21cea38  bl     #0x1b886e8
+21cea3c  adrp   x0, #0x41ca000
+21cea40  ldr    x0, [x0, #0x960]
+21cea44  bl     #0x1b886e8
+21cea48  adrp   x0, #0x41b6000
+21cea4c  ldr    x0, [x0, #0x900]
+21cea50  bl     #0x1b886e8
+21cea54  adrp   x0, #0x41b6000
+21cea58  ldr    x0, [x0, #0x8f8]
+21cea5c  bl     #0x1b886e8
+21cea60  adrp   x0, #0x41af000
+21cea64  ldr    x0, [x0, #0x358]
+21cea68  bl     #0x1b886e8
+21cea6c  adrp   x0, #0x41b2000
+21cea70  ldr    x0, [x0, #0x3e0]
+21cea74  bl     #0x1b886e8
+21cea78  adrp   x0, #0x41b2000
+21cea7c  ldr    x0, [x0, #0x3b0]
+21cea80  bl     #0x1b886e8
+21cea84  adrp   x0, #0x41af000
+21cea88  ldr    x0, [x0, #0x350]
+21cea8c  bl     #0x1b886e8
+21cea90  adrp   x0, #0x41ac000
+21cea94  ldr    x0, [x0, #0xb90]  ; type LeanTween
+21cea98  bl     #0x1b886e8
+21cea9c  adrp   x0, #0x41d2000
+21ceaa0  ldr    x0, [x0, #0x250]
+21ceaa4  bl     #0x1b886e8
+21ceaa8  adrp   x0, #0x41b5000
+21ceaac  ldr    x0, [x0, #0xf0]
+21ceab0  bl     #0x1b886e8
+21ceab4  adrp   x0, #0x41d2000
+21ceab8  ldr    x0, [x0, #0x58]
+21ceabc  bl     #0x1b886e8
+21ceac0  adrp   x0, #0x41b5000
+21ceac4  ldr    x0, [x0, #0xf8]
+21ceac8  bl     #0x1b886e8
+21ceacc  adrp   x0, #0x41ce000
+21cead0  ldr    x0, [x0, #0x330]
+21cead4  bl     #0x1b886e8
+21cead8  adrp   x0, #0x41d1000
+21ceadc  ldr    x0, [x0, #0xe60]
+21ceae0  bl     #0x1b886e8
+21ceae4  adrp   x0, #0x41af000
+21ceae8  ldr    x0, [x0, #0xf98]
+21ceaec  bl     #0x1b886e8
+21ceaf0  adrp   x0, #0x41af000
+21ceaf4  ldr    x0, [x0, #0xfa0]
+21ceaf8  bl     #0x1b886e8
+21ceafc  adrp   x0, #0x41d1000
+21ceb00  ldr    x0, [x0, #0xe68]
+21ceb04  bl     #0x1b886e8
+21ceb08  adrp   x0, #0x41b5000
+21ceb0c  ldr    x0, [x0, #0x100]
+21ceb10  bl     #0x1b886e8
+21ceb14  adrp   x0, #0x41ce000
+21ceb18  ldr    x0, [x0, #0x328]
+21ceb1c  bl     #0x1b886e8
+21ceb20  adrp   x0, #0x41ac000
+21ceb24  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+21ceb28  bl     #0x1b886e8
+21ceb2c  adrp   x0, #0x41d2000
+21ceb30  ldr    x0, [x0, #0xc0]
+21ceb34  bl     #0x1b886e8
+21ceb38  adrp   x0, #0x41ad000
+21ceb3c  ldr    x0, [x0, #0x318]  ; type PWC.AvatarSpine.SpineType
+21ceb40  bl     #0x1b886e8
+21ceb44  adrp   x0, #0x41d2000
+21ceb48  ldr    x0, [x0, #0xf0]
+21ceb4c  bl     #0x1b886e8
+21ceb50  adrp   x0, #0x41ac000
+21ceb54  ldr    x0, [x0, #0xd10]
+21ceb58  bl     #0x1b886e8
+21ceb5c  adrp   x0, #0x41d2000
+21ceb60  ldr    x0, [x0, #0x258]
+21ceb64  bl     #0x1b886e8
+21ceb68  adrp   x0, #0x41d2000
+21ceb6c  ldr    x0, [x0, #0x260]
+21ceb70  bl     #0x1b886e8
+21ceb74  adrp   x0, #0x41d2000
+21ceb78  ldr    x0, [x0, #0x268]
+21ceb7c  bl     #0x1b886e8
+21ceb80  adrp   x0, #0x41d2000
+21ceb84  ldr    x0, [x0, #0x270]
+21ceb88  bl     #0x1b886e8
+21ceb8c  adrp   x0, #0x41d2000
+21ceb90  ldr    x0, [x0, #0x278]
+21ceb94  bl     #0x1b886e8
+21ceb98  adrp   x0, #0x41d2000
+21ceb9c  ldr    x0, [x0, #0x280]  ; type <>c__DisplayClass40_0
+21ceba0  bl     #0x1b886e8
+21ceba4  adrp   x0, #0x41d2000
+21ceba8  ldr    x0, [x0, #0xb0]  ; type <>c
+21cebac  bl     #0x1b886e8
+21cebb0  adrp   x0, #0x41ac000
+21cebb4  ldr    x0, [x0, #0xf80]  ; type UnityEngine.WaitForSeconds
+21cebb8  bl     #0x1b886e8
+21cebbc  adrp   x0, #0x41d2000
+21cebc0  ldr    x0, [x0, #0x288]  ; "] to a spine type!"
+21cebc4  bl     #0x1b886e8
+21cebc8  adrp   x0, #0x41d2000
+21cebcc  ldr    x0, [x0, #0x290]  ; "/Breed"
+21cebd0  bl     #0x1b886e8
+21cebd4  adrp   x0, #0x41d2000
+21cebd8  ldr    x0, [x0, #0x298]  ; "array.Length != 2! originalSpriteName["
+21cebdc  bl     #0x1b886e8
+21cebe0  adrp   x0, #0x41b7000
+21cebe4  ldr    x0, [x0, #0x160]  ; "_Color"
+21cebe8  bl     #0x1b886e8
+21cebec  adrp   x0, #0x41d2000
+21cebf0  ldr    x0, [x0, #0xc8]  ; "AvatarMaker/Thumbs/"
+21cebf4  bl     #0x1b886e8
+21cebf8  adrp   x0, #0x41d2000
+21cebfc  ldr    x0, [x0, #0x2a0]  ; "_Kind"
+21cec00  bl     #0x1b886e8
+21cec04  adrp   x0, #0x41d2000
+21cec08  ldr    x0, [x0, #0x2a8]  ; "Failed to parse string ["
+21cec0c  bl     #0x1b886e8
+21cec10  adrp   x0, #0x41ac000
+21cec14  ldr    x0, [x0, #0xf30]  ; "/"
+21cec18  bl     #0x1b886e8
+21cec1c  adrp   x0, #0x41d2000
+21cec20  ldr    x0, [x0, #0x2b0]  ; "] to a size type!"
+21cec24  bl     #0x1b886e8
+21cec28  adrp   x0, #0x41d2000
+21cec2c  ldr    x0, [x0, #0x2b8]  ; "Avatar type not found!"
+21cec30  bl     #0x1b886e8
+21cec34  adrp   x0, #0x41d1000
+21cec38  ldr    x0, [x0, #0xdd8]  ; "(Clone)"
+21cec3c  bl     #0x1b886e8
+21cec40  adrp   x0, #0x41ac000
+21cec44  ldr    x0, [x0, #0xba0]  ; ""
+21cec48  bl     #0x1b886e8
+21cec4c  adrp   x0, #0x41b0000
+21cec50  ldr    x0, [x0, #0x4e8]  ; "]!"
+21cec54  bl     #0x1b886e8
+21cec58  mov    w8, #1
+21cec5c  strb   w8, [x20, #0x3fe]
+21cec60  ldr    x8, [sp, #0x38]
+21cec64  strb   wzr, [sp, #0xcc]
+21cec68  stp    xzr, xzr, [sp, #0xb0]
+21cec6c  str    wzr, [sp, #0xc8]
+21cec70  str    xzr, [sp, #0xa8]
+21cec74  strb   wzr, [sp, #0xa4]
+21cec78  stp    xzr, xzr, [sp, #0x80]
+21cec7c  str    xzr, [sp, #0x90]
+21cec80  stp    xzr, xzr, [sp, #0x70]
+21cec84  stp    xzr, xzr, [sp, #0x60]
+21cec88  str    xzr, [sp, #0x58]
+21cec8c  ldr    w9, [x8, #0x10]
+21cec90  cmp    w9, #1
+21cec94  b.eq   #0x21ced40
+21cec98  mov    w8, wzr
+21cec9c  cbnz   w9, #0x21d047c
+21ceca0  ldr    x20, [sp, #0x38]
+21ceca4  mov    w8, #-1
+21ceca8  str    w8, [x20, #0x10]
+21cecac  adrp   x8, #0x41d2000
+21cecb0  ldr    x8, [x8, #0x280]  ; type <>c__DisplayClass40_0
+21cecb4  ldr    x0, [x8]
+21cecb8  bl     #0x1b88970
+21cecbc  mov    x1, xzr
+21cecc0  mov    x21, x0
+21cecc4  bl     #0x339a46c
+21cecc8  str    x21, [x20, #0x30]!
+21ceccc  mov    x0, x20
+21cecd0  mov    x1, x21
+21cecd4  bl     #0x1b88694
+21cecd8  ldr    x0, [x20]
+21cecdc  cbz    x0, #0x21d04bc
+21cece0  ldur   x1, [x20, #-0x10]
+21cece4  str    x1, [x0, #0x10]!
+21cece8  bl     #0x1b88694
+21cecec  ldr    x8, [x20]
+21cecf0  cbz    x8, #0x21d04bc
+21cecf4  ldr    x19, [sp, #0x38]
+21cecf8  adrp   x10, #0x41ac000
+21cecfc  ldr    w9, [x19, #0x28]
+21ced00  ldr    x10, [x10, #0xf80]  ; type UnityEngine.WaitForSeconds
+21ced04  str    w9, [x8, #0x18]
+21ced08  ldr    x0, [x10]
+21ced0c  ldr    s8, [x19, #0x2c]
+21ced10  bl     #0x1b88970
+21ced14  mov    v0.16b, v8.16b
+21ced18  mov    x1, xzr
+21ced1c  mov    x20, x0
+21ced20  bl     #0x3cd11cc
+21ced24  str    x20, [x19, #0x18]!
+21ced28  mov    x0, x19
+21ced2c  mov    x1, x20
+21ced30  bl     #0x1b88694
+21ced34  mov    w8, #1
+21ced38  stur   w8, [x19, #-8]
+21ced3c  b      #0x21d047c
+21ced40  ldr    x9, [sp, #0x38]
+21ced44  mov    w8, #-1
+21ced48  adrp   x19, #0x44fd000
+21ced4c  str    w8, [x9, #0x10]
+21ced50  ldrb   w8, [x19, #0x350]
+21ced54  ldr    x9, [x9, #0x20]
+21ced58  str    x9, [sp, #0x30]
+21ced5c  cbnz   w8, #0x21ced74
+21ced60  adrp   x0, #0x41d1000
+21ced64  ldr    x0, [x0, #0x2f8]
+21ced68  bl     #0x1b886e8
+21ced6c  mov    w8, #1
+21ced70  strb   w8, [x19, #0x350]
+21ced74  adrp   x19, #0x41d1000
+21ced78  ldr    x19, [x19, #0x2f8]
+21ced7c  adrp   x24, #0x41ac000
+21ced80  ldr    x8, [x19]
+21ced84  ldr    x24, [x24, #0xbb8]  ; type UnityEngine.Object
+21ced88  ldr    x8, [x8, #0xb8]
+21ced8c  ldr    x0, [x24]
+21ced90  ldr    x25, [x8, #8]
+21ced94  ldr    w9, [x0, #0xe0]
+21ced98  cbnz   w9, #0x21ceda0
+21ced9c  bl     #0x1b8885c
+21ceda0  mov    x0, x25
+21ceda4  mov    x1, xzr
+21ceda8  mov    x2, xzr
+21cedac  bl     #0x3ccb8d8
+21cedb0  tbz    w0, #0, #0x21cede0
+21cedb4  adrp   x20, #0x44fd000
+21cedb8  ldrb   w8, [x20, #0x42e]
+21cedbc  cbnz   w8, #0x21cedd4
+21cedc0  adrp   x0, #0x41d1000
+21cedc4  ldr    x0, [x0, #0x2f8]
+21cedc8  bl     #0x1b886e8
+21cedcc  mov    w8, #1
+21cedd0  strb   w8, [x20, #0x42e]
+21cedd4  ldr    x8, [x19]
+21cedd8  ldr    x8, [x8, #0xb8]
+21ceddc  ldr    x25, [x8, #0x10]
+21cede0  adrp   x21, #0x44fc000
+21cede4  ldrb   w8, [x21, #0xa90]
+21cede8  cbnz   w8, #0x21cee00
+21cedec  adrp   x0, #0x41ca000
+21cedf0  ldr    x0, [x0, #0x578]
+21cedf4  bl     #0x1b886e8
+21cedf8  mov    w8, #1
+21cedfc  strb   w8, [x21, #0xa90]
+21cee00  adrp   x20, #0x41ca000
+21cee04  ldr    x20, [x20, #0x578]
+21cee08  ldr    x8, [x20]
+21cee0c  ldr    x8, [x8, #0xb8]
+21cee10  ldr    x8, [x8, #0x10]
+21cee14  cbz    x8, #0x21d04bc
+21cee18  ldr    x8, [x8, #0x50]
+21cee1c  cbz    x8, #0x21d04bc
+21cee20  ldr    x9, [sp, #0x38]
+21cee24  ldr    x0, [x8, #0x28]  ; type <>c__DisplayClass52_0
+21cee28  ldr    x8, [x9, #0x30]!
+21cee2c  str    x9, [sp, #0x38]
+21cee30  cbz    x8, #0x21d04bc
+21cee34  cbz    x0, #0x21d04bc
+21cee38  ldr    w1, [x8, #0x18]
+21cee3c  mov    x2, xzr
+21cee40  bl     #0x21b50d0  ; -> AvatarMakerCategoriesManager.AnimateSubcategoriesIfNeeded
+21cee44  ldr    x9, [sp, #0x38]
+21cee48  ldrb   w8, [x21, #0xa90]
+21cee4c  ldr    x19, [x9]
+21cee50  cbnz   w8, #0x21cee68
+21cee54  adrp   x0, #0x41ca000
+21cee58  ldr    x0, [x0, #0x578]
+21cee5c  bl     #0x1b886e8
+21cee60  mov    w8, #1
+21cee64  strb   w8, [x21, #0xa90]
+21cee68  ldr    x8, [x20]
+21cee6c  ldr    x8, [x8, #0xb8]
+21cee70  ldr    x8, [x8, #0x10]
+21cee74  cbz    x8, #0x21d04bc
+21cee78  cbz    x19, #0x21d04bc
+21cee7c  ldr    w8, [x8, #0xa8]
+21cee80  str    w8, [x19, #0x28]
+21cee84  ldr    x0, [x24]
+21cee88  ldr    w8, [x0, #0xe0]
+21cee8c  cbnz   w8, #0x21cee94
+21cee90  bl     #0x1b8885c
+21cee94  mov    x0, x25
+21cee98  mov    x1, xzr
+21cee9c  mov    x2, xzr
+21ceea0  bl     #0x3ccb8d8
+21ceea4  tbnz   w0, #0, #0x21ceef0
+21ceea8  ldr    x8, [sp, #0x38]
+21ceeac  ldr    x8, [x8]
+21ceeb0  cbz    x8, #0x21d04bc
+21ceeb4  cbz    x25, #0x21d04bc
+21ceeb8  ldr    w1, [x8, #0x18]
+21ceebc  add    x2, sp, #0xb8
+21ceec0  add    x3, sp, #0xcc
+21ceec4  mov    x0, x25
+21ceec8  bl     #0x21c0750  ; -> AvatarMakerExpansionPackCategory.TryGetRelevantCategoryInCurrentExpansion
+21ceecc  tbnz   w0, #0, #0x21ceef0
+21ceed0  ldr    x8, [sp, #0x38]
+21ceed4  ldr    x8, [x8]
+21ceed8  cbz    x8, #0x21d04bc
+21ceedc  ldr    w0, [x8, #0x28]
+21ceee0  ldr    w1, [x8, #0x18]
+21ceee4  mov    x2, xzr
+21ceee8  bl     #0x2181b54  ; -> CategoryTypeUtils.IsCategoryTypeParentCategory
+21ceeec  tbnz   w0, #0, #0x21d0478
+21ceef0  mov    x0, xzr
+21ceef4  bl     #0x1cb4ac4  ; -> Utils.IsWideScreen
+21ceef8  ldr    x20, [sp, #0x30]
+21ceefc  cbz    x20, #0x21d04bc
+21cef00  mov    w22, w0
+21cef04  mov    x0, x20
+21cef08  bl     #0x21ca2cc  ; -> AvatarMakerThumbsManager.BeginThumbsRefresh
+21cef0c  ldr    x19, [sp, #0x38]
+21cef10  ldr    x23, [x19]
+21cef14  cbz    x23, #0x21d04bc
+21cef18  ldr    w2, [x23, #0x18]
+21cef1c  mov    x0, x20
+21cef20  mov    w1, wzr
+21cef24  bl     #0x21c8f14  ; -> AvatarMakerThumbsManager.GetPooledSection
+21cef28  str    x0, [x23, #0x20]!
+21cef2c  mov    x1, x0
+21cef30  mov    x0, x23
+21cef34  bl     #0x1b88694
+21cef38  ldr    x8, [x19]
+21cef3c  cbz    x8, #0x21d04bc
+21cef40  adrp   x20, #0x41ca000
+21cef44  ldr    x0, [x8, #0x20]  ; "Cant find Hashset for flag type ["
+21cef48  ldr    x20, [x20, #0x578]
+21cef4c  cbz    x0, #0x21d04bc
+21cef50  eor    w8, w22, #1
+21cef54  and    w2, w8, #1
+21cef58  mov    w1, wzr
+21cef5c  str    w8, [sp, #0x24]
+21cef60  bl     #0x21c90c0  ; -> AvatarMakerThumbsSection.Init
+21cef64  ldr    x19, [sp, #0x30]
+21cef68  mov    w1, #1
+21cef6c  mov    x0, x19
+21cef70  bl     #0x21c8e58  ; -> AvatarMakerThumbsManager.DeactivateSectionsFrom
+21cef74  ldr    x0, [x19, #0x28]  ; type PWC.Level.HintBubble.LevelHintBubbleState
+21cef78  cbz    x0, #0x21d04bc
+21cef7c  fmov   s0, #1.00000000
+21cef80  mov    x1, xzr
+21cef84  bl     #0x3f20430
+21cef88  adrp   x19, #0x44fd000
+21cef8c  ldrb   w8, [x19, #0x278]
+21cef90  cbnz   w8, #0x21cefa8
+21cef94  adrp   x0, #0x41ca000
+21cef98  ldr    x0, [x0, #0x578]
+21cef9c  bl     #0x1b886e8
+21cefa0  mov    w8, #1
+21cefa4  strb   w8, [x19, #0x278]
+21cefa8  ldr    x19, [sp, #0x38]
+21cefac  ldr    x8, [x19]
+21cefb0  cbz    x8, #0x21d04bc
+21cefb4  ldr    x9, [x20]
+21cefb8  ldr    w0, [x8, #0x28]
+21cefbc  ldr    w1, [x8, #0x18]
+21cefc0  mov    x2, xzr
+21cefc4  ldr    x9, [x9, #0xb8]
+21cefc8  ldr    w23, [x9, #0xc]
+21cefcc  bl     #0x2181654  ; -> CategoryTypeUtils.IsCategoryTypeKind
+21cefd0  ldr    x22, [x19]
+21cefd4  tbz    w0, #0, #0x21cf2b4
+21cefd8  adrp   x8, #0x41c8000
+21cefdc  ldr    x8, [x8, #0x9b0]
+21cefe0  mov    x9, #-1
+21cefe4  add    x0, sp, #0x40
+21cefe8  mov    x1, xzr
+21cefec  ldr    x8, [x8]
+21ceff0  str    w23, [sp, #0x50]
+21ceff4  stp    x8, x9, [sp, #0x40]
+21ceff8  bl     #0x338d9a0
+21ceffc  adrp   x8, #0x41d2000
+21cf000  ldr    x8, [x8, #0xc8]  ; "AvatarMaker/Thumbs/"
+21cf004  adrp   x9, #0x41d2000
+21cf008  ldr    x9, [x9, #0x2a0]  ; "_Kind"
+21cf00c  mov    x1, x0
+21cf010  ldr    x8, [x8]
+21cf014  mov    x3, xzr
+21cf018  ldr    x2, [x9]
+21cf01c  mov    x0, x8
+21cf020  bl     #0x31dfa68
+21cf024  adrp   x19, #0x41d2000
+21cf028  ldr    x19, [x19, #0xb0]  ; type <>c
+21cf02c  mov    x23, x0
+21cf030  ldr    x8, [x19]
+21cf034  ldr    w9, [x8, #0xe0]
+21cf038  cbnz   w9, #0x21cf048
+21cf03c  mov    x0, x8
+21cf040  bl     #0x1b8885c
+21cf044  ldr    x8, [x19]
+21cf048  ldr    x9, [x8, #0xb8]
+21cf04c  ldr    x24, [x9, #8]
+21cf050  cbnz   x24, #0x21cf0b0
+21cf054  ldr    w9, [x8, #0xe0]
+21cf058  cbnz   w9, #0x21cf068
+21cf05c  mov    x0, x8
+21cf060  bl     #0x1b8885c
+21cf064  ldr    x8, [x19]
+21cf068  adrp   x9, #0x41d2000
+21cf06c  ldr    x8, [x8, #0xb8]
+21cf070  ldr    x9, [x9, #0x110]
+21cf074  ldr    x25, [x8]
+21cf078  ldr    x0, [x9]
+21cf07c  bl     #0x1b88970
+21cf080  adrp   x8, #0x41d2000
+21cf084  ldr    x8, [x8, #0x258]
+21cf088  mov    x1, x25
+21cf08c  mov    x3, xzr
+21cf090  mov    x24, x0
+21cf094  ldr    x2, [x8]
+21cf098  bl     #0x2b311e0
+21cf09c  ldr    x8, [x19]
+21cf0a0  mov    x1, x24
+21cf0a4  ldr    x0, [x8, #0xb8]
+21cf0a8  str    x24, [x0, #8]!
+21cf0ac  bl     #0x1b88694
+21cf0b0  cbz    x22, #0x21d04bc
+21cf0b4  mov    x0, x22
+21cf0b8  mov    x1, x23
+21cf0bc  mov    x2, x24
+21cf0c0  bl     #0x21cdff4  ; -> <>c__DisplayClass40_0.<AfterThumbsScaleDownAnimation>g__InitThumbs|0
+21cf0c4  cbz    x0, #0x21d04bc
+21cf0c8  ldr    w8, [x0, #0x18]
+21cf0cc  str    x0, [sp, #0x28]
+21cf0d0  cmp    w8, #1
+21cf0d4  b.lt   #0x21d0380
+21cf0d8  adrp   x29, #0x41d2000
+21cf0dc  adrp   x28, #0x41af000
+21cf0e0  adrp   x21, #0x41d1000
+21cf0e4  adrp   x20, #0x41ac000
+21cf0e8  adrp   x27, #0x41ae000
+21cf0ec  adrp   x22, #0x41c7000
+21cf0f0  adrp   x19, #0x41d1000
+21cf0f4  ldr    x29, [x29, #0x1f8]
+21cf0f8  ldr    x28, [x28, #0xfa0]
+21cf0fc  ldr    x21, [x21, #0xdd8]  ; "(Clone)"
+21cf100  ldr    x20, [x20, #0xba0]  ; ""
+21cf104  ldr    x27, [x27, #0xf40]
+21cf108  ldr    x22, [x22, #0x9a8]
+21cf10c  ldr    x19, [x19, #0xe68]
+21cf110  mov    w23, wzr
+21cf114  ldr    x8, [sp, #0x38]
+21cf118  ldr    x8, [x8]
+21cf11c  cbz    x8, #0x21d04bc
+21cf120  ldr    x9, [sp, #0x30]
+21cf124  ldr    x0, [x9, #0xc8]  ; "AvatarMaker/Thumbs/"
+21cf128  cbz    x0, #0x21d04bc
+21cf12c  ldr    w1, [x8, #0x18]
+21cf130  ldr    x2, [x29]
+21cf134  bl     #0x2898010
+21cf138  cbz    x0, #0x21d04bc
+21cf13c  ldr    x2, [x28]
+21cf140  mov    w1, w23
+21cf144  bl     #0x2cf044c
+21cf148  cbz    x0, #0x21d04bc
+21cf14c  mov    x1, xzr
+21cf150  mov    x24, x0
+21cf154  bl     #0x3cce6d0
+21cf158  cbz    x0, #0x21d04bc
+21cf15c  ldr    x1, [x21]
+21cf160  ldr    x2, [x20]
+21cf164  mov    x3, xzr
+21cf168  bl     #0x31e1930
+21cf16c  ldr    x8, [x27]
+21cf170  mov    x25, x0
+21cf174  ldr    w9, [x8, #0xe0]
+21cf178  cbnz   w9, #0x21cf184
+21cf17c  mov    x0, x8
+21cf180  bl     #0x1b8885c
+21cf184  ldr    x2, [x22]
+21cf188  add    x1, sp, #0xc8
+21cf18c  mov    x0, x25
+21cf190  bl     #0x24fe728
+21cf194  tbz    w0, #0, #0x21cf24c
+21cf198  ldr    x22, [sp, #0x28]
+21cf19c  ldr    x2, [x19]
+21cf1a0  mov    w1, w23
+21cf1a4  mov    x20, x21
+21cf1a8  mov    x0, x22
+21cf1ac  mov    x21, x28
+21cf1b0  bl     #0x2cf044c
+21cf1b4  adrp   x8, #0x41d2000
+21cf1b8  ldr    w28, [sp, #0xc8]
+21cf1bc  ldr    x8, [x8, #0x238]
+21cf1c0  mov    x25, x0
+21cf1c4  ldr    x8, [x8]
+21cf1c8  mov    x0, x8
+21cf1cc  bl     #0x1b88970
+21cf1d0  mov    x1, xzr
+21cf1d4  mov    x26, x0
+21cf1d8  bl     #0x339a46c
+21cf1dc  str    w28, [x26, #0x10]
+21cf1e0  cbz    x25, #0x21d04bc
+21cf1e4  mov    x0, x25
+21cf1e8  mov    x1, x26
+21cf1ec  bl     #0x21c75a4  ; -> AvatarMakerThumb.AddProperty
+21cf1f0  ldr    x2, [x19]
+21cf1f4  mov    x0, x22
+21cf1f8  mov    w1, w23
+21cf1fc  bl     #0x2cf044c
+21cf200  ldr    x8, [sp, #0x38]
+21cf204  ldr    x8, [x8]
+21cf208  cbz    x8, #0x21d04bc
+21cf20c  cbz    x0, #0x21d04bc
+21cf210  ldr    x9, [sp, #0x30]
+21cf214  ldr    w1, [x8, #0x18]
+21cf218  ldr    w8, [sp, #0x24]
+21cf21c  mov    x4, x24
+21cf220  ldp    x2, x3, [x9, #0xb8]
+21cf224  mov    x6, xzr
+21cf228  and    w5, w8, #1
+21cf22c  bl     #0x21c5938  ; -> AvatarMakerThumb.Init
+21cf230  mov    x28, x21
+21cf234  mov    x21, x20
+21cf238  adrp   x20, #0x41ac000
+21cf23c  adrp   x22, #0x41c7000
+21cf240  ldr    x20, [x20, #0xba0]  ; ""
+21cf244  ldr    x22, [x22, #0x9a8]
+21cf248  b      #0x21cf29c
+21cf24c  adrp   x8, #0x41d2000
+21cf250  ldr    x8, [x8, #0x2a8]  ; "Failed to parse string ["
+21cf254  mov    x1, x25
+21cf258  mov    x3, xzr
+21cf25c  ldr    x0, [x8]
+21cf260  adrp   x8, #0x41d2000
+21cf264  ldr    x8, [x8, #0x288]  ; "] to a spine type!"
+21cf268  ldr    x2, [x8]
+21cf26c  bl     #0x31dfa68
+21cf270  adrp   x8, #0x41ac000
+21cf274  ldr    x8, [x8, #0xae8]
+21cf278  mov    x24, x0
+21cf27c  ldr    x8, [x8]
+21cf280  ldr    w9, [x8, #0xe0]
+21cf284  cbnz   w9, #0x21cf290
+21cf288  mov    x0, x8
+21cf28c  bl     #0x1b8885c
+21cf290  mov    x0, x24
+21cf294  mov    x1, xzr
+21cf298  bl     #0x3ca5b88
+21cf29c  ldr    x8, [sp, #0x28]
+21cf2a0  add    w23, w23, #1
+21cf2a4  ldr    w8, [x8, #0x18]
+21cf2a8  cmp    w23, w8
+21cf2ac  b.lt   #0x21cf114
+21cf2b0  b      #0x21d0380
+21cf2b4  cbz    x22, #0x21d04bc
+21cf2b8  ldr    w0, [x22, #0x28]
+21cf2bc  ldr    w1, [x22, #0x18]
+21cf2c0  mov    x2, xzr
+21cf2c4  bl     #0x2181238  ; -> CategoryTypeUtils.IsCategoryTypeBreed
+21cf2c8  ldr    x8, [sp, #0x38]
+21cf2cc  ldr    x8, [x8]
+21cf2d0  cbz    x8, #0x21d04bc
+21cf2d4  tbz    w0, #0, #0x21cf4a4
+21cf2d8  adrp   x9, #0x41ad000
+21cf2dc  ldr    x9, [x9, #0x318]  ; type PWC.AvatarSpine.SpineType
+21cf2e0  mov    x10, #-1
+21cf2e4  add    x0, sp, #0x40
+21cf2e8  mov    x1, xzr
+21cf2ec  ldr    x9, [x9]
+21cf2f0  stp    x9, x10, [sp, #0x40]
+21cf2f4  ldr    w8, [x8, #0x28]
+21cf2f8  str    w8, [sp, #0x50]
+21cf2fc  bl     #0x338d9a0
+21cf300  adrp   x8, #0x41d2000
+21cf304  ldr    x8, [x8, #0xc8]  ; "AvatarMaker/Thumbs/"
+21cf308  adrp   x9, #0x41d2000
+21cf30c  ldr    x9, [x9, #0x290]  ; "/Breed"
+21cf310  mov    x1, x0
+21cf314  ldr    x8, [x8]
+21cf318  mov    x3, xzr
+21cf31c  ldr    x2, [x9]
+21cf320  mov    x0, x8
+21cf324  bl     #0x31dfa68
+21cf328  ldr    x8, [sp, #0x38]
+21cf32c  mov    x23, x0
+21cf330  ldr    x22, [x8]
+21cf334  adrp   x8, #0x41d2000
+21cf338  ldr    x8, [x8, #0x110]
+21cf33c  ldr    x8, [x8]
+21cf340  mov    x0, x8
+21cf344  bl     #0x1b88970
+21cf348  adrp   x8, #0x41d2000
+21cf34c  ldr    x8, [x8, #0x270]
+21cf350  mov    x1, x22
+21cf354  mov    x3, xzr
+21cf358  mov    x24, x0
+21cf35c  ldr    x2, [x8]
+21cf360  bl     #0x2b311e0
+21cf364  cbz    x22, #0x21d04bc
+21cf368  mov    x0, x22
+21cf36c  mov    x1, x23
+21cf370  mov    x2, x24
+21cf374  bl     #0x21cdff4  ; -> <>c__DisplayClass40_0.<AfterThumbsScaleDownAnimation>g__InitThumbs|0
+21cf378  cbz    x0, #0x21d04bc
+21cf37c  ldr    w8, [x0, #0x18]
+21cf380  mov    x22, x0
+21cf384  cmp    w8, #1
+21cf388  b.lt   #0x21d0380
+21cf38c  adrp   x19, #0x41d2000
+21cf390  adrp   x20, #0x41af000
+21cf394  adrp   x21, #0x41d1000
+21cf398  adrp   x28, #0x41d2000
+21cf39c  ldr    x19, [x19, #0x1f8]
+21cf3a0  ldr    x20, [x20, #0xfa0]
+21cf3a4  ldr    x21, [x21, #0xe68]
+21cf3a8  ldr    x28, [x28, #0x228]
+21cf3ac  mov    w23, wzr
+21cf3b0  ldr    x8, [sp, #0x38]
+21cf3b4  ldr    x8, [x8]
+21cf3b8  cbz    x8, #0x21d04bc
+21cf3bc  ldr    x9, [sp, #0x30]
+21cf3c0  ldr    x0, [x9, #0xc8]  ; "AvatarMaker/Thumbs/"
+21cf3c4  cbz    x0, #0x21d04bc
+21cf3c8  ldr    w1, [x8, #0x18]
+21cf3cc  ldr    x2, [x19]
+21cf3d0  bl     #0x2898010
+21cf3d4  cbz    x0, #0x21d04bc
+21cf3d8  ldr    x2, [x20]
+21cf3dc  mov    w1, w23
+21cf3e0  bl     #0x2cf044c
+21cf3e4  ldr    x8, [sp, #0x38]
+21cf3e8  ldr    x8, [x8]
+21cf3ec  cbz    x8, #0x21d04bc
+21cf3f0  mov    x24, x0
+21cf3f4  mov    x0, x8
+21cf3f8  mov    x1, x24
+21cf3fc  bl     #0x21ce1b4  ; -> <>c__DisplayClass40_0.<AfterThumbsScaleDownAnimation>g__GetBreedName|3
+21cf400  ldr    x2, [x21]
+21cf404  mov    x27, x0
+21cf408  mov    x0, x22
+21cf40c  mov    w1, w23
+21cf410  bl     #0x2cf044c
+21cf414  ldr    x8, [x28]
+21cf418  mov    x25, x0
+21cf41c  mov    x0, x8
+21cf420  bl     #0x1b88970
+21cf424  mov    x1, xzr
+21cf428  mov    x26, x0
+21cf42c  bl     #0x339a46c
+21cf430  mov    x0, x26
+21cf434  str    x27, [x0, #0x10]!
+21cf438  mov    x1, x27
+21cf43c  bl     #0x1b88694
+21cf440  cbz    x25, #0x21d04bc
+21cf444  mov    x0, x25
+21cf448  mov    x1, x26
+21cf44c  bl     #0x21c75a4  ; -> AvatarMakerThumb.AddProperty
+21cf450  ldr    x2, [x21]
+21cf454  mov    x0, x22
+21cf458  mov    w1, w23
+21cf45c  bl     #0x2cf044c
+21cf460  ldr    x8, [sp, #0x38]
+21cf464  ldr    x8, [x8]
+21cf468  cbz    x8, #0x21d04bc
+21cf46c  cbz    x0, #0x21d04bc
+21cf470  ldr    x9, [sp, #0x30]
+21cf474  ldr    w1, [x8, #0x18]
+21cf478  ldr    w8, [sp, #0x24]
+21cf47c  mov    x4, x24
+21cf480  ldp    x2, x3, [x9, #0xb8]
+21cf484  mov    x6, xzr
+21cf488  and    w5, w8, #1
+21cf48c  bl     #0x21c5938  ; -> AvatarMakerThumb.Init
+21cf490  ldr    w8, [x22, #0x18]
+21cf494  add    w23, w23, #1
+21cf498  cmp    w23, w8
+21cf49c  b.lt   #0x21cf3b0
+21cf4a0  b      #0x21d0380
+21cf4a4  ldr    w0, [x8, #0x28]
+21cf4a8  ldr    w1, [x8, #0x18]
+21cf4ac  mov    x2, xzr
+21cf4b0  bl     #0x2180fc0  ; -> CategoryTypeUtils.IsCategoryTypeSize
+21cf4b4  ldr    x8, [sp, #0x38]
+21cf4b8  ldr    x8, [x8]
+21cf4bc  tbz    w0, #0, #0x21cf8bc
+21cf4c0  cbz    x8, #0x21d04bc
+21cf4c4  ldr    w1, [x8, #0x28]
+21cf4c8  mov    w0, w23
+21cf4cc  mov    x2, xzr
+21cf4d0  bl     #0x217fe10  ; -> AvatarTypeExtensionMethods.GetSizeSpriteAtlasName
+21cf4d4  ldr    x19, [sp, #0x38]
+21cf4d8  adrp   x8, #0x41d2000
+21cf4dc  mov    x1, x0
+21cf4e0  mov    x2, xzr
+21cf4e4  ldr    x22, [x19]
+21cf4e8  ldr    x8, [x8, #0xc8]  ; "AvatarMaker/Thumbs/"
+21cf4ec  ldr    x8, [x8]
+21cf4f0  mov    x0, x8
+21cf4f4  bl     #0x31d3914
+21cf4f8  adrp   x8, #0x41d2000
+21cf4fc  ldr    x25, [x19]
+21cf500  ldr    x8, [x8, #0x110]
+21cf504  mov    x23, x0
+21cf508  ldr    x8, [x8]
+21cf50c  mov    x0, x8
+21cf510  bl     #0x1b88970
+21cf514  adrp   x8, #0x41d2000
+21cf518  ldr    x8, [x8, #0x278]
+21cf51c  mov    x1, x25
+21cf520  mov    x3, xzr
+21cf524  mov    x24, x0
+21cf528  ldr    x2, [x8]
+21cf52c  bl     #0x2b311e0
+21cf530  cbz    x22, #0x21d04bc
+21cf534  mov    x0, x22
+21cf538  mov    x1, x23
+21cf53c  mov    x2, x24
+21cf540  bl     #0x21cdff4  ; -> <>c__DisplayClass40_0.<AfterThumbsScaleDownAnimation>g__InitThumbs|0
+21cf544  ldr    x8, [x19]
+21cf548  cbz    x8, #0x21d04bc
+21cf54c  ldr    x9, [sp, #0x30]
+21cf550  mov    x22, x0
+21cf554  ldr    x0, [x9, #0xc8]  ; "AvatarMaker/Thumbs/"
+21cf558  cbz    x0, #0x21d04bc
+21cf55c  ldr    w1, [x8, #0x18]
+21cf560  adrp   x8, #0x41d2000
+21cf564  ldr    x8, [x8, #0x1f8]
+21cf568  ldr    x2, [x8]
+21cf56c  bl     #0x2898010
+21cf570  adrp   x8, #0x41d2000
+21cf574  ldr    x8, [x8, #0x80]
+21cf578  ldr    x1, [x8]
+21cf57c  bl     #0x2520358
+21cf580  adrp   x19, #0x41d2000
+21cf584  ldr    x19, [x19, #0xb0]  ; type <>c
+21cf588  mov    x23, x0
+21cf58c  ldr    x8, [x19]
+21cf590  ldr    w9, [x8, #0xe0]
+21cf594  cbnz   w9, #0x21cf5a4
+21cf598  mov    x0, x8
+21cf59c  bl     #0x1b8885c
+21cf5a0  ldr    x8, [x19]
+21cf5a4  ldr    x9, [x8, #0xb8]
+21cf5a8  ldr    x24, [x9, #0x10]
+21cf5ac  cbnz   x24, #0x21cf60c
+21cf5b0  ldr    w9, [x8, #0xe0]
+21cf5b4  cbnz   w9, #0x21cf5c4
+21cf5b8  mov    x0, x8
+21cf5bc  bl     #0x1b8885c
+21cf5c0  ldr    x8, [x19]
+21cf5c4  adrp   x9, #0x41d2000
+21cf5c8  ldr    x8, [x8, #0xb8]
+21cf5cc  ldr    x9, [x9, #0x30]
+21cf5d0  ldr    x25, [x8]
+21cf5d4  ldr    x0, [x9]
+21cf5d8  bl     #0x1b88970
+21cf5dc  adrp   x8, #0x41d2000
+21cf5e0  ldr    x8, [x8, #0x260]
+21cf5e4  mov    x1, x25
+21cf5e8  mov    x3, xzr
+21cf5ec  mov    x24, x0
+21cf5f0  ldr    x2, [x8]
+21cf5f4  bl     #0x27fb274
+21cf5f8  ldr    x8, [x19]
+21cf5fc  mov    x1, x24
+21cf600  ldr    x0, [x8, #0xb8]
+21cf604  str    x24, [x0, #0x10]!
+21cf608  bl     #0x1b88694
+21cf60c  cbz    x23, #0x21d04bc
+21cf610  adrp   x8, #0x41d2000
+21cf614  ldr    x8, [x8, #0x58]
+21cf618  mov    x0, x23
+21cf61c  mov    x1, x24
+21cf620  ldr    x2, [x8]
+21cf624  bl     #0x2cf2280
+21cf628  cbz    x22, #0x21d04bc
+21cf62c  ldr    w8, [x22, #0x18]
+21cf630  cmp    w8, #1
+21cf634  b.lt   #0x21d0380
+21cf638  adrp   x21, #0x41d1000
+21cf63c  adrp   x19, #0x41ac000
+21cf640  adrp   x29, #0x41ae000
+21cf644  adrp   x20, #0x41d1000
+21cf648  ldr    x21, [x21, #0xdd8]  ; "(Clone)"
+21cf64c  ldr    x19, [x19, #0xba0]  ; ""
+21cf650  ldr    x29, [x29, #0xf40]
+21cf654  ldr    x20, [x20, #0xe68]
+21cf658  mov    w24, wzr
+21cf65c  adrp   x8, #0x41af000
+21cf660  ldr    x8, [x8, #0xfa0]
+21cf664  mov    x0, x23
+21cf668  mov    w1, w24
+21cf66c  ldr    x2, [x8]
+21cf670  bl     #0x2cf044c
+21cf674  cbz    x0, #0x21d04bc
+21cf678  mov    x1, xzr
+21cf67c  mov    x25, x0
+21cf680  bl     #0x3cce6d0
+21cf684  cbz    x0, #0x21d04bc
+21cf688  ldr    x1, [x21]
+21cf68c  ldr    x2, [x19]
+21cf690  mov    x3, xzr
+21cf694  bl     #0x31e1930
+21cf698  cbz    x0, #0x21d04bc
+21cf69c  mov    w1, #0x5f
+21cf6a0  mov    w2, wzr
+21cf6a4  mov    x3, xzr
+21cf6a8  mov    x27, x0
+21cf6ac  bl     #0x31e1f84
+21cf6b0  cbz    x0, #0x21d04bc
+21cf6b4  ldr    w8, [x0, #0x18]
+21cf6b8  mov    x26, x0
+21cf6bc  cbz    w8, #0x21d04e4
+21cf6c0  ldr    x0, [x29]
+21cf6c4  ldr    x28, [x26, #0x20]
+21cf6c8  ldr    w8, [x0, #0xe0]
+21cf6cc  cbnz   w8, #0x21cf6d4
+21cf6d0  bl     #0x1b8885c
+21cf6d4  adrp   x8, #0x41c7000
+21cf6d8  ldr    x8, [x8, #0x9a8]
+21cf6dc  add    x1, sp, #0xb4
+21cf6e0  mov    x0, x28
+21cf6e4  ldr    x2, [x8]
+21cf6e8  bl     #0x24fe728
+21cf6ec  ldr    w8, [x26, #0x18]
+21cf6f0  tbz    w0, #0, #0x21cf810
+21cf6f4  cmp    w8, #2
+21cf6f8  b.ne   #0x21cf830
+21cf6fc  ldr    x0, [x29]
+21cf700  ldr    x27, [x26, #0x28]
+21cf704  ldr    w8, [x0, #0xe0]
+21cf708  cbnz   w8, #0x21cf710
+21cf70c  bl     #0x1b8885c
+21cf710  adrp   x8, #0x41d2000
+21cf714  ldr    x8, [x8, #0x240]
+21cf718  add    x1, sp, #0xb0
+21cf71c  mov    x0, x27
+21cf720  ldr    x2, [x8]
+21cf724  bl     #0x24fe728
+21cf728  tbz    w0, #0, #0x21cf84c
+21cf72c  ldr    x2, [x20]
+21cf730  mov    x0, x22
+21cf734  mov    w1, w24
+21cf738  mov    x28, x19
+21cf73c  bl     #0x2cf044c
+21cf740  adrp   x8, #0x41d2000
+21cf744  ldr    w19, [sp, #0xb4]
+21cf748  ldr    x8, [x8, #0x238]
+21cf74c  mov    x26, x0
+21cf750  ldr    x8, [x8]
+21cf754  mov    x0, x8
+21cf758  bl     #0x1b88970
+21cf75c  mov    x1, xzr
+21cf760  mov    x27, x0
+21cf764  bl     #0x339a46c
+21cf768  str    w19, [x27, #0x10]
+21cf76c  cbz    x26, #0x21d04bc
+21cf770  mov    x0, x26
+21cf774  mov    x1, x27
+21cf778  bl     #0x21c75a4  ; -> AvatarMakerThumb.AddProperty
+21cf77c  ldr    x2, [x20]
+21cf780  mov    x0, x22
+21cf784  mov    w1, w24
+21cf788  bl     #0x2cf044c
+21cf78c  adrp   x8, #0x41d2000
+21cf790  ldr    w19, [sp, #0xb0]
+21cf794  ldr    x8, [x8, #0x230]
+21cf798  mov    x26, x0
+21cf79c  ldr    x8, [x8]
+21cf7a0  mov    x0, x8
+21cf7a4  bl     #0x1b88970
+21cf7a8  mov    x1, xzr
+21cf7ac  mov    x27, x0
+21cf7b0  bl     #0x339a46c
+21cf7b4  str    w19, [x27, #0x10]
+21cf7b8  cbz    x26, #0x21d04bc
+21cf7bc  mov    x0, x26
+21cf7c0  mov    x1, x27
+21cf7c4  bl     #0x21c75a4  ; -> AvatarMakerThumb.AddProperty
+21cf7c8  ldr    x2, [x20]
+21cf7cc  mov    x0, x22
+21cf7d0  mov    w1, w24
+21cf7d4  bl     #0x2cf044c
+21cf7d8  ldr    x8, [sp, #0x38]
+21cf7dc  ldr    x8, [x8]
+21cf7e0  cbz    x8, #0x21d04bc
+21cf7e4  cbz    x0, #0x21d04bc
+21cf7e8  ldr    x9, [sp, #0x30]
+21cf7ec  ldr    w1, [x8, #0x18]
+21cf7f0  ldr    w8, [sp, #0x24]
+21cf7f4  mov    x4, x25
+21cf7f8  ldp    x2, x3, [x9, #0xb8]
+21cf7fc  mov    x6, xzr
+21cf800  and    w5, w8, #1
+21cf804  mov    x19, x28
+21cf808  bl     #0x21c5938  ; -> AvatarMakerThumb.Init
+21cf80c  b      #0x21cf8a8
+21cf810  cbz    w8, #0x21d04e4
+21cf814  adrp   x8, #0x41d2000
+21cf818  ldr    x1, [x26, #0x20]
+21cf81c  ldr    x8, [x8, #0x2a8]  ; "Failed to parse string ["
+21cf820  ldr    x0, [x8]
+21cf824  adrp   x8, #0x41d2000
+21cf828  ldr    x8, [x8, #0x288]  ; "] to a spine type!"
+21cf82c  b      #0x21cf870
+21cf830  adrp   x8, #0x41d2000
+21cf834  ldr    x8, [x8, #0x298]  ; "array.Length != 2! originalSpriteName["
+21cf838  mov    x1, x27
+21cf83c  ldr    x0, [x8]
+21cf840  adrp   x8, #0x41b0000
+21cf844  ldr    x8, [x8, #0x4e8]  ; "]!"
+21cf848  b      #0x21cf870
+21cf84c  ldr    w8, [x26, #0x18]
+21cf850  cmp    w8, #1
+21cf854  b.ls   #0x21d04e4
+21cf858  adrp   x8, #0x41d2000
+21cf85c  ldr    x1, [x26, #0x28]
+21cf860  ldr    x8, [x8, #0x2a8]  ; "Failed to parse string ["
+21cf864  ldr    x0, [x8]
+21cf868  adrp   x8, #0x41d2000
+21cf86c  ldr    x8, [x8, #0x2b0]  ; "] to a size type!"
+21cf870  ldr    x2, [x8]
+21cf874  mov    x3, xzr
+21cf878  bl     #0x31dfa68
+21cf87c  adrp   x8, #0x41ac000
+21cf880  ldr    x8, [x8, #0xae8]
+21cf884  mov    x25, x0
+21cf888  ldr    x8, [x8]
+21cf88c  ldr    w9, [x8, #0xe0]
+21cf890  cbnz   w9, #0x21cf89c
+21cf894  mov    x0, x8
+21cf898  bl     #0x1b8885c
+21cf89c  mov    x0, x25
+21cf8a0  mov    x1, xzr
+21cf8a4  bl     #0x3ca5b88
+21cf8a8  ldr    w8, [x22, #0x18]
+21cf8ac  add    w24, w24, #1
+21cf8b0  cmp    w24, w8
+21cf8b4  b.lt   #0x21cf65c
+21cf8b8  b      #0x21d0380
+21cf8bc  cbz    x8, #0x21d04bc
+21cf8c0  ldr    w0, [x8, #0x28]
+21cf8c4  ldr    w1, [x8, #0x18]
+21cf8c8  mov    x2, xzr
+21cf8cc  bl     #0x2180e74  ; -> CategoryTypeUtils.IsCategoryTypeSkin
+21cf8d0  tbz    w0, #0, #0x21cf900
+21cf8d4  ldr    x8, [sp, #0x38]
+21cf8d8  ldr    x8, [x8]
+21cf8dc  cbz    x8, #0x21d04bc
+21cf8e0  ldr    w1, [x8, #0x18]
+21cf8e4  ldr    w8, [sp, #0x24]
+21cf8e8  ldr    x0, [sp, #0x30]
+21cf8ec  mov    x2, x25
+21cf8f0  and    w3, w8, #1
+21cf8f4  bl     #0x21c896c  ; -> AvatarMakerThumbsManager.TryFillColorSections
+21cf8f8  tbnz   w0, #0, #0x21d0380
+21cf8fc  b      #0x21d0478
+21cf900  adrp   x8, #0x41b2000
+21cf904  ldr    x8, [x8, #0x3b0]
+21cf908  ldr    x0, [x8]
+21cf90c  bl     #0x1b88970
+21cf910  adrp   x8, #0x41b2000
+21cf914  ldr    x8, [x8, #0x3e0]
+21cf918  mov    x22, x0
+21cf91c  ldr    x1, [x8]
+21cf920  bl     #0x2b531ec
+21cf924  ldr    x8, [sp, #0x38]
+21cf928  ldr    x8, [x8]
+21cf92c  cbz    x8, #0x21d04bc
+21cf930  cbz    x22, #0x21d04bc
+21cf934  ldr    w1, [x8, #0x18]
+21cf938  adrp   x8, #0x41b2000
+21cf93c  ldr    x8, [x8, #0xdd8]
+21cf940  mov    x0, x22
+21cf944  ldr    x2, [x8]
+21cf948  bl     #0x2b543f0
+21cf94c  ldr    x20, [sp, #0x38]
+21cf950  ldr    x8, [x20]
+21cf954  cbz    x8, #0x21d04bc
+21cf958  ldr    w0, [x8, #0x28]
+21cf95c  ldr    w1, [x8, #0x18]
+21cf960  mov    x2, xzr
+21cf964  bl     #0x21823f4  ; -> CategoryTypeUtils.GetCategoryTypeHiddenCategories
+21cf968  adrp   x19, #0x41b6000
+21cf96c  ldr    x19, [x19, #0x8f8]
+21cf970  mov    x1, x0
+21cf974  mov    x0, x22
+21cf978  ldr    x2, [x19]
+21cf97c  bl     #0x2b54400
+21cf980  ldr    x8, [x20]
+21cf984  cbz    x8, #0x21d04bc
+21cf988  str    w23, [sp, #0x28]
+21cf98c  adrp   x20, #0x41ca000
+21cf990  ldr    x20, [x20, #0x578]
+21cf994  cbz    x25, #0x21d04bc
+21cf998  ldr    w1, [x8, #0x18]
+21cf99c  add    x2, sp, #0xa8
+21cf9a0  add    x3, sp, #0xa4
+21cf9a4  mov    x0, x25
+21cf9a8  bl     #0x21c0750  ; -> AvatarMakerExpansionPackCategory.TryGetRelevantCategoryInCurrentExpansion
+21cf9ac  ldr    x1, [sp, #0xa8]
+21cf9b0  ldr    x2, [x19]
+21cf9b4  mov    x0, x22
+21cf9b8  bl     #0x2b54400
+21cf9bc  adrp   x8, #0x41ce000
+21cf9c0  ldr    x8, [x8, #0x328]
+21cf9c4  ldr    x0, [x8]
+21cf9c8  bl     #0x1b88970
+21cf9cc  adrp   x8, #0x41ce000
+21cf9d0  ldr    x8, [x8, #0x330]
+21cf9d4  mov    x23, x0
+21cf9d8  ldr    x1, [x8]
+21cf9dc  bl     #0x2ca578c
+21cf9e0  ldr    x0, [x24]
+21cf9e4  ldr    w8, [x0, #0xe0]
+21cf9e8  cbnz   w8, #0x21cf9f0
+21cf9ec  bl     #0x1b8885c
+21cf9f0  mov    x0, x25
+21cf9f4  mov    x1, xzr
+21cf9f8  mov    x2, xzr
+21cf9fc  bl     #0x3ccab90
+21cfa00  tbz    w0, #0, #0x21cfa0c
+21cfa04  ldrb   w8, [x25, #0x34]
+21cfa08  cbz    w8, #0x21d028c
+21cfa0c  str    x23, [sp, #0x10]
+21cfa10  adrp   x8, #0x41ca000
+21cfa14  ldr    x8, [x8, #0x960]
+21cfa18  mov    x0, x22
+21cfa1c  str    x22, [sp, #0x18]
+21cfa20  ldr    x1, [x8]
+21cfa24  add    x8, sp, #0x40
+21cfa28  bl     #0x2b53d74
+21cfa2c  ldr    q0, [sp, #0x40]
+21cfa30  ldr    x8, [sp, #0x50]
+21cfa34  adrp   x26, #0x41ca000
+21cfa38  adrp   x27, #0x41d2000
+21cfa3c  adrp   x23, #0x41b0000
+21cfa40  adrp   x24, #0x41b9000
+21cfa44  adrp   x22, #0x41b7000
+21cfa48  ldr    x26, [x26, #0x950]
+21cfa4c  ldr    x27, [x27, #0x1f0]
+21cfa50  ldr    x23, [x23, #0x9d8]
+21cfa54  ldr    x24, [x24, #0xbe0]
+21cfa58  ldr    x22, [x22, #0x160]  ; "_Color"
+21cfa5c  mov    w19, #1
+21cfa60  str    q0, [sp, #0x80]
+21cfa64  str    x8, [sp, #0x90]
+21cfa68  ldr    x1, [x26]
+21cfa6c  add    x0, sp, #0x80
+21cfa70  bl     #0x29bb66c
+21cfa74  tbz    w0, #0, #0x21d0250
+21cfa78  ldr    x8, [sp, #0x30]
+21cfa7c  ldr    x0, [x8, #0xc8]
+21cfa80  cbz    x0, #0x21d04e8
+21cfa84  ldr    w25, [sp, #0x90]
+21cfa88  ldr    x2, [x27]
+21cfa8c  mov    w1, w25
+21cfa90  bl     #0x28982a4
+21cfa94  tbnz   w0, #0, #0x21cfa68
+21cfa98  adrp   x8, #0x41b5000
+21cfa9c  ldr    x8, [x8, #0x100]
+21cfaa0  ldr    x0, [x8]
+21cfaa4  bl     #0x1b88970
+21cfaa8  adrp   x8, #0x41b5000
+21cfaac  ldr    x8, [x8, #0xf8]
+21cfab0  mov    x26, x0
+21cfab4  ldr    x1, [x8]
+21cfab8  bl     #0x2cefee8
+21cfabc  ldr    x8, [sp, #0x38]
+21cfac0  str    x26, [sp, #0x78]
+21cfac4  ldr    x8, [x8]
+21cfac8  cbz    x8, #0x21d04f4
+21cfacc  ldr    w0, [x8, #0x28]
+21cfad0  mov    w1, w25
+21cfad4  mov    x2, xzr
+21cfad8  bl     #0x21828e0  ; -> CategoryTypeUtils.GetCategoryTypeName
+21cfadc  ldr    x8, [sp, #0x38]
+21cfae0  ldr    x8, [x8]
+21cfae4  cbz    x8, #0x21d04f8
+21cfae8  mov    x26, x0
+21cfaec  ldr    w0, [x8, #0x28]
+21cfaf0  mov    w1, w25
+21cfaf4  mov    x2, xzr
+21cfaf8  bl     #0x2183d4c  ; -> CategoryTypeUtils.IsUsingBreed
+21cfafc  tbz    w0, #0, #0x21cfb44
+21cfb00  ldrb   w8, [x21, #0xa90]
+21cfb04  cbnz   w8, #0x21cfb14
+21cfb08  mov    x0, x20
+21cfb0c  bl     #0x1b886e8
+21cfb10  strb   w19, [x21, #0xa90]
+21cfb14  ldr    x8, [x20]
+21cfb18  ldr    x8, [x8, #0xb8]
+21cfb1c  ldr    x8, [x8, #0x10]  ; type StarsPass.StarsPassPackWidget
+21cfb20  cbz    x8, #0x21d053c
+21cfb24  ldr    x0, [x8, #0x68]  ; type <Start>d__36
+21cfb28  adrp   x8, #0x41ac000
+21cfb2c  ldr    x8, [x8, #0xf30]  ; "/"
+21cfb30  ldr    x1, [x8]
+21cfb34  mov    x2, xzr
+21cfb38  bl     #0x31d3914
+21cfb3c  mov    x28, x0
+21cfb40  b      #0x21cfb50
+21cfb44  adrp   x8, #0x41ac000
+21cfb48  ldr    x8, [x8, #0xba0]  ; ""
+21cfb4c  ldr    x28, [x8]
+21cfb50  adrp   x8, #0x41ac000
+21cfb54  ldr    x8, [x8, #0xd10]
+21cfb58  ldr    x0, [x8]
+21cfb5c  mov    w1, #5
+21cfb60  bl     #0x1b887cc
+21cfb64  mov    x27, x0
+21cfb68  cbz    x0, #0x21d0500
+21cfb6c  ldr    w8, [x27, #0x18]
+21cfb70  cbz    w8, #0x21d04f0
+21cfb74  adrp   x8, #0x41d2000
+21cfb78  ldr    x8, [x8, #0xc8]  ; "AvatarMaker/Thumbs/"
+21cfb7c  mov    x0, x27
+21cfb80  ldr    x1, [x8]
+21cfb84  str    x1, [x0, #0x20]!
+21cfb88  bl     #0x1b88694
+21cfb8c  ldr    x8, [sp, #0x38]
+21cfb90  ldr    x8, [x8]
+21cfb94  cbz    x8, #0x21d04fc
+21cfb98  adrp   x9, #0x41ad000
+21cfb9c  ldr    x9, [x9, #0x318]  ; type PWC.AvatarSpine.SpineType
+21cfba0  ldr    x10, [x9]
+21cfba4  mov    x9, #-1
+21cfba8  stp    x10, x9, [sp, #0x40]
+21cfbac  ldr    w8, [x8, #0x28]
+21cfbb0  str    w8, [sp, #0x50]
+21cfbb4  add    x0, sp, #0x40
+21cfbb8  mov    x1, xzr
+21cfbbc  bl     #0x338d9a0
+21cfbc0  mov    x1, x0
+21cfbc4  ldr    w8, [x27, #0x18]
+21cfbc8  cmp    w8, #1
+21cfbcc  b.ls   #0x21d0508
+21cfbd0  mov    x0, x27
+21cfbd4  str    x1, [x0, #0x28]!
+21cfbd8  bl     #0x1b88694
+21cfbdc  ldr    w8, [x27, #0x18]
+21cfbe0  cmp    w8, #2
+21cfbe4  b.ls   #0x21d050c
+21cfbe8  adrp   x8, #0x41ac000
+21cfbec  ldr    x8, [x8, #0xf30]  ; "/"
+21cfbf0  mov    x0, x27
+21cfbf4  ldr    x1, [x8]
+21cfbf8  str    x1, [x0, #0x30]!
+21cfbfc  bl     #0x1b88694
+21cfc00  ldr    w8, [x27, #0x18]
+21cfc04  cmp    w8, #3
+21cfc08  b.ls   #0x21d04ec
+21cfc0c  mov    x0, x27
+21cfc10  str    x28, [x0, #0x38]!
+21cfc14  mov    x1, x28
+21cfc18  bl     #0x1b88694
+21cfc1c  ldr    w8, [x27, #0x18]
+21cfc20  cmp    w8, #4
+21cfc24  b.ls   #0x21d0504
+21cfc28  mov    x0, x27
+21cfc2c  str    x26, [x0, #0x40]!
+21cfc30  mov    x1, x26
+21cfc34  bl     #0x1b88694
+21cfc38  mov    x0, x27
+21cfc3c  mov    x1, xzr
+21cfc40  bl     #0x31e0104
+21cfc44  adrp   x8, #0x41d2000
+21cfc48  ldr    x8, [x8, #0xc0]
+21cfc4c  ldr    x1, [x8]
+21cfc50  bl     #0x25d6298
+21cfc54  adrp   x8, #0x41b5000
+21cfc58  ldr    x8, [x8, #0x100]
+21cfc5c  mov    x27, x0
+21cfc60  ldr    x0, [x8]
+21cfc64  bl     #0x1b88970
+21cfc68  adrp   x8, #0x41b5000
+21cfc6c  ldr    x8, [x8, #0xf8]
+21cfc70  mov    x26, x0
+21cfc74  ldr    x1, [x8]
+21cfc78  bl     #0x2cefee8
+21cfc7c  adrp   x8, #0x41ac000
+21cfc80  ldr    x8, [x8, #0xbb8]  ; type UnityEngine.Object
+21cfc84  ldr    x0, [x8]
+21cfc88  ldr    w8, [x0, #0xe0]
+21cfc8c  cbnz   w8, #0x21cfc94
+21cfc90  bl     #0x1b8885c
+21cfc94  mov    x0, x27
+21cfc98  mov    x1, xzr
+21cfc9c  mov    x2, xzr
+21cfca0  bl     #0x3ccab90
+21cfca4  tbz    w0, #0, #0x21cfcf8
+21cfca8  cbz    x27, #0x21d0538
+21cfcac  mov    x0, x27
+21cfcb0  mov    x1, xzr
+21cfcb4  bl     #0x3cd81b4
+21cfcb8  mov    w1, w0
+21cfcbc  adrp   x8, #0x41d2000
+21cfcc0  ldr    x8, [x8, #0xf0]
+21cfcc4  ldr    x0, [x8]
+21cfcc8  bl     #0x1b887cc
+21cfccc  mov    x26, x0
+21cfcd0  mov    x0, x27
+21cfcd4  mov    x1, x26
+21cfcd8  mov    x2, xzr
+21cfcdc  bl     #0x3cd8278
+21cfce0  adrp   x8, #0x41d2000
+21cfce4  ldr    x8, [x8, #0x80]
+21cfce8  ldr    x1, [x8]
+21cfcec  mov    x0, x26
+21cfcf0  bl     #0x2520358
+21cfcf4  mov    x26, x0
+21cfcf8  ldr    w8, [sp, #0x28]
+21cfcfc  cmp    w8, #1
+21cfd00  b.eq   #0x21cfda4
+21cfd04  cmp    w8, #2
+21cfd08  b.eq   #0x21cfd60
+21cfd0c  cmp    w8, #3
+21cfd10  b.ne   #0x21cfde4
+21cfd14  adrp   x8, #0x41af000
+21cfd18  ldr    x8, [x8, #0x350]
+21cfd1c  ldr    x0, [x8]
+21cfd20  bl     #0x1b88970
+21cfd24  adrp   x8, #0x41af000
+21cfd28  ldr    x8, [x8, #0x358]
+21cfd2c  mov    x27, x0
+21cfd30  ldr    x1, [x8]
+21cfd34  bl     #0x2b5a3bc
+21cfd38  ldr    x8, [sp, #0x38]
+21cfd3c  ldr    x8, [x8]
+21cfd40  cbz    x8, #0x21d0548
+21cfd44  ldr    w1, [x8, #0x28]
+21cfd48  ldr    x4, [sp, #0x78]
+21cfd4c  ldr    x0, [sp, #0x30]
+21cfd50  mov    w2, w25
+21cfd54  mov    x3, x26
+21cfd58  bl     #0x21cafec  ; -> AvatarMakerThumbsManager.AddItemSpritesOutsideAnyPack
+21cfd5c  b      #0x21cfe38
+21cfd60  adrp   x8, #0x41af000
+21cfd64  ldr    x8, [x8, #0x350]
+21cfd68  ldr    x0, [x8]
+21cfd6c  bl     #0x1b88970
+21cfd70  adrp   x8, #0x41af000
+21cfd74  ldr    x8, [x8, #0x358]
+21cfd78  mov    x27, x0
+21cfd7c  ldr    x1, [x8]
+21cfd80  bl     #0x2b5a3bc
+21cfd84  ldr    x0, [sp, #0x78]
+21cfd88  cbz    x0, #0x21d0544
+21cfd8c  adrp   x8, #0x41d2000
+21cfd90  ldr    x8, [x8, #0x250]
+21cfd94  ldr    x2, [x8]
+21cfd98  mov    x1, x26
+21cfd9c  bl     #0x2cf0928
+21cfda0  b      #0x21cfe38
+21cfda4  ldr    x8, [sp, #0x38]
+21cfda8  ldr    x8, [x8]
+21cfdac  cbz    x8, #0x21d054c
+21cfdb0  adrp   x9, #0x41b5000
+21cfdb4  ldr    x9, [x9, #0x488]
+21cfdb8  ldr    w27, [x8, #0x28]
+21cfdbc  ldr    x0, [x9]
+21cfdc0  ldr    w9, [x0, #0xe0]
+21cfdc4  cbnz   w9, #0x21cfdcc
+21cfdc8  bl     #0x1b8885c
+21cfdcc  mov    w0, w27
+21cfdd0  mov    w1, w25
+21cfdd4  mov    x2, xzr
+21cfdd8  bl     #0x216dad4  ; -> AvatarSpineDataManager.GetMakerIncludedSkinsByCategoryTypeData
+21cfddc  mov    x27, x0
+21cfde0  b      #0x21cfe38
+21cfde4  adrp   x8, #0x41af000
+21cfde8  ldr    x8, [x8, #0x350]
+21cfdec  ldr    x0, [x8]
+21cfdf0  bl     #0x1b88970
+21cfdf4  adrp   x8, #0x41af000
+21cfdf8  ldr    x8, [x8, #0x358]
+21cfdfc  mov    x27, x0
+21cfe00  ldr    x1, [x8]
+21cfe04  bl     #0x2b5a3bc
+21cfe08  adrp   x8, #0x41ac000
+21cfe0c  ldr    x8, [x8, #0xae8]
+21cfe10  ldr    x0, [x8]
+21cfe14  ldr    w8, [x0, #0xe0]
+21cfe18  cbnz   w8, #0x21cfe20
+21cfe1c  bl     #0x1b8885c
+21cfe20  adrp   x8, #0x41d2000
+21cfe24  ldr    x8, [x8, #0x2b8]  ; "Avatar type not found!"
+21cfe28  ldr    x0, [x8]
+21cfe2c  ldr    x1, [sp, #0x30]
+21cfe30  mov    x2, xzr
+21cfe34  bl     #0x3ca5c90
+21cfe38  ldr    x8, [sp, #0x38]
+21cfe3c  ldr    x8, [x8]
+21cfe40  cbz    x8, #0x21d0510
+21cfe44  ldr    w1, [x8, #0x28]
+21cfe48  mov    w2, w25
+21cfe4c  bl     #0x21ca47c  ; -> AvatarMakerThumbsManager.GetRelevantInventorySkins
+21cfe50  mov    x1, x0
+21cfe54  cbz    x27, #0x21d0514
+21cfe58  adrp   x8, #0x41b6000
+21cfe5c  ldr    x8, [x8, #0x900]
+21cfe60  ldr    x2, [x8]
+21cfe64  mov    x0, x27
+21cfe68  bl     #0x2b5b5b0
+21cfe6c  adrp   x8, #0x41b0000
+21cfe70  ldr    x8, [x8, #0x9f8]
+21cfe74  ldr    x1, [x8]
+21cfe78  add    x8, sp, #0x40
+21cfe7c  mov    x0, x27
+21cfe80  bl     #0x2b5af24
+21cfe84  ldr    q0, [sp, #0x40]
+21cfe88  ldr    x8, [sp, #0x50]
+21cfe8c  str    q0, [sp, #0x60]
+21cfe90  str    x8, [sp, #0x70]
+21cfe94  ldr    x1, [x23]
+21cfe98  add    x0, sp, #0x60
+21cfe9c  bl     #0x29c05b0
+21cfea0  tbz    w0, #0, #0x21d007c
+21cfea4  ldr    x8, [sp, #0x38]
+21cfea8  ldr    x8, [x8]
+21cfeac  cbz    x8, #0x21d0178
+21cfeb0  ldr    x27, [sp, #0x70]
+21cfeb4  ldrb   w9, [x21, #0xa90]
+21cfeb8  ldr    w28, [x8, #0x28]
+21cfebc  cbnz   w9, #0x21cfecc
+21cfec0  mov    x0, x20
+21cfec4  bl     #0x1b886e8
+21cfec8  strb   w19, [x21, #0xa90]
+21cfecc  ldr    x8, [x20]
+21cfed0  ldr    x8, [x8, #0xb8]  ; "public.app-category.healthcare-fitness"
+21cfed4  ldr    x8, [x8, #0x10]  ; "public.app-category.weather"
+21cfed8  cbz    x8, #0x21d0180
+21cfedc  ldr    x8, [x8, #0x58]  ; "public.app-category.adventure-games"
+21cfee0  cbz    x8, #0x21d0168
+21cfee4  ldr    x8, [x8, #0x20]  ; "public.app-category.kids-games"
+21cfee8  cbz    x8, #0x21d0170
+21cfeec  ldr    x0, [x24]
+21cfef0  ldr    w29, [x8, #0xb0]
+21cfef4  ldr    w9, [x0, #0xe0]
+21cfef8  cbnz   w9, #0x21cff00
+21cfefc  bl     #0x1b8885c
+21cff00  mov    w0, w28
+21cff04  mov    w1, w29
+21cff08  mov    x2, x27
+21cff0c  mov    x3, xzr
+21cff10  bl     #0x2179764  ; -> AvatarSpineSkinsRestrictionsManager.IsSkinAllowed
+21cff14  tbz    w0, #0, #0x21cfe94
+21cff18  ldr    x8, [sp, #0x38]
+21cff1c  ldr    x8, [x8]
+21cff20  cbz    x8, #0x21d0188
+21cff24  ldr    w8, [x8, #0x28]
+21cff28  cmp    w8, #1
+21cff2c  b.ne   #0x21cff5c
+21cff30  cbz    x27, #0x21d01a0
+21cff34  mov    w1, #0x2f
+21cff38  mov    x0, x27
+21cff3c  mov    w2, wzr
+21cff40  mov    x3, xzr
+21cff44  bl     #0x31e1f84
+21cff48  adrp   x8, #0x41d2000
+21cff4c  ldr    x8, [x8, #0x248]
+21cff50  ldr    x1, [x8]
+21cff54  bl     #0x2510580
+21cff58  b      #0x21cffe8
+21cff5c  cbz    x27, #0x21d01b0
+21cff60  ldr    x1, [x22]
+21cff64  mov    x0, x27
+21cff68  mov    x2, xzr
+21cff6c  bl     #0x31e41b0
+21cff70  tbz    w0, #0, #0x21cffc4
+21cff74  adrp   x8, #0x41ac000
+21cff78  ldr    x1, [x22]
+21cff7c  ldr    x8, [x8, #0xba0]  ; ""
+21cff80  ldr    x2, [x8]
+21cff84  mov    x0, x27
+21cff88  mov    x3, xzr
+21cff8c  bl     #0x31e1930
+21cff90  cbz    x0, #0x21d01b8
+21cff94  mov    w1, #0x5f
+21cff98  mov    w2, wzr
+21cff9c  mov    x3, xzr
+21cffa0  bl     #0x31e1f84
+21cffa4  adrp   x8, #0x41d2000
+21cffa8  ldr    x8, [x8, #0x248]
+21cffac  ldr    x1, [x8]
+21cffb0  bl     #0x2510580
+21cffb4  ldr    x1, [x22]
+21cffb8  mov    x2, xzr
+21cffbc  bl     #0x31d3914
+21cffc0  b      #0x21cffe8
+21cffc4  mov    w1, #0x5f
+21cffc8  mov    x0, x27
+21cffcc  mov    w2, wzr
+21cffd0  mov    x3, xzr
+21cffd4  bl     #0x31e1f84
+21cffd8  adrp   x8, #0x41d2000
+21cffdc  ldr    x8, [x8, #0x248]
+21cffe0  ldr    x1, [x8]
+21cffe4  bl     #0x2510580
+21cffe8  ldr    x8, [sp, #0x38]
+21cffec  ldr    x8, [x8]
+21cfff0  cbz    x8, #0x21d0190
+21cfff4  ldr    w1, [x8, #0x28]
+21cfff8  add    x5, sp, #0x58
+21cfffc  mov    w2, w25
+21d0000  mov    x3, x0
+21d0004  mov    x4, x26
+21d0008  bl     #0x21ccc10  ; -> AvatarMakerThumbsManager.TryGetSpriteFromThumbSolution
+21d000c  tbz    w0, #0, #0x21cfe94
+21d0010  ldr    x0, [sp, #0x78]
+21d0014  cbz    x0, #0x21d0198
+21d0018  adrp   x9, #0x41b5000
+21d001c  ldr    x1, [sp, #0x58]
+21d0020  ldr    w10, [x0, #0x1c]
+21d0024  ldr    x8, [x0, #0x10]
+21d0028  ldr    x9, [x9, #0xf0]
+21d002c  add    w10, w10, #1
+21d0030  ldr    x9, [x9]
+21d0034  str    w10, [x0, #0x1c]
+21d0038  cbz    x8, #0x21d01a8
+21d003c  ldrsw  x10, [x0, #0x18]
+21d0040  ldr    w11, [x8, #0x18]
+21d0044  cmp    w10, w11
+21d0048  b.hs   #0x21d0068
+21d004c  add    w9, w10, #1
+21d0050  add    x8, x8, x10, lsl #3
+21d0054  str    w9, [x0, #0x18]
+21d0058  str    x1, [x8, #0x20]!
+21d005c  mov    x0, x8
+21d0060  bl     #0x1b88694
+21d0064  b      #0x21cfe94
+21d0068  ldr    x8, [x9, #0x20]  ; "Glow_Loop"
+21d006c  ldr    x8, [x8, #0xc0]
+21d0070  ldr    x2, [x8, #0x70]  ; type <>c__DisplayClass54_0
+21d0074  bl     #0x2cf071c
+21d0078  b      #0x21cfe94
+21d007c  mov    x28, xzr
+21d0080  mov    w19, #0x2d
+21d0084  adrp   x8, #0x41b0000
+21d0088  ldr    x8, [x8, #0x9c8]
+21d008c  ldr    x1, [x8]
+21d0090  add    x0, sp, #0x60
+21d0094  bl     #0x29c05ac
+21d0098  cbnz   x28, #0x21d0518
+21d009c  cmp    w19, #0x2d
+21d00a0  b.eq   #0x21d00a8
+21d00a4  cbnz   w19, #0x21d04a4
+21d00a8  ldr    x9, [sp, #0x30]
+21d00ac  ldr    x0, [x9, #0xe0]  ; "StarsPass: spawned pack prefab is missing StarsPassPackItem."
+21d00b0  cbz    x0, #0x21d0524
+21d00b4  ldr    x8, [x0]
+21d00b8  ldrb   w1, [x9, #0x20]
+21d00bc  ldp    x9, x4, [x8, #0x198]
+21d00c0  add    x3, sp, #0x78
+21d00c4  mov    w2, w25
+21d00c8  blr    x9
+21d00cc  adrp   x26, #0x41ca000
+21d00d0  adrp   x27, #0x41d2000
+21d00d4  ldr    x26, [x26, #0x950]
+21d00d8  ldr    x27, [x27, #0x1f0]
+21d00dc  mov    w19, #1
+21d00e0  ldr    x8, [sp, #0x38]
+21d00e4  ldr    x8, [x8]
+21d00e8  cbz    x8, #0x21d0528
+21d00ec  ldr    w1, [x8, #0x28]
+21d00f0  add    x3, sp, #0x78
+21d00f4  mov    w2, w25
+21d00f8  bl     #0x21cb7e8  ; -> AvatarMakerThumbsManager.FilterByClaimedInventoryFlags
+21d00fc  ldr    x8, [sp, #0x78]
+21d0100  cbz    x8, #0x21d0520
+21d0104  ldr    w8, [x8, #0x18]
+21d0108  cbz    w8, #0x21cfa68
+21d010c  add    x2, sp, #0x78
+21d0110  mov    x1, x0
+21d0114  bl     #0x21caed0  ; -> AvatarMakerThumbsManager.ReorderItemSprites
+21d0118  ldr    x8, [sp, #0x38]
+21d011c  ldr    x8, [x8]
+21d0120  cbz    x8, #0x21d052c
+21d0124  ldr    w1, [x8, #0x28]
+21d0128  ldr    x4, [sp, #0x78]
+21d012c  ldr    x19, [sp, #0x30]
+21d0130  mov    w2, w25
+21d0134  mov    w3, wzr
+21d0138  mov    x0, x19
+21d013c  bl     #0x21ca9a0  ; -> AvatarMakerThumbsManager.ApplyAuthoredThumbOrder
+21d0140  ldr    x0, [x19, #0xc8]
+21d0144  cbz    x0, #0x21d0530
+21d0148  adrp   x8, #0x41d2000
+21d014c  ldr    x2, [sp, #0x78]
+21d0150  ldr    x8, [x8, #0x1e8]
+21d0154  ldr    x3, [x8]
+21d0158  mov    w1, w25
+21d015c  bl     #0x28980b0
+21d0160  mov    w19, #1
+21d0164  b      #0x21cfa68
+21d0168  bl     #0x1b88980
+21d016c  b      #0x21d0550
+21d0170  bl     #0x1b88980
+21d0174  b      #0x21d0550
+21d0178  bl     #0x1b88980
+21d017c  b      #0x21d0550
+21d0180  bl     #0x1b88980
+21d0184  b      #0x21d0550
+21d0188  bl     #0x1b88980
+21d018c  b      #0x21d0550
+21d0190  bl     #0x1b88980
+21d0194  b      #0x21d0550
+21d0198  bl     #0x1b88980
+21d019c  b      #0x21d0550
+21d01a0  bl     #0x1b88980
+21d01a4  b      #0x21d0550
+21d01a8  bl     #0x1b88980
+21d01ac  b      #0x21d0550
+21d01b0  bl     #0x1b88980
+21d01b4  b      #0x21d0550
+21d01b8  bl     #0x1b88980
+21d01bc  b      #0x21d0550
+21d01c0  b      #0x21d0220
+21d01c4  b      #0x21d0220
+21d01c8  b      #0x21d0220
+21d01cc  b      #0x21d0220
+21d01d0  b      #0x21d0220
+21d01d4  b      #0x21d0220
+21d01d8  b      #0x21d0220
+21d01dc  b      #0x21d0220
+21d01e0  b      #0x21d0220
+21d01e4  b      #0x21d0220
+21d01e8  b      #0x21d0220
+21d01ec  b      #0x21d0220
+21d01f0  b      #0x21d0220
+21d01f4  b      #0x21d0220
+21d01f8  b      #0x21d0220
+21d01fc  b      #0x21d0220
+21d0200  b      #0x21d0220
+21d0204  b      #0x21d0220
+21d0208  b      #0x21d0220
+21d020c  b      #0x21d0220
+21d0210  b      #0x21d0220
+21d0214  b      #0x21d0220
+21d0218  b      #0x21d0220
+21d021c  b      #0x21d0220
+21d0220  mov    x27, x1
+21d0224  mov    x26, x0
+21d0228  cmp    w27, #1
+21d022c  b.ne   #0x21d04c0
+21d0230  mov    x0, x26
+21d0234  bl     #0x3f939e0
+21d0238  ldr    x28, [x0]
+21d023c  bl     #0x3f939f0
+21d0240  adrp   x20, #0x41ca000
+21d0244  ldr    x20, [x20, #0x578]
+21d0248  mov    w19, wzr
+21d024c  b      #0x21d0084
+21d0250  adrp   x8, #0x41ca000
+21d0254  ldr    x8, [x8, #0x948]
+21d0258  add    x0, sp, #0x80
+21d025c  ldr    x1, [x8]
+21d0260  bl     #0x29bb668
+21d0264  ldr    x8, [sp, #0x38]
+21d0268  ldr    x8, [x8]
+21d026c  cbz    x8, #0x21d04bc
+21d0270  ldp    x23, x22, [sp, #0x10]
+21d0274  ldr    w1, [x8, #0x28]
+21d0278  ldr    x0, [sp, #0x30]
+21d027c  mov    x2, x22
+21d0280  mov    x3, x23
+21d0284  bl     #0x21ccec8  ; -> AvatarMakerThumbsManager.AddOwnedExpansionPacksThumbs
+21d0288  b      #0x21d0334
+21d028c  adrp   x8, #0x41ca000
+21d0290  ldr    x8, [x8, #0x960]
+21d0294  mov    x0, x22
+21d0298  ldr    x1, [x8]
+21d029c  add    x8, sp, #0x40
+21d02a0  bl     #0x2b53d74
+21d02a4  ldr    q0, [sp, #0x40]
+21d02a8  ldr    x8, [sp, #0x50]
+21d02ac  adrp   x19, #0x41ca000
+21d02b0  ldr    x19, [x19, #0x950]
+21d02b4  str    q0, [sp, #0x80]
+21d02b8  str    x8, [sp, #0x90]
+21d02bc  adrp   x20, #0x41d2000
+21d02c0  ldr    x20, [x20, #0x1f0]
+21d02c4  ldr    x1, [x19]
+21d02c8  add    x0, sp, #0x80
+21d02cc  bl     #0x29bb66c
+21d02d0  tbz    w0, #0, #0x21d0320
+21d02d4  ldr    x8, [sp, #0x30]
+21d02d8  ldr    x0, [x8, #0xc8]
+21d02dc  cbz    x0, #0x21d0534
+21d02e0  ldr    w26, [sp, #0x90]
+21d02e4  ldr    x2, [x20]
+21d02e8  mov    w1, w26
+21d02ec  bl     #0x28982a4
+21d02f0  tbnz   w0, #0, #0x21d02c4
+21d02f4  ldr    x8, [sp, #0x38]
+21d02f8  ldr    x8, [x8]
+21d02fc  cbz    x8, #0x21d0540
+21d0300  ldr    x0, [sp, #0x30]
+21d0304  ldr    w1, [x25, #0x30]
+21d0308  ldr    w2, [x8, #0x28]
+21d030c  ldr    x4, [x0, #0xc8]
+21d0310  mov    w3, w26
+21d0314  mov    x5, xzr
+21d0318  bl     #0x21cc5a8  ; -> AvatarMakerThumbsManager.AddExpansionPackThumbs
+21d031c  b      #0x21d02c4
+21d0320  adrp   x8, #0x41ca000
+21d0324  ldr    x8, [x8, #0x948]
+21d0328  add    x0, sp, #0x80
+21d032c  ldr    x1, [x8]
+21d0330  bl     #0x29bb668
+21d0334  ldr    x8, [sp, #0x38]
+21d0338  ldr    x8, [x8]
+21d033c  cbz    x8, #0x21d04bc
+21d0340  ldr    w1, [x8, #0x18]
+21d0344  ldr    w2, [x8, #0x28]
+21d0348  ldr    w8, [sp, #0x24]
+21d034c  ldr    x19, [sp, #0x30]
+21d0350  mov    x3, x22
+21d0354  mov    x4, x23
+21d0358  and    w5, w8, #1
+21d035c  mov    x0, x19
+21d0360  bl     #0x21c976c  ; -> AvatarMakerThumbsManager.FillSections
+21d0364  ldr    x0, [x19, #0xe0]  ; "PreviewControllerCoroutine"
+21d0368  cbz    x0, #0x21d04bc
+21d036c  ldr    x8, [x0]
+21d0370  ldr    x1, [x19, #0xa0]
+21d0374  ldr    x9, [x8, #0x218]
+21d0378  ldr    x2, [x8, #0x220]
+21d037c  blr    x9
+21d0380  ldr    x19, [sp, #0x30]
+21d0384  mov    x0, x19
+21d0388  bl     #0x21ca340  ; -> AvatarMakerThumbsManager.EndThumbsRefresh
+21d038c  mov    w1, #1
+21d0390  mov    x0, x19
+21d0394  bl     #0x21c834c  ; -> AvatarMakerThumbsManager.ScaleThumbs
+21d0398  mov    x0, x19
+21d039c  mov    x1, xzr
+21d03a0  bl     #0x3cc84e4
+21d03a4  ldr    x8, [sp, #0x38]
+21d03a8  mov    x22, x0
+21d03ac  ldr    x24, [x8]
+21d03b0  adrp   x8, #0x41ac000
+21d03b4  ldr    x8, [x8, #0xeb0]
+21d03b8  ldr    x8, [x8]
+21d03bc  mov    x0, x8
+21d03c0  bl     #0x1b88970
+21d03c4  adrp   x8, #0x41d2000
+21d03c8  ldr    x8, [x8, #0x268]
+21d03cc  mov    x1, x24
+21d03d0  mov    x3, xzr
+21d03d4  mov    x23, x0
+21d03d8  ldr    x2, [x8]
+21d03dc  bl     #0x32cd13c
+21d03e0  adrp   x8, #0x41ac000
+21d03e4  ldr    x8, [x8, #0xb90]  ; type LeanTween
+21d03e8  ldr    x0, [x8]
+21d03ec  ldr    w8, [x0, #0xe0]
+21d03f0  cbnz   w8, #0x21d03f8
+21d03f4  bl     #0x1b8885c
+21d03f8  fmov   s0, #0.25000000
+21d03fc  mov    x0, x22
+21d0400  mov    x1, x23
+21d0404  mov    x2, xzr
+21d0408  bl     #0x1c6e4e8  ; -> LeanTween.delayedCall
+21d040c  adrp   x19, #0x44fc000
+21d0410  adrp   x20, #0x41ca000
+21d0414  ldrb   w8, [x19, #0xa90]
+21d0418  ldr    x20, [x20, #0x578]
+21d041c  cbnz   w8, #0x21d0434
+21d0420  adrp   x0, #0x41ca000
+21d0424  ldr    x0, [x0, #0x578]
+21d0428  bl     #0x1b886e8
+21d042c  mov    w8, #1
+21d0430  strb   w8, [x19, #0xa90]
+21d0434  ldr    x8, [x20]
+21d0438  ldr    x8, [x8, #0xb8]
+21d043c  ldr    x8, [x8, #0x10]
+21d0440  cbz    x8, #0x21d04bc
+21d0444  ldr    x8, [x8, #0x50]
+21d0448  cbz    x8, #0x21d04bc
+21d044c  ldr    x9, [sp, #0x38]
+21d0450  ldr    x9, [x9]
+21d0454  cbz    x9, #0x21d04bc
+21d0458  ldr    w1, [x9, #0x18]
+21d045c  ldr    x0, [sp, #0x30]
+21d0460  ldr    x19, [x8, #0x30]
+21d0464  bl     #0x21c85b8  ; -> AvatarMakerThumbsManager.GetMarkedThumbCategoryType
+21d0468  cbz    x19, #0x21d04bc
+21d046c  mov    w1, w0
+21d0470  mov    x0, x19
+21d0474  bl     #0x21bcefc  ; -> AvatarMakerColorsManager.AnimateColorsInIfNeeded
+21d0478  mov    w8, wzr
+21d047c  ldp    x20, x19, [sp, #0x120]
+21d0480  ldp    x22, x21, [sp, #0x110]
+21d0484  ldp    x24, x23, [sp, #0x100]
+21d0488  ldp    x26, x25, [sp, #0xf0]
+21d048c  ldp    x28, x27, [sp, #0xe0]
+21d0490  ldp    x29, x30, [sp, #0xd0]
+21d0494  ldr    d8, [sp, #0xc0]
+21d0498  and    w0, w8, #1
+21d049c  add    sp, sp, #0x130
+21d04a0  ret    
+21d04a4  adrp   x8, #0x41ca000
+21d04a8  ldr    x8, [x8, #0x948]
+21d04ac  add    x0, sp, #0x80
+21d04b0  ldr    x1, [x8]
+21d04b4  bl     #0x29bb668
+21d04b8  b      #0x21d047c
+21d04bc  bl     #0x1b88980
+21d04c0  mov    x28, xzr
+21d04c4  adrp   x8, #0x41b0000
+21d04c8  ldr    x8, [x8, #0x9c8]
+21d04cc  ldr    x1, [x8]
+21d04d0  add    x0, sp, #0x60
+21d04d4  bl     #0x29c05ac
+21d04d8  cbz    x28, #0x21d06d0
+21d04dc  mov    x0, x28
+21d04e0  bl     #0x1b88978
+21d04e4  bl     #0x1b88988
+21d04e8  bl     #0x1b88980
+21d04ec  bl     #0x1b88988
+21d04f0  bl     #0x1b88988
+21d04f4  bl     #0x1b88980
+21d04f8  bl     #0x1b88980
+21d04fc  bl     #0x1b88980
+21d0500  bl     #0x1b88980
+21d0504  bl     #0x1b88988
+21d0508  bl     #0x1b88988
+21d050c  bl     #0x1b88988
+21d0510  bl     #0x1b88980
+21d0514  bl     #0x1b88980
+21d0518  mov    x0, x28
+21d051c  bl     #0x1b88978
+21d0520  bl     #0x1b88980
+21d0524  bl     #0x1b88980
+21d0528  bl     #0x1b88980
+21d052c  bl     #0x1b88980
+21d0530  bl     #0x1b88980
+21d0534  bl     #0x1b88980
+21d0538  bl     #0x1b88980
+21d053c  bl     #0x1b88980
+21d0540  bl     #0x1b88980
+21d0544  bl     #0x1b88980
+21d0548  bl     #0x1b88980
+21d054c  bl     #0x1b88980
+21d0550  mov    x27, x1
+21d0554  mov    x26, x0
+21d0558  b      #0x21d04c4
+21d055c  b      #0x21d06c8
+21d0560  b      #0x21d06c8
+21d0564  b      #0x21d06c8
+21d0568  b      #0x21d06c8
+21d056c  b      #0x21d06c8
+21d0570  b      #0x21d06c8
+21d0574  b      #0x21d06c8
+21d0578  b      #0x21d06c8
+21d057c  b      #0x21d05bc
+21d0580  b      #0x21d05bc
+21d0584  b      #0x21d06c8
+21d0588  b      #0x21d06c8
+21d058c  b      #0x21d06c8
+21d0590  b      #0x21d06c8
+21d0594  b      #0x21d06c8
+21d0598  b      #0x21d06c8
+21d059c  b      #0x21d06c8
+21d05a0  b      #0x21d06c8
+21d05a4  b      #0x21d06c8
+21d05a8  b      #0x21d06c8
+21d05ac  b      #0x21d06c8
+21d05b0  b      #0x21d06c8
+21d05b4  b      #0x21d05bc
+21d05b8  b      #0x21d05bc
+21d05bc  mov    x26, x0
+21d05c0  cmp    w1, #1
+21d05c4  b.ne   #0x21d0600
+21d05c8  mov    x0, x26
+21d05cc  bl     #0x3f939e0
+21d05d0  ldr    x25, [x0]
+21d05d4  bl     #0x3f939f0
+21d05d8  adrp   x8, #0x41ca000
+21d05dc  ldr    x8, [x8, #0x948]
+21d05e0  add    x0, sp, #0x80
+21d05e4  ldr    x1, [x8]
+21d05e8  bl     #0x29bb668
+21d05ec  adrp   x20, #0x41ca000
+21d05f0  ldr    x20, [x20, #0x578]
+21d05f4  cbz    x25, #0x21cfa0c
+21d05f8  mov    x0, x25
+21d05fc  bl     #0x1b88978
+21d0600  mov    x25, xzr
+21d0604  b      #0x21d060c
+21d0608  mov    x26, x0
+21d060c  adrp   x8, #0x41ca000
+21d0610  ldr    x8, [x8, #0x948]
+21d0614  ldr    x1, [x8]
+21d0618  add    x0, sp, #0x80
+21d061c  bl     #0x29bb668
+21d0620  cbz    x25, #0x21d072c
+21d0624  mov    x0, x25
+21d0628  bl     #0x1b88978
+21d062c  b      #0x21d06c8
+21d0630  b      #0x21d06c8
+21d0634  b      #0x21d06c8
+21d0638  b      #0x21d06c8
+21d063c  b      #0x21d06c8
+21d0640  b      #0x21d06c8
+21d0644  b      #0x21d06c8
+21d0648  b      #0x21d06c8
+21d064c  b      #0x21d06c8
+21d0650  b      #0x21d06c8
+21d0654  b      #0x21d06c8
+21d0658  b      #0x21d06c8
+21d065c  b      #0x21d06c8
+21d0660  b      #0x21d06c8
+21d0664  b      #0x21d06c8
+21d0668  b      #0x21d06c8
+21d066c  b      #0x21d06c8
+21d0670  b      #0x21d06c8
+21d0674  b      #0x21d06c8
+21d0678  b      #0x21d06c8
+21d067c  b      #0x21d06c8
+21d0680  b      #0x21d06c8
+21d0684  b      #0x21d06c8
+21d0688  b      #0x21d06c8
+21d068c  b      #0x21d06c8
+21d0690  b      #0x21d06c8
+21d0694  b      #0x21d06c8
+21d0698  b      #0x21d06c8
+21d069c  b      #0x21d06c8
+21d06a0  b      #0x21d06c8
+21d06a4  b      #0x21d06c8
+21d06a8  b      #0x21d06c8
+21d06ac  b      #0x21d06c8
+21d06b0  b      #0x21d06c8
+21d06b4  b      #0x21d06c8
+21d06b8  b      #0x21d06c8
+21d06bc  b      #0x21d06c8
+21d06c0  b      #0x21d06c8
+21d06c4  b      #0x21d06c8
+21d06c8  mov    x27, x1
+21d06cc  mov    x26, x0
+21d06d0  cmp    w27, #1
+21d06d4  b.ne   #0x21d0708
+21d06d8  mov    x0, x26
+21d06dc  bl     #0x3f939e0
+21d06e0  ldr    x24, [x0]
+21d06e4  bl     #0x3f939f0
+21d06e8  adrp   x8, #0x41ca000
+21d06ec  ldr    x8, [x8, #0x948]
+21d06f0  add    x0, sp, #0x80
+21d06f4  ldr    x1, [x8]
+21d06f8  bl     #0x29bb668
+21d06fc  cbz    x24, #0x21d0264
+21d0700  mov    x0, x24
+21d0704  bl     #0x1b88978
+21d0708  mov    x24, xzr
+21d070c  b      #0x21d0714
+21d0710  mov    x26, x0
+21d0714  adrp   x8, #0x41ca000
+21d0718  ldr    x8, [x8, #0x948]
+21d071c  ldr    x1, [x8]
+21d0720  add    x0, sp, #0x80
+21d0724  bl     #0x29bb668
+21d0728  cbnz   x24, #0x21d0734
+21d072c  mov    x0, x26
+21d0730  bl     #0x1c4d150
+21d0734  mov    x0, x24
+21d0738  bl     #0x1b88978
+21d073c  bl     #0x1914dc0

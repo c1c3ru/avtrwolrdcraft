@@ -1,0 +1,17 @@
+{
+  "task_id": "T025/HANDLER/000056fb",
+  "status": "partial",
+  "semantic_completion": false,
+  "method_body_fully_bounded": false,
+  "method": "GameSceneManager.OnActiveSceneChanged: writes static field IsSceneChangingInProgress (offset 0x30) to false; writes static field Multiplayer_LoadingSceneNameInProgress (offset 0x40) to null, with GC write barrier; writes static field CurrentlyLoadingSceneName (offset 0x28) to null, with GC write barrier",
+  "contract": "out/recon/tasks/T025/HANDLER/000056fb/method-contract.json",
+  "control_flow": "out/recon/tasks/T025/HANDLER/000056fb/control-flow.json",
+  "unknowns": "out/recon/tasks/T025/HANDLER/000056fb/unknowns.jsonl",
+  "verification": {
+    "pinned_opcodes": "passed",
+    "named_call_targets_revalidated": "passed",
+    "field_declarations_matched_verbatim": "passed",
+    "runtime_or_device": false
+  },
+  "next_action": "Preserve open callee/runtime unknowns; do not mark done without independent review."
+}
