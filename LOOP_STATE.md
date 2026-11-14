@@ -18,20 +18,24 @@
   validação de runtime ("sticker area has no size", "a part can only wear one [sticker]"),
   e dezenas de assets de sticker nomeados alhures no catálogo. `_st` muito provavelmente
   abrevia "sticker": um decalque pequeno associado à skin, não uma camada invisível.
-- **Pendência não fechada:** decompilação do call-path real (`LevelSkinCATargetHandler.
-  TryAddCAHandlerFromSkinName`/`OnPutClothing`, `LevelCAStickerItemHandler.OnAddedToTarget`/
-  `GetFolderName`, `LevelClothingItemHandler.GetSkinName`) foi tentada via REA
-  (`open_binary` em `il2cpp_in/libil2cpp.so`) em duas rodadas, com duas causas raiz
-  diferentes: (1) OOM do provider Hopper enquanto um teste Unity EditMode concorrente
-  saturava a máquina compartilhada (7,1 GiB); (2) depois da máquina liberar memória (3,3 GiB
-  livres confirmados), duas tentativas limpas travaram do mesmo jeito em
-  `provider_timeout`/`QDialog::WaitDialog` do Hopper — sem banco de análise (`.hop`)
-  pré-existente para este binário de ~75MB e sem Ghidra instalado como alternativa headless,
-  a análise completa não termina dentro da janela de prontidão de 120s do bridge, não importa
-  quantas vezes se repita. Não é mais um problema de memória; é limitação estrutural do
-  provider disponível. Vaddrs exatos anotados para retomar com banco Hopper pré-analisado ou
-  Ghidra configurado (`GHIDRA_INSTALL_DIR`). Classificação: `static_candidate_not_runtime_validated`
-  até essa etapa fechar.
+- **Pendência não fechada (3 rodadas, 2 providers, mesma causa de fundo):** decompilação do
+  call-path real (`LevelSkinCATargetHandler.TryAddCAHandlerFromSkinName`/`OnPutClothing`,
+  `LevelCAStickerItemHandler.OnAddedToTarget`/`GetFolderName`,
+  `LevelClothingItemHandler.GetSkinName`) via REA em `il2cpp_in/libil2cpp.so`: (1) Hopper
+  morto por OOM com um teste Unity EditMode concorrente saturando a máquina; (2) Hopper, já
+  com memória livre, travado 2x em `provider_timeout`/`QDialog::WaitDialog` (sem banco de
+  análise `.hop` pré-existente); (3) depois de instalar Ghidra 12.1.4 e configurar
+  `GHIDRA_INSTALL_DIR` (exigiu reiniciar o job para o MCP server `rea` pegar a env var nova),
+  `open_binary` com Ghidra funcionou, mas `procedure_pseudo_code` matou o processo Java por
+  **OOM de novo** (`journalctl -k` confirma `Killed process 97231 (java)
+  anon-rss:1759520kB`) assim que o Ghidra headless entrou na análise completa do binário.
+  Conclusão: é limitação estrutural da máquina (7,1 GiB RAM + 4 GiB swap insuficientes para
+  analisar um IL2CPP de ~75MB com qualquer um dos dois providers enquanto as sessões/apps
+  normais estão abertas), não do binário nem da abordagem. Retomar exige mais memória
+  disponível no momento (fechar outras sessões/apps, aumentar swap — decisão do usuário) ou
+  rodar numa máquina com mais RAM. Vaddrs exatos seguem anotados em
+  `out/recon/tasks/T034/ST_SUFFIX_FINDINGS.md`. Classificação:
+  `static_candidate_not_runtime_validated` até essa etapa fechar.
 - Evidência completa: `out/recon/tasks/T034/ST_SUFFIX_FINDINGS.md`. Sem alteração do cliente,
   sem execução/emulação, sem aparelho.
 

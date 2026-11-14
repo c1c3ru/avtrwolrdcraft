@@ -114,11 +114,26 @@ Nenhum pseudocódigo foi obtido, em duas rodadas de tentativas com causas raiz d
   a análise completa do zero e não termina dentro da janela de prontidão de 120s do bridge,
   mesmo com memória disponível. Sem Ghidra instalado no sistema como alternativa headless.
 
-Conclusão: isto não é um problema resolvível por retry simples — é uma limitação estrutural
-do provider Hopper (GUI, sem banco de análise cacheado) contra um binário IL2CPP de ~75MB com
-dezenas de milhares de métodos, dentro do timeout do bridge. **Candidato a
-`static_candidate_not_runtime_validated`**: para retomar, é preciso (a) um banco de análise
-Hopper já pronto para este binário (abrir uma vez manualmente/fora do timeout do bridge e
-deixar `open_binary`/`snapshot_path` reaproveitar), ou (b) configurar `GHIDRA_INSTALL_DIR`
-com Ghidra 12.1.x como provider headless alternativo. Vaddrs continuam válidos para quando
-isso for resolvido.
+- **Rodada 3** (2026-11-14, depois de instalar Ghidra 12.1.4 em
+  `~/.local/share/ghidra/ghidra_12.1.4_PUBLIC` e configurar `GHIDRA_INSTALL_DIR` no servidor
+  MCP `rea`, exigindo reiniciar o job para o processo pegar a variável nova): `open_binary`
+  com `provider_id: "ghidra"` funcionou (bind confirmado, Ghidra 12.1.4), mas
+  `procedure_pseudo_code` no primeiro endereço (`0x22c62d0`) matou o processo Java com
+  **SIGKILL** depois que o Ghidra headless entrou na fase "ANALYZING all memory and code"
+  (análise completa do binário, não só da função pedida). Confirmado via
+  `journalctl -k`: `Out of memory: Killed process 97231 (java) total-vm:5852876kB,
+  anon-rss:1759520kB` — o processo nem chegou a estourar seu próprio teto de heap (`-Xmx2G`),
+  foi a pressão de memória do sistema inteiro (7,1 GiB RAM, terminal, outras sessões
+  Claude/Chrome) que faltou.
+
+Conclusão: três tentativas, duas ferramentas de análise diferentes (Hopper e Ghidra), três
+causas de falha relacionadas a recurso/ambiente (OOM, diálogo GUI travado, OOM de novo) — o
+padrão aponta para uma limitação estrutural real da máquina, não do binário nem da
+abordagem: **7,1 GiB RAM (+4 GiB swap) não é suficiente para rodar a análise completa de um
+binário IL2CPP de ~75MB com nenhum dos dois providers disponíveis, enquanto a máquina tem
+as outras sessões/apps normais abertas.** Repetir a mesma tentativa sem mudar esse recurso
+não deve dar resultado diferente. **Candidato a `static_candidate_not_runtime_validated`**:
+para fechar essa pendência é preciso (a) mais memória/swap disponível no momento da análise
+(fechar outras sessões/apps pesados, ou aumentar o swap do sistema — ação que precisa de
+decisão e permissão explícita do usuário, não foi feita), ou (b) rodar essa análise específica
+numa máquina com mais RAM. Vaddrs continuam válidos para quando isso for viável.
