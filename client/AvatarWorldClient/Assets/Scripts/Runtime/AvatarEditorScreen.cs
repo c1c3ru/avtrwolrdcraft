@@ -38,8 +38,10 @@ namespace AvatarWorld.Runtime
             (AvatarCatalog.CategorySkin, "skin"), (AvatarCatalog.CategoryEyes, "eyes"),
             // Confirmadas no CharacterCategoryType do original, adicionadas nesta rodada; ainda sem
             // icone proprio extraido (AvatarMaker/cat_<art>.png ausente) - usam rotulo de texto no
-            // lugar do icone ate a arte original ser localizada/extraida.
-            (AvatarCatalog.CategoryHat, "hat"), (AvatarCatalog.CategoryJacket, "jacket"), (AvatarCatalog.CategoryOnepiece, "onepiece"),
+            // lugar do icone ate a arte original ser localizada/extraida. Chapeu e Jaqueta NAO entram
+            // aqui (mesmo motivo de CategoryHairBack acima): sao so-abas de Acessorio/Camisa
+            // (TabGroups abaixo), nao icones proprios - senao apareceriam duplicados na coluna.
+            (AvatarCatalog.CategoryOnepiece, "onepiece"),
             (AvatarCatalog.CategoryLegs, "legs"), (AvatarCatalog.CategoryBackA, "back_a"), (AvatarCatalog.CategoryFaceCheeks, "face_cheeks"),
         };
 
@@ -203,7 +205,7 @@ namespace AvatarWorld.Runtime
             _redo = Button(_frontCanvas.transform, "RedoButton", Art("AvatarMaker/redo"), new Vector2(0, 0), new Vector2(447f, 94f), new Vector2(151f, 149f), Redo);
 
             // Categorias (icones do original; so as suportadas). Coluna com rolagem vertical: a
-            // versao com so 9 categorias cabia sem rolar, 15 nao cabe mais na altura fixa do painel.
+            // versao com so 9 categorias cabia sem rolar, 13 nao cabe mais na altura fixa do painel.
             var catViewportGo = new GameObject("CategoryViewport", typeof(RectTransform), typeof(RectMask2D), typeof(ScrollRect), typeof(Image));
             catViewportGo.transform.SetParent(_panel, false);
             var catViewport = (RectTransform)catViewportGo.transform;
