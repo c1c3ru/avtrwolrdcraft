@@ -116,6 +116,11 @@ def main():
     def resolve(key, item):
         built = []
         for piece, pids in groups[(key, item)].items():
+            # Pecas "_st" (shadow/template) so existem dentro de pastas _color e nunca tem pagina no
+            # atlas (0 ocorrencias para qualquer item, com ou sem cor): auxiliares do jogo original,
+            # nao usadas pela renderizacao Spine deste cliente. Ignoradas, nao bloqueiam o item.
+            if piece.endswith('_st'):
+                continue
             cands = [t for pid in pids for t in tex.get(f'{piece}_{pid}.png', [])]
             if len(cands) != 1 or piece not in pages or png_size(TEXTURES / cands[0]) != pages[piece]:
                 return None

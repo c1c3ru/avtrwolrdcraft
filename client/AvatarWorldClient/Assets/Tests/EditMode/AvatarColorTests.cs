@@ -101,13 +101,16 @@ namespace AvatarWorld.Core.Tests
         [Test]
         public void ClothingCategoriesCanHaveRealColorItemsResolvedFromTheOriginalSut()
         {
-            // Ciclo 6: Camisa/Calca/Acessorio ganham itens _color reais (Sapato ainda nao teve nenhum
-            // resolvido desta extracao); usam a mesma coluna de cores que sobrancelha/cabelo-atras.
-            foreach (var id in new[] { "shirt_special_1177_color", "bottom_special_1077_color", "bottom_special_1078_color", "bottom_special_1079_color", "accessories_body_neck_515_color" })
+            // Ciclo 6: Camisa/Calca/Sapato/Acessorio usam a mesma coluna de cores que sobrancelha/cabelo-atras.
+            // A piece "_st" (sombra/template do jogo original) nunca tem pagina no atlas para item
+            // nenhum (com ou sem cor); tools/avatar_catalog_build.py ignora essa peca em vez de
+            // rejeitar o item inteiro por causa dela (ciclo 6 continuacao).
+            foreach (var id in new[] { "shirt_special_1177_color", "bottom_special_1077_color", "bottom_special_1078_color", "bottom_special_1079_color", "accessories_body_neck_515_color", "legs_shoes_973_color" })
                 Assert.IsTrue(AvatarCatalog.IsColorItem(id), id);
             Assert.Contains("shirt_special_1177_color", AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShirt]);
             Assert.Contains("bottom_special_1077_color", AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryBottom]);
             Assert.Contains("accessories_body_neck_515_color", AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryAccessory]);
+            Assert.Contains("legs_shoes_973_color", AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShoes], "sapato so ganhou itens _color apos ignorar a peca _st");
             var a = AvatarAppearance.CreateDefault();
             Assert.IsTrue(a.TrySelect(AvatarCatalog.CategoryShirt, "shirt_special_1177_color"));
             Assert.IsTrue(a.TrySelectItemColor(AvatarCatalog.CategoryShirt, 20));
