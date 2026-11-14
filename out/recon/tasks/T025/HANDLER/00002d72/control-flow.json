@@ -1,0 +1,36 @@
+{
+  "schema": "avtr-recon-control-flow/v1",
+  "task": "T025/HANDLER/00002d72",
+  "method": "Game.Level.LevelDigHoleArea.OnBeforeSceneLoadStage1",
+  "method_token": "0x06002d73",
+  "method_vaddr": "0x1e29da8",
+  "status": "partial",
+  "extent": {"start":"0x1e29da8","end_exclusive":"0x1e29dac","bytes":4,"basis":"out/recon/method-extents.jsonl reported extent"},
+  "blocks": [
+    {"id":"B0","range":{"start":"0x1e29da8","end_exclusive":"0x1e29dac"},"instructions":["B 0x1e299b4"],"successors":["H0"],"interpretation":"tail-call transfer to helper; no local return block observed"},
+    {"id":"H0","range":{"start":"0x1e299b4","end_exclusive":"0x1e29c08"},"instructions":[],"successors":[],"interpretation":"helper body not re-disassembled/recovered in this pass; separate task boundary"}
+  ],
+  "edges": [{"from":"B0","to":"H0","kind":"unconditional_tail_branch","confidence":"observed in prior local disassembly; pending byte-level reproduction"}],
+  "field_and_call_notes_from_prior_disassembly": {
+    "helper_reported_range_bytes":596,
+    "reported_guard":"reads receiver byte at offset 0x51 and exits through epilogue if nonzero",
+    "reported_collection":"reads receiver field at offset 0x78; null path enters helper/error handling",
+    "reported_calls":[
+      {"address":"0x1e29a5c","target":"0x3379f00","identity":"System.Array.Clear, token 0x06000ceb","status":"target identity previously mapped; argument semantics need revalidation"},
+      {"address":"0x1e29a6c","target":"0x227b1f8","identity":"LevelConsumerAreaBase.GetImmediateChildrenItems, token 0x06007940","status":"target identity previously mapped; output/use unresolved"},
+      {"address":"0x1e29b2c","target":"0x3cc84a8","identity":"UnityEngine.Component.get_transform, token 0x060006e6","status":"target identity previously mapped"},
+      {"address":"0x1e29b3c","target":"0x3cd4fac","identity":"UnityEngine.Transform.SetParent, token 0x0600088d","status":"target identity previously mapped; parent argument unresolved"},
+      {"address":"0x1e29a84","target":"0x2cf12b4","identity":null,"status":"unresolved generic/native helper"},
+      {"address":"0x1e29ab0","target":"0x29c0b20","identity":null,"status":"unresolved generic/native helper"},
+      {"address":"0x1e29b04","target":"0x1b88694","identity":null,"status":"runtime reference barrier/helper; exact semantics unresolved"},
+      {"address":"0x1e29b1c","target":"0x2cf071c","identity":null,"status":"unresolved generic/native helper"}
+    ],
+    "loop_reported":"back-edge from cleanup/body path near 0x1e29b3c to 0x1e29aa8; iteration semantics unresolved",
+    "exception_reported":"range includes catch runtime helpers and cleanup paths; exception regions and landing pads not reconstructed"
+  },
+  "limits":[
+    "Only B0 is recorded as revalidated from the persistent method-extents/metadata indexes; helper details are carried forward as provisional observations from the prior investigation context.",
+    "Helper extent is bounded by method-extents data, but exception-region completeness and non-contiguous code have not been revalidated.",
+    "This is not a complete CFG; do not use it as an implementation-ready control-flow contract."
+  ]
+}

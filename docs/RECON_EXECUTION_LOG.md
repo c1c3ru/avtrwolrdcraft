@@ -2,6 +2,14 @@
 
 Este registro acompanha o [plano mestre](AVATAR_WORLD_MASTER_PLAN.md). Inventário, recuperação de lógica e implementação validada são marcos distintos. Nenhuma entrada abaixo declara o jogo completo.
 
+## 2026-11-14 — retomada do filho T025/HANDLER/00002d72
+
+- A fila vigente não continha os 12 filhos de handlers descritos no manifesto, embora os artefatos do filho `00002d72` estivessem no workspace. Reimportado `reports/recon/t025_stage_handler_children_2026-11-08.json` (hash `900600fcd3e82120541a894022d8bdbd83ec1407c369d54d407a9f9f051f6853`); IDs reconciliados sem duplicação. Dependências diretas T001 e T022/PILOT_INDEX aceitas; tarefa reivindicada e iniciada para registrar checkpoint.
+- Identidade do callback e limites reportados conferidos em `metadata_methods.jsonl` e `method-extents.jsonl`: `OnBeforeSceneLoadStage1` (`0x06002d73`, VA `0x1e29da8`) é janela de 4 bytes com branch para o MethodDef distinto `DetachContainerAreaChildrenIfNeeded` (`0x06002d74`, VA `0x1e299b4`, extent informado 596 bytes). Isso não demonstra o contrato semântico do helper.
+- REA abriu o ELF pinado com SHA-256 esperado, mas `analyze_function` não produziu análise: Hopper encerrou na inicialização com exit code 247. As notas anteriores de disassembly do helper foram preservadas como provisórias; novos estados, exceções e destinos de chamadas precisam de validação por bytes.
+- Criados contrato, CFG limitado, unknowns e teste de integridade sob `out/recon/tasks/T025/HANDLER/00002d72/`. O teste direcionado passou 3 verificações de identidade/hash/consistência; não testa semântica nativa. Checkpoint deve permanecer `ready`, não `done`, aguardando nova análise do helper, resolução de callees/exceções, corroborar offsets de campos e revisão independente.
+- Sem observação de runtime ou alteração do cliente.
+
 ## 2026-11-01 — primeira onda executada
 
 1. Preservadas as mudanças preexistentes do cliente e os documentos de regras offline. Nenhum script desta onda alterou o cliente Unity ou saves.
