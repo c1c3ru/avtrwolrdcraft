@@ -1072,5 +1072,6 @@
     "Direct/indirect calls may return; exception edges not reconstructed.",
     "Boundary at next metadata start does not establish complete function body.",
     "Final null-failure helper fallthrough is retained as an unknown exit."
-  ]
+  ],
+  "body_extent_status": "candidate_window_only; next metadata start does not prove complete or noncontiguous body/exception regions"
 }

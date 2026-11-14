@@ -40,6 +40,12 @@ CATEGORIES = {
     'HairBack': ['hair/hair_back'],  # cabelo traseiro (coques, rabos): itens _color
     'Hat': ['hat/hat_a', 'hat/hat_b', 'hat/hat_c', 'hat/hat_d'],
     'Jacket': ['jacket/jacket_special', 'jacket/jacket_casual', 'jacket/jacket_formal'],
+    # Categorias confirmadas no CharacterCategoryType do original (PWC.AvatarSpine), ausentes no
+    # editor ate esta rodada; pastas e prefixos reais achados em out/assets/avatar-resources.json.
+    'Onepiece': ['onepiece/onepiece_special', 'onepiece/onepiece_casual', 'onepiece/onepiece_formal'],
+    'Legs': ['legs/legs_socks'],  # "Legs" do original cobre meias+sapato; sapato ja e Shoes aqui
+    'BackA': ['back/back_c'],  # unica pasta de acessorio de costas extraida (Back_A do original)
+    'FaceCheeks': ['face/face_cheeks'],
 }
 THREE_LEVEL = {'mouth', 'eyebrows'}
 COLOR_CATEGORIES = {'Eyebrows', 'HairBack'}  # categorias cujos itens _color entram (recebem tinta Multiply)
@@ -55,6 +61,8 @@ KEEP_FIRST = {
     'HairBack': ['hair_back_none'],
     'Hat': ['hat_none'],
     'Jacket': ['jacket_none'],
+    # categorias novas: sem id pre-existente, a primeira opcao e so a primeira descoberta na pasta
+    'Onepiece': [], 'Legs': [], 'BackA': [], 'FaceCheeks': [],
 }
 BUILT_IN = {'mouth_default', 'eyebrows_default', 'hair_back_none', 'hat_none', 'jacket_none'}
 # cabelo da frente = skins Hair_Front/N_Color do esqueleto (1 pagina cada); os dois primeiros ja existiam

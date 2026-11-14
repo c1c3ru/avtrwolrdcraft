@@ -17,7 +17,10 @@ namespace AvatarWorld.Runtime
         public Camera Cam;
         public LocomotionFamily Family = LocomotionFamily.Character;
         public PostureKind Posture = PostureKind.Standing;
-        public bool HasRunningAnimations;
+        // LevelAnimal.HasRunningAnimations returns false in every recovered family.
+        // Keep the generic Run branch in LocomotionStateMachine for contract tests,
+        // but do not expose a runtime switch that invents this capability.
+        public bool HasRunningAnimations { get { return false; } }
 
         /// <summary>SpineType do catalogo (1 Character, 2 Baby, 3 Cat, 4 Dog, 13 Toddler, 14 Horse); escolhe handlers de CA e prefixo.</summary>
         public int SpineType = 1;

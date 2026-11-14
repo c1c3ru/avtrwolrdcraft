@@ -1,6 +1,6 @@
-{"question": "Confirm interface method at 0x2058174 is get_Item (decode interface-offset search and method slot)."}
-{"question": "Extract serialized DeepLinkManager._mapLinkToLevel contents (keys -> LevelType) from the original data."}
-{"question": "Recover helpers, exceptions and independent body bounds."}
-{"question": "Verify effect of interaction-history callback and SaveBuildingData arguments."}
-{"question": "Validate original absent/empty/nonempty pending key scenarios on device."}
-{"question": "Close callees of world lookup, scene load, fade and return."}
+{"question": "The slot-zero interface dispatch is a get_Item candidate; confirm the effective IL2CPP interface mapping at 0x2058174 (the usage encoding is nonstandard)."}
+{"question": "Determine runtime behavior for a pending key absent from the 149-entry serialized map; the candidate dictionary indexer may throw and the exception path is not decoded."}
+{"question": "Recover shared helpers, exception regions and complete/noncontiguous body extents; the 0x2057fa8..0x20581ec window is only metadata-bounded."}
+{"question": "Verify the effects of OnClickHomePlayButton and the arguments/effect of SaveBuildingData(0, level)."}
+{"question": "Validate original absent/empty/nonempty pending-key scenarios on device; this attempt did not change the save or inject keys."}
+{"question": "Close the callees of world lookup, scene load, fade and return."}

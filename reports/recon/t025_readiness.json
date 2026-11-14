@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "scope": "Assembly-CSharp MethodDefs only; not a complete native/generic-instantiation universe",
-  "queue_revision": 36,
+  "queue_revision": 66,
   "parent_state": "pending",
   "dependencies": [
     {
@@ -22,13 +22,13 @@
     "indexed_nonnull_addresses": 35831,
     "indexed_null_pointers": 590,
     "distinct_nonnull_addresses": 35831,
-    "methods_with_children": 5,
-    "methods_without_children": 36416,
-    "live_children": 5,
+    "methods_with_children": 17,
+    "methods_without_children": 36404,
+    "live_children": 17,
     "child_state_counts": {
-      "stale": 1,
-      "ready": 3,
-      "pending": 1
+      "ready": 6,
+      "running": 1,
+      "pending": 10
     }
   },
   "unmatched_children": [],
@@ -65,7 +65,7 @@
   "inputs": [
     {
       "path": "reports/recon/tasks.json",
-      "sha256": "5a0f88ad335a801a48effe421ea78887f2d3b222f40981aabb88fd6311cfac91"
+      "sha256": "8adfed696ae39d8d74cdd5008c11eff2be5b665d7116efe654389840ec87062c"
     },
     {
       "path": "out/recon/il2cpp/assembly_csharp_methods.jsonl",
@@ -73,8 +73,8 @@
     }
   ],
   "registry": {
-    "path": "out/recon/t025/method_registry.4ec66894631e14af44dce3c5def25803ccd92b9a1d1b5db99aad4bb424f117ab.jsonl",
-    "sha256": "4ec66894631e14af44dce3c5def25803ccd92b9a1d1b5db99aad4bb424f117ab",
+    "path": "out/recon/t025/method_registry.bf90bf6312a573d28d0332fc31306e09d26e2aef52fad3d40a72f4fc637a2b24.jsonl",
+    "sha256": "bf90bf6312a573d28d0332fc31306e09d26e2aef52fad3d40a72f4fc637a2b24",
     "records": 36421
   },
   "producer_sha256": "adcab243d0a3fc7c2b307c5c55266b5d5af80686840d368234305b2890c18439",
