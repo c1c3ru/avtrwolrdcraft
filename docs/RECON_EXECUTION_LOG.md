@@ -10,6 +10,14 @@ Este registro acompanha o [plano mestre](AVATAR_WORLD_MASTER_PLAN.md). Inventár
 - Criados contrato, CFG limitado, unknowns e teste de integridade sob `out/recon/tasks/T025/HANDLER/00002d72/`. O teste direcionado passou 3 verificações de identidade/hash/consistência; não testa semântica nativa. Checkpoint deve permanecer `ready`, não `done`, aguardando nova análise do helper, resolução de callees/exceções, corroborar offsets de campos e revisão independente.
 - Sem observação de runtime ou alteração do cliente.
 
+## 2026-11-14 — análise parcial de T025/HANDLER/000032a8
+
+- Preparado, reivindicado e iniciado o handler `Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems` (`0x060032a9`, MethodDef 12968, VA `0x1e64abc`) depois de confirmar dependências diretas aceitas e inputs com hashes válidos.
+- Hopper voltou a encerrar na inicialização (exit 247); `tools/recon_disasm.py`/Capstone decodificou e persistiu os 208 bytes (52 instruções) do callback e os 1512 bytes do callee `PWC.Level.LevelUtils.DestroyLevelItem` em `out/recon/tasks/T025/HANDLER/000032a8/`.
+- Contrato parcial: `_isNewEveryLoad == false` retorna; caso verdadeiro, percorre `_points`, verifica childCount, seleciona `GetChild(0)` por ponto não vazio e chama o alvo ainda não resolvido `0x24f0700`, passando seu retorno a `DestroyLevelItem(..., true)`. O callback não faz loop sobre todos os filhos. Identidades diretas de `Transform.get_childCount`, `Transform.GetChild` e `LevelUtils.DestroyLevelItem` foram confirmadas por token/endereço.
+- O callee separado mostra chamadas a utilitários de restore-data/inventory, `CATargetExtensionMethods.RemoveCAHandlersAndUpdateGame`, `GameObject.SetActive(false)` e `Object.Destroy`; seu CFG, callbacks, persistência condicional e exceções não foram fechados. Offsets 0x30/0x38 ainda vêm de Cpp2IL, sem join raw de field-offset.
+- Teste estrutural direcionado passou 3 verificações e os JSON/JSONL foram validados. Sem runtime ou alteração do cliente. Checkpoint deve ficar `ready` até resolver o lookup genérico, o callee e a revisão independente.
+
 ## 2026-11-01 — primeira onda executada
 
 1. Preservadas as mudanças preexistentes do cliente e os documentos de regras offline. Nenhum script desta onda alterou o cliente Unity ou saves.

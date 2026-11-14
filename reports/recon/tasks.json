@@ -66399,15 +66399,123 @@
       "parent_id": "T025",
       "title": "Recuperar efeitos do callback Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems (0x060032a9)",
       "role": "lógica",
-      "state": "pending",
+      "state": "ready",
       "dependencies": [
         "T001",
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "planning_seed": false,
-      "evidence_refs": [],
-      "attempts": [],
-      "owner": null,
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/result.json",
+          "sha256": "5e9aa4c32133cddce89d8f4075e9644c83d6908acd68661b49739f91c74f7e11"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/method-contract.json",
+          "sha256": "7e237310a3313c7ac3fd2c172d5729af5ed6816515cacb0323800100e1d72f62"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/control-flow.json",
+          "sha256": "283a5c8e570ac2a357ba8957a1e421e9a73f1b52e356c6fbc7e3de28e5619fdb"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/unknowns.jsonl",
+          "sha256": "5843aef4ad372d8eb7709b96afeff7192aa5735e7253c95b6e9e407762b4ce0a"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/handler.asm.txt",
+          "sha256": "9fa7678e673ec1bd1d42229c94d32c2067cdd991921b95ed1f9b3c66ee8b0eb5"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/destroy_level_item_callee.asm.txt",
+          "sha256": "794548b9099a40c9eb291c2d5384955532e08378a0ee2ed9bd32a4d7d510a82a"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/test_contract_integrity.py",
+          "sha256": "97022b82cd6b110a96083203f08c5a55c27770856aa198e72845b277114d46de"
+        }
+      ],
+      "attempts": [
+        {
+          "id": "50b9d6833bdb47f8a45e14d90390b678",
+          "owner": "/root",
+          "started_at": 1794695535.4576929,
+          "lease_id": "d3a485ba43a5489587c288cd551fe931",
+          "checkpoint_at": 1794696035.7508483,
+          "state": "ready",
+          "note": "Partial static checkpoint: Capstone recovered the full reported 208-byte callback body and established outer points-loop plus child index 0 to unresolved target 0x24f0700 and LevelUtils.DestroyLevelItem(..., true). The 1512-byte callee disassembly is saved but its CFG/effects/exceptions remain open. Three structural checks passed; no semantic acceptance.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/result.json",
+              "sha256": "5e9aa4c32133cddce89d8f4075e9644c83d6908acd68661b49739f91c74f7e11"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/method-contract.json",
+              "sha256": "7e237310a3313c7ac3fd2c172d5729af5ed6816515cacb0323800100e1d72f62"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/control-flow.json",
+              "sha256": "283a5c8e570ac2a357ba8957a1e421e9a73f1b52e356c6fbc7e3de28e5619fdb"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/unknowns.jsonl",
+              "sha256": "5843aef4ad372d8eb7709b96afeff7192aa5735e7253c95b6e9e407762b4ce0a"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/handler.asm.txt",
+              "sha256": "64b8b71755586d0f1c765cd762fead2c81c860fc4b2f04cf4fd043320425d539"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/destroy_level_item_callee.asm.txt",
+              "sha256": "55346268e1cfb0237e59b666b4372bcc258ef8f82eed2a68933271961b20dc2b"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/test_contract_integrity.py",
+              "sha256": "97022b82cd6b110a96083203f08c5a55c27770856aa198e72845b277114d46de"
+            }
+          ]
+        },
+        {
+          "id": "342360658ec74208a794e634295dec41",
+          "owner": "/root",
+          "started_at": 1794696173.0602658,
+          "lease_id": "3769e1da341444bd8b8f85ca77decb73",
+          "checkpoint_at": 1794696189.9634259,
+          "state": "ready",
+          "note": "Partial static checkpoint retained; only normalized whitespace in saved Capstone disassembly outputs. Identity, 208-byte flow, unresolved target and 1512-byte callee boundary unchanged; three structural checks passed; no semantic acceptance.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/result.json",
+              "sha256": "5e9aa4c32133cddce89d8f4075e9644c83d6908acd68661b49739f91c74f7e11"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/method-contract.json",
+              "sha256": "7e237310a3313c7ac3fd2c172d5729af5ed6816515cacb0323800100e1d72f62"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/control-flow.json",
+              "sha256": "283a5c8e570ac2a357ba8957a1e421e9a73f1b52e356c6fbc7e3de28e5619fdb"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/unknowns.jsonl",
+              "sha256": "5843aef4ad372d8eb7709b96afeff7192aa5735e7253c95b6e9e407762b4ce0a"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/handler.asm.txt",
+              "sha256": "9fa7678e673ec1bd1d42229c94d32c2067cdd991921b95ed1f9b3c66ee8b0eb5"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/destroy_level_item_callee.asm.txt",
+              "sha256": "794548b9099a40c9eb291c2d5384955532e08378a0ee2ed9bd32a4d7d510a82a"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/test_contract_integrity.py",
+              "sha256": "97022b82cd6b110a96083203f08c5a55c27770856aa198e72845b277114d46de"
+            }
+          ]
+        }
+      ],
+      "owner": "/root",
       "lease": null,
       "review": null,
       "unknown_ids": [
@@ -66469,7 +66577,7 @@
         "Quais delegates, eventos, coroutines e cenas são acionados?",
         "Quais guards/errors/exception paths afetam o fluxo?"
       ],
-      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "next_action": "Partial static checkpoint retained; only normalized whitespace in saved Capstone disassembly outputs. Identity, 208-byte flow, unresolved target and 1512-byte callee boundary unchanged; three structural checks passed; no semantic acceptance.",
       "resource_locks": [
         "native-method-analysis:000032a8"
       ],
@@ -67287,7 +67395,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 58,
+  "revision": 64,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -68569,6 +68677,48 @@
       "task": "T025/HANDLER/00002d72",
       "actor": "/root",
       "at": 1794694113.9092064
+    },
+    {
+      "revision": 59,
+      "action": "claim",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794695535.4922664
+    },
+    {
+      "revision": 60,
+      "action": "start",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794695541.4808745
+    },
+    {
+      "revision": 61,
+      "action": "checkpoint",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794696035.8181198
+    },
+    {
+      "revision": 62,
+      "action": "claim",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794696173.1339371
+    },
+    {
+      "revision": 63,
+      "action": "start",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794696181.6512418
+    },
+    {
+      "revision": 64,
+      "action": "checkpoint",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794696190.0519276
     }
   ]
 }

@@ -1,0 +1,52 @@
+1e64abc  str    x30, [sp, #-0x30]!
+1e64ac0  stp    x22, x21, [sp, #0x10]
+1e64ac4  stp    x20, x19, [sp, #0x20]
+1e64ac8  adrp   x20, #0x44fb000
+1e64acc  ldrb   w8, [x20, #0xc5]
+1e64ad0  mov    x19, x0
+1e64ad4  tbnz   w8, #0, #0x1e64aec
+1e64ad8  adrp   x0, #0x41ac000
+1e64adc  ldr    x0, [x0, #0xeb8]
+1e64ae0  bl     #0x1b886e8
+1e64ae4  mov    w8, #1
+1e64ae8  strb   w8, [x20, #0xc5]
+1e64aec  ldrb   w8, [x19, #0x38]
+1e64af0  cbz    w8, #0x1e64b74
+1e64af4  ldr    x20, [x19, #0x30]
+1e64af8  cbz    x20, #0x1e64b84
+1e64afc  ldr    w8, [x20, #0x18]
+1e64b00  cmp    w8, #1
+1e64b04  b.lt   #0x1e64b74
+1e64b08  adrp   x22, #0x41ac000
+1e64b0c  ldr    x22, [x22, #0xeb8]
+1e64b10  mov    w21, wzr
+1e64b14  cmp    w21, w8
+1e64b18  b.hs   #0x1e64b88
+1e64b1c  add    x8, x20, w21, sxtw #3
+1e64b20  ldr    x19, [x8, #0x20]
+1e64b24  cbz    x19, #0x1e64b84
+1e64b28  mov    x0, x19
+1e64b2c  mov    x1, xzr
+1e64b30  bl     #0x3cd5d98
+1e64b34  cmp    w0, #1
+1e64b38  b.lt   #0x1e64b64
+1e64b3c  mov    x0, x19
+1e64b40  mov    w1, wzr
+1e64b44  mov    x2, xzr
+1e64b48  bl     #0x3cd61fc
+1e64b4c  cbz    x0, #0x1e64b84
+1e64b50  ldr    x1, [x22]
+1e64b54  bl     #0x24f0700
+1e64b58  mov    w1, #1
+1e64b5c  mov    x2, xzr
+1e64b60  bl     #0x232b9ac  ; -> LevelUtils.DestroyLevelItem
+1e64b64  ldr    w8, [x20, #0x18]
+1e64b68  add    w21, w21, #1
+1e64b6c  cmp    w21, w8
+1e64b70  b.lt   #0x1e64b14
+1e64b74  ldp    x20, x19, [sp, #0x20]
+1e64b78  ldp    x22, x21, [sp, #0x10]
+1e64b7c  ldr    x30, [sp], #0x30
+1e64b80  ret
+1e64b84  bl     #0x1b88980
+1e64b88  bl     #0x1b88988
