@@ -42,11 +42,15 @@ namespace AvatarWorld.Runtime
 
         [Serializable] class InteriorExtras { public List<int> items = new List<int>(); }
         [Serializable] class NpcColor { public string Category; public int Index; }
+        // tools/build_npc_looks.py grava os extras como {id, tint} em minusculas; ExtraItem usa Id/Tint e o JsonUtility diferencia
+        // maiusculas (o Id chegava nulo e RebuildSkin estourava com "Parameter name: key"), por isso o JSON tem tipo proprio.
+        [Serializable] class NpcExtra { public string id; public float[] tint = new float[0]; }
         [Serializable] class NpcLook
         {
             public string Hair, HairBack, Shirt, Bottom, Shoes, Accessory, Mouth, Eyebrows, Hat, Jacket;
             public int skinIndex, eyesIndex;
             public List<NpcColor> colors = new List<NpcColor>();
+            public List<NpcExtra> extras = new List<NpcExtra>();
         }
         [Serializable] class NpcEntry { public int id; public float x, y; public NpcLook look; }
         [Serializable] class NpcFile { public List<NpcEntry> npcs = new List<NpcEntry>(); }
@@ -177,6 +181,10 @@ namespace AvatarWorld.Runtime
             };
             a.ItemColors = new List<CategoryColor>();
             foreach (var c in l.colors) a.ItemColors.Add(new CategoryColor { Category = c.Category, Index = c.Index });
+            a.Extras = new List<ExtraItem>();
+            if (l.extras != null)
+                foreach (var e in l.extras)
+                    if (e != null && !string.IsNullOrEmpty(e.id)) a.Extras.Add(new ExtraItem { Id = e.id, Tint = e.tint ?? new float[0] });
             return a;
         }
 
