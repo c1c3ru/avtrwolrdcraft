@@ -63,6 +63,9 @@ namespace AvatarWorld.Core.Tests
             Assert.IsTrue(back.HasHumanAvatar(0));
 
             back.ActiveHumanSlot = 9;
+            // O slot 1 era o ativo (seu avatar vive em Appearance); ao invalidar o ativo ele nao vai para OtherAvatars.
+            // O teste guarda um avatar do slot 1 explicitamente para checar que o saneamento o preserva.
+            back.OtherAvatars.Add(new SavedAvatar { Slot = 1 });
             back.OtherAvatars.Add(new SavedAvatar { Slot = 9 });
             back.OtherAvatars.Add(new SavedAvatar { Slot = 0 });
             back.OtherAvatars.Add(new SavedAvatar { Slot = 0 });
