@@ -12,7 +12,8 @@ Estado medido nesta data. Itens marcados [feito] foram executados; os demais est
 
 ## 2. Unity EditMode / PlayMode
 - Existem 44 arquivos de teste C# (38 EditMode, 6 PlayMode) para 81 classes em `Assets/Scripts`.
-- Pendente: rodar EditMode e PlayMode. `unity test --mode EditMode` foi morto por OOM do sistema 4 vezes (09:30–09:39) com o swap cheio.
+- [feito] EditMode: 317/318 (a falha era `AvatarSlotsTests.SlotsSurviveJsonRoundTripAndSanitizeBadData`, linha 71; correção do teste commitada, ainda não re-executada). PlayMode: 24/24.
+- Nota: as 4 primeiras execuções do EditMode (09:30–09:39) foram mortas por OOM do sistema com o swap cheio; passou depois de parar o Greenbone.
 - Classes sem nenhum teste (nome sem arquivo `*Tests.cs` correspondente):
   - Dados e regras: `ItemPricing`, `PlayerState`, `ItemNames`, `ItemCatalogFile`, `ItemCatalogIndex`, `AvatarCatalog`, `AvatarKind`, `AvatarKindCatalogData`, `AvatarPaletteData`, `PetAppearance`, `PetCatalogData`, `PetLayerCatalogData`, `PetPaletteData`, `SkyData`, `SceneDescription`, `StoreItem`, `StorePackContent`, `ClaimResult`, `AnswerResult`, `ChallengeDifficulty`, `ChallengeSelector`, `LiteracyChallenge`, `LiteracyContent`, `CACatalogLoader`, `LocomotionAnimations`, `WorldMapMotion`.
   - Runtime e telas: `WorldMapRuntime`, `InteriorRuntime`, `SceneSliceRuntime`, `BasketballCourtRuntime`, `MapCarsLayer`, `MapSpineLayer`, `AvatarGpuRuntime`, `PetGpuRuntime`, `SkyBackground`, `HomeBootstrap`, `LoadingScreen`, `StoreScreen`, `ItemBrowserScreen`, `AvatarEditorScreen`, `AvatarSlotsScreen`, `PetEditorScreen`, `LiteracyChallengeScreen`, `CoinFx`, `UiSound`, `BackgroundMusic`.
