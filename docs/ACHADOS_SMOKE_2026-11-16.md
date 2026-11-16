@@ -13,7 +13,10 @@ Evidências (não versionadas): `out/device/tests/{test_build,world_smoke,visual
 | Não tocados (sem interior, "em obras") | 6: FG_Cinema_UC_Back, FG_Cinema_UC, UGC_Convenience_Store_UC, Gas_Station_UC, Car_Wash_UC, Burger_Restaurant_UC |
 | Basketball | abre a quadra (outra tela), sem log `Interior:` — não conta como falha |
 | Diff visual contra o original | 21 interiores comparados (7 casamentos por nome são incertos, marcados `?` no relatório) |
-| Outros mundos (Campus, Cidade, Fazenda, Resort, Montanha) | **não testados** |
+| Cidade (30 prédios) e Fazenda (4 prédios) | carregam (log `WorldMap: ... predios` bate com os dados), app vivo; sem interiores no catálogo, nenhum prédio foi tocado |
+| Campus | **inconclusivo**: o toque no ícone não trocou de mundo (a captura repete o mapa anterior) |
+| Resort e Montanha | **não testados** (ícones fora da faixa visível do seletor; falta rolar a faixa) |
+| Prédios dos 5 mundos extras | 56 no total, nenhum com interior no `InteriorCatalog` (só o Bairro tem) |
 
 ## Defeitos encontrados
 1. **NPCs quase nunca são desenhados.** 7 de 311 NPCs em 47 interiores com NPCs; 40 interiores com 0, 7 com só 1.
