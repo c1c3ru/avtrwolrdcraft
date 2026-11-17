@@ -450,8 +450,11 @@ class QueueTests(unittest.TestCase):
         with self.assertRaisesRegex(QueueError, "children"):
             self.q.review("A", "parent-reviewer", True, "Parent must await every child")
         child = self.q.claim(name, "child-worker")
+        declared = self.child(name)["outputs"][0]  # o filho declara "out/child/result.json"; a fila exige entregar exatamente as saidas declaradas
+        (self.root / declared).parent.mkdir(parents=True, exist_ok=True)
+        (self.root / declared).write_text("{}")
         self.q.checkpoint(name, "child-worker", child["lease"]["id"], "evidence_ready",
-                          "Bounded child contract ready for review", ["result.json"])
+                          "Bounded child contract ready for review", [declared])
         with self.assertRaisesRegex(QueueError, "independent"):
             self.q.review(name, "child-worker", True, "Self-review prohibited")
         self.q.review(name, "child-reviewer", True, "Verified child contract against evidence")
