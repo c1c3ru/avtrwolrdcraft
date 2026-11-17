@@ -64,6 +64,26 @@ namespace AvatarWorld.Core.Avatar
             return a;
         }
 
+        /// <summary>
+        /// Preset de referencia visual (C6, print "imagem13": chapeu de bombeiro, cabelo branco, jaqueta
+        /// vermelha, saia rosa) - identificado por inspecao visual dos itens reais do catalogo (nao ha
+        /// nome/metadado de cor nos IDs): hat_a_7 (capacete vermelho com emblema), jacket_formal_6
+        /// (jaqueta vermelha solida), bottom_formal_9 (saia rosa pregueada), Hair_Front/1_Color com a cor
+        /// 114 da paleta General (0.9647 RGB, a mais proxima do branco puro).
+        /// </summary>
+        public static AvatarAppearance CreateReferenceImagem13Preset()
+        {
+            var a = CreateDefault();
+            a.TrySelect(AvatarCatalog.CategoryHat, "hat_a_7");
+            a.TrySelect(AvatarCatalog.CategoryJacket, "jacket_formal_6");
+            a.TrySelect(AvatarCatalog.CategoryBottom, "bottom_formal_9");
+            a.TrySelect(AvatarCatalog.CategoryHair, "Hair_Front/1_Color");
+            // Indice 114 da paleta General (palettes.json): RGB (0.9647, 0.9647, 0.9647), o mais proximo
+            // do branco puro entre as 115 cores (nao ha indice exatamente 1,1,1 na paleta oficial).
+            a.TrySelectItemColor(AvatarCatalog.CategoryHair, 114);
+            return a;
+        }
+
         /// <summary>Copia independente (usada pelo historico desfazer/refazer do editor).</summary>
         public AvatarAppearance Clone() => new AvatarAppearance
         {

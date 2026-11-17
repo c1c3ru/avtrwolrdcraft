@@ -48,7 +48,7 @@ CATEGORIES = {
     'FaceCheeks': ['face/face_cheeks'],
 }
 THREE_LEVEL = {'mouth', 'eyebrows'}
-COLOR_CATEGORIES = {'Eyebrows', 'HairBack'}  # categorias cujos itens _color entram (recebem tinta Multiply)
+COLOR_CATEGORIES = {'Eyebrows', 'HairBack', 'Shirt', 'Bottom', 'Shoes', 'Accessory'}  # categorias cujos itens _color entram (recebem tinta Multiply)
 # IDs que ja existiam (os padroes) continuam sendo os primeiros de cada categoria
 KEEP_FIRST = {
     'Shirt': ['shirt_formal_1', 'shirt_casual_1'],
@@ -116,6 +116,11 @@ def main():
     def resolve(key, item):
         built = []
         for piece, pids in groups[(key, item)].items():
+            # Pecas "_st" (shadow/template) so existem dentro de pastas _color e nunca tem pagina no
+            # atlas (0 ocorrencias para qualquer item, com ou sem cor): auxiliares do jogo original,
+            # nao usadas pela renderizacao Spine deste cliente. Ignoradas, nao bloqueiam o item.
+            if piece.endswith('_st'):
+                continue
             cands = [t for pid in pids for t in tex.get(f'{piece}_{pid}.png', [])]
             if len(cands) != 1 or piece not in pages or png_size(TEXTURES / cands[0]) != pages[piece]:
                 return None

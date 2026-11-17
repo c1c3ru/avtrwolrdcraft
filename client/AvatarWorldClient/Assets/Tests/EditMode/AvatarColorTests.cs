@@ -99,6 +99,25 @@ namespace AvatarWorld.Core.Tests
         }
 
         [Test]
+        public void ClothingCategoriesCanHaveRealColorItemsResolvedFromTheOriginalSut()
+        {
+            // Ciclo 6: Camisa/Calca/Sapato/Acessorio usam a mesma coluna de cores que sobrancelha/cabelo-atras.
+            // A piece "_st" (sombra/template do jogo original) nunca tem pagina no atlas para item
+            // nenhum (com ou sem cor); tools/avatar_catalog_build.py ignora essa peca em vez de
+            // rejeitar o item inteiro por causa dela (ciclo 6 continuacao).
+            foreach (var id in new[] { "shirt_special_1177_color", "bottom_special_1077_color", "bottom_special_1078_color", "bottom_special_1079_color", "accessories_body_neck_515_color", "legs_shoes_973_color" })
+                Assert.IsTrue(AvatarCatalog.IsColorItem(id), id);
+            Assert.Contains("shirt_special_1177_color", AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShirt]);
+            Assert.Contains("bottom_special_1077_color", AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryBottom]);
+            Assert.Contains("accessories_body_neck_515_color", AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryAccessory]);
+            Assert.Contains("legs_shoes_973_color", AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShoes], "sapato so ganhou itens _color apos ignorar a peca _st");
+            var a = AvatarAppearance.CreateDefault();
+            Assert.IsTrue(a.TrySelect(AvatarCatalog.CategoryShirt, "shirt_special_1177_color"));
+            Assert.IsTrue(a.TrySelectItemColor(AvatarCatalog.CategoryShirt, 20));
+            Assert.AreEqual(20, a.GetItemColor(AvatarCatalog.CategoryShirt));
+        }
+
+        [Test]
         public void HairIsAnItemCategoryWithColorAndABackLayerSharingTheHairColor()
         {
             Assert.Greater(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHair].Length, 50);
@@ -110,6 +129,24 @@ namespace AvatarWorld.Core.Tests
             var a = AvatarAppearance.CreateDefault();
             Assert.IsTrue(a.TrySelect(AvatarCatalog.CategoryHairBack, AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHairBack][1]));
             Assert.IsFalse(a.SameAs(AvatarAppearance.CreateDefault()));
+        }
+
+        [Test]
+        public void ReferenceImagem13PresetMatchesTheOriginalPrintAndIsFullyValid()
+        {
+            // C6: hat_a_7/jacket_formal_6/bottom_formal_9 escolhidos por inspecao visual (IDs do catalogo
+            // nao tem metadado de cor); identificados comparando uma folha de contato de miniaturas contra
+            // assets/exemplo_jogo_original/imagem13.jpeg (chapeu de bombeiro vermelho, jaqueta vermelha,
+            // saia rosa pregueada). Cabelo e tinta generica (template cinza): qualquer estilo + indice 114
+            // da paleta General (0.9647 RGB) reproduz "cabelo branco".
+            var a = AvatarAppearance.CreateReferenceImagem13Preset();
+            Assert.IsTrue(a.IsFullyValid());
+            Assert.AreEqual("hat_a_7", a.HatId);
+            Assert.AreEqual("jacket_formal_6", a.JacketId);
+            Assert.AreEqual("bottom_formal_9", a.BottomId);
+            Assert.AreEqual("Hair_Front/1_Color", a.HairId);
+            Assert.AreEqual(114, a.GetItemColor(AvatarCatalog.CategoryHair));
+            Assert.IsTrue(AvatarCatalog.IsColorItem(a.HairId));
         }
     }
 }

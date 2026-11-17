@@ -1054,7 +1054,36 @@ namespace AvatarWorld.Core.Avatar
             "shirt_special_1194",
             "shirt_special_1196",
             "shirt_special_1195",
-        };
+                    "shirt_special_1177_color",
+            "shirt_special_869_color",
+            "shirt_special_870_color",
+            "shirt_special_875_color",
+            "shirt_special_876_color",
+            "shirt_special_877_color",
+            "shirt_special_887_color",
+            "shirt_special_888_color",
+            "shirt_special_889_color",
+            "shirt_special_897_color",
+            "shirt_special_950_color",
+            "shirt_special_952_color",
+            "shirt_special_954_color",
+            "shirt_special_955_color",
+            "shirt_special_1024_color",
+            "shirt_special_1025_color",
+            "shirt_special_1026_color",
+            "shirt_special_1028_color",
+            "shirt_special_1034_color",
+            "shirt_special_1056_color",
+            "shirt_special_1058_color",
+            "shirt_special_1070_color",
+            "shirt_special_1071_color",
+            "shirt_special_1142_color",
+            "shirt_special_1143_color",
+            "shirt_special_1144_color",
+            "shirt_special_1175_color",
+            "shirt_special_1176_color",
+            "shirt_special_1178_color",
+};
 
         public static readonly string[] Bottom =
         {
@@ -2034,7 +2063,31 @@ namespace AvatarWorld.Core.Avatar
             "bottom_special_1095",
             "bottom_special_1099",
             "bottom_special_1096",
-        };
+                    "bottom_special_1077_color",
+            "bottom_special_1078_color",
+            "bottom_special_1079_color",
+            "bottom_special_746_color",
+            "bottom_special_806_color",
+            "bottom_special_807_color",
+            "bottom_special_809_color",
+            "bottom_special_823_color",
+            "bottom_special_867_color",
+            "bottom_special_868_color",
+            "bottom_special_869_color",
+            "bottom_special_870_color",
+            "bottom_special_871_color",
+            "bottom_special_872_color",
+            "bottom_special_939_color",
+            "bottom_special_940_color",
+            "bottom_special_941_color",
+            "bottom_special_942_color",
+            "bottom_special_971_color",
+            "bottom_special_980_color",
+            "bottom_special_1045_color",
+            "bottom_special_1046_color",
+            "bottom_special_1047_color",
+            "bottom_special_1080_color",
+};
 
         public static readonly string[] Shoes =
         {
@@ -3215,7 +3268,28 @@ namespace AvatarWorld.Core.Avatar
             "legs_shoes_1362",
             "legs_shoes_1365",
             "legs_shoes_1364",
-        };
+                    "legs_shoes_973_color",
+            "legs_shoes_1026_color",
+            "legs_shoes_1028_color",
+            "legs_shoes_1029_color",
+            "legs_shoes_1038_color",
+            "legs_shoes_1088_color",
+            "legs_shoes_1089_color",
+            "legs_shoes_1090_color",
+            "legs_shoes_1092_color",
+            "legs_shoes_1093_color",
+            "legs_shoes_1094_color",
+            "legs_shoes_1095_color",
+            "legs_shoes_1186_color",
+            "legs_shoes_1187_color",
+            "legs_shoes_1204_color",
+            "legs_shoes_1212_color",
+            "legs_shoes_1219_color",
+            "legs_shoes_1224_color",
+            "legs_shoes_1225_color",
+            "legs_shoes_1305_color",
+            "legs_shoes_1306_color",
+};
 
         public static readonly string[] Accessory =
         {
@@ -4052,7 +4126,16 @@ namespace AvatarWorld.Core.Avatar
             "accessories_body_neck_506",
             "accessories_body_neck_508",
             "accessories_body_neck_509",
-        };
+                    "accessories_body_neck_515_color",
+            "accessories_face_glasses_338_color",
+            "accessories_face_glasses_356_color",
+            "accessories_face_glasses_357_color",
+            "accessories_face_glasses_358_color",
+            "accessories_face_glasses_359_color",
+            "accessories_face_glasses_360_color",
+            "accessories_face_glasses_442_color",
+            "accessories_body_neck_507_color",
+};
 
         public static readonly string[] Mouth =
         {
