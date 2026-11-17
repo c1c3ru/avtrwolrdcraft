@@ -349,6 +349,7 @@ namespace AvatarWorld.Runtime
             to.HairBackId = from.HairBackId; to.HatId = from.HatId; to.JacketId = from.JacketId;
             to.SkinIndex = from.SkinIndex; to.EyesIndex = from.EyesIndex;
             to.ItemColors = from.Clone().ItemColors;
+            to.Extras = from.Extras;
         }
 
         /// <summary>Avatar embutido (mundo/interior): toca uma animacao do esqueleto se ela existir.</summary>
@@ -545,7 +546,7 @@ namespace AvatarWorld.Runtime
             if (Appearance.Extras != null)
                 foreach (var extra in Appearance.Extras)
                 {
-                    if (!_itemsById.TryGetValue(extra.Id, out var item)) continue;
+                    if (extra == null || string.IsNullOrEmpty(extra.Id) || !_itemsById.TryGetValue(extra.Id, out var item)) continue; // um extra ruim nao derruba o NPC
                     LoadItemTextures(item);
                     var tint = extra.Tint != null && extra.Tint.Length >= 3 ? new Color(extra.Tint[0], extra.Tint[1], extra.Tint[2], 1f) : Color.white;
                     foreach (var piece in item.pieces) AddSkin(_skeletonData, skin, tints, SkinOf(piece), tint);

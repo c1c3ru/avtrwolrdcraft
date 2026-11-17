@@ -17,6 +17,18 @@ namespace AvatarWorld.Runtime
         Vector2 _offset;
         bool _follow;
 
+        /// <summary>
+        /// Material do atlas. As texturas do original nao sao pre-multiplicadas: sem _StraightAlphaInput o Spine/Skeleton trata os
+        /// pixels transparentes (RGB branco) como cor e o sol aparecia como um retangulo claro no canto do mapa.
+        /// </summary>
+        public static Material CreateMaterial(Shader shader, Texture2D texture, string name)
+        {
+            var material = new Material(shader) { name = name, mainTexture = texture };
+            material.SetFloat("_StraightAlphaInput", 1f);
+            material.EnableKeyword("_STRAIGHT_ALPHA_INPUT");
+            return material;
+        }
+
         public static MapSpineLayer Create(Transform parent, WorldSpineData data, Camera camera)
         {
             var shader = Shader.Find("Spine/Skeleton");
@@ -31,7 +43,7 @@ namespace AvatarWorld.Runtime
             }
             try
             {
-                var material = new Material(shader) { name = data.skeleton, mainTexture = texture };
+                var material = CreateMaterial(shader, texture, data.skeleton);
                 var atlas = SpineAtlasAsset.CreateRuntimeInstance(atlasText, new[] { material }, true);
                 var dataAsset = SkeletonDataAsset.CreateRuntimeInstance(skeleton, atlas, true, 0.01f);
                 var go = new GameObject("Spine_" + data.skeleton);
