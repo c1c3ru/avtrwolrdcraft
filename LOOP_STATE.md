@@ -1,5 +1,26 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Loja: reextração das ~124 classes de MonoBehaviour restantes — bloqueada por RAM, não por contenção — 2026-11-21
+Continuação de `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md` (PR #42, já mergeada: fix do bug de type-tree
+`List<String>` rotulado como `string`, 7 temas de Casas decodificados). Faltava reextrair as outras ~124
+classes de MonoBehaviour que tinham o mesmo bug (`out/mb/_stats.json`), achando que era só falta de RAM
+momentânea por sessões concorrentes.
+- 4 tentativas seguidas (2 em 07/11, 2 em 21/11, já com swap livre e sem outras sessões Unity rodando)
+  falharam idênticas, sempre no mesmo ponto (carregando `x/base/assets/bin/Data/datapack.unity3d`, 1,3 GB).
+- **Causa real confirmada por `journalctl -k`**: `Out of memory: Killed process ... anon-rss:5778888kB` — o
+  processo passa de **5,8 GB de RAM residente** só pra carregar o datapack (Unity comprime os blocos com
+  LZMA/LZ4HC; descomprimido fica bem maior que o 1,3 GB no disco), e ainda estava crescendo. Não é contenção
+  de outra sessão: é que esta máquina (7,1 GB RAM) não comporta essa carga de trabalho sozinha.
+- Decisão do usuário (2026-11-21): rodar no PC do trabalho (mais RAM) em vez de insistir aqui.
+- Script pronto e documentado, dentro do repo agora (antes só existia fora, em `/tmp` de um job que seria
+  limpo): `tools/mb_retry_failed_classes.py` — docstring tem o passo a passo completo pra extrair
+  `il2cpp_in/`+`x/` do APK (ambos gitignored) e instalar `TypeTreeGeneratorAPI` (faltava no ambiente, não vem
+  com UnityPy). Só reprocessa as classes que ainda estão em `out/mb/_stats.json["erros"]`, mescla o resultado
+  de volta no mesmo arquivo sem apagar o que já está ok.
+- **Próximo passo:** rodar `python3 tools/mb_retry_failed_classes.py` numa máquina com mais RAM livre (o
+  PC do trabalho). Se passar, dá pra reaproveitar `docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md` como
+  base pra refinar a categorização dos 224 pacotes com dados reais em vez de heurística.
+
 ## Loja "Criador de Avatar" vira atalho de navegacao — 2026-11-07
 - Commit `87148a4f8` (branch `worktree-loja-criador-avatar`, pushado): `StoreScreen.SelectCategory` trata
   `StoreCatalog.CategoryAvatarMaker` como atalho (fecha a loja, abre `AvatarSlotsScreen` via
