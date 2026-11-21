@@ -1,5 +1,19 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Loja: Mansão e mais temas de Casas confirmados irresolúveis; Modern House confirmado — 2026-11-22
+Continuando os pendentes de `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md` (PR #64, aberta).
+- `ModernHousePB9Box_Pack` passou de "incerto" pra **confirmado**: busca por "modern" em todo `store_catalog.json`
+  (37230 itens) retorna exatamente a capa + os 2 cômodos já linkados, nenhum outro — não é mais inferência fraca.
+- `MansionBundlePB2Box_Pack` confirmado **irresolúvel**, não só "não achei ainda": `store_catalog.json` tem 351
+  prefabs `*Pack` em `resources.assets`, só 224 linkados em `InventoryBuildData.packToItems` (única instância do
+  objeto no jogo). Os outros 127 "órfãos" não têm item-list em lugar nenhum do APK — inclui Mansão, mais um tema
+  "Apartamento" (`ApartmentHMP82/89/95`, 3 variantes), mais 6 cômodos órfãos de Bubble Glam e uma 2ª variante de
+  Kawaii House. Mesma ausência de dado já documentada pra Moda (`StoreData.Item`/`bundleItems` não estão no APK).
+- Categorização dos 224 pacotes refinada separadamente: ver `docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md`.
+- Nada implementado no cliente ainda (não há editor de casas); decisão de produto pendente do autor sobre o que
+  fazer com temas irresolúveis (excluir da loja offline ou inventar conteúdo próprio, deixando claro que não é
+  dado original).
+
 ## Loja: reextração das ~124 classes de MonoBehaviour restantes — bloqueada por RAM, não por contenção — 2026-11-21
 Continuação de `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md` (PR #42, já mergeada: fix do bug de type-tree
 `List<String>` rotulado como `string`, 7 temas de Casas decodificados). Faltava reextrair as outras ~124

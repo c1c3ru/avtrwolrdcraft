@@ -55,8 +55,8 @@ os itens reais vêm de sub-pacotes de cômodo, achados por prefixo de nome)
 | `BeachHousePB11Box_Pack` | Beach House | `IslandHM*`: Balcony(24) Bathroom(33) Beach(28) Bedroom(30) Kitchen(26) Outdoors(31) | 172 | inferido — o pacote da loja chama "Beach" mas os cômodos reais usam o prefixo `IslandHM` (mesmo padrão de nomenclatura de `GalxeHM`/`SnowyHM`) |
 | `BubbleGlamPB8Box_Pack` | Bubble Glam | `BubbleGlam*`: Bathroom(48) Bedroom(61) Parking(27) PoolArea(69) Teen(53) WalkingCloset×2(68+96) | 422 | inferido — não visto num print, mas o padrão de nome é idêntico aos confirmados |
 | `KawaiiHousePB10Box_Pack` | Kawaii House | `KawaiiHouseP29`(79) `KawaiiHouseP30`(42) | 121 | inferido |
-| `ModernHousePB9Box_Pack` | Modern House | `ModernGarageP55`(36) `ModernLivingRoomAndBalconyP53`(36) | 72 | **incerto** — vínculo por substring "Modern", sem confirmação de print nem de prefixo comum (`GalxeHM`/`IslandHM`-style) |
-| `MansionBundlePB2Box_Pack` | Mansão | — | 0 | **não resolvido** — nenhum sub-pacote de cômodo encontrado por nome; cartão "MANSÃO BUNDLE" apareceu cortado no print (imagem3.jpeg), preço não capturado |
+| `ModernHousePB9Box_Pack` | Modern House | `ModernGarageP55`(36) `ModernLivingRoomAndBalconyP53`(36) | 72 | **confirmado por exclusividade de nome (2026-11-22)** — busca por "modern" em todo `store_catalog.json` (37230 itens) retorna exatamente estes 3 nomes (capa + 2 cômodos), não é coincidência de substring |
+| `MansionBundlePB2Box_Pack` | Mansão | — | 0 | **irresolúvel com os dados atuais (2026-11-22)** — ver nota abaixo |
 
 Isso dá **6–7 temas de Casas confirmados/bem inferidos**, não os 8 relatados. Candidato a um 8º tema, não
 confirmado: `FairyTreeDollhouseP224Box_Pack` (53 itens, sem bundle "capa" `PBxx` associado) — o nome bate em
@@ -77,22 +77,38 @@ mas sem nenhuma prova (não há bundle-capa `MansionBundlePB2` apontando pra ele
 Nenhum desses tem bundle-capa com guid resolvido — ou são temas vendidos sem "capa" (card único, sem sub-trilho),
 ou a ligação real está em dados que não estão no APK (igual já vale para Moda). **Não dou isso como resolvido.**
 
+## Mansão e outros temas irresolúveis (confirmado em 2026-11-22, não é só "não achei ainda")
+`store_catalog.json` tem **351** prefabs com nome terminando em `*Pack` em `resources.assets`; só **224** estão
+linkados em `InventoryBuildData.packToItems` (confirmado só 1 instância do objeto no jogo inteiro —
+`out/mb_survey.json`). Os outros **127** (chamo de "órfãos") são capas/cômodos nomeados que existem como prefab
+mas **não têm nenhuma lista de itens em lugar nenhum do APK** — não é falta de busca, é ausência de dado mesmo,
+igual ao já documentado para `StoreData.Item`/`bundleItems` de Moda. `MansionBundlePB2Box_Pack` e
+`CatamarnP36_Pack` estão nesse grupo (busca por "mansion" em todo o catálogo só retorna a própria capa). Outros
+temas de Casas adicionais também caem aí, sem conteúdo extraível por nenhum método disponível:
+- `ApartmentHMP82Box_Pack`/`P89`/`P95` — 3 variantes de um tema "Apartamento", mesmo padrão `*HM*` de
+  Galxe/Island/Snowy, mas nenhuma das 3 tem cômodos linkados.
+- Mais 6 prefabs de cômodo do tema Bubble Glam existem (`BubbleGlamDinningroomP64`, `KitchenP63`,
+  `LivingroomP39`, `TilesP54`/`TilesPE3`, `CouponPC9`) além dos 7 já linkados — sem item-list.
+- Uma segunda variante de Kawaii House (`KawaiiHouseBox_Bathroom_L33`, `KawaiiHouseBox_MasterBedroom_L33`),
+  separada de `KawaiiHouseP29`/`P30`.
+
+Artefato: `out/recon/store_house_bundles.json`, chave `orphan_pack_prefabs_sem_conteudo`.
+
 ## Limites / o que falta
 1. **Ligação cartão-da-loja → pack é inferência por nome**, igual ao já documentado para Moda em
    `docs/STORE_BUNDLE_CONTENTS.md` — o servidor da loja (preço, nome exibido, bundleItems) não está no APK.
-2. `MansionBundlePB2` segue sem cômodos encontrados; `ModernHousePB9` tem vínculo fraco. Precisa ou (a) mais prints
-   do original mostrando esses dois bundles abertos, ou (b) buscar por outro padrão de nome nos 224 pacotes.
-3. Não confirmei se **todos** os 224 pacotes de `InventoryBuildData` cobrem 100% do que a loja vende, nem se há mais
-   pacotes de casa fora desse objeto único (existe só 1 instância de `InventoryBuildData` no jogo inteiro —
-   `out/mb_survey.json` confirma contagem 1).
-4. Reextrair as outras ~124 classes que falhavam com o mesmo bug (agora corrigido em `tools/mb_dump.py`) não foi
-   feito nesta sessão — pode valer a pena rodar o dump completo de novo.
-5. Itens resolvidos contra `store_catalog.json` só têm nome/categoria/arquivo — sem textura/posição/preço real
+2. `MansionBundlePB2` confirmado irresolúvel com os dados atuais (ver seção acima); `ModernHousePB9` agora
+   confirmado por exclusividade de nome.
+3. Reextrair as outras ~124 classes que falhavam com o mesmo bug (agora corrigido em `tools/mb_dump.py`) não foi
+   feito ainda — bloqueado por RAM nesta máquina (~6 GB de pico, ver `LOOP_STATE.md` e `tools/mb_retry_failed_classes.py`).
+4. Itens resolvidos contra `store_catalog.json` só têm nome/categoria/arquivo — sem textura/posição/preço real
    (preço = 0 a definir, como já documentado).
 
 ## Próximo passo sugerido
 Se o objetivo for implementar Casas no cliente (como foi feito para Moda com `StorePackContent.cs`/`PackGate`),
-falta: (a) confirmar ou descartar `MansionBundlePB2`/`ModernHousePB9`/`FairyTreeDollhouse`/`WelcomeBaby` com mais
-prints ou decisão do autor sobre aceitar a inferência por nome; (b) decidir que "pacote de casa" vira o quê no
-cliente offline (desbloqueio de mobília no editor de casas, que ainda não existe — ver `docs/PRD_WORLD_INTERIORS_2026-11-05.md`);
-(c) rodar em ambiente com Unity Editor (não disponível nesta sessão) para implementar e validar.
+falta: (a) `MansionBundlePB2` ficou irresolúvel (ver seção acima) — decisão do autor: excluir esse tema da loja
+offline, ou inventar conteúdo próprio pra ele (deixando claro que não é dado original); `FairyTreeDollhouse`/
+`WelcomeBaby` continuam como inferência de nome sem prova, mesma decisão se aplica; (b) decidir que "pacote de
+casa" vira o quê no cliente offline (desbloqueio de mobília no editor de casas, que ainda não existe — ver
+`docs/PRD_WORLD_INTERIORS_2026-11-05.md`); (c) rodar em ambiente com Unity Editor (não disponível nesta sessão)
+para implementar e validar.
