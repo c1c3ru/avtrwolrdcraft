@@ -1,0 +1,14 @@
+{
+  "schema": "avtr-recon-task-result/v1",
+  "task": "T025/HANDLER/00003cd1",
+  "state": "ready",
+  "semantic_completion": false,
+  "summary": "Static Capstone recovery closes the 32-byte handler: it invokes SaveItemInBulkData only when _isInsideSlide is nonzero. The helper scans configured scene roots and drop areas, with SetInSildeData responsible for observed detach, bulk persistence and destruction calls. Generic component lookup identities, transitive effects, failure/exception semantics, field corroboration and runtime behavior remain unresolved.",
+  "evidence_type": "pinned shipped ELF Capstone disassembly, metadata method index/extents, generated Cpp2IL field context; static only",
+  "confidence": "high for handler bytes/control flow and direct call identity; medium for helper direct-call mapping and generated field context; low/unresolved for generic lookup types and transitive persistence/destruction semantics",
+  "artifacts": ["method-contract.json", "control-flow.json", "unknowns.jsonl", "handler.asm.txt", "save_item_in_bulk_data.asm.txt", "set_in_slide_data.asm.txt", "save_helper_trampoline.asm.txt", "test_contract_integrity.py"],
+  "validation": {"command": "tools/venv/bin/python out/recon/tasks/T025/HANDLER/00003cd1/test_contract_integrity.py", "result": "3 structural integrity checks passed; no semantic or runtime validation."},
+  "acceptance_gaps": ["resolve both 0x25751c8 generic lookup identities/type arguments", "recover SetInSildeData and LevelUtils.DestroyLevelItem end-to-end", "resolve runtime helpers and exception/unwind behavior", "corroborate generated field offsets and callback lifecycle", "independent review and original-runtime observation"],
+  "rea_attempt": {"provider": "Hopper", "outcome": "not rerun in this checkpoint; prior attempts against the same pinned ELF exited with code 247"},
+  "next_action": "Keep ready/partial. Resolve generic lookup/type-info slots and persistence consumer/callee behavior before semantic acceptance; do not mark done based on this checkpoint."
+}

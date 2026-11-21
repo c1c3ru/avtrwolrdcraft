@@ -155,8 +155,8 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
-      "planning_seed": true,
+      "state": "ready",
+      "planning_seed": false,
       "input_and_steps": "docs atuais, SceneType, catálogo e regras autorizadas; enumerar recursos locais, integrações online, conteúdo ausente e extensões pedagógicas. Registrar política por recurso: paridade, adaptação offline ou ausência externa.",
       "outputs": "`scope.json`, `features.jsonl`, `divergences.jsonl` com domínio e plataformas.",
       "acceptance": "nenhuma exclusão oculta; mudanças de preço/recompensa não são confundidas com regra recuperada.",
@@ -173,14 +173,80 @@
         "canonical_task_queue_write"
       ],
       "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
-      "input_refs": [],
-      "evidence_refs": [],
+      "input_refs": [
+        {
+          "path": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+          "sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f"
+        },
+        {
+          "path": "docs/OFFLINE_HOME_RULES.md",
+          "sha256": "8ecccd1cba0a9d832f9e04fcf294e4a71408c0bd4249dc7c2cd790e15e499919"
+        },
+        {
+          "path": "docs/OFFLINE_RECONSTRUCTION_STATUS.md",
+          "sha256": "10c0522a01076264f17f1abeb513218f0c53f646f25efac051b3e5765c9cb6f0"
+        },
+        {
+          "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/SceneType.cs",
+          "sha256": "374e66aed5ebf321cb689851283b6cfb3b979cf0bb83a1fe9178bf2060102308"
+        },
+        {
+          "path": "LOOP_STATE.md",
+          "sha256": "77bf4dbead9dcd88d085a0aa12d5acf35f4c793271842b286226831a70e0f8f1"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T002/scope.json",
+          "sha256": "fe39137e1a5287495cc9bc9da1a067af783c900068c685b32af42fa96ecc0da5"
+        },
+        {
+          "path": "out/recon/tasks/T002/features.jsonl",
+          "sha256": "86c1b75d910119e66dbfdf61d009e95e0aceacb8cc335664f4daf9e729023e48"
+        },
+        {
+          "path": "out/recon/tasks/T002/divergences.jsonl",
+          "sha256": "92c559ee27a4686453501a4bb7e344f77567211cc7e6e91ce22ad2459cf29d58"
+        },
+        {
+          "path": "out/recon/tasks/T002/result.json",
+          "sha256": "ed34b04b87584cddbb484f72e96c0df90e2ecb941ee7df919795018b31a6ab19"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "18a817c0faf64ef89622a77a95780272",
+          "owner": "agente-logica-claude",
+          "started_at": 1794096961.538834,
+          "lease_id": "0b5ecd72afeb4152b10013633eeebce1",
+          "checkpoint_at": 1794097061.722706,
+          "state": "ready",
+          "note": "Entrega parcial: matriz de escopo (scope.json, 13 dominios de SceneType.cs com status/politica), features.jsonl (20 recursos locais/integracoes ausentes/conteudo faltante/extensoes pedagogicas) e divergences.jsonl (6 itens, incluindo os 3 casos de preco/recompensa local vs original exigidos pelo criterio de aceite). Sintese pura de docs existentes + leitura do clothing-manifest.json atual (4.965 itens, nao commitado); sem Unity/aparelho/datapack. Nao gerei tarefas filhas (decisao de coordenador); Street e StoreBundle ficam UNKNOWN por falta de evidencia nesta sessao.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T002/scope.json",
+              "sha256": "fe39137e1a5287495cc9bc9da1a067af783c900068c685b32af42fa96ecc0da5"
+            },
+            {
+              "path": "out/recon/tasks/T002/features.jsonl",
+              "sha256": "86c1b75d910119e66dbfdf61d009e95e0aceacb8cc335664f4daf9e729023e48"
+            },
+            {
+              "path": "out/recon/tasks/T002/divergences.jsonl",
+              "sha256": "92c559ee27a4686453501a4bb7e344f77567211cc7e6e91ce22ad2459cf29d58"
+            },
+            {
+              "path": "out/recon/tasks/T002/result.json",
+              "sha256": "ed34b04b87584cddbb484f72e96c0df90e2ecb941ee7df919795018b31a6ab19"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+      "next_action": "Entrega parcial: matriz de escopo (scope.json, 13 dominios de SceneType.cs com status/politica), features.jsonl (20 recursos locais/integracoes ausentes/conteudo faltante/extensoes pedagogicas) e divergences.jsonl (6 itens, incluindo os 3 casos de preco/recompensa local vs original exigidos pelo criterio de aceite). Sintese pura de docs existentes + leitura do clothing-manifest.json atual (4.965 itens, nao commitado); sem Unity/aparelho/datapack. Nao gerei tarefas filhas (decisao de coordenador); Street e StoreBundle ficam UNKNOWN por falta de evidencia nesta sessao."
     },
     {
       "id": "T003",
@@ -226,8 +292,8 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
-      "planning_seed": true,
+      "state": "ready",
+      "planning_seed": false,
       "input_and_steps": "REA, Cpp2IL, UnityPy, Unity/Android, decompilador nativo; consultar disponibilidade e versões. Identificar capacidade por operação, licença, host e entradas. Planejar reparo só do bloqueio observado.",
       "outputs": "matriz capacidade→ferramenta→comando→limites e ambiente reproduzível.",
       "acceptance": "rota suportada para inventário e recuperação nativa, ou bloqueio exato registrado; sem instalar/alterar configuração global silenciosamente.",
@@ -240,16 +306,56 @@
         "out/recon/tasks/T004/**"
       ],
       "code_write_policy": "Return patch in task output until coordinator assigns exact files in isolated checkout; shared files require integration owner.",
-      "resource_locks": [],
+      "resource_locks": [
+        "canonical_task_queue_write"
+      ],
       "resource_lock_policy": "Refine at child claim; exclusive device, Unity project and mutable REA database where used.",
-      "input_refs": [],
-      "evidence_refs": [],
+      "input_refs": [
+        {
+          "path": "docs/AVATAR_WORLD_MASTER_PLAN.md",
+          "sha256": "7c2bd4dbb3a3e29c12e347cfd66e232996a25ae36303de2e33d29d8cfd70611f"
+        },
+        {
+          "path": "LOOP_STATE.md",
+          "sha256": "77bf4dbead9dcd88d085a0aa12d5acf35f4c793271842b286226831a70e0f8f1"
+        }
+      ],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T004/tool_capability_matrix.json",
+          "sha256": "d9446294e283f82737c640a0386509874387d492d84895988d957d148d06749d"
+        },
+        {
+          "path": "out/recon/tasks/T004/result.json",
+          "sha256": "b17559c6ea4c196bfc1622a892060401daf40f13d50137672dfeb148c741b256"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "db00cc0f18a8486aa3434740b55be30e",
+          "owner": "agente-logica-claude",
+          "started_at": 1794096340.4648592,
+          "lease_id": "97f1a145a9884c15a9da2f7f5bbe20d6",
+          "checkpoint_at": 1794096440.183594,
+          "state": "ready",
+          "note": "Entrega parcial: matriz de capacidade por ferramenta (out/recon/tasks/T004/tool_capability_matrix.json) montada a partir do que foi de fato exercitado nesta sessao, com o unico bloqueio exato encontrado registrado (UnityPy.load() em datapack.unity3d sofre OOM, confirmado via strace). Nao fiz a geracao de tarefas filhas que esta tarefa coordenadora pede (next_action original); isso fica para decisao de coordenador. Nao e evidence_ready porque o campo outputs desta tarefa e texto descritivo, nao uma lista de arquivos, e a acao de coordenacao (gerar filhos) nao foi executada.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T004/tool_capability_matrix.json",
+              "sha256": "d9446294e283f82737c640a0386509874387d492d84895988d957d148d06749d"
+            },
+            {
+              "path": "out/recon/tasks/T004/result.json",
+              "sha256": "b17559c6ea4c196bfc1622a892060401daf40f13d50137672dfeb148c741b256"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Reconcile inherited evidence and generate bounded child tasks with exact inputs, paths, locks and acceptance before claim."
+      "next_action": "Entrega parcial: matriz de capacidade por ferramenta (out/recon/tasks/T004/tool_capability_matrix.json) montada a partir do que foi de fato exercitado nesta sessao, com o unico bloqueio exato encontrado registrado (UnityPy.load() em datapack.unity3d sofre OOM, confirmado via strace). Nao fiz a geracao de tarefas filhas que esta tarefa coordenadora pede (next_action original); isso fica para decisao de coordenador. Nao e evidence_ready porque o campo outputs desta tarefa e texto descritivo, nao uma lista de arquivos, e a acao de coordenacao (gerar filhos) nao foi executada."
     },
     {
       "id": "T005",
@@ -2340,7 +2446,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "BWYW.BWYWGiftData",
@@ -2389,13 +2495,34 @@
         "out/recon/tasks/T020/CLASS/d723b7b66951bef8/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/d723b7b66951bef8/attempt1-oom.log",
+          "sha256": "e5da6a5c51999f257a1be6c2cbd0d53ac6eeb0582b370a41988643039d6abed5"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "a660426a6c26474d8353862cb8bf57bf",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1794091605.6769128,
+          "lease_id": "f770b80406834b018593dbd78773c678",
+          "checkpoint_at": 1794092035.085336,
+          "state": "blocked_external",
+          "note": "Reproducao da falha (TypeTreeGenerator.load_il2cpp com libil2cpp.so+global-metadata.dat) foi OOM-killed (exit 137) duas vezes, mesmo com ~5.5GB livres e nenhum outro job Unity visivel no momento. Maquina tem 7302MB RAM total e swap (4095MB) ja ~75% ocupado por multiplos processos claude/MCP concorrentes nesta sessao de trabalho. Nao cheguei a executar get_nodes_as_json nem read_typetree; causa raiz do ValueError Failed to get ref type node continua desconhecida. Nota: esta tentativa rodou a partir de um worktree isolado (.claude/worktrees/recon-automation) com root da fila ainda apontando para /home/c1c3ru/avtrwolrdcraft; este checkpoint so existe na copia local da fila deste worktree, nao foi mesclado de volta ao checkout principal.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/d723b7b66951bef8/attempt1-oom.log",
+              "sha256": "e5da6a5c51999f257a1be6c2cbd0d53ac6eeb0582b370a41988643039d6abed5"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Reproducao da falha (TypeTreeGenerator.load_il2cpp com libil2cpp.so+global-metadata.dat) foi OOM-killed (exit 137) duas vezes, mesmo com ~5.5GB livres e nenhum outro job Unity visivel no momento. Maquina tem 7302MB RAM total e swap (4095MB) ja ~75% ocupado por multiplos processos claude/MCP concorrentes nesta sessao de trabalho. Nao cheguei a executar get_nodes_as_json nem read_typetree; causa raiz do ValueError Failed to get ref type node continua desconhecida. Nota: esta tentativa rodou a partir de um worktree isolado (.claude/worktrees/recon-automation) com root da fila ainda apontando para /home/c1c3ru/avtrwolrdcraft; este checkpoint so existe na copia local da fila deste worktree, nao foi mesclado de volta ao checkout principal.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -31509,7 +31636,7 @@
         "T022/PILOT_INDEX/b63661fa60c2"
       ],
       "baseline_maturity": "partial",
-      "state": "stale",
+      "state": "review",
       "planning_seed": false,
       "scope": {
         "method_identity": {
@@ -31584,7 +31711,24 @@
         "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/result.json"
       ],
       "acceptance": "Complete bounded method contract with justified bytes/ranges/CFG, all observable effects and callee conditions, validated tests and independent review; unresolved relevant body/indirect paths prevent semantic completion.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/method-contract.json",
+          "sha256": "47287498d3802eb6b2421884b4f3e5cf35ffa4b87b9fd8a14b232c37ce0454de"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/control-flow.json",
+          "sha256": "f0c48fdd6467a29fe25c6cd57ee2e80a592a8b82473f212ae714b3c504af3f69"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/unknowns.jsonl",
+          "sha256": "e798526923963091935de1dc4c8d78d9bc495115bf9db02c28c4506d0886596d"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/result.json",
+          "sha256": "0459380628ee6b9bef269d54c05c2a6f0cda064d36a84dfd48c50f99bc206b86"
+        }
+      ],
       "unknown_ids": [],
       "attempts": [
         {
@@ -31595,12 +31739,39 @@
           "recovered_at": 1793795084.08067,
           "recovery_note": "Lease expirado; não há processo de análise ativo. Evidências locais preservadas e hashes das entradas conferidos.",
           "recovery_actor": "codex"
+        },
+        {
+          "id": "fe05af06a4a44ad9b2ac18a17f1a16bc",
+          "owner": "agente-logica-claude",
+          "started_at": 1794095726.2869189,
+          "lease_id": "294e4a4a405f4973ac960acd7fd9297c",
+          "checkpoint_at": 1794095769.0526464,
+          "state": "evidence_ready",
+          "note": "Tarefa estava stale (lease anterior do ator codex-navigation ja recuperada por codex em sessao passada, sem reclaim desde entao). Reexecutei tools/recon_home_play.py (ja escrito especificamente para esta tarefa, TASK_OUTPUT apontava para este mesmo diretorio) contra o par nativo+metadata atual: 11 chamadas e 44 ancoras revalidadas. Trabalho puramente estatico, sem Unity/aparelho. Despacho indireto em 0x2058174 permanece apenas inferido (get_Item de IDictionary via slot 0 de vtable), nao certificado.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/method-contract.json",
+              "sha256": "47287498d3802eb6b2421884b4f3e5cf35ffa4b87b9fd8a14b232c37ce0454de"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/control-flow.json",
+              "sha256": "f0c48fdd6467a29fe25c6cd57ee2e80a592a8b82473f212ae714b3c504af3f69"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/unknowns.jsonl",
+              "sha256": "e798526923963091935de1dc4c8d78d9bc495115bf9db02c28c4506d0886596d"
+            },
+            {
+              "path": "out/recon/tasks/T025/METHOD/5fe1bb4a25183678/result.json",
+              "sha256": "0459380628ee6b9bef269d54c05c2a6f0cda064d36a84dfd48c50f99bc206b86"
+            }
+          ]
         }
       ],
-      "owner": "codex-navigation",
+      "owner": "agente-logica-claude",
       "lease": null,
       "review": null,
-      "next_action": "Lease expirado; não há processo de análise ativo. Evidências locais preservadas e hashes das entradas conferidos.",
+      "next_action": "Tarefa estava stale (lease anterior do ator codex-navigation ja recuperada por codex em sessao passada, sem reclaim desde entao). Reexecutei tools/recon_home_play.py (ja escrito especificamente para esta tarefa, TASK_OUTPUT apontava para este mesmo diretorio) contra o par nativo+metadata atual: 11 chamadas e 44 ancoras revalidadas. Trabalho puramente estatico, sem Unity/aparelho. Despacho indireto em 0x2058174 permanece apenas inferido (get_Item de IDictionary via slot 0 de vtable), nao certificado.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -66088,10 +66259,1236 @@
         "Which body, scheduler, callback and exception gaps remain?"
       ],
       "next_action": "Planning only; reconcile existing child IDs, prerequisites, paths and scope before importing or claiming."
+    },
+    {
+      "id": "T025/HANDLER/00002d72",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback Game.Level.LevelDigHoleArea.OnBeforeSceneLoadStage1 (0x06002d73)",
+      "role": "lógica",
+      "state": "ready",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00002d72/result.json",
+          "sha256": "e38f94d8b6296864d64333a7dfd219ec2c37b8c3559d3d48ee1fb8cc24e9f07a"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00002d72/method-contract.json",
+          "sha256": "2bbcc00352791e6e7049da2b22ac1a1616be69567fcce2b43b5dc7d1b4787de9"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00002d72/control-flow.json",
+          "sha256": "67d58425ad1ce8f3b8ebb1c0a5230684e462c091688ea57089e35cfd14529ac1"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00002d72/unknowns.jsonl",
+          "sha256": "e98f0b7807ddeaaceb4d3c5aa74a724c74cc3fd862db71c13ad154299db2f6f2"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00002d72/test_contract_integrity.py",
+          "sha256": "6deb4c4ac9e2c221e538a565db5b4df0720b09c9b4fed51582ef12119717f7a4"
+        }
+      ],
+      "attempts": [
+        {
+          "id": "2d214745349e4f228df3b35533278e97",
+          "owner": "/root",
+          "started_at": 1794694023.1304471,
+          "lease_id": "708316a60aa74820b6edf005137fb584",
+          "checkpoint_at": 1794694113.871633,
+          "state": "ready",
+          "note": "Partial checkpoint: MethodDef identity and reported four-byte tail thunk to separate helper recorded; helper recovery remains open because REA Hopper exited (247), four targets/exception effects are unresolved and field offsets need raw metadata corroboration. Integrity test passed 3 checks only; no semantic acceptance.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00002d72/result.json",
+              "sha256": "e38f94d8b6296864d64333a7dfd219ec2c37b8c3559d3d48ee1fb8cc24e9f07a"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00002d72/method-contract.json",
+              "sha256": "2bbcc00352791e6e7049da2b22ac1a1616be69567fcce2b43b5dc7d1b4787de9"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00002d72/control-flow.json",
+              "sha256": "67d58425ad1ce8f3b8ebb1c0a5230684e462c091688ea57089e35cfd14529ac1"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00002d72/unknowns.jsonl",
+              "sha256": "e98f0b7807ddeaaceb4d3c5aa74a724c74cc3fd862db71c13ad154299db2f6f2"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00002d72/test_contract_integrity.py",
+              "sha256": "6deb4c4ac9e2c221e538a565db5b4df0720b09c9b4fed51582ef12119717f7a4"
+            }
+          ]
+        }
+      ],
+      "owner": "/root",
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.LevelDigHoleArea",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x06002d73",
+          "method_definition_index": 11634,
+          "parameter_count": 0,
+          "vaddr": "0x1e29da8",
+          "file_offset": "0x1e25da8"
+        },
+        "method_definition_index": 11634,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/00002d72/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/00002d72/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/00002d72/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/00002d72/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/00002d72/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Partial checkpoint: MethodDef identity and reported four-byte tail thunk to separate helper recorded; helper recovery remains open because REA Hopper exited (247), four targets/exception effects are unresolved and field offsets need raw metadata corroboration. Integrity test passed 3 checks only; no semantic acceptance.",
+      "resource_locks": [
+        "native-method-analysis:00002d72"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/000032a8",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems (0x060032a9)",
+      "role": "lógica",
+      "state": "ready",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/result.json",
+          "sha256": "5e9aa4c32133cddce89d8f4075e9644c83d6908acd68661b49739f91c74f7e11"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/method-contract.json",
+          "sha256": "7e237310a3313c7ac3fd2c172d5729af5ed6816515cacb0323800100e1d72f62"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/control-flow.json",
+          "sha256": "283a5c8e570ac2a357ba8957a1e421e9a73f1b52e356c6fbc7e3de28e5619fdb"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/unknowns.jsonl",
+          "sha256": "5843aef4ad372d8eb7709b96afeff7192aa5735e7253c95b6e9e407762b4ce0a"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/handler.asm.txt",
+          "sha256": "9fa7678e673ec1bd1d42229c94d32c2067cdd991921b95ed1f9b3c66ee8b0eb5"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/destroy_level_item_callee.asm.txt",
+          "sha256": "794548b9099a40c9eb291c2d5384955532e08378a0ee2ed9bd32a4d7d510a82a"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/000032a8/test_contract_integrity.py",
+          "sha256": "97022b82cd6b110a96083203f08c5a55c27770856aa198e72845b277114d46de"
+        }
+      ],
+      "attempts": [
+        {
+          "id": "50b9d6833bdb47f8a45e14d90390b678",
+          "owner": "/root",
+          "started_at": 1794695535.4576929,
+          "lease_id": "d3a485ba43a5489587c288cd551fe931",
+          "checkpoint_at": 1794696035.7508483,
+          "state": "ready",
+          "note": "Partial static checkpoint: Capstone recovered the full reported 208-byte callback body and established outer points-loop plus child index 0 to unresolved target 0x24f0700 and LevelUtils.DestroyLevelItem(..., true). The 1512-byte callee disassembly is saved but its CFG/effects/exceptions remain open. Three structural checks passed; no semantic acceptance.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/result.json",
+              "sha256": "5e9aa4c32133cddce89d8f4075e9644c83d6908acd68661b49739f91c74f7e11"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/method-contract.json",
+              "sha256": "7e237310a3313c7ac3fd2c172d5729af5ed6816515cacb0323800100e1d72f62"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/control-flow.json",
+              "sha256": "283a5c8e570ac2a357ba8957a1e421e9a73f1b52e356c6fbc7e3de28e5619fdb"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/unknowns.jsonl",
+              "sha256": "5843aef4ad372d8eb7709b96afeff7192aa5735e7253c95b6e9e407762b4ce0a"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/handler.asm.txt",
+              "sha256": "64b8b71755586d0f1c765cd762fead2c81c860fc4b2f04cf4fd043320425d539"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/destroy_level_item_callee.asm.txt",
+              "sha256": "55346268e1cfb0237e59b666b4372bcc258ef8f82eed2a68933271961b20dc2b"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/test_contract_integrity.py",
+              "sha256": "97022b82cd6b110a96083203f08c5a55c27770856aa198e72845b277114d46de"
+            }
+          ]
+        },
+        {
+          "id": "342360658ec74208a794e634295dec41",
+          "owner": "/root",
+          "started_at": 1794696173.0602658,
+          "lease_id": "3769e1da341444bd8b8f85ca77decb73",
+          "checkpoint_at": 1794696189.9634259,
+          "state": "ready",
+          "note": "Partial static checkpoint retained; only normalized whitespace in saved Capstone disassembly outputs. Identity, 208-byte flow, unresolved target and 1512-byte callee boundary unchanged; three structural checks passed; no semantic acceptance.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/result.json",
+              "sha256": "5e9aa4c32133cddce89d8f4075e9644c83d6908acd68661b49739f91c74f7e11"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/method-contract.json",
+              "sha256": "7e237310a3313c7ac3fd2c172d5729af5ed6816515cacb0323800100e1d72f62"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/control-flow.json",
+              "sha256": "283a5c8e570ac2a357ba8957a1e421e9a73f1b52e356c6fbc7e3de28e5619fdb"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/unknowns.jsonl",
+              "sha256": "5843aef4ad372d8eb7709b96afeff7192aa5735e7253c95b6e9e407762b4ce0a"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/handler.asm.txt",
+              "sha256": "9fa7678e673ec1bd1d42229c94d32c2067cdd991921b95ed1f9b3c66ee8b0eb5"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/destroy_level_item_callee.asm.txt",
+              "sha256": "794548b9099a40c9eb291c2d5384955532e08378a0ee2ed9bd32a4d7d510a82a"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/000032a8/test_contract_integrity.py",
+              "sha256": "97022b82cd6b110a96083203f08c5a55c27770856aa198e72845b277114d46de"
+            }
+          ]
+        }
+      ],
+      "owner": "/root",
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.LevelSpawnOnLevelPostInit",
+          "name": "DestroyCurrentItems",
+          "token": "0x060032a9",
+          "method_definition_index": 12968,
+          "parameter_count": 0,
+          "vaddr": "0x1e64abc",
+          "file_offset": "0x1e60abc"
+        },
+        "method_definition_index": 12968,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/000032a8/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/000032a8/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/000032a8/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/000032a8/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/000032a8/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Partial static checkpoint retained; only normalized whitespace in saved Capstone disassembly outputs. Identity, 208-byte flow, unresolved target and 1512-byte callee boundary unchanged; three structural checks passed; no semantic acceptance.",
+      "resource_locks": [
+        "native-method-analysis:000032a8"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/00003cd1",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback Game.Level.WaterSlide.LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1 (0x06003cd2)",
+      "role": "lógica",
+      "state": "ready",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/method-contract.json",
+          "sha256": "22497a432928ecd056af8df8c530fe08f5f7a6dc2704e771c24e6e465e784702"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/control-flow.json",
+          "sha256": "aed4384a2536f1dbfcc62f824efbd4819ad1ec039c260e2fc4985e0f05c013ec"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/unknowns.jsonl",
+          "sha256": "8bcb26a40d8f314d02ee6ea21fb259a0a66d915e9872032bdda38799686b41a8"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/result.json",
+          "sha256": "9e5dbd453005074a9e03e1ddb5b8cb23c6b03ba0754a081a664c2fbb07210f33"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/handler.asm.txt",
+          "sha256": "0ad3cdbc1bd9ceb483ce0b848f6605bb7435f42c3cb6a5b1d86a12fbcc43bd29"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/save_item_in_bulk_data.asm.txt",
+          "sha256": "0ae32e697d162a7aaf660e8e736f1c75b13b5e8c775d7e04a389d8874142ae58"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/set_in_slide_data.asm.txt",
+          "sha256": "ad7a9cbe3f62116e5b45f47def7e698953d8228ec1f0bda96b3166e3426f5371"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/save_helper_trampoline.asm.txt",
+          "sha256": "893385eb2346a3f67d2cb2fce44d5e65b50db1f30ce92422d29a9d1f6184f40d"
+        },
+        {
+          "path": "out/recon/tasks/T025/HANDLER/00003cd1/test_contract_integrity.py",
+          "sha256": "7afd66f57052d0fac200df3fa6585f50280890c0ee2fa55c5815c7ab7068ddb1"
+        },
+        {
+          "path": "docs/RECON_EXECUTION_LOG.md",
+          "sha256": "10d7313f0c723603b2dbcb93bf8a2bbe92f1033cd5738edc3f6c14ef22e24449"
+        }
+      ],
+      "attempts": [
+        {
+          "id": "5c1b41fde6a746d985c8547addc7ca10",
+          "owner": "/root",
+          "started_at": 1794697551.4733102,
+          "lease_id": "c322ed4573a64176a0c0613f2b3a6714",
+          "checkpoint_at": 1794697970.9975426,
+          "state": "ready",
+          "note": "Checkpoint parcial: handler de 32 bytes e fluxo condicional documentados; helpers/callees genéricos, exceções e efeitos end-to-end continuam abertos. 3 checks estruturais e parse passaram; não declarar semantic_completion.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/method-contract.json",
+              "sha256": "22497a432928ecd056af8df8c530fe08f5f7a6dc2704e771c24e6e465e784702"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/control-flow.json",
+              "sha256": "aed4384a2536f1dbfcc62f824efbd4819ad1ec039c260e2fc4985e0f05c013ec"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/unknowns.jsonl",
+              "sha256": "8bcb26a40d8f314d02ee6ea21fb259a0a66d915e9872032bdda38799686b41a8"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/result.json",
+              "sha256": "9e5dbd453005074a9e03e1ddb5b8cb23c6b03ba0754a081a664c2fbb07210f33"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/handler.asm.txt",
+              "sha256": "0ad3cdbc1bd9ceb483ce0b848f6605bb7435f42c3cb6a5b1d86a12fbcc43bd29"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/save_item_in_bulk_data.asm.txt",
+              "sha256": "0ae32e697d162a7aaf660e8e736f1c75b13b5e8c775d7e04a389d8874142ae58"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/set_in_slide_data.asm.txt",
+              "sha256": "ad7a9cbe3f62116e5b45f47def7e698953d8228ec1f0bda96b3166e3426f5371"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/save_helper_trampoline.asm.txt",
+              "sha256": "893385eb2346a3f67d2cb2fce44d5e65b50db1f30ce92422d29a9d1f6184f40d"
+            },
+            {
+              "path": "out/recon/tasks/T025/HANDLER/00003cd1/test_contract_integrity.py",
+              "sha256": "7afd66f57052d0fac200df3fa6585f50280890c0ee2fa55c5815c7ab7068ddb1"
+            },
+            {
+              "path": "docs/RECON_EXECUTION_LOG.md",
+              "sha256": "10d7313f0c723603b2dbcb93bf8a2bbe92f1033cd5738edc3f6c14ef22e24449"
+            }
+          ]
+        }
+      ],
+      "owner": "/root",
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "Game.Level.WaterSlide.LevelSlideSwitcherHandler",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x06003cd2",
+          "method_definition_index": 15569,
+          "parameter_count": 0,
+          "vaddr": "0x1f04f28",
+          "file_offset": "0x1f00f28"
+        },
+        "method_definition_index": 15569,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/00003cd1/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/00003cd1/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/00003cd1/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/00003cd1/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/00003cd1/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Checkpoint parcial: handler de 32 bytes e fluxo condicional documentados; helpers/callees genéricos, exceções e efeitos end-to-end continuam abertos. 3 checks estruturais e parse passaram; não declarar semantic_completion.",
+      "resource_locks": [
+        "native-method-analysis:00003cd1"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/00005600",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback PWC.BackgroundPlanetSoundHandler.OnBeforeSceneLoadStage1 (0x06005601)",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.BackgroundPlanetSoundHandler",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x06005601",
+          "method_definition_index": 22016,
+          "parameter_count": 0,
+          "vaddr": "0x2069448",
+          "file_offset": "0x2065448"
+        },
+        "method_definition_index": 22016,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/00005600/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/00005600/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/00005600/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/00005600/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/00005600/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "resource_locks": [
+        "native-method-analysis:00005600"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/00006999",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback PWC.AvatarSpeech.AvatarSpeechUIMenu.OnBeforeSceneLoadStage1 (0x0600699a)",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.AvatarSpeech.AvatarSpeechUIMenu",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x0600699a",
+          "method_definition_index": 27033,
+          "parameter_count": 0,
+          "vaddr": "0x2194904",
+          "file_offset": "0x2190904"
+        },
+        "method_definition_index": 27033,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/00006999/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/00006999/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/00006999/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/00006999/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/00006999/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "resource_locks": [
+        "native-method-analysis:00006999"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/00006e43",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback PWC.PersistentData.PersistentDataManager.OnBeforeSceneLoadStage2 (0x06006e44)",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.PersistentData.PersistentDataManager",
+          "name": "OnBeforeSceneLoadStage2",
+          "token": "0x06006e44",
+          "method_definition_index": 28227,
+          "parameter_count": 0,
+          "vaddr": "0x21e09b0",
+          "file_offset": "0x21dc9b0"
+        },
+        "method_definition_index": 28227,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/00006e43/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/00006e43/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/00006e43/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/00006e43/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/00006e43/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "resource_locks": [
+        "native-method-analysis:00006e43"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/0000784d",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback PWC.Level.LevelKillArea.OnBeforeSceneLoadStage1 (0x0600784e)",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelKillArea",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x0600784e",
+          "method_definition_index": 30797,
+          "parameter_count": 0,
+          "vaddr": "0x22855a4",
+          "file_offset": "0x22815a4"
+        },
+        "method_definition_index": 30797,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/0000784d/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/0000784d/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/0000784d/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/0000784d/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/0000784d/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "resource_locks": [
+        "native-method-analysis:0000784d"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/0000849b",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback PWC.Level.LevelManager.OnBeforeSceneLoadStage2 (0x0600849c)",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelManager",
+          "name": "OnBeforeSceneLoadStage2",
+          "token": "0x0600849c",
+          "method_definition_index": 33947,
+          "parameter_count": 0,
+          "vaddr": "0x2313e64",
+          "file_offset": "0x230fe64"
+        },
+        "method_definition_index": 33947,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/0000849b/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/0000849b/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/0000849b/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/0000849b/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/0000849b/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "resource_locks": [
+        "native-method-analysis:0000849b"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/0000849c",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback PWC.Level.LevelManager.OnBeforeSceneLoadStage3 (0x0600849d)",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelManager",
+          "name": "OnBeforeSceneLoadStage3",
+          "token": "0x0600849d",
+          "method_definition_index": 33948,
+          "parameter_count": 0,
+          "vaddr": "0x2313e70",
+          "file_offset": "0x230fe70"
+        },
+        "method_definition_index": 33948,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/0000849c/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/0000849c/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/0000849c/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/0000849c/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/0000849c/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "resource_locks": [
+        "native-method-analysis:0000849c"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/000084fe",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback PWC.Level.LevelScreenshotManager.OnBeforeSceneLoad (0x060084ff)",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelScreenshotManager",
+          "name": "OnBeforeSceneLoad",
+          "token": "0x060084ff",
+          "method_definition_index": 34046,
+          "parameter_count": 0,
+          "vaddr": "0x231979c",
+          "file_offset": "0x231579c"
+        },
+        "method_definition_index": 34046,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/000084fe/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/000084fe/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/000084fe/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/000084fe/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/000084fe/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "resource_locks": [
+        "native-method-analysis:000084fe"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/000085cf",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback PWC.Level.LevelNewAvatarManager.OnBeforeSceneLoadStage1 (0x060085d0)",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelNewAvatarManager",
+          "name": "OnBeforeSceneLoadStage1",
+          "token": "0x060085d0",
+          "method_definition_index": 34255,
+          "parameter_count": 0,
+          "vaddr": "0x2336b68",
+          "file_offset": "0x2332b68"
+        },
+        "method_definition_index": 34255,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/000085cf/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/000085cf/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/000085cf/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/000085cf/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/000085cf/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "resource_locks": [
+        "native-method-analysis:000085cf"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
+    },
+    {
+      "id": "T025/HANDLER/00008659",
+      "parent_id": "T025",
+      "title": "Recuperar efeitos do callback PWC.Level.LevelMakerSwitcher.OnBeforeSceneLoadStage3 (0x0600865a)",
+      "role": "lógica",
+      "state": "pending",
+      "dependencies": [
+        "T001",
+        "T022/PILOT_INDEX/b63661fa60c2"
+      ],
+      "planning_seed": false,
+      "evidence_refs": [],
+      "attempts": [],
+      "owner": null,
+      "lease": null,
+      "review": null,
+      "unknown_ids": [
+        "T029/handler_effects_lifetime"
+      ],
+      "scope": {
+        "method_identity": {
+          "image": "Assembly-CSharp.dll",
+          "declaring_type": "PWC.Level.LevelMakerSwitcher",
+          "name": "OnBeforeSceneLoadStage3",
+          "token": "0x0600865a",
+          "method_definition_index": 34393,
+          "parameter_count": 0,
+          "vaddr": "0x233d360",
+          "file_offset": "0x2339360"
+        },
+        "method_definition_index": 34393,
+        "native_sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728",
+        "metadata_sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6",
+        "boundary_policy": "do not infer full extent from next MethodDef; recover reachable and noncontiguous/exception regions or leave partial",
+        "classification": "static_MethodDef_handler_edge_from_direct_Stage_candidate_scan"
+      },
+      "input_refs": [
+        {
+          "path": "reports/recon/scene_subscribers.json",
+          "sha256": "e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e"
+        },
+        {
+          "path": "out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json",
+          "sha256": "efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088"
+        },
+        {
+          "path": "out/recon/il2cpp/libil2cpp.so",
+          "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728"
+        },
+        {
+          "path": "out/recon/il2cpp/global-metadata.dat",
+          "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6"
+        },
+        {
+          "path": "out/recon/il2cpp/metadata_methods.jsonl",
+          "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb"
+        }
+      ],
+      "allowed_paths": [
+        "out/recon/tasks/T025/HANDLER/00008659/**"
+      ],
+      "outputs": [
+        "out/recon/tasks/T025/HANDLER/00008659/method-contract.json",
+        "out/recon/tasks/T025/HANDLER/00008659/control-flow.json",
+        "out/recon/tasks/T025/HANDLER/00008659/unknowns.jsonl",
+        "out/recon/tasks/T025/HANDLER/00008659/result.json"
+      ],
+      "input_and_steps": "Revalidar os hashes do par e a identidade exata do MethodDef. Recuperar parâmetros/retorno, ranges e CFG, loads/stores, chamadas diretas e indiretas, callbacks, mutações de estado, condições e efeitos sob retorno normal; separar efeitos de callees/helpers e registrar erros/exceções não resolvidos. Usar LLVM local já instalado, sem compartilhar arquivos de saída. Criar pseudocódigo e testes de mutação/fixture. Não alterar o cliente. Se a janela, callback ou exceção não fechar, manter partial/ready e criar children com inputs e hashes exatos.",
+      "acceptance": "Contrato e CFG justificam cada bloco/caminho alcançável e os limites de corpo/exceção; parâmetros, dados, chamadas e efeitos observáveis ligados a bytes/metadata; unknowns relevantes explicitados; fixtures/testes passam; revisão independente de fonte raw confirma o recorte. Qualquer helper/dispatch/region relevante aberto impede done.",
+      "questions": [
+        "Qual estado cada ramo lê/escreve?",
+        "Quais objetos/coleções são criados, destruídos ou alterados?",
+        "Quais delegates, eventos, coroutines e cenas são acionados?",
+        "Quais guards/errors/exception paths afetam o fluxo?"
+      ],
+      "next_action": "Executar prepare obrigatório; reivindicar apenas depois que as dependências T001/T022 estiverem aceitas; checkpoint partial se body/dispatch/efeitos externos continuarem abertos.",
+      "resource_locks": [
+        "native-method-analysis:00008659"
+      ],
+      "code_write_policy": "evidence-only; method-specific output directory; no client implementation"
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 54,
+  "revision": 67,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -67328,6 +68725,114 @@
       "task": "T025/METHOD/4a19cfec8f8e89ba",
       "actor": "codex-t025",
       "at": 1794142320.7148824
+    },
+    {
+      "revision": 55,
+      "action": "import_children",
+      "actor": "/root",
+      "at": 1794694000.6361175,
+      "note": "Reconcile the T025 stage-handler child manifest with the current queue; prior task artifacts exist but the matching child IDs are absent.",
+      "manifest_path": "/home/c1c3ru/avtrwolrdcraft/reports/recon/t025_stage_handler_children_2026-11-08.json",
+      "manifest_sha256": "900600fcd3e82120541a894022d8bdbd83ec1407c369d54d407a9f9f051f6853",
+      "unique_input_files_hashed": 5,
+      "child_ids": [
+        "T025/HANDLER/00002d72",
+        "T025/HANDLER/000032a8",
+        "T025/HANDLER/00003cd1",
+        "T025/HANDLER/00005600",
+        "T025/HANDLER/00006999",
+        "T025/HANDLER/00006e43",
+        "T025/HANDLER/0000784d",
+        "T025/HANDLER/0000849b",
+        "T025/HANDLER/0000849c",
+        "T025/HANDLER/000084fe",
+        "T025/HANDLER/000085cf",
+        "T025/HANDLER/00008659"
+      ]
+    },
+    {
+      "revision": 56,
+      "action": "claim",
+      "task": "T025/HANDLER/00002d72",
+      "actor": "/root",
+      "at": 1794694023.2224505
+    },
+    {
+      "revision": 57,
+      "action": "start",
+      "task": "T025/HANDLER/00002d72",
+      "actor": "/root",
+      "at": 1794694026.814828
+    },
+    {
+      "revision": 58,
+      "action": "checkpoint",
+      "task": "T025/HANDLER/00002d72",
+      "actor": "/root",
+      "at": 1794694113.9092064
+    },
+    {
+      "revision": 59,
+      "action": "claim",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794695535.4922664
+    },
+    {
+      "revision": 60,
+      "action": "start",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794695541.4808745
+    },
+    {
+      "revision": 61,
+      "action": "checkpoint",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794696035.8181198
+    },
+    {
+      "revision": 62,
+      "action": "claim",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794696173.1339371
+    },
+    {
+      "revision": 63,
+      "action": "start",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794696181.6512418
+    },
+    {
+      "revision": 64,
+      "action": "checkpoint",
+      "task": "T025/HANDLER/000032a8",
+      "actor": "/root",
+      "at": 1794696190.0519276
+    },
+    {
+      "revision": 65,
+      "action": "claim",
+      "task": "T025/HANDLER/00003cd1",
+      "actor": "/root",
+      "at": 1794697551.5833
+    },
+    {
+      "revision": 66,
+      "action": "start",
+      "task": "T025/HANDLER/00003cd1",
+      "actor": "/root",
+      "at": 1794697558.0117695
+    },
+    {
+      "revision": 67,
+      "action": "checkpoint",
+      "task": "T025/HANDLER/00003cd1",
+      "actor": "/root",
+      "at": 1794697971.0663195
     }
   ]
 }

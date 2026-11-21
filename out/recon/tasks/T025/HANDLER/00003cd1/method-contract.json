@@ -1,0 +1,53 @@
+{
+  "schema": "avtr-recon-method-contract/v1",
+  "task": "T025/HANDLER/00003cd1",
+  "status": "partial",
+  "semantic_completion": false,
+  "method": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "Game.Level.WaterSlide.LevelSlideSwitcherHandler",
+    "name": "OnBeforeSceneLoadStage1",
+    "token": "0x06003cd2",
+    "method_definition_index": 15569,
+    "parameter_count": 0,
+    "return_type": "void (generated Cpp2IL signature; raw signature not independently decoded)",
+    "vaddr": "0x1f04f28",
+    "file_offset": "0x1f00f28",
+    "extent": {"bytes": 32, "end_exclusive": "0x1f04f48", "basis": "method-extents.jsonl, proven=true; Capstone decode of pinned ELF"}
+  },
+  "field_context_from_generated_cpp2il": [
+    {"name": "_dropAreas", "type": "LevelSingleItemDropArea[]", "offset": "0x20"},
+    {"name": "_currentLevelType", "type": "LevelType", "offset": "0x28"},
+    {"name": "_nextSceneLevelType", "type": "LevelType", "offset": "0x2c"},
+    {"name": "_isInsideSlide", "type": "bool", "offset": "0x30"},
+    {"name": "_includeRoot", "type": "bool", "offset": "0x31"}
+  ],
+  "normal_flow": [
+    "The method allocates a 16-byte stack frame and initializes a local bool to false.",
+    "Reads this+0x30, identified by generated Cpp2IL as _isInsideSlide. If zero, returns without calling the save helper.",
+    "If nonzero, calls SaveItemInBulkData(this, &localBool); the caller does not read the local bool afterward.",
+    "SaveItemInBulkData initializes its out bool false. When _includeRoot is true, it obtains the active scene root GameObjects and iterates them; two calls to unresolved target 0x25751c8 must both report success before SetInSildeData is called for the second result.",
+    "SaveItemInBulkData then iterates _dropAreas (when non-null/nonempty), obtains each single item, filters Unity null/equality, and calls SetInSildeData for accepted results.",
+    "SetInSildeData statically branches on runtime type for LevelCharacter/LevelToddler free-hands calls, sets its out bool true, detaches the item transform with worldPositionStays=true, forms a persistence key using prefix Slide_ and _currentLevelType, adds prefab data through SeparatedPDManager.AddToBulkData, then calls LevelUtils.DestroyLevelItem(item, true). These are static call/argument observations; full callee semantics are not recovered.",
+    "The helper body contains a noncontiguous branch trampoline at 0x3f932d0 that loads a second type-info slot and rejoins at 0x1f05010; its type identity is unresolved."
+  ],
+  "direct_callees": [
+    {"at": "0x1f04f3c", "target": "0x1f04f48", "name": "SaveItemInBulkData", "token": "0x06003cd4", "extent_bytes": 464}
+  ],
+  "evidence": [
+    {"path": "out/recon/il2cpp/libil2cpp.so", "sha256": "b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728", "claim": "pinned native bytes"},
+    {"path": "out/recon/il2cpp/global-metadata.dat", "sha256": "1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6", "claim": "pinned metadata pair"},
+    {"path": "out/recon/il2cpp/metadata_methods.jsonl", "sha256": "7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb", "claim": "method tokens, indexes and addresses"},
+    {"path": "out/recon/method-extents.jsonl", "sha256": "6d336b3c67b4e3fda688018eb88854b99fd88cc7d08cd6cdca2cefa8af64c717", "claim": "method extent and proven flag"},
+    {"path": "out/recon/il2cpp/assembly_csharp_methods.jsonl", "sha256": "30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8", "claim": "method-name/address index"},
+    {"path": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/WaterSlide/LevelSlideSwitcherHandler.cs", "sha256": "dd3c7c55069b81baa4f7a919a90960c6ec3e3a72a110709426081248baa07ed0", "claim": "generated field names and offsets"},
+    {"path": "tools/recon_disasm.py", "sha256": "4751c05cbfc6f5d2f900c3dd0136beea70807218a6eaf80bb1124232af9aede7", "claim": "local Capstone producer"}
+  ],
+  "limitations": [
+    "Hopper/REA was unavailable in prior attempts on this pinned ELF (provider exited with code 247); this checkpoint relies on local Capstone disassembly.",
+    "The two 0x25751c8 calls and their type-info arguments are not resolved to managed generic identities.",
+    "SaveItemInBulkData and SetInSildeData were disassembled but not fully semantically recovered; LevelUtils.DestroyLevelItem remains a transitive effect boundary.",
+    "Runtime helper targets 0x1b886e8, 0x1b8885c, 0x1b88980 and 0x1b88988, exception behavior, runtime observations, and independent raw-source review remain open.",
+    "Generated Cpp2IL field labels/offsets were not independently corroborated against raw field-offset records in this task."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "avtr-recon-control-flow/v1",
+  "task": "T025/HANDLER/00003cd1",
+  "method": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1",
+  "token": "0x06003cd2",
+  "extent": {"start": "0x1f04f28", "end_exclusive": "0x1f04f48", "bytes": 32, "instruction_count": 8, "source": "Capstone decode from pinned ELF; proven method-extents entry"},
+  "blocks": [
+    {"id": "B0", "range": ["0x1f04f28", "0x1f04f34"], "operations": ["save link register", "initialize stack local bool false", "read this+0x30 (_isInsideSlide per generated Cpp2IL)"], "successors": ["B1"]},
+    {"id": "B1", "range": ["0x1f04f34", "0x1f04f40"], "operations": ["CBZ _isInsideSlide", "when nonzero pass address of local bool and call SaveItemInBulkData"], "successors": ["B2", "B3"], "edges": [{"condition": "_isInsideSlide == 0", "to": "B3"}, {"condition": "_isInsideSlide != 0", "to": "B2"}]},
+    {"id": "B2", "range": ["0x1f04f38", "0x1f04f40"], "operations": ["x1 = &stack_local_bool", "BL SaveItemInBulkData(this, x1)"], "successors": ["B3"]},
+    {"id": "B3", "range": ["0x1f04f40", "0x1f04f48"], "operations": ["restore link register", "return void"], "successors": []}
+  ],
+  "call_edges": [{"at": "0x1f04f3c", "target": "0x1f04f48", "name": "Game.Level.WaterSlide.LevelSlideSwitcherHandler.SaveItemInBulkData", "token": "0x06003cd4", "argument": "this, address of local bool initialized false"}],
+  "callee_notes": [
+    {"target": "0x1f04f48", "extent_bytes": 464, "disassembly": "save_item_in_bulk_data.asm.txt", "status": "body decoded; transitive generic lookup/exception semantics unresolved"},
+    {"target": "0x1f05214", "extent_bytes": 468, "disassembly": "set_in_slide_data.asm.txt", "status": "body decoded; static effects described in method-contract, full semantics unresolved"},
+    {"target": "0x3f932d0", "extent_bytes": 8, "disassembly": "save_helper_trampoline.asm.txt", "status": "noncontiguous trampoline loads type-info pointer from [x25+0xd58] then branches to 0x1f05010"}
+  ],
+  "exceptions": "No exception table/landing-pad recovery was performed. Calls may throw; helper branches 0x1b88980/0x1b88988 are not assigned exception semantics.",
+  "coverage_limits": ["CFG covers only the proven 32-byte handler extent.", "The helper and its relevant transitive callees are not semantically closed; this CFG is not acceptance of the end-to-end feature contract."]
+}

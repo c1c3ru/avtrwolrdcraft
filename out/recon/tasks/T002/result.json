@@ -1,0 +1,16 @@
+{
+  "task_id": "T002",
+  "status": "partial",
+  "scope": "out/recon/tasks/T002/scope.json",
+  "features": "out/recon/tasks/T002/features.jsonl (20 entries)",
+  "divergences": "out/recon/tasks/T002/divergences.jsonl (6 entries)",
+  "acceptance_check": "No silent exclusion: AWCloud/multiplayer/login are listed explicitly as deliberate scope boundaries (D005), not omitted. Price/reward changes (shop, gifts, pass) are explicitly flagged as author-authorized local rules, not recovered original rules (D001-D003), directly addressing the acceptance criterion.",
+  "method": "Pure synthesis from existing docs (docs/OFFLINE_HOME_RULES.md, docs/OFFLINE_RECONSTRUCTION_STATUS.md, docs/AI_AGENT_REVERSE_ENGINEERING_WORKPLAN.md, docs/STORE_WORLD_UI_SPEC.md, LOOP_STATE.md), the SceneType.cs enum (13 declared scene types) and a direct read of the current (uncommitted) clothing-manifest.json for an up-to-date catalog count. No Unity Editor, device, or datapack.unity3d work performed.",
+  "not_done": "Did not generate bounded child tasks (T002's own stated next_action); that remains a coordinator decision. Street and StoreBundle scene types have no local-implementation evidence found this session and are left UNKNOWN rather than guessed.",
+  "limits": [
+    "This is a snapshot as of this session; LOOP_STATE.md and the manifest are both actively changing (see D004).",
+    "Feature list is not claimed exhaustive -- it reflects what the already-written docs and current catalog state document, not an independent fresh audit of every scene/control."
+  ],
+  "no_global_install_or_config_change_performed": true,
+  "awaiting": "Independent review by a different actor; a coordinator decision on whether/how to turn this matrix into bounded child tasks."
+}

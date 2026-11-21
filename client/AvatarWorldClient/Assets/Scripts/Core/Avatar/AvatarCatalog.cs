@@ -27,6 +27,17 @@ namespace AvatarWorld.Core.Avatar
         public const string CategoryJacket = "Jacket";
         public const string HatNone = "hat_none";
         public const string JacketNone = "jacket_none";
+        // Categorias confirmadas no CharacterCategoryType do original (PWC.AvatarSpine) e ainda
+        // ausentes do editor antes desta rodada; itens reais resolvidos via SUT por
+        // tools/avatar_catalog_build.py (pastas onepiece/legs/back/face do original). So adultos.
+        public const string CategoryOnepiece = "Onepiece";
+        /// <summary>Meias (o original cobre meias+sapato em "Legs"; sapato ja e CategoryShoes aqui).</summary>
+        public const string CategoryLegs = "Legs";
+        /// <summary>Acessorio de costas (Back_A do original: unica pasta "back_c" extraida).</summary>
+        public const string CategoryBackA = "BackA";
+        public const string CategoryFaceCheeks = "FaceCheeks";
+        /// <summary>"Sem peca" das 4 categorias acima para crianca/bebe (nao tem itens reais atribuidos a esses tipos).</summary>
+        public const string OnepieceNone = "onepiece_none", LegsNone = "legs_none", BackANone = "backa_none", FaceCheeksNone = "facecheeks_none";
 
         /// <summary>Categoria cuja cor (ItemColors) vale para o item: o cabelo traseiro usa a cor do cabelo da frente.</summary>
         public static string ColorKey(string category) => category == CategoryHairBack ? CategoryHair : category;
@@ -39,7 +50,8 @@ namespace AvatarWorld.Core.Avatar
 
         public static bool IsBuiltIn(string itemId) =>
             itemId == MouthDefault || itemId == EyebrowsDefault || itemId == HairBackNone ||
-            itemId == AccessoryNone || itemId == BottomNone || itemId == ShoesNone || itemId == HatNone || itemId == JacketNone;
+            itemId == AccessoryNone || itemId == BottomNone || itemId == ShoesNone || itemId == HatNone || itemId == JacketNone ||
+            itemId == OnepieceNone || itemId == LegsNone || itemId == BackANone || itemId == FaceCheeksNone;
 
         /// <summary>Itens _color recebem tinta (Multiply) escolhida na paleta General; os demais usam a textura como esta.</summary>
         public static bool IsColorItem(string itemId) => itemId != null && itemId.EndsWith("_color", System.StringComparison.OrdinalIgnoreCase);
@@ -67,6 +79,10 @@ namespace AvatarWorld.Core.Avatar
             { CategoryHairBack, AvatarCatalogData.HairBack },
             { CategoryHat, AvatarCatalogData.Hat },
             { CategoryJacket, AvatarCatalogData.Jacket },
+            { CategoryOnepiece, AvatarCatalogData.Onepiece },
+            { CategoryLegs, AvatarCatalogData.Legs },
+            { CategoryBackA, AvatarCatalogData.BackA },
+            { CategoryFaceCheeks, AvatarCatalogData.FaceCheeks },
         };
 
         public static string DefaultOption(string category) => OptionsByCategory[category][0];
@@ -92,6 +108,10 @@ namespace AvatarWorld.Core.Avatar
                         { CategoryEyebrows, AvatarKindCatalogData.Toddler.Eyebrows },
                         { CategoryHat, new[] { HatNone } },
                         { CategoryJacket, new[] { JacketNone } },
+                        { CategoryOnepiece, new[] { OnepieceNone } },
+                        { CategoryLegs, new[] { LegsNone } },
+                        { CategoryBackA, new[] { BackANone } },
+                        { CategoryFaceCheeks, new[] { FaceCheeksNone } },
                     } },
                 { AvatarKind.Baby, new Dictionary<string, string[]>
                     {
@@ -105,6 +125,10 @@ namespace AvatarWorld.Core.Avatar
                         { CategoryEyebrows, AvatarKindCatalogData.Baby.Eyebrows },
                         { CategoryHat, new[] { HatNone } },
                         { CategoryJacket, new[] { JacketNone } },
+                        { CategoryOnepiece, new[] { OnepieceNone } },
+                        { CategoryLegs, new[] { LegsNone } },
+                        { CategoryBackA, new[] { BackANone } },
+                        { CategoryFaceCheeks, new[] { FaceCheeksNone } },
                     } },
             };
         }

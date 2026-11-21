@@ -9,7 +9,7 @@ namespace AvatarWorld.Runtime
     /// <summary>
     /// Tela de slots (AvatarMakerLobby do original, prints 16.07.17 e 16.07.35): voltar, abas humano/pet/carro,
     /// slots com silhueta tracejada e lixeira. Cada slot humano mostra o avatar salvo (ou a silhueta para criar) e abre o editor;
-    /// os slots humanos 1-3 criam/editam avatares; pets e veiculos ainda nao existem offline (aviso: sem arte/esqueleto extraidos). O slot de veiculo bloqueado leva a loja.
+    /// os slots humanos 1-3 criam/editam avatares; pets e veiculos ainda nao existem offline (aviso: sem arte/esqueleto extraidos). O slot de veiculo bloqueado leva a tela de compra da vaga (VehicleSlotPurchaseScreen), nao a loja geral.
     /// Posicoes em unidades do canvas 2048x1024 convertidas dos prints (x1,42); arte em Resources/Slots.
     /// O pedestal rosa nao foi extraido: e desenhado em codigo.
     /// </summary>
@@ -20,7 +20,7 @@ namespace AvatarWorld.Runtime
 
         SaveStore _saves;
         PlayerState _state;
-        Action _onClose, _onOpenStore;
+        Action _onClose, _onPurchaseVehicleSlot;
         Camera _camera;
         Canvas _backCanvas, _frontCanvas;
         Transform _slotsRoot;
@@ -38,9 +38,9 @@ namespace AvatarWorld.Runtime
         public string Tab { get; private set; }
         public bool EditorOpen => _editorHost != null;
 
-        public void Begin(SaveStore saves, PlayerState state, Action onClose, Action onOpenStore)
+        public void Begin(SaveStore saves, PlayerState state, Action onClose, Action onPurchaseVehicleSlot)
         {
-            _saves = saves; _state = state; _onClose = onClose; _onOpenStore = onOpenStore;
+            _saves = saves; _state = state; _onClose = onClose; _onPurchaseVehicleSlot = onPurchaseVehicleSlot;
             _font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             UiSceneBuilder.EnsureEventSystem();
             BuildCamera();
@@ -109,7 +109,7 @@ namespace AvatarWorld.Runtime
             AddTab(TabPet, "pet", -244f);
             AddTab(TabCar, "car", -400f);
             Button("DeleteButton", _frontCanvas.transform, Art("Slots/delete"), new Vector2(0.5f, 0.5f), new Vector2(0f, -375f), new Vector2(146f, 143f),
-                () => { UiSound.PlayClick(); ShowToast("Não há nada para remover."); });
+                () => { UiSound.PlayClick(); OnDeletePressed(); });
             _toast = new GameObject("Toast", typeof(RectTransform), typeof(Text)).GetComponent<Text>();
             _toast.transform.SetParent(_frontCanvas.transform, false);
             var rect = _toast.rectTransform;
@@ -181,12 +181,28 @@ namespace AvatarWorld.Runtime
             Place(pedestal.rectTransform, new Vector2(0f, -190f), new Vector2(620f, 130f));
             Button("CarSlot1", _slotsRoot, Art("Slots/empty_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(0f, 20f), new Vector2(519f, 217f),
                 () => { UiSound.PlayClick(); ShowToast("Veículos ainda não estão disponíveis."); });
-            // Slot bloqueado (laranja) com o carrinho de compras do original: leva a loja.
-            Button("CarSlot2", _slotsRoot, Art("Slots/banner_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(SlotSpacing + 90f, 20f), new Vector2(437f, 218f),
-                () => { UiSound.PlayClick(); _onOpenStore?.Invoke(); });
-            var cartLabel = NewText("OpenStore", _slotsRoot, 40, new Color(0.45f, 0.2f, 0.6f));
-            Place(cartLabel.rectTransform, new Vector2(SlotSpacing + 90f, -120f), new Vector2(520f, 60f));
-            cartLabel.text = "Toque para abrir a loja";
+
+            bool unlocked = VehicleSlotCatalog.IsUnlocked(_state);
+            if (unlocked)
+            {
+                // Vaga ja comprada (VehicleSlotPurchaseScreen): sem esqueleto de carro extraido ainda, so
+                // mostra a reserva feita; a cor do rotulo acompanha a faixa escolhida (premium = dourado).
+                Button("CarSlot2", _slotsRoot, Art("Slots/empty_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(SlotSpacing + 90f, 20f), new Vector2(519f, 217f),
+                    () => { UiSound.PlayClick(); ShowToast("Vaga reservada. Veículos ainda não estão disponíveis."); });
+                var ownedLabel = NewText("CarSlot2Label", _slotsRoot, 40,
+                    VehicleSlotCatalog.IsPremium(_state) ? new Color(0.72f, 0.52f, 0.1f) : new Color(0.45f, 0.2f, 0.6f));
+                Place(ownedLabel.rectTransform, new Vector2(SlotSpacing + 90f, -120f), new Vector2(520f, 60f));
+                ownedLabel.text = VehicleSlotCatalog.IsPremium(_state) ? "Vaga premium reservada" : "Vaga reservada";
+            }
+            else
+            {
+                // Slot bloqueado (laranja) com o carrinho de compras do original: leva a tela de compra da vaga.
+                Button("CarSlot2", _slotsRoot, Art("Slots/banner_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(SlotSpacing + 90f, 20f), new Vector2(437f, 218f),
+                    () => { UiSound.PlayClick(); _onPurchaseVehicleSlot?.Invoke(); });
+                var cartLabel = NewText("CarSlot2Label", _slotsRoot, 40, new Color(0.45f, 0.2f, 0.6f));
+                Place(cartLabel.rectTransform, new Vector2(SlotSpacing + 90f, -120f), new Vector2(520f, 60f));
+                cartLabel.text = "Toque para desbloquear";
+            }
         }
 
         void BuildPetSlots()
@@ -259,24 +275,102 @@ namespace AvatarWorld.Runtime
             {
                 var kind = kinds[i];
                 var card = Button("Kind_" + kind, _picker.transform, null, new Vector2(0.5f, 0.5f), new Vector2((i - 1) * 440f, 20f), new Vector2(390f, 330f),
-                    () => { HideKindPicker(); OpenEditor(slot, kind); });
+                    () => { HidePicker(); OpenEditor(slot, kind); });
                 card.color = new Color(1f, 0.93f, 0.96f);
                 var label = NewText("Label", card.transform, 58, new Color(0.45f, 0.2f, 0.6f));
                 Stretch(label.rectTransform);
                 label.text = AvatarKinds.DisplayName(kind);
             }
             var cancel = Button("Cancel", _picker.transform, null, new Vector2(0.5f, 0.5f), new Vector2(0f, -250f), new Vector2(360f, 100f),
-                () => { UiSound.PlayClick(); HideKindPicker(); });
+                () => { UiSound.PlayClick(); HidePicker(); });
             cancel.color = new Color(0.95f, 0.72f, 0.84f);
             var cancelLabel = NewText("Label", cancel.transform, 46, Color.white);
             Stretch(cancelLabel.rectTransform);
             cancelLabel.text = "Cancelar";
         }
 
-        void HideKindPicker()
+        void HidePicker()
         {
             if (_picker != null) Destroy(_picker);
             _picker = null;
+        }
+
+        // Botão lixeira (central, uma única para os três slots - "lixeira central" do original): abre um
+        // seletor com os slots ocupados da aba atual; tocar num remove na hora (cancelar fecha sem apagar).
+        // Carro não tem avatar/pet salvo para remover (a vaga comprada não é reembolsável aqui).
+        void OnDeletePressed()
+        {
+            if (Tab == TabHuman) ShowDeleteHumanPicker();
+            else if (Tab == TabPet) ShowDeletePetPicker();
+            else ShowToast("Não há nada para remover.");
+        }
+
+        void ShowDeleteHumanPicker()
+        {
+            if (_state.HumanAvatarCount() <= 1) { ShowToast("Você precisa ter ao menos um avatar."); return; }
+            var entries = new System.Collections.Generic.List<(int slot, string label)>();
+            for (int slot = 0; slot < PlayerState.HumanSlotCount; slot++)
+                if (_state.HasHumanAvatar(slot))
+                    entries.Add((slot, AvatarKinds.DisplayName(_state.GetHumanAppearance(slot).Kind) + (slot == _state.ActiveHumanSlot ? " (ativo)" : "")));
+            ShowDeletePicker("Escolha o avatar para remover", entries, slot =>
+            {
+                _state.DeleteHumanSlot(slot);
+                try { _saves.Save(_state); }
+                catch (System.Exception e) when (e is System.IO.IOException || e is UnauthorizedAccessException) { Debug.LogWarning("Slots: nao gravou remocao de avatar: " + e.Message); }
+                SelectTab(Tab);
+                ShowToast("Avatar removido.");
+            });
+        }
+
+        void ShowDeletePetPicker()
+        {
+            var entries = new System.Collections.Generic.List<(int slot, string label)>();
+            for (int slot = 0; slot < PlayerState.PetSlotCount; slot++)
+            {
+                var pet = _state.GetPet(slot);
+                if (pet != null) entries.Add((slot, PetCatalog.DisplayName(pet.Species)));
+            }
+            if (entries.Count == 0) { ShowToast("Não há nada para remover."); return; }
+            ShowDeletePicker("Escolha o pet para remover", entries, slot =>
+            {
+                _state.RemovePet(slot);
+                try { _saves.Save(_state); }
+                catch (System.Exception e) when (e is System.IO.IOException || e is UnauthorizedAccessException) { Debug.LogWarning("Slots: nao gravou remocao de pet: " + e.Message); }
+                SelectTab(Tab);
+                ShowToast("Pet removido.");
+            });
+        }
+
+        // Mesma estrutura visual do seletor de tipo (dim + cartoes + cancelar), reaproveitada para a remocao.
+        void ShowDeletePicker(string title, System.Collections.Generic.List<(int slot, string label)> entries, Action<int> onPick)
+        {
+            if (_picker != null) return;
+            _picker = new GameObject("DeletePicker", typeof(RectTransform));
+            _picker.transform.SetParent(_frontCanvas.transform, false);
+            Stretch((RectTransform)_picker.transform);
+            var dim = NewImage("Dim", _picker.transform, null, new Color(0f, 0f, 0f, 0.5f));
+            Stretch(dim.rectTransform);
+            dim.raycastTarget = true;
+            var titleLabel = NewText("Title", _picker.transform, 62, Color.white);
+            Place(titleLabel.rectTransform, new Vector2(0f, 270f), new Vector2(1600f, 100f));
+            titleLabel.text = title;
+            float startX = -(entries.Count - 1) * 220f;
+            for (int i = 0; i < entries.Count; i++)
+            {
+                int slot = entries[i].slot;
+                var card = Button("Entry_" + slot, _picker.transform, null, new Vector2(0.5f, 0.5f), new Vector2(startX + i * 440f, 20f), new Vector2(390f, 330f),
+                    () => { UiSound.PlayClick(); HidePicker(); onPick(slot); });
+                card.color = new Color(0.98f, 0.78f, 0.78f);
+                var label = NewText("Label", card.transform, 52, new Color(0.55f, 0.1f, 0.15f));
+                Stretch(label.rectTransform);
+                label.text = "Remover\n" + entries[i].label;
+            }
+            var cancel = Button("Cancel", _picker.transform, null, new Vector2(0.5f, 0.5f), new Vector2(0f, -250f), new Vector2(360f, 100f),
+                () => { UiSound.PlayClick(); HidePicker(); });
+            cancel.color = new Color(0.95f, 0.72f, 0.84f);
+            var cancelLabel = NewText("Label", cancel.transform, 46, Color.white);
+            Stretch(cancelLabel.rectTransform);
+            cancelLabel.text = "Cancelar";
         }
 
         void OpenEditor(int slot, AvatarKind kind = AvatarKind.Adult)

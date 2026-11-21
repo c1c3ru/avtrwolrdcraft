@@ -51,6 +51,36 @@ namespace AvatarWorld.Core.Tests
         }
 
         [Test]
+        public void DeleteHumanSlotKeepsAtLeastOneAvatarAndSwitchesAwayFromTheActiveOne()
+        {
+            var state = PlayerState.CreateNew(0);
+            Assert.AreEqual(1, state.HumanAvatarCount());
+            Assert.IsFalse(state.DeleteHumanSlot(0), "nao pode apagar o unico avatar");
+            Assert.IsFalse(state.DeleteHumanSlot(1), "slot vazio nao tem o que apagar");
+
+            state.SwitchHumanSlot(1);
+            state.Appearance.TrySelect(AvatarCatalog.CategoryShirt, AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryShirt][3]);
+            string slot1Shirt = state.Appearance.ShirtId;
+            Assert.AreEqual(2, state.HumanAvatarCount());
+
+            // Apaga o slot 0 (nao ativo): slot 1 continua ativo, intacto.
+            Assert.IsTrue(state.DeleteHumanSlot(0));
+            Assert.IsFalse(state.HasHumanAvatar(0));
+            Assert.AreEqual(1, state.ActiveHumanSlot);
+            Assert.AreEqual(slot1Shirt, state.Appearance.ShirtId);
+            Assert.AreEqual(1, state.HumanAvatarCount());
+            Assert.IsFalse(state.DeleteHumanSlot(1), "voltou a ser o unico avatar");
+
+            // Cria outro slot e apaga o ativo: troca para o slot restante antes de apagar.
+            state.SwitchHumanSlot(2);
+            Assert.IsTrue(state.DeleteHumanSlot(2));
+            Assert.AreEqual(1, state.ActiveHumanSlot);
+            Assert.AreEqual(slot1Shirt, state.Appearance.ShirtId);
+            Assert.IsFalse(state.HasHumanAvatar(2));
+            Assert.AreEqual(1, state.HumanAvatarCount());
+        }
+
+        [Test]
         public void SlotsSurviveJsonRoundTripAndSanitizeBadData()
         {
             var state = PlayerState.CreateNew(0);

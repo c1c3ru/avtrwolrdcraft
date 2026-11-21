@@ -1,0 +1,117 @@
+1f05214  sub    sp, sp, #0x50
+1f05218  stp    x30, x23, [sp, #0x20]
+1f0521c  stp    x22, x21, [sp, #0x30]
+1f05220  stp    x20, x19, [sp, #0x40]
+1f05224  adrp   x22, #0x44fb000
+1f05228  ldrb   w8, [x22, #0x6ee]
+1f0522c  mov    x21, x2
+1f05230  mov    x19, x1
+1f05234  mov    x20, x0
+1f05238  tbnz   w8, #0, #0x1f05280
+1f0523c  adrp   x0, #0x41ac000
+1f05240  ldr    x0, [x0, #0xe48]  ; type PWC.Level.LevelCharacter
+1f05244  bl     #0x1b886e8
+1f05248  adrp   x0, #0x41ad000
+1f0524c  ldr    x0, [x0, #0x358]  ; type PWC.Level.LevelToddler
+1f05250  bl     #0x1b886e8
+1f05254  adrp   x0, #0x41b9000
+1f05258  ldr    x0, [x0, #0x7f8]  ; type PWC.Game.LevelType
+1f0525c  bl     #0x1b886e8
+1f05260  adrp   x0, #0x41b5000
+1f05264  ldr    x0, [x0, #0xae0]  ; type PWC.PersistentData.SeparatedPDManager
+1f05268  bl     #0x1b886e8
+1f0526c  adrp   x0, #0x41bf000
+1f05270  ldr    x0, [x0, #0xa00]  ; "Slide_"
+1f05274  bl     #0x1b886e8
+1f05278  mov    w8, #1
+1f0527c  strb   w8, [x22, #0x6ee]
+1f05280  cbz    x19, #0x1f053dc
+1f05284  adrp   x9, #0x41ac000
+1f05288  ldr    x9, [x9, #0xe48]  ; type PWC.Level.LevelCharacter
+1f0528c  ldr    x8, [x19]
+1f05290  ldr    x10, [x9]
+1f05294  ldrb   w9, [x8, #0x130]
+1f05298  ldrb   w11, [x10, #0x130]
+1f0529c  cmp    w9, w11
+1f052a0  b.lo   #0x1f052d0
+1f052a4  ldr    x12, [x8, #0xc8]
+1f052a8  add    x11, x12, x11, lsl #3
+1f052ac  ldur   x11, [x11, #-8]
+1f052b0  cmp    x11, x10
+1f052b4  b.ne   #0x1f052d0
+1f052b8  ldr    x0, [x19, #0x388]
+1f052bc  cbz    x0, #0x1f053d8
+1f052c0  mov    x1, xzr
+1f052c4  bl     #0x22a3214  ; -> LevelCharacterInteractionHandler.FreeHands
+1f052c8  ldr    x8, [x19]
+1f052cc  ldrb   w9, [x8, #0x130]
+1f052d0  adrp   x10, #0x41ad000
+1f052d4  ldr    x10, [x10, #0x358]  ; type PWC.Level.LevelToddler
+1f052d8  ldr    x10, [x10]
+1f052dc  ldrb   w11, [x10, #0x130]
+1f052e0  cmp    w9, w11
+1f052e4  b.lo   #0x1f05308
+1f052e8  ldr    x8, [x8, #0xc8]
+1f052ec  add    x8, x8, x11, lsl #3
+1f052f0  ldur   x8, [x8, #-8]
+1f052f4  cmp    x8, x10
+1f052f8  b.ne   #0x1f05308
+1f052fc  mov    x0, x19
+1f05300  mov    x1, xzr
+1f05304  bl     #0x2340a54  ; -> LevelToddler.FreeHands
+1f05308  mov    w8, #1
+1f0530c  mov    x0, x19
+1f05310  mov    x1, xzr
+1f05314  strb   w8, [x21]
+1f05318  bl     #0x3cc84a8
+1f0531c  cbz    x0, #0x1f053d8
+1f05320  adrp   x21, #0x41b9000
+1f05324  adrp   x22, #0x41bf000
+1f05328  adrp   x23, #0x41b5000
+1f0532c  ldr    x21, [x21, #0x7f8]  ; type PWC.Game.LevelType
+1f05330  ldr    x22, [x22, #0xa00]  ; "Slide_"
+1f05334  ldr    x23, [x23, #0xae0]  ; type PWC.PersistentData.SeparatedPDManager
+1f05338  mov    w2, #1
+1f0533c  mov    x1, xzr
+1f05340  mov    x3, xzr
+1f05344  bl     #0x3cd4ff4
+1f05348  ldr    x8, [x21]
+1f0534c  mov    x9, #-1
+1f05350  add    x0, sp, #8
+1f05354  mov    x1, xzr
+1f05358  stp    x8, x9, [sp, #8]
+1f0535c  ldr    w8, [x20, #0x28]
+1f05360  str    w8, [sp, #0x18]
+1f05364  bl     #0x338d9a0
+1f05368  ldr    x8, [x22]
+1f0536c  mov    x1, x0
+1f05370  mov    x2, xzr
+1f05374  mov    x0, x8
+1f05378  bl     #0x31d3914
+1f0537c  mov    x20, x0
+1f05380  mov    x0, x19
+1f05384  mov    x1, xzr
+1f05388  bl     #0x22f424c  ; -> LevelItem.GetPDPrefab
+1f0538c  ldr    x8, [x23]
+1f05390  mov    x21, x0
+1f05394  ldr    w9, [x8, #0xe0]
+1f05398  cbnz   w9, #0x1f053a4
+1f0539c  mov    x0, x8
+1f053a0  bl     #0x1b8885c
+1f053a4  mov    x0, x20
+1f053a8  mov    x1, x21
+1f053ac  mov    x2, xzr
+1f053b0  bl     #0x21e8620  ; -> SeparatedPDManager.AddToBulkData
+1f053b4  mov    w1, #1
+1f053b8  mov    x0, x19
+1f053bc  mov    x2, xzr
+1f053c0  bl     #0x232b9ac  ; -> LevelUtils.DestroyLevelItem
+1f053c4  ldp    x20, x19, [sp, #0x40]
+1f053c8  ldp    x22, x21, [sp, #0x30]
+1f053cc  ldp    x30, x23, [sp, #0x20]
+1f053d0  add    sp, sp, #0x50
+1f053d4  ret
+1f053d8  bl     #0x1b88980
+1f053dc  mov    w8, #1
+1f053e0  strb   w8, [x21]
+1f053e4  bl     #0x1b88980

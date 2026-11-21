@@ -17,6 +17,14 @@ namespace AvatarWorld.Core.Avatar
         public int Index;
     }
 
+    /// <summary>Peca solta (bochecha, meia, bolsa...) so de NPC: id do manifesto + tinta RGB opcional (vazio = sem tinta).</summary>
+    [Serializable]
+    public sealed class ExtraItem
+    {
+        public string Id;
+        public float[] Tint = new float[0];
+    }
+
     [Serializable]
     public sealed class AvatarAppearance
     {
@@ -30,6 +38,10 @@ namespace AvatarWorld.Core.Avatar
         public string HairBackId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryHairBack);
         public string HatId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryHat);
         public string JacketId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryJacket);
+        public string OnepieceId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryOnepiece);
+        public string LegsId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryLegs);
+        public string BackAId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryBackA);
+        public string FaceCheeksId = AvatarCatalog.DefaultOption(AvatarCatalog.CategoryFaceCheeks);
         /// <summary>Cor (paleta General) por categoria, so para itens _color; ausente = AvatarPaletteData.DefaultItemColor.</summary>
         public List<CategoryColor> ItemColors = new List<CategoryColor>();
         /// <summary>Indices nas paletas Skin/Eyes (palettes.json). Saves antigos sem estes campos ficam nos padroes.</summary>
@@ -38,6 +50,9 @@ namespace AvatarWorld.Core.Avatar
 
         /// <summary>Tipo do avatar (adulto, crianca, bebe). Saves antigos sem o campo ficam Adult (0).</summary>
         public AvatarKind Kind = AvatarKind.Adult;
+
+        /// <summary>Pecas extras so de NPC (sem categoria no editor). Nao entra em Clone/SameAs: o jogador nunca as tem.</summary>
+        [NonSerialized] public List<ExtraItem> Extras;
 
         public static AvatarAppearance CreateDefault() => new AvatarAppearance();
 
@@ -49,10 +64,31 @@ namespace AvatarWorld.Core.Avatar
             return a;
         }
 
+        /// <summary>
+        /// Preset de referencia visual (C6, print "imagem13": chapeu de bombeiro, cabelo branco, jaqueta
+        /// vermelha, saia rosa) - identificado por inspecao visual dos itens reais do catalogo (nao ha
+        /// nome/metadado de cor nos IDs): hat_a_7 (capacete vermelho com emblema), jacket_formal_6
+        /// (jaqueta vermelha solida), bottom_formal_9 (saia rosa pregueada), Hair_Front/1_Color com a cor
+        /// 114 da paleta General (0.9647 RGB, a mais proxima do branco puro).
+        /// </summary>
+        public static AvatarAppearance CreateReferenceImagem13Preset()
+        {
+            var a = CreateDefault();
+            a.TrySelect(AvatarCatalog.CategoryHat, "hat_a_7");
+            a.TrySelect(AvatarCatalog.CategoryJacket, "jacket_formal_6");
+            a.TrySelect(AvatarCatalog.CategoryBottom, "bottom_formal_9");
+            a.TrySelect(AvatarCatalog.CategoryHair, "Hair_Front/1_Color");
+            // Indice 114 da paleta General (palettes.json): RGB (0.9647, 0.9647, 0.9647), o mais proximo
+            // do branco puro entre as 115 cores (nao ha indice exatamente 1,1,1 na paleta oficial).
+            a.TrySelectItemColor(AvatarCatalog.CategoryHair, 114);
+            return a;
+        }
+
         /// <summary>Copia independente (usada pelo historico desfazer/refazer do editor).</summary>
         public AvatarAppearance Clone() => new AvatarAppearance
         {
             Kind = Kind, HairId = HairId, ShirtId = ShirtId, BottomId = BottomId, ShoesId = ShoesId, AccessoryId = AccessoryId, MouthId = MouthId, EyebrowsId = EyebrowsId, HairBackId = HairBackId, HatId = HatId, JacketId = JacketId,
+            OnepieceId = OnepieceId, LegsId = LegsId, BackAId = BackAId, FaceCheeksId = FaceCheeksId,
             SkinIndex = SkinIndex, EyesIndex = EyesIndex,
             ItemColors = ItemColors.ConvertAll(c => new CategoryColor { Category = c.Category, Index = c.Index }),
         };
@@ -75,7 +111,9 @@ namespace AvatarWorld.Core.Avatar
         public bool SameAs(AvatarAppearance other) => other != null && Kind == other.Kind &&
             HairId == other.HairId && ShirtId == other.ShirtId && BottomId == other.BottomId &&
             ShoesId == other.ShoesId && AccessoryId == other.AccessoryId && MouthId == other.MouthId &&
-            EyebrowsId == other.EyebrowsId && HairBackId == other.HairBackId && HatId == other.HatId && JacketId == other.JacketId && SkinIndex == other.SkinIndex && EyesIndex == other.EyesIndex && SameItemColors(other);
+            EyebrowsId == other.EyebrowsId && HairBackId == other.HairBackId && HatId == other.HatId && JacketId == other.JacketId &&
+            OnepieceId == other.OnepieceId && LegsId == other.LegsId && BackAId == other.BackAId && FaceCheeksId == other.FaceCheeksId &&
+            SkinIndex == other.SkinIndex && EyesIndex == other.EyesIndex && SameItemColors(other);
 
         bool SameItemColors(AvatarAppearance other)
         {
@@ -116,6 +154,10 @@ namespace AvatarWorld.Core.Avatar
                 case AvatarCatalog.CategoryHairBack: return HairBackId;
                 case AvatarCatalog.CategoryHat: return HatId;
                 case AvatarCatalog.CategoryJacket: return JacketId;
+                case AvatarCatalog.CategoryOnepiece: return OnepieceId;
+                case AvatarCatalog.CategoryLegs: return LegsId;
+                case AvatarCatalog.CategoryBackA: return BackAId;
+                case AvatarCatalog.CategoryFaceCheeks: return FaceCheeksId;
                 default: throw new ArgumentOutOfRangeException(nameof(category), category, "categoria desconhecida");
             }
         }
@@ -141,6 +183,10 @@ namespace AvatarWorld.Core.Avatar
                 case AvatarCatalog.CategoryHairBack: HairBackId = itemId; break;
                 case AvatarCatalog.CategoryHat: HatId = itemId; break;
                 case AvatarCatalog.CategoryJacket: JacketId = itemId; break;
+                case AvatarCatalog.CategoryOnepiece: OnepieceId = itemId; break;
+                case AvatarCatalog.CategoryLegs: LegsId = itemId; break;
+                case AvatarCatalog.CategoryBackA: BackAId = itemId; break;
+                case AvatarCatalog.CategoryFaceCheeks: FaceCheeksId = itemId; break;
                 default: return false;
             }
             return true;
@@ -158,6 +204,10 @@ namespace AvatarWorld.Core.Avatar
             AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryHairBack, HairBackId) &&
             AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryHat, HatId) &&
             AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryJacket, JacketId) &&
+            AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryOnepiece, OnepieceId) &&
+            AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryLegs, LegsId) &&
+            AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryBackA, BackAId) &&
+            AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryFaceCheeks, FaceCheeksId) &&
             ItemColors.TrueForAll(c => c != null && AvatarCatalog.OptionsByCategory.ContainsKey(c.Category) && c.Index >= 0 && c.Index < AvatarPaletteData.GeneralCount) &&
             SkinIndex >= 0 && SkinIndex < AvatarPaletteData.SkinCount && EyesIndex >= 0 && EyesIndex < AvatarPaletteData.EyesCount;
 
@@ -175,6 +225,10 @@ namespace AvatarWorld.Core.Avatar
             if (!AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryHairBack, HairBackId)) HairBackId = AvatarCatalog.DefaultOption(Kind, AvatarCatalog.CategoryHairBack);
             if (!AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryHat, HatId)) HatId = AvatarCatalog.DefaultOption(Kind, AvatarCatalog.CategoryHat);
             if (!AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryJacket, JacketId)) JacketId = AvatarCatalog.DefaultOption(Kind, AvatarCatalog.CategoryJacket);
+            if (!AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryOnepiece, OnepieceId)) OnepieceId = AvatarCatalog.DefaultOption(Kind, AvatarCatalog.CategoryOnepiece);
+            if (!AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryLegs, LegsId)) LegsId = AvatarCatalog.DefaultOption(Kind, AvatarCatalog.CategoryLegs);
+            if (!AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryBackA, BackAId)) BackAId = AvatarCatalog.DefaultOption(Kind, AvatarCatalog.CategoryBackA);
+            if (!AvatarCatalog.IsValidOption(Kind, AvatarCatalog.CategoryFaceCheeks, FaceCheeksId)) FaceCheeksId = AvatarCatalog.DefaultOption(Kind, AvatarCatalog.CategoryFaceCheeks);
             if (ItemColors == null) ItemColors = new List<CategoryColor>();
             ItemColors.RemoveAll(c => c == null || !AvatarCatalog.OptionsByCategory.ContainsKey(c.Category) || c.Index < 0 || c.Index >= AvatarPaletteData.GeneralCount);
             if (SkinIndex < 0 || SkinIndex >= AvatarPaletteData.SkinCount) SkinIndex = AvatarPaletteData.DefaultSkin;

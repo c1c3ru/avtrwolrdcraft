@@ -1,0 +1,70 @@
+{
+  "schema": "avtr-recon-method-contract/v1",
+  "task": "T025/HANDLER/000032a8",
+  "status": "partial",
+  "semantic_completion": false,
+  "method": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "Game.Level.LevelSpawnOnLevelPostInit",
+    "name": "DestroyCurrentItems",
+    "token": "0x060032a9",
+    "method_definition_index": 12968,
+    "parameter_count": 0,
+    "return_type": "void (Cpp2IL signature; raw signature not separately decoded in this pass)",
+    "vaddr": "0x1e64abc",
+    "file_offset": "0x1e60abc",
+    "extent": {"bytes":208,"end_exclusive":"0x1e64b8c","basis":"out/recon/method-extents.jsonl, proven=true; independently decoded 52 AArch64 instructions with Capstone"}
+  },
+  "field_context_from_generated_cpp2il": [
+    {"name":"_points","type":"Transform[]","offset":"0x30"},
+    {"name":"_isNewEveryLoad","type":"bool","offset":"0x38"}
+  ],
+  "normal_flow": [
+    "A class-initialization guard runs before the instance logic; its runtime helper/type relationship is not resolved here.",
+    "Reads _isNewEveryLoad. False branches directly to the method epilogue; true continues.",
+    "Loads _points. A null array branches to runtime helper 0x1b88980. An empty array returns normally.",
+    "Iterates the _points array by index. A null element branches to 0x1b88980.",
+    "Reads Transform.childCount for each point. Values below one skip that point's child operation.",
+    "For a nonempty point, calls Transform.GetChild with child index 0. A null returned transform branches to 0x1b88980.",
+    "Calls unresolved target 0x24f0700 with the child transform and a value loaded through static data at 0x41aceb8. The result is passed to LevelUtils.DestroyLevelItem with bool argument true. The target may be a typed component lookup, but its exact identity/type argument is unproven.",
+    "Advances to the next point. The recovered body selects only child index 0 per point, not a loop over every child."
+  ],
+  "directly_resolved_callees": [
+    {"at":"0x1e64b30","target":"0x3cd5d98","identity":"UnityEngine.Transform.get_childCount","token":"0x060008a4"},
+    {"at":"0x1e64b48","target":"0x3cd61fc","identity":"UnityEngine.Transform.GetChild","token":"0x060008b1"},
+    {"at":"0x1e64b60","target":"0x232b9ac","identity":"PWC.Level.LevelUtils.DestroyLevelItem","token":"0x060085ae","arguments":"result of 0x24f0700, true"}
+  ],
+  "callee_boundary": {
+    "method":"PWC.Level.LevelUtils.DestroyLevelItem",
+    "vaddr":"0x232b9ac",
+    "extent_bytes":1512,
+    "status":"body disassembly saved, semantic recovery incomplete",
+    "selected_static_calls":[
+      {"identity":"PWC.PWCUtils.IsDestroyed","token":"0x06005840"},
+      {"identity":"PWC.Level.LevelDefaultData.TryGetSceneOwnerForItem","token":"0x06007dc6"},
+      {"identity":"PWC.Level.LevelDefaultDataItemsToRestore.AddItem","token":"0x06007dcd"},
+      {"identity":"PWC.Inventory.ItemsTracker.InventoryItemsTracker.IsTrackingSceneGuid","token":"0x06006493"},
+      {"identity":"PWC.Inventory.ItemsTracker.InventoryItemsTracker.AddItemToRestore","token":"0x06006495"},
+      {"identity":"PWC.Level.ContextualAnimation.CATargetExtensionMethods.RemoveCAHandlersAndUpdateGame","token":"0x06008df7"},
+      {"identity":"UnityEngine.GameObject.SetActive","token":"0x06000738","observed_argument":"false"},
+      {"identity":"UnityEngine.Object.Destroy","token":"0x060007b5"}
+    ],
+    "note":"These are static call identities and argument-flow observations from the saved callee disassembly. Full callee CFG, callback identity/lifetime, exact persistence semantics and exception behavior remain open."
+  },
+  "evidence": [
+    {"path":"out/recon/il2cpp/libil2cpp.so","sha256":"b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728","claim":"pinned native bytes"},
+    {"path":"out/recon/il2cpp/global-metadata.dat","sha256":"1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6","claim":"pinned metadata pair"},
+    {"path":"out/recon/il2cpp/metadata_methods.jsonl","sha256":"7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb","claim":"method tokens, indexes and addresses"},
+    {"path":"out/recon/method-extents.jsonl","sha256":"6d336b3c67b4e3fda688018eb88854b99fd88cc7d08cd6cdca2cefa8af64c717","claim":"bounded main/callee extents"},
+    {"path":"out/recon/il2cpp/assembly_csharp_methods.jsonl","sha256":"30dbb43d44e8e984d1382c3afd6511c8ff09ecca99b1f78ec88896ad59da13d8","claim":"method-name/address index consumed by the disassembler"},
+    {"path":"out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelSpawnOnLevelPostInit.cs","sha256":"6c76d1352d0ff7199cfacdeb91599edbf51f1751c83a6d7627842c8a32344de1","claim":"generated field names, offsets and method signature"},
+    {"path":"out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelUtils.cs","sha256":"4c3f90ac41c9e24c0a0021b87ee9b1ce1396bc6b2c2258e1cdce0d3014958f55","claim":"generated LevelUtils signature"},
+    {"path":"tools/recon_disasm.py","sha256":"4751c05cbfc6f5d2f900c3dd0136beea70807218a6eaf80bb1124232af9aede7","claim":"Capstone disassembly producer"}
+  ],
+  "limitations": [
+    "REA analyze_function could not run because Hopper exited during launch with code 247; Capstone decoding of pinned bytes succeeded locally.",
+    "Cpp2IL field names/offsets are generated metadata and have not been independently corroborated from raw field-offset records in this task.",
+    "Target 0x24f0700 and runtime error helpers 0x1b88980/0x1b88988 remain unresolved.",
+    "No runtime observation, independent raw-source review or full recovery of the 1512-byte DestroyLevelItem callee was performed."
+  ]
+}

@@ -1,0 +1,378 @@
+232b9ac  sub    sp, sp, #0x80
+232b9b0  stp    x29, x30, [sp, #0x20]
+232b9b4  stp    x28, x27, [sp, #0x30]
+232b9b8  stp    x26, x25, [sp, #0x40]
+232b9bc  stp    x24, x23, [sp, #0x50]
+232b9c0  stp    x22, x21, [sp, #0x60]
+232b9c4  stp    x20, x19, [sp, #0x70]
+232b9c8  adrp   x21, #0x44fe000
+232b9cc  adrp   x24, #0x41ac000
+232b9d0  ldrb   w8, [x21, #0x1cc]
+232b9d4  ldr    x24, [x24, #0xbb8]  ; type UnityEngine.Object
+232b9d8  mov    w20, w1
+232b9dc  mov    x19, x0
+232b9e0  tbnz   w8, #0, #0x232baa0
+232b9e4  adrp   x0, #0x41d6000
+232b9e8  ldr    x0, [x0, #0x210]
+232b9ec  bl     #0x1b886e8
+232b9f0  adrp   x0, #0x41ba000
+232b9f4  ldr    x0, [x0, #0x5d0]
+232b9f8  bl     #0x1b886e8
+232b9fc  adrp   x0, #0x41b8000
+232ba00  ldr    x0, [x0, #0xad8]
+232ba04  bl     #0x1b886e8
+232ba08  adrp   x0, #0x41b6000
+232ba0c  ldr    x0, [x0, #0xbc0]
+232ba10  bl     #0x1b886e8
+232ba14  adrp   x0, #0x41ac000
+232ba18  ldr    x0, [x0, #0xae8]
+232ba1c  bl     #0x1b886e8
+232ba20  adrp   x0, #0x41ad000
+232ba24  ldr    x0, [x0, #0x7b8]  ; type PWC.Inventory.InventoryManager
+232ba28  bl     #0x1b886e8
+232ba2c  adrp   x0, #0x41d1000
+232ba30  ldr    x0, [x0, #0x20]  ; type PWC.Level.LevelDefaultDataItemsToRestore
+232ba34  bl     #0x1b886e8
+232ba38  adrp   x0, #0x41c8000
+232ba3c  ldr    x0, [x0, #0x968]  ; type PWC.Level.LevelDefaultData
+232ba40  bl     #0x1b886e8
+232ba44  adrp   x0, #0x41da000
+232ba48  ldr    x0, [x0, #0xb8]  ; type PWC.Level.LevelUtils
+232ba4c  bl     #0x1b886e8
+232ba50  adrp   x0, #0x41ac000
+232ba54  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+232ba58  bl     #0x1b886e8
+232ba5c  adrp   x0, #0x41ac000
+232ba60  ldr    x0, [x0, #0xbf0]  ; type PWC.PWCUtils
+232ba64  bl     #0x1b886e8
+232ba68  adrp   x0, #0x41da000
+232ba6c  ldr    x0, [x0, #0x108]  ; "levelItem is null!"
+232ba70  bl     #0x1b886e8
+232ba74  adrp   x0, #0x41da000
+232ba78  ldr    x0, [x0, #0x110]  ; "No PDSceneObject found on levelItem["
+232ba7c  bl     #0x1b886e8
+232ba80  adrp   x0, #0x41c2000
+232ba84  ldr    x0, [x0, #0x3f8]  ; "Destroyed"
+232ba88  bl     #0x1b886e8
+232ba8c  adrp   x0, #0x41ae000
+232ba90  ldr    x0, [x0, #0xf0]  ; "]"
+232ba94  bl     #0x1b886e8
+232ba98  mov    w8, #1
+232ba9c  strb   w8, [x21, #0x1cc]
+232baa0  ldr    x0, [x24]
+232baa4  stp    xzr, xzr, [sp, #0x10]
+232baa8  str    xzr, [sp, #8]
+232baac  ldr    w8, [x0, #0xe0]
+232bab0  cbnz   w8, #0x232bab8
+232bab4  bl     #0x1b8885c
+232bab8  mov    x0, x19
+232babc  mov    x1, xzr
+232bac0  mov    x2, xzr
+232bac4  bl     #0x3ccb8d8
+232bac8  tbz    w0, #0, #0x232bafc
+232bacc  adrp   x8, #0x41ac000
+232bad0  ldr    x8, [x8, #0xae8]
+232bad4  ldr    x0, [x8]
+232bad8  ldr    w8, [x0, #0xe0]
+232badc  cbnz   w8, #0x232bae4
+232bae0  bl     #0x1b8885c
+232bae4  adrp   x8, #0x41da000
+232bae8  ldr    x8, [x8, #0x108]  ; "levelItem is null!"
+232baec  mov    x1, xzr
+232baf0  ldr    x0, [x8]
+232baf4  bl     #0x3ca5b88
+232baf8  b      #0x232bf6c
+232bafc  cbz    x19, #0x232bf8c
+232bb00  adrp   x8, #0x41ba000
+232bb04  ldr    x8, [x8, #0x5d0]
+232bb08  mov    w1, #1
+232bb0c  mov    x0, x19
+232bb10  ldr    x2, [x8]
+232bb14  bl     #0x24f1424
+232bb18  cbz    x0, #0x232bf8c
+232bb1c  ldr    x8, [x0, #0x18]
+232bb20  mov    x21, x0
+232bb24  cmp    w8, #1
+232bb28  b.lt   #0x232beac
+232bb2c  adrp   x29, #0x41ac000
+232bb30  adrp   x22, #0x41da000
+232bb34  adrp   x25, #0x41c2000
+232bb38  ldr    x29, [x29, #0xbf0]  ; type PWC.PWCUtils
+232bb3c  ldr    x22, [x22, #0xb8]  ; type PWC.Level.LevelUtils
+232bb40  ldr    x25, [x25, #0x3f8]  ; "Destroyed"
+232bb44  mov    x26, xzr
+232bb48  mov    x27, xzr
+232bb4c  and    x8, x8, #0xffffffff
+232bb50  add    x28, x21, #0x20
+232bb54  str    x19, [sp]
+232bb58  cmp    x27, w8, uxtw
+232bb5c  b.hs   #0x232bf90
+232bb60  ldr    x0, [x29]
+232bb64  ldr    x23, [x28, x27, lsl #3]
+232bb68  ldr    w8, [x0, #0xe0]
+232bb6c  cbnz   w8, #0x232bb74
+232bb70  bl     #0x1b8885c
+232bb74  mov    x0, x23
+232bb78  mov    x1, xzr
+232bb7c  bl     #0x2083020  ; -> PWCUtils.IsDestroyed
+232bb80  tbnz   w0, #0, #0x232bd5c
+232bb84  ldr    x8, [x22]
+232bb88  ldr    x8, [x8, #0xb8]
+232bb8c  ldr    x8, [x8, #8]
+232bb90  cmp    x8, #0
+232bb94  csel   x26, x26, x8, eq
+232bb98  cbz    x8, #0x232bbb4
+232bb9c  cbz    x26, #0x232bf8c
+232bba0  ldr    x8, [x26, #0x18]
+232bba4  ldr    x0, [x26, #0x40]
+232bba8  ldr    x2, [x26, #0x28]
+232bbac  mov    x1, x23
+232bbb0  blr    x8
+232bbb4  cbz    x23, #0x232bf8c
+232bbb8  ldr    x8, [x23]
+232bbbc  mov    x0, x23
+232bbc0  ldr    x9, [x8, #0x738]
+232bbc4  ldr    x1, [x8, #0x740]
+232bbc8  blr    x9
+232bbcc  mov    x0, x23
+232bbd0  mov    x1, xzr
+232bbd4  bl     #0x3cc84e4
+232bbd8  cbz    x0, #0x232bf8c
+232bbdc  ldr    x1, [x25]
+232bbe0  mov    x2, xzr
+232bbe4  bl     #0x3cc8a10
+232bbe8  ldr    x0, [x24]
+232bbec  ldr    w8, [x0, #0xe0]
+232bbf0  cbnz   w8, #0x232bbf8
+232bbf4  bl     #0x1b8885c
+232bbf8  mov    x0, x23
+232bbfc  mov    x1, x19
+232bc00  mov    x2, xzr
+232bc04  bl     #0x3ccb8d8
+232bc08  tbz    w0, #0, #0x232bc24
+232bc0c  ldr    x8, [x23]
+232bc10  mov    w1, #1
+232bc14  mov    x0, x23
+232bc18  ldr    x9, [x8, #0x508]
+232bc1c  ldr    x2, [x8, #0x510]
+232bc20  blr    x9
+232bc24  tbz    w20, #0, #0x232bd5c
+232bc28  adrp   x8, #0x41b6000
+232bc2c  ldr    x8, [x8, #0xbc0]
+232bc30  add    x1, sp, #0x10
+232bc34  mov    x0, x23
+232bc38  ldr    x2, [x8]
+232bc3c  bl     #0x24f17fc
+232bc40  tbz    w0, #0, #0x232bcfc
+232bc44  ldr    x8, [sp, #0x10]
+232bc48  cbz    x8, #0x232bf8c
+232bc4c  ldr    x0, [x8, #0x20]
+232bc50  mov    x1, xzr
+232bc54  bl     #0x31dffdc
+232bc58  tbnz   w0, #0, #0x232bd5c
+232bc5c  ldr    x8, [sp, #0x10]
+232bc60  cbz    x8, #0x232bf8c
+232bc64  adrp   x9, #0x41c8000
+232bc68  ldr    x9, [x9, #0x968]  ; type PWC.Level.LevelDefaultData
+232bc6c  mov    x19, x29
+232bc70  mov    w29, w20
+232bc74  mov    x20, x25
+232bc78  ldr    x0, [x9]
+232bc7c  mov    x25, x22
+232bc80  mov    x22, x24
+232bc84  ldr    x24, [x8, #0x20]
+232bc88  ldr    w9, [x0, #0xe0]
+232bc8c  cbnz   w9, #0x232bc94
+232bc90  bl     #0x1b8885c
+232bc94  add    x1, sp, #8
+232bc98  mov    x0, x24
+232bc9c  mov    x2, xzr
+232bca0  bl     #0x22c96b4  ; -> LevelDefaultData.TryGetSceneOwnerForItem
+232bca4  tbz    w0, #0, #0x232bd70
+232bca8  ldr    x8, [sp, #0x10]
+232bcac  cbz    x8, #0x232bf8c
+232bcb0  adrp   x9, #0x41d1000
+232bcb4  ldr    x9, [x9, #0x20]  ; type PWC.Level.LevelDefaultDataItemsToRestore
+232bcb8  ldr    x23, [sp, #8]
+232bcbc  ldr    x24, [x8, #0x20]
+232bcc0  ldr    x0, [x9]
+232bcc4  ldr    w9, [x0, #0xe0]
+232bcc8  cbnz   w9, #0x232bcd0
+232bccc  bl     #0x1b8885c
+232bcd0  mov    x0, x23
+232bcd4  mov    x1, x24
+232bcd8  mov    x2, xzr
+232bcdc  bl     #0x22c9f64  ; -> LevelDefaultDataItemsToRestore.AddItem
+232bce0  mov    x24, x22
+232bce4  mov    x22, x25
+232bce8  mov    x25, x20
+232bcec  mov    w20, w29
+232bcf0  mov    x29, x19
+232bcf4  ldr    x19, [sp]
+232bcf8  b      #0x232bd5c
+232bcfc  mov    x0, x23
+232bd00  mov    x1, xzr
+232bd04  bl     #0x3cce6d0
+232bd08  adrp   x8, #0x41da000
+232bd0c  ldr    x8, [x8, #0x110]  ; "No PDSceneObject found on levelItem["
+232bd10  adrp   x9, #0x41ae000
+232bd14  mov    x1, x0
+232bd18  mov    x3, xzr
+232bd1c  ldr    x8, [x8]
+232bd20  ldr    x9, [x9, #0xf0]  ; "]"
+232bd24  mov    x0, x8
+232bd28  ldr    x2, [x9]
+232bd2c  bl     #0x31dfa68
+232bd30  adrp   x8, #0x41ac000
+232bd34  ldr    x8, [x8, #0xae8]
+232bd38  mov    x23, x0
+232bd3c  ldr    x8, [x8]
+232bd40  ldr    w9, [x8, #0xe0]
+232bd44  cbnz   w9, #0x232bd50
+232bd48  mov    x0, x8
+232bd4c  bl     #0x1b8885c
+232bd50  mov    x0, x23
+232bd54  mov    x1, xzr
+232bd58  bl     #0x3ca5b88
+232bd5c  ldr    w8, [x21, #0x18]
+232bd60  add    x27, x27, #1
+232bd64  cmp    x27, w8, sxtw
+232bd68  b.lt   #0x232bb58
+232bd6c  b      #0x232beac
+232bd70  adrp   x8, #0x41ad000
+232bd74  ldr    x8, [x8, #0x7b8]  ; type PWC.Inventory.InventoryManager
+232bd78  mov    x24, x22
+232bd7c  ldr    x0, [x8]
+232bd80  ldr    w8, [x0, #0xe0]
+232bd84  cbnz   w8, #0x232bd8c
+232bd88  bl     #0x1b8885c
+232bd8c  adrp   x8, #0x44f9000
+232bd90  mov    x22, x25
+232bd94  adrp   x25, #0x41ad000
+232bd98  ldrb   w8, [x8, #0xbbd]
+232bd9c  ldr    x25, [x25, #0x7b8]  ; type PWC.Inventory.InventoryManager
+232bda0  cbnz   w8, #0x232bdb8
+232bda4  mov    x0, x25
+232bda8  bl     #0x1b886e8
+232bdac  mov    w8, #1
+232bdb0  adrp   x9, #0x44f9000
+232bdb4  strb   w8, [x9, #0xbbd]
+232bdb8  ldr    x0, [x25]
+232bdbc  mov    x9, x25
+232bdc0  mov    x25, x20
+232bdc4  ldr    w8, [x0, #0xe0]
+232bdc8  cbnz   w8, #0x232bdd8
+232bdcc  mov    x20, x9
+232bdd0  bl     #0x1b8885c
+232bdd4  ldr    x0, [x20]
+232bdd8  ldr    x8, [x0, #0xb8]
+232bddc  mov    w20, w29
+232bde0  ldr    x9, [x8, #8]
+232bde4  cbz    x9, #0x232bf8c
+232bde8  mov    x29, x19
+232bdec  ldr    x8, [sp, #0x10]
+232bdf0  ldr    x19, [sp]
+232bdf4  cbz    x8, #0x232bf8c
+232bdf8  ldr    x0, [x9, #0x38]
+232bdfc  cbz    x0, #0x232bf8c
+232be00  ldr    x1, [x8, #0x20]
+232be04  mov    x2, xzr
+232be08  bl     #0x213f900  ; -> InventoryItemsTracker.IsTrackingSceneGuid
+232be0c  tbz    w0, #0, #0x232be94
+232be10  adrp   x8, #0x41ad000
+232be14  ldr    x8, [x8, #0x7b8]  ; type PWC.Inventory.InventoryManager
+232be18  ldr    x0, [x8]
+232be1c  ldr    w8, [x0, #0xe0]
+232be20  cbnz   w8, #0x232be28
+232be24  bl     #0x1b8885c
+232be28  adrp   x8, #0x44f9000
+232be2c  ldrb   w8, [x8, #0xbbd]
+232be30  cbnz   w8, #0x232be4c
+232be34  adrp   x0, #0x41ad000
+232be38  ldr    x0, [x0, #0x7b8]  ; type PWC.Inventory.InventoryManager
+232be3c  bl     #0x1b886e8
+232be40  mov    w8, #1
+232be44  adrp   x9, #0x44f9000
+232be48  strb   w8, [x9, #0xbbd]
+232be4c  adrp   x23, #0x41ad000
+232be50  ldr    x23, [x23, #0x7b8]  ; type PWC.Inventory.InventoryManager
+232be54  ldr    x0, [x23]
+232be58  ldr    w8, [x0, #0xe0]
+232be5c  cbnz   w8, #0x232be68
+232be60  bl     #0x1b8885c
+232be64  ldr    x0, [x23]
+232be68  ldr    x8, [x0, #0xb8]
+232be6c  ldr    x9, [x8, #8]
+232be70  cbz    x9, #0x232bf8c
+232be74  ldr    x8, [sp, #0x10]
+232be78  cbz    x8, #0x232bf8c
+232be7c  ldr    x0, [x9, #0x38]
+232be80  cbz    x0, #0x232bf8c
+232be84  ldr    x1, [x8, #0x20]
+232be88  mov    x2, xzr
+232be8c  bl     #0x213fb38  ; -> InventoryItemsTracker.AddItemToRestore
+232be90  b      #0x232bd5c
+232be94  ldr    x8, [x23]
+232be98  mov    x0, x23
+232be9c  ldr    x9, [x8, #0x748]
+232bea0  ldr    x1, [x8, #0x750]
+232bea4  blr    x9
+232bea8  b      #0x232bd5c
+232beac  adrp   x8, #0x41b8000
+232beb0  ldr    x8, [x8, #0xad8]
+232beb4  add    x1, sp, #0x18
+232beb8  mov    x0, x19
+232bebc  ldr    x2, [x8]
+232bec0  bl     #0x24f17fc
+232bec4  tbz    w0, #0, #0x232bf08
+232bec8  adrp   x8, #0x41d6000
+232becc  ldr    x8, [x8, #0x210]
+232bed0  mov    x0, x19
+232bed4  ldr    x1, [x8]
+232bed8  bl     #0x24f0dbc
+232bedc  cbz    x0, #0x232bf08
+232bee0  mov    x20, x0
+232bee4  ldr    x0, [sp, #0x18]
+232bee8  cbz    x0, #0x232bf8c
+232beec  mov    x1, xzr
+232bef0  bl     #0x3cc84e4
+232bef4  mov    x1, x0
+232bef8  mov    x0, x20
+232befc  mov    w2, wzr
+232bf00  mov    x3, xzr
+232bf04  bl     #0x23adf98  ; -> CATargetExtensionMethods.RemoveCAHandlersAndUpdateGame
+232bf08  mov    x0, x19
+232bf0c  mov    x1, xzr
+232bf10  bl     #0x3cc84e4
+232bf14  cbz    x0, #0x232bf8c
+232bf18  mov    w1, wzr
+232bf1c  mov    x2, xzr
+232bf20  bl     #0x3ccad98
+232bf24  ldr    x8, [x19]
+232bf28  mov    w1, #1
+232bf2c  mov    x0, x19
+232bf30  ldr    x9, [x8, #0x508]
+232bf34  ldr    x2, [x8, #0x510]
+232bf38  blr    x9
+232bf3c  mov    x0, x19
+232bf40  mov    x1, xzr
+232bf44  bl     #0x3cc84e4
+232bf48  ldr    x8, [x24]
+232bf4c  mov    x19, x0
+232bf50  ldr    w9, [x8, #0xe0]
+232bf54  cbnz   w9, #0x232bf60
+232bf58  mov    x0, x8
+232bf5c  bl     #0x1b8885c
+232bf60  mov    x0, x19
+232bf64  mov    x1, xzr
+232bf68  bl     #0x3ccf03c
+232bf6c  ldp    x20, x19, [sp, #0x70]
+232bf70  ldp    x22, x21, [sp, #0x60]
+232bf74  ldp    x24, x23, [sp, #0x50]
+232bf78  ldp    x26, x25, [sp, #0x40]
+232bf7c  ldp    x28, x27, [sp, #0x30]
+232bf80  ldp    x29, x30, [sp, #0x20]
+232bf84  add    sp, sp, #0x80
+232bf88  ret
+232bf8c  bl     #0x1b88980
+232bf90  bl     #0x1b88988

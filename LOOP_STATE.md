@@ -1,25 +1,43 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
-## Loja: reextração das ~124 classes de MonoBehaviour restantes — bloqueada por RAM, não por contenção — 2026-11-21
-Continuação de `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md` (PR #42, já mergeada: fix do bug de type-tree
-`List<String>` rotulado como `string`, 7 temas de Casas decodificados). Faltava reextrair as outras ~124
-classes de MonoBehaviour que tinham o mesmo bug (`out/mb/_stats.json`), achando que era só falta de RAM
-momentânea por sessões concorrentes.
-- 4 tentativas seguidas (2 em 07/11, 2 em 21/11, já com swap livre e sem outras sessões Unity rodando)
-  falharam idênticas, sempre no mesmo ponto (carregando `x/base/assets/bin/Data/datapack.unity3d`, 1,3 GB).
-- **Causa real confirmada por `journalctl -k`**: `Out of memory: Killed process ... anon-rss:5778888kB` — o
-  processo passa de **5,8 GB de RAM residente** só pra carregar o datapack (Unity comprime os blocos com
-  LZMA/LZ4HC; descomprimido fica bem maior que o 1,3 GB no disco), e ainda estava crescendo. Não é contenção
-  de outra sessão: é que esta máquina (7,1 GB RAM) não comporta essa carga de trabalho sozinha.
-- Decisão do usuário (2026-11-21): rodar no PC do trabalho (mais RAM) em vez de insistir aqui.
-- Script pronto e documentado, dentro do repo agora (antes só existia fora, em `/tmp` de um job que seria
-  limpo): `tools/mb_retry_failed_classes.py` — docstring tem o passo a passo completo pra extrair
-  `il2cpp_in/`+`x/` do APK (ambos gitignored) e instalar `TypeTreeGeneratorAPI` (faltava no ambiente, não vem
-  com UnityPy). Só reprocessa as classes que ainda estão em `out/mb/_stats.json["erros"]`, mescla o resultado
-  de volta no mesmo arquivo sem apagar o que já está ok.
-- **Próximo passo:** rodar `python3 tools/mb_retry_failed_classes.py` numa máquina com mais RAM livre (o
-  PC do trabalho). Se passar, dá pra reaproveitar `docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md` como
-  base pra refinar a categorização dos 224 pacotes com dados reais em vez de heurística.
+## Hipótese revisada: sufixo `_st` em skins = sticker, não sombra/template — 2026-11-14
+- Hipótese anterior ("camada auxiliar de sombra/template, não visível") era só inferência pelo
+  nome; nunca tinha sido checada contra o atlas original nem contra o código. Escopo real é
+  pequeno: só 2 skins em todo o catálogo capturado têm sufixo `_st` (`hat_3_st` em
+  `hat_a_207_color`, `j_arm_r_2_st` em `jacket_91_color`; 4 `path_id` no total).
+- Checado diretamente no `resources.assets` ORIGINAL (extraído de `apk/base.apk`, via
+  UnityPy): as 4 entradas `_st` existem como Texture2D+Sprite reais, mesmo tamanho de canvas
+  da versão sem `_st` — a extração do clone não pulou nenhuma página do atlas.
+- Pixels decodificados mostram que `_st` NÃO é sombra/silhueta do item base: `Hat_3_ST` é um
+  rosto de urso de pelúcia pequeno (3,9% opaco), `J_Arm_R_2_ST` é um emblema circular pequeno —
+  ambos sem relação de forma com `Hat_3`/`J_Arm_R_2`. Uma sombra real replicaria a silhueta;
+  aqui não replica.
+- Strings do binário/metadata IL2CPP originais (`il2cpp_in/`) confirmam um sistema de
+  "sticker" ativo e não trivial: `LevelCAStickerItemHandler`, `CarStickerDecal`/
+  `CarStickerMapping`/`CarStickerSlotExclusion`, `TryGetStickerForTarget`, mensagens de
+  validação de runtime ("sticker area has no size", "a part can only wear one [sticker]"),
+  e dezenas de assets de sticker nomeados alhures no catálogo. `_st` muito provavelmente
+  abrevia "sticker": um decalque pequeno associado à skin, não uma camada invisível.
+- **Pendência não fechada (3 rodadas, 2 providers, mesma causa de fundo):** decompilação do
+  call-path real (`LevelSkinCATargetHandler.TryAddCAHandlerFromSkinName`/`OnPutClothing`,
+  `LevelCAStickerItemHandler.OnAddedToTarget`/`GetFolderName`,
+  `LevelClothingItemHandler.GetSkinName`) via REA em `il2cpp_in/libil2cpp.so`: (1) Hopper
+  morto por OOM com um teste Unity EditMode concorrente saturando a máquina; (2) Hopper, já
+  com memória livre, travado 2x em `provider_timeout`/`QDialog::WaitDialog` (sem banco de
+  análise `.hop` pré-existente); (3) depois de instalar Ghidra 12.1.4 e configurar
+  `GHIDRA_INSTALL_DIR` (exigiu reiniciar o job para o MCP server `rea` pegar a env var nova),
+  `open_binary` com Ghidra funcionou, mas `procedure_pseudo_code` matou o processo Java por
+  **OOM de novo** (`journalctl -k` confirma `Killed process 97231 (java)
+  anon-rss:1759520kB`) assim que o Ghidra headless entrou na análise completa do binário.
+  Conclusão: é limitação estrutural da máquina (7,1 GiB RAM + 4 GiB swap insuficientes para
+  analisar um IL2CPP de ~75MB com qualquer um dos dois providers enquanto as sessões/apps
+  normais estão abertas), não do binário nem da abordagem. Retomar exige mais memória
+  disponível no momento (fechar outras sessões/apps, aumentar swap — decisão do usuário) ou
+  rodar numa máquina com mais RAM. Vaddrs exatos seguem anotados em
+  `out/recon/tasks/T034/ST_SUFFIX_FINDINGS.md`. Classificação:
+  `static_candidate_not_runtime_validated` até essa etapa fechar.
+- Evidência completa: `out/recon/tasks/T034/ST_SUFFIX_FINDINGS.md`. Sem alteração do cliente,
+  sem execução/emulação, sem aparelho.
 
 ## Loja "Criador de Avatar" vira atalho de navegacao — 2026-11-07
 - Commit `87148a4f8` (branch `worktree-loja-criador-avatar`, pushado): `StoreScreen.SelectCategory` trata
@@ -325,6 +343,8 @@ momentânea por sessões concorrentes.
 - 2026-11-03: 3 deep links sem cena explicados: 7 LevelTypes não distribuídos na 1.227 (inclui Burger/GasStation/CarWash, vistos em obras no mapa). Estáticos concluídos; resta runtime (celular) e revisão independente.
 - 2026-11-03: contrato estático de `GameSceneManager.LoadScene`/`LoadSceneImplement` (T029) com verificador `tools/recon_load_scene.py`, 5 testes de mutação (91 OK) e `docs/RECON_LOAD_SCENE_CONTRACT.md`. LoadScene não chama IsSceneAvailable; ordem: guard in-progress → limpa caches → estáticos → Stage1-3 → StartSceneTransition. Próximo: quem zera IsSceneChangingInProgress (OnActiveSceneChanged 0x2072644), depois WorldBuilding.ClickOnLevel.
 - 2026-11-03: OnActiveSceneChanged e CancelCurrentSceneChangingProgress decodificados (zeram in-progress, MP loading name e CurrentlyLoadingSceneName); 18 âncoras, 92 testes OK. Falta achar assinante/chamador. Próximo: WorldBuilding.ClickOnLevel.
+- 2026-11-07: assinantes dos eventos Stage1-3 decodificados (`tools/recon_scene_subscribers.py`, `docs/RECON_SCENE_SUBSCRIBERS.md`): 5 ligações registro→handler verificadas (`BackgroundPlanetSoundHandler`/Stage1, `PersistentDataManager` e `LevelManager`/Stage2, `LevelManager`/Stage3, mais `GameSceneManager..cctor`→`activeSceneChanged`). 9 testes OK. Revalidado em T025/METHOD/8e708ca7d06e0b52 no mesmo dia.
+- 2026-11-08: decodificado o próprio despacho `blr` dos 3 Stage1-3 dentro de `LoadScene` (`tools/recon_stage_dispatch.py`, `docs/RECON_STAGE_DELEGATE_INVOKE.md`), fechando o unknown `T025/complete_body_and_cfg` até o limite estático: os três `blr x9` (antes só marcados como alvo indireto opaco) carregam o alvo e os dois primeiros argumentos de offsets fixos (`+0x18`/`+0x40`/`+0x28`) do próprio objeto delegate em runtime, nunca de um branch fixo a handler — e essa sequência exata de 4 instruções recorre 467 vezes em classes não relacionadas no mesmo `.so` (idioma genérico do IL2CPP para invocar delegate direto, não algo específico destes 3 eventos). 8 testes OK. Rótulos `invoke_impl`/`m_target`/`method` para esses offsets são candidatos pela forma pública do ABI Il2CppDelegate, não confirmados contra esta build. Não fecha: quem de fato executa em runtime (propriedade do delegate construído pelos `add_*`, não do call site), nem o fade de `StartSceneTransition`. Nenhum alvo REA ativo, nenhuma execução do jogo, fila (`reports/recon/tasks.json`) não tocada nesta rodada.
 - 2026-11-03: contrato estático do toque em prédio (`WorldBuilding.OnPointerClickInternal`/`ClickOnLevel`/`WorldEnterableEntity.LoadScene`/`SaveBuildingData`) com verificador `tools/recon_world_click.py` (17 chamadas, 20 âncoras, 6 testes de mutação) e `docs/RECON_WORLD_CLICK_CONTRACT.md`. Achado: `GAME_CURRENT_WORLD` é gravado em `WorldEnterableEntity.LoadScene` com a cena ativa; gate de entrada usa `ExtraSettings.useTimeLock`/IsCurrentlyFree/IsGameUnlocked, senão popup de preview. Próximo: gates de UGC/ponteiro, `IsCurrentlyFree`/`IsGameUnlocked`, `TryLoadBuildingData` parse.
 - 2026-11-03: gate de acesso decodificado: `PWCConstants..cctor` seta `IsAllWorldFree=true` → `IsCurrentlyFree()` sempre verdadeiro na 1.227; 115 prédios `_isFree=0`; `useTimeLock=0` (parse manual). Verificador `tools/recon_access_gate.py` (10 chamadas, 17 âncoras, 5 testes). Próximo: parse de TryLoadBuildingData, gates de UGC/ponteiro, slot virtual 0x298.
 - 2026-11-03: toque em prédio completo: OnPointerClick ignora drag/reset; OnPointerClickInternal ignora em UGC edit mode; TryLoadBuildingData = string vazia→false, senão Enum.TryParse. recon_world_click.py agora 20 chamadas/37 âncoras, 8 testes.
@@ -354,13 +374,13 @@ momentânea por sessões concorrentes.
 **Estado verificado no aparelho (2026-11-04):** editor com layout do original (CharacterMenu), 400 itens reais (100 camisas/calças/sapatos/acessórios; `tools/avatar_catalog_build.py`), texturas carregadas sob demanda, miniaturas geradas do próprio avatar (~27 ms cada), atlas 2172/2172 sem avisos, 109 testes EditMode. Bug resolvido: texturas novas sem Read/Write (`ClothingTextureImporter`).
 
 **Critério de conclusão (todos verificados no aparelho):**
-- [~] C1 Cores: pele (62), olhos (33) e itens `_color` por tinta Multiply com a paleta General (115) + coluna de cores no menu — OK no aparelho para sobrancelhas (ciclos 1 e 3). Falta: roupas `_color` e cabelo usarem a mesma coluna (estender o catálogo para esses itens).
+- [~] C1 Cores: pele (62), olhos (33) e itens `_color` por tinta Multiply com a paleta General (115) + coluna de cores no menu — OK no aparelho para sobrancelhas (ciclos 1 e 3) e cabelo (ciclo 4). Camisa/calça/sapato/acessório já tinham itens `_color` de uma expansão por seleção explícita anterior (T033); ciclo 6 e sua continuação resolveram **todos** os demais itens `_color` dessas categorias (correção do `resolve()`, ver histórico). Falta validar no aparelho.
 - [~] C2 Rosto/cabelo: olhos com cor, tom de pele (ciclo 1) e boca (100 opções, ciclo 2) OK no aparelho. Sobrancelhas (74, `_color` com tinta) OK no aparelho (ciclo 3). Cabelo frente (100 de 276 skins) + trás (99 de 188 itens) implementado no ciclo 4, AINDA NÃO verificado no aparelho.
-- [ ] C3 Categorias restantes: chapéu, jaqueta, vestido, meias (modelo de save estendido, migração do save antigo).
-- [ ] C4 Slots: vários avatares persistidos (adicionar/trocar/apagar).
-- [ ] C5 Menu: subcategorias e marcas; miniaturas sem artefatos.
-- [ ] C6 Referência visual: um preset reproduz o look do print do original (imagem13: chapéu de bombeiro, cabelo branco, jaqueta vermelha, saia rosa).
-- [ ] C7 Qualidade: 0 erros no logcat, testes verdes, tempo de abertura medido.
+- [~] C3 Categorias restantes: chapéu, jaqueta (outra sessão) + vestido, meias, acessório de costas, bochechas (ciclo 5) com save/renderização ligados. Falta validar no aparelho.
+- [~] C4 Slots: vários avatares persistidos (adicionar/trocar/apagar). Adicionar/trocar já estavam prontos (`PlayerState.SwitchHumanSlot`, `AvatarSlotsScreen`, de sessão paralela); apagar era um botão central (lixeira, bate com o print `AvatarMakerLobby` 16.07.17/16.07.35) que só mostrava "nada para remover". Falta validar no aparelho.
+- [~] C5 Menu: subcategorias (bug de duplicação corrigido, ver histórico) e miniaturas sem artefatos (não confirmado, sem aparelho). "Marcas" sem lastro encontrado para o editor de avatar (só achei "Brand" em handlers de loja/fotobooth de outras telas); não implementado por falta de evidência.
+- [~] C6 Referência visual: `AvatarAppearance.CreateReferenceImagem13Preset()` reproduz chapéu de bombeiro, jaqueta vermelha e saia rosa com itens reais do catálogo; cabelo branco via tinta (índice 114 da paleta General). Falta validar visualmente no aparelho.
+- [ ] C7 Qualidade: 0 erros no logcat, testes verdes, tempo de abertura medido. Licença do Unity conectou nesta sessão (diferente de tentativas anteriores) e achou um erro real de compilação (ver ciclo 10); processo de testes foi morto por pouca memória do sistema antes de rodar de verdade. Retomar quando pedido, não sozinho.
 **Fora desta etapa (documentado):** tipos criança/bebê/animais, CarMaker, avatar andando no mundo, persistência de cena (T030–T032).
 **Decisão pendente do usuário:** como o jogador obtém cada roupa (grátis no editor ou comprada com moedas).
 
@@ -372,7 +392,29 @@ momentânea por sessões concorrentes.
   - Próximo (ciclo 3): sobrancelhas e cabelo (`_color`) → exige tint por item (config `AvatarSpineSkinsDefaultColors_*` + paleta General) e coluna de cores.
 - (ciclo 3) Sobrancelhas + cor por item: `AvatarAppearance.EyebrowsId` e `ItemColors` (lista Categoria/Índice, padrão = marrom escuro da paleta General), tinta Multiply por item `_color`, coluna de cores (visível só quando o item aceita tinta). Tentativa 1 falhou no aparelho (avatar desbotado): `SetAttachment("Eyebrows_L",...)` lançava `Attachment not found` em itens de um só lado e abortava a tinta; tentativa 2: ligar só os anexos do skin do próprio item → OK (sobrancelhas vermelhas visíveis sem os óculos levantados, que as cobrem). Capture de miniatura agora restaura o item anterior em `finally` (a falha deixava o estado preso e salvo). EditMode 115/115.
 - (ciclo 4) Cabelo: `Hair` vira categoria de itens (100 skins `Hair_Front/N_Color`, manifesto com campo `skin`) + categoria `HairBack` (99 itens `_color` + `hair_back_none`), cor única de cabelo (`AvatarCatalog.ColorKey`), abas Frente/Atrás no menu; `tools/avatar_catalog_build.py` lê `out/avatar-spine-inventory.json` (gerado por `AvatarAssetProbe.Inspect`). EditMode 116/116. **Pendente:** instalar e verificar no aparelho (grade de cabelos, aba Atrás, tinta pela coluna, miniaturas do cabelo traseiro, tempo de abertura). Sessão encerrada a pedido do usuário antes dessa verificação.
-**Próximos ciclos (backlog):** roupas `_color` com a mesma coluna; chapéu/jaqueta/vestido/meias (save); slots múltiplos (C4); subcategorias e marcas do menu (C5); preset do print imagem13 (C6); medir abertura e 0 erros no logcat (C7).
+- (ciclo 5) Categorias restantes do CharacterCategoryType (C3): chapéu e jaqueta já tinham entrado por outra sessão em paralelo (upstream, 98 e 78 itens reais); este ciclo fecha o resto com Onepiece (vestido, 100 itens), Legs (meias, 100 itens) e, como bônus do mesmo enum original, BackA (acessório de costas, 28 itens — toda a pasta `back_c` do SUT) e FaceCheeks (bochechas, 100 itens). `tools/avatar_catalog_build.py` ganhou os 4 novos prefixos SUT; PNGs+.meta em Resources/AvatarSpine/Clothing, IDs em AvatarCatalogData.cs e manifesto por extração scoped local (fora do dump completo de 121k texturas da Fase 4a).
+  - As categorias apareciam no menu (AvatarCatalog/AvatarEditorScreen) mas sem onde persistir ou renderizar: `AvatarAppearance` ganhou os 4 campos (Id, Clone, SameAs, Get/SetRaw, IsFullyValid, SanitizeInPlace) e `AvatarGpuRuntime` ganhou as 4 entradas em `CategoryLabels` (aplica anexo no esqueleto + botão de depuração) e na cópia bruta do snapshot de miniatura — mesmo padrão exato do chapéu/jaqueta. Criança/bebê recebem só o placeholder "sem peça" (`OnepieceNone`/`LegsNone`/`BackANone`/`FaceCheeksNone`) e a aba fica oculta, como chapéu/jaqueta.
+  - Testes novos em `AvatarCatalogDataTests.cs` (contagem/unicidade das 4 categorias, placeholder oculto em criança/bebê); `EveryCatalogIdHasAManifestItemWhoseTexturesExist` já cobre as novas categorias por iterar `OptionsByCategory.Keys` genericamente. Testes não executados nesta sessão (backlog final combinado com o usuário). Sem aparelho: validação visual/tátil, preset do print (C6) e tempo de abertura/logcat (C7) continuam pendentes.
+- (ciclo 6) Roupas `_color` com a mesma coluna: `COLOR_CATEGORIES` em `tools/avatar_catalog_build.py` ganhou Shirt/Bottom/Shoes/Accessory. Extração dedicada (`resources.assets`+`resources.assets.resS`, já presentes localmente, via UnityPy) de todos os itens `_color` dessas 4 categorias no SUT: 1.286 path_ids candidatos, 643 texturas realmente existentes no asset (a outra metade são path_ids "fantasma" do par duplo por template, já documentado). Dessas, só 5 itens tiveram TODAS as peças resolvidas com textura e dimensão corretas: `shirt_special_1177_color`, `bottom_special_1077/1078/1079_color` e `accessories_body_neck_515_color`; nenhum sapato resolveu. Adicionados manualmente ao catálogo/manifesto preservando byte a byte as outras categorias (a reexecução direta do gerador com cota alta inflava Chapéu/Jaqueta/Vestido/Meia/Boca/CabeloAtrás para além do já curado e commitado, e zerava Cabelo de novo pela mesma razão do ciclo 5 — descartado, não promovido).
+  - A baixa taxa de resolução (5 de ~1.286 candidatos) sugere que a maioria dos itens `_color` dessas categorias tem peças faltando na extração atual ou dimensões de atlas incompatíveis; não investigado a fundo. Coluna de cores do editor já é genérica (decide só por `IsColorItem` do item selecionado), então os 5 itens já funcionam sem mudança de UI.
+  - Testes novos em `AvatarColorTests.cs` (os 5 ids são itens de cor, aparecem nas categorias certas, tingem via `TrySelectItemColor`). Não executados nesta sessão (backlog final). Sem aparelho.
+- (ciclo 6, continuação — investigação da baixa taxa de resolução) Causa raiz encontrada: toda peça com sufixo `_st` (788 ocorrências, só dentro de pastas `_color`, nunca fora) não tem página correspondente no `Avatar_Spine.atlas.txt` — **para item nenhum**, com ou sem cor. Não é falta de textura nem incompatibilidade de extração: é um tipo de peça auxiliar do jogo original (provável camada de sombra/template) que nunca foi assada no atlas deste cliente. `resolve()` tratava toda peça do item como obrigatória, então um único `_st` bastava para rejeitar o item inteiro.
+  - Corrigido ignorando peças `_st` em `resolve()` (não bloqueiam, não entram no manifesto). Verificação isolada confirmou: dos 155 itens `_color` candidatos nas 4 categorias, **100% resolvem** sem a peça `_st` (antes: 77/155, dos quais 72 já existiam da expansão T033 e 5 vieram da primeira passada deste ciclo). Reexecução do gerador com a correção + mesma extração já feita adicionou os **78 itens `_color` restantes** (28 camisa, 21 calça, 21 sapato, 8 acessório), preservando as demais categorias byte a byte pelo mesmo motivo do ciclo 5/6 anterior (cota alta expõe itens já extraídos mas não curados em Chapéu/Jaqueta/Vestido/Meia/etc. e zera Cabelo).
+  - Camisa/Calça/Sapato/Acessório agora têm, respectivamente, 1077/1000/1198/842 itens, todos os `_color` candidatos do SUT dessas 4 categorias resolvidos. Teste novo cobre a correção. Sem aparelho; sem investigar se as peças `_st` deveriam ser renderizadas de algum outro jeito (sombra?) — ficou documentado, não implementado.
+- (ciclo 7) C4 (apagar slot): `AvatarMakerLobby` do original tem uma lixeira central (print 16.07.17/16.07.35, `docs/STORE_WORLD_UI_SPEC.md:40`), não uma por slot; `AvatarSlotsScreen.DeleteButton` já existia mas era um stub (só mostrava "Não há nada para remover."). Sem print/decompilação que prove a interação exata de seleção, escolhida uma regra própria autorizada pelo padrão já usado no próprio arquivo (`ShowKindPicker`): tocar na lixeira abre um seletor com os slots ocupados da aba atual (humano ou pet); tocar num remove na hora, cancelar fecha sem apagar.
+  - `PlayerState.DeleteHumanSlot`/`HumanAvatarCount` novos: nunca deixa o jogador sem nenhum avatar (bloqueia apagar o último); apagar o slot ativo troca para outro restante antes (reaproveita `SwitchHumanSlot`). Pet não tem essa restrição (`RemovePet` já existia, só faltava UI). Aba de veículo mantém o aviso antigo (vaga comprada não é reembolsável aqui).
+  - Teste novo cobre apagar slot não ativo, apagar o ativo (troca antes) e o bloqueio do último avatar. Não executado nesta sessão; sem aparelho.
+- (ciclo 8) C5: `AvatarCatalog.CategoryHairBack` já era corretamente excluída de `AllMenuCategories` (ícone próprio da coluna) por ser só-aba de Cabelo (`TabGroups`); `CategoryHat`/`CategoryJacket` (adicionadas por outra sessão) não seguiram o mesmo padrão e ficavam **duplicadas**: ícone próprio na coluna (abrindo a categoria direto) + aba "Chapéu"/"Jaqueta" dentro de Acessório/Camisa (o mesmo item, dois caminhos). Removidas de `AllMenuCategories`, mesma correção que já valia para Cabelo-atrás; a coluna cai de 15 para 13 categorias.
+  - Procurei por um sistema de "marcas" de roupa no código decompilado; só achei `Brand` em handlers de loja/fotobooth (`LevelCAKawaiiShopBrandPhotoBoothDropAreaHandler`, `...ShoeShopBrand...`), sem relação com o editor de avatar. Sem evidência de que o `CharacterMenu` original tenha algo assim; não implementado.
+  - "Miniaturas sem artefatos": revisão estática de `Capture()`/`ThumbnailWorker()` não achou bug óbvio (restaura o item anterior em `finally`, limpa a RenderTexture); sem aparelho para confirmar visualmente. Fica aberto.
+- (ciclo 9) C6: IDs do catálogo não têm metadado de cor/estilo, então a única forma de achar o chapéu/jaqueta/saia certos foi inspeção visual. Gerei folhas de contato (grade de miniaturas com rótulo do ID, `tools/venv` + Pillow, script descartável) para Chapéu (98), Jaqueta (78 primeiros) e Calça/Saia (80 primeiros) e comparei contra `assets/exemplo_jogo_original/imagem13.jpeg`: achei `hat_a_7` (capacete vermelho com emblema dourado) na primeira folha, `jacket_formal_6` (jaqueta vermelha sólida) conferido pela peça de torso, `bottom_formal_9` (saia rosa pregueada) na primeira folha.
+  - Cabelo não tem essa inspeção: toda a categoria é um template cinza neutro tingido pela paleta General (mesmo mecanismo de sobrancelha). "Cabelo branco" = qualquer `Hair_Front/N_Color` + índice 114 da paleta (0.9647 RGB, mais próximo do branco puro; não há 1,1,1 exato nas 115 cores). Usei o estilo padrão (`Hair_Front/1_Color`) já que o chapéu cobre a maior parte da cabeça no print.
+  - `AvatarAppearance.CreateReferenceImagem13Preset()` novo, `IsFullyValid()` confirmado. Teste cobre os 4 IDs e a cor. Não validado visualmente no aparelho (sem dispositivo nesta sessão) nem comparado lado a lado com o print renderizado de verdade — a inspeção foi por peça solta (textura recortada), não pelo boneco montado.
+- (ciclo 10) C7, primeira tentativa real de testes: pela primeira vez nesta sessão a licença do Unity Editor (6000.6.6f1, Unity Personal) conectou com sucesso (`LicenseClient-c1c3ru`), diferente das falhas registradas em sessões/ciclos anteriores. `unity -batchmode -runTests -testPlatform EditMode` rodou de verdade (import completo da Library, ~2 min de compilação).
+  - Achado real (não ambiente): `CharacterDragControllerTests.cs` falhava a compilação (CS0200) porque três testes atribuíam `_c.HasRunningAnimations = true/false`, mas o ciclo T032 (commit anterior desta mesma sessão) tornou a propriedade somente leitura (sempre `false`, pela evidência de que `LevelAnimal.HasRunningAnimations` nunca é `true` em nenhuma família recuperada). Erro meu: mudei a API sem atualizar o teste, e só agora consegui compilar de verdade para descobrir.
+  - Corrigido: removidas as atribuições; `AnimalRunsOnlyWithRunningAnimations` (testava um comportamento que não existe mais via o componente público) foi substituído por `AnimalNeverRunsEvenAtHugeSpeed` — o ramo genérico de Run continua coberto direto em `LocomotionStateMachineTests.cs` (chamando `LocomotionStateMachine.Next` com `hasRunningAnimations=true` sem passar pelo componente), exatamente como o comentário do ciclo T032 já previa.
+  - O processo de testes foi morto pelo próprio sistema (`CLAUDE_CODE_DISABLE_BG_SHELL_PRESSURE_REAP`) por pouca memória enquanto a sessão estava ociosa aguardando notificação — não é falha do Unity nem do projeto. Não tentei de novo sem pedir (instrução explícita do sistema). C7 segue aberto: não sabemos ainda se a suíte toda compila/passa, não há build nem aparelho nesta sessão.
+**Próximos ciclos (backlog):** retomar os testes EditMode (C7), medir abertura e checar logcat quando houver aparelho.
 
 ### Retomada do ciclo 4 — 2026-11-07
 - `adb devices -l` não retornou um dispositivo utilizável (consulta inicial vazia; nova tentativa bloqueada ao iniciar o daemon ADB por `Operation not permitted` no sandbox). A validação tátil e de renderização no Xiaomi não pôde ser feita nesta sessão.
@@ -386,3 +428,37 @@ momentânea por sessões concorrentes.
 - Evidência: `docs/RECON_STAGE_HANDLER_EFFECTS.md`, `reports/recon/stage_handler_effects_2026-11-08.json`, cinco filhos `out/recon/tasks/T025/HANDLER/<rid>/` (method-contract/control-flow/unknowns/result), produtor `tools/recon_stage_handler_effects.py`. Sete testes focados passaram (cinco mutações negativas + verificação dos cinco analisadores contra o par real + checagem dos arquivos de saída).
 - Sem alteração do cliente, sem execução/emulação e sem aparelho. Os corpos dos callees nomeados (`LeanTween.cancel`, `PersistentDataManager.SaveProgress`, APIs Unity de cena) e os outros sete handlers do universo de doze MethodDefs únicos (do escaneamento de 13 registros Stage1-3) continuam sem efeitos recuperados. Tudo rotulado `static_candidate_not_runtime_validated`; nenhuma tarefa promovida a `done`.
 - Trabalho feito em worktree isolado (`worktree-recon-stage-handler-effects`), a partir do commit `498a97809`. Não inclui/duplica alterações não commitadas que já existiam no checkout principal (ex.: `tools/recon_stage_handlers.py`/planejamento dos doze handlers, ou os pilotos `GetCurrentWorldSceneName`/`LoadSceneImplement`/`LoadPlayScene` em retomada) — essas permanecem como estavam, fora do escopo deste branch.
+### Continuação RE — lifetime de eventos (2026-11-07)
+- Quatro pares estáticos de inscrição/remoção confirmados em três OnDestroy: BackgroundPlanetSoundHandler Stage1, PersistentDataManager Stage2 e LevelManager Stage2/3. Mesmo MethodDef e alvo this; novo delegate construído na remoção.
+- Evidência: docs/RECON_SCENE_LIFETIME_2026-11-07.md e reports/recon/scene_unsubscribers.json; reprodução com tools/recon_scene_unsubscribers.py.
+- Sem alteração do cliente/fila e sem execução Android. Remoção efetiva, exceções, lifetime Unity estático e nove candidatos restantes seguem abertos. Próximo: efeitos dos handlers e semântica interna de remove/delegates.
+- Verificação do recorte: 5 testes passaram em 16,317 s, sem falhas; produtor retornou zero (quatro pares / três janelas).
+
+### T025 — auditoria e dois pilotos (2026-11-07)
+- T025 permanece aberta: dependências T022–T024 pendentes, universo de 36.421 MethodDefs ainda não reconciliado em filhos (cinco existentes).
+- Registros IL2CPP e joins genéricos recuperados: HashSet<string> ctor/Add/Contains, Dictionary.Clear de MPOwnership, campo MP estático 0 e cache 0x48. Evidência em reports/recon/t025_generic_bindings_investigation.json e revisão independente correspondente.
+- GetCurrentWorldSceneName: 53 instruções no CFG normal local; errata fully_bounded=true corrigida para false no produtor. LoadSceneImplement: 47 instruções, guarda MP e overloads comprovados; efeitos transitivos e exceções abertos. Ambos com contratos reproduzíveis e checkpoint, sem done.
+- 25 testes focados passaram em 10,588 s. Hopper falhou na bridge após 120 s, sessão fechada; sem decompilação/runtime. Próximo: recuperar corpos/erros/helpers dependentes, resolver pipeline de decompilação e expandir universo obrigatório sem reduzir aceite. Detalhes: docs/RECON_T025_COMPLETION_2026-11-07.md.
+- Checkpoint final da rodada: fila revisão36; getter e implement ready, sem lease ativo; T025 pai pending. Auditoria final: reports/recon/t025_readiness.json. Revisões independentes finais em t025_getter_review.json e t025_implement_review.json; nenhuma semântica integral aprovada.
+
+### T026 — máquina next-frame e sceneLoaded (2026-11-07)
+- Filho T026/STATE_MACHINE/execute-next-frame importado e checkpoint ready (fila revisão43, próprio lease liberado). Pai T026 continua pending por T024/T025; nenhuma aprovação global.
+- Oito métodos/offsets originais e oito entradas na tabela de transições: state0 yield null/1; state1 grava -1 antes de Action; outros retornam false. Dispose é no-op local, Reset constrói NotSupportedException e passa ao helper (throw inferido). Tempo/cancelamento Unity continuam externos.
+- Hook LoadingScreenManager Awake/OnDestroy tem add/remove sceneLoaded por slot4 condicional, com ctor canônico registrado; sem provar runtime ou remoção efetiva.
+- 16 testes passaram em19,580s, revisões estáticas independentes e git diff --check OK. Evidências/pendências em docs/RECON_T026_NEXT_FRAME.md e reports/recon/t026_checkpoint.json. Outra frente possui filho T025 em execução; seu lease foi preservado.
+- Próximo recorte T026: contrato de StopCoroutine/host destruction ou outra máquina gameplay com wait/cancelamento, antes de fechar toda a tarefa.
+
+### T026 — universo 449 e censo amplo (2026-11-08)
+- Interfaces corrigem o histórico: 449 máquinas = 387 IEnumerator + 62 async; 12 tipos adicionais, 458 eventos e 1.147 candidatas a closure. Os 169 são apenas um subconjunto por prefixes; exclusões QA/lobby e demais escopos pendentes continuam explícitos.
+- Fila: 449 filhos T026, com next-frame ready e 448 pending importados por coordenador concorrente na revisão 50. Reconciliação exata, sem duplicação ou remoção de dependências.
+- Censo: 445 MoveNext, 411.168 bytes e 86.204 instruções. Quatro slots nulos preservados, com seis alternativas genéricas registradas em evidências separadas. Nenhum contrato semântico fabricado.
+- Condition/timeout recuperado; oito wrappers do scheduler/11 icalls conferidos; docs Unity 2022.3 externas separadas. Passaram 43 testes novos em rodadas focadas. Evidências e revisões em reports/recon/t026_*.json.
+- ADB confirmou versão instalada 1.228/code229; análise estática é 1.227/code228. Sem execução, reinstalação ou modificação de dados. A bridge Hopper não foi observada pronta após o último timeout; confirmação de licença/importação permanece pendente.
+- T026 continua aberta: pai depende de T024/T025; novos filhos dependem de T022–T025. Faltam contratos completos, descoberta complementar e efeitos externos/exceções. Retomada: docs/RECON_T026_PROGRESS_2026-11-08.md e reports/recon/t026_acceptance.json. Atividade concorrente T025 preservada.
+
+### T032 — dispatch, NPC e famílias (2026-11-08)
+- Recuperados 21 virtuais, nove chamadas ILevelAvatar, duas IHasPersistentData e três closures de passo completas; Baby/Cat/Dog/Horse respeitam override de aterrissagem. Campo/assinatura dos callbacks Baby recuperados; atribuição CATargetEvents inferida por layout, com usage não canônico preservado.
+- NPC caller reposiciona diretamente ou faz spawn. Managers de fundo animam sem navegação nos corpos examinados; walkway transporta itens por tween. Todos os 1.170 registros de 229 SceneAvatarMaps têm isOnPhone=true; position serve ownerPosition na restauração de roupas, não prova NPC já no mundo.
+- Corrigidas inferências históricas: Animal HasRunningAnimations=false; Walk usa Forced_To_Walk na faixa0 sem lock e faixa1 com lock; cinco techs sem caminhada animada; Baby herda sync físico. Time.deltaTime confirmado para a velocidade animal.
+- Evidências e revisões locais em out/recon/tasks/T032/{callbacks,npc,families}; contrato integrado em docs/RECON_T032_PROGRESS.md. tools/recon_t032_acceptance.py executa sete probes e revalida hashes/censos/estado, sem promover fila nem implementação.
+- T032 permanece pending, dependências T018/T025/T026/T027/T031 pendentes. Runtime 1.227 não validado: Android instalado é 1.228/code229, apenas consultas de metadados. Sem alteração de cliente, instalação/downgrade ou dados. Integração T049 precisa reconciliar caminhada/overlay, capabilities e roteamento Baby/techs; ordem/cardinalidade/cancelamento de callbacks e receptores dinâmicos permanecem abertos.

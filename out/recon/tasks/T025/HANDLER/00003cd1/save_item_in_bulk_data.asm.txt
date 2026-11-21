@@ -1,0 +1,116 @@
+1f04f48  sub    sp, sp, #0x60
+1f04f4c  stp    x30, x25, [sp, #0x20]
+1f04f50  stp    x24, x23, [sp, #0x30]
+1f04f54  stp    x22, x21, [sp, #0x40]
+1f04f58  stp    x20, x19, [sp, #0x50]
+1f04f5c  adrp   x21, #0x44fb000
+1f04f60  ldrb   w8, [x21, #0x6ed]
+1f04f64  mov    x19, x1
+1f04f68  mov    x20, x0
+1f04f6c  tbnz   w8, #0, #0x1f04fa8
+1f04f70  adrp   x0, #0x41bf000
+1f04f74  ldr    x0, [x0, #0xb18]
+1f04f78  bl     #0x1b886e8
+1f04f7c  adrp   x0, #0x41ba000
+1f04f80  ldr    x0, [x0, #0xd58]
+1f04f84  bl     #0x1b886e8
+1f04f88  adrp   x0, #0x41ac000
+1f04f8c  ldr    x0, [x0, #0xbb8]  ; type UnityEngine.Object
+1f04f90  bl     #0x1b886e8
+1f04f94  adrp   x0, #0x41ac000
+1f04f98  ldr    x0, [x0, #0xc90]  ; type UnityEngine.SceneManagement.SceneManager
+1f04f9c  bl     #0x1b886e8
+1f04fa0  mov    w8, #1
+1f04fa4  strb   w8, [x21, #0x6ed]
+1f04fa8  str    wzr, [sp, #0x18]
+1f04fac  stp    xzr, xzr, [sp, #8]
+1f04fb0  strb   wzr, [x19]
+1f04fb4  ldrb   w8, [x20, #0x31]
+1f04fb8  cbz    w8, #0x1f05070
+1f04fbc  adrp   x8, #0x41ac000
+1f04fc0  ldr    x8, [x8, #0xc90]  ; type UnityEngine.SceneManagement.SceneManager
+1f04fc4  ldr    x0, [x8]
+1f04fc8  ldr    w8, [x0, #0xe0]
+1f04fcc  cbnz   w8, #0x1f04fd4
+1f04fd0  bl     #0x1b8885c
+1f04fd4  mov    x0, xzr
+1f04fd8  bl     #0x3cdb658
+1f04fdc  str    w0, [sp, #0x18]
+1f04fe0  add    x0, sp, #0x18
+1f04fe4  mov    x1, xzr
+1f04fe8  bl     #0x3cdae08
+1f04fec  cbz    x0, #0x1f05114
+1f04ff0  ldr    w8, [x0, #0x18]
+1f04ff4  mov    x21, x0
+1f04ff8  cmp    w8, #1
+1f04ffc  b.lt   #0x1f05070
+1f05000  adrp   x24, #0x41bf000
+1f05004  adrp   x25, #0x41ba000
+1f05008  ldr    x24, [x24, #0xb18]
+1f0500c  b      #0x3f932d0
+1f05010  mov    w23, wzr
+1f05014  cmp    w23, w8
+1f05018  b.hs   #0x1f05110
+1f0501c  add    x8, x21, w23, sxtw #3
+1f05020  ldr    x22, [x8, #0x20]
+1f05024  cbz    x22, #0x1f05114
+1f05028  ldr    x2, [x24]
+1f0502c  add    x1, sp, #8
+1f05030  mov    x0, x22
+1f05034  bl     #0x25751c8
+1f05038  tbz    w0, #0, #0x1f05060
+1f0503c  ldr    x2, [x25]
+1f05040  add    x1, sp, #0x10
+1f05044  mov    x0, x22
+1f05048  bl     #0x25751c8
+1f0504c  tbz    w0, #0, #0x1f05060
+1f05050  ldr    x1, [sp, #0x10]
+1f05054  mov    x0, x20
+1f05058  mov    x2, x19
+1f0505c  bl     #0x1f05214  ; -> LevelSlideSwitcherHandler.SetInSildeData
+1f05060  ldr    w8, [x21, #0x18]
+1f05064  add    w23, w23, #1
+1f05068  cmp    w23, w8
+1f0506c  b.lt   #0x1f05014
+1f05070  ldr    x22, [x20, #0x20]
+1f05074  cbz    x22, #0x1f05114
+1f05078  ldr    w8, [x22, #0x18]
+1f0507c  cmp    w8, #1
+1f05080  b.lt   #0x1f050f8
+1f05084  adrp   x24, #0x41ac000
+1f05088  ldr    x24, [x24, #0xbb8]  ; type UnityEngine.Object
+1f0508c  mov    w23, wzr
+1f05090  cmp    w23, w8
+1f05094  b.hs   #0x1f05110
+1f05098  add    x8, x22, w23, sxtw #3
+1f0509c  ldr    x0, [x8, #0x20]
+1f050a0  cbz    x0, #0x1f05114
+1f050a4  mov    x1, xzr
+1f050a8  bl     #0x2286ab8  ; -> LevelSingleItemDropArea.GetSingleLevelItem
+1f050ac  ldr    x8, [x24]
+1f050b0  mov    x21, x0
+1f050b4  ldr    w9, [x8, #0xe0]
+1f050b8  cbnz   w9, #0x1f050c4
+1f050bc  mov    x0, x8
+1f050c0  bl     #0x1b8885c
+1f050c4  mov    x0, x21
+1f050c8  mov    x1, xzr
+1f050cc  mov    x2, xzr
+1f050d0  bl     #0x3ccb8d8
+1f050d4  tbnz   w0, #0, #0x1f050e8
+1f050d8  mov    x0, x20
+1f050dc  mov    x1, x21
+1f050e0  mov    x2, x19
+1f050e4  bl     #0x1f05214  ; -> LevelSlideSwitcherHandler.SetInSildeData
+1f050e8  ldr    w8, [x22, #0x18]
+1f050ec  add    w23, w23, #1
+1f050f0  cmp    w23, w8
+1f050f4  b.lt   #0x1f05090
+1f050f8  ldp    x20, x19, [sp, #0x50]
+1f050fc  ldp    x22, x21, [sp, #0x40]
+1f05100  ldp    x24, x23, [sp, #0x30]
+1f05104  ldp    x30, x25, [sp, #0x20]
+1f05108  add    sp, sp, #0x60
+1f0510c  ret
+1f05110  bl     #0x1b88988
+1f05114  bl     #0x1b88980

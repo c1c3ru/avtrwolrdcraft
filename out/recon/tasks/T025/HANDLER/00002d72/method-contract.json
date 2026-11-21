@@ -1,0 +1,57 @@
+{
+  "schema": "avtr-recon-method-contract/v1",
+  "task": "T025/HANDLER/00002d72",
+  "status": "partial",
+  "semantic_completion": false,
+  "method": {
+    "image": "Assembly-CSharp.dll",
+    "declaring_type": "Game.Level.LevelDigHoleArea",
+    "name": "OnBeforeSceneLoadStage1",
+    "token": "0x06002d73",
+    "method_definition_index": 11634,
+    "parameter_count": 0,
+    "return_type": "void (Cpp2IL signature; raw return signature not independently decoded during this pass)",
+    "vaddr": "0x1e29da8",
+    "file_offset": "0x1e25da8",
+    "extent": {
+      "bytes": 4,
+      "last_instruction": "B (tail branch)",
+      "target": "0x1e299b4",
+      "target_method": "Game.Level.LevelDigHoleArea.DetachContainerAreaChildrenIfNeeded",
+      "target_token": "0x06002d74",
+      "target_method_definition_index": 11635,
+      "extent_source": "out/recon/method-extents.jsonl; verified=true"
+    }
+  },
+  "static_observations": [
+    "The indexed entry at 0x1e29da8 is a four-byte unconditional tail branch to 0x1e299b4.",
+    "The tail branch does not rewrite x0; under the observed AArch64 instance-method convention, the receiver is forwarded to the helper.",
+    "The helper is a separate MethodDef and has a bounded reported extent of 596 bytes (0x1e299b4 through 0x1e29c07 inclusive).",
+    "The helper's decompiled C# body is empty in the available DiffableCs output; that is absence of recovered body text, not evidence of a no-op."
+  ],
+  "effects_recovered_for_callback": [
+    "Directly delegates to DetachContainerAreaChildrenIfNeeded on the same receiver and returns when that helper returns."
+  ],
+  "helper_effects_status": "partially observed in prior local disassembly; exact semantics remain unresolved",
+  "field_context_from_cpp2il": [
+    {"name":"_containerAreaLevelItems","offset":"0x78","type":"List<LevelItem>"},
+    {"name":"_containerArea","offset":"0x68","type":"LevelContainerArea"},
+    {"name":"_spawner","offset":"0x70","type":"LevelSpawner"},
+    {"name":"_index","offset":"0x98","type":"int"}
+  ],
+  "evidence": [
+    {"path":"out/recon/il2cpp/libil2cpp.so","sha256":"b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728","claim":"native image identity and method bytes"},
+    {"path":"out/recon/il2cpp/global-metadata.dat","sha256":"1ea14cf5829d5c31e5e967b1608b5701020ab0d24bd4ab69d9f1e2b243467bc6","claim":"managed MethodDef metadata identity"},
+    {"path":"out/recon/il2cpp/metadata_methods.jsonl","sha256":"7d6a73ceae5f67589766b8bb7878caed08eb56d1619b1cd55302135482b20eeb","claim":"MethodDef indexes and native addresses"},
+    {"path":"out/recon/method-extents.jsonl","sha256":"6d336b3c67b4e3fda688018eb88854b99fd88cc7d08cd6cdca2cefa8af64c717","claim":"reported instruction-bounded extents for thunk and helper"},
+    {"path":"out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelDigHoleArea.cs","sha256":"ef8a511d5b2bbe958c148beffae8c30dc0f204e989ed56a719bea4920ad88f4e","claim":"method names and field labels/offset annotations; generated output"},
+    {"path":"reports/recon/scene_subscribers.json","sha256":"e1654deafc615dfeed02e1d047d0f154f06e0a58a1a1b1c0c104cb78fbb3d38e","claim":"static registration candidate context"},
+    {"path":"out/recon/tasks/T025/METHOD/8e708ca7d06e0b52/stage_candidate_analysis.json","sha256":"efe164be13ed7519a95b9fcef309e6a4bdeb9687fbf49bda0954a41c929d7088","claim":"prior bounded Stage callback candidate analysis"}
+  ],
+  "limits": [
+    "REA analyze_function could not run on this pass: the available Hopper provider exited during launch with code 247.",
+    "No fresh helper pseudocode, CFG, or raw instruction dump was persisted during this pass; earlier disassembly notes are provisional and must be revalidated from bytes.",
+    "Field labels/offsets come from generated Cpp2IL source; raw metadata field-offset corroboration remains outstanding.",
+    "No runtime observation was collected."
+  ]
+}
