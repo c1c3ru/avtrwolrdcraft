@@ -1,0 +1,20 @@
+{
+  "task": "T020/CLASS/90da446022c5664c",
+  "title": "Corrigir decodificação de PWC.Inventory.InventorySkinsBuildData",
+  "actor": "agente-artefatos-claude",
+  "summary": "Root cause found and fixed, same mechanism as T020/CLASS/22379dfdf824449b (PWC.Inventory.InventoryBuildData). Both instances of this class now decode with check_read=True passing exactly. This reconciliation was written after the fact: the fix was already implemented and merged in an earlier session on this same branch (PR #64) on 2026-11-07, before this task's existence was known; this task's outputs are being filled in now to reconcile that work into the queue.",
+  "answers_to_task_questions": {
+    "Which typetree/alignment/layout operation causes this exact failure?": "Identical to PWC.Inventory.InventoryBuildData: TypeTreeGeneratorAPI mislabels the root node of a List<String> field (here, FlagsToSkinsMap.Pack.SpineTypeToSkins.skins) as m_Type=\"string\" instead of \"vector\". See class-contract.json.",
+    "Which exact serialized object identities failed, and can only those be reprocessed?": "Two objects: path_id=721792 (byte_size 41604) and path_id=721793 (byte_size 372), both in resources.assets. Both were located directly by class-name scan and reprocessed individually; no full redump was needed."
+  },
+  "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) - shared with T020/CLASS/22379dfdf824449b, already committed/pushed (PR #64).",
+  "evidence": [
+    "out/recon/tasks/T020/CLASS/90da446022c5664c/class-contract.json",
+    "out/recon/tasks/T020/CLASS/90da446022c5664c/recount.json",
+    "out/mb/PWC.Inventory.InventorySkinsBuildData.jsonl.gz",
+    "out/mb/_stats.json (PWC.Inventory.InventorySkinsBuildData now {\"ok\": 2}, no longer in erros)"
+  ],
+  "unresolved_objects": "none for this class (2 of 2 instances resolved)",
+  "cross_reference": "See T020/CLASS/22379dfdf824449b/result.json for the shared root-cause writeup and the generalization note about the other ~124 still-pending T020/CLASS tasks (same fix is a plausible but per-class-unverified hypothesis for most of them; a bulk rerun is blocked by a confirmed machine RAM ceiling, see that task's evidence and LOOP_STATE.md 2026-11-21).",
+  "never_autoaccept": "This result is submitted for independent review (checkpoint state=evidence_ready -> state=review); it was not self-reviewed or self-accepted."
+}

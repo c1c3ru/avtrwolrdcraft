@@ -1,0 +1,36 @@
+{
+  "class": "PWC.Inventory.InventoryBuildData",
+  "assembly": "Assembly-CSharp",
+  "unity_class_id": "MonoBehaviour (114)",
+  "original_failure": "EOFError: read_str out of bounds (via tools/mb_dump.py, TypeTreeGeneratorAPI-generated nodes)",
+  "root_cause": {
+    "summary": "TypeTreeGeneratorAPI labels the ROOT node of List<String> fields with m_Type=\"string\" instead of \"vector\", while still emitting the correct nested Array/size/data children underneath.",
+    "mechanism": "UnityPy.helpers.TypeTreeHelper.read_value() dispatches by FUNCTION_READ_MAP.get(node.m_Type) first; since \"string\" is in that map, it calls read_aligned_string() directly on the mislabeled node and never looks at node.m_Children, so it reads a scalar-string length+bytes where a List<String> (array-of-strings) actually sits. This desyncs the reader for every field after the first mislabeled List<String>, producing either EOFError: read_str out of bounds (reads a garbage huge length) or a short ValueError (byte-count mismatch) for other classes with the same bug.",
+    "distinguishing_signal": "A plain string field and a List<String> field both get a root node with m_Type==\"string\" and a first child named \"Array\" (size+data). The real signal is the type of that Array's \"data\" grandchild: \"char\" for a genuine string, anything else (here \"string\") for an actual List<String> that was mislabeled."
+  },
+  "fix": {
+    "location": "tools/mb_dump.py, function fix_mislabeled_vectors(nodes) (also duplicated in tools/mb_retry_failed_classes.py for standalone reruns)",
+    "patch": "For every node with m_Type==\"string\": find its first child; if that child is named \"Array\" and its own \"data\" child has m_Type != \"char\", rename the node's m_Type to \"vector\". This makes UnityPy's read_value() fall through to its generic vector branch (node.m_Children[0].m_Type == \"Array\"), which already handles nested list structures correctly.",
+    "applied_before_read": "Yes - called from nodes_for() right after the m_Enabled alignment-flag patch, before any object of the class is read.",
+    "status": "Landed on worktree-gentle-squishing-bird (PR #64, merged into history via this branch's merge of main) on 2026-11-07/2026-11-21; not yet ported back into this queue's own records until this task."
+  },
+  "fields": {
+    "m_GameObject": "PPtr<GameObject> (zero for a ScriptableObject asset)",
+    "m_Enabled": "UInt8",
+    "m_Script": "PPtr<MonoScript>",
+    "m_Name": "string",
+    "packToItems": {
+      "type": "PacksToItemsMap (custom, non-Unity class)",
+      "packs": {
+        "type": "List<Pack>",
+        "Pack.guid": "string (plain, unaffected by the bug)",
+        "Pack.items": "List<String> - THIS was the mislabeled field (root m_Type=\"string\", should be \"vector\")"
+      }
+    }
+  },
+  "validation": {
+    "method": "check_read=True (UnityPy raises ValueError unless the number of bytes actually consumed equals the object's declared byte_size)",
+    "result": "Passes exactly for the one instance of this class in the game (byte_size=410952, bytes_read=410952).",
+    "decoded_sample": "224 packs resolved; packs[0].guid='b21d8296-8f19-4c6f-91b5-c0deb826a364', items=[13 guids] - see recount.json and docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md for the full semantic use of this data (store bundle -> item-guid lists)."
+  }
+}
