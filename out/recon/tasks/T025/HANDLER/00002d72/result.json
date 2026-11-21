@@ -1,0 +1,26 @@
+{
+  "schema":"avtr-recon-task-result/v1",
+  "task":"T025/HANDLER/00002d72",
+  "state":"ready",
+  "semantic_completion":false,
+  "summary":"Recovered the callback entry as a 4-byte unconditional tail branch from OnBeforeSceneLoadStage1 to DetachContainerAreaChildrenIfNeeded. The callback itself contributes no separately observed state mutation; the delegated helper remains only partially characterized.",
+  "confidence":"high for MethodDef identity and reported thunk extent; low-to-medium for helper effects recorded from earlier disassembly notes",
+  "evidence_type":"shipped-artifact static metadata plus prior local disassembly notes; no runtime evidence",
+  "artifacts":[
+    "method-contract.json",
+    "control-flow.json",
+    "unknowns.jsonl",
+    "test_contract_integrity.py"
+  ],
+  "validation":{"command":"python3 out/recon/tasks/T025/HANDLER/00002d72/test_contract_integrity.py","result":"3 integrity checks passed; these validate pinned identities and partial-state consistency, not recovered helper semantics."},
+  "acceptance_gaps":[
+    "fresh byte-level disassembly and pseudocode for helper",
+    "complete CFG including exception regions",
+    "resolution of relevant callees",
+    "raw field-offset corroboration",
+    "independent reviewer confirmation",
+    "fixture/mutation validation"
+  ],
+  "next_action":"Keep this child ready for independent review and further analysis; do not mark done until the helper body and relevant callees/exception paths are resolved.",
+  "rea_attempt":{"operation":"analyze_function","target":"out/recon/il2cpp/libil2cpp.so","provider":"Hopper","outcome":"provider_unavailable","exit_code":247}
+}

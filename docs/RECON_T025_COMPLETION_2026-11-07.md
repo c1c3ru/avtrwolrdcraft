@@ -27,6 +27,22 @@ Produtor: [recon_t025_generics.py](../tools/recon_t025_generics.py). Evidência:
 
 ## Dossiês T025 atualizados
 
+### Continuação — 2026-11-08
+
+Os cinco pilotos filhos de T025 estão `ready` para revisão/continuidade, nenhum está `done`. Esta rodada reconciliou três deles sem promover suas conclusões estáticas a semântica certificada:
+
+- **`LoadScene` — `8e708ca7d06e0b52`:** o follow-up verificou 9 novos candidatos e, com os quatro edges anteriores, fecha 13/13 candidatos diretos B/BL do scan limitado. Há três chamadas indiretas sequenciais com guarda nula. Os slots em offsets 0/8/0x10 continuam **candidatos** aos campos Stage nomeados: o TypeInfo aponta ao `<>c__DisplayClass28_0` e a base estática não foi reconciliada com `GameSceneManager`. Foram adicionados quatro testes de dispatch e mantidos três testes de candidatos; os artefatos completos estão no diretório do filho.
+- **`ClickOnLevel` — `4a19cfec8f8e89ba`:** corrigida a afirmação anterior de corpo inteiramente limitado. O slice de 388 bytes termina no próximo início metadata e tem hash rederivado, mas corpo completo e regiões de exceção não estão provados. Permanecem 9 chamadas gerenciadas resolvidas, quatro helpers IL2CPP compartilhados sem identidade recuperada e dois `BLR` sem alvo decodificado. Três testes específicos do contrato e oito testes existentes de world-click passaram.
+- **`LoadPlayScene` — `5fe1bb4a25183678`:** retomada após lease expirada; o verificador confirmou as identidades e 11 chamadas, e as 145 instruções de quatro bytes (580 bytes) coincidem com o recorte Craft nos endereços correspondentes. A extração estática já existente do datapack fornece 149 pares deep-link/`LevelType`; o dossiê agora referencia esse mapa e o relatório candidato de cenas, removendo a extração do mapa da lista de pendências. O `BLR` em `0x2058174` permanece candidato a `IDictionary<TKey,TValue>.get_Item`, com o mapeamento efetivo de interface ainda aberto. O limite do método continua candidato e não prova corpo/regiões completos. Sete testes focados passaram.
+
+As três tarefas foram registradas como `ready`, com unknowns e evidências hash-pinned; não foram marcadas `done`. A T025 pai segue aberta por depender de T022–T024 e de reconciliação do grande universo de métodos, além da revisão independente e dos desconhecidos relevantes dos pilotos.
+
+### Callback `LevelManager.OnBeforeSceneLoadStage2` — 2026-11-08
+
+O novo filho `T025/HANDLER/0000849b` confirma, no recorte de 12 bytes `0x2313e64..0x2313e70`, `MOV W8,#1; STRB W8,[X0,#0x3a]; RET`. O FieldDef bruto identifica `<IsAboutToLoadScene>k__BackingField` (token `0x0400aad7`, `System.Boolean`); a tabela nativa `fieldOffsets` confirma offset `0x3a`. O efeito local sob retorno normal é gravar `true` no objeto `LevelManager`. O próximo MethodDef limita a inspeção, sem provar todas as regiões do corpo/exceções; os leitores/reset do flag e a ordem runtime dos callbacks continuam desconhecidos. Três testes de mutação passaram. Evidência e produtor: `out/recon/tasks/T025/HANDLER/0000849b/`.
+
+A auditoria atual [t025_readiness.json](../reports/recon/t025_readiness.json), sobre a revisão 66 da fila, conta 36.421 MethodDefs, 17 filhos rastreáveis (6 `ready`, 10 `pending`, 1 `running`) e 36.404 métodos ainda sem filho ou disposição de escopo. `can_close_t025=false`; T022–T024 continuam pendentes, assim como a classificação dos 590 ponteiros nulos e a revisão independente dos dossiês. A expansão dos 12 filhos de handler melhorou a rastreabilidade, mas não conclui T025.
+
 ### `LoadSceneImplement` — filho `e579655ba8e57adf`
 
 Produtor: [recon_t025_implement.py](../tools/recon_t025_implement.py).

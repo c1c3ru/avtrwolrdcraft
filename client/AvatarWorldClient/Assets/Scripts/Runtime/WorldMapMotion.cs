@@ -189,6 +189,7 @@ namespace AvatarWorld.Runtime
                 go.transform.localScale = new Vector3(s.sx, s.sy, 1f);
                 var anim = Spine.Unity.SkeletonAnimation.AddToGameObject(go, asset);
                 if (!anim.valid) { Debug.LogWarning("WorldMapMotion: spine invalido " + skeletonName); Destroy(go); continue; }
+                HideReferenceSlots(anim.skeleton);
                 string name = PickAnimation(anim, s.animation);
                 if (name != null) anim.state.SetAnimation(0, name, true);
                 var mr = go.GetComponent<MeshRenderer>();
@@ -196,15 +197,35 @@ namespace AvatarWorld.Runtime
             }
         }
 
+        /// <summary>
+        /// Esqueletos do original (ex.: Sun_Moon) trazem slots de referencia do artista (prefixo "REFS-",
+        /// usados so para alinhar capturas de tela durante a animacao) visiveis no setup pose padrao.
+        /// Nao fazem parte da arte final e aparecem como um quadrado solido sobre o esqueleto se nao
+        /// forem escondidos.
+        /// </summary>
+        static void HideReferenceSlots(Spine.Skeleton skeleton)
+        {
+            foreach (var slot in skeleton.Slots)
+                if (slot.Data.Name.StartsWith("REFS-", StringComparison.OrdinalIgnoreCase))
+                    slot.Attachment = null;
+        }
+
         static string PickAnimation(Spine.Unity.SkeletonAnimation anim, string wanted)
         {
             var items = anim.skeleton.Data.Animations;
             if (items.Count == 0) return null;
             if (!string.IsNullOrEmpty(wanted) && anim.skeleton.Data.FindAnimation(wanted) != null) return wanted;
-            // a escolha por hora do dia depende de TimeOfDay do original (nao reproduzido): prefere "Day"/"Idle"
-            foreach (var key in new[] { "Day", "Idle", "Loop" })
+            // a escolha por hora do dia depende de TimeOfDay do original (nao reproduzido): prefere a pose
+            // de repouso ("Idle") de dia. Nomes com Enter/Leave/Transition sao transicoes pontuais do
+            // original (ex.: Sun_Day_Enter, Sun_Day_To_Evening_Transition) e travavam em loop infinito se
+            // escolhidas aqui, entao ficam de fora da busca.
+            foreach (var key in new[] { "Day_Idle", "Idle", "Day", "Loop" })
                 foreach (var a in items)
-                    if (a.Name.IndexOf(key, StringComparison.OrdinalIgnoreCase) >= 0) return a.Name;
+                    if (a.Name.IndexOf(key, StringComparison.OrdinalIgnoreCase) >= 0
+                        && a.Name.IndexOf("Enter", StringComparison.OrdinalIgnoreCase) < 0
+                        && a.Name.IndexOf("Leave", StringComparison.OrdinalIgnoreCase) < 0
+                        && a.Name.IndexOf("Transition", StringComparison.OrdinalIgnoreCase) < 0)
+                        return a.Name;
             return items.Items[0].Name;
         }
 

@@ -95,6 +95,27 @@ namespace AvatarWorld.Core.Economy
             OtherAvatars.RemoveAll(o => o == null || o.Slot == slot);
         }
 
+        /// <summary>Quantidade de avatares humanos existentes (slots ocupados).</summary>
+        public int HumanAvatarCount() => 1 + OtherAvatars.Count;
+
+        /// <summary>
+        /// Apaga um slot ocupado (ativo ou nao). Troca para outro slot restante primeiro se for o ativo -
+        /// o jogador sempre precisa ficar com pelo menos um avatar. Retorna false se o slot esta vazio ou
+        /// e o unico avatar restante (nesse caso nada e alterado).
+        /// </summary>
+        public bool DeleteHumanSlot(int slot)
+        {
+            if (!HasHumanAvatar(slot) || HumanAvatarCount() <= 1) return false;
+            if (slot == ActiveHumanSlot)
+            {
+                int fallback = -1;
+                for (int i = 0; i < HumanSlotCount; i++) if (i != slot && HasHumanAvatar(i)) { fallback = i; break; }
+                SwitchHumanSlot(fallback);
+            }
+            OtherAvatars.RemoveAll(o => o == null || o.Slot == slot);
+            return true;
+        }
+
         /// <summary>Corrige save invalido: slots fora do intervalo/duplicados e aparencias nulas ou invalidas.</summary>
         public void SanitizeAvatarSlots()
         {

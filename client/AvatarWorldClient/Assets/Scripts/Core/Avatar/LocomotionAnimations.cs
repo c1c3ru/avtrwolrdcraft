@@ -28,7 +28,7 @@ namespace AvatarWorld.Core.Avatar
                         : LocomotionStateMachine.ToddlerStandAnimation;
                 case LocomotionFamily.Animal:
                     if (movement == MovementKind.Run) return "General/Running";
-                    if (movement == MovementKind.Walk) return "General/Walking";
+                    if (movement == MovementKind.Walk) return "Track_Animations/Forced_To_Walk";
                     return LocomotionStateMachine.AnimalStandAnimation;
                 default:
                     // Character nunca entra em Run (provado); se chegar, usa o ciclo de andar.

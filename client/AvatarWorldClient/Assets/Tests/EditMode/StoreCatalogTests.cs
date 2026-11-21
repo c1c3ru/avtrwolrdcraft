@@ -32,6 +32,25 @@ namespace AvatarWorld.Core.Tests
         }
 
         [Test]
+        public void ObservedVehicleStorePrices_AreKept()
+        {
+            // Capturados ao vivo em 2026-11-07 (com.pazugames.avatarworld 1.228/versionCode 229), ver docs/STORE_WORLD_UI_SPEC.md.
+            Assert.AreEqual(700, StoreCatalog.Find("bundle-jeep-aventura").Price);
+            Assert.AreEqual(700, StoreCatalog.Find("bundle-carro-familia").Price);
+            Assert.AreEqual(400, StoreCatalog.Find("bundle-viagem-inverno").Price);
+            Assert.AreEqual(400, StoreCatalog.Find("bundle-pe-na-estrada").Price);
+            Assert.AreEqual(300, StoreCatalog.Find("bundle-trator-agricola").Price);
+            Assert.AreEqual(800, StoreCatalog.Find("bundle-helicoptero-vip").Price);
+            Assert.AreEqual(300, StoreCatalog.Find("bundle-limo-luxo").Price);
+            Assert.AreEqual(300, StoreCatalog.Find("bundle-limo-panda").Price);
+            Assert.IsFalse(StoreCatalog.Observed.Contains("motorhome"),
+                "preco do motorhome nao apareceu na captura; nao pode ser marcado como lido do original");
+
+            var subs = StoreCatalog.SubCategories(StoreCatalog.CategoryVehicles);
+            Assert.AreEqual(new[] { "Carro", "Van", "VIP" }, subs.OrderBy(s => s).ToArray());
+        }
+
+        [Test]
         public void Categories_CoinsHasNoOffersAndCombosHasAll()
         {
             Assert.AreEqual(0, StoreCatalog.InCategory(StoreCatalog.CategoryCoins).Count);

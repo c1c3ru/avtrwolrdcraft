@@ -1,5 +1,7 @@
 # Avatares, NPCs, pets e movimento — T032 parcial
 
+**Revisão 2026-11-08:** [dispatch, NPC e famílias](RECON_T032_PROGRESS.md) corrige inferências históricas abaixo: corrida animal é bloqueada por capability false; caminhada usa `Track_Animations/Forced_To_Walk` (faixa0 sem lock, faixa1 com lock); posições de SceneAvatarMap não provam NPCs presentes; velocidade animal usa Time.deltaTime. As seções antigas são registro histórico, não o contrato final desses pontos. O pacote pai e a validação dinâmica permanecem abertos.
+
 Data: 2026-11-04  
 Escopo desta rodada: classificação de presets e tipos de cena, mais extração estática de métodos centrais de spawn, drag/movimento e dados do avatar. Sem execução no aparelho.
 

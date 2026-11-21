@@ -2,6 +2,22 @@
 
 Este registro acompanha o [plano mestre](AVATAR_WORLD_MASTER_PLAN.md). Inventário, recuperação de lógica e implementação validada são marcos distintos. Nenhuma entrada abaixo declara o jogo completo.
 
+## 2026-11-14 — retomada do filho T025/HANDLER/00002d72
+
+- A fila vigente não continha os 12 filhos de handlers descritos no manifesto, embora os artefatos do filho `00002d72` estivessem no workspace. Reimportado `reports/recon/t025_stage_handler_children_2026-11-08.json` (hash `900600fcd3e82120541a894022d8bdbd83ec1407c369d54d407a9f9f051f6853`); IDs reconciliados sem duplicação. Dependências diretas T001 e T022/PILOT_INDEX aceitas; tarefa reivindicada e iniciada para registrar checkpoint.
+- Identidade do callback e limites reportados conferidos em `metadata_methods.jsonl` e `method-extents.jsonl`: `OnBeforeSceneLoadStage1` (`0x06002d73`, VA `0x1e29da8`) é janela de 4 bytes com branch para o MethodDef distinto `DetachContainerAreaChildrenIfNeeded` (`0x06002d74`, VA `0x1e299b4`, extent informado 596 bytes). Isso não demonstra o contrato semântico do helper.
+- REA abriu o ELF pinado com SHA-256 esperado, mas `analyze_function` não produziu análise: Hopper encerrou na inicialização com exit code 247. As notas anteriores de disassembly do helper foram preservadas como provisórias; novos estados, exceções e destinos de chamadas precisam de validação por bytes.
+- Criados contrato, CFG limitado, unknowns e teste de integridade sob `out/recon/tasks/T025/HANDLER/00002d72/`. O teste direcionado passou 3 verificações de identidade/hash/consistência; não testa semântica nativa. Checkpoint deve permanecer `ready`, não `done`, aguardando nova análise do helper, resolução de callees/exceções, corroborar offsets de campos e revisão independente.
+- Sem observação de runtime ou alteração do cliente.
+
+## 2026-11-14 — análise parcial de T025/HANDLER/000032a8
+
+- Preparado, reivindicado e iniciado o handler `Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems` (`0x060032a9`, MethodDef 12968, VA `0x1e64abc`) depois de confirmar dependências diretas aceitas e inputs com hashes válidos.
+- Hopper voltou a encerrar na inicialização (exit 247); `tools/recon_disasm.py`/Capstone decodificou e persistiu os 208 bytes (52 instruções) do callback e os 1512 bytes do callee `PWC.Level.LevelUtils.DestroyLevelItem` em `out/recon/tasks/T025/HANDLER/000032a8/`.
+- Contrato parcial: `_isNewEveryLoad == false` retorna; caso verdadeiro, percorre `_points`, verifica childCount, seleciona `GetChild(0)` por ponto não vazio e chama o alvo ainda não resolvido `0x24f0700`, passando seu retorno a `DestroyLevelItem(..., true)`. O callback não faz loop sobre todos os filhos. Identidades diretas de `Transform.get_childCount`, `Transform.GetChild` e `LevelUtils.DestroyLevelItem` foram confirmadas por token/endereço.
+- O callee separado mostra chamadas a utilitários de restore-data/inventory, `CATargetExtensionMethods.RemoveCAHandlersAndUpdateGame`, `GameObject.SetActive(false)` e `Object.Destroy`; seu CFG, callbacks, persistência condicional e exceções não foram fechados. Offsets 0x30/0x38 ainda vêm de Cpp2IL, sem join raw de field-offset.
+- Teste estrutural direcionado passou 3 verificações e os JSON/JSONL foram validados. Sem runtime ou alteração do cliente. Checkpoint deve ficar `ready` até resolver o lookup genérico, o callee e a revisão independente.
+
 ## 2026-11-01 — primeira onda executada
 
 1. Preservadas as mudanças preexistentes do cliente e os documentos de regras offline. Nenhum script desta onda alterou o cliente Unity ou saves.
@@ -176,3 +192,11 @@ O produtor de loading verifica os hashes dos APKs e só materializa a entrada Un
 - Famílias: `HasRunningAnimations` é `mov w0,wzr;ret` sem override em nenhuma subclasse local — corrida de animal não está habilitada no artefato apesar do ramo genérico em `OnMovement`; caminho desbloqueado chama `GetWalkingAnimationName`→`Track_Animations/Forced_To_Walk` (não `General/Walking`); cinco techs (Bird/Cat/Dog/Rabbit/Robot) retornam false em `HasWalkingAnimations` e seguem só pela física da base; Horse retorna false em `HasSwimmingAnimations`; velocidade é `sqrt(dx²+dy²)/Time.deltaTime` confirmado pelo codegen Unity. Baby herda `LevelItem.OnSyncPosition` sem máquina própria e não deve cair no default Character do enum `LocomotionFamily` do cliente.
 - Verificação: sete probes (`callbacks/probe.py`, `families/check.py`, `families/engine_calls.py`, `families/delegates.py`, `callbacks/review_families.py`, `npc/validate.py`, `families/review_npc.py`) reexecutados pelo auditor `tools/recon_t032_acceptance.py`, que também confere hashes do par nativo/metadata, cardinalidades do dispatch/capabilities/census e compara os sete censos contra os gzip originais. `reports/recon/t032_acceptance.json`: `evidence_integrity_passed=true`, `runtime_acceptance=false`, `implementation_acceptance=false`, `parent_acceptance=false`. ADB (`reports/recon/t032_device_version_check.json`) só leu metadados do pacote (1.228/code229 instalado vs. 1.227/code228 analisado), sem iniciar o jogo nem alterar dados.
 - T032 segue `pending` na fila: T018, T025, T026, T027 e T031 não têm aceite. Reconciliação de cliente (Forced_To_Walk, overlay de faixa1 sob CA travada, corrida=false, roteamento Baby/tech fora do default Character) pertence à T049 e não foi aplicada aqui. Sem runtime, build ou mudança de cliente nesta rodada. Relatório humano: `docs/RECON_T032_PROGRESS.md`; relatórios por recorte em `out/recon/tasks/T032/{callbacks,npc,families}/REPORT.md`.
+
+## 2026-11-14 — análise parcial de T025/HANDLER/00003cd1
+
+- Preparado e reivindicado o callback `Game.Level.WaterSlide.LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1` (`0x06003cd2`, MethodDef 15569, VA `0x1f04f28`) após validação das dependências e hashes dos inputs.
+- Capstone decodificou a janela proven de 32 bytes: inicializa bool local falso, verifica `_isInsideSlide` (`this+0x30`) e chama `SaveItemInBulkData` apenas quando o campo é não zero. O retorno local não é lido no callback.
+- Inspecionados os corpos de 464 bytes de `SaveItemInBulkData` e 468 bytes de `SetInSildeData`, mais trampoline não contíguo de 8 bytes. Evidência estática indica varredura opcional dos roots da cena e dos `_dropAreas`; chamadas condicionais a persistência/desacoplamento/destruição foram anotadas, sem fechar os contratos dos callees.
+- O lookup em `0x25751c8`, os tipos dos slots de type-info, helpers de runtime/exceções, efeitos completos de `LevelUtils.DestroyLevelItem`, corroboracão raw dos offsets e comportamento em runtime permanecem abertos. REA/Hopper não foi repetido porque já falhou na inicialização (exit 247) para o mesmo ELF pinado.
+- Contrato, CFG, seis unknowns e teste estrutural foram salvos em `out/recon/tasks/T025/HANDLER/00003cd1/`. Três verificações estruturais, parse de JSON/JSONL (seis unknowns) e `git diff --check` passaram. Isso não comprova equivalência semântica; manter `ready` parcial.

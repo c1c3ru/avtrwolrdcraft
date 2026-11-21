@@ -1,0 +1,8 @@
+1f04f28  str    x30, [sp, #-0x10]!
+1f04f2c  strb   wzr, [sp, #0xc]
+1f04f30  ldrb   w8, [x0, #0x30]
+1f04f34  cbz    w8, #0x1f04f40
+1f04f38  add    x1, sp, #0xc
+1f04f3c  bl     #0x1f04f48  ; -> LevelSlideSwitcherHandler.SaveItemInBulkData
+1f04f40  ldr    x30, [sp], #0x10
+1f04f44  ret

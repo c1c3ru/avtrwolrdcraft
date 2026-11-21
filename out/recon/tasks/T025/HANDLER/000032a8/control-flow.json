@@ -1,0 +1,27 @@
+{
+  "schema":"avtr-recon-control-flow/v1",
+  "task":"T025/HANDLER/000032a8",
+  "method":"Game.Level.LevelSpawnOnLevelPostInit.DestroyCurrentItems",
+  "token":"0x060032a9",
+  "extent":{"start":"0x1e64abc","end_exclusive":"0x1e64b8c","bytes":208,"instruction_count":52,"source":"Capstone decode from pinned ELF; corroborated with method-extents.jsonl"},
+  "blocks":[
+    {"id":"B0","range":["0x1e64abc","0x1e64aec"],"operations":["prologue","class-init flag test","optional runtime class-init helper; set init flag"],"successors":["B1"]},
+    {"id":"B1","range":["0x1e64aec","0x1e64af4"],"operations":["read this+0x38 (_isNewEveryLoad)","CBZ"],"successors":["B2","B7"],"edges":[{"condition":"_isNewEveryLoad == 0","to":"B7"},{"condition":"nonzero","to":"B2"}]},
+    {"id":"B2","range":["0x1e64af4","0x1e64b08"],"operations":["read this+0x30 (_points)","null guard","read array length","empty-array guard"],"successors":["B3","B7","E0"],"edges":[{"condition":"points == null","to":"E0"},{"condition":"length < 1","to":"B7"},{"condition":"length >= 1","to":"B3"}]},
+    {"id":"B3","range":["0x1e64b08","0x1e64b28"],"operations":["outer index i starts at 0","check i < points.Length","load points[i]"],"successors":["B4","E1","E0"],"edges":[{"condition":"i >= length","to":"E1"},{"condition":"points[i] == null","to":"E0"},{"condition":"valid element","to":"B4"}]},
+    {"id":"B4","range":["0x1e64b28","0x1e64b3c"],"operations":["Transform.get_childCount(points[i])","compare result with 1"],"successors":["B5","B6"],"edges":[{"condition":"childCount < 1","to":"B6"},{"condition":"childCount >= 1","to":"B5"}]},
+    {"id":"B5","range":["0x1e64b3c","0x1e64b64"],"operations":["Transform.GetChild(points[i], 0)","null guard","call unresolved 0x24f0700 with child transform and static-data argument","call LevelUtils.DestroyLevelItem(result, true)"],"successors":["B6","E0"],"edges":[{"condition":"GetChild result == null","to":"E0"},{"condition":"otherwise","to":"B6"}]},
+    {"id":"B6","range":["0x1e64b64","0x1e64b74"],"operations":["increment i","compare with points.Length"],"successors":["B3","B7"],"edges":[{"condition":"i < length","to":"B3"},{"condition":"otherwise","to":"B7"}]},
+    {"id":"B7","range":["0x1e64b74","0x1e64b84"],"operations":["restore registers","return"],"successors":[]},
+    {"id":"E0","range":["0x1e64b84","0x1e64b88"],"operations":["call unresolved runtime helper 0x1b88980"],"successors":[]},
+    {"id":"E1","range":["0x1e64b88","0x1e64b8c"],"operations":["call unresolved runtime helper 0x1b88988"],"successors":[]}
+  ],
+  "call_edges":[
+    {"at":"0x1e64b30","target":"0x3cd5d98","name":"UnityEngine.Transform.get_childCount","token":"0x060008a4"},
+    {"at":"0x1e64b48","target":"0x3cd61fc","name":"UnityEngine.Transform.GetChild","token":"0x060008b1","argument":"child index 0"},
+    {"at":"0x1e64b54","target":"0x24f0700","name":null,"status":"unresolved native/generic target"},
+    {"at":"0x1e64b60","target":"0x232b9ac","name":"PWC.Level.LevelUtils.DestroyLevelItem","token":"0x060085ae","argument":"bool true"}
+  ],
+  "exceptions":"No exception table/landing-pad recovery was performed. Calls may throw; error helper branches are not assigned exception semantics.",
+  "coverage_limits":["CFG covers the reported 208-byte extent only.","The body contains an outer points loop and no recovered loop over child indexes; one child at index 0 is selected per nonempty point.","The returned component type and the unresolved call at 0x24f0700 are not established."]
+}

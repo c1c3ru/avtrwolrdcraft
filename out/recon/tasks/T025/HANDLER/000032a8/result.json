@@ -1,0 +1,14 @@
+{
+  "schema":"avtr-recon-task-result/v1",
+  "task":"T025/HANDLER/000032a8",
+  "state":"ready",
+  "semantic_completion":false,
+  "summary":"Static Capstone recovery shows DestroyCurrentItems returns immediately unless _isNewEveryLoad is true; when active it iterates _points and, for each nonempty point transform, selects only child 0 and passes the result of an unresolved component lookup to LevelUtils.DestroyLevelItem(..., true). The child and destruction helper contracts remain open.",
+  "evidence_type":"pinned shipped ELF disassembly plus metadata index and generated Cpp2IL field labels; static only",
+  "confidence":"high for the 208-byte instruction flow and direct callee identities; medium for field labels/offsets; low for target 0x24f0700 and transitive DestroyLevelItem semantics",
+  "artifacts":["method-contract.json","control-flow.json","unknowns.jsonl","handler.asm.txt","destroy_level_item_callee.asm.txt","test_contract_integrity.py"],
+  "validation":{"command":"tools/venv/bin/python out/recon/tasks/T025/HANDLER/000032a8/test_contract_integrity.py","result":"3 structural integrity checks passed; no semantic test or runtime validation."},
+  "acceptance_gaps":["resolve target 0x24f0700 and its static type argument","recover LevelUtils.DestroyLevelItem fully","corroborate raw field offsets","resolve runtime helpers and exceptions","independent review"],
+  "rea_attempt":{"operation":"analyze_function","provider":"Hopper","target_sha256":"b63661fa60c23ebef1c2da4bb5288ad787eb3da36b22d4bdf285401f1643d728","outcome":"provider_unavailable","exit_code":247},
+  "next_action":"Keep ready for review and continue the unresolved GetComponent-like target and DestroyLevelItem callee before any done acceptance."
+}

@@ -76,38 +76,27 @@ namespace AvatarWorld.Core.Tests
         }
 
         [Test]
-        public void CharacterNeverRunsEvenWithRunningAnimationsAndHugeSpeed()
+        public void CharacterNeverRunsEvenAtHugeSpeed()
         {
             _c.Family = LocomotionFamily.Character;
-            _c.HasRunningAnimations = true;
             _c.Tick(true, new Vector2(0f, 0f), 0.016f);
             for (int i = 1; i <= 5; i++) _c.Tick(true, new Vector2(100f * i, 0f), 0.016f);
             Assert.AreEqual(MovementKind.Walk, _c.Movement);
         }
 
+        // LevelAnimal.HasRunningAnimations returns false in every recovered family (RECON_T032_PROGRESS.md):
+        // through the real component an animal can never reach Run, regardless of speed. The Run branch
+        // itself stays covered directly against LocomotionStateMachine in LocomotionStateMachineTests.cs.
         [Test]
-        public void AnimalRunsOnlyWithRunningAnimations()
+        public void AnimalNeverRunsEvenAtHugeSpeed()
         {
             _c.Family = LocomotionFamily.Animal;
-            _c.HasRunningAnimations = true;
-            _c.Tick(true, new Vector2(0f, 0f), 0.016f);
-            _c.Tick(true, new Vector2(50f, 0f), 0.016f);    // 0.5 u / 0.016 s = 31 u/s: Stand -> Walk
-            Assert.AreEqual(MovementKind.Walk, _c.Movement);
-            _c.Tick(true, new Vector2(100f, 0f), 0.016f);   // Walk -> Run (> 18)
-            Assert.AreEqual(MovementKind.Run, _c.Movement);
-            Assert.AreEqual("General/Running", _c.CurrentAnimation);
-        }
-
-        [Test]
-        public void AnimalWithoutRunningAnimationsStaysWalking()
-        {
-            _c.Family = LocomotionFamily.Animal;
-            _c.HasRunningAnimations = false;
             _c.Tick(true, new Vector2(0f, 0f), 0.016f);
             _c.Tick(true, new Vector2(50f, 0f), 0.016f);
             _c.Tick(true, new Vector2(100f, 0f), 0.016f);
             Assert.AreEqual(MovementKind.Walk, _c.Movement);
             Assert.AreEqual("General/Walking", _c.CurrentAnimation);
+            Assert.IsFalse(_c.HasRunningAnimations);
         }
 
         [Test]

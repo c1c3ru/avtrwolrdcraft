@@ -18,7 +18,7 @@ namespace AvatarWorld.Core.Tests
         [Test]
         public void ClothingCategoriesOfferManyUniqueOptionsAndKeepTheOriginalDefaults()
         {
-            foreach (var category in new[] { AvatarCatalog.CategoryShirt, AvatarCatalog.CategoryBottom, AvatarCatalog.CategoryShoes, AvatarCatalog.CategoryAccessory, AvatarCatalog.CategoryMouth, AvatarCatalog.CategoryHair, AvatarCatalog.CategoryHairBack })
+            foreach (var category in new[] { AvatarCatalog.CategoryShirt, AvatarCatalog.CategoryBottom, AvatarCatalog.CategoryShoes, AvatarCatalog.CategoryAccessory, AvatarCatalog.CategoryMouth, AvatarCatalog.CategoryHair, AvatarCatalog.CategoryHairBack, AvatarCatalog.CategoryOnepiece, AvatarCatalog.CategoryLegs, AvatarCatalog.CategoryFaceCheeks })
             {
                 var ids = AvatarCatalog.OptionsByCategory[category];
                 Assert.GreaterOrEqual(ids.Length, 100, category);
@@ -33,6 +33,23 @@ namespace AvatarWorld.Core.Tests
             Assert.AreEqual(AvatarCatalog.JacketNone, AvatarCatalog.DefaultOption(AvatarCatalog.CategoryJacket));
             Assert.Greater(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryHat].Length, 50);
             Assert.Greater(AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryJacket].Length, 50);
+            // BackA (acessorio de costas) teve so 28 pecas reais extraidas (unica pasta "back_c"): sem a cota de 100.
+            var backA = AvatarCatalog.OptionsByCategory[AvatarCatalog.CategoryBackA];
+            Assert.GreaterOrEqual(backA.Length, 20, AvatarCatalog.CategoryBackA);
+            Assert.AreEqual(backA.Length, backA.Distinct().Count(), AvatarCatalog.CategoryBackA + " tem ids repetidos");
+        }
+
+        [Test]
+        public void NewCharacterCategoryTypeCategoriesAreHiddenForChildAndBaby()
+        {
+            // Onepiece/Legs/BackA/FaceCheeks sao "so adultos" (RECON_CHARACTER_CONTRACT.md): crianca/bebe
+            // recebem so o placeholder "sem peca" e a categoria fica oculta no menu desses tipos.
+            foreach (var kind in new[] { AvatarKind.Toddler, AvatarKind.Baby })
+                foreach (var category in new[] { AvatarCatalog.CategoryOnepiece, AvatarCatalog.CategoryLegs, AvatarCatalog.CategoryBackA, AvatarCatalog.CategoryFaceCheeks })
+                {
+                    Assert.AreEqual(1, AvatarCatalog.Options(kind)[category].Length, kind + "/" + category);
+                    Assert.IsFalse(AvatarCatalog.IsEditable(kind, category), kind + "/" + category);
+                }
         }
 
         [Test]
