@@ -1605,8 +1605,8 @@
   },
   "ModernHousePB9Box_Pack": {
    "label": "Modern House",
-   "status": "uncertain-rooms",
-   "note": "prefixo Modern bate com 2 packs, mas sem confirmacao direta de vinculo",
+   "status": "confirmed-exclusive-name-match",
+   "note": "Busca por \"modern\" em TODO o store_catalog.json (37230 itens) retorna exatamente 3 nomes: a capa e os 2 comodos - mesmo padrao evidencial dos outros temas (nao e so coincidencia de substring, e o universo inteiro de nomes \"Modern\" do jogo).",
    "bundle_guid": "084bb8a6-8e78-4734-89a9-6f9867eb6d9e",
    "rooms": [
     {
@@ -1706,5 +1706,14 @@
    "rooms": [],
    "total_items": 0
   }
+ },
+ "orphan_pack_prefabs_sem_conteudo": {
+  "nota": "store_catalog.json tem 351 prefabs com nome terminando em *Pack em resources.assets; so 224 estao linkados em InventoryBuildData.packToItems (unica instancia do objeto no jogo, confirmada por out/mb_survey.json). Os outros 127 (incluindo MansionBundlePB2 e CatamarnP36, ja documentados) sao capas/comodos SEM nenhuma lista de itens em lugar nenhum do APK - nao e falta de busca, e ausencia de dado mesmo, igual ao caso ja documentado de StoreData/bundleItems para Moda.",
+  "count": 129,
+  "temas_de_casa_adicionais_sem_conteudo": [
+   "ApartmentHMP82Box_Pack/P89/P95 (3 variantes, 0 comodos encontrados)",
+   "BubbleGlam: mais 6 comodos nomeados (Dinningroom P64, Kitchen P63, Livingroom P39, Tiles P54/PE3, Coupon PC9) existem como prefab mas sem item-list",
+   "KawaiiHouse: KawaiiHouseBox_Bathroom_L33 e KawaiiHouseBox_MasterBedroom_L33, variante separada de KawaiiHouseP29/P30, tambem sem item-list"
+  ]
  }
 }

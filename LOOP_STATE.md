@@ -1,5 +1,40 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Loja: Mansão e mais temas de Casas confirmados irresolúveis; Modern House confirmado — 2026-11-22
+Continuando os pendentes de `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md` (PR #64, aberta).
+- `ModernHousePB9Box_Pack` passou de "incerto" pra **confirmado**: busca por "modern" em todo `store_catalog.json`
+  (37230 itens) retorna exatamente a capa + os 2 cômodos já linkados, nenhum outro — não é mais inferência fraca.
+- `MansionBundlePB2Box_Pack` confirmado **irresolúvel**, não só "não achei ainda": `store_catalog.json` tem 351
+  prefabs `*Pack` em `resources.assets`, só 224 linkados em `InventoryBuildData.packToItems` (única instância do
+  objeto no jogo). Os outros 127 "órfãos" não têm item-list em lugar nenhum do APK — inclui Mansão, mais um tema
+  "Apartamento" (`ApartmentHMP82/89/95`, 3 variantes), mais 6 cômodos órfãos de Bubble Glam e uma 2ª variante de
+  Kawaii House. Mesma ausência de dado já documentada pra Moda (`StoreData.Item`/`bundleItems` não estão no APK).
+- Categorização dos 224 pacotes refinada separadamente: ver `docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md`.
+- Nada implementado no cliente ainda (não há editor de casas); decisão de produto pendente do autor sobre o que
+  fazer com temas irresolúveis (excluir da loja offline ou inventar conteúdo próprio, deixando claro que não é
+  dado original).
+
+## Loja: reextração das ~124 classes de MonoBehaviour restantes — bloqueada por RAM, não por contenção — 2026-11-21
+Continuação de `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md` (PR #42, já mergeada: fix do bug de type-tree
+`List<String>` rotulado como `string`, 7 temas de Casas decodificados). Faltava reextrair as outras ~124
+classes de MonoBehaviour que tinham o mesmo bug (`out/mb/_stats.json`), achando que era só falta de RAM
+momentânea por sessões concorrentes.
+- 4 tentativas seguidas (2 em 07/11, 2 em 21/11, já com swap livre e sem outras sessões Unity rodando)
+  falharam idênticas, sempre no mesmo ponto (carregando `x/base/assets/bin/Data/datapack.unity3d`, 1,3 GB).
+- **Causa real confirmada por `journalctl -k`**: `Out of memory: Killed process ... anon-rss:5778888kB` — o
+  processo passa de **5,8 GB de RAM residente** só pra carregar o datapack (Unity comprime os blocos com
+  LZMA/LZ4HC; descomprimido fica bem maior que o 1,3 GB no disco), e ainda estava crescendo. Não é contenção
+  de outra sessão: é que esta máquina (7,1 GB RAM) não comporta essa carga de trabalho sozinha.
+- Decisão do usuário (2026-11-21): rodar no PC do trabalho (mais RAM) em vez de insistir aqui.
+- Script pronto e documentado, dentro do repo agora (antes só existia fora, em `/tmp` de um job que seria
+  limpo): `tools/mb_retry_failed_classes.py` — docstring tem o passo a passo completo pra extrair
+  `il2cpp_in/`+`x/` do APK (ambos gitignored) e instalar `TypeTreeGeneratorAPI` (faltava no ambiente, não vem
+  com UnityPy). Só reprocessa as classes que ainda estão em `out/mb/_stats.json["erros"]`, mescla o resultado
+  de volta no mesmo arquivo sem apagar o que já está ok.
+- **Próximo passo:** rodar `python3 tools/mb_retry_failed_classes.py` numa máquina com mais RAM livre (o
+  PC do trabalho). Se passar, dá pra reaproveitar `docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md` como
+  base pra refinar a categorização dos 224 pacotes com dados reais em vez de heurística.
+
 ## Hipótese revisada: sufixo `_st` em skins = sticker, não sombra/template — 2026-11-14
 - Hipótese anterior ("camada auxiliar de sombra/template, não visível") era só inferência pelo
   nome; nunca tinha sido checada contra o atlas original nem contra o código. Escopo real é
