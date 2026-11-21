@@ -1,0 +1,22 @@
+{
+  "task": "T020/CLASS/22379dfdf824449b",
+  "title": "Corrigir decodificação de PWC.Inventory.InventoryBuildData",
+  "actor": "agente-artefatos-claude",
+  "summary": "Root cause found and fixed. The class now decodes with check_read=True passing exactly. This reconciliation was written after the fact: the actual investigation/fix happened in an earlier session on this same branch (worktree-gentle-squishing-bird) on 2026-11-07, before this task's existence was known (the formal task queue reports/recon/tasks.json was discovered later, on 2026-11-22, while surveying 'ready' work). This task's outputs are being filled in now to reconcile that already-completed, already-merged work into the queue, not to redo it.",
+  "answers_to_task_questions": {
+    "Which typetree/alignment/layout operation causes this exact failure?": "TypeTreeGeneratorAPI (the IL2CPP-metadata-driven type-tree generator used by tools/mb_dump.py) mislabels the root node of List<String> fields as m_Type=\"string\" instead of \"vector\", while still emitting the correct Array/size/data children underneath. UnityPy's TypeTreeHelper.read_value() dispatches on node.m_Type via FUNCTION_READ_MAP first; \"string\" is in that map, so it reads the whole field as a scalar aligned string (ignoring the real Array children) and desyncs the reader for everything that follows. See class-contract.json for the exact mechanism and the fix (fix_mislabeled_vectors in tools/mb_dump.py).",
+    "Which exact serialized object identities failed, and can only those be reprocessed?": "Exactly one object: path_id=217 in sharedassets1.assets (byte_size 410952). Confirmed via out/mb_survey.json that this class has only one instance in the entire game. Yes - only this one object needed reprocessing; it was located directly by scanning env.objects for MonoBehaviour objects whose MonoScript resolves to this class name, without writing a full redump of the other ~2,300 classes."
+  },
+  "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors), already committed and pushed (PR #64, branch worktree-gentle-squishing-bird; reached this worktree's main-derived history via the merge commit 94d211139 / e97b53683 brought in by git pull). Also duplicated, with full standalone setup instructions, in tools/mb_retry_failed_classes.py.",
+  "evidence": [
+    "out/recon/tasks/T020/CLASS/22379dfdf824449b/class-contract.json",
+    "out/recon/tasks/T020/CLASS/22379dfdf824449b/recount.json",
+    "out/mb/PWC.Inventory.InventoryBuildData.jsonl.gz",
+    "out/mb/_stats.json (PWC.Inventory.InventoryBuildData now {\"ok\": 1}, no longer in erros)",
+    "docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md (downstream semantic use of the decoded data: 7 confirmed/inferred store 'Casas' bundle themes)",
+    "out/recon/store_house_bundles.json (resolved pack -> item-guid data, cross-referenced against store_catalog.json)"
+  ],
+  "unresolved_objects": "none for this class (1 of 1 instance resolved)",
+  "generalization_note": "The same fix_mislabeled_vectors patch almost certainly resolves most of the other T020/CLASS pending tasks: before this fix, out/mb/_stats.json had 126 failing classes, 43 with the identical EOFError signature and 81 with a related ValueError (byte-count mismatch, which is the same desync but caught before it ran fully off the end of the buffer). This was NOT verified for every class individually - attempting a bulk re-run across all ~124 remaining failing classes hit a real, independently-confirmed machine memory ceiling (see T020/CLASS/d723b7b66951bef8's attempt1-oom.log for an earlier, independent OOM at the same load step; LOOP_STATE.md 2026-11-21 entry has journalctl -k evidence of anon-rss reaching ~5.8 GB just to load datapack.unity3d on this 7.1 GB machine). tools/mb_retry_failed_classes.py is ready to rerun the remaining classes on a machine with more RAM; each one would still need its own task-by-task reconciliation like this one, since 'the same bug' is a hypothesis per class, not yet individually re-verified.",
+  "never_autoaccept": "This result is submitted for independent review (checkpoint state=evidence_ready -> state=review); it was not self-reviewed or self-accepted."
+}

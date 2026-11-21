@@ -8144,7 +8144,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "review",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.Inventory.InventoryBuildData",
@@ -8193,13 +8193,50 @@
         "out/recon/tasks/T020/CLASS/22379dfdf824449b/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/22379dfdf824449b/class-contract.json",
+          "sha256": "737306457945708cc17472720f10c7eec1cd5285d41477c1eff37b2574991ccd"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/22379dfdf824449b/recount.json",
+          "sha256": "72b331ce6f22508fac5d609ff090080e2a361813e5357e55af0e9493e5fbfb7d"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/22379dfdf824449b/result.json",
+          "sha256": "e73b4fedd0aeda26c1086356ab2611944585c0a53cdea477f12e41471440aca0"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "ba27724760b44ff0a0943d1f61f578db",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795303356.944362,
+          "lease_id": "be05e4ef10b9424bb5def4dbe976a076",
+          "checkpoint_at": 1795303448.1176546,
+          "state": "evidence_ready",
+          "note": "Root cause achado e corrigido (bug de mislabeling de List<String> no TypeTreeGeneratorAPI, ver class-contract.json). 1 de 1 instancia da classe no jogo decodificada e validada com check_read=True. Trabalho ja estava feito/commitado numa sessao anterior (PR #64); reconciliado aqui agora. Pronto para revisao independente.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/22379dfdf824449b/class-contract.json",
+              "sha256": "737306457945708cc17472720f10c7eec1cd5285d41477c1eff37b2574991ccd"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/22379dfdf824449b/recount.json",
+              "sha256": "72b331ce6f22508fac5d609ff090080e2a361813e5357e55af0e9493e5fbfb7d"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/22379dfdf824449b/result.json",
+              "sha256": "e73b4fedd0aeda26c1086356ab2611944585c0a53cdea477f12e41471440aca0"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Root cause achado e corrigido (bug de mislabeling de List<String> no TypeTreeGeneratorAPI, ver class-contract.json). 1 de 1 instancia da classe no jogo decodificada e validada com check_read=True. Trabalho ja estava feito/commitado numa sessao anterior (PR #64); reconciliado aqui agora. Pronto para revisao independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -8214,7 +8251,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "review",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.Inventory.InventorySkinsBuildData",
@@ -8263,13 +8300,50 @@
         "out/recon/tasks/T020/CLASS/90da446022c5664c/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/90da446022c5664c/class-contract.json",
+          "sha256": "977797acf58090e5b57cc5fb16449781564287b008da96c4dec951a99ce11ae3"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/90da446022c5664c/recount.json",
+          "sha256": "6805f6ba083aab6b310427b0b4c327ba7a86edf9ef3af75ee47b22fa909cfe96"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/90da446022c5664c/result.json",
+          "sha256": "2bd655d397f757385db76a871163b04300849ff6c69bb9122b9754efd90d3efd"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "241e7cfcdf15472e8ba43c5b5d6c563f",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795303464.830751,
+          "lease_id": "b5a9e0801a9642269cf7c52b9f82a170",
+          "checkpoint_at": 1795303512.6811256,
+          "state": "evidence_ready",
+          "note": "Mesmo bug/fix de T020/CLASS/22379dfdf824449b (InventoryBuildData). As 2 instancias no jogo decodificam e validam com check_read=True. Trabalho ja feito/commitado em sessao anterior (PR #64); reconciliado aqui. Pronto para revisao independente.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/90da446022c5664c/class-contract.json",
+              "sha256": "977797acf58090e5b57cc5fb16449781564287b008da96c4dec951a99ce11ae3"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/90da446022c5664c/recount.json",
+              "sha256": "6805f6ba083aab6b310427b0b4c327ba7a86edf9ef3af75ee47b22fa909cfe96"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/90da446022c5664c/result.json",
+              "sha256": "2bd655d397f757385db76a871163b04300849ff6c69bb9122b9754efd90d3efd"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Mesmo bug/fix de T020/CLASS/22379dfdf824449b (InventoryBuildData). As 2 instancias no jogo decodificam e validam com check_read=True. Trabalho ja feito/commitado em sessao anterior (PR #64); reconciliado aqui. Pronto para revisao independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -67488,7 +67562,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 67,
+  "revision": 73,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -68833,6 +68907,48 @@
       "task": "T025/HANDLER/00003cd1",
       "actor": "/root",
       "at": 1794697971.0663195
+    },
+    {
+      "revision": 68,
+      "action": "claim",
+      "task": "T020/CLASS/22379dfdf824449b",
+      "actor": "agente-artefatos-claude",
+      "at": 1795303356.984099
+    },
+    {
+      "revision": 69,
+      "action": "start",
+      "task": "T020/CLASS/22379dfdf824449b",
+      "actor": "agente-artefatos-claude",
+      "at": 1795303361.366586
+    },
+    {
+      "revision": 70,
+      "action": "checkpoint",
+      "task": "T020/CLASS/22379dfdf824449b",
+      "actor": "agente-artefatos-claude",
+      "at": 1795303448.1563525
+    },
+    {
+      "revision": 71,
+      "action": "claim",
+      "task": "T020/CLASS/90da446022c5664c",
+      "actor": "agente-artefatos-claude",
+      "at": 1795303464.8803673
+    },
+    {
+      "revision": 72,
+      "action": "start",
+      "task": "T020/CLASS/90da446022c5664c",
+      "actor": "agente-artefatos-claude",
+      "at": 1795303469.3015907
+    },
+    {
+      "revision": 73,
+      "action": "checkpoint",
+      "task": "T020/CLASS/90da446022c5664c",
+      "actor": "agente-artefatos-claude",
+      "at": 1795303512.7201035
     }
   ]
 }

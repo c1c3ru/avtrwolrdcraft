@@ -1,0 +1,29 @@
+{
+  "class": "PWC.Inventory.InventoryBuildData",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 1,
+    "err_message": "EOFError: read_str out of bounds"
+  },
+  "after": {
+    "ok": 1,
+    "bad": 0,
+    "err": 0
+  },
+  "total_instances_in_game": 1,
+  "instances_in_game_confirmed_by": "out/mb_survey.json (class seen exactly once across the whole datapack.unity3d scan)",
+  "affected_objects": [
+    {
+      "path_id": 217,
+      "assets_file": "sharedassets1.assets",
+      "byte_size": 410952,
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation_note": "1 of 1 known instance reprocessed and resolved; 0 unknowns remain for this class. No full bundle redump was performed - only this single object's path_id/file was targeted (located via a one-off scan of env.objects filtered to MonoBehaviour + matching class name), consistent with the task's 'without redumping the full bundle' constraint.",
+  "output_artifact": "out/mb/PWC.Inventory.InventoryBuildData.jsonl.gz (1 line, same schema as the rest of out/mb/*.jsonl.gz: decoded fields + _path_id + _file)",
+  "stats_json_update": "out/mb/_stats.json: PWC.Inventory.InventoryBuildData moved from erros{...} + stats{err:1} to stats{ok:1}, entry removed from erros"
+}

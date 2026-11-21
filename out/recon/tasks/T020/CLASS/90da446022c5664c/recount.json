@@ -1,0 +1,36 @@
+{
+  "class": "PWC.Inventory.InventorySkinsBuildData",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 2,
+    "err_message": "EOFError: read_str out of bounds"
+  },
+  "after": {
+    "ok": 2,
+    "bad": 0,
+    "err": 0
+  },
+  "total_instances_in_game": 2,
+  "instances_in_game_confirmed_by": "out/mb/_stats.json stats entry before fix: {\"err\": 2}, matching exactly 2 instances found while scanning datapack.unity3d",
+  "affected_objects": [
+    {
+      "path_id": 721792,
+      "assets_file": "resources.assets",
+      "byte_size": 41604,
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 721793,
+      "assets_file": "resources.assets",
+      "byte_size": 372,
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation_note": "2 of 2 known instances reprocessed and resolved; 0 unknowns remain for this class. Only these two objects were targeted (located by scanning env.objects filtered to MonoBehaviour + matching class name), no full bundle redump performed.",
+  "output_artifact": "out/mb/PWC.Inventory.InventorySkinsBuildData.jsonl.gz (2 lines)",
+  "stats_json_update": "out/mb/_stats.json: PWC.Inventory.InventorySkinsBuildData moved from erros{...} + stats{err:2} to stats{ok:2}, entry removed from erros"
+}

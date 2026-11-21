@@ -1,0 +1,39 @@
+{
+  "class": "PWC.Inventory.InventorySkinsBuildData",
+  "assembly": "Assembly-CSharp",
+  "unity_class_id": "MonoBehaviour (114)",
+  "original_failure": "EOFError: read_str out of bounds (via tools/mb_dump.py, TypeTreeGeneratorAPI-generated nodes)",
+  "root_cause": {
+    "summary": "Same bug as T020/CLASS/22379dfdf824449b (PWC.Inventory.InventoryBuildData): TypeTreeGeneratorAPI labels the ROOT node of List<String> fields with m_Type=\"string\" instead of \"vector\", keeping the correct Array/size/data children underneath but causing UnityPy's reader to treat the field as a scalar string.",
+    "affected_fields_here": "flagsToSkins.packs[].spines[].skins (List<String>) - the per-SpineType skin-name list inside each fashion pack's flag entry.",
+    "mechanism": "Identical dispatch bug: UnityPy.helpers.TypeTreeHelper.read_value() picks FUNCTION_READ_MAP[\"string\"] = read_aligned_string for the mislabeled node, ignoring its real Array children, desyncing every field that follows.",
+    "distinguishing_signal": "Same as the InventoryBuildData case: the mislabeled node's first child is named \"Array\" whose own \"data\" child has m_Type==\"string\" (list of strings), not \"char\" (a real scalar string)."
+  },
+  "fix": {
+    "location": "tools/mb_dump.py, function fix_mislabeled_vectors(nodes) - same fix, no class-specific change needed; the function is generic over any List<String> field.",
+    "status": "Landed on worktree-gentle-squishing-bird (PR #64) on 2026-11-07/2026-11-21."
+  },
+  "fields": {
+    "m_GameObject": "PPtr<GameObject>",
+    "m_Enabled": "UInt8",
+    "m_Script": "PPtr<MonoScript>",
+    "m_Name": "string",
+    "flagsToSkins": {
+      "type": "FlagsToSkinsMap (custom, non-Unity class)",
+      "packs": {
+        "type": "List<Pack>",
+        "Pack.flag": "InventoryFlagType (int enum)",
+        "Pack.spines": {
+          "type": "List<SpineTypeToSkins>",
+          "SpineTypeToSkins.spineType": "SpineType (int enum)",
+          "SpineTypeToSkins.skins": "List<String> - THIS was the mislabeled field"
+        }
+      }
+    }
+  },
+  "note_on_moda_pipeline": "This class is NOT the data source used for the already-shipped Moda pack content in docs/STORE_BUNDLE_CONTENTS.md - that pipeline reads a CSV TextAsset (InventorySkinsBuildData.MAP_CSV_PATH = \"AvatarMaker/Data/Avatar_MKR_Packs\") via tools/pack_texture_coverage.py, bypassing this ScriptableObject's own serialized fields entirely. Fixing this class's decoding is still useful as an independent cross-check / second source for the same flag->skins mapping, and for provenance completeness of out/mb/_stats.json.",
+  "validation": {
+    "method": "check_read=True",
+    "result": "Passes exactly for both instances of this class in the game (byte_size 41604 and 372 respectively)."
+  }
+}
