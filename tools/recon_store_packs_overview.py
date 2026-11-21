@@ -16,13 +16,22 @@ FURNITURE_CATS = {'carpet', 'wall', 'ceiling', 'floor', 'table', 'chair', 'lamp'
                    'desk', 'bench', 'sticker', 'box', 'basket', 'plate', 'cup', 'bowl', 'glass', 'bottle',
                    'candle', 'towel', 'soap', 'bag', 'pool', 'door', 'window', 'stair', 'balcony', 'garage',
                    'kitchen', 'bathroom', 'bedroom', 'toy', 'book', 'small', 'big', 'tray', 'napkin', 'fork',
-                   'knife', 'spoon'}
-PET_CATS = {'dog', 'cat', 'pet', 'plushie'}
-BABY_CATS = {'baby', 'toddler', 'pacifier', 'wrap'}
-CELEB_CATS = {'balloon', 'candle', 'food', 'cake'}
+                   'knife', 'spoon', 'sticky', 'pencil', 'garden', 'yard', 'pouffe', 'decor', 'kettle',
+                   'ornament', 'wardrobe', 'pillow', 'light', 'statue', 'coffee', 'seed', 'ugc', 'bush',
+                   'tree', 'fence', 'sand'}
+PET_CATS = {'dog', 'cat', 'pet', 'plushie', 'hamster', 'horse'}
+BABY_CATS = {'baby', 'toddler', 'pacifier', 'wrap', 'kids', 'kid'}
+CELEB_CATS = {'balloon', 'candle', 'food', 'cake', 'gift'}
+# familias de pacote ja confirmadas em docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md como comodos de um tema de
+# Casas (por prefixo de nome compartilhado) - sobrescreve o conteudo dos itens, que pode ser misto (ex.: um
+# quarto de bebe dentro da casa Natural Chic ainda e um comodo, nao um pacote de bebe avulso).
+KNOWN_HOUSE_ROOM_PREFIXES = ('BubbleGlam', 'GalxeHM', 'IslandHM', 'NaturalChic', 'SnowyHM',
+                              'KawaiiHouseP29', 'KawaiiHouseP30', 'ModernGarage', 'ModernLivingRoomAndBalcony')
 
 
 def bucket_for(name, p, by_guid):
+    if name.startswith(KNOWN_HOUSE_ROOM_PREFIXES):
+        return 'Casa/comodo'
     items = p['items'] if isinstance(p['items'], list) else []
     cats = collections.Counter()
     for ig in items:
@@ -39,25 +48,21 @@ def bucket_for(name, p, by_guid):
     # sinais fortes por nome primeiro
     if re.search(r'house|hm(bathroom|bedroom|kitchen|living|lounge|lumi|sky|vega|balcony|beach|outdoors)|mansion|dollhouse', nl):
         return 'Casa/comodo'
-    if re.search(r'vehicle|truck|limo|scooter|bicycle|tractor|^rv|boat|catamarn', nl):
+    if re.search(r'vehicle|truck|limo|scooter|bicycle|tractor|^rv|boat|catamarn|longboard', nl):
         return 'Veiculo'
-    if re.search(r'wedding|birthday|party|graduation|newyears|pumpkin|valentine', nl):
+    if re.search(r'wedding|birthday|party|graduation|newyears|pumpkin|valentine|costumes?\d|winterofjoy', nl):
         return 'Celebracao'
-    if re.search(r'sport|basketball|football|gym|tennis|ski|skate|cheerlead', nl):
+    if re.search(r'sport|basketball|football|gym|tennis|ski|skate|cheerlead|horsegrooming', nl):
         return 'Esporte'
-    # fallback por conteudo dos itens
-    if furn / total > 0.35:
-        return 'Casa/comodo'
-    if pet / total > 0.3:
-        return 'Pet'
-    if baby / total > 0.3:
-        return 'Bebe/crianca'
-    if celeb / total > 0.3:
-        return 'Celebracao'
-    if char / total > 0.3:
+    if re.search(r'^y2k|^pf\d|pf\d+box|daizy|daisy|makeup|glam|hiphop|popstar|swim|fashion|edgy|prepto', nl):
         return 'Moda/avatar'
     if total == 0:
         return 'Bundle-capa (0 itens diretos)'
+    # fallback por conteudo dos itens: escolhe o grupo com maior contagem, exige minimo de 20% para aceitar
+    scores = {'Casa/comodo': furn, 'Pet': pet, 'Bebe/crianca': baby, 'Celebracao': celeb, 'Moda/avatar': char}
+    best_bucket, best_score = max(scores.items(), key=lambda kv: kv[1])
+    if best_score / total > 0.2:
+        return best_bucket
     return 'Indefinido'
 
 
