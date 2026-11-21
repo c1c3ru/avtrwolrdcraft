@@ -1,5 +1,23 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: fila formal descoberta e usada; 124 classes restantes triadas sem RAM — 2026-11-22
+- Descoberta: já existe uma fila formal de tarefas (`tools/recon_queue.py`, `reports/recon/tasks.json`,
+  908 tarefas) coordenando o trabalho entre as sessões/worktrees — família `T020/CLASS/<hash>`, uma por
+  classe de MonoBehaviour que falha na extração. Reconciliei `InventoryBuildData`/`InventorySkinsBuildData`
+  nela (PR #65): `claim` → `start` → `checkpoint evidence_ready`, ambas em estado `review` aguardando
+  revisor independente (não autoaceitei, a fila proíbe).
+- Achado: `TypeTreeGenerator.get_nodes_as_json()` só precisa de `il2cpp_in/` + `data.unity3d` (não o
+  `datapack.unity3d` de 1,3 GB que sempre dá OOM) — dá pra testar a hipótese "mesmo bug de
+  `fix_mislabeled_vectors`" pras 124 classes restantes sem risco de travar a máquina. Resultado: 65
+  provavelmente já resolvidas pelo fix existente (falta só confirmar com o datapack), ~19+ são limitação
+  da própria biblioteca `TypeTreeGeneratorAPI` (null ref em campo de dicionário genérico cru, ex.
+  `SerializableDictionaryBase<TKey,TValue>` — afeta 12 classes `AvatarMaker*ColorsConfig`/`*SubcategoriesConfig`,
+  relevante pro trabalho paralelo do editor de avatar), ~13+ são tipos removidos do binário shipado
+  (`PWC.EditorApp.*`, ferramental de editor/dev, confirmado ausente também no `out/cpp2il` decompilado),
+  9 têm causa raiz ainda não diagnosticada. Detalhe completo: `docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`.
+- Nada disso foi marcado `done` na fila — é triagem/hipótese, não resolução (acceptance de cada tarefa
+  exige ler objetos reais com `check_read=True`, que precisa do datapack).
+
 ## Loja: Mansão e mais temas de Casas confirmados irresolúveis; Modern House confirmado — 2026-11-22
 Continuando os pendentes de `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md` (PR #64, aberta).
 - `ModernHousePB9Box_Pack` passou de "incerto" pra **confirmado**: busca por "modern" em todo `store_catalog.json`
