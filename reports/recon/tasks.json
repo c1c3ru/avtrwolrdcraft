@@ -3239,7 +3239,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "Game.Level.LevelCatTunnel",
@@ -3288,13 +3288,42 @@
         "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/class-contract.json",
+          "sha256": "f0f8fc79613d82f747d0e4abffae36dc4bc72abcf04b21597beb54f698df88bf"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/recount.json",
+          "sha256": "96644d0afb642988921baa47b480e8491e02c487525a2802d6228968482e0c1e"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "0aefb0005c424b56a786153d487f62cb",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367698.3185706,
+          "lease_id": "d2afce2d0e634570bb7042c7b5047422",
+          "checkpoint_at": 1795367698.7935827,
+          "state": "blocked_external",
+          "note": "Game.Level.LevelCatTunnel: campo `_dropAreas: SerializableDictionaryBase<Side, LevelDropArea>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelCatTunnel.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/class-contract.json",
+              "sha256": "f0f8fc79613d82f747d0e4abffae36dc4bc72abcf04b21597beb54f698df88bf"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/recount.json",
+              "sha256": "96644d0afb642988921baa47b480e8491e02c487525a2802d6228968482e0c1e"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Game.Level.LevelCatTunnel: campo `_dropAreas: SerializableDictionaryBase<Side, LevelDropArea>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelCatTunnel.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5203,7 +5232,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "Game.Level.MovingTraingBackground.LevelStationButton",
@@ -5252,13 +5281,42 @@
         "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/class-contract.json",
+          "sha256": "a806ec4bcbe1eccfbbc9e21a65e1d443abfd59321760511733208f938f435b7c"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/recount.json",
+          "sha256": "eaa6897cc2da2fd5b3d3590c881e15d2230c6c14653e4e3f8e2262a0041c7774"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "450deb2f380c427aaf97abce33ef0780",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367706.9154196,
+          "lease_id": "a3b2d81db5864f2cbc2e0cb4043fe3fd",
+          "checkpoint_at": 1795367707.684001,
+          "state": "blocked_external",
+          "note": "Game.Level.MovingTraingBackground.LevelStationButton: campo `_buttonsStates: SerializableDictionaryBase<SelectionState, LevelStationButtonState>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/MovingTraingBackground/LevelStationButton.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 12 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/class-contract.json",
+              "sha256": "a806ec4bcbe1eccfbbc9e21a65e1d443abfd59321760511733208f938f435b7c"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/recount.json",
+              "sha256": "eaa6897cc2da2fd5b3d3590c881e15d2230c6c14653e4e3f8e2262a0041c7774"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "Game.Level.MovingTraingBackground.LevelStationButton: campo `_buttonsStates: SerializableDictionaryBase<SelectionState, LevelStationButtonState>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/MovingTraingBackground/LevelStationButton.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 12 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5343,7 +5401,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerBabyColorsConfig",
@@ -5392,13 +5450,42 @@
         "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/class-contract.json",
+          "sha256": "693dee46cf82d5b28e413591af991482460598ffdb584909245cc44229df27c7"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/recount.json",
+          "sha256": "b190559dfa5361b27e3e759db63925d6a97bd687a613e2cfb0cf3d59e24a78af"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "9be32a49b85240fd9653442b39bfe778",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367713.19583,
+          "lease_id": "33ce54359f9a49ab8d3aa61f6151facb",
+          "checkpoint_at": 1795367713.6459703,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerBabyColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<BabyCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabyColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/class-contract.json",
+              "sha256": "693dee46cf82d5b28e413591af991482460598ffdb584909245cc44229df27c7"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/recount.json",
+              "sha256": "b190559dfa5361b27e3e759db63925d6a97bd687a613e2cfb0cf3d59e24a78af"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerBabyColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<BabyCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabyColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5413,7 +5500,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig",
@@ -5462,13 +5549,42 @@
         "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/class-contract.json",
+          "sha256": "b63317d101d7b7ead3a68a61b3966e61c57405f46159d0c030c8396bac1b8cfb"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/recount.json",
+          "sha256": "ab386ee4cad979d01db87fb7eddd31efb9f311789685eb35b7025c60c2adca40"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "3fbf55b8116e4dbf9a5f520a8b5e6533",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367718.3984263,
+          "lease_id": "42600a0cf7714491b5533606809d2897",
+          "checkpoint_at": 1795367719.1100929,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<BabyCategoryType, BabySubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabySubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/class-contract.json",
+              "sha256": "b63317d101d7b7ead3a68a61b3966e61c57405f46159d0c030c8396bac1b8cfb"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/recount.json",
+              "sha256": "ab386ee4cad979d01db87fb7eddd31efb9f311789685eb35b7025c60c2adca40"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<BabyCategoryType, BabySubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabySubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5483,7 +5599,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCarColorsConfig",
@@ -5532,13 +5648,42 @@
         "out/recon/tasks/T020/CLASS/379ca071ca92e791/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/class-contract.json",
+          "sha256": "461dab43a1452320638174da5d6665ded1139fd253cf14efbf959eaf8dc3309a"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/recount.json",
+          "sha256": "11cd2c865a7865d96558b4eb8253389760f5d5a43cca02405642b3042a13987a"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "987bd73619a247709d4c4af1683fb651",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367724.12338,
+          "lease_id": "eced4d60ae8e429dbdeb5b1dbc3d6059",
+          "checkpoint_at": 1795367724.5723803,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerCarColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<CarCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/class-contract.json",
+              "sha256": "461dab43a1452320638174da5d6665ded1139fd253cf14efbf959eaf8dc3309a"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/recount.json",
+              "sha256": "11cd2c865a7865d96558b4eb8253389760f5d5a43cca02405642b3042a13987a"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerCarColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<CarCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5553,7 +5698,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig",
@@ -5602,13 +5747,42 @@
         "out/recon/tasks/T020/CLASS/ec772f214266864a/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/class-contract.json",
+          "sha256": "ebbb774153f9c5bf2b50fbee3ec9836d40f0e832a58028a05b87b2ae4ea01906"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/recount.json",
+          "sha256": "6009cbbe626a090d4a0615f4133ee0c6613dccfe0bdf70cc2bdacfb29d05f528"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "8800f0f6564a43e482cc8bba54cee63f",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367729.30001,
+          "lease_id": "5b55c70042d74e23acb3c30402243132",
+          "checkpoint_at": 1795367729.7384522,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<CarCategoryType, CarSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/class-contract.json",
+              "sha256": "ebbb774153f9c5bf2b50fbee3ec9836d40f0e832a58028a05b87b2ae4ea01906"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/recount.json",
+              "sha256": "6009cbbe626a090d4a0615f4133ee0c6613dccfe0bdf70cc2bdacfb29d05f528"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<CarCategoryType, CarSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5693,7 +5867,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCatColorsConfig",
@@ -5742,13 +5916,42 @@
         "out/recon/tasks/T020/CLASS/c67d866343f1dff2/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/class-contract.json",
+          "sha256": "9abc688f6dae8d85968d1e35ee384439e22066fc6ba00b42438be7ac69d3ecaf"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/recount.json",
+          "sha256": "13ca7f7658573f2b04c57005abe7a6b08d276dffe07a23980a4de86d9464dd21"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "5ea1aea7634c48f19b12befad7c7cd1e",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367734.4631293,
+          "lease_id": "7fd18abea49f4590a61816897875626f",
+          "checkpoint_at": 1795367734.9094384,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerCatColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<CatCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/class-contract.json",
+              "sha256": "9abc688f6dae8d85968d1e35ee384439e22066fc6ba00b42438be7ac69d3ecaf"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/recount.json",
+              "sha256": "13ca7f7658573f2b04c57005abe7a6b08d276dffe07a23980a4de86d9464dd21"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerCatColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<CatCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5763,7 +5966,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig",
@@ -5812,13 +6015,42 @@
         "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/class-contract.json",
+          "sha256": "b60a87c45afe101605f1be52ce3ee0b3317817dc6dbad4f0fa6fe042c7fbc38f"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/recount.json",
+          "sha256": "0783992003f5fb90479829d2169e2b9cefaa19da8c7c9f7c7ab0235874a5750a"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "b0bed09592994a368a29f519d7991275",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367739.7146165,
+          "lease_id": "84ccadb894644b41bf8f9ba6f0ba8d09",
+          "checkpoint_at": 1795367740.171995,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<CatCategoryType, CatSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/class-contract.json",
+              "sha256": "b60a87c45afe101605f1be52ce3ee0b3317817dc6dbad4f0fa6fe042c7fbc38f"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/recount.json",
+              "sha256": "0783992003f5fb90479829d2169e2b9cefaa19da8c7c9f7c7ab0235874a5750a"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<CatCategoryType, CatSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5833,7 +6065,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig",
@@ -5882,13 +6114,42 @@
         "out/recon/tasks/T020/CLASS/82f94aca75d93ede/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/class-contract.json",
+          "sha256": "ef220fc88528e678cf37277a360172e6e491e5606c7fb13f59655832a345b195"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/recount.json",
+          "sha256": "8294e0bd00bd3ff0f1c4583713b63fa06802358602b4047633d3fe9c905acd35"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "7875d7542bea4f3795825328916a4776",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367744.8804424,
+          "lease_id": "44abc54b654e4689a1ae884b494195f9",
+          "checkpoint_at": 1795367745.326749,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/class-contract.json",
+              "sha256": "ef220fc88528e678cf37277a360172e6e491e5606c7fb13f59655832a345b195"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/recount.json",
+              "sha256": "8294e0bd00bd3ff0f1c4583713b63fa06802358602b4047633d3fe9c905acd35"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5903,7 +6164,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig",
@@ -5952,13 +6213,42 @@
         "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/class-contract.json",
+          "sha256": "82e63cc559d7c1cab4ccc44934a6af4601e6cefa986c118eef4f8bbd3f4ea688"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/recount.json",
+          "sha256": "19db61e47db668d216aa539b5cbfc054af5b694870904d19ab6fd48a3602a541"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "a915e96b57b94cf2b1ad2b92cfcbaf7b",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367750.0309217,
+          "lease_id": "9b912a21078041edbe7069b68cf3973e",
+          "checkpoint_at": 1795367750.4801764,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<CharacterCategoryType, CharacterSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/class-contract.json",
+              "sha256": "82e63cc559d7c1cab4ccc44934a6af4601e6cefa986c118eef4f8bbd3f4ea688"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/recount.json",
+              "sha256": "19db61e47db668d216aa539b5cbfc054af5b694870904d19ab6fd48a3602a541"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<CharacterCategoryType, CharacterSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -5973,7 +6263,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerDogColorsConfig",
@@ -6022,13 +6312,42 @@
         "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/class-contract.json",
+          "sha256": "2ff99bc5e8c97b79366f56950feb014a2572708c79d912b0b5fd3babddb5d027"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/recount.json",
+          "sha256": "f45a97ffed2d2cbb60b258cd66ed6958d34efae4c7a92c35d5819da04c868aba"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "f4f2e9420d884aee95c83f2e47c066c4",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367755.1950953,
+          "lease_id": "415f084267ba4284ba7e1122dc02279d",
+          "checkpoint_at": 1795367755.777042,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerDogColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<DogCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/class-contract.json",
+              "sha256": "2ff99bc5e8c97b79366f56950feb014a2572708c79d912b0b5fd3babddb5d027"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/recount.json",
+              "sha256": "f45a97ffed2d2cbb60b258cd66ed6958d34efae4c7a92c35d5819da04c868aba"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerDogColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<DogCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6043,7 +6362,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig",
@@ -6092,13 +6411,42 @@
         "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/class-contract.json",
+          "sha256": "ac6010449a188f48e588310de255c9c6a315bf21abc602b5a58870a4ced56637"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/recount.json",
+          "sha256": "8f07fdabbed01f6e02757dfb41d0635574cb20c97448017020bc690852f4a4ea"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "bcb37414169f434eb697e75ed4bb7fb6",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367760.7018898,
+          "lease_id": "554ee426ffe64c2d8230488b95b3efc6",
+          "checkpoint_at": 1795367761.156164,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<DogCategoryType, CatSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/class-contract.json",
+              "sha256": "ac6010449a188f48e588310de255c9c6a315bf21abc602b5a58870a4ced56637"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/recount.json",
+              "sha256": "8f07fdabbed01f6e02757dfb41d0635574cb20c97448017020bc690852f4a4ea"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<DogCategoryType, CatSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6113,7 +6461,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerHorseColorsConfig",
@@ -6162,13 +6510,42 @@
         "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/class-contract.json",
+          "sha256": "07e6ce909d2a889087ac621e3b01b170ac899407d8dcc28e88e15a5739ed1992"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/recount.json",
+          "sha256": "97ff7b8ee55f5bc0ae2f18ffc78941a30837a7b4ae4e6b3d707d69fcfc65e945"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "9753c8f8d60449138570ef2cc3f2772f",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367765.8941684,
+          "lease_id": "537c371730cd42019bb116e00bf4fd9c",
+          "checkpoint_at": 1795367766.3343167,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerHorseColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<HorseCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/class-contract.json",
+              "sha256": "07e6ce909d2a889087ac621e3b01b170ac899407d8dcc28e88e15a5739ed1992"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/recount.json",
+              "sha256": "97ff7b8ee55f5bc0ae2f18ffc78941a30837a7b4ae4e6b3d707d69fcfc65e945"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerHorseColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<HorseCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6183,7 +6560,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig",
@@ -6232,13 +6609,42 @@
         "out/recon/tasks/T020/CLASS/98ee43171e398598/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/class-contract.json",
+          "sha256": "fbccd904b52de01f3c673a6be773a6c9adb625966d7cfa7a66a70332b0851b70"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/recount.json",
+          "sha256": "3e47a67c4b5d4c6a847b6367aa554532113e60180b100973c074ab3f55274c74"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "a246446cadd847208bd0c62581bb62db",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367771.0244775,
+          "lease_id": "760840ca30654b66b56577deca3037fe",
+          "checkpoint_at": 1795367771.4705882,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<HorseCategoryType, HorseSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/class-contract.json",
+              "sha256": "fbccd904b52de01f3c673a6be773a6c9adb625966d7cfa7a66a70332b0851b70"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/recount.json",
+              "sha256": "3e47a67c4b5d4c6a847b6367aa554532113e60180b100973c074ab3f55274c74"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<HorseCategoryType, HorseSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6253,7 +6659,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig",
@@ -6302,13 +6708,42 @@
         "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/class-contract.json",
+          "sha256": "62bc1652c21c8c63cd3f82a374cce91299247e21ac6c491d6a66dfbcee1accf9"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/recount.json",
+          "sha256": "1acb95b6c438a26b5614f246d4a78e44cb9f5016077cf94c0b6538191d8961cc"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "0050d65c393245d38449a57b9c6a5e27",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367776.2074485,
+          "lease_id": "5ecd5d8c713a4cf9928a5c5236103a9f",
+          "checkpoint_at": 1795367776.7103052,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<ToddlerCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/class-contract.json",
+              "sha256": "62bc1652c21c8c63cd3f82a374cce91299247e21ac6c491d6a66dfbcee1accf9"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/recount.json",
+              "sha256": "1acb95b6c438a26b5614f246d4a78e44cb9f5016077cf94c0b6538191d8961cc"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<ToddlerCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6323,7 +6758,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig",
@@ -6372,13 +6807,42 @@
         "out/recon/tasks/T020/CLASS/3efb39891b0bca92/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/class-contract.json",
+          "sha256": "979310c8d3652af1e5fccf41fa0bf33067006fbc37cece5543afe71bd392828b"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/recount.json",
+          "sha256": "3daa011aa66beab1f4c4f925ecc600ac1565318e4ebf6404261f04e052ad2585"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "4d9687ac06414d94a157b546b7a73366",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367782.2500467,
+          "lease_id": "22742763838341d8a29fb72da2fda84a",
+          "checkpoint_at": 1795367782.802169,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<ToddlerCategoryType, ToddlerSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/class-contract.json",
+              "sha256": "979310c8d3652af1e5fccf41fa0bf33067006fbc37cece5543afe71bd392828b"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/recount.json",
+              "sha256": "3daa011aa66beab1f4c4f925ecc600ac1565318e4ebf6404261f04e052ad2585"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<ToddlerCategoryType, ToddlerSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6463,7 +6927,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMakerLobby.AvatarMakerLobbyManager",
@@ -6512,13 +6976,42 @@
         "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/class-contract.json",
+          "sha256": "70f4c4a1852e275d7046861ea30c2d4b3b22b1cb60e47adc211d4c79db77057b"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/recount.json",
+          "sha256": "26d00a37e5badd3c2de2eed844a393d70c09bcb14c3ccd9d4b3ae547cf212859"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "0af3014648c744c39f26669e43a2e19f",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367788.0037584,
+          "lease_id": "6381311e35f8405fba077d364bfc48ec",
+          "checkpoint_at": 1795367788.5399916,
+          "state": "blocked_external",
+          "note": "PWC.AvatarMakerLobby.AvatarMakerLobbyManager: campo `_filledSlotPrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarMakerLobbyFilledSlot>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMakerLobby/AvatarMakerLobbyManager.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/class-contract.json",
+              "sha256": "70f4c4a1852e275d7046861ea30c2d4b3b22b1cb60e47adc211d4c79db77057b"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/recount.json",
+              "sha256": "26d00a37e5badd3c2de2eed844a393d70c09bcb14c3ccd9d4b3ae547cf212859"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.AvatarMakerLobby.AvatarMakerLobbyManager: campo `_filledSlotPrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarMakerLobbyFilledSlot>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMakerLobby/AvatarMakerLobbyManager.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9920,7 +10413,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.Level.LevelSkinsRandomizer",
@@ -9969,13 +10462,42 @@
         "out/recon/tasks/T020/CLASS/debb94ab279ef194/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/class-contract.json",
+          "sha256": "fd809a323703a0aa18df44a4dc1d4ed4a63bfb875e1dfe21aef482f4b004a7e1"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/recount.json",
+          "sha256": "700399865409a0f4597915620895fa536a500e33da2d05547d32b9f638a9f7cc"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "061affc6d4e8459c9876370c13982b2f",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367793.6722374,
+          "lease_id": "3e58a7f3b9e4459296e849c3aa3aa028",
+          "checkpoint_at": 1795367794.1800418,
+          "state": "blocked_external",
+          "note": "PWC.Level.LevelSkinsRandomizer: campo `_skinsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, RandomSkinsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelSkinsRandomizer.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 3 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/class-contract.json",
+              "sha256": "fd809a323703a0aa18df44a4dc1d4ed4a63bfb875e1dfe21aef482f4b004a7e1"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/recount.json",
+              "sha256": "700399865409a0f4597915620895fa536a500e33da2d05547d32b9f638a9f7cc"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.Level.LevelSkinsRandomizer: campo `_skinsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, RandomSkinsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelSkinsRandomizer.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 3 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -10271,7 +10793,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb",
@@ -10320,13 +10842,42 @@
         "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/class-contract.json",
+          "sha256": "9762ab549f62eb637b157f8b1e30438276138ef3a91c847cc12f17604892ed80"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/recount.json",
+          "sha256": "0ba162da13b71a3c08338dd640df570dad986de7b00d41e7bec2fd32f3a69785"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "5cb86636f7cc4fefb216c7bccd861b54",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367799.2658417,
+          "lease_id": "daad736179bb40e2b5dd8225c5fd2ddd",
+          "checkpoint_at": 1795367799.7944,
+          "state": "blocked_external",
+          "note": "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb: campo `_prizesSprites: SerializableDictionaryBase<PrizeType, Sprite>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/AchievementsApp/AchievementDetailThumb.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/class-contract.json",
+              "sha256": "9762ab549f62eb637b157f8b1e30438276138ef3a91c847cc12f17604892ed80"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/recount.json",
+              "sha256": "0ba162da13b71a3c08338dd640df570dad986de7b00d41e7bec2fd32f3a69785"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb: campo `_prizesSprites: SerializableDictionaryBase<PrizeType, Sprite>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/AchievementsApp/AchievementDetailThumb.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -10341,7 +10892,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.ContactsContent",
@@ -10390,13 +10941,42 @@
         "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/class-contract.json",
+          "sha256": "cfeed8862517420ffc6a29282f25365b2cc2c0d34aa04284dd466b2f18b5043d"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/recount.json",
+          "sha256": "1195be3670c42cd0d647f0a21ac63445e54c502d98a27675b4eb97cad7006601"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "6e96092b82bb44949cac247770e962e5",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367804.815192,
+          "lease_id": "be9bf87592344904957daf2a8c46c736",
+          "checkpoint_at": 1795367805.3001623,
+          "state": "blocked_external",
+          "note": "PWC.LevelPhone.ContactsContent: campo `_contactSpinePrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarSpineSkinsManagerBase>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/ContactsContent.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/class-contract.json",
+              "sha256": "cfeed8862517420ffc6a29282f25365b2cc2c0d34aa04284dd466b2f18b5043d"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/recount.json",
+              "sha256": "1195be3670c42cd0d647f0a21ac63445e54c502d98a27675b4eb97cad7006601"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.LevelPhone.ContactsContent: campo `_contactSpinePrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarSpineSkinsManagerBase>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/ContactsContent.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -10411,7 +10991,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.DeliveryApp.DeliveryContent",
@@ -10460,13 +11040,42 @@
         "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/class-contract.json",
+          "sha256": "4f6cdb89d859924ae7670d1223c85dc0de643acfadde12261b6f23aff85e1dec"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/recount.json",
+          "sha256": "3af7e82950157452ac6016e99a9df4381206899dd97f0715ec787b644a993067"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "a123154866894229a452a257fab38e9d",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367810.3413415,
+          "lease_id": "ad9284d40d754a58beb27a58f6ed93fe",
+          "checkpoint_at": 1795367810.8416922,
+          "state": "blocked_external",
+          "note": "PWC.LevelPhone.DeliveryApp.DeliveryContent: campo `_pageManagers: SerializableDictionaryBase<DeliveryAppStepType, DeliveryPageManagerBase>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/DeliveryApp/DeliveryContent.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/class-contract.json",
+              "sha256": "4f6cdb89d859924ae7670d1223c85dc0de643acfadde12261b6f23aff85e1dec"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/recount.json",
+              "sha256": "3af7e82950157452ac6016e99a9df4381206899dd97f0715ec787b644a993067"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.LevelPhone.DeliveryApp.DeliveryContent: campo `_pageManagers: SerializableDictionaryBase<DeliveryAppStepType, DeliveryPageManagerBase>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/DeliveryApp/DeliveryContent.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -10481,7 +11090,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.PhoneBackground",
@@ -10530,13 +11139,42 @@
         "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/class-contract.json",
+          "sha256": "430446f84cbf232e585ed74b8a57266766b6dc28cefa24b33cd23af5a92c235e"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/recount.json",
+          "sha256": "acd26800868eac19712185629490669fec9ceb172d7d96ccf245115f640ddce6"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "3e2e55838456428089181ebf6d0d9d63",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367816.2926617,
+          "lease_id": "f0defec8fe96411abf7d30cd20f6262a",
+          "checkpoint_at": 1795367816.8711843,
+          "state": "blocked_external",
+          "note": "PWC.LevelPhone.PhoneBackground: campo `_backgroundColors: SerializableDictionaryBase<ApplicationType, ApplicationBackgroundData>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneBackground.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/class-contract.json",
+              "sha256": "430446f84cbf232e585ed74b8a57266766b6dc28cefa24b33cd23af5a92c235e"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/recount.json",
+              "sha256": "acd26800868eac19712185629490669fec9ceb172d7d96ccf245115f640ddce6"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.LevelPhone.PhoneBackground: campo `_backgroundColors: SerializableDictionaryBase<ApplicationType, ApplicationBackgroundData>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneBackground.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -10551,7 +11189,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.PhoneContentIcon",
@@ -10600,13 +11238,42 @@
         "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/class-contract.json",
+          "sha256": "617e3ace48dd443b3768b16a71265f22f2bcf81dafe79270303aedf7bd974e70"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/recount.json",
+          "sha256": "44d1b52a1914ac7f25613c8b418f8f6a1651df5a2b57391d64ce7ac4c6b4b339"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "ac9d48b9ca5b4f6fb6071f4972ed0c98",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367821.8315637,
+          "lease_id": "f430fb99802b4c1888c0cc0e6f09bc08",
+          "checkpoint_at": 1795367822.2630713,
+          "state": "blocked_external",
+          "note": "PWC.LevelPhone.PhoneContentIcon: campo `_applicationsIcons: SerializableDictionaryBase<ApplicationType, Sprite>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneContentIcon.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/class-contract.json",
+              "sha256": "617e3ace48dd443b3768b16a71265f22f2bcf81dafe79270303aedf7bd974e70"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/recount.json",
+              "sha256": "44d1b52a1914ac7f25613c8b418f8f6a1651df5a2b57391d64ce7ac4c6b4b339"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.LevelPhone.PhoneContentIcon: campo `_applicationsIcons: SerializableDictionaryBase<ApplicationType, Sprite>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneContentIcon.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -10621,7 +11288,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.PhoneSeparator",
@@ -10670,13 +11337,42 @@
         "out/recon/tasks/T020/CLASS/dad413b840f63fce/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/class-contract.json",
+          "sha256": "ec859e8f6ac63cc95f4380e9943906e6c8466486e918e5efc1ecc9085883372a"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/recount.json",
+          "sha256": "96009878f5381b9779910482fc23707ca271fcc59061e159ff9ce7e7718f6e34"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "2da1690f9dda46129736af2147e24bcf",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367826.8739471,
+          "lease_id": "299f47372bff4744a7762be1725e5173",
+          "checkpoint_at": 1795367827.300136,
+          "state": "blocked_external",
+          "note": "PWC.LevelPhone.PhoneSeparator: campo `_seperatorColors: SerializableDictionaryBase<ApplicationType, Color>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneSeparator.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/class-contract.json",
+              "sha256": "ec859e8f6ac63cc95f4380e9943906e6c8466486e918e5efc1ecc9085883372a"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/recount.json",
+              "sha256": "96009878f5381b9779910482fc23707ca271fcc59061e159ff9ce7e7718f6e34"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.LevelPhone.PhoneSeparator: campo `_seperatorColors: SerializableDictionaryBase<ApplicationType, Color>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneSeparator.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -10762,7 +11458,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.DeepLink.DeepLinkManager",
@@ -10811,13 +11507,42 @@
         "out/recon/tasks/T020/CLASS/9d1c483f660c0668/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/class-contract.json",
+          "sha256": "478fd81d5adabce0d3c2912a4c93737da4ce020b938e69ae72412dae77962854"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/recount.json",
+          "sha256": "b1c17e402a069f79c85be7f8c351796d72b793df6139d626a22640f55931f0ca"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "6343efde7e724f3683c061c7ca1828c4",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367831.8676276,
+          "lease_id": "0cbe41b8fa7a46cf83e58769bb26ae32",
+          "checkpoint_at": 1795367832.298747,
+          "state": "blocked_external",
+          "note": "PazuCore.DeepLink.DeepLinkManager: campo `_mapLinkToLevel: SerializableDictionaryBase<String, LevelType>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/DeepLink/DeepLinkManager.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/class-contract.json",
+              "sha256": "478fd81d5adabce0d3c2912a4c93737da4ce020b938e69ae72412dae77962854"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/recount.json",
+              "sha256": "b1c17e402a069f79c85be7f8c351796d72b793df6139d626a22640f55931f0ca"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PazuCore.DeepLink.DeepLinkManager: campo `_mapLinkToLevel: SerializableDictionaryBase<String, LevelType>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/DeepLink/DeepLinkManager.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -11112,7 +11837,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode",
@@ -11161,13 +11886,42 @@
         "out/recon/tasks/T020/CLASS/3a010d2426799b2e/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/class-contract.json",
+          "sha256": "23de2eac07568ff2140e8c5ea443504fbb722e11219232abf725984b613226d8"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/recount.json",
+          "sha256": "cb75679802ca077210c9b51c2dbb09a90a6e2d2ad2b40d164f5899772455e818"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "b8ef6f65a46448829990ab3fc6516ab9",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367836.9396455,
+          "lease_id": "e1e161197154445ab18a8ba5213660ff",
+          "checkpoint_at": 1795367837.3755453,
+          "state": "blocked_external",
+          "note": "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode: campo `_languageCodeToPosition: SerializableDictionaryBase<String, Vector2>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCChangePositionWIthLanguageCode.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/class-contract.json",
+              "sha256": "23de2eac07568ff2140e8c5ea443504fbb722e11219232abf725984b613226d8"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/recount.json",
+              "sha256": "cb75679802ca077210c9b51c2dbb09a90a6e2d2ad2b40d164f5899772455e818"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode: campo `_languageCodeToPosition: SerializableDictionaryBase<String, Vector2>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCChangePositionWIthLanguageCode.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -11182,7 +11936,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode",
@@ -11231,13 +11985,42 @@
         "out/recon/tasks/T020/CLASS/1998843c3ea996f7/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/class-contract.json",
+          "sha256": "36ace74e104aa8b82e2420a0fa8020bec719be136c18792119da545bdfe432cd"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/recount.json",
+          "sha256": "ef3ef629edb293de5bad6e80724499702c52eabb4a2956675d8e017dba700e1f"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "1beacb9c12b14c2fbccb701dc8c19a19",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795367841.9330795,
+          "lease_id": "d0c0404e114b45d5a81eef4ea0e63d0f",
+          "checkpoint_at": 1795367842.3675354,
+          "state": "blocked_external",
+          "note": "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode: campo `_languageCodeToLineSpace: SerializableDictionaryBase<String, Single>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCTMPTextLineSpaceWIthLanguageCode.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 3 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/class-contract.json",
+              "sha256": "36ace74e104aa8b82e2420a0fa8020bec719be136c18792119da545bdfe432cd"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/recount.json",
+              "sha256": "ef3ef629edb293de5bad6e80724499702c52eabb4a2956675d8e017dba700e1f"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode: campo `_languageCodeToLineSpace: SerializableDictionaryBase<String, Single>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCTMPTextLineSpaceWIthLanguageCode.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 3 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -68142,7 +68925,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 133,
+  "revision": 214,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -69949,6 +70732,573 @@
       "task": "T020/CLASS/31705c20ed2bb5b3",
       "actor": "agente-artefatos-claude",
       "at": 1795308732.2166393
+    },
+    {
+      "revision": 134,
+      "action": "claim",
+      "task": "T020/CLASS/3c0f9b1d8d11f9d9",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367698.3651974
+    },
+    {
+      "revision": 135,
+      "action": "start",
+      "task": "T020/CLASS/3c0f9b1d8d11f9d9",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367698.5977223
+    },
+    {
+      "revision": 136,
+      "action": "checkpoint",
+      "task": "T020/CLASS/3c0f9b1d8d11f9d9",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367698.8320837
+    },
+    {
+      "revision": 137,
+      "action": "claim",
+      "task": "T020/CLASS/7c9ee2a580e5e6b3",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367707.0414283
+    },
+    {
+      "revision": 138,
+      "action": "start",
+      "task": "T020/CLASS/7c9ee2a580e5e6b3",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367707.469199
+    },
+    {
+      "revision": 139,
+      "action": "checkpoint",
+      "task": "T020/CLASS/7c9ee2a580e5e6b3",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367707.731279
+    },
+    {
+      "revision": 140,
+      "action": "claim",
+      "task": "T020/CLASS/db06c1b5d845a25c",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367713.2316773
+    },
+    {
+      "revision": 141,
+      "action": "start",
+      "task": "T020/CLASS/db06c1b5d845a25c",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367713.4467793
+    },
+    {
+      "revision": 142,
+      "action": "checkpoint",
+      "task": "T020/CLASS/db06c1b5d845a25c",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367713.6926324
+    },
+    {
+      "revision": 143,
+      "action": "claim",
+      "task": "T020/CLASS/388df2f05bd90e6f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367718.4469454
+    },
+    {
+      "revision": 144,
+      "action": "start",
+      "task": "T020/CLASS/388df2f05bd90e6f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367718.8098986
+    },
+    {
+      "revision": 145,
+      "action": "checkpoint",
+      "task": "T020/CLASS/388df2f05bd90e6f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367719.158317
+    },
+    {
+      "revision": 146,
+      "action": "claim",
+      "task": "T020/CLASS/379ca071ca92e791",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367724.1632223
+    },
+    {
+      "revision": 147,
+      "action": "start",
+      "task": "T020/CLASS/379ca071ca92e791",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367724.383786
+    },
+    {
+      "revision": 148,
+      "action": "checkpoint",
+      "task": "T020/CLASS/379ca071ca92e791",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367724.60923
+    },
+    {
+      "revision": 149,
+      "action": "claim",
+      "task": "T020/CLASS/ec772f214266864a",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367729.3391542
+    },
+    {
+      "revision": 150,
+      "action": "start",
+      "task": "T020/CLASS/ec772f214266864a",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367729.5606825
+    },
+    {
+      "revision": 151,
+      "action": "checkpoint",
+      "task": "T020/CLASS/ec772f214266864a",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367729.773294
+    },
+    {
+      "revision": 152,
+      "action": "claim",
+      "task": "T020/CLASS/c67d866343f1dff2",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367734.5025947
+    },
+    {
+      "revision": 153,
+      "action": "start",
+      "task": "T020/CLASS/c67d866343f1dff2",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367734.725523
+    },
+    {
+      "revision": 154,
+      "action": "checkpoint",
+      "task": "T020/CLASS/c67d866343f1dff2",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367734.947503
+    },
+    {
+      "revision": 155,
+      "action": "claim",
+      "task": "T020/CLASS/0d273b2b5ae269db",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367739.7526066
+    },
+    {
+      "revision": 156,
+      "action": "start",
+      "task": "T020/CLASS/0d273b2b5ae269db",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367739.9840667
+    },
+    {
+      "revision": 157,
+      "action": "checkpoint",
+      "task": "T020/CLASS/0d273b2b5ae269db",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367740.219699
+    },
+    {
+      "revision": 158,
+      "action": "claim",
+      "task": "T020/CLASS/82f94aca75d93ede",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367744.9198892
+    },
+    {
+      "revision": 159,
+      "action": "start",
+      "task": "T020/CLASS/82f94aca75d93ede",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367745.1396227
+    },
+    {
+      "revision": 160,
+      "action": "checkpoint",
+      "task": "T020/CLASS/82f94aca75d93ede",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367745.3644767
+    },
+    {
+      "revision": 161,
+      "action": "claim",
+      "task": "T020/CLASS/fef4f6d3fe08a535",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367750.067309
+    },
+    {
+      "revision": 162,
+      "action": "start",
+      "task": "T020/CLASS/fef4f6d3fe08a535",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367750.2855551
+    },
+    {
+      "revision": 163,
+      "action": "checkpoint",
+      "task": "T020/CLASS/fef4f6d3fe08a535",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367750.5193589
+    },
+    {
+      "revision": 164,
+      "action": "claim",
+      "task": "T020/CLASS/9b6333eb4d8c18eb",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367755.2344525
+    },
+    {
+      "revision": 165,
+      "action": "start",
+      "task": "T020/CLASS/9b6333eb4d8c18eb",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367755.4511683
+    },
+    {
+      "revision": 166,
+      "action": "checkpoint",
+      "task": "T020/CLASS/9b6333eb4d8c18eb",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367755.8399343
+    },
+    {
+      "revision": 167,
+      "action": "claim",
+      "task": "T020/CLASS/6d7be4b1201ac73f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367760.7442002
+    },
+    {
+      "revision": 168,
+      "action": "start",
+      "task": "T020/CLASS/6d7be4b1201ac73f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367760.9628012
+    },
+    {
+      "revision": 169,
+      "action": "checkpoint",
+      "task": "T020/CLASS/6d7be4b1201ac73f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367761.1934037
+    },
+    {
+      "revision": 170,
+      "action": "claim",
+      "task": "T020/CLASS/03cf08395d3f4d51",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367765.930564
+    },
+    {
+      "revision": 171,
+      "action": "start",
+      "task": "T020/CLASS/03cf08395d3f4d51",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367766.1517537
+    },
+    {
+      "revision": 172,
+      "action": "checkpoint",
+      "task": "T020/CLASS/03cf08395d3f4d51",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367766.3704014
+    },
+    {
+      "revision": 173,
+      "action": "claim",
+      "task": "T020/CLASS/98ee43171e398598",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367771.0622385
+    },
+    {
+      "revision": 174,
+      "action": "start",
+      "task": "T020/CLASS/98ee43171e398598",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367771.2862337
+    },
+    {
+      "revision": 175,
+      "action": "checkpoint",
+      "task": "T020/CLASS/98ee43171e398598",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367771.5089025
+    },
+    {
+      "revision": 176,
+      "action": "claim",
+      "task": "T020/CLASS/7e9938eb7a582d5c",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367776.2467954
+    },
+    {
+      "revision": 177,
+      "action": "start",
+      "task": "T020/CLASS/7e9938eb7a582d5c",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367776.481879
+    },
+    {
+      "revision": 178,
+      "action": "checkpoint",
+      "task": "T020/CLASS/7e9938eb7a582d5c",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367776.8283148
+    },
+    {
+      "revision": 179,
+      "action": "claim",
+      "task": "T020/CLASS/3efb39891b0bca92",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367782.2981257
+    },
+    {
+      "revision": 180,
+      "action": "start",
+      "task": "T020/CLASS/3efb39891b0bca92",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367782.5840147
+    },
+    {
+      "revision": 181,
+      "action": "checkpoint",
+      "task": "T020/CLASS/3efb39891b0bca92",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367782.8447049
+    },
+    {
+      "revision": 182,
+      "action": "claim",
+      "task": "T020/CLASS/874bb5e732c3ae55",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367788.0579462
+    },
+    {
+      "revision": 183,
+      "action": "start",
+      "task": "T020/CLASS/874bb5e732c3ae55",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367788.3082805
+    },
+    {
+      "revision": 184,
+      "action": "checkpoint",
+      "task": "T020/CLASS/874bb5e732c3ae55",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367788.5867105
+    },
+    {
+      "revision": 185,
+      "action": "claim",
+      "task": "T020/CLASS/debb94ab279ef194",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367793.7115464
+    },
+    {
+      "revision": 186,
+      "action": "start",
+      "task": "T020/CLASS/debb94ab279ef194",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367793.9788249
+    },
+    {
+      "revision": 187,
+      "action": "checkpoint",
+      "task": "T020/CLASS/debb94ab279ef194",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367794.2187617
+    },
+    {
+      "revision": 188,
+      "action": "claim",
+      "task": "T020/CLASS/d76fc257e7d34d6a",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367799.3118804
+    },
+    {
+      "revision": 189,
+      "action": "start",
+      "task": "T020/CLASS/d76fc257e7d34d6a",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367799.569133
+    },
+    {
+      "revision": 190,
+      "action": "checkpoint",
+      "task": "T020/CLASS/d76fc257e7d34d6a",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367799.836833
+    },
+    {
+      "revision": 191,
+      "action": "claim",
+      "task": "T020/CLASS/e4a0494ce4c72fcd",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367804.8568134
+    },
+    {
+      "revision": 192,
+      "action": "start",
+      "task": "T020/CLASS/e4a0494ce4c72fcd",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367805.093364
+    },
+    {
+      "revision": 193,
+      "action": "checkpoint",
+      "task": "T020/CLASS/e4a0494ce4c72fcd",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367805.343048
+    },
+    {
+      "revision": 194,
+      "action": "claim",
+      "task": "T020/CLASS/1bf0ddcd177c2274",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367810.3887017
+    },
+    {
+      "revision": 195,
+      "action": "start",
+      "task": "T020/CLASS/1bf0ddcd177c2274",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367810.6451752
+    },
+    {
+      "revision": 196,
+      "action": "checkpoint",
+      "task": "T020/CLASS/1bf0ddcd177c2274",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367810.8836367
+    },
+    {
+      "revision": 197,
+      "action": "claim",
+      "task": "T020/CLASS/794affaa77d5b1eb",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367816.3285873
+    },
+    {
+      "revision": 198,
+      "action": "start",
+      "task": "T020/CLASS/794affaa77d5b1eb",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367816.6449435
+    },
+    {
+      "revision": 199,
+      "action": "checkpoint",
+      "task": "T020/CLASS/794affaa77d5b1eb",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367816.9076612
+    },
+    {
+      "revision": 200,
+      "action": "claim",
+      "task": "T020/CLASS/4e9924232dd3e81d",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367821.8661
+    },
+    {
+      "revision": 201,
+      "action": "start",
+      "task": "T020/CLASS/4e9924232dd3e81d",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367822.083264
+    },
+    {
+      "revision": 202,
+      "action": "checkpoint",
+      "task": "T020/CLASS/4e9924232dd3e81d",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367822.2989233
+    },
+    {
+      "revision": 203,
+      "action": "claim",
+      "task": "T020/CLASS/dad413b840f63fce",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367826.9088352
+    },
+    {
+      "revision": 204,
+      "action": "start",
+      "task": "T020/CLASS/dad413b840f63fce",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367827.1171246
+    },
+    {
+      "revision": 205,
+      "action": "checkpoint",
+      "task": "T020/CLASS/dad413b840f63fce",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367827.3361757
+    },
+    {
+      "revision": 206,
+      "action": "claim",
+      "task": "T020/CLASS/9d1c483f660c0668",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367831.9031072
+    },
+    {
+      "revision": 207,
+      "action": "start",
+      "task": "T020/CLASS/9d1c483f660c0668",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367832.1211572
+    },
+    {
+      "revision": 208,
+      "action": "checkpoint",
+      "task": "T020/CLASS/9d1c483f660c0668",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367832.3341904
+    },
+    {
+      "revision": 209,
+      "action": "claim",
+      "task": "T020/CLASS/3a010d2426799b2e",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367836.9753785
+    },
+    {
+      "revision": 210,
+      "action": "start",
+      "task": "T020/CLASS/3a010d2426799b2e",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367837.1833339
+    },
+    {
+      "revision": 211,
+      "action": "checkpoint",
+      "task": "T020/CLASS/3a010d2426799b2e",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367837.4225667
+    },
+    {
+      "revision": 212,
+      "action": "claim",
+      "task": "T020/CLASS/1998843c3ea996f7",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367841.9690578
+    },
+    {
+      "revision": 213,
+      "action": "start",
+      "task": "T020/CLASS/1998843c3ea996f7",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367842.1913214
+    },
+    {
+      "revision": 214,
+      "action": "checkpoint",
+      "task": "T020/CLASS/1998843c3ea996f7",
+      "actor": "agente-artefatos-claude",
+      "at": 1795367842.4034348
     }
   ]
 }

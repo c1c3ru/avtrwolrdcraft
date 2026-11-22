@@ -1,7 +1,8 @@
 {
  "PazuCore.GameExtraSettings": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_UNCONFIRMED_cause",
+  "native_message": "Object reference not set to an instance of an object.",
+  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue."
  },
  "PazuCore.GameSettings": {
   "node_count": 101,
@@ -11,20 +12,28 @@
   "triage": "same_bug_likely_fixed"
  },
  "PazuCore.WindowManager": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_UNCONFIRMED_cause",
+  "native_message": "Object reference not set to an instance of an object.",
+  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue."
  },
  "PazuCore.LocalizationManager": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_UNCONFIRMED_cause",
+  "native_message": "Object reference not set to an instance of an object.",
+  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue."
  },
  "PazuCore.DeepLink.DeepLinkManager": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_mapLinkToLevel: SerializableDictionaryBase<String, LevelType>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/DeepLink/DeepLinkManager.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_prizesSprites: SerializableDictionaryBase<PrizeType, Sprite>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/AchievementsApp/AchievementDetailThumb.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.Level.LevelStationaryPlant": {
   "node_count": 59,
@@ -41,16 +50,25 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.LevelPhone.PhoneBackground": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_backgroundColors: SerializableDictionaryBase<ApplicationType, ApplicationBackgroundData>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneBackground.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.LevelPhone.ContactsContent": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_contactSpinePrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarSpineSkinsManagerBase>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/ContactsContent.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.LevelPhone.PhoneSeparator": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_seperatorColors: SerializableDictionaryBase<ApplicationType, Color>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneSeparator.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.Level.LevelAnimationDropAreaHandler": {
   "node_count": 20,
@@ -60,8 +78,11 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.LevelPhone.DeliveryApp.DeliveryContent": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_pageManagers: SerializableDictionaryBase<DeliveryAppStepType, DeliveryPageManagerBase>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/DeliveryApp/DeliveryContent.cs",
+  "queue_task_closed_blocked_external": true
  },
  "Game.Level.ContextualAnimation.LevelCAEventHandlerByAnimationNameItemHandler": {
   "node_count": 62,
@@ -71,8 +92,11 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.LevelPhone.PhoneContentIcon": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_applicationsIcons: SerializableDictionaryBase<ApplicationType, Sprite>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneContentIcon.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.Level.LevelSimpleToggleableSpine": {
   "node_count": 115,
@@ -134,8 +158,11 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.Level.LevelSkinsRandomizer": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_skinsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, RandomSkinsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelSkinsRandomizer.cs",
+  "queue_task_closed_blocked_external": true
  },
  "Game.Level.LevelWaffleMachine": {
   "node_count": 58,
@@ -229,8 +256,11 @@
   "triage": "same_bug_likely_fixed"
  },
  "Game.Level.MovingTraingBackground.LevelStationButton": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_buttonsStates: SerializableDictionaryBase<SelectionState, LevelStationButtonState>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/MovingTraingBackground/LevelStationButton.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.Game.LevelToggleableTransform": {
   "node_count": 108,
@@ -384,12 +414,18 @@
   "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_languageCodeToPosition: SerializableDictionaryBase<String, Vector2>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCChangePositionWIthLanguageCode.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.AvatarMakerLobby.AvatarMakerLobbyManager": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_filledSlotPrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarMakerLobbyFilledSlot>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMakerLobby/AvatarMakerLobbyManager.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.CarsMaker.CarMakerDoorOpener": {
   "node_count": 21,
@@ -539,8 +575,11 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.AvatarMaker.AvatarMakerBabyColorsConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<BabyCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabyColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.EditorApp.EADelayedEventInputField": {
   "triage": "type_stripped_from_release_il2cpp_metadata",
@@ -561,8 +600,11 @@
   "confirmed_absent_from_cpp2il_decompile": true
  },
  "PWC.AvatarMaker.AvatarMakerDogColorsConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<DogCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.EditorApp.EALevelEditorPanel": {
   "triage": "type_stripped_from_release_il2cpp_metadata",
@@ -585,8 +627,11 @@
   "triage": "same_bug_likely_fixed"
  },
  "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_languageCodeToLineSpace: SerializableDictionaryBase<String, Single>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCTMPTextLineSpaceWIthLanguageCode.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler": {
   "node_count": 41,
@@ -603,8 +648,11 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.AvatarMaker.AvatarMakerCatColorsConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<CatCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.AvatarMaker.AvatarMakerCarThumbsConfig": {
   "node_count": 31,
@@ -626,8 +674,11 @@
   "confirmed_absent_from_cpp2il_decompile": true
  },
  "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<DogCategoryType, CatSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.EditorApp.EAHierarchyResult": {
   "triage": "type_stripped_from_release_il2cpp_metadata",
@@ -635,8 +686,11 @@
   "confirmed_absent_from_cpp2il_decompile": true
  },
  "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<BabyCategoryType, BabySubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabySubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "Game.Level.LevelSpineObjectSymmetricMovement": {
   "node_count": 19,
@@ -646,8 +700,11 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<CatCategoryType, CatSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "Game.Level.BackgroundCharacterSpineManager": {
   "node_count": 21,
@@ -692,16 +749,25 @@
   "confirmed_absent_from_cpp2il_decompile": true
  },
  "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<HorseCategoryType, HorseSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<ToddlerCategoryType, ToddlerSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.EditorApp.EAItemPreviewPanel": {
   "triage": "type_stripped_from_release_il2cpp_metadata",
@@ -709,8 +775,11 @@
   "confirmed_absent_from_cpp2il_decompile": true
  },
  "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<CharacterCategoryType, CharacterSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.EditorApp.EAItemPreviewPanelSpritePreview": {
   "triage": "type_stripped_from_release_il2cpp_metadata",
@@ -718,16 +787,25 @@
   "confirmed_absent_from_cpp2il_decompile": true
  },
  "PWC.AvatarMaker.AvatarMakerHorseColorsConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<HorseCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<CarCategoryType, CarSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<ToddlerCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.EditorApp.EACAMenuInfo": {
   "triage": "type_stripped_from_release_il2cpp_metadata",
@@ -735,12 +813,18 @@
   "confirmed_absent_from_cpp2il_decompile": true
  },
  "Game.Level.LevelCatTunnel": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_dropAreas: SerializableDictionaryBase<Side, LevelDropArea>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelCatTunnel.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.AvatarMaker.AvatarMakerCarColorsConfig": {
-  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
-  "native_message": "Object reference not set to an instance of an object."
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<CarCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
  },
  "PWC.EditorApp.EALoginPanel": {
   "triage": "type_stripped_from_release_il2cpp_metadata",

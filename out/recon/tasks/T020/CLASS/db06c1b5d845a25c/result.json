@@ -1,0 +1,14 @@
+{
+ "task": "T020/CLASS/db06c1b5d845a25c",
+ "title": "Corrigir decodificação de PWC.AvatarMaker.AvatarMakerBabyColorsConfig",
+ "actor": "agente-artefatos-claude",
+ "summary": "PWC.AvatarMaker.AvatarMakerBabyColorsConfig: confirmed blocked by a TypeTreeGeneratorAPI limitation resolving the raw generic field `_colorsByCategoryType: SerializableDictionaryBase<BabyCategoryType, AWSpineColorsList>` - verified present in the decompiled source (not inferred from the error message alone; checked individually, 27 of 30 classes sharing this native error signature have this exact field shape, 3 do not and were left open/undiagnosed rather than batch-closed on an unverified assumption). Checkpointed as blocked_external, not evidence_ready: exact object identities are unknown (needs the datapack, which repeatedly OOMs this machine).",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/class-contract.json",
+  "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/recount.json",
+  "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabyColorsConfig.cs",
+  "docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md",
+  "out/recon/tasks/T020/node_tree_triage_2026-11-22.json"
+ ],
+ "not_batch_closed_without_individual_verification": "PazuCore.GameExtraSettings, PazuCore.LocalizationManager and PazuCore.WindowManager share the same native error message but do NOT have a SerializableDictionaryBase<K,V> field in their decompiled source - their real trigger is still unknown and they were deliberately left pending/ready rather than closed with an unverified claim."
+}

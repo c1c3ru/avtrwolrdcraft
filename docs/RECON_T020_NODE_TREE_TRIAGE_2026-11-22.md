@@ -27,7 +27,8 @@ Script: `out/recon/tasks/T020/node_tree_triage_2026-11-22.py`. Saída:
 | Categoria | Classes | O que significa |
 |---|---:|---|
 | `same_bug_likely_fixed` | 65 | Tem campo `List<String>` mal rotulado como `string` — mesmo bug já corrigido em `tools/mb_dump.py`. Alta confiança de que já está resolvido; falta só confirmar lendo os objetos de verdade (precisa do datapack). |
-| `typetreegeneratorapi_nullref_on_raw_generic_type_field` | 30 | `TypeTreeGeneratorAPI` quebra (`Object reference not set to an instance of an object`) ao resolver um campo declarado como instanciação genérica crua (ex.: `SerializableDictionaryBase<CarCategoryType, AWSpineColorsList>` direto, sem subclasse nomeada — confirmado lendo `AvatarMakerCarColorsConfig.cs`/`AvatarMakerDogColorsConfig.cs` decompilados). **Limitação da biblioteca nativa, não um bug meu** — já está na versão mais recente (0.0.10, não tem outra pra tentar). Inclui as **14** classes `PWC.AvatarMaker.AvatarMaker{Car,Dog,Horse,Cat,Baby,Toddler,Character}{Colors,Subcategories}Config` — ou seja, **todas** as 7 espécies × {Colors, Subcategories} do editor de avatar, relevante pro trabalho paralelo dessa frente. |
+| `typetreegeneratorapi_nullref_confirmed_serializabledict_field` | 27 | `TypeTreeGeneratorAPI` quebra (`Object reference not set to an instance of an object`) ao resolver um campo declarado como instanciação genérica crua de `SerializableDictionaryBase<TKey,TValue>` (de `RotaryHeart.Lib.SerializableDictionary`, asset de terceiros) direto na classe, sem subclasse nomeada. **Verificado individualmente nas 27**, campo e tipo exatos lidos do `out/cpp2il` decompilado de cada uma (não é suposição pela mensagem de erro) — ver `out/recon/tasks/T020/node_tree_triage_2026-11-22.json` pra lista campo-a-campo. **Limitação da biblioteca nativa, não um bug meu** — já está na versão mais recente (0.0.10, não tem outra pra tentar). Inclui as **14** classes `PWC.AvatarMaker.AvatarMaker{Car,Dog,Horse,Cat,Baby,Toddler,Character}{Colors,Subcategories}Config` (todas as 7 espécies × {Colors, Subcategories} do editor de avatar) mais 13 outras (`PhoneBackground`, `DeepLinkManager`, etc.). **As 27 tarefas correspondentes foram fechadas na fila formal como `blocked_external`** (2026-11-22, `out/recon/tasks/T020/close_nullref_confirmed_tasks_2026-11-22.py`). |
+| `typetreegeneratorapi_nullref_UNCONFIRMED_cause` | 3 | `PazuCore.GameExtraSettings`, `PazuCore.LocalizationManager`, `PazuCore.WindowManager` têm a **mesma mensagem nativa** das 27 acima, mas **não têm** campo `SerializableDictionaryBase<K,V>` no fonte decompilado — causa real ainda não diagnosticada. **Deliberadamente não fechadas** na fila (ficam `pending`/`ready`) para não registrar uma causa não verificada. |
 | `type_stripped_from_release_il2cpp_metadata` | 20 | `Type "X" was not found in the IL2CPP metadata` — **confirmado (2026-11-22) que nenhuma das 20 existe no `out/cpp2il` decompilado**, e nem a própria string `"EditorApp"` aparece em lugar nenhum da árvore inteira (checagem sistemática, não amostra). Code stripping do Unity: classe nunca referenciada estaticamente, removida do binário shipado, mas o `MonoScript` serializado ficou apontando pro nome. **Todas as 20** são `PWC.EditorApp.*` — ferramental de editor/dev interno (painéis de login, busca, hierarquia, editor de nível), não parte do jogo jogável. **Irresolúvel de verdade** — não é "ainda não achei", é confirmado ausente do binário. |
 | `serialize_reference_ref_types_resolution` | 9 | **Diagnosticado em 2026-11-22.** Árvore de tipos gerada com sucesso, mas todas as 9 têm nós `ManagedReferencesRegistry`/`ReferencedObject` — usam `[SerializeReference]` do Unity (referência polimórfica). O tipo concreto de cada instância só é resolvido lendo o objeto de verdade contra `SerializedFile.ref_types` (metadado por arquivo serializado, comparação exata de classe/namespace/assembly em `get_ref_type_node`/equivalente nativo), não pela árvore estática do IL2CPP sozinha. Confirmado que `assetsfile` já é passado certinho pro `read_typetree` (`UnityPy.files.ObjectReader.read_typetree` já faz isso) — não é bug de parâmetro faltando. Tentativa de leitura real bloqueada 2x por OOM (ver `LOOP_STATE.md`, `out/recon/tasks/T020/serializeref_attempt1-oom.log`). Lista completa e notes: `out/recon/tasks/T020/node_tree_triage_2026-11-22.json`. |
 
@@ -57,13 +58,12 @@ geração de nó.
 ## Próximo passo sugerido
 1. Quando houver RAM disponível (PC do trabalho, ver `tools/mb_retry_failed_classes.py`), reprocessar
    de verdade as 65 `same_bug_likely_fixed` primeiro — maior retorno, mesmo fix já pronto.
-2. As 30 `typetreegeneratorapi_nullref_*` precisam de outra ferramenta de extração (esta biblioteca
-   não dá conta) — ou aceitar como `blocked_external`, igual já está registrado pra
-   `T020/CLASS/d723b7b66951bef8` (BWYWGiftData). Priorizar as 14 `AvatarMaker*ColorsConfig`/
-   `*SubcategoriesConfig` se a frente do editor de avatar precisar desses dados.
-3. As 20 `type_stripped_*` (todas `PWC.EditorApp.*`) podem fechar como "não resolvível, tipo
-   removido do binário shipado" com confiança alta (confirmado sistematicamente contra o
-   `out/cpp2il` inteiro, não amostra) — não vale reabrir sem nova evidência.
-4. As 9 `serialize_reference_ref_types_resolution` precisam do datapack carregado pra confirmar se
+2. As 3 `typetreegeneratorapi_nullref_UNCONFIRMED_cause` (`GameExtraSettings`, `LocalizationManager`,
+   `WindowManager`) precisam de diagnóstico individual — a causa real não é a mesma dos 27 já
+   fechados (sem `SerializableDictionaryBase`), provavelmente outro campo genérico problemático em
+   algum tipo referenciado recursivamente.
+3. As 9 `serialize_reference_ref_types_resolution` precisam do datapack carregado pra confirmar se
    `ref_types` está ausente no arquivo serializado ou se é mismatch de nome na comparação exata — só
    dá pra saber lendo o objeto de verdade (2 tentativas já bloqueadas por OOM, ver `LOOP_STATE.md`).
+4. **Já fechados na fila** (`blocked_external`, não precisam de mais trabalho sem evidência nova):
+   as 20 `type_stripped_*` e as 27 `typetreegeneratorapi_nullref_confirmed_*`.

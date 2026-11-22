@@ -1,5 +1,17 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: mais 27 classes fechadas na fila; 3 outliers deixados em aberto por rigor — 2026-11-22
+Continuação do fechamento das 20 `type_stripped_*`. Para as 30 `typetreegeneratorapi_nullref_*`,
+verifiquei **individualmente** (não por amostra) cada uma contra `out/cpp2il` decompilado antes de
+fechar qualquer uma — achei que 3 (`PazuCore.GameExtraSettings`, `PazuCore.LocalizationManager`,
+`PazuCore.WindowManager`) têm a mesma mensagem nativa mas **não têm** o campo
+`SerializableDictionaryBase<K,V>` confirmado nas outras 27 — causa real delas ainda desconhecida.
+- Fechei só as 27 confirmadas (campo e tipo exatos lidos do fonte decompilado de cada uma) na fila
+  formal como `blocked_external` (`out/recon/tasks/T020/close_nullref_confirmed_tasks_2026-11-22.py`).
+  As 3 outliers ficam `pending`/`ready`, sem causa raiz registrada — não fechei sem prova.
+- Fila: `blocked_external` de 21 para 48, `pending` de 871 para 844.
+- Detalhe: `docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`.
+
 ## T020: 20 classes PWC.EditorApp.* fechadas na fila como blocked_external — 2026-11-22
 Confirmado sistematicamente (não amostra) que nenhuma das 20 classes `type_stripped_*` existe em
 `out/cpp2il/DiffableCs` — nem a string "EditorApp" aparece em lugar nenhum da árvore decompilada.
