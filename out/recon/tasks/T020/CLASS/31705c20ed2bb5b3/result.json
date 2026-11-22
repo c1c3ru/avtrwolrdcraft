@@ -1,0 +1,13 @@
+{
+ "task": "T020/CLASS/31705c20ed2bb5b3",
+ "title": "Corrigir decodificação de PWC.EditorApp.EASearchResult",
+ "actor": "agente-artefatos-claude",
+ "summary": "PWC.EditorApp.EASearchResult: confirmed as type-stripped-from-release-binary, not a decoding bug. Checkpointed as blocked_external rather than evidence_ready because this task's acceptance criterion 'identify every affected object' cannot be met without the datapack (which repeatedly OOMs this machine) - only the aggregate failure count is known, not individual object path_ids. See docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md for the full cross-class investigation (20 classes, same root cause, same evidence method).",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/31705c20ed2bb5b3/class-contract.json",
+  "out/recon/tasks/T020/CLASS/31705c20ed2bb5b3/recount.json",
+  "docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md",
+  "out/recon/tasks/T020/node_tree_triage_2026-11-22.json"
+ ],
+ "next_action_if_ram_available": "If this is ever revisited with enough RAM to load datapack.unity3d: confirm the object count/identities for completeness, but do NOT expect the type to become readable - the root cause (type absent from IL2CPP metadata) cannot be fixed by any parser change."
+}

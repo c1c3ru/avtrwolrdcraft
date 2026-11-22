@@ -1,5 +1,18 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: 20 classes PWC.EditorApp.* fechadas na fila como blocked_external — 2026-11-22
+Confirmado sistematicamente (não amostra) que nenhuma das 20 classes `type_stripped_*` existe em
+`out/cpp2il/DiffableCs` — nem a string "EditorApp" aparece em lugar nenhum da árvore decompilada.
+Fechei as 20 tarefas `T020/CLASS/<hash>` correspondentes na fila formal via `claim`→`start`→
+`checkpoint(blocked_external)` (script `out/recon/tasks/T020/close_type_stripped_tasks_2026-11-22.py`),
+gerando `class-contract.json`/`recount.json`/`result.json` em `out/recon/tasks/T020/CLASS/<hash>/`
+pra cada uma.
+- **Por que `blocked_external` e não `evidence_ready`**: o critério de aceite exige "identificar
+  cada objeto afetado" (path_id/arquivo exato) — isso só dá pra saber abrindo o `datapack.unity3d`,
+  bloqueado por RAM. Só a contagem agregada (`out/mb/_stats.json`) é conhecida, não a identidade de
+  cada objeto. Marcar como resolvido sem isso seria inventar evidência.
+- Fila: `blocked_external` subiu de 1 para 21, `pending` caiu de 891 para 871.
+
 ## T020: as 124 classes 100% categorizadas por causa raiz — 2026-11-22
 Fechando a triagem (`docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`): as 18 classes que tinham
 falha de geração de árvore sem correlação automática da mensagem nativa foram checadas uma a uma

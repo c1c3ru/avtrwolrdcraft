@@ -6603,7 +6603,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EACAInfoManager",
@@ -6652,13 +6652,42 @@
         "out/recon/tasks/T020/CLASS/539303b3b1843fa0/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/539303b3b1843fa0/class-contract.json",
+          "sha256": "8926d43e3abff4cd60f5e286433b541822f31a00c9e0ec45184abb2f19db87d0"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/539303b3b1843fa0/recount.json",
+          "sha256": "633db0ba49547d06740e06652a1ecf6f1dbdd2740ea0a863e30646e7eb04adbf"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "87f7173570fb4fb6a742c730e92a272a",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308632.4905233,
+          "lease_id": "2fbf4e1e12bb4d4c8424363d8fcc39be",
+          "checkpoint_at": 1795308632.9317467,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EACAInfoManager: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/539303b3b1843fa0/class-contract.json",
+              "sha256": "8926d43e3abff4cd60f5e286433b541822f31a00c9e0ec45184abb2f19db87d0"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/539303b3b1843fa0/recount.json",
+              "sha256": "633db0ba49547d06740e06652a1ecf6f1dbdd2740ea0a863e30646e7eb04adbf"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EACAInfoManager: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6673,7 +6702,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EACAItemInfo",
@@ -6722,13 +6751,42 @@
         "out/recon/tasks/T020/CLASS/4c4a8b17436966da/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/4c4a8b17436966da/class-contract.json",
+          "sha256": "782b02b994abd46c1b1f8ba244843bb36d53d51cec10d7cda904674332c3d473"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/4c4a8b17436966da/recount.json",
+          "sha256": "978e105abb61d70a573bdc17534065dd9fdbec8d94bf097ef0dff349c7c9af6b"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "5a887ebef57f4fd390882ac3a2b494d4",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308637.8613658,
+          "lease_id": "10c2132e31e147f3b86e8cc07d87662d",
+          "checkpoint_at": 1795308638.2844212,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EACAItemInfo: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/4c4a8b17436966da/class-contract.json",
+              "sha256": "782b02b994abd46c1b1f8ba244843bb36d53d51cec10d7cda904674332c3d473"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/4c4a8b17436966da/recount.json",
+              "sha256": "978e105abb61d70a573bdc17534065dd9fdbec8d94bf097ef0dff349c7c9af6b"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EACAItemInfo: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6743,7 +6801,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EACAMenuInfo",
@@ -6792,13 +6850,42 @@
         "out/recon/tasks/T020/CLASS/22c7da6e8fc3ee3f/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/22c7da6e8fc3ee3f/class-contract.json",
+          "sha256": "3623defeb5da14391133989e1b1de7b731186be362b032a23f0b7a55ce3bd8a7"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/22c7da6e8fc3ee3f/recount.json",
+          "sha256": "bf47c75ac3cd1eee122c38949e45c3bc77e560713ced53f562bdfbff74c1bf32"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "efac3f91d9a9459aae97e0b788e5e604",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308643.0300012,
+          "lease_id": "50acd56913564a1e9dcca470ed47f439",
+          "checkpoint_at": 1795308643.4964826,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EACAMenuInfo: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/22c7da6e8fc3ee3f/class-contract.json",
+              "sha256": "3623defeb5da14391133989e1b1de7b731186be362b032a23f0b7a55ce3bd8a7"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/22c7da6e8fc3ee3f/recount.json",
+              "sha256": "bf47c75ac3cd1eee122c38949e45c3bc77e560713ced53f562bdfbff74c1bf32"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EACAMenuInfo: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6813,7 +6900,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EADelayedEventInputField",
@@ -6862,13 +6949,42 @@
         "out/recon/tasks/T020/CLASS/dce23b77d06cdfef/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/dce23b77d06cdfef/class-contract.json",
+          "sha256": "c4a41bec5af1a19de8b27c0724f0d8aba596a54fb48dbee0d32c4549314a7d9c"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/dce23b77d06cdfef/recount.json",
+          "sha256": "0423a010dae04b15c92f3aa07f41e9aa4abb74073a9305ef57fa9c67e92f7003"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "dca40f944a5c4ad29d3e775919ac2467",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308648.3329175,
+          "lease_id": "f50b12ca7de24a479053d0fec93c0d6b",
+          "checkpoint_at": 1795308648.7661712,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EADelayedEventInputField: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 2 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/dce23b77d06cdfef/class-contract.json",
+              "sha256": "c4a41bec5af1a19de8b27c0724f0d8aba596a54fb48dbee0d32c4549314a7d9c"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/dce23b77d06cdfef/recount.json",
+              "sha256": "0423a010dae04b15c92f3aa07f41e9aa4abb74073a9305ef57fa9c67e92f7003"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EADelayedEventInputField: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 2 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6883,7 +6999,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EAEditorAssetsIndexer",
@@ -6932,13 +7048,42 @@
         "out/recon/tasks/T020/CLASS/6460bac5599af4fa/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/6460bac5599af4fa/class-contract.json",
+          "sha256": "f7d3cc253fa9a8a00d0d410fc77dbd6be15e7c233138368ddf94043633466f6b"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/6460bac5599af4fa/recount.json",
+          "sha256": "b92b98b46cb10a6b29a7277f9c2e28c548944fdbe70df0a566b7c842b43944f9"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "c8c27baab55a4e33b784b2cd897071e4",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308653.7246168,
+          "lease_id": "b165943497e3422b93fcb440fb5d22a1",
+          "checkpoint_at": 1795308654.4694998,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EAEditorAssetsIndexer: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/6460bac5599af4fa/class-contract.json",
+              "sha256": "f7d3cc253fa9a8a00d0d410fc77dbd6be15e7c233138368ddf94043633466f6b"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/6460bac5599af4fa/recount.json",
+              "sha256": "b92b98b46cb10a6b29a7277f9c2e28c548944fdbe70df0a566b7c842b43944f9"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EAEditorAssetsIndexer: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -6953,7 +7098,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EAEditorDirectoryIndexer",
@@ -7002,13 +7147,42 @@
         "out/recon/tasks/T020/CLASS/a61eada4f379d4de/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/a61eada4f379d4de/class-contract.json",
+          "sha256": "cd70fe5ccc482fd1f3aa02e39a952352c9fbe4717a39f74812c19526b7073566"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/a61eada4f379d4de/recount.json",
+          "sha256": "1c055167726de20c7940263029bc9abd2a6a07dc2d6b57d0df7da859eadcba0a"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "19c74d2b5e1740598d630e7c31d51c9a",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308660.204703,
+          "lease_id": "6b4aaf7eed4f44b782b64f941697bb5d",
+          "checkpoint_at": 1795308660.6456113,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EAEditorDirectoryIndexer: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 3 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/a61eada4f379d4de/class-contract.json",
+              "sha256": "cd70fe5ccc482fd1f3aa02e39a952352c9fbe4717a39f74812c19526b7073566"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/a61eada4f379d4de/recount.json",
+              "sha256": "1c055167726de20c7940263029bc9abd2a6a07dc2d6b57d0df7da859eadcba0a"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EAEditorDirectoryIndexer: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 3 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7023,7 +7197,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EAHierarchyPanel",
@@ -7072,13 +7246,42 @@
         "out/recon/tasks/T020/CLASS/1c13a938e4aaa33b/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/1c13a938e4aaa33b/class-contract.json",
+          "sha256": "b192f2c4a0e5db25f478d1e53219b7f7be072e5f5d1888865c17d5520463e089"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/1c13a938e4aaa33b/recount.json",
+          "sha256": "d6ad1a39f3aeca32a4bd545d840b2e71723bc5d852b9a43b7765339d1dacc9ef"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "9e2363185aad43499fe1c3ea8e1efdd8",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308665.5104012,
+          "lease_id": "b6b10e99a86241e89ed82a1fc503f6cc",
+          "checkpoint_at": 1795308666.0137112,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EAHierarchyPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/1c13a938e4aaa33b/class-contract.json",
+              "sha256": "b192f2c4a0e5db25f478d1e53219b7f7be072e5f5d1888865c17d5520463e089"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/1c13a938e4aaa33b/recount.json",
+              "sha256": "d6ad1a39f3aeca32a4bd545d840b2e71723bc5d852b9a43b7765339d1dacc9ef"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EAHierarchyPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7093,7 +7296,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EAHierarchyResult",
@@ -7142,13 +7345,42 @@
         "out/recon/tasks/T020/CLASS/145bfd5d8452ad58/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/145bfd5d8452ad58/class-contract.json",
+          "sha256": "023e8216dce356150b5edb5646fd6bca63370856c5a84e08fec6c20c62bd4c88"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/145bfd5d8452ad58/recount.json",
+          "sha256": "388d7277db86dee975fbea623eefff7815f9732964460545bbcd4438f30330e1"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "4f9313665e5f4ba7863ec8adfdaf9810",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308670.6887975,
+          "lease_id": "7521126f8b494e009d545b5502110ec1",
+          "checkpoint_at": 1795308671.12349,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EAHierarchyResult: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/145bfd5d8452ad58/class-contract.json",
+              "sha256": "023e8216dce356150b5edb5646fd6bca63370856c5a84e08fec6c20c62bd4c88"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/145bfd5d8452ad58/recount.json",
+              "sha256": "388d7277db86dee975fbea623eefff7815f9732964460545bbcd4438f30330e1"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EAHierarchyResult: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7163,7 +7395,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EAItemPreviewPanel",
@@ -7212,13 +7444,42 @@
         "out/recon/tasks/T020/CLASS/06d746a146177eea/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/06d746a146177eea/class-contract.json",
+          "sha256": "45220387a2269d8be9a3666531ccbd8982c9a81f679d6cfa6595e6a699be595c"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/06d746a146177eea/recount.json",
+          "sha256": "559a52701c8e1210e2ac090816b0578602e34cf6255e9f76f5cc79335bc3a9d9"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "f1d3ff16598b45018c087303fae7e5e7",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308675.74739,
+          "lease_id": "ca0fb1df588a4d068749dcc681984478",
+          "checkpoint_at": 1795308676.1925437,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EAItemPreviewPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/06d746a146177eea/class-contract.json",
+              "sha256": "45220387a2269d8be9a3666531ccbd8982c9a81f679d6cfa6595e6a699be595c"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/06d746a146177eea/recount.json",
+              "sha256": "559a52701c8e1210e2ac090816b0578602e34cf6255e9f76f5cc79335bc3a9d9"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EAItemPreviewPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7233,7 +7494,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EAItemPreviewPanelSpritePreview",
@@ -7282,13 +7543,42 @@
         "out/recon/tasks/T020/CLASS/06700d2b7c1ae843/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/06700d2b7c1ae843/class-contract.json",
+          "sha256": "1512753cb0ebbeed979f93eb9061a719a58c587a639973351b580616584951d3"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/06700d2b7c1ae843/recount.json",
+          "sha256": "9912b0dd782822bd991859968b96ef3d747f0c3a6b67cab94bc6683cbaa1e9db"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "076f5627481a4acba8487ee6851697ad",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308680.8166335,
+          "lease_id": "7309289625f04493baeceed251fbd3be",
+          "checkpoint_at": 1795308681.2426448,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EAItemPreviewPanelSpritePreview: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/06700d2b7c1ae843/class-contract.json",
+              "sha256": "1512753cb0ebbeed979f93eb9061a719a58c587a639973351b580616584951d3"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/06700d2b7c1ae843/recount.json",
+              "sha256": "9912b0dd782822bd991859968b96ef3d747f0c3a6b67cab94bc6683cbaa1e9db"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EAItemPreviewPanelSpritePreview: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7303,7 +7593,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EALevelEditorPanel",
@@ -7352,13 +7642,42 @@
         "out/recon/tasks/T020/CLASS/d52ff34678e3f448/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/d52ff34678e3f448/class-contract.json",
+          "sha256": "a97478365786f2966db4285bd8924e4a84ba78a3b301947b44a751a0fbc1e28f"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/d52ff34678e3f448/recount.json",
+          "sha256": "eed915726838ea9789468f4576c8d43857d15c84980f4de95ed5a8c2c717e393"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "3bc94e29b539432fb9fb5fb63a2e57fa",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308685.9776998,
+          "lease_id": "e060e09174114d58891681cae12bead8",
+          "checkpoint_at": 1795308686.4388268,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EALevelEditorPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/d52ff34678e3f448/class-contract.json",
+              "sha256": "a97478365786f2966db4285bd8924e4a84ba78a3b301947b44a751a0fbc1e28f"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/d52ff34678e3f448/recount.json",
+              "sha256": "eed915726838ea9789468f4576c8d43857d15c84980f4de95ed5a8c2c717e393"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EALevelEditorPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7373,7 +7692,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EALoginPanel",
@@ -7422,13 +7741,42 @@
         "out/recon/tasks/T020/CLASS/4f0c433ef6871a86/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/4f0c433ef6871a86/class-contract.json",
+          "sha256": "ff01ee2c66626e53cca9157e564cb10970fb8d1de48cd1ceaabb888eef2bf3d1"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/4f0c433ef6871a86/recount.json",
+          "sha256": "bf022da60ae2040e30c2583e60e86aa5bf63b4b11e842c9f4d745a7310737672"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "e697ad77f2624f20bdf3cc45fce8858a",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308691.3273034,
+          "lease_id": "1fac0fd172434fa19d878ccbdf7355b7",
+          "checkpoint_at": 1795308691.8339746,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EALoginPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/4f0c433ef6871a86/class-contract.json",
+              "sha256": "ff01ee2c66626e53cca9157e564cb10970fb8d1de48cd1ceaabb888eef2bf3d1"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/4f0c433ef6871a86/recount.json",
+              "sha256": "bf022da60ae2040e30c2583e60e86aa5bf63b4b11e842c9f4d745a7310737672"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EALoginPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7443,7 +7791,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EAResultPool",
@@ -7492,13 +7840,42 @@
         "out/recon/tasks/T020/CLASS/63f3d118bbb25d87/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/63f3d118bbb25d87/class-contract.json",
+          "sha256": "5724806ee5504ff34d1171676a401c761058f051f68fa5eea91ddf57402e4bd2"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/63f3d118bbb25d87/recount.json",
+          "sha256": "4474f3b4244b76cb649c6c80a31bedec0d50042d106df493b22af35a8985ca26"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "1320384bc9b941fe91fc84f980f901ce",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308696.5222383,
+          "lease_id": "1db0c0672d0b4b7c96a307c189465071",
+          "checkpoint_at": 1795308696.9528701,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EAResultPool: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 2 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/63f3d118bbb25d87/class-contract.json",
+              "sha256": "5724806ee5504ff34d1171676a401c761058f051f68fa5eea91ddf57402e4bd2"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/63f3d118bbb25d87/recount.json",
+              "sha256": "4474f3b4244b76cb649c6c80a31bedec0d50042d106df493b22af35a8985ca26"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EAResultPool: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 2 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7513,7 +7890,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EASUTEAddedSkinsScreen",
@@ -7562,13 +7939,42 @@
         "out/recon/tasks/T020/CLASS/1b17117aea56d38f/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/1b17117aea56d38f/class-contract.json",
+          "sha256": "aa56de639e35704072dc6361079705bb7785bda62e9b171b6e2b4d6391759107"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/1b17117aea56d38f/recount.json",
+          "sha256": "1ddfc5394f33568a3d5f45f807f87eb30c5201026e41a93a8ec6ce07dc191764"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "39274495bf7946648978a3aac63fb494",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308701.5839987,
+          "lease_id": "355e6aabbfb04cf6b19825436d5a4a22",
+          "checkpoint_at": 1795308702.0128598,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EASUTEAddedSkinsScreen: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/1b17117aea56d38f/class-contract.json",
+              "sha256": "aa56de639e35704072dc6361079705bb7785bda62e9b171b6e2b4d6391759107"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/1b17117aea56d38f/recount.json",
+              "sha256": "1ddfc5394f33568a3d5f45f807f87eb30c5201026e41a93a8ec6ce07dc191764"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EASUTEAddedSkinsScreen: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7583,7 +7989,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EASUTEDirectoryButtonHandler",
@@ -7632,13 +8038,42 @@
         "out/recon/tasks/T020/CLASS/2d1f6062d1599cb4/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/2d1f6062d1599cb4/class-contract.json",
+          "sha256": "9034c2e192df39575b9e6ebd42919ae9614730ad36362cbc245ce44896763bfd"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/2d1f6062d1599cb4/recount.json",
+          "sha256": "576d7f8e932993170db315aa81171a212bb6a494eb8390adeef3b2d89e9a9039"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "6f2a654d8027413cab56f3d4937d9893",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308706.6159608,
+          "lease_id": "ca079dbe46a8459aa2c5c39bfffe3267",
+          "checkpoint_at": 1795308707.0458198,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EASUTEDirectoryButtonHandler: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/2d1f6062d1599cb4/class-contract.json",
+              "sha256": "9034c2e192df39575b9e6ebd42919ae9614730ad36362cbc245ce44896763bfd"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/2d1f6062d1599cb4/recount.json",
+              "sha256": "576d7f8e932993170db315aa81171a212bb6a494eb8390adeef3b2d89e9a9039"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EASUTEDirectoryButtonHandler: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7653,7 +8088,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EASUTEManager",
@@ -7702,13 +8137,42 @@
         "out/recon/tasks/T020/CLASS/4bfe4e6bcf779a64/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/4bfe4e6bcf779a64/class-contract.json",
+          "sha256": "c5b495751b8a0cfa51628a617801c96f7fa78cc689eef30fda18e9bc3bc26c59"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/4bfe4e6bcf779a64/recount.json",
+          "sha256": "89e89dff0ae00cd757ba1df774d79797c5162c52bc956e82cb5933abd1d5ed2c"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "7cd5154b35ed4064a5afe28210a85222",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308711.6126258,
+          "lease_id": "14450b08b7fc4afebdb9b2b651e6e7d9",
+          "checkpoint_at": 1795308712.0449772,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EASUTEManager: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/4bfe4e6bcf779a64/class-contract.json",
+              "sha256": "c5b495751b8a0cfa51628a617801c96f7fa78cc689eef30fda18e9bc3bc26c59"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/4bfe4e6bcf779a64/recount.json",
+              "sha256": "89e89dff0ae00cd757ba1df774d79797c5162c52bc956e82cb5933abd1d5ed2c"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EASUTEManager: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7723,7 +8187,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EASUTEMenuManager",
@@ -7772,13 +8236,42 @@
         "out/recon/tasks/T020/CLASS/20b8e07ddde1171a/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/20b8e07ddde1171a/class-contract.json",
+          "sha256": "7150c374d8bb8885e55d2fd2d9b0a85905f1b56d43bc6f276ccf17591812aedf"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/20b8e07ddde1171a/recount.json",
+          "sha256": "7ca5dc3d315fb3af67164c177f932a4afaac6c958b11899f9e45401db9549e8f"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "bdd760a4267f473494c056defbb6f1b6",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308716.623588,
+          "lease_id": "3d500520d6804621b1ab3969aa0d37e1",
+          "checkpoint_at": 1795308717.0643494,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EASUTEMenuManager: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/20b8e07ddde1171a/class-contract.json",
+              "sha256": "7150c374d8bb8885e55d2fd2d9b0a85905f1b56d43bc6f276ccf17591812aedf"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/20b8e07ddde1171a/recount.json",
+              "sha256": "7ca5dc3d315fb3af67164c177f932a4afaac6c958b11899f9e45401db9549e8f"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EASUTEMenuManager: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7793,7 +8286,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EASUTEThumbButtonHandler",
@@ -7842,13 +8335,42 @@
         "out/recon/tasks/T020/CLASS/e8a9144affd8a5d1/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/e8a9144affd8a5d1/class-contract.json",
+          "sha256": "0fba8997d15ca0e3b40a87c96cddd650d9ed9d79667a00f91d6ba0f7277c0d4d"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/e8a9144affd8a5d1/recount.json",
+          "sha256": "23e5ec7f4a2b92ff8fc11c2ff271eb3866f473fc408004566cc010eb3435d944"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "d815854770f447bb9453ae91410e79b4",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308721.6656759,
+          "lease_id": "2658e602858b4b5790e6d2426deeb550",
+          "checkpoint_at": 1795308722.0962145,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EASUTEThumbButtonHandler: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/e8a9144affd8a5d1/class-contract.json",
+              "sha256": "0fba8997d15ca0e3b40a87c96cddd650d9ed9d79667a00f91d6ba0f7277c0d4d"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/e8a9144affd8a5d1/recount.json",
+              "sha256": "23e5ec7f4a2b92ff8fc11c2ff271eb3866f473fc408004566cc010eb3435d944"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EASUTEThumbButtonHandler: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7863,7 +8385,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EASearchPanel",
@@ -7912,13 +8434,42 @@
         "out/recon/tasks/T020/CLASS/13ae43245ca43971/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/13ae43245ca43971/class-contract.json",
+          "sha256": "4f7d39bb3c55e1dbb4e6720c724f6fadc791ab402cec5c2d470a7c023b5d0ee6"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/13ae43245ca43971/recount.json",
+          "sha256": "ae389466df31696514db474d899a102b1fb8714ed236539acbabe70caa5f1020"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "92514dabeaff4980a0e2339672aa9f5c",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308726.654193,
+          "lease_id": "b3ad316db9a24e2391e0506c9661a564",
+          "checkpoint_at": 1795308727.082324,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EASearchPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/13ae43245ca43971/class-contract.json",
+              "sha256": "4f7d39bb3c55e1dbb4e6720c724f6fadc791ab402cec5c2d470a7c023b5d0ee6"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/13ae43245ca43971/recount.json",
+              "sha256": "ae389466df31696514db474d899a102b1fb8714ed236539acbabe70caa5f1020"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EASearchPanel: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -7933,7 +8484,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.EditorApp.EASearchResult",
@@ -7982,13 +8533,42 @@
         "out/recon/tasks/T020/CLASS/31705c20ed2bb5b3/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/31705c20ed2bb5b3/class-contract.json",
+          "sha256": "2f372daabb90611e208f40e9be5d8262a8641d2d0c6f7f95cdc37d0938eddfa3"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/31705c20ed2bb5b3/recount.json",
+          "sha256": "34b7593688d5ee0d7b0e0f038516d2ccd7505137be5665c62f53560f2a2035ee"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "609a0293af6e419da255721f0a07068e",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795308731.752534,
+          "lease_id": "327282c4d0e54ac8a5ab3f5c3b971e21",
+          "checkpoint_at": 1795308732.1750073,
+          "state": "blocked_external",
+          "note": "PWC.EditorApp.EASearchResult: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/31705c20ed2bb5b3/class-contract.json",
+              "sha256": "2f372daabb90611e208f40e9be5d8262a8641d2d0c6f7f95cdc37d0938eddfa3"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/31705c20ed2bb5b3/recount.json",
+              "sha256": "34b7593688d5ee0d7b0e0f038516d2ccd7505137be5665c62f53560f2a2035ee"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PWC.EditorApp.EASearchResult: confirmado ausente do binario IL2CPP shipado (nao existe no out/cpp2il decompilado inteiro, verificacao sistematica 2026-11-22). Nao e bug de parsing - nao ha o que corrigir. Identificacao individual dos 1 objetos (path_id/arquivo) bloqueada por RAM (precisa do datapack). Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -67562,7 +68142,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 73,
+  "revision": 133,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -68949,6 +69529,426 @@
       "task": "T020/CLASS/90da446022c5664c",
       "actor": "agente-artefatos-claude",
       "at": 1795303512.7201035
+    },
+    {
+      "revision": 74,
+      "action": "claim",
+      "task": "T020/CLASS/539303b3b1843fa0",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308632.5293264
+    },
+    {
+      "revision": 75,
+      "action": "start",
+      "task": "T020/CLASS/539303b3b1843fa0",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308632.7454967
+    },
+    {
+      "revision": 76,
+      "action": "checkpoint",
+      "task": "T020/CLASS/539303b3b1843fa0",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308632.984374
+    },
+    {
+      "revision": 77,
+      "action": "claim",
+      "task": "T020/CLASS/4c4a8b17436966da",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308637.8961387
+    },
+    {
+      "revision": 78,
+      "action": "start",
+      "task": "T020/CLASS/4c4a8b17436966da",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308638.1064243
+    },
+    {
+      "revision": 79,
+      "action": "checkpoint",
+      "task": "T020/CLASS/4c4a8b17436966da",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308638.3213115
+    },
+    {
+      "revision": 80,
+      "action": "claim",
+      "task": "T020/CLASS/22c7da6e8fc3ee3f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308643.0688312
+    },
+    {
+      "revision": 81,
+      "action": "start",
+      "task": "T020/CLASS/22c7da6e8fc3ee3f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308643.3076537
+    },
+    {
+      "revision": 82,
+      "action": "checkpoint",
+      "task": "T020/CLASS/22c7da6e8fc3ee3f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308643.5372043
+    },
+    {
+      "revision": 83,
+      "action": "claim",
+      "task": "T020/CLASS/dce23b77d06cdfef",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308648.3708947
+    },
+    {
+      "revision": 84,
+      "action": "start",
+      "task": "T020/CLASS/dce23b77d06cdfef",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308648.5840669
+    },
+    {
+      "revision": 85,
+      "action": "checkpoint",
+      "task": "T020/CLASS/dce23b77d06cdfef",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308648.8043263
+    },
+    {
+      "revision": 86,
+      "action": "claim",
+      "task": "T020/CLASS/6460bac5599af4fa",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308653.797986
+    },
+    {
+      "revision": 87,
+      "action": "start",
+      "task": "T020/CLASS/6460bac5599af4fa",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308654.1666746
+    },
+    {
+      "revision": 88,
+      "action": "checkpoint",
+      "task": "T020/CLASS/6460bac5599af4fa",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308654.5788846
+    },
+    {
+      "revision": 89,
+      "action": "claim",
+      "task": "T020/CLASS/a61eada4f379d4de",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308660.2450147
+    },
+    {
+      "revision": 90,
+      "action": "start",
+      "task": "T020/CLASS/a61eada4f379d4de",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308660.464397
+    },
+    {
+      "revision": 91,
+      "action": "checkpoint",
+      "task": "T020/CLASS/a61eada4f379d4de",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308660.6824944
+    },
+    {
+      "revision": 92,
+      "action": "claim",
+      "task": "T020/CLASS/1c13a938e4aaa33b",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308665.5473914
+    },
+    {
+      "revision": 93,
+      "action": "start",
+      "task": "T020/CLASS/1c13a938e4aaa33b",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308665.7578022
+    },
+    {
+      "revision": 94,
+      "action": "checkpoint",
+      "task": "T020/CLASS/1c13a938e4aaa33b",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308666.075811
+    },
+    {
+      "revision": 95,
+      "action": "claim",
+      "task": "T020/CLASS/145bfd5d8452ad58",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308670.725367
+    },
+    {
+      "revision": 96,
+      "action": "start",
+      "task": "T020/CLASS/145bfd5d8452ad58",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308670.9405458
+    },
+    {
+      "revision": 97,
+      "action": "checkpoint",
+      "task": "T020/CLASS/145bfd5d8452ad58",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308671.1606553
+    },
+    {
+      "revision": 98,
+      "action": "claim",
+      "task": "T020/CLASS/06d746a146177eea",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308675.7875075
+    },
+    {
+      "revision": 99,
+      "action": "start",
+      "task": "T020/CLASS/06d746a146177eea",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308676.00703
+    },
+    {
+      "revision": 100,
+      "action": "checkpoint",
+      "task": "T020/CLASS/06d746a146177eea",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308676.23004
+    },
+    {
+      "revision": 101,
+      "action": "claim",
+      "task": "T020/CLASS/06700d2b7c1ae843",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308680.8521237
+    },
+    {
+      "revision": 102,
+      "action": "start",
+      "task": "T020/CLASS/06700d2b7c1ae843",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308681.0623646
+    },
+    {
+      "revision": 103,
+      "action": "checkpoint",
+      "task": "T020/CLASS/06700d2b7c1ae843",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308681.279377
+    },
+    {
+      "revision": 104,
+      "action": "claim",
+      "task": "T020/CLASS/d52ff34678e3f448",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308686.0139804
+    },
+    {
+      "revision": 105,
+      "action": "start",
+      "task": "T020/CLASS/d52ff34678e3f448",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308686.2372968
+    },
+    {
+      "revision": 106,
+      "action": "checkpoint",
+      "task": "T020/CLASS/d52ff34678e3f448",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308686.4755907
+    },
+    {
+      "revision": 107,
+      "action": "claim",
+      "task": "T020/CLASS/4f0c433ef6871a86",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308691.3673513
+    },
+    {
+      "revision": 108,
+      "action": "start",
+      "task": "T020/CLASS/4f0c433ef6871a86",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308691.6459072
+    },
+    {
+      "revision": 109,
+      "action": "checkpoint",
+      "task": "T020/CLASS/4f0c433ef6871a86",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308691.8714306
+    },
+    {
+      "revision": 110,
+      "action": "claim",
+      "task": "T020/CLASS/63f3d118bbb25d87",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308696.5585368
+    },
+    {
+      "revision": 111,
+      "action": "start",
+      "task": "T020/CLASS/63f3d118bbb25d87",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308696.7737093
+    },
+    {
+      "revision": 112,
+      "action": "checkpoint",
+      "task": "T020/CLASS/63f3d118bbb25d87",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308696.9895017
+    },
+    {
+      "revision": 113,
+      "action": "claim",
+      "task": "T020/CLASS/1b17117aea56d38f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308701.620419
+    },
+    {
+      "revision": 114,
+      "action": "start",
+      "task": "T020/CLASS/1b17117aea56d38f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308701.8330975
+    },
+    {
+      "revision": 115,
+      "action": "checkpoint",
+      "task": "T020/CLASS/1b17117aea56d38f",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308702.04856
+    },
+    {
+      "revision": 116,
+      "action": "claim",
+      "task": "T020/CLASS/2d1f6062d1599cb4",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308706.6514568
+    },
+    {
+      "revision": 117,
+      "action": "start",
+      "task": "T020/CLASS/2d1f6062d1599cb4",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308706.8655283
+    },
+    {
+      "revision": 118,
+      "action": "checkpoint",
+      "task": "T020/CLASS/2d1f6062d1599cb4",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308707.085761
+    },
+    {
+      "revision": 119,
+      "action": "claim",
+      "task": "T020/CLASS/4bfe4e6bcf779a64",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308711.6491737
+    },
+    {
+      "revision": 120,
+      "action": "start",
+      "task": "T020/CLASS/4bfe4e6bcf779a64",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308711.8643994
+    },
+    {
+      "revision": 121,
+      "action": "checkpoint",
+      "task": "T020/CLASS/4bfe4e6bcf779a64",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308712.0860775
+    },
+    {
+      "revision": 122,
+      "action": "claim",
+      "task": "T020/CLASS/20b8e07ddde1171a",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308716.660413
+    },
+    {
+      "revision": 123,
+      "action": "start",
+      "task": "T020/CLASS/20b8e07ddde1171a",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308716.8865817
+    },
+    {
+      "revision": 124,
+      "action": "checkpoint",
+      "task": "T020/CLASS/20b8e07ddde1171a",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308717.1063411
+    },
+    {
+      "revision": 125,
+      "action": "claim",
+      "task": "T020/CLASS/e8a9144affd8a5d1",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308721.7026806
+    },
+    {
+      "revision": 126,
+      "action": "start",
+      "task": "T020/CLASS/e8a9144affd8a5d1",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308721.9060638
+    },
+    {
+      "revision": 127,
+      "action": "checkpoint",
+      "task": "T020/CLASS/e8a9144affd8a5d1",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308722.133262
+    },
+    {
+      "revision": 128,
+      "action": "claim",
+      "task": "T020/CLASS/13ae43245ca43971",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308726.6903508
+    },
+    {
+      "revision": 129,
+      "action": "start",
+      "task": "T020/CLASS/13ae43245ca43971",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308726.9073088
+    },
+    {
+      "revision": 130,
+      "action": "checkpoint",
+      "task": "T020/CLASS/13ae43245ca43971",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308727.1218596
+    },
+    {
+      "revision": 131,
+      "action": "claim",
+      "task": "T020/CLASS/31705c20ed2bb5b3",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308731.788822
+    },
+    {
+      "revision": 132,
+      "action": "start",
+      "task": "T020/CLASS/31705c20ed2bb5b3",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308731.9953244
+    },
+    {
+      "revision": 133,
+      "action": "checkpoint",
+      "task": "T020/CLASS/31705c20ed2bb5b3",
+      "actor": "agente-artefatos-claude",
+      "at": 1795308732.2166393
     }
   ]
 }
