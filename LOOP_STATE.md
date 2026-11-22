@@ -1,5 +1,20 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T002: dominio StoreBundle resolvido com trabalho de outra sessao — 2026-11-22
+Pedido do usuário pra pegar T002 (igual T004: só doc, zero RAM). A tentativa anterior tinha
+deixado `StoreBundle` como `UNKNOWN_not_scoped_yet` ("nenhuma evidência encontrada nesta
+sessão") — exatamente o domínio que a minha investigação da loja (2026-11-07) resolveu depois.
+Reconfigurei as referências obsoletas e atualizei `scope.json`/`features.jsonl`/`divergences.jsonl`:
+- `StoreBundle` passa pra `STATIC_EVIDENCE_RECOVERED_no_local_implementation`: os 224 pacotes de
+  `InventoryBuildData` categorizados, 7 temas de Casas resolvidos (2 confirmados contra print do
+  jogo original) — mas nenhuma tela/gate do cliente consome isso ainda (mesma maturidade do
+  `CarMaker`, que já estava assim).
+- Novo F021 (feature) e D007 (divergência: associação cartão→pacote é inferência por nome, não
+  prova — mesma ressalva já aceita pro pipeline de Moda).
+- `Street` continua `UNKNOWN` — nenhuma evidência encontrada em nenhuma sessão, não inventei nada.
+- Checkpointada de volta como `ready` (2 tentativas registradas); gerar tarefas-filhas continua
+  decisão de coordenador.
+
 ## T004: matriz de capacidade de ferramentas atualizada com os achados de hoje — 2026-11-22
 Pedido do usuário pra pegar outra tarefa ainda não concluída. `T004` ("Inventário de ferramentas e
 capacidade real") já tinha uma tentativa parcial anterior (`out/recon/tasks/T004/tool_capability_matrix.json`),

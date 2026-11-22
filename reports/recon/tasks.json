@@ -184,7 +184,7 @@
         },
         {
           "path": "docs/OFFLINE_RECONSTRUCTION_STATUS.md",
-          "sha256": "10c0522a01076264f17f1abeb513218f0c53f646f25efac051b3e5765c9cb6f0"
+          "sha256": "f104183c75b40b42486fb98cb1a4626a64bfc2e2bc769426d22bd0ab0c36d82b"
         },
         {
           "path": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/SceneType.cs",
@@ -192,25 +192,25 @@
         },
         {
           "path": "LOOP_STATE.md",
-          "sha256": "77bf4dbead9dcd88d085a0aa12d5acf35f4c793271842b286226831a70e0f8f1"
+          "sha256": "c8bf27657f9638a913fa9ebb2d44d6dd941cfe62172393f49360fc0588167c25"
         }
       ],
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T002/scope.json",
-          "sha256": "fe39137e1a5287495cc9bc9da1a067af783c900068c685b32af42fa96ecc0da5"
+          "sha256": "439603b18093fb052c815512d8a4bfc2c59a3eb12146af024c77acb7225734b1"
         },
         {
           "path": "out/recon/tasks/T002/features.jsonl",
-          "sha256": "86c1b75d910119e66dbfdf61d009e95e0aceacb8cc335664f4daf9e729023e48"
+          "sha256": "77d787f8a4264cca125ecbf0e15e4e05bc3e05f826de046a8e93b8b5d3f19f16"
         },
         {
           "path": "out/recon/tasks/T002/divergences.jsonl",
-          "sha256": "92c559ee27a4686453501a4bb7e344f77567211cc7e6e91ce22ad2459cf29d58"
+          "sha256": "81fe1c549e78122ecd32784139f7c4ed29104c7846a78d72315bd33be99beba4"
         },
         {
           "path": "out/recon/tasks/T002/result.json",
-          "sha256": "ed34b04b87584cddbb484f72e96c0df90e2ecb941ee7df919795018b31a6ab19"
+          "sha256": "afd1005863e494aee83325f9ca5d97aabe376bc12add7e7498ba08fc1e720966"
         }
       ],
       "unknown_ids": [],
@@ -241,12 +241,39 @@
               "sha256": "ed34b04b87584cddbb484f72e96c0df90e2ecb941ee7df919795018b31a6ab19"
             }
           ]
+        },
+        {
+          "id": "aa542569a5994cf1aa539b10b980ed45",
+          "owner": "agente-coordenador-claude",
+          "started_at": 1795370382.4123774,
+          "lease_id": "953b3da46e0540a8b7d0e2720f9f00a5",
+          "checkpoint_at": 1795370382.936391,
+          "state": "ready",
+          "note": "Reaproveitei trabalho de outra sessao (docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md, docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md) pra resolver o dominio StoreBundle, que estava UNKNOWN_not_scoped_yet por falta de evidencia. Agora: STATIC_EVIDENCE_RECOVERED_no_local_implementation - os 224 pacotes de InventoryBuildData estao categorizados e 7 temas de casa resolvidos (2 confirmados contra print do jogo original), mas nenhuma tela/gate do cliente consome esses dados ainda. Adicionei F021 (feature) e D007 (divergencia: associacao cartao->pacote e inferencia por nome, nao prova - mesma ressalva ja aceita pro pipeline de Moda). Street continua UNKNOWN (nenhuma evidencia encontrada em nenhuma sessao). Nao gerei tarefas filhas (decisao de coordenador, deixada em aberto, igual a tentativa anterior).",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T002/scope.json",
+              "sha256": "439603b18093fb052c815512d8a4bfc2c59a3eb12146af024c77acb7225734b1"
+            },
+            {
+              "path": "out/recon/tasks/T002/features.jsonl",
+              "sha256": "77d787f8a4264cca125ecbf0e15e4e05bc3e05f826de046a8e93b8b5d3f19f16"
+            },
+            {
+              "path": "out/recon/tasks/T002/divergences.jsonl",
+              "sha256": "81fe1c549e78122ecd32784139f7c4ed29104c7846a78d72315bd33be99beba4"
+            },
+            {
+              "path": "out/recon/tasks/T002/result.json",
+              "sha256": "afd1005863e494aee83325f9ca5d97aabe376bc12add7e7498ba08fc1e720966"
+            }
+          ]
         }
       ],
-      "owner": "agente-logica-claude",
+      "owner": "agente-coordenador-claude",
       "lease": null,
       "review": null,
-      "next_action": "Entrega parcial: matriz de escopo (scope.json, 13 dominios de SceneType.cs com status/politica), features.jsonl (20 recursos locais/integracoes ausentes/conteudo faltante/extensoes pedagogicas) e divergences.jsonl (6 itens, incluindo os 3 casos de preco/recompensa local vs original exigidos pelo criterio de aceite). Sintese pura de docs existentes + leitura do clothing-manifest.json atual (4.965 itens, nao commitado); sem Unity/aparelho/datapack. Nao gerei tarefas filhas (decisao de coordenador); Street e StoreBundle ficam UNKNOWN por falta de evidencia nesta sessao."
+      "next_action": "Reaproveitei trabalho de outra sessao (docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md, docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md) pra resolver o dominio StoreBundle, que estava UNKNOWN_not_scoped_yet por falta de evidencia. Agora: STATIC_EVIDENCE_RECOVERED_no_local_implementation - os 224 pacotes de InventoryBuildData estao categorizados e 7 temas de casa resolvidos (2 confirmados contra print do jogo original), mas nenhuma tela/gate do cliente consome esses dados ainda. Adicionei F021 (feature) e D007 (divergencia: associacao cartao->pacote e inferencia por nome, nao prova - mesma ressalva ja aceita pro pipeline de Moda). Street continua UNKNOWN (nenhuma evidencia encontrada em nenhuma sessao). Nao gerei tarefas filhas (decisao de coordenador, deixada em aberto, igual a tentativa anterior)."
     },
     {
       "id": "T003",
@@ -69031,7 +69058,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 227,
+  "revision": 231,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -71496,6 +71523,34 @@
       "task": "T004",
       "actor": "agente-artefatos-claude",
       "at": 1795369361.1151655
+    },
+    {
+      "revision": 228,
+      "action": "configure",
+      "task": "T002",
+      "actor": "agente-coordenador-claude",
+      "at": 1795370377.1593285
+    },
+    {
+      "revision": 229,
+      "action": "claim",
+      "task": "T002",
+      "actor": "agente-coordenador-claude",
+      "at": 1795370382.4557202
+    },
+    {
+      "revision": 230,
+      "action": "start",
+      "task": "T002",
+      "actor": "agente-coordenador-claude",
+      "at": 1795370382.6760507
+    },
+    {
+      "revision": 231,
+      "action": "checkpoint",
+      "task": "T002",
+      "actor": "agente-coordenador-claude",
+      "at": 1795370383.0407038
     }
   ]
 }
