@@ -49,8 +49,9 @@
       "tool": "UnityPy 1.25.4 + TypeTreeGeneratorAPI 0.0.10, in tools/venv (Python 3.14)",
       "status": "AVAILABLE for small files; BLOCKED for the large datapack bundle on this host right now",
       "evidence_of_block": "UnityPy.load() on x/base/assets/bin/Data/datapack.unity3d (1.27GB compressed on disk) was reliably OOM-killed in this session (confirmed via strace: SIGKILL across worker threads during the load itself, not a clean Python-level exit), independent of thread count (RAYON_NUM_THREADS=1 still OOM'd). See out/recon/tasks/T020/CLASS/d723b7b66951bef8/attempt*.log for the full trace.",
-      "works_fine_for": "The small x/base/assets/bin/Data/data.unity3d (16MB) and assets/base.apk's embedded data.unity3d (both used successfully this session via tools/map_world_navigation.py's approach).",
-      "limits": ["Any task whose evidence requires loading datapack.unity3d directly (most of the T020/CLASS/* class-decode-fix family, and T015/SCENE/* scenes with nonzero cached_root_count beyond what out/scene_roots.json already has) is blocked on this host until more RAM/swap headroom is available or the operation runs on a host with more memory."]
+      "additional_confirmation_2026-11-22": "5 more attempts this same day, all killed at the identical step (loading datapack.unity3d, before any object is read), confirmed via journalctl -k each time. Resident memory at the moment of the kill varied widely across attempts - 3.66GB, 3.75GB, and 5.78GB RSS in three different runs - which rules out a fixed per-process ceiling; it is global host memory pressure at the moment of the call (observed culprit: a user's Chrome instance with many renderer processes, sometimes 2GB+ alone) that decides whether this specific load survives, not a property of the Python process itself. 'RAM available' read from `free -m` right before launching the load did NOT reliably predict the outcome (one attempt was launched with 2.6GB available/1.6GB swap free and still died; see LOOP_STATE.md 2026-11-21/22 entries for the full timeline across all attempts).",
+      "works_fine_for": "The small x/base/assets/bin/Data/data.unity3d (16MB) and assets/base.apk's embedded data.unity3d (both used successfully this session via tools/map_world_navigation.py's approach), and the lightweight type-tree-only capability documented separately below.",
+      "limits": ["Any task whose evidence requires loading datapack.unity3d directly (most of the T020/CLASS/* class-decode-fix family, and T015/SCENE/* scenes needing more than their cached root-object list from out/navigation-map/scenes.json - 252 of 254 scenes there already have cached_roots, but the full component/child inventory below the root still needs the datapack) is blocked on this host until more RAM/swap headroom is available (tried: closing other sessions, waiting - neither reliably worked this session) or the operation runs on a host with more memory (a work PC was identified as the fallback; see tools/mb_retry_failed_classes.py's docstring for the exact extraction recipe to reproduce il2cpp_in/ and x/ there from the APK)."]
     },
     {
       "capability": "On-device dynamic inspection (ADB)",
@@ -61,15 +62,31 @@
     },
     {
       "capability": "REA (reverse-engineer-anything) MCP toolset",
-      "tool": "mcp__rea__* (binary_session, open_binary, procedure_pseudo_code, trace_feature, etc.)",
-      "status": "AVAILABLE as an MCP server in this coding session; NOT used for any T0xx/T025 work this session (the existing project-specific tools/recon_*.py scripts were reused instead, since they already carry this project's exact anchors/tests)",
-      "limits": ["Not evaluated against libil2cpp.so/datapack.unity3d in this session; capability against this specific binary pair is unverified, not a known blocker."]
+      "tool": "mcp__rea__* (binary_session, open_binary, procedure_pseudo_code, analyze_function, inspect_native_instruction, etc.)",
+      "status": "EVALUATED 2026-11-22 against out/recon/il2cpp/libil2cpp.so (ARM64, 75MB) - BLOCKED for both deep-analysis providers right now, for two unrelated reasons",
+      "evidence": [
+        "open_binary succeeded fast for both 'hopper' and 'ghidra' provider_id (hash of libil2cpp.so confirmed: b63661fa60c2...), and binary_session reported both providers' availability.status as 'available' beforehand.",
+        "Hopper: any analysis call (analyze_function) hung and returned provider_timeout after 120s, with launcher stderr showing 'QObject::disconnect: wildcard call disconnects from destroyed signal of QDialog::WaitDialog' - Hopper is stuck on a modal dialog (license/loader) with no GUI available in this headless sandbox to dismiss it. Same symptom already noted in LOOP_STATE.md from an earlier session (T034 _st investigation).",
+        "Ghidra: analyze_function on one address timed out at 330000ms; a SECOND, much lighter call (inspect_native_instruction, a single-address decode) ALSO ran past 120s before being stopped. This shows every call triggers Ghidra's full AnalyzeHeadless import+auto-analysis pipeline from a fresh temp project each time (-deleteProject, no cache between MCP calls) rather than a per-function lazy analysis - so there is no 'ask for just one small thing' escape hatch via this bridge. The JVM process itself is memory-bounded (-Xmx2G heap cap observed in `ps`), so this did NOT produce an OOM kill this time (unlike UnityPy/datapack below) - it is a wall-clock timeout, with host swap dropping as low as 132MB free during the run."
+      ],
+      "limits": [
+        "Neither Hopper nor Ghidra is currently usable through this REA bridge in this sandboxed environment for even a single targeted lookup - Hopper needs interactive GUI dismissal of a stuck dialog; Ghidra's bridge always redoes a full-binary headless analysis pass (multiple minutes) per call, with no persistence across calls.",
+        "Lighter REA read tools that do NOT require a provider's deep-analysis run (binary_session, open_binary itself) work fine and are cheap - the wall only appears once an analysis-dependent tool (analyze_function, inspect_native_instruction, procedure_pseudo_code, resolve_native_call_targets, etc.) is called."
+      ]
+    },
+    {
+      "capability": "Lightweight IL2CPP type-tree generation without loading the large asset bundle",
+      "tool": "UnityPy's TypeTreeGenerator (TypeTreeGeneratorAPI 0.0.10) called with only il2cpp_in/{libil2cpp.so,global-metadata.dat} (90MB total) + x/base/assets/bin/Data/data.unity3d (16MB, for MonoScript name->assembly lookup) - deliberately never touching x/base/assets/bin/Data/datapack.unity3d (the 1.27GB bundle that OOMs below)",
+      "status": "DISCOVERED and used successfully this session (2026-11-22) - new capability, not previously in this matrix",
+      "evidence": "Used to triage all 124 still-failing MonoBehaviour classes from out/mb/_stats.json by generating each class's type-tree node list alone (no object data read) and classifying the failure by structural pattern (mislabeled List<String> field vs. raw-generic-field crash vs. type missing from metadata vs. ManagedReferencesRegistry/SerializeReference). Zero OOM risk observed across many repeated invocations today, including while the datapack-loading capability below was actively OOMing. See docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md and out/recon/tasks/T020/node_tree_triage_2026-11-22.py.",
+      "limits": ["Only produces the STATIC field layout (type tree shape); cannot read or validate actual serialized object bytes, so it is a hypothesis/triage tool, not a substitute for the real check_read=True verification that still needs the datapack."]
     }
   ],
   "known_limits_summary": [
-    "The single hard blocker found this session is host memory: loading datapack.unity3d (>1GB) via UnityPy reliably OOMs on this 7.3GB-RAM/4GB-swap host, regardless of thread count, independent of other concurrent jobs.",
-    "Everything that stays within libil2cpp.so + global-metadata.dat + small cached JSON/jsonl/gz indexes (ARM64 method contracts, scene-root lookups, class/field name joins) works reliably and was used successfully this session.",
-    "Unity Editor batch builds work but contend heavily for the same scarce RAM; running one alongside UnityPy-on-datapack or another Editor instance is not reliable on this host."
+    "The single hard blocker reconfirmed across two sessions (2026-11-21, 2026-11-22) is host memory: loading datapack.unity3d (>1GB) via UnityPy reliably OOMs on this 7.3GB-RAM/4GB-swap host at a varying RSS threshold (3.66-5.78GB observed), regardless of thread count or the RAM 'available' reading at launch time - this is global host memory pressure, not a fixed per-process ceiling.",
+    "Everything that stays within libil2cpp.so + global-metadata.dat + small cached JSON/jsonl/gz indexes (ARM64 method contracts, scene-root lookups, class/field name joins, and now full type-tree generation for triage) works reliably and was used successfully across both sessions.",
+    "Unity Editor batch builds work but contend heavily for the same scarce RAM; running one alongside UnityPy-on-datapack or another Editor instance is not reliable on this host.",
+    "REA's Hopper and Ghidra deep-analysis providers are both currently unusable in this sandbox for any analysis-dependent call (not just heavy ones) - Hopper hangs on a stuck GUI dialog, Ghidra always redoes a full-binary headless analysis pass per call with no cross-call cache, hitting a wall-clock timeout before an OOM would even be reached."
   ],
   "no_global_install_or_config_change_performed": true,
   "verification": {"target_executed": false, "semantic_certification": false}

@@ -1,0 +1,12 @@
+{
+ "task": "T020/CLASS/7ea1a24e4c2ed7ba",
+ "title": "Corrigir decodificação de PazuCore.WindowManager",
+ "actor": "agente-artefatos-claude",
+ "summary": "PazuCore.WindowManager: confirmed as the same TypeTreeGeneratorAPI SerializableDictionaryBase<K,V> limitation as the 27 classes closed earlier this session, reached indirectly via the named subclass `Name_Back_Scene` on field `nameBackScene`. Initially left open because a literal string grep missed the indirect reference; resolved by checking field types against the full subclass list instead of the raw generic string.",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/class-contract.json",
+  "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/recount.json",
+  "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/WindowManager.cs",
+  "docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md"
+ ]
+}

@@ -1,0 +1,845 @@
+{
+ "PazuCore.GameExtraSettings": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue.",
+  "confirmed_indirectly_via_named_subclass": true,
+  "queue_task_closed_blocked_external": true
+ },
+ "PazuCore.GameSettings": {
+  "node_count": 101,
+  "mislabeled_list_string_fields_found": [
+   "elements"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PazuCore.WindowManager": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue.",
+  "confirmed_indirectly_via_named_subclass": true,
+  "queue_task_closed_blocked_external": true
+ },
+ "PazuCore.LocalizationManager": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue.",
+  "confirmed_indirectly_via_named_subclass": true,
+  "queue_task_closed_blocked_external": true
+ },
+ "PazuCore.DeepLink.DeepLinkManager": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_mapLinkToLevel: SerializableDictionaryBase<String, LevelType>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/DeepLink/DeepLinkManager.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_prizesSprites: SerializableDictionaryBase<PrizeType, Sprite>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/AchievementsApp/AchievementDetailThumb.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.Level.LevelStationaryPlant": {
+  "node_count": 59,
+  "mislabeled_list_string_fields_found": [
+   "_incrementSounds"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelSecretAvatarAnimationSolvedListener": {
+  "node_count": 135,
+  "mislabeled_list_string_fields_found": [
+   "_SolvingData"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.LevelPhone.PhoneBackground": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_backgroundColors: SerializableDictionaryBase<ApplicationType, ApplicationBackgroundData>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneBackground.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.LevelPhone.ContactsContent": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_contactSpinePrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarSpineSkinsManagerBase>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/ContactsContent.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.LevelPhone.PhoneSeparator": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_seperatorColors: SerializableDictionaryBase<ApplicationType, Color>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneSeparator.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.Level.LevelAnimationDropAreaHandler": {
+  "node_count": 20,
+  "mislabeled_list_string_fields_found": [
+   "_animationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.LevelPhone.DeliveryApp.DeliveryContent": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_pageManagers: SerializableDictionaryBase<DeliveryAppStepType, DeliveryPageManagerBase>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/DeliveryApp/DeliveryContent.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "Game.Level.ContextualAnimation.LevelCAEventHandlerByAnimationNameItemHandler": {
+  "node_count": 62,
+  "mislabeled_list_string_fields_found": [
+   "_animationNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.LevelPhone.PhoneContentIcon": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_applicationsIcons: SerializableDictionaryBase<ApplicationType, Sprite>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneContentIcon.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.Level.LevelSimpleToggleableSpine": {
+  "node_count": 115,
+  "mislabeled_list_string_fields_found": [
+   "_soundNames",
+   "_idleAnimationsNames",
+   "_transitionAnimationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelOnSpecificPairAnimationBetweenSpecificAvatars": {
+  "node_count": 97,
+  "mislabeled_list_string_fields_found": [],
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
+ },
+ "Spine.Unity.SkeletonAnimation": {
+  "node_count": 72,
+  "mislabeled_list_string_fields_found": [
+   "separatorSlotNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelPeriodicSpine": {
+  "node_count": 26,
+  "mislabeled_list_string_fields_found": [
+   "_periodicAnimationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelToggleableMap": {
+  "node_count": 56,
+  "mislabeled_list_string_fields_found": [
+   "_idleAnimationsNames",
+   "_transitionAnimationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelAnimationDropArea": {
+  "node_count": 26,
+  "mislabeled_list_string_fields_found": [
+   "_animationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelUpgradeTrackerGuidsFilter": {
+  "node_count": 34,
+  "mislabeled_list_string_fields_found": [
+   "_guids",
+   "_prefabGuids"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelLabelConditionsUnlockableObjectHandler": {
+  "node_count": 24,
+  "mislabeled_list_string_fields_found": [
+   "_labels"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelSkinsRandomizer": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_skinsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, RandomSkinsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelSkinsRandomizer.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "Game.Level.LevelWaffleMachine": {
+  "node_count": 58,
+  "mislabeled_list_string_fields_found": [
+   "_idleAnimationsNames",
+   "_dynamicAnimationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelIceCreamContainerMachine": {
+  "node_count": 32,
+  "mislabeled_list_string_fields_found": [
+   "_animationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelToggleableMultipleAudio": {
+  "node_count": 133,
+  "mislabeled_list_string_fields_found": [
+   "_soundNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Game.LevelPinata": {
+  "node_count": 103,
+  "mislabeled_list_string_fields_found": [
+   "_hitAnimations",
+   "_idleAnimations"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelSimpleToggleableSpineItem": {
+  "node_count": 52,
+  "mislabeled_list_string_fields_found": [
+   "_idleAnimationsNames",
+   "_transitionAnimationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelMultiLabelHandler": {
+  "node_count": 16,
+  "mislabeled_list_string_fields_found": [
+   "_labels"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelBaristaMachine": {
+  "node_count": 93,
+  "mislabeled_list_string_fields_found": [
+   "_idleAnimationsNames",
+   "_dynamicAnimationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.Baking.LevelMixerMachine": {
+  "node_count": 81,
+  "mislabeled_list_string_fields_found": [
+   "_animationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Spine.Unity.SkeletonDataAsset": {
+  "node_count": 84,
+  "mislabeled_list_string_fields_found": [
+   "fromAnimation",
+   "toAnimation"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelToggleableMultipleAudioItemHandler": {
+  "node_count": 133,
+  "mislabeled_list_string_fields_found": [
+   "_soundNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelActionOnAnimationDropAreaHandler": {
+  "node_count": 155,
+  "mislabeled_list_string_fields_found": [
+   "_animationsNames",
+   "_animationsNamesEnd",
+   "_animationsNamesEvent"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelPlant": {
+  "node_count": 98,
+  "mislabeled_list_string_fields_found": [
+   "_soundNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.MovingTraingBackground.LevelStationButton": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_buttonsStates: SerializableDictionaryBase<SelectionState, LevelStationButtonState>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/MovingTraingBackground/LevelStationButton.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.Game.LevelToggleableTransform": {
+  "node_count": 108,
+  "mislabeled_list_string_fields_found": [
+   "_transitionsSoundNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelSecretAvatarPutClothingsListener": {
+  "node_count": 68,
+  "mislabeled_list_string_fields_found": [
+   "_solvingCategories",
+   "_solvingSkins"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelConsumerAreaSkinNameConditionHandler": {
+  "node_count": 17,
+  "mislabeled_list_string_fields_found": [
+   "_skinNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelCopyAnimationsFromOtherDropArea": {
+  "node_count": 29,
+  "mislabeled_list_string_fields_found": [
+   "_animationsToCopy"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "LevelDropAreaEventOnAvatarWithSkinDropHandler": {
+  "node_count": 199,
+  "mislabeled_list_string_fields_found": [
+   "_skinNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.ContextualAnimation.LevelCAConductorDropAreaHandler": {
+  "node_count": 30,
+  "mislabeled_list_string_fields_found": [
+   "_animationNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.ContextualAnimation.LevelCAMusicalInstrumentCADataItemHandler": {
+  "node_count": 36,
+  "mislabeled_list_string_fields_found": [
+   "_soundsName"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelRoadBlockAreaToggleableSpine": {
+  "node_count": 115,
+  "mislabeled_list_string_fields_found": [
+   "_soundNames",
+   "_idleAnimationsNames",
+   "_transitionAnimationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.ContextualAnimation.LevelCAMusicalInstrumentWithSpecialNamesWithCADataDropAreaHandler": {
+  "node_count": 31,
+  "mislabeled_list_string_fields_found": [
+   "_soundsName"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.ContextualAnimation.LevelCADrumsMusicClassroomHandler": {
+  "node_count": 63,
+  "mislabeled_list_string_fields_found": [
+   "_soundsName",
+   "_transitionAnimationsNames",
+   "_withSticksAnimations",
+   "_withoutSticksAnimations"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelSecretAvatarAnimationByScreenCaptureListener": {
+  "node_count": 74,
+  "mislabeled_list_string_fields_found": [
+   "_animationNames",
+   "_avatarIDs",
+   "_requiredSkins"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelSecretAvatarAnimationWithExampleAvatarSolvedListener": {
+  "node_count": 89,
+  "mislabeled_list_string_fields_found": [
+   "_SolvingAnimationNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelConsumerAreaSUTNameConditionHandler": {
+  "node_count": 16,
+  "mislabeled_list_string_fields_found": [
+   "_SUTNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.Level.LevelMultiToggleableAudio": {
+  "node_count": 127,
+  "mislabeled_list_string_fields_found": [
+   "_soundsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelStaticConditionsResolverWithDropAreas": {
+  "node_count": 118,
+  "mislabeled_list_string_fields_found": [],
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
+ },
+ "Game.Level.LevelStaticConditionsResolver": {
+  "node_count": 91,
+  "mislabeled_list_string_fields_found": [],
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
+ },
+ "PWC.Level.LevelSetAnimationOnAvatarsInConsumerAreaHandler": {
+  "node_count": 24,
+  "mislabeled_list_string_fields_found": [
+   "_animationNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelSpineObjectEventHelper": {
+  "node_count": 133,
+  "mislabeled_list_string_fields_found": [
+   "_animationNamesForEvents"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelDragActionAreaMultiLabelEventHandler": {
+  "node_count": 54,
+  "mislabeled_list_string_fields_found": [
+   "_labels"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelSecretVehicleInWorldPositionListener": {
+  "node_count": 116,
+  "mislabeled_list_string_fields_found": [],
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
+ },
+ "Game.Level.LevelStaticConditionsResolverWithParkedVehicles": {
+  "node_count": 140,
+  "mislabeled_list_string_fields_found": [],
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
+ },
+ "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_languageCodeToPosition: SerializableDictionaryBase<String, Vector2>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCChangePositionWIthLanguageCode.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.AvatarMakerLobby.AvatarMakerLobbyManager": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_filledSlotPrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarMakerLobbyFilledSlot>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMakerLobby/AvatarMakerLobbyManager.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.CarsMaker.CarMakerDoorOpener": {
+  "node_count": 21,
+  "mislabeled_list_string_fields_found": [
+   "_excludedBreeds"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.EditorApp.EASUTEThumbButtonHandler": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EASUTEThumbButtonHandler\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.EditorApp.EASUTEDirectoryButtonHandler": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EASUTEDirectoryButtonHandler\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.EditorApp.EASUTEAddedSkinsScreen": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EASUTEAddedSkinsScreen\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.EditorApp.EASUTEManager": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EASUTEManager\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.EditorApp.EASUTEMenuManager": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EASUTEMenuManager\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.AvatarMaker.SUTSkinsDataMap": {
+  "node_count": 16,
+  "mislabeled_list_string_fields_found": [
+   "skins"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "BWYW.DailyTasksData": {
+  "node_count": 36,
+  "mislabeled_list_string_fields_found": [],
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
+ },
+ "BWYW.BWYWGiftData": {
+  "node_count": 41,
+  "mislabeled_list_string_fields_found": [],
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
+ },
+ "PWC.EditorApp.EAEditorDirectoryIndexer": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAEditorDirectoryIndexer\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "Game.Level.LevelOutfit": {
+  "node_count": 71,
+  "mislabeled_list_string_fields_found": [
+   "solvingSkins"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelRecipeSecret": {
+  "node_count": 70,
+  "mislabeled_list_string_fields_found": [],
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
+ },
+ "PWC.World.Buildings.TransportationResetData": {
+  "node_count": 27,
+  "mislabeled_list_string_fields_found": [
+   "_crossSitAreasSceneGuids",
+   "_crossDropAreasSceneGuids"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.EditorApp.EAEditorAssetsIndexer": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAEditorAssetsIndexer\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "Game.Level.LevelItemsMenuShopPack": {
+  "node_count": 52,
+  "mislabeled_list_string_fields_found": [
+   "_alteranteIdleAnimations"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRKeyExistConditionHandler": {
+  "node_count": 89,
+  "mislabeled_list_string_fields_found": [
+   "_path"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRAnalyticsContextSetter": {
+  "node_count": 39,
+  "mislabeled_list_string_fields_found": [
+   "_parameters",
+   "path"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PazuCore.PazuCoreAddressables.AFC.AFCAnalyticsEventCreator": {
+  "node_count": 17,
+  "mislabeled_list_string_fields_found": [
+   "_parameters"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelPlayAnimation": {
+  "node_count": 16,
+  "mislabeled_list_string_fields_found": [
+   "_animations"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelShopPack": {
+  "node_count": 51,
+  "mislabeled_list_string_fields_found": [
+   "_alteranteIdleAnimations"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelPDBulkDataShopPack": {
+  "node_count": 55,
+  "mislabeled_list_string_fields_found": [
+   "_alteranteIdleAnimations"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.ContextualAnimation.LevelCAXmasGiftExchangerItemHandler": {
+  "node_count": 43,
+  "mislabeled_list_string_fields_found": [
+   "_clothingGiftsName"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelPlayerVehicle": {
+  "node_count": 173,
+  "mislabeled_list_string_fields_found": [
+   "_radioStations",
+   "_sirensSounds"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.AvatarMaker.AvatarMakerBabyColorsConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<BabyCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabyColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.EditorApp.EADelayedEventInputField": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EADelayedEventInputField\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRAnalyticsEventCreator": {
+  "node_count": 40,
+  "mislabeled_list_string_fields_found": [
+   "_parameters",
+   "path"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.EditorApp.EAHierarchyPanel": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAHierarchyPanel\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.AvatarMaker.AvatarMakerDogColorsConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<DogCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.EditorApp.EALevelEditorPanel": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EALevelEditorPanel\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.Level.BasketballSystem.LevelBSBasketballItemHandler": {
+  "node_count": 34,
+  "mislabeled_list_string_fields_found": [
+   "_passingForwardAnimationNames",
+   "_passingBackwardAnimationNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelChainSortingItemHandler": {
+  "node_count": 96,
+  "mislabeled_list_string_fields_found": [
+   "labels"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_languageCodeToLineSpace: SerializableDictionaryBase<String, Single>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCTMPTextLineSpaceWIthLanguageCode.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler": {
+  "node_count": 41,
+  "mislabeled_list_string_fields_found": [
+   "_soundNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRText": {
+  "node_count": 24,
+  "mislabeled_list_string_fields_found": [
+   "_path"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.AvatarMaker.AvatarMakerCatColorsConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<CatCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.AvatarMaker.AvatarMakerCarThumbsConfig": {
+  "node_count": 31,
+  "mislabeled_list_string_fields_found": [
+   "SkinNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRVideoComponent": {
+  "node_count": 130,
+  "mislabeled_list_string_fields_found": [
+   "_path"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.EditorApp.EASearchPanel": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EASearchPanel\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<DogCategoryType, CatSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.EditorApp.EAHierarchyResult": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAHierarchyResult\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<BabyCategoryType, BabySubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabySubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "Game.Level.LevelSpineObjectSymmetricMovement": {
+  "node_count": 19,
+  "mislabeled_list_string_fields_found": [
+   "_transitionAnimationsNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<CatCategoryType, CatSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "Game.Level.BackgroundCharacterSpineManager": {
+  "node_count": 21,
+  "mislabeled_list_string_fields_found": [
+   "_additionalSkinNames"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRTextureComponent": {
+  "node_count": 99,
+  "mislabeled_list_string_fields_found": [
+   "_path"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "Game.Level.LevelItemConditionsResolver": {
+  "node_count": 94,
+  "mislabeled_list_string_fields_found": [],
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
+ },
+ "PWC.EditorApp.EAResultPool": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAResultPool\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PazuCore.PazuCoreAddressables.AFC.CR.AFCCROpenGame": {
+  "node_count": 24,
+  "mislabeled_list_string_fields_found": [
+   "_path"
+  ],
+  "triage": "same_bug_likely_fixed"
+ },
+ "PWC.EditorApp.EACAInfoManager": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EACAInfoManager\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.EditorApp.EACAItemInfo": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EACAItemInfo\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<HorseCategoryType, HorseSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<ToddlerCategoryType, ToddlerSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.EditorApp.EAItemPreviewPanel": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAItemPreviewPanel\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<CharacterCategoryType, CharacterSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.EditorApp.EAItemPreviewPanelSpritePreview": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAItemPreviewPanelSpritePreview\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.AvatarMaker.AvatarMakerHorseColorsConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<HorseCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_subcategoriesData: SerializableDictionaryBase<CarCategoryType, CarSubcategoryDataList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarSubcategoriesConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<ToddlerCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.EditorApp.EACAMenuInfo": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EACAMenuInfo\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "Game.Level.LevelCatTunnel": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_dropAreas: SerializableDictionaryBase<Side, LevelDropArea>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelCatTunnel.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.AvatarMaker.AvatarMakerCarColorsConfig": {
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
+  "native_message": "Object reference not set to an instance of an object.",
+  "confirmed_field": "_colorsByCategoryType: SerializableDictionaryBase<CarCategoryType, AWSpineColorsList>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarColorsConfig.cs",
+  "queue_task_closed_blocked_external": true
+ },
+ "PWC.EditorApp.EALoginPanel": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EALoginPanel\" was not found in the IL2CPP metadata.",
+  "confirmed_absent_from_cpp2il_decompile": true
+ },
+ "PWC.EditorApp.EASearchResult": {
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EASearchResult\" was not found in the IL2CPP metadata.\nTOTAL 124\nsame_bug_likely_fixed: 65\ndifferent_root_cause (no mislabeled field found): 9\nclass not in base MonoScripts: 0\nnode generation itself failed: 50",
+  "confirmed_absent_from_cpp2il_decompile": true
+ }
+}

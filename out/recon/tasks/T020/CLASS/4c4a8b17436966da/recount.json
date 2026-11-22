@@ -1,0 +1,15 @@
+{
+ "class": "PWC.EditorApp.EACAItemInfo",
+ "before": {
+  "err": 1,
+  "err_message": "ValueError or EOFError depending on instance - root cause is identical: type not in IL2CPP metadata"
+ },
+ "after": {
+  "ok": 0,
+  "bad": 0,
+  "err": 1
+ },
+ "status": "confirmed_unresolvable_type_stripped_from_release_binary",
+ "object_identities": "NOT individually identified (path_id/file) - doing so needs the datapack.unity3d container opened (needs ~6GB+ RAM, repeatedly OOM'd on this machine, see LOOP_STATE.md 2026-11-21/22). Only the aggregate count from out/mb/_stats.json is known. This is an explicit, named gap, not a silently-skipped detail: the exact object count (1) is known and preserved; which specific serialized objects they are is not.",
+ "unresolved_objects": "1 objects of this class, identities unknown (see object_identities)"
+}

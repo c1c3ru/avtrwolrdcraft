@@ -1,0 +1,12 @@
+{
+ "task": "T020/CLASS/632fec20632a317b",
+ "title": "Corrigir decodificação de PazuCore.LocalizationManager",
+ "actor": "agente-artefatos-claude",
+ "summary": "PazuCore.LocalizationManager: confirmed as the same TypeTreeGeneratorAPI SerializableDictionaryBase<K,V> limitation as the 27 classes closed earlier this session, reached indirectly via the named subclass `Country_SupportedLanguages` on field `supportedCountries`. Initially left open because a literal string grep missed the indirect reference; resolved by checking field types against the full subclass list instead of the raw generic string.",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/632fec20632a317b/class-contract.json",
+  "out/recon/tasks/T020/CLASS/632fec20632a317b/recount.json",
+  "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/LocalizationManager.cs",
+  "docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md"
+ ]
+}

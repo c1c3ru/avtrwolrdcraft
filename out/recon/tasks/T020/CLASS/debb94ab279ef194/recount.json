@@ -1,0 +1,14 @@
+{
+ "class": "PWC.Level.LevelSkinsRandomizer",
+ "before": {
+  "err": 3
+ },
+ "after": {
+  "ok": 0,
+  "bad": 0,
+  "err": 3
+ },
+ "status": "confirmed_blocked_by_typetreegeneratorapi_limitation",
+ "object_identities": "NOT individually identified (path_id/file) - this is a node-generation-time failure (happens before any object of the class is even attempted), and confirming the exact object count/identities would need the datapack.unity3d container opened anyway (repeatedly OOM'd on this machine, see LOOP_STATE.md). Only the aggregate count from out/mb/_stats.json is known (3).",
+ "unresolved_objects": "3 objects of this class, identities unknown"
+}

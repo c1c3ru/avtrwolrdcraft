@@ -1,0 +1,14 @@
+{
+ "class": "PazuCore.WindowManager",
+ "assembly": "Assembly-CSharp",
+ "unity_class_id": "MonoBehaviour (114)",
+ "original_failure": "node generation raises AssertionError: failed to dump nodes as json (native message: 'Object reference not set to an instance of an object.')",
+ "root_cause": {
+  "summary": "Same TypeTreeGeneratorAPI limitation as the 27 other classes already closed under this signature, but reached via an INDIRECT path: the field `nameBackScene` is declared with type `Name_Back_Scene`, which is a NAMED SUBCLASS of SerializableDictionaryBase<TKey,TValue> rather than the raw generic used directly as the field type. The crash happens all the same, because the actual serialized layout still comes from the generic base class's own fields (TKey[]/TValue[] specialized arrays) regardless of whether the field type is the raw generic or a named subclass of it.",
+  "chain": "Name_Back_Scene : SerializableDictionaryBase<String, BackSceneLoadConfig>",
+  "confirmed_in_source": "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/WindowManager.cs",
+  "revision_note": "This class was initially left OPEN/unconfirmed (2026-11-22, same session) because a first-pass grep for the literal string 'SerializableDictionaryBase' in its own decompiled file found nothing - it only appears in the intermediate named-subclass file, not this class's own file. Found by checking this class's field types against the full list of SerializableDictionaryBase subclasses in the codebase (Country_SupportedLanguages, Name_Audio, Name_AudioEvent, Name_Back_Scene)."
+ },
+ "fix": "None available without a different type-tree extraction tool.",
+ "resolvability": "Blocked on tooling, not on data or analysis effort."
+}

@@ -1,5 +1,130 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T004: matriz de capacidade de ferramentas atualizada com os achados de hoje — 2026-11-22
+Pedido do usuário pra pegar outra tarefa ainda não concluída. `T004` ("Inventário de ferramentas e
+capacidade real") já tinha uma tentativa parcial anterior (`out/recon/tasks/T004/tool_capability_matrix.json`),
+bloqueada só por referência obsoleta (`LOOP_STATE.md` mudou muito desde então) — reconfigurei as
+referências e atualizei a matriz com tudo que descobri hoje:
+- Entrada da REA passa de "não avaliada" pra "avaliada, bloqueada": Hopper preso em diálogo de GUI
+  (`QDialog::WaitDialog`), Ghidra reanalisa o binário inteiro a cada chamada (sempre estoura timeout
+  de 330s+, mesmo numa leitura de 1 endereço só, sem cache entre chamadas).
+- Nova capacidade documentada: geração de type-tree isolada (`TypeTreeGenerator` sem carregar o
+  datapack) — zero risco de OOM, foi exatamente a técnica que usei pra triar as 124 classes de T020.
+- Entrada do UnityPy/datapack enriquecida: mais 5 tentativas de OOM confirmadas hoje, RSS variando
+  3,66–5,78 GB (confirma que não é teto fixo, é pressão de memória do host no momento).
+- Checkpointada de volta como `ready` (fila: 2 tentativas registradas) — decisão de gerar
+  tarefas-filhas a partir desta matriz continua em aberto, não é minha pra tomar sozinho.
+
+## T025/HANDLER: Hopper e Ghidra reconfirmados inviáveis hoje (REA) — 2026-11-22
+Tentei retomar `T025/HANDLER/000032a8` (resolver alvo 0x24f0700, único gap documentado do
+callback `DestroyCurrentItems`) via REA, já que `binary_session` reportava Hopper e Ghidra como
+"available". `open_binary` funcionou nos dois (hash do `libil2cpp.so` conferido:
+`b63661fa60c2...`), mas qualquer operação de análise travou:
+- **Hopper**: `analyze_function` → `provider_timeout`, preso em `QDialog::WaitDialog` (mesmo
+  diálogo de licença/loader já documentado antes, sem GUI pra dispensar neste sandbox).
+- **Ghidra**: `analyze_function` e depois `inspect_native_instruction` (uma operação bem mais leve,
+  um endereço só) **ambas** estouraram timeout de 330s+ — confirma que qualquer chamada nesta
+  sessão dispara uma análise completa do binário de 75 MB do zero (sem cache entre chamadas), não
+  uma análise pontual do endereço pedido. RAM chegou a 132 MB de swap livre numa hora, mas o
+  processo java (heap limitado a `-Xmx2G`) nunca estourou OOM — só timeout.
+- Nenhum dado novo recuperado. `000032a8` segue exatamente como estava (208 bytes do handler e os
+  3 callees diretos já resolvidos via Capstone estático; alvo `0x24f0700` e o callee de 1512 bytes
+  `DestroyLevelItem` seguem abertos).
+- **Conclusão**: REA/Hopper/Ghidra não são viáveis agora neste ambiente pra T025, por motivos
+  diferentes do RAM do UnityPy (T020) — é diálogo de GUI preso (Hopper) e análise completa
+  obrigatória por chamada (Ghidra), não falta de memória pura. Mudando pra T015/SCENE.
+
+## T020: os 3 outliers também fechados — causa raiz 100% unificada e todas as 124 classes resolvidas/prontas — 2026-11-22
+Continuando a sessão anterior: os 3 outliers (`GameExtraSettings`, `LocalizationManager`,
+`WindowManager`) deixados abertos por não terem a string "SerializableDictionaryBase" no próprio
+arquivo decompilado. Achado: eles referenciam **subclasses nomeadas** desse genérico
+(`Name_Back_Scene`, `Country_SupportedLanguages`, `Name_Audio`, `Name_AudioEvent`) — mesmo mecanismo
+de quebra, só que indireto (um grep ingênuo pela string literal não pega). Fechadas as 3 tarefas
+restantes na fila como `blocked_external` (`out/recon/tasks/T020/close_nullref_final3_2026-11-22.py`).
+- Fila: `blocked_external` de 48 para 51, `pending` de 844 para 841.
+- **As 124 classes T020 agora têm causa raiz 100% identificada**: 65 `same_bug_likely_fixed`
+  (precisam só de RAM pra confirmar), 30 `typetreegeneratorapi_nullref_*` (fechadas, limitação de
+  ferramenta), 20 `type_stripped_*` (fechadas, binário shipado sem o tipo), 9
+  `serialize_reference_*` (precisam só de RAM pra confirmar). Nenhuma categoria "causa desconhecida"
+  restante. Detalhe: `docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`.
+
+## T020: mais 27 classes fechadas na fila; 3 outliers deixados em aberto por rigor — 2026-11-22
+Continuação do fechamento das 20 `type_stripped_*`. Para as 30 `typetreegeneratorapi_nullref_*`,
+verifiquei **individualmente** (não por amostra) cada uma contra `out/cpp2il` decompilado antes de
+fechar qualquer uma — achei que 3 (`PazuCore.GameExtraSettings`, `PazuCore.LocalizationManager`,
+`PazuCore.WindowManager`) têm a mesma mensagem nativa mas **não têm** o campo
+`SerializableDictionaryBase<K,V>` confirmado nas outras 27 — causa real delas ainda desconhecida.
+- Fechei só as 27 confirmadas (campo e tipo exatos lidos do fonte decompilado de cada uma) na fila
+  formal como `blocked_external` (`out/recon/tasks/T020/close_nullref_confirmed_tasks_2026-11-22.py`).
+  As 3 outliers ficam `pending`/`ready`, sem causa raiz registrada — não fechei sem prova.
+- Fila: `blocked_external` de 21 para 48, `pending` de 871 para 844.
+- Detalhe: `docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`.
+
+## T020: 20 classes PWC.EditorApp.* fechadas na fila como blocked_external — 2026-11-22
+Confirmado sistematicamente (não amostra) que nenhuma das 20 classes `type_stripped_*` existe em
+`out/cpp2il/DiffableCs` — nem a string "EditorApp" aparece em lugar nenhum da árvore decompilada.
+Fechei as 20 tarefas `T020/CLASS/<hash>` correspondentes na fila formal via `claim`→`start`→
+`checkpoint(blocked_external)` (script `out/recon/tasks/T020/close_type_stripped_tasks_2026-11-22.py`),
+gerando `class-contract.json`/`recount.json`/`result.json` em `out/recon/tasks/T020/CLASS/<hash>/`
+pra cada uma.
+- **Por que `blocked_external` e não `evidence_ready`**: o critério de aceite exige "identificar
+  cada objeto afetado" (path_id/arquivo exato) — isso só dá pra saber abrindo o `datapack.unity3d`,
+  bloqueado por RAM. Só a contagem agregada (`out/mb/_stats.json`) é conhecida, não a identidade de
+  cada objeto. Marcar como resolvido sem isso seria inventar evidência.
+- Fila: `blocked_external` subiu de 1 para 21, `pending` caiu de 891 para 871.
+
+## T020: as 124 classes 100% categorizadas por causa raiz — 2026-11-22
+Fechando a triagem (`docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`): as 18 classes que tinham
+falha de geração de árvore sem correlação automática da mensagem nativa foram checadas uma a uma
+(sem tocar no datapack). Resultado final das 124: **65** `same_bug_likely_fixed` (mesmo fix já
+mergeado, falta só confirmar com dado real), **30** `typetreegeneratorapi_nullref_*` (limitação da
+lib nativa em campo de dicionário genérico cru — inclui agora **todas as 14** classes
+`AvatarMaker*ColorsConfig`/`*SubcategoriesConfig`, uma por espécie do editor de avatar), **20**
+`type_stripped_*` (todas `PWC.EditorApp.*`, provável code stripping, provavelmente irresolúvel de
+verdade), **9** `serialize_reference_ref_types_resolution` (já diagnosticadas antes).
+Nenhuma classe restante sem causa raiz identificada.
+
+## T020: as 9 classes de "causa desconhecida" diagnosticadas (SerializeReference) — 2026-11-22
+Continuação da triagem (`docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`). As 9 classes que tinham
+árvore de tipos gerada com sucesso mas nenhum campo `List<String>` mal rotulado agora têm causa raiz
+identificada: todas usam `[SerializeReference]` do Unity (confirmado: todas têm nós
+`ManagedReferencesRegistry`/`ReferencedObject`). O tipo concreto de cada instância só resolve contra
+`SerializedFile.ref_types`, que é metadado por arquivo serializado — precisa do datapack carregado pra
+confirmar se está ausente ou se é mismatch de nome na comparação exata. Confirmado que `assetsfile` já
+é passado certinho pro `read_typetree` (não é bug de parâmetro faltando).
+- Inclui `BWYW.DailyTasksData` (`T020/CLASS/4cc86bcb4a623c07`, ready) e `BWYW.BWYWGiftData`
+  (`T020/CLASS/d723b7b66951bef8`, `blocked_external` numa tentativa anterior que travou só carregando
+  o IL2CPP, antes de gerar a árvore — confirmado agora que a geração funciona, o bloqueio foi memória).
+- **Parado por decisão do usuário, após 1 tentativa adicional autorizada**: usuário pediu pra conferir
+  a memória e tentar mesmo assim (2,6 GiB disponível, 1,6 GiB swap livre no momento do disparo — melhor
+  que antes). `journalctl -k` confirma OOM de novo, **5ª vez seguida, sempre no mesmo ponto** (carregando
+  `datapack.unity3d`, antes de processar qualquer objeto): desta vez matado com só **3,75 GB de RSS**
+  (`anon-rss:3745384kB`), bem abaixo do pico de ~5,8 GB da tentativa anterior — confirma que não é um
+  teto fixo do processo, é pressão do sistema todo variando em tempo real (provavelmente o Chrome,
+  maior consumidor de RAM observado, crescendo durante os poucos segundos do carregamento). "RAM
+  disponível" no instante do disparo não prediz o resultado de forma confiável nesta máquina. Decisão
+  final do usuário: parar de tentar por conta própria aqui; diagnóstico (SerializeReference) documentado
+  é considerado avanço suficiente por ora. Retomar no PC do trabalho (`tools/mb_retry_failed_classes.py`)
+  ou depois de fechar o Chrome manualmente.
+
+## T020: fila formal descoberta e usada; 124 classes restantes triadas sem RAM — 2026-11-22
+- Descoberta: já existe uma fila formal de tarefas (`tools/recon_queue.py`, `reports/recon/tasks.json`,
+  908 tarefas) coordenando o trabalho entre as sessões/worktrees — família `T020/CLASS/<hash>`, uma por
+  classe de MonoBehaviour que falha na extração. Reconciliei `InventoryBuildData`/`InventorySkinsBuildData`
+  nela (PR #65): `claim` → `start` → `checkpoint evidence_ready`, ambas em estado `review` aguardando
+  revisor independente (não autoaceitei, a fila proíbe).
+- Achado: `TypeTreeGenerator.get_nodes_as_json()` só precisa de `il2cpp_in/` + `data.unity3d` (não o
+  `datapack.unity3d` de 1,3 GB que sempre dá OOM) — dá pra testar a hipótese "mesmo bug de
+  `fix_mislabeled_vectors`" pras 124 classes restantes sem risco de travar a máquina. Resultado: 65
+  provavelmente já resolvidas pelo fix existente (falta só confirmar com o datapack), ~19+ são limitação
+  da própria biblioteca `TypeTreeGeneratorAPI` (null ref em campo de dicionário genérico cru, ex.
+  `SerializableDictionaryBase<TKey,TValue>` — afeta 12 classes `AvatarMaker*ColorsConfig`/`*SubcategoriesConfig`,
+  relevante pro trabalho paralelo do editor de avatar), ~13+ são tipos removidos do binário shipado
+  (`PWC.EditorApp.*`, ferramental de editor/dev, confirmado ausente também no `out/cpp2il` decompilado),
+  9 têm causa raiz ainda não diagnosticada. Detalhe completo: `docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`.
+- Nada disso foi marcado `done` na fila — é triagem/hipótese, não resolução (acceptance de cada tarefa
+  exige ler objetos reais com `check_read=True`, que precisa do datapack).
+
 ## Loja: Mansão e mais temas de Casas confirmados irresolúveis; Modern House confirmado — 2026-11-22
 Continuando os pendentes de `docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md` (PR #64, aberta).
 - `ModernHousePB9Box_Pack` passou de "incerto" pra **confirmado**: busca por "modern" em todo `store_catalog.json`

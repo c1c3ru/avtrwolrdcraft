@@ -1,0 +1,13 @@
+{
+ "class": "PWC.EditorApp.EADelayedEventInputField",
+ "assembly": "Assembly-CSharp",
+ "unity_class_id": "MonoBehaviour (114)",
+ "original_failure": "Type \"PWC.EditorApp::EADelayedEventInputField\" was not found in the IL2CPP metadata.",
+ "root_cause": {
+  "summary": "The type does not exist in this build's IL2CPP metadata/binary at all. TypeTreeGenerator.get_nodes_as_json() fails immediately with 'Type \"PWC.EditorApp::EADelayedEventInputField\" was not found in the IL2CPP metadata.' before any field layout can even be attempted - this is not a parsing bug, the type genuinely is not present to parse.",
+  "evidence": "Confirmed 2026-11-22: not one of the 20 PWC.EditorApp.* classes with this exact failure signature exists anywhere in out/cpp2il/DiffableCs (the full Cpp2IL static decompile of this build's Assembly-CSharp) - not even the literal string 'EditorApp' appears anywhere in that decompiled tree. Checked systematically (grep across the whole tree), not by sampling.",
+  "interpretation": "Classic Unity/IL2CPP managed code stripping: PWC.EditorApp.* is internal level/content editor tooling (login, search, hierarchy, level-editor panels - judging by the class names) that is never statically referenced by the shipped game code path, so the IL2CPP build stripped the types entirely. A stale MonoScript object (just a name string pointing at the now-absent type) remains in the serialized assets, which is why out/mb/_stats.json still lists it as a failing class instead of simply absent."
+ },
+ "fix": "None possible - the type is not in the binary to parse. Not a tools/mb_dump.py bug.",
+ "resolvability": "Confirmed unresolvable with any static-analysis approach against this build. The only theoretical recourse would be an older/different build of the APK that still ships this editor tooling, which is out of scope."
+}
