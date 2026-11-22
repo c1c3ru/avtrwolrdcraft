@@ -11,8 +11,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PazuCore.WindowManager": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "PazuCore.LocalizationManager": {
   "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
@@ -41,8 +41,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.LevelPhone.PhoneBackground": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "PWC.LevelPhone.ContactsContent": {
   "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
@@ -60,8 +60,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.LevelPhone.DeliveryApp.DeliveryContent": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "Game.Level.ContextualAnimation.LevelCAEventHandlerByAnimationNameItemHandler": {
   "node_count": 62,
@@ -71,8 +71,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.LevelPhone.PhoneContentIcon": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "PWC.Level.LevelSimpleToggleableSpine": {
   "node_count": 115,
@@ -134,8 +134,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.Level.LevelSkinsRandomizer": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "Game.Level.LevelWaffleMachine": {
   "node_count": 58,
@@ -229,8 +229,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "Game.Level.MovingTraingBackground.LevelStationButton": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "PWC.Game.LevelToggleableTransform": {
   "node_count": 108,
@@ -384,8 +384,8 @@
   "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "PWC.AvatarMakerLobby.AvatarMakerLobbyManager": {
   "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
@@ -399,8 +399,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.EditorApp.EASUTEThumbButtonHandler": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EASUTEThumbButtonHandler\" was not found in the IL2CPP metadata."
  },
  "PWC.EditorApp.EASUTEDirectoryButtonHandler": {
   "triage": "type_stripped_from_release_il2cpp_metadata",
@@ -438,8 +438,8 @@
   "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "PWC.EditorApp.EAEditorDirectoryIndexer": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAEditorDirectoryIndexer\" was not found in the IL2CPP metadata."
  },
  "Game.Level.LevelOutfit": {
   "node_count": 71,
@@ -463,8 +463,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.EditorApp.EAEditorAssetsIndexer": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAEditorAssetsIndexer\" was not found in the IL2CPP metadata."
  },
  "Game.Level.LevelItemsMenuShopPack": {
   "node_count": 52,
@@ -532,8 +532,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.AvatarMaker.AvatarMakerBabyColorsConfig": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "PWC.EditorApp.EADelayedEventInputField": {
   "triage": "type_stripped_from_release_il2cpp_metadata",
@@ -548,8 +548,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.EditorApp.EAHierarchyPanel": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAHierarchyPanel\" was not found in the IL2CPP metadata."
  },
  "PWC.AvatarMaker.AvatarMakerDogColorsConfig": {
   "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
@@ -575,8 +575,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler": {
   "node_count": 41,
@@ -593,8 +593,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.AvatarMaker.AvatarMakerCatColorsConfig": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "PWC.AvatarMaker.AvatarMakerCarThumbsConfig": {
   "node_count": 31,
@@ -611,8 +611,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.EditorApp.EASearchPanel": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EASearchPanel\" was not found in the IL2CPP metadata."
  },
  "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig": {
   "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
@@ -634,8 +634,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "typetreegeneratorapi_nullref_on_raw_generic_type_field",
+  "native_message": "Object reference not set to an instance of an object."
  },
  "Game.Level.BackgroundCharacterSpineManager": {
   "node_count": 21,
@@ -658,8 +658,8 @@
   "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "PWC.EditorApp.EAResultPool": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EAResultPool\" was not found in the IL2CPP metadata."
  },
  "PazuCore.PazuCoreAddressables.AFC.CR.AFCCROpenGame": {
   "node_count": 24,
@@ -669,8 +669,8 @@
   "triage": "same_bug_likely_fixed"
  },
  "PWC.EditorApp.EACAInfoManager": {
-  "triage": "node_generation_failed_uncategorized_by_regex",
-  "native_message": ""
+  "triage": "type_stripped_from_release_il2cpp_metadata",
+  "native_message": "Type \"PWC.EditorApp::EACAInfoManager\" was not found in the IL2CPP metadata."
  },
  "PWC.EditorApp.EACAItemInfo": {
   "triage": "type_stripped_from_release_il2cpp_metadata",

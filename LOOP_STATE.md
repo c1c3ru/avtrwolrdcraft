@@ -1,5 +1,16 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: as 124 classes 100% categorizadas por causa raiz — 2026-11-22
+Fechando a triagem (`docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`): as 18 classes que tinham
+falha de geração de árvore sem correlação automática da mensagem nativa foram checadas uma a uma
+(sem tocar no datapack). Resultado final das 124: **65** `same_bug_likely_fixed` (mesmo fix já
+mergeado, falta só confirmar com dado real), **30** `typetreegeneratorapi_nullref_*` (limitação da
+lib nativa em campo de dicionário genérico cru — inclui agora **todas as 14** classes
+`AvatarMaker*ColorsConfig`/`*SubcategoriesConfig`, uma por espécie do editor de avatar), **20**
+`type_stripped_*` (todas `PWC.EditorApp.*`, provável code stripping, provavelmente irresolúvel de
+verdade), **9** `serialize_reference_ref_types_resolution` (já diagnosticadas antes).
+Nenhuma classe restante sem causa raiz identificada.
+
 ## T020: as 9 classes de "causa desconhecida" diagnosticadas (SerializeReference) — 2026-11-22
 Continuação da triagem (`docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`). As 9 classes que tinham
 árvore de tipos gerada com sucesso mas nenhum campo `List<String>` mal rotulado agora têm causa raiz
