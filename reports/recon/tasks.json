@@ -198,11 +198,11 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T002/scope.json",
-          "sha256": "439603b18093fb052c815512d8a4bfc2c59a3eb12146af024c77acb7225734b1"
+          "sha256": "ab87f1c9b7e845b39361b8528cbb08e005353204cbc0f9c489c96dea5fa9d65c"
         },
         {
           "path": "out/recon/tasks/T002/features.jsonl",
-          "sha256": "77d787f8a4264cca125ecbf0e15e4e05bc3e05f826de046a8e93b8b5d3f19f16"
+          "sha256": "513a4e12568b809bbbd812f43b30981ce074e4ba19beb2193f461c0bb6df6c40"
         },
         {
           "path": "out/recon/tasks/T002/divergences.jsonl",
@@ -210,7 +210,7 @@
         },
         {
           "path": "out/recon/tasks/T002/result.json",
-          "sha256": "afd1005863e494aee83325f9ca5d97aabe376bc12add7e7498ba08fc1e720966"
+          "sha256": "f9bc5d621a3fe13b68e5992f09e2c8baa7e8896211867f0c659594816617e679"
         }
       ],
       "unknown_ids": [],
@@ -268,12 +268,39 @@
               "sha256": "afd1005863e494aee83325f9ca5d97aabe376bc12add7e7498ba08fc1e720966"
             }
           ]
+        },
+        {
+          "id": "2804fd7a81ed4e72a1e7a5f7add556f8",
+          "owner": "agente-coordenador-claude",
+          "started_at": 1795370638.926706,
+          "lease_id": "7d437b4240234d65b6d313ab844f83b3",
+          "checkpoint_at": 1795370639.3702352,
+          "state": "ready",
+          "note": "Resolvido tambem o dominio Street (estava UNKNOWN igual StoreBundle). Achado por grep direto no out/cpp2il decompilado (nao so docs existentes): namespace PWC.Street inteiro (StreetManager + ~10 classes) implementa um bairro lateral de casas construidas pelo jogador, entrado pelo mapa World via PWC.World.WorldStreetEntry. Nenhuma sessao anterior tinha essa evidencia documentada. Adicionei F022. Agora as 13 entradas de SceneType.cs tem status+politica atribuidos, nenhuma UNKNOWN_not_scoped_yet restante.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T002/scope.json",
+              "sha256": "ab87f1c9b7e845b39361b8528cbb08e005353204cbc0f9c489c96dea5fa9d65c"
+            },
+            {
+              "path": "out/recon/tasks/T002/features.jsonl",
+              "sha256": "513a4e12568b809bbbd812f43b30981ce074e4ba19beb2193f461c0bb6df6c40"
+            },
+            {
+              "path": "out/recon/tasks/T002/divergences.jsonl",
+              "sha256": "81fe1c549e78122ecd32784139f7c4ed29104c7846a78d72315bd33be99beba4"
+            },
+            {
+              "path": "out/recon/tasks/T002/result.json",
+              "sha256": "f9bc5d621a3fe13b68e5992f09e2c8baa7e8896211867f0c659594816617e679"
+            }
+          ]
         }
       ],
       "owner": "agente-coordenador-claude",
       "lease": null,
       "review": null,
-      "next_action": "Reaproveitei trabalho de outra sessao (docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md, docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md) pra resolver o dominio StoreBundle, que estava UNKNOWN_not_scoped_yet por falta de evidencia. Agora: STATIC_EVIDENCE_RECOVERED_no_local_implementation - os 224 pacotes de InventoryBuildData estao categorizados e 7 temas de casa resolvidos (2 confirmados contra print do jogo original), mas nenhuma tela/gate do cliente consome esses dados ainda. Adicionei F021 (feature) e D007 (divergencia: associacao cartao->pacote e inferencia por nome, nao prova - mesma ressalva ja aceita pro pipeline de Moda). Street continua UNKNOWN (nenhuma evidencia encontrada em nenhuma sessao). Nao gerei tarefas filhas (decisao de coordenador, deixada em aberto, igual a tentativa anterior)."
+      "next_action": "Resolvido tambem o dominio Street (estava UNKNOWN igual StoreBundle). Achado por grep direto no out/cpp2il decompilado (nao so docs existentes): namespace PWC.Street inteiro (StreetManager + ~10 classes) implementa um bairro lateral de casas construidas pelo jogador, entrado pelo mapa World via PWC.World.WorldStreetEntry. Nenhuma sessao anterior tinha essa evidencia documentada. Adicionei F022. Agora as 13 entradas de SceneType.cs tem status+politica atribuidos, nenhuma UNKNOWN_not_scoped_yet restante."
     },
     {
       "id": "T003",
@@ -69058,7 +69085,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 231,
+  "revision": 235,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -71551,6 +71578,34 @@
       "task": "T002",
       "actor": "agente-coordenador-claude",
       "at": 1795370383.0407038
+    },
+    {
+      "revision": 232,
+      "action": "configure",
+      "task": "T002",
+      "actor": "agente-coordenador-claude",
+      "at": 1795370633.9024477
+    },
+    {
+      "revision": 233,
+      "action": "claim",
+      "task": "T002",
+      "actor": "agente-coordenador-claude",
+      "at": 1795370638.9649043
+    },
+    {
+      "revision": 234,
+      "action": "start",
+      "task": "T002",
+      "actor": "agente-coordenador-claude",
+      "at": 1795370639.1814883
+    },
+    {
+      "revision": 235,
+      "action": "checkpoint",
+      "task": "T002",
+      "actor": "agente-coordenador-claude",
+      "at": 1795370639.4054139
     }
   ]
 }

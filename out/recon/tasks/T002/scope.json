@@ -36,9 +36,9 @@
     },
     {
       "scene_type": "Street",
-      "status": "NOT_STARTED",
-      "policy": "UNKNOWN_not_scoped_yet",
-      "note": "No evidence of local implementation found this session; not covered by LOOP_STATE.md or the reconstruction-status doc."
+      "status": "STATIC_EVIDENCE_RECOVERED_no_local_implementation",
+      "policy": "offline_adaptation_candidate",
+      "note": "Updated 2026-11-22 (previous passes found no evidence -- it lives under the `PWC.Street` namespace, not a literal 'Street' doc mention, so earlier doc-only synthesis missed it). out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Street/ has a full static feature: StreetManager drives a side-scrolling neighborhood of player-built house fronts (StreetHouse/StreetHouseLevel/StreetHouseLayout), decorative passing StreetVehicle sprites and cloud sections, entered from the World map via PWC.World.WorldStreetEntry (a WorldEnterableEntity, same base class as other World-map buildings) tied to WorldMakerBuildingType/WorldMakerStreetType. No local implementation, docs mention, or LOOP_STATE.md entry exists for this feature in any session -- same maturity tier as CarMaker/StoreBundle (static evidence only, not implemented)."
     },
     {
       "scene_type": "Store",
