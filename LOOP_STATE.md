@@ -1,5 +1,24 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T025/HANDLER: Hopper e Ghidra reconfirmados inviáveis hoje (REA) — 2026-11-22
+Tentei retomar `T025/HANDLER/000032a8` (resolver alvo 0x24f0700, único gap documentado do
+callback `DestroyCurrentItems`) via REA, já que `binary_session` reportava Hopper e Ghidra como
+"available". `open_binary` funcionou nos dois (hash do `libil2cpp.so` conferido:
+`b63661fa60c2...`), mas qualquer operação de análise travou:
+- **Hopper**: `analyze_function` → `provider_timeout`, preso em `QDialog::WaitDialog` (mesmo
+  diálogo de licença/loader já documentado antes, sem GUI pra dispensar neste sandbox).
+- **Ghidra**: `analyze_function` e depois `inspect_native_instruction` (uma operação bem mais leve,
+  um endereço só) **ambas** estouraram timeout de 330s+ — confirma que qualquer chamada nesta
+  sessão dispara uma análise completa do binário de 75 MB do zero (sem cache entre chamadas), não
+  uma análise pontual do endereço pedido. RAM chegou a 132 MB de swap livre numa hora, mas o
+  processo java (heap limitado a `-Xmx2G`) nunca estourou OOM — só timeout.
+- Nenhum dado novo recuperado. `000032a8` segue exatamente como estava (208 bytes do handler e os
+  3 callees diretos já resolvidos via Capstone estático; alvo `0x24f0700` e o callee de 1512 bytes
+  `DestroyLevelItem` seguem abertos).
+- **Conclusão**: REA/Hopper/Ghidra não são viáveis agora neste ambiente pra T025, por motivos
+  diferentes do RAM do UnityPy (T020) — é diálogo de GUI preso (Hopper) e análise completa
+  obrigatória por chamada (Ghidra), não falta de memória pura. Mudando pra T015/SCENE.
+
 ## T020: os 3 outliers também fechados — causa raiz 100% unificada e todas as 124 classes resolvidas/prontas — 2026-11-22
 Continuando a sessão anterior: os 3 outliers (`GameExtraSettings`, `LocalizationManager`,
 `WindowManager`) deixados abertos por não terem a string "SerializableDictionaryBase" no próprio
