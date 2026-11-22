@@ -1,0 +1,17 @@
+il2cpp loaded
+base scripts loaded: 5572
+loading datapack...
+/bin/bash, linha 1: 119805 Morto                      /home/c1c3ru/avtrwolrdcraft/tools/venv/bin/python3 /home/c1c3ru/.claude/jobs/57f8c0ba/tmp/probe_serializeref.py
+
+[exited with code 137]
+
+--- journalctl -k evidence (2026-11-21 21:29:40) ---
+Out of memory: Killed process 119805 (python3) total-vm:277673492kB, anon-rss:3745384kB, file-rss:8kB, shmem-rss:0kB, UID:1000 pgtables:8568kB oom_score_adj:200
+oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=init.scope,mems_allowed=0,global_oom,task_memcg=/user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-723a5dcc-6492-49cd-9ed2-d996e9492da6.scope,task=python3,pid=119805,uid=1000
+Memory at launch: avail_mb=2589 swap_free_mb=1567 (free -m, moments before this run started)
+Killed at only ~3.66 GiB RSS - well below the ~5.78 GiB seen in an earlier, different attempt
+(T020/CLASS/22379dfdf824449b's successful run reached similar RSS without being killed when system
+load was lighter). Conclusion: this is global system memory pressure (Chrome's many renderer
+processes observed as the largest consumers at the time), not a fixed ceiling on this process; the
+"available" memory reading at launch time does not reliably predict whether this specific load will
+survive on this machine.

@@ -11,9 +11,17 @@ confirmar se está ausente ou se é mismatch de nome na comparação exata. Conf
 - Inclui `BWYW.DailyTasksData` (`T020/CLASS/4cc86bcb4a623c07`, ready) e `BWYW.BWYWGiftData`
   (`T020/CLASS/d723b7b66951bef8`, `blocked_external` numa tentativa anterior que travou só carregando
   o IL2CPP, antes de gerar a árvore — confirmado agora que a geração funciona, o bloqueio foi memória).
-- **Parado aqui por decisão do usuário**: memória no momento (Chrome ~2,5 GB, <1 GB swap livre) não
-  permitia tentar o datapack com segurança; já houve um caso anterior de OOM derrubando processo de
-  outra sessão por engano. Diagnóstico documentado é considerado avanço suficiente por ora.
+- **Parado por decisão do usuário, após 1 tentativa adicional autorizada**: usuário pediu pra conferir
+  a memória e tentar mesmo assim (2,6 GiB disponível, 1,6 GiB swap livre no momento do disparo — melhor
+  que antes). `journalctl -k` confirma OOM de novo, **5ª vez seguida, sempre no mesmo ponto** (carregando
+  `datapack.unity3d`, antes de processar qualquer objeto): desta vez matado com só **3,75 GB de RSS**
+  (`anon-rss:3745384kB`), bem abaixo do pico de ~5,8 GB da tentativa anterior — confirma que não é um
+  teto fixo do processo, é pressão do sistema todo variando em tempo real (provavelmente o Chrome,
+  maior consumidor de RAM observado, crescendo durante os poucos segundos do carregamento). "RAM
+  disponível" no instante do disparo não prediz o resultado de forma confiável nesta máquina. Decisão
+  final do usuário: parar de tentar por conta própria aqui; diagnóstico (SerializeReference) documentado
+  é considerado avanço suficiente por ora. Retomar no PC do trabalho (`tools/mb_retry_failed_classes.py`)
+  ou depois de fechar o Chrome manualmente.
 
 ## T020: fila formal descoberta e usada; 124 classes restantes triadas sem RAM — 2026-11-22
 - Descoberta: já existe uma fila formal de tarefas (`tools/recon_queue.py`, `reports/recon/tasks.json`,
