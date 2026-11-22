@@ -1,5 +1,19 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T002: dominio Street tambem resolvido (achado novo, nao so reaproveitamento) — 2026-11-22
+Usuário perguntou se ainda faltava algo no T002. Sim: `Street` (o outro domínio `UNKNOWN`) —
+diferente de `StoreBundle`, não era reaproveitamento de trabalho já feito, foi achado agora:
+sessões anteriores só tinham sintetizado docs existentes e nenhum doc menciona "Street" (o
+código vive no namespace `PWC.Street`, não citado em nenhum lugar). Grep direto no
+`out/cpp2il` decompilado achou um namespace inteiro (`StreetManager` + ~10 classes): um bairro
+lateral de casas construídas pelo jogador, visual (veículos passando, nuvens), entrado pelo
+mapa `World` via `PWC.World.WorldStreetEntry` (mesma classe-base dos prédios do mapa).
+- `scope.json`: Street passa de `UNKNOWN_not_scoped_yet` pra
+  `STATIC_EVIDENCE_RECOVERED_no_local_implementation` (mesma maturidade de CarMaker/StoreBundle).
+- `features.jsonl`: +F022.
+- **As 13 entradas de `SceneType.cs` agora têm status+política atribuídos — nenhuma `UNKNOWN`
+  restante.** Checkpointada de volta como `ready` (3 tentativas registradas na fila).
+
 ## T002: dominio StoreBundle resolvido com trabalho de outra sessao — 2026-11-22
 Pedido do usuário pra pegar T002 (igual T004: só doc, zero RAM). A tentativa anterior tinha
 deixado `StoreBundle` como `UNKNOWN_not_scoped_yet` ("nenhuma evidência encontrada nesta
