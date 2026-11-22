@@ -1,8 +1,10 @@
 {
  "PazuCore.GameExtraSettings": {
-  "triage": "typetreegeneratorapi_nullref_UNCONFIRMED_cause",
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
   "native_message": "Object reference not set to an instance of an object.",
-  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue."
+  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue.",
+  "confirmed_indirectly_via_named_subclass": true,
+  "queue_task_closed_blocked_external": true
  },
  "PazuCore.GameSettings": {
   "node_count": 101,
@@ -12,14 +14,18 @@
   "triage": "same_bug_likely_fixed"
  },
  "PazuCore.WindowManager": {
-  "triage": "typetreegeneratorapi_nullref_UNCONFIRMED_cause",
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
   "native_message": "Object reference not set to an instance of an object.",
-  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue."
+  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue.",
+  "confirmed_indirectly_via_named_subclass": true,
+  "queue_task_closed_blocked_external": true
  },
  "PazuCore.LocalizationManager": {
-  "triage": "typetreegeneratorapi_nullref_UNCONFIRMED_cause",
+  "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",
   "native_message": "Object reference not set to an instance of an object.",
-  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue."
+  "note": "Same native error (Object reference not set...) as the 27 confirmed classes, but no SerializableDictionaryBase<K,V> field found in decompiled source - real trigger not yet diagnosed. Left pending/ready, NOT closed in the queue.",
+  "confirmed_indirectly_via_named_subclass": true,
+  "queue_task_closed_blocked_external": true
  },
  "PazuCore.DeepLink.DeepLinkManager": {
   "triage": "typetreegeneratorapi_nullref_confirmed_serializabledict_field",

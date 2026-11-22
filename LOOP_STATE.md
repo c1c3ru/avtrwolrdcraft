@@ -1,5 +1,19 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: os 3 outliers também fechados — causa raiz 100% unificada e todas as 124 classes resolvidas/prontas — 2026-11-22
+Continuando a sessão anterior: os 3 outliers (`GameExtraSettings`, `LocalizationManager`,
+`WindowManager`) deixados abertos por não terem a string "SerializableDictionaryBase" no próprio
+arquivo decompilado. Achado: eles referenciam **subclasses nomeadas** desse genérico
+(`Name_Back_Scene`, `Country_SupportedLanguages`, `Name_Audio`, `Name_AudioEvent`) — mesmo mecanismo
+de quebra, só que indireto (um grep ingênuo pela string literal não pega). Fechadas as 3 tarefas
+restantes na fila como `blocked_external` (`out/recon/tasks/T020/close_nullref_final3_2026-11-22.py`).
+- Fila: `blocked_external` de 48 para 51, `pending` de 844 para 841.
+- **As 124 classes T020 agora têm causa raiz 100% identificada**: 65 `same_bug_likely_fixed`
+  (precisam só de RAM pra confirmar), 30 `typetreegeneratorapi_nullref_*` (fechadas, limitação de
+  ferramenta), 20 `type_stripped_*` (fechadas, binário shipado sem o tipo), 9
+  `serialize_reference_*` (precisam só de RAM pra confirmar). Nenhuma categoria "causa desconhecida"
+  restante. Detalhe: `docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`.
+
 ## T020: mais 27 classes fechadas na fila; 3 outliers deixados em aberto por rigor — 2026-11-22
 Continuação do fechamento das 20 `type_stripped_*`. Para as 30 `typetreegeneratorapi_nullref_*`,
 verifiquei **individualmente** (não por amostra) cada uma contra `out/cpp2il` decompilado antes de

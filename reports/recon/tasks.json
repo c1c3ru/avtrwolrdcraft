@@ -11557,7 +11557,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.GameExtraSettings",
@@ -11606,13 +11606,42 @@
         "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/class-contract.json",
+          "sha256": "b8ab3a8a2ba5caea6cec6f1844d271eee187dba49de97e5c64dc061c00116206"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/recount.json",
+          "sha256": "8dc9b90c470d17197d53de3c5b261347dc99bc9b4ac1dc1acd3048bfe3f47ff5"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "5f8942f0538748e09db7f6e29f305594",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795368067.1064692,
+          "lease_id": "8455bff7f1754c6a86b5e7de5e01b377",
+          "checkpoint_at": 1795368067.5531664,
+          "state": "blocked_external",
+          "note": "PazuCore.GameExtraSettings: mesmo limite do TypeTreeGeneratorAPI, alcancado indiretamente via subclasse nomeada `Name_Back_Scene / Name_Audio / Name_AudioEvent` (campo `nameBackScene (also backgroundMusics, audioEvents - same mechanism, not individually isolated which one trips the crash first)`) que deriva de SerializableDictionaryBase<K,V>. Confirmado no fonte decompilado. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/class-contract.json",
+              "sha256": "b8ab3a8a2ba5caea6cec6f1844d271eee187dba49de97e5c64dc061c00116206"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/recount.json",
+              "sha256": "8dc9b90c470d17197d53de3c5b261347dc99bc9b4ac1dc1acd3048bfe3f47ff5"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PazuCore.GameExtraSettings: mesmo limite do TypeTreeGeneratorAPI, alcancado indiretamente via subclasse nomeada `Name_Back_Scene / Name_Audio / Name_AudioEvent` (campo `nameBackScene (also backgroundMusics, audioEvents - same mechanism, not individually isolated which one trips the crash first)`) que deriva de SerializableDictionaryBase<K,V>. Confirmado no fonte decompilado. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -11697,7 +11726,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.LocalizationManager",
@@ -11746,13 +11775,42 @@
         "out/recon/tasks/T020/CLASS/632fec20632a317b/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/class-contract.json",
+          "sha256": "04e123de42d278890b91010e644a8904064de14613e8388549c603df7c35a4c4"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/recount.json",
+          "sha256": "fb7ff281eeebec135ab02b0f90d5fa0354ae8b9ffce7ea36fa4bfabf137b5b64"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "b2ba234a55e940179edfcda114b17fd9",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795368061.759663,
+          "lease_id": "6994ce0a476543fda90a9c87ce463962",
+          "checkpoint_at": 1795368062.2406762,
+          "state": "blocked_external",
+          "note": "PazuCore.LocalizationManager: mesmo limite do TypeTreeGeneratorAPI, alcancado indiretamente via subclasse nomeada `Country_SupportedLanguages` (campo `supportedCountries`) que deriva de SerializableDictionaryBase<K,V>. Confirmado no fonte decompilado. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/class-contract.json",
+              "sha256": "04e123de42d278890b91010e644a8904064de14613e8388549c603df7c35a4c4"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/recount.json",
+              "sha256": "fb7ff281eeebec135ab02b0f90d5fa0354ae8b9ffce7ea36fa4bfabf137b5b64"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PazuCore.LocalizationManager: mesmo limite do TypeTreeGeneratorAPI, alcancado indiretamente via subclasse nomeada `Country_SupportedLanguages` (campo `supportedCountries`) que deriva de SerializableDictionaryBase<K,V>. Confirmado no fonte decompilado. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -12525,7 +12583,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "pending",
+      "state": "blocked_external",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.WindowManager",
@@ -12574,13 +12632,42 @@
         "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/result.json"
       ],
       "acceptance": "Preserve original err count/cause, identify every affected object, demonstrate corrected decoding/layout and exact count reconciliation; unresolved objects remain explicit unknowns.",
-      "evidence_refs": [],
+      "evidence_refs": [
+        {
+          "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/class-contract.json",
+          "sha256": "ec2b49580a821bde156c6b9f463876246d75c929139cf06663f4e5d9ab368199"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/recount.json",
+          "sha256": "5a5c7021d6d595d55510c7688e9a0eefa3212df48d3264ef9dbac2dbbc993741"
+        }
+      ],
       "unknown_ids": [],
-      "attempts": [],
-      "owner": null,
+      "attempts": [
+        {
+          "id": "a88bd5f4a39f4150ae776dab742e9343",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795368056.4456441,
+          "lease_id": "55ca5eeb9c1b4ce697057597d271af18",
+          "checkpoint_at": 1795368056.8937154,
+          "state": "blocked_external",
+          "note": "PazuCore.WindowManager: mesmo limite do TypeTreeGeneratorAPI, alcancado indiretamente via subclasse nomeada `Name_Back_Scene` (campo `nameBackScene`) que deriva de SerializableDictionaryBase<K,V>. Confirmado no fonte decompilado. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/class-contract.json",
+              "sha256": "ec2b49580a821bde156c6b9f463876246d75c929139cf06663f4e5d9ab368199"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/recount.json",
+              "sha256": "5a5c7021d6d595d55510c7688e9a0eefa3212df48d3264ef9dbac2dbbc993741"
+            }
+          ]
+        }
+      ],
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Wait for exact dependencies, claim exclusive outputs, revalidate input hashes, then execute the bounded scope; never autoaccept.",
+      "next_action": "PazuCore.WindowManager: mesmo limite do TypeTreeGeneratorAPI, alcancado indiretamente via subclasse nomeada `Name_Back_Scene` (campo `nameBackScene`) que deriva de SerializableDictionaryBase<K,V>. Confirmado no fonte decompilado. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -68925,7 +69012,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 214,
+  "revision": 223,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -71299,6 +71386,69 @@
       "task": "T020/CLASS/1998843c3ea996f7",
       "actor": "agente-artefatos-claude",
       "at": 1795367842.4034348
+    },
+    {
+      "revision": 215,
+      "action": "claim",
+      "task": "T020/CLASS/7ea1a24e4c2ed7ba",
+      "actor": "agente-artefatos-claude",
+      "at": 1795368056.4857337
+    },
+    {
+      "revision": 216,
+      "action": "start",
+      "task": "T020/CLASS/7ea1a24e4c2ed7ba",
+      "actor": "agente-artefatos-claude",
+      "at": 1795368056.7058673
+    },
+    {
+      "revision": 217,
+      "action": "checkpoint",
+      "task": "T020/CLASS/7ea1a24e4c2ed7ba",
+      "actor": "agente-artefatos-claude",
+      "at": 1795368056.9349203
+    },
+    {
+      "revision": 218,
+      "action": "claim",
+      "task": "T020/CLASS/632fec20632a317b",
+      "actor": "agente-artefatos-claude",
+      "at": 1795368061.8080156
+    },
+    {
+      "revision": 219,
+      "action": "start",
+      "task": "T020/CLASS/632fec20632a317b",
+      "actor": "agente-artefatos-claude",
+      "at": 1795368062.0425367
+    },
+    {
+      "revision": 220,
+      "action": "checkpoint",
+      "task": "T020/CLASS/632fec20632a317b",
+      "actor": "agente-artefatos-claude",
+      "at": 1795368062.2798114
+    },
+    {
+      "revision": 221,
+      "action": "claim",
+      "task": "T020/CLASS/eb247b7ee7bc0692",
+      "actor": "agente-artefatos-claude",
+      "at": 1795368067.1477919
+    },
+    {
+      "revision": 222,
+      "action": "start",
+      "task": "T020/CLASS/eb247b7ee7bc0692",
+      "actor": "agente-artefatos-claude",
+      "at": 1795368067.3651354
+    },
+    {
+      "revision": 223,
+      "action": "checkpoint",
+      "task": "T020/CLASS/eb247b7ee7bc0692",
+      "actor": "agente-artefatos-claude",
+      "at": 1795368067.5926762
     }
   ]
 }
