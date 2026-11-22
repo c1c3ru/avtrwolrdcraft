@@ -30,7 +30,14 @@ Script: `out/recon/tasks/T020/node_tree_triage_2026-11-22.py`. Saída:
 | `typetreegeneratorapi_nullref_on_raw_generic_type_field` | 19 (pelo menos; ver nota abaixo) | `TypeTreeGeneratorAPI` quebra (`Object reference not set to an instance of an object`) ao resolver um campo declarado como instanciação genérica crua (ex.: `SerializableDictionaryBase<CarCategoryType, AWSpineColorsList>` direto, sem subclasse nomeada — confirmado lendo `AvatarMakerCarColorsConfig.cs`/`AvatarMakerDogColorsConfig.cs` decompilados). **Limitação da biblioteca nativa, não um bug meu** — já está na versão mais recente (0.0.10, não tem outra pra tentar). Afeta sobretudo as classes `PWC.AvatarMaker.AvatarMaker*ColorsConfig`/`*SubcategoriesConfig` (12 das 19), relevantes pro trabalho paralelo do editor de avatar. |
 | `type_stripped_from_release_il2cpp_metadata` | 13 (pelo menos) | `Type "X" was not found in the IL2CPP metadata` — classe não existe nem no `out/cpp2il` decompilado (conferido em 2 exemplos: `EALoginPanel`, `EACAMenuInfo`). Provável code stripping do Unity (classe nunca referenciada estaticamente, removida do binário, mas o `MonoScript` serializado ficou). Maioria é `PWC.EditorApp.*` — ferramental de editor/dev, não parte do jogo jogável. Provavelmente **irresolúvel de verdade**, não só "ainda não achei". |
 | `node_generation_failed_uncategorized_by_regex` | 18 | Mesma falha de geração de nó das duas categorias acima, mas a correlação automática (regex sobre stdout capturado numa rodada manual) não bateu o nome da classe com a mensagem nativa certa. Provavelmente se dividem entre as duas categorias acima; não investigado individualmente por falta de tempo/valor nesta sessão. |
-| `different_root_cause_node_gen_succeeded` | 9 | Árvore de tipos gerada com sucesso, mas **nenhum** campo `List<String>` mal rotulado encontrado — bug diferente, ainda não diagnosticado. |
+| `serialize_reference_ref_types_resolution` (antes `different_root_cause`) | 9 | **Diagnosticado em 2026-11-22.** Árvore de tipos gerada com sucesso, mas todas as 9 têm nós `ManagedReferencesRegistry`/`ReferencedObject` — usam `[SerializeReference]` do Unity (referência polimórfica). O tipo concreto de cada instância só é resolvido lendo o objeto de verdade contra `SerializedFile.ref_types` (metadado por arquivo serializado, comparação exata de classe/namespace/assembly em `get_ref_type_node`/equivalente nativo), não pela árvore estática do IL2CPP sozinha. Confirmado que `assetsfile` já é passado certinho pro `read_typetree` (`UnityPy.files.ObjectReader.read_typetree` já faz isso) — não é bug de parâmetro faltando. Não deu pra ir além sem carregar o datapack (bloqueado por RAM baixa no momento do diagnóstico — Chrome usando ~2,5 GB, <1 GB de swap livre). Lista completa das 9 classes e o note detalhado: `out/recon/tasks/T020/node_tree_triage_2026-11-22.json`. |
+
+### Sobre `BWYW.DailyTasksData` e `BWYW.BWYWGiftData`
+Essas duas já têm tarefas próprias na fila (`T020/CLASS/4cc86bcb4a623c07`, `ready`;
+`T020/CLASS/d723b7b66951bef8`, `blocked_external` — essa travou numa tentativa anterior de outra
+sessão só pra *carregar* o IL2CPP, antes de sequer gerar a árvore de tipos). Confirmado agora que a
+geração de árvore funciona para as duas (o bloqueio daquela sessão foi memória, não um problema
+estrutural da classe); a causa real de leitura é a mesma `[SerializeReference]` das outras 7.
 
 ## Tentativa de capturar a mensagem nativa automaticamente (não funcionou)
 Tentei redirecionar o fd 1 (stdout) ao redor da chamada nativa pra capturar a mensagem de erro real
@@ -49,5 +56,7 @@ geração de nó.
    `T020/CLASS/d723b7b66951bef8` (BWYWGiftData).
 3. As 13+ `type_stripped_*` são candidatas fortes a fechar como "não resolvível, tipo removido do
    binário shipado" — não vale reabrir sem nova evidência.
-4. As 9 `different_root_cause` + 18 não categorizadas precisam de investigação individual (rodar cada
-   uma isolada, ler o stdout direto no terminal).
+4. As 9 `serialize_reference_ref_types_resolution` precisam do datapack carregado pra confirmar se
+   `ref_types` está ausente no arquivo serializado ou se é mismatch de nome na comparação exata — só
+   dá pra saber lendo o objeto de verdade. As 18 não categorizadas pela regex ainda precisam de
+   investigação individual (rodar cada uma isolada, ler o stdout direto no terminal).

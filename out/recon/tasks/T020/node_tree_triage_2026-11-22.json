@@ -86,7 +86,8 @@
  "Game.Level.LevelOnSpecificPairAnimationBetweenSpecificAvatars": {
   "node_count": 97,
   "mislabeled_list_string_fields_found": [],
-  "triage": "different_root_cause_node_gen_succeeded"
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "Spine.Unity.SkeletonAnimation": {
   "node_count": 72,
@@ -340,12 +341,14 @@
  "Game.Level.LevelStaticConditionsResolverWithDropAreas": {
   "node_count": 118,
   "mislabeled_list_string_fields_found": [],
-  "triage": "different_root_cause_node_gen_succeeded"
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "Game.Level.LevelStaticConditionsResolver": {
   "node_count": 91,
   "mislabeled_list_string_fields_found": [],
-  "triage": "different_root_cause_node_gen_succeeded"
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "PWC.Level.LevelSetAnimationOnAvatarsInConsumerAreaHandler": {
   "node_count": 24,
@@ -371,12 +374,14 @@
  "Game.Level.LevelSecretVehicleInWorldPositionListener": {
   "node_count": 116,
   "mislabeled_list_string_fields_found": [],
-  "triage": "different_root_cause_node_gen_succeeded"
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "Game.Level.LevelStaticConditionsResolverWithParkedVehicles": {
   "node_count": 140,
   "mislabeled_list_string_fields_found": [],
-  "triage": "different_root_cause_node_gen_succeeded"
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode": {
   "triage": "node_generation_failed_uncategorized_by_regex",
@@ -423,12 +428,14 @@
  "BWYW.DailyTasksData": {
   "node_count": 36,
   "mislabeled_list_string_fields_found": [],
-  "triage": "different_root_cause_node_gen_succeeded"
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "BWYW.BWYWGiftData": {
   "node_count": 41,
   "mislabeled_list_string_fields_found": [],
-  "triage": "different_root_cause_node_gen_succeeded"
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "PWC.EditorApp.EAEditorDirectoryIndexer": {
   "triage": "node_generation_failed_uncategorized_by_regex",
@@ -444,7 +451,8 @@
  "Game.Level.LevelRecipeSecret": {
   "node_count": 70,
   "mislabeled_list_string_fields_found": [],
-  "triage": "different_root_cause_node_gen_succeeded"
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "PWC.World.Buildings.TransportationResetData": {
   "node_count": 27,
@@ -646,7 +654,8 @@
  "Game.Level.LevelItemConditionsResolver": {
   "node_count": 94,
   "mislabeled_list_string_fields_found": [],
-  "triage": "different_root_cause_node_gen_succeeded"
+  "triage": "serialize_reference_ref_types_resolution",
+  "note": "Type tree confirmed to contain ManagedReferencesRegistry/ReferencedObject nodes (Unity [SerializeReference] polymorphic fields). The concrete type of each instance is resolved at read time against SerializedFile.ref_types (per serialized file metadata, exact match on class/namespace/assembly), not from the IL2CPP-generated static type tree alone. assetsfile IS passed correctly to read_typetree (UnityPy.files.ObjectReader.read_typetree already does this) - the failure is NOT a missing-parameter bug. Whether it is missing/empty ref_types for these specific files or a name-matching mismatch in get_ref_type_node/native boost equivalent could not be determined without loading the actual serialized file data (needs the datapack, blocked by low RAM at diagnosis time, 2026-11-22)."
  },
  "PWC.EditorApp.EAResultPool": {
   "triage": "node_generation_failed_uncategorized_by_regex",

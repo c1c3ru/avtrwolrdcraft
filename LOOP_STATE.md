@@ -1,5 +1,20 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: as 9 classes de "causa desconhecida" diagnosticadas (SerializeReference) — 2026-11-22
+Continuação da triagem (`docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md`). As 9 classes que tinham
+árvore de tipos gerada com sucesso mas nenhum campo `List<String>` mal rotulado agora têm causa raiz
+identificada: todas usam `[SerializeReference]` do Unity (confirmado: todas têm nós
+`ManagedReferencesRegistry`/`ReferencedObject`). O tipo concreto de cada instância só resolve contra
+`SerializedFile.ref_types`, que é metadado por arquivo serializado — precisa do datapack carregado pra
+confirmar se está ausente ou se é mismatch de nome na comparação exata. Confirmado que `assetsfile` já
+é passado certinho pro `read_typetree` (não é bug de parâmetro faltando).
+- Inclui `BWYW.DailyTasksData` (`T020/CLASS/4cc86bcb4a623c07`, ready) e `BWYW.BWYWGiftData`
+  (`T020/CLASS/d723b7b66951bef8`, `blocked_external` numa tentativa anterior que travou só carregando
+  o IL2CPP, antes de gerar a árvore — confirmado agora que a geração funciona, o bloqueio foi memória).
+- **Parado aqui por decisão do usuário**: memória no momento (Chrome ~2,5 GB, <1 GB swap livre) não
+  permitia tentar o datapack com segurança; já houve um caso anterior de OOM derrubando processo de
+  outra sessão por engano. Diagnóstico documentado é considerado avanço suficiente por ora.
+
 ## T020: fila formal descoberta e usada; 124 classes restantes triadas sem RAM — 2026-11-22
 - Descoberta: já existe uma fila formal de tarefas (`tools/recon_queue.py`, `reports/recon/tasks.json`,
   908 tarefas) coordenando o trabalho entre as sessões/worktrees — família `T020/CLASS/<hash>`, uma por
