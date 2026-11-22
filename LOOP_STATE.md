@@ -1,5 +1,20 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T004: matriz de capacidade de ferramentas atualizada com os achados de hoje — 2026-11-22
+Pedido do usuário pra pegar outra tarefa ainda não concluída. `T004` ("Inventário de ferramentas e
+capacidade real") já tinha uma tentativa parcial anterior (`out/recon/tasks/T004/tool_capability_matrix.json`),
+bloqueada só por referência obsoleta (`LOOP_STATE.md` mudou muito desde então) — reconfigurei as
+referências e atualizei a matriz com tudo que descobri hoje:
+- Entrada da REA passa de "não avaliada" pra "avaliada, bloqueada": Hopper preso em diálogo de GUI
+  (`QDialog::WaitDialog`), Ghidra reanalisa o binário inteiro a cada chamada (sempre estoura timeout
+  de 330s+, mesmo numa leitura de 1 endereço só, sem cache entre chamadas).
+- Nova capacidade documentada: geração de type-tree isolada (`TypeTreeGenerator` sem carregar o
+  datapack) — zero risco de OOM, foi exatamente a técnica que usei pra triar as 124 classes de T020.
+- Entrada do UnityPy/datapack enriquecida: mais 5 tentativas de OOM confirmadas hoje, RSS variando
+  3,66–5,78 GB (confirma que não é teto fixo, é pressão de memória do host no momento).
+- Checkpointada de volta como `ready` (fila: 2 tentativas registradas) — decisão de gerar
+  tarefas-filhas a partir desta matriz continua em aberto, não é minha pra tomar sozinho.
+
 ## T025/HANDLER: Hopper e Ghidra reconfirmados inviáveis hoje (REA) — 2026-11-22
 Tentei retomar `T025/HANDLER/000032a8` (resolver alvo 0x24f0700, único gap documentado do
 callback `DestroyCurrentItems`) via REA, já que `binary_session` reportava Hopper e Ghidra como

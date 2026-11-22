@@ -317,17 +317,17 @@
         },
         {
           "path": "LOOP_STATE.md",
-          "sha256": "77bf4dbead9dcd88d085a0aa12d5acf35f4c793271842b286226831a70e0f8f1"
+          "sha256": "c8bf27657f9638a913fa9ebb2d44d6dd941cfe62172393f49360fc0588167c25"
         }
       ],
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T004/tool_capability_matrix.json",
-          "sha256": "d9446294e283f82737c640a0386509874387d492d84895988d957d148d06749d"
+          "sha256": "26c4259b54593b2ba6301e9dc03c926a2eb6a3a4e6a67f8c46721ce8065846f7"
         },
         {
           "path": "out/recon/tasks/T004/result.json",
-          "sha256": "b17559c6ea4c196bfc1622a892060401daf40f13d50137672dfeb148c741b256"
+          "sha256": "a7bca4161c7142c2292bba3b785245d19bc0bc2f7c1a23b8f1d3bb7628b1e6c0"
         }
       ],
       "unknown_ids": [],
@@ -350,12 +350,31 @@
               "sha256": "b17559c6ea4c196bfc1622a892060401daf40f13d50137672dfeb148c741b256"
             }
           ]
+        },
+        {
+          "id": "5e9b25086a724240a4e5a0b23b9635d1",
+          "owner": "agente-artefatos-claude",
+          "started_at": 1795369343.7762942,
+          "lease_id": "749075cb389d482fa3f54ddbac8b9f6d",
+          "checkpoint_at": 1795369361.0761216,
+          "state": "ready",
+          "note": "Matriz atualizada com achados de 2026-11-22: REA/Hopper/Ghidra avaliados contra libil2cpp.so e confirmados bloqueados agora (Hopper preso em dialogo de GUI; Ghidra reanalisa o binario inteiro a cada chamada, sempre estoura timeout de 330s+, mesmo pra uma leitura leve de 1 endereco). Nova capacidade documentada: geracao de type-tree isolada (TypeTreeGenerator sem carregar o datapack) - zero risco de OOM, usada pra triar as 124 classes de T020. Entrada do UnityPy/datapack enriquecida com mais 5 tentativas de OOM confirmadas, RSS variando 3.66-5.78GB (nao e teto fixo). Ainda nao gerei as tarefas-filhas desta matriz (decisao de coordenador, deixada em aberto como na tentativa anterior) - fica pronta (ready) de novo pra proxima rodada/revisor.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T004/tool_capability_matrix.json",
+              "sha256": "26c4259b54593b2ba6301e9dc03c926a2eb6a3a4e6a67f8c46721ce8065846f7"
+            },
+            {
+              "path": "out/recon/tasks/T004/result.json",
+              "sha256": "a7bca4161c7142c2292bba3b785245d19bc0bc2f7c1a23b8f1d3bb7628b1e6c0"
+            }
+          ]
         }
       ],
-      "owner": "agente-logica-claude",
+      "owner": "agente-artefatos-claude",
       "lease": null,
       "review": null,
-      "next_action": "Entrega parcial: matriz de capacidade por ferramenta (out/recon/tasks/T004/tool_capability_matrix.json) montada a partir do que foi de fato exercitado nesta sessao, com o unico bloqueio exato encontrado registrado (UnityPy.load() em datapack.unity3d sofre OOM, confirmado via strace). Nao fiz a geracao de tarefas filhas que esta tarefa coordenadora pede (next_action original); isso fica para decisao de coordenador. Nao e evidence_ready porque o campo outputs desta tarefa e texto descritivo, nao uma lista de arquivos, e a acao de coordenacao (gerar filhos) nao foi executada."
+      "next_action": "Matriz atualizada com achados de 2026-11-22: REA/Hopper/Ghidra avaliados contra libil2cpp.so e confirmados bloqueados agora (Hopper preso em dialogo de GUI; Ghidra reanalisa o binario inteiro a cada chamada, sempre estoura timeout de 330s+, mesmo pra uma leitura leve de 1 endereco). Nova capacidade documentada: geracao de type-tree isolada (TypeTreeGenerator sem carregar o datapack) - zero risco de OOM, usada pra triar as 124 classes de T020. Entrada do UnityPy/datapack enriquecida com mais 5 tentativas de OOM confirmadas, RSS variando 3.66-5.78GB (nao e teto fixo). Ainda nao gerei as tarefas-filhas desta matriz (decisao de coordenador, deixada em aberto como na tentativa anterior) - fica pronta (ready) de novo pra proxima rodada/revisor."
     },
     {
       "id": "T005",
@@ -69012,7 +69031,7 @@
     }
   ],
   "root": "/home/c1c3ru/avtrwolrdcraft",
-  "revision": 223,
+  "revision": 227,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -71449,6 +71468,34 @@
       "task": "T020/CLASS/eb247b7ee7bc0692",
       "actor": "agente-artefatos-claude",
       "at": 1795368067.5926762
+    },
+    {
+      "revision": 224,
+      "action": "configure",
+      "task": "T004",
+      "actor": "agente-artefatos-claude",
+      "at": 1795369334.698835
+    },
+    {
+      "revision": 225,
+      "action": "claim",
+      "task": "T004",
+      "actor": "agente-artefatos-claude",
+      "at": 1795369343.836619
+    },
+    {
+      "revision": 226,
+      "action": "start",
+      "task": "T004",
+      "actor": "agente-artefatos-claude",
+      "at": 1795369344.0634334
+    },
+    {
+      "revision": 227,
+      "action": "checkpoint",
+      "task": "T004",
+      "actor": "agente-artefatos-claude",
+      "at": 1795369361.1151655
     }
   ]
 }
