@@ -66,9 +66,9 @@
     },
     {
       "scene_type": "StoreBundle",
-      "status": "NOT_STARTED",
-      "policy": "UNKNOWN_not_scoped_yet",
-      "note": "No local-implementation evidence found this session."
+      "status": "STATIC_EVIDENCE_RECOVERED_no_local_implementation",
+      "policy": "offline_adaptation_candidate",
+      "note": "Updated 2026-11-22 (previous passes found no evidence): PWC.Inventory.InventoryBuildData (the single packGuid->item-guid-list object in the whole game) is now decoded (type-tree bug fixed, docs/RECON_STORE_HOUSE_BUNDLES_2026-11-07.md) and all 224 packs categorized (docs/RECON_STORE_ALL_PACKS_OVERVIEW_2026-11-07.md): 74 Moda/avatar, 65 Casa/comodo, 21 Bebe/crianca, 14 Celebracao, 14 Pet, 9 Esporte, 9 Veiculo, 11 Indefinido. Of the Casa/comodo cluster, 7 house themes are confirmed/well-inferred (2 confirmed against original-game screenshots: Galxe Mansion, Natural Chic) -- see that doc for which theme-covers remain unresolved (Mansao) vs. confirmed. Card->pack association is inference by name (same caveat as the already-shipped Moda pipeline in docs/STORE_BUNDLE_CONTENTS.md) since the real store server/catalog is not in the APK. No client-side screen/editor consumes this data yet (no StoreBundle UI, no PackGate-equivalent for houses/vehicles/pets) -- this is recovered STATIC evidence only, same maturity tier as the CarMaker entry below, not an implementation."
     },
     {
       "scene_type": "CarMaker",
