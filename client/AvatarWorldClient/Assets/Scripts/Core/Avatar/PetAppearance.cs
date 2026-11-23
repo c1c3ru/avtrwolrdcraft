@@ -19,25 +19,7 @@ namespace AvatarWorld.Core.Avatar
 
         public static string[] Species { get; } = Layered.Concat(PetCatalogData.Species).ToArray();
 
-        public static string DisplayName(string species)
-        {
-            switch (species)
-            {
-                case "Dog": return "Cão";
-                case "Cat": return "Gato";
-                case "Horse": return "Cavalo";
-                case "Cow": return "Vaca";
-                case "Rabbit": return "Coelho";
-                case "Hamster": return "Hamster";
-                case "Bird": return "Pássaro";
-                case "Chicken": return "Galinha";
-                case "Turtle": return "Tartaruga";
-                case "Lizard": return "Lagarto";
-                case "Snake": return "Cobra";
-                case "Fish": return "Peixe";
-                default: return species;
-            }
-        }
+        public static string DisplayName(string species) => AvatarWorld.Core.Localization.Loc.Name("pet.", species);
 
         public static bool IsLayered(string species) => species != null && PetLayerCatalogData.Species.ContainsKey(species);
 
