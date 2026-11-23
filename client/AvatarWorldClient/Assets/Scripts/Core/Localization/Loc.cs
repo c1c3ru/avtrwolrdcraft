@@ -74,6 +74,9 @@ namespace AvatarWorld.Core.Localization
             ["store.bought"] = new[] { "Combo adquirido!", "Bundle acquired!", "¡Paquete adquirido!", "Paket didapatkan!" },
             // categorias (o identificador continua sendo o nome em portugues; isto e so o texto exibido)
             ["cat.Moedas AW"] = new[] { "Moedas AW", "AW Coins", "Monedas AW", "Koin AW" },
+            ["cat.Passe de Avatar"] = new[] { "Passe de Avatar", "Avatar Pass", "Pase de Avatar", "Pass Avatar" },
+            ["offer.avatar-pass"] = new[] { "Passe de Avatar", "Avatar Pass", "Pase de Avatar", "Pass Avatar" },
+            ["pass.bought"] = new[] { "Passe ativado! {0} combos liberados.", "Pass activated! {0} bundles unlocked.", "¡Pase activado! {0} paquetes desbloqueados.", "Pass aktif! {0} paket terbuka." },
             ["cat.Destaque"] = new[] { "Destaque", "Featured", "Destacados", "Unggulan" },
             ["cat.Veículos"] = new[] { "Veículos", "Vehicles", "Vehículos", "Kendaraan" },
             ["cat.Casas"] = new[] { "Casas", "Houses", "Casas", "Rumah" },

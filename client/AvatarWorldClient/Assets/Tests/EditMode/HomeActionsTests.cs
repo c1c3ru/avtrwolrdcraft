@@ -190,6 +190,25 @@ namespace AvatarWorld.Core.Tests
             Assert.AreSame(idFlag.sprite, flag.sprite);
         }
 
+        [Test] public void AvatarPassButtons_OpenThePassWhenProvided()
+        {
+            var passRoot = new GameObject("TestHomePass");
+            try
+            {
+                var desc = JsonUtility.FromJson<SceneDescription>(Resources.Load<TextAsset>("HomeSlice/level3").text);
+                var objs = UiSceneBuilder.Build(desc, null, parent: passRoot.transform);
+                var withPass = passRoot.AddComponent<HomeActions>();
+                int opened = 0;
+                withPass.Initialize(objs, saves, state, () => { }, null, null, () => opened++);
+                Assert.IsFalse(withPass.PendingButtons.Contains("AvatarPassButton"));
+                Assert.IsFalse(withPass.PendingButtons.Contains("AvatarPassButton_Small"));
+                Assert.AreEqual(actions.PendingButtons.Count - 2, withPass.PendingButtons.Count);
+                withPass.Open("AvatarPassButton");
+                Assert.AreEqual(1, opened);
+            }
+            finally { Object.DestroyImmediate(passRoot); }
+        }
+
         [Test] public void ShopButtonOpensTheStoreWhenProvided()
         {
             var shopRoot = new GameObject("TestHomeShop");

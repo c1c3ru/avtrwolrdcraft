@@ -32,13 +32,15 @@ namespace AvatarWorld.Runtime
         Action play;
         Action<int> starterPack;
         Action openStore;
+        Action openAvatarPass;
         public readonly List<string> PendingButtons = new List<string>();
 
         public void Initialize(IReadOnlyList<GameObject> objects, SaveStore saveStore,
             PlayerState sharedState, Action openPlay, Action<int> openStarterPack = null,
-            Action openStoreScreen = null)
+            Action openStoreScreen = null, Action openAvatarPassScreen = null)
         {
             openStore = openStoreScreen;
+            openAvatarPass = openAvatarPassScreen;
             starterPack = openStarterPack;
             saves = saveStore ?? throw new ArgumentNullException(nameof(saveStore));
             state = sharedState ?? throw new ArgumentNullException(nameof(sharedState));
@@ -91,6 +93,13 @@ namespace AvatarWorld.Runtime
                         // Botoes do SettingsMenu original: liga/desliga com os icones On/Off do proprio menu.
                         bool isSfx = action == "SFX";
                         button.onClick.AddListener(() => ToggleSound(isSfx));
+                        boundButtons.Add(button);
+                        break;
+                    case "AvatarPassButton":
+                    case "AvatarPassButton_Small":
+                        // No original abre a compra da assinatura (IAP); aqui abre a loja no Passe de Avatar, pago com moedas dos desafios.
+                        if (openAvatarPass == null) goto default;
+                        button.onClick.AddListener(() => Open(action));
                         boundButtons.Add(button);
                         break;
                     case "WorldResetButton":
@@ -153,6 +162,14 @@ namespace AvatarWorld.Runtime
                 case "SettingsButton": ShowSettings(); break;
                 case "AccountButton": ShowProfile(); break;
                 case "AchievementsAppWidget": ShowProgress(); break;
+                case "AvatarPassButton":
+                case "AvatarPassButton_Small":
+                    if (openAvatarPass == null) break;
+                    Close();
+                    inGameplay = true;
+                    SetHomeVisible(false);
+                    openAvatarPass();
+                    break;
                 case "WorldResetButton": ShowResetWarning(); break;
                 case "ChatLanguageButton":
                     if (languagesPanel != null) languagesPanel.SetActive(!languagesPanel.activeSelf);

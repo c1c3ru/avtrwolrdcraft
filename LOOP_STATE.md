@@ -1,5 +1,17 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Passe de Avatar offline (compra unica com moedas) — 2026-11-23
+Decisao do usuario: o jogo e offline e o jogador ganha moedas acertando desafios, entao o passe vira pacote comprado com elas.
+- No original o passe e uma assinatura (`game55.subscription.avatarpass`) que da os combos marcados `isIncludedInAvatarPass` e uma
+  recompensa periodica; combos e valores vem do servidor. O desenho abaixo e **do cliente**, nao recuperado.
+- `Core/Economy/AvatarPass.cs`: compra unica de 1500 moedas (acima de qualquer combo, 300-1400) que concede 4 combos de moda
+  (PB13 Ricos e Famosos, PB20 Pop Star, PB23 Show ao vivo, PB24 Ferias de Primavera; juntos valem mais que o passe). Sem renovacao,
+  sem recompensa periodica. Combo ja comprado continua com 1 resgate. Categoria propria "Passe de Avatar" na loja, fora de Combos/Destaque.
+- Botoes `AvatarPassButton`/`AvatarPassButton_Small` da Home abrem a loja nessa categoria (`HomeBootstrap.OpenStore(category:)`).
+  `AvatarPassChangeWidget` (troca de plano/assinatura) segue pendente de proposito.
+- **Arte provisoria**: o cartao reaproveita a arte do PB13; o APK nao traz arte propria do passe extraida.
+- Testes: EditMode 374/374 (+ `AvatarPassTests`).
+
 ## Fila viva: pre-revisao das 3 tarefas em `review` — 2026-11-23
 Leitura dos artefatos, sem reexecutar analise e **sem alterar a fila** (a revisao formal pede revisor independente; esta e so um parecer).
 - `T020/CLASS/InventoryBuildData` e `InventorySkinsBuildData`: hashes de evidencia conferem; `recount.json` fecha a conta (1/1 e 2/2
