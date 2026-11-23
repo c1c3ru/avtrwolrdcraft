@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: U3 fechado, offsets por tabela de metadata — 2026-11-23
+- `MetadataRegistration.fieldOffsets` achada em `0x4235148` (ancora: contador 16859 | ptr | 16859 em `.data.rel.ro`); junta com metadata v31.
+  Validada em `DeepLinkManager._mapLinkToLevel=0x28`. Confirma `_points 0x30`, `_isNewEveryLoad 0x38`, `PDSceneObject.sceneGuid 0x20`,
+  `InventoryManager.Instance` (estatico 0x8) e `.ItemsTracker 0x38`. Ferramenta reutilizavel: `tools/il2cpp_field_offsets.py`.
+  Detalhes: `docs/RECON_FIELD_OFFSETS_2026-11-23.md`. T025/HANDLER/000032a8 segue com U4 e revisao abertos; fila nao alterada.
+
 ## RE com Capstone: corpo de LevelUtils.DestroyLevelItem recuperado — 2026-11-23
 - Fluxo completo (null-check, GetComponentsInChildren, evento OnBeforeDestroy, tag "Destroyed", restauracao via LevelDefaultDataItemsToRestore /
   InventoryItemsTracker / virtual, desativa+Destroy). 3 despachos virtuais ficam como candidatos (dump sem `slot`). Fecha U2 de

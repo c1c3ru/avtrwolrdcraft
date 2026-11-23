@@ -51,5 +51,6 @@ Object.Destroy(levelItem.gameObject);                                           
 - Media: tipos dos genericos (`0x24f1424` = `GetComponentsInChildren<LevelItem>(true)` porque cada elemento vai para `Action<LevelItem>`;
   `0x24f17fc` do laco = `PDSceneObject` pelo texto de erro; os dois usos finais nao foram decodificados).
 - Baixa: nomes dos 3 despachos virtuais (`+0x738`, `+0x748`, `+0x508`): o dump nao traz `slot`; sao candidatos, nao fatos.
-- Offsets `pd+0x20` (sceneGuid) e `InventoryManager.statics+0xb8` vem de leitura de assembly, nao de tabela de metadata (U3).
+- Offsets `pd+0x20` (sceneGuid), `InventoryManager.Instance` (estatico +0x8) e `.ItemsTracker` (+0x38) **confirmados** pela tabela de metadata
+  (`docs/RECON_FIELD_OFFSETS_2026-11-23.md`); no pseudo-codigo, `InventoryManager.<static +0xb8>.itemsTracker` = `InventoryManager.Instance.ItemsTracker`.
 - Fila nao alterada; revisao independente pendente.
