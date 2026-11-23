@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE sem Hopper/Ghidra: despacho de HomePlayButton.LoadPlayScene resolvido — 2026-11-23
+- `0x2058174` = `IDictionary<string, LevelType>.get_Item` sobre `DeepLinkManager._mapLinkToLevel` (campo `+0x28`); despacho de interface
+  padrao do IL2CPP. Detalhes e ressalvas em `docs/RECON_HOMEPLAY_DISPATCH_2026-11-23.md`. Fecha 1 dos 6 desconhecidos de T025/5fe1bb4a;
+  a tarefa segue `partial` e a fila nao foi alterada. Capstone 5.0.7 em venv instala sem problema (alternativa leve aos bloqueios de Ghidra).
+
 ## Fila viva: pre-revisao das 3 tarefas em `review` — 2026-11-23
 Leitura dos artefatos, sem reexecutar analise e **sem alterar a fila** (a revisao formal pede revisor independente; esta e so um parecer).
 - `T020/CLASS/InventoryBuildData` e `InventorySkinsBuildData`: hashes de evidencia conferem; `recount.json` fecha a conta (1/1 e 2/2
