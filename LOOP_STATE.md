@@ -1,5 +1,14 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Idioma: editor de avatar/pet, navegador de itens, mapa e quadra — 2026-11-23
+- `Loc` cobre agora tambem `AvatarEditorScreen` (abas Frente/Atras/Camisa/Jaqueta/Acessorio/Chapeu, "Na loja", avisos),
+  `PetEditorScreen` (todas as abas, Variante, avisos), `ItemBrowserScreen`, avisos do `WorldMapRuntime` e textos da
+  `BasketballCourtRuntime` (a mensagem guarda a chave e e traduzida a cada quadro).
+- Fica em portugues de proposito: o banco de perguntas dos desafios (`LiteracyChallengeScreen` e `ChallengeBank`: o conteudo
+  e de portugues/matematica, traduzir o enunciado mudaria o exercicio), nomes dos itens de roupa/catalogo (`item.DisplayName`),
+  categorias do navegador de itens (ids como `character`/`food`) e nomes dos mundos do seletor (nao sao exibidos).
+- Testes: EditMode 366/366, PlayMode 25/25.
+
 ## Idioma na loja, slots e vaga de veiculo; cinema fechado como "em obras" — 2026-11-23
 - `Loc` ganhou os textos de `StoreScreen`, `AvatarSlotsScreen` e `VehicleSlotPurchaseScreen` (pt/en/es/id), mais nomes de
   avatar (`AvatarKinds.DisplayName`) e pet (`PetCatalog.DisplayName`). Categorias, subgrupos e titulos de oferta continuam em

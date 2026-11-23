@@ -1,3 +1,4 @@
+using AvatarWorld.Core.Localization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -290,9 +291,9 @@ namespace AvatarWorld.Runtime
         // segunda categoria for editavel no tipo do avatar (crianca/bebe nao tem jaqueta nem chapeu).
         static readonly (string menuKey, (string category, string label)[] tabs)[] TabGroups =
         {
-            (AvatarCatalog.CategoryHair, new[] { (AvatarCatalog.CategoryHair, "Frente"), (AvatarCatalog.CategoryHairBack, "Atrás") }),
-            (AvatarCatalog.CategoryShirt, new[] { (AvatarCatalog.CategoryShirt, "Camisa"), (AvatarCatalog.CategoryJacket, "Jaqueta") }),
-            (AvatarCatalog.CategoryAccessory, new[] { (AvatarCatalog.CategoryAccessory, "Acessório"), (AvatarCatalog.CategoryHat, "Chapéu") }),
+            (AvatarCatalog.CategoryHair, new[] { (AvatarCatalog.CategoryHair, "editor.front"), (AvatarCatalog.CategoryHairBack, "editor.back") }),
+            (AvatarCatalog.CategoryShirt, new[] { (AvatarCatalog.CategoryShirt, "editor.shirt"), (AvatarCatalog.CategoryJacket, "editor.jacket") }),
+            (AvatarCatalog.CategoryAccessory, new[] { (AvatarCatalog.CategoryAccessory, "editor.accessory"), (AvatarCatalog.CategoryHat, "editor.hat") }),
         };
 
         static string MenuKeyOf(string category)
@@ -341,7 +342,7 @@ namespace AvatarWorld.Runtime
                     button.onClick.AddListener(() => { UiSound.PlayClick(); SelectCategory(key); });
                     var label = NewText("Label", tab.transform, 34, new Color(0.35f, 0.12f, 0.45f));
                     Stretch(label.rectTransform);
-                    label.text = group.tabs[i].label;
+                    label.text = Loc.Get(group.tabs[i].label); // o campo guarda a chave de Loc
                     _tabButtons[key] = tab;
                 }
                 bar.SetActive(false);
@@ -474,7 +475,7 @@ namespace AvatarWorld.Runtime
                     Place(tag.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 26f), new Vector2(200f, 44f));
                     tag.font = _font; tag.fontSize = 30; tag.alignment = TextAnchor.MiddleCenter;
                     tag.color = new Color(0.45f, 0.2f, 0.6f); tag.raycastTarget = false;
-                    tag.text = "Na loja";
+                    tag.text = Loc.Get("editor.inshop");
                 }
             }
             RefreshSelection();
@@ -534,7 +535,7 @@ namespace AvatarWorld.Runtime
             if (_avatar == null || !_avatar.IsReady) return;
             if (PackGate.IsLocked(_state, itemId))
             {
-                ShowToast("Peça do combo \"" + PackGate.OfferTitleFor(itemId) + "\" da loja.");
+                ShowToast(Loc.Format("editor.packpiece", PackGate.OfferTitleFor(itemId)));
                 return;
             }
             _avatar.SelectOption(_category, itemId);
@@ -579,7 +580,7 @@ namespace AvatarWorld.Runtime
             {
                 _avatar.ApplyAppearance(before); // falha de escrita: volta ao que estava salvo
                 RefreshSelection();
-                ShowToast("Não foi possível salvar. Nada foi alterado.");
+                ShowToast(Loc.Get("editor.savefail"));
                 return;
             }
             Saved = true;
