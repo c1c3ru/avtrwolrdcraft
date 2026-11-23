@@ -1,3 +1,4 @@
+using AvatarWorld.Core.Localization;
 using System;
 using AvatarWorld.Core.Economy;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace AvatarWorld.Runtime
         int _score;
         bool _dragging;
         bool _shooting;
-        string _message = "Arraste a bola para cima para arremessar";
+        string _messageKey = "court.hint"; // chave de Loc, resolvida a cada quadro (o idioma pode mudar)
 
         public int Score => _score;
         public bool IsDragging => _dragging;
@@ -110,7 +111,7 @@ namespace AvatarWorld.Runtime
                 if (t >= 1f)
                 {
                     _score++;
-                    _message = "Cesta! Toque e arraste para tentar de novo";
+                    _messageKey = "court.scored";
                     _falling = true;
                     _fallTime = 0f;
                 }
@@ -195,7 +196,7 @@ namespace AvatarWorld.Runtime
             if (upward < 0.55f)
             {
                 _ball.transform.position = _ballHome;
-                _message = "Puxe a bola para cima para arremessar";
+                _messageKey = "court.pull";
                 return;
             }
             _shotStart = _ball.transform.position;
@@ -203,7 +204,7 @@ namespace AvatarWorld.Runtime
             _shotTarget = new Vector3(side * (HoopX - RingOffset.x), HoopY + RingOffset.y, 0);
             _shotTime = 0;
             _shooting = true;
-            _message = "Arremessando…";
+            _messageKey = "court.throwing";
         }
 
         void OnGUI()
@@ -211,9 +212,9 @@ namespace AvatarWorld.Runtime
             GUIStyle label = new GUIStyle(GUI.skin.label) { fontSize = Mathf.Max(18, Screen.height / 32), alignment = TextAnchor.MiddleCenter };
             label.normal.textColor = Color.white;
             GUI.Box(new Rect(Screen.width * 0.38f, 12, Screen.width * 0.24f, 100), "");
-            GUI.Label(new Rect(Screen.width * 0.38f, 16, Screen.width * 0.24f, 42), "CESTAS  " + _score, label);
-            GUI.Label(new Rect(Screen.width * 0.2f, 62, Screen.width * 0.6f, 40), _message, label);
-            if (GUI.Button(new Rect(16, 16, Mathf.Max(120, Screen.width * 0.12f), 56), "Voltar ao mapa")) _onExit?.Invoke();
+            GUI.Label(new Rect(Screen.width * 0.38f, 16, Screen.width * 0.24f, 42), Loc.Format("court.score", _score), label);
+            GUI.Label(new Rect(Screen.width * 0.2f, 62, Screen.width * 0.6f, 40), Loc.Get(_messageKey), label);
+            if (GUI.Button(new Rect(16, 16, Mathf.Max(120, Screen.width * 0.12f), 56), Loc.Get("court.back"))) _onExit?.Invoke();
         }
     }
 }

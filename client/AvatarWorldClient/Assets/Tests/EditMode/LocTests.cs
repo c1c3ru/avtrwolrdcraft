@@ -79,5 +79,23 @@ namespace AvatarWorld.Core.Tests
             }
             finally { Loc.Current = before; }
         }
+
+        [Test] public void ScreenKeysUsedByTheRuntimeScreensExist()
+        {
+            // Chaves referenciadas por editor de avatar/pet, navegador de itens, mapa e quadra (strings no codigo as citam por nome).
+            var keys = new[]
+            {
+                "item.close", "item.have", "item.bought", "item.price",
+                "editor.front", "editor.back", "editor.shirt", "editor.jacket", "editor.accessory", "editor.hat", "editor.inshop", "editor.packpiece", "editor.savefail",
+                "pet.variant", "pet.invalid", "pet.savefail",
+                "pet.tab.breed", "pet.tab.pattern", "pet.tab.bodycolor", "pet.tab.patterncolor", "pet.tab.eyebrow", "pet.tab.eyebrowcolor",
+                "pet.tab.hat", "pet.tab.bridle", "pet.tab.outfit", "pet.tab.saddle", "pet.tab.shoes", "pet.tab.accessory", "pet.tab.mane",
+                "pet.tab.manecolor", "pet.tab.tail", "pet.tab.tailcolor", "pet.tab.eyes", "pet.tab.eyescolor", "pet.tab.mouth",
+                "map.noavatars", "map.nohouse", "map.construction", "map.unavailable",
+                "court.hint", "court.pull", "court.scored", "court.throwing", "court.score", "court.back",
+            };
+            foreach (var key in keys) Assert.IsTrue(Loc.Has(key), key);
+            Assert.AreEqual("BASKETS  3", string.Format(Loc.Get("court.score", Language.En), 3));
+        }
     }
 }

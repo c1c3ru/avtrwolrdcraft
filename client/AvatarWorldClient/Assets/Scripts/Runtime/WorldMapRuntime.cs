@@ -1,3 +1,4 @@
+using AvatarWorld.Core.Localization;
 using System;
 using System.Collections.Generic;
 using AvatarWorld.Core.Economy;
@@ -465,10 +466,10 @@ namespace AvatarWorld.Runtime
                 new Vector2(146f, 143f), () =>
                 {
                     if (_onOpenSlots != null) _onOpenSlots();
-                    else ShowToast("Adicionar avatares ainda não está disponível.");
+                    else ShowToast(Loc.Get("map.noavatars"));
                 });
             var house = MakeUiButton(root, "EditHouseButton", "edit_house", topRight, center, new Vector2(-92.5f, -91f),
-                new Vector2(146f, 143f), () => ShowToast("Editar a casa ainda não está disponível."));
+                new Vector2(146f, 143f), () => ShowToast(Loc.Get("map.nohouse")));
             _uiRects.AddRange(new[] { toggle, globe, avatar, house });
             ApplyWeather(_weather);
         }
@@ -618,8 +619,8 @@ namespace AvatarWorld.Runtime
                 return;
             }
             ShowToast(building.defaultLevel == 0
-                ? "Este lugar ainda está em obras."
-                : "Este lugar ainda não está disponível.");
+                ? Loc.Get("map.construction")
+                : Loc.Get("map.unavailable"));
         }
 
         // Destaque, loading, um quadro para renderizar e so entao troca para a quadra.

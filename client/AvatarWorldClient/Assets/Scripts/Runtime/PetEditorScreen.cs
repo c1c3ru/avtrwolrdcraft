@@ -1,3 +1,4 @@
+using AvatarWorld.Core.Localization;
 using System;
 using System.Collections.Generic;
 using AvatarWorld.Core.Avatar;
@@ -25,27 +26,27 @@ namespace AvatarWorld.Runtime
 
         static string TabLabel(Tab tab, string species)
         {
-            if (species == "Horse" && tab == Tab.Hat) return "Rédea";
-            if (species == "Horse" && tab == Tab.Outfit) return "Sela";
+            if (species == "Horse" && tab == Tab.Hat) return Loc.Get("pet.tab.bridle");
+            if (species == "Horse" && tab == Tab.Outfit) return Loc.Get("pet.tab.saddle");
             switch (tab)
             {
-                case Tab.Breed: return "Raça";
-                case Tab.Pattern: return "Padrão";
-                case Tab.BodyColor: return "Cor";
-                case Tab.PatternColor: return "Cor padrão";
-                case Tab.Eyebrow: return "Sobrancelha";
-                case Tab.EyebrowColor: return "Cor sobr.";
-                case Tab.Hat: return "Chapéu";
-                case Tab.Outfit: return "Roupa";
-                case Tab.Shoes: return "Sapatos";
-                case Tab.Accessory: return "Acessório";
-                case Tab.Mane: return "Crina";
-                case Tab.ManeColor: return "Cor crina";
-                case Tab.Tail: return "Cauda";
-                case Tab.TailColor: return "Cor cauda";
-                case Tab.Eyes: return "Olhos";
-                case Tab.EyesColor: return "Cor olhos";
-                default: return "Boca";
+                case Tab.Breed: return Loc.Get("pet.tab.breed");
+                case Tab.Pattern: return Loc.Get("pet.tab.pattern");
+                case Tab.BodyColor: return Loc.Get("pet.tab.bodycolor");
+                case Tab.PatternColor: return Loc.Get("pet.tab.patterncolor");
+                case Tab.Eyebrow: return Loc.Get("pet.tab.eyebrow");
+                case Tab.EyebrowColor: return Loc.Get("pet.tab.eyebrowcolor");
+                case Tab.Hat: return Loc.Get("pet.tab.hat");
+                case Tab.Outfit: return Loc.Get("pet.tab.outfit");
+                case Tab.Shoes: return Loc.Get("pet.tab.shoes");
+                case Tab.Accessory: return Loc.Get("pet.tab.accessory");
+                case Tab.Mane: return Loc.Get("pet.tab.mane");
+                case Tab.ManeColor: return Loc.Get("pet.tab.manecolor");
+                case Tab.Tail: return Loc.Get("pet.tab.tail");
+                case Tab.TailColor: return Loc.Get("pet.tab.tailcolor");
+                case Tab.Eyes: return Loc.Get("pet.tab.eyes");
+                case Tab.EyesColor: return Loc.Get("pet.tab.eyescolor");
+                default: return Loc.Get("pet.tab.mouth");
             }
         }
 
@@ -148,7 +149,7 @@ namespace AvatarWorld.Runtime
             Stretch((RectTransform)_simpleGroup.transform);
             var variantTitle = NewText("VariantTitle", _simpleGroup.transform, 52, Ink);
             Place(variantTitle.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -380f), new Vector2(760f, 80f));
-            variantTitle.text = "Variante";
+            variantTitle.text = Loc.Get("pet.variant");
             var prev = Button("Prev", _simpleGroup.transform, null, new Vector2(0.5f, 1), new Vector2(-270f, -520f), new Vector2(150f, 130f), () => StepVariant(-1));
             prev.color = new Color(0.95f, 0.72f, 0.84f);
             var prevLabel = NewText("Label", prev.transform, 70, Color.white); Stretch(prevLabel.rectTransform); prevLabel.text = "<";
@@ -360,11 +361,11 @@ namespace AvatarWorld.Runtime
         {
             if (_closing) return;
             UiSound.PlayClick();
-            if (!_state.SetPet(_slot, _working)) { ShowToast("Pet inválido."); return; }
+            if (!_state.SetPet(_slot, _working)) { ShowToast(Loc.Get("pet.invalid")); return; }
             try { _saves.Save(_state); }
             catch (Exception e) when (e is System.IO.IOException || e is UnauthorizedAccessException)
             {
-                ShowToast("Não foi possível salvar.");
+                ShowToast(Loc.Get("pet.savefail"));
                 return;
             }
             Saved = true;

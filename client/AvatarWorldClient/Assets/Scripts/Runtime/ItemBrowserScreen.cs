@@ -1,3 +1,4 @@
+using AvatarWorld.Core.Localization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -94,7 +95,7 @@ namespace AvatarWorld.Runtime
 
             var title = Txt("Title", _root, 56, TextAnchor.MiddleCenter, Color.white);
             Place(title.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -70f), new Vector2(900f, 90f));
-            title.text = "Itens (" + _index.Count + ")";
+            title.text = Loc.Get("store.items") + " (" + _index.Count + ")";
 
             _chips = _index.Categories(ChipCount);
             float x = 330f;
@@ -188,14 +189,14 @@ namespace AvatarWorld.Runtime
             bool owned = _state.GetClaimCount(item.Guid) >= 1;
             var price = Txt("Price", card.transform, 40, TextAnchor.MiddleCenter, owned ? new Color(0.1f, 0.5f, 0.2f) : TextDark);
             Place(price.rectTransform, new Vector2(0.5f, 0), new Vector2(0f, 32f), new Vector2(370f, 56f));
-            price.text = owned ? "Adquirido" : item.Price + " moedas";
+            price.text = owned ? Loc.Get("store.owned") : Loc.Format("item.price", item.Price);
             var captured = item;
             Click(card.gameObject, () => { UiSound.PlayClick(); OnTapped(captured); });
         }
 
         void OnTapped(CatalogItem item)
         {
-            if (_state.GetClaimCount(item.Guid) >= 1) { ShowToast("Você já tem este item."); return; }
+            if (_state.GetClaimCount(item.Guid) >= 1) { ShowToast(Loc.Get("item.have")); return; }
             OpenModal(item);
         }
 
@@ -215,10 +216,10 @@ namespace AvatarWorld.Runtime
             var msg = Txt("Message", panel.transform, 44, TextAnchor.MiddleCenter, TextDark);
             Place(msg.rectTransform, new Vector2(0.5f, 1), new Vector2(0f, -170f), new Vector2(1000f, 220f));
             msg.text = canPay
-                ? "Comprar \"" + item.DisplayName + "\" por " + item.Price + " moedas?"
-                : "Faltam " + (item.Price - _state.PazuCurrency) + " moedas para \"" + item.DisplayName + "\".";
-            if (canPay) Button(panel.transform, "Comprar", new Vector2(-250f, 80f), () => Purchase(item));
-            Button(panel.transform, canPay ? "Cancelar" : "Fechar", new Vector2(canPay ? 250f : 0f, 80f), CloseModal);
+                ? Loc.Format("store.confirm", item.DisplayName, item.Price)
+                : Loc.Format("store.missing", item.Price - _state.PazuCurrency, item.DisplayName);
+            if (canPay) Button(panel.transform, Loc.Get("store.buy"), new Vector2(-250f, 80f), () => Purchase(item));
+            Button(panel.transform, Loc.Get(canPay ? "store.cancel" : "item.close"), new Vector2(canPay ? 250f : 0f, 80f), CloseModal);
         }
 
         void Button(Transform parent, string label, Vector2 pos, Action action)
@@ -238,7 +239,7 @@ namespace AvatarWorld.Runtime
             if (!result.Success)
             {
                 CloseModal();
-                ShowToast(result.Error == ClaimError.InsufficientFunds ? "Moedas insuficientes." : "Não foi possível comprar agora.");
+                ShowToast(Loc.Get(result.Error == ClaimError.InsufficientFunds ? "store.insufficient" : "store.fail"));
                 return;
             }
             try { _saves?.Save(_state); }
@@ -246,13 +247,13 @@ namespace AvatarWorld.Runtime
             {
                 JsonUtility.FromJsonOverwrite(snapshot, _state);
                 CloseModal();
-                ShowToast("Não foi possível salvar. A compra foi desfeita.");
+                ShowToast(Loc.Get("store.savefail"));
                 return;
             }
             CloseModal();
             RefreshCoins();
             Select(_category, _page);
-            ShowToast("Item adquirido!");
+            ShowToast(Loc.Get("item.bought"));
         }
 
         void CloseModal() { if (_modal != null) Destroy(_modal); _modal = null; }
