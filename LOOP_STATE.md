@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: U4 fechado, helpers do runtime — 2026-11-23
+- `0x1b88980` = throw NullReferenceException, `0x1b88988` = throw IndexOutOfRangeException (confirmados por strings do binario),
+  `0x1b8885c` = ClassInit (guarda `[klass+0xe0]`), `0x1b886e8` = init lazy de metadata-usage. `docs/RECON_RUNTIME_HELPERS_2026-11-23.md`.
+  T025/HANDLER/000032a8: U1-U4 fechados; faltam nomes dos 3 virtuais, 2 genericos finais e revisao independente. Fila nao alterada.
+
 ## RE com Capstone: U3 fechado, offsets por tabela de metadata — 2026-11-23
 - `MetadataRegistration.fieldOffsets` achada em `0x4235148` (ancora: contador 16859 | ptr | 16859 em `.data.rel.ro`); junta com metadata v31.
   Validada em `DeepLinkManager._mapLinkToLevel=0x28`. Confirma `_points 0x30`, `_isNewEveryLoad 0x38`, `PDSceneObject.sceneGuid 0x20`,
