@@ -1,5 +1,16 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Idioma na loja, slots e vaga de veiculo; cinema fechado como "em obras" — 2026-11-23
+- `Loc` ganhou os textos de `StoreScreen`, `AvatarSlotsScreen` e `VehicleSlotPurchaseScreen` (pt/en/es/id), mais nomes de
+  avatar (`AvatarKinds.DisplayName`) e pet (`PetCatalog.DisplayName`). Categorias, subgrupos e titulos de oferta continuam em
+  portugues como **identificador** (logica, testes, saves); a tela mostra `Loc.Name("cat."|"sub."|"offer.", id)`, que sem
+  traducao devolve o proprio valor. Teste garante traducao para toda categoria/subgrupo/oferta do catalogo.
+- Ainda em portugues: editor de avatar/pet, mapa, quadra, desafios (banco de perguntas), carregamento, nomes dos itens de roupa.
+- `FG_Cinema_UC_T1S3` / `_Back`: nao e lacuna. `UC` = "under construction": `defaultLevel 0`, sem cena no original, igual aos outros
+  4 `*_UC_T1` (ja documentado em `PRD_WORLD_INTERIORS_2026-11-05.md`). O aviso "em obras" atual esta correto; nada a exportar.
+- Botoes da Home sem acao (presentes, feriado, passe, `World_ShopButton`) seguem aguardando recuperar a logica no binario.
+- Testes: EditMode 365/365, PlayMode 25/25.
+
 ## Home: WorldResetButton + seletor de idioma da interface — 2026-11-23
 Pedido: fazer os dois botoes offline da Home; o resto so depois de recuperar a logica do original no binario.
 - **WorldResetButton**: no original (`PWC.WorldReset.WorldResetManager`, so assinaturas) entra num "modo reset" que zera os dados

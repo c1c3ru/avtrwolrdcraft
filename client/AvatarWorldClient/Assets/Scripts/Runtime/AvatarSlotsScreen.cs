@@ -1,3 +1,4 @@
+using AvatarWorld.Core.Localization;
 using System;
 using AvatarWorld.Core.Avatar;
 using AvatarWorld.Core.Economy;
@@ -180,7 +181,7 @@ namespace AvatarWorld.Runtime
             var pedestal = NewImage("Pedestal", _slotsRoot, PedestalSprite(), Color.white);
             Place(pedestal.rectTransform, new Vector2(0f, -190f), new Vector2(620f, 130f));
             Button("CarSlot1", _slotsRoot, Art("Slots/empty_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(0f, 20f), new Vector2(519f, 217f),
-                () => { UiSound.PlayClick(); ShowToast("Veículos ainda não estão disponíveis."); });
+                () => { UiSound.PlayClick(); ShowToast(Loc.Get("slots.novehicles")); });
 
             bool unlocked = VehicleSlotCatalog.IsUnlocked(_state);
             if (unlocked)
@@ -188,11 +189,11 @@ namespace AvatarWorld.Runtime
                 // Vaga ja comprada (VehicleSlotPurchaseScreen): sem esqueleto de carro extraido ainda, so
                 // mostra a reserva feita; a cor do rotulo acompanha a faixa escolhida (premium = dourado).
                 Button("CarSlot2", _slotsRoot, Art("Slots/empty_vehicle"), new Vector2(0.5f, 0.5f), new Vector2(SlotSpacing + 90f, 20f), new Vector2(519f, 217f),
-                    () => { UiSound.PlayClick(); ShowToast("Vaga reservada. Veículos ainda não estão disponíveis."); });
+                    () => { UiSound.PlayClick(); ShowToast(Loc.Get("slots.reserved.toast")); });
                 var ownedLabel = NewText("CarSlot2Label", _slotsRoot, 40,
                     VehicleSlotCatalog.IsPremium(_state) ? new Color(0.72f, 0.52f, 0.1f) : new Color(0.45f, 0.2f, 0.6f));
                 Place(ownedLabel.rectTransform, new Vector2(SlotSpacing + 90f, -120f), new Vector2(520f, 60f));
-                ownedLabel.text = VehicleSlotCatalog.IsPremium(_state) ? "Vaga premium reservada" : "Vaga reservada";
+                ownedLabel.text = Loc.Get(VehicleSlotCatalog.IsPremium(_state) ? "slots.reserved.premium" : "slots.reserved");
             }
             else
             {
@@ -201,7 +202,7 @@ namespace AvatarWorld.Runtime
                     () => { UiSound.PlayClick(); _onPurchaseVehicleSlot?.Invoke(); });
                 var cartLabel = NewText("CarSlot2Label", _slotsRoot, 40, new Color(0.45f, 0.2f, 0.6f));
                 Place(cartLabel.rectTransform, new Vector2(SlotSpacing + 90f, -120f), new Vector2(520f, 60f));
-                cartLabel.text = "Toque para desbloquear";
+                cartLabel.text = Loc.Get("slots.unlock");
             }
         }
 
@@ -269,7 +270,7 @@ namespace AvatarWorld.Runtime
             dim.raycastTarget = true;
             var title = NewText("Title", _picker.transform, 62, Color.white);
             Place(title.rectTransform, new Vector2(0f, 270f), new Vector2(1400f, 100f));
-            title.text = "Escolha o tipo de avatar";
+            title.text = Loc.Get("slots.pickkind");
             var kinds = AvatarKinds.All;
             for (int i = 0; i < kinds.Length; i++)
             {
@@ -286,7 +287,7 @@ namespace AvatarWorld.Runtime
             cancel.color = new Color(0.95f, 0.72f, 0.84f);
             var cancelLabel = NewText("Label", cancel.transform, 46, Color.white);
             Stretch(cancelLabel.rectTransform);
-            cancelLabel.text = "Cancelar";
+            cancelLabel.text = Loc.Get("store.cancel");
         }
 
         void HidePicker()
@@ -302,23 +303,23 @@ namespace AvatarWorld.Runtime
         {
             if (Tab == TabHuman) ShowDeleteHumanPicker();
             else if (Tab == TabPet) ShowDeletePetPicker();
-            else ShowToast("Não há nada para remover.");
+            else ShowToast(Loc.Get("slots.nothing"));
         }
 
         void ShowDeleteHumanPicker()
         {
-            if (_state.HumanAvatarCount() <= 1) { ShowToast("Você precisa ter ao menos um avatar."); return; }
+            if (_state.HumanAvatarCount() <= 1) { ShowToast(Loc.Get("slots.atleastone")); return; }
             var entries = new System.Collections.Generic.List<(int slot, string label)>();
             for (int slot = 0; slot < PlayerState.HumanSlotCount; slot++)
                 if (_state.HasHumanAvatar(slot))
-                    entries.Add((slot, AvatarKinds.DisplayName(_state.GetHumanAppearance(slot).Kind) + (slot == _state.ActiveHumanSlot ? " (ativo)" : "")));
-            ShowDeletePicker("Escolha o avatar para remover", entries, slot =>
+                    entries.Add((slot, AvatarKinds.DisplayName(_state.GetHumanAppearance(slot).Kind) + (slot == _state.ActiveHumanSlot ? Loc.Get("slots.active") : "")));
+            ShowDeletePicker(Loc.Get("slots.pickremove.avatar"), entries, slot =>
             {
                 _state.DeleteHumanSlot(slot);
                 try { _saves.Save(_state); }
                 catch (System.Exception e) when (e is System.IO.IOException || e is UnauthorizedAccessException) { Debug.LogWarning("Slots: nao gravou remocao de avatar: " + e.Message); }
                 SelectTab(Tab);
-                ShowToast("Avatar removido.");
+                ShowToast(Loc.Get("slots.avatarremoved"));
             });
         }
 
@@ -330,14 +331,14 @@ namespace AvatarWorld.Runtime
                 var pet = _state.GetPet(slot);
                 if (pet != null) entries.Add((slot, PetCatalog.DisplayName(pet.Species)));
             }
-            if (entries.Count == 0) { ShowToast("Não há nada para remover."); return; }
-            ShowDeletePicker("Escolha o pet para remover", entries, slot =>
+            if (entries.Count == 0) { ShowToast(Loc.Get("slots.nothing")); return; }
+            ShowDeletePicker(Loc.Get("slots.pickremove.pet"), entries, slot =>
             {
                 _state.RemovePet(slot);
                 try { _saves.Save(_state); }
                 catch (System.Exception e) when (e is System.IO.IOException || e is UnauthorizedAccessException) { Debug.LogWarning("Slots: nao gravou remocao de pet: " + e.Message); }
                 SelectTab(Tab);
-                ShowToast("Pet removido.");
+                ShowToast(Loc.Get("slots.petremoved"));
             });
         }
 
@@ -363,14 +364,14 @@ namespace AvatarWorld.Runtime
                 card.color = new Color(0.98f, 0.78f, 0.78f);
                 var label = NewText("Label", card.transform, 52, new Color(0.55f, 0.1f, 0.15f));
                 Stretch(label.rectTransform);
-                label.text = "Remover\n" + entries[i].label;
+                label.text = Loc.Get("slots.remove") + "\n" + entries[i].label;
             }
             var cancel = Button("Cancel", _picker.transform, null, new Vector2(0.5f, 0.5f), new Vector2(0f, -250f), new Vector2(360f, 100f),
                 () => { UiSound.PlayClick(); HidePicker(); });
             cancel.color = new Color(0.95f, 0.72f, 0.84f);
             var cancelLabel = NewText("Label", cancel.transform, 46, Color.white);
             Stretch(cancelLabel.rectTransform);
-            cancelLabel.text = "Cancelar";
+            cancelLabel.text = Loc.Get("store.cancel");
         }
 
         void OpenEditor(int slot, AvatarKind kind = AvatarKind.Adult)

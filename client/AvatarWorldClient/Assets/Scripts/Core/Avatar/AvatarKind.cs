@@ -15,7 +15,7 @@ namespace AvatarWorld.Core.Avatar
         public static bool IsDefined(AvatarKind kind) => kind == AvatarKind.Adult || kind == AvatarKind.Toddler || kind == AvatarKind.Baby;
 
         public static string DisplayName(AvatarKind kind) =>
-            kind == AvatarKind.Toddler ? "Criança" : kind == AvatarKind.Baby ? "Bebê" : "Adulto";
+            AvatarWorld.Core.Localization.Loc.Get(kind == AvatarKind.Toddler ? "kind.Toddler" : kind == AvatarKind.Baby ? "kind.Baby" : "kind.Adult");
 
         /// <summary>Pasta em Resources/AvatarSpine com atlas, esqueleto e manifesto proprios (adulto usa a raiz).</summary>
         public static string ResourceFolder(AvatarKind kind) =>

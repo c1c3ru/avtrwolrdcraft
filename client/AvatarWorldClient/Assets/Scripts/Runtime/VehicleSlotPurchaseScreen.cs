@@ -1,3 +1,4 @@
+using AvatarWorld.Core.Localization;
 using System;
 using System.Collections;
 using System.IO;
@@ -101,11 +102,11 @@ namespace AvatarWorld.Runtime
             var title = NewText("Title", _root, 68, TextAnchor.MiddleCenter, Color.white);
             title.gameObject.AddComponent<Outline>().effectColor = new Color(0.15f, 0.04f, 0.3f);
             Anchor(title.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -140f), new Vector2(1400f, 100f));
-            title.text = "Vaga de Veículo";
+            title.text = Loc.Get("vehicle.title");
 
             var subtitle = NewText("Subtitle", _root, 36, TextAnchor.MiddleCenter, new Color(1f, 1f, 1f, 0.85f));
             Anchor(subtitle.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -210f), new Vector2(1400f, 60f));
-            subtitle.text = "Desbloqueie uma vaga extra para o seu carro";
+            subtitle.text = Loc.Get("vehicle.subtitle");
 
             BuildItemShowcase();
 
@@ -213,8 +214,8 @@ namespace AvatarWorld.Runtime
             var text = NewText("Owned", _cardsRoot, 46, TextAnchor.MiddleCenter, Color.white);
             Anchor(text.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, -300f), new Vector2(1200f, 140f));
             text.text = VehicleSlotCatalog.IsPremium(_state)
-                ? "Vaga premium já desbloqueada!"
-                : "Vaga de veículo já desbloqueada!";
+                ? Loc.Get("vehicle.owned.premium")
+                : Loc.Get("vehicle.owned");
         }
 
         /// <summary>
@@ -243,13 +244,13 @@ namespace AvatarWorld.Runtime
                 var ribbon = NewText("Ribbon", card.transform, 32, TextAnchor.MiddleCenter, TextDark);
                 Anchor(ribbon.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, -36f), new Vector2(360f, 56f));
                 ribbon.gameObject.AddComponent<Outline>().effectColor = Color.white;
-                ribbon.text = "★ Melhor oferta ★";
+                ribbon.text = Loc.Get("vehicle.best");
                 ribbon.raycastTarget = false;
             }
 
             var titleText = NewText("Title", card.transform, premium ? 48 : 42, TextAnchor.MiddleCenter, TextDark);
             Anchor(titleText.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, premium ? -96f : -70f), new Vector2(width - 40f, 70f));
-            titleText.text = offer.Title;
+            titleText.text = Loc.Name("offer.", offer.Id, offer.Title);
             titleText.raycastTarget = false;
 
             var pill = NewImage("Price", card.transform, Art("Store/ui/currency_bg"), Color.white);
@@ -268,7 +269,7 @@ namespace AvatarWorld.Runtime
             {
                 var bonus = NewText("Bonus", card.transform, 30, TextAnchor.MiddleCenter, new Color(0.25f, 0.5f, 0.2f));
                 Anchor(bonus.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 128f), new Vector2(width - 40f, 44f));
-                bonus.text = "+" + VehicleSlotCatalog.PremiumBonus + " moedas de bônus";
+                bonus.text = Loc.Format("vehicle.bonus", VehicleSlotCatalog.PremiumBonus);
                 bonus.raycastTarget = false;
             }
 
@@ -277,7 +278,7 @@ namespace AvatarWorld.Runtime
             Anchor(cta.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 42f), new Vector2(300f, 90f));
             var ctaLabel = NewText("Label", cta.transform, 40, TextAnchor.MiddleCenter, TextDark);
             Stretch(ctaLabel.rectTransform, Vector2.zero, Vector2.one);
-            ctaLabel.text = affordable ? "Comprar" : "Ganhar moedas";
+            ctaLabel.text = Loc.Get(affordable ? "store.buy" : "store.earn");
             ctaLabel.raycastTarget = false;
             StoreOffer captured = offer;
             Click(cta.gameObject, () => OnTierTapped(captured, premium));
@@ -291,7 +292,7 @@ namespace AvatarWorld.Runtime
             UiSound.PlayClick();
             if (_state.PazuCurrency < offer.Price)
             {
-                ShowToast("Faltam " + (offer.Price - _state.PazuCurrency) + " moedas.");
+                ShowToast(Loc.Format("vehicle.missing", offer.Price - _state.PazuCurrency));
                 _onEarnCoins?.Invoke(offer.Price);
                 return;
             }
@@ -304,19 +305,19 @@ namespace AvatarWorld.Runtime
             var result = VehicleSlotCatalog.Buy(_state, offer);
             if (!result.Success)
             {
-                ShowToast(result.Error == ClaimError.AlreadyClaimed ? "Você já tem uma vaga de veículo." : "Não foi possível comprar agora.");
+                ShowToast(Loc.Get(result.Error == ClaimError.AlreadyClaimed ? "vehicle.already" : "store.fail"));
                 return;
             }
             try { _saves?.Save(_state); }
             catch (Exception e) when (e is IOException || e is UnauthorizedAccessException)
             {
                 JsonUtility.FromJsonOverwrite(snapshot, _state);
-                ShowToast("Não foi possível salvar. A compra foi desfeita.");
+                ShowToast(Loc.Get("store.savefail"));
                 return;
             }
             _busy = true;
             RefreshCoins();
-            ShowToast(premium ? "Vaga premium desbloqueada! +" + VehicleSlotCatalog.PremiumBonus + " moedas de bônus." : "Vaga de veículo desbloqueada!");
+            ShowToast(premium ? Loc.Format("vehicle.unlocked.premium", VehicleSlotCatalog.PremiumBonus) : Loc.Get("vehicle.unlocked"));
             StartCoroutine(CloseAfterDelay(1.1f));
         }
 

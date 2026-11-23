@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using AvatarWorld.Core.Economy;
+using AvatarWorld.Core.Localization;
 using AvatarWorld.Core.Literacy;
 using UnityEngine;
 using UnityEngine.UI;
@@ -133,7 +134,7 @@ namespace AvatarWorld.Runtime
                 Anchor(items.rectTransform, new Vector2(1, 1), new Vector2(-470f, -68f), new Vector2(240f, 91f));
                 var label = NewText("Label", items.transform, 44, TextAnchor.MiddleCenter, TextDark);
                 Stretch(label.rectTransform, Vector2.zero, Vector2.one);
-                label.text = "Itens";
+                label.text = Loc.Get("store.items");
                 label.raycastTarget = false;
                 Click(items.gameObject, () => { UiSound.PlayClick(); _onOpenItems(); });
             }
@@ -229,7 +230,7 @@ namespace AvatarWorld.Runtime
                     button.type = Image.Type.Sliced;
                     var label = NewText("Label", button.transform, 30, TextAnchor.MiddleCenter, TextDark);
                     Stretch(label.rectTransform, new Vector2(0.06f, 0f), new Vector2(0.94f, 1f));
-                    label.text = cat;
+                    label.text = Loc.Name("cat.", cat);
                     label.resizeTextForBestFit = true;
                     label.resizeTextMinSize = 18; label.resizeTextMaxSize = 30;
                 }
@@ -280,8 +281,8 @@ namespace AvatarWorld.Runtime
             var subs = StoreCatalog.SubCategories(_category);
             _subRail.gameObject.SetActive(subs.Count > 0);
             if (subs.Count == 0) return;
-            AddSubChip(null, "Todos");
-            foreach (var sub in subs) AddSubChip(sub, sub);
+            AddSubChip(null, Loc.Get("store.all"));
+            foreach (var sub in subs) AddSubChip(sub, Loc.Name("sub.", sub));
             _subContent.anchoredPosition = Vector2.zero;
         }
 
@@ -360,7 +361,7 @@ namespace AvatarWorld.Runtime
             Stretch(panel.rectTransform, Vector2.zero, Vector2.one);
             var text = NewText("Text", card.transform, 60, TextAnchor.MiddleCenter, TextDark);
             Stretch(text.rectTransform, new Vector2(0.06f, 0.1f), new Vector2(0.94f, 0.9f));
-            text.text = _category + "\nEm breve";
+            text.text = Loc.Name("cat.", _category) + "\n" + Loc.Get("store.soon");
         }
 
         // ---------- cartoes ----------
@@ -385,7 +386,7 @@ namespace AvatarWorld.Runtime
             var title = NewText("Title", card.transform, 38, TextAnchor.MiddleCenter, Color.white);
             title.gameObject.AddComponent<Outline>().effectColor = new Color(0.15f, 0.04f, 0.3f);
             Anchor(title.rectTransform, new Vector2(0.5f, 1f), new Vector2(0f, 8f), new Vector2(520f, 56f));
-            title.text = offer.Title;
+            title.text = Loc.Name("offer.", offer.Id, offer.Title);
             title.raycastTarget = false;
 
             var pill = NewImage("Price", card.transform, Art("Store/ui/currency_bg"), Color.white);
@@ -395,7 +396,7 @@ namespace AvatarWorld.Runtime
             {
                 var own = NewText("Owned", pill.transform, 38, TextAnchor.MiddleCenter, new Color(0.6f, 1f, 0.7f));
                 Stretch(own.rectTransform, Vector2.zero, Vector2.one);
-                own.text = "Adquirido";
+                own.text = Loc.Get("store.owned");
             }
             else
             {
@@ -410,7 +411,7 @@ namespace AvatarWorld.Runtime
                     var buy = NewText("BuyBadge", card.transform, 40, TextAnchor.MiddleCenter, new Color(0.6f, 1f, 0.7f));
                     buy.gameObject.AddComponent<Outline>().effectColor = new Color(0.15f, 0.04f, 0.3f);
                     Anchor(buy.rectTransform, new Vector2(0f, 0f), new Vector2(150f, 70f), new Vector2(240f, 80f));
-                    buy.text = "Comprar";
+                    buy.text = Loc.Get("store.buy");
                 }
             }
         }
@@ -435,10 +436,10 @@ namespace AvatarWorld.Runtime
                 title.text = ChallengeDifficulty.LabelFor(level);
                 var body = NewText("Body", card.transform, 36, TextAnchor.MiddleCenter, TextDark);
                 Anchor(body.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, 10f), new Vector2(440f, 250f));
-                body.text = "Desafios de português e matemática para ganhar moedas";
+                body.text = Loc.Get("store.challenge.body");
                 var reward = NewText("Reward", card.transform, 46, TextAnchor.MiddleCenter, new Color(0.45f, 0.2f, 0.6f));
                 Anchor(reward.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 150f), new Vector2(460f, 80f));
-                reward.text = "+" + ChallengeDifficulty.RewardFor(level) + " moedas por acerto";
+                reward.text = Loc.Format("store.challenge.reward", ChallengeDifficulty.RewardFor(level));
                 title.raycastTarget = body.raycastTarget = reward.raycastTarget = false;
             }
         }
@@ -447,7 +448,7 @@ namespace AvatarWorld.Runtime
 
         void OnOfferTapped(StoreOffer offer)
         {
-            if (StoreCatalog.IsOwned(_state, offer)) { ShowToast("Você já tem este combo."); return; }
+            if (StoreCatalog.IsOwned(_state, offer)) { ShowToast(Loc.Get("store.have")); return; }
             OpenModal(offer);
         }
 
@@ -476,17 +477,17 @@ namespace AvatarWorld.Runtime
             Anchor(message.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 230f), new Vector2(1060f, 120f));
             message.raycastTarget = false;
             message.text = canPay
-                ? "Comprar \"" + offer.Title + "\" por " + offer.Price + " moedas?"
-                : "Faltam " + (offer.Price - _state.PazuCurrency) + " moedas para \"" + offer.Title + "\".";
+                ? Loc.Format("store.confirm", Loc.Name("offer.", offer.Id, offer.Title), offer.Price)
+                : Loc.Format("store.missing", offer.Price - _state.PazuCurrency, Loc.Name("offer.", offer.Id, offer.Title));
 
-            var primary = PillButton(panel.transform, canPay ? "Comprar" : "Ganhar moedas", new Vector2(-250f, 90f));
+            var primary = PillButton(panel.transform, Loc.Get(canPay ? "store.buy" : "store.earn"), new Vector2(-250f, 90f));
             Click(primary, () =>
             {
                 UiSound.PlayClick();
                 if (canPay) Purchase(offer);
                 else { CloseModal(); _onEarnCoins?.Invoke(offer.Price); }
             });
-            var cancel = PillButton(panel.transform, "Cancelar", new Vector2(250f, 90f));
+            var cancel = PillButton(panel.transform, Loc.Get("store.cancel"), new Vector2(250f, 90f));
             Click(cancel, () => { UiSound.PlayClick(); CloseModal(); });
         }
 
@@ -516,7 +517,7 @@ namespace AvatarWorld.Runtime
             if (!result.Success)
             {
                 CloseModal();
-                ShowToast(result.Error == ClaimError.InsufficientFunds ? "Moedas insuficientes." : "Não foi possível comprar agora.");
+                ShowToast(Loc.Get(result.Error == ClaimError.InsufficientFunds ? "store.insufficient" : "store.fail"));
                 return;
             }
             try { _saves?.Save(_state); }
@@ -524,13 +525,13 @@ namespace AvatarWorld.Runtime
             {
                 JsonUtility.FromJsonOverwrite(snapshot, _state);
                 CloseModal();
-                ShowToast("Não foi possível salvar. A compra foi desfeita.");
+                ShowToast(Loc.Get("store.savefail"));
                 return;
             }
             CloseModal();
             RefreshCoins();
             ShowCards();
-            ShowToast("Combo adquirido!");
+            ShowToast(Loc.Get("store.bought"));
         }
 
         void ShowToast(string message)

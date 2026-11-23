@@ -1,4 +1,7 @@
 using System;
+using System.Linq;
+using AvatarWorld.Core.Avatar;
+using AvatarWorld.Core.Economy;
 using AvatarWorld.Core.Localization;
 using NUnit.Framework;
 
@@ -45,6 +48,36 @@ namespace AvatarWorld.Core.Tests
             Assert.IsFalse(Loc.TryParse(null, out _));
             foreach (Language each in Enum.GetValues(typeof(Language)))
             { Assert.IsTrue(Loc.TryParse(Loc.Code(each), out var back)); Assert.AreEqual(each, back); }
+        }
+
+        [Test] public void EveryStoreCategorySubgroupAndOfferHasADisplayTranslation()
+        {
+            foreach (var cat in StoreCatalog.Categories) Assert.IsTrue(Loc.Has("cat." + cat), "categoria " + cat);
+            foreach (var cat in StoreCatalog.Categories)
+                foreach (var sub in StoreCatalog.SubCategories(cat)) Assert.IsTrue(Loc.Has("sub." + sub), "subgrupo " + sub);
+            foreach (var offer in StoreCatalog.All) Assert.IsTrue(Loc.Has("offer." + offer.Id), "oferta " + offer.Id);
+            Assert.IsTrue(Loc.Has("offer." + VehicleSlotCatalog.StandardId));
+            Assert.IsTrue(Loc.Has("offer." + VehicleSlotCatalog.PremiumId));
+        }
+
+        [Test] public void AvatarKindAndPetNamesFollowTheLanguageWithoutChangingIdentifiers()
+        {
+            var before = Loc.Current;
+            try
+            {
+                Loc.Current = Language.Pt;
+                Assert.AreEqual("Criança", AvatarKinds.DisplayName(AvatarKind.Toddler));
+                Assert.AreEqual("Cão", PetCatalog.DisplayName("Dog"));
+                Loc.Current = Language.En;
+                Assert.AreEqual("Child", AvatarKinds.DisplayName(AvatarKind.Toddler));
+                Assert.AreEqual("Baby", AvatarKinds.DisplayName(AvatarKind.Baby));
+                Assert.AreEqual("Dog", PetCatalog.DisplayName("Dog"));
+                foreach (var species in PetCatalog.Species) Assert.IsTrue(Loc.Has("pet." + species), species);
+                Assert.AreEqual("Vehicles", Loc.Name("cat.", StoreCatalog.CategoryVehicles));
+                Assert.AreEqual(StoreCatalog.CategoryVehicles, "Veículos", "o identificador da logica nao muda com o idioma");
+                Assert.AreEqual("Desconhecida", Loc.Name("cat.", "Desconhecida"), "sem traducao mostra o proprio valor");
+            }
+            finally { Loc.Current = before; }
         }
     }
 }
