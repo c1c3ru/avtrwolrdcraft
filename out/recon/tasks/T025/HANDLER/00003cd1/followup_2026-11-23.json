@@ -1,0 +1,34 @@
+{
+  "schema": "avtr-recon-task-followup/v1",
+  "task": "T025/HANDLER/00003cd1",
+  "date": "2026-11-23",
+  "note": "Adendo: nao altera result.json/method-contract.json originais. Fecha os desconhecidos U1-U5 com tabelas de metadata e disassembly; U6 e limites formais seguem abertos.",
+  "source_docs": [
+    "docs/RECON_SLIDE_SWITCHER_2026-11-23.md",
+    "docs/RECON_RUNTIME_HELPERS_2026-11-23.md",
+    "docs/RECON_FIELD_OFFSETS_2026-11-23.md",
+    "docs/RECON_GENERIC_USAGES_2026-11-23.md",
+    "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md"
+  ],
+  "unknowns": {
+    "U1": {"status": "closed", "answer": "0x25751c8 = GameObject.TryGetComponent<T>(out); T = ILevelLivingBeing (GOT 0x41bfb18) e LevelItem (GOT 0x41bad58), via methodSpecs/genericInsts."},
+    "U2": {"status": "closed", "answer": "Os slots de type-info [x24]/[x25+0xd58] sao os dois GOT acima; o trampolim 0x3f932d0 e um veneer (erratum 843419) que retorna a 0x1f05010."},
+    "U3": {"status": "partially_closed", "answer": "SetInSildeData: FreeHands (LevelCharacter/LevelToddler), SetParent(null,true), AddToBulkData('Slide_'+_currentLevelType, GetPDPrefab()), DestroyLevelItem(item,true). DestroyLevelItem recuperado em docs/RECON_DESTROYLEVELITEM_2026-11-23.md. Chaves de restauracao no consumo ('Slide_*' na cena seguinte) nao analisadas."},
+    "U4": {"status": "closed_with_inference", "answer": "0x1b88980 = throw NullReferenceException, 0x1b88988 = throw IndexOutOfRangeException (strings no binario)."},
+    "U5": {"status": "closed", "answer": "Offsets _dropAreas 0x20, _currentLevelType 0x28, _nextSceneLevelType 0x2c, _isInsideSlide 0x30, _includeRoot 0x31 confirmados pela tabela fieldOffsets do metadata (tools/il2cpp_field_offsets.py). Timing do callback vem de GameSceneManager.LoadScene (Stage1)."},
+    "U6": {"status": "closed_for_this_method", "answer": "O handler so le _isInsideSlide; a chave usa _currentLevelType e nenhum dos dois campos e alterado aqui."}
+  },
+  "independent_review": {
+    "doc": "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md",
+    "reviewer": "subagente-revisor-independente (agente sem o contexto da analise)",
+    "verdict": "aceitar",
+    "claims_verified": 10,
+    "claims_confirmed": 9,
+    "errors_found": "1 erro de grafia de endereco de GOT (corrigido), sem impacto semantico"
+  },
+  "residual_reservations": [
+    "Tabela formal de excecao (LSDA) nao recuperada; so o fluxo visivel de landing pads.",
+    "Nenhuma validacao dinamica/em aparelho.",
+    "Consumo da chave 'Slide_*' na cena seguinte e formato interno de AddToBulkData nao analisados."
+  ]
+}
