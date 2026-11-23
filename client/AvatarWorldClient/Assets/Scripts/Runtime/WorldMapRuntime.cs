@@ -60,6 +60,13 @@ namespace AvatarWorld.Runtime
         const float GlobeClosedX = 444f, GlobeWeatherOpenX = 822f;
         // Mundos do seletor (arte do original) -> cena: Campus=College, Bairro=World, Cidade=StarDustCity,
         // Fazenda=Countryside, Resort=Vacation, Montanha=SnowyMountain. Hoje so o Bairro tem cena exportada; os demais avisam.
+        // PWC.Game.LevelWorldType de cada entrada de Maps (mesma ordem): Campus=College, Bairro=World, Cidade=StarDustCity,
+        // Fazenda=Countryside, Resort=Vacation, Montanha=SnowyMountain. Usado pelo modo feriado.
+        static readonly int[] MapWorlds =
+        {
+            HolidayMode.College, HolidayMode.World, HolidayMode.StarDustCity, HolidayMode.Countryside, HolidayMode.Vacation, HolidayMode.SnowyMountain,
+        };
+
         static readonly (string art, string name, string folder)[] Maps =
         {
             ("map_university", "Campus", "Maps/college"), ("map_town", "Bairro", null), ("map_city", "Cidade", "Maps/stardust"),
@@ -81,7 +88,7 @@ namespace AvatarWorld.Runtime
             _onBack = onBack;
             _onOpenBasketball = onOpenBasketball;
             LoadMapData(Maps[_selectedMap].folder);
-            _weather = LoadWeather();
+            _weather = EffectiveWeather();
             BuildCamera();
             BuildOverlay();
             StartCoroutine(BuildSprites(onReady));
@@ -279,6 +286,9 @@ namespace AvatarWorld.Runtime
 
             BuildTopBar(root.transform);
         }
+
+        /// <summary>Clima do mapa atual: o salvo, ou Halloween se o modo feriado esta ligado e o mundo participa.</summary>
+        int EffectiveWeather() => HolidayMode.WeatherFor(MapWorlds[_selectedMap], LoadWeather(), HolidayModeStore.IsOn);
 
         static int LoadWeather()
         {
@@ -544,6 +554,7 @@ namespace AvatarWorld.Runtime
             _cloudGroups.Clear(); _trainGroups.Clear(); _trainBaseX.Clear(); _tinted.Clear(); _tintedSpines.Clear(); _lastTintMinute = -1;
             _textures.Clear();
             _selectedMap = index;
+            _weather = EffectiveWeather();
             for (int i = 0; i < _mapChecks.Count; i++) _mapChecks[i].SetActive(i == index);
             LoadMapData(Maps[index].folder);
             _camera.orthographicSize = _data.camera.orthoSize;

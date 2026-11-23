@@ -1,5 +1,22 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Modo feriado (HolidayButton) com dados lidos do binario — 2026-11-23
+Capstone voltou a funcionar (`tools/recon_disasm.py`) e leu `Game.World.HolidayGameModeButton`:
+- `OnButtonPress` -> `SetHolidayWeatherOnWorlds` grava `WeatherManager.SaveWeatherForWorld(mundo, 8)` para cada mundo de
+  `_holidayWeatherWorlds`, liga caçadas de evento (`HuntsAchievementData.TryEnableEventHunt`) e chama `WorldResetManager.ResetStorePack`.
+- Lista de mundos: o `.cctor` cria um array de 4 `LevelWorldType` inicializado por `InitializeArray`; o blob esta no
+  `global-metadata.dat` (fieldRef 15 de `<PrivateImplementationDetails>` -> fieldDefaultValues) e vale **[1, 3, 4, 6]** =
+  World, StarDustCity, Countryside, College (Vacation e SnowyMountain ficam de fora).
+- Enum `WeatherType` lido do metadata (inteiros comprimidos): Clear 0, Rain 1, Snow 6, Snow_Xmas 7, **Halloween 8**.
+  O ceu do clima 8 e o `BackgroundSkyConfig` 721801, ja decodificado em `out/mb`; `tools/export_sky.py` passou a exporta-lo.
+- Cliente: `Core/World/HolidayMode.cs` (regras), `HolidayModeStore` (preferencia `home.holiday`), `WorldMapRuntime` usa o clima
+  efetivo por mapa (`MapWorlds`) e o `HolidayButton` da Home alterna o modo. Halloween virou clima suportado (atualiza o teste que o
+  tratava como evento fora do mapa); Snow_Xmas segue fora.
+- **Nao reproduzido**: caçadas de evento, reset de pacote da loja, o botao so aparecer quando ha feriado ativo (config remota) e o
+  caminho de "desligar" do `OnButtonPress` (nao lido: aqui desligar so devolve o clima salvo). Decoracao de Halloween nos mapas
+  nao foi extraida: o mundo em Halloween mostra o ceu laranja/roxo e some com neve/chuva/nuvens, sem abobora.
+- Testes: EditMode 381/381, PlayMode 25/25.
+
 ## Passe de Avatar offline (compra unica com moedas) — 2026-11-23
 Decisao do usuario: o jogo e offline e o jogador ganha moedas acertando desafios, entao o passe vira pacote comprado com elas.
 - No original o passe e uma assinatura (`game55.subscription.avatarpass`) que da os combos marcados `isIncludedInAvatarPass` e uma

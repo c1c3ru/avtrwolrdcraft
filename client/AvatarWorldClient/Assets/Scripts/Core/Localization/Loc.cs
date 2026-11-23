@@ -239,6 +239,9 @@ namespace AvatarWorld.Core.Localization
             ["court.throwing"] = new[] { "Arremessando…", "Shooting…", "Lanzando…", "Menembak…" },
             ["court.score"] = new[] { "CESTAS  {0}", "BASKETS  {0}", "CANASTAS  {0}", "KERANJANG  {0}" },
             ["court.back"] = new[] { "Voltar ao mapa", "Back to map", "Volver al mapa", "Kembali ke peta" },
+            ["holiday.title"] = new[] { "Modo feriado", "Holiday mode", "Modo festivo", "Mode liburan" },
+            ["holiday.on"] = new[] { "Modo feriado ligado. O céu de Halloween aparece nos mapas Bairro, Cidade, Fazenda e Campus.", "Holiday mode on. The Halloween sky shows on the Neighborhood, City, Farm and Campus maps.", "Modo festivo activado. El cielo de Halloween aparece en los mapas Barrio, Ciudad, Granja y Campus.", "Mode liburan aktif. Langit Halloween muncul di peta Lingkungan, Kota, Pertanian, dan Kampus." },
+            ["holiday.off"] = new[] { "Modo feriado desligado. O clima volta ao que você escolheu.", "Holiday mode off. The weather goes back to what you chose.", "Modo festivo desactivado. El clima vuelve a lo que elegiste.", "Mode liburan nonaktif. Cuaca kembali seperti pilihanmu." },
             ["reset.done"] = new[] { "Progresso reiniciado.", "Progress reset.", "Progreso reiniciado.", "Kemajuan diatur ulang." },
         };
 

@@ -102,6 +102,11 @@ namespace AvatarWorld.Runtime
                         button.onClick.AddListener(() => Open(action));
                         boundButtons.Add(button);
                         break;
+                    case "HolidayButton":
+                        // No original liga o clima Halloween em 4 mundos (HolidayGameModeButton); aqui e uma chave local sempre disponivel.
+                        button.onClick.AddListener(() => Open(action));
+                        boundButtons.Add(button);
+                        break;
                     case "WorldResetButton":
                         // No original entra no "modo reset" e zera os dados de cada cena (WorldResetManager); aqui o unico estado
                         // persistente e o save local, entao reinicia o progresso (com confirmacao dupla e copia de seguranca).
@@ -170,6 +175,7 @@ namespace AvatarWorld.Runtime
                     SetHomeVisible(false);
                     openAvatarPass();
                     break;
+                case "HolidayButton": ToggleHoliday(); break;
                 case "WorldResetButton": ShowResetWarning(); break;
                 case "ChatLanguageButton":
                     if (languagesPanel != null) languagesPanel.SetActive(!languagesPanel.activeSelf);
@@ -274,6 +280,12 @@ namespace AvatarWorld.Runtime
             var target = chat != null ? chat.transform.Find("Image")?.GetComponent<Image>() : null;
             var source = chosen != null ? chosen.transform.Find("Image")?.GetComponent<Image>() : null;
             if (target != null && source != null) target.sprite = source.sprite;
+        }
+
+        void ToggleHoliday()
+        {
+            HolidayModeStore.IsOn = !HolidayModeStore.IsOn;
+            Show(Loc.Get("holiday.title"), Loc.Get(HolidayModeStore.IsOn ? "holiday.on" : "holiday.off"));
         }
 
         // Reiniciar progresso: dois passos (aviso -> "Tem certeza?") antes de apagar.

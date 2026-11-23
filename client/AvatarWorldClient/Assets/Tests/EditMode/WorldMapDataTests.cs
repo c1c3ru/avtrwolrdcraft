@@ -55,7 +55,8 @@ namespace AvatarWorld.Core.Tests
             Assert.IsFalse(snowOnly.VisibleIn(WorldWeather.Clear));
             Assert.IsFalse(snowOnly.VisibleIn(WorldWeather.Rain));
             Assert.IsTrue(WorldWeather.IsSupported(WorldWeather.Rain));
-            Assert.IsFalse(WorldWeather.IsSupported(8), "Halloween e evento, fora do mapa");
+            Assert.IsTrue(WorldWeather.IsSupported(8), "Halloween entra pelo modo feriado (HolidayMode)");
+            Assert.IsFalse(WorldWeather.IsSupported(7), "Snow_Xmas continua fora do mapa");
         }
 
         [Test]

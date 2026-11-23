@@ -20,7 +20,8 @@ namespace AvatarWorld.Core.Tests
         string path;
         bool played, coins, paused, hadSound;
         int sound, sfx, music;
-        bool hadSfx, hadMusic, hadLanguage;
+        bool hadSfx, hadMusic, hadLanguage, hadHoliday;
+        int holiday;
         string language;
         Language locBefore;
         List<GameObject> objects;
@@ -34,6 +35,9 @@ namespace AvatarWorld.Core.Tests
             sfx = PlayerPrefs.GetInt("home.sfx.enabled", 1);
             hadMusic = PlayerPrefs.HasKey("home.music.enabled");
             music = PlayerPrefs.GetInt("home.music.enabled", 1);
+            hadHoliday = PlayerPrefs.HasKey("home.holiday");
+            holiday = PlayerPrefs.GetInt("home.holiday", 0);
+            PlayerPrefs.DeleteKey("home.holiday");
             hadLanguage = PlayerPrefs.HasKey("home.language");
             language = PlayerPrefs.GetString("home.language", "");
             PlayerPrefs.DeleteKey("home.language");
@@ -60,6 +64,8 @@ namespace AvatarWorld.Core.Tests
             else PlayerPrefs.DeleteKey("home.sfx.enabled");
             if (hadMusic) PlayerPrefs.SetInt("home.music.enabled", music);
             else PlayerPrefs.DeleteKey("home.music.enabled");
+            if (hadHoliday) PlayerPrefs.SetInt("home.holiday", holiday);
+            else PlayerPrefs.DeleteKey("home.holiday");
             if (hadLanguage) PlayerPrefs.SetString("home.language", language);
             else PlayerPrefs.DeleteKey("home.language");
             Loc.Current = locBefore;
@@ -100,8 +106,8 @@ namespace AvatarWorld.Core.Tests
 
         [Test] public void UnsupportedFeaturesRemainDisabledAndPending()
         {
-            Assert.AreEqual(12, actions.BoundButtonCount); // + WorldReset, ChatLanguage e as 4 bandeiras
-            Assert.AreEqual(27, actions.PendingButtons.Count);
+            Assert.AreEqual(13, actions.BoundButtonCount); // + Holiday, WorldReset, ChatLanguage e as 4 bandeiras
+            Assert.AreEqual(26, actions.PendingButtons.Count);
             Assert.IsFalse(Button("ShopButton").interactable);
             Assert.IsFalse(objects.Find(o => o.name == "MultiplayerCanvas").activeSelf);
             actions.Open("ShopButton");
@@ -188,6 +194,18 @@ namespace AvatarWorld.Core.Tests
             var flag = Array.Find(root.GetComponentsInChildren<Button>(true), b => b.name.Trim() == "ChatLanguageButton").transform.Find("Image").GetComponent<Image>();
             var idFlag = Array.Find(root.GetComponentsInChildren<Button>(true), b => b.name.Trim() == "idButton").transform.Find("Image").GetComponent<Image>();
             Assert.AreSame(idFlag.sprite, flag.sprite);
+        }
+
+        [Test] public void HolidayButton_TogglesTheModeAndExplainsTheState()
+        {
+            Assert.IsFalse(HolidayModeStore.IsOn, "comeca desligado");
+            Button("HolidayButton").onClick.Invoke();
+            Assert.IsTrue(HolidayModeStore.IsOn);
+            Assert.AreEqual(Loc.Get("holiday.title"), actions.CurrentPage);
+            actions.Open("HolidayButton");
+            Assert.IsFalse(HolidayModeStore.IsOn, "segundo toque desliga");
+            actions.Open("HolidayButton");
+            Assert.IsTrue(HolidayModeStore.IsOn);
         }
 
         [Test] public void AvatarPassButtons_OpenThePassWhenProvided()
