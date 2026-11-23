@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1 recuperado — 2026-11-23
+- T025/HANDLER/00003cd1: se `_isInsideSlide`, guarda itens vivos da raiz da cena (`_includeRoot`) e o item de cada `_dropAreas`: solta maos, `SetParent(null)`,
+  `AddToBulkData("Slide_"+_currentLevelType, GetPDPrefab())` e `DestroyLevelItem(item,true)`. Genericos e offsets por tabela. `docs/RECON_SLIDE_SWITCHER_2026-11-23.md`.
+  Com isso as 3 HANDLERs `ready` de T025 tem corpo estatico recuperado; todas aguardam revisao independente. Fila nao alterada.
+
 ## RE com Capstone: LevelDigHoleArea.DetachContainerAreaChildrenIfNeeded recuperado — 2026-11-23
 - T025/HANDLER/00002d72: callback e tail-call; o helper (596 bytes) faz, se `!IsInteractable` (+0x51): `_containerAreaLevelItems.Clear()`, copia
   `_containerArea.GetImmediateChildrenItems()` para ela e solta cada item com `transform.SetParent(null)`. Genericos todos `List<LevelItem>`.
