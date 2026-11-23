@@ -35,3 +35,20 @@ entrada. Pergunta: o corpo contiguo e **fechado** (sem ilhas escondidas, sem flu
 ## Estado da fila
 Nao alterei `reports/recon/tasks.json`: nenhuma tarefa foi reivindicada, checkpointada ou revisada. As evidencias em `out/recon/tasks/` tambem nao
 foram reescritas. A tarefa `5fe1bb4a` (em `review`) continua com 3 de 4 hashes divergentes do registrado.
+
+## Desconhecido atacado: regra de data de `ClothesDropDataMap.GetDropDataForTime` (lida, `0x22486f8`)
+Corpo de 0x1ec bytes lido por inteiro (`tools/recon_disasm.py`); o que ele faz, em ordem:
+1. Na primeira chamada, `GetAllUnixTimes` (`0x22488e0`) preenche `unixTime` de cada entrada e marca `_isUnixValuesCalculated` (`+0x28`).
+2. Zera os dois `out long` e, se `_timeToClothesData` (`+0x18`) e nula, retorna null.
+3. Percorre a lista em ordem. Entrada com `unixTime > time` e pulada. Para a primeira com `unixTime <= time`, olha a seguinte: se a seguinte ja
+   e `> time` (ou nao existe), essa e a vigente; senao avanca. Ou seja, devolve a **ultima entrada com `unixTime <= time`** (lista em ordem crescente) e
+   retorna null se todas sao futuras.
+4. `out dropEndTime` (1o `out`) = `unixTime` da entrada seguinte, ou 0 se a vigente e a ultima; `out dropStartTime` (2o) = `unixTime` da vigente (no caso de
+   igualdade exata com `time`, o proprio `time`, que e o mesmo valor). Retorna `entrada.data` (`PDTextBulkData`, `+0x28`).
+5. Todo acesso a lista/elemento tem guarda de null que desvia para o thunk de NullReference.
+
+`TimeToClothesDropData.GetUnixTimeFromDate` (`0x2248a30`) monta `new DateTime(year@+0x18, month@+0x14, day@+0x10, 14, 0, 0, DateTimeKind.Utc)` e converte para
+segundos Unix: **todo drop comeca as 14:00 UTC da data**. O cliente adotou as duas regras (`ClothesDrop.StartHourUtc`, `ClothesDrops.Current`).
+
+Ainda aberto: comparacao exata de "novo" em `CheckIsAnyNewDropExist` (usa o nome do ultimo drop visto por `LevelType`, `GetLastDropNameSeen`, nao a data), `EnsureData`
+(313 linhas) e a escolha de qual `LevelType` mostrar quando varias lojas tem drop novo. O cliente compara por data e mostra todas as lojas.
