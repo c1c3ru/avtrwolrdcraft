@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: virtuais de LevelItem resolvidos pela vtable — 2026-11-23
+- Slot = (offset-0x138)/16; `vtableMethods` v31 = (valor&0x1FFFFFFF)>>1. `+0x738`=`OnBeforeDestroyWhileInGameplay`, `+0x748`=
+  `AddToCustomRestoreDataBeforeDestroyWhileInGameplay`, `+0x508`=`DetachFromParentIfExists(true)`. Validado em slots 0..3 (Object).
+  Ferramenta `tools/il2cpp_vtable.py`; `docs/RECON_LEVELITEM_VTABLE_2026-11-23.md`. Faltam 2 genericos finais e revisao. Fila nao alterada.
+
 ## RE com Capstone: U4 fechado, helpers do runtime — 2026-11-23
 - `0x1b88980` = throw NullReferenceException, `0x1b88988` = throw IndexOutOfRangeException (confirmados por strings do binario),
   `0x1b8885c` = ClassInit (guarda `[klass+0xe0]`), `0x1b886e8` = init lazy de metadata-usage. `docs/RECON_RUNTIME_HELPERS_2026-11-23.md`.

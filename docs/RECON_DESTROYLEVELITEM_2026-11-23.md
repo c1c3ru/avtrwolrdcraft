@@ -11,10 +11,10 @@ items = levelItem.GetComponentsInChildren<LevelItem>(true);                     
 foreach (child in items) {                                                               // inclui o proprio item e filhos, inativos tambem
     if (PWCUtils.IsDestroyed(child)) continue;                                           // 0x2083020
     OnBeforeDestroyLevelItemAction?.Invoke(child);                                       // static Action<LevelItem> (statics+0x8) de LevelUtils
-    child.<virtual @vtable+0x738>();                                                     // candidato: OnBeforeDestroyWhileInGameplay (nao provado)
+    child.<virtual @vtable+0x738>();                                                     // CONFIRMADO: LevelItem.OnBeforeDestroyWhileInGameplay (slot 96)
     child.gameObject.tag = "Destroyed";                                                  // get_gameObject 0x3cc84e4 / set_tag 0x3cc8a10
     if (child != levelItem)                                                              // op_Equality
-        child.<virtual @vtable+0x508>(true);                                             // candidato: DetachFromParentIfExists(true)
+        child.<virtual @vtable+0x508>(true);                                             // CONFIRMADO: LevelItem.DetachFromParentIfExists(true) (slot 61)
     if (shouldAddRestoreData) {
         if (child.TryGetComponent<PDSceneObject>(out pd)) {                              // 0x24f17fc
             if (!string.IsNullOrEmpty(pd.sceneGuid /*+0x20*/)) {                         // 0x31dffdc
@@ -23,7 +23,7 @@ foreach (child in items) {                                                      
                 else if (InventoryManager.<static +0xb8>.itemsTracker.IsTrackingSceneGuid(pd.sceneGuid))  // 0x213f900
                     InventoryItemsTracker.AddItemToRestore(pd.sceneGuid);                // 0x213fb38
                 else
-                    child.<virtual @vtable+0x748>();                                     // candidato: AddToCustomRestoreDataBeforeDestroyWhileInGameplay
+                    child.<virtual @vtable+0x748>();                                     // CONFIRMADO: AddToCustomRestoreDataBeforeDestroyWhileInGameplay (slot 97)
             }
         } else
             Debug.LogError("No PDSceneObject found on levelItem[" + child.name + "]");   // get_name 0x3cce6d0, Concat 0x31dfa68
@@ -34,7 +34,7 @@ if (levelItem.TryGetComponent<X>(out x))                                        
     if ((h = levelItem.GetComponent<Y>()) != null)                                       // 0x24f0dbc (Y nao decodificado)
         CATargetExtensionMethods.RemoveCAHandlersAndUpdateGame(h, x.gameObject, false);  // 0x23adf98
 levelItem.gameObject.SetActive(false);                                                   // 0x3ccad98
-levelItem.<virtual @vtable+0x508>(true);                                                 // mesmo despacho do filho
+levelItem.DetachFromParentIfExists(true);                                               // mesmo despacho do filho
 Object.Destroy(levelItem.gameObject);                                                    // 0x3ccf03c
 ```
 
@@ -50,7 +50,7 @@ Object.Destroy(levelItem.gameObject);                                           
   `"No PDSceneObject found on levelItem["`).
 - Media: tipos dos genericos (`0x24f1424` = `GetComponentsInChildren<LevelItem>(true)` porque cada elemento vai para `Action<LevelItem>`;
   `0x24f17fc` do laco = `PDSceneObject` pelo texto de erro; os dois usos finais nao foram decodificados).
-- Baixa: nomes dos 3 despachos virtuais (`+0x738`, `+0x748`, `+0x508`): o dump nao traz `slot`; sao candidatos, nao fatos.
+- Os 3 despachos virtuais foram **resolvidos** pela vtable do metadata (`docs/RECON_LEVELITEM_VTABLE_2026-11-23.md`).
 - Offsets `pd+0x20` (sceneGuid), `InventoryManager.Instance` (estatico +0x8) e `.ItemsTracker` (+0x38) **confirmados** pela tabela de metadata
   (`docs/RECON_FIELD_OFFSETS_2026-11-23.md`); no pseudo-codigo, `InventoryManager.<static +0xb8>.itemsTracker` = `InventoryManager.Instance.ItemsTracker`.
 - Fila nao alterada; revisao independente pendente.
