@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using AvatarWorld.Core.Economy;
+using AvatarWorld.Core.Localization;
 using AvatarWorld.Runtime;
 using NUnit.Framework;
 using UnityEngine;
@@ -19,7 +20,9 @@ namespace AvatarWorld.Core.Tests
         string path;
         bool played, coins, paused, hadSound;
         int sound, sfx, music;
-        bool hadSfx, hadMusic;
+        bool hadSfx, hadMusic, hadLanguage;
+        string language;
+        Language locBefore;
         List<GameObject> objects;
 
         [SetUp] public void Setup()
@@ -31,6 +34,11 @@ namespace AvatarWorld.Core.Tests
             sfx = PlayerPrefs.GetInt("home.sfx.enabled", 1);
             hadMusic = PlayerPrefs.HasKey("home.music.enabled");
             music = PlayerPrefs.GetInt("home.music.enabled", 1);
+            hadLanguage = PlayerPrefs.HasKey("home.language");
+            language = PlayerPrefs.GetString("home.language", "");
+            PlayerPrefs.DeleteKey("home.language");
+            locBefore = Loc.Current;
+            Loc.Current = Language.Pt;
             path = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".json");
             saves = new SaveStore(path);
             state = PlayerState.CreateNew(75);
@@ -52,10 +60,16 @@ namespace AvatarWorld.Core.Tests
             else PlayerPrefs.DeleteKey("home.sfx.enabled");
             if (hadMusic) PlayerPrefs.SetInt("home.music.enabled", music);
             else PlayerPrefs.DeleteKey("home.music.enabled");
+            if (hadLanguage) PlayerPrefs.SetString("home.language", language);
+            else PlayerPrefs.DeleteKey("home.language");
+            Loc.Current = locBefore;
             UiSound.SetMuted(sfx == 0);
             BackgroundMusic.SetMuted(music == 0);
             PlayerPrefs.Save();
         }
+
+        // O GameObject do botao do painel nasce com o texto da epoca; o que acompanha o idioma e o rotulo.
+        Text Label(string text) => Array.Find(root.GetComponentsInChildren<Text>(true), t => t.text == text && t.gameObject.activeInHierarchy);
 
         Button Button(string name) => Array.Find(root.GetComponentsInChildren<Button>(true), b => b.name == name && b.gameObject.activeInHierarchy);
 
@@ -86,12 +100,94 @@ namespace AvatarWorld.Core.Tests
 
         [Test] public void UnsupportedFeaturesRemainDisabledAndPending()
         {
-            Assert.AreEqual(6, actions.BoundButtonCount);
-            Assert.AreEqual(33, actions.PendingButtons.Count);
+            Assert.AreEqual(12, actions.BoundButtonCount); // + WorldReset, ChatLanguage e as 4 bandeiras
+            Assert.AreEqual(27, actions.PendingButtons.Count);
             Assert.IsFalse(Button("ShopButton").interactable);
             Assert.IsFalse(objects.Find(o => o.name == "MultiplayerCanvas").activeSelf);
             actions.Open("ShopButton");
             Assert.IsNull(actions.CurrentPage);
+        }
+
+        [Test] public void WorldReset_NeedsTwoConfirmationsAndKeepsABackup()
+        {
+            new LocalStoreService(state).Earn(10, "antes do reset");
+            state.CompletedChallenges.Add("desafio-x");
+            saves.Save(state);
+            actions.Open("SettingsButton");
+            Button("WorldResetButton").onClick.Invoke();
+            Assert.AreEqual(Loc.Get("reset.title"), actions.CurrentPage);
+            Assert.IsNull(Button(Loc.Get("reset.confirm.do")), "o botao final so aparece no segundo passo");
+            Assert.AreEqual(85, state.PazuCurrency, "o aviso sozinho nao apaga nada");
+
+            Button(Loc.Get("reset.continue")).onClick.Invoke();
+            Assert.AreEqual(Loc.Get("reset.confirm.title"), actions.CurrentPage);
+            Assert.AreEqual(85, state.PazuCurrency, "a confirmacao ainda nao apaga");
+
+            Button(Loc.Get("reset.confirm.do")).onClick.Invoke();
+            Assert.AreEqual(HomeBootstrap.StartingPazuCurrency, state.PazuCurrency);
+            Assert.AreEqual(0, state.CompletedChallenges.Count);
+            Assert.AreEqual(0, state.Ledger.Count);
+            Assert.IsNotNull(state.Appearance);
+            Assert.AreEqual(HomeBootstrap.StartingPazuCurrency, saves.LoadOrCreate(0).PazuCurrency, "o save em disco tambem volta ao inicio");
+            Assert.IsTrue(File.Exists(path + ".before-reset"), "copia de seguranca do save anterior");
+            Assert.AreEqual(85, new SaveStore(path + ".before-reset").LoadOrCreate(0).PazuCurrency);
+            File.Delete(path + ".before-reset");
+        }
+
+        [Test] public void WorldReset_CanBeCancelledWithBack()
+        {
+            actions.Open("SettingsButton");
+            Button("WorldResetButton").onClick.Invoke();
+            Button(Loc.Get("back")).onClick.Invoke();
+            Assert.IsNull(actions.CurrentPage);
+            Assert.AreEqual(75, state.PazuCurrency);
+        }
+
+        [Test] public void LanguageButtons_SwitchInterfaceLanguageAndRememberIt()
+        {
+            actions.Open("SettingsButton");
+            actions.Open("ChatLanguageButton");
+            Button("enButton").onClick.Invoke();
+            Assert.AreEqual(Language.En, Loc.Current);
+            Assert.AreEqual("en", PlayerPrefs.GetString("home.language"));
+            actions.Open("AccountButton");
+            Assert.AreEqual("Local profile", actions.CurrentPage);
+            Assert.IsNotNull(Button("Save progress"));
+            Assert.IsNotNull(Label("Back"));
+
+            actions.Close();
+            actions.Open("SettingsButton");
+            actions.Open("ChatLanguageButton");
+            Button("esButton").onClick.Invoke();
+            Assert.AreEqual(Language.Es, Loc.Current);
+            actions.Open("AccountButton");
+            Assert.IsNotNull(Label("Volver"), "o botao Voltar do painel acompanha o idioma");
+
+            // Novo Home (proximo boot) le a preferencia gravada.
+            Loc.Current = Language.Pt;
+            var again = new GameObject("TestHome2");
+            try
+            {
+                var desc = JsonUtility.FromJson<SceneDescription>(Resources.Load<TextAsset>("HomeSlice/level3").text);
+                var objs = UiSceneBuilder.Build(desc, null, parent: again.transform);
+                again.AddComponent<HomeActions>().Initialize(objs, saves, state, () => { });
+                Assert.AreEqual(Language.Es, Loc.Current);
+            }
+            finally { Object.DestroyImmediate(again); }
+        }
+
+        [Test] public void ChatLanguageButton_TogglesThePanelAndFlagFollowsTheChoice()
+        {
+            var panel = Array.Find(root.GetComponentsInChildren<Transform>(true), t => t.name == "ChatLanguagesPanel").gameObject;
+            Assert.IsFalse(panel.activeSelf);
+            actions.Open("SettingsButton");
+            actions.Open("ChatLanguageButton");
+            Assert.IsTrue(panel.activeSelf);
+            Button("idButton").onClick.Invoke();
+            Assert.IsFalse(panel.activeSelf, "escolher fecha o painel");
+            var flag = Array.Find(root.GetComponentsInChildren<Button>(true), b => b.name.Trim() == "ChatLanguageButton").transform.Find("Image").GetComponent<Image>();
+            var idFlag = Array.Find(root.GetComponentsInChildren<Button>(true), b => b.name.Trim() == "idButton").transform.Find("Image").GetComponent<Image>();
+            Assert.AreSame(idFlag.sprite, flag.sprite);
         }
 
         [Test] public void ShopButtonOpensTheStoreWhenProvided()
