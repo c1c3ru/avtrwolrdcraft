@@ -1,5 +1,16 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Fila viva: pre-revisao das 3 tarefas em `review` — 2026-11-23
+Leitura dos artefatos, sem reexecutar analise e **sem alterar a fila** (a revisao formal pede revisor independente; esta e so um parecer).
+- `T020/CLASS/InventoryBuildData` e `InventorySkinsBuildData`: hashes de evidencia conferem; `recount.json` fecha a conta (1/1 e 2/2
+  instancias, 0 desconhecidas, `check_read` ok), causa raiz unica com as outras T020. Atende o criterio de aceite no papel; o fix foi
+  feito antes (PR #64) e as saidas foram preenchidas depois (`reconciliation_note`). Nao reexecutei a decodificacao (UnityPy sem RAM).
+- `T025/METHOD/HomePlayButton.LoadPlayScene`: **nao passa**. 3 dos 4 arquivos de evidencia (`method-contract.json`, `control-flow.json`,
+  `unknowns.jsonl`) tem hash diferente do registrado na fila (foram regerados depois do `evidence_ready`), e `result.json` diz
+  `status: partial`, `semantic_completion: false` com 6 desconhecidos (despacho indireto em 0x2058174 so inferido). O proprio
+  aceite diz que corpo/caminho indireto nao resolvido impede conclusao semantica. Precisa ser reenviada (hashes novos) e fica
+  presa no mesmo bloqueio de ferramentas (Hopper/Ghidra) para fechar os desconhecidos.
+
 ## Idioma: editor de avatar/pet, navegador de itens, mapa e quadra — 2026-11-23
 - `Loc` cobre agora tambem `AvatarEditorScreen` (abas Frente/Atras/Camisa/Jaqueta/Acessorio/Chapeu, "Na loja", avisos),
   `PetEditorScreen` (todas as abas, Variante, avisos), `ItemBrowserScreen`, avisos do `WorldMapRuntime` e textos da
