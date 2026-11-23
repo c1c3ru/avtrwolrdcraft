@@ -95,7 +95,7 @@ namespace AvatarWorld.Core.Tests
             _c.Tick(true, new Vector2(50f, 0f), 0.016f);
             _c.Tick(true, new Vector2(100f, 0f), 0.016f);
             Assert.AreEqual(MovementKind.Walk, _c.Movement);
-            Assert.AreEqual("General/Walking", _c.CurrentAnimation);
+            Assert.AreEqual("Track_Animations/Forced_To_Walk", _c.CurrentAnimation);
             Assert.IsFalse(_c.HasRunningAnimations);
         }
 

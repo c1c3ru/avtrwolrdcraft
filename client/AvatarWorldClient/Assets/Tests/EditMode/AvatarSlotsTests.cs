@@ -98,7 +98,7 @@ namespace AvatarWorld.Core.Tests
             back.OtherAvatars.Add(new SavedAvatar { Slot = 0 });
             back.SanitizeAvatarSlots();
             Assert.AreEqual(0, back.ActiveHumanSlot);
-            Assert.AreEqual(1, back.OtherAvatars.FindAll(o => o.Slot == 1).Count);
+            Assert.AreEqual(0, back.OtherAvatars.Count); // ativo invalido volta ao slot 0; slots 9 e duplicados de 0 somem
             Assert.IsTrue(back.OtherAvatars.TrueForAll(o => o.Slot != 0 && o.Appearance != null));
         }
 

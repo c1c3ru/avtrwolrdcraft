@@ -1,5 +1,15 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Sincronia com main + extras de NPC nos interiores + EditMode 352/352 — 2026-11-23
+- Repo local levado ao `origin/main` (36ee9c818); trabalho local em `npc-extras-tests-sync`.
+- `InteriorRuntime` passou a ler `look.extras` (`{Id, Tint}`, caixa igual ao JSON) e desenhar bochechas/meias/etc. nos NPCs;
+  `AvatarGpuRuntime` ignora extra nulo/sem Id. Armadilha: `JsonUtility` diferencia maiusculas — tipo com `id/tint` nao le nada.
+- 5 testes EditMode desatualizados corrigidos (nenhum era bug de codigo): loja (32 ofertas apos veiculos), animal anda com
+  `Track_Animations/Forced_To_Walk`, meias/bochechas viraram categorias do editor (C3) e podem coincidir com extras de NPC,
+  e a saneacao de slots devolve `OtherAvatars` vazio quando o slot ativo e invalido.
+- Unity EditMode: 352 passam, 0 falham (a 1a rodada morreu por SIGKILL/memoria; repetir com RAM livre resolveu).
+- Pendencias de RE (T020/T025) seguem bloqueadas por ferramenta (Hopper/Ghidra/UnityPy OOM), sem mudanca.
+
 ## T002: dominio Street tambem resolvido (achado novo, nao so reaproveitamento) — 2026-11-22
 Usuário perguntou se ainda faltava algo no T002. Sim: `Street` (o outro domínio `UNKNOWN`) —
 diferente de `StoreBundle`, não era reaproveitamento de trabalho já feito, foi achado agora:
