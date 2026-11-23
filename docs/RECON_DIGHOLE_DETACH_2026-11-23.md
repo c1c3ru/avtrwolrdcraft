@@ -37,3 +37,6 @@ A lista guardada e a mesma que o resto da classe usa depois (nao analisado aqui)
   (re-lanca excecao): nomeados pelo papel no chamador e pelos GOT de classArgs, sem corpo conferido.
 - Nao decodificado: LSDA/tabela de excecao formal (so o landing pad visivel por fluxo), corpo de `GetImmediateChildrenItems`, quem consome `_containerAreaLevelItems`
   depois (provavel recolocacao ao recarregar), validacao dinamica. Revisao independente pendente. Fila nao alterada.
+
+## Correcao apos revisao independente
+`LevelDigHoleArea.OnGamePause` (`0x1e299b0`) tambem e `b 0x1e299b4`: o desanexar roda **tambem ao pausar o jogo**, nao so antes de carregar a cena. `OnGameResume` (`0x1e29c08`) tem forma parecida e nao foi analisado.

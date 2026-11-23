@@ -42,10 +42,10 @@ Em palavras: ao sair da cena estando no escorregador, os itens/seres vivos solto
 prefab persistente) e sao destruidos com restauracao (`DestroyLevelItem(..., true)`), para serem recriados na cena seguinte.
 
 ## Provado vs inferido
-- Provado (tabelas): offsets de campo; `TryGetComponent<ILevelLivingBeing>` (GOT `0x41bf0b18`) e `TryGetComponent<LevelItem>` (GOT `0x41ba0d58`); nomes dos callees por endereco;
+- Provado (tabelas): offsets de campo; `TryGetComponent<ILevelLivingBeing>` (GOT `0x41bfb18`) e `TryGetComponent<LevelItem>` (GOT `0x41bad58`); nomes dos callees por endereco;
   strings `"Slide_"`. A chave usa `_currentLevelType` (+0x28), **nao** `_nextSceneLevelType` (+0x2c): o handler nao altera nenhum dos dois (fecha U6 no que toca a este metodo).
 - Inferido: `is LevelCharacter/LevelToddler` vem do teste de hierarquia de classe (`[klass+0x130]` profundidade e `[klass+0xc8]` tabela de tipos) contra os GOT de
-  `LevelCharacter`/`LevelToddler`; `[item+0x388]` como o `LevelCharacterInteractionHandler` (so por tipo do callee; offset nao confirmado pela tabela); `SetParent(null, true)` pela
+  `LevelCharacter`/`LevelToddler`; `[item+0x388]` = `LevelCharacter.<InteractionHandler>` (confirmado pela tabela de campos na revisao independente); `SetParent(null, true)` pela
   ordem de argumentos `(x1=null, w2=1)`; stub `0x25751c8` e `GameObject.TryGetComponent<T>(out)` (pelo GOT, sem corpo lido).
 - Aberto: formato de `AddToBulkData`/consumo da chave `Slide_*` na cena seguinte; LSDA formal; validacao dinamica; revisao independente. Fila nao alterada.
 

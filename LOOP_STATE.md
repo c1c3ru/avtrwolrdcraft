@@ -1,5 +1,12 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Revisao independente das HANDLERs e METHODs de T025 — 2026-11-23
+- Revisor (agente sem o contexto da analise) reverificou 71 afirmacoes no binario/metadata: `000032a8`, `00002d72` e METHOD GetCurrentWorldSceneName/ClickOnLevel
+  **aceitar com ressalvas**; `00003cd1`, LoadScene/LoadSceneImplement e HomePlayButton.LoadPlayScene **aceitar**. Relatorio: `docs/REVIEW_INDEPENDENT_RE_2026-11-23.md`.
+- Erros achados e corrigidos: sinal do ramo em `DestroyLevelItem` (detach dentro do laco so para `child == levelItem`), `OnGamePause` tambem dispara o detach do DigHole,
+  GOT mal escritos, contagem de chamadores (50 call sites/49 metodos), textos "aberto" desatualizados. Limitacoes mantidas: `IDictionary.get_Item` e inferencia forte, sem validacao dinamica.
+- A fila `reports/recon/tasks.json` **nao** foi alterada: marcar `done` e decisao do usuario/coordenador (a revisao e de um agente do mesmo ambiente, nao de uma pessoa).
+
 ## RE com Capstone: botoes da Home ligados a loja — 2026-11-23
 - OnClick de `AvatarPassChangeWidget`, `StoreAvatarPassButton`, `StoreAvatarPassGiftsButton` e `StoreNewUserGiftCurrencyButton` lidos; visibilidade do presente de novo usuario
   = `TryGetPackItemIndex(StorePackType.NewUserGiftCurrency=1000004)` + item nao resgatado, escondido em multiplayer. A **quantia nao esta no binario** (vem do servidor).

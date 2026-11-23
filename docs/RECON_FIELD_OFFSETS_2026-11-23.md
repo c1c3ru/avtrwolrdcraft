@@ -24,4 +24,4 @@ Correcao ao doc de `DestroyLevelItem`: o rastreador e `InventoryManager.Instance
 nao um "static +0xb8" solto; `+0xb8` e so o ponteiro `static_fields` da classe IL2CPP.
 
 ## Ainda aberto
-U4 (helpers `0x1b886e8`, `0x1b88980`, `0x1b88988`), nomes dos 3 virtuais, tipos dos dois genericos finais, revisao independente. Fila nao alterada.
+U4, virtuais e genericos fechados depois (`RECON_RUNTIME_HELPERS`, `RECON_LEVELITEM_VTABLE`, `RECON_GENERIC_USAGES`); revisao independente em `REVIEW_INDEPENDENT_RE_2026-11-23.md`. Fila nao alterada.

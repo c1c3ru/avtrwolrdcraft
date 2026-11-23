@@ -35,7 +35,7 @@ if (SettingsManager.instance._extraSettings.useTimeLock       // GameExtraSettin
 ```
 Offline: tratar `IsGameUnlocked()` como verdadeiro libera todos os predios (nosso cliente ja o faz). Chamadores diretos: `WorldBuilding.OnPointerClickInternal` e `WorldBuildingLevel.OnPointerClick`.
 
-## Quem chama GameSceneManager.LoadScene (50 chamadores diretos, `tools/il2cpp_callers.py`)
+## Quem chama GameSceneManager.LoadScene (50 call sites em 49 metodos, `tools/il2cpp_callers.py`; `LevelInstancedLevelExitSwitcher.LoadScene` chama duas vezes)
 - **Home/menus**: `HomePlayButton.LoadPlayScene`, `GameAchievementsButton.OnClick`, `SecretHomeWidget.WidgetButtomClick`, `OpenHomeSceneButton.OnClick`, `ChangeWorldButton.OnButtonClick`,
   `BackButton.OnButtonClick`, `WorldReset.WorldResetButton.OnClick` e `ExitResetGameModeButton.OnClick`.
 - **Mundo/predios**: `WorldEnterableEntity.LoadScene`, `Street.StreetHouseLevel.OnPointerClick`, `WorldManager.AvatarMakerButtonPress`, `UGC.UGCLevelEntrance.PerformClick`.

@@ -50,7 +50,7 @@ Offline (nosso caso), `IsMultiplayerGame` e falso: o lambda sempre cai em `LoadS
 if (<estatico bool em +0x0 da classe MPManager? GOT 0x41b5350>) MPOwnership.Clear();     // 0x20d7e78
 SceneManager.LoadSceneAsync(sceneName);                                                   // 0x3cdc604 (1 arg)
 ```
-(O booleano lido e o mesmo `IsMultiplayerGame` usado no lambda; classe pelo uso, o slot de GOT esta em `.bss` e nao decodificado.) O retorno do `LoadSceneAsync` e descartado.
+(O booleano lido e o mesmo `IsMultiplayerGame` usado no lambda; o GOT `0x41b5350` decodifica como `MPManager`, confirmado na revisao independente.) O retorno do `LoadSceneAsync` e descartado.
 
 ## HomePlayButton.LoadPlayScene — fecha 3 dos 6 desconhecidos de T025/5fe1bb4a
 ```

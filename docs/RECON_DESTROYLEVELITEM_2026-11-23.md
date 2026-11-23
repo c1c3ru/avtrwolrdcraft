@@ -13,7 +13,7 @@ foreach (child in items) {                                                      
     OnBeforeDestroyLevelItemAction?.Invoke(child);                                       // static Action<LevelItem> (statics+0x8) de LevelUtils
     child.<virtual @vtable+0x738>();                                                     // CONFIRMADO: LevelItem.OnBeforeDestroyWhileInGameplay (slot 96)
     child.gameObject.tag = "Destroyed";                                                  // get_gameObject 0x3cc84e4 / set_tag 0x3cc8a10
-    if (child != levelItem)                                                              // op_Equality
+    if (child == levelItem)                                                              // op_Equality; so o item raiz (revisao independente corrigiu o sinal)
         child.<virtual @vtable+0x508>(true);                                             // CONFIRMADO: LevelItem.DetachFromParentIfExists(true) (slot 61)
     if (shouldAddRestoreData) {
         if (child.TryGetComponent<PDSceneObject>(out pd)) {                              // 0x24f17fc
@@ -49,7 +49,7 @@ Object.Destroy(levelItem.gameObject);                                           
 - Alta: ramos, callees nomeados (todos achados no indice por endereco), strings (`"levelItem is null!"`, `"Destroyed"`,
   `"No PDSceneObject found on levelItem["`).
 - Tipos dos genericos **provados** pela cadeia GOT -> methodSpecs -> genericInsts (`docs/RECON_GENERIC_USAGES_2026-11-23.md`); o ultimo e `GetComponentInParent<ICATarget>`, nao `GetComponent`.
-  `0x24f17fc` do laco = `PDSceneObject` pelo texto de erro; os dois usos finais nao foram decodificados).
+  `0x24f17fc` do laco = `PDSceneObject` pelo texto de erro; os dois usos finais foram decodificados depois em RECON_GENERIC_USAGES).
 - Os 3 despachos virtuais foram **resolvidos** pela vtable do metadata (`docs/RECON_LEVELITEM_VTABLE_2026-11-23.md`).
 - Offsets `pd+0x20` (sceneGuid), `InventoryManager.Instance` (estatico +0x8) e `.ItemsTracker` (+0x38) **confirmados** pela tabela de metadata
   (`docs/RECON_FIELD_OFFSETS_2026-11-23.md`); no pseudo-codigo, `InventoryManager.<static +0xb8>.itemsTracker` = `InventoryManager.Instance.ItemsTracker`.
