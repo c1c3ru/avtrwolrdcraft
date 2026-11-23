@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: LevelDigHoleArea.DetachContainerAreaChildrenIfNeeded recuperado — 2026-11-23
+- T025/HANDLER/00002d72: callback e tail-call; o helper (596 bytes) faz, se `!IsInteractable` (+0x51): `_containerAreaLevelItems.Clear()`, copia
+  `_containerArea.GetImmediateChildrenItems()` para ela e solta cada item com `transform.SetParent(null)`. Genericos todos `List<LevelItem>`.
+  Stubs genericos e LSDA formal ficam como media/aberto. `docs/RECON_DIGHOLE_DETACH_2026-11-23.md`. Fila nao alterada.
+
 ## RE com Capstone: genericos de DestroyLevelItem decodificados — 2026-11-23
 - Cadeia GOT -> variavel codificada (tipo 6 MethodRef, indice `>>1`) -> `methodSpecs` -> `genericInsts` -> tipo. Resultado: `GetComponentsInChildren<LevelItem>`,
   `TryGetComponent<PDSceneObject>`, `TryGetComponent<LevelCAHandlerBase>`, `GetComponentInParent<ICATarget>` (correcao: nao e GetComponent) e
