@@ -47,6 +47,30 @@ namespace AvatarWorld.Runtime
             }
         }
 
+        /// <summary>
+        /// Apaga o save do jogador (reiniciar progresso). Antes guarda uma copia em "&lt;save&gt;.before-reset" (sobrescreve a anterior),
+        /// para o reset nao ser irreversivel por engano. Sem save, nao faz nada.
+        /// </summary>
+        public void ResetToNew()
+        {
+            if (!File.Exists(_path)) return;
+            File.Copy(_path, _path + ".before-reset", true);
+            File.Delete(_path);
+        }
+
+        /// <summary>
+        /// Volta o estado em memoria a um jogo novo mantendo a mesma instancia (Home, loja, editor e mundo guardam a referencia).
+        /// Campos [NonSerialized] nao fazem parte do save e ficam como estao.
+        /// </summary>
+        public static void ResetInPlace(PlayerState state, int startingPazuCurrency)
+        {
+            if (state == null) throw new ArgumentNullException(nameof(state));
+            JsonUtility.FromJsonOverwrite(JsonUtility.ToJson(PlayerState.CreateNew(startingPazuCurrency)), state);
+            if (state.Appearance == null) state.Appearance = AvatarAppearance.CreateDefault();
+            state.SanitizeAvatarSlots();
+            state.SanitizePets();
+        }
+
         public void Save(PlayerState state)
         {
             if (state == null) throw new ArgumentNullException(nameof(state));

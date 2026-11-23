@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using AvatarWorld.Core.Economy;
+using AvatarWorld.Core.Localization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ namespace AvatarWorld.Runtime
         const string SoundKey = "home.sound.enabled";
         const string SfxKey = "home.sfx.enabled";
         const string MusicKey = "home.music.enabled";
+        const string LanguageKey = "home.language";
         readonly List<Button> boundButtons = new List<Button>();
         GameObject panel;
         RectTransform content;
@@ -21,6 +23,8 @@ namespace AvatarWorld.Runtime
         Font font;
         readonly List<Canvas> homeCanvases = new List<Canvas>();
         GameObject settingsMenu;
+        GameObject languagesPanel;
+        Text backLabel;
         bool inGameplay;
         public string CurrentPage { get; private set; }
         public int BoundButtonCount => boundButtons.Count;
@@ -52,6 +56,7 @@ namespace AvatarWorld.Runtime
                 PlayerPrefs.SetInt(MusicKey, legacyEnabled);
                 PlayerPrefs.Save();
             }
+            if (Loc.TryParse(PlayerPrefs.GetString(LanguageKey, ""), out var savedLanguage)) Loc.Current = savedLanguage;
             UiSound.SetMuted(PlayerPrefs.GetInt(SfxKey, 1) == 0);
             BackgroundMusic.SetMuted(PlayerPrefs.GetInt(MusicKey, 1) == 0);
             BuildPanel();
@@ -61,6 +66,7 @@ namespace AvatarWorld.Runtime
                     go.name == "SignedUserButton " || go.name == "NotSignedUserButton" ||
                     go.name == "SettingsMenu" || go.name == "UserMenu") go.SetActive(false);
                 if (go.name == "SettingsMenu") settingsMenu = go;
+                if (go.name == "ChatLanguagesPanel") languagesPanel = go;
                 var button = go.GetComponent<Button>();
                 if (button == null) continue;
                 string action = go.name.Trim();
@@ -87,6 +93,25 @@ namespace AvatarWorld.Runtime
                         button.onClick.AddListener(() => ToggleSound(isSfx));
                         boundButtons.Add(button);
                         break;
+                    case "WorldResetButton":
+                        // No original entra no "modo reset" e zera os dados de cada cena (WorldResetManager); aqui o unico estado
+                        // persistente e o save local, entao reinicia o progresso (com confirmacao dupla e copia de seguranca).
+                        button.onClick.AddListener(() => Open(action));
+                        boundButtons.Add(button);
+                        break;
+                    case "ChatLanguageButton":
+                        // No original e o idioma do CHAT (multiplayer). Aqui o mesmo seletor troca o idioma da interface.
+                        button.onClick.AddListener(() => Open(action));
+                        boundButtons.Add(button);
+                        break;
+                    case "enButton":
+                    case "idButton":
+                    case "esButton":
+                    case "ptButton":
+                        Loc.TryParse(action.Substring(0, 2), out var chosen);
+                        button.onClick.AddListener(() => SetLanguage(chosen));
+                        boundButtons.Add(button);
+                        break;
                     case "World_ShopButton StarterPack":
                         // No original abre a compra (dinheiro real); aqui abre desafios que pagam moedas.
                         if (starterPack == null) goto default;
@@ -100,6 +125,7 @@ namespace AvatarWorld.Runtime
                         break;
                 }
             }
+            ShowLanguageFlag(Loc.Current);
         }
 
         public void Open(string action)
@@ -127,6 +153,10 @@ namespace AvatarWorld.Runtime
                 case "SettingsButton": ShowSettings(); break;
                 case "AccountButton": ShowProfile(); break;
                 case "AchievementsAppWidget": ShowProgress(); break;
+                case "WorldResetButton": ShowResetWarning(); break;
+                case "ChatLanguageButton":
+                    if (languagesPanel != null) languagesPanel.SetActive(!languagesPanel.activeSelf);
+                    break;
             }
         }
 
@@ -151,7 +181,7 @@ namespace AvatarWorld.Runtime
 
         void ShowProgress()
         {
-            Show("Progresso", $"Desafios concluídos: {state.CompletedChallenges.Count}\nMoedas: {state.PazuCurrency}\nPontos: {state.LoyaltyPoints}");
+            Show(Loc.Get("progress.title"), Loc.Format("progress.body", state.CompletedChallenges.Count, state.PazuCurrency, state.LoyaltyPoints));
             foreach (var id in state.CompletedChallenges) AddText(id, 24);
         }
 
@@ -166,7 +196,7 @@ namespace AvatarWorld.Runtime
         void ShowSettings()
         {
             if (settingsMenu == null) return;
-            CurrentPage = "Configurações";
+            CurrentPage = Loc.Get("settings");
             settingsMenu.transform.SetAsLastSibling();
             settingsMenu.SetActive(true);
             var background = settingsMenu.transform.Find("Background");
@@ -207,15 +237,62 @@ namespace AvatarWorld.Runtime
             }
         }
 
+        /// <summary>Troca o idioma da interface, grava a preferencia e atualiza o que ja esta na tela.</summary>
+        public void SetLanguage(Language language)
+        {
+            Loc.Current = language;
+            PlayerPrefs.SetString(LanguageKey, Loc.Code(language));
+            PlayerPrefs.Save();
+            if (backLabel != null) { backLabel.text = Loc.Get("back"); backLabel.transform.parent.name = backLabel.text; }
+            ShowLanguageFlag(language);
+            if (languagesPanel != null) languagesPanel.SetActive(false);
+        }
+
+        // O botao do seletor mostra a bandeira do idioma atual (mesmo sprite do botao daquele idioma).
+        void ShowLanguageFlag(Language language)
+        {
+            if (settingsMenu == null) return;
+            var chat = Array.Find(settingsMenu.GetComponentsInChildren<Button>(true), b => b.name.Trim() == "ChatLanguageButton");
+            var chosen = Array.Find(settingsMenu.GetComponentsInChildren<Button>(true), b => b.name.Trim() == Loc.Code(language) + "Button");
+            var target = chat != null ? chat.transform.Find("Image")?.GetComponent<Image>() : null;
+            var source = chosen != null ? chosen.transform.Find("Image")?.GetComponent<Image>() : null;
+            if (target != null && source != null) target.sprite = source.sprite;
+        }
+
+        // Reiniciar progresso: dois passos (aviso -> "Tem certeza?") antes de apagar.
+        void ShowResetWarning()
+        {
+            if (settingsMenu != null) settingsMenu.SetActive(false);
+            Show(Loc.Get("reset.title"), Loc.Get("reset.warn"));
+            AddButton(Loc.Get("reset.continue"), ShowResetConfirm);
+        }
+
+        void ShowResetConfirm()
+        {
+            Show(Loc.Get("reset.confirm.title"), Loc.Get("reset.confirm.body"));
+            AddButton(Loc.Get("reset.confirm.do"), ConfirmReset);
+        }
+
+        void ConfirmReset()
+        {
+            TryStorage(() =>
+            {
+                saves.ResetToNew();
+                SaveStore.ResetInPlace(state, HomeBootstrap.StartingPazuCurrency);
+                saves.Save(state);
+                Show(Loc.Get("reset.title"), Loc.Get("reset.done"));
+            });
+        }
+
         void ShowProfile()
         {
-            Show("Perfil local", $"Progresso salvo neste aparelho.\nMoedas: {state.PazuCurrency}\nPontos: {state.LoyaltyPoints}");
-            AddButton("Salvar progresso", SaveProgress);
+            Show(Loc.Get("profile.title"), Loc.Format("profile.body", state.PazuCurrency, state.LoyaltyPoints));
+            AddButton(Loc.Get("profile.save"), SaveProgress);
         }
 
         void SaveProgress()
         {
-            TryStorage(() => { saves.Save(state); Show("Perfil local", "Progresso salvo neste aparelho."); });
+            TryStorage(() => { saves.Save(state); Show(Loc.Get("profile.title"), Loc.Get("profile.saved")); });
         }
 
         void TryStorage(Action action)
@@ -224,7 +301,7 @@ namespace AvatarWorld.Runtime
             catch (Exception e) when (e is IOException || e is UnauthorizedAccessException)
             {
                 Debug.LogWarning("Home: falha no armazenamento local: " + e.GetType().Name);
-                Show("Armazenamento", "Não foi possível acessar o salvamento. Confira o espaço livre e tente novamente.");
+                Show(Loc.Get("storage.title"), Loc.Get("storage.error"));
             }
         }
 
@@ -273,7 +350,8 @@ namespace AvatarWorld.Runtime
             scroll.content = content;
             scroll.horizontal = false;
             scroll.movementType = ScrollRect.MovementType.Clamped;
-            var close = MakeButton(card.transform, "Voltar", Close);
+            var close = MakeButton(card.transform, Loc.Get("back"), Close);
+            backLabel = close.GetComponentInChildren<Text>();
             Stretch((RectTransform)close.transform, new Vector2(0.1f, 0.025f), new Vector2(0.9f, 0.13f));
             // O ScrollRect ocupa quase todo o Card. Garante que o botão permaneça no topo
             // da ordem de raycast depois de criar a máscara/viewport.

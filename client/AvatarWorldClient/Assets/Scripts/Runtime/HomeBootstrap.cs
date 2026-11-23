@@ -17,7 +17,7 @@ namespace AvatarWorld.Runtime
     {
         const string SceneJson = "HomeSlice/level3";
         const string SpriteDir = "HomeSlice/sprites/";
-        const int StartingPazuCurrency = 50;
+        public const int StartingPazuCurrency = 50;
 
         SaveStore _save;
         PlayerState _state;

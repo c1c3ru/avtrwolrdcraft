@@ -1,5 +1,18 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Home: WorldResetButton + seletor de idioma da interface — 2026-11-23
+Pedido: fazer os dois botoes offline da Home; o resto so depois de recuperar a logica do original no binario.
+- **WorldResetButton**: no original (`PWC.WorldReset.WorldResetManager`, so assinaturas) entra num "modo reset" que zera os dados
+  de cada cena (itens, avatares, pacote de loja). Aqui os interiores nao persistem nada, entao o equivalente e reiniciar o save
+  local: aviso -> "Tem certeza?" -> apaga. Guarda copia em `player_state.json.before-reset` (`SaveStore.ResetToNew`) e zera o
+  `PlayerState` em memoria mantendo a instancia (`SaveStore.ResetInPlace`). O fluxo de duas telas e do cliente, nao do original.
+- **ChatLanguageButton/en/id/es/pt**: no original e o idioma do **chat multiplayer**, nao da interface. Decisao do usuario:
+  usar o mesmo seletor para o idioma da interface. `Core/Localization/Loc.cs` (pt/en/es/id, chave ausente cai no pt e depois
+  na propria chave), preferencia em PlayerPrefs `home.language`, bandeira do botao acompanha a escolha. Funcionalidade nossa.
+- **Cobertura**: so os textos do HomeActions (Configuracoes, Perfil, Progresso, Armazenamento, Voltar, reset) estao traduzidos.
+  Loja, editor, mapa, minijogos e desafios seguem em portugues; basta mover as strings para `Loc` conforme for preciso.
+- Botoes da Home: 12 ligados (eram 6), 27 pendentes (eram 33). Testes: EditMode 363/363, PlayMode 25/25.
+
 ## Sincronia com main + extras de NPC nos interiores + EditMode 352/352 — 2026-11-23
 - Repo local levado ao `origin/main` (36ee9c818); trabalho local em `npc-extras-tests-sync`.
 - `InteriorRuntime` passou a ler `look.extras` (`{Id, Tint}`, caixa igual ao JSON) e desenhar bochechas/meias/etc. nos NPCs;
