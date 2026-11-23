@@ -1,5 +1,9 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: alvo 0x24f0700 de DestroyCurrentItems resolvido — 2026-11-23
+- `0x24f0700` = `Component.GetComponent<T>()` compartilhado (GetTypeFromHandle + GetComponentFastPath), T = `LevelItem` (por assinatura de
+  `DestroyLevelItem`). Fecha U1 de T025/HANDLER/000032a8; U2-U4 e revisao seguem abertos. `docs/RECON_DESTROYCURRENTITEMS_TARGET_2026-11-23.md`.
+
 ## RE sem Hopper/Ghidra: despacho de HomePlayButton.LoadPlayScene resolvido — 2026-11-23
 - `0x2058174` = `IDictionary<string, LevelType>.get_Item` sobre `DeepLinkManager._mapLinkToLevel` (campo `+0x28`); despacho de interface
   padrao do IL2CPP. Detalhes e ressalvas em `docs/RECON_HOMEPLAY_DISPATCH_2026-11-23.md`. Fecha 1 dos 6 desconhecidos de T025/5fe1bb4a;
