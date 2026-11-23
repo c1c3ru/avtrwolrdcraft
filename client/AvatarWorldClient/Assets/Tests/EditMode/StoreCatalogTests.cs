@@ -10,7 +10,7 @@ namespace AvatarWorld.Core.Tests
         [Test]
         public void Catalog_HasUniqueIdsPricesInTheObservedRangeAndExistingArt()
         {
-            Assert.AreEqual(23, StoreCatalog.All.Count);
+            Assert.AreEqual(32, StoreCatalog.All.Count);
             Assert.AreEqual(StoreCatalog.All.Count, StoreCatalog.All.Select(o => o.Id).Distinct().Count());
             foreach (var offer in StoreCatalog.All)
             {

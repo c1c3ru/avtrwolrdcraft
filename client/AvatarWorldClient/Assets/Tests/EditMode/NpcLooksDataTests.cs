@@ -105,10 +105,23 @@ namespace AvatarWorld.Core.Tests
             Assert.Greater(total, 100, "deveria haver centenas de pecas extras nos NPCs");
         }
 
+        // Meias (Legs) e bochechas (FaceCheeks) viraram categorias do editor (C3) e tambem sao extras de NPC; o look do NPC nao
+        // tem campo para elas, entao a sobreposicao e esperada. Todas as demais categorias do editor continuam proibidas como extra.
+        static HashSet<string> NpcOnlyEditorIds()
+        {
+            var ids = new HashSet<string>();
+            foreach (var kv in AvatarCatalog.OptionsByCategory)
+            {
+                if (kv.Key == AvatarCatalog.CategoryLegs || kv.Key == AvatarCatalog.CategoryFaceCheeks) continue;
+                foreach (var id in kv.Value) ids.Add(id);
+            }
+            return ids;
+        }
+
         [Test]
         public void Extras_DoNotDuplicateWithinOneNpcOrLeakIntoEditorCategories()
         {
-            var editorIds = new HashSet<string>(AvatarCatalog.OptionsByCategory.Values.SelectMany(v => v));
+            var editorIds = NpcOnlyEditorIds();
             foreach (var (key, file) in AllNpcFiles())
                 foreach (var n in file.npcs)
                 {
@@ -121,7 +134,7 @@ namespace AvatarWorld.Core.Tests
         [Test]
         public void NpcOnlyManifestItems_StayOutOfTheEditorLists()
         {
-            var editorIds = new HashSet<string>(AvatarCatalog.OptionsByCategory.Values.SelectMany(v => v));
+            var editorIds = NpcOnlyEditorIds();
             var extraIds = AllNpcFiles().SelectMany(f => f.file.npcs).SelectMany(n => n.look.extras).Select(e => e.Id).Distinct().ToList();
             Assert.Greater(extraIds.Count, 0);
             Assert.IsEmpty(extraIds.Where(editorIds.Contains).ToList());
