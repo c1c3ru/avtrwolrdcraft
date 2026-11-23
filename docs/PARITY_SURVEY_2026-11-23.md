@@ -38,6 +38,6 @@ Atualiza `PARITY_SURVEY_2026-11-09.md`. Medido no `main` (commit `fbc569af9`). C
 ## O que ainda não anda, e por quê
 
 1. Botões da Home de presentes, feriado, passe e `World_ShopButton`: no binário só há assinaturas (por exemplo `AvatarPassChangeWidget`) e as respostas vêm do servidor (`StoreAvatarPassNextRewardStatusCloudResponse`). Fazer exige recuperar corpos de método.
-2. Ledger `AVATAR_WORLD_TASKS.json`: continua 60/60 `pending`, embora 13 tarefas tenham evidência em `out/recon/tasks/`. A fila formal de recon (`reports/recon/tasks.json`) é a que reflete o estado real; nunca marcar `done` sem revisão.
+2. Filas de tarefas: `docs/AVATAR_WORLD_TASKS.json` é só o **seed de planejamento** (`kind: planning_seed_not_live_execution_state`) e fica 60/60 `pending` de propósito; não é um atraso a corrigir. O estado real está na fila viva `reports/recon/tasks.json` (`local_live_queue`), com 908 tarefas: 841 `pending`, 51 `blocked_external`, 10 `ready`, 3 `review`, 3 `done`. Dos 60 itens de topo, T001 está `done` e T002/T004 `ready`. Há 3 tarefas esperando **revisão independente** (nenhuma foi marcada `done` sem revisão): `T020/CLASS/InventoryBuildData`, `T020/CLASS/InventorySkinsBuildData` e `T025/METHOD/HomePlayButton.LoadPlayScene`.
 3. Sem diff visual contra o original (capturas ADB em `out/device/sbs-nav` podem servir de referência).
 4. Sem validação em aparelho do build Android desde as mudanças de Home/loja/idioma.
