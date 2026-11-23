@@ -17,22 +17,66 @@ namespace AvatarWorld.Runtime
         Vector2 _offset;
         bool _follow;
 
+        /// <summary>
+        /// Material do atlas. As texturas do original nao sao pre-multiplicadas: sem _StraightAlphaInput o Spine/Skeleton trata os
+        /// pixels transparentes (RGB branco) como cor e o sol aparecia como um retangulo claro no canto do mapa.
+        /// </summary>
+        public static Material CreateMaterial(Shader shader, Texture2D texture, string name)
+        {
+            var material = new Material(shader) { name = name, mainTexture = texture };
+            material.SetFloat("_StraightAlphaInput", 1f);
+            material.EnableKeyword("_STRAIGHT_ALPHA_INPUT");
+            return material;
+        }
+
+        /// <summary>
+        /// Textura de uma pagina do atlas: a pasta MapSpine so guarda a primeira pagina; as demais (Pendolum2/3, C_Scissors_2..20...)
+        /// ficam em Resources/Spine/&lt;esqueleto&gt;/. Null se nao existir em nenhuma.
+        /// </summary>
+        public static Texture2D LoadPageTexture(string skeleton, string page)
+        {
+            var texture = Resources.Load<Texture2D>("MapSpine/" + skeleton + "/" + page);
+            return texture != null ? texture : Resources.Load<Texture2D>("Spine/" + skeleton + "/" + page);
+        }
+
+        /// <summary>
+        /// Um Material por pagina do atlas, na ordem do arquivo. O Spine liga cada pagina ao material cujo mainTexture tem o nome da
+        /// pagina; com um material so, as paginas extras geravam "Material with texture name ... not found for atlas asset".
+        /// Pagina sem textura vira um pixel transparente (com aviso) para o resto do esqueleto ainda desenhar.
+        /// </summary>
+        public static Material[] CreateMaterials(Shader shader, string skeleton, string atlasText)
+        {
+            var pages = AvatarAtlasLoader.ParsePageNames(atlasText);
+            var materials = new Material[pages.Length];
+            for (int i = 0; i < pages.Length; i++)
+            {
+                var texture = LoadPageTexture(skeleton, pages[i]);
+                if (texture == null)
+                {
+                    Debug.LogWarning("MapSpine: pagina ausente " + skeleton + "/" + pages[i]);
+                    texture = new Texture2D(1, 1, TextureFormat.RGBA32, false) { name = pages[i] };
+                    texture.SetPixel(0, 0, Color.clear);
+                    texture.Apply(false, true);
+                }
+                materials[i] = CreateMaterial(shader, texture, pages[i]);
+            }
+            return materials;
+        }
+
         public static MapSpineLayer Create(Transform parent, WorldSpineData data, Camera camera)
         {
             var shader = Shader.Find("Spine/Skeleton");
             string root = "MapSpine/" + data.skeleton + "/" + data.skeleton;
             var skeleton = Resources.Load<TextAsset>(root + ".skel");
             var atlasText = Resources.Load<TextAsset>(root + ".atlas");
-            var texture = Resources.Load<Texture2D>(root);
-            if (shader == null || skeleton == null || atlasText == null || texture == null)
+            if (shader == null || skeleton == null || atlasText == null)
             {
                 Debug.LogWarning("MapSpine: recursos ausentes para " + data.skeleton);
                 return null;
             }
             try
             {
-                var material = new Material(shader) { name = data.skeleton, mainTexture = texture };
-                var atlas = SpineAtlasAsset.CreateRuntimeInstance(atlasText, new[] { material }, true);
+                var atlas = SpineAtlasAsset.CreateRuntimeInstance(atlasText, CreateMaterials(shader, data.skeleton, atlasText.text), true);
                 var dataAsset = SkeletonDataAsset.CreateRuntimeInstance(skeleton, atlas, true, 0.01f);
                 var go = new GameObject("Spine_" + data.skeleton);
                 go.transform.SetParent(parent, false);
