@@ -14,11 +14,16 @@ conjuntos em `PDTextBulkData`). Nao precisou de UnityPy nem de memoria.
   `ClothesDropStore` (JSON + preferencia `home.drops.seen.<loja>`). `ClothesDropGiftsWidget` abre "Novidades de roupas": uma linha por
   loja e o botao **Vestir**, que aplica ao avatar ativo as pecas que existem no editor (uma por categoria) e grava. `GiftsWidget` virou a
   bolinha de "novo" (some depois de ver). A agenda do APK acaba em 2025, entao offline o vigente e o ultimo conjunto de cada loja.
+- **Regra de data lida no binario (T025)**: `ClothesDropDataMap.GetDropDataForTime(long time, out dropEnd, out dropStart)` devolve o `data` da
+  ULTIMA entrada com `unixTime <= time` (lista em ordem crescente; null se todas sao futuras) e preenche `dropEnd` = inicio da proxima (0 se nao ha)
+  e `dropStart` = inicio da atual. `TimeToClothesDropData.GetUnixTimeFromDate` monta `new DateTime(ano, mes, dia, 14, 0, 0, Utc)`: cada
+  drop comeca as **14:00 UTC**. O cliente passou a usar isso (`ClothesDrop.StartHourUtc`, `Current(store, nowUtc)`). O original tambem devolve
+  conjuntos "Empty"; o cliente pula os vazios (decisao nossa).
 - Limites: ~metade das pecas dos drops (189 de 378) existe no editor; bolsas, piercings, chapeus (`Hat_A`) e vestidos (`Onepiece_Special`)
   dos drops nao tem textura/manifesto aqui. A sacola em jogo, o icone do widget por loja e a entrada na loja do original nao foram feitos;
   `GiftsWidget (2)` (variante inativa) segue pendente. Interpretacao de `GiftsWidget` como bolinha vem de `HomeNewClothesDropBadge._view`
   apontar para ele no `level3`.
-- Testes: EditMode 387/387, PlayMode 25/25.
+- Testes: EditMode 388/388, PlayMode 25/25.
 
 ## Modo feriado (HolidayButton) com dados lidos do binario — 2026-11-23
 Capstone voltou a funcionar (`tools/recon_disasm.py`) e leu `Game.World.HolidayGameModeButton`:

@@ -14,8 +14,20 @@ namespace AvatarWorld.Core.Avatar
         /// <summary>Ids de roupa do editor (skin "Shirt_Special/643" vira "shirt_special_643").</summary>
         public string[] items = new string[0];
 
+        /// <summary>Hora (UTC) em que todo drop entra em vigor: o original monta `new DateTime(ano, mes, dia, 14, 0, 0, Utc)` em
+        /// TimeToClothesDropData.GetUnixTimeFromDate (lido no binario, 0x2248a30).</summary>
+        public const int StartHourUtc = 14;
+
         public bool TryGetDate(out DateTime day) =>
             DateTime.TryParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out day);
+
+        /// <summary>Instante UTC de inicio do drop (data as 14:00 UTC).</summary>
+        public bool TryGetStartUtc(out DateTime startUtc)
+        {
+            if (!TryGetDate(out var day)) { startUtc = default; return false; }
+            startUtc = DateTime.SpecifyKind(day.Date.AddHours(StartHourUtc), DateTimeKind.Utc);
+            return true;
+        }
     }
 
     [Serializable]
@@ -41,17 +53,22 @@ namespace AvatarWorld.Core.Avatar
     /// </summary>
     public static class ClothesDrops
     {
-        /// <summary>Drop vigente na data: o mais recente com data &lt;= hoje e pelo menos uma peca; null se nao ha.</summary>
-        public static ClothesDrop Current(ClothesDropStoreData store, DateTime today)
+        /// <summary>
+        /// Drop vigente no instante `now` (UTC; Local e convertido, Unspecified conta como UTC): o mais recente cujo inicio (data as 14:00 UTC)
+        /// ja passou (&lt;=, como `GetDropDataForTime`, que devolve a ultima entrada com unixTime &lt;= agora ou null se todas sao futuras)
+        /// e que tem pelo menos uma peca. O original devolve tambem conjuntos "Empty"; pular os vazios e decisao do cliente.
+        /// </summary>
+        public static ClothesDrop Current(ClothesDropStoreData store, DateTime now)
         {
             if (store?.drops == null) return null;
+            var nowUtc = now.Kind == DateTimeKind.Local ? now.ToUniversalTime() : now;
             ClothesDrop best = null;
-            DateTime bestDay = DateTime.MinValue;
+            DateTime bestStart = DateTime.MinValue;
             foreach (var drop in store.drops)
             {
-                if (drop == null || drop.items == null || drop.items.Length == 0 || !drop.TryGetDate(out var day)) continue;
-                if (day.Date > today.Date) continue;
-                if (best == null || day >= bestDay) { best = drop; bestDay = day; }
+                if (drop == null || drop.items == null || drop.items.Length == 0 || !drop.TryGetStartUtc(out var start)) continue;
+                if (start > nowUtc) continue;
+                if (best == null || start >= bestStart) { best = drop; bestStart = start; }
             }
             return best;
         }

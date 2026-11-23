@@ -34,8 +34,8 @@ namespace AvatarWorld.Runtime
         Action<int> starterPack;
         Action openStore;
         Action openAvatarPass;
-        /// <summary>Data usada para decidir o drop vigente (injetavel em teste).</summary>
-        public Func<DateTime> Today = () => DateTime.Now;
+        /// <summary>Instante (UTC) usado para decidir o drop vigente (injetavel em teste).</summary>
+        public Func<DateTime> Today = () => DateTime.UtcNow;
         public readonly List<string> PendingButtons = new List<string>();
 
         public void Initialize(IReadOnlyList<GameObject> objects, SaveStore saveStore,

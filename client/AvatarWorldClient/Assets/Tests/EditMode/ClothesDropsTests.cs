@@ -21,9 +21,22 @@ namespace AvatarWorld.Core.Tests
                 ("2024-03-01", "B", new[] { "x_2" }), ("2024-04-01", "C", new[] { "x_3" }), ("2024-05-01", "Vazio", new string[0]));
             Assert.AreEqual("B", ClothesDrops.Current(store, new DateTime(2024, 3, 15)).name);
             Assert.AreEqual("C", ClothesDrops.Current(store, new DateTime(2030, 1, 1)).name, "conjunto vazio mais novo e pulado");
-            Assert.AreEqual("B", ClothesDrops.Current(store, new DateTime(2024, 3, 1)).name, "no proprio dia ja vale");
+            Assert.AreEqual("A", ClothesDrops.Current(store, new DateTime(2024, 3, 1, 13, 59, 59, DateTimeKind.Utc)).name, "antes das 14:00 UTC do dia ainda vale o anterior");
+            Assert.AreEqual("B", ClothesDrops.Current(store, new DateTime(2024, 3, 1, 14, 0, 0, DateTimeKind.Utc)).name, "as 14:00 UTC do dia ja vale (<=)");
+            Assert.AreEqual("B", ClothesDrops.Current(store, new DateTime(2024, 3, 1, 15, 0, 0, DateTimeKind.Utc)).name);
             Assert.IsNull(ClothesDrops.Current(store, new DateTime(2023, 12, 31)), "antes do primeiro: nada");
+            Assert.IsNull(ClothesDrops.Current(store, new DateTime(2024, 2, 1, 13, 0, 0, DateTimeKind.Utc)), "o primeiro so vale a partir das 14:00 UTC");
             Assert.IsNull(ClothesDrops.Current(null, DateTime.Now));
+        }
+
+        [Test] public void DropStartsAt1400UtcAsInTheOriginal()
+        {
+            Assert.AreEqual(14, ClothesDrop.StartHourUtc);
+            var drop = new ClothesDrop { date = "2024-03-01", name = "A", items = new[] { "x" } };
+            Assert.IsTrue(drop.TryGetStartUtc(out var start));
+            Assert.AreEqual(new DateTime(2024, 3, 1, 14, 0, 0, DateTimeKind.Utc), start);
+            Assert.AreEqual(DateTimeKind.Utc, start.Kind);
+            Assert.IsFalse(new ClothesDrop { date = "lixo" }.TryGetStartUtc(out _));
         }
 
         [Test] public void NewMeansTheCurrentDropIsNotTheLastSeenOne()
