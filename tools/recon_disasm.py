@@ -9,7 +9,7 @@ sys.path.insert(0, str(HERE))
 import recon_il2cpp as r  # noqa: E402
 from capstone import Cs, CS_ARCH_ARM64, CS_MODE_ARM  # noqa: E402
 
-DEFAULT_DATA = Path("/home/deppi/avatarworld-re/out/recon/il2cpp")
+DEFAULT_DATA = HERE.parent / "out" / "recon" / "il2cpp"
 
 
 def main():
