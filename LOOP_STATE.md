@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: botoes da Home ligados a loja — 2026-11-23
+- OnClick de `AvatarPassChangeWidget`, `StoreAvatarPassButton`, `StoreAvatarPassGiftsButton` e `StoreNewUserGiftCurrencyButton` lidos; visibilidade do presente de novo usuario
+  = `TryGetPackItemIndex(StorePackType.NewUserGiftCurrency=1000004)` + item nao resgatado, escondido em multiplayer. A **quantia nao esta no binario** (vem do servidor).
+  `docs/RECON_HOME_STORE_BUTTONS_2026-11-23.md`. Fila nao alterada.
+
 ## RE com Capstone: grafo de navegacao entre cenas — 2026-11-23
 - `IsSceneChangingInProgress` liga em `LoadScene` e desliga em `OnActiveSceneChanged`/`CancelCurrentSceneChangingProgress`. `GetCurrentWorldSceneName` = PlayerPrefs
   `GAME_CURRENT_WORLD` (default `LevelWorldType.World`). `WorldBuilding.ClickOnLevel` entra se `useTimeLock || IsCurrentlyFree || IsGameUnlocked`, senao mostra
