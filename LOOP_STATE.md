@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: GameSceneManager.LoadScene/LoadSceneImplement + HomePlayButton.LoadPlayScene — 2026-11-23
+- Stage1/2/3 = estaticos `OnBeforeSceneLoadStage{1,2,3}Action` (+0/8/16, tabela). `LoadScene` zera 4 caches, marca `IsSceneChangingInProgress`, roda os 3 estagios e
+  entrega o lambda a `LoadingScreenManager.StartSceneTransition`; o lambda faz `LoadSceneAsync` (offline) ou o fluxo multiplayer. `HomePlayButton.LoadPlayScene` completo
+  (chave `pazucore_pending_deep_link`, default `GirlsRoom_Z1B1L2`, tail call para `LoadScene`). `docs/RECON_GAMESCENEMANAGER_LOADSCENE_2026-11-23.md`. Fila nao alterada.
+
 ## RE com Capstone: LevelSlideSwitcherHandler.OnBeforeSceneLoadStage1 recuperado — 2026-11-23
 - T025/HANDLER/00003cd1: se `_isInsideSlide`, guarda itens vivos da raiz da cena (`_includeRoot`) e o item de cada `_dropAreas`: solta maos, `SetParent(null)`,
   `AddToBulkData("Slide_"+_currentLevelType, GetPDPrefab())` e `DestroyLevelItem(item,true)`. Genericos e offsets por tabela. `docs/RECON_SLIDE_SWITCHER_2026-11-23.md`.
