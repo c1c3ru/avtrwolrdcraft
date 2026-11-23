@@ -1,0 +1,55 @@
+# PWC.Level.LevelUtils.DestroyLevelItem(LevelItem levelItem, bool shouldAddRestoreData = true) — 2026-11-23
+
+Fecha o U2 de `T025/HANDLER/000032a8`. Corpo `0x232b9ac..0x232bf94` (1512 bytes), de
+`out/recon/tasks/T025/HANDLER/000032a8/destroy_level_item_callee.asm.txt`; callees por `out/recon/il2cpp/*_methods.jsonl`.
+Estatico apenas (Capstone), sem Hopper/Ghidra. `libil2cpp.so` sha256 `b63661fa60c2...`. `w20` = `shouldAddRestoreData`, `x19` = `levelItem`.
+
+## Fluxo (pseudo-codigo)
+```
+if (levelItem == null)  { Debug.LogError("levelItem is null!"); return; }              // op_Equality 0x3ccb8d8, LogError 0x3ca5b88
+items = levelItem.GetComponentsInChildren<LevelItem>(true);                              // 0x24f1424 (generico, T inferido, ver abaixo)
+foreach (child in items) {                                                               // inclui o proprio item e filhos, inativos tambem
+    if (PWCUtils.IsDestroyed(child)) continue;                                           // 0x2083020
+    OnBeforeDestroyLevelItemAction?.Invoke(child);                                       // static Action<LevelItem> (statics+0x8) de LevelUtils
+    child.<virtual @vtable+0x738>();                                                     // candidato: OnBeforeDestroyWhileInGameplay (nao provado)
+    child.gameObject.tag = "Destroyed";                                                  // get_gameObject 0x3cc84e4 / set_tag 0x3cc8a10
+    if (child != levelItem)                                                              // op_Equality
+        child.<virtual @vtable+0x508>(true);                                             // candidato: DetachFromParentIfExists(true)
+    if (shouldAddRestoreData) {
+        if (child.TryGetComponent<PDSceneObject>(out pd)) {                              // 0x24f17fc
+            if (!string.IsNullOrEmpty(pd.sceneGuid /*+0x20*/)) {                         // 0x31dffdc
+                if (LevelDefaultData.TryGetSceneOwnerForItem(pd.sceneGuid, out owner))   // 0x22c96b4
+                    LevelDefaultDataItemsToRestore.AddItem(owner, pd.sceneGuid);         // 0x22c9f64
+                else if (InventoryManager.<static +0xb8>.itemsTracker.IsTrackingSceneGuid(pd.sceneGuid))  // 0x213f900
+                    InventoryItemsTracker.AddItemToRestore(pd.sceneGuid);                // 0x213fb38
+                else
+                    child.<virtual @vtable+0x748>();                                     // candidato: AddToCustomRestoreDataBeforeDestroyWhileInGameplay
+            }
+        } else
+            Debug.LogError("No PDSceneObject found on levelItem[" + child.name + "]");   // get_name 0x3cce6d0, Concat 0x31dfa68
+    }
+}
+// depois do laco:
+if (levelItem.TryGetComponent<X>(out x))                                                 // 0x24f17fc (2o uso, X nao decodificado)
+    if ((h = levelItem.GetComponent<Y>()) != null)                                       // 0x24f0dbc (Y nao decodificado)
+        CATargetExtensionMethods.RemoveCAHandlersAndUpdateGame(h, x.gameObject, false);  // 0x23adf98
+levelItem.gameObject.SetActive(false);                                                   // 0x3ccad98
+levelItem.<virtual @vtable+0x508>(true);                                                 // mesmo despacho do filho
+Object.Destroy(levelItem.gameObject);                                                    // 0x3ccf03c
+```
+
+## Efeitos que importam
+- **Persistencia/restauracao** (so com `shouldAddRestoreData`): cada item destruido com `sceneGuid` vira entrada de restauracao em
+  `LevelDefaultDataItemsToRestore` (se pertence a um dono de cena padrao) ou em `InventoryItemsTracker` (se o guid e rastreado pelo
+  inventario); senao o proprio item grava dados custom (virtual). Item sem `PDSceneObject` so loga erro.
+- **Ordem**: evento global antes, depois `tag="Destroyed"`, desativa e so entao `Object.Destroy`.
+- `DestroyCurrentItems` chama com `true`, entao o ciclo de nivel registra restauracao para cada item removido.
+
+## Confianca / ainda aberto
+- Alta: ramos, callees nomeados (todos achados no indice por endereco), strings (`"levelItem is null!"`, `"Destroyed"`,
+  `"No PDSceneObject found on levelItem["`).
+- Media: tipos dos genericos (`0x24f1424` = `GetComponentsInChildren<LevelItem>(true)` porque cada elemento vai para `Action<LevelItem>`;
+  `0x24f17fc` do laco = `PDSceneObject` pelo texto de erro; os dois usos finais nao foram decodificados).
+- Baixa: nomes dos 3 despachos virtuais (`+0x738`, `+0x748`, `+0x508`): o dump nao traz `slot`; sao candidatos, nao fatos.
+- Offsets `pd+0x20` (sceneGuid) e `InventoryManager.statics+0xb8` vem de leitura de assembly, nao de tabela de metadata (U3).
+- Fila nao alterada; revisao independente pendente.

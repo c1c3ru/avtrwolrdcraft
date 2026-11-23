@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: corpo de LevelUtils.DestroyLevelItem recuperado — 2026-11-23
+- Fluxo completo (null-check, GetComponentsInChildren, evento OnBeforeDestroy, tag "Destroyed", restauracao via LevelDefaultDataItemsToRestore /
+  InventoryItemsTracker / virtual, desativa+Destroy). 3 despachos virtuais ficam como candidatos (dump sem `slot`). Fecha U2 de
+  T025/HANDLER/000032a8; U3/U4 e revisao seguem abertos. `docs/RECON_DESTROYLEVELITEM_2026-11-23.md`.
+
 ## RE com Capstone: alvo 0x24f0700 de DestroyCurrentItems resolvido — 2026-11-23
 - `0x24f0700` = `Component.GetComponent<T>()` compartilhado (GetTypeFromHandle + GetComponentFastPath), T = `LevelItem` (por assinatura de
   `DestroyLevelItem`). Fecha U1 de T025/HANDLER/000032a8; U2-U4 e revisao seguem abertos. `docs/RECON_DESTROYCURRENTITEMS_TARGET_2026-11-23.md`.
