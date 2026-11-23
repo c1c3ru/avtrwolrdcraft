@@ -52,3 +52,32 @@ segundos Unix: **todo drop comeca as 14:00 UTC da data**. O cliente adotou as du
 
 Ainda aberto: comparacao exata de "novo" em `CheckIsAnyNewDropExist` (usa o nome do ultimo drop visto por `LevelType`, `GetLastDropNameSeen`, nao a data), `EnsureData`
 (313 linhas) e a escolha de qual `LevelType` mostrar quando varias lojas tem drop novo. O cliente compara por data e mostra todas as lojas.
+
+## Desconhecido atacado: como o original decide "drop novo" (`ClothesDropUtils`, lido)
+Corpos lidos: `CheckIsAnyNewDropExist` (`0x2248bf8`), `OnLevelEnter` (`0x22495cc`), `GetLastDropNameSeen` (`0x2249368`), `MarkLastSeen` (`0x22496dc`),
+`CheckIsAnyLastChanceDropExist` (`0x2249ec0`). Constantes do cpp2il: `HOUR_OF_UPDATE = 14`, `LAST_CHANCE_DURATION_HOURS = 24`,
+`SHOP_DROP_INTERACTION_DATA_KEY = "PWC_World_ShopDropInteractionHistory"`, mapas em `Level/ClothesDropSystemMap/ClothesDropMap_<loja>`.
+
+`CheckIsAnyNewDropExist(long currentTime, out LevelType levelType)`:
+1. `EnsureData()` carrega o dicionario `LevelType -> ClothesDropDataMap`; `*levelType = 0`; `melhor = 0`.
+2. Para cada par do dicionario: `dados = mapa.GetDropDataForTime(currentTime, out fim, out inicio)`.
+3. Pula se `dados` e nulo (`UnityEngine.Object ==`) ou se `dados.name` e nulo/vazio.
+4. `igual = (dados.name == GetLastDropNameSeen(levelType))`. Se `inicio > melhor` e `!igual`: `melhor = inicio`, `*levelType = chave`.
+5. Retorna `*levelType != 0`.
+
+Ou seja: entre todas as lojas cujo drop vigente tem **nome diferente do ultimo visto**, devolve **uma so**, a de **inicio mais recente**. A comparacao e por
+**nome do ScriptableObject** (`ClothesDrop_BulkData_<Tema>_LD<n>_L<nivel>`), nao por data, e conjuntos `Empty` tem nome nao vazio, entao contam como drop novo.
+
+- **Quando vira "visto"**: `OnLevelEnter(type, time)` = `MarkLastSeen(type, GetCurrentDropName(type, time))`, ou seja ao **entrar no nivel da loja**, nao ao tocar no widget.
+- **Onde guarda**: PlayerPrefs `PWC_World_ShopDropInteractionHistory`, JSON de `ShopDropInteractionTable { lastDropNameInteractionHistory: [ { levelType, lastDropName, isNotificationSeen } ] }`.
+- `CheckIsAnyLastChanceDropExist()` e um stub que retorna `true` (`mov w0, #1; ret`); a regra de "ultima chance" (24 h antes do fim) nao esta nesse corpo.
+- `GetWidgetIconByLevelType(levelType)` mostra o icone da loja escolhida: o widget do original aponta para **uma** loja.
+
+### Diferencas do cliente (`ClothesDrops`, `HomeActions.ShowClothesDrops`)
+| Original | Cliente |
+|---|---|
+| "Novo" = nome do drop vigente != nome visto (por loja) | "Novo" = data do drop vigente != data vista (equivalente, um drop por data) |
+| Widget aponta para a UMA loja de inicio mais recente | Painel lista todas as lojas com drop vigente |
+| Marca visto ao entrar no nivel da loja | Marca visto todas as lojas ao abrir o painel |
+| Conjunto `Empty` conta como drop vigente | Conjuntos sem pecas sao pulados |
+Nada disso foi mudado no cliente; so documentado.
