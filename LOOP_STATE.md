@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: grafo de navegacao entre cenas — 2026-11-23
+- `IsSceneChangingInProgress` liga em `LoadScene` e desliga em `OnActiveSceneChanged`/`CancelCurrentSceneChangingProgress`. `GetCurrentWorldSceneName` = PlayerPrefs
+  `GAME_CURRENT_WORLD` (default `LevelWorldType.World`). `WorldBuilding.ClickOnLevel` entra se `useTimeLock || IsCurrentlyFree || IsGameUnlocked`, senao mostra
+  `WorldBuildingPreviewPopup`. 50 chamadores diretos de `LoadScene` mapeados com a nova `tools/il2cpp_callers.py`. `docs/RECON_SCENE_NAVIGATION_GRAPH_2026-11-23.md`. Fila nao alterada.
+
 ## RE com Capstone: GameSceneManager.LoadScene/LoadSceneImplement + HomePlayButton.LoadPlayScene — 2026-11-23
 - Stage1/2/3 = estaticos `OnBeforeSceneLoadStage{1,2,3}Action` (+0/8/16, tabela). `LoadScene` zera 4 caches, marca `IsSceneChangingInProgress`, roda os 3 estagios e
   entrega o lambda a `LoadingScreenManager.StartSceneTransition`; o lambda faz `LoadSceneAsync` (offline) ou o fluxo multiplayer. `HomePlayButton.LoadPlayScene` completo
