@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using AvatarWorld.Core.Avatar;
 using AvatarWorld.Core.Economy;
 using AvatarWorld.Core.Localization;
 using AvatarWorld.Runtime;
@@ -35,6 +37,7 @@ namespace AvatarWorld.Core.Tests
             sfx = PlayerPrefs.GetInt("home.sfx.enabled", 1);
             hadMusic = PlayerPrefs.HasKey("home.music.enabled");
             music = PlayerPrefs.GetInt("home.music.enabled", 1);
+            ClearDropPrefs();
             hadHoliday = PlayerPrefs.HasKey("home.holiday");
             holiday = PlayerPrefs.GetInt("home.holiday", 0);
             PlayerPrefs.DeleteKey("home.holiday");
@@ -64,6 +67,7 @@ namespace AvatarWorld.Core.Tests
             else PlayerPrefs.DeleteKey("home.sfx.enabled");
             if (hadMusic) PlayerPrefs.SetInt("home.music.enabled", music);
             else PlayerPrefs.DeleteKey("home.music.enabled");
+            ClearDropPrefs();
             if (hadHoliday) PlayerPrefs.SetInt("home.holiday", holiday);
             else PlayerPrefs.DeleteKey("home.holiday");
             if (hadLanguage) PlayerPrefs.SetString("home.language", language);
@@ -76,6 +80,11 @@ namespace AvatarWorld.Core.Tests
 
         // O GameObject do botao do painel nasce com o texto da epoca; o que acompanha o idioma e o rotulo.
         Text Label(string text) => Array.Find(root.GetComponentsInChildren<Text>(true), t => t.text == text && t.gameObject.activeInHierarchy);
+
+        static void ClearDropPrefs()
+        {
+            foreach (var store in ClothesDropStore.Load().stores) PlayerPrefs.DeleteKey("home.drops.seen." + store.key);
+        }
 
         Button Button(string name) => Array.Find(root.GetComponentsInChildren<Button>(true), b => b.name == name && b.gameObject.activeInHierarchy);
 
@@ -106,8 +115,8 @@ namespace AvatarWorld.Core.Tests
 
         [Test] public void UnsupportedFeaturesRemainDisabledAndPending()
         {
-            Assert.AreEqual(13, actions.BoundButtonCount); // + Holiday, WorldReset, ChatLanguage e as 4 bandeiras
-            Assert.AreEqual(26, actions.PendingButtons.Count);
+            Assert.AreEqual(17, actions.BoundButtonCount); // + Holiday, WorldReset, ChatLanguage, 4 bandeiras e 4 widgets de drops
+            Assert.AreEqual(22, actions.PendingButtons.Count);
             Assert.IsFalse(Button("ShopButton").interactable);
             Assert.IsFalse(objects.Find(o => o.name == "MultiplayerCanvas").activeSelf);
             actions.Open("ShopButton");
@@ -206,6 +215,25 @@ namespace AvatarWorld.Core.Tests
             Assert.IsFalse(HolidayModeStore.IsOn, "segundo toque desliga");
             actions.Open("HolidayButton");
             Assert.IsTrue(HolidayModeStore.IsOn);
+        }
+
+        [Test] public void ClothesDropWidget_ListsDropsMarksThemSeenAndWearsAnOutfit()
+        {
+            actions.Today = () => new DateTime(2026, 11, 23);
+            var badge = Array.Find(root.GetComponentsInChildren<Button>(true), b => b.name.Trim() == "GiftsWidget");
+            Assert.IsTrue(badge.gameObject.activeSelf, "drop nao visto: bolinha de novo aparece");
+
+            actions.Open("ClothesDropGiftsWidget");
+            Assert.AreEqual(Loc.Get("drops.title"), actions.CurrentPage);
+            Assert.IsFalse(badge.gameObject.activeSelf, "abrir marca como visto e some a bolinha");
+            foreach (var store in ClothesDropStore.Load().stores)
+                Assert.AreEqual(ClothesDrops.Current(store, actions.Today()).date, ClothesDropStore.Seen(store.key), store.key);
+
+            var before = state.Appearance.Clone();
+            string theme = ClothesDrops.Current(ClothesDropStore.Load().stores.First(x => x.key == "Fashionshop"), actions.Today()).name.Replace('_', ' ');
+            Button(Loc.Format("drops.wear", theme)).onClick.Invoke();
+            Assert.IsFalse(state.Appearance.SameAs(before), "vestir muda o avatar");
+            Assert.IsFalse(saves.LoadOrCreate(0).Appearance.SameAs(before), "e grava no save");
         }
 
         [Test] public void AvatarPassButtons_OpenThePassWhenProvided()

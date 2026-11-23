@@ -1,5 +1,25 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Drops de roupa (ClothesDropGiftsWidget / GiftsWidget) — 2026-11-23
+O `ClothesDropDataMap` **nao estava bloqueado**: ja existia decodificado em `out/mb/PWC.Level.ClothesDropDataMap.jsonl.gz` (e os
+conjuntos em `PDTextBulkData`). Nao precisou de UnityPy nem de memoria.
+- Dados: 6 lojas (`ClothesDropMap_<Loja>_L<nivel>`: Fashionshop, Kawaiishop, KPopStore, ShoeShopBrand, EveningStore,
+  ShoesAndBags_Store), 71 drops datados de 2024-06 a 2025-09 (temas Daizy, Kawaii_Collection, Baller_Y2K, Kpop, Evening, LotusShoes;
+  "Empty" = sem drop), 378 pecas distintas (skin `Shirt_Special/643` -> id do editor `shirt_special_643`). `tools/export_clothes_drops.py`
+  gera `Resources/ClothesDrops/drops.json` so com as pecas do esqueleto adulto (`spineType 1`).
+- Original (lido no Capstone): `HomeNewClothesDropBadge.Init` -> `ClothesDropUtils.CheckIsAnyNewDropExist` compara
+  `ClothesDropDataMap.GetDropDataForTime` com `GetLastDropNameSeen`; as pecas viram uma sacola de tempo limitado (`LevelLimitedTimeClothesDrop`,
+  6 fases). O corpo de `GetDropDataForTime` e a regra exata de data nao foram lidos.
+- Cliente: `Core/Avatar/ClothesDrops.cs` (vigente = mais recente com data <= hoje e com pecas; "novo" = diferente do ultimo visto),
+  `ClothesDropStore` (JSON + preferencia `home.drops.seen.<loja>`). `ClothesDropGiftsWidget` abre "Novidades de roupas": uma linha por
+  loja e o botao **Vestir**, que aplica ao avatar ativo as pecas que existem no editor (uma por categoria) e grava. `GiftsWidget` virou a
+  bolinha de "novo" (some depois de ver). A agenda do APK acaba em 2025, entao offline o vigente e o ultimo conjunto de cada loja.
+- Limites: ~metade das pecas dos drops (189 de 378) existe no editor; bolsas, piercings, chapeus (`Hat_A`) e vestidos (`Onepiece_Special`)
+  dos drops nao tem textura/manifesto aqui. A sacola em jogo, o icone do widget por loja e a entrada na loja do original nao foram feitos;
+  `GiftsWidget (2)` (variante inativa) segue pendente. Interpretacao de `GiftsWidget` como bolinha vem de `HomeNewClothesDropBadge._view`
+  apontar para ele no `level3`.
+- Testes: EditMode 387/387, PlayMode 25/25.
+
 ## Modo feriado (HolidayButton) com dados lidos do binario — 2026-11-23
 Capstone voltou a funcionar (`tools/recon_disasm.py`) e leu `Game.World.HolidayGameModeButton`:
 - `OnButtonPress` -> `SetHolidayWeatherOnWorlds` grava `WeatherManager.SaveWeatherForWorld(mundo, 8)` para cada mundo de
