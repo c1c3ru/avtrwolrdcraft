@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## RE com Capstone: genericos de DestroyLevelItem decodificados — 2026-11-23
+- Cadeia GOT -> variavel codificada (tipo 6 MethodRef, indice `>>1`) -> `methodSpecs` -> `genericInsts` -> tipo. Resultado: `GetComponentsInChildren<LevelItem>`,
+  `TryGetComponent<PDSceneObject>`, `TryGetComponent<LevelCAHandlerBase>`, `GetComponentInParent<ICATarget>` (correcao: nao e GetComponent) e
+  `0x24f0700` = `GetComponent<LevelItem>` (agora provado). `tools/il2cpp_method_usage.py`; `docs/RECON_GENERIC_USAGES_2026-11-23.md`.
+  T025/HANDLER/000032a8: todo o conteudo estatico fechado; resta revisao independente e validacao dinamica. Fila nao alterada.
+
 ## RE com Capstone: virtuais de LevelItem resolvidos pela vtable — 2026-11-23
 - Slot = (offset-0x138)/16; `vtableMethods` v31 = (valor&0x1FFFFFFF)>>1. `+0x738`=`OnBeforeDestroyWhileInGameplay`, `+0x748`=
   `AddToCustomRestoreDataBeforeDestroyWhileInGameplay`, `+0x508`=`DetachFromParentIfExists(true)`. Validado em slots 0..3 (Object).

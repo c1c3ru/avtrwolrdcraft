@@ -30,8 +30,8 @@ foreach (child in items) {                                                      
     }
 }
 // depois do laco:
-if (levelItem.TryGetComponent<X>(out x))                                                 // 0x24f17fc (2o uso, X nao decodificado)
-    if ((h = levelItem.GetComponent<Y>()) != null)                                       // 0x24f0dbc (Y nao decodificado)
+if (levelItem.TryGetComponent<LevelCAHandlerBase>(out x))                                // 0x24f17fc (decodificado em RECON_GENERIC_USAGES)
+    if ((h = levelItem.GetComponentInParent<ICATarget>()) != null)                       // 0x24f0dbc
         CATargetExtensionMethods.RemoveCAHandlersAndUpdateGame(h, x.gameObject, false);  // 0x23adf98
 levelItem.gameObject.SetActive(false);                                                   // 0x3ccad98
 levelItem.DetachFromParentIfExists(true);                                               // mesmo despacho do filho
@@ -48,7 +48,7 @@ Object.Destroy(levelItem.gameObject);                                           
 ## Confianca / ainda aberto
 - Alta: ramos, callees nomeados (todos achados no indice por endereco), strings (`"levelItem is null!"`, `"Destroyed"`,
   `"No PDSceneObject found on levelItem["`).
-- Media: tipos dos genericos (`0x24f1424` = `GetComponentsInChildren<LevelItem>(true)` porque cada elemento vai para `Action<LevelItem>`;
+- Tipos dos genericos **provados** pela cadeia GOT -> methodSpecs -> genericInsts (`docs/RECON_GENERIC_USAGES_2026-11-23.md`); o ultimo e `GetComponentInParent<ICATarget>`, nao `GetComponent`.
   `0x24f17fc` do laco = `PDSceneObject` pelo texto de erro; os dois usos finais nao foram decodificados).
 - Os 3 despachos virtuais foram **resolvidos** pela vtable do metadata (`docs/RECON_LEVELITEM_VTABLE_2026-11-23.md`).
 - Offsets `pd+0x20` (sceneGuid), `InventoryManager.Instance` (estatico +0x8) e `.ItemsTracker` (+0x38) **confirmados** pela tabela de metadata
