@@ -65,7 +65,8 @@ namespace AvatarWorld.Runtime
 
             HomeLayout.Apply(objs);
             _homeActions = gameObject.AddComponent<HomeActions>();
-            _homeActions.Initialize(objs, _save, _state, OpenWorldMap, OpenStarterPackChallenges, () => OpenStore());
+            _homeActions.Initialize(objs, _save, _state, OpenWorldMap, OpenStarterPackChallenges, () => OpenStore(),
+                () => OpenStore(category: StoreCatalog.CategoryAvatarPass));
 
             BackgroundMusic.Play("Audio/home_music");
             yield return new WaitForSecondsRealtime(.65f);
@@ -83,7 +84,7 @@ namespace AvatarWorld.Runtime
         }
 
         /// <summary>Loja com a moldura do original. Sem moedas, os desafios (preco -> dificuldade) pagam moedas.</summary>
-        void OpenStore(Action afterClose = null)
+        void OpenStore(Action afterClose = null, string category = null)
         {
             if (FindFirstObjectByType<StoreScreen>() != null) return;
             var host = new GameObject("Store");
@@ -121,6 +122,7 @@ namespace AvatarWorld.Runtime
                 _save.Save(_state);
                 OpenAvatarSlots();
             });
+            if (!string.IsNullOrEmpty(category)) store.SelectCategory(category);
         }
 
         /// <summary>Play abre o mapa World do original; a quadra de basquete e um predio dele.</summary>

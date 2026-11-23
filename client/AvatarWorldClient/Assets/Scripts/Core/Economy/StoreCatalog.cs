@@ -37,6 +37,8 @@ namespace AvatarWorld.Core.Economy
     {
         public const string CategoryCoins = "Moedas AW";
         public const string CategoryFeatured = "Destaque";
+        /// <summary>Categoria so com o cartao do Passe de Avatar (compra unica com moedas; ver AvatarPass).</summary>
+        public const string CategoryAvatarPass = "Passe de Avatar";
         public const string CategoryVehicles = "Veículos";
         public const string CategoryHouses = "Casas";
         public const string CategoryStory = "Narrativa";
@@ -59,7 +61,7 @@ namespace AvatarWorld.Core.Economy
         /// <summary>Ordem do trilho lateral do original (rolavel; ha mais categorias que cabem na tela).</summary>
         public static readonly string[] Categories =
         {
-            CategoryCoins, CategoryFeatured, CategoryVehicles, CategoryHouses, CategoryStory, CategoryAvatarMaker,
+            CategoryCoins, CategoryFeatured, CategoryAvatarPass, CategoryVehicles, CategoryHouses, CategoryStory, CategoryAvatarMaker,
             CategoryCombos, CategoryFashion, CategoryVacation, CategoryPets, CategoryCelebrations, CategoryProfessions,
             CategorySports,
         };
@@ -142,17 +144,18 @@ namespace AvatarWorld.Core.Economy
         public static IReadOnlyList<StoreOffer> InCategory(string category)
         {
             if (category == CategoryCoins) return new List<StoreOffer>();
+            if (category == CategoryAvatarPass) return new List<StoreOffer> { AvatarPass.Offer };
             if (category == CategoryCombos) return All;
             if (category == CategoryFeatured) return All.Where(o => o.Featured).ToList();
             return All.Where(o => o.Category == category).ToList();
         }
 
-        public static StoreOffer Find(string id) => All.FirstOrDefault(o => o.Id == id);
+        public static StoreOffer Find(string id) => id == AvatarPass.Id ? AvatarPass.Offer : All.FirstOrDefault(o => o.Id == id);
 
         public static bool IsOwned(PlayerState state, StoreOffer offer) => state.GetClaimCount(offer.Id) >= 1;
 
         /// <summary>Compra com moedas; nunca dinheiro real. Resultado vem do LocalStoreService.</summary>
         public static ClaimResult Buy(PlayerState state, StoreOffer offer) =>
-            new LocalStoreService(state).Claim(offer.ToStoreItem());
+            offer != null && offer.Id == AvatarPass.Id ? AvatarPass.Buy(state) : new LocalStoreService(state).Claim(offer.ToStoreItem());
     }
 }

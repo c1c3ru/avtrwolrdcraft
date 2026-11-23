@@ -1,5 +1,59 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Drops de roupa (ClothesDropGiftsWidget / GiftsWidget) — 2026-11-23
+O `ClothesDropDataMap` **nao estava bloqueado**: ja existia decodificado em `out/mb/PWC.Level.ClothesDropDataMap.jsonl.gz` (e os
+conjuntos em `PDTextBulkData`). Nao precisou de UnityPy nem de memoria.
+- Dados: 6 lojas (`ClothesDropMap_<Loja>_L<nivel>`: Fashionshop, Kawaiishop, KPopStore, ShoeShopBrand, EveningStore,
+  ShoesAndBags_Store), 71 drops datados de 2024-06 a 2025-09 (temas Daizy, Kawaii_Collection, Baller_Y2K, Kpop, Evening, LotusShoes;
+  "Empty" = sem drop), 378 pecas distintas (skin `Shirt_Special/643` -> id do editor `shirt_special_643`). `tools/export_clothes_drops.py`
+  gera `Resources/ClothesDrops/drops.json` so com as pecas do esqueleto adulto (`spineType 1`).
+- Original (lido no Capstone): `HomeNewClothesDropBadge.Init` -> `ClothesDropUtils.CheckIsAnyNewDropExist` compara
+  `ClothesDropDataMap.GetDropDataForTime` com `GetLastDropNameSeen`; as pecas viram uma sacola de tempo limitado (`LevelLimitedTimeClothesDrop`,
+  6 fases). O corpo de `GetDropDataForTime` e a regra exata de data nao foram lidos.
+- Cliente: `Core/Avatar/ClothesDrops.cs` (vigente = mais recente com data <= hoje e com pecas; "novo" = diferente do ultimo visto),
+  `ClothesDropStore` (JSON + preferencia `home.drops.seen.<loja>`). `ClothesDropGiftsWidget` abre "Novidades de roupas": uma linha por
+  loja e o botao **Vestir**, que aplica ao avatar ativo as pecas que existem no editor (uma por categoria) e grava. `GiftsWidget` virou a
+  bolinha de "novo" (some depois de ver). A agenda do APK acaba em 2025, entao offline o vigente e o ultimo conjunto de cada loja.
+- **Regra de data lida no binario (T025)**: `ClothesDropDataMap.GetDropDataForTime(long time, out dropEnd, out dropStart)` devolve o `data` da
+  ULTIMA entrada com `unixTime <= time` (lista em ordem crescente; null se todas sao futuras) e preenche `dropEnd` = inicio da proxima (0 se nao ha)
+  e `dropStart` = inicio da atual. `TimeToClothesDropData.GetUnixTimeFromDate` monta `new DateTime(ano, mes, dia, 14, 0, 0, Utc)`: cada
+  drop comeca as **14:00 UTC**. O cliente passou a usar isso (`ClothesDrop.StartHourUtc`, `Current(store, nowUtc)`). O original tambem devolve
+  conjuntos "Empty"; o cliente pula os vazios (decisao nossa).
+- Limites: ~metade das pecas dos drops (189 de 378) existe no editor; bolsas, piercings, chapeus (`Hat_A`) e vestidos (`Onepiece_Special`)
+  dos drops nao tem textura/manifesto aqui. A sacola em jogo, o icone do widget por loja e a entrada na loja do original nao foram feitos;
+  `GiftsWidget (2)` (variante inativa) segue pendente. Interpretacao de `GiftsWidget` como bolinha vem de `HomeNewClothesDropBadge._view`
+  apontar para ele no `level3`.
+- Testes: EditMode 388/388, PlayMode 25/25.
+
+## Modo feriado (HolidayButton) com dados lidos do binario — 2026-11-23
+Capstone voltou a funcionar (`tools/recon_disasm.py`) e leu `Game.World.HolidayGameModeButton`:
+- `OnButtonPress` -> `SetHolidayWeatherOnWorlds` grava `WeatherManager.SaveWeatherForWorld(mundo, 8)` para cada mundo de
+  `_holidayWeatherWorlds`, liga caçadas de evento (`HuntsAchievementData.TryEnableEventHunt`) e chama `WorldResetManager.ResetStorePack`.
+- Lista de mundos: o `.cctor` cria um array de 4 `LevelWorldType` inicializado por `InitializeArray`; o blob esta no
+  `global-metadata.dat` (fieldRef 15 de `<PrivateImplementationDetails>` -> fieldDefaultValues) e vale **[1, 3, 4, 6]** =
+  World, StarDustCity, Countryside, College (Vacation e SnowyMountain ficam de fora).
+- Enum `WeatherType` lido do metadata (inteiros comprimidos): Clear 0, Rain 1, Snow 6, Snow_Xmas 7, **Halloween 8**.
+  O ceu do clima 8 e o `BackgroundSkyConfig` 721801, ja decodificado em `out/mb`; `tools/export_sky.py` passou a exporta-lo.
+- Cliente: `Core/World/HolidayMode.cs` (regras), `HolidayModeStore` (preferencia `home.holiday`), `WorldMapRuntime` usa o clima
+  efetivo por mapa (`MapWorlds`) e o `HolidayButton` da Home alterna o modo. Halloween virou clima suportado (atualiza o teste que o
+  tratava como evento fora do mapa); Snow_Xmas segue fora.
+- **Nao reproduzido**: caçadas de evento, reset de pacote da loja, o botao so aparecer quando ha feriado ativo (config remota) e o
+  caminho de "desligar" do `OnButtonPress` (nao lido: aqui desligar so devolve o clima salvo). Decoracao de Halloween nos mapas
+  nao foi extraida: o mundo em Halloween mostra o ceu laranja/roxo e some com neve/chuva/nuvens, sem abobora.
+- Testes: EditMode 381/381, PlayMode 25/25.
+
+## Passe de Avatar offline (compra unica com moedas) — 2026-11-23
+Decisao do usuario: o jogo e offline e o jogador ganha moedas acertando desafios, entao o passe vira pacote comprado com elas.
+- No original o passe e uma assinatura (`game55.subscription.avatarpass`) que da os combos marcados `isIncludedInAvatarPass` e uma
+  recompensa periodica; combos e valores vem do servidor. O desenho abaixo e **do cliente**, nao recuperado.
+- `Core/Economy/AvatarPass.cs`: compra unica de 1500 moedas (acima de qualquer combo, 300-1400) que concede 4 combos de moda
+  (PB13 Ricos e Famosos, PB20 Pop Star, PB23 Show ao vivo, PB24 Ferias de Primavera; juntos valem mais que o passe). Sem renovacao,
+  sem recompensa periodica. Combo ja comprado continua com 1 resgate. Categoria propria "Passe de Avatar" na loja, fora de Combos/Destaque.
+- Botoes `AvatarPassButton`/`AvatarPassButton_Small` da Home abrem a loja nessa categoria (`HomeBootstrap.OpenStore(category:)`).
+  `AvatarPassChangeWidget` (troca de plano/assinatura) segue pendente de proposito.
+- **Arte provisoria**: o cartao reaproveita a arte do PB13; o APK nao traz arte propria do passe extraida.
+- Testes: EditMode 374/374 (+ `AvatarPassTests`).
+
 ## Fila viva: pre-revisao das 3 tarefas em `review` — 2026-11-23
 Leitura dos artefatos, sem reexecutar analise e **sem alterar a fila** (a revisao formal pede revisor independente; esta e so um parecer).
 - `T020/CLASS/InventoryBuildData` e `InventorySkinsBuildData`: hashes de evidencia conferem; `recount.json` fecha a conta (1/1 e 2/2

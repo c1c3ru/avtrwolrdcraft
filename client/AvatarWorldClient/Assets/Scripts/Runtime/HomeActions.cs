@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using AvatarWorld.Core.Avatar;
 using AvatarWorld.Core.Economy;
 using AvatarWorld.Core.Localization;
 using UnityEngine;
@@ -32,13 +33,17 @@ namespace AvatarWorld.Runtime
         Action play;
         Action<int> starterPack;
         Action openStore;
+        Action openAvatarPass;
+        /// <summary>Instante (UTC) usado para decidir o drop vigente (injetavel em teste).</summary>
+        public Func<DateTime> Today = () => DateTime.UtcNow;
         public readonly List<string> PendingButtons = new List<string>();
 
         public void Initialize(IReadOnlyList<GameObject> objects, SaveStore saveStore,
             PlayerState sharedState, Action openPlay, Action<int> openStarterPack = null,
-            Action openStoreScreen = null)
+            Action openStoreScreen = null, Action openAvatarPassScreen = null)
         {
             openStore = openStoreScreen;
+            openAvatarPass = openAvatarPassScreen;
             starterPack = openStarterPack;
             saves = saveStore ?? throw new ArgumentNullException(nameof(saveStore));
             state = sharedState ?? throw new ArgumentNullException(nameof(sharedState));
@@ -93,6 +98,25 @@ namespace AvatarWorld.Runtime
                         button.onClick.AddListener(() => ToggleSound(isSfx));
                         boundButtons.Add(button);
                         break;
+                    case "AvatarPassButton":
+                    case "AvatarPassButton_Small":
+                        // No original abre a compra da assinatura (IAP); aqui abre a loja no Passe de Avatar, pago com moedas dos desafios.
+                        if (openAvatarPass == null) goto default;
+                        button.onClick.AddListener(() => Open(action));
+                        boundButtons.Add(button);
+                        break;
+                    case "GiftsWidget":
+                    case "ClothesDropGiftsWidget":
+                        // No original e a bolinha de "novo drop de roupas" (HomeNewClothesDropBadge) e o atalho para o drop da loja.
+                        if (ClothesDropStore.Load().stores.Length == 0) goto default;
+                        button.onClick.AddListener(() => Open("ClothesDropGiftsWidget"));
+                        boundButtons.Add(button);
+                        break;
+                    case "HolidayButton":
+                        // No original liga o clima Halloween em 4 mundos (HolidayGameModeButton); aqui e uma chave local sempre disponivel.
+                        button.onClick.AddListener(() => Open(action));
+                        boundButtons.Add(button);
+                        break;
                     case "WorldResetButton":
                         // No original entra no "modo reset" e zera os dados de cada cena (WorldResetManager); aqui o unico estado
                         // persistente e o save local, entao reinicia o progresso (com confirmacao dupla e copia de seguranca).
@@ -126,6 +150,7 @@ namespace AvatarWorld.Runtime
                 }
             }
             ShowLanguageFlag(Loc.Current);
+            RefreshDropBadge();
         }
 
         public void Open(string action)
@@ -153,6 +178,16 @@ namespace AvatarWorld.Runtime
                 case "SettingsButton": ShowSettings(); break;
                 case "AccountButton": ShowProfile(); break;
                 case "AchievementsAppWidget": ShowProgress(); break;
+                case "AvatarPassButton":
+                case "AvatarPassButton_Small":
+                    if (openAvatarPass == null) break;
+                    Close();
+                    inGameplay = true;
+                    SetHomeVisible(false);
+                    openAvatarPass();
+                    break;
+                case "HolidayButton": ToggleHoliday(); break;
+                case "ClothesDropGiftsWidget": ShowClothesDrops(); break;
                 case "WorldResetButton": ShowResetWarning(); break;
                 case "ChatLanguageButton":
                     if (languagesPanel != null) languagesPanel.SetActive(!languagesPanel.activeSelf);
@@ -257,6 +292,64 @@ namespace AvatarWorld.Runtime
             var target = chat != null ? chat.transform.Find("Image")?.GetComponent<Image>() : null;
             var source = chosen != null ? chosen.transform.Find("Image")?.GetComponent<Image>() : null;
             if (target != null && source != null) target.sprite = source.sprite;
+        }
+
+        // Bolinha de "novo": o GiftsWidget so aparece enquanto ha drop vigente nao visto (como HomeNewClothesDropBadge).
+        void RefreshDropBadge()
+        {
+            bool anyNew = ClothesDropStore.AnyNew(Today());
+            foreach (var button in boundButtons)
+                if (button != null && button.name.Trim() == "GiftsWidget") button.gameObject.SetActive(anyNew);
+        }
+
+        void ShowClothesDrops()
+        {
+            var today = Today();
+            Show(Loc.Get("drops.title"), "");
+            bool any = false;
+            foreach (var store in ClothesDropStore.Load().stores)
+            {
+                var drop = ClothesDrops.Current(store, today);
+                if (drop == null) continue;
+                any = true;
+                var available = ClothesDrops.Available(drop, id => CategoryOf(id) != null);
+                string theme = drop.name.Replace('_', ' ');
+                AddText(Loc.Format("drops.line", theme, drop.date, available.Count, drop.items.Length), 24);
+                var captured = drop;
+                AddButton(Loc.Format("drops.wear", theme), () => WearDrop(captured));
+            }
+            if (!any) AddText(Loc.Get("drops.none"), 26);
+            ClothesDropStore.MarkAllSeen(today);
+            RefreshDropBadge();
+        }
+
+        // Categoria do editor (para o tipo do avatar ativo) que contem a peca, ou null.
+        string CategoryOf(string itemId)
+        {
+            var kind = state.Appearance.Kind;
+            foreach (var pair in AvatarCatalog.OptionsByCategory)
+                if (AvatarCatalog.IsValidOption(kind, pair.Key, itemId)) return pair.Key;
+            return null;
+        }
+
+        void WearDrop(ClothesDrop drop)
+        {
+            var used = new HashSet<string>();
+            int worn = 0;
+            foreach (var id in drop.items)
+            {
+                var category = CategoryOf(id);
+                if (category == null || used.Contains(category)) continue;
+                if (state.Appearance.TrySelect(category, id)) { used.Add(category); worn++; }
+            }
+            if (worn == 0) { Show(Loc.Get("drops.title"), Loc.Get("drops.noneavail")); return; }
+            TryStorage(() => { saves.Save(state); Show(Loc.Get("drops.title"), Loc.Format("drops.worn", worn)); });
+        }
+
+        void ToggleHoliday()
+        {
+            HolidayModeStore.IsOn = !HolidayModeStore.IsOn;
+            Show(Loc.Get("holiday.title"), Loc.Get(HolidayModeStore.IsOn ? "holiday.on" : "holiday.off"));
         }
 
         // Reiniciar progresso: dois passos (aviso -> "Tem certeza?") antes de apagar.

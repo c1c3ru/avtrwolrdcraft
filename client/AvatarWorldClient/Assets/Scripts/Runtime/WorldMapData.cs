@@ -129,10 +129,10 @@ namespace AvatarWorld.Runtime
     /// <summary>Valores de WeatherType do original usados no mapa (Halloween=8 e Snow_Xmas=7 nao entram).</summary>
     public static class WorldWeather
     {
-        public const int Clear = 0, Rain = 1, Snow = 6;
+        public const int Clear = 0, Rain = 1, Snow = 6, Halloween = 8; // WeatherType do original (Snow_Xmas = 7 nao entra)
         public const string PrefsKey = "PazuWorld_WeatherType"; // mesma chave do original
 
-        public static bool IsSupported(int weather) => weather == Clear || weather == Rain || weather == Snow;
+        public static bool IsSupported(int weather) => weather == Clear || weather == Rain || weather == Snow || weather == Halloween;
     }
 
     [Serializable]

@@ -74,6 +74,9 @@ namespace AvatarWorld.Core.Localization
             ["store.bought"] = new[] { "Combo adquirido!", "Bundle acquired!", "¡Paquete adquirido!", "Paket didapatkan!" },
             // categorias (o identificador continua sendo o nome em portugues; isto e so o texto exibido)
             ["cat.Moedas AW"] = new[] { "Moedas AW", "AW Coins", "Monedas AW", "Koin AW" },
+            ["cat.Passe de Avatar"] = new[] { "Passe de Avatar", "Avatar Pass", "Pase de Avatar", "Pass Avatar" },
+            ["offer.avatar-pass"] = new[] { "Passe de Avatar", "Avatar Pass", "Pase de Avatar", "Pass Avatar" },
+            ["pass.bought"] = new[] { "Passe ativado! {0} combos liberados.", "Pass activated! {0} bundles unlocked.", "¡Pase activado! {0} paquetes desbloqueados.", "Pass aktif! {0} paket terbuka." },
             ["cat.Destaque"] = new[] { "Destaque", "Featured", "Destacados", "Unggulan" },
             ["cat.Veículos"] = new[] { "Veículos", "Vehicles", "Vehículos", "Kendaraan" },
             ["cat.Casas"] = new[] { "Casas", "Houses", "Casas", "Rumah" },
@@ -236,6 +239,15 @@ namespace AvatarWorld.Core.Localization
             ["court.throwing"] = new[] { "Arremessando…", "Shooting…", "Lanzando…", "Menembak…" },
             ["court.score"] = new[] { "CESTAS  {0}", "BASKETS  {0}", "CANASTAS  {0}", "KERANJANG  {0}" },
             ["court.back"] = new[] { "Voltar ao mapa", "Back to map", "Volver al mapa", "Kembali ke peta" },
+            ["holiday.title"] = new[] { "Modo feriado", "Holiday mode", "Modo festivo", "Mode liburan" },
+            ["holiday.on"] = new[] { "Modo feriado ligado. O céu de Halloween aparece nos mapas Bairro, Cidade, Fazenda e Campus.", "Holiday mode on. The Halloween sky shows on the Neighborhood, City, Farm and Campus maps.", "Modo festivo activado. El cielo de Halloween aparece en los mapas Barrio, Ciudad, Granja y Campus.", "Mode liburan aktif. Langit Halloween muncul di peta Lingkungan, Kota, Pertanian, dan Kampus." },
+            ["holiday.off"] = new[] { "Modo feriado desligado. O clima volta ao que você escolheu.", "Holiday mode off. The weather goes back to what you chose.", "Modo festivo desactivado. El clima vuelve a lo que elegiste.", "Mode liburan nonaktif. Cuaca kembali seperti pilihanmu." },
+            ["drops.title"] = new[] { "Novidades de roupas", "New clothes", "Ropa nueva", "Pakaian baru" },
+            ["drops.none"] = new[] { "Nenhuma novidade de roupas no momento.", "No new clothes right now.", "No hay ropa nueva por ahora.", "Belum ada pakaian baru saat ini." },
+            ["drops.line"] = new[] { "{0}  ·  {1}  ·  {2} de {3} peças no editor", "{0}  ·  {1}  ·  {2} of {3} pieces in the editor", "{0}  ·  {1}  ·  {2} de {3} piezas en el editor", "{0}  ·  {1}  ·  {2} dari {3} item di editor" },
+            ["drops.wear"] = new[] { "Vestir {0}", "Wear {0}", "Vestir {0}", "Pakai {0}" },
+            ["drops.worn"] = new[] { "Peças vestidas no avatar: {0}.", "Pieces put on your avatar: {0}.", "Piezas puestas en tu avatar: {0}.", "Item yang dipakai avatar: {0}." },
+            ["drops.noneavail"] = new[] { "Nenhuma peça deste conjunto está disponível para este avatar.", "None of this set's pieces are available for this avatar.", "Ninguna pieza de este conjunto está disponible para este avatar.", "Tidak ada item set ini yang tersedia untuk avatar ini." },
             ["reset.done"] = new[] { "Progresso reiniciado.", "Progress reset.", "Progreso reiniciado.", "Kemajuan diatur ulang." },
         };
 

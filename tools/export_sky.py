@@ -3,7 +3,7 @@
 
 Os 6 mapas usam as MESMAS configuracoes (clear 721800, rain 721802, snow 721803) e os mesmos parametros
 (smoothness/middle). Cada config tem 4 transicoes de horario (nightToSunrise, sunriseToDay, dayToSunset,
-sunsetToNight) com 4 cores de topo e 4 de base. Halloween (721801) nao entra (clima nao suportado no cliente).
+sunsetToNight) com 4 cores de topo e 4 de base. Halloween (721801, WeatherType 8) entra desde o modo feriado; Snow_Xmas (7) nao.
 
 uso: python3 tools/export_sky.py
 """
@@ -14,7 +14,8 @@ ROOT = Path(__file__).resolve().parent.parent
 PHASES = ["nightToSunrise", "sunriseToDay", "dayToSunset", "sunsetToNight"]
 WEATHERS = [(0, "clear", 721800, "_clearSmoothness", "_clearMiddle"),
             (1, "rain", 721802, "_rainSmoothness", "_rainMiddle"),
-            (6, "snow", 721803, "_snowSmoothness", "_snowMiddle")]
+            (6, "snow", 721803, "_snowSmoothness", "_snowMiddle"),
+            (8, "halloween", 721801, "_halloweenSmoothness", "_halloweenMiddle")]
 
 
 def main():

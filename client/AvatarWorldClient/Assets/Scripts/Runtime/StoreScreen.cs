@@ -531,7 +531,7 @@ namespace AvatarWorld.Runtime
             CloseModal();
             RefreshCoins();
             ShowCards();
-            ShowToast(Loc.Get("store.bought"));
+            ShowToast(offer.Id == AvatarPass.Id ? Loc.Format("pass.bought", AvatarPass.IncludedCount) : Loc.Get("store.bought"));
         }
 
         void ShowToast(string message)
