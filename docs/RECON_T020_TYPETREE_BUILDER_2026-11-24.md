@@ -28,3 +28,11 @@ Cada uma reconcilia com `declared_counts` da fila (linhas = ok + err).
 
 ## Fila
 As 18 tarefas `T020/CLASS` correspondentes continuam `pending`: submeter/aprovar exige nova autorizacao explicita.
+
+## Atualizacao: a leitura exata nao basta (falso positivo evitado)
+Ao testar variantes de layout (cabecalho com/sem `m_Name`, tamanho da base do dicionario) para as classes do `LevelPhone`, uma variante (`PhoneContentIcon`, sem `m_Name`) consumiu exatamente os 108 bytes das 225
+instancias, mas os **valores eram lixo** (`_image.m_PathID = 29652454211584`, `bool` com valores 2..12 e 128): parse deslocado em 4 bytes. Conclusao: **consumo exato de `byte_size` e necessario, nao suficiente.**
+- A ferramenta agora tambem exige **sanidade dos valores** (`sane()`): `PPtr` com `fileID` 0..30 e `pathID` < 2^36, floats finitos e <= 1e7, ints em 32 bits, strings sem lixo e **campos `bool` do C# valendo 0 ou 1**.
+- Com isso, `PhoneContentIcon` e rejeitada (nenhuma variante passa) e **nao foi integrada**; as 18 ja integradas foram reconstruidas com a ferramenta endurecida e saem **identicas** (18/18), e uma auditoria
+  manual nao achou valores suspeitos (PPtrs de configs do avatar apontam para `pathID 7217xx` em `resources.assets`, vizinhos dos 721792/721793 do `InventorySkinsBuildData`).
+- Fica registrado que os cabecalhos de objetos dentro de cenas (`level*`) parecem diferir do esperado; nao resolvido. 43 classes continuam sem solucao.

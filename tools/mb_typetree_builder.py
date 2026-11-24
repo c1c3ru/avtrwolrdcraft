@@ -30,6 +30,10 @@ NOT_SER = ("Dictionary<", "HashSet<", "Action", "Func<", "UnityAction", "Predica
 UNITY_ROOTS = {"MonoBehaviour", "ScriptableObject", "Component", "Behaviour", "Object", "UIBehaviour", "Graphic", "MaskableGraphic"}
 
 
+DICT_BASE = {"n": None}
+BOOL_NAMES = set()  # nomes de campos bool da classe em construcao (um bool so pode valer 0 ou 1)
+
+
 class Unsupported(Exception):
     pass
 
@@ -156,6 +160,8 @@ def emit(t, name, level, out):
         t, s = NAMED_PRIM[s], NAMED_PRIM[s]
     if s == "string":
         out.append(node(level, "string", name, 0x4000)); return
+    if s == "bool":
+        BOOL_NAMES.add(name)
     if s in PRIM:
         out.append(node(level, PRIM[s][0], name, PRIM[s][1])); return
     if s in VEC:
@@ -171,8 +177,12 @@ def emit(t, name, level, out):
         if len(args) != 2:
             raise Unsupported(f"dicionario sem args: {t}")
         out.append(node(level, s, name))
-        for bt, bn in class_fields("DrawableDictionary"):  # base editor: reorderableList (sem campos) + reqReferences (PPtr)
-            emit(bt, bn, level + 1, out)
+        if DICT_BASE["n"] is None:
+            for bt, bn in class_fields("DrawableDictionary"):  # base editor: reorderableList (sem campos) + reqReferences (PPtr)
+                emit(bt, bn, level + 1, out)
+        else:  # variante: n inteiros de 4 bytes no lugar da base (objetos em cenas serializam menos)
+            for k in range(DICT_BASE["n"]):
+                out.append(node(level + 1, "int", f"_base{k}"))
         emit(f"List<{args[0]}>", "_keyValues", level + 1, out)
         emit(f"{args[0]}[]", "_keys", level + 1, out)
         emit(f"{args[1]}[]", "_values", level + 1, out)
@@ -205,12 +215,36 @@ def emit(t, name, level, out):
     out.append(node(level + 1, "int", "m_FileID")); out.append(node(level + 1, "SInt64", "m_PathID"))
 
 
-def build(cname):
+def sane(v, path=""):
+    """Plausibilidade dos valores lidos: a leitura exata de byte_size e necessaria mas NAO suficiente (um parse deslocado pode consumir os mesmos bytes).
+    Rejeita PPtr com fileID fora de 0..30 ou pathID >= 2**36, float nao finito/enorme, int fora de 32 bits e strings com lixo."""
+    if isinstance(v, dict):
+        if set(v) == {"m_FileID", "m_PathID"}:
+            return 0 <= v["m_FileID"] <= 30 and 0 <= v["m_PathID"] < 2 ** 36
+        for k, x in v.items():
+            if k in BOOL_NAMES and isinstance(x, int) and x not in (0, 1):
+                return False
+        return all(sane(x, path + "/" + k) for k, x in v.items() if not k.startswith("_path") and k != "_file")
+    if isinstance(v, list):
+        return all(sane(x) for x in v)
+    if isinstance(v, float):
+        return v == v and abs(v) <= 1e7
+    if isinstance(v, bool):
+        return True
+    if isinstance(v, int):
+        return abs(v) <= 2 ** 31 - 1
+    if isinstance(v, str):
+        return "\ufffd" not in v and not any(ord(ch) < 32 and ch not in "\n\r\t" for ch in v)
+    return True
+
+
+def build(cname, with_name=True):
     out = [node(0, simple(cname), "Base"),
            node(1, "PPtr<GameObject>", "m_GameObject", 0x4000), node(2, "int", "m_FileID"), node(2, "SInt64", "m_PathID"),
            node(1, "UInt8", "m_Enabled", 0x4000),
-           node(1, "PPtr<MonoScript>", "m_Script", 0x4000), node(2, "int", "m_FileID"), node(2, "SInt64", "m_PathID"),
-           node(1, "string", "m_Name", 0x4000)]
+           node(1, "PPtr<MonoScript>", "m_Script", 0x4000), node(2, "int", "m_FileID"), node(2, "SInt64", "m_PathID")]
+    if with_name:
+        out.append(node(1, "string", "m_Name", 0x4000))
     for ft, fn in class_fields(cname):
         emit(ft, fn, 1, out)
     return out
@@ -227,27 +261,44 @@ def main():
             byclass[c].append((int(pid), fil, os.path.join(raw_dir, f)))
     summary = {}
     for c, objs in sorted(byclass.items()):
-        try:
-            nodes = build(c)
-            root = TypeTreeNode.from_list(nodes)
-        except Unsupported as e:
-            summary[c] = ("nao suportada", str(e)[:90]); continue
-        except Exception as e:
-            summary[c] = ("erro ao montar", f"{type(e).__name__}: {str(e)[:80]}"); continue
-        rows, errs = [], []
-        for pid, fil, p in objs:
-            data = open(p, "rb").read()
+        variants = [(True, None), (False, None)] + [(wn, n) for wn in (True, False) for n in (0, 1, 2, 3, 4)]
+        rows, errs, chosen = [], ["nenhuma variante leu exato"], None
+        built_any = False
+        for with_name, dbase in variants:
+            DICT_BASE["n"] = dbase
+            BOOL_NAMES.clear()
             try:
-                d = TypeTreeHelper.read_typetree(root, EndianBinaryReader(data, endian="<"), as_dict=True, byte_size=len(data), check_read=True)
-                d["_path_id"], d["_file"] = pid, fil
-                rows.append(d)
+                root = TypeTreeNode.from_list(build(c, with_name))
+                built_any = True
+            except Unsupported as e:
+                summary[c] = ("nao suportada", str(e)[:90]); break
             except Exception as e:
-                errs.append(f"{type(e).__name__}: {str(e)[:70]}")
+                summary[c] = ("erro ao montar", f"{type(e).__name__}: {str(e)[:80]}"); break
+            r, e_ = [], []
+            for pid, fil, p in objs:
+                data = open(p, "rb").read()
+                try:
+                    d = TypeTreeHelper.read_typetree(root, EndianBinaryReader(data, endian="<"), as_dict=True, byte_size=len(data), check_read=True)
+                    if not sane(d):
+                        raise ValueError("valores implausiveis (parse deslocado?)")
+                    d["_path_id"], d["_file"] = pid, fil
+                    r.append(d)
+                except Exception as ex:
+                    e_.append(f"{type(ex).__name__}: {str(ex)[:70]}")
+            if r and not e_:
+                rows, errs, chosen = r, [], (with_name, dbase)
+                break
+            if len(r) > len(rows):
+                rows, errs = r, e_
+        DICT_BASE["n"] = None
+        if c in summary:
+            continue
         if rows and not errs:
             with gzip.open(os.path.join(out_dir, re.sub(r"[^\w.\-]+", "_", c) + ".jsonl.gz"), "wt") as fh:
                 for d in rows:
                     fh.write(json.dumps(d, default=str) + "\n")
-        summary[c] = ("ok" if not errs else "parcial/falha", f"{len(rows)} ok, {len(errs)} err" + (f" | {errs[0]}" if errs else ""))
+        var = "" if chosen is None else f" | variante: m_Name={'sim' if chosen[0] else 'NAO'}, base_dict={'Cpp2IL' if chosen[1] is None else str(chosen[1]) + ' ints'}"
+        summary[c] = ("ok" if not errs else "parcial/falha", f"{len(rows)} ok, {len(errs)} err" + (f" | {errs[0]}" if errs else "") + var)
     for c, (st, msg) in summary.items():
         print(f"{st:15} {c} | {msg}")
     print(collections.Counter(s for s, _ in summary.values()))
