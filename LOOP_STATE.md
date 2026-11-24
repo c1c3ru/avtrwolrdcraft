@@ -1,6 +1,16 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
-## Marcar T025 como done: preparado, nao aplicado — 2026-11-24
+## T025: 8 tarefas aceitas na fila (done) com reservas — 2026-11-24
+- Aplicado a pedido do usuario: `relocate` para o worktree (`root` da fila agora = `.../.claude/worktrees/re-capstone-dispatch`, revisao 237) e, para cada tarefa,
+  `submit` (autor `agente-re-capstone-claude`) + `accept` (revisor `revisor-independente-subagente`, distinto do autor) com as reservas na nota.
+  `done`: HANDLER 000032a8/00002d72/00003cd1 e METHOD 8e708ca7d06e0b52 (LoadScene), e579655ba8e57adf (LoadSceneImplement), d417091ede9f01e0, 4a19cfec8f8e89ba, 5fe1bb4a25183678.
+  Fila: done 3 -> 11. `5fe1bb4a...` estava em `review` com hashes stale: foi rejeitada (bloqueava o relocate) e resubmetida.
+- **Atencao ao mover de maquina**: o `root` da fila nao e mais `/home/c1c3ru/avtrwolrdcraft`. No repo real, rodar
+  `python3 tools/recon_queue.py relocate --root <raiz do repo> --actor <ator> --note ...` (exige os arquivos de input/evidencia presentes; `assets/*.apk` e `out/recon/il2cpp/*` nao sao versionados).
+- Reservas que os `done` carregam (nas notas de revisao e nos adendos): LSDA formal e validacao em aparelho abertas; `IDictionary.get_Item` em HomePlayButton e inferencia forte; conteudo de `_mapLinkToLevel`
+  nao extraido; consumidores de `_containerAreaLevelItems` e da chave `Slide_*` nao analisados; desconhecidos T029 fora de escopo seguem abertos.
+
+## Marcar T025 como done: preparado, nao aplicado — 2026-11-24 (superado pela entrada acima)
 - Adendos `followup_2026-11-24`... (arquivos `followup_2026-11-23.json`) criados para as 8 tarefas T025 revisadas, com desconhecidos fechados/abertos e reservas.
   `tools/recon_queue_submit_review.py` faz submit/accept/reject. **Nao apliquei na fila**: `reports/recon/tasks.json` tem `root=/home/c1c3ru/avtrwolrdcraft` (inexistente aqui) e `relocate`
   exige o destino existente, entao mudaria o `root` do repo. Rodar no repo com raiz valida. `T025/METHOD/5fe1bb4a25183678` esta em `review` com hashes stale: rejeitar e reconfigurar antes.
