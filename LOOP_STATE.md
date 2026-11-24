@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: +3 classes com o construtor v3 (tipos aninhados, enums do Unity) — 2026-11-24
+- `tools/mb_typetree_builder_v3.py` resolve tipos aninhados (`SceneMap.Item`) e enums do Unity (`SystemLanguage`). Regressao 27/27 identica; +3 classes: `GameExtraSettings`, `LocalizationManager` (26 paises e seus idiomas), `LevelCatTunnel`.
+  **`GameExtraSettings.useTimeLock = 0`**: o gate de `WorldBuilding.ClickOnLevel` depende so de `IsCurrentlyFree`/`IsGameUnlocked`. Restam 31 (20 EditorApp + 11 SerializeReference). `docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md`.
+  As 3 tarefas ficam `blocked_external` aguardando autorizacao. Adendo de stats `c` (a/b e `_stats.json` congelados: evidencia hasheada).
+
 ## T020: 9 classes do construtor v2 aceitas (done) — 2026-11-24
 - A pedido explicito do usuario: as 9 tarefas (5 do LevelPhone, LevelStationButton, AvatarMakerLobbyManager, LevelSkinsRandomizer, AchievementDetailThumb) foram reabertas (`configure`) e submetidas/aprovadas
   (autor `agente-re-capstone-claude`, revisor `revisor-claude-t020`) apos verificacao independente (contagens, ids, um `m_Script`, adendo de estatisticas, sanidade e conteudo identico a segunda execucao da v2; regressao 18/18).
