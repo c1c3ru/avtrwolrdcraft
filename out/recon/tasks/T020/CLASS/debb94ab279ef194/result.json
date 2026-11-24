@@ -1,14 +1,18 @@
 {
  "task": "T020/CLASS/debb94ab279ef194",
  "title": "Corrigir decodificação de PWC.Level.LevelSkinsRandomizer",
- "actor": "agente-artefatos-claude",
- "summary": "PWC.Level.LevelSkinsRandomizer: confirmed blocked by a TypeTreeGeneratorAPI limitation resolving the raw generic field `_skinsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, RandomSkinsList>` - verified present in the decompiled source (not inferred from the error message alone; checked individually, 27 of 30 classes sharing this native error signature have this exact field shape, 3 do not and were left open/undiagnosed rather than batch-closed on an unverified assumption). Checkpointed as blocked_external, not evidence_ready: exact object identities are unknown (needs the datapack, which repeatedly OOMs this machine).",
+ "actor": "agente-re-capstone-claude",
+ "summary": "PWC.Level.LevelSkinsRandomizer: 3/3 instancia(s) decodificadas (type tree construido a partir do Cpp2IL).",
+ "fix_location": "tools/mb_typetree_builder_v2.py",
  "evidence": [
   "out/recon/tasks/T020/CLASS/debb94ab279ef194/class-contract.json",
   "out/recon/tasks/T020/CLASS/debb94ab279ef194/recount.json",
-  "out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelSkinsRandomizer.cs",
-  "docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md",
-  "out/recon/tasks/T020/node_tree_triage_2026-11-22.json"
+  "out/mb/PWC.Level.LevelSkinsRandomizer.jsonl.gz",
+  "out/mb/_stats_addendum_2026-11-24b.json",
+  "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+  "tools/mb_typetree_builder_v2.py"
  ],
- "not_batch_closed_without_individual_verification": "PazuCore.GameExtraSettings, PazuCore.LocalizationManager and PazuCore.WindowManager share the same native error message but do NOT have a SerializableDictionaryBase<K,V> field in their decompiled source - their real trigger is still unknown and they were deliberately left pending/ready rather than closed with an unverified claim."
+ "unresolved_objects": "nenhum",
+ "previous_attempt_note": "Tentativa anterior (2026-11-22) fechou esta tarefa como blocked_external por limitacao de ferramenta; reaberta por configure apos o construtor de type tree v2 (2026-11-24). A v1 lia 4 bytes a mais por pegar o atributo do campo anterior.",
+ "never_autoaccept": "Submetido para revisao com verificacao independente; nao foi auto-aceito."
 }

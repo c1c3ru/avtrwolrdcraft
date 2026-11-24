@@ -8113,7 +8113,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "Game.Level.MovingTraingBackground.LevelStationButton",
@@ -8128,16 +8128,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "Game.Level.MovingTraingBackground.LevelStationButton"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -8165,11 +8160,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/class-contract.json",
-          "sha256": "a806ec4bcbe1eccfbbc9e21a65e1d443abfd59321760511733208f938f435b7c"
+          "sha256": "c36b83ec8745feaccd95999ff1d6bd65bf81407799824ddef88f7f9b98c7a655"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/recount.json",
-          "sha256": "eaa6897cc2da2fd5b3d3590c881e15d2230c6c14653e4e3f8e2262a0041c7774"
+          "sha256": "e58232f9706e8437d8bd7d3d5200900b80d6df3ee8c98770ebf1cbb8ac735db0"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/result.json",
+          "sha256": "e44e57da184208749492b7d8fa50c0205ea6794f3cd526223ed2e6609ad1b431"
+        },
+        {
+          "path": "out/mb/Game.Level.MovingTraingBackground.LevelStationButton.jsonl.gz",
+          "sha256": "509a213d7cc92645f54a87a674801f9be517170c5e64bff659e92288ae5ec171"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24b.json",
+          "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+          "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v2.py",
+          "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
         }
       ],
       "unknown_ids": [],
@@ -8192,12 +8207,86 @@
               "sha256": "eaa6897cc2da2fd5b3d3590c881e15d2230c6c14653e4e3f8e2262a0041c7774"
             }
           ]
+        },
+        {
+          "id": "78cb27c6fb1a4624a5242383bad3112f",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795540269.6526175,
+          "lease_id": "04b07d35fd7f48fea1b0b6d89b879ad7",
+          "checkpoint_at": 1795540270.084529,
+          "state": "evidence_ready",
+          "note": "Game.Level.MovingTraingBackground.LevelStationButton: reaberta de blocked_external; decodificada pelo construtor de type tree v2 (Cpp2IL, atributos contiguos) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/class-contract.json",
+              "sha256": "c36b83ec8745feaccd95999ff1d6bd65bf81407799824ddef88f7f9b98c7a655"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/recount.json",
+              "sha256": "e58232f9706e8437d8bd7d3d5200900b80d6df3ee8c98770ebf1cbb8ac735db0"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/result.json",
+              "sha256": "e44e57da184208749492b7d8fa50c0205ea6794f3cd526223ed2e6609ad1b431"
+            },
+            {
+              "path": "out/mb/Game.Level.MovingTraingBackground.LevelStationButton.jsonl.gz",
+              "sha256": "509a213d7cc92645f54a87a674801f9be517170c5e64bff659e92288ae5ec171"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24b.json",
+              "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+              "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v2.py",
+              "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "Game.Level.MovingTraingBackground.LevelStationButton: campo `_buttonsStates: SerializableDictionaryBase<SelectionState, LevelStationButtonState>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/MovingTraingBackground/LevelStationButton.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 12 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
+        "at": 1795540274.1152775,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/class-contract.json",
+            "sha256": "c36b83ec8745feaccd95999ff1d6bd65bf81407799824ddef88f7f9b98c7a655"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/recount.json",
+            "sha256": "e58232f9706e8437d8bd7d3d5200900b80d6df3ee8c98770ebf1cbb8ac735db0"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/7c9ee2a580e5e6b3/result.json",
+            "sha256": "e44e57da184208749492b7d8fa50c0205ea6794f3cd526223ed2e6609ad1b431"
+          },
+          {
+            "path": "out/mb/Game.Level.MovingTraingBackground.LevelStationButton.jsonl.gz",
+            "sha256": "509a213d7cc92645f54a87a674801f9be517170c5e64bff659e92288ae5ec171"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24b.json",
+            "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+            "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v2.py",
+            "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -11366,7 +11455,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMakerLobby.AvatarMakerLobbyManager",
@@ -11381,16 +11470,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMakerLobby.AvatarMakerLobbyManager"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -11418,11 +11502,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/class-contract.json",
-          "sha256": "70f4c4a1852e275d7046861ea30c2d4b3b22b1cb60e47adc211d4c79db77057b"
+          "sha256": "fe65ec2ebc91b893fb789441bce65b6c481252c89dbdcee058d6270a21d67d3f"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/recount.json",
-          "sha256": "26d00a37e5badd3c2de2eed844a393d70c09bcb14c3ccd9d4b3ae547cf212859"
+          "sha256": "1b0c68d7a99e1372e2a649da169fee5af101f4a9205a2f1505a647ca2b63ef4d"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/result.json",
+          "sha256": "89a3bb0bb094a9a9da1efdf9612d5da0533ccfa40806fb135918ea1ae8e667a3"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMakerLobby.AvatarMakerLobbyManager.jsonl.gz",
+          "sha256": "a4bd9b2f5e7c981a8bff7d6ccb2b20a1dfa8e8d22b245eb4af10f3ce1a7c970c"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24b.json",
+          "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+          "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v2.py",
+          "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
         }
       ],
       "unknown_ids": [],
@@ -11445,12 +11549,86 @@
               "sha256": "26d00a37e5badd3c2de2eed844a393d70c09bcb14c3ccd9d4b3ae547cf212859"
             }
           ]
+        },
+        {
+          "id": "4e087df89988456ba24c356451c84ea7",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795540278.3668993,
+          "lease_id": "8771005c2ba746adba899ed1f020b596",
+          "checkpoint_at": 1795540278.762048,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMakerLobby.AvatarMakerLobbyManager: reaberta de blocked_external; decodificada pelo construtor de type tree v2 (Cpp2IL, atributos contiguos) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/class-contract.json",
+              "sha256": "fe65ec2ebc91b893fb789441bce65b6c481252c89dbdcee058d6270a21d67d3f"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/recount.json",
+              "sha256": "1b0c68d7a99e1372e2a649da169fee5af101f4a9205a2f1505a647ca2b63ef4d"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/result.json",
+              "sha256": "89a3bb0bb094a9a9da1efdf9612d5da0533ccfa40806fb135918ea1ae8e667a3"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMakerLobby.AvatarMakerLobbyManager.jsonl.gz",
+              "sha256": "a4bd9b2f5e7c981a8bff7d6ccb2b20a1dfa8e8d22b245eb4af10f3ce1a7c970c"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24b.json",
+              "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+              "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v2.py",
+              "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMakerLobby.AvatarMakerLobbyManager: campo `_filledSlotPrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarMakerLobbyFilledSlot>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMakerLobby/AvatarMakerLobbyManager.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
+        "at": 1795540282.7280838,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/class-contract.json",
+            "sha256": "fe65ec2ebc91b893fb789441bce65b6c481252c89dbdcee058d6270a21d67d3f"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/recount.json",
+            "sha256": "1b0c68d7a99e1372e2a649da169fee5af101f4a9205a2f1505a647ca2b63ef4d"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/874bb5e732c3ae55/result.json",
+            "sha256": "89a3bb0bb094a9a9da1efdf9612d5da0533ccfa40806fb135918ea1ae8e667a3"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMakerLobby.AvatarMakerLobbyManager.jsonl.gz",
+            "sha256": "a4bd9b2f5e7c981a8bff7d6ccb2b20a1dfa8e8d22b245eb4af10f3ce1a7c970c"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24b.json",
+            "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+            "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v2.py",
+            "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -16658,7 +16836,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.Level.LevelSkinsRandomizer",
@@ -16673,16 +16851,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.Level.LevelSkinsRandomizer"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -16710,11 +16883,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/class-contract.json",
-          "sha256": "fd809a323703a0aa18df44a4dc1d4ed4a63bfb875e1dfe21aef482f4b004a7e1"
+          "sha256": "994289a2988433588e8881ce1475a6c1001ff346d0309b33b93fa1120b3c5bdc"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/recount.json",
-          "sha256": "700399865409a0f4597915620895fa536a500e33da2d05547d32b9f638a9f7cc"
+          "sha256": "f98ea2c69f73bd63f2e64e4ae44c30f65a6aa976c51cd9719b676de3494f2122"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/result.json",
+          "sha256": "0cfd6f0d6fe306f2eddfa4c2bb6637b631fc7bb15507fef87520d4794dcaea6a"
+        },
+        {
+          "path": "out/mb/PWC.Level.LevelSkinsRandomizer.jsonl.gz",
+          "sha256": "4f9a6a1391824eb25d668c0c7ec5c49a051ab065a6e54407a697f862e111df72"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24b.json",
+          "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+          "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v2.py",
+          "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
         }
       ],
       "unknown_ids": [],
@@ -16737,12 +16930,86 @@
               "sha256": "700399865409a0f4597915620895fa536a500e33da2d05547d32b9f638a9f7cc"
             }
           ]
+        },
+        {
+          "id": "e117e7ba01b04843be243c0199ddfbec",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795540286.9766908,
+          "lease_id": "8f0e751dbf5c467b8f2a1d9a20a9501e",
+          "checkpoint_at": 1795540287.5591366,
+          "state": "evidence_ready",
+          "note": "PWC.Level.LevelSkinsRandomizer: reaberta de blocked_external; decodificada pelo construtor de type tree v2 (Cpp2IL, atributos contiguos) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/class-contract.json",
+              "sha256": "994289a2988433588e8881ce1475a6c1001ff346d0309b33b93fa1120b3c5bdc"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/recount.json",
+              "sha256": "f98ea2c69f73bd63f2e64e4ae44c30f65a6aa976c51cd9719b676de3494f2122"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/result.json",
+              "sha256": "0cfd6f0d6fe306f2eddfa4c2bb6637b631fc7bb15507fef87520d4794dcaea6a"
+            },
+            {
+              "path": "out/mb/PWC.Level.LevelSkinsRandomizer.jsonl.gz",
+              "sha256": "4f9a6a1391824eb25d668c0c7ec5c49a051ab065a6e54407a697f862e111df72"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24b.json",
+              "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+              "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v2.py",
+              "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.Level.LevelSkinsRandomizer: campo `_skinsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, RandomSkinsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/Level/LevelSkinsRandomizer.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 3 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
+        "at": 1795540291.4939063,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/class-contract.json",
+            "sha256": "994289a2988433588e8881ce1475a6c1001ff346d0309b33b93fa1120b3c5bdc"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/recount.json",
+            "sha256": "f98ea2c69f73bd63f2e64e4ae44c30f65a6aa976c51cd9719b676de3494f2122"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/debb94ab279ef194/result.json",
+            "sha256": "0cfd6f0d6fe306f2eddfa4c2bb6637b631fc7bb15507fef87520d4794dcaea6a"
+          },
+          {
+            "path": "out/mb/PWC.Level.LevelSkinsRandomizer.jsonl.gz",
+            "sha256": "4f9a6a1391824eb25d668c0c7ec5c49a051ab065a6e54407a697f862e111df72"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24b.json",
+            "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+            "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v2.py",
+            "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -17454,7 +17721,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb",
@@ -17469,16 +17736,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -17506,11 +17768,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/class-contract.json",
-          "sha256": "9762ab549f62eb637b157f8b1e30438276138ef3a91c847cc12f17604892ed80"
+          "sha256": "676e0cdc6e52c493e30298149e436fa8bfee3357836bf8d8b5a46d30056bf191"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/recount.json",
-          "sha256": "0ba162da13b71a3c08338dd640df570dad986de7b00d41e7bec2fd32f3a69785"
+          "sha256": "e7157647cdef3268b236c7cf3fdae3310da2ab54833f83b08bd9ddfc84fd34b7"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/result.json",
+          "sha256": "9fd781a1a3de65d0280aabe82b0688933dbe060f29875e1526b1b7873705a072"
+        },
+        {
+          "path": "out/mb/PWC.LevelPhone.AchievementsApp.AchievementDetailThumb.jsonl.gz",
+          "sha256": "bc633d4b3ce880851724561a1ae23f4fa4e1a2551bede21541c93d5786a3a86e"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24b.json",
+          "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+          "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v2.py",
+          "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
         }
       ],
       "unknown_ids": [],
@@ -17533,12 +17815,86 @@
               "sha256": "0ba162da13b71a3c08338dd640df570dad986de7b00d41e7bec2fd32f3a69785"
             }
           ]
+        },
+        {
+          "id": "b9937f9c11364faebc3fcd2512e75035",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795540295.617832,
+          "lease_id": "4f81ed36998446bb8ea63a492798edbc",
+          "checkpoint_at": 1795540296.0413728,
+          "state": "evidence_ready",
+          "note": "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb: reaberta de blocked_external; decodificada pelo construtor de type tree v2 (Cpp2IL, atributos contiguos) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/class-contract.json",
+              "sha256": "676e0cdc6e52c493e30298149e436fa8bfee3357836bf8d8b5a46d30056bf191"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/recount.json",
+              "sha256": "e7157647cdef3268b236c7cf3fdae3310da2ab54833f83b08bd9ddfc84fd34b7"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/result.json",
+              "sha256": "9fd781a1a3de65d0280aabe82b0688933dbe060f29875e1526b1b7873705a072"
+            },
+            {
+              "path": "out/mb/PWC.LevelPhone.AchievementsApp.AchievementDetailThumb.jsonl.gz",
+              "sha256": "bc633d4b3ce880851724561a1ae23f4fa4e1a2551bede21541c93d5786a3a86e"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24b.json",
+              "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+              "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v2.py",
+              "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb: campo `_prizesSprites: SerializableDictionaryBase<PrizeType, Sprite>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/AchievementsApp/AchievementDetailThumb.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
+        "at": 1795540300.2308974,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/class-contract.json",
+            "sha256": "676e0cdc6e52c493e30298149e436fa8bfee3357836bf8d8b5a46d30056bf191"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/recount.json",
+            "sha256": "e7157647cdef3268b236c7cf3fdae3310da2ab54833f83b08bd9ddfc84fd34b7"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/d76fc257e7d34d6a/result.json",
+            "sha256": "9fd781a1a3de65d0280aabe82b0688933dbe060f29875e1526b1b7873705a072"
+          },
+          {
+            "path": "out/mb/PWC.LevelPhone.AchievementsApp.AchievementDetailThumb.jsonl.gz",
+            "sha256": "bc633d4b3ce880851724561a1ae23f4fa4e1a2551bede21541c93d5786a3a86e"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24b.json",
+            "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+            "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v2.py",
+            "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -17553,7 +17909,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.ContactsContent",
@@ -17568,16 +17924,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.LevelPhone.ContactsContent"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -17605,11 +17956,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/class-contract.json",
-          "sha256": "cfeed8862517420ffc6a29282f25365b2cc2c0d34aa04284dd466b2f18b5043d"
+          "sha256": "d31305a2335d796afa86d2a2a0e9eb230c68e2a1a582d0c5ac2c05c9743ee35f"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/recount.json",
-          "sha256": "1195be3670c42cd0d647f0a21ac63445e54c502d98a27675b4eb97cad7006601"
+          "sha256": "cfe27c90b589b62afd82e49c299ed8f360b206cbdb66e77ac474332480fd202c"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/result.json",
+          "sha256": "fd2ea90638ded6cb0d4fdd72c7212866a0030eeb90f181e8d6f294cd29d32eb0"
+        },
+        {
+          "path": "out/mb/PWC.LevelPhone.ContactsContent.jsonl.gz",
+          "sha256": "f161a4ec5304ac8836ce5fddbf83e3f148af92d0bd1733b6eb169973c3fc9ec5"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24b.json",
+          "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+          "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v2.py",
+          "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
         }
       ],
       "unknown_ids": [],
@@ -17632,12 +18003,86 @@
               "sha256": "1195be3670c42cd0d647f0a21ac63445e54c502d98a27675b4eb97cad7006601"
             }
           ]
+        },
+        {
+          "id": "67f1b840ae8a46ca9723f493a455ded3",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795540304.6870775,
+          "lease_id": "24aed57860504137b46bbd22560ca26f",
+          "checkpoint_at": 1795540305.1635566,
+          "state": "evidence_ready",
+          "note": "PWC.LevelPhone.ContactsContent: reaberta de blocked_external; decodificada pelo construtor de type tree v2 (Cpp2IL, atributos contiguos) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/class-contract.json",
+              "sha256": "d31305a2335d796afa86d2a2a0e9eb230c68e2a1a582d0c5ac2c05c9743ee35f"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/recount.json",
+              "sha256": "cfe27c90b589b62afd82e49c299ed8f360b206cbdb66e77ac474332480fd202c"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/result.json",
+              "sha256": "fd2ea90638ded6cb0d4fdd72c7212866a0030eeb90f181e8d6f294cd29d32eb0"
+            },
+            {
+              "path": "out/mb/PWC.LevelPhone.ContactsContent.jsonl.gz",
+              "sha256": "f161a4ec5304ac8836ce5fddbf83e3f148af92d0bd1733b6eb169973c3fc9ec5"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24b.json",
+              "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+              "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v2.py",
+              "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.LevelPhone.ContactsContent: campo `_contactSpinePrefabBySpineType: SerializableDictionaryBase<SpineType, AvatarSpineSkinsManagerBase>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/ContactsContent.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
+        "at": 1795540309.2171712,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/class-contract.json",
+            "sha256": "d31305a2335d796afa86d2a2a0e9eb230c68e2a1a582d0c5ac2c05c9743ee35f"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/recount.json",
+            "sha256": "cfe27c90b589b62afd82e49c299ed8f360b206cbdb66e77ac474332480fd202c"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/e4a0494ce4c72fcd/result.json",
+            "sha256": "fd2ea90638ded6cb0d4fdd72c7212866a0030eeb90f181e8d6f294cd29d32eb0"
+          },
+          {
+            "path": "out/mb/PWC.LevelPhone.ContactsContent.jsonl.gz",
+            "sha256": "f161a4ec5304ac8836ce5fddbf83e3f148af92d0bd1733b6eb169973c3fc9ec5"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24b.json",
+            "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+            "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v2.py",
+            "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -17652,7 +18097,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.DeliveryApp.DeliveryContent",
@@ -17667,16 +18112,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.LevelPhone.DeliveryApp.DeliveryContent"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -17704,11 +18144,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/class-contract.json",
-          "sha256": "4f6cdb89d859924ae7670d1223c85dc0de643acfadde12261b6f23aff85e1dec"
+          "sha256": "0d78f6d699c63c52f0546c0e8d31f252a4333319ef7cccfe9b1700ae19086ea2"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/recount.json",
-          "sha256": "3af7e82950157452ac6016e99a9df4381206899dd97f0715ec787b644a993067"
+          "sha256": "b6479a95cc9c2f32d2e6acb71eb964e4e28ed8c4f915cdd339d4ba2a6acd40f6"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/result.json",
+          "sha256": "217c0c8c6db99d09eb3a9c03f9567d72cff48e6cf47489908daad8c89637c25e"
+        },
+        {
+          "path": "out/mb/PWC.LevelPhone.DeliveryApp.DeliveryContent.jsonl.gz",
+          "sha256": "c0619e603ba132d9d16e54f5157bac6756c6c2c84e7d4fa994a27545f02dcc40"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24b.json",
+          "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+          "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v2.py",
+          "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
         }
       ],
       "unknown_ids": [],
@@ -17731,12 +18191,86 @@
               "sha256": "3af7e82950157452ac6016e99a9df4381206899dd97f0715ec787b644a993067"
             }
           ]
+        },
+        {
+          "id": "86a2f07dbf334187b030285dec5927a6",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795540313.3671007,
+          "lease_id": "acaf76ea71d4494f8e9567f958416dd7",
+          "checkpoint_at": 1795540313.776109,
+          "state": "evidence_ready",
+          "note": "PWC.LevelPhone.DeliveryApp.DeliveryContent: reaberta de blocked_external; decodificada pelo construtor de type tree v2 (Cpp2IL, atributos contiguos) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/class-contract.json",
+              "sha256": "0d78f6d699c63c52f0546c0e8d31f252a4333319ef7cccfe9b1700ae19086ea2"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/recount.json",
+              "sha256": "b6479a95cc9c2f32d2e6acb71eb964e4e28ed8c4f915cdd339d4ba2a6acd40f6"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/result.json",
+              "sha256": "217c0c8c6db99d09eb3a9c03f9567d72cff48e6cf47489908daad8c89637c25e"
+            },
+            {
+              "path": "out/mb/PWC.LevelPhone.DeliveryApp.DeliveryContent.jsonl.gz",
+              "sha256": "c0619e603ba132d9d16e54f5157bac6756c6c2c84e7d4fa994a27545f02dcc40"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24b.json",
+              "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+              "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v2.py",
+              "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.LevelPhone.DeliveryApp.DeliveryContent: campo `_pageManagers: SerializableDictionaryBase<DeliveryAppStepType, DeliveryPageManagerBase>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/DeliveryApp/DeliveryContent.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
+        "at": 1795540317.6472545,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/class-contract.json",
+            "sha256": "0d78f6d699c63c52f0546c0e8d31f252a4333319ef7cccfe9b1700ae19086ea2"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/recount.json",
+            "sha256": "b6479a95cc9c2f32d2e6acb71eb964e4e28ed8c4f915cdd339d4ba2a6acd40f6"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/1bf0ddcd177c2274/result.json",
+            "sha256": "217c0c8c6db99d09eb3a9c03f9567d72cff48e6cf47489908daad8c89637c25e"
+          },
+          {
+            "path": "out/mb/PWC.LevelPhone.DeliveryApp.DeliveryContent.jsonl.gz",
+            "sha256": "c0619e603ba132d9d16e54f5157bac6756c6c2c84e7d4fa994a27545f02dcc40"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24b.json",
+            "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+            "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v2.py",
+            "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -17751,7 +18285,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.PhoneBackground",
@@ -17766,16 +18300,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.LevelPhone.PhoneBackground"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -17803,11 +18332,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/class-contract.json",
-          "sha256": "430446f84cbf232e585ed74b8a57266766b6dc28cefa24b33cd23af5a92c235e"
+          "sha256": "4be217e75c2266b45a8670a064877dbd3c6a8e8da178bf12ffc54153202fdf0b"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/recount.json",
-          "sha256": "acd26800868eac19712185629490669fec9ceb172d7d96ccf245115f640ddce6"
+          "sha256": "b7dd04c0e74edc475d9f4788132c28edb204b588efe278eac80f60525b1fb9f0"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/result.json",
+          "sha256": "0612a706ada66dda5df1df9dbd61712b21dc1b2dfd4c514f13ae9bc20b61de61"
+        },
+        {
+          "path": "out/mb/PWC.LevelPhone.PhoneBackground.jsonl.gz",
+          "sha256": "eb7cb17622f22aa764907ad5e7d20e774ae69d10f908e36fd2211ceac6d8d009"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24b.json",
+          "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+          "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v2.py",
+          "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
         }
       ],
       "unknown_ids": [],
@@ -17830,12 +18379,86 @@
               "sha256": "acd26800868eac19712185629490669fec9ceb172d7d96ccf245115f640ddce6"
             }
           ]
+        },
+        {
+          "id": "f689f66d6aff4b47bc8a5b66df91bd1b",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795540321.864256,
+          "lease_id": "4ca84676408345dc88e7664db4e62ef6",
+          "checkpoint_at": 1795540322.26116,
+          "state": "evidence_ready",
+          "note": "PWC.LevelPhone.PhoneBackground: reaberta de blocked_external; decodificada pelo construtor de type tree v2 (Cpp2IL, atributos contiguos) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/class-contract.json",
+              "sha256": "4be217e75c2266b45a8670a064877dbd3c6a8e8da178bf12ffc54153202fdf0b"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/recount.json",
+              "sha256": "b7dd04c0e74edc475d9f4788132c28edb204b588efe278eac80f60525b1fb9f0"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/result.json",
+              "sha256": "0612a706ada66dda5df1df9dbd61712b21dc1b2dfd4c514f13ae9bc20b61de61"
+            },
+            {
+              "path": "out/mb/PWC.LevelPhone.PhoneBackground.jsonl.gz",
+              "sha256": "eb7cb17622f22aa764907ad5e7d20e774ae69d10f908e36fd2211ceac6d8d009"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24b.json",
+              "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+              "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v2.py",
+              "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.LevelPhone.PhoneBackground: campo `_backgroundColors: SerializableDictionaryBase<ApplicationType, ApplicationBackgroundData>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneBackground.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
+        "at": 1795540326.1347826,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/class-contract.json",
+            "sha256": "4be217e75c2266b45a8670a064877dbd3c6a8e8da178bf12ffc54153202fdf0b"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/recount.json",
+            "sha256": "b7dd04c0e74edc475d9f4788132c28edb204b588efe278eac80f60525b1fb9f0"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/794affaa77d5b1eb/result.json",
+            "sha256": "0612a706ada66dda5df1df9dbd61712b21dc1b2dfd4c514f13ae9bc20b61de61"
+          },
+          {
+            "path": "out/mb/PWC.LevelPhone.PhoneBackground.jsonl.gz",
+            "sha256": "eb7cb17622f22aa764907ad5e7d20e774ae69d10f908e36fd2211ceac6d8d009"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24b.json",
+            "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+            "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v2.py",
+            "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -17850,7 +18473,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.PhoneContentIcon",
@@ -17865,16 +18488,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.LevelPhone.PhoneContentIcon"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -17902,11 +18520,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/class-contract.json",
-          "sha256": "617e3ace48dd443b3768b16a71265f22f2bcf81dafe79270303aedf7bd974e70"
+          "sha256": "bb162b79ea2f2279458611cf7795684c40c4a2571045e8788cde94019d856419"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/recount.json",
-          "sha256": "44d1b52a1914ac7f25613c8b418f8f6a1651df5a2b57391d64ce7ac4c6b4b339"
+          "sha256": "b7e0fc1eb27f47c6a0be6ccdd6abaf47c707828c5651d14e0f3822435f600b9a"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/result.json",
+          "sha256": "2406f3dbb3bdf33aa6cd7e8169b3d50b89770046527c1736139e383dd9961bda"
+        },
+        {
+          "path": "out/mb/PWC.LevelPhone.PhoneContentIcon.jsonl.gz",
+          "sha256": "aa51913773b270119f62b13bea879098b60359d485d25f68b5e70f03e7cf88b5"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24b.json",
+          "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+          "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v2.py",
+          "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
         }
       ],
       "unknown_ids": [],
@@ -17929,12 +18567,86 @@
               "sha256": "44d1b52a1914ac7f25613c8b418f8f6a1651df5a2b57391d64ce7ac4c6b4b339"
             }
           ]
+        },
+        {
+          "id": "e0940f787532417da8126b601f22d30b",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795540330.2262952,
+          "lease_id": "41d7ffbe1a394f798ada6901df658013",
+          "checkpoint_at": 1795540330.7568865,
+          "state": "evidence_ready",
+          "note": "PWC.LevelPhone.PhoneContentIcon: reaberta de blocked_external; decodificada pelo construtor de type tree v2 (Cpp2IL, atributos contiguos) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/class-contract.json",
+              "sha256": "bb162b79ea2f2279458611cf7795684c40c4a2571045e8788cde94019d856419"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/recount.json",
+              "sha256": "b7e0fc1eb27f47c6a0be6ccdd6abaf47c707828c5651d14e0f3822435f600b9a"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/result.json",
+              "sha256": "2406f3dbb3bdf33aa6cd7e8169b3d50b89770046527c1736139e383dd9961bda"
+            },
+            {
+              "path": "out/mb/PWC.LevelPhone.PhoneContentIcon.jsonl.gz",
+              "sha256": "aa51913773b270119f62b13bea879098b60359d485d25f68b5e70f03e7cf88b5"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24b.json",
+              "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+              "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v2.py",
+              "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.LevelPhone.PhoneContentIcon: campo `_applicationsIcons: SerializableDictionaryBase<ApplicationType, Sprite>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneContentIcon.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
+        "at": 1795540334.6608992,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/class-contract.json",
+            "sha256": "bb162b79ea2f2279458611cf7795684c40c4a2571045e8788cde94019d856419"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/recount.json",
+            "sha256": "b7e0fc1eb27f47c6a0be6ccdd6abaf47c707828c5651d14e0f3822435f600b9a"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/4e9924232dd3e81d/result.json",
+            "sha256": "2406f3dbb3bdf33aa6cd7e8169b3d50b89770046527c1736139e383dd9961bda"
+          },
+          {
+            "path": "out/mb/PWC.LevelPhone.PhoneContentIcon.jsonl.gz",
+            "sha256": "aa51913773b270119f62b13bea879098b60359d485d25f68b5e70f03e7cf88b5"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24b.json",
+            "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+            "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v2.py",
+            "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -17949,7 +18661,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.LevelPhone.PhoneSeparator",
@@ -17964,16 +18676,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.LevelPhone.PhoneSeparator"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -18001,11 +18708,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/class-contract.json",
-          "sha256": "ec859e8f6ac63cc95f4380e9943906e6c8466486e918e5efc1ecc9085883372a"
+          "sha256": "af5dc779e2c51af6b63ee5bc36bfdeab3873c89c07d3cf785ffd79ec4c381962"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/recount.json",
-          "sha256": "96009878f5381b9779910482fc23707ca271fcc59061e159ff9ce7e7718f6e34"
+          "sha256": "2d9106ea6f72c254f35f962d976f14b58e995eae0d71d271cd22134b9ab2217f"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/result.json",
+          "sha256": "5e34fc0bd6e118ef43946f2967d743c032da1c0c67d88eefd6bbfc016077a845"
+        },
+        {
+          "path": "out/mb/PWC.LevelPhone.PhoneSeparator.jsonl.gz",
+          "sha256": "38f02493eb51e3852a3af87a0b3ff6608dc9197e1b5ef6646853d46a85c3da05"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24b.json",
+          "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+          "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v2.py",
+          "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
         }
       ],
       "unknown_ids": [],
@@ -18028,12 +18755,86 @@
               "sha256": "96009878f5381b9779910482fc23707ca271fcc59061e159ff9ce7e7718f6e34"
             }
           ]
+        },
+        {
+          "id": "7a51c24f383b481388f968d28c81a38a",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795540338.885813,
+          "lease_id": "7a663d89b1fa40fdbabb5cca2368231a",
+          "checkpoint_at": 1795540339.4147985,
+          "state": "evidence_ready",
+          "note": "PWC.LevelPhone.PhoneSeparator: reaberta de blocked_external; decodificada pelo construtor de type tree v2 (Cpp2IL, atributos contiguos) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/class-contract.json",
+              "sha256": "af5dc779e2c51af6b63ee5bc36bfdeab3873c89c07d3cf785ffd79ec4c381962"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/recount.json",
+              "sha256": "2d9106ea6f72c254f35f962d976f14b58e995eae0d71d271cd22134b9ab2217f"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/result.json",
+              "sha256": "5e34fc0bd6e118ef43946f2967d743c032da1c0c67d88eefd6bbfc016077a845"
+            },
+            {
+              "path": "out/mb/PWC.LevelPhone.PhoneSeparator.jsonl.gz",
+              "sha256": "38f02493eb51e3852a3af87a0b3ff6608dc9197e1b5ef6646853d46a85c3da05"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24b.json",
+              "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+              "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v2.py",
+              "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.LevelPhone.PhoneSeparator: campo `_seperatorColors: SerializableDictionaryBase<ApplicationType, Color>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/LevelPhone/PhoneSeparator.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 225 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
+        "at": 1795540343.3998735,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/class-contract.json",
+            "sha256": "af5dc779e2c51af6b63ee5bc36bfdeab3873c89c07d3cf785ffd79ec4c381962"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/recount.json",
+            "sha256": "2d9106ea6f72c254f35f962d976f14b58e995eae0d71d271cd22134b9ab2217f"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/dad413b840f63fce/result.json",
+            "sha256": "5e34fc0bd6e118ef43946f2967d743c032da1c0c67d88eefd6bbfc016077a845"
+          },
+          {
+            "path": "out/mb/PWC.LevelPhone.PhoneSeparator.jsonl.gz",
+            "sha256": "38f02493eb51e3852a3af87a0b3ff6608dc9197e1b5ef6646853d46a85c3da05"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24b.json",
+            "sha256": "08f3cd7fef6363d2afa5fb1cb09f596f56f8a9f8737354b92a1c65fc50ee3cdd"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md",
+            "sha256": "ee10a6daa6e710396b4ccb74eb93d7fd8b2ea4e42fabd6e3368073745c10b11a"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v2.py",
+            "sha256": "f6d5a077e417c4a15ac5b575d9e01939b469b0c40100c01ea451c4d7db7a6475"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v2 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 18/18 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; A v1 tinha um bug de janela de atributos (pegava o atributo do campo anterior), corrigido na v2; PhoneContentIcon, que a v1 lia com valores lixo, sai coerente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -78365,7 +79166,7 @@
     }
   ],
   "root": "/home/deppi/avtrwolrdcraft/.claude/worktrees/re-capstone-dispatch",
-  "revision": 613,
+  "revision": 658,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -83535,6 +84336,321 @@
       "task": "T020/CLASS/7ea1a24e4c2ed7ba",
       "actor": "revisor-claude-t020",
       "at": 1795539495.33732
+    },
+    {
+      "revision": 614,
+      "action": "configure",
+      "task": "T020/CLASS/7c9ee2a580e5e6b3",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540265.4883742
+    },
+    {
+      "revision": 615,
+      "action": "claim",
+      "task": "T020/CLASS/7c9ee2a580e5e6b3",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540269.6915681
+    },
+    {
+      "revision": 616,
+      "action": "start",
+      "task": "T020/CLASS/7c9ee2a580e5e6b3",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540269.9152465
+    },
+    {
+      "revision": 617,
+      "action": "checkpoint",
+      "task": "T020/CLASS/7c9ee2a580e5e6b3",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540270.1252084
+    },
+    {
+      "revision": 618,
+      "action": "review",
+      "task": "T020/CLASS/7c9ee2a580e5e6b3",
+      "actor": "revisor-claude-t020",
+      "at": 1795540274.1540694
+    },
+    {
+      "revision": 619,
+      "action": "configure",
+      "task": "T020/CLASS/874bb5e732c3ae55",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540274.3865747
+    },
+    {
+      "revision": 620,
+      "action": "claim",
+      "task": "T020/CLASS/874bb5e732c3ae55",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540278.406413
+    },
+    {
+      "revision": 621,
+      "action": "start",
+      "task": "T020/CLASS/874bb5e732c3ae55",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540278.6011155
+    },
+    {
+      "revision": 622,
+      "action": "checkpoint",
+      "task": "T020/CLASS/874bb5e732c3ae55",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540278.7999043
+    },
+    {
+      "revision": 623,
+      "action": "review",
+      "task": "T020/CLASS/874bb5e732c3ae55",
+      "actor": "revisor-claude-t020",
+      "at": 1795540282.767112
+    },
+    {
+      "revision": 624,
+      "action": "configure",
+      "task": "T020/CLASS/debb94ab279ef194",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540282.9989436
+    },
+    {
+      "revision": 625,
+      "action": "claim",
+      "task": "T020/CLASS/debb94ab279ef194",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540287.0185297
+    },
+    {
+      "revision": 626,
+      "action": "start",
+      "task": "T020/CLASS/debb94ab279ef194",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540287.2781096
+    },
+    {
+      "revision": 627,
+      "action": "checkpoint",
+      "task": "T020/CLASS/debb94ab279ef194",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540287.598876
+    },
+    {
+      "revision": 628,
+      "action": "review",
+      "task": "T020/CLASS/debb94ab279ef194",
+      "actor": "revisor-claude-t020",
+      "at": 1795540291.5322008
+    },
+    {
+      "revision": 629,
+      "action": "configure",
+      "task": "T020/CLASS/d76fc257e7d34d6a",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540291.7407746
+    },
+    {
+      "revision": 630,
+      "action": "claim",
+      "task": "T020/CLASS/d76fc257e7d34d6a",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540295.6573558
+    },
+    {
+      "revision": 631,
+      "action": "start",
+      "task": "T020/CLASS/d76fc257e7d34d6a",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540295.8539364
+    },
+    {
+      "revision": 632,
+      "action": "checkpoint",
+      "task": "T020/CLASS/d76fc257e7d34d6a",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540296.0787873
+    },
+    {
+      "revision": 633,
+      "action": "review",
+      "task": "T020/CLASS/d76fc257e7d34d6a",
+      "actor": "revisor-claude-t020",
+      "at": 1795540300.273234
+    },
+    {
+      "revision": 634,
+      "action": "configure",
+      "task": "T020/CLASS/e4a0494ce4c72fcd",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540300.512518
+    },
+    {
+      "revision": 635,
+      "action": "claim",
+      "task": "T020/CLASS/e4a0494ce4c72fcd",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540304.7267883
+    },
+    {
+      "revision": 636,
+      "action": "start",
+      "task": "T020/CLASS/e4a0494ce4c72fcd",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540304.9328265
+    },
+    {
+      "revision": 637,
+      "action": "checkpoint",
+      "task": "T020/CLASS/e4a0494ce4c72fcd",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540305.2071228
+    },
+    {
+      "revision": 638,
+      "action": "review",
+      "task": "T020/CLASS/e4a0494ce4c72fcd",
+      "actor": "revisor-claude-t020",
+      "at": 1795540309.2631197
+    },
+    {
+      "revision": 639,
+      "action": "configure",
+      "task": "T020/CLASS/1bf0ddcd177c2274",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540309.4937508
+    },
+    {
+      "revision": 640,
+      "action": "claim",
+      "task": "T020/CLASS/1bf0ddcd177c2274",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540313.4159076
+    },
+    {
+      "revision": 641,
+      "action": "start",
+      "task": "T020/CLASS/1bf0ddcd177c2274",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540313.61327
+    },
+    {
+      "revision": 642,
+      "action": "checkpoint",
+      "task": "T020/CLASS/1bf0ddcd177c2274",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540313.814913
+    },
+    {
+      "revision": 643,
+      "action": "review",
+      "task": "T020/CLASS/1bf0ddcd177c2274",
+      "actor": "revisor-claude-t020",
+      "at": 1795540317.6862106
+    },
+    {
+      "revision": 644,
+      "action": "configure",
+      "task": "T020/CLASS/794affaa77d5b1eb",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540317.890293
+    },
+    {
+      "revision": 645,
+      "action": "claim",
+      "task": "T020/CLASS/794affaa77d5b1eb",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540321.9032
+    },
+    {
+      "revision": 646,
+      "action": "start",
+      "task": "T020/CLASS/794affaa77d5b1eb",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540322.0994592
+    },
+    {
+      "revision": 647,
+      "action": "checkpoint",
+      "task": "T020/CLASS/794affaa77d5b1eb",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540322.2996578
+    },
+    {
+      "revision": 648,
+      "action": "review",
+      "task": "T020/CLASS/794affaa77d5b1eb",
+      "actor": "revisor-claude-t020",
+      "at": 1795540326.1724722
+    },
+    {
+      "revision": 649,
+      "action": "configure",
+      "task": "T020/CLASS/4e9924232dd3e81d",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540326.369739
+    },
+    {
+      "revision": 650,
+      "action": "claim",
+      "task": "T020/CLASS/4e9924232dd3e81d",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540330.264331
+    },
+    {
+      "revision": 651,
+      "action": "start",
+      "task": "T020/CLASS/4e9924232dd3e81d",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540330.4664478
+    },
+    {
+      "revision": 652,
+      "action": "checkpoint",
+      "task": "T020/CLASS/4e9924232dd3e81d",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540330.796794
+    },
+    {
+      "revision": 653,
+      "action": "review",
+      "task": "T020/CLASS/4e9924232dd3e81d",
+      "actor": "revisor-claude-t020",
+      "at": 1795540334.6996732
+    },
+    {
+      "revision": 654,
+      "action": "configure",
+      "task": "T020/CLASS/dad413b840f63fce",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540335.026448
+    },
+    {
+      "revision": 655,
+      "action": "claim",
+      "task": "T020/CLASS/dad413b840f63fce",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540338.9243603
+    },
+    {
+      "revision": 656,
+      "action": "start",
+      "task": "T020/CLASS/dad413b840f63fce",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540339.181487
+    },
+    {
+      "revision": 657,
+      "action": "checkpoint",
+      "task": "T020/CLASS/dad413b840f63fce",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795540339.4553359
+    },
+    {
+      "revision": 658,
+      "action": "review",
+      "task": "T020/CLASS/dad413b840f63fce",
+      "actor": "revisor-claude-t020",
+      "at": 1795540343.4416754
     }
   ]
 }

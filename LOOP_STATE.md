@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: 9 classes do construtor v2 aceitas (done) — 2026-11-24
+- A pedido explicito do usuario: as 9 tarefas (5 do LevelPhone, LevelStationButton, AvatarMakerLobbyManager, LevelSkinsRandomizer, AchievementDetailThumb) foram reabertas (`configure`) e submetidas/aprovadas
+  (autor `agente-re-capstone-claude`, revisor `revisor-claude-t020`) apos verificacao independente (contagens, ids, um `m_Script`, adendo de estatisticas, sanidade e conteudo identico a segunda execucao da v2; regressao 18/18).
+  Fila: done 94 -> 103, blocked_external 33 -> 24. Evidencia aponta para `tools/mb_typetree_builder_v2.py` e `out/mb/_stats_addendum_2026-11-24b.json` (o `_stats.json` segue congelado).
+- Restam 34 classes T020 sem solucao: 20 EditorApp (irrecuperaveis), 12 com `[SerializeReference]`/ConditionResolver, GameExtraSettings, LocalizationManager.
+
 ## T020: +9 classes com o construtor v2 (bug da janela de atributos corrigido) — 2026-11-24
 - A v1 pegava o `[SerializeField]` do campo anterior (ex. `PhoneSeparator._tweenID` nao e serializado); `tools/mb_typetree_builder_v2.py` usa so atributos contiguos. +9 classes (5 do LevelPhone, LevelStationButton,
   AvatarMakerLobbyManager, LevelSkinsRandomizer, AchievementDetailThumb; 1.142 instancias), regressao 18/18 identica. Restam 34 (20 EditorApp, 12 com SerializeReference, GameExtraSettings, LocalizationManager). `docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md`.

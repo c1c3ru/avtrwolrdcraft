@@ -1,14 +1,94 @@
 {
  "class": "Game.Level.MovingTraingBackground.LevelStationButton",
  "before": {
-  "err": 12
- },
- "after": {
   "ok": 0,
   "bad": 0,
-  "err": 12
+  "err": 12,
+  "err_message": "ValueError: Expected to read 232 bytes, but only read 32 bytes"
  },
- "status": "confirmed_blocked_by_typetreegeneratorapi_limitation",
- "object_identities": "NOT individually identified (path_id/file) - this is a node-generation-time failure (happens before any object of the class is even attempted), and confirming the exact object count/identities would need the datapack.unity3d container opened anyway (repeatedly OOM'd on this machine, see LOOP_STATE.md). Only the aggregate count from out/mb/_stats.json is known (12).",
- "unresolved_objects": "12 objects of this class, identities unknown"
+ "after": {
+  "ok": 12,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 12,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours (tools/mb_retry_errors_lowmem.py); bytes crus de todas as instancias da classe extraidos e lidos",
+ "affected_objects": [
+  {
+   "path_id": 1708,
+   "assets_file": "level58",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2034,
+   "assets_file": "level58",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2043,
+   "assets_file": "level62",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2046,
+   "assets_file": "level62",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2115,
+   "assets_file": "level62",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2185,
+   "assets_file": "level186",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2373,
+   "assets_file": "level186",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2390,
+   "assets_file": "level186",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2396,
+   "assets_file": "level186",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2403,
+   "assets_file": "level186",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2940,
+   "assets_file": "level224",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3090,
+   "assets_file": "level224",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "12 instancia(s) lidas com consumo exato de byte_size e valores plausiveis; total = declarado ok 0 + err 12.",
+ "output_artifact": "out/mb/Game.Level.MovingTraingBackground.LevelStationButton.jsonl.gz",
+ "stats_json_update": "out/mb/_stats_addendum_2026-11-24b.json: Game.Level.MovingTraingBackground.LevelStationButton -> {\"ok\": 12} (o _stats.json fica congelado: e evidencia hasheada de tarefas done)"
 }
