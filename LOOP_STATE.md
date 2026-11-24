@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020/CLASS InventoryBuildData e InventorySkinsBuildData aceitas (done) — 2026-11-24
+- `accept` registrado a pedido explicito do usuario (revisor `revisor-claude-t020`, distinto dos autores), apos verificacao em `docs/REVIEW_T020_INVENTORY_2026-11-24.md`
+  (contagens 1/1 e 2/2, erro original preservado, dados decodificados coerentes). Reserva: releitura via UnityPy nao reexecutada (RAM). Fila: done 11 -> 13, nada em `review`.
+- Continuam abertas as 74 classes T020 que so confirmam com mais RAM (UnityPy descomprime o bundle de 1,3 GB com pico ~2x). `root` da fila segue no worktree (ver entrada de T025).
+
 ## T025: 8 tarefas aceitas na fila (done) com reservas — 2026-11-24
 - Aplicado a pedido do usuario: `relocate` para o worktree (`root` da fila agora = `.../.claude/worktrees/re-capstone-dispatch`, revisao 237) e, para cada tarefa,
   `submit` (autor `agente-re-capstone-claude`) + `accept` (revisor `revisor-independente-subagente`, distinto do autor) com as reservas na nota.

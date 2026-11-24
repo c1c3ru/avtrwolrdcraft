@@ -9290,7 +9290,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "review",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.Inventory.InventoryBuildData",
@@ -9381,8 +9381,27 @@
       ],
       "owner": "agente-artefatos-claude",
       "lease": null,
-      "review": null,
-      "next_action": "Root cause achado e corrigido (bug de mislabeling de List<String> no TypeTreeGeneratorAPI, ver class-contract.json). 1 de 1 instancia da classe no jogo decodificada e validada com check_read=True. Trabalho ja estava feito/commitado numa sessao anterior (PR #64); reconciliado aqui agora. Pronto para revisao independente.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Aprovado por autorizacao explicita do usuario. Verificacao em docs/REVIEW_T020_INVENTORY_2026-11-24.md: recount.json reconcilia 1/1 instancia (path_id 217, sharedassets1.assets) com out/mb/PWC.Inventory.InventoryBuildData.jsonl.gz; erro original (EOFError read_str out of bounds, err=1) preservado; classe fora de _stats.json erros. Reserva: releitura via UnityPy nao reexecutada (RAM); verificacao sobre artefatos ja decodificados.",
+        "at": 1795530888.6071367,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/22379dfdf824449b/class-contract.json",
+            "sha256": "737306457945708cc17472720f10c7eec1cd5285d41477c1eff37b2574991ccd"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/22379dfdf824449b/recount.json",
+            "sha256": "72b331ce6f22508fac5d609ff090080e2a361813e5357e55af0e9493e5fbfb7d"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/22379dfdf824449b/result.json",
+            "sha256": "e73b4fedd0aeda26c1086356ab2611944585c0a53cdea477f12e41471440aca0"
+          }
+        ]
+      },
+      "next_action": "Aprovado por autorizacao explicita do usuario. Verificacao em docs/REVIEW_T020_INVENTORY_2026-11-24.md: recount.json reconcilia 1/1 instancia (path_id 217, sharedassets1.assets) com out/mb/PWC.Inventory.InventoryBuildData.jsonl.gz; erro original (EOFError read_str out of bounds, err=1) preservado; classe fora de _stats.json erros. Reserva: releitura via UnityPy nao reexecutada (RAM); verificacao sobre artefatos ja decodificados.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9397,7 +9416,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "review",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.Inventory.InventorySkinsBuildData",
@@ -9488,8 +9507,27 @@
       ],
       "owner": "agente-artefatos-claude",
       "lease": null,
-      "review": null,
-      "next_action": "Mesmo bug/fix de T020/CLASS/22379dfdf824449b (InventoryBuildData). As 2 instancias no jogo decodificam e validam com check_read=True. Trabalho ja feito/commitado em sessao anterior (PR #64); reconciliado aqui. Pronto para revisao independente.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Aprovado por autorizacao explicita do usuario. Verificacao em docs/REVIEW_T020_INVENTORY_2026-11-24.md: recount.json reconcilia 2/2 instancias (path_ids 721792 e 721793, resources.assets) com out/mb/PWC.Inventory.InventorySkinsBuildData.jsonl.gz; erro original (EOFError, err=2) preservado; classe fora de _stats.json erros. Reserva: releitura via UnityPy nao reexecutada (RAM); verificacao sobre artefatos ja decodificados.",
+        "at": 1795530892.5960624,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/90da446022c5664c/class-contract.json",
+            "sha256": "977797acf58090e5b57cc5fb16449781564287b008da96c4dec951a99ce11ae3"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/90da446022c5664c/recount.json",
+            "sha256": "6805f6ba083aab6b310427b0b4c327ba7a86edf9ef3af75ee47b22fa909cfe96"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/90da446022c5664c/result.json",
+            "sha256": "2bd655d397f757385db76a871163b04300849ff6c69bb9122b9754efd90d3efd"
+          }
+        ]
+      },
+      "next_action": "Aprovado por autorizacao explicita do usuario. Verificacao em docs/REVIEW_T020_INVENTORY_2026-11-24.md: recount.json reconcilia 2/2 instancias (path_ids 721792 e 721793, resources.assets) com out/mb/PWC.Inventory.InventorySkinsBuildData.jsonl.gz; erro original (EOFError, err=2) preservado; classe fora de _stats.json erros. Reserva: releitura via UnityPy nao reexecutada (RAM); verificacao sobre artefatos ja decodificados.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -70173,7 +70211,7 @@
     }
   ],
   "root": "/home/deppi/avtrwolrdcraft/.claude/worktrees/re-capstone-dispatch",
-  "revision": 269,
+  "revision": 271,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -72935,6 +72973,20 @@
       "task": "T025/METHOD/5fe1bb4a25183678",
       "actor": "revisor-independente-subagente",
       "at": 1795528742.7991667
+    },
+    {
+      "revision": 270,
+      "action": "review",
+      "task": "T020/CLASS/22379dfdf824449b",
+      "actor": "revisor-claude-t020",
+      "at": 1795530888.6350734
+    },
+    {
+      "revision": 271,
+      "action": "review",
+      "task": "T020/CLASS/90da446022c5664c",
+      "actor": "revisor-claude-t020",
+      "at": 1795530892.6258354
     }
   ]
 }
