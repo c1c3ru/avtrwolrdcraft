@@ -8386,7 +8386,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerBabyColorsConfig",
@@ -8401,16 +8401,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerBabyColorsConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -8438,11 +8433,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/class-contract.json",
-          "sha256": "693dee46cf82d5b28e413591af991482460598ffdb584909245cc44229df27c7"
+          "sha256": "115de83d47a1549cf61106c9ba4d36a351c30baf0da363ccfd1266e140c9163b"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/recount.json",
-          "sha256": "b190559dfa5361b27e3e759db63925d6a97bd687a613e2cfb0cf3d59e24a78af"
+          "sha256": "e3b968898a2c2c907c5e01c3d178a38c912b02eabba49a03b531f1e3450e693a"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/result.json",
+          "sha256": "a87db986b433e0a962f8729d6d32935e86caa1c40250d372613423170169db95"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerBabyColorsConfig.jsonl.gz",
+          "sha256": "db2573a90a1b0b73a54715bfb1d10fd1e422de64d6fa69197b22d405ace53b1a"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -8465,12 +8480,86 @@
               "sha256": "b190559dfa5361b27e3e759db63925d6a97bd687a613e2cfb0cf3d59e24a78af"
             }
           ]
+        },
+        {
+          "id": "ef689024416e4b1aa71dd7e305281e6d",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539343.5704162,
+          "lease_id": "321112f63af742ddadd95e5e4c42f0d1",
+          "checkpoint_at": 1795539344.0180259,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerBabyColorsConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/class-contract.json",
+              "sha256": "115de83d47a1549cf61106c9ba4d36a351c30baf0da363ccfd1266e140c9163b"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/recount.json",
+              "sha256": "e3b968898a2c2c907c5e01c3d178a38c912b02eabba49a03b531f1e3450e693a"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/result.json",
+              "sha256": "a87db986b433e0a962f8729d6d32935e86caa1c40250d372613423170169db95"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerBabyColorsConfig.jsonl.gz",
+              "sha256": "db2573a90a1b0b73a54715bfb1d10fd1e422de64d6fa69197b22d405ace53b1a"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerBabyColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<BabyCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabyColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539347.9924347,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/class-contract.json",
+            "sha256": "115de83d47a1549cf61106c9ba4d36a351c30baf0da363ccfd1266e140c9163b"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/recount.json",
+            "sha256": "e3b968898a2c2c907c5e01c3d178a38c912b02eabba49a03b531f1e3450e693a"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/db06c1b5d845a25c/result.json",
+            "sha256": "a87db986b433e0a962f8729d6d32935e86caa1c40250d372613423170169db95"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerBabyColorsConfig.jsonl.gz",
+            "sha256": "db2573a90a1b0b73a54715bfb1d10fd1e422de64d6fa69197b22d405ace53b1a"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -8485,7 +8574,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig",
@@ -8500,16 +8589,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -8537,11 +8621,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/class-contract.json",
-          "sha256": "b63317d101d7b7ead3a68a61b3966e61c57405f46159d0c030c8396bac1b8cfb"
+          "sha256": "01ec62dcdc4edb182517659700c1187159b76ed9372055f73f80dd68af5aa23e"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/recount.json",
-          "sha256": "ab386ee4cad979d01db87fb7eddd31efb9f311789685eb35b7025c60c2adca40"
+          "sha256": "5b75241a5f96a8186dd960ecb406d5386d39605924549d2808b1c4f1bb892dec"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/result.json",
+          "sha256": "b8930e49bbe5a09532d35f288f482030c45278f763be11d1fc63404624a00cb8"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig.jsonl.gz",
+          "sha256": "3a4c60f2b1c55dee3c0bb2b6ffbeae6d6ecce6df7a686a03d2df36fea6275d78"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -8564,12 +8668,86 @@
               "sha256": "ab386ee4cad979d01db87fb7eddd31efb9f311789685eb35b7025c60c2adca40"
             }
           ]
+        },
+        {
+          "id": "3361077e0ced4c2dbc17cad1a327b3fb",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539352.2470114,
+          "lease_id": "fa947e00d07f4d6ba8338c946659a2b3",
+          "checkpoint_at": 1795539352.6318986,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/class-contract.json",
+              "sha256": "01ec62dcdc4edb182517659700c1187159b76ed9372055f73f80dd68af5aa23e"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/recount.json",
+              "sha256": "5b75241a5f96a8186dd960ecb406d5386d39605924549d2808b1c4f1bb892dec"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/result.json",
+              "sha256": "b8930e49bbe5a09532d35f288f482030c45278f763be11d1fc63404624a00cb8"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig.jsonl.gz",
+              "sha256": "3a4c60f2b1c55dee3c0bb2b6ffbeae6d6ecce6df7a686a03d2df36fea6275d78"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<BabyCategoryType, BabySubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerBabySubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539356.5396051,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/class-contract.json",
+            "sha256": "01ec62dcdc4edb182517659700c1187159b76ed9372055f73f80dd68af5aa23e"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/recount.json",
+            "sha256": "5b75241a5f96a8186dd960ecb406d5386d39605924549d2808b1c4f1bb892dec"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/388df2f05bd90e6f/result.json",
+            "sha256": "b8930e49bbe5a09532d35f288f482030c45278f763be11d1fc63404624a00cb8"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig.jsonl.gz",
+            "sha256": "3a4c60f2b1c55dee3c0bb2b6ffbeae6d6ecce6df7a686a03d2df36fea6275d78"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -8584,7 +8762,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCarColorsConfig",
@@ -8599,16 +8777,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerCarColorsConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -8636,11 +8809,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/class-contract.json",
-          "sha256": "461dab43a1452320638174da5d6665ded1139fd253cf14efbf959eaf8dc3309a"
+          "sha256": "9ca5e00c721052af448e85e6188831c5c6e657613a5af58b546a245b9411d9b4"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/recount.json",
-          "sha256": "11cd2c865a7865d96558b4eb8253389760f5d5a43cca02405642b3042a13987a"
+          "sha256": "086af1b765376e9fd715fd10860fc4b6e3c05638b428395bc945f8bea54dafe1"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/result.json",
+          "sha256": "6194974a86573ec554f3442966e9df6c75bc2446075a5d59a98a53bae0487905"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerCarColorsConfig.jsonl.gz",
+          "sha256": "c9630472b27733adbb5dd628408970cf782fa42d3aa2ffaa6cb17d05ccd3741f"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -8663,12 +8856,86 @@
               "sha256": "11cd2c865a7865d96558b4eb8253389760f5d5a43cca02405642b3042a13987a"
             }
           ]
+        },
+        {
+          "id": "e91f023071904ce08b0da05fba57b1d2",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539360.6413078,
+          "lease_id": "173b79643d954e0eb0e4728aee612756",
+          "checkpoint_at": 1795539361.0464396,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerCarColorsConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/class-contract.json",
+              "sha256": "9ca5e00c721052af448e85e6188831c5c6e657613a5af58b546a245b9411d9b4"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/recount.json",
+              "sha256": "086af1b765376e9fd715fd10860fc4b6e3c05638b428395bc945f8bea54dafe1"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/result.json",
+              "sha256": "6194974a86573ec554f3442966e9df6c75bc2446075a5d59a98a53bae0487905"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerCarColorsConfig.jsonl.gz",
+              "sha256": "c9630472b27733adbb5dd628408970cf782fa42d3aa2ffaa6cb17d05ccd3741f"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerCarColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<CarCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539364.9356194,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/class-contract.json",
+            "sha256": "9ca5e00c721052af448e85e6188831c5c6e657613a5af58b546a245b9411d9b4"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/recount.json",
+            "sha256": "086af1b765376e9fd715fd10860fc4b6e3c05638b428395bc945f8bea54dafe1"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/379ca071ca92e791/result.json",
+            "sha256": "6194974a86573ec554f3442966e9df6c75bc2446075a5d59a98a53bae0487905"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerCarColorsConfig.jsonl.gz",
+            "sha256": "c9630472b27733adbb5dd628408970cf782fa42d3aa2ffaa6cb17d05ccd3741f"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -8683,7 +8950,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig",
@@ -8698,16 +8965,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -8735,11 +8997,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/class-contract.json",
-          "sha256": "ebbb774153f9c5bf2b50fbee3ec9836d40f0e832a58028a05b87b2ae4ea01906"
+          "sha256": "f34ca046f6f8857244331a326276552a70802f01abe7e2a814013f7af00e9ff6"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/recount.json",
-          "sha256": "6009cbbe626a090d4a0615f4133ee0c6613dccfe0bdf70cc2bdacfb29d05f528"
+          "sha256": "2c4836126925f0360a4d2a4be520470bd32eb7a9b8ac5e67ecdf08fabc89a62c"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/result.json",
+          "sha256": "29de656ba34951f95764ce4ad2e805ed879f2d823da2bda3174d08e5cee34454"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig.jsonl.gz",
+          "sha256": "e688174e95acdcce19953b246f65a37a4c70495c59fc25878276ae5cb79f5e0e"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -8762,12 +9044,86 @@
               "sha256": "6009cbbe626a090d4a0615f4133ee0c6613dccfe0bdf70cc2bdacfb29d05f528"
             }
           ]
+        },
+        {
+          "id": "710fee5782cf4ab7926a93f744007bea",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539369.012145,
+          "lease_id": "415b4cf5bcad465e805e7b27a3f4f315",
+          "checkpoint_at": 1795539369.4231186,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/class-contract.json",
+              "sha256": "f34ca046f6f8857244331a326276552a70802f01abe7e2a814013f7af00e9ff6"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/recount.json",
+              "sha256": "2c4836126925f0360a4d2a4be520470bd32eb7a9b8ac5e67ecdf08fabc89a62c"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/result.json",
+              "sha256": "29de656ba34951f95764ce4ad2e805ed879f2d823da2bda3174d08e5cee34454"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig.jsonl.gz",
+              "sha256": "e688174e95acdcce19953b246f65a37a4c70495c59fc25878276ae5cb79f5e0e"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<CarCategoryType, CarSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCarSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539373.3406396,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/class-contract.json",
+            "sha256": "f34ca046f6f8857244331a326276552a70802f01abe7e2a814013f7af00e9ff6"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/recount.json",
+            "sha256": "2c4836126925f0360a4d2a4be520470bd32eb7a9b8ac5e67ecdf08fabc89a62c"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/ec772f214266864a/result.json",
+            "sha256": "29de656ba34951f95764ce4ad2e805ed879f2d823da2bda3174d08e5cee34454"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig.jsonl.gz",
+            "sha256": "e688174e95acdcce19953b246f65a37a4c70495c59fc25878276ae5cb79f5e0e"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -8956,7 +9312,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCatColorsConfig",
@@ -8971,16 +9327,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerCatColorsConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9008,11 +9359,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/class-contract.json",
-          "sha256": "9abc688f6dae8d85968d1e35ee384439e22066fc6ba00b42438be7ac69d3ecaf"
+          "sha256": "130e053834c3556a778f39019a9c77d61ce3f7e84cdef3ba895a15c95183c86f"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/recount.json",
-          "sha256": "13ca7f7658573f2b04c57005abe7a6b08d276dffe07a23980a4de86d9464dd21"
+          "sha256": "86e299a1189f998c6869a3eeaedb6ffc736885c1a1a9574606542c9647f3e804"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/result.json",
+          "sha256": "1282ef80859730db414ec1bbfdd8c8a14f007e73bd4dcdbdad76e3ecded8050f"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerCatColorsConfig.jsonl.gz",
+          "sha256": "b88a73723929d40a61fccfb73c0d5f98c4446e5539a2e3fee5d3f11b2c61aae7"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9035,12 +9406,86 @@
               "sha256": "13ca7f7658573f2b04c57005abe7a6b08d276dffe07a23980a4de86d9464dd21"
             }
           ]
+        },
+        {
+          "id": "c1f25eb212eb4d94a2e444de6bfbf089",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539377.5300255,
+          "lease_id": "7abb0c4afb2741d089e0fa73d5811cb8",
+          "checkpoint_at": 1795539377.9423513,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerCatColorsConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/class-contract.json",
+              "sha256": "130e053834c3556a778f39019a9c77d61ce3f7e84cdef3ba895a15c95183c86f"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/recount.json",
+              "sha256": "86e299a1189f998c6869a3eeaedb6ffc736885c1a1a9574606542c9647f3e804"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/result.json",
+              "sha256": "1282ef80859730db414ec1bbfdd8c8a14f007e73bd4dcdbdad76e3ecded8050f"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerCatColorsConfig.jsonl.gz",
+              "sha256": "b88a73723929d40a61fccfb73c0d5f98c4446e5539a2e3fee5d3f11b2c61aae7"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerCatColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<CatCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539381.8769755,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/class-contract.json",
+            "sha256": "130e053834c3556a778f39019a9c77d61ce3f7e84cdef3ba895a15c95183c86f"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/recount.json",
+            "sha256": "86e299a1189f998c6869a3eeaedb6ffc736885c1a1a9574606542c9647f3e804"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/c67d866343f1dff2/result.json",
+            "sha256": "1282ef80859730db414ec1bbfdd8c8a14f007e73bd4dcdbdad76e3ecded8050f"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerCatColorsConfig.jsonl.gz",
+            "sha256": "b88a73723929d40a61fccfb73c0d5f98c4446e5539a2e3fee5d3f11b2c61aae7"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9055,7 +9500,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig",
@@ -9070,16 +9515,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9107,11 +9547,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/class-contract.json",
-          "sha256": "b60a87c45afe101605f1be52ce3ee0b3317817dc6dbad4f0fa6fe042c7fbc38f"
+          "sha256": "819c51753b4869a70e88c079956046140d4bf93761afaeeb074fdcad6ff7236d"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/recount.json",
-          "sha256": "0783992003f5fb90479829d2169e2b9cefaa19da8c7c9f7c7ab0235874a5750a"
+          "sha256": "da11e8dc5a275e135af38e77c9e8fb963bfb0c2c5d440cc8352a1a94c883b95f"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/result.json",
+          "sha256": "cbd7182fb24c1dcb4fa326e7a7436b463ea81a555a7a2735e21c96dbdb7551a0"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig.jsonl.gz",
+          "sha256": "8f33ba7a6c175ed8b6f68be4bcc93e1cb55e6702e30acdee95a911cb16f8be1e"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9134,12 +9594,86 @@
               "sha256": "0783992003f5fb90479829d2169e2b9cefaa19da8c7c9f7c7ab0235874a5750a"
             }
           ]
+        },
+        {
+          "id": "df31e99e5e60483d8490da3052a3fd4a",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539386.0886989,
+          "lease_id": "00590c09b34a42bc8e679f3774fdeaa3",
+          "checkpoint_at": 1795539386.6109934,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/class-contract.json",
+              "sha256": "819c51753b4869a70e88c079956046140d4bf93761afaeeb074fdcad6ff7236d"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/recount.json",
+              "sha256": "da11e8dc5a275e135af38e77c9e8fb963bfb0c2c5d440cc8352a1a94c883b95f"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/result.json",
+              "sha256": "cbd7182fb24c1dcb4fa326e7a7436b463ea81a555a7a2735e21c96dbdb7551a0"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig.jsonl.gz",
+              "sha256": "8f33ba7a6c175ed8b6f68be4bcc93e1cb55e6702e30acdee95a911cb16f8be1e"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<CatCategoryType, CatSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCatSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539390.6109862,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/class-contract.json",
+            "sha256": "819c51753b4869a70e88c079956046140d4bf93761afaeeb074fdcad6ff7236d"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/recount.json",
+            "sha256": "da11e8dc5a275e135af38e77c9e8fb963bfb0c2c5d440cc8352a1a94c883b95f"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/0d273b2b5ae269db/result.json",
+            "sha256": "cbd7182fb24c1dcb4fa326e7a7436b463ea81a555a7a2735e21c96dbdb7551a0"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig.jsonl.gz",
+            "sha256": "8f33ba7a6c175ed8b6f68be4bcc93e1cb55e6702e30acdee95a911cb16f8be1e"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9154,7 +9688,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig",
@@ -9169,16 +9703,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9206,11 +9735,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/class-contract.json",
-          "sha256": "ef220fc88528e678cf37277a360172e6e491e5606c7fb13f59655832a345b195"
+          "sha256": "eb11bc26698ecd0049072cfc99b693113b6be350cedb66c2392bc3101f90b10c"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/recount.json",
-          "sha256": "8294e0bd00bd3ff0f1c4583713b63fa06802358602b4047633d3fe9c905acd35"
+          "sha256": "449821e2dfdc2fd4af6a7dc4cd180b9a496b06e87b196bd00f46651ba315fbda"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/result.json",
+          "sha256": "4de82b97318f930931bad72b4390d69c1383b5f61d2fb0298540286b5ddfc7f7"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerCharacterColorsConfig.jsonl.gz",
+          "sha256": "0824fb3d05a151f2dcf1f7943c279dbc612c386cb0b40fb5a2e64277bfd062f2"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9233,12 +9782,86 @@
               "sha256": "8294e0bd00bd3ff0f1c4583713b63fa06802358602b4047633d3fe9c905acd35"
             }
           ]
+        },
+        {
+          "id": "98e95c62fa73456b88c127abf81d247c",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539394.895372,
+          "lease_id": "b96b068a34f549528e7382bb8d71f8a4",
+          "checkpoint_at": 1795539395.287068,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/class-contract.json",
+              "sha256": "eb11bc26698ecd0049072cfc99b693113b6be350cedb66c2392bc3101f90b10c"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/recount.json",
+              "sha256": "449821e2dfdc2fd4af6a7dc4cd180b9a496b06e87b196bd00f46651ba315fbda"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/result.json",
+              "sha256": "4de82b97318f930931bad72b4390d69c1383b5f61d2fb0298540286b5ddfc7f7"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerCharacterColorsConfig.jsonl.gz",
+              "sha256": "0824fb3d05a151f2dcf1f7943c279dbc612c386cb0b40fb5a2e64277bfd062f2"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<CharacterCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539399.2154915,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/class-contract.json",
+            "sha256": "eb11bc26698ecd0049072cfc99b693113b6be350cedb66c2392bc3101f90b10c"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/recount.json",
+            "sha256": "449821e2dfdc2fd4af6a7dc4cd180b9a496b06e87b196bd00f46651ba315fbda"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/82f94aca75d93ede/result.json",
+            "sha256": "4de82b97318f930931bad72b4390d69c1383b5f61d2fb0298540286b5ddfc7f7"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerCharacterColorsConfig.jsonl.gz",
+            "sha256": "0824fb3d05a151f2dcf1f7943c279dbc612c386cb0b40fb5a2e64277bfd062f2"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9253,7 +9876,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig",
@@ -9268,16 +9891,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9305,11 +9923,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/class-contract.json",
-          "sha256": "82e63cc559d7c1cab4ccc44934a6af4601e6cefa986c118eef4f8bbd3f4ea688"
+          "sha256": "15bd8cdc56857a57e527fa527df1170da91d21aa8683614a1ee78a8e5b403d38"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/recount.json",
-          "sha256": "19db61e47db668d216aa539b5cbfc054af5b694870904d19ab6fd48a3602a541"
+          "sha256": "5b923bf3c2ca8ef95a9f740e99e54509e9f68bf0a6dfec5f9bc42ea95adc3855"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/result.json",
+          "sha256": "0e9e6b200bba0d2f3894f686ace1959bfb8a758409ca3947d2775a6f4e0ffa80"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig.jsonl.gz",
+          "sha256": "4647392f11ff4695aa79006bebcedb2d32d36c5cfd13ce1cee0735c19f903728"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9332,12 +9970,86 @@
               "sha256": "19db61e47db668d216aa539b5cbfc054af5b694870904d19ab6fd48a3602a541"
             }
           ]
+        },
+        {
+          "id": "34f8cf5f435a460884a47e7dec5a9269",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539403.3132865,
+          "lease_id": "49f8fd731fe4453790b08edc9b5f3802",
+          "checkpoint_at": 1795539403.7171364,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/class-contract.json",
+              "sha256": "15bd8cdc56857a57e527fa527df1170da91d21aa8683614a1ee78a8e5b403d38"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/recount.json",
+              "sha256": "5b923bf3c2ca8ef95a9f740e99e54509e9f68bf0a6dfec5f9bc42ea95adc3855"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/result.json",
+              "sha256": "0e9e6b200bba0d2f3894f686ace1959bfb8a758409ca3947d2775a6f4e0ffa80"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig.jsonl.gz",
+              "sha256": "4647392f11ff4695aa79006bebcedb2d32d36c5cfd13ce1cee0735c19f903728"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<CharacterCategoryType, CharacterSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerCharacterSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539407.6245108,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/class-contract.json",
+            "sha256": "15bd8cdc56857a57e527fa527df1170da91d21aa8683614a1ee78a8e5b403d38"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/recount.json",
+            "sha256": "5b923bf3c2ca8ef95a9f740e99e54509e9f68bf0a6dfec5f9bc42ea95adc3855"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/fef4f6d3fe08a535/result.json",
+            "sha256": "0e9e6b200bba0d2f3894f686ace1959bfb8a758409ca3947d2775a6f4e0ffa80"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig.jsonl.gz",
+            "sha256": "4647392f11ff4695aa79006bebcedb2d32d36c5cfd13ce1cee0735c19f903728"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9352,7 +10064,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerDogColorsConfig",
@@ -9367,16 +10079,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerDogColorsConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9404,11 +10111,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/class-contract.json",
-          "sha256": "2ff99bc5e8c97b79366f56950feb014a2572708c79d912b0b5fd3babddb5d027"
+          "sha256": "109acab796ff8010d28319579467f365f1158e0d2957b7c50a5277dd88a3882b"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/recount.json",
-          "sha256": "f45a97ffed2d2cbb60b258cd66ed6958d34efae4c7a92c35d5819da04c868aba"
+          "sha256": "c83dd7eebadbecbf15c29cd86bd54709d1e6cea1b02509c426e93be09b18d893"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/result.json",
+          "sha256": "c077985c08550d483153afe3ccbc47d89a0ba3bbe6a607a9ef0bcb6bfd0ffc18"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerDogColorsConfig.jsonl.gz",
+          "sha256": "74b20afa5e9b940221c685ddb4ba92b977eb791b582c99860fdd4e8d1e3c9208"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9431,12 +10158,86 @@
               "sha256": "f45a97ffed2d2cbb60b258cd66ed6958d34efae4c7a92c35d5819da04c868aba"
             }
           ]
+        },
+        {
+          "id": "ae5bfa632d664ff2885e15ccca5e07d5",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539411.8235068,
+          "lease_id": "9b9d251bbf184e3ba5db249b523f3d56",
+          "checkpoint_at": 1795539412.357006,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerDogColorsConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/class-contract.json",
+              "sha256": "109acab796ff8010d28319579467f365f1158e0d2957b7c50a5277dd88a3882b"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/recount.json",
+              "sha256": "c83dd7eebadbecbf15c29cd86bd54709d1e6cea1b02509c426e93be09b18d893"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/result.json",
+              "sha256": "c077985c08550d483153afe3ccbc47d89a0ba3bbe6a607a9ef0bcb6bfd0ffc18"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerDogColorsConfig.jsonl.gz",
+              "sha256": "74b20afa5e9b940221c685ddb4ba92b977eb791b582c99860fdd4e8d1e3c9208"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerDogColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<DogCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539416.3405643,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/class-contract.json",
+            "sha256": "109acab796ff8010d28319579467f365f1158e0d2957b7c50a5277dd88a3882b"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/recount.json",
+            "sha256": "c83dd7eebadbecbf15c29cd86bd54709d1e6cea1b02509c426e93be09b18d893"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/9b6333eb4d8c18eb/result.json",
+            "sha256": "c077985c08550d483153afe3ccbc47d89a0ba3bbe6a607a9ef0bcb6bfd0ffc18"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerDogColorsConfig.jsonl.gz",
+            "sha256": "74b20afa5e9b940221c685ddb4ba92b977eb791b582c99860fdd4e8d1e3c9208"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9451,7 +10252,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig",
@@ -9466,16 +10267,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9503,11 +10299,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/class-contract.json",
-          "sha256": "ac6010449a188f48e588310de255c9c6a315bf21abc602b5a58870a4ced56637"
+          "sha256": "27b26e5fc8c458afd8eedf084418c4989c25dfbca6d8f3ae7715aacbfc8a6f99"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/recount.json",
-          "sha256": "8f07fdabbed01f6e02757dfb41d0635574cb20c97448017020bc690852f4a4ea"
+          "sha256": "1457ec22a865a0daca24dccb3768ae103567a61c8fed8f55afee01029a437794"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/result.json",
+          "sha256": "1232057671aff17b3a8ac794f795d96c7fecff0b88d6ac9f1d4a865250e28fb5"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig.jsonl.gz",
+          "sha256": "29fd3133819c5aace605d8e752f4f3b4e02134880e12d63ba03376d069f8b3d7"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9530,12 +10346,86 @@
               "sha256": "8f07fdabbed01f6e02757dfb41d0635574cb20c97448017020bc690852f4a4ea"
             }
           ]
+        },
+        {
+          "id": "b26414e72f9e466e894a4f47de923a8d",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539420.6280727,
+          "lease_id": "78b122b365ed48ada43912e1ddf4be8b",
+          "checkpoint_at": 1795539421.045576,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/class-contract.json",
+              "sha256": "27b26e5fc8c458afd8eedf084418c4989c25dfbca6d8f3ae7715aacbfc8a6f99"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/recount.json",
+              "sha256": "1457ec22a865a0daca24dccb3768ae103567a61c8fed8f55afee01029a437794"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/result.json",
+              "sha256": "1232057671aff17b3a8ac794f795d96c7fecff0b88d6ac9f1d4a865250e28fb5"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig.jsonl.gz",
+              "sha256": "29fd3133819c5aace605d8e752f4f3b4e02134880e12d63ba03376d069f8b3d7"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<DogCategoryType, CatSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539425.09277,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/class-contract.json",
+            "sha256": "27b26e5fc8c458afd8eedf084418c4989c25dfbca6d8f3ae7715aacbfc8a6f99"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/recount.json",
+            "sha256": "1457ec22a865a0daca24dccb3768ae103567a61c8fed8f55afee01029a437794"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/6d7be4b1201ac73f/result.json",
+            "sha256": "1232057671aff17b3a8ac794f795d96c7fecff0b88d6ac9f1d4a865250e28fb5"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig.jsonl.gz",
+            "sha256": "29fd3133819c5aace605d8e752f4f3b4e02134880e12d63ba03376d069f8b3d7"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9550,7 +10440,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerHorseColorsConfig",
@@ -9565,16 +10455,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerHorseColorsConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9602,11 +10487,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/class-contract.json",
-          "sha256": "07e6ce909d2a889087ac621e3b01b170ac899407d8dcc28e88e15a5739ed1992"
+          "sha256": "0b68026c27756b723adfab41d67ea3336cb5cd2167ec34bb2fefcdffc8f9b46f"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/recount.json",
-          "sha256": "97ff7b8ee55f5bc0ae2f18ffc78941a30837a7b4ae4e6b3d707d69fcfc65e945"
+          "sha256": "d19e05ba5063e39d490f689ac5bb1228ea21a825a0665d9a3f72135def520109"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/result.json",
+          "sha256": "4cb957d0793ea9a52f96edae6b272cc3cbf7789ede3118d61c55043e7da08ad7"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerHorseColorsConfig.jsonl.gz",
+          "sha256": "39300d8d6d51b5bad971303f1d7fa45f785b1e28609f0f7bdb52dd2dfd31bd05"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9629,12 +10534,86 @@
               "sha256": "97ff7b8ee55f5bc0ae2f18ffc78941a30837a7b4ae4e6b3d707d69fcfc65e945"
             }
           ]
+        },
+        {
+          "id": "702a38ad02b3458caf84423a94525d61",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539429.2827046,
+          "lease_id": "d9c2cf3eecc04aebbcf942a27906575e",
+          "checkpoint_at": 1795539429.7922716,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerHorseColorsConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/class-contract.json",
+              "sha256": "0b68026c27756b723adfab41d67ea3336cb5cd2167ec34bb2fefcdffc8f9b46f"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/recount.json",
+              "sha256": "d19e05ba5063e39d490f689ac5bb1228ea21a825a0665d9a3f72135def520109"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/result.json",
+              "sha256": "4cb957d0793ea9a52f96edae6b272cc3cbf7789ede3118d61c55043e7da08ad7"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerHorseColorsConfig.jsonl.gz",
+              "sha256": "39300d8d6d51b5bad971303f1d7fa45f785b1e28609f0f7bdb52dd2dfd31bd05"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerHorseColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<HorseCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539433.8901896,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/class-contract.json",
+            "sha256": "0b68026c27756b723adfab41d67ea3336cb5cd2167ec34bb2fefcdffc8f9b46f"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/recount.json",
+            "sha256": "d19e05ba5063e39d490f689ac5bb1228ea21a825a0665d9a3f72135def520109"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/03cf08395d3f4d51/result.json",
+            "sha256": "4cb957d0793ea9a52f96edae6b272cc3cbf7789ede3118d61c55043e7da08ad7"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerHorseColorsConfig.jsonl.gz",
+            "sha256": "39300d8d6d51b5bad971303f1d7fa45f785b1e28609f0f7bdb52dd2dfd31bd05"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9649,7 +10628,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig",
@@ -9664,16 +10643,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9701,11 +10675,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/class-contract.json",
-          "sha256": "fbccd904b52de01f3c673a6be773a6c9adb625966d7cfa7a66a70332b0851b70"
+          "sha256": "9739ccdff350ef1a5fe285da5367b6c109f25e61c627ef558cf52cebbd90d829"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/recount.json",
-          "sha256": "3e47a67c4b5d4c6a847b6367aa554532113e60180b100973c074ab3f55274c74"
+          "sha256": "27458f4d16e5f62c6d7c4729a32c71324aaae4667e01be8551f836acfe68223e"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/result.json",
+          "sha256": "995bdb724abc3f31fb8a676a9614684358b21e1f3ecb1a927a56dd74512d8c51"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig.jsonl.gz",
+          "sha256": "eb279e7d2b5b648c1981b9a00c86e7fcfb89a4b91fd688176f438a1aeaf2fa36"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9728,12 +10722,86 @@
               "sha256": "3e47a67c4b5d4c6a847b6367aa554532113e60180b100973c074ab3f55274c74"
             }
           ]
+        },
+        {
+          "id": "894c3b762820469e9bcedf87980b3a34",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539437.9922743,
+          "lease_id": "ee747c40b6a54fd9bb73b0194ae63aed",
+          "checkpoint_at": 1795539438.68902,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/class-contract.json",
+              "sha256": "9739ccdff350ef1a5fe285da5367b6c109f25e61c627ef558cf52cebbd90d829"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/recount.json",
+              "sha256": "27458f4d16e5f62c6d7c4729a32c71324aaae4667e01be8551f836acfe68223e"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/result.json",
+              "sha256": "995bdb724abc3f31fb8a676a9614684358b21e1f3ecb1a927a56dd74512d8c51"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig.jsonl.gz",
+              "sha256": "eb279e7d2b5b648c1981b9a00c86e7fcfb89a4b91fd688176f438a1aeaf2fa36"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<HorseCategoryType, HorseSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerHorseSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539442.66469,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/class-contract.json",
+            "sha256": "9739ccdff350ef1a5fe285da5367b6c109f25e61c627ef558cf52cebbd90d829"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/recount.json",
+            "sha256": "27458f4d16e5f62c6d7c4729a32c71324aaae4667e01be8551f836acfe68223e"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/98ee43171e398598/result.json",
+            "sha256": "995bdb724abc3f31fb8a676a9614684358b21e1f3ecb1a927a56dd74512d8c51"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig.jsonl.gz",
+            "sha256": "eb279e7d2b5b648c1981b9a00c86e7fcfb89a4b91fd688176f438a1aeaf2fa36"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9748,7 +10816,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig",
@@ -9763,16 +10831,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9800,11 +10863,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/class-contract.json",
-          "sha256": "62bc1652c21c8c63cd3f82a374cce91299247e21ac6c491d6a66dfbcee1accf9"
+          "sha256": "4f72a6a0e674e52500648b3637913a4720e4b4a3080b2e0d4ba66f64546356d9"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/recount.json",
-          "sha256": "1acb95b6c438a26b5614f246d4a78e44cb9f5016077cf94c0b6538191d8961cc"
+          "sha256": "5ee3f7b3ef40fccef78bca3728f73da1521745e4fa86297e102a9e3df2faded2"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/result.json",
+          "sha256": "986ad059a2ff9b6892831804639a5ef9fb04225fc761415a578566d238e98670"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerToddlerColorsConfig.jsonl.gz",
+          "sha256": "3324748ddeeae024e98777ef44d82804805e227d6501dd2b3cced9f1391ece33"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9827,12 +10910,86 @@
               "sha256": "1acb95b6c438a26b5614f246d4a78e44cb9f5016077cf94c0b6538191d8961cc"
             }
           ]
+        },
+        {
+          "id": "d9fcc133aad14bf3a287f2e1642572ea",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539446.9553528,
+          "lease_id": "f8b6d27973f447f796bac73ef9711eb1",
+          "checkpoint_at": 1795539447.5719488,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/class-contract.json",
+              "sha256": "4f72a6a0e674e52500648b3637913a4720e4b4a3080b2e0d4ba66f64546356d9"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/recount.json",
+              "sha256": "5ee3f7b3ef40fccef78bca3728f73da1521745e4fa86297e102a9e3df2faded2"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/result.json",
+              "sha256": "986ad059a2ff9b6892831804639a5ef9fb04225fc761415a578566d238e98670"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerToddlerColorsConfig.jsonl.gz",
+              "sha256": "3324748ddeeae024e98777ef44d82804805e227d6501dd2b3cced9f1391ece33"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig: campo `_colorsByCategoryType: SerializableDictionaryBase<ToddlerCategoryType, AWSpineColorsList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerColorsConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539451.73902,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/class-contract.json",
+            "sha256": "4f72a6a0e674e52500648b3637913a4720e4b4a3080b2e0d4ba66f64546356d9"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/recount.json",
+            "sha256": "5ee3f7b3ef40fccef78bca3728f73da1521745e4fa86297e102a9e3df2faded2"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/7e9938eb7a582d5c/result.json",
+            "sha256": "986ad059a2ff9b6892831804639a5ef9fb04225fc761415a578566d238e98670"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerToddlerColorsConfig.jsonl.gz",
+            "sha256": "3324748ddeeae024e98777ef44d82804805e227d6501dd2b3cced9f1391ece33"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -9847,7 +11004,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig",
@@ -9862,16 +11019,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -9899,11 +11051,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/class-contract.json",
-          "sha256": "979310c8d3652af1e5fccf41fa0bf33067006fbc37cece5543afe71bd392828b"
+          "sha256": "ac4efe42b118e3a32254e8ea93de0b83beb4c4d0891aa554fef7aa1f68fda27e"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/recount.json",
-          "sha256": "3daa011aa66beab1f4c4f925ecc600ac1565318e4ebf6404261f04e052ad2585"
+          "sha256": "370aa2da6563746f661ff1b9c2a8fc9327d01ed3f1aa73a1f564a8a75cc6cf60"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/result.json",
+          "sha256": "eb4a8e3b6912f4750027c7a2b3ff638d22f9f0755a61c61aed5f0da53c1ea5a3"
+        },
+        {
+          "path": "out/mb/PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig.jsonl.gz",
+          "sha256": "0fd21c543276e699f8365b00bc058bb461aa41996ccbb881c8099b257b761034"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -9926,12 +11098,86 @@
               "sha256": "3daa011aa66beab1f4c4f925ecc600ac1565318e4ebf6404261f04e052ad2585"
             }
           ]
+        },
+        {
+          "id": "06cb9b4f0d55458d82d229344af8500c",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539455.937669,
+          "lease_id": "39ccf56d3a57497ba3b22e12372cb17d",
+          "checkpoint_at": 1795539456.5168977,
+          "state": "evidence_ready",
+          "note": "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/class-contract.json",
+              "sha256": "ac4efe42b118e3a32254e8ea93de0b83beb4c4d0891aa554fef7aa1f68fda27e"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/recount.json",
+              "sha256": "370aa2da6563746f661ff1b9c2a8fc9327d01ed3f1aa73a1f564a8a75cc6cf60"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/result.json",
+              "sha256": "eb4a8e3b6912f4750027c7a2b3ff638d22f9f0755a61c61aed5f0da53c1ea5a3"
+            },
+            {
+              "path": "out/mb/PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig.jsonl.gz",
+              "sha256": "0fd21c543276e699f8365b00bc058bb461aa41996ccbb881c8099b257b761034"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig: campo `_subcategoriesData: SerializableDictionaryBase<ToddlerCategoryType, ToddlerSubcategoryDataList>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerToddlerSubcategoriesConfig.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539460.5762136,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/class-contract.json",
+            "sha256": "ac4efe42b118e3a32254e8ea93de0b83beb4c4d0891aa554fef7aa1f68fda27e"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/recount.json",
+            "sha256": "370aa2da6563746f661ff1b9c2a8fc9327d01ed3f1aa73a1f564a8a75cc6cf60"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/3efb39891b0bca92/result.json",
+            "sha256": "eb4a8e3b6912f4750027c7a2b3ff638d22f9f0755a61c61aed5f0da53c1ea5a3"
+          },
+          {
+            "path": "out/mb/PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig.jsonl.gz",
+            "sha256": "0fd21c543276e699f8365b00bc058bb461aa41996ccbb881c8099b257b761034"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -16977,7 +18223,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.DeepLink.DeepLinkManager",
@@ -16992,16 +18238,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PazuCore.DeepLink.DeepLinkManager"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -17029,11 +18270,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/class-contract.json",
-          "sha256": "478fd81d5adabce0d3c2912a4c93737da4ce020b938e69ae72412dae77962854"
+          "sha256": "6bab3326f838e5352d485bd08676b765996e49ceff50aa8ab8a5136e52afb5c0"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/recount.json",
-          "sha256": "b1c17e402a069f79c85be7f8c351796d72b793df6139d626a22640f55931f0ca"
+          "sha256": "891b7b2ad5704fe54612b11a5a878eb14751b54c0e3adebb1874d273080656df"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/result.json",
+          "sha256": "52c5de5412276b2c9bc59fd35e979b52e37a8102ad94efb89d9d5ae99f8bcc31"
+        },
+        {
+          "path": "out/mb/PazuCore.DeepLink.DeepLinkManager.jsonl.gz",
+          "sha256": "92a72c2cfe7d749c65d1f1f7cb6150769b71a48761c87ef5d4e836de31a5f031"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -17056,12 +18317,86 @@
               "sha256": "b1c17e402a069f79c85be7f8c351796d72b793df6139d626a22640f55931f0ca"
             }
           ]
+        },
+        {
+          "id": "b48c1773602d49788c4308b815349b8f",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539464.7582529,
+          "lease_id": "c95c5ca6fec94442b3ab10bc78988b4b",
+          "checkpoint_at": 1795539465.4639814,
+          "state": "evidence_ready",
+          "note": "PazuCore.DeepLink.DeepLinkManager: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/class-contract.json",
+              "sha256": "6bab3326f838e5352d485bd08676b765996e49ceff50aa8ab8a5136e52afb5c0"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/recount.json",
+              "sha256": "891b7b2ad5704fe54612b11a5a878eb14751b54c0e3adebb1874d273080656df"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/result.json",
+              "sha256": "52c5de5412276b2c9bc59fd35e979b52e37a8102ad94efb89d9d5ae99f8bcc31"
+            },
+            {
+              "path": "out/mb/PazuCore.DeepLink.DeepLinkManager.jsonl.gz",
+              "sha256": "92a72c2cfe7d749c65d1f1f7cb6150769b71a48761c87ef5d4e836de31a5f031"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PazuCore.DeepLink.DeepLinkManager: campo `_mapLinkToLevel: SerializableDictionaryBase<String, LevelType>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/DeepLink/DeepLinkManager.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539469.4901917,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/class-contract.json",
+            "sha256": "6bab3326f838e5352d485bd08676b765996e49ceff50aa8ab8a5136e52afb5c0"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/recount.json",
+            "sha256": "891b7b2ad5704fe54612b11a5a878eb14751b54c0e3adebb1874d273080656df"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/9d1c483f660c0668/result.json",
+            "sha256": "52c5de5412276b2c9bc59fd35e979b52e37a8102ad94efb89d9d5ae99f8bcc31"
+          },
+          {
+            "path": "out/mb/PazuCore.DeepLink.DeepLinkManager.jsonl.gz",
+            "sha256": "92a72c2cfe7d749c65d1f1f7cb6150769b71a48761c87ef5d4e836de31a5f031"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -17622,7 +18957,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode",
@@ -17637,16 +18972,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -17674,11 +19004,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/class-contract.json",
-          "sha256": "23de2eac07568ff2140e8c5ea443504fbb722e11219232abf725984b613226d8"
+          "sha256": "3c3c0bf34f216975f81345706ac7847c0460bb4798e7a8f39447e17a75059154"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/recount.json",
-          "sha256": "cb75679802ca077210c9b51c2dbb09a90a6e2d2ad2b40d164f5899772455e818"
+          "sha256": "1d51fb816aa32ce234b32f51c54c83c06f0c73a0b12261cb72891b1e2520d830"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/result.json",
+          "sha256": "97457d1bc204985255318f633f712a76940f098ebb09498a58a34bd10e761d6e"
+        },
+        {
+          "path": "out/mb/PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode.jsonl.gz",
+          "sha256": "78ec87c17622130bbc1ee6cdefda0abae2df11d1b65351036269e5640e0412a0"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -17701,12 +19051,86 @@
               "sha256": "cb75679802ca077210c9b51c2dbb09a90a6e2d2ad2b40d164f5899772455e818"
             }
           ]
+        },
+        {
+          "id": "3ac4517798b040df99eae55428681134",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539473.6544294,
+          "lease_id": "16489637e8cf4d7b8070a9d80ca36e66",
+          "checkpoint_at": 1795539474.0739038,
+          "state": "evidence_ready",
+          "note": "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/class-contract.json",
+              "sha256": "3c3c0bf34f216975f81345706ac7847c0460bb4798e7a8f39447e17a75059154"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/recount.json",
+              "sha256": "1d51fb816aa32ce234b32f51c54c83c06f0c73a0b12261cb72891b1e2520d830"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/result.json",
+              "sha256": "97457d1bc204985255318f633f712a76940f098ebb09498a58a34bd10e761d6e"
+            },
+            {
+              "path": "out/mb/PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode.jsonl.gz",
+              "sha256": "78ec87c17622130bbc1ee6cdefda0abae2df11d1b65351036269e5640e0412a0"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode: campo `_languageCodeToPosition: SerializableDictionaryBase<String, Vector2>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCChangePositionWIthLanguageCode.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 2 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539478.0699959,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/class-contract.json",
+            "sha256": "3c3c0bf34f216975f81345706ac7847c0460bb4798e7a8f39447e17a75059154"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/recount.json",
+            "sha256": "1d51fb816aa32ce234b32f51c54c83c06f0c73a0b12261cb72891b1e2520d830"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/3a010d2426799b2e/result.json",
+            "sha256": "97457d1bc204985255318f633f712a76940f098ebb09498a58a34bd10e761d6e"
+          },
+          {
+            "path": "out/mb/PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode.jsonl.gz",
+            "sha256": "78ec87c17622130bbc1ee6cdefda0abae2df11d1b65351036269e5640e0412a0"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -17721,7 +19145,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode",
@@ -17736,16 +19160,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -17773,11 +19192,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/class-contract.json",
-          "sha256": "36ace74e104aa8b82e2420a0fa8020bec719be136c18792119da545bdfe432cd"
+          "sha256": "b9976c5e810a3631e1826b8380bc7d60f66afbbb030338e5c71d91c0726261f6"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/recount.json",
-          "sha256": "ef3ef629edb293de5bad6e80724499702c52eabb4a2956675d8e017dba700e1f"
+          "sha256": "8b38f1dfd3a3eabbebbf775fa5165beb3bae5672be82155fb056a025aec0702d"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/result.json",
+          "sha256": "14e9b56ab2792c6716b41e8ffcc5f831b17bf4d3ac9266deae247dc8a5bd0415"
+        },
+        {
+          "path": "out/mb/PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode.jsonl.gz",
+          "sha256": "18242f0c47c9912f14111ab4a186331865f976a5170b3e5afa143118e447b009"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -17800,12 +19239,86 @@
               "sha256": "ef3ef629edb293de5bad6e80724499702c52eabb4a2956675d8e017dba700e1f"
             }
           ]
+        },
+        {
+          "id": "9ede8b139a9f4c179e0d2132bf2bc42b",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539482.3200471,
+          "lease_id": "69050e359aa94edcab2998f1e1352df8",
+          "checkpoint_at": 1795539482.765755,
+          "state": "evidence_ready",
+          "note": "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/class-contract.json",
+              "sha256": "b9976c5e810a3631e1826b8380bc7d60f66afbbb030338e5c71d91c0726261f6"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/recount.json",
+              "sha256": "8b38f1dfd3a3eabbebbf775fa5165beb3bae5672be82155fb056a025aec0702d"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/result.json",
+              "sha256": "14e9b56ab2792c6716b41e8ffcc5f831b17bf4d3ac9266deae247dc8a5bd0415"
+            },
+            {
+              "path": "out/mb/PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode.jsonl.gz",
+              "sha256": "18242f0c47c9912f14111ab4a186331865f976a5170b3e5afa143118e447b009"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode: campo `_languageCodeToLineSpace: SerializableDictionaryBase<String, Single>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/PazuCoreAddressables/AFC/AFCTMPTextLineSpaceWIthLanguageCode.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 3 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539486.7323499,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/class-contract.json",
+            "sha256": "b9976c5e810a3631e1826b8380bc7d60f66afbbb030338e5c71d91c0726261f6"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/recount.json",
+            "sha256": "8b38f1dfd3a3eabbebbf775fa5165beb3bae5672be82155fb056a025aec0702d"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/1998843c3ea996f7/result.json",
+            "sha256": "14e9b56ab2792c6716b41e8ffcc5f831b17bf4d3ac9266deae247dc8a5bd0415"
+          },
+          {
+            "path": "out/mb/PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode.jsonl.gz",
+            "sha256": "18242f0c47c9912f14111ab4a186331865f976a5170b3e5afa143118e447b009"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -19038,7 +20551,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.WindowManager",
@@ -19053,16 +20566,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PazuCore.WindowManager"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -19090,11 +20598,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/class-contract.json",
-          "sha256": "ec2b49580a821bde156c6b9f463876246d75c929139cf06663f4e5d9ab368199"
+          "sha256": "359ce0aa48923ee542b707d0c46546b4630148371f17b7717c5ebce2178aee29"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/recount.json",
-          "sha256": "5a5c7021d6d595d55510c7688e9a0eefa3212df48d3264ef9dbac2dbbc993741"
+          "sha256": "3c7794939d45253e2961b8c3c7ce621302db0d2905bd04e4c2a23e4d4959e4b3"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/result.json",
+          "sha256": "4f35c6294a65b86540a21ba8dad474d7ccbfc45e45183593bef851bb751374bd"
+        },
+        {
+          "path": "out/mb/PazuCore.WindowManager.jsonl.gz",
+          "sha256": "4df2ecb4c05aaeebc96fb7222db945b0a0d3fdb6da5b613a8a50fbfb6bbe8358"
+        },
+        {
+          "path": "out/mb/_stats.json",
+          "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+          "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+        },
+        {
+          "path": "tools/mb_typetree_builder.py",
+          "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
         }
       ],
       "unknown_ids": [],
@@ -19117,12 +20645,86 @@
               "sha256": "5a5c7021d6d595d55510c7688e9a0eefa3212df48d3264ef9dbac2dbbc993741"
             }
           ]
+        },
+        {
+          "id": "7819c2011e694dd1bb8b897f7a39c5a7",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795539490.86352,
+          "lease_id": "938f27ac79c84fa283fd011294fe45ed",
+          "checkpoint_at": 1795539491.3191593,
+          "state": "evidence_ready",
+          "note": "PazuCore.WindowManager: reaberta de blocked_external; decodificada pelo construtor de type tree (Cpp2IL) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/class-contract.json",
+              "sha256": "359ce0aa48923ee542b707d0c46546b4630148371f17b7717c5ebce2178aee29"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/recount.json",
+              "sha256": "3c7794939d45253e2961b8c3c7ce621302db0d2905bd04e4c2a23e4d4959e4b3"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/result.json",
+              "sha256": "4f35c6294a65b86540a21ba8dad474d7ccbfc45e45183593bef851bb751374bd"
+            },
+            {
+              "path": "out/mb/PazuCore.WindowManager.jsonl.gz",
+              "sha256": "4df2ecb4c05aaeebc96fb7222db945b0a0d3fdb6da5b613a8a50fbfb6bbe8358"
+            },
+            {
+              "path": "out/mb/_stats.json",
+              "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+              "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+            },
+            {
+              "path": "tools/mb_typetree_builder.py",
+              "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PazuCore.WindowManager: mesmo limite do TypeTreeGeneratorAPI, alcancado indiretamente via subclasse nomeada `Name_Back_Scene` (campo `nameBackScene`) que deriva de SerializableDictionaryBase<K,V>. Confirmado no fonte decompilado. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
+        "at": 1795539495.2989693,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/class-contract.json",
+            "sha256": "359ce0aa48923ee542b707d0c46546b4630148371f17b7717c5ebce2178aee29"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/recount.json",
+            "sha256": "3c7794939d45253e2961b8c3c7ce621302db0d2905bd04e4c2a23e4d4959e4b3"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/7ea1a24e4c2ed7ba/result.json",
+            "sha256": "4f35c6294a65b86540a21ba8dad474d7ccbfc45e45183593bef851bb751374bd"
+          },
+          {
+            "path": "out/mb/PazuCore.WindowManager.jsonl.gz",
+            "sha256": "4df2ecb4c05aaeebc96fb7222db945b0a0d3fdb6da5b613a8a50fbfb6bbe8358"
+          },
+          {
+            "path": "out/mb/_stats.json",
+            "sha256": "861e4e5c1780b74e1ba10bc55b4a2447e4657175f536256db455a57f8c812dbb"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md",
+            "sha256": "63313c77e285e648bff386f98c09c6c103524c79211c784149f5585da27b715c"
+          },
+          {
+            "path": "tools/mb_typetree_builder.py",
+            "sha256": "295490c1ed0a9cf69312ccb12baf6c5fe98f6ae7537efa7ef6919876265ef77a"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, _stats.json {ok:n} sem erro, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico ao reconstruido pela ferramenta endurecida (leitura exata + sanidade + bool 0/1). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; DeepLinkManager foi tambem confirmado contra decodificacao manual independente.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -76763,7 +78365,7 @@
     }
   ],
   "root": "/home/deppi/avtrwolrdcraft/.claude/worktrees/re-capstone-dispatch",
-  "revision": 523,
+  "revision": 613,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -81303,6 +82905,636 @@
       "task": "T020/CLASS/3a8d096ce57c3ba0",
       "actor": "revisor-claude-t020",
       "at": 1795537016.3673434
+    },
+    {
+      "revision": 524,
+      "action": "configure",
+      "task": "T020/CLASS/db06c1b5d845a25c",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539339.6284685
+    },
+    {
+      "revision": 525,
+      "action": "claim",
+      "task": "T020/CLASS/db06c1b5d845a25c",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539343.606994
+    },
+    {
+      "revision": 526,
+      "action": "start",
+      "task": "T020/CLASS/db06c1b5d845a25c",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539343.818335
+    },
+    {
+      "revision": 527,
+      "action": "checkpoint",
+      "task": "T020/CLASS/db06c1b5d845a25c",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539344.0545092
+    },
+    {
+      "revision": 528,
+      "action": "review",
+      "task": "T020/CLASS/db06c1b5d845a25c",
+      "actor": "revisor-claude-t020",
+      "at": 1795539348.0318403
+    },
+    {
+      "revision": 529,
+      "action": "configure",
+      "task": "T020/CLASS/388df2f05bd90e6f",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539348.2422657
+    },
+    {
+      "revision": 530,
+      "action": "claim",
+      "task": "T020/CLASS/388df2f05bd90e6f",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539352.2850504
+    },
+    {
+      "revision": 531,
+      "action": "start",
+      "task": "T020/CLASS/388df2f05bd90e6f",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539352.4732583
+    },
+    {
+      "revision": 532,
+      "action": "checkpoint",
+      "task": "T020/CLASS/388df2f05bd90e6f",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539352.6687732
+    },
+    {
+      "revision": 533,
+      "action": "review",
+      "task": "T020/CLASS/388df2f05bd90e6f",
+      "actor": "revisor-claude-t020",
+      "at": 1795539356.5765529
+    },
+    {
+      "revision": 534,
+      "action": "configure",
+      "task": "T020/CLASS/379ca071ca92e791",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539356.7704546
+    },
+    {
+      "revision": 535,
+      "action": "claim",
+      "task": "T020/CLASS/379ca071ca92e791",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539360.67899
+    },
+    {
+      "revision": 536,
+      "action": "start",
+      "task": "T020/CLASS/379ca071ca92e791",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539360.8863692
+    },
+    {
+      "revision": 537,
+      "action": "checkpoint",
+      "task": "T020/CLASS/379ca071ca92e791",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539361.0835662
+    },
+    {
+      "revision": 538,
+      "action": "review",
+      "task": "T020/CLASS/379ca071ca92e791",
+      "actor": "revisor-claude-t020",
+      "at": 1795539364.9731517
+    },
+    {
+      "revision": 539,
+      "action": "configure",
+      "task": "T020/CLASS/ec772f214266864a",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539365.1676354
+    },
+    {
+      "revision": 540,
+      "action": "claim",
+      "task": "T020/CLASS/ec772f214266864a",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539369.0487897
+    },
+    {
+      "revision": 541,
+      "action": "start",
+      "task": "T020/CLASS/ec772f214266864a",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539369.2648528
+    },
+    {
+      "revision": 542,
+      "action": "checkpoint",
+      "task": "T020/CLASS/ec772f214266864a",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539369.4605405
+    },
+    {
+      "revision": 543,
+      "action": "review",
+      "task": "T020/CLASS/ec772f214266864a",
+      "actor": "revisor-claude-t020",
+      "at": 1795539373.3807716
+    },
+    {
+      "revision": 544,
+      "action": "configure",
+      "task": "T020/CLASS/c67d866343f1dff2",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539373.6289613
+    },
+    {
+      "revision": 545,
+      "action": "claim",
+      "task": "T020/CLASS/c67d866343f1dff2",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539377.5678108
+    },
+    {
+      "revision": 546,
+      "action": "start",
+      "task": "T020/CLASS/c67d866343f1dff2",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539377.7786367
+    },
+    {
+      "revision": 547,
+      "action": "checkpoint",
+      "task": "T020/CLASS/c67d866343f1dff2",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539377.9800029
+    },
+    {
+      "revision": 548,
+      "action": "review",
+      "task": "T020/CLASS/c67d866343f1dff2",
+      "actor": "revisor-claude-t020",
+      "at": 1795539381.9142163
+    },
+    {
+      "revision": 549,
+      "action": "configure",
+      "task": "T020/CLASS/0d273b2b5ae269db",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539382.1263535
+    },
+    {
+      "revision": 550,
+      "action": "claim",
+      "task": "T020/CLASS/0d273b2b5ae269db",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539386.1262832
+    },
+    {
+      "revision": 551,
+      "action": "start",
+      "task": "T020/CLASS/0d273b2b5ae269db",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539386.3909278
+    },
+    {
+      "revision": 552,
+      "action": "checkpoint",
+      "task": "T020/CLASS/0d273b2b5ae269db",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539386.647937
+    },
+    {
+      "revision": 553,
+      "action": "review",
+      "task": "T020/CLASS/0d273b2b5ae269db",
+      "actor": "revisor-claude-t020",
+      "at": 1795539390.648274
+    },
+    {
+      "revision": 554,
+      "action": "configure",
+      "task": "T020/CLASS/82f94aca75d93ede",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539390.9211855
+    },
+    {
+      "revision": 555,
+      "action": "claim",
+      "task": "T020/CLASS/82f94aca75d93ede",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539394.933148
+    },
+    {
+      "revision": 556,
+      "action": "start",
+      "task": "T020/CLASS/82f94aca75d93ede",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539395.1279776
+    },
+    {
+      "revision": 557,
+      "action": "checkpoint",
+      "task": "T020/CLASS/82f94aca75d93ede",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539395.324801
+    },
+    {
+      "revision": 558,
+      "action": "review",
+      "task": "T020/CLASS/82f94aca75d93ede",
+      "actor": "revisor-claude-t020",
+      "at": 1795539399.2525334
+    },
+    {
+      "revision": 559,
+      "action": "configure",
+      "task": "T020/CLASS/fef4f6d3fe08a535",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539399.4517534
+    },
+    {
+      "revision": 560,
+      "action": "claim",
+      "task": "T020/CLASS/fef4f6d3fe08a535",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539403.360482
+    },
+    {
+      "revision": 561,
+      "action": "start",
+      "task": "T020/CLASS/fef4f6d3fe08a535",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539403.5532393
+    },
+    {
+      "revision": 562,
+      "action": "checkpoint",
+      "task": "T020/CLASS/fef4f6d3fe08a535",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539403.7541363
+    },
+    {
+      "revision": 563,
+      "action": "review",
+      "task": "T020/CLASS/fef4f6d3fe08a535",
+      "actor": "revisor-claude-t020",
+      "at": 1795539407.6617303
+    },
+    {
+      "revision": 564,
+      "action": "configure",
+      "task": "T020/CLASS/9b6333eb4d8c18eb",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539407.8676462
+    },
+    {
+      "revision": 565,
+      "action": "claim",
+      "task": "T020/CLASS/9b6333eb4d8c18eb",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539411.861121
+    },
+    {
+      "revision": 566,
+      "action": "start",
+      "task": "T020/CLASS/9b6333eb4d8c18eb",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539412.0944843
+    },
+    {
+      "revision": 567,
+      "action": "checkpoint",
+      "task": "T020/CLASS/9b6333eb4d8c18eb",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539412.3944974
+    },
+    {
+      "revision": 568,
+      "action": "review",
+      "task": "T020/CLASS/9b6333eb4d8c18eb",
+      "actor": "revisor-claude-t020",
+      "at": 1795539416.3792365
+    },
+    {
+      "revision": 569,
+      "action": "configure",
+      "task": "T020/CLASS/6d7be4b1201ac73f",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539416.6013827
+    },
+    {
+      "revision": 570,
+      "action": "claim",
+      "task": "T020/CLASS/6d7be4b1201ac73f",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539420.6687083
+    },
+    {
+      "revision": 571,
+      "action": "start",
+      "task": "T020/CLASS/6d7be4b1201ac73f",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539420.867804
+    },
+    {
+      "revision": 572,
+      "action": "checkpoint",
+      "task": "T020/CLASS/6d7be4b1201ac73f",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539421.084501
+    },
+    {
+      "revision": 573,
+      "action": "review",
+      "task": "T020/CLASS/6d7be4b1201ac73f",
+      "actor": "revisor-claude-t020",
+      "at": 1795539425.1296494
+    },
+    {
+      "revision": 574,
+      "action": "configure",
+      "task": "T020/CLASS/03cf08395d3f4d51",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539425.367816
+    },
+    {
+      "revision": 575,
+      "action": "claim",
+      "task": "T020/CLASS/03cf08395d3f4d51",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539429.3201723
+    },
+    {
+      "revision": 576,
+      "action": "start",
+      "task": "T020/CLASS/03cf08395d3f4d51",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539429.524524
+    },
+    {
+      "revision": 577,
+      "action": "checkpoint",
+      "task": "T020/CLASS/03cf08395d3f4d51",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539429.8615017
+    },
+    {
+      "revision": 578,
+      "action": "review",
+      "task": "T020/CLASS/03cf08395d3f4d51",
+      "actor": "revisor-claude-t020",
+      "at": 1795539433.9311934
+    },
+    {
+      "revision": 579,
+      "action": "configure",
+      "task": "T020/CLASS/98ee43171e398598",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539434.134926
+    },
+    {
+      "revision": 580,
+      "action": "claim",
+      "task": "T020/CLASS/98ee43171e398598",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539438.0295708
+    },
+    {
+      "revision": 581,
+      "action": "start",
+      "task": "T020/CLASS/98ee43171e398598",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539438.3642135
+    },
+    {
+      "revision": 582,
+      "action": "checkpoint",
+      "task": "T020/CLASS/98ee43171e398598",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539438.761472
+    },
+    {
+      "revision": 583,
+      "action": "review",
+      "task": "T020/CLASS/98ee43171e398598",
+      "actor": "revisor-claude-t020",
+      "at": 1795539442.7020934
+    },
+    {
+      "revision": 584,
+      "action": "configure",
+      "task": "T020/CLASS/7e9938eb7a582d5c",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539442.9049027
+    },
+    {
+      "revision": 585,
+      "action": "claim",
+      "task": "T020/CLASS/7e9938eb7a582d5c",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539446.993384
+    },
+    {
+      "revision": 586,
+      "action": "start",
+      "task": "T020/CLASS/7e9938eb7a582d5c",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539447.3427591
+    },
+    {
+      "revision": 587,
+      "action": "checkpoint",
+      "task": "T020/CLASS/7e9938eb7a582d5c",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539447.6124058
+    },
+    {
+      "revision": 588,
+      "action": "review",
+      "task": "T020/CLASS/7e9938eb7a582d5c",
+      "actor": "revisor-claude-t020",
+      "at": 1795539451.7823408
+    },
+    {
+      "revision": 589,
+      "action": "configure",
+      "task": "T020/CLASS/3efb39891b0bca92",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539452.036774
+    },
+    {
+      "revision": 590,
+      "action": "claim",
+      "task": "T020/CLASS/3efb39891b0bca92",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539455.9752645
+    },
+    {
+      "revision": 591,
+      "action": "start",
+      "task": "T020/CLASS/3efb39891b0bca92",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539456.2312765
+    },
+    {
+      "revision": 592,
+      "action": "checkpoint",
+      "task": "T020/CLASS/3efb39891b0bca92",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539456.5546312
+    },
+    {
+      "revision": 593,
+      "action": "review",
+      "task": "T020/CLASS/3efb39891b0bca92",
+      "actor": "revisor-claude-t020",
+      "at": 1795539460.6150138
+    },
+    {
+      "revision": 594,
+      "action": "configure",
+      "task": "T020/CLASS/9d1c483f660c0668",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539460.841391
+    },
+    {
+      "revision": 595,
+      "action": "claim",
+      "task": "T020/CLASS/9d1c483f660c0668",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539464.7973924
+    },
+    {
+      "revision": 596,
+      "action": "start",
+      "task": "T020/CLASS/9d1c483f660c0668",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539465.0754573
+    },
+    {
+      "revision": 597,
+      "action": "checkpoint",
+      "task": "T020/CLASS/9d1c483f660c0668",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539465.5381174
+    },
+    {
+      "revision": 598,
+      "action": "review",
+      "task": "T020/CLASS/9d1c483f660c0668",
+      "actor": "revisor-claude-t020",
+      "at": 1795539469.5292804
+    },
+    {
+      "revision": 599,
+      "action": "configure",
+      "task": "T020/CLASS/3a010d2426799b2e",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539469.7442772
+    },
+    {
+      "revision": 600,
+      "action": "claim",
+      "task": "T020/CLASS/3a010d2426799b2e",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539473.6947844
+    },
+    {
+      "revision": 601,
+      "action": "start",
+      "task": "T020/CLASS/3a010d2426799b2e",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539473.9033186
+    },
+    {
+      "revision": 602,
+      "action": "checkpoint",
+      "task": "T020/CLASS/3a010d2426799b2e",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539474.1155117
+    },
+    {
+      "revision": 603,
+      "action": "review",
+      "task": "T020/CLASS/3a010d2426799b2e",
+      "actor": "revisor-claude-t020",
+      "at": 1795539478.1082351
+    },
+    {
+      "revision": 604,
+      "action": "configure",
+      "task": "T020/CLASS/1998843c3ea996f7",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539478.4457452
+    },
+    {
+      "revision": 605,
+      "action": "claim",
+      "task": "T020/CLASS/1998843c3ea996f7",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539482.3575034
+    },
+    {
+      "revision": 606,
+      "action": "start",
+      "task": "T020/CLASS/1998843c3ea996f7",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539482.5644388
+    },
+    {
+      "revision": 607,
+      "action": "checkpoint",
+      "task": "T020/CLASS/1998843c3ea996f7",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539482.8050628
+    },
+    {
+      "revision": 608,
+      "action": "review",
+      "task": "T020/CLASS/1998843c3ea996f7",
+      "actor": "revisor-claude-t020",
+      "at": 1795539486.772587
+    },
+    {
+      "revision": 609,
+      "action": "configure",
+      "task": "T020/CLASS/7ea1a24e4c2ed7ba",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539486.9901984
+    },
+    {
+      "revision": 610,
+      "action": "claim",
+      "task": "T020/CLASS/7ea1a24e4c2ed7ba",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539490.9019399
+    },
+    {
+      "revision": 611,
+      "action": "start",
+      "task": "T020/CLASS/7ea1a24e4c2ed7ba",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539491.1217282
+    },
+    {
+      "revision": 612,
+      "action": "checkpoint",
+      "task": "T020/CLASS/7ea1a24e4c2ed7ba",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795539491.3565388
+    },
+    {
+      "revision": 613,
+      "action": "review",
+      "task": "T020/CLASS/7ea1a24e4c2ed7ba",
+      "actor": "revisor-claude-t020",
+      "at": 1795539495.33732
     }
   ]
 }

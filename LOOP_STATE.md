@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: 18 classes do construtor de type tree aceitas (done) — 2026-11-24
+- A pedido explicito do usuario: as 18 tarefas (estavam `blocked_external` por limitacao de ferramenta) foram reabertas com `configure` e submetidas/aprovadas (autor `agente-re-capstone-claude`, revisor
+  `revisor-claude-t020`) apos verificacao independente: contagens = declared ok+err, ids, um `m_Script`, `_stats.json`, auditoria de sanidade dos valores e conteudo identico ao reconstruido pela ferramenta endurecida.
+  Fila: done 76 -> 94, blocked_external 51 -> 33. Reserva: layout inferido do Cpp2IL (prova = leitura exata + valores plausiveis); `PhoneContentIcon` foi rejeitada por falso positivo e nao entrou.
+- Achado: a janela de atributos da ferramenta (4 linhas acima do campo) pegava o `[SerializeField]` do campo ANTERIOR (ex. `PhoneSeparator._tweenID` nao e serializado); correcao em andamento para as classes do LevelPhone.
+
 ## T020: +18 classes via construtor de type tree (Cpp2IL) — 2026-11-24
 - `tools/mb_typetree_builder.py` monta o type tree por fora quando o gerador quebra em `SerializableDictionaryBase`; leitura validada por consumo exato dos bytes. 18 classes em `out/mb`
   (14 configs do editor de avatar, DeepLinkManager, WindowManager, 2 AFC); `_stats.json` erros 61 -> 43. DeepLinkManager bate com a decodificacao manual (149 pares).

@@ -1,14 +1,28 @@
 {
  "class": "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig",
  "before": {
-  "err": 1
- },
- "after": {
   "ok": 0,
   "bad": 0,
-  "err": 1
+  "err": 1,
+  "err_message": "ValueError: Expected to read 116 bytes, but only read 32 bytes"
  },
- "status": "confirmed_blocked_by_typetreegeneratorapi_limitation",
- "object_identities": "NOT individually identified (path_id/file) - this is a node-generation-time failure (happens before any object of the class is even attempted), and confirming the exact object count/identities would need the datapack.unity3d container opened anyway (repeatedly OOM'd on this machine, see LOOP_STATE.md). Only the aggregate count from out/mb/_stats.json is known (1).",
- "unresolved_objects": "1 objects of this class, identities unknown"
+ "after": {
+  "ok": 1,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 1,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours (tools/mb_retry_errors_lowmem.py); bytes crus de todas as instancias da classe extraidos e lidos",
+ "affected_objects": [
+  {
+   "path_id": 1037540,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "1 instancia(s) lidas com consumo exato de byte_size e valores plausiveis; total = declarado ok 0 + err 1.",
+ "output_artifact": "out/mb/PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig -> {\"ok\": 1}, removida de erros"
 }

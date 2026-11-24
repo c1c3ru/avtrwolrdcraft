@@ -1,13 +1,17 @@
 {
  "class": "PWC.AvatarMaker.AvatarMakerDogColorsConfig",
- "assembly": "Assembly-CSharp",
+ "assembly": "Assembly-CSharp (ver MonoScript)",
  "unity_class_id": "MonoBehaviour (114)",
- "original_failure": "ValueError or EOFError at read time; node generation itself raises AssertionError: failed to dump nodes as json (native message: 'Object reference not set to an instance of an object.')",
+ "original_failure": "ValueError: Expected to read 116 bytes, but only read 32 bytes (tools/mb_dump.py; TypeTreeGeneratorAPI sem nos para a classe)",
  "root_cause": {
-  "summary": "TypeTreeGeneratorAPI crashes while resolving the field `_colorsByCategoryType` declared as a raw generic instantiation `SerializableDictionaryBase<DogCategoryType, AWSpineColorsList>` (from RotaryHeart.Lib.SerializableDictionary, a third-party asset) directly on this class - not through a named, non-generic subclass. Confirmed present in the decompiled source: out/cpp2il/DiffableCs/Assembly-CSharp/PWC/AvatarMaker/AvatarMakerDogColorsConfig.cs.",
-  "mechanism": "SerializableDictionaryBase<TKey,TValue> declares [SerializeField] private TKey[] _keys; TValue[] _values; (plus a legacy _keyValues list). When TKey/TValue are supplied as a raw, unnamed closed generic instantiation on the field itself (rather than via a concrete non-generic subclass), TypeTreeGeneratorAPI's native IL2CPP metadata walker throws an internal null reference exception while trying to resolve the specialized array element types - before any type tree node is produced for this class at all.",
-  "confirmed_not_a_parsing_bug_in_this_repo": "This is identical in nature to the bug already fixed in tools/mb_dump.py (fix_mislabeled_vectors, for mislabeled List<String> root nodes) but happens one level earlier and inside the native extension itself - there is no Python-side node list to post-process, because get_nodes_as_json() raises before returning anything. TypeTreeGeneratorAPI is already at its latest published version (0.0.10, checked 2026-11-21); no newer release to try."
+  "summary": "O TypeTreeGeneratorAPI lanca NullReferenceException ao gerar nos de qualquer classe com campo SerializableDictionaryBase<K,V> (RotaryHeart); sem nos, o UnityPy cai no type tree embutido (inexistente em build de jogador) e le so o cabecalho (32 bytes).",
+  "evidence_of_cause": "Sondagem em 2026-11-24: o gerador funciona para o tipo do valor (BackSceneLoadConfig) e para a base DrawableDictionary, mas falha para o dicionario generico e para a classe que o contem. Triagem em out/recon/tasks/T020/node_tree_triage_2026-11-22.json (typetreegeneratorapi_nullref_confirmed_serializabledict_field).",
+  "layout_proved": "Campos da base DrawableDictionary (reorderableList sem campos + reqReferences PPtr) seguidos de _keyValues List<K>, _keys K[], _values V[]; confirmado pela leitura exata e por DeepLinkManager (149 pares identicos a decodificacao manual independente)."
  },
- "fix": "None available without a different type-tree extraction tool (this one cannot resolve raw generic SerializableDictionaryBase<K,V> fields at all).",
- "resolvability": "Blocked on tooling, not on data or analysis effort."
+ "fix": {
+  "location": "tools/mb_typetree_builder.py (monta o type tree a partir do Cpp2IL) + tools/lowmem_unitypy.py + tools/mb_retry_errors_lowmem.py (bytes crus)",
+  "applied_before_read": true,
+  "validation": "leitura exata de byte_size E checagem de sanidade dos valores (PPtr, floats, ints, strings, bool 0/1); falso positivo da PhoneContentIcon evitado com isso"
+ },
+ "unresolved": "nenhum objeto desta classe permanece com erro"
 }

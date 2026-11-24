@@ -1,14 +1,34 @@
 {
  "class": "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig",
  "before": {
-  "err": 2
- },
- "after": {
   "ok": 0,
   "bad": 0,
-  "err": 2
+  "err": 2,
+  "err_message": "ValueError: Expected to read 56 bytes, but only read 32 bytes"
  },
- "status": "confirmed_blocked_by_typetreegeneratorapi_limitation",
- "object_identities": "NOT individually identified (path_id/file) - this is a node-generation-time failure (happens before any object of the class is even attempted), and confirming the exact object count/identities would need the datapack.unity3d container opened anyway (repeatedly OOM'd on this machine, see LOOP_STATE.md). Only the aggregate count from out/mb/_stats.json is known (2).",
- "unresolved_objects": "2 objects of this class, identities unknown"
+ "after": {
+  "ok": 2,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 2,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours (tools/mb_retry_errors_lowmem.py); bytes crus de todas as instancias da classe extraidos e lidos",
+ "affected_objects": [
+  {
+   "path_id": 878166,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 992441,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "2 instancia(s) lidas com consumo exato de byte_size e valores plausiveis; total = declarado ok 0 + err 2.",
+ "output_artifact": "out/mb/PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig -> {\"ok\": 2}, removida de erros"
 }
