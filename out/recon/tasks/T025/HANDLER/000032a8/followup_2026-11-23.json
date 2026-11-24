@@ -1,0 +1,46 @@
+{
+  "schema": "avtr-recon-task-followup/v1",
+  "task": "T025/HANDLER/000032a8",
+  "date": "2026-11-23",
+  "note": "Adendo: nao altera os arquivos originais da tarefa. Resume o que os docs e a revisao independente sustentam; reservas listadas.",
+  "source_docs": [
+    "docs/RECON_DESTROYCURRENTITEMS_TARGET_2026-11-23.md",
+    "docs/RECON_DESTROYLEVELITEM_2026-11-23.md",
+    "docs/RECON_FIELD_OFFSETS_2026-11-23.md",
+    "docs/RECON_RUNTIME_HELPERS_2026-11-23.md",
+    "docs/RECON_LEVELITEM_VTABLE_2026-11-23.md",
+    "docs/RECON_GENERIC_USAGES_2026-11-23.md",
+    "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md"
+  ],
+  "unknowns": {
+    "U1": {
+      "status": "closed",
+      "answer": "0x24f0700 = Component.GetComponent<LevelItem>() (GOT 0x41aceb8 -> methodSpecs -> genericInsts)."
+    },
+    "U2": {
+      "status": "closed",
+      "answer": "LevelUtils.DestroyLevelItem recuperado: null-check, GetComponentsInChildren<LevelItem>, evento OnBeforeDestroy, tag 'Destroyed', restauracao via LevelDefaultDataItemsToRestore/InventoryItemsTracker/virtual, SetActive(false)+Destroy. Virtuais +0x738/+0x748/+0x508 = OnBeforeDestroyWhileInGameplay / AddToCustomRestoreDataBeforeDestroyWhileInGameplay / DetachFromParentIfExists (slots 96/97/61)."
+    },
+    "U3": {
+      "status": "closed",
+      "answer": "_points 0x30, _isNewEveryLoad 0x38, PDSceneObject.sceneGuid 0x20, InventoryManager.Instance (estatico 0x8)/ItemsTracker 0x38 pela tabela fieldOffsets do metadata."
+    },
+    "U4": {
+      "status": "closed_with_inference",
+      "answer": "0x1b88980 NRE, 0x1b88988 IOORE (strings), 0x1b8885c ClassInit, 0x1b886e8 init lazy de metadata-usage (inferido pelo padrao)."
+    }
+  },
+  "independent_review": {
+    "doc": "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md",
+    "reviewer": "subagente-revisor-independente (agente sem o contexto da analise)",
+    "verdict": "aceitar com ressalvas",
+    "claims_verified": 29,
+    "claims_confirmed": 27,
+    "errors_found": "1 refutada (sinal do ramo child==levelItem em DestroyLevelItem, corrigida); 1 nao verificavel"
+  },
+  "residual_reservations": [
+    "Tabela formal de excecao (LSDA) nao recuperada; so fluxo visivel de landing pads.",
+    "Nenhuma validacao dinamica/em aparelho.",
+    "Uso de DetachFromParentIfExists dentro do laco: so para child == levelItem (corrigido apos a revisao)."
+  ]
+}

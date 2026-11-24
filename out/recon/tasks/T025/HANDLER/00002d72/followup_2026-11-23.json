@@ -1,0 +1,47 @@
+{
+  "schema": "avtr-recon-task-followup/v1",
+  "task": "T025/HANDLER/00002d72",
+  "date": "2026-11-23",
+  "note": "Adendo: nao altera os arquivos originais da tarefa. Resume o que os docs e a revisao independente sustentam; reservas listadas.",
+  "source_docs": [
+    "docs/RECON_DIGHOLE_DETACH_2026-11-23.md",
+    "docs/RECON_FIELD_OFFSETS_2026-11-23.md",
+    "docs/RECON_GENERIC_USAGES_2026-11-23.md",
+    "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md"
+  ],
+  "unknowns": {
+    "U1": {
+      "status": "closed",
+      "answer": "DetachContainerAreaChildrenIfNeeded: se !IsInteractable (+0x51), Clear de _containerAreaLevelItems (+0x78), copia de _containerArea.GetImmediateChildrenItems() e transform.SetParent(null) em cada item."
+    },
+    "U2": {
+      "status": "partially_closed",
+      "answer": "0x227b1f8 = LevelConsumerAreaBase.GetImmediateChildrenItems; stubs 0x2cf12b4/0x29c0b20/0x2cf071c/0x1b88694 nomeados pelo papel no chamador e pelos GOT de classArgs (List<LevelItem>), sem corpo conferido."
+    },
+    "U3": {
+      "status": "partially_closed",
+      "answer": "Landing pad com Dispose do enumerador visivel; LSDA formal nao recuperada."
+    },
+    "U4": {
+      "status": "closed",
+      "answer": "_containerArea 0x68, _containerAreaLevelItems 0x78, IsInteractable 0x51 (LevelDigArea) confirmados pela tabela."
+    },
+    "U5": {
+      "status": "partially_closed",
+      "answer": "Efeito: itens filhos do container saem do pai antes da troca de cena e ficam guardados; quem os consome depois nao foi analisado. OnGamePause (0x1e299b0) tambem chama o helper; OnGameResume nao analisado."
+    }
+  },
+  "independent_review": {
+    "doc": "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md",
+    "reviewer": "subagente-revisor-independente (agente sem o contexto da analise)",
+    "verdict": "aceitar com ressalvas",
+    "claims_verified": 9,
+    "claims_confirmed": 8,
+    "errors_found": "1 omissao (OnGamePause tambem dispara o detach), corrigida"
+  },
+  "residual_reservations": [
+    "Tabela formal de excecao (LSDA) nao recuperada; so fluxo visivel de landing pads.",
+    "Nenhuma validacao dinamica/em aparelho.",
+    "Consumidor de _containerAreaLevelItems e OnGameResume nao analisados."
+  ]
+}

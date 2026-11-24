@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Marcar T025 como done: preparado, nao aplicado — 2026-11-24
+- Adendos `followup_2026-11-24`... (arquivos `followup_2026-11-23.json`) criados para as 8 tarefas T025 revisadas, com desconhecidos fechados/abertos e reservas.
+  `tools/recon_queue_submit_review.py` faz submit/accept/reject. **Nao apliquei na fila**: `reports/recon/tasks.json` tem `root=/home/c1c3ru/avtrwolrdcraft` (inexistente aqui) e `relocate`
+  exige o destino existente, entao mudaria o `root` do repo. Rodar no repo com raiz valida. `T025/METHOD/5fe1bb4a25183678` esta em `review` com hashes stale: rejeitar e reconfigurar antes.
+  Os criterios de aceite pedem limites de excecao (LSDA) e dizem que regiao relevante aberta impede done: aceitar so com as reservas registradas na nota.
+
 ## Revisao independente das HANDLERs e METHODs de T025 — 2026-11-23
 - Revisor (agente sem o contexto da analise) reverificou 71 afirmacoes no binario/metadata: `000032a8`, `00002d72` e METHOD GetCurrentWorldSceneName/ClickOnLevel
   **aceitar com ressalvas**; `00003cd1`, LoadScene/LoadSceneImplement e HomePlayButton.LoadPlayScene **aceitar**. Relatorio: `docs/REVIEW_INDEPENDENT_RE_2026-11-23.md`.

@@ -1,0 +1,51 @@
+{
+  "schema": "avtr-recon-task-followup/v1",
+  "task": "T025/METHOD/5fe1bb4a25183678",
+  "date": "2026-11-23",
+  "note": "Adendo: nao altera os arquivos originais da tarefa. Resume o que os docs e a revisao independente sustentam; reservas listadas.",
+  "source_docs": [
+    "docs/RECON_HOMEPLAY_DISPATCH_2026-11-23.md",
+    "docs/RECON_GAMESCENEMANAGER_LOADSCENE_2026-11-23.md",
+    "docs/RECON_RUNTIME_HELPERS_2026-11-23.md",
+    "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md"
+  ],
+  "unknowns": {
+    "U1_dispatch_0x2058174": {
+      "status": "closed_with_inference",
+      "answer": "IDictionary<string,LevelType>.get_Item sobre DeepLinkManager._mapLinkToLevel (+0x28); inferencia forte (GOT da interface nao decodifica)."
+    },
+    "U2_map_contents": {
+      "status": "open",
+      "answer": "Conteudo serializado de _mapLinkToLevel (149 entradas) nao extraido."
+    },
+    "U3_bounds_exceptions": {
+      "status": "open",
+      "answer": "Limites independentes do corpo e regioes de excecao nao provados."
+    },
+    "U4_callbacks": {
+      "status": "partially_closed",
+      "answer": "OnClickHomePlayButton e SaveBuildingData(0, level) nomeados e com argumentos lidos; corpos nao analisados."
+    },
+    "U5_device": {
+      "status": "open",
+      "answer": "Validacao em aparelho dos cenarios de chave pendente ausente/vazia/nao vazia nao feita."
+    },
+    "U6_callees": {
+      "status": "closed",
+      "answer": "world lookup = GetCurrentWorldSceneName; scene load = GameSceneManager.LoadScene (tail call, w1=1, x2=0); fade/retorno = LoadingScreenManager.StartSceneTransition."
+    }
+  },
+  "independent_review": {
+    "doc": "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md",
+    "reviewer": "subagente-revisor-independente (agente sem o contexto da analise)",
+    "verdict": "aceitar",
+    "claims_verified": 6,
+    "claims_confirmed": 6,
+    "errors_found": "nenhum"
+  },
+  "residual_reservations": [
+    "Tabela formal de excecao (LSDA) nao recuperada; so fluxo visivel de landing pads.",
+    "Nenhuma validacao dinamica/em aparelho.",
+    "ATENCAO: a tarefa esta em `review` com hashes de evidencia antigos (method-contract.json, control-flow.json, unknowns.jsonl foram regerados depois). A aprovacao falha com evidencia stale: rejeitar e reconfigurar antes de nova submissao."
+  ]
+}

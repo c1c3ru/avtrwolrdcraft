@@ -1,0 +1,34 @@
+{
+  "schema": "avtr-recon-task-followup/v1",
+  "task": "T025/METHOD/4a19cfec8f8e89ba",
+  "date": "2026-11-23",
+  "note": "Adendo: nao altera os arquivos originais da tarefa. Resume o que os docs e a revisao independente sustentam; reservas listadas.",
+  "source_docs": [
+    "docs/RECON_SCENE_NAVIGATION_GRAPH_2026-11-23.md",
+    "docs/RECON_FIELD_OFFSETS_2026-11-23.md",
+    "docs/RECON_LEVELITEM_VTABLE_2026-11-23.md",
+    "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md"
+  ],
+  "unknowns": {
+    "contract": {
+      "status": "closed",
+      "answer": "WorldBuilding.ClickOnLevel 0x2108e90: OnClickBuildingAction?.Invoke; InteractionHistoryManager.MarkBuildingAsInteracted/SetFocusedBuildingType; se useTimeLock (GameExtraSettings +0x73) || IsCurrentlyFree || IsGameUnlocked -> OnClickAction, SaveBuildingData, virtual slot 22 WorldEnterableEntity.LoadScene(GetSceneName(level)); senao WorldBuildingPreviewPopup.Show."
+    },
+    "bodies": {
+      "status": "open",
+      "answer": "Corpos de IsCurrentlyFree, IsGameUnlocked, WorldBuildingPreviewPopup.Show e de WorldEnterableEntity.LoadScene nao analisados."
+    }
+  },
+  "independent_review": {
+    "doc": "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md",
+    "reviewer": "subagente-revisor-independente (agente sem o contexto da analise)",
+    "verdict": "aceitar com ressalvas",
+    "claims_verified": 7,
+    "claims_confirmed": 6,
+    "errors_found": "vide REVIEW (parcial no grafo)"
+  },
+  "residual_reservations": [
+    "Tabela formal de excecao (LSDA) nao recuperada; so fluxo visivel de landing pads.",
+    "Nenhuma validacao dinamica/em aparelho."
+  ]
+}

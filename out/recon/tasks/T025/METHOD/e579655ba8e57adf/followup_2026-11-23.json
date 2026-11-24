@@ -1,0 +1,45 @@
+{
+  "schema": "avtr-recon-task-followup/v1",
+  "task": "T025/METHOD/e579655ba8e57adf",
+  "date": "2026-11-23",
+  "note": "Adendo: nao altera os arquivos originais da tarefa. Resume o que os docs e a revisao independente sustentam; reservas listadas.",
+  "source_docs": [
+    "docs/RECON_GAMESCENEMANAGER_LOADSCENE_2026-11-23.md",
+    "docs/RECON_RUNTIME_HELPERS_2026-11-23.md",
+    "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md"
+  ],
+  "unknowns": {
+    "body-regions": {
+      "status": "partially_closed",
+      "answer": "LoadSceneImplement 0x2072cc8 lido: se o booleano estatico de MPManager (IsMultiplayerGame) -> MPOwnership.Clear(); depois SceneManager.LoadSceneAsync(sceneName). Regioes nao contiguas/excecao nao provadas."
+    },
+    "init": {
+      "status": "closed_with_inference",
+      "answer": "Helpers 0x1b886e8/0x1b8885c/0x1b88980/0x1b88988 identificados (ver RECON_RUNTIME_HELPERS)."
+    },
+    "clear": {
+      "status": "open",
+      "answer": "Corpo de MPOwnership.Clear nao analisado alem do disassembly existente."
+    },
+    "unity-load": {
+      "status": "open",
+      "answer": "Semantica nativa de SceneManager.LoadSceneAsync (falha/nulo/string invalida) e conclusao posterior fora do alcance estatico."
+    },
+    "runtime": {
+      "status": "open",
+      "answer": "Sem execucao do original."
+    }
+  },
+  "independent_review": {
+    "doc": "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md",
+    "reviewer": "subagente-revisor-independente (agente sem o contexto da analise)",
+    "verdict": "aceitar",
+    "claims_verified": 10,
+    "claims_confirmed": 10,
+    "errors_found": "nenhum (verificacao conjunta com LoadScene)"
+  },
+  "residual_reservations": [
+    "Tabela formal de excecao (LSDA) nao recuperada; so fluxo visivel de landing pads.",
+    "Nenhuma validacao dinamica/em aparelho."
+  ]
+}

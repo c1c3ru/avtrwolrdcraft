@@ -1,0 +1,39 @@
+{
+  "schema": "avtr-recon-task-followup/v1",
+  "task": "T025/METHOD/8e708ca7d06e0b52",
+  "date": "2026-11-23",
+  "note": "Adendo: nao altera os arquivos originais da tarefa. Resume o que os docs e a revisao independente sustentam; reservas listadas.",
+  "source_docs": [
+    "docs/RECON_GAMESCENEMANAGER_LOADSCENE_2026-11-23.md",
+    "docs/RECON_SCENE_NAVIGATION_GRAPH_2026-11-23.md",
+    "docs/RECON_FIELD_OFFSETS_2026-11-23.md",
+    "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md"
+  ],
+  "unknowns": {
+    "T025/stage_dispatch_binding": {
+      "status": "closed",
+      "answer": "As 3 chamadas indiretas (offsets 0/8/16 dos estaticos) sao GameSceneManager.OnBeforeSceneLoadStage1/2/3Action (tabela fieldOffsets, typeDef 3803)."
+    },
+    "T025/complete_body_and_cfg": {
+      "status": "partially_closed",
+      "answer": "Corpo 0x20728d4 lido inteiro: closure, trava IsSceneChangingInProgress, 4 limpezas de cache, Stage1/2/3, LoadingScreenManager.StartSceneTransition(lambda). Limites de excecao nao provados."
+    },
+    "T029/*": {
+      "status": "out_of_scope_here",
+      "answer": "Desconhecidos T029 (registros de Stage, efeitos dos handlers, tween etc.) nao pertencem a este metodo e seguem abertos; 3 handlers T025 foram recuperados em outras tarefas."
+    }
+  },
+  "independent_review": {
+    "doc": "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md",
+    "reviewer": "subagente-revisor-independente (agente sem o contexto da analise)",
+    "verdict": "aceitar",
+    "claims_verified": 10,
+    "claims_confirmed": 10,
+    "errors_found": "nenhum"
+  },
+  "residual_reservations": [
+    "Tabela formal de excecao (LSDA) nao recuperada; so fluxo visivel de landing pads.",
+    "Nenhuma validacao dinamica/em aparelho.",
+    "Trava IsSceneChangingInProgress: zerada em OnActiveSceneChanged e CancelCurrentSceneChangingProgress; varredura global de escritas diretas nao feita."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "avtr-recon-task-followup/v1",
+  "task": "T025/METHOD/d417091ede9f01e0",
+  "date": "2026-11-23",
+  "note": "Adendo: nao altera os arquivos originais da tarefa. Resume o que os docs e a revisao independente sustentam; reservas listadas.",
+  "source_docs": [
+    "docs/RECON_SCENE_NAVIGATION_GRAPH_2026-11-23.md",
+    "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md"
+  ],
+  "unknowns": {
+    "contract": {
+      "status": "closed",
+      "answer": "GetCurrentWorldSceneName 0x2073238: default = ((LevelWorldType)1).ToString() (World); saved = PlayerPrefs.GetString('GAME_CURRENT_WORLD', default); retorna saved se IsSceneAvailable(saved) senao default."
+    },
+    "IsSceneAvailable": {
+      "status": "open",
+      "answer": "Corpo de GameSceneManager.IsSceneAvailable (0x207305c) nao analisado; usa _availableSceneNames (+0x48)."
+    }
+  },
+  "independent_review": {
+    "doc": "docs/REVIEW_INDEPENDENT_RE_2026-11-23.md",
+    "reviewer": "subagente-revisor-independente (agente sem o contexto da analise)",
+    "verdict": "aceitar com ressalvas",
+    "claims_verified": 7,
+    "claims_confirmed": 6,
+    "errors_found": "1 parcial (contagem de chamadores do grafo: 50 call sites em 49 metodos, corrigida)"
+  },
+  "residual_reservations": [
+    "Tabela formal de excecao (LSDA) nao recuperada; so fluxo visivel de landing pads.",
+    "Nenhuma validacao dinamica/em aparelho."
+  ]
+}
