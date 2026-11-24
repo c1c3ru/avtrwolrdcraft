@@ -48,3 +48,22 @@ Ou seja, o bloco e o **primeiro grupo da tabela**, nao um pedaco no meio de outr
 Os usos conhecidos tratam o valor como `Il2CppClass*`: a classe do proprio tipo (`ldr x8,[x20]; ldr x8,[x8,#0xb8]` = `static_fields` em `HolidayGameModeButton..cctor`),
 a classe de array de `LevelWorldType` (`SzArrayNew(classe, 4)`) e a interface procurada na tabela de offsets de interface do `HomePlayButton`.
 Isso sugere que o grupo guarda referencias de classe que precisam de montagem em tempo de execucao (tipo proprio, arrays, instancias genericas). **Nao confirmado**: so vi 3 usos.
+
+## Quantos metodos usam o bloco (medido, `tools/recon_usage_impact.py`)
+Para cada metodo de Assembly-CSharp (35.831 com endereco), desmonta o corpo e segue o par `adrp` + `ldr` ate o slot da `.got`; conta o metodo se o slot aponta
+para uma entrada do bloco nao-token. Heuristica: so enxerga o par direto, nao copias de registrador.
+
+| | |
+|---|---|
+| Metodos analisados | 35.831 |
+| Com pelo menos um uso do bloco | **9.364 (26,1%)** |
+| Tipos com algum metodo afetado | 3.089 de 4.715 |
+
+- Nao e um canto isolado: **um em cada quatro metodos** carrega ao menos uma referencia desse grupo (classe do proprio tipo para estaticos, arrays, instancias genericas...).
+  Entre os tipos de que ja falamos: `HomePlayButton` (6 metodos), `HolidayGameModeButton` (7), `ClothesDropUtils` (5), `GameSceneManager` (22), `WorldBuilding` (13);
+  `ClothesDropDataMap` nao tem nenhum.
+- Efeito pratico: em quase todo metodo afetado so a **referencia de classe/instancia** fica sem nome; o corpo continua legivel (fluxo, chamadas diretas, strings, campos por offset),
+  como vimos em todas as leituras desta serie.
+- Nota de medicao: a primeira execucao leu `assembly_csharp_methods.jsonl` e `metadata_methods.jsonl`, que repetem os metodos de Assembly-CSharp, e contou o dobro
+  (71.662 / 18.728); os numeros acima sao os valores **sem repeticao por endereco**, obtidos deduplicando o JSON dessa execucao. O script ja foi corrigido, mas **nao foi reexecutado por inteiro**
+  (a varredura leva ~25 min); so testei a versao corrigida com `--limit 300`.
