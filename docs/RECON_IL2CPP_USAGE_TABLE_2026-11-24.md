@@ -1,0 +1,33 @@
+# Tabela de usos de metadata do IL2CPP: um bloco de 6.390 entradas nao decodifica — 2026-11-24
+
+Continuacao do T025 (despacho indireto de `HomePlayButton.LoadPlayScene` em `0x2058174`, ver `RECON_T025_BODY_BOUNDS_2026-11-23.md`).
+Ferramenta: `tools/recon_usage_table.py` (reproduz tudo abaixo). Binario: `libil2cpp.so` sha256 `b63661fa60c2...`.
+
+## Como o jogo resolve uma referencia de metadata (lido, `0x1b561d0`)
+O codigo carrega `ldr xN, [slot_da_.got]` e obtem um endereco **A** na `.data`; antes de usar chama `InitializeRuntimeMetadata(A)` (`0x1b886e8` -> `0x1bc8270` -> `0x1b561d0`),
+que le `*A`:
+- **bit0 == 0**: ja e um ponteiro resolvido; devolve como esta.
+- **bit0 == 1**: e um token. `tag = (v >> 29) & 7`, `indice = (v >> 1) & 0x0FFFFFFF`. Tags vistas no binario: 1 = tipo/classe, 3 = metodo (MethodDef),
+  4 = campo (via `fieldRefs`: tipo + indice no tipo), 5 = string literal, 6 = MethodRef (generico). Depois da resolucao, o runtime grava o ponteiro em `*A`.
+O `recon_disasm.py` usa a mesma ideia para anotar `; type X` e `; "string"`.
+
+## O achado
+Das **66.844** entradas da `.data` apontadas pela `.got`: 6.946 tag 1, 14.344 tag 3, 646 tag 4, 22.095 tag 5, 16.417 tag 6, 4 tag 7, 2 zero, e **6.390 que nao sao token**.
+Essas 6.390 formam **um unico bloco contiguo**: `0x42e55f8`..`0x42f1da0`. Nao e zero nem token de 32 bits:
+- 64 bits cheios, todas as metades baixas distintas, metades altas com so **1.407** valores distintos (cada um repetido de 3 a 7 vezes), bit0=1 em 48% das entradas;
+- `zlib` comprime a 0,58 (aleatorio puro daria ~1,0) e as 16 bytes consecutivos nunca se repetem.
+Ou seja, ha estrutura, mas nao e um token de IL2CPP e nao decodifica pela regra acima. XOR/soma/rotacao simples entre as duas metades nao produz tokens (taxa ~37%, igual ao acaso).
+
+## O que isso explica
+- Os dois slots do despacho do `HomePlayButton` (`0x41c7a98` -> `0x42eb4d8` e `0x41aeea8` -> `0x42f08b0`) caem nesse bloco: por isso a interface alvo e o campo do singleton nao decodificam.
+- Idem o slot da propria classe `HolidayGameModeButton` (`0x42f1a68`) e outros "type"/"method" sem anotacao em varios `.asm` desta serie.
+- Nenhuma das 24 funcoes de `.init_array` referencia esse bloco (olhei so as primeiras ~600 bytes de cada), entao nao achei um decodificador dentro da `libil2cpp.so`.
+
+## O que NAO sei
+- Se o bloco e **cifrado/ofuscado** (por exemplo por protecao do app, como o PairIP ja documentado) e reescrito antes do uso, ou se e outra estrutura (uma tabela diferente que a `.got` aponta por outro motivo). Os dados so mostram que nao e token.
+- Quantos metodos usam entradas do bloco. Nao varri os 36 mil metodos.
+- Nao tentei quebrar a transformacao: sem texto claro conhecido para esse bloco nao ha como validar uma hipotese.
+
+## Consequencia para o T025
+Metodos cujo corpo depende dessas entradas (classe do proprio tipo, interfaces, campos estaticos) ficam com tipos/classes **nao resolvidos** estaticamente; so os de tag 1/3/4/5/6 fora do bloco resolvem. O despacho do `HomePlayButton`
+continua **inferido** (slot 0 de uma interface de dicionario), agora com a causa documentada. Resolver exige olhar o runtime (dump de memoria apos a inicializacao) ou achar a rotina que escreve o bloco.
