@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/a8d9cf098a7447a9",
+ "title": "Corrigir decodificação de Game.Level.LevelBaristaMachine",
+ "actor": "agente-re-capstone-claude",
+ "summary": "Game.Level.LevelBaristaMachine: 3 de 3 instancia(s) com erro resolvidas; total 3/3 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/a8d9cf098a7447a9/class-contract.json",
+  "out/recon/tasks/T020/CLASS/a8d9cf098a7447a9/recount.json",
+  "out/mb/Game.Level.LevelBaristaMachine.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

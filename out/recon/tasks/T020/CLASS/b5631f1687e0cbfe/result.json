@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/b5631f1687e0cbfe",
+ "title": "Corrigir decodificação de PWC.Level.LevelAnimationDropAreaHandler",
+ "actor": "agente-re-capstone-claude",
+ "summary": "PWC.Level.LevelAnimationDropAreaHandler: 16 de 16 instancia(s) com erro resolvidas; total 16/16 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/b5631f1687e0cbfe/class-contract.json",
+  "out/recon/tasks/T020/CLASS/b5631f1687e0cbfe/recount.json",
+  "out/mb/PWC.Level.LevelAnimationDropAreaHandler.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

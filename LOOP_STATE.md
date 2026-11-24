@@ -1,5 +1,12 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: 63 tarefas de classe aceitas (done) — 2026-11-24
+- A pedido explicito do usuario, as 63 tarefas `T020/CLASS/<hash>` das classes resolvidas pelo loader de baixa memoria foram submetidas (autor `agente-re-capstone-claude`) e aprovadas
+  (revisor `revisor-claude-t020`) apos verificacao independente automatica: linhas = ok+err declarados na fila, objetos recuperados = err declarado, sem path_id duplicado, um unico `m_Script`,
+  `_stats.json` consistente e **conteudo identico linha a linha** ao da reproducao com o script limpo `tools/mb_retry_errors_lowmem.py` (63/63). Fila: done 13 -> 76, pending 841 -> 778.
+- Evidencia por tarefa em `out/recon/tasks/T020/CLASS/<hash>/` (class-contract, recount, result). Reserva registrada: causa-raiz do grupo `same_bug_likely_fixed` (List<String> mal rotulado, por triagem);
+  prova do layout = leitura exata, nao analise campo a campo. Continuam sem solucao 61 classes (30 nullref, 20 stripped, 9 serialize_reference, 2). `root` da fila segue no worktree.
+
 ## T020: 63 classes resolvidas sem mais RAM (loader em streaming) — 2026-11-24
 - `tools/lowmem_unitypy.py` (descompressao em streaming + `mmap`, so SerializedFile) derrubou o pico de ~6 GB+ para ~2,5 GB e permitiu o passe completo sobre 881.898 MonoBehaviours.
   64 classes com 3.951 instancias gravadas em `out/mb` (63 100% ok, 1 parcial); `_stats.json` erros 124 -> 61. Regressao nas 13 classes com dump antigo: so muda `""` -> `[]` em `List<string>`.

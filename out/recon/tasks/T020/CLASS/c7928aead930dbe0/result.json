@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/c7928aead930dbe0",
+ "title": "Corrigir decodificação de Game.Level.LevelSecretAvatarAnimationByScreenCaptureListener",
+ "actor": "agente-re-capstone-claude",
+ "summary": "Game.Level.LevelSecretAvatarAnimationByScreenCaptureListener: 10 de 10 instancia(s) com erro resolvidas; total 11/11 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/c7928aead930dbe0/class-contract.json",
+  "out/recon/tasks/T020/CLASS/c7928aead930dbe0/recount.json",
+  "out/mb/Game.Level.LevelSecretAvatarAnimationByScreenCaptureListener.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

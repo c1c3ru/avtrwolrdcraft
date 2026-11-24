@@ -1,0 +1,77 @@
+{
+ "class": "PWC.Game.LevelToggleableTransform",
+ "before": {
+  "ok": 10,
+  "bad": 0,
+  "err": 9,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 19,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 19,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 5538,
+   "assets_file": "level59",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 765203,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 837660,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 896614,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1043508,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1045845,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1070304,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1104908,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1195414,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "9 instancia(s) que falhavam foram reprocessadas e resolvidas; 10 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 19 = declarado ok 10 + err 9.",
+ "output_artifact": "out/mb/PWC.Game.LevelToggleableTransform.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Game.LevelToggleableTransform -> {\"ok\": 19}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

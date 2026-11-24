@@ -1,0 +1,65 @@
+{
+ "class": "PWC.Level.LevelSimpleToggleableSpineItem",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 7,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 7,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 7,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 5247,
+   "assets_file": "level27",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 743073,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 791869,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 945709,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1053962,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1098915,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1112758,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "7 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 7 = declarado ok 0 + err 7.",
+ "output_artifact": "out/mb/PWC.Level.LevelSimpleToggleableSpineItem.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.LevelSimpleToggleableSpineItem -> {\"ok\": 7}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

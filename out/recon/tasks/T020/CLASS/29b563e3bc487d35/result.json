@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/29b563e3bc487d35",
+ "title": "Corrigir decodificação de PWC.Level.LevelMultiToggleableAudio",
+ "actor": "agente-re-capstone-claude",
+ "summary": "PWC.Level.LevelMultiToggleableAudio: 5 de 5 instancia(s) com erro resolvidas; total 5/5 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/29b563e3bc487d35/class-contract.json",
+  "out/recon/tasks/T020/CLASS/29b563e3bc487d35/recount.json",
+  "out/mb/PWC.Level.LevelMultiToggleableAudio.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

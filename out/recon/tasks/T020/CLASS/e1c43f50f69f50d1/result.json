@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/e1c43f50f69f50d1",
+ "title": "Corrigir decodificação de PWC.Level.LevelPlant",
+ "actor": "agente-re-capstone-claude",
+ "summary": "PWC.Level.LevelPlant: 34 de 34 instancia(s) com erro resolvidas; total 66/66 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/e1c43f50f69f50d1/class-contract.json",
+  "out/recon/tasks/T020/CLASS/e1c43f50f69f50d1/recount.json",
+  "out/mb/PWC.Level.LevelPlant.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

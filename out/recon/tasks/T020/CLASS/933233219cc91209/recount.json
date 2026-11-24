@@ -1,0 +1,83 @@
+{
+ "class": "PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 10,
+  "err_message": "ValueError: Expected to read 192 bytes, but only read 116 bytes"
+ },
+ "after": {
+  "ok": 10,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 10,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 798907,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 887074,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 903609,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 994933,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 995845,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1052048,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1072607,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1145577,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1162430,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1170369,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "10 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 10 = declarado ok 0 + err 10.",
+ "output_artifact": "out/mb/PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler -> {\"ok\": 10}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

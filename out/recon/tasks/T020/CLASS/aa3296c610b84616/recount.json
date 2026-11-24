@@ -1,0 +1,185 @@
+{
+ "class": "Game.Level.LevelSecretAvatarPutClothingsListener",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 27,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 27,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 27,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 3865,
+   "assets_file": "level72",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4059,
+   "assets_file": "level72",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4074,
+   "assets_file": "level72",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4111,
+   "assets_file": "level72",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2421,
+   "assets_file": "level114",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4803,
+   "assets_file": "level124",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4806,
+   "assets_file": "level124",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3761,
+   "assets_file": "level127",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4421,
+   "assets_file": "level139",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3479,
+   "assets_file": "level164",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2461,
+   "assets_file": "level167",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2881,
+   "assets_file": "level180",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2883,
+   "assets_file": "level180",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3603,
+   "assets_file": "level180",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2310,
+   "assets_file": "level182",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2324,
+   "assets_file": "level182",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2590,
+   "assets_file": "level182",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2632,
+   "assets_file": "level182",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4153,
+   "assets_file": "level187",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2100,
+   "assets_file": "level188",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2611,
+   "assets_file": "level206",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 804466,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 878379,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 922758,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1014367,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1074584,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1130810,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "27 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 27 = declarado ok 0 + err 27.",
+ "output_artifact": "out/mb/Game.Level.LevelSecretAvatarPutClothingsListener.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: Game.Level.LevelSecretAvatarPutClothingsListener -> {\"ok\": 27}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

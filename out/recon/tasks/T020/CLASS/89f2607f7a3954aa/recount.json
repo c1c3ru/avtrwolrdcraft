@@ -1,0 +1,95 @@
+{
+ "class": "Game.Level.LevelDragActionAreaMultiLabelEventHandler",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 12,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 12,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 12,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 1885,
+   "assets_file": "level207",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1995,
+   "assets_file": "level207",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2030,
+   "assets_file": "level207",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2057,
+   "assets_file": "level207",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1989,
+   "assets_file": "level208",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2140,
+   "assets_file": "level208",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2156,
+   "assets_file": "level208",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2267,
+   "assets_file": "level208",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3471,
+   "assets_file": "level209",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3271,
+   "assets_file": "level210",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3780,
+   "assets_file": "level211",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3224,
+   "assets_file": "level212",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "12 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 12 = declarado ok 0 + err 12.",
+ "output_artifact": "out/mb/Game.Level.LevelDragActionAreaMultiLabelEventHandler.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: Game.Level.LevelDragActionAreaMultiLabelEventHandler -> {\"ok\": 12}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

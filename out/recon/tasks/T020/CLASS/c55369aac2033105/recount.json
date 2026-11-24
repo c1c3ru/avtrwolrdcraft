@@ -1,0 +1,59 @@
+{
+ "class": "PWC.AvatarMaker.SUTSkinsDataMap",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 6,
+  "err_message": "ValueError: Expected to read 7156 bytes, but only read 572 bytes"
+ },
+ "after": {
+  "ok": 6,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 6,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 721794,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 721795,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 721796,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 721797,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 721798,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 721799,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "6 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 6 = declarado ok 0 + err 6.",
+ "output_artifact": "out/mb/PWC.AvatarMaker.SUTSkinsDataMap.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.AvatarMaker.SUTSkinsDataMap -> {\"ok\": 6}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

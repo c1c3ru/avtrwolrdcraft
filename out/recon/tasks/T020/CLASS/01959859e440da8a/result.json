@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/01959859e440da8a",
+ "title": "Corrigir decodificação de PWC.Game.LevelToggleableTransform",
+ "actor": "agente-re-capstone-claude",
+ "summary": "PWC.Game.LevelToggleableTransform: 9 de 9 instancia(s) com erro resolvidas; total 19/19 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/01959859e440da8a/class-contract.json",
+  "out/recon/tasks/T020/CLASS/01959859e440da8a/recount.json",
+  "out/mb/PWC.Game.LevelToggleableTransform.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

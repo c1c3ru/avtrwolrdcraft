@@ -1,0 +1,179 @@
+{
+ "class": "PWC.Level.LevelToggleableMultipleAudio",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 26,
+  "err_message": "EOFError: read_l out of bounds"
+ },
+ "after": {
+  "ok": 26,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 26,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 3632,
+   "assets_file": "level26",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3650,
+   "assets_file": "level31",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 5211,
+   "assets_file": "level39",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2017,
+   "assets_file": "level126",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3550,
+   "assets_file": "level139",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1528,
+   "assets_file": "level200",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3407,
+   "assets_file": "level216",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3407,
+   "assets_file": "level217",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3412,
+   "assets_file": "level218",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3398,
+   "assets_file": "level219",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 771523,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 829208,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 833835,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 890957,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 904900,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 951598,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 969100,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 973923,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 993537,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1009711,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1027030,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1047786,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1102106,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1106219,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1187472,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1201778,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "26 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 26 = declarado ok 0 + err 26.",
+ "output_artifact": "out/mb/PWC.Level.LevelToggleableMultipleAudio.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.LevelToggleableMultipleAudio -> {\"ok\": 26}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

@@ -1,0 +1,155 @@
+{
+ "class": "LevelDropAreaEventOnAvatarWithSkinDropHandler",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 22,
+  "err_message": "ValueError: Expected to read 672 bytes, but only read 660 bytes"
+ },
+ "after": {
+  "ok": 22,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 22,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 4084,
+   "assets_file": "level106",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4085,
+   "assets_file": "level106",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4086,
+   "assets_file": "level106",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4087,
+   "assets_file": "level106",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4098,
+   "assets_file": "level106",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4099,
+   "assets_file": "level106",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4100,
+   "assets_file": "level106",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4101,
+   "assets_file": "level106",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2723,
+   "assets_file": "level135",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3492,
+   "assets_file": "level177",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3493,
+   "assets_file": "level177",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3494,
+   "assets_file": "level177",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3495,
+   "assets_file": "level177",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3530,
+   "assets_file": "level177",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3531,
+   "assets_file": "level177",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3532,
+   "assets_file": "level177",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3533,
+   "assets_file": "level177",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3073,
+   "assets_file": "level187",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 858239,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 864186,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1176205,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1195915,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "22 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 22 = declarado ok 0 + err 22.",
+ "output_artifact": "out/mb/LevelDropAreaEventOnAvatarWithSkinDropHandler.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: LevelDropAreaEventOnAvatarWithSkinDropHandler -> {\"ok\": 22}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

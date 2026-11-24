@@ -1,0 +1,227 @@
+{
+ "class": "PWC.Level.LevelPlant",
+ "before": {
+  "ok": 32,
+  "bad": 0,
+  "err": 34,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 66,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 66,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 4158,
+   "assets_file": "level49",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2960,
+   "assets_file": "level143",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2961,
+   "assets_file": "level143",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3580,
+   "assets_file": "level143",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3581,
+   "assets_file": "level143",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3582,
+   "assets_file": "level143",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3636,
+   "assets_file": "level143",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 758455,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 791558,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 791559,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 791560,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 791561,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 868834,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 900279,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 902835,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 935324,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 942011,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 942012,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 958809,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 958810,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 958811,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 958812,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 988105,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 988118,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1000173,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1000448,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1010798,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1051713,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1051714,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1061411,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1100848,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1105442,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1119912,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1171810,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "34 instancia(s) que falhavam foram reprocessadas e resolvidas; 32 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 66 = declarado ok 32 + err 34.",
+ "output_artifact": "out/mb/PWC.Level.LevelPlant.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.LevelPlant -> {\"ok\": 66}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

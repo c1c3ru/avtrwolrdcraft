@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/62be3319baa856dd",
+ "title": "Corrigir decodificação de PazuCore.PazuCoreAddressables.AFC.CR.AFCCRTextureComponent",
+ "actor": "agente-re-capstone-claude",
+ "summary": "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRTextureComponent: 5 de 5 instancia(s) com erro resolvidas; total 5/5 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/62be3319baa856dd/class-contract.json",
+  "out/recon/tasks/T020/CLASS/62be3319baa856dd/recount.json",
+  "out/mb/PazuCore.PazuCoreAddressables.AFC.CR.AFCCRTextureComponent.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

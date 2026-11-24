@@ -1,0 +1,53 @@
+{
+ "class": "PWC.Level.LevelUpgradeTrackerGuidsFilter",
+ "before": {
+  "ok": 3,
+  "bad": 0,
+  "err": 5,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 8,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 8,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 2639,
+   "assets_file": "level19",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 6841,
+   "assets_file": "level37",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3156,
+   "assets_file": "level49",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 7689,
+   "assets_file": "level50",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 5749,
+   "assets_file": "level51",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "5 instancia(s) que falhavam foram reprocessadas e resolvidas; 3 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 8 = declarado ok 3 + err 5.",
+ "output_artifact": "out/mb/PWC.Level.LevelUpgradeTrackerGuidsFilter.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.LevelUpgradeTrackerGuidsFilter -> {\"ok\": 8}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

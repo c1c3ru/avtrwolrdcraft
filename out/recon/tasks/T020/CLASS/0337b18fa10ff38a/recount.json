@@ -1,0 +1,65 @@
+{
+ "class": "PWC.Level.LevelConsumerAreaSkinNameConditionHandler",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 7,
+  "err_message": "ValueError: Expected to read 216 bytes, but only read 48 bytes"
+ },
+ "after": {
+  "ok": 7,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 7,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 3211,
+   "assets_file": "level90",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2940,
+   "assets_file": "level94",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4071,
+   "assets_file": "level139",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4285,
+   "assets_file": "level139",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2939,
+   "assets_file": "level157",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3613,
+   "assets_file": "level157",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1044329,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "7 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 7 = declarado ok 0 + err 7.",
+ "output_artifact": "out/mb/PWC.Level.LevelConsumerAreaSkinNameConditionHandler.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.LevelConsumerAreaSkinNameConditionHandler -> {\"ok\": 7}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

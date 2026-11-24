@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/b3e3456b478a8d71",
+ "title": "Corrigir decodificação de Game.Level.Baking.LevelMixerMachine",
+ "actor": "agente-re-capstone-claude",
+ "summary": "Game.Level.Baking.LevelMixerMachine: 1 de 1 instancia(s) com erro resolvidas; total 1/1 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/b3e3456b478a8d71/class-contract.json",
+  "out/recon/tasks/T020/CLASS/b3e3456b478a8d71/recount.json",
+  "out/mb/Game.Level.Baking.LevelMixerMachine.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

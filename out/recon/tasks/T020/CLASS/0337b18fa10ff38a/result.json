@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/0337b18fa10ff38a",
+ "title": "Corrigir decodificação de PWC.Level.LevelConsumerAreaSkinNameConditionHandler",
+ "actor": "agente-re-capstone-claude",
+ "summary": "PWC.Level.LevelConsumerAreaSkinNameConditionHandler: 7 de 7 instancia(s) com erro resolvidas; total 7/7 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/0337b18fa10ff38a/class-contract.json",
+  "out/recon/tasks/T020/CLASS/0337b18fa10ff38a/recount.json",
+  "out/mb/PWC.Level.LevelConsumerAreaSkinNameConditionHandler.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

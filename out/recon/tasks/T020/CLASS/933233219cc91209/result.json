@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/933233219cc91209",
+ "title": "Corrigir decodificação de PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler",
+ "actor": "agente-re-capstone-claude",
+ "summary": "PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler: 10 de 10 instancia(s) com erro resolvidas; total 10/10 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/933233219cc91209/class-contract.json",
+  "out/recon/tasks/T020/CLASS/933233219cc91209/recount.json",
+  "out/mb/PWC.Level.ContextualAnimation.LevelCAToddlerMusicalInstrumentItemHandler.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

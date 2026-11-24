@@ -1,0 +1,41 @@
+{
+ "class": "PWC.World.Buildings.TransportationResetData",
+ "before": {
+  "ok": 1,
+  "bad": 0,
+  "err": 3,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 4,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 4,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 724100,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 724101,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 724102,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "3 instancia(s) que falhavam foram reprocessadas e resolvidas; 1 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 4 = declarado ok 1 + err 3.",
+ "output_artifact": "out/mb/PWC.World.Buildings.TransportationResetData.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.World.Buildings.TransportationResetData -> {\"ok\": 4}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

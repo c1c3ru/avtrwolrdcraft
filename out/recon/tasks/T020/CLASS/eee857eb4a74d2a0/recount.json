@@ -1,0 +1,47 @@
+{
+ "class": "PWC.Level.LevelToggleableMultipleAudioItemHandler",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 4,
+  "err_message": "EOFError: read_l out of bounds"
+ },
+ "after": {
+  "ok": 4,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 4,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 4885,
+   "assets_file": "level39",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3272,
+   "assets_file": "level71",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 905828,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1019117,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "4 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 4 = declarado ok 0 + err 4.",
+ "output_artifact": "out/mb/PWC.Level.LevelToggleableMultipleAudioItemHandler.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.LevelToggleableMultipleAudioItemHandler -> {\"ok\": 4}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

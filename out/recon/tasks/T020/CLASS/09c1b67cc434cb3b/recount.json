@@ -1,0 +1,83 @@
+{
+ "class": "PWC.Level.LevelStationaryPlant",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 10,
+  "err_message": "ValueError: Expected to read 320 bytes, but only read 252 bytes"
+ },
+ "after": {
+  "ok": 10,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 10,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 3773,
+   "assets_file": "level5",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 4774,
+   "assets_file": "level5",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1757,
+   "assets_file": "level7",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2812,
+   "assets_file": "level28",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2412,
+   "assets_file": "level71",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2444,
+   "assets_file": "level71",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2507,
+   "assets_file": "level71",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2591,
+   "assets_file": "level71",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2633,
+   "assets_file": "level71",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 2856,
+   "assets_file": "level86",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "10 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 10 = declarado ok 0 + err 10.",
+ "output_artifact": "out/mb/PWC.Level.LevelStationaryPlant.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.LevelStationaryPlant -> {\"ok\": 10}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

@@ -1,0 +1,53 @@
+{
+ "class": "PWC.Level.LevelMultiToggleableAudio",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 5,
+  "err_message": "ValueError: Expected to read 280 bytes, but only read 192 bytes"
+ },
+ "after": {
+  "ok": 5,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 5,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 2491,
+   "assets_file": "level178",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 3710,
+   "assets_file": "level179",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 734181,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1170785,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1189265,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "5 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 5 = declarado ok 0 + err 5.",
+ "output_artifact": "out/mb/PWC.Level.LevelMultiToggleableAudio.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.LevelMultiToggleableAudio -> {\"ok\": 5}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

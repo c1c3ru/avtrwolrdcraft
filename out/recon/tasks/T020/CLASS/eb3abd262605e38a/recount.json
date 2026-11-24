@@ -1,0 +1,65 @@
+{
+ "class": "PWC.Level.BasketballSystem.LevelBSBasketballItemHandler",
+ "before": {
+  "ok": 51,
+  "bad": 0,
+  "err": 7,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 58,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 58,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 784463,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 843606,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 861365,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 908826,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 993393,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 998979,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1066067,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "7 instancia(s) que falhavam foram reprocessadas e resolvidas; 51 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 58 = declarado ok 51 + err 7.",
+ "output_artifact": "out/mb/PWC.Level.BasketballSystem.LevelBSBasketballItemHandler.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PWC.Level.BasketballSystem.LevelBSBasketballItemHandler -> {\"ok\": 58}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

@@ -1,0 +1,71 @@
+{
+ "class": "PazuCore.PazuCoreAddressables.AFC.CR.AFCCRAnalyticsEventCreator",
+ "before": {
+  "ok": 0,
+  "bad": 0,
+  "err": 8,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 8,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 8,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 765146,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 795900,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 931647,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 975167,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1034642,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1171636,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1193121,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1197497,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "8 instancia(s) que falhavam foram reprocessadas e resolvidas; 0 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 8 = declarado ok 0 + err 8.",
+ "output_artifact": "out/mb/PazuCore.PazuCoreAddressables.AFC.CR.AFCCRAnalyticsEventCreator.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: PazuCore.PazuCoreAddressables.AFC.CR.AFCCRAnalyticsEventCreator -> {\"ok\": 8}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

@@ -1,0 +1,24 @@
+{
+ "class": "Game.Level.LevelToggleableMap",
+ "assembly": "Assembly-CSharp (ver MonoScript)",
+ "unity_class_id": "MonoBehaviour (114)",
+ "original_failure": "EOFError: read_str out of bounds (tools/mb_dump.py, nos do TypeTreeGeneratorAPI)",
+ "root_cause": {
+  "summary": "Mesmo defeito ja corrigido em InventoryBuildData: o TypeTreeGeneratorAPI rotula como m_Type=\"string\" a raiz de campos List<String>, mantendo os filhos Array/size/data corretos; o leitor do UnityPy le um string escalar e dessincroniza o restante do objeto.",
+  "evidence_of_cause": {
+   "mislabeled_list_string_fields_found": [
+    "_idleAnimationsNames",
+    "_transitionAnimationsNames"
+   ],
+   "node_count": 56,
+   "triage": "same_bug_likely_fixed",
+   "source": "out/recon/tasks/T020/node_tree_triage_2026-11-22.json"
+  },
+  "caveat": "A causa e a do grupo same_bug_likely_fixed (campo(s) List<String> mal rotulado(s) acima); a prova de que o layout agora esta correto e a leitura exata (UnityPy exige consumir todos os bytes do objeto), nao uma analise campo a campo."
+ },
+ "fix": {
+  "location": "tools/mb_dump.py, fix_mislabeled_vectors(nodes) (reaproveitada por tools/mb_retry_errors_lowmem.py)",
+  "applied_before_read": true
+ },
+ "unresolved": "nenhum objeto desta classe permanece com erro"
+}

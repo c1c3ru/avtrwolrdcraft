@@ -1,0 +1,35 @@
+{
+ "class": "Spine.Unity.SkeletonDataAsset",
+ "before": {
+  "ok": 586,
+  "bad": 0,
+  "err": 2,
+  "err_message": "EOFError: read_str out of bounds"
+ },
+ "after": {
+  "ok": 588,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 588,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 251,
+   "assets_file": "sharedassets36.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 175,
+   "assets_file": "sharedassets101.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "2 instancia(s) que falhavam foram reprocessadas e resolvidas; 586 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 588 = declarado ok 586 + err 2.",
+ "output_artifact": "out/mb/Spine.Unity.SkeletonDataAsset.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: Spine.Unity.SkeletonDataAsset -> {\"ok\": 588}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/1043926dff18e2cc",
+ "title": "Corrigir decodificação de LevelDropAreaEventOnAvatarWithSkinDropHandler",
+ "actor": "agente-re-capstone-claude",
+ "summary": "LevelDropAreaEventOnAvatarWithSkinDropHandler: 22 de 22 instancia(s) com erro resolvidas; total 22/22 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/1043926dff18e2cc/class-contract.json",
+  "out/recon/tasks/T020/CLASS/1043926dff18e2cc/recount.json",
+  "out/mb/LevelDropAreaEventOnAvatarWithSkinDropHandler.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}

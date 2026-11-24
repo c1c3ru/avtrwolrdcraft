@@ -1,0 +1,65 @@
+{
+ "class": "Game.Level.BackgroundCharacterSpineManager",
+ "before": {
+  "ok": 9,
+  "bad": 0,
+  "err": 7,
+  "err_message": "EOFError: read_i_array out of bounds"
+ },
+ "after": {
+  "ok": 16,
+  "bad": 0,
+  "err": 0
+ },
+ "total_instances_in_game": 16,
+ "instances_in_game_confirmed_by": "passe completo sobre 881.898 MonoBehaviours com tools/mb_retry_errors_lowmem.py (todas as instancias da classe lidas; ok+err = declared ok+err)",
+ "affected_objects": [
+  {
+   "path_id": 913930,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 930975,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 940258,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 971015,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 998659,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1005887,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  },
+  {
+   "path_id": 1120541,
+   "assets_file": "resources.assets",
+   "status": "resolved",
+   "check_read_passed": true
+  }
+ ],
+ "unresolved_objects": [],
+ "reconciliation_note": "7 instancia(s) que falhavam foram reprocessadas e resolvidas; 9 ja estavam decodificadas e foram reproduzidas (so muda \"\" -> [] em List<string> vazios). Total 16 = declarado ok 9 + err 7.",
+ "output_artifact": "out/mb/Game.Level.BackgroundCharacterSpineManager.jsonl.gz",
+ "stats_json_update": "out/mb/_stats.json: Game.Level.BackgroundCharacterSpineManager -> {\"ok\": 16}, removida de erros",
+ "full_bundle_redump": "passe de leitura sobre o datapack com loader de baixa memoria (tools/lowmem_unitypy.py); so as classes com erro foram gravadas"
+}

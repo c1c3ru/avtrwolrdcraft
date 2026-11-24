@@ -1,0 +1,17 @@
+{
+ "task": "T020/CLASS/b3c892fb194d1dbe",
+ "title": "Corrigir decodificação de Game.Level.ContextualAnimation.LevelCAMusicalInstrumentWithSpecialNamesWithCADataDropAreaHandler",
+ "actor": "agente-re-capstone-claude",
+ "summary": "Game.Level.ContextualAnimation.LevelCAMusicalInstrumentWithSpecialNamesWithCADataDropAreaHandler: 19 de 19 instancia(s) com erro resolvidas; total 19/19 decodificadas com leitura exata.",
+ "fix_location": "tools/mb_dump.py (fix_mislabeled_vectors) + tools/lowmem_unitypy.py (leitura sem estouro de memoria)",
+ "evidence": [
+  "out/recon/tasks/T020/CLASS/b3c892fb194d1dbe/class-contract.json",
+  "out/recon/tasks/T020/CLASS/b3c892fb194d1dbe/recount.json",
+  "out/mb/Game.Level.ContextualAnimation.LevelCAMusicalInstrumentWithSpecialNamesWithCADataDropAreaHandler.jsonl.gz",
+  "out/mb/_stats.json",
+  "docs/RECON_T020_LOWMEM_2026-11-24.md",
+  "tools/mb_retry_errors_lowmem.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "never_autoaccept": "Submetido para revisao; nao foi auto-aceito pelo gerador (revisao com verificacao independente dos arquivos)."
+}
