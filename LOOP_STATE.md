@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: +9 classes com o construtor v2 (bug da janela de atributos corrigido) — 2026-11-24
+- A v1 pegava o `[SerializeField]` do campo anterior (ex. `PhoneSeparator._tweenID` nao e serializado); `tools/mb_typetree_builder_v2.py` usa so atributos contiguos. +9 classes (5 do LevelPhone, LevelStationButton,
+  AvatarMakerLobbyManager, LevelSkinsRandomizer, AchievementDetailThumb; 1.142 instancias), regressao 18/18 identica. Restam 34 (20 EditorApp, 12 com SerializeReference, GameExtraSettings, LocalizationManager). `docs/RECON_T020_TYPETREE_BUILDER_V2_2026-11-24.md`.
+- **Armadilha de evidencia**: `out/mb/_stats.json`, `tools/mb_typetree_builder.py` e `docs/RECON_T020_*` sao evidencia hasheada de tarefas `done`; **nao editar** (quebra o `relocate`). Por isso `_stats_addendum_2026-11-24b.json` e a v2 sao arquivos novos.
+  As 9 tarefas ficam `blocked_external` aguardando autorizacao para submeter.
+
 ## T020: 18 classes do construtor de type tree aceitas (done) — 2026-11-24
 - A pedido explicito do usuario: as 18 tarefas (estavam `blocked_external` por limitacao de ferramenta) foram reabertas com `configure` e submetidas/aprovadas (autor `agente-re-capstone-claude`, revisor
   `revisor-claude-t020`) apos verificacao independente: contagens = declared ok+err, ids, um `m_Script`, `_stats.json`, auditoria de sanidade dos valores e conteudo identico ao reconstruido pela ferramenta endurecida.

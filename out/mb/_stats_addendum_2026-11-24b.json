@@ -1,0 +1,33 @@
+{
+ "note": "Adendo de 2026-11-24 a out/mb/_stats.json (que fica congelado: e evidencia hasheada de tarefas T020 done e editar quebraria o relocate da fila). Estas classes decodificam 100% e saem da lista de erros.",
+ "tool": "tools/mb_typetree_builder_v2.py",
+ "stats": {
+  "Game.Level.MovingTraingBackground.LevelStationButton": {
+   "ok": 12
+  },
+  "PWC.AvatarMakerLobby.AvatarMakerLobbyManager": {
+   "ok": 1
+  },
+  "PWC.Level.LevelSkinsRandomizer": {
+   "ok": 3
+  },
+  "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb": {
+   "ok": 1
+  },
+  "PWC.LevelPhone.ContactsContent": {
+   "ok": 225
+  },
+  "PWC.LevelPhone.DeliveryApp.DeliveryContent": {
+   "ok": 225
+  },
+  "PWC.LevelPhone.PhoneBackground": {
+   "ok": 225
+  },
+  "PWC.LevelPhone.PhoneContentIcon": {
+   "ok": 225
+  },
+  "PWC.LevelPhone.PhoneSeparator": {
+   "ok": 225
+  }
+ }
+}
