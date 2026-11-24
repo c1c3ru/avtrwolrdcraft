@@ -34,7 +34,7 @@
    "ok": 1
   },
   "PazuCore.WindowManager": {
-   "err": 1
+   "ok": 1
   },
   "PazuCore.PazuNotification": {
    "ok": 1
@@ -127,7 +127,7 @@
    "ok": 4908
   },
   "PazuCore.DeepLink.DeepLinkManager": {
-   "err": 1
+   "ok": 1
   },
   "PWC.Inventory.InventoryManager": {
    "ok": 1
@@ -4949,7 +4949,7 @@
    "ok": 3
   },
   "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode": {
-   "err": 2
+   "ok": 2
   },
   "PWC.WorldReset.AvatarMakerLobbyAvatarTypeButton": {
    "ok": 3
@@ -5834,7 +5834,7 @@
    "ok": 1
   },
   "PWC.AvatarMaker.AvatarMakerBabyColorsConfig": {
-   "err": 2
+   "ok": 2
   },
   "PWC.Level.LevelForceEmptyLiquidOnDropAreaHandler": {
    "ok": 18
@@ -5987,7 +5987,7 @@
    "ok": 10
   },
   "PWC.AvatarMaker.AvatarMakerDogColorsConfig": {
-   "err": 2
+   "ok": 2
   },
   "LevelChicken": {
    "ok": 3
@@ -6083,7 +6083,7 @@
    "ok": 6
   },
   "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode": {
-   "err": 3
+   "ok": 3
   },
   "Game.Level.ContextualAnimation.LevelCAFrontBabyStrollerItemHandler": {
    "ok": 6
@@ -6281,7 +6281,7 @@
    "ok": 1
   },
   "PWC.AvatarMaker.AvatarMakerCatColorsConfig": {
-   "err": 2
+   "ok": 2
   },
   "Game.Store.StoreAvatarIDRequriedWindow": {
    "ok": 1
@@ -6428,7 +6428,7 @@
    "ok": 1
   },
   "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig": {
-   "err": 2
+   "ok": 2
   },
   "Game.Level.ContextualAnimation.LevelCABabyOnCharacterHandler": {
    "ok": 1
@@ -6515,7 +6515,7 @@
    "ok": 6
   },
   "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig": {
-   "err": 2
+   "ok": 2
   },
   "PWC.Level.ContextualAnimation.LevelCADropAreaWithSpineObjectHandlerWithData": {
    "ok": 3
@@ -6620,7 +6620,7 @@
    "ok": 4
   },
   "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig": {
-   "err": 2
+   "ok": 2
   },
   "PWC.Level.Maker.Customization.LevelMakerCustomizationLight": {
    "ok": 1
@@ -6848,7 +6848,7 @@
    "ok": 1
   },
   "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig": {
-   "err": 2
+   "ok": 2
   },
   "Game.Level.LevelItemsChangerItemHandler": {
    "ok": 2
@@ -6863,7 +6863,7 @@
    "ok": 2
   },
   "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig": {
-   "err": 2
+   "ok": 2
   },
   "Game.Level.LevelCAJetPackItemHandler": {
    "ok": 2
@@ -6875,7 +6875,7 @@
    "ok": 12
   },
   "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig": {
-   "err": 2
+   "ok": 2
   },
   "Game.Level.ContextualAnimation.LevelCAKettleItemHandler": {
    "ok": 3
@@ -6941,7 +6941,7 @@
    "ok": 1
   },
   "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig": {
-   "err": 2
+   "ok": 2
   },
   "Game.Level.LevelValentinesRoseItemHandler": {
    "ok": 1
@@ -6992,7 +6992,7 @@
    "ok": 1
   },
   "PWC.AvatarMaker.AvatarMakerHorseColorsConfig": {
-   "err": 2
+   "ok": 2
   },
   "PWC.Level.LevelToddler": {
    "ok": 1
@@ -7013,7 +7013,7 @@
    "ok": 1
   },
   "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig": {
-   "err": 1
+   "ok": 1
   },
   "LevelTractorPlanter": {
    "ok": 1
@@ -7022,7 +7022,7 @@
    "ok": 2
   },
   "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig": {
-   "err": 2
+   "ok": 2
   },
   "PWC.AvatarMaker.AvatarMakerToddlerThumbsConfig": {
    "ok": 2
@@ -7217,7 +7217,7 @@
    "ok": 3
   },
   "PWC.AvatarMaker.AvatarMakerCarColorsConfig": {
-   "err": 1
+   "ok": 1
   },
   "PWC.PremadeCharacters.PremadeEditorCatSpineSkinsManager": {
    "ok": 1
@@ -7258,9 +7258,7 @@
  },
  "erros": {
   "PazuCore.GameExtraSettings": "ValueError: Expected to read 544 bytes, but only read 52 bytes",
-  "PazuCore.WindowManager": "ValueError: Expected to read 168 bytes, but only read 32 bytes",
   "PazuCore.LocalizationManager": "ValueError: Expected to read 4528 bytes, but only read 32 bytes",
-  "PazuCore.DeepLink.DeepLinkManager": "ValueError: Expected to read 6028 bytes, but only read 32 bytes",
   "PWC.LevelPhone.AchievementsApp.AchievementDetailThumb": "ValueError: Expected to read 240 bytes, but only read 32 bytes",
   "Game.Level.LevelSecretAvatarAnimationSolvedListener": "EOFError: read_str out of bounds",
   "PWC.LevelPhone.PhoneBackground": "ValueError: Expected to read 188 bytes, but only read 32 bytes",
@@ -7275,7 +7273,6 @@
   "Game.Level.LevelStaticConditionsResolver": "EOFError: read_str out of bounds",
   "Game.Level.LevelSecretVehicleInWorldPositionListener": "ValueError: Failed to get ref type node",
   "Game.Level.LevelStaticConditionsResolverWithParkedVehicles": "EOFError: read_str out of bounds",
-  "PazuCore.PazuCoreAddressables.AFC.AFCChangePositionWIthLanguageCode": "ValueError: Expected to read 200 bytes, but only read 32 bytes",
   "PWC.AvatarMakerLobby.AvatarMakerLobbyManager": "ValueError: Expected to read 292 bytes, but only read 32 bytes",
   "PWC.EditorApp.EASUTEThumbButtonHandler": "ValueError: Expected to read 44 bytes, but only read 32 bytes",
   "PWC.EditorApp.EASUTEDirectoryButtonHandler": "ValueError: Expected to read 44 bytes, but only read 32 bytes",
@@ -7288,34 +7285,19 @@
   "Game.Level.LevelOutfit": "EOFError: read_str out of bounds",
   "Game.Level.LevelRecipeSecret": "EOFError: read_str out of bounds",
   "PWC.EditorApp.EAEditorAssetsIndexer": "ValueError: Expected to read 320 bytes, but only read 64 bytes",
-  "PWC.AvatarMaker.AvatarMakerBabyColorsConfig": "ValueError: Expected to read 276 bytes, but only read 32 bytes",
   "PWC.EditorApp.EADelayedEventInputField": "ValueError: Expected to read 208 bytes, but only read 32 bytes",
   "PWC.EditorApp.EAHierarchyPanel": "ValueError: Expected to read 72 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerDogColorsConfig": "ValueError: Expected to read 116 bytes, but only read 32 bytes",
   "PWC.EditorApp.EALevelEditorPanel": "ValueError: Expected to read 44 bytes, but only read 32 bytes",
-  "PazuCore.PazuCoreAddressables.AFC.AFCTMPTextLineSpaceWIthLanguageCode": "ValueError: Expected to read 76 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerCatColorsConfig": "ValueError: Expected to read 96 bytes, but only read 32 bytes",
   "PWC.EditorApp.EASearchPanel": "ValueError: Expected to read 80 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerDogSubcategoriesConfig": "ValueError: Expected to read 56 bytes, but only read 32 bytes",
   "PWC.EditorApp.EAHierarchyResult": "ValueError: Expected to read 104 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerBabySubcategoriesConfig": "ValueError: Expected to read 56 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerCatSubcategoriesConfig": "ValueError: Expected to read 56 bytes, but only read 32 bytes",
   "Game.Level.LevelItemConditionsResolver": "EOFError: read_str out of bounds",
   "PWC.EditorApp.EAResultPool": "ValueError: Expected to read 44 bytes, but only read 32 bytes",
   "PWC.EditorApp.EACAInfoManager": "ValueError: Expected to read 56 bytes, but only read 32 bytes",
   "PWC.EditorApp.EACAItemInfo": "ValueError: Expected to read 92 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerHorseSubcategoriesConfig": "ValueError: Expected to read 100 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerCharacterColorsConfig": "ValueError: Expected to read 376 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerToddlerSubcategoriesConfig": "ValueError: Expected to read 100 bytes, but only read 32 bytes",
   "PWC.EditorApp.EAItemPreviewPanel": "ValueError: Expected to read 68 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerCharacterSubcategoriesConfig": "ValueError: Expected to read 552 bytes, but only read 32 bytes",
   "PWC.EditorApp.EAItemPreviewPanelSpritePreview": "ValueError: Expected to read 56 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerHorseColorsConfig": "ValueError: Expected to read 156 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerCarSubcategoriesConfig": "ValueError: Expected to read 116 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerToddlerColorsConfig": "ValueError: Expected to read 356 bytes, but only read 32 bytes",
   "PWC.EditorApp.EACAMenuInfo": "ValueError: Expected to read 96 bytes, but only read 32 bytes",
   "Game.Level.LevelCatTunnel": "ValueError: Expected to read 116 bytes, but only read 32 bytes",
-  "PWC.AvatarMaker.AvatarMakerCarColorsConfig": "ValueError: Expected to read 440 bytes, but only read 32 bytes",
   "PWC.EditorApp.EALoginPanel": "ValueError: Expected to read 68 bytes, but only read 32 bytes",
   "PWC.EditorApp.EASearchResult": "ValueError: Expected to read 68 bytes, but only read 32 bytes"
  }

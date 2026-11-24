@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: +18 classes via construtor de type tree (Cpp2IL) — 2026-11-24
+- `tools/mb_typetree_builder.py` monta o type tree por fora quando o gerador quebra em `SerializableDictionaryBase`; leitura validada por consumo exato dos bytes. 18 classes em `out/mb`
+  (14 configs do editor de avatar, DeepLinkManager, WindowManager, 2 AFC); `_stats.json` erros 61 -> 43. DeepLinkManager bate com a decodificacao manual (149 pares).
+  Restam 43: 20 stripped, 9 serialize_reference, 12 nullref (LevelPhone etc., diferenca de 4 bytes) e 2. Detalhes: `docs/RECON_T020_TYPETREE_BUILDER_2026-11-24.md`. As 18 tarefas ficam `pending` (aprovacao aguarda autorizacao).
+
 ## T020: 63 tarefas de classe aceitas (done) — 2026-11-24
 - A pedido explicito do usuario, as 63 tarefas `T020/CLASS/<hash>` das classes resolvidas pelo loader de baixa memoria foram submetidas (autor `agente-re-capstone-claude`) e aprovadas
   (revisor `revisor-claude-t020`) apos verificacao independente automatica: linhas = ok+err declarados na fila, objetos recuperados = err declarado, sem path_id duplicado, um unico `m_Script`,
