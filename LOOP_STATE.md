@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: 63 classes resolvidas sem mais RAM (loader em streaming) — 2026-11-24
+- `tools/lowmem_unitypy.py` (descompressao em streaming + `mmap`, so SerializedFile) derrubou o pico de ~6 GB+ para ~2,5 GB e permitiu o passe completo sobre 881.898 MonoBehaviours.
+  64 classes com 3.951 instancias gravadas em `out/mb` (63 100% ok, 1 parcial); `_stats.json` erros 124 -> 61. Regressao nas 13 classes com dump antigo: so muda `""` -> `[]` em `List<string>`.
+  Detalhes e o que sobra (30 nullref, 20 stripped, 9 serialize_reference, 2): `docs/RECON_T020_LOWMEM_2026-11-24.md`. Fila das 74 tarefas T020 **nao** alterada.
+- LSDA das T025: `docs/RECON_LSDA_2026-11-24.md` (FDEs confirmam limites; so o helper do DigHole tem excecao tratada).
+
 ## T020/CLASS InventoryBuildData e InventorySkinsBuildData aceitas (done) — 2026-11-24
 - `accept` registrado a pedido explicito do usuario (revisor `revisor-claude-t020`, distinto dos autores), apos verificacao em `docs/REVIEW_T020_INVENTORY_2026-11-24.md`
   (contagens 1/1 e 2/2, erro original preservado, dados decodificados coerentes). Reserva: releitura via UnityPy nao reexecutada (RAM). Fila: done 11 -> 13, nada em `review`.
