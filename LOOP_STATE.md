@@ -10,6 +10,10 @@
 - **NAO validado**: execucao no Unity/aparelho. A posicao do botao (abaixo do `WorldResetButton`) e um 1o palpite; `AddCatalogButton` tem `Debug.Log` temporarios de retangulos para ajustar no aparelho (remover depois).
   Gerar o APK exige a `Library` do Unity (17 GB no checkout principal; so ha ~12 GB livres, uma importacao nova no worktree arrisca encher o disco).
 - Armadilha: nao criar nada que edite arquivos de evidencia hasheados (ver entradas T020).
+- **Tentativa de APK (opcao "a", 2026-11-25) falhou por memoria**: aplicado temporariamente no checkout principal (tem a `Library`), `BuildAndroidSideBySide` foi morto duas vezes pelo OOM-killer
+  (Unity com ~7,8 GB anon + 1,8 GB shmem no empacotamento dos assets; total 15 GB com ~5 GB de outros apps). Precisa de ~11 GB livres. Tudo foi revertido (backup por cp + sha256).
+- **Efeitos colaterais de um build do Unity morto no meio** (limpar sempre): `ProjectSettings.asset` fica com `productName: Avatar World (teste)`, `...avatarworldoffline.sbs` e `minSdk 26` (o metodo so restaura no `finally`);
+  `Assets/Resources/PerformanceTestRun{Info,Settings}.json(.meta)` ficam para tras (entrariam no proximo build). Restaurar `ProjectSettings` a partir de um clone limpo e apagar esses 4 arquivos.
 
 ## EditorApp: decodificacao estrutural e contexto — 2026-11-25
 - As 20 classes `PWC.EditorApp.*` (24 instancias) sao ferramentas internas do estudio: editor de **skins de avatar** (cena `level252`, `EASUTEditorManager` + `EASUTAvatarDisplay`), editor de **fases** (hierarquia, busca, preview;
