@@ -19,6 +19,63 @@ import unityfs_extract as ufs  # noqa: E402
 from mb_retry_failed_classes import fix_mislabeled_vectors  # noqa: E402
 
 
+MB_HEADER = {"m_GameObject", "m_Enabled", "m_Script", "m_Name"}
+
+
+def drop_registry(ns):
+    """Nos de um tipo REFERENCIADO (dados de um ReferencedObject): sem registro proprio (so o objeto de nivel superior tem) e sem o cabecalho de
+    MonoBehaviour (m_GameObject, m_Enabled, m_Script, m_Name), que o TypeTreeGenerator emite para qualquer classe mas que nao existe nesses dados."""
+    out, skip = [], False
+    for n in ns:
+        if n["m_Level"] == 1 and (n["m_Type"] == "ManagedReferencesRegistry" or n["m_Name"] in MB_HEADER):
+            skip = True
+            continue
+        if skip and n["m_Level"] > 1:
+            continue
+        skip = False
+        out.append(n)
+    return out
+
+
+def dedupe_registry(ns):
+    """TypeTreeGenerator emite `references: ManagedReferencesRegistry` mais de uma vez (no meio, junto do primeiro campo managedReference, e no fim);
+    no Unity o registro existe uma so vez, no fim do objeto. Mantem o ultimo de nivel 1 e descarta os anteriores com os filhos."""
+    idx = [i for i, n in enumerate(ns) if n["m_Level"] == 1 and n["m_Type"] == "ManagedReferencesRegistry"]
+    drop = set()
+    for i in idx[:-1]:
+        drop.add(i)
+        j = i + 1
+        while j < len(ns) and ns[j]["m_Level"] > 1:
+            drop.add(j)
+            j += 1
+    return [n for k, n in enumerate(ns) if k not in drop]
+
+
+def read_with_ref_types(o, nodes, make_nodes):
+    """Leitura com o leitor em Python (o em C nao deixa trocar a resolucao de tipo referenciado). `make_nodes(asm, ns, cls)` gera a arvore do tipo
+    referenciado a partir do IL2CPP: o proprio registro traz classe/namespace/assembly de cada objeto, e este arquivo nao tem tabela ref_types."""
+    import UnityPy.helpers.TypeTreeHelper as TH
+    from UnityPy.helpers.TypeTreeNode import TypeTreeNode
+    cache = {}
+
+    def resolve(ref_object, assetfile):
+        typ = ref_object["type"]
+        cls, ns, asm = (typ["class"], typ["ns"], typ["asm"]) if isinstance(typ, dict) else (getattr(typ, "class"), typ.ns, typ.asm)
+        if cls == "":
+            return None
+        key = (asm, ns, cls)
+        if key not in cache:
+            cache[key] = TypeTreeNode.from_list(make_nodes(asm, ns, cls, ref=True))
+        return cache[key]
+
+    old_resolve, old_boost = TH.get_ref_type_node, TH.read_typetree_boost
+    TH.get_ref_type_node, TH.read_typetree_boost = resolve, None
+    try:
+        return o.read_typetree(nodes, check_read=True)
+    finally:
+        TH.get_ref_type_node, TH.read_typetree_boost = old_resolve, old_boost
+
+
 def extract_serialized(bundle, dest):
     f, data_start, blocks, nodes = ufs.parse(bundle)
     dest.mkdir(parents=True, exist_ok=True)
@@ -60,16 +117,19 @@ def main():
     pid_class = {pid: f"{s.m_Namespace}.{s.m_ClassName}".strip(".") for pid, s in scripts.items()}
     targets = {pid: c for pid, c in pid_class.items() if c in wanted_names}
     print("classes alvo com script:", len(set(targets.values())), "de", len(wanted_names), flush=True)
+    def make_nodes(asm, ns_, cls, ref=False):
+        ns = json.loads(g.get_nodes_as_json(asm.removesuffix(".dll"), (ns_ + "." if ns_ else "") + cls))
+        for n in ns:
+            if n["m_Name"] == "m_Enabled" and n["m_Level"] == 1:
+                n["m_MetaFlag"] = 16384
+        fix_mislabeled_vectors(ns)
+        return drop_registry(ns) if ref else dedupe_registry(ns)
+
     nodes, gen_err = {}, {}
     for pid, c in targets.items():
         s = scripts[pid]
         try:
-            ns = json.loads(g.get_nodes_as_json(s.m_AssemblyName.removesuffix(".dll"), c))
-            for n in ns:
-                if n["m_Name"] == "m_Enabled" and n["m_Level"] == 1:
-                    n["m_MetaFlag"] = 16384
-            fix_mislabeled_vectors(ns)
-            nodes[pid] = ns
+            nodes[pid] = make_nodes(s.m_AssemblyName, s.m_Namespace, s.m_ClassName)
         except Exception as e:  # noqa: BLE001
             gen_err[c] = f"{type(e).__name__}: {str(e)[:150]}"
     print("arvores geradas:", len({targets[p] for p in nodes}), "| falha ao gerar:", len(gen_err), flush=True)
@@ -101,7 +161,13 @@ def main():
                 stat[c]["sem_arvore"] += 1
                 continue
             try:
-                d = o.read_typetree(nodes[pid], check_read=True)
+                try:
+                    d = o.read_typetree(nodes[pid], check_read=True)
+                except ValueError as e:
+                    if "ref type node" not in str(e):
+                        raise
+                    d = read_with_ref_types(o, nodes[pid], make_nodes)
+                    stat[c]["via_ref_types"] += 1
                 d["_path_id"], d["_file"] = o.path_id, fn
                 if c not in writers:
                     writers[c] = gzip.open(a.out / (re.sub(r"[^\w.\-]+", "_", c) + ".jsonl.gz"), "wt")
