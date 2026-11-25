@@ -1,0 +1,1031 @@
+[
+ {
+  "class": "PWC.EditorApp.EACAInfoManager",
+  "path_id": 948584,
+  "file": "resources.assets",
+  "size": 56,
+  "gameobject": "EACAInfoManager",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1131575,
+     "script": "PWC.EditorApp.EACAMenuInfo",
+     "gameobject": "EACAMenuInfo"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 953167,
+     "script": "PWC.EditorApp.EACAItemInfo",
+     "gameobject": "EACAItemInfo"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EACAItemInfo",
+  "path_id": 953167,
+  "file": "resources.assets",
+  "size": 92,
+  "gameobject": "EACAItemInfo",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 1116471296
+   },
+   {
+    "kind": "int",
+    "value": 1071644672
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "RectTransform",
+     "path_id": 709096,
+     "gameobject": "Content"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 787717,
+     "script": "UnityEngine.UI.Image",
+     "gameobject": "Image"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1172001,
+     "script": "UnityEngine.UI.Button",
+     "gameobject": "Collapse"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 846813,
+     "script": "TMPro.TMP_InputField",
+     "gameobject": "InputField (TMP)"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EACAMenuInfo",
+  "path_id": 1131575,
+  "file": "resources.assets",
+  "size": 96,
+  "gameobject": "EACAMenuInfo",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "int",
+    "value": 1116471296
+   },
+   {
+    "kind": "int",
+    "value": 1112014848
+   },
+   {
+    "kind": "int",
+    "value": 1073741824
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "RectTransform",
+     "path_id": 709095,
+     "gameobject": "Content"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 787716,
+     "script": "UnityEngine.UI.Image",
+     "gameobject": "Image"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1172000,
+     "script": "UnityEngine.UI.Button",
+     "gameobject": "Collapse"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 879107,
+     "script": "TMPro.TMP_InputField",
+     "gameobject": "InputField (TMP)"
+    }
+   },
+   {
+    "kind": "int",
+    "value": 1120403456
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EADelayedEventInputField",
+  "path_id": 1026753,
+  "file": "resources.assets",
+  "size": 212,
+  "gameobject": "InputField (TMP)",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 935222,
+     "script": "TMPro.TMP_InputField",
+     "gameobject": "InputField (TMP)"
+    }
+   },
+   {
+    "kind": "int",
+    "value": 1036831949
+   },
+   {
+    "kind": "int",
+    "value": 1
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 771513,
+     "script": "PWC.EditorApp.EAHierarchyPanel",
+     "gameobject": "EAHierarchyPanel Canvas"
+    }
+   },
+   {
+    "kind": "str",
+    "value": "PWC.EditorApp.EAHierarchyPanel, Assembly-CSharp"
+   },
+   {
+    "kind": "str",
+    "value": "OnSearchInHierarchy"
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "str",
+    "value": "UnityEngine.Object, UnityEngine"
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 2
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EADelayedEventInputField",
+  "path_id": 765007,
+  "file": "resources.assets",
+  "size": 208,
+  "gameobject": "InputField (TMP)",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 886940,
+     "script": "TMPro.TMP_InputField",
+     "gameobject": "InputField (TMP)"
+    }
+   },
+   {
+    "kind": "int",
+    "value": 1073741824
+   },
+   {
+    "kind": "int",
+    "value": 1
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 851958,
+     "script": "PWC.EditorApp.EASearchPanel",
+     "gameobject": "EASearchPanel Canvas"
+    }
+   },
+   {
+    "kind": "str",
+    "value": "PWC.EditorApp.EASearchPanel, Assembly-CSharp"
+   },
+   {
+    "kind": "str",
+    "value": "OnSearchFromProject"
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "str",
+    "value": "UnityEngine.Object, UnityEngine"
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "int",
+    "value": 2
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAEditorAssetsIndexer",
+  "path_id": 724639,
+  "file": "resources.assets",
+  "size": 320,
+  "gameobject": null,
+  "m_Name": "PTLSimpleBackground_LevelMaker",
+  "items": [
+   {
+    "kind": "int",
+    "value": 21
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Texture2D",
+     "path_id": 67077,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Texture2D",
+     "path_id": 87217,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Texture2D",
+     "path_id": 89776,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Texture2D",
+     "path_id": 33307,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Texture2D",
+     "path_id": 91701,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Texture2D",
+     "path_id": 60295,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Texture2D",
+     "path_id": 28855,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Texture2D",
+     "path_id": 51702,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Texture2D",
+     "path_id": 58871,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "GameObject",
+     "path_id": 248683,
+     "name": "Ceiling_Lamp_01_P98"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 134579,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 115006,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 133110,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 156329,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 173750,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 149351,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 216211,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 140500,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 141191,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 216039,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 188267,
+     "gameobject": null
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAEditorDirectoryIndexer",
+  "path_id": 723146,
+  "file": "resources.assets",
+  "size": 64,
+  "gameobject": null,
+  "m_Name": "EAEditor_DirectoryIndexer",
+  "items": [
+   {
+    "kind": "int",
+    "value": 0
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAEditorDirectoryIndexer",
+  "path_id": 724356,
+  "file": "resources.assets",
+  "size": 68,
+  "gameobject": null,
+  "m_Name": "PTLExtension_VideoContentBuilder",
+  "items": [
+   {
+    "kind": "int",
+    "value": 0
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAEditorDirectoryIndexer",
+  "path_id": 724382,
+  "file": "resources.assets",
+  "size": 64,
+  "gameobject": null,
+  "m_Name": "EAEditor_DirectoryIndexer",
+  "items": [
+   {
+    "kind": "int",
+    "value": 0
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAHierarchyPanel",
+  "path_id": 771513,
+  "file": "resources.assets",
+  "size": 72,
+  "gameobject": "EAHierarchyPanel Canvas",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "RectTransform",
+     "path_id": 716450,
+     "gameobject": "Menu"
+    }
+   },
+   {
+    "kind": "int",
+    "value": 1064563700
+   },
+   {
+    "kind": "int",
+    "value": 1062458324
+   },
+   {
+    "kind": "int",
+    "value": 1053872337
+   },
+   {
+    "kind": "int",
+    "value": 1065353216
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1133087,
+     "script": "PWC.EditorApp.EAResultPool",
+     "gameobject": "Content"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAHierarchyResult",
+  "path_id": 858595,
+  "file": "resources.assets",
+  "size": 104,
+  "gameobject": "EAHierarchyResult",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1003790,
+     "script": "UnityEngine.UI.Image",
+     "gameobject": "Image"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 830663,
+     "script": "TMPro.TMP_InputField",
+     "gameobject": "InputField (TMP)"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 984744,
+     "script": "UnityEngine.UI.LayoutElement",
+     "gameobject": "ParentResult"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 840562,
+     "script": "UnityEngine.UI.Button",
+     "gameobject": "Expand Button"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "RectTransform",
+     "path_id": 718987,
+     "gameobject": "ChildResults"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1085955,
+     "script": "UnityEngine.UI.Image",
+     "gameobject": "ParentResult"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAItemPreviewPanelSpritePreview",
+  "path_id": 1014314,
+  "file": "resources.assets",
+  "size": 56,
+  "gameobject": "EASpritePreview",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1074274,
+     "script": "UnityEngine.UI.Image",
+     "gameobject": "Image"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1058298,
+     "script": "TMPro.TextMeshProUGUI",
+     "gameobject": "Text (TMP)"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAItemPreviewPanel",
+  "path_id": 997647,
+  "file": "resources.assets",
+  "size": 68,
+  "gameobject": "EAItemPreviewPanel",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "RectTransform",
+     "path_id": 720392,
+     "gameobject": "Content"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1014314,
+     "script": "PWC.EditorApp.EAItemPreviewPanelSpritePreview",
+     "gameobject": "EASpritePreview"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1166549,
+     "script": "UnityEngine.UI.Text",
+     "gameobject": "Description"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EALevelEditorPanel",
+  "path_id": 784077,
+  "file": "resources.assets",
+  "size": 44,
+  "gameobject": "EALevelEditorPanel Canvas",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "RectTransform",
+     "path_id": 700250,
+     "gameobject": "Menu"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EALoginPanel",
+  "path_id": 1199241,
+  "file": "resources.assets",
+  "size": 68,
+  "gameobject": "EALoginPanel",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 747416,
+     "script": "UnityEngine.UI.InputField",
+     "gameobject": "InputField (Legacy)"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 900342,
+     "script": "UnityEngine.UI.InputField",
+     "gameobject": "InputField (Legacy)"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "GameObject",
+     "path_id": 243389,
+     "name": "OTP"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAResultPool",
+  "path_id": 1133087,
+  "file": "resources.assets",
+  "size": 44,
+  "gameobject": "Content",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "GameObject",
+     "path_id": 358801,
+     "name": "EAHierarchyResult"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EAResultPool",
+  "path_id": 925629,
+  "file": "resources.assets",
+  "size": 44,
+  "gameobject": "Content",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "GameObject",
+     "path_id": 358802,
+     "name": "EASearchResult"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EASUTEAddedSkinsScreen",
+  "path_id": 1262,
+  "file": "level252",
+  "size": 56,
+  "gameobject": "AddedSkinsScreen",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1297,
+     "script": "TMPro.TMP_InputField",
+     "gameobject": "InputField (TMP)"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1212,
+     "script": "TMPro.TextMeshProUGUI",
+     "gameobject": "Text (TMP)"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EASUTEDirectoryButtonHandler",
+  "path_id": 27,
+  "file": "sharedassets252.assets",
+  "size": 44,
+  "gameobject": "EASUTEDirectoryButton",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "GameObject",
+     "path_id": 10,
+     "name": "EASUTEPathSeperatorButton"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EASUTEManager",
+  "path_id": 1274,
+  "file": "level252",
+  "size": 88,
+  "gameobject": "EASUTEditorManager",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr_externo",
+    "fileID": 1,
+    "path_id": 1
+   },
+   {
+    "kind": "int",
+    "value": 1342
+   },
+   {
+    "kind": "int",
+    "value": 0
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1337,
+     "script": "PWC.EditorApp.EASUTEMenuManager",
+     "gameobject": "EASUTEMenuManager"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1244,
+     "script": "TMPro.TMP_Dropdown",
+     "gameobject": "Dropdown"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1326,
+     "script": "TMPro.TMP_Dropdown",
+     "gameobject": "Dropdown"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EASUTEMenuManager",
+  "path_id": 1337,
+  "file": "level252",
+  "size": 80,
+  "gameobject": "EASUTEMenuManager",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "RectTransform",
+     "path_id": 805,
+     "gameobject": "Content"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "RectTransform",
+     "path_id": 800,
+     "gameobject": "Content"
+    }
+   },
+   {
+    "kind": "pptr_externo",
+    "fileID": 5,
+    "path_id": 27
+   },
+   {
+    "kind": "pptr_externo",
+    "fileID": 5,
+    "path_id": 24
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EASUTEThumbButtonHandler",
+  "path_id": 24,
+  "file": "sharedassets252.assets",
+  "size": 44,
+  "gameobject": "EASUTEThumbButton",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 31,
+     "script": "UnityEngine.UI.Image",
+     "gameobject": "Image"
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EASearchPanel",
+  "path_id": 851958,
+  "file": "resources.assets",
+  "size": 80,
+  "gameobject": "EASearchPanel Canvas",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "RectTransform",
+     "path_id": 713324,
+     "gameobject": "Menu"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 925629,
+     "script": "PWC.EditorApp.EAResultPool",
+     "gameobject": "Content"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 132336,
+     "gameobject": null
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "Sprite",
+     "path_id": 202571,
+     "gameobject": null
+    }
+   }
+  ]
+ },
+ {
+  "class": "PWC.EditorApp.EASearchResult",
+  "path_id": 1201000,
+  "file": "resources.assets",
+  "size": 68,
+  "gameobject": "EASearchResult",
+  "m_Name": "",
+  "items": [
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1018486,
+     "script": "UnityEngine.UI.Image",
+     "gameobject": "Image"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 824707,
+     "script": "TMPro.TMP_InputField",
+     "gameobject": "InputField (TMP)"
+    }
+   },
+   {
+    "kind": "pptr",
+    "ref": {
+     "type": "MonoBehaviour",
+     "path_id": 1082855,
+     "script": "UnityEngine.UI.Button",
+     "gameobject": "EASearchResult"
+    }
+   }
+  ]
+ }
+]

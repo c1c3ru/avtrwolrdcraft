@@ -1,5 +1,10 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## EditorApp: decodificacao estrutural e contexto — 2026-11-25
+- As 20 classes `PWC.EditorApp.*` (24 instancias) sao ferramentas internas do estudio: editor de **skins de avatar** (cena `level252`, `EASUTEditorManager` + `EASUTAvatarDisplay`), editor de **fases** (hierarquia, busca, preview;
+  prefabs em `resources.assets`), login por OTP e painel de animacao contextual. Sem esquema (tipo removido do IL2CPP); estrutura e contexto em `out/recon/editorapp/structural_decode.json`, `docs/RECON_T020_EDITORAPP_STRUCTURAL_2026-11-25.md`,
+  `tools/resolve_editorapp_context.py`. Impacto no jogador: nenhum visivel; nao e o editor de avatar do jogador (esse e o AvatarMaker). As 20 tarefas seguem `blocked_external`.
+
 ## T020: GameExtraSettings, LocalizationManager e LevelCatTunnel aceitas (done) — 2026-11-25
 - A pedido explicito do usuario: as 3 tarefas foram reabertas (`configure`) e submetidas/aprovadas (autor `agente-re-capstone-claude`, revisor `revisor-claude-t020`) apos verificacao independente
   (contagens, ids, `m_Script`, adendo de stats `c`, sanidade, conteudo identico a segunda execucao da v3; regressao 27/27). Evidencia: `tools/mb_typetree_builder_v3.py`, `out/mb/_stats_addendum_2026-11-24c.json`,
