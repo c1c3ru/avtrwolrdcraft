@@ -105,6 +105,8 @@ def main():
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--tmp", type=Path, default=Path("out/device/dp/ser"))
     ap.add_argument("--only", nargs="*", default=[], help="processar so estes arquivos (nomes)")
+    ap.add_argument("--no-fix-vectors", action="store_true", help="NAO aplicar fix_mislabeled_vectors (ablacao: mostra quais classes dependem dele)")
+    ap.add_argument("--no-fix-registry", action="store_true", help="NAO aplicar dedupe/drop de registro nem o cabecalho de ref types (ablacao)")
     a = ap.parse_args()
     groups = json.loads(a.classes.read_text())
     wanted_names = {c: g for g, cs in groups.items() for c in cs}
@@ -122,7 +124,10 @@ def main():
         for n in ns:
             if n["m_Name"] == "m_Enabled" and n["m_Level"] == 1:
                 n["m_MetaFlag"] = 16384
-        fix_mislabeled_vectors(ns)
+        if not a.no_fix_vectors:
+            fix_mislabeled_vectors(ns)
+        if a.no_fix_registry:
+            return ns
         return drop_registry(ns) if ref else dedupe_registry(ns)
 
     nodes, gen_err = {}, {}
