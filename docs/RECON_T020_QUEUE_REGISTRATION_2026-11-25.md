@@ -11,8 +11,9 @@
 | so da correcao do registro `[SerializeReference]` | 7 | `LevelOnSpecificPairAnimationBetweenSpecificAvatars`, `LevelStaticConditionsResolver`, `LevelSecretVehicleInWorldPositionListener`, `LevelStaticConditionsResolverWithParkedVehicles`, `BWYWGiftData`, `LevelRecipeSecret`, `LevelItemConditionsResolver` |
 | das duas | 4 | `LevelSecretAvatarAnimationSolvedListener`, `LevelOutfit`, `LevelStaticConditionsResolverWithDropAreas` (1 das 14 so precisa da primeira), `DailyTasksData` |
 Isso corrige a classificacao antiga (por exemplo `LevelSecretAvatarAnimationSolvedListener` e `LevelOutfit` eram "mesmo bug" mas dependem tambem do registro).
-- Em cada `recount.json`: contagem antes (declarada na tarefa, build anterior), depois (1.230), identidade de cada objeto (`path_id` + arquivo) e a reconciliacao. 70 das 74 batem com a contagem antiga ou a superam por conteudo
-  novo; **4 divergem para mais** sem que eu saiba se e conteudo do 1.230 ou subcontagem antiga (declarado como desconhecido em cada `result.json`).
+- Em cada `recount.json`: contagem antes (declarada na tarefa, build anterior), depois (1.230), identidade de cada objeto (`path_id` + arquivo) e a reconciliacao. **61 das 74 batem exatamente** com a contagem antiga (`ok + err`); **13 divergem, todas para mais** (nenhuma tem menos instancias no 1.230):
+  maiores diferencas `SkeletonAnimation` 1.963 -> 2.005, `LevelItemConditionsResolver` 6 -> 24, `LevelStaticConditionsResolver` 2 -> 18, `SkeletonDataAsset` 588 -> 601. Nao sei se e conteudo novo do 1.230 ou subcontagem antiga;
+  fica declarado como desconhecido no `result.json` de cada uma.
 
 ## O que NAO consegui fazer: registrar na fila
 `reports/recon/tasks.json` tem `root: /home/c1c3ru/avtrwolrdcraft`, que nao existe aqui; toda operacao resolve os arquivos de evidencia a partir desse root. O caminho previsto para mudar de maquina, `Queue.relocate`,
