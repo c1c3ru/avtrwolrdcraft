@@ -1,0 +1,231 @@
+{
+  "class": "Game.Level.LevelShopPack",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 34,
+    "err_message": "EOFError: read_i out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 34,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 34,
+  "affected_objects": [
+    {
+      "path_id": 757077,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 778544,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 781197,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 789855,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 807254,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 842922,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 845992,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 860275,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 860276,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 872295,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 874948,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 931026,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 934800,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 934952,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 945235,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 951909,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 955644,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 967800,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 967801,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 978639,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 982742,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 989277,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 989278,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1019687,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1067943,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1072286,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1095772,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1104691,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1113041,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1115232,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1173165,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1177837,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1184594,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1187121,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 34,
+    "new_total": 34,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelShopPack.jsonl.gz (campos decodificados + _path_id + _file)"
+}

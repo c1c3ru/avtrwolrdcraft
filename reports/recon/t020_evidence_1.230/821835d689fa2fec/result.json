@@ -1,0 +1,15 @@
+{
+  "task": "T020/CLASS/821835d689fa2fec",
+  "title": "Corrigir decodificação de Game.Level.LevelStaticConditionsResolverWithDropAreas",
+  "actor": "agente-artefatos-claude",
+  "status": "evidence_for_independent_review",
+  "summary": "Game.Level.LevelStaticConditionsResolverWithDropAreas: 14 de 14 instancias decodificam (check_read=True) no build 1.230 com a(s) correcao(oes): vector, registry. Causa verificada por ablacao (sem a correcao: vector=13/14, registry=0/14). Contagem do 1.230 difere da antiga (ver recount.json). Leitura feita no build instalado 1.230 (libil2cpp sha256 7635d66d61a0...); a contagem declarada na tarefa vem de um build anterior (libil2cpp sha256 b63661fa60c2...). Nao e a mesma instalacao.",
+  "answers_to_task_questions": {
+    "Which typetree/alignment/layout operation causes this exact failure?": "TypeTreeGeneratorAPI rotula como m_Type=\"string\" o no raiz de campos List<String> (com filhos Array/size/data corretos). O UnityPy despacha por m_Type antes de olhar os filhos, le um string escalar onde ha uma lista e dessincroniza todo campo seguinte (EOFError: read_str out of bounds ou diferenca de bytes). Correcao: fix_mislabeled_vectors (tools/mb_dump.py, tools/mb_retry_failed_classes.py): renomeia para vector os nos \"string\" cujo filho Array tem `data` diferente de char. | O objeto usa [SerializeReference]. (1) O arquivo serializado nao tem ref_types (0 entradas), entao o UnityPy falha com \"Failed to get ref type node\"; o proprio registro traz class/ns/asm de cada referencia. (2) O TypeTreeGenerator emite `references: ManagedReferencesRegistry` varias vezes (uma por classe da heranca com campo managedReference) quando o certo e uma, no fim; e, para tipos referenciados, emite o cabecalho de MonoBehaviour (m_GameObject, m_Enabled, m_Script, m_Name) que nao existe nos dados de um ReferencedObject. Correcao: dedupe_registry / drop_registry / read_with_ref_types em tools/mb_stream_extract.py (leitor em Python so para as instancias que pedem tipo referenciado).",
+    "Which exact serialized object identities failed, and can only those be reprocessed?": "14 objetos, listados em recount.json (path_id + arquivo). Foram reprocessados so os MonoBehaviours desta classe, arquivo serializado a arquivo, sem abrir o datapack inteiro."
+  },
+  "unknowns": [
+    "Divergencia de contagem entre o build antigo e o 1.230.",
+    "Significado dos campos nao validado."
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "class": "LevelDropAreaEventOnAvatarWithSkinDropHandler",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 22,
+    "err_message": "ValueError: Expected to read 672 bytes, but only read 660 bytes",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 22,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 22,
+  "affected_objects": [
+    {
+      "path_id": 4090,
+      "assets_file": "level106",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4091,
+      "assets_file": "level106",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4092,
+      "assets_file": "level106",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4093,
+      "assets_file": "level106",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4104,
+      "assets_file": "level106",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4105,
+      "assets_file": "level106",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4106,
+      "assets_file": "level106",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4107,
+      "assets_file": "level106",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2727,
+      "assets_file": "level135",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3500,
+      "assets_file": "level177",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3501,
+      "assets_file": "level177",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3502,
+      "assets_file": "level177",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3503,
+      "assets_file": "level177",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3538,
+      "assets_file": "level177",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3539,
+      "assets_file": "level177",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3540,
+      "assets_file": "level177",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3541,
+      "assets_file": "level177",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3077,
+      "assets_file": "level187",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 880457,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 886580,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1207017,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1227266,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 22,
+    "new_total": 22,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/LevelDropAreaEventOnAvatarWithSkinDropHandler.jsonl.gz (campos decodificados + _path_id + _file)"
+}

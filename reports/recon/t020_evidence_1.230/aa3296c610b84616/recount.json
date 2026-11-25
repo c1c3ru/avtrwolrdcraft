@@ -1,0 +1,189 @@
+{
+  "class": "Game.Level.LevelSecretAvatarPutClothingsListener",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 27,
+    "err_message": "EOFError: read_str out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 27,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 27,
+  "affected_objects": [
+    {
+      "path_id": 2425,
+      "assets_file": "level114",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4810,
+      "assets_file": "level124",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4813,
+      "assets_file": "level124",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3765,
+      "assets_file": "level127",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4425,
+      "assets_file": "level139",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3483,
+      "assets_file": "level164",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2467,
+      "assets_file": "level167",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2886,
+      "assets_file": "level180",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2888,
+      "assets_file": "level180",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3611,
+      "assets_file": "level180",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2314,
+      "assets_file": "level182",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2328,
+      "assets_file": "level182",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2594,
+      "assets_file": "level182",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2636,
+      "assets_file": "level182",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4157,
+      "assets_file": "level187",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2104,
+      "assets_file": "level188",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2615,
+      "assets_file": "level206",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3872,
+      "assets_file": "level72",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4066,
+      "assets_file": "level72",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4081,
+      "assets_file": "level72",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4118,
+      "assets_file": "level72",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 825238,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 901179,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 946791,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1040945,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1102712,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1160385,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 27,
+    "new_total": 27,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelSecretAvatarPutClothingsListener.jsonl.gz (campos decodificados + _path_id + _file)"
+}

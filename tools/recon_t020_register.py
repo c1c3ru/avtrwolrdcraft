@@ -124,14 +124,23 @@ def main():
     ap.add_argument("--queue", type=Path, default=ROOT / "reports/recon/tasks.json")
     a = ap.parse_args()
     q = json.loads(a.queue.read_text())
-    tg = json.loads((ROOT / "out/recon/t020_targets.json").read_text())
-    classes = [c for cs in tg.values() for c in cs]
+    by_class = {t["scope"]["class_name"]: t for t in q["tasks"] if t["id"].startswith("T020/CLASS/")}
+    if a.no_write:
+        # modo para outra maquina: usa so a evidencia ja copiada para out/recon/tasks/T020/CLASS/<hash>/ (nao precisa dos dumps nem do build)
+        classes = []
+        for c, t in by_class.items():
+            f = ROOT / "out/recon/tasks/T020/CLASS" / t["id"].rsplit("/", 1)[-1] / "recount.json"
+            if f.is_file() and "total_instances_in_game_1_230" in f.read_text():
+                classes.append(c)
+        attr = stats = old_stats = None
+    else:
+        tg = json.loads((ROOT / "out/recon/t020_targets.json").read_text())
+        classes = [c for cs in tg.values() for c in cs]
+        attr = json.loads((IL / "t020_attribution.json").read_text())
+        stats = {c: v for cs in json.loads((IL / TAG / "_stats.json").read_text())["groups"].values() for c, v in cs.items()}
+        old_stats = json.loads((ROOT / "out/mb/_stats.json").read_text())["stats"]
     if a.limit:
         classes = classes[: a.limit]
-    attr = json.loads((IL / "t020_attribution.json").read_text())
-    stats = {c: v for cs in json.loads((IL / TAG / "_stats.json").read_text())["groups"].values() for c, v in cs.items()}
-    old_stats = json.loads((ROOT / "out/mb/_stats.json").read_text())["stats"]
-    by_class = {t["scope"]["class_name"]: t for t in q["tasks"] if t["id"].startswith("T020/CLASS/")}
     plan = []
     if a.no_write:
         for c in classes:

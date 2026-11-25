@@ -1,0 +1,39 @@
+{
+  "class": "Game.Level.LevelCopyAnimationsFromOtherDropArea",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 2,
+    "err_message": "EOFError: read_i out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 2,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 2,
+  "affected_objects": [
+    {
+      "path_id": 1452,
+      "assets_file": "level99",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1512,
+      "assets_file": "level99",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 2,
+    "new_total": 2,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelCopyAnimationsFromOtherDropArea.jsonl.gz (campos decodificados + _path_id + _file)"
+}

@@ -1,0 +1,171 @@
+{
+  "class": "Game.Level.LevelPlayerVehicle",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 22,
+    "err_message": "EOFError: read_str out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 24,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 24,
+  "affected_objects": [
+    {
+      "path_id": 771580,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 785460,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 793226,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 799293,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 829741,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 840931,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 846294,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 872711,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 882959,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 889169,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 903043,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 930286,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 948542,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 972969,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 975102,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 997936,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1043743,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1043744,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1130055,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1164483,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1215159,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1217376,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1224861,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1229038,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 22,
+    "new_total": 24,
+    "exact_match": false,
+    "note": "o 1.230 tem MAIS instancias que a contagem antiga; nao sei se e conteudo novo do build ou subcontagem antiga (nao rodei o build antigo com este extrator)."
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelPlayerVehicle.jsonl.gz (campos decodificados + _path_id + _file)"
+}

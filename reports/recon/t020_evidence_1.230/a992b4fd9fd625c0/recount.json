@@ -1,0 +1,39 @@
+{
+  "class": "Game.Level.LevelWaffleMachine",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 2,
+    "err_message": "EOFError: read_str out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 2,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 2,
+  "affected_objects": [
+    {
+      "path_id": 2755,
+      "assets_file": "level184",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2531,
+      "assets_file": "level25",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 2,
+    "new_total": 2,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelWaffleMachine.jsonl.gz (campos decodificados + _path_id + _file)"
+}

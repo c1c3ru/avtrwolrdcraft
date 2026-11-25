@@ -1,0 +1,24 @@
+{
+  "class": "PazuCore.PazuCoreAddressables.AFC.AFCAnalyticsEventCreator",
+  "assembly": "Assembly-CSharp",
+  "unity_class_id": "MonoBehaviour (114)",
+  "original_failure": "ValueError: Expected to read 84 bytes, but only read 44 bytes",
+  "build_note": "Leitura feita no build instalado 1.230 (libil2cpp sha256 7635d66d61a0...); a contagem declarada na tarefa vem de um build anterior (libil2cpp sha256 b63661fa60c2...). Nao e a mesma instalacao.",
+  "root_cause": {
+    "depends_on": [
+      "vector"
+    ],
+    "summary": "TypeTreeGeneratorAPI rotula como m_Type=\"string\" o no raiz de campos List<String> (com filhos Array/size/data corretos). O UnityPy despacha por m_Type antes de olhar os filhos, le um string escalar onde ha uma lista e dessincroniza todo campo seguinte (EOFError: read_str out of bounds ou diferenca de bytes). Correcao: fix_mislabeled_vectors (tools/mb_dump.py, tools/mb_retry_failed_classes.py): renomeia para vector os nos \"string\" cujo filho Array tem `data` diferente de char."
+  },
+  "verification_by_ablation": {
+    "full_fix": "98 de 98 instancias decodificam com check_read=True",
+    "without_vector_fix": "0 de 98 instancias decodificam",
+    "without_registry_fix": "98 de 98 instancias decodificam",
+    "instances_read_via_ref_type_path": 0
+  },
+  "fix_location": "tools/mb_stream_extract.py (+ fix_mislabeled_vectors de tools/mb_dump.py)",
+  "limits": [
+    "check_read=True prova que o objeto decodifica sem sobra/falta de byte; nao valida o significado dos campos.",
+    "Tipos referenciados foram lidos com a arvore gerada do IL2CPP do mesmo build, sem leitura de referencia independente."
+  ]
+}

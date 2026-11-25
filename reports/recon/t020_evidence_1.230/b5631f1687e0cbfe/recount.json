@@ -1,0 +1,123 @@
+{
+  "class": "PWC.Level.LevelAnimationDropAreaHandler",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 16,
+    "err_message": "ValueError: Expected to read 80 bytes, but only read 56 bytes",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 16,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 16,
+  "affected_objects": [
+    {
+      "path_id": 3651,
+      "assets_file": "level27",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2533,
+      "assets_file": "level28",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2622,
+      "assets_file": "level28",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2650,
+      "assets_file": "level28",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2801,
+      "assets_file": "level28",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3063,
+      "assets_file": "level28",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6231,
+      "assets_file": "level5",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 808083,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 819860,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 988641,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1050235,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1065218,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1070084,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1176694,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1177178,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1229386,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 16,
+    "new_total": 16,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/PWC.Level.LevelAnimationDropAreaHandler.jsonl.gz (campos decodificados + _path_id + _file)"
+}

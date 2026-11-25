@@ -1,0 +1,39 @@
+{
+  "class": "Game.Level.ContextualAnimation.LevelCAConductorDropAreaHandler",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 2,
+    "err_message": "ValueError: Expected to read 152 bytes, but only read 80 bytes",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 2,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 2,
+  "affected_objects": [
+    {
+      "path_id": 2737,
+      "assets_file": "level108",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1040486,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 2,
+    "new_total": 2,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.ContextualAnimation.LevelCAConductorDropAreaHandler.jsonl.gz (campos decodificados + _path_id + _file)"
+}

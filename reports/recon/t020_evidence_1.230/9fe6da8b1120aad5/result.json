@@ -1,0 +1,14 @@
+{
+  "task": "T020/CLASS/9fe6da8b1120aad5",
+  "title": "Corrigir decodificação de PazuCore.GameSettings",
+  "actor": "agente-artefatos-claude",
+  "status": "evidence_for_independent_review",
+  "summary": "PazuCore.GameSettings: 1 de 1 instancias decodificam (check_read=True) no build 1.230 com a(s) correcao(oes): vector. Causa verificada por ablacao (sem a correcao: vector=0/1, registry=1/1). Contagem bate com a antiga. Leitura feita no build instalado 1.230 (libil2cpp sha256 7635d66d61a0...); a contagem declarada na tarefa vem de um build anterior (libil2cpp sha256 b63661fa60c2...). Nao e a mesma instalacao.",
+  "answers_to_task_questions": {
+    "Which typetree/alignment/layout operation causes this exact failure?": "TypeTreeGeneratorAPI rotula como m_Type=\"string\" o no raiz de campos List<String> (com filhos Array/size/data corretos). O UnityPy despacha por m_Type antes de olhar os filhos, le um string escalar onde ha uma lista e dessincroniza todo campo seguinte (EOFError: read_str out of bounds ou diferenca de bytes). Correcao: fix_mislabeled_vectors (tools/mb_dump.py, tools/mb_retry_failed_classes.py): renomeia para vector os nos \"string\" cujo filho Array tem `data` diferente de char.",
+    "Which exact serialized object identities failed, and can only those be reprocessed?": "1 objetos, listados em recount.json (path_id + arquivo). Foram reprocessados so os MonoBehaviours desta classe, arquivo serializado a arquivo, sem abrir o datapack inteiro."
+  },
+  "unknowns": [
+    "Significado dos campos nao validado."
+  ]
+}

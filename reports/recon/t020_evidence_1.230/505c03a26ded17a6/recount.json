@@ -1,0 +1,45 @@
+{
+  "class": "Game.Level.LevelRoadBlockAreaToggleableSpine",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 3,
+    "err_message": "EOFError: read_str out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 3,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 3,
+  "affected_objects": [
+    {
+      "path_id": 3869,
+      "assets_file": "level116",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2866,
+      "assets_file": "level132",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2351,
+      "assets_file": "level133",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 3,
+    "new_total": 3,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelRoadBlockAreaToggleableSpine.jsonl.gz (campos decodificados + _path_id + _file)"
+}

@@ -1,0 +1,135 @@
+{
+  "class": "Game.Level.LevelStaticConditionsResolver",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 2,
+    "err_message": "EOFError: read_str out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 18,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 18,
+  "affected_objects": [
+    {
+      "path_id": 2314,
+      "assets_file": "level181",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2840,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2842,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2844,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2846,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2918,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2920,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2922,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2924,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2955,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2957,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2959,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2961,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3238,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3240,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3242,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3244,
+      "assets_file": "level230",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 761062,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 2,
+    "new_total": 18,
+    "exact_match": false,
+    "note": "o 1.230 tem MAIS instancias que a contagem antiga; nao sei se e conteudo novo do build ou subcontagem antiga (nao rodei o build antigo com este extrator)."
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelStaticConditionsResolver.jsonl.gz (campos decodificados + _path_id + _file)"
+}

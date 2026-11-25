@@ -1,0 +1,183 @@
+{
+  "class": "PWC.Level.LevelToggleableMultipleAudio",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 26,
+    "err_message": "EOFError: read_l out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 26,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 26,
+  "affected_objects": [
+    {
+      "path_id": 2021,
+      "assets_file": "level126",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3554,
+      "assets_file": "level139",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1532,
+      "assets_file": "level200",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3411,
+      "assets_file": "level216",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3411,
+      "assets_file": "level217",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3416,
+      "assets_file": "level218",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3402,
+      "assets_file": "level219",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3636,
+      "assets_file": "level26",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3669,
+      "assets_file": "level31",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 5219,
+      "assets_file": "level39",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 791388,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 850625,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 855377,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 914108,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 928437,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 976437,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 994459,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 999404,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1019567,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1036182,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1053929,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1075194,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1130926,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1135154,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1218585,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1233277,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 26,
+    "new_total": 26,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/PWC.Level.LevelToggleableMultipleAudio.jsonl.gz (campos decodificados + _path_id + _file)"
+}

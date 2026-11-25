@@ -1,0 +1,14 @@
+{
+  "task": "T020/CLASS/0dc8787429b8c7e0",
+  "title": "Corrigir decodificação de Game.Level.LevelStaticConditionsResolverWithParkedVehicles",
+  "actor": "agente-artefatos-claude",
+  "status": "evidence_for_independent_review",
+  "summary": "Game.Level.LevelStaticConditionsResolverWithParkedVehicles: 2 de 2 instancias decodificam (check_read=True) no build 1.230 com a(s) correcao(oes): registry. Causa verificada por ablacao (sem a correcao: vector=2/2, registry=0/2). Contagem bate com a antiga. Leitura feita no build instalado 1.230 (libil2cpp sha256 7635d66d61a0...); a contagem declarada na tarefa vem de um build anterior (libil2cpp sha256 b63661fa60c2...). Nao e a mesma instalacao.",
+  "answers_to_task_questions": {
+    "Which typetree/alignment/layout operation causes this exact failure?": "O objeto usa [SerializeReference]. (1) O arquivo serializado nao tem ref_types (0 entradas), entao o UnityPy falha com \"Failed to get ref type node\"; o proprio registro traz class/ns/asm de cada referencia. (2) O TypeTreeGenerator emite `references: ManagedReferencesRegistry` varias vezes (uma por classe da heranca com campo managedReference) quando o certo e uma, no fim; e, para tipos referenciados, emite o cabecalho de MonoBehaviour (m_GameObject, m_Enabled, m_Script, m_Name) que nao existe nos dados de um ReferencedObject. Correcao: dedupe_registry / drop_registry / read_with_ref_types em tools/mb_stream_extract.py (leitor em Python so para as instancias que pedem tipo referenciado).",
+    "Which exact serialized object identities failed, and can only those be reprocessed?": "2 objetos, listados em recount.json (path_id + arquivo). Foram reprocessados so os MonoBehaviours desta classe, arquivo serializado a arquivo, sem abrir o datapack inteiro."
+  },
+  "unknowns": [
+    "Significado dos campos nao validado."
+  ]
+}

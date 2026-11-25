@@ -1,0 +1,24 @@
+{
+  "class": "Game.Level.LevelOnSpecificPairAnimationBetweenSpecificAvatars",
+  "assembly": "Assembly-CSharp",
+  "unity_class_id": "MonoBehaviour (114)",
+  "original_failure": "EOFError: read_str out of bounds",
+  "build_note": "Leitura feita no build instalado 1.230 (libil2cpp sha256 7635d66d61a0...); a contagem declarada na tarefa vem de um build anterior (libil2cpp sha256 b63661fa60c2...). Nao e a mesma instalacao.",
+  "root_cause": {
+    "depends_on": [
+      "registry"
+    ],
+    "summary": "O objeto usa [SerializeReference]. (1) O arquivo serializado nao tem ref_types (0 entradas), entao o UnityPy falha com \"Failed to get ref type node\"; o proprio registro traz class/ns/asm de cada referencia. (2) O TypeTreeGenerator emite `references: ManagedReferencesRegistry` varias vezes (uma por classe da heranca com campo managedReference) quando o certo e uma, no fim; e, para tipos referenciados, emite o cabecalho de MonoBehaviour (m_GameObject, m_Enabled, m_Script, m_Name) que nao existe nos dados de um ReferencedObject. Correcao: dedupe_registry / drop_registry / read_with_ref_types em tools/mb_stream_extract.py (leitor em Python so para as instancias que pedem tipo referenciado)."
+  },
+  "verification_by_ablation": {
+    "full_fix": "14 de 14 instancias decodificam com check_read=True",
+    "without_vector_fix": "14 de 14 instancias decodificam",
+    "without_registry_fix": "0 de 14 instancias decodificam",
+    "instances_read_via_ref_type_path": 2
+  },
+  "fix_location": "tools/mb_stream_extract.py (+ fix_mislabeled_vectors de tools/mb_dump.py)",
+  "limits": [
+    "check_read=True prova que o objeto decodifica sem sobra/falta de byte; nao valida o significado dos campos.",
+    "Tipos referenciados foram lidos com a arvore gerada do IL2CPP do mesmo build, sem leitura de referencia independente."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "class": "Game.Level.LevelPeriodicSpine",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 4,
+    "err_message": "ValueError: Expected to read 80 bytes, but only read 72 bytes",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 4,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 4,
+  "affected_objects": [
+    {
+      "path_id": 2138,
+      "assets_file": "level16",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2193,
+      "assets_file": "level16",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4385,
+      "assets_file": "level9",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4573,
+      "assets_file": "level9",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 4,
+    "new_total": 4,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelPeriodicSpine.jsonl.gz (campos decodificados + _path_id + _file)"
+}

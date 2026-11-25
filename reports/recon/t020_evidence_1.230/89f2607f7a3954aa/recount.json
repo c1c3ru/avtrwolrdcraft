@@ -1,0 +1,99 @@
+{
+  "class": "Game.Level.LevelDragActionAreaMultiLabelEventHandler",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 12,
+    "err_message": "EOFError: read_str out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 12,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 12,
+  "affected_objects": [
+    {
+      "path_id": 1889,
+      "assets_file": "level207",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1999,
+      "assets_file": "level207",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2034,
+      "assets_file": "level207",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2061,
+      "assets_file": "level207",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1993,
+      "assets_file": "level208",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2144,
+      "assets_file": "level208",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2160,
+      "assets_file": "level208",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2271,
+      "assets_file": "level208",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3475,
+      "assets_file": "level209",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3275,
+      "assets_file": "level210",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3784,
+      "assets_file": "level211",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3228,
+      "assets_file": "level212",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 12,
+    "new_total": 12,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelDragActionAreaMultiLabelEventHandler.jsonl.gz (campos decodificados + _path_id + _file)"
+}

@@ -1,0 +1,69 @@
+{
+  "class": "PWC.Level.LevelConsumerAreaSkinNameConditionHandler",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 7,
+    "err_message": "ValueError: Expected to read 216 bytes, but only read 48 bytes",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 7,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 7,
+  "affected_objects": [
+    {
+      "path_id": 4075,
+      "assets_file": "level139",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4289,
+      "assets_file": "level139",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2943,
+      "assets_file": "level157",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3617,
+      "assets_file": "level157",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3215,
+      "assets_file": "level90",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2944,
+      "assets_file": "level94",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1071658,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 7,
+    "new_total": 7,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/PWC.Level.LevelConsumerAreaSkinNameConditionHandler.jsonl.gz (campos decodificados + _path_id + _file)"
+}

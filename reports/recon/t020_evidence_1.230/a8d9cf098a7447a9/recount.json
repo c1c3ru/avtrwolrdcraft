@@ -1,0 +1,45 @@
+{
+  "class": "Game.Level.LevelBaristaMachine",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 3,
+    "err_message": "EOFError: read_str out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 3,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 3,
+  "affected_objects": [
+    {
+      "path_id": 2704,
+      "assets_file": "level137",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6153,
+      "assets_file": "level33",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2515,
+      "assets_file": "level65",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 3,
+    "new_total": 3,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.LevelBaristaMachine.jsonl.gz (campos decodificados + _path_id + _file)"
+}

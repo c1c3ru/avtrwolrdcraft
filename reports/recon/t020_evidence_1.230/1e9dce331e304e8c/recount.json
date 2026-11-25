@@ -1,0 +1,129 @@
+{
+  "class": "Game.Level.ContextualAnimation.LevelCAEventHandlerByAnimationNameItemHandler",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 17,
+    "err_message": "EOFError: read_str out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 17,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 17,
+  "affected_objects": [
+    {
+      "path_id": 3779,
+      "assets_file": "level133",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3826,
+      "assets_file": "level133",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3933,
+      "assets_file": "level133",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3977,
+      "assets_file": "level133",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6278,
+      "assets_file": "level5",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 5155,
+      "assets_file": "level74",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 803923,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 820766,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 908705,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 960586,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1030753,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1062181,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1124729,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1125398,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1148899,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1189493,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1194075,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 17,
+    "new_total": 17,
+    "exact_match": true,
+    "note": "batem exatamente"
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/Game.Level.ContextualAnimation.LevelCAEventHandlerByAnimationNameItemHandler.jsonl.gz (campos decodificados + _path_id + _file)"
+}

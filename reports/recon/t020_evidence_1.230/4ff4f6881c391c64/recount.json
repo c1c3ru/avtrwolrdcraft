@@ -1,0 +1,1311 @@
+{
+  "class": "PWC.Level.LevelSimpleToggleableSpine",
+  "before": {
+    "ok": 0,
+    "bad": 0,
+    "err": 208,
+    "err_message": "EOFError: read_str out of bounds",
+    "source": "contagem declarada na tarefa (build anterior)"
+  },
+  "after": {
+    "ok": 214,
+    "bad": 0,
+    "err": 0,
+    "build": "1.230 instalado"
+  },
+  "total_instances_in_game_1_230": 214,
+  "affected_objects": [
+    {
+      "path_id": 4526,
+      "assets_file": "level111",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4538,
+      "assets_file": "level111",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1857,
+      "assets_file": "level126",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1889,
+      "assets_file": "level126",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1948,
+      "assets_file": "level126",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1979,
+      "assets_file": "level126",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2006,
+      "assets_file": "level126",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2060,
+      "assets_file": "level126",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2206,
+      "assets_file": "level126",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4558,
+      "assets_file": "level127",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2911,
+      "assets_file": "level130",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2880,
+      "assets_file": "level132",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3256,
+      "assets_file": "level134",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3747,
+      "assets_file": "level134",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4023,
+      "assets_file": "level134",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2567,
+      "assets_file": "level135",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2255,
+      "assets_file": "level136",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2959,
+      "assets_file": "level136",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2960,
+      "assets_file": "level136",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2961,
+      "assets_file": "level136",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2962,
+      "assets_file": "level136",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2963,
+      "assets_file": "level136",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3301,
+      "assets_file": "level136",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2365,
+      "assets_file": "level138",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2383,
+      "assets_file": "level138",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2432,
+      "assets_file": "level138",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2568,
+      "assets_file": "level138",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2588,
+      "assets_file": "level138",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3193,
+      "assets_file": "level138",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3194,
+      "assets_file": "level138",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3195,
+      "assets_file": "level138",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3198,
+      "assets_file": "level138",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3395,
+      "assets_file": "level139",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3715,
+      "assets_file": "level139",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3854,
+      "assets_file": "level139",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4028,
+      "assets_file": "level139",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4242,
+      "assets_file": "level139",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3212,
+      "assets_file": "level140",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3598,
+      "assets_file": "level140",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3875,
+      "assets_file": "level141",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4120,
+      "assets_file": "level141",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4779,
+      "assets_file": "level141",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2387,
+      "assets_file": "level143",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3130,
+      "assets_file": "level143",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3331,
+      "assets_file": "level143",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3494,
+      "assets_file": "level143",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3658,
+      "assets_file": "level143",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3672,
+      "assets_file": "level143",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3646,
+      "assets_file": "level162",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3681,
+      "assets_file": "level162",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3063,
+      "assets_file": "level171",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2912,
+      "assets_file": "level181",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3684,
+      "assets_file": "level183",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3476,
+      "assets_file": "level187",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1958,
+      "assets_file": "level197",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1944,
+      "assets_file": "level198",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3254,
+      "assets_file": "level199",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2785,
+      "assets_file": "level204",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2799,
+      "assets_file": "level204",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3459,
+      "assets_file": "level204",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2587,
+      "assets_file": "level206",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3796,
+      "assets_file": "level223",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4043,
+      "assets_file": "level223",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4571,
+      "assets_file": "level223",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4581,
+      "assets_file": "level223",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4667,
+      "assets_file": "level223",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3914,
+      "assets_file": "level225",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4149,
+      "assets_file": "level225",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3806,
+      "assets_file": "level229",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4499,
+      "assets_file": "level229",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4629,
+      "assets_file": "level229",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3350,
+      "assets_file": "level232",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2366,
+      "assets_file": "level24",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2689,
+      "assets_file": "level24",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3710,
+      "assets_file": "level24",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2883,
+      "assets_file": "level25",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3507,
+      "assets_file": "level26",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4179,
+      "assets_file": "level27",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4320,
+      "assets_file": "level36",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6251,
+      "assets_file": "level37",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6274,
+      "assets_file": "level37",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3587,
+      "assets_file": "level39",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2475,
+      "assets_file": "level44",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2496,
+      "assets_file": "level44",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2536,
+      "assets_file": "level45",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 10785,
+      "assets_file": "level50",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 11627,
+      "assets_file": "level50",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 12292,
+      "assets_file": "level50",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 12293,
+      "assets_file": "level50",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 7903,
+      "assets_file": "level51",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 9010,
+      "assets_file": "level51",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 5984,
+      "assets_file": "level53",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6485,
+      "assets_file": "level53",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6823,
+      "assets_file": "level53",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6824,
+      "assets_file": "level53",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6493,
+      "assets_file": "level54",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6494,
+      "assets_file": "level54",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6817,
+      "assets_file": "level54",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 7879,
+      "assets_file": "level55",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 8581,
+      "assets_file": "level55",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 8901,
+      "assets_file": "level55",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 8902,
+      "assets_file": "level55",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 7122,
+      "assets_file": "level56",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 7123,
+      "assets_file": "level56",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 7462,
+      "assets_file": "level56",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3567,
+      "assets_file": "level6",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4211,
+      "assets_file": "level64",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4291,
+      "assets_file": "level64",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4393,
+      "assets_file": "level64",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4397,
+      "assets_file": "level64",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 5032,
+      "assets_file": "level64",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 6423,
+      "assets_file": "level64",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2578,
+      "assets_file": "level65",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2792,
+      "assets_file": "level65",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3214,
+      "assets_file": "level66",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3264,
+      "assets_file": "level66",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3298,
+      "assets_file": "level66",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3341,
+      "assets_file": "level66",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3387,
+      "assets_file": "level66",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1910,
+      "assets_file": "level67",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1967,
+      "assets_file": "level67",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2115,
+      "assets_file": "level67",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2312,
+      "assets_file": "level67",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2381,
+      "assets_file": "level67",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2355,
+      "assets_file": "level68",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2684,
+      "assets_file": "level68",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1708,
+      "assets_file": "level7",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4421,
+      "assets_file": "level70",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 5478,
+      "assets_file": "level70",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 5644,
+      "assets_file": "level70",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 5645,
+      "assets_file": "level70",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2351,
+      "assets_file": "level71",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2925,
+      "assets_file": "level71",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2692,
+      "assets_file": "level72",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2759,
+      "assets_file": "level72",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2680,
+      "assets_file": "level73",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2930,
+      "assets_file": "level73",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2669,
+      "assets_file": "level79",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2968,
+      "assets_file": "level79",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3257,
+      "assets_file": "level79",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3326,
+      "assets_file": "level79",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3349,
+      "assets_file": "level79",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3452,
+      "assets_file": "level79",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2481,
+      "assets_file": "level80",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2745,
+      "assets_file": "level84",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4037,
+      "assets_file": "level9",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4232,
+      "assets_file": "level9",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4309,
+      "assets_file": "level9",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 4436,
+      "assets_file": "level9",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1558,
+      "assets_file": "level93",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1816,
+      "assets_file": "level93",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 3349,
+      "assets_file": "level94",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1821,
+      "assets_file": "level98",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2007,
+      "assets_file": "level98",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 2020,
+      "assets_file": "level98",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 755532,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 771051,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 771122,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 785910,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 819244,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 825298,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 826150,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 834732,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 840602,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 846085,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 850054,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 850695,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 859662,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 861187,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 865769,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 877571,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 902677,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 911936,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 920281,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 922898,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 941352,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 945057,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 953649,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 955029,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 955663,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 956938,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 960352,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 960353,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 964857,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 968597,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 973804,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 975616,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 978961,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 979143,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 983736,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 987106,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 995608,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 995609,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1007567,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1013161,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1020086,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1024145,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1060722,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1065788,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1080915,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1085239,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1120097,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1123913,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1141659,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1156980,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1169289,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1182135,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1189321,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1190062,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1190063,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1195178,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1198838,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1205606,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    },
+    {
+      "path_id": 1218745,
+      "assets_file": "resources.assets",
+      "status": "resolved",
+      "check_read_passed": true
+    }
+  ],
+  "unresolved_objects": [],
+  "reconciliation": {
+    "old_total_ok_plus_err": 208,
+    "new_total": 214,
+    "exact_match": false,
+    "note": "o 1.230 tem MAIS instancias que a contagem antiga; nao sei se e conteudo novo do build ou subcontagem antiga (nao rodei o build antigo com este extrator)."
+  },
+  "output_artifact": "out/recon/il2cpp_1.230/mb_t020_all/PWC.Level.LevelSimpleToggleableSpine.jsonl.gz (campos decodificados + _path_id + _file)"
+}
