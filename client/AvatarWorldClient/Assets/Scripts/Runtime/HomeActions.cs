@@ -32,13 +32,15 @@ namespace AvatarWorld.Runtime
         Action play;
         Action<int> starterPack;
         Action openStore;
+        Action openCatalogs;
         public readonly List<string> PendingButtons = new List<string>();
 
         public void Initialize(IReadOnlyList<GameObject> objects, SaveStore saveStore,
             PlayerState sharedState, Action openPlay, Action<int> openStarterPack = null,
-            Action openStoreScreen = null)
+            Action openStoreScreen = null, Action openCatalogScreen = null)
         {
             openStore = openStoreScreen;
+            openCatalogs = openCatalogScreen;
             starterPack = openStarterPack;
             saves = saveStore ?? throw new ArgumentNullException(nameof(saveStore));
             state = sharedState ?? throw new ArgumentNullException(nameof(sharedState));
@@ -125,8 +127,55 @@ namespace AvatarWorld.Runtime
                         break;
                 }
             }
+            AddCatalogButton();
             ShowLanguageFlag(Loc.Current);
         }
+
+        /// <summary>
+        /// "Catalogos" nas Configuracoes: ferramentas internas do estudio (EditorApp) abertas ao jogador, so leitura.
+        /// O botao e um clone do WorldResetButton do SettingsMenu original (mesma moldura e som de clique), com a arte de pilula
+        /// do app e o texto traduzido, ao lado dele.
+        /// </summary>
+        void AddCatalogButton()
+        {
+            if (openCatalogs == null || settingsMenu == null) return;
+            var template = Array.Find(settingsMenu.GetComponentsInChildren<Button>(true), b => b.name.Trim() == "WorldResetButton");
+            if (template == null) return;
+            var clone = Instantiate(template.gameObject, template.transform.parent);
+            clone.name = "StudioCatalogButton";
+            var button = clone.GetComponent<Button>();
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => Open("StudioCatalogButton"));
+            boundButtons.Add(button);
+            catalogButtonRect = (RectTransform)clone.transform;
+            var source = (RectTransform)template.transform;
+            catalogButtonRect.anchorMin = source.anchorMin; catalogButtonRect.anchorMax = source.anchorMax;
+            catalogButtonRect.pivot = source.pivot; catalogButtonRect.sizeDelta = source.sizeDelta;
+            catalogButtonRect.anchoredPosition = source.anchoredPosition + new Vector2(0f, -(source.rect.height + 24f));
+            Debug.Log("[Catalogos] WorldResetButton anchors " + source.anchorMin + "-" + source.anchorMax + " pos " + source.anchoredPosition + " size " + source.sizeDelta + " rect " + source.rect);
+            foreach (var sibling in template.transform.parent.GetComponentsInChildren<RectTransform>(true))
+                if (sibling.parent == template.transform.parent)
+                    Debug.Log("[Catalogos] irmao " + sibling.name.Trim() + " pos " + sibling.anchoredPosition + " size " + sibling.sizeDelta);
+            var graphic = clone.transform.Find("Graphic");
+            if (graphic != null)
+            {
+                var image = graphic.GetComponent<Image>();
+                var pill = Resources.Load<Texture2D>("Icons/pill_green");
+                if (image != null && pill != null)
+                    image.sprite = Sprite.Create(pill, new Rect(0, 0, pill.width, pill.height), new Vector2(0.5f, 0.5f), 100f);
+                var label = new GameObject("Label", typeof(RectTransform), typeof(Text));
+                label.transform.SetParent(clone.transform, false);
+                var text = label.GetComponent<Text>();
+                text.font = font; text.fontSize = 40; text.alignment = TextAnchor.MiddleCenter;
+                text.color = new Color(0.2f, 0.1f, 0.3f); text.raycastTarget = false;
+                text.horizontalOverflow = HorizontalWrapMode.Overflow;
+                text.text = Loc.Get("catalog.title");
+                var rect = (RectTransform)label.transform;
+                rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.offsetMin = rect.offsetMax = Vector2.zero;
+            }
+        }
+
+        RectTransform catalogButtonRect;
 
         public void Open(string action)
         {
@@ -154,6 +203,11 @@ namespace AvatarWorld.Runtime
                 case "AccountButton": ShowProfile(); break;
                 case "AchievementsAppWidget": ShowProgress(); break;
                 case "WorldResetButton": ShowResetWarning(); break;
+                case "StudioCatalogButton":
+                    if (settingsMenu != null) settingsMenu.SetActive(false);
+                    CurrentPage = Loc.Get("catalog.title");
+                    openCatalogs?.Invoke();
+                    break;
                 case "ChatLanguageButton":
                     if (languagesPanel != null) languagesPanel.SetActive(!languagesPanel.activeSelf);
                     break;

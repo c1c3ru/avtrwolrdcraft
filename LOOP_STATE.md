@@ -1,5 +1,16 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## Catalogos nas Configuracoes (ferramentas do estudio abertas ao jogador) — 2026-11-25
+- Pedido do usuario: deixar as ferramentas internas (EditorApp) acessiveis ao jogador, no padrao do app; entrada em **Configuracoes**; 1a entrega = **catalogos** (so leitura).
+- `Core/Economy/CatalogSearch.cs` (`CatalogSearch`, `CatalogEntry`, `CatalogView`): busca sem acento por termos em qualquer ordem, filtro por categoria e paginacao, sem engine.
+  `Runtime/StudioCatalogScreen.cs`: tela no padrao do `ItemBrowserScreen` (Canvas 2048x1024, paleta roxa, `Loc`, `UiSound`), 2 abas ("Itens da loja" = store_catalog.json, "Roupas e skins" = `AvatarCatalog`),
+  busca por texto, chips das 7 maiores categorias (as demais ficam acessiveis pela busca), cartoes 4x3 e detalhe. Sem compra. Chaves `catalog.*` em pt/en/es/id.
+- Entrada: `HomeActions.AddCatalogButton` clona o `WorldResetButton` do `SettingsMenu` original (pilula `Icons/pill_green` + texto "Catalogos"); `HomeBootstrap.OpenCatalogs` abre a tela.
+- **Validado**: logica do Core com `dotnet` (67 verificacoes, 0 falhas, inclui o catalogo real de avatar e as 4 linguas); Runtime+Core compilam contra as DLLs do Unity (0 erros). Testes NUnit em `Tests/EditMode/CatalogSearchTests.cs` (nao rodados no Unity).
+- **NAO validado**: execucao no Unity/aparelho. A posicao do botao (abaixo do `WorldResetButton`) e um 1o palpite; `AddCatalogButton` tem `Debug.Log` temporarios de retangulos para ajustar no aparelho (remover depois).
+  Gerar o APK exige a `Library` do Unity (17 GB no checkout principal; so ha ~12 GB livres, uma importacao nova no worktree arrisca encher o disco).
+- Armadilha: nao criar nada que edite arquivos de evidencia hasheados (ver entradas T020).
+
 ## EditorApp: decodificacao estrutural e contexto — 2026-11-25
 - As 20 classes `PWC.EditorApp.*` (24 instancias) sao ferramentas internas do estudio: editor de **skins de avatar** (cena `level252`, `EASUTEditorManager` + `EASUTAvatarDisplay`), editor de **fases** (hierarquia, busca, preview;
   prefabs em `resources.assets`), login por OTP e painel de animacao contextual. Sem esquema (tipo removido do IL2CPP); estrutura e contexto em `out/recon/editorapp/structural_decode.json`, `docs/RECON_T020_EDITORAPP_STRUCTURAL_2026-11-25.md`,

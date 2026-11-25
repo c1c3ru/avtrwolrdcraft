@@ -65,7 +65,7 @@ namespace AvatarWorld.Runtime
 
             HomeLayout.Apply(objs);
             _homeActions = gameObject.AddComponent<HomeActions>();
-            _homeActions.Initialize(objs, _save, _state, OpenWorldMap, OpenStarterPackChallenges, () => OpenStore());
+            _homeActions.Initialize(objs, _save, _state, OpenWorldMap, OpenStarterPackChallenges, () => OpenStore(), OpenCatalogs);
 
             BackgroundMusic.Play("Audio/home_music");
             yield return new WaitForSecondsRealtime(.65f);
@@ -80,6 +80,18 @@ namespace AvatarWorld.Runtime
             var screen = screenGo.AddComponent<LiteracyChallengeScreen>();
             screen.BeginRandom(_literacy, new ChallengeSelector(_state), packValue, "Pacote Inicial",
                 () => _save.Save(_state), _homeActions.ReturnToHome);
+        }
+
+        /// <summary>Catalogos (itens da loja e roupas/skins), so leitura, abertos pelas Configuracoes.</summary>
+        void OpenCatalogs()
+        {
+            if (FindFirstObjectByType<StudioCatalogScreen>() != null) return;
+            var go = new GameObject("StudioCatalog");
+            go.AddComponent<StudioCatalogScreen>().Begin(_state, () =>
+            {
+                Destroy(go);
+                _homeActions.ReturnFromGameplay();
+            });
         }
 
         /// <summary>Loja com a moldura do original. Sem moedas, os desafios (preco -> dificuldade) pagam moedas.</summary>

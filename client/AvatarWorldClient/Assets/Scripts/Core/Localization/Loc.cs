@@ -191,6 +191,17 @@ namespace AvatarWorld.Core.Localization
             ["item.have"] = new[] { "Você já tem este item.", "You already have this item.", "Ya tienes este artículo.", "Kamu sudah memiliki item ini." },
             ["item.bought"] = new[] { "Item adquirido!", "Item acquired!", "¡Artículo adquirido!", "Item didapatkan!" },
             ["item.price"] = new[] { "{0} moedas", "{0} coins", "{0} monedas", "{0} koin" },
+            // ---- Catalogos (ferramentas do estudio abertas ao jogador, so leitura) ----
+            ["catalog.title"] = new[] { "Catálogos", "Catalogs", "Catálogos", "Katalog" },
+            ["catalog.tab.items"] = new[] { "Itens da loja", "Store items", "Artículos de la tienda", "Item toko" },
+            ["catalog.tab.pieces"] = new[] { "Roupas e skins", "Clothes and skins", "Ropa y skins", "Pakaian dan skin" },
+            ["catalog.search"] = new[] { "Buscar...", "Search...", "Buscar...", "Cari..." },
+            ["catalog.all"] = new[] { "Todas", "All", "Todas", "Semua" },
+            ["catalog.empty"] = new[] { "Nada encontrado", "Nothing found", "No se encontró nada", "Tidak ditemukan" },
+            ["catalog.count"] = new[] { "{0} de {1}", "{0} of {1}", "{0} de {1}", "{0} dari {1}" },
+            ["catalog.category"] = new[] { "Categoria", "Category", "Categoría", "Kategori" },
+            ["catalog.code"] = new[] { "Código", "Code", "Código", "Kode" },
+            ["catalog.price"] = new[] { "Preço", "Price", "Precio", "Harga" },
             // ---- Editor de avatar ----
             ["editor.front"] = new[] { "Frente", "Front", "Frente", "Depan" },
             ["editor.back"] = new[] { "Atrás", "Back", "Atrás", "Belakang" },
