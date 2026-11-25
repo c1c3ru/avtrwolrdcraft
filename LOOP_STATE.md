@@ -1,5 +1,11 @@
 # LOOP_STATE — Avatar World RE (uso pessoal, repo privado)
 
+## T020: GameExtraSettings, LocalizationManager e LevelCatTunnel aceitas (done) — 2026-11-25
+- A pedido explicito do usuario: as 3 tarefas foram reabertas (`configure`) e submetidas/aprovadas (autor `agente-re-capstone-claude`, revisor `revisor-claude-t020`) apos verificacao independente
+  (contagens, ids, `m_Script`, adendo de stats `c`, sanidade, conteudo identico a segunda execucao da v3; regressao 27/27). Evidencia: `tools/mb_typetree_builder_v3.py`, `out/mb/_stats_addendum_2026-11-24c.json`,
+  `docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md`. Restam 31 classes T020 (20 EditorApp irrecuperaveis + 11 com SerializeReference/ConditionResolver).
+- Nao editar (evidencia hasheada de tarefas done): v1/v2/v3 do construtor, `_stats.json`, adendos de stats a/b/c e os docs `RECON_T020_*`.
+
 ## T020: +3 classes com o construtor v3 (tipos aninhados, enums do Unity) — 2026-11-24
 - `tools/mb_typetree_builder_v3.py` resolve tipos aninhados (`SceneMap.Item`) e enums do Unity (`SystemLanguage`). Regressao 27/27 identica; +3 classes: `GameExtraSettings`, `LocalizationManager` (26 paises e seus idiomas), `LevelCatTunnel`.
   **`GameExtraSettings.useTimeLock = 0`**: o gate de `WorldBuilding.ClickOnLevel` depende so de `IsCurrentlyFree`/`IsGameUnlocked`. Restam 31 (20 EditorApp + 11 SerializeReference). `docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md`.

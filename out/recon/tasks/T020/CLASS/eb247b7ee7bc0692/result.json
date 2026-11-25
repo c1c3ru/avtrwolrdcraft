@@ -1,12 +1,18 @@
 {
  "task": "T020/CLASS/eb247b7ee7bc0692",
  "title": "Corrigir decodificação de PazuCore.GameExtraSettings",
- "actor": "agente-artefatos-claude",
- "summary": "PazuCore.GameExtraSettings: confirmed as the same TypeTreeGeneratorAPI SerializableDictionaryBase<K,V> limitation as the 27 classes closed earlier this session, reached indirectly via the named subclass `Name_Back_Scene / Name_Audio / Name_AudioEvent` on field `nameBackScene (also backgroundMusics, audioEvents - same mechanism, not individually isolated which one trips the crash first)`. Initially left open because a literal string grep missed the indirect reference; resolved by checking field types against the full subclass list instead of the raw generic string.",
+ "actor": "agente-re-capstone-claude",
+ "summary": "PazuCore.GameExtraSettings: 1/1 instancia(s) decodificadas (type tree construido a partir do Cpp2IL).",
+ "fix_location": "tools/mb_typetree_builder_v3.py",
  "evidence": [
   "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/class-contract.json",
   "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/recount.json",
-  "out/cpp2il/DiffableCs/Assembly-CSharp/PazuCore/GameExtraSettings.cs",
-  "docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md"
- ]
+  "out/mb/PazuCore.GameExtraSettings.jsonl.gz",
+  "out/mb/_stats_addendum_2026-11-24c.json",
+  "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+  "tools/mb_typetree_builder_v3.py"
+ ],
+ "unresolved_objects": "nenhum",
+ "previous_attempt_note": "Tentativa anterior (2026-11-22) fechou esta tarefa como blocked_external por limitacao de ferramenta; reaberta por configure apos o construtor de type tree v3 (2026-11-24): resolve tipos aninhados (SceneMap.Item) e enums do Unity (SystemLanguage), que a v1/v2 resolviam como PPtr.",
+ "never_autoaccept": "Submetido para revisao com verificacao independente; nao foi auto-aceito."
 }

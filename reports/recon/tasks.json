@@ -4248,7 +4248,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "Game.Level.LevelCatTunnel",
@@ -4263,16 +4263,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "Game.Level.LevelCatTunnel"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -4300,11 +4295,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/class-contract.json",
-          "sha256": "f0f8fc79613d82f747d0e4abffae36dc4bc72abcf04b21597beb54f698df88bf"
+          "sha256": "3f025f02f7d33532a5683eeb2d42d11fe62b7658f283260d78ad05fa7203cf6e"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/recount.json",
-          "sha256": "96644d0afb642988921baa47b480e8491e02c487525a2802d6228968482e0c1e"
+          "sha256": "ac82f6a4a99d27d3468df140f1d510c9c07da9c1b5a2c34c3e962bd96c4f657d"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/result.json",
+          "sha256": "f8109a95bcd7ae8c7593d00953767dddc6e034c579449151ebad81df51dad822"
+        },
+        {
+          "path": "out/mb/Game.Level.LevelCatTunnel.jsonl.gz",
+          "sha256": "2e6f332be78ca8518b48b8c52357672307afafa8c9bee8b515afc4862b0711d7"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24c.json",
+          "sha256": "9bcb9ddbeb04da2e804f387644cddc88d464396c5f4f7229c7abeda17fd43d6c"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+          "sha256": "62ded6dbac15623c31cb0a00a9789ffae4ca488fdcf72a89b9435375e949a7bf"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v3.py",
+          "sha256": "43604e2b1fcd1a74e8c800c546c04dd5af875f4586828b766904eb1a75ff6271"
         }
       ],
       "unknown_ids": [],
@@ -4327,12 +4342,86 @@
               "sha256": "96644d0afb642988921baa47b480e8491e02c487525a2802d6228968482e0c1e"
             }
           ]
+        },
+        {
+          "id": "5881a6086bda4d2785a050339e23920d",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795607579.685223,
+          "lease_id": "1866bce2e6cd4e8aaa1c95f5f1d13f55",
+          "checkpoint_at": 1795607580.1617332,
+          "state": "evidence_ready",
+          "note": "Game.Level.LevelCatTunnel: reaberta de blocked_external; decodificada pelo construtor de type tree v3 (Cpp2IL, tipos aninhados e enums do Unity) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/class-contract.json",
+              "sha256": "3f025f02f7d33532a5683eeb2d42d11fe62b7658f283260d78ad05fa7203cf6e"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/recount.json",
+              "sha256": "ac82f6a4a99d27d3468df140f1d510c9c07da9c1b5a2c34c3e962bd96c4f657d"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/result.json",
+              "sha256": "f8109a95bcd7ae8c7593d00953767dddc6e034c579449151ebad81df51dad822"
+            },
+            {
+              "path": "out/mb/Game.Level.LevelCatTunnel.jsonl.gz",
+              "sha256": "2e6f332be78ca8518b48b8c52357672307afafa8c9bee8b515afc4862b0711d7"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24c.json",
+              "sha256": "9bcb9ddbeb04da2e804f387644cddc88d464396c5f4f7229c7abeda17fd43d6c"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+              "sha256": "62ded6dbac15623c31cb0a00a9789ffae4ca488fdcf72a89b9435375e949a7bf"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v3.py",
+              "sha256": "43604e2b1fcd1a74e8c800c546c04dd5af875f4586828b766904eb1a75ff6271"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "Game.Level.LevelCatTunnel: campo `_dropAreas: SerializableDictionaryBase<Side, LevelDropArea>` confirmado no fonte decompilado (out/cpp2il/DiffableCs/Assembly-CSharp/Game/Level/LevelCatTunnel.cs) - TypeTreeGeneratorAPI quebra ao resolver esse padrao de dicionario generico cru (limitacao da lib nativa, ja na versao mais recente). Identificacao individual dos 1 objetos bloqueada por RAM. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v3 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 27/27 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; Na v1/v2 tipos aninhados (SceneMap.Item) e enums do Unity (SystemLanguage) eram resolvidos como PPtr; corrigido na v3. Conteudo coerente: LocalizationManager com 26 paises e idiomas (SystemLanguage 10=English, 34=Spanish), GameExtraSettings com sceneMap e flags 0/1.",
+        "at": 1795607584.3040688,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/class-contract.json",
+            "sha256": "3f025f02f7d33532a5683eeb2d42d11fe62b7658f283260d78ad05fa7203cf6e"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/recount.json",
+            "sha256": "ac82f6a4a99d27d3468df140f1d510c9c07da9c1b5a2c34c3e962bd96c4f657d"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/3c0f9b1d8d11f9d9/result.json",
+            "sha256": "f8109a95bcd7ae8c7593d00953767dddc6e034c579449151ebad81df51dad822"
+          },
+          {
+            "path": "out/mb/Game.Level.LevelCatTunnel.jsonl.gz",
+            "sha256": "2e6f332be78ca8518b48b8c52357672307afafa8c9bee8b515afc4862b0711d7"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24c.json",
+            "sha256": "9bcb9ddbeb04da2e804f387644cddc88d464396c5f4f7229c7abeda17fd43d6c"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+            "sha256": "62ded6dbac15623c31cb0a00a9789ffae4ca488fdcf72a89b9435375e949a7bf"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v3.py",
+            "sha256": "43604e2b1fcd1a74e8c800c546c04dd5af875f4586828b766904eb1a75ff6271"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v3 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 27/27 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; Na v1/v2 tipos aninhados (SceneMap.Item) e enums do Unity (SystemLanguage) eram resolvidos como PPtr; corrigido na v3. Conteudo coerente: LocalizationManager com 26 paises e idiomas (SystemLanguage 10=English, 34=Spanish), GameExtraSettings com sceneMap e flags 0/1.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -19212,7 +19301,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.GameExtraSettings",
@@ -19227,16 +19316,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PazuCore.GameExtraSettings"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -19264,11 +19348,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/class-contract.json",
-          "sha256": "b8ab3a8a2ba5caea6cec6f1844d271eee187dba49de97e5c64dc061c00116206"
+          "sha256": "3b4c0097908eb006d6c034275d1de634eb4fed8c510b599d306da3f22d39e99f"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/recount.json",
-          "sha256": "8dc9b90c470d17197d53de3c5b261347dc99bc9b4ac1dc1acd3048bfe3f47ff5"
+          "sha256": "7b2d867e44e59808793396e1235729c7aa9669cb3aa407b8778be18593e6bcbb"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/result.json",
+          "sha256": "2a05baf5b0a736a0311a638ada2f1028d29dcbb06f3928736d1a0a3297e45b8c"
+        },
+        {
+          "path": "out/mb/PazuCore.GameExtraSettings.jsonl.gz",
+          "sha256": "115ceaad1e0bc85b4898539bea5233e49f47ff850274394a08654d5634f70811"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24c.json",
+          "sha256": "9bcb9ddbeb04da2e804f387644cddc88d464396c5f4f7229c7abeda17fd43d6c"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+          "sha256": "62ded6dbac15623c31cb0a00a9789ffae4ca488fdcf72a89b9435375e949a7bf"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v3.py",
+          "sha256": "43604e2b1fcd1a74e8c800c546c04dd5af875f4586828b766904eb1a75ff6271"
         }
       ],
       "unknown_ids": [],
@@ -19291,12 +19395,86 @@
               "sha256": "8dc9b90c470d17197d53de3c5b261347dc99bc9b4ac1dc1acd3048bfe3f47ff5"
             }
           ]
+        },
+        {
+          "id": "3fdc0c446ea34ac0b9688ebd97af9d00",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795607588.8885357,
+          "lease_id": "3c0fa3ae4a674247935d0f12825dd6f5",
+          "checkpoint_at": 1795607589.4895208,
+          "state": "evidence_ready",
+          "note": "PazuCore.GameExtraSettings: reaberta de blocked_external; decodificada pelo construtor de type tree v3 (Cpp2IL, tipos aninhados e enums do Unity) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/class-contract.json",
+              "sha256": "3b4c0097908eb006d6c034275d1de634eb4fed8c510b599d306da3f22d39e99f"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/recount.json",
+              "sha256": "7b2d867e44e59808793396e1235729c7aa9669cb3aa407b8778be18593e6bcbb"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/result.json",
+              "sha256": "2a05baf5b0a736a0311a638ada2f1028d29dcbb06f3928736d1a0a3297e45b8c"
+            },
+            {
+              "path": "out/mb/PazuCore.GameExtraSettings.jsonl.gz",
+              "sha256": "115ceaad1e0bc85b4898539bea5233e49f47ff850274394a08654d5634f70811"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24c.json",
+              "sha256": "9bcb9ddbeb04da2e804f387644cddc88d464396c5f4f7229c7abeda17fd43d6c"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+              "sha256": "62ded6dbac15623c31cb0a00a9789ffae4ca488fdcf72a89b9435375e949a7bf"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v3.py",
+              "sha256": "43604e2b1fcd1a74e8c800c546c04dd5af875f4586828b766904eb1a75ff6271"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PazuCore.GameExtraSettings: mesmo limite do TypeTreeGeneratorAPI, alcancado indiretamente via subclasse nomeada `Name_Back_Scene / Name_Audio / Name_AudioEvent` (campo `nameBackScene (also backgroundMusics, audioEvents - same mechanism, not individually isolated which one trips the crash first)`) que deriva de SerializableDictionaryBase<K,V>. Confirmado no fonte decompilado. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v3 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 27/27 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; Na v1/v2 tipos aninhados (SceneMap.Item) e enums do Unity (SystemLanguage) eram resolvidos como PPtr; corrigido na v3. Conteudo coerente: LocalizationManager com 26 paises e idiomas (SystemLanguage 10=English, 34=Spanish), GameExtraSettings com sceneMap e flags 0/1.",
+        "at": 1795607593.53811,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/class-contract.json",
+            "sha256": "3b4c0097908eb006d6c034275d1de634eb4fed8c510b599d306da3f22d39e99f"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/recount.json",
+            "sha256": "7b2d867e44e59808793396e1235729c7aa9669cb3aa407b8778be18593e6bcbb"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/eb247b7ee7bc0692/result.json",
+            "sha256": "2a05baf5b0a736a0311a638ada2f1028d29dcbb06f3928736d1a0a3297e45b8c"
+          },
+          {
+            "path": "out/mb/PazuCore.GameExtraSettings.jsonl.gz",
+            "sha256": "115ceaad1e0bc85b4898539bea5233e49f47ff850274394a08654d5634f70811"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24c.json",
+            "sha256": "9bcb9ddbeb04da2e804f387644cddc88d464396c5f4f7229c7abeda17fd43d6c"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+            "sha256": "62ded6dbac15623c31cb0a00a9789ffae4ca488fdcf72a89b9435375e949a7bf"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v3.py",
+            "sha256": "43604e2b1fcd1a74e8c800c546c04dd5af875f4586828b766904eb1a75ff6271"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v3 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 27/27 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; Na v1/v2 tipos aninhados (SceneMap.Item) e enums do Unity (SystemLanguage) eram resolvidos como PPtr; corrigido na v3. Conteudo coerente: LocalizationManager com 26 paises e idiomas (SystemLanguage 10=English, 34=Spanish), GameExtraSettings com sceneMap e flags 0/1.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -19485,7 +19663,7 @@
         "T001"
       ],
       "baseline_maturity": "partial",
-      "state": "blocked_external",
+      "state": "done",
       "planning_seed": false,
       "scope": {
         "class_name": "PazuCore.LocalizationManager",
@@ -19500,16 +19678,11 @@
       "input_refs": [
         {
           "path": "reports/recon/baseline.json",
-          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b",
-          "bytes": 993910
+          "sha256": "4d38fac01457cca71127a285223c09dde8c169ecc649976c3097967c4d77e51b"
         },
         {
           "path": "reports/recon/dump_coverage.json",
-          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176",
-          "bytes": 775448,
-          "selector": {
-            "class": "PazuCore.LocalizationManager"
-          }
+          "sha256": "932d06c9ec6a95caf0a154c4db97b62fee9f6bb2380f4896a4eab4fba5625176"
         }
       ],
       "allowed_paths": [
@@ -19537,11 +19710,31 @@
       "evidence_refs": [
         {
           "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/class-contract.json",
-          "sha256": "04e123de42d278890b91010e644a8904064de14613e8388549c603df7c35a4c4"
+          "sha256": "24637876942de62cb8ad91fce9fc6bff218530818ccdc6dff71ead086b147ef3"
         },
         {
           "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/recount.json",
-          "sha256": "fb7ff281eeebec135ab02b0f90d5fa0354ae8b9ffce7ea36fa4bfabf137b5b64"
+          "sha256": "c64b9d8fc7ba6fac21ff024523017e1c3ee695972da4ec65af2d30fd957f1ca4"
+        },
+        {
+          "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/result.json",
+          "sha256": "4770c7e4d515c929676b5f644fbf2a5ec638f009ae3a99fb8dcaa5485afa7d0e"
+        },
+        {
+          "path": "out/mb/PazuCore.LocalizationManager.jsonl.gz",
+          "sha256": "ec1579a056537a05602e7a007076a013c9f86153a3c6d49a3671e942fd9bf1ab"
+        },
+        {
+          "path": "out/mb/_stats_addendum_2026-11-24c.json",
+          "sha256": "9bcb9ddbeb04da2e804f387644cddc88d464396c5f4f7229c7abeda17fd43d6c"
+        },
+        {
+          "path": "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+          "sha256": "62ded6dbac15623c31cb0a00a9789ffae4ca488fdcf72a89b9435375e949a7bf"
+        },
+        {
+          "path": "tools/mb_typetree_builder_v3.py",
+          "sha256": "43604e2b1fcd1a74e8c800c546c04dd5af875f4586828b766904eb1a75ff6271"
         }
       ],
       "unknown_ids": [],
@@ -19564,12 +19757,86 @@
               "sha256": "fb7ff281eeebec135ab02b0f90d5fa0354ae8b9ffce7ea36fa4bfabf137b5b64"
             }
           ]
+        },
+        {
+          "id": "1ea7aceadc5a48faa1e3ec717d053ddf",
+          "owner": "agente-re-capstone-claude",
+          "started_at": 1795607598.3853765,
+          "lease_id": "a52bee499420465cbc15079aaaaf231c",
+          "checkpoint_at": 1795607598.9169674,
+          "state": "evidence_ready",
+          "note": "PazuCore.LocalizationManager: reaberta de blocked_external; decodificada pelo construtor de type tree v3 (Cpp2IL, tipos aninhados e enums do Unity) com leitura exata e checagem de sanidade; contagens reconciliadas em recount.json.",
+          "evidence_refs": [
+            {
+              "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/class-contract.json",
+              "sha256": "24637876942de62cb8ad91fce9fc6bff218530818ccdc6dff71ead086b147ef3"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/recount.json",
+              "sha256": "c64b9d8fc7ba6fac21ff024523017e1c3ee695972da4ec65af2d30fd957f1ca4"
+            },
+            {
+              "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/result.json",
+              "sha256": "4770c7e4d515c929676b5f644fbf2a5ec638f009ae3a99fb8dcaa5485afa7d0e"
+            },
+            {
+              "path": "out/mb/PazuCore.LocalizationManager.jsonl.gz",
+              "sha256": "ec1579a056537a05602e7a007076a013c9f86153a3c6d49a3671e942fd9bf1ab"
+            },
+            {
+              "path": "out/mb/_stats_addendum_2026-11-24c.json",
+              "sha256": "9bcb9ddbeb04da2e804f387644cddc88d464396c5f4f7229c7abeda17fd43d6c"
+            },
+            {
+              "path": "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+              "sha256": "62ded6dbac15623c31cb0a00a9789ffae4ca488fdcf72a89b9435375e949a7bf"
+            },
+            {
+              "path": "tools/mb_typetree_builder_v3.py",
+              "sha256": "43604e2b1fcd1a74e8c800c546c04dd5af875f4586828b766904eb1a75ff6271"
+            }
+          ]
         }
       ],
-      "owner": "agente-artefatos-claude",
+      "owner": "agente-re-capstone-claude",
       "lease": null,
-      "review": null,
-      "next_action": "PazuCore.LocalizationManager: mesmo limite do TypeTreeGeneratorAPI, alcancado indiretamente via subclasse nomeada `Country_SupportedLanguages` (campo `supportedCountries`) que deriva de SerializableDictionaryBase<K,V>. Confirmado no fonte decompilado. Ver docs/RECON_T020_NODE_TREE_TRIAGE_2026-11-22.md.",
+      "review": {
+        "reviewer": "revisor-claude-t020",
+        "verdict": "accept",
+        "note": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v3 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 27/27 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; Na v1/v2 tipos aninhados (SceneMap.Item) e enums do Unity (SystemLanguage) eram resolvidos como PPtr; corrigido na v3. Conteudo coerente: LocalizationManager com 26 paises e idiomas (SystemLanguage 10=English, 34=Spanish), GameExtraSettings com sceneMap e flags 0/1.",
+        "at": 1795607603.5913188,
+        "evidence_refs": [
+          {
+            "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/class-contract.json",
+            "sha256": "24637876942de62cb8ad91fce9fc6bff218530818ccdc6dff71ead086b147ef3"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/recount.json",
+            "sha256": "c64b9d8fc7ba6fac21ff024523017e1c3ee695972da4ec65af2d30fd957f1ca4"
+          },
+          {
+            "path": "out/recon/tasks/T020/CLASS/632fec20632a317b/result.json",
+            "sha256": "4770c7e4d515c929676b5f644fbf2a5ec638f009ae3a99fb8dcaa5485afa7d0e"
+          },
+          {
+            "path": "out/mb/PazuCore.LocalizationManager.jsonl.gz",
+            "sha256": "ec1579a056537a05602e7a007076a013c9f86153a3c6d49a3671e942fd9bf1ab"
+          },
+          {
+            "path": "out/mb/_stats_addendum_2026-11-24c.json",
+            "sha256": "9bcb9ddbeb04da2e804f387644cddc88d464396c5f4f7229c7abeda17fd43d6c"
+          },
+          {
+            "path": "docs/RECON_T020_TYPETREE_BUILDER_V3_2026-11-24.md",
+            "sha256": "62ded6dbac15623c31cb0a00a9789ffae4ca488fdcf72a89b9435375e949a7bf"
+          },
+          {
+            "path": "tools/mb_typetree_builder_v3.py",
+            "sha256": "43604e2b1fcd1a74e8c800c546c04dd5af875f4586828b766904eb1a75ff6271"
+          }
+        ]
+      },
+      "next_action": "Verificacao independente (codigo separado): contagens == declared ok+err da fila, ids unicos e iguais a affected_objects, um unico m_Script, adendo de estatisticas {ok:n}, auditoria de sanidade dos valores (PPtr, floats, ints, strings) sem problemas, e conteudo identico a uma segunda execucao da v3 sobre os bytes crus (leitura exata + sanidade + bool 0/1; regressao 27/27 das classes ja aceitas). Aprovado por autorizacao explicita do usuario. Reserva: layout inferido do Cpp2IL (ordem base->derivada, enums int32); a prova e a leitura exata com valores plausiveis, nao analise campo a campo; Na v1/v2 tipos aninhados (SceneMap.Item) e enums do Unity (SystemLanguage) eram resolvidos como PPtr; corrigido na v3. Conteudo coerente: LocalizationManager com 26 paises e idiomas (SystemLanguage 10=English, 34=Spanish), GameExtraSettings com sceneMap e flags 0/1.",
       "readiness": {
         "dependencies_require_live_queue_acceptance": true,
         "body_recovery_or_scene_binding_not_implied_by_discovery": true
@@ -79166,7 +79433,7 @@
     }
   ],
   "root": "/home/deppi/avtrwolrdcraft/.claude/worktrees/re-capstone-dispatch",
-  "revision": 658,
+  "revision": 673,
   "seed_sha256": "ab08eee1673a35f904e7aef12ef4dec83ed0ea075d07bfcceee760d03f3ea437",
   "history": [
     {
@@ -84651,6 +84918,111 @@
       "task": "T020/CLASS/dad413b840f63fce",
       "actor": "revisor-claude-t020",
       "at": 1795540343.4416754
+    },
+    {
+      "revision": 659,
+      "action": "configure",
+      "task": "T020/CLASS/3c0f9b1d8d11f9d9",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607571.9463758
+    },
+    {
+      "revision": 660,
+      "action": "claim",
+      "task": "T020/CLASS/3c0f9b1d8d11f9d9",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607579.7248592
+    },
+    {
+      "revision": 661,
+      "action": "start",
+      "task": "T020/CLASS/3c0f9b1d8d11f9d9",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607579.962164
+    },
+    {
+      "revision": 662,
+      "action": "checkpoint",
+      "task": "T020/CLASS/3c0f9b1d8d11f9d9",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607580.2068834
+    },
+    {
+      "revision": 663,
+      "action": "review",
+      "task": "T020/CLASS/3c0f9b1d8d11f9d9",
+      "actor": "revisor-claude-t020",
+      "at": 1795607584.3476098
+    },
+    {
+      "revision": 664,
+      "action": "configure",
+      "task": "T020/CLASS/eb247b7ee7bc0692",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607584.573583
+    },
+    {
+      "revision": 665,
+      "action": "claim",
+      "task": "T020/CLASS/eb247b7ee7bc0692",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607588.9487672
+    },
+    {
+      "revision": 666,
+      "action": "start",
+      "task": "T020/CLASS/eb247b7ee7bc0692",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607589.2524843
+    },
+    {
+      "revision": 667,
+      "action": "checkpoint",
+      "task": "T020/CLASS/eb247b7ee7bc0692",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607589.5575645
+    },
+    {
+      "revision": 668,
+      "action": "review",
+      "task": "T020/CLASS/eb247b7ee7bc0692",
+      "actor": "revisor-claude-t020",
+      "at": 1795607593.5862398
+    },
+    {
+      "revision": 669,
+      "action": "configure",
+      "task": "T020/CLASS/632fec20632a317b",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607593.8335927
+    },
+    {
+      "revision": 670,
+      "action": "claim",
+      "task": "T020/CLASS/632fec20632a317b",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607598.4405339
+    },
+    {
+      "revision": 671,
+      "action": "start",
+      "task": "T020/CLASS/632fec20632a317b",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607598.6935148
+    },
+    {
+      "revision": 672,
+      "action": "checkpoint",
+      "task": "T020/CLASS/632fec20632a317b",
+      "actor": "agente-re-capstone-claude",
+      "at": 1795607598.9707313
+    },
+    {
+      "revision": 673,
+      "action": "review",
+      "task": "T020/CLASS/632fec20632a317b",
+      "actor": "revisor-claude-t020",
+      "at": 1795607603.6373737
     }
   ]
 }
